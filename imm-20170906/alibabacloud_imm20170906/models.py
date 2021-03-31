@@ -25,6 +25,10 @@ class CompareImageFacesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -74,6 +78,10 @@ class CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -110,6 +118,10 @@ class CompareImageFacesResponseBodyFaceAFaceAttributes(TeaModel):
             self.face_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_boundary is not None:
             result['FaceBoundary'] = self.face_boundary.to_map()
@@ -137,6 +149,10 @@ class CompareImageFacesResponseBodyFaceA(TeaModel):
             self.face_attributes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_id is not None:
             result['FaceId'] = self.face_id
@@ -171,6 +187,10 @@ class CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -207,6 +227,10 @@ class CompareImageFacesResponseBodyFaceBFaceAttributes(TeaModel):
             self.face_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_boundary is not None:
             result['FaceBoundary'] = self.face_boundary.to_map()
@@ -234,6 +258,10 @@ class CompareImageFacesResponseBodyFaceB(TeaModel):
             self.face_attributes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_id is not None:
             result['FaceId'] = self.face_id
@@ -273,6 +301,10 @@ class CompareImageFacesResponseBody(TeaModel):
             self.face_b.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -319,6 +351,10 @@ class CompareImageFacesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -385,6 +421,10 @@ class ConvertOfficeFormatRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -486,6 +526,10 @@ class ConvertOfficeFormatResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_count is not None:
             result['PageCount'] = self.page_count
@@ -518,6 +562,10 @@ class ConvertOfficeFormatResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -556,6 +604,10 @@ class CreateGrabFrameTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -603,6 +655,10 @@ class CreateGrabFrameTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -639,6 +695,10 @@ class CreateGrabFrameTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -673,6 +733,10 @@ class CreateGroupFacesJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -714,6 +778,10 @@ class CreateGroupFacesJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_type is not None:
             result['JobType'] = self.job_type
@@ -754,6 +822,10 @@ class CreateGroupFacesJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -790,6 +862,10 @@ class CreateImageProcessTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -833,6 +909,10 @@ class CreateImageProcessTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -869,6 +949,10 @@ class CreateImageProcessTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -903,6 +987,10 @@ class CreateMediaComplexTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -942,6 +1030,10 @@ class CreateMediaComplexTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -978,6 +1070,10 @@ class CreateMediaComplexTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1016,6 +1112,10 @@ class CreateMergeFaceGroupsJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -1069,6 +1169,10 @@ class CreateMergeFaceGroupsJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id_from is not None:
             result['GroupIdFrom'] = self.group_id_from
@@ -1117,6 +1221,10 @@ class CreateMergeFaceGroupsJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1191,6 +1299,10 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -1316,6 +1428,10 @@ class CreateOfficeConversionTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -1364,6 +1480,10 @@ class CreateOfficeConversionTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1396,6 +1516,10 @@ class CreateSetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -1443,6 +1567,10 @@ class CreateSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
@@ -1503,6 +1631,10 @@ class CreateSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1516,151 +1648,6 @@ class CreateSetResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateSetResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateStreamAnalyseTaskRequest(TeaModel):
-    def __init__(
-        self,
-        project: str = None,
-        stream_uri: str = None,
-        grab_type: str = None,
-        start_time: str = None,
-        end_time: str = None,
-        save_type: bool = None,
-        interval: str = None,
-        tgt_uri: str = None,
-        notify_topic_name: str = None,
-        notify_endpoint: str = None,
-    ):
-        self.project = project
-        self.stream_uri = stream_uri
-        self.grab_type = grab_type
-        self.start_time = start_time
-        self.end_time = end_time
-        self.save_type = save_type
-        self.interval = interval
-        self.tgt_uri = tgt_uri
-        self.notify_topic_name = notify_topic_name
-        self.notify_endpoint = notify_endpoint
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.project is not None:
-            result['Project'] = self.project
-        if self.stream_uri is not None:
-            result['StreamUri'] = self.stream_uri
-        if self.grab_type is not None:
-            result['GrabType'] = self.grab_type
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.save_type is not None:
-            result['SaveType'] = self.save_type
-        if self.interval is not None:
-            result['Interval'] = self.interval
-        if self.tgt_uri is not None:
-            result['TgtUri'] = self.tgt_uri
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Project') is not None:
-            self.project = m.get('Project')
-        if m.get('StreamUri') is not None:
-            self.stream_uri = m.get('StreamUri')
-        if m.get('GrabType') is not None:
-            self.grab_type = m.get('GrabType')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('SaveType') is not None:
-            self.save_type = m.get('SaveType')
-        if m.get('Interval') is not None:
-            self.interval = m.get('Interval')
-        if m.get('TgtUri') is not None:
-            self.tgt_uri = m.get('TgtUri')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        return self
-
-
-class CreateStreamAnalyseTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        task_id: str = None,
-        request_id: str = None,
-        task_type: str = None,
-    ):
-        self.task_id = task_id
-        self.request_id = request_id
-        self.task_type = task_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
-        return self
-
-
-class CreateStreamAnalyseTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CreateStreamAnalyseTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CreateStreamAnalyseTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1688,6 +1675,10 @@ class CreateVideoAbstractTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -1739,6 +1730,10 @@ class CreateVideoAbstractTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -1775,6 +1770,10 @@ class CreateVideoAbstractTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1797,22 +1796,12 @@ class CreateVideoAnalyseTaskRequest(TeaModel):
         self,
         project: str = None,
         video_uri: str = None,
-        grab_type: str = None,
-        start_time: str = None,
-        end_time: str = None,
-        save_type: bool = None,
-        interval: str = None,
         tgt_uri: str = None,
         notify_topic_name: str = None,
         notify_endpoint: str = None,
     ):
         self.project = project
         self.video_uri = video_uri
-        self.grab_type = grab_type
-        self.start_time = start_time
-        self.end_time = end_time
-        self.save_type = save_type
-        self.interval = interval
         self.tgt_uri = tgt_uri
         self.notify_topic_name = notify_topic_name
         self.notify_endpoint = notify_endpoint
@@ -1821,21 +1810,15 @@ class CreateVideoAnalyseTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
         if self.video_uri is not None:
             result['VideoUri'] = self.video_uri
-        if self.grab_type is not None:
-            result['GrabType'] = self.grab_type
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.save_type is not None:
-            result['SaveType'] = self.save_type
-        if self.interval is not None:
-            result['Interval'] = self.interval
         if self.tgt_uri is not None:
             result['TgtUri'] = self.tgt_uri
         if self.notify_topic_name is not None:
@@ -1850,16 +1833,6 @@ class CreateVideoAnalyseTaskRequest(TeaModel):
             self.project = m.get('Project')
         if m.get('VideoUri') is not None:
             self.video_uri = m.get('VideoUri')
-        if m.get('GrabType') is not None:
-            self.grab_type = m.get('GrabType')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('SaveType') is not None:
-            self.save_type = m.get('SaveType')
-        if m.get('Interval') is not None:
-            self.interval = m.get('Interval')
         if m.get('TgtUri') is not None:
             self.tgt_uri = m.get('TgtUri')
         if m.get('NotifyTopicName') is not None:
@@ -1884,6 +1857,10 @@ class CreateVideoAnalyseTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -1920,6 +1897,10 @@ class CreateVideoAnalyseTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1960,6 +1941,10 @@ class CreateVideoCompressTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2011,6 +1996,10 @@ class CreateVideoCompressTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -2047,6 +2036,10 @@ class CreateVideoCompressTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2093,6 +2086,10 @@ class CreateVideoProduceTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2156,6 +2153,10 @@ class CreateVideoProduceTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -2192,6 +2193,10 @@ class CreateVideoProduceTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2218,7 +2223,6 @@ class DecodeBlindWatermarkRequest(TeaModel):
         target_uri: str = None,
         image_quality: int = None,
         model: str = None,
-        watermark_type: str = None,
     ):
         self.project = project
         self.image_uri = image_uri
@@ -2226,12 +2230,15 @@ class DecodeBlindWatermarkRequest(TeaModel):
         self.target_uri = target_uri
         self.image_quality = image_quality
         self.model = model
-        self.watermark_type = watermark_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2245,8 +2252,6 @@ class DecodeBlindWatermarkRequest(TeaModel):
             result['ImageQuality'] = self.image_quality
         if self.model is not None:
             result['Model'] = self.model
-        if self.watermark_type is not None:
-            result['WatermarkType'] = self.watermark_type
         return result
 
     def from_map(self, m: dict = None):
@@ -2263,8 +2268,6 @@ class DecodeBlindWatermarkRequest(TeaModel):
             self.image_quality = m.get('ImageQuality')
         if m.get('Model') is not None:
             self.model = m.get('Model')
-        if m.get('WatermarkType') is not None:
-            self.watermark_type = m.get('WatermarkType')
         return self
 
 
@@ -2283,6 +2286,10 @@ class DecodeBlindWatermarkResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2319,6 +2326,10 @@ class DecodeBlindWatermarkResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2351,6 +2362,10 @@ class DeleteImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2386,6 +2401,10 @@ class DeleteImageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2422,6 +2441,10 @@ class DeleteImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2454,6 +2477,10 @@ class DeleteImageJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2485,6 +2512,10 @@ class DeleteImageJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2513,6 +2544,10 @@ class DeleteImageJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2543,6 +2578,10 @@ class DeleteOfficeConversionTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2570,6 +2609,10 @@ class DeleteOfficeConversionTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2598,6 +2641,10 @@ class DeleteOfficeConversionTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2626,6 +2673,10 @@ class DeleteProjectRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2649,6 +2700,10 @@ class DeleteProjectResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2677,6 +2732,10 @@ class DeleteProjectResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2707,6 +2766,10 @@ class DeleteSetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2736,6 +2799,10 @@ class DeleteSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2768,6 +2835,10 @@ class DeleteSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2802,6 +2873,10 @@ class DeleteVideoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2841,6 +2916,10 @@ class DeleteVideoResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2877,6 +2956,10 @@ class DeleteVideoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2909,6 +2992,10 @@ class DeleteVideoTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -2940,6 +3027,10 @@ class DeleteVideoTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2968,6 +3059,10 @@ class DeleteVideoTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2998,6 +3093,10 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project_types is not None:
             result['ProjectTypes'] = self.project_types
@@ -3028,6 +3127,10 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Region'] = []
         if self.region is not None:
@@ -3059,6 +3162,10 @@ class DescribeRegionsResponseBody(TeaModel):
             self.regions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3092,6 +3199,10 @@ class DescribeRegionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3122,6 +3233,10 @@ class DetectImageBodiesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -3155,6 +3270,10 @@ class DetectImageBodiesResponseBodyBodiesBodyBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -3193,6 +3312,10 @@ class DetectImageBodiesResponseBodyBodies(TeaModel):
             self.body_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.body_confidence is not None:
             result['BodyConfidence'] = self.body_confidence
@@ -3228,6 +3351,10 @@ class DetectImageBodiesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3269,6 +3396,10 @@ class DetectImageBodiesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3291,23 +3422,23 @@ class DetectImageFacesRequest(TeaModel):
         self,
         project: str = None,
         image_uri: str = None,
-        real_uid: str = None,
     ):
         self.project = project
         self.image_uri = image_uri
-        self.real_uid = real_uid
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
         if self.image_uri is not None:
             result['ImageUri'] = self.image_uri
-        if self.real_uid is not None:
-            result['RealUid'] = self.real_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -3316,8 +3447,6 @@ class DetectImageFacesRequest(TeaModel):
             self.project = m.get('Project')
         if m.get('ImageUri') is not None:
             self.image_uri = m.get('ImageUri')
-        if m.get('RealUid') is not None:
-            self.real_uid = m.get('RealUid')
         return self
 
 
@@ -3338,6 +3467,10 @@ class DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -3377,6 +3510,10 @@ class DetectImageFacesResponseBodyFacesFaceAttributesHeadPose(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pitch is not None:
             result['Pitch'] = self.pitch
@@ -3425,6 +3562,10 @@ class DetectImageFacesResponseBodyFacesFaceAttributes(TeaModel):
             self.head_pose.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.glasses_confidence is not None:
             result['GlassesConfidence'] = self.glasses_confidence
@@ -3490,6 +3631,10 @@ class DetectImageFacesResponseBodyFacesEmotionDetails(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.happy is not None:
             result['HAPPY'] = self.happy
@@ -3564,6 +3709,10 @@ class DetectImageFacesResponseBodyFaces(TeaModel):
             self.emotion_details.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.attractive_confidence is not None:
             result['AttractiveConfidence'] = self.attractive_confidence
@@ -3644,6 +3793,10 @@ class DetectImageFacesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3685,6 +3838,10 @@ class DetectImageFacesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3715,6 +3872,10 @@ class DetectImageLogosRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -3748,6 +3909,10 @@ class DetectImageLogosResponseBodyLogosLogoBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -3788,6 +3953,10 @@ class DetectImageLogosResponseBodyLogos(TeaModel):
             self.logo_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logo_confidence is not None:
             result['LogoConfidence'] = self.logo_confidence
@@ -3827,6 +3996,10 @@ class DetectImageLogosResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3868,6 +4041,10 @@ class DetectImageLogosResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3898,6 +4075,10 @@ class DetectImageQRCodesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -3931,6 +4112,10 @@ class DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -3969,6 +4154,10 @@ class DetectImageQRCodesResponseBodyQRCodes(TeaModel):
             self.qrcode_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.content is not None:
             result['Content'] = self.content
@@ -4004,6 +4193,10 @@ class DetectImageQRCodesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4045,6 +4238,10 @@ class DetectImageQRCodesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4067,23 +4264,23 @@ class DetectImageTagsRequest(TeaModel):
         self,
         project: str = None,
         image_uri: str = None,
-        real_uid: str = None,
     ):
         self.project = project
         self.image_uri = image_uri
-        self.real_uid = real_uid
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
         if self.image_uri is not None:
             result['ImageUri'] = self.image_uri
-        if self.real_uid is not None:
-            result['RealUid'] = self.real_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -4092,8 +4289,6 @@ class DetectImageTagsRequest(TeaModel):
             self.project = m.get('Project')
         if m.get('ImageUri') is not None:
             self.image_uri = m.get('ImageUri')
-        if m.get('RealUid') is not None:
-            self.real_uid = m.get('RealUid')
         return self
 
 
@@ -4118,6 +4313,10 @@ class DetectImageTagsResponseBodyTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parent_tag_en_name is not None:
             result['ParentTagEnName'] = self.parent_tag_en_name
@@ -4168,6 +4367,10 @@ class DetectImageTagsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4209,6 +4412,10 @@ class DetectImageTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4239,6 +4446,10 @@ class DetectQRCodesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -4272,6 +4483,10 @@ class DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -4310,6 +4525,10 @@ class DetectQRCodesResponseBodySuccessDetailsQRCodes(TeaModel):
             self.qrcodes_rectangle.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.qrcodes_rectangle is not None:
             result['QRCodesRectangle'] = self.qrcodes_rectangle.to_map()
@@ -4343,6 +4562,10 @@ class DetectQRCodesResponseBodySuccessDetails(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.src_uri is not None:
             result['SrcUri'] = self.src_uri
@@ -4379,6 +4602,10 @@ class DetectQRCodesResponseBodyFailDetails(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
@@ -4421,6 +4648,10 @@ class DetectQRCodesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SuccessDetails'] = []
         if self.success_details is not None:
@@ -4467,6 +4698,10 @@ class DetectQRCodesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4495,7 +4730,6 @@ class EncodeBlindWatermarkRequest(TeaModel):
         content: str = None,
         target_image_type: str = None,
         model: str = None,
-        watermark_type: str = None,
     ):
         self.project = project
         self.image_uri = image_uri
@@ -4505,12 +4739,15 @@ class EncodeBlindWatermarkRequest(TeaModel):
         self.content = content
         self.target_image_type = target_image_type
         self.model = model
-        self.watermark_type = watermark_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -4528,8 +4765,6 @@ class EncodeBlindWatermarkRequest(TeaModel):
             result['TargetImageType'] = self.target_image_type
         if self.model is not None:
             result['Model'] = self.model
-        if self.watermark_type is not None:
-            result['WatermarkType'] = self.watermark_type
         return result
 
     def from_map(self, m: dict = None):
@@ -4550,8 +4785,6 @@ class EncodeBlindWatermarkRequest(TeaModel):
             self.target_image_type = m.get('TargetImageType')
         if m.get('Model') is not None:
             self.model = m.get('Model')
-        if m.get('WatermarkType') is not None:
-            self.watermark_type = m.get('WatermarkType')
         return self
 
 
@@ -4570,6 +4803,10 @@ class EncodeBlindWatermarkResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4606,6 +4843,10 @@ class EncodeBlindWatermarkResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4690,6 +4931,10 @@ class FindImagesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -4831,6 +5076,10 @@ class FindImagesResponseBodyImagesTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_confidence is not None:
             result['TagConfidence'] = self.tag_confidence
@@ -4872,6 +5121,10 @@ class FindImagesResponseBodyImagesOCROCRBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -4912,6 +5165,10 @@ class FindImagesResponseBodyImagesOCR(TeaModel):
             self.ocrboundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ocrconfidence is not None:
             result['OCRConfidence'] = self.ocrconfidence
@@ -4954,6 +5211,10 @@ class FindImagesResponseBodyImagesAddress(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.township is not None:
             result['Township'] = self.township
@@ -5003,6 +5264,10 @@ class FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -5042,6 +5307,10 @@ class FindImagesResponseBodyImagesFacesFaceAttributesHeadPose(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pitch is not None:
             result['Pitch'] = self.pitch
@@ -5090,6 +5359,10 @@ class FindImagesResponseBodyImagesFacesFaceAttributes(TeaModel):
             self.head_pose.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.glasses_confidence is not None:
             result['GlassesConfidence'] = self.glasses_confidence
@@ -5155,6 +5428,10 @@ class FindImagesResponseBodyImagesFacesEmotionDetails(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.happy is not None:
             result['HAPPY'] = self.happy
@@ -5227,6 +5504,10 @@ class FindImagesResponseBodyImagesFaces(TeaModel):
             self.emotion_details.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gender is not None:
             result['Gender'] = self.gender
@@ -5314,6 +5595,10 @@ class FindImagesResponseBodyImagesImageQuality(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.overall_score is not None:
             result['OverallScore'] = self.overall_score
@@ -5379,6 +5664,10 @@ class FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -5419,6 +5708,10 @@ class FindImagesResponseBodyImagesCroppingSuggestion(TeaModel):
             self.cropping_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -5558,6 +5851,10 @@ class FindImagesResponseBodyImages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cropping_suggestion_status is not None:
             result['CroppingSuggestionStatus'] = self.cropping_suggestion_status
@@ -5788,6 +6085,10 @@ class FindImagesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5833,6 +6134,10 @@ class FindImagesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5873,6 +6178,10 @@ class FindSimilarFacesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -5926,6 +6235,10 @@ class FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -5962,6 +6275,10 @@ class FindSimilarFacesResponseBodyFacesFaceAttributes(TeaModel):
             self.face_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_boundary is not None:
             result['FaceBoundary'] = self.face_boundary.to_map()
@@ -5992,6 +6309,10 @@ class FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -6028,6 +6349,10 @@ class FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributes(TeaModel):
             self.face_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_boundary is not None:
             result['FaceBoundary'] = self.face_boundary.to_map()
@@ -6061,6 +6386,10 @@ class FindSimilarFacesResponseBodyFacesSimilarFaces(TeaModel):
             self.face_attributes.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_id is not None:
             result['FaceId'] = self.face_id
@@ -6116,6 +6445,10 @@ class FindSimilarFacesResponseBodyFaces(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_id is not None:
             result['FaceId'] = self.face_id
@@ -6170,6 +6503,10 @@ class FindSimilarFacesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6207,6 +6544,10 @@ class FindSimilarFacesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6241,6 +6582,10 @@ class GetContentKeyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -6280,6 +6625,10 @@ class GetContentKeyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.version_id is not None:
             result['VersionId'] = self.version_id
@@ -6316,6 +6665,10 @@ class GetContentKeyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6348,6 +6701,10 @@ class GetDRMLicenseRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -6383,6 +6740,10 @@ class GetDRMLicenseResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6419,6 +6780,10 @@ class GetDRMLicenseResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6451,6 +6816,10 @@ class GetImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -6500,6 +6869,10 @@ class GetImageResponseBodyImageQuality(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.overall_score is not None:
             result['OverallScore'] = self.overall_score
@@ -6569,6 +6942,10 @@ class GetImageResponseBodyAddress(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.township is not None:
             result['Township'] = self.township
@@ -6618,6 +6995,10 @@ class GetImageResponseBodyTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_name is not None:
             result['TagName'] = self.tag_name
@@ -6659,6 +7040,10 @@ class GetImageResponseBodyFacesFaceAttributesFaceBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -6698,6 +7083,10 @@ class GetImageResponseBodyFacesFaceAttributesHeadPose(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pitch is not None:
             result['Pitch'] = self.pitch
@@ -6746,6 +7135,10 @@ class GetImageResponseBodyFacesFaceAttributes(TeaModel):
             self.head_pose.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.glasses_confidence is not None:
             result['GlassesConfidence'] = self.glasses_confidence
@@ -6811,6 +7204,10 @@ class GetImageResponseBodyFacesEmotionDetails(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.happy is not None:
             result['HAPPY'] = self.happy
@@ -6883,6 +7280,10 @@ class GetImageResponseBodyFaces(TeaModel):
             self.emotion_details.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gender is not None:
             result['Gender'] = self.gender
@@ -6958,6 +7359,10 @@ class GetImageResponseBodyCroppingSuggestionCroppingBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -6998,6 +7403,10 @@ class GetImageResponseBodyCroppingSuggestion(TeaModel):
             self.cropping_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -7036,6 +7445,10 @@ class GetImageResponseBodyOCROCRBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -7076,6 +7489,10 @@ class GetImageResponseBodyOCR(TeaModel):
             self.ocrboundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ocrconfidence is not None:
             result['OCRConfidence'] = self.ocrconfidence
@@ -7219,6 +7636,10 @@ class GetImageResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_quality is not None:
             result['ImageQuality'] = self.image_quality.to_map()
@@ -7453,6 +7874,10 @@ class GetImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7485,6 +7910,10 @@ class GetImageCroppingSuggestionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -7522,6 +7951,10 @@ class GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -7562,6 +7995,10 @@ class GetImageCroppingSuggestionsResponseBodyCroppingSuggestions(TeaModel):
             self.cropping_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -7601,6 +8038,10 @@ class GetImageCroppingSuggestionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7642,6 +8083,10 @@ class GetImageCroppingSuggestionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7672,6 +8117,10 @@ class GetImageQualityRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -7717,6 +8166,10 @@ class GetImageQualityResponseBodyImageQuality(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.overall_score is not None:
             result['OverallScore'] = self.overall_score
@@ -7781,6 +8234,10 @@ class GetImageQualityResponseBody(TeaModel):
             self.image_quality.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_quality is not None:
             result['ImageQuality'] = self.image_quality.to_map()
@@ -7818,6 +8275,10 @@ class GetImageQualityResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7848,6 +8309,10 @@ class GetMediaMetaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -7889,6 +8354,10 @@ class GetMediaMetaResponseBodyMediaMetaMediaFormatTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -7950,6 +8419,10 @@ class GetMediaMetaResponseBodyMediaMetaMediaFormatAddress(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.township is not None:
             result['Township'] = self.township
@@ -8018,6 +8491,10 @@ class GetMediaMetaResponseBodyMediaMetaMediaFormat(TeaModel):
             self.address.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -8131,6 +8608,10 @@ class GetMediaMetaResponseBodyMediaMetaMediaStreamsVideoStreams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -8272,6 +8753,10 @@ class GetMediaMetaResponseBodyMediaMetaMediaStreamsAudioStreams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -8357,6 +8842,10 @@ class GetMediaMetaResponseBodyMediaMetaMediaStreamsSubtitleStreams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -8399,6 +8888,10 @@ class GetMediaMetaResponseBodyMediaMetaMediaStreams(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStreams'] = []
         if self.video_streams is not None:
@@ -8450,6 +8943,10 @@ class GetMediaMetaResponseBodyMediaMeta(TeaModel):
             self.media_streams.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_format is not None:
             result['MediaFormat'] = self.media_format.to_map()
@@ -8484,6 +8981,10 @@ class GetMediaMetaResponseBody(TeaModel):
             self.media_meta.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_uri is not None:
             result['MediaUri'] = self.media_uri
@@ -8521,6 +9022,10 @@ class GetMediaMetaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8551,6 +9056,10 @@ class GetOfficeConversionTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -8578,6 +9087,10 @@ class GetOfficeConversionTaskResponseBodyFailDetail(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -8630,6 +9143,10 @@ class GetOfficeConversionTaskResponseBody(TeaModel):
             self.fail_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -8715,6 +9232,10 @@ class GetOfficeConversionTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8761,6 +9282,10 @@ class GetOfficeEditURLRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -8830,6 +9355,10 @@ class GetOfficeEditURLResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.refresh_token is not None:
             result['RefreshToken'] = self.refresh_token
@@ -8878,6 +9407,10 @@ class GetOfficeEditURLResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8924,6 +9457,10 @@ class GetOfficePreviewURLRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -8993,6 +9530,10 @@ class GetOfficePreviewURLResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preview_url is not None:
             result['PreviewURL'] = self.preview_url
@@ -9041,6 +9582,10 @@ class GetOfficePreviewURLResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9069,6 +9614,10 @@ class GetProjectRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -9110,6 +9659,10 @@ class GetProjectResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -9174,6 +9727,10 @@ class GetProjectResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9204,6 +9761,10 @@ class GetSetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -9247,6 +9808,10 @@ class GetSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
@@ -9307,6 +9872,10 @@ class GetSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9339,6 +9908,10 @@ class GetVideoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -9376,6 +9949,10 @@ class GetVideoResponseBodyVideoTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_name is not None:
             result['TagName'] = self.tag_name
@@ -9490,6 +10067,10 @@ class GetVideoResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
@@ -9675,6 +10256,10 @@ class GetVideoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9707,6 +10292,10 @@ class GetVideoTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -9760,6 +10349,10 @@ class GetVideoTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -9832,6 +10425,10 @@ class GetVideoTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9860,6 +10457,8 @@ class GetWebofficeURLRequest(TeaModel):
         file: str = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
+        watermark: str = None,
+        hidecmb: bool = None,
     ):
         self.project = project
         self.src_type = src_type
@@ -9869,11 +10468,17 @@ class GetWebofficeURLRequest(TeaModel):
         self.file = file
         self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
+        self.watermark = watermark
+        self.hidecmb = hidecmb
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -9891,6 +10496,10 @@ class GetWebofficeURLRequest(TeaModel):
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
+        if self.watermark is not None:
+            result['Watermark'] = self.watermark
+        if self.hidecmb is not None:
+            result['Hidecmb'] = self.hidecmb
         return result
 
     def from_map(self, m: dict = None):
@@ -9911,6 +10520,10 @@ class GetWebofficeURLRequest(TeaModel):
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Watermark') is not None:
+            self.watermark = m.get('Watermark')
+        if m.get('Hidecmb') is not None:
+            self.hidecmb = m.get('Hidecmb')
         return self
 
 
@@ -9935,6 +10548,10 @@ class GetWebofficeURLResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.refresh_token is not None:
             result['RefreshToken'] = self.refresh_token
@@ -9983,6 +10600,10 @@ class GetWebofficeURLResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10014,7 +10635,6 @@ class IndexImageRequest(TeaModel):
         remarks_c: str = None,
         remarks_d: str = None,
         external_id: str = None,
-        real_uid: str = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
         remarks_array_a: str = None,
@@ -10031,7 +10651,6 @@ class IndexImageRequest(TeaModel):
         self.remarks_c = remarks_c
         self.remarks_d = remarks_d
         self.external_id = external_id
-        self.real_uid = real_uid
         self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.remarks_array_a = remarks_array_a
@@ -10041,6 +10660,10 @@ class IndexImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -10064,8 +10687,6 @@ class IndexImageRequest(TeaModel):
             result['RemarksD'] = self.remarks_d
         if self.external_id is not None:
             result['ExternalId'] = self.external_id
-        if self.real_uid is not None:
-            result['RealUid'] = self.real_uid
         if self.notify_endpoint is not None:
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
@@ -10100,8 +10721,6 @@ class IndexImageRequest(TeaModel):
             self.remarks_d = m.get('RemarksD')
         if m.get('ExternalId') is not None:
             self.external_id = m.get('ExternalId')
-        if m.get('RealUid') is not None:
-            self.real_uid = m.get('RealUid')
         if m.get('NotifyEndpoint') is not None:
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
@@ -10146,6 +10765,10 @@ class IndexImageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.remarks_array_b is not None:
             result['RemarksArrayB'] = self.remarks_array_b
@@ -10218,6 +10841,10 @@ class IndexImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10243,11 +10870,6 @@ class IndexVideoRequest(TeaModel):
         video_uri: str = None,
         remarks_a: str = None,
         remarks_b: str = None,
-        grab_type: str = None,
-        start_time: str = None,
-        end_time: str = None,
-        save_type: bool = None,
-        interval: str = None,
         tgt_uri: str = None,
         remarks_c: str = None,
         remarks_d: str = None,
@@ -10260,11 +10882,6 @@ class IndexVideoRequest(TeaModel):
         self.video_uri = video_uri
         self.remarks_a = remarks_a
         self.remarks_b = remarks_b
-        self.grab_type = grab_type
-        self.start_time = start_time
-        self.end_time = end_time
-        self.save_type = save_type
-        self.interval = interval
         self.tgt_uri = tgt_uri
         self.remarks_c = remarks_c
         self.remarks_d = remarks_d
@@ -10276,6 +10893,10 @@ class IndexVideoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -10287,16 +10908,6 @@ class IndexVideoRequest(TeaModel):
             result['RemarksA'] = self.remarks_a
         if self.remarks_b is not None:
             result['RemarksB'] = self.remarks_b
-        if self.grab_type is not None:
-            result['GrabType'] = self.grab_type
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.save_type is not None:
-            result['SaveType'] = self.save_type
-        if self.interval is not None:
-            result['Interval'] = self.interval
         if self.tgt_uri is not None:
             result['TgtUri'] = self.tgt_uri
         if self.remarks_c is not None:
@@ -10323,16 +10934,6 @@ class IndexVideoRequest(TeaModel):
             self.remarks_a = m.get('RemarksA')
         if m.get('RemarksB') is not None:
             self.remarks_b = m.get('RemarksB')
-        if m.get('GrabType') is not None:
-            self.grab_type = m.get('GrabType')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('SaveType') is not None:
-            self.save_type = m.get('SaveType')
-        if m.get('Interval') is not None:
-            self.interval = m.get('Interval')
         if m.get('TgtUri') is not None:
             self.tgt_uri = m.get('TgtUri')
         if m.get('RemarksC') is not None:
@@ -10377,6 +10978,10 @@ class IndexVideoResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
@@ -10441,6 +11046,10 @@ class IndexVideoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10493,6 +11102,10 @@ class ListFaceGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -10570,6 +11183,10 @@ class ListFaceGroupsResponseBodyFaceGroupsGroupCoverFaceFaceBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -10597,37 +11214,47 @@ class ListFaceGroupsResponseBodyFaceGroupsGroupCoverFaceFaceBoundary(TeaModel):
 class ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace(TeaModel):
     def __init__(
         self,
-        image_uri: str = None,
         face_id: str = None,
+        image_uri: str = None,
         face_boundary: ListFaceGroupsResponseBodyFaceGroupsGroupCoverFaceFaceBoundary = None,
+        external_id: str = None,
     ):
-        self.image_uri = image_uri
         self.face_id = face_id
+        self.image_uri = image_uri
         self.face_boundary = face_boundary
+        self.external_id = external_id
 
     def validate(self):
         if self.face_boundary:
             self.face_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.image_uri is not None:
-            result['ImageUri'] = self.image_uri
         if self.face_id is not None:
             result['FaceId'] = self.face_id
+        if self.image_uri is not None:
+            result['ImageUri'] = self.image_uri
         if self.face_boundary is not None:
             result['FaceBoundary'] = self.face_boundary.to_map()
+        if self.external_id is not None:
+            result['ExternalId'] = self.external_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUri') is not None:
-            self.image_uri = m.get('ImageUri')
         if m.get('FaceId') is not None:
             self.face_id = m.get('FaceId')
+        if m.get('ImageUri') is not None:
+            self.image_uri = m.get('ImageUri')
         if m.get('FaceBoundary') is not None:
             temp_model = ListFaceGroupsResponseBodyFaceGroupsGroupCoverFaceFaceBoundary()
             self.face_boundary = temp_model.from_map(m['FaceBoundary'])
+        if m.get('ExternalId') is not None:
+            self.external_id = m.get('ExternalId')
         return self
 
 
@@ -10677,6 +11304,10 @@ class ListFaceGroupsResponseBodyFaceGroups(TeaModel):
             self.group_cover_face.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gender is not None:
             result['Gender'] = self.gender
@@ -10776,6 +11407,10 @@ class ListFaceGroupsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10817,6 +11452,10 @@ class ListFaceGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10853,6 +11492,10 @@ class ListImagesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -10898,6 +11541,10 @@ class ListImagesResponseBodyImagesTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_confidence is not None:
             result['TagConfidence'] = self.tag_confidence
@@ -10939,6 +11586,10 @@ class ListImagesResponseBodyImagesOCROCRBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -10979,6 +11630,10 @@ class ListImagesResponseBodyImagesOCR(TeaModel):
             self.ocrboundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ocrconfidence is not None:
             result['OCRConfidence'] = self.ocrconfidence
@@ -11021,6 +11676,10 @@ class ListImagesResponseBodyImagesAddress(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.township is not None:
             result['Township'] = self.township
@@ -11070,6 +11729,10 @@ class ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -11109,6 +11772,10 @@ class ListImagesResponseBodyImagesFacesFaceAttributesHeadPose(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pitch is not None:
             result['Pitch'] = self.pitch
@@ -11157,6 +11824,10 @@ class ListImagesResponseBodyImagesFacesFaceAttributes(TeaModel):
             self.head_pose.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.glasses_confidence is not None:
             result['GlassesConfidence'] = self.glasses_confidence
@@ -11222,6 +11893,10 @@ class ListImagesResponseBodyImagesFacesEmotionDetails(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.happy is not None:
             result['HAPPY'] = self.happy
@@ -11294,6 +11969,10 @@ class ListImagesResponseBodyImagesFaces(TeaModel):
             self.emotion_details.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gender is not None:
             result['Gender'] = self.gender
@@ -11381,6 +12060,10 @@ class ListImagesResponseBodyImagesImageQuality(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.overall_score is not None:
             result['OverallScore'] = self.overall_score
@@ -11446,6 +12129,10 @@ class ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -11486,6 +12173,10 @@ class ListImagesResponseBodyImagesCroppingSuggestion(TeaModel):
             self.cropping_boundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -11625,6 +12316,10 @@ class ListImagesResponseBodyImages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cropping_suggestion_status is not None:
             result['CroppingSuggestionStatus'] = self.cropping_suggestion_status
@@ -11855,6 +12550,10 @@ class ListImagesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11900,6 +12599,10 @@ class ListImagesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11932,6 +12635,10 @@ class ListOfficeConversionTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -11987,6 +12694,10 @@ class ListOfficeConversionTaskResponseBodyTasks(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -12065,6 +12776,10 @@ class ListOfficeConversionTaskResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tasks'] = []
         if self.tasks is not None:
@@ -12106,6 +12821,10 @@ class ListOfficeConversionTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12134,6 +12853,10 @@ class ListProjectAPIsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -12161,6 +12884,10 @@ class ListProjectAPIsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -12197,6 +12924,10 @@ class ListProjectAPIsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12227,6 +12958,10 @@ class ListProjectsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.marker is not None:
             result['Marker'] = self.marker
@@ -12270,6 +13005,10 @@ class ListProjectsResponseBodyProjects(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -12332,6 +13071,10 @@ class ListProjectsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12373,6 +13116,10 @@ class ListProjectsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12403,6 +13150,10 @@ class ListSetsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -12444,6 +13195,10 @@ class ListSetsResponseBodySets(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_count is not None:
             result['VideoCount'] = self.video_count
@@ -12502,6 +13257,10 @@ class ListSetsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12543,6 +13302,10 @@ class ListSetsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12573,6 +13336,10 @@ class ListSetTagsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -12604,6 +13371,10 @@ class ListSetTagsResponseBodyTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_name is not None:
             result['TagName'] = self.tag_name
@@ -12642,6 +13413,10 @@ class ListSetTagsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12683,6 +13458,10 @@ class ListSetTagsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12717,6 +13496,10 @@ class ListVideoAudiosRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -12770,6 +13553,10 @@ class ListVideoAudiosResponseBodyAudiosAudioTexts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -12874,6 +13661,10 @@ class ListVideoAudiosResponseBodyAudios(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_position is not None:
             result['SourcePosition'] = self.source_position
@@ -12997,6 +13788,10 @@ class ListVideoAudiosResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13046,6 +13841,10 @@ class ListVideoAudiosResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13080,6 +13879,10 @@ class ListVideoFramesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -13121,6 +13924,10 @@ class ListVideoFramesResponseBodyFramesTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_confidence is not None:
             result['TagConfidence'] = self.tag_confidence
@@ -13162,6 +13969,10 @@ class ListVideoFramesResponseBodyFramesOCROCRBoundary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -13202,6 +14013,10 @@ class ListVideoFramesResponseBodyFramesOCR(TeaModel):
             self.ocrboundary.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ocrconfidence is not None:
             result['OCRConfidence'] = self.ocrconfidence
@@ -13240,6 +14055,10 @@ class ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -13279,6 +14098,10 @@ class ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pitch is not None:
             result['Pitch'] = self.pitch
@@ -13327,6 +14150,10 @@ class ListVideoFramesResponseBodyFramesFacesFaceAttributes(TeaModel):
             self.head_pose.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.glasses_confidence is not None:
             result['GlassesConfidence'] = self.glasses_confidence
@@ -13392,6 +14219,10 @@ class ListVideoFramesResponseBodyFramesFacesEmotionDetails(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.happy is not None:
             result['HAPPY'] = self.happy
@@ -13464,6 +14295,10 @@ class ListVideoFramesResponseBodyFramesFaces(TeaModel):
             self.emotion_details.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gender is not None:
             result['Gender'] = self.gender
@@ -13604,6 +14439,10 @@ class ListVideoFramesResponseBodyFrames(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tags_fail_reason is not None:
             result['TagsFailReason'] = self.tags_fail_reason
@@ -13773,6 +14612,10 @@ class ListVideoFramesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Frames'] = []
         if self.frames is not None:
@@ -13822,6 +14665,10 @@ class ListVideoFramesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13856,6 +14703,10 @@ class ListVideosRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -13897,6 +14748,10 @@ class ListVideosResponseBodyVideosVideoTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_name is not None:
             result['TagName'] = self.tag_name
@@ -13981,6 +14836,10 @@ class ListVideosResponseBodyVideos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -14110,6 +14969,10 @@ class ListVideosResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14155,6 +15018,10 @@ class ListVideosResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14189,6 +15056,10 @@ class ListVideoTasksRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -14244,6 +15115,10 @@ class ListVideoTasksResponseBodyTasks(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -14314,6 +15189,10 @@ class ListVideoTasksResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tasks'] = []
         if self.tasks is not None:
@@ -14355,6 +15234,10 @@ class ListVideoTasksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14383,6 +15266,10 @@ class OpenImmServiceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -14408,6 +15295,10 @@ class OpenImmServiceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14440,6 +15331,10 @@ class OpenImmServiceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14476,6 +15371,10 @@ class PutProjectRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -14533,6 +15432,10 @@ class PutProjectResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -14597,6 +15500,10 @@ class PutProjectResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14629,6 +15536,10 @@ class RefreshOfficeEditTokenRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -14668,6 +15579,10 @@ class RefreshOfficeEditTokenResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.refresh_token is not None:
             result['RefreshToken'] = self.refresh_token
@@ -14712,6 +15627,10 @@ class RefreshOfficeEditTokenResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14744,6 +15663,10 @@ class RefreshOfficePreviewTokenRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -14783,6 +15706,10 @@ class RefreshOfficePreviewTokenResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.refresh_token is not None:
             result['RefreshToken'] = self.refresh_token
@@ -14827,6 +15754,10 @@ class RefreshOfficePreviewTokenResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14859,6 +15790,10 @@ class RefreshWebofficeTokenRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -14898,6 +15833,10 @@ class RefreshWebofficeTokenResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.refresh_token is not None:
             result['RefreshToken'] = self.refresh_token
@@ -14942,6 +15881,10 @@ class RefreshWebofficeTokenResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14974,6 +15917,7 @@ class UpdateFaceGroupRequest(TeaModel):
         remarks_array_a: str = None,
         remarks_array_b: str = None,
         external_id: str = None,
+        reset_items: str = None,
     ):
         self.project = project
         self.set_id = set_id
@@ -14987,11 +15931,16 @@ class UpdateFaceGroupRequest(TeaModel):
         self.remarks_array_a = remarks_array_a
         self.remarks_array_b = remarks_array_b
         self.external_id = external_id
+        self.reset_items = reset_items
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -15017,6 +15966,8 @@ class UpdateFaceGroupRequest(TeaModel):
             result['RemarksArrayB'] = self.remarks_array_b
         if self.external_id is not None:
             result['ExternalId'] = self.external_id
+        if self.reset_items is not None:
+            result['ResetItems'] = self.reset_items
         return result
 
     def from_map(self, m: dict = None):
@@ -15045,6 +15996,8 @@ class UpdateFaceGroupRequest(TeaModel):
             self.remarks_array_b = m.get('RemarksArrayB')
         if m.get('ExternalId') is not None:
             self.external_id = m.get('ExternalId')
+        if m.get('ResetItems') is not None:
+            self.reset_items = m.get('ResetItems')
         return self
 
 
@@ -15063,6 +16016,10 @@ class UpdateFaceGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15099,6 +16056,10 @@ class UpdateFaceGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15151,6 +16112,10 @@ class UpdateImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -15244,6 +16209,10 @@ class UpdateImageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.remarks_array_b is not None:
             result['RemarksArrayB'] = self.remarks_array_b
@@ -15316,6 +16285,10 @@ class UpdateImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15348,6 +16321,10 @@ class UpdateProjectRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -15393,6 +16370,10 @@ class UpdateProjectResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -15449,6 +16430,10 @@ class UpdateProjectResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15481,6 +16466,10 @@ class UpdateSetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.project is not None:
             result['Project'] = self.project
@@ -15520,6 +16509,10 @@ class UpdateSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
@@ -15564,6 +16557,10 @@ class UpdateSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

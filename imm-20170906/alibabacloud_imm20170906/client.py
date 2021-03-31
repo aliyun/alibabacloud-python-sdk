@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_imm20170906 import models as imm_20170906_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -48,11 +50,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CompareImageFacesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUriA'] = request.image_uri_a
+        query['ImageUriB'] = request.image_uri_b
+        query['FaceIdA'] = request.face_id_a
+        query['FaceIdB'] = request.face_id_b
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CompareImageFacesResponse().from_map(
-            self.do_rpcrequest('CompareImageFaces', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CompareImageFaces',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CompareImageFacesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def compare_image_faces_with_options_async(
@@ -61,11 +83,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CompareImageFacesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUriA'] = request.image_uri_a
+        query['ImageUriB'] = request.image_uri_b
+        query['FaceIdA'] = request.face_id_a
+        query['FaceIdB'] = request.face_id_b
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CompareImageFacesResponse().from_map(
-            await self.do_rpcrequest_async('CompareImageFaces', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CompareImageFaces',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CompareImageFacesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def compare_image_faces(
@@ -88,11 +130,45 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ConvertOfficeFormatResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUri'] = request.src_uri
+        query['TgtType'] = request.tgt_type
+        query['TgtUri'] = request.tgt_uri
+        query['SrcType'] = request.src_type
+        query['StartPage'] = request.start_page
+        query['EndPage'] = request.end_page
+        query['MaxSheetRow'] = request.max_sheet_row
+        query['MaxSheetCol'] = request.max_sheet_col
+        query['MaxSheetCount'] = request.max_sheet_count
+        query['SheetOnePage'] = request.sheet_one_page
+        query['ModelId'] = request.model_id
+        query['Password'] = request.password
+        query['TgtFilePrefix'] = request.tgt_file_prefix
+        query['TgtFileSuffix'] = request.tgt_file_suffix
+        query['TgtFilePages'] = request.tgt_file_pages
+        query['FitToPagesTall'] = request.fit_to_pages_tall
+        query['FitToPagesWide'] = request.fit_to_pages_wide
+        query['PdfVector'] = request.pdf_vector
+        query['Hidecomments'] = request.hidecomments
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ConvertOfficeFormatResponse().from_map(
-            self.do_rpcrequest('ConvertOfficeFormat', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ConvertOfficeFormat',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ConvertOfficeFormatResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def convert_office_format_with_options_async(
@@ -101,11 +177,45 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ConvertOfficeFormatResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUri'] = request.src_uri
+        query['TgtType'] = request.tgt_type
+        query['TgtUri'] = request.tgt_uri
+        query['SrcType'] = request.src_type
+        query['StartPage'] = request.start_page
+        query['EndPage'] = request.end_page
+        query['MaxSheetRow'] = request.max_sheet_row
+        query['MaxSheetCol'] = request.max_sheet_col
+        query['MaxSheetCount'] = request.max_sheet_count
+        query['SheetOnePage'] = request.sheet_one_page
+        query['ModelId'] = request.model_id
+        query['Password'] = request.password
+        query['TgtFilePrefix'] = request.tgt_file_prefix
+        query['TgtFileSuffix'] = request.tgt_file_suffix
+        query['TgtFilePages'] = request.tgt_file_pages
+        query['FitToPagesTall'] = request.fit_to_pages_tall
+        query['FitToPagesWide'] = request.fit_to_pages_wide
+        query['PdfVector'] = request.pdf_vector
+        query['Hidecomments'] = request.hidecomments
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ConvertOfficeFormatResponse().from_map(
-            await self.do_rpcrequest_async('ConvertOfficeFormat', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ConvertOfficeFormat',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ConvertOfficeFormatResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def convert_office_format(
@@ -128,11 +238,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateGrabFrameTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VideoUri'] = request.video_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetList'] = request.target_list
+        query['CustomMessage'] = request.custom_message
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateGrabFrameTaskResponse().from_map(
-            self.do_rpcrequest('CreateGrabFrameTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGrabFrameTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateGrabFrameTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_grab_frame_task_with_options_async(
@@ -141,11 +271,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateGrabFrameTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VideoUri'] = request.video_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetList'] = request.target_list
+        query['CustomMessage'] = request.custom_message
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateGrabFrameTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateGrabFrameTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGrabFrameTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateGrabFrameTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_grab_frame_task(
@@ -168,11 +318,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateGroupFacesJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateGroupFacesJobResponse().from_map(
-            self.do_rpcrequest('CreateGroupFacesJob', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGroupFacesJob',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateGroupFacesJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_group_faces_job_with_options_async(
@@ -181,11 +349,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateGroupFacesJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateGroupFacesJobResponse().from_map(
-            await self.do_rpcrequest_async('CreateGroupFacesJob', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGroupFacesJob',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateGroupFacesJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_group_faces_job(
@@ -208,11 +394,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateImageProcessTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetList'] = request.target_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateImageProcessTaskResponse().from_map(
-            self.do_rpcrequest('CreateImageProcessTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateImageProcessTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateImageProcessTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_image_process_task_with_options_async(
@@ -221,11 +426,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateImageProcessTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetList'] = request.target_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateImageProcessTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateImageProcessTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateImageProcessTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateImageProcessTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_image_process_task(
@@ -248,11 +472,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateMediaComplexTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Parameters'] = request.parameters
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateMediaComplexTaskResponse().from_map(
-            self.do_rpcrequest('CreateMediaComplexTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMediaComplexTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateMediaComplexTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_media_complex_task_with_options_async(
@@ -261,11 +503,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateMediaComplexTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Parameters'] = request.parameters
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateMediaComplexTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateMediaComplexTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMediaComplexTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateMediaComplexTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_media_complex_task(
@@ -288,11 +548,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateMergeFaceGroupsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['GroupIdFrom'] = request.group_id_from
+        query['GroupIdTo'] = request.group_id_to
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateMergeFaceGroupsJobResponse().from_map(
-            self.do_rpcrequest('CreateMergeFaceGroupsJob', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMergeFaceGroupsJob',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateMergeFaceGroupsJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_merge_face_groups_job_with_options_async(
@@ -301,11 +581,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateMergeFaceGroupsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['GroupIdFrom'] = request.group_id_from
+        query['GroupIdTo'] = request.group_id_to
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateMergeFaceGroupsJobResponse().from_map(
-            await self.do_rpcrequest_async('CreateMergeFaceGroupsJob', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMergeFaceGroupsJob',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateMergeFaceGroupsJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_merge_face_groups_job(
@@ -328,11 +628,49 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateOfficeConversionTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUri'] = request.src_uri
+        query['TgtType'] = request.tgt_type
+        query['TgtUri'] = request.tgt_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['SrcType'] = request.src_type
+        query['StartPage'] = request.start_page
+        query['EndPage'] = request.end_page
+        query['MaxSheetRow'] = request.max_sheet_row
+        query['MaxSheetCol'] = request.max_sheet_col
+        query['MaxSheetCount'] = request.max_sheet_count
+        query['SheetOnePage'] = request.sheet_one_page
+        query['ModelId'] = request.model_id
+        query['Password'] = request.password
+        query['TgtFilePrefix'] = request.tgt_file_prefix
+        query['TgtFileSuffix'] = request.tgt_file_suffix
+        query['TgtFilePages'] = request.tgt_file_pages
+        query['FitToPagesTall'] = request.fit_to_pages_tall
+        query['FitToPagesWide'] = request.fit_to_pages_wide
+        query['IdempotentToken'] = request.idempotent_token
+        query['PdfVector'] = request.pdf_vector
+        query['Hidecomments'] = request.hidecomments
+        query['DisplayDpi'] = request.display_dpi
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateOfficeConversionTaskResponse().from_map(
-            self.do_rpcrequest('CreateOfficeConversionTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateOfficeConversionTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateOfficeConversionTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_office_conversion_task_with_options_async(
@@ -341,11 +679,49 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateOfficeConversionTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUri'] = request.src_uri
+        query['TgtType'] = request.tgt_type
+        query['TgtUri'] = request.tgt_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['SrcType'] = request.src_type
+        query['StartPage'] = request.start_page
+        query['EndPage'] = request.end_page
+        query['MaxSheetRow'] = request.max_sheet_row
+        query['MaxSheetCol'] = request.max_sheet_col
+        query['MaxSheetCount'] = request.max_sheet_count
+        query['SheetOnePage'] = request.sheet_one_page
+        query['ModelId'] = request.model_id
+        query['Password'] = request.password
+        query['TgtFilePrefix'] = request.tgt_file_prefix
+        query['TgtFileSuffix'] = request.tgt_file_suffix
+        query['TgtFilePages'] = request.tgt_file_pages
+        query['FitToPagesTall'] = request.fit_to_pages_tall
+        query['FitToPagesWide'] = request.fit_to_pages_wide
+        query['IdempotentToken'] = request.idempotent_token
+        query['PdfVector'] = request.pdf_vector
+        query['Hidecomments'] = request.hidecomments
+        query['DisplayDpi'] = request.display_dpi
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateOfficeConversionTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateOfficeConversionTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateOfficeConversionTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateOfficeConversionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_office_conversion_task(
@@ -368,11 +744,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['SetName'] = request.set_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateSetResponse().from_map(
-            self.do_rpcrequest('CreateSet', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateSet',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateSetResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_set_with_options_async(
@@ -381,11 +774,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['SetName'] = request.set_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateSetResponse().from_map(
-            await self.do_rpcrequest_async('CreateSet', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateSet',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateSetResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_set(
@@ -402,57 +812,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_set_with_options_async(request, runtime)
 
-    def create_stream_analyse_task_with_options(
-        self,
-        request: imm_20170906_models.CreateStreamAnalyseTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20170906_models.CreateStreamAnalyseTaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return imm_20170906_models.CreateStreamAnalyseTaskResponse().from_map(
-            self.do_rpcrequest('CreateStreamAnalyseTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_stream_analyse_task_with_options_async(
-        self,
-        request: imm_20170906_models.CreateStreamAnalyseTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20170906_models.CreateStreamAnalyseTaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return imm_20170906_models.CreateStreamAnalyseTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateStreamAnalyseTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_stream_analyse_task(
-        self,
-        request: imm_20170906_models.CreateStreamAnalyseTaskRequest,
-    ) -> imm_20170906_models.CreateStreamAnalyseTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_stream_analyse_task_with_options(request, runtime)
-
-    async def create_stream_analyse_task_async(
-        self,
-        request: imm_20170906_models.CreateStreamAnalyseTaskRequest,
-    ) -> imm_20170906_models.CreateStreamAnalyseTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_stream_analyse_task_with_options_async(request, runtime)
-
     def create_video_abstract_task_with_options(
         self,
         request: imm_20170906_models.CreateVideoAbstractTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateVideoAbstractTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VideoUri'] = request.video_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetVideoUri'] = request.target_video_uri
+        query['TargetClipsUri'] = request.target_clips_uri
+        query['AbstractLength'] = request.abstract_length
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateVideoAbstractTaskResponse().from_map(
-            self.do_rpcrequest('CreateVideoAbstractTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVideoAbstractTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateVideoAbstractTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_video_abstract_task_with_options_async(
@@ -461,11 +852,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateVideoAbstractTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VideoUri'] = request.video_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetVideoUri'] = request.target_video_uri
+        query['TargetClipsUri'] = request.target_clips_uri
+        query['AbstractLength'] = request.abstract_length
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateVideoAbstractTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateVideoAbstractTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVideoAbstractTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateVideoAbstractTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_video_abstract_task(
@@ -488,11 +900,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateVideoAnalyseTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VideoUri'] = request.video_uri
+        query['TgtUri'] = request.tgt_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateVideoAnalyseTaskResponse().from_map(
-            self.do_rpcrequest('CreateVideoAnalyseTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVideoAnalyseTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateVideoAnalyseTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_video_analyse_task_with_options_async(
@@ -501,11 +932,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateVideoAnalyseTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VideoUri'] = request.video_uri
+        query['TgtUri'] = request.tgt_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateVideoAnalyseTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateVideoAnalyseTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVideoAnalyseTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateVideoAnalyseTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_video_analyse_task(
@@ -528,11 +978,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateVideoCompressTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VideoUri'] = request.video_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetList'] = request.target_list
+        query['CustomMessage'] = request.custom_message
+        query['TargetContainer'] = request.target_container
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateVideoCompressTaskResponse().from_map(
-            self.do_rpcrequest('CreateVideoCompressTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVideoCompressTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateVideoCompressTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_video_compress_task_with_options_async(
@@ -541,11 +1012,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateVideoCompressTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VideoUri'] = request.video_uri
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetList'] = request.target_list
+        query['CustomMessage'] = request.custom_message
+        query['TargetContainer'] = request.target_container
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateVideoCompressTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateVideoCompressTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVideoCompressTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateVideoCompressTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_video_compress_task(
@@ -568,11 +1060,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateVideoProduceTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Images'] = request.images
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetUri'] = request.target_uri
+        query['CustomMessage'] = request.custom_message
+        query['Music'] = request.music
+        query['Width'] = request.width
+        query['Height'] = request.height
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateVideoProduceTaskResponse().from_map(
-            self.do_rpcrequest('CreateVideoProduceTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVideoProduceTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateVideoProduceTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_video_produce_task_with_options_async(
@@ -581,11 +1097,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.CreateVideoProduceTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Images'] = request.images
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['TargetUri'] = request.target_uri
+        query['CustomMessage'] = request.custom_message
+        query['Music'] = request.music
+        query['Width'] = request.width
+        query['Height'] = request.height
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.CreateVideoProduceTaskResponse().from_map(
-            await self.do_rpcrequest_async('CreateVideoProduceTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVideoProduceTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.CreateVideoProduceTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_video_produce_task(
@@ -608,11 +1148,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DecodeBlindWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
+        query['OriginalImageUri'] = request.original_image_uri
+        query['TargetUri'] = request.target_uri
+        query['ImageQuality'] = request.image_quality
+        query['Model'] = request.model
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DecodeBlindWatermarkResponse().from_map(
-            self.do_rpcrequest('DecodeBlindWatermark', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DecodeBlindWatermark',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DecodeBlindWatermarkResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def decode_blind_watermark_with_options_async(
@@ -621,11 +1181,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DecodeBlindWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
+        query['OriginalImageUri'] = request.original_image_uri
+        query['TargetUri'] = request.target_uri
+        query['ImageQuality'] = request.image_quality
+        query['Model'] = request.model
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DecodeBlindWatermarkResponse().from_map(
-            await self.do_rpcrequest_async('DecodeBlindWatermark', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DecodeBlindWatermark',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DecodeBlindWatermarkResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def decode_blind_watermark(
@@ -648,11 +1228,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteImageResponse().from_map(
-            self.do_rpcrequest('DeleteImage', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteImageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_image_with_options_async(
@@ -661,11 +1258,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteImageResponse().from_map(
-            await self.do_rpcrequest_async('DeleteImage', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteImageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_image(
@@ -688,11 +1302,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteImageJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['JobType'] = request.job_type
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteImageJobResponse().from_map(
-            self.do_rpcrequest('DeleteImageJob', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteImageJob',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteImageJobResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_image_job_with_options_async(
@@ -701,11 +1332,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteImageJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['JobType'] = request.job_type
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteImageJobResponse().from_map(
-            await self.do_rpcrequest_async('DeleteImageJob', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteImageJob',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteImageJobResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_image_job(
@@ -728,11 +1376,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteOfficeConversionTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteOfficeConversionTaskResponse().from_map(
-            self.do_rpcrequest('DeleteOfficeConversionTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteOfficeConversionTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteOfficeConversionTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_office_conversion_task_with_options_async(
@@ -741,11 +1405,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteOfficeConversionTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteOfficeConversionTaskResponse().from_map(
-            await self.do_rpcrequest_async('DeleteOfficeConversionTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteOfficeConversionTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteOfficeConversionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_office_conversion_task(
@@ -768,11 +1448,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteProjectResponse().from_map(
-            self.do_rpcrequest('DeleteProject', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_project_with_options_async(
@@ -781,11 +1476,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteProjectResponse().from_map(
-            await self.do_rpcrequest_async('DeleteProject', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_project(
@@ -808,11 +1518,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteSetResponse().from_map(
-            self.do_rpcrequest('DeleteSet', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteSet',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteSetResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_set_with_options_async(
@@ -821,11 +1547,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteSetResponse().from_map(
-            await self.do_rpcrequest_async('DeleteSet', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteSet',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteSetResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_set(
@@ -848,11 +1590,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
+        query['Resources'] = request.resources
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteVideoResponse().from_map(
-            self.do_rpcrequest('DeleteVideo', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteVideo',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteVideoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_video_with_options_async(
@@ -861,11 +1621,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
+        query['Resources'] = request.resources
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteVideoResponse().from_map(
-            await self.do_rpcrequest_async('DeleteVideo', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteVideo',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteVideoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_video(
@@ -888,11 +1666,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteVideoTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['TaskType'] = request.task_type
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteVideoTaskResponse().from_map(
-            self.do_rpcrequest('DeleteVideoTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteVideoTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteVideoTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_video_task_with_options_async(
@@ -901,11 +1696,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DeleteVideoTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['TaskType'] = request.task_type
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DeleteVideoTaskResponse().from_map(
-            await self.do_rpcrequest_async('DeleteVideoTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteVideoTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DeleteVideoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_video_task(
@@ -927,8 +1739,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DescribeRegionsResponse:
         req = open_api_models.OpenApiRequest()
-        return imm_20170906_models.DescribeRegionsResponse().from_map(
-            self.do_rpcrequest('DescribeRegions', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -936,8 +1760,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DescribeRegionsResponse:
         req = open_api_models.OpenApiRequest()
-        return imm_20170906_models.DescribeRegionsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRegions', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(self) -> imm_20170906_models.DescribeRegionsResponse:
@@ -954,11 +1790,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageBodiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageBodiesResponse().from_map(
-            self.do_rpcrequest('DetectImageBodies', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageBodies',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageBodiesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def detect_image_bodies_with_options_async(
@@ -967,11 +1819,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageBodiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageBodiesResponse().from_map(
-            await self.do_rpcrequest_async('DetectImageBodies', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageBodies',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageBodiesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_image_bodies(
@@ -994,11 +1862,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageFacesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageFacesResponse().from_map(
-            self.do_rpcrequest('DetectImageFaces', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageFaces',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageFacesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def detect_image_faces_with_options_async(
@@ -1007,11 +1891,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageFacesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageFacesResponse().from_map(
-            await self.do_rpcrequest_async('DetectImageFaces', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageFaces',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageFacesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_image_faces(
@@ -1034,11 +1934,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageLogosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageLogosResponse().from_map(
-            self.do_rpcrequest('DetectImageLogos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageLogos',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageLogosResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def detect_image_logos_with_options_async(
@@ -1047,11 +1963,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageLogosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageLogosResponse().from_map(
-            await self.do_rpcrequest_async('DetectImageLogos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageLogos',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageLogosResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_image_logos(
@@ -1074,11 +2006,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageQRCodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageQRCodesResponse().from_map(
-            self.do_rpcrequest('DetectImageQRCodes', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageQRCodes',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageQRCodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def detect_image_qrcodes_with_options_async(
@@ -1087,11 +2035,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageQRCodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageQRCodesResponse().from_map(
-            await self.do_rpcrequest_async('DetectImageQRCodes', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageQRCodes',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageQRCodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_image_qrcodes(
@@ -1114,11 +2078,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageTagsResponse().from_map(
-            self.do_rpcrequest('DetectImageTags', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageTags',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageTagsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def detect_image_tags_with_options_async(
@@ -1127,11 +2107,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectImageTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectImageTagsResponse().from_map(
-            await self.do_rpcrequest_async('DetectImageTags', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectImageTags',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectImageTagsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_image_tags(
@@ -1154,11 +2150,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectQRCodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUris'] = request.src_uris
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectQRCodesResponse().from_map(
-            self.do_rpcrequest('DetectQRCodes', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectQRCodes',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectQRCodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def detect_qrcodes_with_options_async(
@@ -1167,11 +2179,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.DetectQRCodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUris'] = request.src_uris
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.DetectQRCodesResponse().from_map(
-            await self.do_rpcrequest_async('DetectQRCodes', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DetectQRCodes',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.DetectQRCodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_qrcodes(
@@ -1194,11 +2222,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.EncodeBlindWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
+        query['WatermarkUri'] = request.watermark_uri
+        query['TargetUri'] = request.target_uri
+        query['ImageQuality'] = request.image_quality
+        query['Content'] = request.content
+        query['TargetImageType'] = request.target_image_type
+        query['Model'] = request.model
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.EncodeBlindWatermarkResponse().from_map(
-            self.do_rpcrequest('EncodeBlindWatermark', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EncodeBlindWatermark',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.EncodeBlindWatermarkResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def encode_blind_watermark_with_options_async(
@@ -1207,11 +2257,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.EncodeBlindWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
+        query['WatermarkUri'] = request.watermark_uri
+        query['TargetUri'] = request.target_uri
+        query['ImageQuality'] = request.image_quality
+        query['Content'] = request.content
+        query['TargetImageType'] = request.target_image_type
+        query['Model'] = request.model
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.EncodeBlindWatermarkResponse().from_map(
-            await self.do_rpcrequest_async('EncodeBlindWatermark', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EncodeBlindWatermark',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.EncodeBlindWatermarkResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def encode_blind_watermark(
@@ -1234,11 +2306,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.FindImagesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageSizeRange'] = request.image_size_range
+        query['ImageTimeRange'] = request.image_time_range
+        query['CreateTimeRange'] = request.create_time_range
+        query['ModifyTimeRange'] = request.modify_time_range
+        query['SourceType'] = request.source_type
+        query['SourceUriPrefix'] = request.source_uri_prefix
+        query['RemarksAPrefix'] = request.remarks_aprefix
+        query['RemarksBPrefix'] = request.remarks_bprefix
+        query['TagNames'] = request.tag_names
+        query['OCRContentsMatch'] = request.ocrcontents_match
+        query['AgeRange'] = request.age_range
+        query['Gender'] = request.gender
+        query['Emotion'] = request.emotion
+        query['OrderBy'] = request.order_by
+        query['Order'] = request.order
+        query['Marker'] = request.marker
+        query['LocationBoundary'] = request.location_boundary
+        query['RemarksCPrefix'] = request.remarks_cprefix
+        query['RemarksDPrefix'] = request.remarks_dprefix
+        query['ExternalId'] = request.external_id
+        query['GroupId'] = request.group_id
+        query['Limit'] = request.limit
+        query['FacesModifyTimeRange'] = request.faces_modify_time_range
+        query['TagsModifyTimeRange'] = request.tags_modify_time_range
+        query['AddressLineContentsMatch'] = request.address_line_contents_match
+        query['RemarksArrayAIn'] = request.remarks_array_ain
+        query['RemarksArrayBIn'] = request.remarks_array_bin
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.FindImagesResponse().from_map(
-            self.do_rpcrequest('FindImages', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='FindImages',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.FindImagesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def find_images_with_options_async(
@@ -1247,11 +2362,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.FindImagesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageSizeRange'] = request.image_size_range
+        query['ImageTimeRange'] = request.image_time_range
+        query['CreateTimeRange'] = request.create_time_range
+        query['ModifyTimeRange'] = request.modify_time_range
+        query['SourceType'] = request.source_type
+        query['SourceUriPrefix'] = request.source_uri_prefix
+        query['RemarksAPrefix'] = request.remarks_aprefix
+        query['RemarksBPrefix'] = request.remarks_bprefix
+        query['TagNames'] = request.tag_names
+        query['OCRContentsMatch'] = request.ocrcontents_match
+        query['AgeRange'] = request.age_range
+        query['Gender'] = request.gender
+        query['Emotion'] = request.emotion
+        query['OrderBy'] = request.order_by
+        query['Order'] = request.order
+        query['Marker'] = request.marker
+        query['LocationBoundary'] = request.location_boundary
+        query['RemarksCPrefix'] = request.remarks_cprefix
+        query['RemarksDPrefix'] = request.remarks_dprefix
+        query['ExternalId'] = request.external_id
+        query['GroupId'] = request.group_id
+        query['Limit'] = request.limit
+        query['FacesModifyTimeRange'] = request.faces_modify_time_range
+        query['TagsModifyTimeRange'] = request.tags_modify_time_range
+        query['AddressLineContentsMatch'] = request.address_line_contents_match
+        query['RemarksArrayAIn'] = request.remarks_array_ain
+        query['RemarksArrayBIn'] = request.remarks_array_bin
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.FindImagesResponse().from_map(
-            await self.do_rpcrequest_async('FindImages', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='FindImages',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.FindImagesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def find_images(
@@ -1274,11 +2432,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.FindSimilarFacesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
+        query['FaceId'] = request.face_id
+        query['Limit'] = request.limit
+        query['MinSimilarity'] = request.min_similarity
+        query['ResponseFormat'] = request.response_format
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.FindSimilarFacesResponse().from_map(
-            self.do_rpcrequest('FindSimilarFaces', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='FindSimilarFaces',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.FindSimilarFacesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def find_similar_faces_with_options_async(
@@ -1287,11 +2466,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.FindSimilarFacesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
+        query['FaceId'] = request.face_id
+        query['Limit'] = request.limit
+        query['MinSimilarity'] = request.min_similarity
+        query['ResponseFormat'] = request.response_format
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.FindSimilarFacesResponse().from_map(
-            await self.do_rpcrequest_async('FindSimilarFaces', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='FindSimilarFaces',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.FindSimilarFacesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def find_similar_faces(
@@ -1314,11 +2514,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetContentKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VersionId'] = request.version_id
+        query['DRMServerId'] = request.drmserver_id
+        query['KeyIds'] = request.key_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetContentKeyResponse().from_map(
-            self.do_rpcrequest('GetContentKey', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetContentKey',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetContentKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_content_key_with_options_async(
@@ -1327,11 +2545,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetContentKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['VersionId'] = request.version_id
+        query['DRMServerId'] = request.drmserver_id
+        query['KeyIds'] = request.key_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetContentKeyResponse().from_map(
-            await self.do_rpcrequest_async('GetContentKey', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetContentKey',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetContentKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_content_key(
@@ -1354,11 +2590,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetDRMLicenseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['DRMType'] = request.drmtype
+        query['DRMLicense'] = request.drmlicense
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetDRMLicenseResponse().from_map(
-            self.do_rpcrequest('GetDRMLicense', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetDRMLicense',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetDRMLicenseResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_drmlicense_with_options_async(
@@ -1367,11 +2620,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetDRMLicenseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['DRMType'] = request.drmtype
+        query['DRMLicense'] = request.drmlicense
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetDRMLicenseResponse().from_map(
-            await self.do_rpcrequest_async('GetDRMLicense', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetDRMLicense',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetDRMLicenseResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_drmlicense(
@@ -1394,11 +2664,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetImageResponse().from_map(
-            self.do_rpcrequest('GetImage', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetImage',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetImageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_with_options_async(
@@ -1407,11 +2694,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetImageResponse().from_map(
-            await self.do_rpcrequest_async('GetImage', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetImage',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetImageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image(
@@ -1434,11 +2738,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetImageCroppingSuggestionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
+        query['AspectRatios'] = request.aspect_ratios
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetImageCroppingSuggestionsResponse().from_map(
-            self.do_rpcrequest('GetImageCroppingSuggestions', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetImageCroppingSuggestions',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetImageCroppingSuggestionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_cropping_suggestions_with_options_async(
@@ -1447,11 +2768,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetImageCroppingSuggestionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
+        query['AspectRatios'] = request.aspect_ratios
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetImageCroppingSuggestionsResponse().from_map(
-            await self.do_rpcrequest_async('GetImageCroppingSuggestions', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetImageCroppingSuggestions',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetImageCroppingSuggestionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image_cropping_suggestions(
@@ -1474,11 +2812,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetImageQualityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetImageQualityResponse().from_map(
-            self.do_rpcrequest('GetImageQuality', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetImageQuality',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetImageQualityResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_quality_with_options_async(
@@ -1487,11 +2841,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetImageQualityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ImageUri'] = request.image_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetImageQualityResponse().from_map(
-            await self.do_rpcrequest_async('GetImageQuality', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetImageQuality',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetImageQualityResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image_quality(
@@ -1514,11 +2884,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetMediaMetaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['MediaUri'] = request.media_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetMediaMetaResponse().from_map(
-            self.do_rpcrequest('GetMediaMeta', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetMediaMeta',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetMediaMetaResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_media_meta_with_options_async(
@@ -1527,11 +2913,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetMediaMetaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['MediaUri'] = request.media_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetMediaMetaResponse().from_map(
-            await self.do_rpcrequest_async('GetMediaMeta', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetMediaMeta',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetMediaMetaResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_media_meta(
@@ -1554,11 +2956,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetOfficeConversionTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetOfficeConversionTaskResponse().from_map(
-            self.do_rpcrequest('GetOfficeConversionTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetOfficeConversionTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetOfficeConversionTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_office_conversion_task_with_options_async(
@@ -1567,11 +2985,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetOfficeConversionTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetOfficeConversionTaskResponse().from_map(
-            await self.do_rpcrequest_async('GetOfficeConversionTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetOfficeConversionTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetOfficeConversionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_office_conversion_task(
@@ -1594,11 +3028,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetOfficeEditURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUri'] = request.src_uri
+        query['SrcType'] = request.src_type
+        query['FileID'] = request.file_id
+        query['TgtUri'] = request.tgt_uri
+        query['UserID'] = request.user_id
+        query['UserName'] = request.user_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['FileName'] = request.file_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetOfficeEditURLResponse().from_map(
-            self.do_rpcrequest('GetOfficeEditURL', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetOfficeEditURL',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetOfficeEditURLResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_office_edit_urlwith_options_async(
@@ -1607,11 +3065,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetOfficeEditURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUri'] = request.src_uri
+        query['SrcType'] = request.src_type
+        query['FileID'] = request.file_id
+        query['TgtUri'] = request.tgt_uri
+        query['UserID'] = request.user_id
+        query['UserName'] = request.user_name
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['FileName'] = request.file_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetOfficeEditURLResponse().from_map(
-            await self.do_rpcrequest_async('GetOfficeEditURL', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetOfficeEditURL',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetOfficeEditURLResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_office_edit_url(
@@ -1634,11 +3116,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetOfficePreviewURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUri'] = request.src_uri
+        query['SrcType'] = request.src_type
+        query['WatermarkType'] = request.watermark_type
+        query['WatermarkValue'] = request.watermark_value
+        query['WatermarkFillStyle'] = request.watermark_fill_style
+        query['WatermarkFont'] = request.watermark_font
+        query['WatermarkRotate'] = request.watermark_rotate
+        query['WatermarkHorizontal'] = request.watermark_horizontal
+        query['WatermarkVertical'] = request.watermark_vertical
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetOfficePreviewURLResponse().from_map(
-            self.do_rpcrequest('GetOfficePreviewURL', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetOfficePreviewURL',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetOfficePreviewURLResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_office_preview_urlwith_options_async(
@@ -1647,11 +3153,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetOfficePreviewURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcUri'] = request.src_uri
+        query['SrcType'] = request.src_type
+        query['WatermarkType'] = request.watermark_type
+        query['WatermarkValue'] = request.watermark_value
+        query['WatermarkFillStyle'] = request.watermark_fill_style
+        query['WatermarkFont'] = request.watermark_font
+        query['WatermarkRotate'] = request.watermark_rotate
+        query['WatermarkHorizontal'] = request.watermark_horizontal
+        query['WatermarkVertical'] = request.watermark_vertical
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetOfficePreviewURLResponse().from_map(
-            await self.do_rpcrequest_async('GetOfficePreviewURL', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetOfficePreviewURL',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetOfficePreviewURLResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_office_preview_url(
@@ -1674,11 +3204,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetProjectResponse().from_map(
-            self.do_rpcrequest('GetProject', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProject',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_project_with_options_async(
@@ -1687,11 +3232,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetProjectResponse().from_map(
-            await self.do_rpcrequest_async('GetProject', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetProject',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_project(
@@ -1714,11 +3274,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetSetResponse().from_map(
-            self.do_rpcrequest('GetSet', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetSet',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetSetResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_set_with_options_async(
@@ -1727,11 +3303,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetSetResponse().from_map(
-            await self.do_rpcrequest_async('GetSet', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetSet',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetSetResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_set(
@@ -1754,11 +3346,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetVideoResponse().from_map(
-            self.do_rpcrequest('GetVideo', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetVideo',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetVideoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_video_with_options_async(
@@ -1767,11 +3376,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetVideoResponse().from_map(
-            await self.do_rpcrequest_async('GetVideo', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetVideo',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetVideoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_video(
@@ -1794,11 +3420,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetVideoTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['TaskType'] = request.task_type
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetVideoTaskResponse().from_map(
-            self.do_rpcrequest('GetVideoTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetVideoTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetVideoTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_video_task_with_options_async(
@@ -1807,11 +3450,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetVideoTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['TaskType'] = request.task_type
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetVideoTaskResponse().from_map(
-            await self.do_rpcrequest_async('GetVideoTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetVideoTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetVideoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_video_task(
@@ -1834,11 +3494,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetWebofficeURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcType'] = request.src_type
+        query['FileID'] = request.file_id
+        query['User'] = request.user
+        query['Permission'] = request.permission
+        query['File'] = request.file
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['Watermark'] = request.watermark
+        query['Hidecmb'] = request.hidecmb
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetWebofficeURLResponse().from_map(
-            self.do_rpcrequest('GetWebofficeURL', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetWebofficeURL',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetWebofficeURLResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_weboffice_urlwith_options_async(
@@ -1847,11 +3531,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.GetWebofficeURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SrcType'] = request.src_type
+        query['FileID'] = request.file_id
+        query['User'] = request.user
+        query['Permission'] = request.permission
+        query['File'] = request.file
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['Watermark'] = request.watermark
+        query['Hidecmb'] = request.hidecmb
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.GetWebofficeURLResponse().from_map(
-            await self.do_rpcrequest_async('GetWebofficeURL', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetWebofficeURL',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.GetWebofficeURLResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_weboffice_url(
@@ -1874,11 +3582,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.IndexImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
+        query['RemarksA'] = request.remarks_a
+        query['RemarksB'] = request.remarks_b
+        query['SourceType'] = request.source_type
+        query['SourceUri'] = request.source_uri
+        query['SourcePosition'] = request.source_position
+        query['RemarksC'] = request.remarks_c
+        query['RemarksD'] = request.remarks_d
+        query['ExternalId'] = request.external_id
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['RemarksArrayA'] = request.remarks_array_a
+        query['RemarksArrayB'] = request.remarks_array_b
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.IndexImageResponse().from_map(
-            self.do_rpcrequest('IndexImage', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='IndexImage',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.IndexImageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def index_image_with_options_async(
@@ -1887,11 +3624,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.IndexImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
+        query['RemarksA'] = request.remarks_a
+        query['RemarksB'] = request.remarks_b
+        query['SourceType'] = request.source_type
+        query['SourceUri'] = request.source_uri
+        query['SourcePosition'] = request.source_position
+        query['RemarksC'] = request.remarks_c
+        query['RemarksD'] = request.remarks_d
+        query['ExternalId'] = request.external_id
+        query['NotifyEndpoint'] = request.notify_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['RemarksArrayA'] = request.remarks_array_a
+        query['RemarksArrayB'] = request.remarks_array_b
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.IndexImageResponse().from_map(
-            await self.do_rpcrequest_async('IndexImage', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='IndexImage',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.IndexImageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def index_image(
@@ -1914,11 +3680,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.IndexVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
+        query['RemarksA'] = request.remarks_a
+        query['RemarksB'] = request.remarks_b
+        query['TgtUri'] = request.tgt_uri
+        query['RemarksC'] = request.remarks_c
+        query['RemarksD'] = request.remarks_d
+        query['ExternalId'] = request.external_id
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.IndexVideoResponse().from_map(
-            self.do_rpcrequest('IndexVideo', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='IndexVideo',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.IndexVideoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def index_video_with_options_async(
@@ -1927,11 +3718,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.IndexVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
+        query['RemarksA'] = request.remarks_a
+        query['RemarksB'] = request.remarks_b
+        query['TgtUri'] = request.tgt_uri
+        query['RemarksC'] = request.remarks_c
+        query['RemarksD'] = request.remarks_d
+        query['ExternalId'] = request.external_id
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['NotifyEndpoint'] = request.notify_endpoint
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.IndexVideoResponse().from_map(
-            await self.do_rpcrequest_async('IndexVideo', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='IndexVideo',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.IndexVideoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def index_video(
@@ -1954,11 +3770,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListFaceGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['Marker'] = request.marker
+        query['Limit'] = request.limit
+        query['Order'] = request.order
+        query['OrderBy'] = request.order_by
+        query['RemarksAQuery'] = request.remarks_aquery
+        query['RemarksBQuery'] = request.remarks_bquery
+        query['RemarksCQuery'] = request.remarks_cquery
+        query['RemarksDQuery'] = request.remarks_dquery
+        query['RemarksArrayAQuery'] = request.remarks_array_aquery
+        query['RemarksArrayBQuery'] = request.remarks_array_bquery
+        query['ExternalId'] = request.external_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListFaceGroupsResponse().from_map(
-            self.do_rpcrequest('ListFaceGroups', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFaceGroups',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListFaceGroupsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_face_groups_with_options_async(
@@ -1967,11 +3810,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListFaceGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['Marker'] = request.marker
+        query['Limit'] = request.limit
+        query['Order'] = request.order
+        query['OrderBy'] = request.order_by
+        query['RemarksAQuery'] = request.remarks_aquery
+        query['RemarksBQuery'] = request.remarks_bquery
+        query['RemarksCQuery'] = request.remarks_cquery
+        query['RemarksDQuery'] = request.remarks_dquery
+        query['RemarksArrayAQuery'] = request.remarks_array_aquery
+        query['RemarksArrayBQuery'] = request.remarks_array_bquery
+        query['ExternalId'] = request.external_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListFaceGroupsResponse().from_map(
-            await self.do_rpcrequest_async('ListFaceGroups', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListFaceGroups',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListFaceGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_face_groups(
@@ -1994,11 +3864,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListImagesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['CreateTimeStart'] = request.create_time_start
+        query['Marker'] = request.marker
+        query['Limit'] = request.limit
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListImagesResponse().from_map(
-            self.do_rpcrequest('ListImages', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListImagesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_images_with_options_async(
@@ -2007,11 +3896,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListImagesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['CreateTimeStart'] = request.create_time_start
+        query['Marker'] = request.marker
+        query['Limit'] = request.limit
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListImagesResponse().from_map(
-            await self.do_rpcrequest_async('ListImages', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListImagesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_images(
@@ -2034,11 +3942,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListOfficeConversionTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Marker'] = request.marker
+        query['MaxKeys'] = request.max_keys
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListOfficeConversionTaskResponse().from_map(
-            self.do_rpcrequest('ListOfficeConversionTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListOfficeConversionTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListOfficeConversionTaskResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_office_conversion_task_with_options_async(
@@ -2047,11 +3972,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListOfficeConversionTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Marker'] = request.marker
+        query['MaxKeys'] = request.max_keys
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListOfficeConversionTaskResponse().from_map(
-            await self.do_rpcrequest_async('ListOfficeConversionTask', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListOfficeConversionTask',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListOfficeConversionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_office_conversion_task(
@@ -2074,11 +4016,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListProjectAPIsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListProjectAPIsResponse().from_map(
-            self.do_rpcrequest('ListProjectAPIs', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectAPIs',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListProjectAPIsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_project_apis_with_options_async(
@@ -2087,11 +4044,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListProjectAPIsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListProjectAPIsResponse().from_map(
-            await self.do_rpcrequest_async('ListProjectAPIs', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjectAPIs',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListProjectAPIsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_project_apis(
@@ -2114,11 +4086,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListProjectsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Marker'] = request.marker
+        query['MaxKeys'] = request.max_keys
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListProjectsResponse().from_map(
-            self.do_rpcrequest('ListProjects', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_projects_with_options_async(
@@ -2127,11 +4115,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListProjectsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Marker'] = request.marker
+        query['MaxKeys'] = request.max_keys
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListProjectsResponse().from_map(
-            await self.do_rpcrequest_async('ListProjects', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_projects(
@@ -2154,11 +4158,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListSetsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Marker'] = request.marker
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListSetsResponse().from_map(
-            self.do_rpcrequest('ListSets', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSets',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListSetsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_sets_with_options_async(
@@ -2167,11 +4187,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListSetsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Marker'] = request.marker
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListSetsResponse().from_map(
-            await self.do_rpcrequest_async('ListSets', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSets',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListSetsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_sets(
@@ -2194,11 +4230,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListSetTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListSetTagsResponse().from_map(
-            self.do_rpcrequest('ListSetTags', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSetTags',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListSetTagsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_set_tags_with_options_async(
@@ -2207,11 +4259,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListSetTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListSetTagsResponse().from_map(
-            await self.do_rpcrequest_async('ListSetTags', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSetTags',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListSetTagsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_set_tags(
@@ -2234,11 +4302,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListVideoAudiosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
+        query['Marker'] = request.marker
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListVideoAudiosResponse().from_map(
-            self.do_rpcrequest('ListVideoAudios', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVideoAudios',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideoAudiosResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_video_audios_with_options_async(
@@ -2247,11 +4333,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListVideoAudiosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
+        query['Marker'] = request.marker
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListVideoAudiosResponse().from_map(
-            await self.do_rpcrequest_async('ListVideoAudios', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVideoAudios',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideoAudiosResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_video_audios(
@@ -2274,11 +4378,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListVideoFramesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
+        query['Marker'] = request.marker
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListVideoFramesResponse().from_map(
-            self.do_rpcrequest('ListVideoFrames', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVideoFrames',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideoFramesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_video_frames_with_options_async(
@@ -2287,11 +4409,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListVideoFramesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['VideoUri'] = request.video_uri
+        query['Marker'] = request.marker
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListVideoFramesResponse().from_map(
-            await self.do_rpcrequest_async('ListVideoFrames', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVideoFrames',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideoFramesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_video_frames(
@@ -2314,11 +4454,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListVideosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['CreateTimeStart'] = request.create_time_start
+        query['Marker'] = request.marker
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListVideosResponse().from_map(
-            self.do_rpcrequest('ListVideos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVideos',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideosResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_videos_with_options_async(
@@ -2327,11 +4485,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListVideosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['CreateTimeStart'] = request.create_time_start
+        query['Marker'] = request.marker
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListVideosResponse().from_map(
-            await self.do_rpcrequest_async('ListVideos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVideos',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideosResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_videos(
@@ -2354,11 +4530,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListVideoTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Marker'] = request.marker
+        query['MaxKeys'] = request.max_keys
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListVideoTasksResponse().from_map(
-            self.do_rpcrequest('ListVideoTasks', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVideoTasks',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideoTasksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_video_tasks_with_options_async(
@@ -2367,11 +4561,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.ListVideoTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['Marker'] = request.marker
+        query['MaxKeys'] = request.max_keys
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.ListVideoTasksResponse().from_map(
-            await self.do_rpcrequest_async('ListVideoTasks', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVideoTasks',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideoTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_video_tasks(
@@ -2394,11 +4606,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.OpenImmServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.OpenImmServiceResponse().from_map(
-            self.do_rpcrequest('OpenImmService', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='OpenImmService',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.OpenImmServiceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def open_imm_service_with_options_async(
@@ -2407,11 +4634,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.OpenImmServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.OpenImmServiceResponse().from_map(
-            await self.do_rpcrequest_async('OpenImmService', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='OpenImmService',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.OpenImmServiceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def open_imm_service(
@@ -2434,11 +4676,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.PutProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ServiceRole'] = request.service_role
+        query['CU'] = request.cu
+        query['Type'] = request.type
+        query['BillingType'] = request.billing_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.PutProjectResponse().from_map(
-            self.do_rpcrequest('PutProject', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PutProject',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.PutProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def put_project_with_options_async(
@@ -2447,11 +4708,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.PutProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['ServiceRole'] = request.service_role
+        query['CU'] = request.cu
+        query['Type'] = request.type
+        query['BillingType'] = request.billing_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.PutProjectResponse().from_map(
-            await self.do_rpcrequest_async('PutProject', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PutProject',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.PutProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_project(
@@ -2474,11 +4754,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.RefreshOfficeEditTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['AccessToken'] = request.access_token
+        query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.RefreshOfficeEditTokenResponse().from_map(
-            self.do_rpcrequest('RefreshOfficeEditToken', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RefreshOfficeEditToken',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.RefreshOfficeEditTokenResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def refresh_office_edit_token_with_options_async(
@@ -2487,11 +4784,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.RefreshOfficeEditTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['AccessToken'] = request.access_token
+        query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.RefreshOfficeEditTokenResponse().from_map(
-            await self.do_rpcrequest_async('RefreshOfficeEditToken', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RefreshOfficeEditToken',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.RefreshOfficeEditTokenResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def refresh_office_edit_token(
@@ -2514,11 +4828,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.RefreshOfficePreviewTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['AccessToken'] = request.access_token
+        query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.RefreshOfficePreviewTokenResponse().from_map(
-            self.do_rpcrequest('RefreshOfficePreviewToken', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RefreshOfficePreviewToken',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.RefreshOfficePreviewTokenResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def refresh_office_preview_token_with_options_async(
@@ -2527,11 +4858,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.RefreshOfficePreviewTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['AccessToken'] = request.access_token
+        query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.RefreshOfficePreviewTokenResponse().from_map(
-            await self.do_rpcrequest_async('RefreshOfficePreviewToken', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RefreshOfficePreviewToken',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.RefreshOfficePreviewTokenResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def refresh_office_preview_token(
@@ -2554,11 +4902,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.RefreshWebofficeTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['AccessToken'] = request.access_token
+        query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.RefreshWebofficeTokenResponse().from_map(
-            self.do_rpcrequest('RefreshWebofficeToken', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RefreshWebofficeToken',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.RefreshWebofficeTokenResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def refresh_weboffice_token_with_options_async(
@@ -2567,11 +4932,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.RefreshWebofficeTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['AccessToken'] = request.access_token
+        query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.RefreshWebofficeTokenResponse().from_map(
-            await self.do_rpcrequest_async('RefreshWebofficeToken', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RefreshWebofficeToken',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.RefreshWebofficeTokenResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def refresh_weboffice_token(
@@ -2594,11 +4976,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.UpdateFaceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['GroupId'] = request.group_id
+        query['GroupName'] = request.group_name
+        query['GroupCoverFaceId'] = request.group_cover_face_id
+        query['RemarksA'] = request.remarks_a
+        query['RemarksB'] = request.remarks_b
+        query['RemarksC'] = request.remarks_c
+        query['RemarksD'] = request.remarks_d
+        query['RemarksArrayA'] = request.remarks_array_a
+        query['RemarksArrayB'] = request.remarks_array_b
+        query['ExternalId'] = request.external_id
+        query['ResetItems'] = request.reset_items
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.UpdateFaceGroupResponse().from_map(
-            self.do_rpcrequest('UpdateFaceGroup', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateFaceGroup',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.UpdateFaceGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_face_group_with_options_async(
@@ -2607,11 +5016,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.UpdateFaceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['GroupId'] = request.group_id
+        query['GroupName'] = request.group_name
+        query['GroupCoverFaceId'] = request.group_cover_face_id
+        query['RemarksA'] = request.remarks_a
+        query['RemarksB'] = request.remarks_b
+        query['RemarksC'] = request.remarks_c
+        query['RemarksD'] = request.remarks_d
+        query['RemarksArrayA'] = request.remarks_array_a
+        query['RemarksArrayB'] = request.remarks_array_b
+        query['ExternalId'] = request.external_id
+        query['ResetItems'] = request.reset_items
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.UpdateFaceGroupResponse().from_map(
-            await self.do_rpcrequest_async('UpdateFaceGroup', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateFaceGroup',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.UpdateFaceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_face_group(
@@ -2634,11 +5070,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.UpdateImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
+        query['RemarksA'] = request.remarks_a
+        query['RemarksB'] = request.remarks_b
+        query['SourceType'] = request.source_type
+        query['SourceUri'] = request.source_uri
+        query['SourcePosition'] = request.source_position
+        query['RemarksC'] = request.remarks_c
+        query['RemarksD'] = request.remarks_d
+        query['ExternalId'] = request.external_id
+        query['RemarksArrayA'] = request.remarks_array_a
+        query['RemarksArrayB'] = request.remarks_array_b
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.UpdateImageResponse().from_map(
-            self.do_rpcrequest('UpdateImage', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateImage',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.UpdateImageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_image_with_options_async(
@@ -2647,11 +5110,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.UpdateImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['ImageUri'] = request.image_uri
+        query['RemarksA'] = request.remarks_a
+        query['RemarksB'] = request.remarks_b
+        query['SourceType'] = request.source_type
+        query['SourceUri'] = request.source_uri
+        query['SourcePosition'] = request.source_position
+        query['RemarksC'] = request.remarks_c
+        query['RemarksD'] = request.remarks_d
+        query['ExternalId'] = request.external_id
+        query['RemarksArrayA'] = request.remarks_array_a
+        query['RemarksArrayB'] = request.remarks_array_b
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.UpdateImageResponse().from_map(
-            await self.do_rpcrequest_async('UpdateImage', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateImage',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.UpdateImageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_image(
@@ -2674,11 +5164,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['NewCU'] = request.new_cu
+        query['NewServiceRole'] = request.new_service_role
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.UpdateProjectResponse().from_map(
-            self.do_rpcrequest('UpdateProject', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.UpdateProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_project_with_options_async(
@@ -2687,11 +5194,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['NewCU'] = request.new_cu
+        query['NewServiceRole'] = request.new_service_role
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.UpdateProjectResponse().from_map(
-            await self.do_rpcrequest_async('UpdateProject', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.UpdateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_project(
@@ -2714,11 +5238,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.UpdateSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['SetName'] = request.set_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.UpdateSetResponse().from_map(
-            self.do_rpcrequest('UpdateSet', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateSet',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.UpdateSetResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_set_with_options_async(
@@ -2727,11 +5268,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20170906_models.UpdateSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Project'] = request.project
+        query['SetId'] = request.set_id
+        query['SetName'] = request.set_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return imm_20170906_models.UpdateSetResponse().from_map(
-            await self.do_rpcrequest_async('UpdateSet', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateSet',
+            version='2017-09-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.UpdateSetResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_set(
