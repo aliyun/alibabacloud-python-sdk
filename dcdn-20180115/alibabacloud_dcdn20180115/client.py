@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -105,7 +106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.AddDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.AddDcdnDomainResponse(),
             self.do_rpcrequest('AddDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -118,7 +120,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.AddDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.AddDcdnDomainResponse(),
             await self.do_rpcrequest_async('AddDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -145,7 +148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.AddDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.AddDcdnIpaDomainResponse(),
             self.do_rpcrequest('AddDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -158,7 +162,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.AddDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.AddDcdnIpaDomainResponse(),
             await self.do_rpcrequest_async('AddDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -185,7 +190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchAddDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchAddDcdnDomainResponse(),
             self.do_rpcrequest('BatchAddDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -198,7 +204,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchAddDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchAddDcdnDomainResponse(),
             await self.do_rpcrequest_async('BatchAddDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -225,7 +232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchDeleteDcdnDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchDeleteDcdnDomainConfigsResponse(),
             self.do_rpcrequest('BatchDeleteDcdnDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -238,7 +246,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchDeleteDcdnDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchDeleteDcdnDomainConfigsResponse(),
             await self.do_rpcrequest_async('BatchDeleteDcdnDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -265,7 +274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse(),
             self.do_rpcrequest('BatchSetDcdnDomainCertificate', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -278,7 +288,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse(),
             await self.do_rpcrequest_async('BatchSetDcdnDomainCertificate', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -305,7 +316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse(),
             self.do_rpcrequest('BatchSetDcdnDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -318,7 +330,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse(),
             await self.do_rpcrequest_async('BatchSetDcdnDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -345,7 +358,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchSetDcdnIpaDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchSetDcdnIpaDomainConfigsResponse(),
             self.do_rpcrequest('BatchSetDcdnIpaDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -358,7 +372,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchSetDcdnIpaDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchSetDcdnIpaDomainConfigsResponse(),
             await self.do_rpcrequest_async('BatchSetDcdnIpaDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -385,7 +400,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchStartDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchStartDcdnDomainResponse(),
             self.do_rpcrequest('BatchStartDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -398,7 +414,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchStartDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchStartDcdnDomainResponse(),
             await self.do_rpcrequest_async('BatchStartDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -425,7 +442,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchStopDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchStopDcdnDomainResponse(),
             self.do_rpcrequest('BatchStopDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -438,7 +456,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.BatchStopDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchStopDcdnDomainResponse(),
             await self.do_rpcrequest_async('BatchStopDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -465,7 +484,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse(),
             self.do_rpcrequest('CreateDcdnCertificateSigningRequest', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -478,7 +498,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse(),
             await self.do_rpcrequest_async('CreateDcdnCertificateSigningRequest', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -496,6 +517,60 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dcdn_certificate_signing_request_with_options_async(request, runtime)
 
+    def create_dcdn_deliver_task_with_options(
+        self,
+        tmp_req: dcdn_20180115_models.CreateDcdnDeliverTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnDeliverTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.CreateDcdnDeliverTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.deliver):
+            request.deliver_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deliver, 'Deliver', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnDeliverTaskResponse(),
+            self.do_rpcrequest('CreateDcdnDeliverTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_dcdn_deliver_task_with_options_async(
+        self,
+        tmp_req: dcdn_20180115_models.CreateDcdnDeliverTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnDeliverTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.CreateDcdnDeliverTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.deliver):
+            request.deliver_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deliver, 'Deliver', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnDeliverTaskResponse(),
+            await self.do_rpcrequest_async('CreateDcdnDeliverTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_dcdn_deliver_task(
+        self,
+        request: dcdn_20180115_models.CreateDcdnDeliverTaskRequest,
+    ) -> dcdn_20180115_models.CreateDcdnDeliverTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dcdn_deliver_task_with_options(request, runtime)
+
+    async def create_dcdn_deliver_task_async(
+        self,
+        request: dcdn_20180115_models.CreateDcdnDeliverTaskRequest,
+    ) -> dcdn_20180115_models.CreateDcdnDeliverTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dcdn_deliver_task_with_options_async(request, runtime)
+
     def create_dcdn_domain_offline_log_delivery_with_options(
         self,
         request: dcdn_20180115_models.CreateDcdnDomainOfflineLogDeliveryRequest,
@@ -505,7 +580,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.CreateDcdnDomainOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnDomainOfflineLogDeliveryResponse(),
             self.do_rpcrequest('CreateDcdnDomainOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -518,7 +594,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.CreateDcdnDomainOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnDomainOfflineLogDeliveryResponse(),
             await self.do_rpcrequest_async('CreateDcdnDomainOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -536,6 +613,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dcdn_domain_offline_log_delivery_with_options_async(request, runtime)
 
+    def create_dcdn_sub_task_with_options(
+        self,
+        request: dcdn_20180115_models.CreateDcdnSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnSubTaskResponse(),
+            self.do_rpcrequest('CreateDcdnSubTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_dcdn_sub_task_with_options_async(
+        self,
+        request: dcdn_20180115_models.CreateDcdnSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnSubTaskResponse(),
+            await self.do_rpcrequest_async('CreateDcdnSubTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_dcdn_sub_task(
+        self,
+        request: dcdn_20180115_models.CreateDcdnSubTaskRequest,
+    ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dcdn_sub_task_with_options(request, runtime)
+
+    async def create_dcdn_sub_task_async(
+        self,
+        request: dcdn_20180115_models.CreateDcdnSubTaskRequest,
+    ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dcdn_sub_task_with_options_async(request, runtime)
+
+    def delete_dcdn_deliver_task_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnDeliverTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnDeliverTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnDeliverTaskResponse(),
+            self.do_rpcrequest('DeleteDcdnDeliverTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_dcdn_deliver_task_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnDeliverTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnDeliverTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnDeliverTaskResponse(),
+            await self.do_rpcrequest_async('DeleteDcdnDeliverTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_dcdn_deliver_task(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnDeliverTaskRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnDeliverTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dcdn_deliver_task_with_options(request, runtime)
+
+    async def delete_dcdn_deliver_task_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnDeliverTaskRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnDeliverTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dcdn_deliver_task_with_options_async(request, runtime)
+
     def delete_dcdn_domain_with_options(
         self,
         request: dcdn_20180115_models.DeleteDcdnDomainRequest,
@@ -545,7 +706,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnDomainResponse(),
             self.do_rpcrequest('DeleteDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -558,7 +720,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnDomainResponse(),
             await self.do_rpcrequest_async('DeleteDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -585,7 +748,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnIpaDomainResponse(),
             self.do_rpcrequest('DeleteDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -598,7 +762,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnIpaDomainResponse(),
             await self.do_rpcrequest_async('DeleteDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -625,7 +790,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnIpaSpecificConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnIpaSpecificConfigResponse(),
             self.do_rpcrequest('DeleteDcdnIpaSpecificConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -638,7 +804,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnIpaSpecificConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnIpaSpecificConfigResponse(),
             await self.do_rpcrequest_async('DeleteDcdnIpaSpecificConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -665,7 +832,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnSpecificConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnSpecificConfigResponse(),
             self.do_rpcrequest('DeleteDcdnSpecificConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -678,7 +846,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnSpecificConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnSpecificConfigResponse(),
             await self.do_rpcrequest_async('DeleteDcdnSpecificConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -705,7 +874,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnSpecificStagingConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnSpecificStagingConfigResponse(),
             self.do_rpcrequest('DeleteDcdnSpecificStagingConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -718,7 +888,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DeleteDcdnSpecificStagingConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnSpecificStagingConfigResponse(),
             await self.do_rpcrequest_async('DeleteDcdnSpecificStagingConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -736,6 +907,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dcdn_specific_staging_config_with_options_async(request, runtime)
 
+    def delete_dcdn_sub_task_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnSubTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnSubTaskResponse(),
+            self.do_rpcrequest('DeleteDcdnSubTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_dcdn_sub_task_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnSubTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnSubTaskResponse(),
+            await self.do_rpcrequest_async('DeleteDcdnSubTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_dcdn_sub_task(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnSubTaskRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnSubTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dcdn_sub_task_with_options(request, runtime)
+
+    async def delete_dcdn_sub_task_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnSubTaskRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnSubTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dcdn_sub_task_with_options_async(request, runtime)
+
     def describe_dcdn_bgp_bps_data_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnBgpBpsDataRequest,
@@ -745,7 +958,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnBgpBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnBgpBpsDataResponse(),
             self.do_rpcrequest('DescribeDcdnBgpBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -758,7 +972,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnBgpBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnBgpBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnBgpBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -785,7 +1000,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnBgpTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnBgpTrafficDataResponse(),
             self.do_rpcrequest('DescribeDcdnBgpTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -798,7 +1014,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnBgpTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnBgpTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnBgpTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -825,7 +1042,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnCertificateDetailResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnCertificateDetailResponse(),
             self.do_rpcrequest('DescribeDcdnCertificateDetail', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -838,7 +1056,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnCertificateDetailResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnCertificateDetailResponse(),
             await self.do_rpcrequest_async('DescribeDcdnCertificateDetail', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -865,7 +1084,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnCertificateListResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnCertificateListResponse(),
             self.do_rpcrequest('DescribeDcdnCertificateList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -878,7 +1098,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnCertificateListResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnCertificateListResponse(),
             await self.do_rpcrequest_async('DescribeDcdnCertificateList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -905,7 +1126,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnConfigOfVersionResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnConfigOfVersionResponse(),
             self.do_rpcrequest('DescribeDcdnConfigOfVersion', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -918,7 +1140,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnConfigOfVersionResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnConfigOfVersionResponse(),
             await self.do_rpcrequest_async('DescribeDcdnConfigOfVersion', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -936,6 +1159,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_config_of_version_with_options_async(request, runtime)
 
+    def describe_dcdn_deliver_list_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnDeliverListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnDeliverListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDeliverListResponse(),
+            self.do_rpcrequest('DescribeDcdnDeliverList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dcdn_deliver_list_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnDeliverListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnDeliverListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDeliverListResponse(),
+            await self.do_rpcrequest_async('DescribeDcdnDeliverList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dcdn_deliver_list(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnDeliverListRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnDeliverListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_deliver_list_with_options(request, runtime)
+
+    async def describe_dcdn_deliver_list_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnDeliverListRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnDeliverListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_deliver_list_with_options_async(request, runtime)
+
     def describe_dcdn_domain_bps_data_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnDomainBpsDataRequest,
@@ -945,7 +1210,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainBpsDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -958,7 +1224,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -985,7 +1252,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainByCertificateResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainByCertificateResponse(),
             self.do_rpcrequest('DescribeDcdnDomainByCertificate', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -998,7 +1266,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainByCertificateResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainByCertificateResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainByCertificate', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1025,7 +1294,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainCertificateInfoResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainCertificateInfoResponse(),
             self.do_rpcrequest('DescribeDcdnDomainCertificateInfo', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1038,7 +1308,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainCertificateInfoResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainCertificateInfoResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainCertificateInfo', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1066,7 +1337,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainCnameResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainCnameResponse(),
             self.do_rpcrequest('DescribeDcdnDomainCname', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1080,7 +1352,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainCnameResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainCnameResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainCname', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1107,7 +1380,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainConfigsResponse(),
             self.do_rpcrequest('DescribeDcdnDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1120,7 +1394,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainConfigsResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1147,7 +1422,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainDetailResponse(),
             self.do_rpcrequest('DescribeDcdnDomainDetail', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1160,7 +1436,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainDetailResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainDetail', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1187,7 +1464,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainHitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainHitRateDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainHitRateData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1200,7 +1478,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainHitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainHitRateDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainHitRateData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1227,7 +1506,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainHttpCodeDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainHttpCodeData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1240,7 +1520,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainHttpCodeDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainHttpCodeData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1267,7 +1548,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainIpaBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainIpaBpsDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainIpaBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1280,7 +1562,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainIpaBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainIpaBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainIpaBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1307,7 +1590,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainIpaTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainIpaTrafficDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainIpaTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1320,7 +1604,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainIpaTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainIpaTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainIpaTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1347,7 +1632,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainIspDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainIspDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainIspData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1360,7 +1646,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainIspDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainIspDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainIspData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1387,7 +1674,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainLogResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainLogResponse(),
             self.do_rpcrequest('DescribeDcdnDomainLog', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1400,7 +1688,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainLogResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainLogResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainLog', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1427,7 +1716,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainMultiUsageData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1440,7 +1730,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainMultiUsageDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainMultiUsageData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1467,7 +1758,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainOriginBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainOriginBpsDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainOriginBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1480,7 +1772,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainOriginBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainOriginBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainOriginBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1507,7 +1800,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainOriginTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainOriginTrafficDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainOriginTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1520,7 +1814,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainOriginTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainOriginTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainOriginTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1547,7 +1842,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainPropertyResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainPropertyResponse(),
             self.do_rpcrequest('DescribeDcdnDomainProperty', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1560,7 +1856,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainPropertyResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainPropertyResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainProperty', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1587,7 +1884,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainPvDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainPvDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainPvData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1600,7 +1898,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainPvDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainPvDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainPvData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1627,7 +1926,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainQpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainQpsDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainQpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1640,7 +1940,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainQpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainQpsDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainQpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1668,7 +1969,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeBpsDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeBpsData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1682,7 +1984,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeBpsData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1710,7 +2013,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeByteHitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeByteHitRateDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeByteHitRateData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1724,7 +2028,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeByteHitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeByteHitRateDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeByteHitRateData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1752,7 +2057,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeDetailData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1766,7 +2072,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeDetailData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1793,7 +2100,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeHttpCodeDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeHttpCodeData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1806,7 +2114,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeHttpCodeDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeHttpCodeData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1834,7 +2143,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeQpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeQpsDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeQpsData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1848,7 +2158,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeQpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeQpsDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeQpsData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1876,7 +2187,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeReqHitRateData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1890,7 +2202,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeReqHitRateDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeReqHitRateData', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1917,7 +2230,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcBpsDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeSrcBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1930,7 +2244,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeSrcBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1957,7 +2272,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcHttpCodeDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeSrcHttpCodeData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1970,7 +2286,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcHttpCodeDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeSrcHttpCodeData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1997,7 +2314,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcTrafficDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeSrcTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2010,7 +2328,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeSrcTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeSrcTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2037,7 +2356,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeTrafficDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRealTimeTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2050,7 +2370,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRealTimeTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRealTimeTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRealTimeTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2077,7 +2398,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRegionDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRegionDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainRegionData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2090,7 +2412,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainRegionDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainRegionDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainRegionData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2117,7 +2440,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainStagingConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainStagingConfigResponse(),
             self.do_rpcrequest('DescribeDcdnDomainStagingConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2130,7 +2454,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainStagingConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainStagingConfigResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainStagingConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2157,7 +2482,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainTopReferVisitResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainTopReferVisitResponse(),
             self.do_rpcrequest('DescribeDcdnDomainTopReferVisit', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2170,7 +2496,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainTopReferVisitResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainTopReferVisitResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainTopReferVisit', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2197,7 +2524,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainTopUrlVisitResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainTopUrlVisitResponse(),
             self.do_rpcrequest('DescribeDcdnDomainTopUrlVisit', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2210,7 +2538,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainTopUrlVisitResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainTopUrlVisitResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainTopUrlVisit', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2237,7 +2566,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainTrafficDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2250,7 +2580,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2277,7 +2608,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainUvDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainUvDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainUvData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2290,7 +2622,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainUvDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainUvDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainUvData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2317,7 +2650,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainWebsocketBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainWebsocketBpsDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainWebsocketBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2330,7 +2664,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainWebsocketBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainWebsocketBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainWebsocketBpsData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2357,7 +2692,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainWebsocketHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainWebsocketHttpCodeDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainWebsocketHttpCodeData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2370,7 +2706,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainWebsocketHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainWebsocketHttpCodeDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainWebsocketHttpCodeData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2397,7 +2734,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainWebsocketTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainWebsocketTrafficDataResponse(),
             self.do_rpcrequest('DescribeDcdnDomainWebsocketTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2410,7 +2748,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnDomainWebsocketTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnDomainWebsocketTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeDcdnDomainWebsocketTrafficData', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2437,7 +2776,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnHttpsDomainListResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnHttpsDomainListResponse(),
             self.do_rpcrequest('DescribeDcdnHttpsDomainList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2450,7 +2790,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnHttpsDomainListResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnHttpsDomainListResponse(),
             await self.do_rpcrequest_async('DescribeDcdnHttpsDomainList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2477,7 +2818,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpaDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaDomainConfigsResponse(),
             self.do_rpcrequest('DescribeDcdnIpaDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2490,7 +2832,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpaDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaDomainConfigsResponse(),
             await self.do_rpcrequest_async('DescribeDcdnIpaDomainConfigs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2517,7 +2860,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpaDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaDomainDetailResponse(),
             self.do_rpcrequest('DescribeDcdnIpaDomainDetail', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2530,7 +2874,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpaDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaDomainDetailResponse(),
             await self.do_rpcrequest_async('DescribeDcdnIpaDomainDetail', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2557,7 +2902,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpaServiceResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaServiceResponse(),
             self.do_rpcrequest('DescribeDcdnIpaService', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2570,7 +2916,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpaServiceResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaServiceResponse(),
             await self.do_rpcrequest_async('DescribeDcdnIpaService', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2597,7 +2944,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpaUserDomainsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaUserDomainsResponse(),
             self.do_rpcrequest('DescribeDcdnIpaUserDomains', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2610,7 +2958,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpaUserDomainsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpaUserDomainsResponse(),
             await self.do_rpcrequest_async('DescribeDcdnIpaUserDomains', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2637,7 +2986,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpInfoResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpInfoResponse(),
             self.do_rpcrequest('DescribeDcdnIpInfo', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2650,7 +3000,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnIpInfoResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnIpInfoResponse(),
             await self.do_rpcrequest_async('DescribeDcdnIpInfo', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2677,7 +3028,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryResponse(),
             self.do_rpcrequest('DescribeDcdnOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2690,7 +3042,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryResponse(),
             await self.do_rpcrequest_async('DescribeDcdnOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2717,7 +3070,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryFieldResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryFieldResponse(),
             self.do_rpcrequest('DescribeDcdnOfflineLogDeliveryField', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2730,7 +3084,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryFieldResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryFieldResponse(),
             await self.do_rpcrequest_async('DescribeDcdnOfflineLogDeliveryField', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2757,7 +3112,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryRegionsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryRegionsResponse(),
             self.do_rpcrequest('DescribeDcdnOfflineLogDeliveryRegions', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2770,7 +3126,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryRegionsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryRegionsResponse(),
             await self.do_rpcrequest_async('DescribeDcdnOfflineLogDeliveryRegions', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2797,7 +3154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryStatusResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryStatusResponse(),
             self.do_rpcrequest('DescribeDcdnOfflineLogDeliveryStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2810,7 +3168,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryStatusResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOfflineLogDeliveryStatusResponse(),
             await self.do_rpcrequest_async('DescribeDcdnOfflineLogDeliveryStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2837,7 +3196,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnRefreshQuotaResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnRefreshQuotaResponse(),
             self.do_rpcrequest('DescribeDcdnRefreshQuota', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2850,7 +3210,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnRefreshQuotaResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnRefreshQuotaResponse(),
             await self.do_rpcrequest_async('DescribeDcdnRefreshQuota', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2877,7 +3238,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnRefreshTasksResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnRefreshTasksResponse(),
             self.do_rpcrequest('DescribeDcdnRefreshTasks', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2890,7 +3252,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnRefreshTasksResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnRefreshTasksResponse(),
             await self.do_rpcrequest_async('DescribeDcdnRefreshTasks', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2917,7 +3280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnRegionAndIspResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnRegionAndIspResponse(),
             self.do_rpcrequest('DescribeDcdnRegionAndIsp', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2930,7 +3294,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnRegionAndIspResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnRegionAndIspResponse(),
             await self.do_rpcrequest_async('DescribeDcdnRegionAndIsp', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2948,6 +3313,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_region_and_isp_with_options_async(request, runtime)
 
+    def describe_dcdn_report_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnReportResponse(),
+            self.do_rpcrequest('DescribeDcdnReport', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dcdn_report_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnReportResponse(),
+            await self.do_rpcrequest_async('DescribeDcdnReport', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dcdn_report(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnReportRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_report_with_options(request, runtime)
+
+    async def describe_dcdn_report_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnReportRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_report_with_options_async(request, runtime)
+
+    def describe_dcdn_report_list_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnReportListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnReportListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnReportListResponse(),
+            self.do_rpcrequest('DescribeDcdnReportList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dcdn_report_list_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnReportListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnReportListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnReportListResponse(),
+            await self.do_rpcrequest_async('DescribeDcdnReportList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dcdn_report_list(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnReportListRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnReportListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_report_list_with_options(request, runtime)
+
+    async def describe_dcdn_report_list_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnReportListRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnReportListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_report_list_with_options_async(request, runtime)
+
+    def describe_dcdn_sec_func_info_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSecFuncInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnSecFuncInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnSecFuncInfoResponse(),
+            self.do_rpcrequest('DescribeDcdnSecFuncInfo', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dcdn_sec_func_info_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSecFuncInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnSecFuncInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnSecFuncInfoResponse(),
+            await self.do_rpcrequest_async('DescribeDcdnSecFuncInfo', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dcdn_sec_func_info(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSecFuncInfoRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnSecFuncInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_sec_func_info_with_options(request, runtime)
+
+    async def describe_dcdn_sec_func_info_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSecFuncInfoRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnSecFuncInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_sec_func_info_with_options_async(request, runtime)
+
     def describe_dcdn_service_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnServiceRequest,
@@ -2957,7 +3448,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnServiceResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnServiceResponse(),
             self.do_rpcrequest('DescribeDcdnService', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2970,7 +3462,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnServiceResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnServiceResponse(),
             await self.do_rpcrequest_async('DescribeDcdnService', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2997,7 +3490,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnStagingIpResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnStagingIpResponse(),
             self.do_rpcrequest('DescribeDcdnStagingIp', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3010,7 +3504,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnStagingIpResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnStagingIpResponse(),
             await self.do_rpcrequest_async('DescribeDcdnStagingIp', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3028,6 +3523,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_staging_ip_with_options_async(request, runtime)
 
+    def describe_dcdn_sub_list_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSubListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnSubListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnSubListResponse(),
+            self.do_rpcrequest('DescribeDcdnSubList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dcdn_sub_list_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSubListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnSubListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnSubListResponse(),
+            await self.do_rpcrequest_async('DescribeDcdnSubList', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dcdn_sub_list(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSubListRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnSubListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_sub_list_with_options(request, runtime)
+
+    async def describe_dcdn_sub_list_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSubListRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnSubListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_sub_list_with_options_async(request, runtime)
+
     def describe_dcdn_tag_resources_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnTagResourcesRequest,
@@ -3037,7 +3574,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnTagResourcesResponse(),
             self.do_rpcrequest('DescribeDcdnTagResources', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3050,7 +3588,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnTagResourcesResponse(),
             await self.do_rpcrequest_async('DescribeDcdnTagResources', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3077,7 +3616,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnTopDomainsByFlowResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnTopDomainsByFlowResponse(),
             self.do_rpcrequest('DescribeDcdnTopDomainsByFlow', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3090,7 +3630,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnTopDomainsByFlowResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnTopDomainsByFlowResponse(),
             await self.do_rpcrequest_async('DescribeDcdnTopDomainsByFlow', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3117,7 +3658,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserBillHistoryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserBillHistoryResponse(),
             self.do_rpcrequest('DescribeDcdnUserBillHistory', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3130,7 +3672,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserBillHistoryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserBillHistoryResponse(),
             await self.do_rpcrequest_async('DescribeDcdnUserBillHistory', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3157,7 +3700,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserBillTypeResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserBillTypeResponse(),
             self.do_rpcrequest('DescribeDcdnUserBillType', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3170,7 +3714,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserBillTypeResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserBillTypeResponse(),
             await self.do_rpcrequest_async('DescribeDcdnUserBillType', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3197,7 +3742,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserDomainsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserDomainsResponse(),
             self.do_rpcrequest('DescribeDcdnUserDomains', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3210,7 +3756,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserDomainsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserDomainsResponse(),
             await self.do_rpcrequest_async('DescribeDcdnUserDomains', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3237,7 +3784,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserDomainsByFuncResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserDomainsByFuncResponse(),
             self.do_rpcrequest('DescribeDcdnUserDomainsByFunc', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3250,7 +3798,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserDomainsByFuncResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserDomainsByFuncResponse(),
             await self.do_rpcrequest_async('DescribeDcdnUserDomainsByFunc', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3277,7 +3826,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserQuotaResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserQuotaResponse(),
             self.do_rpcrequest('DescribeDcdnUserQuota', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3290,7 +3840,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserQuotaResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserQuotaResponse(),
             await self.do_rpcrequest_async('DescribeDcdnUserQuota', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3317,7 +3868,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserResourcePackageResponse(),
             self.do_rpcrequest('DescribeDcdnUserResourcePackage', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3330,7 +3882,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserResourcePackageResponse(),
             await self.do_rpcrequest_async('DescribeDcdnUserResourcePackage', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3357,7 +3910,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserSecDropResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserSecDropResponse(),
             self.do_rpcrequest('DescribeDcdnUserSecDrop', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3370,7 +3924,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserSecDropResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserSecDropResponse(),
             await self.do_rpcrequest_async('DescribeDcdnUserSecDrop', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3388,6 +3943,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_user_sec_drop_with_options_async(request, runtime)
 
+    def describe_dcdn_user_sec_drop_by_minute_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteResponse(),
+            self.do_rpcrequest('DescribeDcdnUserSecDropByMinute', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dcdn_user_sec_drop_by_minute_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteResponse(),
+            await self.do_rpcrequest_async('DescribeDcdnUserSecDropByMinute', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dcdn_user_sec_drop_by_minute(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_user_sec_drop_by_minute_with_options(request, runtime)
+
+    async def describe_dcdn_user_sec_drop_by_minute_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnUserSecDropByMinuteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_user_sec_drop_by_minute_with_options_async(request, runtime)
+
     def describe_dcdn_user_tags_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnUserTagsRequest,
@@ -3397,7 +3994,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserTagsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserTagsResponse(),
             self.do_rpcrequest('DescribeDcdnUserTags', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3410,7 +4008,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnUserTagsResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnUserTagsResponse(),
             await self.do_rpcrequest_async('DescribeDcdnUserTags', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3437,7 +4036,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnVerifyContentResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnVerifyContentResponse(),
             self.do_rpcrequest('DescribeDcdnVerifyContent', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3450,7 +4050,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnVerifyContentResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnVerifyContentResponse(),
             await self.do_rpcrequest_async('DescribeDcdnVerifyContent', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3477,7 +4078,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnWafDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafDomainResponse(),
             self.do_rpcrequest('DescribeDcdnWafDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3490,7 +4092,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeDcdnWafDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafDomainResponse(),
             await self.do_rpcrequest_async('DescribeDcdnWafDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3517,7 +4120,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeUserDcdnIpaStatusResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeUserDcdnIpaStatusResponse(),
             self.do_rpcrequest('DescribeUserDcdnIpaStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3530,7 +4134,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeUserDcdnIpaStatusResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeUserDcdnIpaStatusResponse(),
             await self.do_rpcrequest_async('DescribeUserDcdnIpaStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3557,7 +4162,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeUserDcdnStatusResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeUserDcdnStatusResponse(),
             self.do_rpcrequest('DescribeUserDcdnStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3570,7 +4176,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DescribeUserDcdnStatusResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeUserDcdnStatusResponse(),
             await self.do_rpcrequest_async('DescribeUserDcdnStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3588,6 +4195,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_dcdn_status_with_options_async(request, runtime)
 
+    def describe_user_logservice_status_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeUserLogserviceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeUserLogserviceStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeUserLogserviceStatusResponse(),
+            self.do_rpcrequest('DescribeUserLogserviceStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_user_logservice_status_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeUserLogserviceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeUserLogserviceStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeUserLogserviceStatusResponse(),
+            await self.do_rpcrequest_async('DescribeUserLogserviceStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_user_logservice_status(
+        self,
+        request: dcdn_20180115_models.DescribeUserLogserviceStatusRequest,
+    ) -> dcdn_20180115_models.DescribeUserLogserviceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_logservice_status_with_options(request, runtime)
+
+    async def describe_user_logservice_status_async(
+        self,
+        request: dcdn_20180115_models.DescribeUserLogserviceStatusRequest,
+    ) -> dcdn_20180115_models.DescribeUserLogserviceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_logservice_status_with_options_async(request, runtime)
+
     def disable_dcdn_domain_offline_log_delivery_with_options(
         self,
         request: dcdn_20180115_models.DisableDcdnDomainOfflineLogDeliveryRequest,
@@ -3597,7 +4246,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DisableDcdnDomainOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DisableDcdnDomainOfflineLogDeliveryResponse(),
             self.do_rpcrequest('DisableDcdnDomainOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3610,7 +4260,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DisableDcdnDomainOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DisableDcdnDomainOfflineLogDeliveryResponse(),
             await self.do_rpcrequest_async('DisableDcdnDomainOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3637,7 +4288,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DisableDcdnOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DisableDcdnOfflineLogDeliveryResponse(),
             self.do_rpcrequest('DisableDcdnOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3650,7 +4302,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.DisableDcdnOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.DisableDcdnOfflineLogDeliveryResponse(),
             await self.do_rpcrequest_async('DisableDcdnOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3677,7 +4330,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.EnableDcdnDomainOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.EnableDcdnDomainOfflineLogDeliveryResponse(),
             self.do_rpcrequest('EnableDcdnDomainOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3690,7 +4344,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.EnableDcdnDomainOfflineLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.EnableDcdnDomainOfflineLogDeliveryResponse(),
             await self.do_rpcrequest_async('EnableDcdnDomainOfflineLogDelivery', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3717,7 +4372,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.ModifyDCdnDomainSchdmByPropertyResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyDCdnDomainSchdmByPropertyResponse(),
             self.do_rpcrequest('ModifyDCdnDomainSchdmByProperty', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3730,7 +4386,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.ModifyDCdnDomainSchdmByPropertyResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyDCdnDomainSchdmByPropertyResponse(),
             await self.do_rpcrequest_async('ModifyDCdnDomainSchdmByProperty', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3757,7 +4414,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.OpenDcdnServiceResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.OpenDcdnServiceResponse(),
             self.do_rpcrequest('OpenDcdnService', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3770,7 +4428,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.OpenDcdnServiceResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.OpenDcdnServiceResponse(),
             await self.do_rpcrequest_async('OpenDcdnService', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3797,7 +4456,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.PreloadDcdnObjectCachesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.PreloadDcdnObjectCachesResponse(),
             self.do_rpcrequest('PreloadDcdnObjectCaches', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3810,7 +4470,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.PreloadDcdnObjectCachesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.PreloadDcdnObjectCachesResponse(),
             await self.do_rpcrequest_async('PreloadDcdnObjectCaches', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3837,7 +4498,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.PublishDcdnStagingConfigToProductionResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.PublishDcdnStagingConfigToProductionResponse(),
             self.do_rpcrequest('PublishDcdnStagingConfigToProduction', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3850,7 +4512,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.PublishDcdnStagingConfigToProductionResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.PublishDcdnStagingConfigToProductionResponse(),
             await self.do_rpcrequest_async('PublishDcdnStagingConfigToProduction', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3877,7 +4540,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.RefreshDcdnObjectCachesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.RefreshDcdnObjectCachesResponse(),
             self.do_rpcrequest('RefreshDcdnObjectCaches', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3890,7 +4554,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.RefreshDcdnObjectCachesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.RefreshDcdnObjectCachesResponse(),
             await self.do_rpcrequest_async('RefreshDcdnObjectCaches', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3917,7 +4582,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.RollbackDcdnStagingConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.RollbackDcdnStagingConfigResponse(),
             self.do_rpcrequest('RollbackDcdnStagingConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3930,7 +4596,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.RollbackDcdnStagingConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.RollbackDcdnStagingConfigResponse(),
             await self.do_rpcrequest_async('RollbackDcdnStagingConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3957,7 +4624,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.SetDcdnConfigOfVersionResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnConfigOfVersionResponse(),
             self.do_rpcrequest('SetDcdnConfigOfVersion', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3970,7 +4638,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.SetDcdnConfigOfVersionResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnConfigOfVersionResponse(),
             await self.do_rpcrequest_async('SetDcdnConfigOfVersion', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3997,7 +4666,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.SetDcdnDomainCertificateResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainCertificateResponse(),
             self.do_rpcrequest('SetDcdnDomainCertificate', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4010,7 +4680,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.SetDcdnDomainCertificateResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainCertificateResponse(),
             await self.do_rpcrequest_async('SetDcdnDomainCertificate', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4037,7 +4708,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse(),
             self.do_rpcrequest('SetDcdnDomainCSRCertificate', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4050,7 +4722,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse(),
             await self.do_rpcrequest_async('SetDcdnDomainCSRCertificate', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4077,7 +4750,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.SetDcdnDomainStagingConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainStagingConfigResponse(),
             self.do_rpcrequest('SetDcdnDomainStagingConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4090,7 +4764,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.SetDcdnDomainStagingConfigResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainStagingConfigResponse(),
             await self.do_rpcrequest_async('SetDcdnDomainStagingConfig', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4117,7 +4792,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.StartDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.StartDcdnDomainResponse(),
             self.do_rpcrequest('StartDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4130,7 +4806,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.StartDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.StartDcdnDomainResponse(),
             await self.do_rpcrequest_async('StartDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4157,7 +4834,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.StartDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.StartDcdnIpaDomainResponse(),
             self.do_rpcrequest('StartDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4170,7 +4848,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.StartDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.StartDcdnIpaDomainResponse(),
             await self.do_rpcrequest_async('StartDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4197,7 +4876,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.StopDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.StopDcdnDomainResponse(),
             self.do_rpcrequest('StopDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4210,7 +4890,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.StopDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.StopDcdnDomainResponse(),
             await self.do_rpcrequest_async('StopDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4237,7 +4918,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.StopDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.StopDcdnIpaDomainResponse(),
             self.do_rpcrequest('StopDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4250,7 +4932,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.StopDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.StopDcdnIpaDomainResponse(),
             await self.do_rpcrequest_async('StopDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4277,7 +4960,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.TagDcdnResourcesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.TagDcdnResourcesResponse(),
             self.do_rpcrequest('TagDcdnResources', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4290,7 +4974,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.TagDcdnResourcesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.TagDcdnResourcesResponse(),
             await self.do_rpcrequest_async('TagDcdnResources', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4317,7 +5002,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.UntagDcdnResourcesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.UntagDcdnResourcesResponse(),
             self.do_rpcrequest('UntagDcdnResources', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4330,7 +5016,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.UntagDcdnResourcesResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.UntagDcdnResourcesResponse(),
             await self.do_rpcrequest_async('UntagDcdnResources', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4348,6 +5035,60 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.untag_dcdn_resources_with_options_async(request, runtime)
 
+    def update_dcdn_deliver_task_with_options(
+        self,
+        tmp_req: dcdn_20180115_models.UpdateDcdnDeliverTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.UpdateDcdnDeliverTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.UpdateDcdnDeliverTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.deliver):
+            request.deliver_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deliver, 'Deliver', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.UpdateDcdnDeliverTaskResponse(),
+            self.do_rpcrequest('UpdateDcdnDeliverTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_dcdn_deliver_task_with_options_async(
+        self,
+        tmp_req: dcdn_20180115_models.UpdateDcdnDeliverTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.UpdateDcdnDeliverTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.UpdateDcdnDeliverTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.deliver):
+            request.deliver_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deliver, 'Deliver', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule):
+            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.UpdateDcdnDeliverTaskResponse(),
+            await self.do_rpcrequest_async('UpdateDcdnDeliverTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_dcdn_deliver_task(
+        self,
+        request: dcdn_20180115_models.UpdateDcdnDeliverTaskRequest,
+    ) -> dcdn_20180115_models.UpdateDcdnDeliverTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dcdn_deliver_task_with_options(request, runtime)
+
+    async def update_dcdn_deliver_task_async(
+        self,
+        request: dcdn_20180115_models.UpdateDcdnDeliverTaskRequest,
+    ) -> dcdn_20180115_models.UpdateDcdnDeliverTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dcdn_deliver_task_with_options_async(request, runtime)
+
     def update_dcdn_domain_with_options(
         self,
         request: dcdn_20180115_models.UpdateDcdnDomainRequest,
@@ -4357,7 +5098,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.UpdateDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.UpdateDcdnDomainResponse(),
             self.do_rpcrequest('UpdateDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4370,7 +5112,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.UpdateDcdnDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.UpdateDcdnDomainResponse(),
             await self.do_rpcrequest_async('UpdateDcdnDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4397,7 +5140,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.UpdateDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.UpdateDcdnIpaDomainResponse(),
             self.do_rpcrequest('UpdateDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4410,7 +5154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.UpdateDcdnIpaDomainResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.UpdateDcdnIpaDomainResponse(),
             await self.do_rpcrequest_async('UpdateDcdnIpaDomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4428,6 +5173,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_dcdn_ipa_domain_with_options_async(request, runtime)
 
+    def update_dcdn_sub_task_with_options(
+        self,
+        request: dcdn_20180115_models.UpdateDcdnSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.UpdateDcdnSubTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.UpdateDcdnSubTaskResponse(),
+            self.do_rpcrequest('UpdateDcdnSubTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_dcdn_sub_task_with_options_async(
+        self,
+        request: dcdn_20180115_models.UpdateDcdnSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.UpdateDcdnSubTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.UpdateDcdnSubTaskResponse(),
+            await self.do_rpcrequest_async('UpdateDcdnSubTask', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_dcdn_sub_task(
+        self,
+        request: dcdn_20180115_models.UpdateDcdnSubTaskRequest,
+    ) -> dcdn_20180115_models.UpdateDcdnSubTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dcdn_sub_task_with_options(request, runtime)
+
+    async def update_dcdn_sub_task_async(
+        self,
+        request: dcdn_20180115_models.UpdateDcdnSubTaskRequest,
+    ) -> dcdn_20180115_models.UpdateDcdnSubTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dcdn_sub_task_with_options_async(request, runtime)
+
     def verify_dcdn_domain_owner_with_options(
         self,
         request: dcdn_20180115_models.VerifyDcdnDomainOwnerRequest,
@@ -4437,7 +5224,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.VerifyDcdnDomainOwnerResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.VerifyDcdnDomainOwnerResponse(),
             self.do_rpcrequest('VerifyDcdnDomainOwner', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4450,7 +5238,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dcdn_20180115_models.VerifyDcdnDomainOwnerResponse().from_map(
+        return TeaCore.from_map(
+            dcdn_20180115_models.VerifyDcdnDomainOwnerResponse(),
             await self.do_rpcrequest_async('VerifyDcdnDomainOwner', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
