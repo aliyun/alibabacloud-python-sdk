@@ -23,6 +23,10 @@ class ActivateMediaWorkflowRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -70,6 +74,10 @@ class ActivateMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -112,6 +120,10 @@ class ActivateMediaWorkflowResponseBody(TeaModel):
             self.media_workflow.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -145,6 +157,10 @@ class ActivateMediaWorkflowResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -185,6 +201,10 @@ class AddAsrPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -234,6 +254,10 @@ class AddAsrPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -270,6 +294,10 @@ class AddAsrPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -313,6 +341,10 @@ class AddAsrPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -346,6 +378,10 @@ class AddAsrPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -384,6 +420,10 @@ class AddCategoryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -433,6 +473,10 @@ class AddCategoryResponseBodyCategory(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cate_name is not None:
             result['CateName'] = self.cate_name
@@ -471,6 +515,10 @@ class AddCategoryResponseBody(TeaModel):
             self.category.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.category is not None:
             result['Category'] = self.category.to_map()
@@ -504,6 +552,10 @@ class AddCategoryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -544,6 +596,10 @@ class AddCensorPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -593,6 +649,10 @@ class AddCensorPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -629,6 +689,10 @@ class AddCensorPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -672,6 +736,10 @@ class AddCensorPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -705,6 +773,10 @@ class AddCensorPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -747,6 +819,10 @@ class AddCoverPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -800,6 +876,10 @@ class AddCoverPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -838,6 +918,10 @@ class AddCoverPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -885,6 +969,10 @@ class AddCoverPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -918,6 +1006,10 @@ class AddCoverPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -974,6 +1066,10 @@ class AddMCTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1075,6 +1171,10 @@ class AddMCTemplateResponseBodyTemplate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logo is not None:
             result['Logo'] = self.logo
@@ -1145,6 +1245,10 @@ class AddMCTemplateResponseBody(TeaModel):
             self.template.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1178,6 +1282,10 @@ class AddMCTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1232,6 +1340,10 @@ class AddMediaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1307,6 +1419,10 @@ class AddMediaResponseBodyMediaTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag is not None:
             result['Tag'] = self.tag
@@ -1332,6 +1448,10 @@ class AddMediaResponseBodyMediaFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -1359,6 +1479,10 @@ class AddMediaResponseBodyMediaRunIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.run_id is not None:
             result['RunId'] = self.run_id
@@ -1421,6 +1545,10 @@ class AddMediaResponseBodyMedia(TeaModel):
             self.run_id_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -1518,6 +1646,10 @@ class AddMediaResponseBody(TeaModel):
             self.media.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1551,6 +1683,10 @@ class AddMediaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1589,6 +1725,10 @@ class AddMediaTagRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1632,6 +1772,10 @@ class AddMediaTagResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1660,6 +1804,10 @@ class AddMediaTagResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1700,6 +1848,10 @@ class AddMediaWorkflowRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1757,6 +1909,10 @@ class AddMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -1803,6 +1959,10 @@ class AddMediaWorkflowResponseBody(TeaModel):
             self.media_workflow.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1836,6 +1996,10 @@ class AddMediaWorkflowResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1880,6 +2044,10 @@ class AddPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1941,6 +2109,10 @@ class AddPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.mq_topic is not None:
             result['MqTopic'] = self.mq_topic
@@ -1991,6 +2163,10 @@ class AddPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.speed is not None:
             result['Speed'] = self.speed
@@ -2046,6 +2222,10 @@ class AddPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2079,6 +2259,10 @@ class AddPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2119,6 +2303,10 @@ class AddPornPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2168,6 +2356,10 @@ class AddPornPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -2204,6 +2396,10 @@ class AddPornPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -2247,6 +2443,10 @@ class AddPornPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2280,6 +2480,10 @@ class AddPornPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2326,6 +2530,10 @@ class AddSmarttagTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2387,6 +2595,10 @@ class AddSmarttagTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2419,6 +2631,10 @@ class AddSmarttagTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2465,6 +2681,10 @@ class AddTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2526,6 +2746,10 @@ class AddTemplateResponseBodyTemplateVideoBitrateBnd(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -2596,6 +2820,10 @@ class AddTemplateResponseBodyTemplateVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -2718,6 +2946,10 @@ class AddTemplateResponseBodyTemplateTransConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -2769,6 +3001,10 @@ class AddTemplateResponseBodyTemplateMuxConfigWebp(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.loop is not None:
             result['Loop'] = self.loop
@@ -2798,6 +3034,10 @@ class AddTemplateResponseBodyTemplateMuxConfigGif(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -2833,6 +3073,10 @@ class AddTemplateResponseBodyTemplateMuxConfigSegment(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -2865,6 +3109,10 @@ class AddTemplateResponseBodyTemplateMuxConfig(TeaModel):
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.webp is not None:
             result['Webp'] = self.webp.to_map()
@@ -2901,6 +3149,10 @@ class AddTemplateResponseBodyTemplateAudioVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method is not None:
             result['Method'] = self.method
@@ -2943,6 +3195,10 @@ class AddTemplateResponseBodyTemplateAudio(TeaModel):
             self.volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -2995,6 +3251,10 @@ class AddTemplateResponseBodyTemplateContainer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -3041,6 +3301,10 @@ class AddTemplateResponseBodyTemplate(TeaModel):
             self.container.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -3100,6 +3364,10 @@ class AddTemplateResponseBody(TeaModel):
             self.template.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3133,6 +3401,10 @@ class AddTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3173,6 +3445,10 @@ class AddTerrorismPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3222,6 +3498,10 @@ class AddTerrorismPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -3258,6 +3538,10 @@ class AddTerrorismPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -3301,6 +3585,10 @@ class AddTerrorismPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3334,6 +3622,10 @@ class AddTerrorismPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3372,6 +3664,10 @@ class AddWaterMarkTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3421,6 +3717,10 @@ class AddWaterMarkTemplateResponseBodyWaterMarkTemplateRatioRefer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dx is not None:
             result['Dx'] = self.dx
@@ -3458,6 +3758,10 @@ class AddWaterMarkTemplateResponseBodyWaterMarkTemplateTimeline(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -3508,6 +3812,10 @@ class AddWaterMarkTemplateResponseBodyWaterMarkTemplate(TeaModel):
             self.timeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -3576,6 +3884,10 @@ class AddWaterMarkTemplateResponseBody(TeaModel):
             self.water_mark_template.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.water_mark_template is not None:
             result['WaterMarkTemplate'] = self.water_mark_template.to_map()
@@ -3609,6 +3921,10 @@ class AddWaterMarkTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3647,6 +3963,10 @@ class BindInputBucketRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3690,6 +4010,10 @@ class BindInputBucketResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3718,6 +4042,10 @@ class BindInputBucketResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3756,6 +4084,10 @@ class BindOutputBucketRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3799,6 +4131,10 @@ class BindOutputBucketResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3827,6 +4163,10 @@ class BindOutputBucketResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3863,6 +4203,10 @@ class CancelJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3904,6 +4248,10 @@ class CancelJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3936,6 +4284,10 @@ class CancelJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3970,6 +4322,10 @@ class CategoryTreeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4007,6 +4363,10 @@ class CategoryTreeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4039,6 +4399,10 @@ class CategoryTreeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4093,6 +4457,10 @@ class CheckResourceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.interrupt is not None:
             result['Interrupt'] = self.interrupt
@@ -4194,6 +4562,10 @@ class CheckResourceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gmt_wakeup is not None:
             result['GmtWakeup'] = self.gmt_wakeup
@@ -4274,6 +4646,10 @@ class CheckResourceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4316,6 +4692,10 @@ class CreateFpShotDBRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4377,6 +4757,10 @@ class CreateFpShotDBResponseBodyFpShotDB(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
@@ -4423,6 +4807,10 @@ class CreateFpShotDBResponseBody(TeaModel):
             self.fp_shot_db.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4456,6 +4844,10 @@ class CreateFpShotDBResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4492,6 +4884,10 @@ class CreateMcuTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4533,6 +4929,10 @@ class CreateMcuTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4565,6 +4965,10 @@ class CreateMcuTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4605,6 +5009,10 @@ class CreateSessionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4656,6 +5064,10 @@ class CreateSessionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ticket is not None:
             result['Ticket'] = self.ticket
@@ -4692,6 +5104,10 @@ class CreateSessionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4728,6 +5144,10 @@ class DeactivateMediaWorkflowRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4775,6 +5195,10 @@ class DeactivateMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -4817,6 +5241,10 @@ class DeactivateMediaWorkflowResponseBody(TeaModel):
             self.media_workflow.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4850,6 +5278,10 @@ class DeactivateMediaWorkflowResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4888,6 +5320,10 @@ class DecryptKeyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4935,6 +5371,10 @@ class DecryptKeyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.rand is not None:
             result['Rand'] = self.rand
@@ -4971,6 +5411,10 @@ class DecryptKeyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5007,6 +5451,10 @@ class DeleteCategoryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5046,6 +5494,10 @@ class DeleteCategoryResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5074,6 +5526,10 @@ class DeleteCategoryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5110,6 +5566,10 @@ class DeleteMCTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5151,6 +5611,10 @@ class DeleteMCTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5183,6 +5647,10 @@ class DeleteMCTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5219,6 +5687,10 @@ class DeleteMcuJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5258,6 +5730,10 @@ class DeleteMcuJobResponseBodyNonExistJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -5281,6 +5757,10 @@ class DeleteMcuJobResponseBodyDeletedJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -5311,6 +5791,10 @@ class DeleteMcuJobResponseBody(TeaModel):
             self.deleted_job_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_job_ids is not None:
             result['NonExistJobIds'] = self.non_exist_job_ids.to_map()
@@ -5349,6 +5833,10 @@ class DeleteMcuJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5385,6 +5873,10 @@ class DeleteMcuTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5426,6 +5918,10 @@ class DeleteMcuTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5458,6 +5954,10 @@ class DeleteMcuTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5494,6 +5994,10 @@ class DeleteMediaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5533,6 +6037,10 @@ class DeleteMediaResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5561,6 +6069,10 @@ class DeleteMediaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5599,6 +6111,10 @@ class DeleteMediaTagRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5642,6 +6158,10 @@ class DeleteMediaTagResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5670,6 +6190,10 @@ class DeleteMediaTagResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5706,6 +6230,10 @@ class DeleteMediaWorkflowRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5753,6 +6281,10 @@ class DeleteMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -5795,6 +6327,10 @@ class DeleteMediaWorkflowResponseBody(TeaModel):
             self.media_workflow.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5828,6 +6364,10 @@ class DeleteMediaWorkflowResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5864,6 +6404,10 @@ class DeletePipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5905,6 +6449,10 @@ class DeletePipelineResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5937,6 +6485,10 @@ class DeletePipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5973,6 +6525,10 @@ class DeleteSmarttagTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6012,6 +6568,10 @@ class DeleteSmarttagTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6040,6 +6600,10 @@ class DeleteSmarttagTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6076,6 +6640,10 @@ class DeleteTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6117,6 +6685,10 @@ class DeleteTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6149,6 +6721,10 @@ class DeleteTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6185,6 +6761,10 @@ class DeleteWaterMarkTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6226,6 +6806,10 @@ class DeleteWaterMarkTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6258,6 +6842,10 @@ class DeleteWaterMarkTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6280,23 +6868,23 @@ class DescribeMtsUserResourcePackageRequest(TeaModel):
         self,
         security_token: str = None,
         owner_id: int = None,
-        show_log: str = None,
     ):
         self.security_token = security_token
         self.owner_id = owner_id
-        self.show_log = show_log
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.show_log is not None:
-            result['ShowLog'] = self.show_log
         return result
 
     def from_map(self, m: dict = None):
@@ -6305,8 +6893,6 @@ class DescribeMtsUserResourcePackageRequest(TeaModel):
             self.security_token = m.get('SecurityToken')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('ShowLog') is not None:
-            self.show_log = m.get('ShowLog')
         return self
 
 
@@ -6331,6 +6917,10 @@ class DescribeMtsUserResourcePackageResponseBodyResourcePackageInfosResourcePack
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
@@ -6377,6 +6967,10 @@ class DescribeMtsUserResourcePackageResponseBodyResourcePackageInfos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ResourcePackageInfo'] = []
         if self.resource_package_info is not None:
@@ -6408,6 +7002,10 @@ class DescribeMtsUserResourcePackageResponseBody(TeaModel):
             self.resource_package_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6441,6 +7039,10 @@ class DescribeMtsUserResourcePackageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6485,6 +7087,10 @@ class GetLicenseRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6542,6 +7148,10 @@ class GetLicenseResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6574,6 +7184,10 @@ class GetLicenseResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6610,6 +7224,10 @@ class GetPackageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6651,6 +7269,10 @@ class GetPackageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cert_package is not None:
             result['CertPackage'] = self.cert_package
@@ -6683,6 +7305,10 @@ class GetPackageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6717,6 +7343,10 @@ class ListAllCategoryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6758,6 +7388,10 @@ class ListAllCategoryResponseBodyCategoryListCategory(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cate_name is not None:
             result['CateName'] = self.cate_name
@@ -6796,6 +7430,10 @@ class ListAllCategoryResponseBodyCategoryList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Category'] = []
         if self.category is not None:
@@ -6827,6 +7465,10 @@ class ListAllCategoryResponseBody(TeaModel):
             self.category_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.category_list is not None:
             result['CategoryList'] = self.category_list.to_map()
@@ -6860,6 +7502,10 @@ class ListAllCategoryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6898,6 +7544,10 @@ class ListAllMediaBucketRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6943,6 +7593,10 @@ class ListAllMediaBucketResponseBodyMediaBucketListMediaBucket(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -6973,6 +7627,10 @@ class ListAllMediaBucketResponseBodyMediaBucketList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaBucket'] = []
         if self.media_bucket is not None:
@@ -7006,6 +7664,10 @@ class ListAllMediaBucketResponseBody(TeaModel):
             self.media_bucket_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7043,6 +7705,10 @@ class ListAllMediaBucketResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7083,6 +7749,10 @@ class ListAsrPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -7132,6 +7802,10 @@ class ListAsrPipelineResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
@@ -7168,6 +7842,10 @@ class ListAsrPipelineResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -7211,6 +7889,10 @@ class ListAsrPipelineResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -7248,6 +7930,10 @@ class ListAsrPipelineResponseBody(TeaModel):
             self.pipeline_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -7293,6 +7979,10 @@ class ListAsrPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7333,6 +8023,10 @@ class ListCensorPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -7382,6 +8076,10 @@ class ListCensorPipelineResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -7418,6 +8116,10 @@ class ListCensorPipelineResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -7461,6 +8163,10 @@ class ListCensorPipelineResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -7498,6 +8204,10 @@ class ListCensorPipelineResponseBody(TeaModel):
             self.pipeline_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -7543,6 +8253,10 @@ class ListCensorPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7583,6 +8297,10 @@ class ListCoverPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -7648,6 +8366,10 @@ class ListCoverPipelineResponseBodyPipelineListPipeline(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -7710,6 +8432,10 @@ class ListCoverPipelineResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -7747,6 +8473,10 @@ class ListCoverPipelineResponseBody(TeaModel):
             self.pipeline_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -7792,6 +8522,10 @@ class ListCoverPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7830,6 +8564,10 @@ class ListCustomPersonsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -7875,6 +8613,10 @@ class ListCustomPersonsResponseBodyCategoriesCategoryPersonsPersonFacesFace(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
@@ -7905,6 +8647,10 @@ class ListCustomPersonsResponseBodyCategoriesCategoryPersonsPersonFaces(TeaModel
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Face'] = []
         if self.face is not None:
@@ -7940,6 +8686,10 @@ class ListCustomPersonsResponseBodyCategoriesCategoryPersonsPerson(TeaModel):
             self.faces.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.person_name is not None:
             result['PersonName'] = self.person_name
@@ -7979,6 +8729,10 @@ class ListCustomPersonsResponseBodyCategoriesCategoryPersons(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Person'] = []
         if self.person is not None:
@@ -8014,6 +8768,10 @@ class ListCustomPersonsResponseBodyCategoriesCategory(TeaModel):
             self.persons.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.persons is not None:
             result['Persons'] = self.persons.to_map()
@@ -8053,6 +8811,10 @@ class ListCustomPersonsResponseBodyCategories(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Category'] = []
         if self.category is not None:
@@ -8084,6 +8846,10 @@ class ListCustomPersonsResponseBody(TeaModel):
             self.categories.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8117,6 +8883,10 @@ class ListCustomPersonsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8153,6 +8923,10 @@ class ListFpShotDBRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8200,6 +8974,10 @@ class ListFpShotDBResponseBodyFpShotDBListFpShotDB(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -8242,6 +9020,10 @@ class ListFpShotDBResponseBodyFpShotDBList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpShotDB'] = []
         if self.fp_shot_db is not None:
@@ -8270,6 +9052,10 @@ class ListFpShotDBResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -8300,6 +9086,10 @@ class ListFpShotDBResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.fp_shot_dblist is not None:
             result['FpShotDBList'] = self.fp_shot_dblist.to_map()
@@ -8338,6 +9128,10 @@ class ListFpShotDBResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8378,6 +9172,10 @@ class ListFpShotFilesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8429,6 +9227,10 @@ class ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -8465,6 +9267,10 @@ class ListFpShotFilesResponseBodyFpShotFileListFpShotFile(TeaModel):
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.primary_key is not None:
             result['PrimaryKey'] = self.primary_key
@@ -8500,6 +9306,10 @@ class ListFpShotFilesResponseBodyFpShotFileList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpShotFile'] = []
         if self.fp_shot_file is not None:
@@ -8533,6 +9343,10 @@ class ListFpShotFilesResponseBody(TeaModel):
             self.fp_shot_file_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8570,6 +9384,10 @@ class ListFpShotFilesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8614,6 +9432,10 @@ class ListFpShotNotaryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8681,6 +9503,10 @@ class ListFpShotNotaryResponseBodyFpShotNotaryListFpShotNotary(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -8731,6 +9557,10 @@ class ListFpShotNotaryResponseBodyFpShotNotaryList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpShotNotary'] = []
         if self.fp_shot_notary is not None:
@@ -8764,6 +9594,10 @@ class ListFpShotNotaryResponseBody(TeaModel):
             self.fp_shot_notary_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8801,6 +9635,10 @@ class ListFpShotNotaryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8814,6 +9652,174 @@ class ListFpShotNotaryResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListFpShotNotaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListInferenceJobRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: int = None,
+    ):
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListInferenceJobResponseBodyJobs(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        result: str = None,
+        job_id: str = None,
+        user_id: int = None,
+        message: str = None,
+    ):
+        self.status = status
+        self.result = result
+        self.job_id = job_id
+        self.user_id = user_id
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class ListInferenceJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        jobs: List[ListInferenceJobResponseBodyJobs] = None,
+        code: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.jobs = jobs
+        self.code = code
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['Jobs'].append(k.to_map() if k else None)
+        if self.code is not None:
+            result['Code'] = self.code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.jobs = []
+        if m.get('Jobs') is not None:
+            for k in m.get('Jobs'):
+                temp_model = ListInferenceJobResponseBodyJobs()
+                self.jobs.append(temp_model.from_map(k))
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        return self
+
+
+class ListInferenceJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListInferenceJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListInferenceJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8847,6 +9853,10 @@ class ListJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8908,6 +9918,10 @@ class ListJobResponseBodyJobListJobOutputVideoBitrateBnd(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -8974,6 +9988,10 @@ class ListJobResponseBodyJobListJobOutputVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -9088,6 +10106,10 @@ class ListJobResponseBodyJobListJobOutputTransConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -9149,6 +10171,10 @@ class ListJobResponseBodyJobListJobOutputEncryption(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -9196,6 +10222,10 @@ class ListJobResponseBodyJobListJobOutputWaterMarkListWaterMarkInputFile(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -9242,6 +10272,10 @@ class ListJobResponseBodyJobListJobOutputWaterMarkListWaterMark(TeaModel):
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -9297,6 +10331,10 @@ class ListJobResponseBodyJobListJobOutputWaterMarkList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WaterMark'] = []
         if self.water_mark is not None:
@@ -9327,6 +10365,10 @@ class ListJobResponseBodyJobListJobOutputM3U8NonStandardSupportTS(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.size_support is not None:
             result['SizeSupport'] = self.size_support
@@ -9355,6 +10397,10 @@ class ListJobResponseBodyJobListJobOutputM3U8NonStandardSupport(TeaModel):
             self.ts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ts is not None:
             result['TS'] = self.ts.to_map()
@@ -9381,6 +10427,10 @@ class ListJobResponseBodyJobListJobOutputAudioVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method is not None:
             result['Method'] = self.method
@@ -9421,6 +10471,10 @@ class ListJobResponseBodyJobListJobOutputAudio(TeaModel):
             self.volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -9475,6 +10529,10 @@ class ListJobResponseBodyJobListJobOutputMergeListMerge(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -9513,6 +10571,10 @@ class ListJobResponseBodyJobListJobOutputMergeList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Merge'] = []
         if self.merge is not None:
@@ -9541,6 +10603,10 @@ class ListJobResponseBodyJobListJobOutputSuperReso(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_half_sample is not None:
             result['IsHalfSample'] = self.is_half_sample
@@ -9570,6 +10636,10 @@ class ListJobResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSubtitleFi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -9612,6 +10682,10 @@ class ListJobResponseBodyJobListJobOutputOutSubtitleListOutSubtitle(TeaModel):
             self.out_subtitle_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -9651,6 +10725,10 @@ class ListJobResponseBodyJobListJobOutputOutSubtitleList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['OutSubtitle'] = []
         if self.out_subtitle is not None:
@@ -9685,6 +10763,10 @@ class ListJobResponseBodyJobListJobOutputOutputFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -9720,6 +10802,10 @@ class ListJobResponseBodyJobListJobOutputContainer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -9745,6 +10831,10 @@ class ListJobResponseBodyJobListJobOutputClipTimeSpan(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.seek is not None:
             result['Seek'] = self.seek
@@ -9773,6 +10863,10 @@ class ListJobResponseBodyJobListJobOutputClip(TeaModel):
             self.time_span.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time_span is not None:
             result['TimeSpan'] = self.time_span.to_map()
@@ -9803,6 +10897,10 @@ class ListJobResponseBodyJobListJobOutputOpeningListOpening(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.open_url is not None:
             result['openUrl'] = self.open_url
@@ -9841,6 +10939,10 @@ class ListJobResponseBodyJobListJobOutputOpeningList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Opening'] = []
         if self.opening is not None:
@@ -9869,6 +10971,10 @@ class ListJobResponseBodyJobListJobOutputMuxConfigWebp(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.loop is not None:
             result['Loop'] = self.loop
@@ -9898,6 +11004,10 @@ class ListJobResponseBodyJobListJobOutputMuxConfigGif(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -9933,6 +11043,10 @@ class ListJobResponseBodyJobListJobOutputMuxConfigSegment(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -9965,6 +11079,10 @@ class ListJobResponseBodyJobListJobOutputMuxConfig(TeaModel):
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.webp is not None:
             result['Webp'] = self.webp.to_map()
@@ -10011,6 +11129,10 @@ class ListJobResponseBodyJobListJobOutputTailSlateListTailSlate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -10061,6 +11183,10 @@ class ListJobResponseBodyJobListJobOutputTailSlateList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TailSlate'] = []
         if self.tail_slate is not None:
@@ -10093,6 +11219,10 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitl
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -10129,6 +11259,10 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitl
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.char_enc is not None:
             result['CharEnc'] = self.char_enc
@@ -10164,6 +11298,10 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfigExtSubtitleList(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ExtSubtitle'] = []
         if self.ext_subtitle is not None:
@@ -10192,6 +11330,10 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfigSubtitleListSubtitle(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -10218,6 +11360,10 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfigSubtitleList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Subtitle'] = []
         if self.subtitle is not None:
@@ -10251,6 +11397,10 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfig(TeaModel):
             self.subtitle_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ext_subtitle_list is not None:
             result['ExtSubtitleList'] = self.ext_subtitle_list.to_map()
@@ -10284,6 +11434,10 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoSt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -10360,6 +11514,10 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoSt
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -10475,6 +11633,10 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsVideoStreamList(TeaMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -10533,6 +11695,10 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsAudioStreamListAudioSt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -10619,6 +11785,10 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsAudioStreamList(TeaMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -10649,6 +11819,10 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamListSubt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -10679,6 +11853,10 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamList(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -10716,6 +11894,10 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreams(TeaModel):
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -10764,6 +11946,10 @@ class ListJobResponseBodyJobListJobOutputPropertiesFormat(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -10834,6 +12020,10 @@ class ListJobResponseBodyJobListJobOutputProperties(TeaModel):
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -10974,6 +12164,10 @@ class ListJobResponseBodyJobListJobOutput(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -11118,6 +12312,10 @@ class ListJobResponseBodyJobListJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -11153,6 +12351,10 @@ class ListJobResponseBodyJobListJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -11209,6 +12411,10 @@ class ListJobResponseBodyJobListJob(TeaModel):
             self.mnsmessage_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -11278,6 +12484,10 @@ class ListJobResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -11311,6 +12521,10 @@ class ListJobResponseBody(TeaModel):
             self.job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11348,6 +12562,10 @@ class ListJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11390,6 +12608,10 @@ class ListMediaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -11441,6 +12663,10 @@ class ListMediaResponseBodyMediaListMediaTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag is not None:
             result['Tag'] = self.tag
@@ -11466,6 +12692,10 @@ class ListMediaResponseBodyMediaListMediaFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -11493,6 +12723,10 @@ class ListMediaResponseBodyMediaListMediaRunIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.run_id is not None:
             result['RunId'] = self.run_id
@@ -11555,6 +12789,10 @@ class ListMediaResponseBodyMediaListMedia(TeaModel):
             self.run_id_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -11652,6 +12890,10 @@ class ListMediaResponseBodyMediaList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Media'] = []
         if self.media is not None:
@@ -11685,6 +12927,10 @@ class ListMediaResponseBody(TeaModel):
             self.media_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_list is not None:
             result['MediaList'] = self.media_list.to_map()
@@ -11722,6 +12968,10 @@ class ListMediaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11766,6 +13016,10 @@ class ListMediaWorkflowExecutionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -11825,6 +13079,10 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -11873,6 +13131,10 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
             self.mnsmessage_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -11932,6 +13194,10 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Activity'] = []
         if self.activity is not None:
@@ -11964,6 +13230,10 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -11998,6 +13268,10 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user_data is not None:
             result['UserData'] = self.user_data
@@ -12043,6 +13317,10 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -12099,6 +13377,10 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionList(TeaModel
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaWorkflowExecution'] = []
         if self.media_workflow_execution is not None:
@@ -12132,6 +13414,10 @@ class ListMediaWorkflowExecutionsResponseBody(TeaModel):
             self.media_workflow_execution_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_workflow_execution_list is not None:
             result['MediaWorkflowExecutionList'] = self.media_workflow_execution_list.to_map()
@@ -12169,6 +13455,10 @@ class ListMediaWorkflowExecutionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12209,6 +13499,10 @@ class ListPornPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12258,6 +13552,10 @@ class ListPornPipelineResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -12294,6 +13592,10 @@ class ListPornPipelineResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -12337,6 +13639,10 @@ class ListPornPipelineResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -12374,6 +13680,10 @@ class ListPornPipelineResponseBody(TeaModel):
             self.pipeline_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -12419,6 +13729,10 @@ class ListPornPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12459,6 +13773,10 @@ class ListTerrorismPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12508,6 +13826,10 @@ class ListTerrorismPipelineResponseBodyPipelineListPipelineNotifyConfig(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -12544,6 +13866,10 @@ class ListTerrorismPipelineResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -12587,6 +13913,10 @@ class ListTerrorismPipelineResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -12624,6 +13954,10 @@ class ListTerrorismPipelineResponseBody(TeaModel):
             self.pipeline_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -12669,6 +14003,10 @@ class ListTerrorismPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12717,6 +14055,10 @@ class LogicalDeleteResourceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.interrupt is not None:
             result['Interrupt'] = self.interrupt
@@ -12800,6 +14142,10 @@ class LogicalDeleteResourceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gmt_wakeup is not None:
             result['GmtWakeup'] = self.gmt_wakeup
@@ -12868,6 +14214,10 @@ class LogicalDeleteResourceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12916,6 +14266,10 @@ class PhysicalDeleteResourceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.interrupt is not None:
             result['Interrupt'] = self.interrupt
@@ -12999,6 +14353,10 @@ class PhysicalDeleteResourceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gmt_wakeup is not None:
             result['GmtWakeup'] = self.gmt_wakeup
@@ -13067,6 +14425,10 @@ class PhysicalDeleteResourceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13101,6 +14463,10 @@ class PlayerAuthRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13142,6 +14508,10 @@ class PlayerAuthResponseBodySwitchListSwitch(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.function_id is not None:
             result['FunctionId'] = self.function_id
@@ -13180,6 +14550,10 @@ class PlayerAuthResponseBodySwitchList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Switch'] = []
         if self.switch is not None:
@@ -13213,6 +14587,10 @@ class PlayerAuthResponseBody(TeaModel):
             self.switch_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13250,6 +14628,10 @@ class PlayerAuthResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13300,6 +14682,10 @@ class PlayInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13367,6 +14753,10 @@ class PlayInfoResponseBodyNotFoundCDNDomain(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -13420,6 +14810,10 @@ class PlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.download_type is not None:
             result['downloadType'] = self.download_type
@@ -13506,6 +14900,10 @@ class PlayInfoResponseBodyPlayInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PlayInfo'] = []
         if self.play_info is not None:
@@ -13541,6 +14939,10 @@ class PlayInfoResponseBody(TeaModel):
             self.play_info_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13579,6 +14981,10 @@ class PlayInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13615,6 +15021,10 @@ class QueryAnalysisJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13656,6 +15066,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfigQu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method_streaming is not None:
             result['MethodStreaming'] = self.method_streaming
@@ -13691,6 +15105,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfigPr
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -13733,6 +15151,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfigPr
             self.crop.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.deinterlace is not None:
             result['Deinterlace'] = self.deinterlace
@@ -13766,6 +15188,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfig(T
             self.properties_control.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quality_control is not None:
             result['QualityControl'] = self.quality_control.to_map()
@@ -13799,6 +15225,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobMNSMessageResult
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -13832,6 +15262,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -13890,6 +15324,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -13974,6 +15412,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.trans_mode is not None:
             result['TransMode'] = self.trans_mode
@@ -13999,6 +15441,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -14026,6 +15472,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -14054,6 +15504,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gif is not None:
             result['Gif'] = self.gif.to_map()
@@ -14093,6 +15547,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -14136,6 +15594,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -14182,6 +15644,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
             self.container.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -14241,6 +15707,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateList(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Template'] = []
         if self.template is not None:
@@ -14273,6 +15743,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobInputFile(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -14335,6 +15809,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJob(TeaModel):
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -14413,6 +15891,10 @@ class QueryAnalysisJobListResponseBodyAnalysisJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AnalysisJob'] = []
         if self.analysis_job is not None:
@@ -14441,6 +15923,10 @@ class QueryAnalysisJobListResponseBodyNonExistAnalysisJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -14471,6 +15957,10 @@ class QueryAnalysisJobListResponseBody(TeaModel):
             self.non_exist_analysis_job_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -14509,6 +15999,10 @@ class QueryAnalysisJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14545,6 +16039,10 @@ class QueryAnnotationJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -14588,6 +16086,10 @@ class QueryAnnotationJobListResponseBodyAnnotationJobListAnnotationJobInput(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -14621,6 +16123,10 @@ class QueryAnnotationJobListResponseBodyAnnotationJobListAnnotationJobVideoAnnot
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -14651,6 +16157,10 @@ class QueryAnnotationJobListResponseBodyAnnotationJobListAnnotationJobVideoAnnot
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Annotation'] = []
         if self.annotation is not None:
@@ -14682,6 +16192,10 @@ class QueryAnnotationJobListResponseBodyAnnotationJobListAnnotationJobVideoAnnot
             self.annotations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.annotations is not None:
             result['Annotations'] = self.annotations.to_map()
@@ -14729,6 +16243,10 @@ class QueryAnnotationJobListResponseBodyAnnotationJobListAnnotationJob(TeaModel)
             self.video_annotation_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -14789,6 +16307,10 @@ class QueryAnnotationJobListResponseBodyAnnotationJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AnnotationJob'] = []
         if self.annotation_job is not None:
@@ -14817,6 +16339,10 @@ class QueryAnnotationJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -14847,6 +16373,10 @@ class QueryAnnotationJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.annotation_job_list is not None:
             result['AnnotationJobList'] = self.annotation_job_list.to_map()
@@ -14885,6 +16415,10 @@ class QueryAnnotationJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -14921,6 +16455,10 @@ class QueryAsrJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -14960,6 +16498,10 @@ class QueryAsrJobListResponseBodyJobListJobAsrConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scene is not None:
             result['Scene'] = self.scene
@@ -14987,6 +16529,10 @@ class QueryAsrJobListResponseBodyJobListJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -15026,6 +16572,10 @@ class QueryAsrJobListResponseBodyJobListJobAsrResultAsrTextListAsrText(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -15068,6 +16618,10 @@ class QueryAsrJobListResponseBodyJobListJobAsrResultAsrTextList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AsrText'] = []
         if self.asr_text is not None:
@@ -15099,6 +16653,10 @@ class QueryAsrJobListResponseBodyJobListJobAsrResult(TeaModel):
             self.asr_text_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -15150,6 +16708,10 @@ class QueryAsrJobListResponseBodyJobListJob(TeaModel):
             self.asr_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -15215,6 +16777,10 @@ class QueryAsrJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -15243,6 +16809,10 @@ class QueryAsrJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -15273,6 +16843,10 @@ class QueryAsrJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15311,6 +16885,10 @@ class QueryAsrJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15347,6 +16925,10 @@ class QueryAsrPipelineListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -15388,6 +16970,10 @@ class QueryAsrPipelineListResponseBodyPipelineListPipelineNotifyConfig(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
@@ -15424,6 +17010,10 @@ class QueryAsrPipelineListResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -15467,6 +17057,10 @@ class QueryAsrPipelineListResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -15495,6 +17089,10 @@ class QueryAsrPipelineListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -15525,6 +17123,10 @@ class QueryAsrPipelineListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -15563,6 +17165,10 @@ class QueryAsrPipelineListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15597,6 +17203,10 @@ class QueryAuthConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -15636,6 +17246,10 @@ class QueryAuthConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key_2 is not None:
             result['Key2'] = self.key_2
@@ -15672,6 +17286,10 @@ class QueryAuthConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -15708,6 +17326,10 @@ class QueryCensorJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -15755,6 +17377,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorTerrorismResultT
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -15797,6 +17423,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorTerrorismResultT
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Top'] = []
         if self.top is not None:
@@ -15827,6 +17457,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorTerrorismResultT
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.label is not None:
             result['Label'] = self.label
@@ -15857,6 +17491,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorTerrorismResultT
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Counter'] = []
         if self.counter is not None:
@@ -15898,6 +17536,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorTerrorismResult(
             self.terrorism_counter_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.terrorism_top_list is not None:
             result['TerrorismTopList'] = self.terrorism_top_list.to_map()
@@ -15949,6 +17591,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobImageCensorResultsImag
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_bucket is not None:
             result['ImageBucket'] = self.image_bucket
@@ -15987,6 +17633,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobImageCensorResults(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ImageCensorResult'] = []
         if self.image_censor_result is not None:
@@ -16019,6 +17669,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -16054,6 +17708,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorConfigOutputFile
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -16094,6 +17752,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorConfig(TeaModel)
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.interval is not None:
             result['Interval'] = self.interval
@@ -16136,6 +17798,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorPornResultPornCo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.label is not None:
             result['Label'] = self.label
@@ -16166,6 +17832,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorPornResultPornCo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Counter'] = []
         if self.counter is not None:
@@ -16202,6 +17872,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorPornResultPornTo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -16244,6 +17918,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorPornResultPornTo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Top'] = []
         if self.top is not None:
@@ -16285,6 +17963,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJobCensorPornResult(TeaMo
             self.porn_top_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.porn_counter_list is not None:
             result['PornCounterList'] = self.porn_counter_list.to_map()
@@ -16369,6 +18051,10 @@ class QueryCensorJobListResponseBodyCensorJobListCensorJob(TeaModel):
             self.censor_porn_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -16460,6 +18146,10 @@ class QueryCensorJobListResponseBodyCensorJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CensorJob'] = []
         if self.censor_job is not None:
@@ -16488,6 +18178,10 @@ class QueryCensorJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -16518,6 +18212,10 @@ class QueryCensorJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16556,6 +18254,10 @@ class QueryCensorJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16592,6 +18294,10 @@ class QueryCensorPipelineListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -16633,6 +18339,10 @@ class QueryCensorPipelineListResponseBodyPipelineListPipelineNotifyConfig(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -16669,6 +18379,10 @@ class QueryCensorPipelineListResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -16712,6 +18426,10 @@ class QueryCensorPipelineListResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -16740,6 +18458,10 @@ class QueryCensorPipelineListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -16770,6 +18492,10 @@ class QueryCensorPipelineListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -16808,6 +18534,10 @@ class QueryCensorPipelineListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -16844,6 +18574,10 @@ class QueryComplexJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -16883,6 +18617,10 @@ class QueryComplexJobListResponseBodyNonExistJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -16908,6 +18646,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputVideoBitrateBnd(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -16972,6 +18714,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -17084,6 +18830,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputTransConfig(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -17149,6 +18899,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputEncryption(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -17196,6 +18950,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputWaterMarkListWater
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -17242,6 +19000,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputWaterMarkListWater
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -17297,6 +19059,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputWaterMarkList(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WaterMark'] = []
         if self.water_mark is not None:
@@ -17327,6 +19093,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputM3U8NonStandardSup
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.size_support is not None:
             result['SizeSupport'] = self.size_support
@@ -17355,6 +19125,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputM3U8NonStandardSup
             self.ts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ts is not None:
             result['TS'] = self.ts.to_map()
@@ -17381,6 +19155,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputAudioVolume(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method is not None:
             result['Method'] = self.method
@@ -17421,6 +19199,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputAudio(TeaModel):
             self.volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -17475,6 +19257,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputMergeListMerge(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -17513,6 +19299,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputMergeList(TeaModel
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Merge'] = []
         if self.merge is not None:
@@ -17541,6 +19331,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputSuperReso(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_half_sample is not None:
             result['IsHalfSample'] = self.is_half_sample
@@ -17568,6 +19362,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputDigiWaterMarkInput
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -17604,6 +19402,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputDigiWaterMark(TeaM
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -17642,6 +19444,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputOutputFile(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -17677,6 +19483,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputContainer(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -17702,6 +19512,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputClipTimeSpan(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.seek is not None:
             result['Seek'] = self.seek
@@ -17730,6 +19544,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputClip(TeaModel):
             self.time_span.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time_span is not None:
             result['TimeSpan'] = self.time_span.to_map()
@@ -17760,6 +19578,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputMuxConfigGif(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -17795,6 +19617,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputMuxConfigSegment(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -17823,6 +19649,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputMuxConfig(TeaModel
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gif is not None:
             result['Gif'] = self.gif.to_map()
@@ -17856,6 +19686,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputSubtitleConfigExtS
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -17892,6 +19726,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputSubtitleConfigExtS
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.char_enc is not None:
             result['CharEnc'] = self.char_enc
@@ -17927,6 +19765,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputSubtitleConfigExtS
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ExtSubtitle'] = []
         if self.ext_subtitle is not None:
@@ -17955,6 +19797,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputSubtitleConfigSubt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -17981,6 +19827,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputSubtitleConfigSubt
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Subtitle'] = []
         if self.subtitle is not None:
@@ -18014,6 +19864,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputSubtitleConfig(Tea
             self.subtitle_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ext_subtitle_list is not None:
             result['ExtSubtitleList'] = self.ext_subtitle_list.to_map()
@@ -18047,6 +19901,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputPropertiesStreamsV
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -18123,6 +19981,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputPropertiesStreamsV
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -18238,6 +20100,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputPropertiesStreamsV
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -18296,6 +20162,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputPropertiesStreamsA
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -18382,6 +20252,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputPropertiesStreamsA
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -18412,6 +20286,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputPropertiesStreamsS
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -18442,6 +20320,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputPropertiesStreamsS
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -18479,6 +20361,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputPropertiesStreams(
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -18527,6 +20413,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputPropertiesFormat(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -18597,6 +20487,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutputProperties(TeaMode
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -18729,6 +20623,10 @@ class QueryComplexJobListResponseBodyJobListJobTranscodeOutput(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -18863,6 +20761,10 @@ class QueryComplexJobListResponseBodyJobListJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -18896,6 +20798,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.t is not None:
             result['T'] = self.t
@@ -18924,6 +20830,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
             self.clips_config_video.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.clips_config_video is not None:
             result['ClipsConfigVideo'] = self.clips_config_video.to_map()
@@ -18955,6 +20865,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
             self.clips_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.clips_config is not None:
             result['ClipsConfig'] = self.clips_config.to_map()
@@ -18994,6 +20908,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Clip'] = []
         if self.clip is not None:
@@ -19029,6 +20947,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
             self.clips.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -19068,6 +20990,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Track'] = []
         if self.track is not None:
@@ -19100,6 +21026,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.channel_layout is not None:
             result['ChannelLayout'] = self.channel_layout
@@ -19145,6 +21075,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bg_color is not None:
             result['BgColor'] = self.bg_color
@@ -19201,6 +21135,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
             self.timeline_config_video.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeline_config_audio is not None:
             result['TimelineConfigAudio'] = self.timeline_config_audio.to_map()
@@ -19235,6 +21173,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
             self.timeline_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.track_list is not None:
             result['TrackList'] = self.track_list.to_map()
@@ -19266,6 +21208,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.effect is not None:
             result['Effect'] = self.effect
@@ -19296,6 +21242,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Effect'] = []
         if self.effect is not None:
@@ -19339,6 +21289,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
             self.effects.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -19394,6 +21348,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Clip'] = []
         if self.clip is not None:
@@ -19427,6 +21385,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
             self.clip_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeline is not None:
             result['Timeline'] = self.timeline.to_map()
@@ -19457,6 +21419,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigsComplexEditi
             self.editing.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.editing is not None:
             result['Editing'] = self.editing.to_map()
@@ -19484,6 +21450,10 @@ class QueryComplexJobListResponseBodyJobListJobComplexEditingConfigs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ComplexEditingConfigs'] = []
         if self.complex_editing_configs is not None:
@@ -19516,6 +21486,10 @@ class QueryComplexJobListResponseBodyJobListJobInputsInputsEditingInputsEditingI
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -19549,6 +21523,10 @@ class QueryComplexJobListResponseBodyJobListJobInputsInputsEditingInputsEditingI
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_normal_sar is not None:
             result['IsNormalSar'] = self.is_normal_sar
@@ -19583,6 +21561,10 @@ class QueryComplexJobListResponseBodyJobListJobInputsInputsEditingInputsEditingI
             self.input_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.input_file is not None:
             result['InputFile'] = self.input_file.to_map()
@@ -19619,6 +21601,10 @@ class QueryComplexJobListResponseBodyJobListJobInputsInputsEditingInputs(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EditingInput'] = []
         if self.editing_input is not None:
@@ -19648,6 +21634,10 @@ class QueryComplexJobListResponseBodyJobListJobInputsInputs(TeaModel):
             self.editing_inputs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.editing_inputs is not None:
             result['EditingInputs'] = self.editing_inputs.to_map()
@@ -19675,6 +21665,10 @@ class QueryComplexJobListResponseBodyJobListJobInputs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Inputs'] = []
         if self.inputs is not None:
@@ -19732,6 +21726,10 @@ class QueryComplexJobListResponseBodyJobListJob(TeaModel):
             self.inputs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -19806,6 +21804,10 @@ class QueryComplexJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -19841,6 +21843,10 @@ class QueryComplexJobListResponseBody(TeaModel):
             self.job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_job_ids is not None:
             result['NonExistJobIds'] = self.non_exist_job_ids.to_map()
@@ -19879,6 +21885,10 @@ class QueryComplexJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -19927,6 +21937,10 @@ class QueryCoverJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -19994,6 +22008,10 @@ class QueryCoverJobListResponseBodyCoverJobListCoverJobCoverImageListCoverImage(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -20028,6 +22046,10 @@ class QueryCoverJobListResponseBodyCoverJobListCoverJobCoverImageList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CoverImage'] = []
         if self.cover_image is not None:
@@ -20060,6 +22082,10 @@ class QueryCoverJobListResponseBodyCoverJobListCoverJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -20095,6 +22121,10 @@ class QueryCoverJobListResponseBodyCoverJobListCoverJobCoverConfigOutputFile(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -20127,6 +22157,10 @@ class QueryCoverJobListResponseBodyCoverJobListCoverJobCoverConfig(TeaModel):
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.output_file is not None:
             result['OutputFile'] = self.output_file.to_map()
@@ -20174,6 +22208,10 @@ class QueryCoverJobListResponseBodyCoverJobListCoverJob(TeaModel):
             self.cover_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -20239,6 +22277,10 @@ class QueryCoverJobListResponseBodyCoverJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CoverJob'] = []
         if self.cover_job is not None:
@@ -20267,6 +22309,10 @@ class QueryCoverJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -20299,6 +22345,10 @@ class QueryCoverJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cover_job_list is not None:
             result['CoverJobList'] = self.cover_job_list.to_map()
@@ -20341,6 +22391,10 @@ class QueryCoverJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20377,6 +22431,10 @@ class QueryCoverPipelineListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -20418,6 +22476,10 @@ class QueryCoverPipelineListResponseBodyPipelineListPipelineNotifyConfig(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -20456,6 +22518,10 @@ class QueryCoverPipelineListResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -20503,6 +22569,10 @@ class QueryCoverPipelineListResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -20531,6 +22601,10 @@ class QueryCoverPipelineListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -20561,6 +22635,10 @@ class QueryCoverPipelineListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -20599,6 +22677,10 @@ class QueryCoverPipelineListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -20635,6 +22717,10 @@ class QueryEditingJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -20674,6 +22760,10 @@ class QueryEditingJobListResponseBodyNonExistJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -20701,6 +22791,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInputInputFil
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -20734,6 +22828,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInputInputCon
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_normal_sar is not None:
             result['IsNormalSar'] = self.is_normal_sar
@@ -20768,6 +22866,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInput(TeaMode
             self.input_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.input_file is not None:
             result['InputFile'] = self.input_file.to_map()
@@ -20804,6 +22906,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingInputs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EditingInput'] = []
         if self.editing_input is not None:
@@ -20834,6 +22940,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigVideoBitrateBnd(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -20898,6 +23008,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -21010,6 +23124,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigTransConfig(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -21075,6 +23193,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEncryption(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -21122,6 +23244,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkListWaterMa
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -21168,6 +23294,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkListWaterMa
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -21223,6 +23353,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkList(TeaMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WaterMark'] = []
         if self.water_mark is not None:
@@ -21253,6 +23387,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigM3U8NonStandardSuppo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.size_support is not None:
             result['SizeSupport'] = self.size_support
@@ -21281,6 +23419,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigM3U8NonStandardSuppo
             self.ts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ts is not None:
             result['TS'] = self.ts.to_map()
@@ -21307,6 +23449,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigAudioVolume(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method is not None:
             result['Method'] = self.method
@@ -21347,6 +23493,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigAudio(TeaModel):
             self.volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -21401,6 +23551,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigMergeListMerge(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -21439,6 +23593,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigMergeList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Merge'] = []
         if self.merge is not None:
@@ -21467,6 +23625,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigSuperReso(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_half_sample is not None:
             result['IsHalfSample'] = self.is_half_sample
@@ -21494,6 +23656,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigDigiWaterMarkInputFi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -21530,6 +23696,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigDigiWaterMark(TeaMod
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -21568,6 +23738,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigOutputFile(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -21605,6 +23779,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrack
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.t is not None:
             result['T'] = self.t
@@ -21633,6 +23811,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrack
             self.clips_config_video.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.clips_config_video is not None:
             result['ClipsConfigVideo'] = self.clips_config_video.to_map()
@@ -21664,6 +23846,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrack
             self.clips_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.clips_config is not None:
             result['ClipsConfig'] = self.clips_config.to_map()
@@ -21703,6 +23889,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrack
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Clip'] = []
         if self.clip is not None:
@@ -21738,6 +23928,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrack
             self.clips.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -21777,6 +23971,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrack
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Track'] = []
         if self.track is not None:
@@ -21809,6 +24007,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.channel_layout is not None:
             result['ChannelLayout'] = self.channel_layout
@@ -21854,6 +24056,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bg_color is not None:
             result['BgColor'] = self.bg_color
@@ -21910,6 +24116,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimel
             self.timeline_config_video.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeline_config_audio is not None:
             result['TimelineConfigAudio'] = self.timeline_config_audio.to_map()
@@ -21944,6 +24154,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimeline(TeaM
             self.timeline_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.track_list is not None:
             result['TrackList'] = self.track_list.to_map()
@@ -21975,6 +24189,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClipE
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.effect is not None:
             result['Effect'] = self.effect
@@ -22005,6 +24223,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClipE
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Effect'] = []
         if self.effect is not None:
@@ -22048,6 +24270,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClip(
             self.effects.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -22103,6 +24329,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipList(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Clip'] = []
         if self.clip is not None:
@@ -22136,6 +24366,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigEditing(TeaModel):
             self.clip_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeline is not None:
             result['Timeline'] = self.timeline.to_map()
@@ -22165,6 +24399,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigContainer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -22190,6 +24428,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigClipTimeSpan(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.seek is not None:
             result['Seek'] = self.seek
@@ -22218,6 +24460,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigClip(TeaModel):
             self.time_span.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time_span is not None:
             result['TimeSpan'] = self.time_span.to_map()
@@ -22248,6 +24494,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfigGif(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -22283,6 +24533,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfigSegment(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -22311,6 +24565,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfig(TeaModel):
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gif is not None:
             result['Gif'] = self.gif.to_map()
@@ -22344,6 +24602,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSub
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -22380,6 +24642,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSub
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.char_enc is not None:
             result['CharEnc'] = self.char_enc
@@ -22415,6 +24681,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSub
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ExtSubtitle'] = []
         if self.ext_subtitle is not None:
@@ -22443,6 +24713,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigSubtit
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -22469,6 +24743,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigSubtit
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Subtitle'] = []
         if self.subtitle is not None:
@@ -22502,6 +24780,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfig(TeaMo
             self.subtitle_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ext_subtitle_list is not None:
             result['ExtSubtitleList'] = self.ext_subtitle_list.to_map()
@@ -22535,6 +24817,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVid
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -22611,6 +24897,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVid
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -22726,6 +25016,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVid
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -22784,6 +25078,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsAud
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -22870,6 +25168,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsAud
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -22900,6 +25202,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsSub
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -22930,6 +25236,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsSub
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -22967,6 +25277,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreams(Te
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -23015,6 +25329,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesFormat(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -23085,6 +25403,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfigProperties(TeaModel)
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -23221,6 +25543,10 @@ class QueryEditingJobListResponseBodyJobListJobEditingConfig(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -23360,6 +25686,10 @@ class QueryEditingJobListResponseBodyJobListJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -23416,6 +25746,10 @@ class QueryEditingJobListResponseBodyJobListJob(TeaModel):
             self.mnsmessage_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -23485,6 +25819,10 @@ class QueryEditingJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -23520,6 +25858,10 @@ class QueryEditingJobListResponseBody(TeaModel):
             self.job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_job_ids is not None:
             result['NonExistJobIds'] = self.non_exist_job_ids.to_map()
@@ -23558,6 +25900,10 @@ class QueryEditingJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -23594,6 +25940,10 @@ class QueryFacerecogJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -23633,6 +25983,10 @@ class QueryFacerecogJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -23660,6 +26014,10 @@ class QueryFacerecogJobListResponseBodyFacerecogJobListFacerecogJobVideoFacereco
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -23694,6 +26052,10 @@ class QueryFacerecogJobListResponseBodyFacerecogJobListFacerecogJobVideoFacereco
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Face'] = []
         if self.face is not None:
@@ -23725,6 +26087,10 @@ class QueryFacerecogJobListResponseBodyFacerecogJobListFacerecogJobVideoFacereco
             self.faces.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -23756,6 +26122,10 @@ class QueryFacerecogJobListResponseBodyFacerecogJobListFacerecogJobVideoFacereco
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Facerecog'] = []
         if self.facerecog is not None:
@@ -23785,6 +26155,10 @@ class QueryFacerecogJobListResponseBodyFacerecogJobListFacerecogJobVideoFacereco
             self.facerecogs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.facerecogs is not None:
             result['Facerecogs'] = self.facerecogs.to_map()
@@ -23813,6 +26187,10 @@ class QueryFacerecogJobListResponseBodyFacerecogJobListFacerecogJobInput(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -23863,6 +26241,10 @@ class QueryFacerecogJobListResponseBodyFacerecogJobListFacerecogJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -23923,6 +26305,10 @@ class QueryFacerecogJobListResponseBodyFacerecogJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FacerecogJob'] = []
         if self.facerecog_job is not None:
@@ -23958,6 +26344,10 @@ class QueryFacerecogJobListResponseBody(TeaModel):
             self.facerecog_job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -23996,6 +26386,10 @@ class QueryFacerecogJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24032,6 +26426,10 @@ class QueryFpCompareJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -24075,6 +26473,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobMasterFile(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -24110,6 +26512,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobQueryFile(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -24145,6 +26551,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobMatchFrameSto
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -24180,6 +26590,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobMatchFrameSto
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -24215,6 +26629,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobMatchFrameSto
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -24255,6 +26673,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobMatchFrameSto
             self.query_media_frames.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.master_media_frames is not None:
             result['MasterMediaFrames'] = self.master_media_frames.to_map()
@@ -24307,6 +26729,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobFpCompareResu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.query_start_time is not None:
             result['QueryStartTime'] = self.query_start_time
@@ -24369,6 +26795,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobFpCompareResu
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaMatchSegment'] = []
         if self.media_match_segment is not None:
@@ -24413,6 +26843,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobFpCompareResu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.audio_sample_rate is not None:
             result['AudioSampleRate'] = self.audio_sample_rate
@@ -24484,6 +26918,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobFpCompareResu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.audio_sample_rate is not None:
             result['AudioSampleRate'] = self.audio_sample_rate
@@ -24548,6 +26986,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJobFpCompareResu
             self.master_media_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_match_segments is not None:
             result['MediaMatchSegments'] = self.media_match_segments.to_map()
@@ -24613,6 +27055,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobListFpCompareJob(TeaModel):
             self.fp_compare_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.master_file is not None:
             result['MasterFile'] = self.master_file.to_map()
@@ -24691,6 +27137,10 @@ class QueryFpCompareJobListResponseBodyFpCompareJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpCompareJob'] = []
         if self.fp_compare_job is not None:
@@ -24719,6 +27169,10 @@ class QueryFpCompareJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -24749,6 +27203,10 @@ class QueryFpCompareJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.fp_compare_job_list is not None:
             result['FpCompareJobList'] = self.fp_compare_job_list.to_map()
@@ -24787,6 +27245,10 @@ class QueryFpCompareJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -24823,6 +27285,10 @@ class QueryFpDBDeleteJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -24880,6 +27346,10 @@ class QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -24942,6 +27412,10 @@ class QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpDBDeleteJob'] = []
         if self.fp_dbdelete_job is not None:
@@ -24970,6 +27444,10 @@ class QueryFpDBDeleteJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -25000,6 +27478,10 @@ class QueryFpDBDeleteJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -25038,6 +27520,10 @@ class QueryFpDBDeleteJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -25074,6 +27560,10 @@ class QueryFpFileDeleteJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -25131,6 +27621,10 @@ class QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -25193,6 +27687,10 @@ class QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpFileDeleteJob'] = []
         if self.fp_file_delete_job is not None:
@@ -25221,6 +27719,10 @@ class QueryFpFileDeleteJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -25251,6 +27753,10 @@ class QueryFpFileDeleteJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -25289,6 +27795,10 @@ class QueryFpFileDeleteJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -25331,6 +27841,10 @@ class QueryFpImportResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -25386,6 +27900,10 @@ class QueryFpImportResultResponseBodyPageInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_index is not None:
             result['PageIndex'] = self.page_index
@@ -25427,6 +27945,10 @@ class QueryFpImportResultResponseBodyFpResultLogInfoListFpResultLogInfo(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.log_start_time is not None:
             result['LogStartTime'] = self.log_start_time
@@ -25473,6 +27995,10 @@ class QueryFpImportResultResponseBodyFpResultLogInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpResultLogInfo'] = []
         if self.fp_result_log_info is not None:
@@ -25510,6 +28036,10 @@ class QueryFpImportResultResponseBody(TeaModel):
             self.fp_result_log_info_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_info is not None:
             result['PageInfo'] = self.page_info.to_map()
@@ -25552,6 +28082,10 @@ class QueryFpImportResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -25602,6 +28136,10 @@ class QueryFpShotJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -25669,6 +28207,10 @@ class QueryFpShotJobListResponseBodyNonExistPrimaryKeys(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -25694,6 +28236,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -25723,6 +28269,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -25757,6 +28307,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duplication is not None:
             result['Duplication'] = self.duplication.to_map()
@@ -25793,6 +28347,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpShotSlice'] = []
         if self.fp_shot_slice is not None:
@@ -25826,6 +28384,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
             self.fp_shot_slices.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.primary_key is not None:
             result['PrimaryKey'] = self.primary_key
@@ -25861,6 +28423,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpShot'] = []
         if self.fp_shot is not None:
@@ -25891,6 +28457,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpS
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -25920,6 +28490,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpS
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -25954,6 +28528,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpS
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duplication is not None:
             result['Duplication'] = self.duplication.to_map()
@@ -25990,6 +28568,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpS
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpShotSlice'] = []
         if self.fp_shot_slice is not None:
@@ -26023,6 +28605,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpS
             self.fp_shot_slices.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.primary_key is not None:
             result['PrimaryKey'] = self.primary_key
@@ -26058,6 +28644,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShots(Te
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpShot'] = []
         if self.fp_shot is not None:
@@ -26091,6 +28681,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResult(TeaModel)
             self.fp_shots.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.audio_fp_shots is not None:
             result['AudioFpShots'] = self.audio_fp_shots.to_map()
@@ -26126,6 +28720,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotConfig(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.primary_key is not None:
             result['PrimaryKey'] = self.primary_key
@@ -26165,6 +28763,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobInputFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -26227,6 +28829,10 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJob(TeaModel):
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.fp_shot_result is not None:
             result['FpShotResult'] = self.fp_shot_result.to_map()
@@ -26308,6 +28914,10 @@ class QueryFpShotJobListResponseBodyFpShotJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FpShotJob'] = []
         if self.fp_shot_job is not None:
@@ -26336,6 +28946,10 @@ class QueryFpShotJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -26372,6 +28986,10 @@ class QueryFpShotJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -26419,6 +29037,10 @@ class QueryFpShotJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -26455,6 +29077,10 @@ class QueryImageSearchJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -26498,6 +29124,10 @@ class QueryImageSearchJobListResponseBodyImageSearchJobListImageSearchJobResultI
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.matched_frame is not None:
             result['MatchedFrame'] = self.matched_frame
@@ -26532,6 +29162,10 @@ class QueryImageSearchJobListResponseBodyImageSearchJobListImageSearchJobResultI
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ImageSearchShots'] = []
         if self.image_search_shots is not None:
@@ -26561,6 +29195,10 @@ class QueryImageSearchJobListResponseBodyImageSearchJobListImageSearchJobResult(
             self.image_search_shots.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_search_shots is not None:
             result['ImageSearchShots'] = self.image_search_shots.to_map()
@@ -26589,6 +29227,10 @@ class QueryImageSearchJobListResponseBodyImageSearchJobListImageSearchJobInputIm
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -26624,6 +29266,10 @@ class QueryImageSearchJobListResponseBodyImageSearchJobListImageSearchJobInputVi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -26680,6 +29326,10 @@ class QueryImageSearchJobListResponseBodyImageSearchJobListImageSearchJob(TeaMod
             self.input_video.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -26749,6 +29399,10 @@ class QueryImageSearchJobListResponseBodyImageSearchJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ImageSearchJob'] = []
         if self.image_search_job is not None:
@@ -26777,6 +29431,10 @@ class QueryImageSearchJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -26807,6 +29465,10 @@ class QueryImageSearchJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_search_job_list is not None:
             result['ImageSearchJobList'] = self.image_search_job_list.to_map()
@@ -26845,6 +29507,10 @@ class QueryImageSearchJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -26858,6 +29524,174 @@ class QueryImageSearchJobListResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = QueryImageSearchJobListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryInferenceJobRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: int = None,
+        job_id: str = None,
+    ):
+        self.user_id = user_id
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class QueryInferenceJobResponseBodyJob(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        result: str = None,
+        job_id: str = None,
+        user_id: int = None,
+        message: str = None,
+    ):
+        self.status = status
+        self.result = result
+        self.job_id = job_id
+        self.user_id = user_id
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class QueryInferenceJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        job: QueryInferenceJobResponseBodyJob = None,
+        code: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.job = job
+        self.code = code
+
+    def validate(self):
+        if self.job:
+            self.job.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.job is not None:
+            result['Job'] = self.job.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Job') is not None:
+            temp_model = QueryInferenceJobResponseBodyJob()
+            self.job = temp_model.from_map(m['Job'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        return self
+
+
+class QueryInferenceJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryInferenceJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryInferenceJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26879,6 +29713,10 @@ class QueryInnerJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -26918,6 +29756,10 @@ class QueryInnerJobResponseBodyVideo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -26953,6 +29795,10 @@ class QueryInnerJobResponseBodyImageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -26987,6 +29833,10 @@ class QueryInnerJobResponseBodyImage(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Result'] = []
         if self.result is not None:
@@ -27026,6 +29876,10 @@ class QueryInnerJobResponseBody(TeaModel):
             self.image.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -27072,6 +29926,10 @@ class QueryInnerJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -27108,6 +29966,10 @@ class QueryIProductionJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -27165,6 +30027,10 @@ class QueryIProductionJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.function_name is not None:
             result['FunctionName'] = self.function_name
@@ -27229,6 +30095,10 @@ class QueryIProductionJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -27265,6 +30135,10 @@ class QueryIProductionJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -27304,6 +30178,10 @@ class QueryIProductionJobListResponseBodyJobs(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -27327,6 +30205,10 @@ class QueryIProductionJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -27359,6 +30241,10 @@ class QueryIProductionJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -27401,6 +30287,10 @@ class QueryIProductionJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -27437,6 +30327,10 @@ class QueryJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -27476,6 +30370,10 @@ class QueryJobListResponseBodyNonExistJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -27501,6 +30399,10 @@ class QueryJobListResponseBodyJobListJobOutputVideoBitrateBnd(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -27567,6 +30469,10 @@ class QueryJobListResponseBodyJobListJobOutputVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -27681,6 +30587,10 @@ class QueryJobListResponseBodyJobListJobOutputTransConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -27742,6 +30652,10 @@ class QueryJobListResponseBodyJobListJobOutputEncryption(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -27789,6 +30703,10 @@ class QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMarkInputFile(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -27835,6 +30753,10 @@ class QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMark(TeaModel):
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -27890,6 +30812,10 @@ class QueryJobListResponseBodyJobListJobOutputWaterMarkList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WaterMark'] = []
         if self.water_mark is not None:
@@ -27920,6 +30846,10 @@ class QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupportTS(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.size_support is not None:
             result['SizeSupport'] = self.size_support
@@ -27948,6 +30878,10 @@ class QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupport(TeaModel):
             self.ts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ts is not None:
             result['TS'] = self.ts.to_map()
@@ -27974,6 +30908,10 @@ class QueryJobListResponseBodyJobListJobOutputAudioVolume(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method is not None:
             result['Method'] = self.method
@@ -28014,6 +30952,10 @@ class QueryJobListResponseBodyJobListJobOutputAudio(TeaModel):
             self.volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -28068,6 +31010,10 @@ class QueryJobListResponseBodyJobListJobOutputMergeListMerge(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -28106,6 +31052,10 @@ class QueryJobListResponseBodyJobListJobOutputMergeList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Merge'] = []
         if self.merge is not None:
@@ -28134,6 +31084,10 @@ class QueryJobListResponseBodyJobListJobOutputSuperReso(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_half_sample is not None:
             result['IsHalfSample'] = self.is_half_sample
@@ -28163,6 +31117,10 @@ class QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSubti
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -28205,6 +31163,10 @@ class QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitle(TeaMode
             self.out_subtitle_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -28244,6 +31206,10 @@ class QueryJobListResponseBodyJobListJobOutputOutSubtitleList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['OutSubtitle'] = []
         if self.out_subtitle is not None:
@@ -28278,6 +31244,10 @@ class QueryJobListResponseBodyJobListJobOutputOutputFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -28313,6 +31283,10 @@ class QueryJobListResponseBodyJobListJobOutputContainer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -28338,6 +31312,10 @@ class QueryJobListResponseBodyJobListJobOutputClipTimeSpan(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.seek is not None:
             result['Seek'] = self.seek
@@ -28366,6 +31344,10 @@ class QueryJobListResponseBodyJobListJobOutputClip(TeaModel):
             self.time_span.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time_span is not None:
             result['TimeSpan'] = self.time_span.to_map()
@@ -28396,6 +31378,10 @@ class QueryJobListResponseBodyJobListJobOutputOpeningListOpening(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.open_url is not None:
             result['openUrl'] = self.open_url
@@ -28434,6 +31420,10 @@ class QueryJobListResponseBodyJobListJobOutputOpeningList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Opening'] = []
         if self.opening is not None:
@@ -28462,6 +31452,10 @@ class QueryJobListResponseBodyJobListJobOutputMuxConfigWebp(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.loop is not None:
             result['Loop'] = self.loop
@@ -28491,6 +31485,10 @@ class QueryJobListResponseBodyJobListJobOutputMuxConfigGif(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -28526,6 +31524,10 @@ class QueryJobListResponseBodyJobListJobOutputMuxConfigSegment(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -28558,6 +31560,10 @@ class QueryJobListResponseBodyJobListJobOutputMuxConfig(TeaModel):
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.webp is not None:
             result['Webp'] = self.webp.to_map()
@@ -28604,6 +31610,10 @@ class QueryJobListResponseBodyJobListJobOutputTailSlateListTailSlate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -28654,6 +31664,10 @@ class QueryJobListResponseBodyJobListJobOutputTailSlateList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TailSlate'] = []
         if self.tail_slate is not None:
@@ -28686,6 +31700,10 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -28722,6 +31740,10 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSu
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.char_enc is not None:
             result['CharEnc'] = self.char_enc
@@ -28757,6 +31779,10 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleList(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ExtSubtitle'] = []
         if self.ext_subtitle is not None:
@@ -28785,6 +31811,10 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfigSubtitleListSubtitle
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -28811,6 +31841,10 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfigSubtitleList(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Subtitle'] = []
         if self.subtitle is not None:
@@ -28844,6 +31878,10 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfig(TeaModel):
             self.subtitle_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ext_subtitle_list is not None:
             result['ExtSubtitleList'] = self.ext_subtitle_list.to_map()
@@ -28873,6 +31911,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesSourceLogosSourceLogo(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source is not None:
             result['Source'] = self.source
@@ -28899,6 +31941,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesSourceLogos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SourceLogo'] = []
         if self.source_logo is not None:
@@ -28931,6 +31977,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -29007,6 +32057,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVi
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -29122,6 +32176,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamList(T
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -29180,6 +32238,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsAudioStreamListAu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -29266,6 +32328,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsAudioStreamList(T
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -29296,6 +32362,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamLis
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -29326,6 +32396,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamLis
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -29363,6 +32437,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreams(TeaModel):
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -29411,6 +32489,10 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesFormat(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -29485,6 +32567,10 @@ class QueryJobListResponseBodyJobListJobOutputProperties(TeaModel):
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -29630,6 +32716,10 @@ class QueryJobListResponseBodyJobListJobOutput(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -29774,6 +32864,10 @@ class QueryJobListResponseBodyJobListJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -29809,6 +32903,10 @@ class QueryJobListResponseBodyJobListJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -29865,6 +32963,10 @@ class QueryJobListResponseBodyJobListJob(TeaModel):
             self.mnsmessage_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -29934,6 +33036,10 @@ class QueryJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -29969,6 +33075,10 @@ class QueryJobListResponseBody(TeaModel):
             self.job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_job_ids is not None:
             result['NonExistJobIds'] = self.non_exist_job_ids.to_map()
@@ -30007,6 +33117,10 @@ class QueryJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -30055,6 +33169,10 @@ class QueryMCJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -30122,6 +33240,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornTextsPornText(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -30156,6 +33278,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornTexts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PornText'] = []
         if self.porn_text is not None:
@@ -30190,6 +33316,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornVideosPornVideo(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -30228,6 +33358,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornVideos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PornVideo'] = []
         if self.porn_video is not None:
@@ -30266,6 +33400,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornAudiosPornAudio(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -30312,6 +33450,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornAudios(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PornAudio'] = []
         if self.porn_audio is not None:
@@ -30346,6 +33488,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornImagesPornImage(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -30384,6 +33530,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornImages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PornImage'] = []
         if self.porn_image is not None:
@@ -30420,6 +33570,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornOcrsPornOcr(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -30462,6 +33616,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResultPornOcrs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PornOcr'] = []
         if self.porn_ocr is not None:
@@ -30507,6 +33665,10 @@ class QueryMCJobListResponseBodyJobListJobResultPornResult(TeaModel):
             self.porn_ocrs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.porn_texts is not None:
             result['PornTexts'] = self.porn_texts.to_map()
@@ -30559,6 +33721,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdOcrsAdOcr(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -30601,6 +33767,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdOcrs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AdOcr'] = []
         if self.ad_ocr is not None:
@@ -30633,6 +33803,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdTextsAdText(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -30667,6 +33841,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdTexts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AdText'] = []
         if self.ad_text is not None:
@@ -30701,6 +33879,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdImagesAdImage(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -30739,6 +33921,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdImages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AdImage'] = []
         if self.ad_image is not None:
@@ -30777,6 +33963,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdAudiosAdAudio(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -30823,6 +34013,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdAudios(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AdAudio'] = []
         if self.ad_audio is not None:
@@ -30857,6 +34051,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdVideosAdVideo(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -30895,6 +34093,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResultAdVideos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AdVideo'] = []
         if self.ad_video is not None:
@@ -30940,6 +34142,10 @@ class QueryMCJobListResponseBodyJobListJobResultAdResult(TeaModel):
             self.ad_videos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ad_ocrs is not None:
             result['AdOcrs'] = self.ad_ocrs.to_map()
@@ -30990,6 +34196,10 @@ class QueryMCJobListResponseBodyJobListJobResultLogoResultLogoImagesLogoImage(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -31028,6 +34238,10 @@ class QueryMCJobListResponseBodyJobListJobResultLogoResultLogoImages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LogoImage'] = []
         if self.logo_image is not None:
@@ -31062,6 +34276,10 @@ class QueryMCJobListResponseBodyJobListJobResultLogoResultLogoVideosLogoVideo(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -31100,6 +34318,10 @@ class QueryMCJobListResponseBodyJobListJobResultLogoResultLogoVideos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LogoVideo'] = []
         if self.logo_video is not None:
@@ -31133,6 +34355,10 @@ class QueryMCJobListResponseBodyJobListJobResultLogoResult(TeaModel):
             self.logo_videos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logo_images is not None:
             result['LogoImages'] = self.logo_images.to_map()
@@ -31168,6 +34394,10 @@ class QueryMCJobListResponseBodyJobListJobResultQrcodeResultQrcodeImagesQrcodeIm
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -31206,6 +34436,10 @@ class QueryMCJobListResponseBodyJobListJobResultQrcodeResultQrcodeImages(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['QrcodeImage'] = []
         if self.qrcode_image is not None:
@@ -31240,6 +34474,10 @@ class QueryMCJobListResponseBodyJobListJobResultQrcodeResultQrcodeVideosQrcodeVi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -31278,6 +34516,10 @@ class QueryMCJobListResponseBodyJobListJobResultQrcodeResultQrcodeVideos(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['QrcodeVideo'] = []
         if self.qrcode_video is not None:
@@ -31311,6 +34553,10 @@ class QueryMCJobListResponseBodyJobListJobResultQrcodeResult(TeaModel):
             self.qrcode_videos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.qrcode_images is not None:
             result['QrcodeImages'] = self.qrcode_images.to_map()
@@ -31348,6 +34594,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsOcrsPoliti
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -31390,6 +34640,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsOcrs(TeaMo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PoliticsOcr'] = []
         if self.politics_ocr is not None:
@@ -31424,6 +34678,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsVideosPoli
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -31462,6 +34720,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsVideos(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PoliticsVideo'] = []
         if self.politics_video is not None:
@@ -31496,6 +34758,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsImagesPoli
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -31534,6 +34800,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsImages(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PoliticsImage'] = []
         if self.politics_image is not None:
@@ -31566,6 +34836,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsTextsPolit
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -31600,6 +34874,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsTexts(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PoliticsText'] = []
         if self.politics_text is not None:
@@ -31638,6 +34916,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsAudiosPoli
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -31684,6 +34966,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResultPoliticsAudios(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PoliticsAudio'] = []
         if self.politics_audio is not None:
@@ -31729,6 +35015,10 @@ class QueryMCJobListResponseBodyJobListJobResultPoliticsResult(TeaModel):
             self.politics_audios.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.politics_ocrs is not None:
             result['PoliticsOcrs'] = self.politics_ocrs.to_map()
@@ -31779,6 +35069,10 @@ class QueryMCJobListResponseBodyJobListJobResultLiveResultLiveImagesLiveImage(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -31817,6 +35111,10 @@ class QueryMCJobListResponseBodyJobListJobResultLiveResultLiveImages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LiveImage'] = []
         if self.live_image is not None:
@@ -31851,6 +35149,10 @@ class QueryMCJobListResponseBodyJobListJobResultLiveResultLiveVideosLiveVideo(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -31889,6 +35191,10 @@ class QueryMCJobListResponseBodyJobListJobResultLiveResultLiveVideos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LiveVideo'] = []
         if self.live_video is not None:
@@ -31922,6 +35228,10 @@ class QueryMCJobListResponseBodyJobListJobResultLiveResult(TeaModel):
             self.live_videos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.live_images is not None:
             result['LiveImages'] = self.live_images.to_map()
@@ -31959,6 +35269,10 @@ class QueryMCJobListResponseBodyJobListJobResultAbuseResultAbuseOcrsAbuseOcr(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -32001,6 +35315,10 @@ class QueryMCJobListResponseBodyJobListJobResultAbuseResultAbuseOcrs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AbuseOcr'] = []
         if self.abuse_ocr is not None:
@@ -32039,6 +35357,10 @@ class QueryMCJobListResponseBodyJobListJobResultAbuseResultAbuseAudiosAbuseAudio
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -32085,6 +35407,10 @@ class QueryMCJobListResponseBodyJobListJobResultAbuseResultAbuseAudios(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AbuseAudio'] = []
         if self.abuse_audio is not None:
@@ -32117,6 +35443,10 @@ class QueryMCJobListResponseBodyJobListJobResultAbuseResultAbuseTextsAbuseText(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -32151,6 +35481,10 @@ class QueryMCJobListResponseBodyJobListJobResultAbuseResultAbuseTexts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AbuseText'] = []
         if self.abuse_text is not None:
@@ -32188,6 +35522,10 @@ class QueryMCJobListResponseBodyJobListJobResultAbuseResult(TeaModel):
             self.abuse_texts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.abuse_ocrs is not None:
             result['AbuseOcrs'] = self.abuse_ocrs.to_map()
@@ -32226,6 +35564,10 @@ class QueryMCJobListResponseBodyJobListJobResultSpamResultSpamTextsSpamText(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -32260,6 +35602,10 @@ class QueryMCJobListResponseBodyJobListJobResultSpamResultSpamTexts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SpamText'] = []
         if self.spam_text is not None:
@@ -32298,6 +35644,10 @@ class QueryMCJobListResponseBodyJobListJobResultSpamResultSpamAudiosSpamAudio(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -32344,6 +35694,10 @@ class QueryMCJobListResponseBodyJobListJobResultSpamResultSpamAudios(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SpamAudio'] = []
         if self.spam_audio is not None:
@@ -32380,6 +35734,10 @@ class QueryMCJobListResponseBodyJobListJobResultSpamResultSpamOcrsSpamOcr(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -32422,6 +35780,10 @@ class QueryMCJobListResponseBodyJobListJobResultSpamResultSpamOcrs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SpamOcr'] = []
         if self.spam_ocr is not None:
@@ -32459,6 +35821,10 @@ class QueryMCJobListResponseBodyJobListJobResultSpamResult(TeaModel):
             self.spam_ocrs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.spam_texts is not None:
             result['SpamTexts'] = self.spam_texts.to_map()
@@ -32503,6 +35869,10 @@ class QueryMCJobListResponseBodyJobListJobResultContrabandResultContrabandAudios
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -32549,6 +35919,10 @@ class QueryMCJobListResponseBodyJobListJobResultContrabandResultContrabandAudios
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ContrabandAudio'] = []
         if self.contraband_audio is not None:
@@ -32585,6 +35959,10 @@ class QueryMCJobListResponseBodyJobListJobResultContrabandResultContrabandOcrsCo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -32627,6 +36005,10 @@ class QueryMCJobListResponseBodyJobListJobResultContrabandResultContrabandOcrs(T
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ContrabandOcr'] = []
         if self.contraband_ocr is not None:
@@ -32659,6 +36041,10 @@ class QueryMCJobListResponseBodyJobListJobResultContrabandResultContrabandTextsC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -32693,6 +36079,10 @@ class QueryMCJobListResponseBodyJobListJobResultContrabandResultContrabandTexts(
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ContrabandText'] = []
         if self.contraband_text is not None:
@@ -32730,6 +36120,10 @@ class QueryMCJobListResponseBodyJobListJobResultContrabandResult(TeaModel):
             self.contraband_texts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.contraband_audios is not None:
             result['ContrabandAudios'] = self.contraband_audios.to_map()
@@ -32772,6 +36166,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismOcrsTerr
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -32814,6 +36212,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismOcrs(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TerrorismOcr'] = []
         if self.terrorism_ocr is not None:
@@ -32852,6 +36254,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismAudiosTe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -32898,6 +36304,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismAudios(T
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TerrorismAudio'] = []
         if self.terrorism_audio is not None:
@@ -32932,6 +36342,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismVideosTe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -32970,6 +36384,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismVideos(T
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TerrorismVideo'] = []
         if self.terrorism_video is not None:
@@ -33002,6 +36420,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismTextsTer
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -33036,6 +36458,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismTexts(Te
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TerrorismText'] = []
         if self.terrorism_text is not None:
@@ -33070,6 +36496,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismImagesTe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -33108,6 +36538,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResultTerrorismImages(T
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TerrorismImage'] = []
         if self.terrorism_image is not None:
@@ -33153,6 +36587,10 @@ class QueryMCJobListResponseBodyJobListJobResultTerrorismResult(TeaModel):
             self.terrorism_images.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.terrorism_ocrs is not None:
             result['TerrorismOcrs'] = self.terrorism_ocrs.to_map()
@@ -33238,6 +36676,10 @@ class QueryMCJobListResponseBodyJobListJobResult(TeaModel):
             self.terrorism_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -33332,6 +36774,10 @@ class QueryMCJobListResponseBodyJobListJob(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -33391,6 +36837,10 @@ class QueryMCJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -33419,6 +36869,10 @@ class QueryMCJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -33451,6 +36905,10 @@ class QueryMCJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -33493,6 +36951,10 @@ class QueryMCJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -33529,6 +36991,10 @@ class QueryMCTemplateListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -33568,6 +37034,10 @@ class QueryMCTemplateListResponseBodyNonExistTids(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -33615,6 +37085,10 @@ class QueryMCTemplateListResponseBodyTemplateListTemplate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logo is not None:
             result['Logo'] = self.logo
@@ -33689,6 +37163,10 @@ class QueryMCTemplateListResponseBodyTemplateList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Template'] = []
         if self.template is not None:
@@ -33724,6 +37202,10 @@ class QueryMCTemplateListResponseBody(TeaModel):
             self.template_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_tids is not None:
             result['NonExistTids'] = self.non_exist_tids.to_map()
@@ -33762,6 +37244,10 @@ class QueryMCTemplateListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -33798,6 +37284,10 @@ class QueryMcuJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -33837,6 +37327,10 @@ class QueryMcuJobResponseBodyNonExistJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -33864,6 +37358,10 @@ class QueryMcuJobResponseBodyJobResultJobTagResultTagFrameTagInfosFrameTagInfo(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -33898,6 +37396,10 @@ class QueryMcuJobResponseBodyJobResultJobTagResultTagFrameTagInfos(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FrameTagInfo'] = []
         if self.frame_tag_info is not None:
@@ -33933,6 +37435,10 @@ class QueryMcuJobResponseBodyJobResultJobTagResultTag(TeaModel):
             self.frame_tag_infos.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -33972,6 +37478,10 @@ class QueryMcuJobResponseBodyJobResultJobTagResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -34006,6 +37516,10 @@ class QueryMcuJobResponseBodyJobResultJobOcrResultOcr(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -34044,6 +37558,10 @@ class QueryMcuJobResponseBodyJobResultJobOcrResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Ocr'] = []
         if self.ocr is not None:
@@ -34076,6 +37594,10 @@ class QueryMcuJobResponseBodyJobResultJobSubTaskInfoSubTask(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -34110,6 +37632,10 @@ class QueryMcuJobResponseBodyJobResultJobSubTaskInfo(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubTask'] = []
         if self.sub_task is not None:
@@ -34140,6 +37666,10 @@ class QueryMcuJobResponseBodyJobResultJobCategoryResultCategoriesCategory(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -34170,6 +37700,10 @@ class QueryMcuJobResponseBodyJobResultJobCategoryResultCategories(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Category'] = []
         if self.category is not None:
@@ -34201,6 +37735,10 @@ class QueryMcuJobResponseBodyJobResultJobCategoryResult(TeaModel):
             self.categories.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.categories is not None:
             result['Categories'] = self.categories.to_map()
@@ -34233,6 +37771,10 @@ class QueryMcuJobResponseBodyJobResultJobFaceResultFaceCelebritiesCelebrity(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -34267,6 +37809,10 @@ class QueryMcuJobResponseBodyJobResultJobFaceResultFaceCelebrities(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Celebrity'] = []
         if self.celebrity is not None:
@@ -34302,6 +37848,10 @@ class QueryMcuJobResponseBodyJobResultJobFaceResultFace(TeaModel):
             self.celebrities.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -34341,6 +37891,10 @@ class QueryMcuJobResponseBodyJobResultJobFaceResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Face'] = []
         if self.face is not None:
@@ -34373,6 +37927,10 @@ class QueryMcuJobResponseBodyJobResultJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -34412,6 +37970,10 @@ class QueryMcuJobResponseBodyJobResultJobAsrResultAsrTextListAsrText(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -34454,6 +38016,10 @@ class QueryMcuJobResponseBodyJobResultJobAsrResultAsrTextList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AsrText'] = []
         if self.asr_text is not None:
@@ -34485,6 +38051,10 @@ class QueryMcuJobResponseBodyJobResultJobAsrResult(TeaModel):
             self.asr_text_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -34546,6 +38116,10 @@ class QueryMcuJobResponseBodyJobResultJob(TeaModel):
             self.asr_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_result is not None:
             result['TagResult'] = self.tag_result.to_map()
@@ -34619,6 +38193,10 @@ class QueryMcuJobResponseBodyJobResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -34654,6 +38232,10 @@ class QueryMcuJobResponseBody(TeaModel):
             self.job_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_job_ids is not None:
             result['NonExistJobIds'] = self.non_exist_job_ids.to_map()
@@ -34692,6 +38274,10 @@ class QueryMcuJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -34728,6 +38314,10 @@ class QueryMcuTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -34769,6 +38359,10 @@ class QueryMcuTemplateResponseBodyTemplatesJob(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template is not None:
             result['Template'] = self.template
@@ -34799,6 +38393,10 @@ class QueryMcuTemplateResponseBodyTemplates(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -34830,6 +38428,10 @@ class QueryMcuTemplateResponseBody(TeaModel):
             self.templates.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -34863,6 +38465,10 @@ class QueryMcuTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -34903,6 +38509,10 @@ class QueryMediaCensorJobDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -34956,6 +38566,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -34994,6 +38608,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Result'] = []
         if self.result is not None:
@@ -35029,6 +38647,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
             self.results.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -35068,6 +38690,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CoverImageCensorResult'] = []
         if self.cover_image_censor_result is not None:
@@ -35102,6 +38728,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailTitleCensorResult
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -35141,6 +38771,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -35178,6 +38812,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailBarrageCensorResu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -35219,6 +38857,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailDescCensorResult(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -35258,6 +38900,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -35294,6 +38940,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.output_file is not None:
             result['OutputFile'] = self.output_file.to_map()
@@ -35332,6 +38982,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -35370,6 +39024,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CensorResult'] = []
         if self.censor_result is not None:
@@ -35403,6 +39061,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
             self.censor_results.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
@@ -35438,6 +39100,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoTimeline'] = []
         if self.video_timeline is not None:
@@ -35472,6 +39138,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -35510,6 +39180,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CensorResult'] = []
         if self.censor_result is not None:
@@ -35545,6 +39219,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
             self.censor_results.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_timelines is not None:
             result['VideoTimelines'] = self.video_timelines.to_map()
@@ -35621,6 +39299,10 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail(TeaModel):
             self.vensor_censor_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -35714,6 +39396,10 @@ class QueryMediaCensorJobDetailResponseBody(TeaModel):
             self.media_censor_job_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -35747,6 +39433,10 @@ class QueryMediaCensorJobDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -35795,6 +39485,10 @@ class QueryMediaCensorJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -35864,6 +39558,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverIm
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -35902,6 +39600,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverIm
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Result'] = []
         if self.result is not None:
@@ -35937,6 +39639,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverIm
             self.results.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -35976,6 +39682,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobCoverIm
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CoverImageCensorResult'] = []
         if self.cover_image_censor_result is not None:
@@ -36010,6 +39720,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobTitleCe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -36049,6 +39763,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobInput(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -36086,6 +39804,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobBarrage
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -36127,6 +39849,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobDescCen
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -36166,6 +39892,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -36202,6 +39932,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVideoCe
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.output_file is not None:
             result['OutputFile'] = self.output_file.to_map()
@@ -36240,6 +39974,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -36278,6 +40016,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CensorResult'] = []
         if self.censor_result is not None:
@@ -36311,6 +40053,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
             self.censor_results.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
@@ -36346,6 +40092,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoTimeline'] = []
         if self.video_timeline is not None:
@@ -36380,6 +40130,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
@@ -36418,6 +40172,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['CensorResult'] = []
         if self.censor_result is not None:
@@ -36453,6 +40211,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJobVensorC
             self.censor_results.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_timelines is not None:
             result['VideoTimelines'] = self.video_timelines.to_map()
@@ -36529,6 +40291,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobListMediaCensorJob(TeaMod
             self.vensor_censor_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -36622,6 +40388,10 @@ class QueryMediaCensorJobListResponseBodyMediaCensorJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaCensorJob'] = []
         if self.media_censor_job is not None:
@@ -36650,6 +40420,10 @@ class QueryMediaCensorJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -36682,6 +40456,10 @@ class QueryMediaCensorJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_censor_job_list is not None:
             result['MediaCensorJobList'] = self.media_censor_job_list.to_map()
@@ -36724,6 +40502,10 @@ class QueryMediaCensorJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -36760,6 +40542,10 @@ class QueryMediaDetailJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -36803,6 +40589,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -36837,6 +40627,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Sensitive'] = []
         if self.sensitive is not None:
@@ -36869,6 +40663,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -36903,6 +40701,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Politician'] = []
         if self.politician is not None:
@@ -36931,6 +40733,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -36966,6 +40772,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -37016,6 +40826,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Clip'] = []
         if self.clip is not None:
@@ -37047,6 +40861,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
             self.clips.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -37078,6 +40896,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Custom'] = []
         if self.custom is not None:
@@ -37110,6 +40932,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -37144,6 +40970,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FrameTagInfo'] = []
         if self.frame_tag_info is not None:
@@ -37176,6 +41006,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -37210,6 +41044,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Celebrity'] = []
         if self.celebrity is not None:
@@ -37265,6 +41103,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
             self.celebrities.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -37329,6 +41171,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultMediaDetailR
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaDetailRecgResult'] = []
         if self.media_detail_recg_result is not None:
@@ -37357,6 +41203,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResultTags(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -37387,6 +41237,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailResult(TeaModel):
             self.tags.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -37424,6 +41278,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailConfigOutputFile(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -37460,6 +41318,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobMediaDetailConfig(TeaModel):
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.output_file is not None:
             result['OutputFile'] = self.output_file.to_map()
@@ -37496,6 +41358,10 @@ class QueryMediaDetailJobListResponseBodyJobListJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -37550,6 +41416,10 @@ class QueryMediaDetailJobListResponseBodyJobListJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -37615,6 +41485,10 @@ class QueryMediaDetailJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -37643,6 +41517,10 @@ class QueryMediaDetailJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -37673,6 +41551,10 @@ class QueryMediaDetailJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -37711,6 +41593,10 @@ class QueryMediaDetailJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -37747,6 +41633,10 @@ class QueryMediaFpDeleteJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -37786,6 +41676,10 @@ class QueryMediaFpDeleteJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -37827,6 +41721,10 @@ class QueryMediaFpDeleteJobListResponseBodyMediaFpDeleteJobListMediaFpDeleteJob(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -37889,6 +41787,10 @@ class QueryMediaFpDeleteJobListResponseBodyMediaFpDeleteJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaFpDeleteJob'] = []
         if self.media_fp_delete_job is not None:
@@ -37924,6 +41826,10 @@ class QueryMediaFpDeleteJobListResponseBody(TeaModel):
             self.media_fp_delete_job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -37962,6 +41868,10 @@ class QueryMediaFpDeleteJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -37998,6 +41908,10 @@ class QueryMediaInfoJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -38037,6 +41951,10 @@ class QueryMediaInfoJobListResponseBodyNonExistMediaInfoJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -38064,6 +41982,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobInput(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -38099,6 +42021,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobMNSMessageRes
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -38134,6 +42060,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -38212,6 +42142,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sar is not None:
             result['Sar'] = self.sar
@@ -38331,6 +42265,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -38389,6 +42327,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -38475,6 +42417,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -38521,6 +42467,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -38583,6 +42533,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -38620,6 +42574,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -38668,6 +42626,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFor
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -38738,6 +42700,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties(Te
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -38820,6 +42786,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJob(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -38889,6 +42859,10 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaInfoJob'] = []
         if self.media_info_job is not None:
@@ -38924,6 +42898,10 @@ class QueryMediaInfoJobListResponseBody(TeaModel):
             self.media_info_job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_media_info_job_ids is not None:
             result['NonExistMediaInfoJobIds'] = self.non_exist_media_info_job_ids.to_map()
@@ -38962,6 +42940,10 @@ class QueryMediaInfoJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -39006,6 +42988,10 @@ class QueryMediaListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -39061,6 +43047,10 @@ class QueryMediaListResponseBodyNonExistMediaIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_id is not None:
             result['MediaId'] = self.media_id
@@ -39084,6 +43074,10 @@ class QueryMediaListResponseBodyMediaListMediaTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag is not None:
             result['Tag'] = self.tag
@@ -39109,6 +43103,10 @@ class QueryMediaListResponseBodyMediaListMediaPlayListPlayFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -39159,6 +43157,10 @@ class QueryMediaListResponseBodyMediaListMediaPlayListPlay(TeaModel):
             self.file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.encryption is not None:
             result['Encryption'] = self.encryption
@@ -39230,6 +43232,10 @@ class QueryMediaListResponseBodyMediaListMediaPlayList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Play'] = []
         if self.play is not None:
@@ -39260,6 +43266,10 @@ class QueryMediaListResponseBodyMediaListMediaFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -39289,6 +43299,10 @@ class QueryMediaListResponseBodyMediaListMediaSummaryListSummaryFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -39325,6 +43339,10 @@ class QueryMediaListResponseBodyMediaListMediaSummaryListSummary(TeaModel):
             self.file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -39368,6 +43386,10 @@ class QueryMediaListResponseBodyMediaListMediaSummaryList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Summary'] = []
         if self.summary is not None:
@@ -39400,6 +43422,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVid
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -39478,6 +43504,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVid
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sar is not None:
             result['Sar'] = self.sar
@@ -39597,6 +43627,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsVideoStreamList(Te
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -39655,6 +43689,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsAudioStreamListAud
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -39741,6 +43779,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsAudioStreamList(Te
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -39771,6 +43813,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsSubtitleStreamList
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -39801,6 +43847,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsSubtitleStreamList
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -39838,6 +43888,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreams(TeaModel):
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -39886,6 +43940,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoFormat(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -39942,6 +44000,10 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfo(TeaModel):
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.streams is not None:
             result['Streams'] = self.streams.to_map()
@@ -39973,6 +44035,10 @@ class QueryMediaListResponseBodyMediaListMediaSnapshotListSnapshotFile(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -40011,6 +44077,10 @@ class QueryMediaListResponseBodyMediaListMediaSnapshotListSnapshot(TeaModel):
             self.file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -40058,6 +44128,10 @@ class QueryMediaListResponseBodyMediaListMediaSnapshotList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Snapshot'] = []
         if self.snapshot is not None:
@@ -40086,6 +44160,10 @@ class QueryMediaListResponseBodyMediaListMediaRunIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.run_id is not None:
             result['RunId'] = self.run_id
@@ -40164,6 +44242,10 @@ class QueryMediaListResponseBodyMediaListMedia(TeaModel):
             self.run_id_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -40281,6 +44363,10 @@ class QueryMediaListResponseBodyMediaList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Media'] = []
         if self.media is not None:
@@ -40316,6 +44402,10 @@ class QueryMediaListResponseBody(TeaModel):
             self.media_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_media_ids is not None:
             result['NonExistMediaIds'] = self.non_exist_media_ids.to_map()
@@ -40354,6 +44444,10 @@ class QueryMediaListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -40398,6 +44492,10 @@ class QueryMediaListByURLRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -40453,6 +44551,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag is not None:
             result['Tag'] = self.tag
@@ -40478,6 +44580,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaPlayListPlayFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -40528,6 +44634,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaPlayListPlay(TeaModel):
             self.file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.encryption is not None:
             result['Encryption'] = self.encryption
@@ -40599,6 +44709,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaPlayList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Play'] = []
         if self.play is not None:
@@ -40629,6 +44743,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -40658,6 +44776,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummaryFile(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -40694,6 +44816,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummary(TeaModel):
             self.file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -40737,6 +44863,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaSummaryList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Summary'] = []
         if self.summary is not None:
@@ -40769,6 +44899,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamLi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -40847,6 +44981,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamLi
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sar is not None:
             result['Sar'] = self.sar
@@ -40966,6 +45104,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamLi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -41024,6 +45166,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsAudioStreamLi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -41110,6 +45256,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsAudioStreamLi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -41140,6 +45290,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsSubtitleStrea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -41170,6 +45324,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsSubtitleStrea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -41207,6 +45365,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreams(TeaModel):
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -41255,6 +45417,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoFormat(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -41311,6 +45477,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfo(TeaModel):
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.streams is not None:
             result['Streams'] = self.streams.to_map()
@@ -41342,6 +45512,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshotFile(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -41380,6 +45554,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshot(TeaModel
             self.file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -41427,6 +45605,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaSnapshotList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Snapshot'] = []
         if self.snapshot is not None:
@@ -41455,6 +45637,10 @@ class QueryMediaListByURLResponseBodyMediaListMediaRunIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.run_id is not None:
             result['RunId'] = self.run_id
@@ -41533,6 +45719,10 @@ class QueryMediaListByURLResponseBodyMediaListMedia(TeaModel):
             self.run_id_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -41650,6 +45840,10 @@ class QueryMediaListByURLResponseBodyMediaList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Media'] = []
         if self.media is not None:
@@ -41678,6 +45872,10 @@ class QueryMediaListByURLResponseBodyNonExistFileURLs(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_url is not None:
             result['FileURL'] = self.file_url
@@ -41708,6 +45906,10 @@ class QueryMediaListByURLResponseBody(TeaModel):
             self.non_exist_file_urls.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_list is not None:
             result['MediaList'] = self.media_list.to_map()
@@ -41746,6 +45948,10 @@ class QueryMediaListByURLResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -41782,6 +45988,10 @@ class QueryMediaWorkflowExecutionListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -41821,6 +46031,10 @@ class QueryMediaWorkflowExecutionListResponseBodyNonExistRunIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.run_id is not None:
             result['RunId'] = self.run_id
@@ -41848,6 +46062,10 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -41896,6 +46114,10 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
             self.mnsmessage_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -41955,6 +46177,10 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Activity'] = []
         if self.activity is not None:
@@ -41987,6 +46213,10 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -42021,6 +46251,10 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user_data is not None:
             result['UserData'] = self.user_data
@@ -42066,6 +46300,10 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -42122,6 +46360,10 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionList(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaWorkflowExecution'] = []
         if self.media_workflow_execution is not None:
@@ -42157,6 +46399,10 @@ class QueryMediaWorkflowExecutionListResponseBody(TeaModel):
             self.media_workflow_execution_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_run_ids is not None:
             result['NonExistRunIds'] = self.non_exist_run_ids.to_map()
@@ -42195,6 +46441,10 @@ class QueryMediaWorkflowExecutionListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -42231,6 +46481,10 @@ class QueryMediaWorkflowListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -42270,6 +46524,10 @@ class QueryMediaWorkflowListResponseBodyNonExistMediaWorkflowIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_workflow_id is not None:
             result['MediaWorkflowId'] = self.media_workflow_id
@@ -42303,6 +46561,10 @@ class QueryMediaWorkflowListResponseBodyMediaWorkflowListMediaWorkflow(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -42349,6 +46611,10 @@ class QueryMediaWorkflowListResponseBodyMediaWorkflowList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaWorkflow'] = []
         if self.media_workflow is not None:
@@ -42384,6 +46650,10 @@ class QueryMediaWorkflowListResponseBody(TeaModel):
             self.media_workflow_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_media_workflow_ids is not None:
             result['NonExistMediaWorkflowIds'] = self.non_exist_media_workflow_ids.to_map()
@@ -42422,6 +46692,10 @@ class QueryMediaWorkflowListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -42458,6 +46732,10 @@ class QueryPipelineListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -42503,6 +46781,10 @@ class QueryPipelineListResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.mq_topic is not None:
             result['MqTopic'] = self.mq_topic
@@ -42553,6 +46835,10 @@ class QueryPipelineListResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.speed is not None:
             result['Speed'] = self.speed
@@ -42608,6 +46894,10 @@ class QueryPipelineListResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -42636,6 +46926,10 @@ class QueryPipelineListResponseBodyNonExistPids(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -42666,6 +46960,10 @@ class QueryPipelineListResponseBody(TeaModel):
             self.non_exist_pids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -42704,6 +47002,10 @@ class QueryPipelineListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -42740,6 +47042,10 @@ class QueryPornJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -42783,6 +47089,10 @@ class QueryPornJobListResponseBodyPornJobListPornJobPornConfigOutputFile(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -42819,6 +47129,10 @@ class QueryPornJobListResponseBodyPornJobListPornJobPornConfig(TeaModel):
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.interval is not None:
             result['Interval'] = self.interval
@@ -42853,6 +47167,10 @@ class QueryPornJobListResponseBodyPornJobListPornJobCensorPornResultPornCounterL
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.label is not None:
             result['Label'] = self.label
@@ -42883,6 +47201,10 @@ class QueryPornJobListResponseBodyPornJobListPornJobCensorPornResultPornCounterL
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Counter'] = []
         if self.counter is not None:
@@ -42919,6 +47241,10 @@ class QueryPornJobListResponseBodyPornJobListPornJobCensorPornResultPornTopListT
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -42961,6 +47287,10 @@ class QueryPornJobListResponseBodyPornJobListPornJobCensorPornResultPornTopList(
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Top'] = []
         if self.top is not None:
@@ -43002,6 +47332,10 @@ class QueryPornJobListResponseBodyPornJobListPornJobCensorPornResult(TeaModel):
             self.porn_top_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.porn_counter_list is not None:
             result['PornCounterList'] = self.porn_counter_list.to_map()
@@ -43051,6 +47385,10 @@ class QueryPornJobListResponseBodyPornJobListPornJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -43105,6 +47443,10 @@ class QueryPornJobListResponseBodyPornJobListPornJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -43170,6 +47512,10 @@ class QueryPornJobListResponseBodyPornJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PornJob'] = []
         if self.porn_job is not None:
@@ -43198,6 +47544,10 @@ class QueryPornJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -43228,6 +47578,10 @@ class QueryPornJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -43266,6 +47620,10 @@ class QueryPornJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -43302,6 +47660,10 @@ class QueryPornPipelineListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -43343,6 +47705,10 @@ class QueryPornPipelineListResponseBodyPipelineListPipelineNotifyConfig(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -43379,6 +47745,10 @@ class QueryPornPipelineListResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -43422,6 +47792,10 @@ class QueryPornPipelineListResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -43450,6 +47824,10 @@ class QueryPornPipelineListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -43480,6 +47858,10 @@ class QueryPornPipelineListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -43518,6 +47900,10 @@ class QueryPornPipelineListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -43554,6 +47940,10 @@ class QuerySmarttagJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -43595,6 +47985,10 @@ class QuerySmarttagJobResponseBodyResultsResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -43625,6 +48019,10 @@ class QuerySmarttagJobResponseBodyResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Result'] = []
         if self.result is not None:
@@ -43660,6 +48058,10 @@ class QuerySmarttagJobResponseBody(TeaModel):
             self.results.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_status is not None:
             result['JobStatus'] = self.job_status
@@ -43701,6 +48103,10 @@ class QuerySmarttagJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -43737,6 +48143,10 @@ class QuerySmarttagTemplateListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -43788,6 +48198,10 @@ class QuerySmarttagTemplateListResponseBodyTemplatesTemplate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.analyse_types is not None:
             result['AnalyseTypes'] = self.analyse_types
@@ -43838,6 +48252,10 @@ class QuerySmarttagTemplateListResponseBodyTemplates(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Template'] = []
         if self.template is not None:
@@ -43869,6 +48287,10 @@ class QuerySmarttagTemplateListResponseBody(TeaModel):
             self.templates.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -43902,6 +48324,10 @@ class QuerySmarttagTemplateListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -43950,6 +48376,10 @@ class QuerySnapshotJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -44029,6 +48459,10 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.padding is not None:
             result['Padding'] = self.padding
@@ -44090,6 +48524,10 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigOu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -44131,6 +48569,10 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -44187,6 +48629,10 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfig(T
             self.tile_output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -44249,6 +48695,10 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobMNSMessageResult
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -44286,6 +48736,10 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -44348,6 +48802,10 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -44421,6 +48879,10 @@ class QuerySnapshotJobListResponseBodySnapshotJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SnapshotJob'] = []
         if self.snapshot_job is not None:
@@ -44449,6 +48911,10 @@ class QuerySnapshotJobListResponseBodyNonExistSnapshotJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -44481,6 +48947,10 @@ class QuerySnapshotJobListResponseBody(TeaModel):
             self.non_exist_snapshot_job_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.snapshot_job_list is not None:
             result['SnapshotJobList'] = self.snapshot_job_list.to_map()
@@ -44523,6 +48993,10 @@ class QuerySnapshotJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -44559,6 +49033,10 @@ class QuerySubtitleJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -44598,6 +49076,10 @@ class QuerySubtitleJobListResponseBodyNonExistJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -44625,6 +49107,10 @@ class QuerySubtitleJobListResponseBodyJobListJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -44667,6 +49153,10 @@ class QuerySubtitleJobListResponseBodyJobListJob(TeaModel):
             self.mnsmessage_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.output_config is not None:
             result['OutputConfig'] = self.output_config
@@ -44714,6 +49204,10 @@ class QuerySubtitleJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -44749,6 +49243,10 @@ class QuerySubtitleJobListResponseBody(TeaModel):
             self.job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_job_ids is not None:
             result['NonExistJobIds'] = self.non_exist_job_ids.to_map()
@@ -44787,6 +49285,10 @@ class QuerySubtitleJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -44823,6 +49325,10 @@ class QueryTagJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -44864,6 +49370,10 @@ class QueryTagJobListResponseBodyTagJobListTagJobVideoTagResultTagAnResultsTagAn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -44894,6 +49404,10 @@ class QueryTagJobListResponseBodyTagJobListTagJobVideoTagResultTagAnResults(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagAnResult'] = []
         if self.tag_an_result is not None:
@@ -44926,6 +49440,10 @@ class QueryTagJobListResponseBodyTagJobListTagJobVideoTagResultTagFrResultsTagFr
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -44960,6 +49478,10 @@ class QueryTagJobListResponseBodyTagJobListTagJobVideoTagResultTagFrResultsTagFr
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagFace'] = []
         if self.tag_face is not None:
@@ -44991,6 +49513,10 @@ class QueryTagJobListResponseBodyTagJobListTagJobVideoTagResultTagFrResultsTagFr
             self.tag_faces.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_faces is not None:
             result['TagFaces'] = self.tag_faces.to_map()
@@ -45022,6 +49548,10 @@ class QueryTagJobListResponseBodyTagJobListTagJobVideoTagResultTagFrResults(TeaM
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagFrResult'] = []
         if self.tag_fr_result is not None:
@@ -45057,6 +49587,10 @@ class QueryTagJobListResponseBodyTagJobListTagJobVideoTagResult(TeaModel):
             self.tag_fr_results.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_an_results is not None:
             result['TagAnResults'] = self.tag_an_results.to_map()
@@ -45094,6 +49628,10 @@ class QueryTagJobListResponseBodyTagJobListTagJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -45144,6 +49682,10 @@ class QueryTagJobListResponseBodyTagJobListTagJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -45204,6 +49746,10 @@ class QueryTagJobListResponseBodyTagJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagJob'] = []
         if self.tag_job is not None:
@@ -45232,6 +49778,10 @@ class QueryTagJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -45262,6 +49812,10 @@ class QueryTagJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_job_list is not None:
             result['TagJobList'] = self.tag_job_list.to_map()
@@ -45300,6 +49854,10 @@ class QueryTagJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -45336,6 +49894,10 @@ class QueryTemplateListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -45375,6 +49937,10 @@ class QueryTemplateListResponseBodyNonExistTids(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -45400,6 +49966,10 @@ class QueryTemplateListResponseBodyTemplateListTemplateVideoBitrateBnd(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -45470,6 +50040,10 @@ class QueryTemplateListResponseBodyTemplateListTemplateVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -45592,6 +50166,10 @@ class QueryTemplateListResponseBodyTemplateListTemplateTransConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -45643,6 +50221,10 @@ class QueryTemplateListResponseBodyTemplateListTemplateMuxConfigWebp(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.loop is not None:
             result['Loop'] = self.loop
@@ -45672,6 +50254,10 @@ class QueryTemplateListResponseBodyTemplateListTemplateMuxConfigGif(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -45707,6 +50293,10 @@ class QueryTemplateListResponseBodyTemplateListTemplateMuxConfigSegment(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -45739,6 +50329,10 @@ class QueryTemplateListResponseBodyTemplateListTemplateMuxConfig(TeaModel):
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.webp is not None:
             result['Webp'] = self.webp.to_map()
@@ -45785,6 +50379,10 @@ class QueryTemplateListResponseBodyTemplateListTemplateAudio(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -45832,6 +50430,10 @@ class QueryTemplateListResponseBodyTemplateListTemplateContainer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -45878,6 +50480,10 @@ class QueryTemplateListResponseBodyTemplateListTemplate(TeaModel):
             self.container.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -45937,6 +50543,10 @@ class QueryTemplateListResponseBodyTemplateList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Template'] = []
         if self.template is not None:
@@ -45972,6 +50582,10 @@ class QueryTemplateListResponseBody(TeaModel):
             self.template_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_tids is not None:
             result['NonExistTids'] = self.non_exist_tids.to_map()
@@ -46010,6 +50624,10 @@ class QueryTemplateListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -46046,6 +50664,10 @@ class QueryTerrorismJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -46093,6 +50715,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobListTerrorismJobCensorTerrori
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -46135,6 +50761,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobListTerrorismJobCensorTerrori
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Top'] = []
         if self.top is not None:
@@ -46165,6 +50795,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobListTerrorismJobCensorTerrori
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.label is not None:
             result['Label'] = self.label
@@ -46195,6 +50829,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobListTerrorismJobCensorTerrori
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Counter'] = []
         if self.counter is not None:
@@ -46236,6 +50874,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobListTerrorismJobCensorTerrori
             self.terrorism_counter_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.terrorism_top_list is not None:
             result['TerrorismTopList'] = self.terrorism_top_list.to_map()
@@ -46285,6 +50927,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobListTerrorismJobTerrorismConf
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -46321,6 +50967,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobListTerrorismJobTerrorismConf
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.interval is not None:
             result['Interval'] = self.interval
@@ -46357,6 +51007,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobListTerrorismJobInput(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -46411,6 +51065,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobListTerrorismJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -46476,6 +51134,10 @@ class QueryTerrorismJobListResponseBodyTerrorismJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TerrorismJob'] = []
         if self.terrorism_job is not None:
@@ -46504,6 +51166,10 @@ class QueryTerrorismJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -46534,6 +51200,10 @@ class QueryTerrorismJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -46572,6 +51242,10 @@ class QueryTerrorismJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -46608,6 +51282,10 @@ class QueryTerrorismPipelineListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -46649,6 +51327,10 @@ class QueryTerrorismPipelineListResponseBodyPipelineListPipelineNotifyConfig(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -46685,6 +51367,10 @@ class QueryTerrorismPipelineListResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -46728,6 +51414,10 @@ class QueryTerrorismPipelineListResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -46756,6 +51446,10 @@ class QueryTerrorismPipelineListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -46786,6 +51480,10 @@ class QueryTerrorismPipelineListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -46824,6 +51522,10 @@ class QueryTerrorismPipelineListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -46860,6 +51562,10 @@ class QueryVideoGifJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -46903,6 +51609,10 @@ class QueryVideoGifJobListResponseBodyJobListJobVideoGifResultOutputFile(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -46935,6 +51645,10 @@ class QueryVideoGifJobListResponseBodyJobListJobVideoGifResult(TeaModel):
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.output_file is not None:
             result['OutputFile'] = self.output_file.to_map()
@@ -46963,6 +51677,10 @@ class QueryVideoGifJobListResponseBodyJobListJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -47013,6 +51731,10 @@ class QueryVideoGifJobListResponseBodyJobListJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -47073,6 +51795,10 @@ class QueryVideoGifJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -47101,6 +51827,10 @@ class QueryVideoGifJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -47131,6 +51861,10 @@ class QueryVideoGifJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -47169,6 +51903,10 @@ class QueryVideoGifJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -47205,6 +51943,10 @@ class QueryVideoPoseJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -47244,6 +51986,10 @@ class QueryVideoPoseJobListResponseBodyNonExistJobIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -47273,6 +52019,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobOutputConfigDataFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -47314,6 +52064,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobOutputConfigVideoFile(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -47354,6 +52108,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobOutputConfig(TeaModel):
             self.video_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.data_file is not None:
             result['DataFile'] = self.data_file.to_map()
@@ -47387,6 +52145,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -47424,6 +52186,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -47463,6 +52229,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobPropertiesStreamsVideoStreamLis
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -47541,6 +52311,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobPropertiesStreamsVideoStreamLis
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sar is not None:
             result['Sar'] = self.sar
@@ -47660,6 +52434,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobPropertiesStreamsVideoStreamLis
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -47718,6 +52496,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobPropertiesStreamsAudioStreamLis
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -47804,6 +52586,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobPropertiesStreamsAudioStreamLis
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -47850,6 +52636,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobPropertiesStreamsSubtitleStream
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -47912,6 +52702,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobPropertiesStreamsSubtitleStream
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -47949,6 +52743,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobPropertiesStreams(TeaModel):
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -47997,6 +52795,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobPropertiesFormat(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -48067,6 +52869,10 @@ class QueryVideoPoseJobListResponseBodyJobListJobProperties(TeaModel):
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -48145,6 +52951,10 @@ class QueryVideoPoseJobListResponseBodyJobListJob(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.output_config is not None:
             result['OutputConfig'] = self.output_config.to_map()
@@ -48203,6 +53013,10 @@ class QueryVideoPoseJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -48238,6 +53052,10 @@ class QueryVideoPoseJobListResponseBody(TeaModel):
             self.job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.non_exist_job_ids is not None:
             result['NonExistJobIds'] = self.non_exist_job_ids.to_map()
@@ -48276,6 +53094,10 @@ class QueryVideoPoseJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -48306,6 +53128,10 @@ class QueryVideoQualityJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user_id is not None:
             result['UserId'] = self.user_id
@@ -48343,6 +53169,10 @@ class QueryVideoQualityJobResponseBodyJob(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -48393,6 +53223,10 @@ class QueryVideoQualityJobResponseBody(TeaModel):
             self.job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -48434,6 +53268,10 @@ class QueryVideoQualityJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -48470,6 +53308,10 @@ class QueryVideoSplitJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -48513,6 +53355,10 @@ class QueryVideoSplitJobListResponseBodyJobListJobVideoSplitResultVideoSplitList
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -48547,6 +53393,10 @@ class QueryVideoSplitJobListResponseBodyJobListJobVideoSplitResultVideoSplitList
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoSplit'] = []
         if self.video_split is not None:
@@ -48576,6 +53426,10 @@ class QueryVideoSplitJobListResponseBodyJobListJobVideoSplitResult(TeaModel):
             self.video_split_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_split_list is not None:
             result['VideoSplitList'] = self.video_split_list.to_map()
@@ -48604,6 +53458,10 @@ class QueryVideoSplitJobListResponseBodyJobListJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -48654,6 +53512,10 @@ class QueryVideoSplitJobListResponseBodyJobListJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -48714,6 +53576,10 @@ class QueryVideoSplitJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -48742,6 +53608,10 @@ class QueryVideoSplitJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -48772,6 +53642,10 @@ class QueryVideoSplitJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -48810,6 +53684,10 @@ class QueryVideoSplitJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -48846,6 +53724,10 @@ class QueryVideoSummaryJobListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -48887,6 +53769,10 @@ class QueryVideoSummaryJobListResponseBodyJobListJobVideoSummaryResultVideoSumma
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -48917,6 +53803,10 @@ class QueryVideoSummaryJobListResponseBodyJobListJobVideoSummaryResultVideoSumma
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoSummary'] = []
         if self.video_summary is not None:
@@ -48949,6 +53839,10 @@ class QueryVideoSummaryJobListResponseBodyJobListJobVideoSummaryResultOutputFile
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -48985,6 +53879,10 @@ class QueryVideoSummaryJobListResponseBodyJobListJobVideoSummaryResult(TeaModel)
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_summary_list is not None:
             result['VideoSummaryList'] = self.video_summary_list.to_map()
@@ -49018,6 +53916,10 @@ class QueryVideoSummaryJobListResponseBodyJobListJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -49068,6 +53970,10 @@ class QueryVideoSummaryJobListResponseBodyJobListJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -49128,6 +54034,10 @@ class QueryVideoSummaryJobListResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -49156,6 +54066,10 @@ class QueryVideoSummaryJobListResponseBodyNonExistIds(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -49186,6 +54100,10 @@ class QueryVideoSummaryJobListResponseBody(TeaModel):
             self.non_exist_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -49224,6 +54142,10 @@ class QueryVideoSummaryJobListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -49260,6 +54182,10 @@ class QueryWaterMarkTemplateListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -49299,6 +54225,10 @@ class QueryWaterMarkTemplateListResponseBodyNonExistWids(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -49328,6 +54258,10 @@ class QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTempla
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dx is not None:
             result['Dx'] = self.dx
@@ -49365,6 +54299,10 @@ class QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTempla
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -49415,6 +54353,10 @@ class QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTempla
             self.timeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -49483,6 +54425,10 @@ class QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WaterMarkTemplate'] = []
         if self.water_mark_template is not None:
@@ -49518,6 +54464,10 @@ class QueryWaterMarkTemplateListResponseBody(TeaModel):
             self.water_mark_template_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -49556,6 +54506,10 @@ class QueryWaterMarkTemplateListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -49592,6 +54546,10 @@ class RefreshCdnDomainConfigsCacheRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -49631,6 +54589,10 @@ class RefreshCdnDomainConfigsCacheResponseBodySucessDomains(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -49654,6 +54616,10 @@ class RefreshCdnDomainConfigsCacheResponseBodyFailedDomains(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.string is not None:
             result['String'] = self.string
@@ -49684,6 +54650,10 @@ class RefreshCdnDomainConfigsCacheResponseBody(TeaModel):
             self.failed_domains.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sucess_domains is not None:
             result['SucessDomains'] = self.sucess_domains.to_map()
@@ -49722,6 +54692,10 @@ class RefreshCdnDomainConfigsCacheResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -49762,6 +54736,10 @@ class RegisterCustomFaceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -49811,6 +54789,10 @@ class RegisterCustomFaceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.face_id is not None:
             result['FaceId'] = self.face_id
@@ -49843,6 +54825,10 @@ class RegisterCustomFaceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -49885,6 +54871,10 @@ class RegisterMediaDetailPersonRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -49940,6 +54930,10 @@ class RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersona
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -49984,6 +54978,10 @@ class RegisterMediaDetailPersonResponseBodyRegisteredPersonagesRegisteredPersona
             self.image_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quality is not None:
             result['Quality'] = self.quality
@@ -50035,6 +55033,10 @@ class RegisterMediaDetailPersonResponseBodyRegisteredPersonages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RegisteredPersonage'] = []
         if self.registered_personage is not None:
@@ -50067,6 +55069,10 @@ class RegisterMediaDetailPersonResponseBodyFailedImagesFailedImageImageFile(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -50103,6 +55109,10 @@ class RegisterMediaDetailPersonResponseBodyFailedImagesFailedImage(TeaModel):
             self.image_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_file is not None:
             result['ImageFile'] = self.image_file.to_map()
@@ -50138,6 +55148,10 @@ class RegisterMediaDetailPersonResponseBodyFailedImages(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['FailedImage'] = []
         if self.failed_image is not None:
@@ -50173,6 +55187,10 @@ class RegisterMediaDetailPersonResponseBody(TeaModel):
             self.failed_images.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -50211,6 +55229,10 @@ class RegisterMediaDetailPersonResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -50251,6 +55273,10 @@ class RegisterMediaDetailScenarioRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -50300,6 +55326,10 @@ class RegisterMediaDetailScenarioResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scenario_id is not None:
             result['ScenarioId'] = self.scenario_id
@@ -50332,6 +55362,10 @@ class RegisterMediaDetailScenarioResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -50372,6 +55406,10 @@ class ReportAnnotationJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -50421,6 +55459,10 @@ class ReportAnnotationJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -50453,6 +55495,10 @@ class ReportAnnotationJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -50493,6 +55539,10 @@ class ReportCensorJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -50542,6 +55592,10 @@ class ReportCensorJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -50574,6 +55628,10 @@ class ReportCensorJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -50612,6 +55670,10 @@ class ReportCoverJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -50657,6 +55719,10 @@ class ReportCoverJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -50689,6 +55755,10 @@ class ReportCoverJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -50729,6 +55799,10 @@ class ReportFacerecogJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -50778,6 +55852,10 @@ class ReportFacerecogJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -50810,6 +55888,10 @@ class ReportFacerecogJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -50850,6 +55932,10 @@ class ReportFpShotJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -50899,6 +55985,10 @@ class ReportFpShotJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -50931,6 +56021,10 @@ class ReportFpShotJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -50971,6 +56065,10 @@ class ReportMediaDetailJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -51020,6 +56118,10 @@ class ReportMediaDetailJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -51052,6 +56154,10 @@ class ReportMediaDetailJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -51092,6 +56198,10 @@ class ReportPornJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -51141,6 +56251,10 @@ class ReportPornJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -51173,6 +56287,10 @@ class ReportPornJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -51213,6 +56331,10 @@ class ReportTagJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -51262,6 +56384,10 @@ class ReportTagJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -51294,6 +56420,10 @@ class ReportTagJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -51334,6 +56464,10 @@ class ReportTerrorismJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -51383,6 +56517,10 @@ class ReportTerrorismJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -51415,6 +56553,10 @@ class ReportTerrorismJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -51455,6 +56597,10 @@ class ReportVideoSplitJobResultRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -51504,6 +56650,10 @@ class ReportVideoSplitJobResultResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -51536,6 +56686,10 @@ class ReportVideoSplitJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -51590,6 +56744,10 @@ class SearchMediaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -51665,6 +56823,10 @@ class SearchMediaResponseBodyMediaListMediaTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag is not None:
             result['Tag'] = self.tag
@@ -51690,6 +56852,10 @@ class SearchMediaResponseBodyMediaListMediaFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -51717,6 +56883,10 @@ class SearchMediaResponseBodyMediaListMediaRunIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.run_id is not None:
             result['RunId'] = self.run_id
@@ -51777,6 +56947,10 @@ class SearchMediaResponseBodyMediaListMedia(TeaModel):
             self.run_id_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -51870,6 +57044,10 @@ class SearchMediaResponseBodyMediaList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Media'] = []
         if self.media is not None:
@@ -51907,6 +57085,10 @@ class SearchMediaResponseBody(TeaModel):
             self.media_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_list is not None:
             result['MediaList'] = self.media_list.to_map()
@@ -51952,6 +57134,10 @@ class SearchMediaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -51992,6 +57178,10 @@ class SearchMediaWorkflowRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -52049,6 +57239,10 @@ class SearchMediaWorkflowResponseBodyMediaWorkflowListMediaWorkflow(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -52095,6 +57289,10 @@ class SearchMediaWorkflowResponseBodyMediaWorkflowList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MediaWorkflow'] = []
         if self.media_workflow is not None:
@@ -52132,6 +57330,10 @@ class SearchMediaWorkflowResponseBody(TeaModel):
             self.media_workflow_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -52177,6 +57379,10 @@ class SearchMediaWorkflowResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -52217,6 +57423,10 @@ class SearchPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -52270,6 +57480,10 @@ class SearchPipelineResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.mq_topic is not None:
             result['MqTopic'] = self.mq_topic
@@ -52320,6 +57534,10 @@ class SearchPipelineResponseBodyPipelineListPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.speed is not None:
             result['Speed'] = self.speed
@@ -52375,6 +57593,10 @@ class SearchPipelineResponseBodyPipelineList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Pipeline'] = []
         if self.pipeline is not None:
@@ -52412,6 +57634,10 @@ class SearchPipelineResponseBody(TeaModel):
             self.pipeline_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -52457,6 +57683,10 @@ class SearchPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -52497,6 +57727,10 @@ class SearchTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -52546,6 +57780,10 @@ class SearchTemplateResponseBodyTemplateListTemplateVideoBitrateBnd(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -52614,6 +57852,10 @@ class SearchTemplateResponseBodyTemplateListTemplateVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -52732,6 +57974,10 @@ class SearchTemplateResponseBodyTemplateListTemplateTransConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -52789,6 +58035,10 @@ class SearchTemplateResponseBodyTemplateListTemplateMuxConfigGif(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -52824,6 +58074,10 @@ class SearchTemplateResponseBodyTemplateListTemplateMuxConfigSegment(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -52852,6 +58106,10 @@ class SearchTemplateResponseBodyTemplateListTemplateMuxConfig(TeaModel):
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gif is not None:
             result['Gif'] = self.gif.to_map()
@@ -52893,6 +58151,10 @@ class SearchTemplateResponseBodyTemplateListTemplateAudio(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -52940,6 +58202,10 @@ class SearchTemplateResponseBodyTemplateListTemplateContainer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -52986,6 +58252,10 @@ class SearchTemplateResponseBodyTemplateListTemplate(TeaModel):
             self.container.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -53045,6 +58315,10 @@ class SearchTemplateResponseBodyTemplateList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Template'] = []
         if self.template is not None:
@@ -53082,6 +58356,10 @@ class SearchTemplateResponseBody(TeaModel):
             self.template_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -53127,6 +58405,10 @@ class SearchTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -53167,6 +58449,10 @@ class SearchWaterMarkTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -53220,6 +58506,10 @@ class SearchWaterMarkTemplateResponseBodyWaterMarkTemplateListWaterMarkTemplateR
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dx is not None:
             result['Dx'] = self.dx
@@ -53257,6 +58547,10 @@ class SearchWaterMarkTemplateResponseBodyWaterMarkTemplateListWaterMarkTemplateT
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -53307,6 +58601,10 @@ class SearchWaterMarkTemplateResponseBodyWaterMarkTemplateListWaterMarkTemplate(
             self.timeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -53375,6 +58673,10 @@ class SearchWaterMarkTemplateResponseBodyWaterMarkTemplateList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WaterMarkTemplate'] = []
         if self.water_mark_template is not None:
@@ -53412,6 +58714,10 @@ class SearchWaterMarkTemplateResponseBody(TeaModel):
             self.water_mark_template_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -53457,6 +58763,10 @@ class SearchWaterMarkTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -53495,6 +58805,10 @@ class SetAuthConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -53542,6 +58856,10 @@ class SetAuthConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key_2 is not None:
             result['Key2'] = self.key_2
@@ -53578,6 +58896,10 @@ class SetAuthConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -53614,6 +58936,10 @@ class StopIProductionJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -53655,6 +58981,10 @@ class StopIProductionJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -53687,6 +59017,10 @@ class StopIProductionJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -53731,6 +59065,10 @@ class SubmitAnalysisJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -53788,6 +59126,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfigQualityControl(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method_streaming is not None:
             result['MethodStreaming'] = self.method_streaming
@@ -53823,6 +59165,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfigPropertiesControlCro
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -53865,6 +59211,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfigPropertiesControl(Te
             self.crop.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.deinterlace is not None:
             result['Deinterlace'] = self.deinterlace
@@ -53898,6 +59248,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfig(TeaModel):
             self.properties_control.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.quality_control is not None:
             result['QualityControl'] = self.quality_control.to_map()
@@ -53931,6 +59285,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -53964,6 +59322,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideoBitrateBn
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -54022,6 +59384,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideo(TeaModel
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -54106,6 +59472,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateTransConfig(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.trans_mode is not None:
             result['TransMode'] = self.trans_mode
@@ -54131,6 +59501,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigGif(T
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -54158,6 +59532,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigSegme
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -54186,6 +59564,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfig(TeaM
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gif is not None:
             result['Gif'] = self.gif.to_map()
@@ -54225,6 +59607,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateAudio(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -54268,6 +59654,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateContainer(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -54314,6 +59704,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplate(TeaModel):
             self.container.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -54373,6 +59767,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Template'] = []
         if self.template is not None:
@@ -54405,6 +59803,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJobInputFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -54467,6 +59869,10 @@ class SubmitAnalysisJobResponseBodyAnalysisJob(TeaModel):
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -54545,6 +59951,10 @@ class SubmitAnalysisJobResponseBody(TeaModel):
             self.analysis_job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -54578,6 +59988,10 @@ class SubmitAnalysisJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -54620,6 +60034,10 @@ class SubmitAnnotationJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -54673,6 +60091,10 @@ class SubmitAnnotationJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -54705,6 +60127,10 @@ class SubmitAnnotationJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -54747,6 +60173,10 @@ class SubmitAsrJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -54800,6 +60230,10 @@ class SubmitAsrJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -54832,6 +60266,10 @@ class SubmitAsrJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -54874,6 +60312,10 @@ class SubmitBeautifyJobsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -54931,6 +60373,10 @@ class SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfigOutputFile(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -54967,6 +60413,10 @@ class SubmitBeautifyJobsResponseBodyJobListJobBeautifyConfig(TeaModel):
             self.output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.output_file is not None:
             result['OutputFile'] = self.output_file.to_map()
@@ -54997,6 +60447,10 @@ class SubmitBeautifyJobsResponseBodyJobListJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -55036,6 +60490,10 @@ class SubmitBeautifyJobsResponseBodyJobListJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -55090,6 +60548,10 @@ class SubmitBeautifyJobsResponseBodyJobListJob(TeaModel):
             self.mnsmessage_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -55155,6 +60617,10 @@ class SubmitBeautifyJobsResponseBodyJobList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Job'] = []
         if self.job is not None:
@@ -55186,6 +60652,10 @@ class SubmitBeautifyJobsResponseBody(TeaModel):
             self.job_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -55219,6 +60689,10 @@ class SubmitBeautifyJobsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -55267,6 +60741,10 @@ class SubmitComplexJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -55332,6 +60810,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideoBitrateBnd(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -55396,6 +60878,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -55508,6 +60994,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputTransConfig(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -55573,6 +61063,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputEncryption(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -55620,6 +61114,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMar
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -55666,6 +61164,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkListWaterMar
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -55721,6 +61223,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputWaterMarkList(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WaterMark'] = []
         if self.water_mark is not None:
@@ -55751,6 +61257,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSuppor
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.size_support is not None:
             result['SizeSupport'] = self.size_support
@@ -55779,6 +61289,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputM3U8NonStandardSuppor
             self.ts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ts is not None:
             result['TS'] = self.ts.to_map()
@@ -55805,6 +61319,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudioVolume(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method is not None:
             result['Method'] = self.method
@@ -55845,6 +61363,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputAudio(TeaModel):
             self.volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -55899,6 +61421,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeListMerge(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -55937,6 +61463,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputMergeList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Merge'] = []
         if self.merge is not None:
@@ -55965,6 +61495,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputSuperReso(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_half_sample is not None:
             result['IsHalfSample'] = self.is_half_sample
@@ -55992,6 +61526,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMarkInputFil
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -56028,6 +61566,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputDigiWaterMark(TeaMode
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -56066,6 +61608,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputOutputFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -56101,6 +61647,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputContainer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -56126,6 +61676,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputClipTimeSpan(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.seek is not None:
             result['Seek'] = self.seek
@@ -56154,6 +61708,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputClip(TeaModel):
             self.time_span.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time_span is not None:
             result['TimeSpan'] = self.time_span.to_map()
@@ -56184,6 +61742,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigGif(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -56219,6 +61781,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfigSegment(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -56247,6 +61813,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputMuxConfig(TeaModel):
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gif is not None:
             result['Gif'] = self.gif.to_map()
@@ -56280,6 +61850,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -56316,6 +61890,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubt
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.char_enc is not None:
             result['CharEnc'] = self.char_enc
@@ -56351,6 +61929,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigExtSubt
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ExtSubtitle'] = []
         if self.ext_subtitle is not None:
@@ -56379,6 +61961,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitl
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -56405,6 +61991,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfigSubtitl
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Subtitle'] = []
         if self.subtitle is not None:
@@ -56438,6 +62028,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputSubtitleConfig(TeaMod
             self.subtitle_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ext_subtitle_list is not None:
             result['ExtSubtitleList'] = self.ext_subtitle_list.to_map()
@@ -56471,6 +62065,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVide
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -56547,6 +62145,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVide
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -56662,6 +62264,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsVide
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -56720,6 +62326,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -56806,6 +62416,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsAudi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -56836,6 +62450,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -56866,6 +62484,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreamsSubt
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -56903,6 +62525,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesStreams(Tea
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -56951,6 +62577,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputPropertiesFormat(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -57021,6 +62651,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutputProperties(TeaModel):
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -57153,6 +62787,10 @@ class SubmitComplexJobResponseBodyComplexJobTranscodeOutput(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -57287,6 +62925,10 @@ class SubmitComplexJobResponseBodyComplexJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -57320,6 +62962,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.t is not None:
             result['T'] = self.t
@@ -57348,6 +62994,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
             self.clips_config_video.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.clips_config_video is not None:
             result['ClipsConfigVideo'] = self.clips_config_video.to_map()
@@ -57379,6 +63029,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
             self.clips_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.clips_config is not None:
             result['ClipsConfig'] = self.clips_config.to_map()
@@ -57418,6 +63072,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Clip'] = []
         if self.clip is not None:
@@ -57453,6 +63111,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
             self.clips.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -57492,6 +63154,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Track'] = []
         if self.track is not None:
@@ -57524,6 +63190,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.channel_layout is not None:
             result['ChannelLayout'] = self.channel_layout
@@ -57569,6 +63239,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bg_color is not None:
             result['BgColor'] = self.bg_color
@@ -57625,6 +63299,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
             self.timeline_config_video.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeline_config_audio is not None:
             result['TimelineConfigAudio'] = self.timeline_config_audio.to_map()
@@ -57659,6 +63337,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
             self.timeline_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.track_list is not None:
             result['TrackList'] = self.track_list.to_map()
@@ -57690,6 +63372,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.effect is not None:
             result['Effect'] = self.effect
@@ -57720,6 +63406,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Effect'] = []
         if self.effect is not None:
@@ -57763,6 +63453,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
             self.effects.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -57818,6 +63512,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Clip'] = []
         if self.clip is not None:
@@ -57851,6 +63549,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
             self.clip_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeline is not None:
             result['Timeline'] = self.timeline.to_map()
@@ -57881,6 +63583,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigsComplexEditingC
             self.editing.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.editing is not None:
             result['Editing'] = self.editing.to_map()
@@ -57908,6 +63614,10 @@ class SubmitComplexJobResponseBodyComplexJobComplexEditingConfigs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ComplexEditingConfigs'] = []
         if self.complex_editing_configs is not None:
@@ -57940,6 +63650,10 @@ class SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInpu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -57973,6 +63687,10 @@ class SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInpu
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_normal_sar is not None:
             result['IsNormalSar'] = self.is_normal_sar
@@ -58007,6 +63725,10 @@ class SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputsEditingInpu
             self.input_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.input_file is not None:
             result['InputFile'] = self.input_file.to_map()
@@ -58043,6 +63765,10 @@ class SubmitComplexJobResponseBodyComplexJobInputsInputsEditingInputs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EditingInput'] = []
         if self.editing_input is not None:
@@ -58072,6 +63798,10 @@ class SubmitComplexJobResponseBodyComplexJobInputsInputs(TeaModel):
             self.editing_inputs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.editing_inputs is not None:
             result['EditingInputs'] = self.editing_inputs.to_map()
@@ -58099,6 +63829,10 @@ class SubmitComplexJobResponseBodyComplexJobInputs(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Inputs'] = []
         if self.inputs is not None:
@@ -58156,6 +63890,10 @@ class SubmitComplexJobResponseBodyComplexJob(TeaModel):
             self.inputs.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -58230,6 +63968,10 @@ class SubmitComplexJobResponseBody(TeaModel):
             self.complex_job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -58263,6 +64005,10 @@ class SubmitComplexJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -58305,6 +64051,10 @@ class SubmitCoverJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -58358,6 +64108,10 @@ class SubmitCoverJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -58390,6 +64144,10 @@ class SubmitCoverJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -58434,6 +64192,10 @@ class SubmitEditingJobsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -58493,6 +64255,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditing
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -58526,6 +64292,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditing
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_normal_sar is not None:
             result['IsNormalSar'] = self.is_normal_sar
@@ -58560,6 +64330,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditing
             self.input_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.input_file is not None:
             result['InputFile'] = self.input_file.to_map()
@@ -58596,6 +64370,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputs(TeaMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['EditingInput'] = []
         if self.editing_input is not None:
@@ -58626,6 +64404,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -58690,6 +64472,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo(T
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -58802,6 +64588,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransCo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -58867,6 +64657,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncrypt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -58914,6 +64708,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMa
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -58960,6 +64758,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMa
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -59015,6 +64817,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMa
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WaterMark'] = []
         if self.water_mark is not None:
@@ -59045,6 +64851,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8Non
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.size_support is not None:
             result['SizeSupport'] = self.size_support
@@ -59073,6 +64883,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8Non
             self.ts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ts is not None:
             result['TS'] = self.ts.to_map()
@@ -59099,6 +64913,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method is not None:
             result['Method'] = self.method
@@ -59139,6 +64957,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio(T
             self.volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -59193,6 +65015,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeLi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -59231,6 +65057,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeLi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Merge'] = []
         if self.merge is not None:
@@ -59259,6 +65089,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperRe
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_half_sample is not None:
             result['IsHalfSample'] = self.is_half_sample
@@ -59286,6 +65120,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWat
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -59322,6 +65160,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWat
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -59360,6 +65202,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputF
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -59397,6 +65243,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.t is not None:
             result['T'] = self.t
@@ -59425,6 +65275,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
             self.clips_config_video.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.clips_config_video is not None:
             result['ClipsConfigVideo'] = self.clips_config_video.to_map()
@@ -59456,6 +65310,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
             self.clips_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.clips_config is not None:
             result['ClipsConfig'] = self.clips_config.to_map()
@@ -59495,6 +65353,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Clip'] = []
         if self.clip is not None:
@@ -59530,6 +65392,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
             self.clips.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -59569,6 +65435,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Track'] = []
         if self.track is not None:
@@ -59601,6 +65471,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.channel_layout is not None:
             result['ChannelLayout'] = self.channel_layout
@@ -59646,6 +65520,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bg_color is not None:
             result['BgColor'] = self.bg_color
@@ -59702,6 +65580,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
             self.timeline_config_video.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeline_config_audio is not None:
             result['TimelineConfigAudio'] = self.timeline_config_audio.to_map()
@@ -59736,6 +65618,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
             self.timeline_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.track_list is not None:
             result['TrackList'] = self.track_list.to_map()
@@ -59767,6 +65653,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.effect is not None:
             result['Effect'] = self.effect
@@ -59797,6 +65687,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Effect'] = []
         if self.effect is not None:
@@ -59840,6 +65734,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
             self.effects.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -59895,6 +65793,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Clip'] = []
         if self.clip is not None:
@@ -59928,6 +65830,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing
             self.clip_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timeline is not None:
             result['Timeline'] = self.timeline.to_map()
@@ -59957,6 +65863,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContain
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -59982,6 +65892,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTim
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.seek is not None:
             result['Seek'] = self.seek
@@ -60010,6 +65924,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip(Te
             self.time_span.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time_span is not None:
             result['TimeSpan'] = self.time_span.to_map()
@@ -60040,6 +65958,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConf
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -60075,6 +65997,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConf
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -60103,6 +66029,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConf
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.gif is not None:
             result['Gif'] = self.gif.to_map()
@@ -60136,6 +66066,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitl
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -60172,6 +66106,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitl
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.char_enc is not None:
             result['CharEnc'] = self.char_enc
@@ -60207,6 +66145,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitl
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ExtSubtitle'] = []
         if self.ext_subtitle is not None:
@@ -60235,6 +66177,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitl
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -60261,6 +66207,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitl
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Subtitle'] = []
         if self.subtitle is not None:
@@ -60294,6 +66244,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitl
             self.subtitle_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ext_subtitle_list is not None:
             result['ExtSubtitleList'] = self.ext_subtitle_list.to_map()
@@ -60327,6 +66281,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -60403,6 +66361,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -60518,6 +66480,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -60576,6 +66542,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -60662,6 +66632,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -60692,6 +66666,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -60722,6 +66700,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -60759,6 +66741,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -60807,6 +66793,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -60877,6 +66867,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropert
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -61013,6 +67007,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig(TeaMod
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -61152,6 +67150,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJobMNSMessageResult(Tea
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -61208,6 +67210,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResultJob(TeaModel):
             self.mnsmessage_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -61281,6 +67287,10 @@ class SubmitEditingJobsResponseBodyJobResultListJobResult(TeaModel):
             self.job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job is not None:
             result['Job'] = self.job.to_map()
@@ -61320,6 +67330,10 @@ class SubmitEditingJobsResponseBodyJobResultList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['JobResult'] = []
         if self.job_result is not None:
@@ -61351,6 +67365,10 @@ class SubmitEditingJobsResponseBody(TeaModel):
             self.job_result_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_result_list is not None:
             result['JobResultList'] = self.job_result_list.to_map()
@@ -61384,6 +67402,10 @@ class SubmitEditingJobsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -61426,6 +67448,10 @@ class SubmitFacerecogJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -61479,6 +67505,10 @@ class SubmitFacerecogJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -61511,6 +67541,10 @@ class SubmitFacerecogJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -61557,6 +67591,10 @@ class SubmitFpCompareJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -61618,6 +67656,10 @@ class SubmitFpCompareJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -61650,6 +67692,10 @@ class SubmitFpCompareJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -61692,6 +67738,10 @@ class SubmitFpDBDeleteJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -61745,6 +67795,10 @@ class SubmitFpDBDeleteJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -61777,6 +67831,10 @@ class SubmitFpDBDeleteJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -61819,6 +67877,10 @@ class SubmitFpFileDeleteJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -61872,6 +67934,10 @@ class SubmitFpFileDeleteJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -61904,6 +67970,10 @@ class SubmitFpFileDeleteJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -61946,6 +68016,10 @@ class SubmitFpShotJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -61999,6 +68073,10 @@ class SubmitFpShotJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -62031,6 +68109,10 @@ class SubmitFpShotJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -62071,6 +68153,10 @@ class SubmitImageQualityJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -62122,6 +68208,10 @@ class SubmitImageQualityJobResponseBodyImageQualityJobResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -62159,6 +68249,10 @@ class SubmitImageQualityJobResponseBodyImageQualityJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -62209,6 +68303,10 @@ class SubmitImageQualityJobResponseBodyImageQualityJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -62261,6 +68359,10 @@ class SubmitImageQualityJobResponseBody(TeaModel):
             self.image_quality_job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -62294,6 +68396,10 @@ class SubmitImageQualityJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -62340,6 +68446,10 @@ class SubmitImageSearchJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -62401,6 +68511,10 @@ class SubmitImageSearchJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -62433,6 +68547,10 @@ class SubmitImageSearchJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -62446,6 +68564,163 @@ class SubmitImageSearchJobResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SubmitImageSearchJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitInferenceJobRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: int = None,
+        test_id: str = None,
+        model_type: str = None,
+        model_path: str = None,
+        input: str = None,
+        pipeline_id: str = None,
+        user_data: str = None,
+        notify_url: str = None,
+    ):
+        self.user_id = user_id
+        self.test_id = test_id
+        self.model_type = model_type
+        self.model_path = model_path
+        self.input = input
+        self.pipeline_id = pipeline_id
+        self.user_data = user_data
+        self.notify_url = notify_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.test_id is not None:
+            result['TestId'] = self.test_id
+        if self.model_type is not None:
+            result['ModelType'] = self.model_type
+        if self.model_path is not None:
+            result['ModelPath'] = self.model_path
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.notify_url is not None:
+            result['NotifyUrl'] = self.notify_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('TestId') is not None:
+            self.test_id = m.get('TestId')
+        if m.get('ModelType') is not None:
+            self.model_type = m.get('ModelType')
+        if m.get('ModelPath') is not None:
+            self.model_path = m.get('ModelPath')
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('NotifyUrl') is not None:
+            self.notify_url = m.get('NotifyUrl')
+        return self
+
+
+class SubmitInferenceJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        test_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        code: str = None,
+        job_id: str = None,
+    ):
+        self.test_id = test_id
+        self.message = message
+        self.request_id = request_id
+        self.code = code
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.test_id is not None:
+            result['TestId'] = self.test_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TestId') is not None:
+            self.test_id = m.get('TestId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class SubmitInferenceJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SubmitInferenceJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SubmitInferenceJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -62475,6 +68750,10 @@ class SubmitInnerJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -62528,6 +68807,10 @@ class SubmitInnerJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -62560,6 +68843,10 @@ class SubmitInnerJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -62612,6 +68899,10 @@ class SubmitIProductionJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -62687,6 +68978,10 @@ class SubmitIProductionJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -62723,6 +69018,10 @@ class SubmitIProductionJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -62767,6 +69066,10 @@ class SubmitJobsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -62824,6 +69127,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputVideoBitrateBnd(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -62890,6 +69197,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.bufsize is not None:
             result['Bufsize'] = self.bufsize
@@ -63004,6 +69315,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputTransConfig(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -63065,6 +69380,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputEncryption(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -63112,6 +69431,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputWaterMarkListWaterMar
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -63158,6 +69481,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputWaterMarkListWaterMar
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -63213,6 +69540,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputWaterMarkList(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['WaterMark'] = []
         if self.water_mark is not None:
@@ -63243,6 +69574,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputM3U8NonStandardSuppor
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.size_support is not None:
             result['SizeSupport'] = self.size_support
@@ -63271,6 +69606,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputM3U8NonStandardSuppor
             self.ts.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ts is not None:
             result['TS'] = self.ts.to_map()
@@ -63297,6 +69636,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputAudioVolume(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.method is not None:
             result['Method'] = self.method
@@ -63337,6 +69680,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputAudio(TeaModel):
             self.volume.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -63391,6 +69738,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMergeListMerge(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -63429,6 +69780,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMergeList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Merge'] = []
         if self.merge is not None:
@@ -63457,6 +69812,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSuperReso(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_half_sample is not None:
             result['IsHalfSample'] = self.is_half_sample
@@ -63486,6 +69845,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOutSubtitleListOutSub
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -63528,6 +69891,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOutSubtitleListOutSub
             self.out_subtitle_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -63567,6 +69934,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOutSubtitleList(TeaMo
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['OutSubtitle'] = []
         if self.out_subtitle is not None:
@@ -63599,6 +69970,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputDigiWaterMarkInputFil
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -63635,6 +70010,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputDigiWaterMark(TeaMode
             self.input_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -63673,6 +70052,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOutputFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -63716,6 +70099,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputAmixListAmix(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -63758,6 +70145,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputAmixList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Amix'] = []
         if self.amix is not None:
@@ -63786,6 +70177,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputContainer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -63811,6 +70206,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputClipTimeSpan(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.seek is not None:
             result['Seek'] = self.seek
@@ -63839,6 +70238,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputClip(TeaModel):
             self.time_span.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time_span is not None:
             result['TimeSpan'] = self.time_span.to_map()
@@ -63869,6 +70272,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOpeningListOpening(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.open_url is not None:
             result['openUrl'] = self.open_url
@@ -63907,6 +70314,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOpeningList(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Opening'] = []
         if self.opening is not None:
@@ -63935,6 +70346,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfigWebp(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.loop is not None:
             result['Loop'] = self.loop
@@ -63964,6 +70379,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfigGif(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -63999,6 +70418,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfigSegment(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -64031,6 +70454,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfig(TeaModel):
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.webp is not None:
             result['Webp'] = self.webp.to_map()
@@ -64077,6 +70504,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputTailSlateListTailSlat
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -64127,6 +70558,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputTailSlateList(TeaMode
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TailSlate'] = []
         if self.tail_slate is not None:
@@ -64159,6 +70594,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigExtSubt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -64195,6 +70634,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigExtSubt
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.char_enc is not None:
             result['CharEnc'] = self.char_enc
@@ -64230,6 +70673,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigExtSubt
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ExtSubtitle'] = []
         if self.ext_subtitle is not None:
@@ -64258,6 +70705,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigSubtitl
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.map is not None:
             result['Map'] = self.map
@@ -64284,6 +70735,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigSubtitl
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Subtitle'] = []
         if self.subtitle is not None:
@@ -64317,6 +70772,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfig(TeaMod
             self.subtitle_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.ext_subtitle_list is not None:
             result['ExtSubtitleList'] = self.ext_subtitle_list.to_map()
@@ -64350,6 +70809,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsVide
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -64426,6 +70889,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsVide
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -64541,6 +71008,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsVide
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -64599,6 +71070,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsAudi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -64685,6 +71160,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsAudi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -64715,6 +71194,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsSubt
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.index is not None:
             result['Index'] = self.index
@@ -64745,6 +71228,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsSubt
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -64782,6 +71269,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreams(Tea
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -64830,6 +71321,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesFormat(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -64900,6 +71395,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputProperties(TeaModel):
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -65048,6 +71547,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutput(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -65202,6 +71705,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -65237,6 +71744,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -65293,6 +71804,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJob(TeaModel):
             self.mnsmessage_result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -65366,6 +71881,10 @@ class SubmitJobsResponseBodyJobResultListJobResult(TeaModel):
             self.job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job is not None:
             result['Job'] = self.job.to_map()
@@ -65405,6 +71924,10 @@ class SubmitJobsResponseBodyJobResultList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['JobResult'] = []
         if self.job_result is not None:
@@ -65436,6 +71959,10 @@ class SubmitJobsResponseBody(TeaModel):
             self.job_result_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_result_list is not None:
             result['JobResultList'] = self.job_result_list.to_map()
@@ -65469,6 +71996,10 @@ class SubmitJobsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -65515,6 +72046,10 @@ class SubmitMCJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -65576,6 +72111,10 @@ class SubmitMCJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -65608,6 +72147,10 @@ class SubmitMCJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -65652,6 +72195,10 @@ class SubmitMcuJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -65709,6 +72256,10 @@ class SubmitMcuJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -65741,6 +72292,10 @@ class SubmitMcuJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -65791,6 +72346,10 @@ class SubmitMediaCensorJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -65860,6 +72419,10 @@ class SubmitMediaCensorJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -65892,6 +72455,10 @@ class SubmitMediaCensorJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -65934,6 +72501,10 @@ class SubmitMediaDetailJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -65987,6 +72558,10 @@ class SubmitMediaDetailJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -66019,6 +72594,10 @@ class SubmitMediaDetailJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -66061,6 +72640,10 @@ class SubmitMediaFpDeleteJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -66114,6 +72697,10 @@ class SubmitMediaFpDeleteJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -66146,6 +72733,10 @@ class SubmitMediaFpDeleteJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -66188,6 +72779,10 @@ class SubmitMediaInfoJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -66243,6 +72838,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.object is not None:
             result['Object'] = self.object
@@ -66278,6 +72877,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -66313,6 +72916,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -66391,6 +72998,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sar is not None:
             result['Sar'] = self.sar
@@ -66510,6 +73121,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -66568,6 +73183,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsAudioStreamList
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -66654,6 +73273,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsAudioStreamList
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -66700,6 +73323,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsSubtitleStreamL
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -66762,6 +73389,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsSubtitleStreamL
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -66799,6 +73430,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreams(TeaModel):
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -66847,6 +73482,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesFormat(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -66917,6 +73556,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobProperties(TeaModel):
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -66999,6 +73642,10 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJob(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -67068,6 +73715,10 @@ class SubmitMediaInfoJobResponseBody(TeaModel):
             self.media_info_job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_info_job is not None:
             result['MediaInfoJob'] = self.media_info_job.to_map()
@@ -67101,6 +73752,10 @@ class SubmitMediaInfoJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -67143,6 +73798,10 @@ class SubmitPornJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -67196,6 +73855,10 @@ class SubmitPornJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -67228,6 +73891,10 @@ class SubmitPornJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -67282,6 +73949,10 @@ class SubmitSmarttagJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -67359,6 +74030,10 @@ class SubmitSmarttagJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -67391,6 +74066,10 @@ class SubmitSmarttagJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -67433,6 +74112,10 @@ class SubmitSnapshotJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -67500,6 +74183,10 @@ class SubmitSnapshotJobResponseBodySnapshotJobSnapshotConfigTileOut(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.padding is not None:
             result['Padding'] = self.padding
@@ -67561,6 +74248,10 @@ class SubmitSnapshotJobResponseBodySnapshotJobSnapshotConfigOutputFile(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -67602,6 +74293,10 @@ class SubmitSnapshotJobResponseBodySnapshotJobSnapshotConfigTileOutputFile(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -67658,6 +74353,10 @@ class SubmitSnapshotJobResponseBodySnapshotJobSnapshotConfig(TeaModel):
             self.tile_output_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.time is not None:
             result['Time'] = self.time
@@ -67720,6 +74419,10 @@ class SubmitSnapshotJobResponseBodySnapshotJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -67757,6 +74460,10 @@ class SubmitSnapshotJobResponseBodySnapshotJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -67819,6 +74526,10 @@ class SubmitSnapshotJobResponseBodySnapshotJob(TeaModel):
             self.input.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -67892,6 +74603,10 @@ class SubmitSnapshotJobResponseBody(TeaModel):
             self.snapshot_job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -67925,6 +74640,10 @@ class SubmitSnapshotJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -67967,6 +74686,10 @@ class SubmitSubtitleJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -68024,6 +74747,10 @@ class SubmitSubtitleJobResponseBodySubtitleJob(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_id is not None:
             result['JobId'] = self.job_id
@@ -68062,6 +74789,10 @@ class SubmitSubtitleJobResponseBody(TeaModel):
             self.subtitle_job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -68095,6 +74826,10 @@ class SubmitSubtitleJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -68137,6 +74872,10 @@ class SubmitTagJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -68190,6 +74929,10 @@ class SubmitTagJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -68222,6 +74965,10 @@ class SubmitTagJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -68264,6 +75011,10 @@ class SubmitTerrorismJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -68317,6 +75068,10 @@ class SubmitTerrorismJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -68349,6 +75104,10 @@ class SubmitTerrorismJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -68391,6 +75150,10 @@ class SubmitVideoGifJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -68444,6 +75207,10 @@ class SubmitVideoGifJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -68476,6 +75243,10 @@ class SubmitVideoGifJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -68518,6 +75289,10 @@ class SubmitVideoPoseJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -68575,6 +75350,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigDataFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -68616,6 +75395,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfigVideoFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -68656,6 +75439,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobOutputConfig(TeaModel):
             self.video_file.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.data_file is not None:
             result['DataFile'] = self.data_file.to_map()
@@ -68689,6 +75476,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobMNSMessageResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -68726,6 +75517,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobInput(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
@@ -68765,6 +75560,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamList
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.preload_time is not None:
             result['PreloadTime'] = self.preload_time
@@ -68843,6 +75642,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamList
             self.network_cost.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sar is not None:
             result['Sar'] = self.sar
@@ -68962,6 +75765,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsVideoStreamList
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VideoStream'] = []
         if self.video_stream is not None:
@@ -69020,6 +75827,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamList
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -69106,6 +75917,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsAudioStreamList
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['AudioStream'] = []
         if self.audio_stream is not None:
@@ -69152,6 +75967,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamL
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.timebase is not None:
             result['Timebase'] = self.timebase
@@ -69214,6 +76033,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreamsSubtitleStreamL
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubtitleStream'] = []
         if self.subtitle_stream is not None:
@@ -69251,6 +76074,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesStreams(TeaModel):
             self.subtitle_stream_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_stream_list is not None:
             result['VideoStreamList'] = self.video_stream_list.to_map()
@@ -69299,6 +76126,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobPropertiesFormat(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -69369,6 +76200,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJobProperties(TeaModel):
             self.format.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -69447,6 +76282,10 @@ class SubmitVideoPoseJobResponseBodyVideoPoseJob(TeaModel):
             self.properties.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.output_config is not None:
             result['OutputConfig'] = self.output_config.to_map()
@@ -69505,6 +76344,10 @@ class SubmitVideoPoseJobResponseBody(TeaModel):
             self.video_pose_job.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -69538,6 +76381,10 @@ class SubmitVideoPoseJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -69584,6 +76431,10 @@ class SubmitVideoQualityJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user_id is not None:
             result['UserId'] = self.user_id
@@ -69649,6 +76500,10 @@ class SubmitVideoQualityJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -69689,6 +76544,10 @@ class SubmitVideoQualityJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -69731,6 +76590,10 @@ class SubmitVideoSplitJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -69784,6 +76647,10 @@ class SubmitVideoSplitJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -69816,6 +76683,10 @@ class SubmitVideoSplitJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -69858,6 +76729,10 @@ class SubmitVideoSummaryJobRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -69911,6 +76786,10 @@ class SubmitVideoSummaryJobResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -69943,6 +76822,10 @@ class SubmitVideoSummaryJobResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -69989,6 +76872,10 @@ class TagCustomPersonRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -70048,6 +76935,10 @@ class TagCustomPersonResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -70076,6 +76967,10 @@ class TagCustomPersonResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -70114,6 +77009,10 @@ class UnbindInputBucketRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -70157,6 +77056,10 @@ class UnbindInputBucketResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -70185,6 +77088,10 @@ class UnbindInputBucketResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -70221,6 +77128,10 @@ class UnbindOutputBucketRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -70260,6 +77171,10 @@ class UnbindOutputBucketResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -70288,6 +77203,10 @@ class UnbindOutputBucketResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -70328,6 +77247,10 @@ class UnregisterCustomFaceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -70375,6 +77298,10 @@ class UnregisterCustomFaceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -70403,6 +77330,10 @@ class UnregisterCustomFaceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -70447,6 +77378,10 @@ class UpdateAsrPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -70504,6 +77439,10 @@ class UpdateAsrPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
@@ -70540,6 +77479,10 @@ class UpdateAsrPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -70583,6 +77526,10 @@ class UpdateAsrPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -70616,6 +77563,10 @@ class UpdateAsrPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -70654,6 +77605,10 @@ class UpdateCategoryNameRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -70697,6 +77652,10 @@ class UpdateCategoryNameResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -70725,6 +77684,10 @@ class UpdateCategoryNameResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -70769,6 +77732,10 @@ class UpdateCensorPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -70826,6 +77793,10 @@ class UpdateCensorPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -70862,6 +77833,10 @@ class UpdateCensorPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -70905,6 +77880,10 @@ class UpdateCensorPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -70938,6 +77917,10 @@ class UpdateCensorPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -70984,6 +77967,10 @@ class UpdateCoverPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -71045,6 +78032,10 @@ class UpdateCoverPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -71083,6 +78074,10 @@ class UpdateCoverPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -71130,6 +78125,10 @@ class UpdateCoverPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -71163,6 +78162,10 @@ class UpdateCoverPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -71221,6 +78224,10 @@ class UpdateMCTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -71328,6 +78335,10 @@ class UpdateMCTemplateResponseBodyTemplate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logo is not None:
             result['Logo'] = self.logo
@@ -71402,6 +78413,10 @@ class UpdateMCTemplateResponseBody(TeaModel):
             self.template.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -71435,6 +78450,10 @@ class UpdateMCTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -71473,6 +78492,10 @@ class UpdateMcuTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -71518,6 +78541,10 @@ class UpdateMcuTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -71550,6 +78577,10 @@ class UpdateMcuTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -71596,6 +78627,10 @@ class UpdateMediaRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -71655,6 +78690,10 @@ class UpdateMediaResponseBodyMediaTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag is not None:
             result['Tag'] = self.tag
@@ -71680,6 +78719,10 @@ class UpdateMediaResponseBodyMediaFile(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -71707,6 +78750,10 @@ class UpdateMediaResponseBodyMediaRunIdList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.run_id is not None:
             result['RunId'] = self.run_id
@@ -71769,6 +78816,10 @@ class UpdateMediaResponseBodyMedia(TeaModel):
             self.run_id_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -71866,6 +78917,10 @@ class UpdateMediaResponseBody(TeaModel):
             self.media.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -71899,6 +78954,10 @@ class UpdateMediaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -71937,6 +78996,10 @@ class UpdateMediaCategoryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -71980,6 +79043,10 @@ class UpdateMediaCategoryResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -72008,6 +79075,10 @@ class UpdateMediaCategoryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -72046,6 +79117,10 @@ class UpdateMediaCoverRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -72089,6 +79164,10 @@ class UpdateMediaCoverResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -72117,6 +79196,10 @@ class UpdateMediaCoverResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -72155,6 +79238,10 @@ class UpdateMediaPublishStateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -72198,6 +79285,10 @@ class UpdateMediaPublishStateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -72226,6 +79317,10 @@ class UpdateMediaPublishStateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -72264,6 +79359,10 @@ class UpdateMediaWorkflowRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -72317,6 +79416,10 @@ class UpdateMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -72363,6 +79466,10 @@ class UpdateMediaWorkflowResponseBody(TeaModel):
             self.media_workflow.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -72396,6 +79503,10 @@ class UpdateMediaWorkflowResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -72434,6 +79545,10 @@ class UpdateMediaWorkflowTriggerModeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -72487,6 +79602,10 @@ class UpdateMediaWorkflowTriggerModeResponseBodyMediaWorkflow(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -72533,6 +79652,10 @@ class UpdateMediaWorkflowTriggerModeResponseBody(TeaModel):
             self.media_workflow.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -72566,6 +79689,10 @@ class UpdateMediaWorkflowTriggerModeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -72610,6 +79737,10 @@ class UpdatePipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -72671,6 +79802,10 @@ class UpdatePipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.mq_topic is not None:
             result['MqTopic'] = self.mq_topic
@@ -72719,6 +79854,10 @@ class UpdatePipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.speed is not None:
             result['Speed'] = self.speed
@@ -72770,6 +79909,10 @@ class UpdatePipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -72803,6 +79946,10 @@ class UpdatePipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -72847,6 +79994,10 @@ class UpdatePornPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -72904,6 +80055,10 @@ class UpdatePornPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -72940,6 +80095,10 @@ class UpdatePornPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -72983,6 +80142,10 @@ class UpdatePornPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -73016,6 +80179,10 @@ class UpdatePornPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -73064,6 +80231,10 @@ class UpdateSmarttagTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -73127,6 +80298,10 @@ class UpdateSmarttagTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -73155,6 +80330,10 @@ class UpdateSmarttagTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -73203,6 +80382,10 @@ class UpdateTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -73268,6 +80451,10 @@ class UpdateTemplateResponseBodyTemplateVideoBitrateBnd(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max is not None:
             result['Max'] = self.max
@@ -73338,6 +80525,10 @@ class UpdateTemplateResponseBodyTemplateVideo(TeaModel):
             self.bitrate_bnd.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.long_short_mode is not None:
             result['LongShortMode'] = self.long_short_mode
@@ -73460,6 +80651,10 @@ class UpdateTemplateResponseBodyTemplateTransConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.is_check_audio_bitrate is not None:
             result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
@@ -73511,6 +80706,10 @@ class UpdateTemplateResponseBodyTemplateMuxConfigWebp(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.loop is not None:
             result['Loop'] = self.loop
@@ -73540,6 +80739,10 @@ class UpdateTemplateResponseBodyTemplateMuxConfigGif(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.final_delay is not None:
             result['FinalDelay'] = self.final_delay
@@ -73575,6 +80778,10 @@ class UpdateTemplateResponseBodyTemplateMuxConfigSegment(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -73607,6 +80814,10 @@ class UpdateTemplateResponseBodyTemplateMuxConfig(TeaModel):
             self.segment.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.webp is not None:
             result['Webp'] = self.webp.to_map()
@@ -73653,6 +80864,10 @@ class UpdateTemplateResponseBodyTemplateAudio(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.profile is not None:
             result['Profile'] = self.profile
@@ -73700,6 +80915,10 @@ class UpdateTemplateResponseBodyTemplateContainer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format is not None:
             result['Format'] = self.format
@@ -73746,6 +80965,10 @@ class UpdateTemplateResponseBodyTemplate(TeaModel):
             self.container.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video is not None:
             result['Video'] = self.video.to_map()
@@ -73805,6 +81028,10 @@ class UpdateTemplateResponseBody(TeaModel):
             self.template.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -73838,6 +81065,10 @@ class UpdateTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -73882,6 +81113,10 @@ class UpdateTerrorismPipelineRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -73939,6 +81174,10 @@ class UpdateTerrorismPipelineResponseBodyPipelineNotifyConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.topic is not None:
             result['Topic'] = self.topic
@@ -73975,6 +81214,10 @@ class UpdateTerrorismPipelineResponseBodyPipeline(TeaModel):
             self.notify_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.state is not None:
             result['State'] = self.state
@@ -74018,6 +81261,10 @@ class UpdateTerrorismPipelineResponseBody(TeaModel):
             self.pipeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -74051,6 +81298,10 @@ class UpdateTerrorismPipelineResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -74091,6 +81342,10 @@ class UpdateWaterMarkTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -74144,6 +81399,10 @@ class UpdateWaterMarkTemplateResponseBodyWaterMarkTemplateRatioRefer(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dx is not None:
             result['Dx'] = self.dx
@@ -74181,6 +81440,10 @@ class UpdateWaterMarkTemplateResponseBodyWaterMarkTemplateTimeline(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.start is not None:
             result['Start'] = self.start
@@ -74231,6 +81494,10 @@ class UpdateWaterMarkTemplateResponseBodyWaterMarkTemplate(TeaModel):
             self.timeline.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -74299,6 +81566,10 @@ class UpdateWaterMarkTemplateResponseBody(TeaModel):
             self.water_mark_template.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.water_mark_template is not None:
             result['WaterMarkTemplate'] = self.water_mark_template.to_map()
@@ -74332,6 +81603,10 @@ class UpdateWaterMarkTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
