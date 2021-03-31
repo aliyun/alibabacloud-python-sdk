@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -49,7 +50,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CancelUpdateStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CancelUpdateStackResponse(),
             self.do_rpcrequest('CancelUpdateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -62,7 +64,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CancelUpdateStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CancelUpdateStackResponse(),
             await self.do_rpcrequest_async('CancelUpdateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -89,7 +92,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ContinueCreateStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ContinueCreateStackResponse(),
             self.do_rpcrequest('ContinueCreateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -102,7 +106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ContinueCreateStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ContinueCreateStackResponse(),
             await self.do_rpcrequest_async('ContinueCreateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -129,7 +134,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateChangeSetResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateChangeSetResponse(),
             self.do_rpcrequest('CreateChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -142,7 +148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateChangeSetResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateChangeSetResponse(),
             await self.do_rpcrequest_async('CreateChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -169,7 +176,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateStackResponse(),
             self.do_rpcrequest('CreateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -182,7 +190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateStackResponse(),
             await self.do_rpcrequest_async('CreateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -209,7 +218,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateStackGroupResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateStackGroupResponse(),
             self.do_rpcrequest('CreateStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -222,7 +232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateStackGroupResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateStackGroupResponse(),
             await self.do_rpcrequest_async('CreateStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -257,7 +268,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateStackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateStackInstancesResponse(),
             self.do_rpcrequest('CreateStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -278,7 +290,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateStackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateStackInstancesResponse(),
             await self.do_rpcrequest_async('CreateStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -305,7 +318,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateTemplateResponse(),
             self.do_rpcrequest('CreateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -318,7 +332,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.CreateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.CreateTemplateResponse(),
             await self.do_rpcrequest_async('CreateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -345,7 +360,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteChangeSetResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteChangeSetResponse(),
             self.do_rpcrequest('DeleteChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -358,7 +374,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteChangeSetResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteChangeSetResponse(),
             await self.do_rpcrequest_async('DeleteChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -385,7 +402,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteStackResponse(),
             self.do_rpcrequest('DeleteStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -398,7 +416,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteStackResponse(),
             await self.do_rpcrequest_async('DeleteStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -425,7 +444,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteStackGroupResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteStackGroupResponse(),
             self.do_rpcrequest('DeleteStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -438,7 +458,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteStackGroupResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteStackGroupResponse(),
             await self.do_rpcrequest_async('DeleteStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -473,7 +494,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteStackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteStackInstancesResponse(),
             self.do_rpcrequest('DeleteStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -494,7 +516,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteStackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteStackInstancesResponse(),
             await self.do_rpcrequest_async('DeleteStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -521,7 +544,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteTemplateResponse(),
             self.do_rpcrequest('DeleteTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -534,7 +558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DeleteTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DeleteTemplateResponse(),
             await self.do_rpcrequest_async('DeleteTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -561,7 +586,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DescribeRegionsResponse(),
             self.do_rpcrequest('DescribeRegions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -574,7 +600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DescribeRegionsResponse(),
             await self.do_rpcrequest_async('DescribeRegions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -601,7 +628,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DetectStackDriftResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DetectStackDriftResponse(),
             self.do_rpcrequest('DetectStackDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -614,7 +642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DetectStackDriftResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DetectStackDriftResponse(),
             await self.do_rpcrequest_async('DetectStackDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -645,7 +674,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DetectStackGroupDriftResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DetectStackGroupDriftResponse(),
             self.do_rpcrequest('DetectStackGroupDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -662,7 +692,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DetectStackGroupDriftResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DetectStackGroupDriftResponse(),
             await self.do_rpcrequest_async('DetectStackGroupDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -689,7 +720,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DetectStackResourceDriftResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DetectStackResourceDriftResponse(),
             self.do_rpcrequest('DetectStackResourceDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -702,7 +734,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.DetectStackResourceDriftResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.DetectStackResourceDriftResponse(),
             await self.do_rpcrequest_async('DetectStackResourceDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -729,7 +762,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ExecuteChangeSetResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ExecuteChangeSetResponse(),
             self.do_rpcrequest('ExecuteChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -742,7 +776,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ExecuteChangeSetResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ExecuteChangeSetResponse(),
             await self.do_rpcrequest_async('ExecuteChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -769,7 +804,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GenerateTemplatePolicyResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GenerateTemplatePolicyResponse(),
             self.do_rpcrequest('GenerateTemplatePolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -782,7 +818,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GenerateTemplatePolicyResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GenerateTemplatePolicyResponse(),
             await self.do_rpcrequest_async('GenerateTemplatePolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -809,7 +846,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetChangeSetResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetChangeSetResponse(),
             self.do_rpcrequest('GetChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -822,7 +860,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetChangeSetResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetChangeSetResponse(),
             await self.do_rpcrequest_async('GetChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -849,7 +888,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetResourceTypeResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetResourceTypeResponse(),
             self.do_rpcrequest('GetResourceType', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -862,7 +902,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetResourceTypeResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetResourceTypeResponse(),
             await self.do_rpcrequest_async('GetResourceType', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -889,7 +930,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetResourceTypeTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetResourceTypeTemplateResponse(),
             self.do_rpcrequest('GetResourceTypeTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -902,7 +944,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetResourceTypeTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetResourceTypeTemplateResponse(),
             await self.do_rpcrequest_async('GetResourceTypeTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -929,7 +972,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackResponse(),
             self.do_rpcrequest('GetStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -942,7 +986,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackResponse(),
             await self.do_rpcrequest_async('GetStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -969,7 +1014,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackDriftDetectionStatusResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackDriftDetectionStatusResponse(),
             self.do_rpcrequest('GetStackDriftDetectionStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -982,7 +1028,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackDriftDetectionStatusResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackDriftDetectionStatusResponse(),
             await self.do_rpcrequest_async('GetStackDriftDetectionStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1009,7 +1056,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackGroupResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackGroupResponse(),
             self.do_rpcrequest('GetStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1022,7 +1070,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackGroupResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackGroupResponse(),
             await self.do_rpcrequest_async('GetStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1049,7 +1098,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackGroupOperationResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackGroupOperationResponse(),
             self.do_rpcrequest('GetStackGroupOperation', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1062,7 +1112,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackGroupOperationResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackGroupOperationResponse(),
             await self.do_rpcrequest_async('GetStackGroupOperation', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1089,7 +1140,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackInstanceResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackInstanceResponse(),
             self.do_rpcrequest('GetStackInstance', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1102,7 +1154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackInstanceResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackInstanceResponse(),
             await self.do_rpcrequest_async('GetStackInstance', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1129,7 +1182,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackPolicyResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackPolicyResponse(),
             self.do_rpcrequest('GetStackPolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1142,7 +1196,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackPolicyResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackPolicyResponse(),
             await self.do_rpcrequest_async('GetStackPolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1169,7 +1224,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackResourceResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackResourceResponse(),
             self.do_rpcrequest('GetStackResource', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1182,7 +1238,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetStackResourceResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetStackResourceResponse(),
             await self.do_rpcrequest_async('GetStackResource', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1209,7 +1266,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetTemplateResponse(),
             self.do_rpcrequest('GetTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1222,7 +1280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetTemplateResponse(),
             await self.do_rpcrequest_async('GetTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1249,7 +1308,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetTemplateEstimateCostResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetTemplateEstimateCostResponse(),
             self.do_rpcrequest('GetTemplateEstimateCost', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1262,7 +1322,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetTemplateEstimateCostResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetTemplateEstimateCostResponse(),
             await self.do_rpcrequest_async('GetTemplateEstimateCost', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1289,7 +1350,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetTemplateSummaryResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetTemplateSummaryResponse(),
             self.do_rpcrequest('GetTemplateSummary', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1302,7 +1364,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.GetTemplateSummaryResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.GetTemplateSummaryResponse(),
             await self.do_rpcrequest_async('GetTemplateSummary', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1329,7 +1392,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListChangeSetsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListChangeSetsResponse(),
             self.do_rpcrequest('ListChangeSets', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1342,7 +1406,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListChangeSetsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListChangeSetsResponse(),
             await self.do_rpcrequest_async('ListChangeSets', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1365,7 +1430,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListResourceTypesResponse:
         req = open_api_models.OpenApiRequest()
-        return ros20190910_models.ListResourceTypesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListResourceTypesResponse(),
             self.do_rpcrequest('ListResourceTypes', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1374,7 +1440,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListResourceTypesResponse:
         req = open_api_models.OpenApiRequest()
-        return ros20190910_models.ListResourceTypesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListResourceTypesResponse(),
             await self.do_rpcrequest_async('ListResourceTypes', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1395,7 +1462,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackEventsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackEventsResponse(),
             self.do_rpcrequest('ListStackEvents', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1408,7 +1476,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackEventsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackEventsResponse(),
             await self.do_rpcrequest_async('ListStackEvents', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1435,7 +1504,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackGroupOperationResultsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackGroupOperationResultsResponse(),
             self.do_rpcrequest('ListStackGroupOperationResults', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1448,7 +1518,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackGroupOperationResultsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackGroupOperationResultsResponse(),
             await self.do_rpcrequest_async('ListStackGroupOperationResults', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1475,7 +1546,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackGroupOperationsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackGroupOperationsResponse(),
             self.do_rpcrequest('ListStackGroupOperations', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1488,7 +1560,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackGroupOperationsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackGroupOperationsResponse(),
             await self.do_rpcrequest_async('ListStackGroupOperations', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1515,7 +1588,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackGroupsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackGroupsResponse(),
             self.do_rpcrequest('ListStackGroups', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1528,7 +1602,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackGroupsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackGroupsResponse(),
             await self.do_rpcrequest_async('ListStackGroups', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1555,7 +1630,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackInstancesResponse(),
             self.do_rpcrequest('ListStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1568,7 +1644,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackInstancesResponse(),
             await self.do_rpcrequest_async('ListStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1595,7 +1672,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackOperationRisksResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackOperationRisksResponse(),
             self.do_rpcrequest('ListStackOperationRisks', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1608,7 +1686,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackOperationRisksResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackOperationRisksResponse(),
             await self.do_rpcrequest_async('ListStackOperationRisks', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1635,7 +1714,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackResourceDriftsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackResourceDriftsResponse(),
             self.do_rpcrequest('ListStackResourceDrifts', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1648,7 +1728,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackResourceDriftsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackResourceDriftsResponse(),
             await self.do_rpcrequest_async('ListStackResourceDrifts', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1675,7 +1756,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackResourcesResponse(),
             self.do_rpcrequest('ListStackResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1688,7 +1770,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStackResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStackResourcesResponse(),
             await self.do_rpcrequest_async('ListStackResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1715,7 +1798,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStacksResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStacksResponse(),
             self.do_rpcrequest('ListStacks', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1728,7 +1812,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListStacksResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListStacksResponse(),
             await self.do_rpcrequest_async('ListStacks', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1755,7 +1840,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTagKeysResponse(),
             self.do_rpcrequest('ListTagKeys', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1768,7 +1854,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTagKeysResponse(),
             await self.do_rpcrequest_async('ListTagKeys', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1795,7 +1882,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTagResourcesResponse(),
             self.do_rpcrequest('ListTagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1808,7 +1896,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTagResourcesResponse(),
             await self.do_rpcrequest_async('ListTagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1835,7 +1924,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTagValuesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTagValuesResponse(),
             self.do_rpcrequest('ListTagValues', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1848,7 +1938,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTagValuesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTagValuesResponse(),
             await self.do_rpcrequest_async('ListTagValues', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1875,7 +1966,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTemplatesResponse(),
             self.do_rpcrequest('ListTemplates', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1888,7 +1980,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTemplatesResponse(),
             await self.do_rpcrequest_async('ListTemplates', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1915,7 +2008,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTemplateVersionsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTemplateVersionsResponse(),
             self.do_rpcrequest('ListTemplateVersions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1928,7 +2022,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ListTemplateVersionsResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ListTemplateVersionsResponse(),
             await self.do_rpcrequest_async('ListTemplateVersions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1946,6 +2041,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_template_versions_with_options_async(request, runtime)
 
+    def move_resource_group_with_options(
+        self,
+        request: ros20190910_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.MoveResourceGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ros20190910_models.MoveResourceGroupResponse(),
+            self.do_rpcrequest('MoveResourceGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def move_resource_group_with_options_async(
+        self,
+        request: ros20190910_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.MoveResourceGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ros20190910_models.MoveResourceGroupResponse(),
+            await self.do_rpcrequest_async('MoveResourceGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def move_resource_group(
+        self,
+        request: ros20190910_models.MoveResourceGroupRequest,
+    ) -> ros20190910_models.MoveResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.move_resource_group_with_options(request, runtime)
+
+    async def move_resource_group_async(
+        self,
+        request: ros20190910_models.MoveResourceGroupRequest,
+    ) -> ros20190910_models.MoveResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.move_resource_group_with_options_async(request, runtime)
+
     def preview_stack_with_options(
         self,
         request: ros20190910_models.PreviewStackRequest,
@@ -1955,7 +2092,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.PreviewStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.PreviewStackResponse(),
             self.do_rpcrequest('PreviewStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1968,7 +2106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.PreviewStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.PreviewStackResponse(),
             await self.do_rpcrequest_async('PreviewStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1995,7 +2134,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.SetDeletionProtectionResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.SetDeletionProtectionResponse(),
             self.do_rpcrequest('SetDeletionProtection', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2008,7 +2148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.SetDeletionProtectionResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.SetDeletionProtectionResponse(),
             await self.do_rpcrequest_async('SetDeletionProtection', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2035,7 +2176,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.SetStackPolicyResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.SetStackPolicyResponse(),
             self.do_rpcrequest('SetStackPolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2048,7 +2190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.SetStackPolicyResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.SetStackPolicyResponse(),
             await self.do_rpcrequest_async('SetStackPolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2075,7 +2218,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.SetTemplatePermissionResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.SetTemplatePermissionResponse(),
             self.do_rpcrequest('SetTemplatePermission', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2088,7 +2232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.SetTemplatePermissionResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.SetTemplatePermissionResponse(),
             await self.do_rpcrequest_async('SetTemplatePermission', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2115,7 +2260,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.SignalResourceResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.SignalResourceResponse(),
             self.do_rpcrequest('SignalResource', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2128,7 +2274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.SignalResourceResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.SignalResourceResponse(),
             await self.do_rpcrequest_async('SignalResource', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2155,7 +2302,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.StopStackGroupOperationResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.StopStackGroupOperationResponse(),
             self.do_rpcrequest('StopStackGroupOperation', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2168,7 +2316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.StopStackGroupOperationResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.StopStackGroupOperationResponse(),
             await self.do_rpcrequest_async('StopStackGroupOperation', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2195,7 +2344,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2208,7 +2358,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2235,7 +2386,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2248,7 +2400,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2275,7 +2428,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateStackResponse(),
             self.do_rpcrequest('UpdateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2288,7 +2442,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateStackResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateStackResponse(),
             await self.do_rpcrequest_async('UpdateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2323,7 +2478,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateStackGroupResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateStackGroupResponse(),
             self.do_rpcrequest('UpdateStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2344,7 +2500,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateStackGroupResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateStackGroupResponse(),
             await self.do_rpcrequest_async('UpdateStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2379,7 +2536,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateStackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateStackInstancesResponse(),
             self.do_rpcrequest('UpdateStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2400,7 +2558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateStackInstancesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateStackInstancesResponse(),
             await self.do_rpcrequest_async('UpdateStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2427,7 +2586,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateStackTemplateByResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateStackTemplateByResourcesResponse(),
             self.do_rpcrequest('UpdateStackTemplateByResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2440,7 +2600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateStackTemplateByResourcesResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateStackTemplateByResourcesResponse(),
             await self.do_rpcrequest_async('UpdateStackTemplateByResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2467,7 +2628,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateTemplateResponse(),
             self.do_rpcrequest('UpdateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2480,7 +2642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.UpdateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.UpdateTemplateResponse(),
             await self.do_rpcrequest_async('UpdateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2507,7 +2670,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ValidateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ValidateTemplateResponse(),
             self.do_rpcrequest('ValidateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2520,7 +2684,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ros20190910_models.ValidateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            ros20190910_models.ValidateTemplateResponse(),
             await self.do_rpcrequest_async('ValidateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 

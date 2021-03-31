@@ -1,3 +1,6 @@
+2021-03-31 Version: 2.0.4
+- Generated python 2019-09-10 for ROS.
+
 2021-01-22 Version: 2.0.3
 - Generated python 2019-09-10 for ROS.
 

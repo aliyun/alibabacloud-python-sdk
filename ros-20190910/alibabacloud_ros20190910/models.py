@@ -19,6 +19,10 @@ class CancelUpdateStackRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -50,6 +54,10 @@ class CancelUpdateStackResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -78,6 +86,10 @@ class CancelUpdateStackResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -108,6 +120,10 @@ class ContinueCreateStackRequestParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -158,6 +174,10 @@ class ContinueCreateStackRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -228,6 +248,10 @@ class ContinueCreateStackResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -260,6 +284,10 @@ class ContinueCreateStackResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -290,6 +318,10 @@ class CreateChangeSetRequestParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -321,6 +353,10 @@ class CreateChangeSetRequestResourcesToImport(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_identifier is not None:
             result['ResourceIdentifier'] = self.resource_identifier
@@ -345,7 +381,6 @@ class CreateChangeSetRequest(TeaModel):
     def __init__(
         self,
         stack_id: str = None,
-        channel_id: str = None,
         stack_policy_url: str = None,
         stack_policy_body: str = None,
         stack_name: str = None,
@@ -357,10 +392,7 @@ class CreateChangeSetRequest(TeaModel):
         template_url: str = None,
         stack_policy_during_update_url: str = None,
         template_body: str = None,
-        update_allow_policy: str = None,
         timeout_in_minutes: int = None,
-        activity_id: str = None,
-        order_source: str = None,
         disable_rollback: bool = None,
         change_set_name: str = None,
         stack_policy_during_update_body: str = None,
@@ -373,7 +405,6 @@ class CreateChangeSetRequest(TeaModel):
         resources_to_import: List[CreateChangeSetRequestResourcesToImport] = None,
     ):
         self.stack_id = stack_id
-        self.channel_id = channel_id
         self.stack_policy_url = stack_policy_url
         self.stack_policy_body = stack_policy_body
         self.stack_name = stack_name
@@ -385,10 +416,7 @@ class CreateChangeSetRequest(TeaModel):
         self.template_url = template_url
         self.stack_policy_during_update_url = stack_policy_during_update_url
         self.template_body = template_body
-        self.update_allow_policy = update_allow_policy
         self.timeout_in_minutes = timeout_in_minutes
-        self.activity_id = activity_id
-        self.order_source = order_source
         self.disable_rollback = disable_rollback
         self.change_set_name = change_set_name
         self.stack_policy_during_update_body = stack_policy_during_update_body
@@ -411,11 +439,13 @@ class CreateChangeSetRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
         if self.stack_policy_url is not None:
             result['StackPolicyURL'] = self.stack_policy_url
         if self.stack_policy_body is not None:
@@ -438,14 +468,8 @@ class CreateChangeSetRequest(TeaModel):
             result['StackPolicyDuringUpdateURL'] = self.stack_policy_during_update_url
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
-        if self.update_allow_policy is not None:
-            result['UpdateAllowPolicy'] = self.update_allow_policy
         if self.timeout_in_minutes is not None:
             result['TimeoutInMinutes'] = self.timeout_in_minutes
-        if self.activity_id is not None:
-            result['ActivityId'] = self.activity_id
-        if self.order_source is not None:
-            result['OrderSource'] = self.order_source
         if self.disable_rollback is not None:
             result['DisableRollback'] = self.disable_rollback
         if self.change_set_name is not None:
@@ -476,8 +500,6 @@ class CreateChangeSetRequest(TeaModel):
         m = m or dict()
         if m.get('StackId') is not None:
             self.stack_id = m.get('StackId')
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
         if m.get('StackPolicyURL') is not None:
             self.stack_policy_url = m.get('StackPolicyURL')
         if m.get('StackPolicyBody') is not None:
@@ -500,14 +522,8 @@ class CreateChangeSetRequest(TeaModel):
             self.stack_policy_during_update_url = m.get('StackPolicyDuringUpdateURL')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
-        if m.get('UpdateAllowPolicy') is not None:
-            self.update_allow_policy = m.get('UpdateAllowPolicy')
         if m.get('TimeoutInMinutes') is not None:
             self.timeout_in_minutes = m.get('TimeoutInMinutes')
-        if m.get('ActivityId') is not None:
-            self.activity_id = m.get('ActivityId')
-        if m.get('OrderSource') is not None:
-            self.order_source = m.get('OrderSource')
         if m.get('DisableRollback') is not None:
             self.disable_rollback = m.get('DisableRollback')
         if m.get('ChangeSetName') is not None:
@@ -552,6 +568,10 @@ class CreateChangeSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.change_set_id is not None:
             result['ChangeSetId'] = self.change_set_id
@@ -588,6 +608,10 @@ class CreateChangeSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -618,6 +642,10 @@ class CreateStackRequestParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -647,6 +675,10 @@ class CreateStackRequestTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -667,15 +699,12 @@ class CreateStackRequest(TeaModel):
     def __init__(
         self,
         disable_rollback: bool = None,
-        channel_id: str = None,
         template_body: str = None,
         stack_policy_url: str = None,
         timeout_in_minutes: int = None,
         stack_policy_body: str = None,
         stack_name: str = None,
         region_id: str = None,
-        activity_id: str = None,
-        order_source: str = None,
         client_token: str = None,
         template_url: str = None,
         ram_role_name: str = None,
@@ -686,17 +715,15 @@ class CreateStackRequest(TeaModel):
         parameters: List[CreateStackRequestParameters] = None,
         notification_urls: List[str] = None,
         tags: List[CreateStackRequestTags] = None,
+        resource_group_id: str = None,
     ):
         self.disable_rollback = disable_rollback
-        self.channel_id = channel_id
         self.template_body = template_body
         self.stack_policy_url = stack_policy_url
         self.timeout_in_minutes = timeout_in_minutes
         self.stack_policy_body = stack_policy_body
         self.stack_name = stack_name
         self.region_id = region_id
-        self.activity_id = activity_id
-        self.order_source = order_source
         self.client_token = client_token
         self.template_url = template_url
         self.ram_role_name = ram_role_name
@@ -707,6 +734,7 @@ class CreateStackRequest(TeaModel):
         self.parameters = parameters
         self.notification_urls = notification_urls
         self.tags = tags
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.parameters:
@@ -719,11 +747,13 @@ class CreateStackRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.disable_rollback is not None:
             result['DisableRollback'] = self.disable_rollback
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.stack_policy_url is not None:
@@ -736,10 +766,6 @@ class CreateStackRequest(TeaModel):
             result['StackName'] = self.stack_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.activity_id is not None:
-            result['ActivityId'] = self.activity_id
-        if self.order_source is not None:
-            result['OrderSource'] = self.order_source
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.template_url is not None:
@@ -764,14 +790,14 @@ class CreateStackRequest(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DisableRollback') is not None:
             self.disable_rollback = m.get('DisableRollback')
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('StackPolicyURL') is not None:
@@ -784,10 +810,6 @@ class CreateStackRequest(TeaModel):
             self.stack_name = m.get('StackName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('ActivityId') is not None:
-            self.activity_id = m.get('ActivityId')
-        if m.get('OrderSource') is not None:
-            self.order_source = m.get('OrderSource')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('TemplateURL') is not None:
@@ -814,6 +836,8 @@ class CreateStackRequest(TeaModel):
             for k in m.get('Tags'):
                 temp_model = CreateStackRequestTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -830,6 +854,10 @@ class CreateStackResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -862,6 +890,10 @@ class CreateStackResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -892,6 +924,10 @@ class CreateStackGroupRequestParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -922,6 +958,7 @@ class CreateStackGroupRequest(TeaModel):
         template_id: str = None,
         template_version: str = None,
         parameters: List[CreateStackGroupRequestParameters] = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -934,6 +971,7 @@ class CreateStackGroupRequest(TeaModel):
         self.template_id = template_id
         self.template_version = template_version
         self.parameters = parameters
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.parameters:
@@ -942,6 +980,10 @@ class CreateStackGroupRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -967,6 +1009,8 @@ class CreateStackGroupRequest(TeaModel):
         if self.parameters is not None:
             for k in self.parameters:
                 result['Parameters'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -996,6 +1040,8 @@ class CreateStackGroupRequest(TeaModel):
             for k in m.get('Parameters'):
                 temp_model = CreateStackGroupRequestParameters()
                 self.parameters.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -1012,6 +1058,10 @@ class CreateStackGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1044,6 +1094,10 @@ class CreateStackGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1074,6 +1128,10 @@ class CreateStackInstancesRequestParameterOverrides(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -1122,6 +1180,10 @@ class CreateStackInstancesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1188,6 +1250,10 @@ class CreateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -1236,6 +1302,10 @@ class CreateStackInstancesShrinkRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1302,6 +1372,10 @@ class CreateStackInstancesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1334,6 +1408,10 @@ class CreateStackInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1358,16 +1436,22 @@ class CreateTemplateRequest(TeaModel):
         description: str = None,
         template_body: str = None,
         template_name: str = None,
+        resource_group_id: str = None,
     ):
         self.template_url = template_url
         self.description = description
         self.template_body = template_body
         self.template_name = template_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
@@ -1377,6 +1461,8 @@ class CreateTemplateRequest(TeaModel):
             result['TemplateBody'] = self.template_body
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1389,6 +1475,8 @@ class CreateTemplateRequest(TeaModel):
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -1405,6 +1493,10 @@ class CreateTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1437,6 +1529,10 @@ class CreateTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1467,6 +1563,10 @@ class DeleteChangeSetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1494,6 +1594,10 @@ class DeleteChangeSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1522,6 +1626,10 @@ class DeleteChangeSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1558,6 +1666,10 @@ class DeleteStackRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -1597,6 +1709,10 @@ class DeleteStackResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1625,6 +1741,10 @@ class DeleteStackResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1655,6 +1775,10 @@ class DeleteStackGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1682,6 +1806,10 @@ class DeleteStackGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1710,6 +1838,10 @@ class DeleteStackGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1752,6 +1884,10 @@ class DeleteStackInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1817,6 +1953,10 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -1870,6 +2010,10 @@ class DeleteStackInstancesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1902,6 +2046,10 @@ class DeleteStackInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1930,6 +2078,10 @@ class DeleteTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
@@ -1953,6 +2105,10 @@ class DeleteTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1981,6 +2137,10 @@ class DeleteTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2009,6 +2169,10 @@ class DescribeRegionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
@@ -2036,6 +2200,10 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
@@ -2072,6 +2240,10 @@ class DescribeRegionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2109,6 +2281,10 @@ class DescribeRegionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2143,6 +2319,10 @@ class DetectStackDriftRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -2180,6 +2360,10 @@ class DetectStackDriftResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2212,6 +2396,10 @@ class DetectStackDriftResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2246,6 +2434,10 @@ class DetectStackGroupDriftRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
@@ -2287,6 +2479,10 @@ class DetectStackGroupDriftShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
@@ -2324,6 +2520,10 @@ class DetectStackGroupDriftResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2356,6 +2556,10 @@ class DetectStackGroupDriftResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2390,6 +2594,10 @@ class DetectStackResourceDriftRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -2431,6 +2639,10 @@ class DetectStackResourceDriftResponseBodyPropertyDifferences(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.actual_value is not None:
             result['ActualValue'] = self.actual_value
@@ -2487,6 +2699,10 @@ class DetectStackResourceDriftResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logical_resource_id is not None:
             result['LogicalResourceId'] = self.logical_resource_id
@@ -2556,6 +2772,10 @@ class DetectStackResourceDriftResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2588,6 +2808,10 @@ class ExecuteChangeSetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -2619,6 +2843,10 @@ class ExecuteChangeSetResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2647,6 +2875,10 @@ class ExecuteChangeSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2681,6 +2913,10 @@ class GenerateTemplatePolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
@@ -2720,6 +2956,10 @@ class GenerateTemplatePolicyResponseBodyPolicyStatement(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.effect is not None:
             result['Effect'] = self.effect
@@ -2756,6 +2996,10 @@ class GenerateTemplatePolicyResponseBodyPolicy(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.version is not None:
             result['Version'] = self.version
@@ -2791,6 +3035,10 @@ class GenerateTemplatePolicyResponseBody(TeaModel):
             self.policy.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.policy is not None:
             result['Policy'] = self.policy.to_map()
@@ -2824,6 +3072,10 @@ class GenerateTemplatePolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2856,6 +3108,10 @@ class GetChangeSetRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.show_template is not None:
             result['ShowTemplate'] = self.show_template
@@ -2889,6 +3145,10 @@ class GetChangeSetResponseBodyParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -2951,6 +3211,10 @@ class GetChangeSetResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -3048,6 +3312,10 @@ class GetChangeSetResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3076,6 +3344,10 @@ class GetResourceTypeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -3107,6 +3379,10 @@ class GetResourceTypeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3151,6 +3427,10 @@ class GetResourceTypeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3179,6 +3459,10 @@ class GetResourceTypeTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -3204,6 +3488,10 @@ class GetResourceTypeTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3236,6 +3524,10 @@ class GetResourceTypeTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3259,15 +3551,21 @@ class GetStackRequest(TeaModel):
         stack_id: str = None,
         region_id: str = None,
         client_token: str = None,
+        output_option: str = None,
     ):
         self.stack_id = stack_id
         self.region_id = region_id
         self.client_token = client_token
+        self.output_option = output_option
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -3275,6 +3573,8 @@ class GetStackRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.output_option is not None:
+            result['OutputOption'] = self.output_option
         return result
 
     def from_map(self, m: dict = None):
@@ -3285,6 +3585,8 @@ class GetStackRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('OutputOption') is not None:
+            self.output_option = m.get('OutputOption')
         return self
 
 
@@ -3301,6 +3603,10 @@ class GetStackResponseBodyParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -3330,6 +3636,10 @@ class GetStackResponseBodyTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -3372,6 +3682,7 @@ class GetStackResponseBody(TeaModel):
         tags: List[GetStackResponseBodyTags] = None,
         timeout_in_minutes: int = None,
         stack_id: str = None,
+        resource_group_id: str = None,
     ):
         self.status = status
         self.description = description
@@ -3396,6 +3707,7 @@ class GetStackResponseBody(TeaModel):
         self.tags = tags
         self.timeout_in_minutes = timeout_in_minutes
         self.stack_id = stack_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.parameters:
@@ -3408,6 +3720,10 @@ class GetStackResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -3459,6 +3775,8 @@ class GetStackResponseBody(TeaModel):
             result['TimeoutInMinutes'] = self.timeout_in_minutes
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3515,6 +3833,8 @@ class GetStackResponseBody(TeaModel):
             self.timeout_in_minutes = m.get('TimeoutInMinutes')
         if m.get('StackId') is not None:
             self.stack_id = m.get('StackId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -3534,6 +3854,10 @@ class GetStackResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3564,6 +3888,10 @@ class GetStackDriftDetectionStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -3605,6 +3933,10 @@ class GetStackDriftDetectionStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3661,6 +3993,10 @@ class GetStackDriftDetectionStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3691,6 +4027,10 @@ class GetStackGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -3720,6 +4060,10 @@ class GetStackGroupResponseBodyStackGroupParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -3763,6 +4107,10 @@ class GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail(TeaModel
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.drift_detection_time is not None:
             result['DriftDetectionTime'] = self.drift_detection_time
@@ -3819,6 +4167,7 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         execution_role_name: str = None,
         template_body: str = None,
         stack_group_drift_detection_detail: GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail = None,
+        resource_group_id: str = None,
     ):
         self.stack_group_id = stack_group_id
         self.status = status
@@ -3829,6 +4178,7 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         self.execution_role_name = execution_role_name
         self.template_body = template_body
         self.stack_group_drift_detection_detail = stack_group_drift_detection_detail
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.parameters:
@@ -3839,6 +4189,10 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
             self.stack_group_drift_detection_detail.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_group_id is not None:
             result['StackGroupId'] = self.stack_group_id
@@ -3860,6 +4214,8 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
             result['TemplateBody'] = self.template_body
         if self.stack_group_drift_detection_detail is not None:
             result['StackGroupDriftDetectionDetail'] = self.stack_group_drift_detection_detail.to_map()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3886,6 +4242,8 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         if m.get('StackGroupDriftDetectionDetail') is not None:
             temp_model = GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail()
             self.stack_group_drift_detection_detail = temp_model.from_map(m['StackGroupDriftDetectionDetail'])
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -3903,6 +4261,10 @@ class GetStackGroupResponseBody(TeaModel):
             self.stack_group.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3936,6 +4298,10 @@ class GetStackGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3966,6 +4332,10 @@ class GetStackGroupOperationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -4009,6 +4379,10 @@ class GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetect
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.drift_detection_time is not None:
             result['DriftDetectionTime'] = self.drift_detection_time
@@ -4072,6 +4446,10 @@ class GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences(
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.max_concurrent_count is not None:
             result['MaxConcurrentCount'] = self.max_concurrent_count
@@ -4138,6 +4516,10 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
             self.operation_preferences.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4214,6 +4596,10 @@ class GetStackGroupOperationResponseBody(TeaModel):
             self.stack_group_operation.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4247,6 +4633,10 @@ class GetStackGroupOperationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4281,6 +4671,10 @@ class GetStackInstanceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -4318,6 +4712,10 @@ class GetStackInstanceResponseBodyStackInstanceParameterOverrides(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -4366,6 +4764,10 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4433,6 +4835,10 @@ class GetStackInstanceResponseBody(TeaModel):
             self.stack_instance.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4466,6 +4872,10 @@ class GetStackInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4496,6 +4906,10 @@ class GetStackPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -4525,6 +4939,10 @@ class GetStackPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4557,6 +4975,10 @@ class GetStackPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4593,6 +5015,10 @@ class GetStackResourceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -4660,6 +5086,10 @@ class GetStackResourceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -4744,6 +5174,10 @@ class GetStackResourceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4786,6 +5220,10 @@ class GetTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -4843,6 +5281,10 @@ class GetTemplateResponseBodyPermissions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.version_option is not None:
             result['VersionOption'] = self.version_option
@@ -4886,6 +5328,7 @@ class GetTemplateResponseBody(TeaModel):
         template_id: str = None,
         stack_id: str = None,
         share_type: str = None,
+        resource_group_id: str = None,
     ):
         self.template_arn = template_arn
         self.description = description
@@ -4903,6 +5346,7 @@ class GetTemplateResponseBody(TeaModel):
         self.template_id = template_id
         self.stack_id = stack_id
         self.share_type = share_type
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.permissions:
@@ -4911,6 +5355,10 @@ class GetTemplateResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_arn is not None:
             result['TemplateARN'] = self.template_arn
@@ -4946,6 +5394,8 @@ class GetTemplateResponseBody(TeaModel):
             result['StackId'] = self.stack_id
         if self.share_type is not None:
             result['ShareType'] = self.share_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4985,6 +5435,8 @@ class GetTemplateResponseBody(TeaModel):
             self.stack_id = m.get('StackId')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -5004,6 +5456,10 @@ class GetTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5034,6 +5490,10 @@ class GetTemplateEstimateCostRequestParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -5076,6 +5536,10 @@ class GetTemplateEstimateCostRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
@@ -5130,6 +5594,10 @@ class GetTemplateEstimateCostResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5162,6 +5630,10 @@ class GetTemplateEstimateCostResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5204,6 +5676,10 @@ class GetTemplateSummaryRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -5259,6 +5735,10 @@ class GetTemplateSummaryResponseBodyResourceIdentifierSummaries(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -5305,6 +5785,10 @@ class GetTemplateSummaryResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_types is not None:
             result['ResourceTypes'] = self.resource_types
@@ -5362,6 +5846,10 @@ class GetTemplateSummaryResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5404,6 +5892,10 @@ class ListChangeSetsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -5475,6 +5967,10 @@ class ListChangeSetsResponseBodyChangeSets(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5549,6 +6045,10 @@ class ListChangeSetsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5598,6 +6098,10 @@ class ListChangeSetsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5628,6 +6132,10 @@ class ListResourceTypesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_types is not None:
             result['ResourceTypes'] = self.resource_types
@@ -5660,6 +6168,10 @@ class ListResourceTypesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5700,6 +6212,10 @@ class ListStackEventsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -5763,6 +6279,10 @@ class ListStackEventsResponseBodyEvents(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5829,6 +6349,10 @@ class ListStackEventsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5878,6 +6402,10 @@ class ListStackEventsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5912,6 +6440,10 @@ class ListStackGroupOperationResultsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -5953,6 +6485,10 @@ class ListStackGroupOperationResultsResponseBodyStackGroupOperationResults(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -5999,6 +6535,10 @@ class ListStackGroupOperationResultsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6048,6 +6588,10 @@ class ListStackGroupOperationResultsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6082,6 +6626,10 @@ class ListStackGroupOperationsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -6131,6 +6679,10 @@ class ListStackGroupOperationsResponseBodyStackGroupOperations(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -6193,6 +6745,10 @@ class ListStackGroupOperationsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6242,6 +6798,10 @@ class ListStackGroupOperationsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6266,16 +6826,22 @@ class ListStackGroupsRequest(TeaModel):
         status: str = None,
         page_size: int = None,
         page_number: int = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.status = status
         self.page_size = page_size
         self.page_number = page_number
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -6285,6 +6851,8 @@ class ListStackGroupsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6297,6 +6865,8 @@ class ListStackGroupsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -6309,6 +6879,7 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         description: str = None,
         stack_group_drift_status: str = None,
         stack_group_name: str = None,
+        resource_group_id: str = None,
     ):
         self.stack_group_id = stack_group_id
         self.status = status
@@ -6316,11 +6887,16 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         self.description = description
         self.stack_group_drift_status = stack_group_drift_status
         self.stack_group_name = stack_group_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_group_id is not None:
             result['StackGroupId'] = self.stack_group_id
@@ -6334,6 +6910,8 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
             result['StackGroupDriftStatus'] = self.stack_group_drift_status
         if self.stack_group_name is not None:
             result['StackGroupName'] = self.stack_group_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6350,6 +6928,8 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
             self.stack_group_drift_status = m.get('StackGroupDriftStatus')
         if m.get('StackGroupName') is not None:
             self.stack_group_name = m.get('StackGroupName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -6375,6 +6955,10 @@ class ListStackGroupsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['StackGroups'] = []
         if self.stack_groups is not None:
@@ -6424,6 +7008,10 @@ class ListStackGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6462,6 +7050,10 @@ class ListStackInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -6521,6 +7113,10 @@ class ListStackInstancesResponseBodyStackInstances(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -6587,6 +7183,10 @@ class ListStackInstancesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6636,6 +7236,10 @@ class ListStackInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6676,6 +7280,10 @@ class ListStackOperationRisksRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -6737,6 +7345,10 @@ class ListStackOperationRisksResponseBodyRiskResources(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logical_resource_id is not None:
             result['LogicalResourceId'] = self.logical_resource_id
@@ -6793,6 +7405,10 @@ class ListStackOperationRisksResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6830,6 +7446,10 @@ class ListStackOperationRisksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6866,6 +7486,10 @@ class ListStackResourceDriftsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -6911,6 +7535,10 @@ class ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.actual_value is not None:
             result['ActualValue'] = self.actual_value
@@ -6965,6 +7593,10 @@ class ListStackResourceDriftsResponseBodyResourceDrifts(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logical_resource_id is not None:
             result['LogicalResourceId'] = self.logical_resource_id
@@ -7032,6 +7664,10 @@ class ListStackResourceDriftsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ResourceDrifts'] = []
         if self.resource_drifts is not None:
@@ -7073,6 +7709,10 @@ class ListStackResourceDriftsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7103,6 +7743,10 @@ class ListStackResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -7150,6 +7794,10 @@ class ListStackResourcesResponseBodyResources(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -7218,6 +7866,10 @@ class ListStackResourcesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7255,6 +7907,10 @@ class ListStackResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7285,6 +7941,10 @@ class ListStacksRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -7313,6 +7973,7 @@ class ListStacksRequest(TeaModel):
         status: List[str] = None,
         stack_name: List[str] = None,
         tag: List[ListStacksRequestTag] = None,
+        resource_group_id: str = None,
     ):
         self.page_size = page_size
         self.parent_stack_id = parent_stack_id
@@ -7323,6 +7984,7 @@ class ListStacksRequest(TeaModel):
         self.status = status
         self.stack_name = stack_name
         self.tag = tag
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.tag:
@@ -7331,6 +7993,10 @@ class ListStacksRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -7352,6 +8018,8 @@ class ListStacksRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7377,6 +8045,8 @@ class ListStacksRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = ListStacksRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -7393,6 +8063,10 @@ class ListStacksResponseBodyStacksTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -7426,6 +8100,7 @@ class ListStacksResponseBodyStacks(TeaModel):
         stack_id: str = None,
         stack_drift_status: str = None,
         stack_type: str = None,
+        resource_group_id: str = None,
     ):
         self.status = status
         self.update_time = update_time
@@ -7441,6 +8116,7 @@ class ListStacksResponseBodyStacks(TeaModel):
         self.stack_id = stack_id
         self.stack_drift_status = stack_drift_status
         self.stack_type = stack_type
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.tags:
@@ -7449,6 +8125,10 @@ class ListStacksResponseBodyStacks(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -7480,6 +8160,8 @@ class ListStacksResponseBodyStacks(TeaModel):
             result['StackDriftStatus'] = self.stack_drift_status
         if self.stack_type is not None:
             result['StackType'] = self.stack_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7515,6 +8197,8 @@ class ListStacksResponseBodyStacks(TeaModel):
             self.stack_drift_status = m.get('StackDriftStatus')
         if m.get('StackType') is not None:
             self.stack_type = m.get('StackType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -7540,6 +8224,10 @@ class ListStacksResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -7589,6 +8277,10 @@ class ListStacksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7621,6 +8313,10 @@ class ListTagKeysRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -7656,6 +8352,10 @@ class ListTagKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -7692,6 +8392,10 @@ class ListTagKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7722,6 +8426,10 @@ class ListTagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -7760,6 +8468,10 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -7810,6 +8522,10 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -7852,6 +8568,10 @@ class ListTagResourcesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -7893,6 +8613,10 @@ class ListTagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7927,6 +8651,10 @@ class ListTagValuesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -7966,6 +8694,10 @@ class ListTagValuesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -8002,6 +8734,10 @@ class ListTagValuesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8032,6 +8768,10 @@ class ListTemplatesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -8056,12 +8796,14 @@ class ListTemplatesRequest(TeaModel):
         template_name: str = None,
         share_type: str = None,
         tag: List[ListTemplatesRequestTag] = None,
+        resource_group_id: str = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
         self.template_name = template_name
         self.share_type = share_type
         self.tag = tag
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         if self.tag:
@@ -8070,6 +8812,10 @@ class ListTemplatesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -8083,6 +8829,8 @@ class ListTemplatesRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8100,6 +8848,8 @@ class ListTemplatesRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = ListTemplatesRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -8115,6 +8865,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         template_id: str = None,
         owner_id: str = None,
         share_type: str = None,
+        resource_group_id: str = None,
     ):
         self.template_arn = template_arn
         self.update_time = update_time
@@ -8125,11 +8876,16 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.template_id = template_id
         self.owner_id = owner_id
         self.share_type = share_type
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_arn is not None:
             result['TemplateARN'] = self.template_arn
@@ -8149,6 +8905,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.share_type is not None:
             result['ShareType'] = self.share_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8171,6 +8929,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -8196,6 +8956,10 @@ class ListTemplatesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -8245,6 +9009,10 @@ class ListTemplatesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8277,6 +9045,10 @@ class ListTemplateVersionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -8318,6 +9090,10 @@ class ListTemplateVersionsResponseBodyVersions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -8368,6 +9144,10 @@ class ListTemplateVersionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Versions'] = []
         if self.versions is not None:
@@ -8409,6 +9189,10 @@ class ListTemplateVersionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8426,6 +9210,116 @@ class ListTemplateVersionsResponse(TeaModel):
         return self
 
 
+class MoveResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        resource_id: str = None,
+        new_resource_group_id: str = None,
+        region_id: str = None,
+    ):
+        self.resource_type = resource_type
+        self.resource_id = resource_id
+        self.new_resource_group_id = new_resource_group_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class MoveResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MoveResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: MoveResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = MoveResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PreviewStackRequestParameters(TeaModel):
     def __init__(
         self,
@@ -8439,6 +9333,10 @@ class PreviewStackRequestParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -8491,6 +9389,10 @@ class PreviewStackRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.disable_rollback is not None:
             result['DisableRollback'] = self.disable_rollback
@@ -8565,6 +9467,10 @@ class PreviewStackResponseBodyStackParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -8602,6 +9508,10 @@ class PreviewStackResponseBodyStackResources(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.logical_resource_id is not None:
             result['LogicalResourceId'] = self.logical_resource_id
@@ -8668,6 +9578,10 @@ class PreviewStackResponseBodyStack(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_description is not None:
             result['TemplateDescription'] = self.template_description
@@ -8736,6 +9650,10 @@ class PreviewStackResponseBody(TeaModel):
             self.stack.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8769,6 +9687,10 @@ class PreviewStackResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8801,6 +9723,10 @@ class SetDeletionProtectionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -8832,6 +9758,10 @@ class SetDeletionProtectionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8860,6 +9790,10 @@ class SetDeletionProtectionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8894,6 +9828,10 @@ class SetStackPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -8929,6 +9867,10 @@ class SetStackPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8957,6 +9899,10 @@ class SetStackPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8993,6 +9939,10 @@ class SetTemplatePermissionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.share_option is not None:
             result['ShareOption'] = self.share_option
@@ -9032,6 +9982,10 @@ class SetTemplatePermissionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9060,6 +10014,10 @@ class SetTemplatePermissionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9085,7 +10043,6 @@ class SignalResourceRequest(TeaModel):
         region_id: str = None,
         unique_id: str = None,
         client_token: str = None,
-        data: str = None,
         logical_resource_id: str = None,
     ):
         self.stack_id = stack_id
@@ -9093,13 +10050,16 @@ class SignalResourceRequest(TeaModel):
         self.region_id = region_id
         self.unique_id = unique_id
         self.client_token = client_token
-        self.data = data
         self.logical_resource_id = logical_resource_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -9111,8 +10071,6 @@ class SignalResourceRequest(TeaModel):
             result['UniqueId'] = self.unique_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.data is not None:
-            result['Data'] = self.data
         if self.logical_resource_id is not None:
             result['LogicalResourceId'] = self.logical_resource_id
         return result
@@ -9129,8 +10087,6 @@ class SignalResourceRequest(TeaModel):
             self.unique_id = m.get('UniqueId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
         if m.get('LogicalResourceId') is not None:
             self.logical_resource_id = m.get('LogicalResourceId')
         return self
@@ -9147,6 +10103,10 @@ class SignalResourceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9175,6 +10135,10 @@ class SignalResourceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9205,6 +10169,10 @@ class StopStackGroupOperationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -9232,6 +10200,10 @@ class StopStackGroupOperationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9260,6 +10232,10 @@ class StopStackGroupOperationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9290,6 +10266,10 @@ class TagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -9326,6 +10306,10 @@ class TagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -9366,6 +10350,10 @@ class TagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9394,6 +10382,10 @@ class TagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9430,6 +10422,10 @@ class UntagResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -9469,6 +10465,10 @@ class UntagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9497,6 +10497,10 @@ class UntagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9527,6 +10531,10 @@ class UpdateStackRequestParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -9556,6 +10564,10 @@ class UpdateStackRequestTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -9581,13 +10593,11 @@ class UpdateStackRequest(TeaModel):
         timeout_in_minutes: int = None,
         template_body: str = None,
         stack_policy_url: str = None,
-        update_allow_policy: str = None,
         stack_policy_during_update_url: str = None,
         stack_policy_body: str = None,
         use_previous_parameters: bool = None,
         region_id: str = None,
         disable_rollback: bool = None,
-        enable_recover: bool = None,
         template_url: str = None,
         ram_role_name: str = None,
         replacement_option: str = None,
@@ -9602,13 +10612,11 @@ class UpdateStackRequest(TeaModel):
         self.timeout_in_minutes = timeout_in_minutes
         self.template_body = template_body
         self.stack_policy_url = stack_policy_url
-        self.update_allow_policy = update_allow_policy
         self.stack_policy_during_update_url = stack_policy_during_update_url
         self.stack_policy_body = stack_policy_body
         self.use_previous_parameters = use_previous_parameters
         self.region_id = region_id
         self.disable_rollback = disable_rollback
-        self.enable_recover = enable_recover
         self.template_url = template_url
         self.ram_role_name = ram_role_name
         self.replacement_option = replacement_option
@@ -9628,6 +10636,10 @@ class UpdateStackRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -9641,8 +10653,6 @@ class UpdateStackRequest(TeaModel):
             result['TemplateBody'] = self.template_body
         if self.stack_policy_url is not None:
             result['StackPolicyURL'] = self.stack_policy_url
-        if self.update_allow_policy is not None:
-            result['UpdateAllowPolicy'] = self.update_allow_policy
         if self.stack_policy_during_update_url is not None:
             result['StackPolicyDuringUpdateURL'] = self.stack_policy_during_update_url
         if self.stack_policy_body is not None:
@@ -9653,8 +10663,6 @@ class UpdateStackRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.disable_rollback is not None:
             result['DisableRollback'] = self.disable_rollback
-        if self.enable_recover is not None:
-            result['EnableRecover'] = self.enable_recover
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
         if self.ram_role_name is not None:
@@ -9689,8 +10697,6 @@ class UpdateStackRequest(TeaModel):
             self.template_body = m.get('TemplateBody')
         if m.get('StackPolicyURL') is not None:
             self.stack_policy_url = m.get('StackPolicyURL')
-        if m.get('UpdateAllowPolicy') is not None:
-            self.update_allow_policy = m.get('UpdateAllowPolicy')
         if m.get('StackPolicyDuringUpdateURL') is not None:
             self.stack_policy_during_update_url = m.get('StackPolicyDuringUpdateURL')
         if m.get('StackPolicyBody') is not None:
@@ -9701,8 +10707,6 @@ class UpdateStackRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('DisableRollback') is not None:
             self.disable_rollback = m.get('DisableRollback')
-        if m.get('EnableRecover') is not None:
-            self.enable_recover = m.get('EnableRecover')
         if m.get('TemplateURL') is not None:
             self.template_url = m.get('TemplateURL')
         if m.get('RamRoleName') is not None:
@@ -9739,6 +10743,10 @@ class UpdateStackResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9771,6 +10779,10 @@ class UpdateStackResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9801,6 +10813,10 @@ class UpdateStackGroupRequestParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -9859,6 +10875,10 @@ class UpdateStackGroupRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -9945,6 +10965,10 @@ class UpdateStackGroupShrinkRequestParameters(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -10003,6 +11027,10 @@ class UpdateStackGroupShrinkRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -10089,6 +11117,10 @@ class UpdateStackGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10121,6 +11153,10 @@ class UpdateStackGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10151,6 +11187,10 @@ class UpdateStackInstancesRequestParameterOverrides(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -10197,6 +11237,10 @@ class UpdateStackInstancesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -10259,6 +11303,10 @@ class UpdateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
@@ -10305,6 +11353,10 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -10367,6 +11419,10 @@ class UpdateStackInstancesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10399,6 +11455,10 @@ class UpdateStackInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10437,6 +11497,10 @@ class UpdateStackTemplateByResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
@@ -10484,6 +11548,10 @@ class UpdateStackTemplateByResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10520,6 +11588,10 @@ class UpdateStackTemplateByResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10556,6 +11628,10 @@ class UpdateTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
@@ -10597,6 +11673,10 @@ class UpdateTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10629,6 +11709,10 @@ class UpdateTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10661,6 +11745,10 @@ class ValidateTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
@@ -10696,6 +11784,10 @@ class ValidateTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
@@ -10732,6 +11824,10 @@ class ValidateTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
