@@ -48,48 +48,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def calc_cacswith_options(
-        self,
-        request: imageprocess_20200320_models.CalcCACSRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.CalcCACSResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.CalcCACSResponse(),
-            self.do_rpcrequest('CalcCACS', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def calc_cacswith_options_async(
-        self,
-        request: imageprocess_20200320_models.CalcCACSRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.CalcCACSResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.CalcCACSResponse(),
-            await self.do_rpcrequest_async('CalcCACS', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def calc_cacs(
-        self,
-        request: imageprocess_20200320_models.CalcCACSRequest,
-    ) -> imageprocess_20200320_models.CalcCACSResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.calc_cacswith_options(request, runtime)
-
-    async def calc_cacs_async(
-        self,
-        request: imageprocess_20200320_models.CalcCACSRequest,
-    ) -> imageprocess_20200320_models.CalcCACSResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.calc_cacswith_options_async(request, runtime)
-
     def classify_fnfwith_options(
         self,
         request: imageprocess_20200320_models.ClassifyFNFRequest,
@@ -256,47 +214,215 @@ class Client(OpenApiClient):
         classify_fnfresp = await self.classify_fnfwith_options_async(classify_fnfreq, runtime)
         return classify_fnfresp
 
-    def detect_covid_19cad_with_options(
+    def detect_lung_nodule_with_options(
         self,
-        request: imageprocess_20200320_models.DetectCovid19CadRequest,
+        request: imageprocess_20200320_models.DetectLungNoduleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            imageprocess_20200320_models.DetectCovid19CadResponse(),
-            self.do_rpcrequest('DetectCovid19Cad', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imageprocess_20200320_models.DetectLungNoduleResponse(),
+            self.do_rpcrequest('DetectLungNodule', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def detect_covid_19cad_with_options_async(
+    async def detect_lung_nodule_with_options_async(
         self,
-        request: imageprocess_20200320_models.DetectCovid19CadRequest,
+        request: imageprocess_20200320_models.DetectLungNoduleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            imageprocess_20200320_models.DetectCovid19CadResponse(),
-            await self.do_rpcrequest_async('DetectCovid19Cad', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imageprocess_20200320_models.DetectLungNoduleResponse(),
+            await self.do_rpcrequest_async('DetectLungNodule', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def detect_covid_19cad(
+    def detect_lung_nodule(
         self,
-        request: imageprocess_20200320_models.DetectCovid19CadRequest,
-    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        request: imageprocess_20200320_models.DetectLungNoduleRequest,
+    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
         runtime = util_models.RuntimeOptions()
-        return self.detect_covid_19cad_with_options(request, runtime)
+        return self.detect_lung_nodule_with_options(request, runtime)
 
-    async def detect_covid_19cad_async(
+    async def detect_lung_nodule_async(
         self,
-        request: imageprocess_20200320_models.DetectCovid19CadRequest,
-    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        request: imageprocess_20200320_models.DetectLungNoduleRequest,
+    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.detect_covid_19cad_with_options_async(request, runtime)
+        return await self.detect_lung_nodule_with_options_async(request, runtime)
+
+    def run_ctregistration_with_options(
+        self,
+        request: imageprocess_20200320_models.RunCTRegistrationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.RunCTRegistrationResponse(),
+            self.do_rpcrequest('RunCTRegistration', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def run_ctregistration_with_options_async(
+        self,
+        request: imageprocess_20200320_models.RunCTRegistrationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.RunCTRegistrationResponse(),
+            await self.do_rpcrequest_async('RunCTRegistration', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def run_ctregistration(
+        self,
+        request: imageprocess_20200320_models.RunCTRegistrationRequest,
+    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_ctregistration_with_options(request, runtime)
+
+    async def run_ctregistration_async(
+        self,
+        request: imageprocess_20200320_models.RunCTRegistrationRequest,
+    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_ctregistration_with_options_async(request, runtime)
+
+    def translate_med_with_options(
+        self,
+        request: imageprocess_20200320_models.TranslateMedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.TranslateMedResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.TranslateMedResponse(),
+            self.do_rpcrequest('TranslateMed', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def translate_med_with_options_async(
+        self,
+        request: imageprocess_20200320_models.TranslateMedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.TranslateMedResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.TranslateMedResponse(),
+            await self.do_rpcrequest_async('TranslateMed', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def translate_med(
+        self,
+        request: imageprocess_20200320_models.TranslateMedRequest,
+    ) -> imageprocess_20200320_models.TranslateMedResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.translate_med_with_options(request, runtime)
+
+    async def translate_med_async(
+        self,
+        request: imageprocess_20200320_models.TranslateMedRequest,
+    ) -> imageprocess_20200320_models.TranslateMedResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.translate_med_with_options_async(request, runtime)
+
+    def detect_spine_mriwith_options(
+        self,
+        request: imageprocess_20200320_models.DetectSpineMRIRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectSpineMRIResponse(),
+            self.do_rpcrequest('DetectSpineMRI', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def detect_spine_mriwith_options_async(
+        self,
+        request: imageprocess_20200320_models.DetectSpineMRIRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectSpineMRIResponse(),
+            await self.do_rpcrequest_async('DetectSpineMRI', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def detect_spine_mri(
+        self,
+        request: imageprocess_20200320_models.DetectSpineMRIRequest,
+    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_spine_mriwith_options(request, runtime)
+
+    async def detect_spine_mri_async(
+        self,
+        request: imageprocess_20200320_models.DetectSpineMRIRequest,
+    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_spine_mriwith_options_async(request, runtime)
+
+    def calc_cacswith_options(
+        self,
+        request: imageprocess_20200320_models.CalcCACSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.CalcCACSResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.CalcCACSResponse(),
+            self.do_rpcrequest('CalcCACS', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def calc_cacswith_options_async(
+        self,
+        request: imageprocess_20200320_models.CalcCACSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.CalcCACSResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.CalcCACSResponse(),
+            await self.do_rpcrequest_async('CalcCACS', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def calc_cacs(
+        self,
+        request: imageprocess_20200320_models.CalcCACSRequest,
+    ) -> imageprocess_20200320_models.CalcCACSResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.calc_cacswith_options(request, runtime)
+
+    async def calc_cacs_async(
+        self,
+        request: imageprocess_20200320_models.CalcCACSRequest,
+    ) -> imageprocess_20200320_models.CalcCACSResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.calc_cacswith_options_async(request, runtime)
 
     def detect_hip_keypoint_xray_with_options(
         self,
@@ -630,6 +756,48 @@ class Client(OpenApiClient):
         detect_knee_keypoint_xray_resp = await self.detect_knee_keypoint_xray_with_options_async(detect_knee_keypoint_xray_req, runtime)
         return detect_knee_keypoint_xray_resp
 
+    def run_med_qawith_options(
+        self,
+        request: imageprocess_20200320_models.RunMedQARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.RunMedQAResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.RunMedQAResponse(),
+            self.do_rpcrequest('RunMedQA', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def run_med_qawith_options_async(
+        self,
+        request: imageprocess_20200320_models.RunMedQARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.RunMedQAResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.RunMedQAResponse(),
+            await self.do_rpcrequest_async('RunMedQA', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def run_med_qa(
+        self,
+        request: imageprocess_20200320_models.RunMedQARequest,
+    ) -> imageprocess_20200320_models.RunMedQAResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_med_qawith_options(request, runtime)
+
+    async def run_med_qa_async(
+        self,
+        request: imageprocess_20200320_models.RunMedQARequest,
+    ) -> imageprocess_20200320_models.RunMedQAResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_med_qawith_options_async(request, runtime)
+
     def detect_knee_xray_with_options(
         self,
         request: imageprocess_20200320_models.DetectKneeXRayRequest,
@@ -796,47 +964,47 @@ class Client(OpenApiClient):
         detect_knee_xray_resp = await self.detect_knee_xray_with_options_async(detect_knee_xray_req, runtime)
         return detect_knee_xray_resp
 
-    def detect_lung_nodule_with_options(
+    def get_async_job_result_with_options(
         self,
-        request: imageprocess_20200320_models.DetectLungNoduleRequest,
+        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            imageprocess_20200320_models.DetectLungNoduleResponse(),
-            self.do_rpcrequest('DetectLungNodule', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imageprocess_20200320_models.GetAsyncJobResultResponse(),
+            self.do_rpcrequest('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def detect_lung_nodule_with_options_async(
+    async def get_async_job_result_with_options_async(
         self,
-        request: imageprocess_20200320_models.DetectLungNoduleRequest,
+        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            imageprocess_20200320_models.DetectLungNoduleResponse(),
-            await self.do_rpcrequest_async('DetectLungNodule', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imageprocess_20200320_models.GetAsyncJobResultResponse(),
+            await self.do_rpcrequest_async('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def detect_lung_nodule(
+    def get_async_job_result(
         self,
-        request: imageprocess_20200320_models.DetectLungNoduleRequest,
-    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
+    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
         runtime = util_models.RuntimeOptions()
-        return self.detect_lung_nodule_with_options(request, runtime)
+        return self.get_async_job_result_with_options(request, runtime)
 
-    async def detect_lung_nodule_async(
+    async def get_async_job_result_async(
         self,
-        request: imageprocess_20200320_models.DetectLungNoduleRequest,
-    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
+    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.detect_lung_nodule_with_options_async(request, runtime)
+        return await self.get_async_job_result_with_options_async(request, runtime)
 
     def detect_rib_fracture_with_options(
         self,
@@ -879,6 +1047,90 @@ class Client(OpenApiClient):
     ) -> imageprocess_20200320_models.DetectRibFractureResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detect_rib_fracture_with_options_async(request, runtime)
+
+    def detect_covid_19cad_with_options(
+        self,
+        request: imageprocess_20200320_models.DetectCovid19CadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectCovid19CadResponse(),
+            self.do_rpcrequest('DetectCovid19Cad', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def detect_covid_19cad_with_options_async(
+        self,
+        request: imageprocess_20200320_models.DetectCovid19CadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectCovid19CadResponse(),
+            await self.do_rpcrequest_async('DetectCovid19Cad', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def detect_covid_19cad(
+        self,
+        request: imageprocess_20200320_models.DetectCovid19CadRequest,
+    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_covid_19cad_with_options(request, runtime)
+
+    async def detect_covid_19cad_async(
+        self,
+        request: imageprocess_20200320_models.DetectCovid19CadRequest,
+    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_covid_19cad_with_options_async(request, runtime)
+
+    def screen_chest_ctwith_options(
+        self,
+        request: imageprocess_20200320_models.ScreenChestCTRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenChestCTResponse(),
+            self.do_rpcrequest('ScreenChestCT', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def screen_chest_ctwith_options_async(
+        self,
+        request: imageprocess_20200320_models.ScreenChestCTRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenChestCTResponse(),
+            await self.do_rpcrequest_async('ScreenChestCT', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def screen_chest_ct(
+        self,
+        request: imageprocess_20200320_models.ScreenChestCTRequest,
+    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.screen_chest_ctwith_options(request, runtime)
+
+    async def screen_chest_ct_async(
+        self,
+        request: imageprocess_20200320_models.ScreenChestCTRequest,
+    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.screen_chest_ctwith_options_async(request, runtime)
 
     def detect_skin_disease_with_options(
         self,
@@ -1045,255 +1297,3 @@ class Client(OpenApiClient):
         detect_skin_disease_req.url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         detect_skin_disease_resp = await self.detect_skin_disease_with_options_async(detect_skin_disease_req, runtime)
         return detect_skin_disease_resp
-
-    def detect_spine_mriwith_options(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectSpineMRIResponse(),
-            self.do_rpcrequest('DetectSpineMRI', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def detect_spine_mriwith_options_async(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectSpineMRIResponse(),
-            await self.do_rpcrequest_async('DetectSpineMRI', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def detect_spine_mri(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_spine_mriwith_options(request, runtime)
-
-    async def detect_spine_mri_async(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_spine_mriwith_options_async(request, runtime)
-
-    def get_async_job_result_with_options(
-        self,
-        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.GetAsyncJobResultResponse(),
-            self.do_rpcrequest('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_async_job_result_with_options_async(
-        self,
-        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.GetAsyncJobResultResponse(),
-            await self.do_rpcrequest_async('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_async_job_result(
-        self,
-        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
-    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_async_job_result_with_options(request, runtime)
-
-    async def get_async_job_result_async(
-        self,
-        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
-    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_async_job_result_with_options_async(request, runtime)
-
-    def run_ctregistration_with_options(
-        self,
-        request: imageprocess_20200320_models.RunCTRegistrationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.RunCTRegistrationResponse(),
-            self.do_rpcrequest('RunCTRegistration', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def run_ctregistration_with_options_async(
-        self,
-        request: imageprocess_20200320_models.RunCTRegistrationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.RunCTRegistrationResponse(),
-            await self.do_rpcrequest_async('RunCTRegistration', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def run_ctregistration(
-        self,
-        request: imageprocess_20200320_models.RunCTRegistrationRequest,
-    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.run_ctregistration_with_options(request, runtime)
-
-    async def run_ctregistration_async(
-        self,
-        request: imageprocess_20200320_models.RunCTRegistrationRequest,
-    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.run_ctregistration_with_options_async(request, runtime)
-
-    def run_med_qawith_options(
-        self,
-        request: imageprocess_20200320_models.RunMedQARequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.RunMedQAResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.RunMedQAResponse(),
-            self.do_rpcrequest('RunMedQA', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def run_med_qawith_options_async(
-        self,
-        request: imageprocess_20200320_models.RunMedQARequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.RunMedQAResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.RunMedQAResponse(),
-            await self.do_rpcrequest_async('RunMedQA', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def run_med_qa(
-        self,
-        request: imageprocess_20200320_models.RunMedQARequest,
-    ) -> imageprocess_20200320_models.RunMedQAResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.run_med_qawith_options(request, runtime)
-
-    async def run_med_qa_async(
-        self,
-        request: imageprocess_20200320_models.RunMedQARequest,
-    ) -> imageprocess_20200320_models.RunMedQAResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.run_med_qawith_options_async(request, runtime)
-
-    def screen_chest_ctwith_options(
-        self,
-        request: imageprocess_20200320_models.ScreenChestCTRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.ScreenChestCTResponse(),
-            self.do_rpcrequest('ScreenChestCT', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def screen_chest_ctwith_options_async(
-        self,
-        request: imageprocess_20200320_models.ScreenChestCTRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.ScreenChestCTResponse(),
-            await self.do_rpcrequest_async('ScreenChestCT', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def screen_chest_ct(
-        self,
-        request: imageprocess_20200320_models.ScreenChestCTRequest,
-    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.screen_chest_ctwith_options(request, runtime)
-
-    async def screen_chest_ct_async(
-        self,
-        request: imageprocess_20200320_models.ScreenChestCTRequest,
-    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.screen_chest_ctwith_options_async(request, runtime)
-
-    def translate_med_with_options(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.TranslateMedResponse(),
-            self.do_rpcrequest('TranslateMed', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def translate_med_with_options_async(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.TranslateMedResponse(),
-            await self.do_rpcrequest_async('TranslateMed', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def translate_med(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.translate_med_with_options(request, runtime)
-
-    async def translate_med_async(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.translate_med_with_options_async(request, runtime)
