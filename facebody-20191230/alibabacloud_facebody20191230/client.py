@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -56,7 +57,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.ExtractPedestrianFeatureAttrResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ExtractPedestrianFeatureAttrResponse(),
             self.do_rpcrequest('ExtractPedestrianFeatureAttr', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -69,7 +71,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.ExtractPedestrianFeatureAttrResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ExtractPedestrianFeatureAttrResponse(),
             await self.do_rpcrequest_async('ExtractPedestrianFeatureAttr', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -220,7 +223,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectBodyCountResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectBodyCountResponse(),
             self.do_rpcrequest('DetectBodyCount', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -233,7 +237,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectBodyCountResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectBodyCountResponse(),
             await self.do_rpcrequest_async('DetectBodyCount', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -384,7 +389,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectVideoLivingFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectVideoLivingFaceResponse(),
             self.do_rpcrequest('DetectVideoLivingFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -397,7 +403,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectVideoLivingFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectVideoLivingFaceResponse(),
             await self.do_rpcrequest_async('DetectVideoLivingFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -548,7 +555,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizeFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizeFaceResponse(),
             self.do_rpcrequest('RecognizeFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -561,7 +569,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizeFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizeFaceResponse(),
             await self.do_rpcrequest_async('RecognizeFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -712,7 +721,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.VerifyFaceMaskResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.VerifyFaceMaskResponse(),
             self.do_rpcrequest('VerifyFaceMask', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -725,7 +735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.VerifyFaceMaskResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.VerifyFaceMaskResponse(),
             await self.do_rpcrequest_async('VerifyFaceMask', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -752,7 +763,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectIPCPedestrianResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectIPCPedestrianResponse(),
             self.do_rpcrequest('DetectIPCPedestrian', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -765,7 +777,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectIPCPedestrianResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectIPCPedestrianResponse(),
             await self.do_rpcrequest_async('DetectIPCPedestrian', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -916,7 +929,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GetFaceEntityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GetFaceEntityResponse(),
             self.do_rpcrequest('GetFaceEntity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -929,7 +943,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GetFaceEntityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GetFaceEntityResponse(),
             await self.do_rpcrequest_async('GetFaceEntity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -956,7 +971,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CompareFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CompareFaceResponse(),
             self.do_rpcrequest('CompareFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -969,7 +985,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CompareFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CompareFaceResponse(),
             await self.do_rpcrequest_async('CompareFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -996,7 +1013,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.PedestrianDetectAttributeResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.PedestrianDetectAttributeResponse(),
             self.do_rpcrequest('PedestrianDetectAttribute', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1009,7 +1027,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.PedestrianDetectAttributeResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.PedestrianDetectAttributeResponse(),
             await self.do_rpcrequest_async('PedestrianDetectAttribute', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1160,7 +1179,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.FaceFilterResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.FaceFilterResponse(),
             self.do_rpcrequest('FaceFilter', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1173,7 +1193,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.FaceFilterResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.FaceFilterResponse(),
             await self.do_rpcrequest_async('FaceFilter', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1324,7 +1345,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.FaceBeautyResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.FaceBeautyResponse(),
             self.do_rpcrequest('FaceBeauty', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1337,7 +1359,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.FaceBeautyResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.FaceBeautyResponse(),
             await self.do_rpcrequest_async('FaceBeauty', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1488,7 +1511,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GenerateHumanAnimeStyleResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GenerateHumanAnimeStyleResponse(),
             self.do_rpcrequest('GenerateHumanAnimeStyle', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1501,7 +1525,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GenerateHumanAnimeStyleResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GenerateHumanAnimeStyleResponse(),
             await self.do_rpcrequest_async('GenerateHumanAnimeStyle', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1653,7 +1678,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return facebody_20191230_models.QueryFaceImageTemplateResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.QueryFaceImageTemplateResponse(),
             self.do_rpcrequest('QueryFaceImageTemplate', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1667,7 +1693,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return facebody_20191230_models.QueryFaceImageTemplateResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.QueryFaceImageTemplateResponse(),
             await self.do_rpcrequest_async('QueryFaceImageTemplate', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1694,7 +1721,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectFaceResponse(),
             self.do_rpcrequest('DetectFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1707,7 +1735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectFaceResponse(),
             await self.do_rpcrequest_async('DetectFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1858,7 +1887,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectMaskResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectMaskResponse(),
             self.do_rpcrequest('DetectMask', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1871,7 +1901,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectMaskResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectMaskResponse(),
             await self.do_rpcrequest_async('DetectMask', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2022,7 +2053,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GenRealPersonVerificationTokenResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GenRealPersonVerificationTokenResponse(),
             self.do_rpcrequest('GenRealPersonVerificationToken', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2035,7 +2067,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GenRealPersonVerificationTokenResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GenRealPersonVerificationTokenResponse(),
             await self.do_rpcrequest_async('GenRealPersonVerificationToken', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2058,7 +2091,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ListFaceDbsResponse:
         req = open_api_models.OpenApiRequest()
-        return facebody_20191230_models.ListFaceDbsResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ListFaceDbsResponse(),
             self.do_rpcrequest('ListFaceDbs', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2067,7 +2101,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ListFaceDbsResponse:
         req = open_api_models.OpenApiRequest()
-        return facebody_20191230_models.ListFaceDbsResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ListFaceDbsResponse(),
             await self.do_rpcrequest_async('ListFaceDbs', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2088,7 +2123,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizeActionResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizeActionResponse(),
             self.do_rpcrequest('RecognizeAction', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2101,7 +2137,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizeActionResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizeActionResponse(),
             await self.do_rpcrequest_async('RecognizeAction', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2128,7 +2165,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectChefCapResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectChefCapResponse(),
             self.do_rpcrequest('DetectChefCap', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2141,7 +2179,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectChefCapResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectChefCapResponse(),
             await self.do_rpcrequest_async('DetectChefCap', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2292,7 +2331,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectLivingFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectLivingFaceResponse(),
             self.do_rpcrequest('DetectLivingFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2305,7 +2345,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectLivingFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectLivingFaceResponse(),
             await self.do_rpcrequest_async('DetectLivingFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2332,7 +2373,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectCelebrityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectCelebrityResponse(),
             self.do_rpcrequest('DetectCelebrity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2345,7 +2387,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectCelebrityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectCelebrityResponse(),
             await self.do_rpcrequest_async('DetectCelebrity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2496,7 +2539,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GetRealPersonVerificationResultResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GetRealPersonVerificationResultResponse(),
             self.do_rpcrequest('GetRealPersonVerificationResult', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2509,7 +2553,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GetRealPersonVerificationResultResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GetRealPersonVerificationResultResponse(),
             await self.do_rpcrequest_async('GetRealPersonVerificationResult', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2536,7 +2581,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteFaceResponse(),
             self.do_rpcrequest('DeleteFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2549,7 +2595,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteFaceResponse(),
             await self.do_rpcrequest_async('DeleteFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2576,7 +2623,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.ExtractPedestrianFeatureAttributeResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ExtractPedestrianFeatureAttributeResponse(),
             self.do_rpcrequest('ExtractPedestrianFeatureAttribute', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2589,7 +2637,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.ExtractPedestrianFeatureAttributeResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ExtractPedestrianFeatureAttributeResponse(),
             await self.do_rpcrequest_async('ExtractPedestrianFeatureAttribute', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2616,7 +2665,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizeExpressionResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizeExpressionResponse(),
             self.do_rpcrequest('RecognizeExpression', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2629,7 +2679,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizeExpressionResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizeExpressionResponse(),
             await self.do_rpcrequest_async('RecognizeExpression', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2780,7 +2831,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.MergeImageFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.MergeImageFaceResponse(),
             self.do_rpcrequest('MergeImageFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2793,7 +2845,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.MergeImageFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.MergeImageFaceResponse(),
             await self.do_rpcrequest_async('MergeImageFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2944,7 +2997,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteBodyPersonResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteBodyPersonResponse(),
             self.do_rpcrequest('DeleteBodyPerson', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2957,7 +3011,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteBodyPersonResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteBodyPersonResponse(),
             await self.do_rpcrequest_async('DeleteBodyPerson', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2984,7 +3039,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectPedestrianResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectPedestrianResponse(),
             self.do_rpcrequest('DetectPedestrian', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2997,7 +3053,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectPedestrianResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectPedestrianResponse(),
             await self.do_rpcrequest_async('DetectPedestrian', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3148,7 +3205,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.SwapFacialFeaturesResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.SwapFacialFeaturesResponse(),
             self.do_rpcrequest('SwapFacialFeatures', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3161,7 +3219,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.SwapFacialFeaturesResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.SwapFacialFeaturesResponse(),
             await self.do_rpcrequest_async('SwapFacialFeatures', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3188,7 +3247,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.SearchFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.SearchFaceResponse(),
             self.do_rpcrequest('SearchFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3201,7 +3261,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.SearchFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.SearchFaceResponse(),
             await self.do_rpcrequest_async('SearchFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3352,7 +3413,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.UpdateFaceEntityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.UpdateFaceEntityResponse(),
             self.do_rpcrequest('UpdateFaceEntity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3365,7 +3427,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.UpdateFaceEntityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.UpdateFaceEntityResponse(),
             await self.do_rpcrequest_async('UpdateFaceEntity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3392,7 +3455,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.BlurFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.BlurFaceResponse(),
             self.do_rpcrequest('BlurFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3405,7 +3469,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.BlurFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.BlurFaceResponse(),
             await self.do_rpcrequest_async('BlurFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3556,7 +3621,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.FaceMakeupResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.FaceMakeupResponse(),
             self.do_rpcrequest('FaceMakeup', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3569,7 +3635,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.FaceMakeupResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.FaceMakeupResponse(),
             await self.do_rpcrequest_async('FaceMakeup', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3720,7 +3787,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CreateBodyPersonResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CreateBodyPersonResponse(),
             self.do_rpcrequest('CreateBodyPerson', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3733,7 +3801,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CreateBodyPersonResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CreateBodyPersonResponse(),
             await self.do_rpcrequest_async('CreateBodyPerson', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3760,7 +3829,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.AddFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.AddFaceResponse(),
             self.do_rpcrequest('AddFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3773,7 +3843,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.AddFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.AddFaceResponse(),
             await self.do_rpcrequest_async('AddFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3924,7 +3995,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GenerateHumanSketchStyleResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GenerateHumanSketchStyleResponse(),
             self.do_rpcrequest('GenerateHumanSketchStyle', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3937,7 +4009,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.GenerateHumanSketchStyleResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GenerateHumanSketchStyleResponse(),
             await self.do_rpcrequest_async('GenerateHumanSketchStyle', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4088,7 +4161,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteBodyDbResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteBodyDbResponse(),
             self.do_rpcrequest('DeleteBodyDb', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4101,7 +4175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteBodyDbResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteBodyDbResponse(),
             await self.do_rpcrequest_async('DeleteBodyDb', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4132,7 +4207,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectPedestrianIntrusionResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectPedestrianIntrusionResponse(),
             self.do_rpcrequest('DetectPedestrianIntrusion', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4149,7 +4225,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DetectPedestrianIntrusionResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectPedestrianIntrusionResponse(),
             await self.do_rpcrequest_async('DetectPedestrianIntrusion', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4300,7 +4377,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.HandPostureResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.HandPostureResponse(),
             self.do_rpcrequest('HandPosture', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4313,7 +4391,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.HandPostureResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.HandPostureResponse(),
             await self.do_rpcrequest_async('HandPosture', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4464,7 +4543,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.EnhanceFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.EnhanceFaceResponse(),
             self.do_rpcrequest('EnhanceFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4477,7 +4557,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.EnhanceFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.EnhanceFaceResponse(),
             await self.do_rpcrequest_async('EnhanceFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4629,7 +4710,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return facebody_20191230_models.GetBodyPersonResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GetBodyPersonResponse(),
             self.do_rpcrequest('GetBodyPerson', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4643,7 +4725,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return facebody_20191230_models.GetBodyPersonResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.GetBodyPersonResponse(),
             await self.do_rpcrequest_async('GetBodyPerson', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4670,7 +4753,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizeHandGestureResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizeHandGestureResponse(),
             self.do_rpcrequest('RecognizeHandGesture', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4683,7 +4767,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizeHandGestureResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizeHandGestureResponse(),
             await self.do_rpcrequest_async('RecognizeHandGesture', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4834,7 +4919,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteFaceDbResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteFaceDbResponse(),
             self.do_rpcrequest('DeleteFaceDb', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4847,7 +4933,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteFaceDbResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteFaceDbResponse(),
             await self.do_rpcrequest_async('DeleteFaceDb', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4875,7 +4962,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return facebody_20191230_models.ListBodyPersonResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ListBodyPersonResponse(),
             self.do_rpcrequest('ListBodyPerson', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4889,7 +4977,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return facebody_20191230_models.ListBodyPersonResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ListBodyPersonResponse(),
             await self.do_rpcrequest_async('ListBodyPerson', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4917,7 +5006,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return facebody_20191230_models.ListBodyDbsResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ListBodyDbsResponse(),
             self.do_rpcrequest('ListBodyDbs', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4931,7 +5021,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return facebody_20191230_models.ListBodyDbsResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ListBodyDbsResponse(),
             await self.do_rpcrequest_async('ListBodyDbs', '2019-12-30', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4958,7 +5049,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.ListFaceEntitiesResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ListFaceEntitiesResponse(),
             self.do_rpcrequest('ListFaceEntities', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4971,7 +5063,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.ListFaceEntitiesResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.ListFaceEntitiesResponse(),
             await self.do_rpcrequest_async('ListFaceEntities', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4998,7 +5091,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizePublicFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizePublicFaceResponse(),
             self.do_rpcrequest('RecognizePublicFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5011,7 +5105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.RecognizePublicFaceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.RecognizePublicFaceResponse(),
             await self.do_rpcrequest_async('RecognizePublicFace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5038,7 +5133,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteFaceImageTemplateResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteFaceImageTemplateResponse(),
             self.do_rpcrequest('DeleteFaceImageTemplate', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5051,7 +5147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteFaceImageTemplateResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteFaceImageTemplateResponse(),
             await self.do_rpcrequest_async('DeleteFaceImageTemplate', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5078,7 +5175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CreateFaceDbResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CreateFaceDbResponse(),
             self.do_rpcrequest('CreateFaceDb', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5091,7 +5189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CreateFaceDbResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CreateFaceDbResponse(),
             await self.do_rpcrequest_async('CreateFaceDb', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5122,7 +5221,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.AddBodyTraceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.AddBodyTraceResponse(),
             self.do_rpcrequest('AddBodyTrace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5139,7 +5239,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.AddBodyTraceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.AddBodyTraceResponse(),
             await self.do_rpcrequest_async('AddBodyTrace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5170,7 +5271,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.SearchBodyTraceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.SearchBodyTraceResponse(),
             self.do_rpcrequest('SearchBodyTrace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5187,7 +5289,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.SearchBodyTraceResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.SearchBodyTraceResponse(),
             await self.do_rpcrequest_async('SearchBodyTrace', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5214,7 +5317,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.AddFaceImageTemplateResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.AddFaceImageTemplateResponse(),
             self.do_rpcrequest('AddFaceImageTemplate', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5227,7 +5331,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.AddFaceImageTemplateResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.AddFaceImageTemplateResponse(),
             await self.do_rpcrequest_async('AddFaceImageTemplate', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5378,7 +5483,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CountCrowdResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CountCrowdResponse(),
             self.do_rpcrequest('CountCrowd', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5391,7 +5497,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CountCrowdResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CountCrowdResponse(),
             await self.do_rpcrequest_async('CountCrowd', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5542,7 +5649,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.AddFaceEntityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.AddFaceEntityResponse(),
             self.do_rpcrequest('AddFaceEntity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5555,7 +5663,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.AddFaceEntityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.AddFaceEntityResponse(),
             await self.do_rpcrequest_async('AddFaceEntity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5582,7 +5691,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteFaceEntityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteFaceEntityResponse(),
             self.do_rpcrequest('DeleteFaceEntity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5595,7 +5705,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.DeleteFaceEntityResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.DeleteFaceEntityResponse(),
             await self.do_rpcrequest_async('DeleteFaceEntity', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5622,7 +5733,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.FaceTidyupResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.FaceTidyupResponse(),
             self.do_rpcrequest('FaceTidyup', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5635,7 +5747,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.FaceTidyupResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.FaceTidyupResponse(),
             await self.do_rpcrequest_async('FaceTidyup', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5786,7 +5899,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.BodyPostureResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.BodyPostureResponse(),
             self.do_rpcrequest('BodyPosture', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5799,7 +5913,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.BodyPostureResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.BodyPostureResponse(),
             await self.do_rpcrequest_async('BodyPosture', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5941,6 +6056,172 @@ class Client(OpenApiClient):
         body_posture_resp = await self.body_posture_with_options_async(body_posture_req, runtime)
         return body_posture_resp
 
+    def monitor_examination_with_options(
+        self,
+        request: facebody_20191230_models.MonitorExaminationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.MonitorExaminationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            facebody_20191230_models.MonitorExaminationResponse(),
+            self.do_rpcrequest('MonitorExamination', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def monitor_examination_with_options_async(
+        self,
+        request: facebody_20191230_models.MonitorExaminationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.MonitorExaminationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            facebody_20191230_models.MonitorExaminationResponse(),
+            await self.do_rpcrequest_async('MonitorExamination', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def monitor_examination(
+        self,
+        request: facebody_20191230_models.MonitorExaminationRequest,
+    ) -> facebody_20191230_models.MonitorExaminationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.monitor_examination_with_options(request, runtime)
+
+    async def monitor_examination_async(
+        self,
+        request: facebody_20191230_models.MonitorExaminationRequest,
+    ) -> facebody_20191230_models.MonitorExaminationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.monitor_examination_with_options_async(request, runtime)
+
+    def monitor_examination_advance(
+        self,
+        request: facebody_20191230_models.MonitorExaminationAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.MonitorExaminationResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint='openplatform.aliyuncs.com',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        monitor_examination_req = facebody_20191230_models.MonitorExaminationRequest()
+        OpenApiUtilClient.convert(request, monitor_examination_req)
+        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.image_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        oss_client.post_object(upload_request, oss_runtime)
+        monitor_examination_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        monitor_examination_resp = self.monitor_examination_with_options(monitor_examination_req, runtime)
+        return monitor_examination_resp
+
+    async def monitor_examination_advance_async(
+        self,
+        request: facebody_20191230_models.MonitorExaminationAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.MonitorExaminationResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint='openplatform.aliyuncs.com',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        monitor_examination_req = facebody_20191230_models.MonitorExaminationRequest()
+        OpenApiUtilClient.convert(request, monitor_examination_req)
+        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.image_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        await oss_client.post_object_async(upload_request, oss_runtime)
+        monitor_examination_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        monitor_examination_resp = await self.monitor_examination_with_options_async(monitor_examination_req, runtime)
+        return monitor_examination_resp
+
     def create_body_db_with_options(
         self,
         request: facebody_20191230_models.CreateBodyDbRequest,
@@ -5950,7 +6231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CreateBodyDbResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CreateBodyDbResponse(),
             self.do_rpcrequest('CreateBodyDb', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5963,7 +6245,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return facebody_20191230_models.CreateBodyDbResponse().from_map(
+        return TeaCore.from_map(
+            facebody_20191230_models.CreateBodyDbResponse(),
             await self.do_rpcrequest_async('CreateBodyDb', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
