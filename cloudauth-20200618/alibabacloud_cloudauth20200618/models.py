@@ -4,6 +4,255 @@ from Tea.model import TeaModel
 from typing import BinaryIO
 
 
+class VerifyBankElementRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: int = None,
+        outer_order_no: str = None,
+        mode: str = None,
+        bank_card_no: str = None,
+        id_no: str = None,
+        bank_card_url: str = None,
+        bank_card_file: str = None,
+        id_name: str = None,
+        mobile: str = None,
+    ):
+        self.scene_id = scene_id
+        self.outer_order_no = outer_order_no
+        self.mode = mode
+        self.bank_card_no = bank_card_no
+        self.id_no = id_no
+        self.bank_card_url = bank_card_url
+        self.bank_card_file = bank_card_file
+        self.id_name = id_name
+        self.mobile = mobile
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.outer_order_no is not None:
+            result['OuterOrderNo'] = self.outer_order_no
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.bank_card_no is not None:
+            result['BankCardNo'] = self.bank_card_no
+        if self.id_no is not None:
+            result['IdNo'] = self.id_no
+        if self.bank_card_url is not None:
+            result['BankCardUrl'] = self.bank_card_url
+        if self.bank_card_file is not None:
+            result['BankCardFile'] = self.bank_card_file
+        if self.id_name is not None:
+            result['IdName'] = self.id_name
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('OuterOrderNo') is not None:
+            self.outer_order_no = m.get('OuterOrderNo')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('BankCardNo') is not None:
+            self.bank_card_no = m.get('BankCardNo')
+        if m.get('IdNo') is not None:
+            self.id_no = m.get('IdNo')
+        if m.get('BankCardUrl') is not None:
+            self.bank_card_url = m.get('BankCardUrl')
+        if m.get('BankCardFile') is not None:
+            self.bank_card_file = m.get('BankCardFile')
+        if m.get('IdName') is not None:
+            self.id_name = m.get('IdName')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        return self
+
+
+class VerifyBankElementResponseResultObject(TeaModel):
+    def __init__(
+        self,
+        passed: str = None,
+        sub_code: str = None,
+        material_info: str = None,
+        certify_id: str = None,
+    ):
+        self.passed = passed
+        self.sub_code = sub_code
+        self.material_info = material_info
+        self.certify_id = certify_id
+
+    def validate(self):
+        self.validate_required(self.passed, 'passed')
+        self.validate_required(self.sub_code, 'sub_code')
+        self.validate_required(self.material_info, 'material_info')
+        self.validate_required(self.certify_id, 'certify_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        if self.material_info is not None:
+            result['MaterialInfo'] = self.material_info
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        if m.get('MaterialInfo') is not None:
+            self.material_info = m.get('MaterialInfo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        return self
+
+
+class VerifyBankElementResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        message: str = None,
+        code: str = None,
+        result_object: VerifyBankElementResponseResultObject = None,
+    ):
+        self.request_id = request_id
+        self.message = message
+        self.code = code
+        self.result_object = result_object
+
+    def validate(self):
+        self.validate_required(self.request_id, 'request_id')
+        self.validate_required(self.message, 'message')
+        self.validate_required(self.code, 'code')
+        self.validate_required(self.result_object, 'result_object')
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ResultObject') is not None:
+            temp_model = VerifyBankElementResponseResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class VerifyBankElementAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        bank_card_file_object: BinaryIO = None,
+        scene_id: int = None,
+        outer_order_no: str = None,
+        mode: str = None,
+        bank_card_no: str = None,
+        id_no: str = None,
+        bank_card_url: str = None,
+        id_name: str = None,
+        mobile: str = None,
+    ):
+        self.bank_card_file_object = bank_card_file_object
+        self.scene_id = scene_id
+        self.outer_order_no = outer_order_no
+        self.mode = mode
+        self.bank_card_no = bank_card_no
+        self.id_no = id_no
+        self.bank_card_url = bank_card_url
+        self.id_name = id_name
+        self.mobile = mobile
+
+    def validate(self):
+        self.validate_required(self.bank_card_file_object, 'bank_card_file_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bank_card_file_object is not None:
+            result['BankCardFileObject'] = self.bank_card_file_object
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.outer_order_no is not None:
+            result['OuterOrderNo'] = self.outer_order_no
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.bank_card_no is not None:
+            result['BankCardNo'] = self.bank_card_no
+        if self.id_no is not None:
+            result['IdNo'] = self.id_no
+        if self.bank_card_url is not None:
+            result['BankCardUrl'] = self.bank_card_url
+        if self.id_name is not None:
+            result['IdName'] = self.id_name
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BankCardFileObject') is not None:
+            self.bank_card_file_object = m.get('BankCardFileObject')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('OuterOrderNo') is not None:
+            self.outer_order_no = m.get('OuterOrderNo')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('BankCardNo') is not None:
+            self.bank_card_no = m.get('BankCardNo')
+        if m.get('IdNo') is not None:
+            self.id_no = m.get('IdNo')
+        if m.get('BankCardUrl') is not None:
+            self.bank_card_url = m.get('BankCardUrl')
+        if m.get('IdName') is not None:
+            self.id_name = m.get('IdName')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        return self
+
+
 class ContrastSmartVerifyRequest(TeaModel):
     def __init__(
         self,
@@ -566,6 +815,8 @@ class InitSmartVerifyRequest(TeaModel):
         certify_id: str = None,
         oss_bucket_name: str = None,
         oss_object_name: str = None,
+        id_no: str = None,
+        id_name: str = None,
     ):
         self.scene_id = scene_id
         self.outer_order_no = outer_order_no
@@ -585,6 +836,8 @@ class InitSmartVerifyRequest(TeaModel):
         self.certify_id = certify_id
         self.oss_bucket_name = oss_bucket_name
         self.oss_object_name = oss_object_name
+        self.id_no = id_no
+        self.id_name = id_name
 
     def validate(self):
         pass
@@ -631,6 +884,10 @@ class InitSmartVerifyRequest(TeaModel):
             result['OssBucketName'] = self.oss_bucket_name
         if self.oss_object_name is not None:
             result['OssObjectName'] = self.oss_object_name
+        if self.id_no is not None:
+            result['IdNo'] = self.id_no
+        if self.id_name is not None:
+            result['IdName'] = self.id_name
         return result
 
     def from_map(self, m: dict = None):
@@ -671,6 +928,10 @@ class InitSmartVerifyRequest(TeaModel):
             self.oss_bucket_name = m.get('OssBucketName')
         if m.get('OssObjectName') is not None:
             self.oss_object_name = m.get('OssObjectName')
+        if m.get('IdNo') is not None:
+            self.id_no = m.get('IdNo')
+        if m.get('IdName') is not None:
+            self.id_name = m.get('IdName')
         return self
 
 

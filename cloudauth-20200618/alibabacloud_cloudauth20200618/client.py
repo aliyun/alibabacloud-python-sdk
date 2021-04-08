@@ -28,6 +28,172 @@ class Client(RPCClient):
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloudauth', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
+    def verify_bank_element(
+        self,
+        request: cloudauth_20200618_models.VerifyBankElementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20200618_models.VerifyBankElementResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            cloudauth_20200618_models.VerifyBankElementResponse(),
+            self.do_request('VerifyBankElement', 'HTTPS', 'POST', '2020-06-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def verify_bank_element_async(
+        self,
+        request: cloudauth_20200618_models.VerifyBankElementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20200618_models.VerifyBankElementResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            cloudauth_20200618_models.VerifyBankElementResponse(),
+            await self.do_request_async('VerifyBankElement', 'HTTPS', 'POST', '2020-06-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def verify_bank_element_simply(
+        self,
+        request: cloudauth_20200618_models.VerifyBankElementRequest,
+    ) -> cloudauth_20200618_models.VerifyBankElementResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_bank_element(request, runtime)
+
+    async def verify_bank_element_simply_async(
+        self,
+        request: cloudauth_20200618_models.VerifyBankElementRequest,
+    ) -> cloudauth_20200618_models.VerifyBankElementResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_bank_element_async(request, runtime)
+
+    def verify_bank_element_advance(
+        self,
+        request: cloudauth_20200618_models.VerifyBankElementAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20200618_models.VerifyBankElementResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='Cloudauth',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        RPCUtilClient.convert(runtime, oss_runtime)
+        verify_bank_element_req = cloudauth_20200618_models.VerifyBankElementRequest()
+        RPCUtilClient.convert(request, verify_bank_element_req)
+        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = RPCUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.bank_card_file_object,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        oss_client.post_object(upload_request, oss_runtime)
+        verify_bank_element_req.bank_card_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        verify_bank_element_resp = self.verify_bank_element(verify_bank_element_req, runtime)
+        return verify_bank_element_resp
+
+    async def verify_bank_element_advance_async(
+        self,
+        request: cloudauth_20200618_models.VerifyBankElementAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20200618_models.VerifyBankElementResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='Cloudauth',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        RPCUtilClient.convert(runtime, oss_runtime)
+        verify_bank_element_req = cloudauth_20200618_models.VerifyBankElementRequest()
+        RPCUtilClient.convert(request, verify_bank_element_req)
+        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = RPCUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.bank_card_file_object,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        await oss_client.post_object_async(upload_request, oss_runtime)
+        verify_bank_element_req.bank_card_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        verify_bank_element_resp = await self.verify_bank_element_async(verify_bank_element_req, runtime)
+        return verify_bank_element_resp
+
     def contrast_smart_verify(
         self,
         request: cloudauth_20200618_models.ContrastSmartVerifyRequest,
@@ -72,11 +238,14 @@ class Client(RPCClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -134,11 +303,14 @@ class Client(RPCClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -232,11 +404,14 @@ class Client(RPCClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -294,11 +469,14 @@ class Client(RPCClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )

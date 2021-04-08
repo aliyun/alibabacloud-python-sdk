@@ -1,3 +1,6 @@
+2021-04-08 Version: 1.0.4
+- ADD VerifyBankElement API.
+
 2021-03-31 Version: 1.0.3
 - ElementSmartVerify api add certNationalEmblemUrl parameter.
 
