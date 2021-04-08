@@ -154,6 +154,156 @@ class AddAudioAsyncResponse(TeaModel):
         return self
 
 
+class AddDocAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        watermark_id: str = None,
+        url_list: str = None,
+    ):
+        self.watermark_id = watermark_id
+        self.url_list = url_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.watermark_id is not None:
+            result['WatermarkId'] = self.watermark_id
+        if self.url_list is not None:
+            result['urlList'] = self.url_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WatermarkId') is not None:
+            self.watermark_id = m.get('WatermarkId')
+        if m.get('urlList') is not None:
+            self.url_list = m.get('urlList')
+        return self
+
+
+class AddDocAsyncResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_uid: str = None,
+        data_id: str = None,
+    ):
+        self.task_uid = task_uid
+        self.data_id = data_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_uid is not None:
+            result['TaskUid'] = self.task_uid
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskUid') is not None:
+            self.task_uid = m.get('TaskUid')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        return self
+
+
+class AddDocAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        msg: str = None,
+        request_id: str = None,
+        data: List[AddDocAsyncResponseBodyData] = None,
+    ):
+        self.msg = msg
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = AddDocAsyncResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class AddDocAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AddDocAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AddDocAsyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddImageAsyncRequest(TeaModel):
     def __init__(
         self,
@@ -722,14 +872,16 @@ class GetAudioAddResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: GetAudioAddResponseBodyData = None,
+        data: List[GetAudioAddResponseBodyData] = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            self.data.validate()
+            for k in self.data:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -739,17 +891,21 @@ class GetAudioAddResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.data = []
         if m.get('Data') is not None:
-            temp_model = GetAudioAddResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+            for k in m.get('Data'):
+                temp_model = GetAudioAddResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         return self
 
 
@@ -1076,14 +1232,16 @@ class GetAudioExtractResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: GetAudioExtractResponseBodyData = None,
+        data: List[GetAudioExtractResponseBodyData] = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            self.data.validate()
+            for k in self.data:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1093,17 +1251,21 @@ class GetAudioExtractResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.data = []
         if m.get('Data') is not None:
-            temp_model = GetAudioExtractResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+            for k in m.get('Data'):
+                temp_model = GetAudioExtractResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         return self
 
 
@@ -1290,6 +1452,564 @@ class GetAudioTraceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetAudioTraceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDocAddRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetDocAddResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        source_url: str = None,
+        result_url: str = None,
+        data_id: str = None,
+        gmt_modified: int = None,
+        media_type: str = None,
+        msg: str = None,
+        task_uid: str = None,
+        app_id: int = None,
+        gmt_create: int = None,
+        opt_type: str = None,
+        finished_time: int = None,
+        id: int = None,
+    ):
+        self.status = status
+        self.source_url = source_url
+        self.result_url = result_url
+        self.data_id = data_id
+        self.gmt_modified = gmt_modified
+        self.media_type = media_type
+        self.msg = msg
+        self.task_uid = task_uid
+        self.app_id = app_id
+        self.gmt_create = gmt_create
+        self.opt_type = opt_type
+        self.finished_time = finished_time
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.source_url is not None:
+            result['SourceUrl'] = self.source_url
+        if self.result_url is not None:
+            result['ResultUrl'] = self.result_url
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.task_uid is not None:
+            result['TaskUid'] = self.task_uid
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.opt_type is not None:
+            result['OptType'] = self.opt_type
+        if self.finished_time is not None:
+            result['FinishedTime'] = self.finished_time
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SourceUrl') is not None:
+            self.source_url = m.get('SourceUrl')
+        if m.get('ResultUrl') is not None:
+            self.result_url = m.get('ResultUrl')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('TaskUid') is not None:
+            self.task_uid = m.get('TaskUid')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('OptType') is not None:
+            self.opt_type = m.get('OptType')
+        if m.get('FinishedTime') is not None:
+            self.finished_time = m.get('FinishedTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetDocAddResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: List[GetDocAddResponseBodyData] = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetDocAddResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class GetDocAddResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDocAddResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDocAddResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDocAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        url_list: str = None,
+    ):
+        self.app_name = app_name
+        self.url_list = url_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.url_list is not None:
+            result['urlList'] = self.url_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('urlList') is not None:
+            self.url_list = m.get('urlList')
+        return self
+
+
+class GetDocAsyncResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_uid: str = None,
+        data_id: str = None,
+    ):
+        self.task_uid = task_uid
+        self.data_id = data_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_uid is not None:
+            result['TaskUid'] = self.task_uid
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskUid') is not None:
+            self.task_uid = m.get('TaskUid')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        return self
+
+
+class GetDocAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: List[GetDocAsyncResponseBodyData] = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetDocAsyncResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class GetDocAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDocAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDocAsyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDocExtractRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetDocExtractResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        source_url: str = None,
+        water_mark_id: str = None,
+        result_url: str = None,
+        data_id: str = None,
+        gmt_modified: int = None,
+        media_type: str = None,
+        msg: str = None,
+        task_uid: str = None,
+        app_id: int = None,
+        gmt_create: int = None,
+        opt_type: str = None,
+        finished_time: int = None,
+        id: int = None,
+    ):
+        self.status = status
+        self.source_url = source_url
+        self.water_mark_id = water_mark_id
+        self.result_url = result_url
+        self.data_id = data_id
+        self.gmt_modified = gmt_modified
+        self.media_type = media_type
+        self.msg = msg
+        self.task_uid = task_uid
+        self.app_id = app_id
+        self.gmt_create = gmt_create
+        self.opt_type = opt_type
+        self.finished_time = finished_time
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.source_url is not None:
+            result['SourceUrl'] = self.source_url
+        if self.water_mark_id is not None:
+            result['WaterMarkId'] = self.water_mark_id
+        if self.result_url is not None:
+            result['ResultUrl'] = self.result_url
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.task_uid is not None:
+            result['TaskUid'] = self.task_uid
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.opt_type is not None:
+            result['OptType'] = self.opt_type
+        if self.finished_time is not None:
+            result['FinishedTime'] = self.finished_time
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SourceUrl') is not None:
+            self.source_url = m.get('SourceUrl')
+        if m.get('WaterMarkId') is not None:
+            self.water_mark_id = m.get('WaterMarkId')
+        if m.get('ResultUrl') is not None:
+            self.result_url = m.get('ResultUrl')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('TaskUid') is not None:
+            self.task_uid = m.get('TaskUid')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('OptType') is not None:
+            self.opt_type = m.get('OptType')
+        if m.get('FinishedTime') is not None:
+            self.finished_time = m.get('FinishedTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetDocExtractResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: List[GetDocExtractResponseBodyData] = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetDocExtractResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class GetDocExtractResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDocExtractResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDocExtractResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1718,14 +2438,16 @@ class GetQueryTraceFileResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: GetQueryTraceFileResponseBodyData = None,
+        data: List[GetQueryTraceFileResponseBodyData] = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            self.data.validate()
+            for k in self.data:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1735,17 +2457,21 @@ class GetQueryTraceFileResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.data = []
         if m.get('Data') is not None:
-            temp_model = GetQueryTraceFileResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+            for k in m.get('Data'):
+                temp_model = GetQueryTraceFileResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         return self
 
 
@@ -1916,14 +2642,16 @@ class GetVideoAddResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: GetVideoAddResponseBodyData = None,
+        data: List[GetVideoAddResponseBodyData] = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            self.data.validate()
+            for k in self.data:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1933,17 +2661,21 @@ class GetVideoAddResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.data = []
         if m.get('Data') is not None:
-            temp_model = GetVideoAddResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+            for k in m.get('Data'):
+                temp_model = GetVideoAddResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         return self
 
 
@@ -2276,14 +3008,16 @@ class GetVideoExtractResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: GetVideoExtractResponseBodyData = None,
+        data: List[GetVideoExtractResponseBodyData] = None,
     ):
         self.request_id = request_id
         self.data = data
 
     def validate(self):
         if self.data:
-            self.data.validate()
+            for k in self.data:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2293,17 +3027,21 @@ class GetVideoExtractResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.data = []
         if m.get('Data') is not None:
-            temp_model = GetVideoExtractResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
+            for k in m.get('Data'):
+                temp_model = GetVideoExtractResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         return self
 
 

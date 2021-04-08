@@ -82,6 +82,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_audio_async_with_options_async(request, runtime)
 
+    def add_doc_async_with_options(
+        self,
+        request: lvwang_watermark_20210104_models.AddDocAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> lvwang_watermark_20210104_models.AddDocAsyncResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            lvwang_watermark_20210104_models.AddDocAsyncResponse(),
+            self.do_rpcrequest('AddDocAsync', '2021-01-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_doc_async_with_options_async(
+        self,
+        request: lvwang_watermark_20210104_models.AddDocAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> lvwang_watermark_20210104_models.AddDocAsyncResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            lvwang_watermark_20210104_models.AddDocAsyncResponse(),
+            await self.do_rpcrequest_async('AddDocAsync', '2021-01-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_doc_async(
+        self,
+        request: lvwang_watermark_20210104_models.AddDocAsyncRequest,
+    ) -> lvwang_watermark_20210104_models.AddDocAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_doc_async_with_options(request, runtime)
+
+    async def add_doc_async_async(
+        self,
+        request: lvwang_watermark_20210104_models.AddDocAsyncRequest,
+    ) -> lvwang_watermark_20210104_models.AddDocAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_doc_async_with_options_async(request, runtime)
+
     def add_image_async_with_options(
         self,
         request: lvwang_watermark_20210104_models.AddImageAsyncRequest,
@@ -375,6 +417,132 @@ class Client(OpenApiClient):
     ) -> lvwang_watermark_20210104_models.GetAudioTraceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_audio_trace_with_options_async(request, runtime)
+
+    def get_doc_add_with_options(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocAddRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> lvwang_watermark_20210104_models.GetDocAddResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            lvwang_watermark_20210104_models.GetDocAddResponse(),
+            self.do_rpcrequest('GetDocAdd', '2021-01-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_doc_add_with_options_async(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocAddRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> lvwang_watermark_20210104_models.GetDocAddResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            lvwang_watermark_20210104_models.GetDocAddResponse(),
+            await self.do_rpcrequest_async('GetDocAdd', '2021-01-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_doc_add(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocAddRequest,
+    ) -> lvwang_watermark_20210104_models.GetDocAddResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_doc_add_with_options(request, runtime)
+
+    async def get_doc_add_async(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocAddRequest,
+    ) -> lvwang_watermark_20210104_models.GetDocAddResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_doc_add_with_options_async(request, runtime)
+
+    def get_doc_async_with_options(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> lvwang_watermark_20210104_models.GetDocAsyncResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            lvwang_watermark_20210104_models.GetDocAsyncResponse(),
+            self.do_rpcrequest('GetDocAsync', '2021-01-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_doc_async_with_options_async(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> lvwang_watermark_20210104_models.GetDocAsyncResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            lvwang_watermark_20210104_models.GetDocAsyncResponse(),
+            await self.do_rpcrequest_async('GetDocAsync', '2021-01-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_doc_async(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocAsyncRequest,
+    ) -> lvwang_watermark_20210104_models.GetDocAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_doc_async_with_options(request, runtime)
+
+    async def get_doc_async_async(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocAsyncRequest,
+    ) -> lvwang_watermark_20210104_models.GetDocAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_doc_async_with_options_async(request, runtime)
+
+    def get_doc_extract_with_options(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocExtractRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> lvwang_watermark_20210104_models.GetDocExtractResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            lvwang_watermark_20210104_models.GetDocExtractResponse(),
+            self.do_rpcrequest('GetDocExtract', '2021-01-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_doc_extract_with_options_async(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocExtractRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> lvwang_watermark_20210104_models.GetDocExtractResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            lvwang_watermark_20210104_models.GetDocExtractResponse(),
+            await self.do_rpcrequest_async('GetDocExtract', '2021-01-04', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_doc_extract(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocExtractRequest,
+    ) -> lvwang_watermark_20210104_models.GetDocExtractResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_doc_extract_with_options(request, runtime)
+
+    async def get_doc_extract_async(
+        self,
+        request: lvwang_watermark_20210104_models.GetDocExtractRequest,
+    ) -> lvwang_watermark_20210104_models.GetDocExtractResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_doc_extract_with_options_async(request, runtime)
 
     def get_image_async_with_options(
         self,
