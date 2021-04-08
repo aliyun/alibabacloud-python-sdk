@@ -1,3 +1,6 @@
+2021-04-08 Version: 3.0.3
+- Add DetectIPCVideoObject.
+
 2021-03-10 Version: 3.0.2
 - AMP Version Change.
 
