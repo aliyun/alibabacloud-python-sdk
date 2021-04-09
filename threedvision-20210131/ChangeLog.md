@@ -1,3 +1,6 @@
+2021-04-09 Version: 1.0.4
+- Release ReconstructThreeDMultiView.
+
 2021-03-31 Version: 1.0.3
 - Generated python 2021-01-31 for threedvision.
 

@@ -4,6 +4,484 @@ from Tea.model import TeaModel
 from typing import BinaryIO, Dict
 
 
+class ReconstructBodyBySingleImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        # A short description of struct
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class ReconstructBodyBySingleImageAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class ReconstructBodyBySingleImageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        depth_url: str = None,
+        mesh_url: str = None,
+    ):
+        self.depth_url = depth_url
+        self.mesh_url = mesh_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.depth_url is not None:
+            result['DepthURL'] = self.depth_url
+        if self.mesh_url is not None:
+            result['MeshURL'] = self.mesh_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DepthURL') is not None:
+            self.depth_url = m.get('DepthURL')
+        if m.get('MeshURL') is not None:
+            self.mesh_url = m.get('MeshURL')
+        return self
+
+
+class ReconstructBodyBySingleImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: ReconstructBodyBySingleImageResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = ReconstructBodyBySingleImageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class ReconstructBodyBySingleImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ReconstructBodyBySingleImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ReconstructBodyBySingleImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReconstructThreeDMultiViewRequest(TeaModel):
+    def __init__(
+        self,
+        zip_file_url: str = None,
+        mode: str = None,
+    ):
+        # A short description of struct
+        self.zip_file_url = zip_file_url
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.zip_file_url is not None:
+            result['ZipFileUrl'] = self.zip_file_url
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ZipFileUrl') is not None:
+            self.zip_file_url = m.get('ZipFileUrl')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
+class ReconstructThreeDMultiViewAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        zip_file_url_object: BinaryIO = None,
+        mode: str = None,
+    ):
+        self.zip_file_url_object = zip_file_url_object
+        self.mode = mode
+
+    def validate(self):
+        self.validate_required(self.zip_file_url_object, 'zip_file_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.zip_file_url_object is not None:
+            result['ZipFileUrlObject'] = self.zip_file_url_object
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ZipFileUrlObject') is not None:
+            self.zip_file_url_object = m.get('ZipFileUrlObject')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
+class ReconstructThreeDMultiViewResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        point_cloud_url: str = None,
+    ):
+        self.point_cloud_url = point_cloud_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.point_cloud_url is not None:
+            result['PointCloudURL'] = self.point_cloud_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PointCloudURL') is not None:
+            self.point_cloud_url = m.get('PointCloudURL')
+        return self
+
+
+class ReconstructThreeDMultiViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: ReconstructThreeDMultiViewResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = ReconstructThreeDMultiViewResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class ReconstructThreeDMultiViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ReconstructThreeDMultiViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ReconstructThreeDMultiViewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAsyncJobResultRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class GetAsyncJobResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        error_message: str = None,
+        result: str = None,
+        error_code: str = None,
+        job_id: str = None,
+    ):
+        self.status = status
+        self.error_message = error_message
+        self.result = result
+        self.error_code = error_code
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class GetAsyncJobResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: GetAsyncJobResultResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = GetAsyncJobResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class GetAsyncJobResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAsyncJobResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAsyncJobResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EstimateMonocularImageDepthRequest(TeaModel):
     def __init__(
         self,
