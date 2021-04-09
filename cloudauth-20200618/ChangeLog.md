@@ -1,3 +1,6 @@
+2021-04-09 Version: 1.0.5
+- Add VerifyBankElement API.
+
 2021-04-08 Version: 2.0.2
 - Add VerifyBankElement API.
 
