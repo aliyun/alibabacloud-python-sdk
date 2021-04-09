@@ -1,3 +1,6 @@
+2021-04-09 Version: 1.0.1
+- New API SDK.
+
 2021-03-30 Version: 2.0.1
 - Generated python 2019-03-07 for Cloudauth.
 
