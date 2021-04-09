@@ -54,6 +54,870 @@ class Client(RPCClient):
         self.check_config(config)
         self._endpoint = self.get_endpoint('dataworks-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
+    def get_meta_table_theme_level(
+        self,
+        request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetMetaTableThemeLevelResponse(),
+            self.do_request('GetMetaTableThemeLevel', 'HTTPS', 'GET', '2020-05-18', 'AK', TeaCore.to_map(request), None, runtime)
+        )
+
+    async def get_meta_table_theme_level_async(
+        self,
+        request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetMetaTableThemeLevelResponse(),
+            await self.do_request_async('GetMetaTableThemeLevel', 'HTTPS', 'GET', '2020-05-18', 'AK', TeaCore.to_map(request), None, runtime)
+        )
+
+    def get_meta_table_theme_level_simply(
+        self,
+        request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
+    ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_meta_table_theme_level(request, runtime)
+
+    async def get_meta_table_theme_level_simply_async(
+        self,
+        request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
+    ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_meta_table_theme_level_async(request, runtime)
+
+    def get_permission_apply_order_detail(
+        self,
+        request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse(),
+            self.do_request('GetPermissionApplyOrderDetail', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def get_permission_apply_order_detail_async(
+        self,
+        request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse(),
+            await self.do_request_async('GetPermissionApplyOrderDetail', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def get_permission_apply_order_detail_simply(
+        self,
+        request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
+    ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_permission_apply_order_detail(request, runtime)
+
+    async def get_permission_apply_order_detail_simply_async(
+        self,
+        request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
+    ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_permission_apply_order_detail_async(request, runtime)
+
+    def list_permission_apply_orders(
+        self,
+        request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListPermissionApplyOrdersResponse(),
+            self.do_request('ListPermissionApplyOrders', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def list_permission_apply_orders_async(
+        self,
+        request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListPermissionApplyOrdersResponse(),
+            await self.do_request_async('ListPermissionApplyOrders', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def list_permission_apply_orders_simply(
+        self,
+        request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
+    ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_permission_apply_orders(request, runtime)
+
+    async def list_permission_apply_orders_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
+    ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_permission_apply_orders_async(request, runtime)
+
+    def create_permission_apply_order(
+        self,
+        request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreatePermissionApplyOrderResponse(),
+            self.do_request('CreatePermissionApplyOrder', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def create_permission_apply_order_async(
+        self,
+        request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreatePermissionApplyOrderResponse(),
+            await self.do_request_async('CreatePermissionApplyOrder', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def create_permission_apply_order_simply(
+        self,
+        request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
+    ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_permission_apply_order(request, runtime)
+
+    async def create_permission_apply_order_simply_async(
+        self,
+        request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
+    ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_permission_apply_order_async(request, runtime)
+
+    def approve_permission_apply_order(
+        self,
+        request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse(),
+            self.do_request('ApprovePermissionApplyOrder', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def approve_permission_apply_order_async(
+        self,
+        request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse(),
+            await self.do_request_async('ApprovePermissionApplyOrder', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def approve_permission_apply_order_simply(
+        self,
+        request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
+    ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.approve_permission_apply_order(request, runtime)
+
+    async def approve_permission_apply_order_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
+    ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.approve_permission_apply_order_async(request, runtime)
+
+    def list_success_instance_amount(
+        self,
+        request: dataworks_public_20200518_models.ListSuccessInstanceAmountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListSuccessInstanceAmountResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListSuccessInstanceAmountResponse(),
+            self.do_request('ListSuccessInstanceAmount', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def list_success_instance_amount_async(
+        self,
+        request: dataworks_public_20200518_models.ListSuccessInstanceAmountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListSuccessInstanceAmountResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListSuccessInstanceAmountResponse(),
+            await self.do_request_async('ListSuccessInstanceAmount', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def list_success_instance_amount_simply(
+        self,
+        request: dataworks_public_20200518_models.ListSuccessInstanceAmountRequest,
+    ) -> dataworks_public_20200518_models.ListSuccessInstanceAmountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_success_instance_amount(request, runtime)
+
+    async def list_success_instance_amount_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ListSuccessInstanceAmountRequest,
+    ) -> dataworks_public_20200518_models.ListSuccessInstanceAmountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_success_instance_amount_async(request, runtime)
+
+    def list_file_type(
+        self,
+        request: dataworks_public_20200518_models.ListFileTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListFileTypeResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListFileTypeResponse(),
+            self.do_request('ListFileType', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def list_file_type_async(
+        self,
+        request: dataworks_public_20200518_models.ListFileTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListFileTypeResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListFileTypeResponse(),
+            await self.do_request_async('ListFileType', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def list_file_type_simply(
+        self,
+        request: dataworks_public_20200518_models.ListFileTypeRequest,
+    ) -> dataworks_public_20200518_models.ListFileTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_file_type(request, runtime)
+
+    async def list_file_type_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ListFileTypeRequest,
+    ) -> dataworks_public_20200518_models.ListFileTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_file_type_async(request, runtime)
+
+    def list_instance_amount(
+        self,
+        request: dataworks_public_20200518_models.ListInstanceAmountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListInstanceAmountResponse(),
+            self.do_request('ListInstanceAmount', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def list_instance_amount_async(
+        self,
+        request: dataworks_public_20200518_models.ListInstanceAmountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListInstanceAmountResponse(),
+            await self.do_request_async('ListInstanceAmount', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def list_instance_amount_simply(
+        self,
+        request: dataworks_public_20200518_models.ListInstanceAmountRequest,
+    ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_amount(request, runtime)
+
+    async def list_instance_amount_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ListInstanceAmountRequest,
+    ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_amount_async(request, runtime)
+
+    def list_data_sources(
+        self,
+        request: dataworks_public_20200518_models.ListDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDataSourcesResponse(),
+            self.do_request('ListDataSources', 'HTTPS', 'GET', '2020-05-18', 'AK', TeaCore.to_map(request), None, runtime)
+        )
+
+    async def list_data_sources_async(
+        self,
+        request: dataworks_public_20200518_models.ListDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDataSourcesResponse(),
+            await self.do_request_async('ListDataSources', 'HTTPS', 'GET', '2020-05-18', 'AK', TeaCore.to_map(request), None, runtime)
+        )
+
+    def list_data_sources_simply(
+        self,
+        request: dataworks_public_20200518_models.ListDataSourcesRequest,
+    ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_sources(request, runtime)
+
+    async def list_data_sources_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ListDataSourcesRequest,
+    ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_sources_async(request, runtime)
+
+    def list_nodes_by_baseline(
+        self,
+        request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListNodesByBaselineResponse(),
+            self.do_request('ListNodesByBaseline', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def list_nodes_by_baseline_async(
+        self,
+        request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListNodesByBaselineResponse(),
+            await self.do_request_async('ListNodesByBaseline', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def list_nodes_by_baseline_simply(
+        self,
+        request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
+    ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_nodes_by_baseline(request, runtime)
+
+    async def list_nodes_by_baseline_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
+    ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_nodes_by_baseline_async(request, runtime)
+
+    def list_manual_dag_instances(
+        self,
+        request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListManualDagInstancesResponse(),
+            self.do_request('ListManualDagInstances', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def list_manual_dag_instances_async(
+        self,
+        request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListManualDagInstancesResponse(),
+            await self.do_request_async('ListManualDagInstances', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def list_manual_dag_instances_simply(
+        self,
+        request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
+    ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_manual_dag_instances(request, runtime)
+
+    async def list_manual_dag_instances_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
+    ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_manual_dag_instances_async(request, runtime)
+
+    def get_instance_status_statistic(
+        self,
+        request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetInstanceStatusStatisticResponse(),
+            self.do_request('GetInstanceStatusStatistic', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def get_instance_status_statistic_async(
+        self,
+        request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetInstanceStatusStatisticResponse(),
+            await self.do_request_async('GetInstanceStatusStatistic', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def get_instance_status_statistic_simply(
+        self,
+        request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
+    ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_instance_status_statistic(request, runtime)
+
+    async def get_instance_status_statistic_simply_async(
+        self,
+        request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
+    ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_instance_status_statistic_async(request, runtime)
+
+    def delete_data_source(
+        self,
+        request: dataworks_public_20200518_models.DeleteDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteDataSourceResponse(),
+            self.do_request('DeleteDataSource', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def delete_data_source_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteDataSourceResponse(),
+            await self.do_request_async('DeleteDataSource', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def delete_data_source_simply(
+        self,
+        request: dataworks_public_20200518_models.DeleteDataSourceRequest,
+    ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_source(request, runtime)
+
+    async def delete_data_source_simply_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteDataSourceRequest,
+    ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_source_async(request, runtime)
+
+    def create_data_source(
+        self,
+        request: dataworks_public_20200518_models.CreateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateDataSourceResponse(),
+            self.do_request('CreateDataSource', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def create_data_source_async(
+        self,
+        request: dataworks_public_20200518_models.CreateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateDataSourceResponse(),
+            await self.do_request_async('CreateDataSource', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def create_data_source_simply(
+        self,
+        request: dataworks_public_20200518_models.CreateDataSourceRequest,
+    ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_source(request, runtime)
+
+    async def create_data_source_simply_async(
+        self,
+        request: dataworks_public_20200518_models.CreateDataSourceRequest,
+    ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_source_async(request, runtime)
+
+    def top_ten_error_times_instance(
+        self,
+        request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse(),
+            self.do_request('TopTenErrorTimesInstance', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def top_ten_error_times_instance_async(
+        self,
+        request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse(),
+            await self.do_request_async('TopTenErrorTimesInstance', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def top_ten_error_times_instance_simply(
+        self,
+        request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
+    ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.top_ten_error_times_instance(request, runtime)
+
+    async def top_ten_error_times_instance_simply_async(
+        self,
+        request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
+    ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.top_ten_error_times_instance_async(request, runtime)
+
+    def top_ten_elapsed_time_instance(
+        self,
+        request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse(),
+            self.do_request('TopTenElapsedTimeInstance', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def top_ten_elapsed_time_instance_async(
+        self,
+        request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse(),
+            await self.do_request_async('TopTenElapsedTimeInstance', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def top_ten_elapsed_time_instance_simply(
+        self,
+        request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
+    ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.top_ten_elapsed_time_instance(request, runtime)
+
+    async def top_ten_elapsed_time_instance_simply_async(
+        self,
+        request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
+    ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.top_ten_elapsed_time_instance_async(request, runtime)
+
+    def get_project(
+        self,
+        request: dataworks_public_20200518_models.GetProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetProjectResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetProjectResponse(),
+            self.do_request('GetProject', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def get_project_async(
+        self,
+        request: dataworks_public_20200518_models.GetProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetProjectResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetProjectResponse(),
+            await self.do_request_async('GetProject', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def get_project_simply(
+        self,
+        request: dataworks_public_20200518_models.GetProjectRequest,
+    ) -> dataworks_public_20200518_models.GetProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_project(request, runtime)
+
+    async def get_project_simply_async(
+        self,
+        request: dataworks_public_20200518_models.GetProjectRequest,
+    ) -> dataworks_public_20200518_models.GetProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_project_async(request, runtime)
+
+    def list_nodes_by_output(
+        self,
+        request: dataworks_public_20200518_models.ListNodesByOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListNodesByOutputResponse(),
+            self.do_request('ListNodesByOutput', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def list_nodes_by_output_async(
+        self,
+        request: dataworks_public_20200518_models.ListNodesByOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListNodesByOutputResponse(),
+            await self.do_request_async('ListNodesByOutput', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def list_nodes_by_output_simply(
+        self,
+        request: dataworks_public_20200518_models.ListNodesByOutputRequest,
+    ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_nodes_by_output(request, runtime)
+
+    async def list_nodes_by_output_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ListNodesByOutputRequest,
+    ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_nodes_by_output_async(request, runtime)
+
+    def get_file_type_statistic(
+        self,
+        request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetFileTypeStatisticResponse(),
+            self.do_request('GetFileTypeStatistic', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def get_file_type_statistic_async(
+        self,
+        request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetFileTypeStatisticResponse(),
+            await self.do_request_async('GetFileTypeStatistic', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def get_file_type_statistic_simply(
+        self,
+        request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
+    ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_file_type_statistic(request, runtime)
+
+    async def get_file_type_statistic_simply_async(
+        self,
+        request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
+    ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_file_type_statistic_async(request, runtime)
+
+    def run_smoke_test(
+        self,
+        request: dataworks_public_20200518_models.RunSmokeTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RunSmokeTestResponse(),
+            self.do_request('RunSmokeTest', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def run_smoke_test_async(
+        self,
+        request: dataworks_public_20200518_models.RunSmokeTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RunSmokeTestResponse(),
+            await self.do_request_async('RunSmokeTest', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def run_smoke_test_simply(
+        self,
+        request: dataworks_public_20200518_models.RunSmokeTestRequest,
+    ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_smoke_test(request, runtime)
+
+    async def run_smoke_test_simply_async(
+        self,
+        request: dataworks_public_20200518_models.RunSmokeTestRequest,
+    ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_smoke_test_async(request, runtime)
+
+    def list_node_input_or_output(
+        self,
+        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListNodeInputOrOutputResponse(),
+            self.do_request('ListNodeInputOrOutput', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def list_node_input_or_output_async(
+        self,
+        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListNodeInputOrOutputResponse(),
+            await self.do_request_async('ListNodeInputOrOutput', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def list_node_input_or_output_simply(
+        self,
+        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
+    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_node_input_or_output(request, runtime)
+
+    async def list_node_input_or_output_simply_async(
+        self,
+        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
+    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_node_input_or_output_async(request, runtime)
+
+    def run_cycle_dag_nodes(
+        self,
+        request: dataworks_public_20200518_models.RunCycleDagNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RunCycleDagNodesResponse(),
+            self.do_request('RunCycleDagNodes', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def run_cycle_dag_nodes_async(
+        self,
+        request: dataworks_public_20200518_models.RunCycleDagNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RunCycleDagNodesResponse(),
+            await self.do_request_async('RunCycleDagNodes', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def run_cycle_dag_nodes_simply(
+        self,
+        request: dataworks_public_20200518_models.RunCycleDagNodesRequest,
+    ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_cycle_dag_nodes(request, runtime)
+
+    async def run_cycle_dag_nodes_simply_async(
+        self,
+        request: dataworks_public_20200518_models.RunCycleDagNodesRequest,
+    ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_cycle_dag_nodes_async(request, runtime)
+
+    def run_manual_dag_nodes(
+        self,
+        request: dataworks_public_20200518_models.RunManualDagNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RunManualDagNodesResponse(),
+            self.do_request('RunManualDagNodes', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def run_manual_dag_nodes_async(
+        self,
+        request: dataworks_public_20200518_models.RunManualDagNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.RunManualDagNodesResponse(),
+            await self.do_request_async('RunManualDagNodes', 'HTTPS', 'POST', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def run_manual_dag_nodes_simply(
+        self,
+        request: dataworks_public_20200518_models.RunManualDagNodesRequest,
+    ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_manual_dag_nodes(request, runtime)
+
+    async def run_manual_dag_nodes_simply_async(
+        self,
+        request: dataworks_public_20200518_models.RunManualDagNodesRequest,
+    ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_manual_dag_nodes_async(request, runtime)
+
+    def update_data_source(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDataSourceResponse(),
+            self.do_request('UpdateDataSource', 'HTTPS', 'PUT', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    async def update_data_source_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        UtilClient.validate_model(request)
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDataSourceResponse(),
+            await self.do_request_async('UpdateDataSource', 'HTTPS', 'PUT', '2020-05-18', 'AK', None, TeaCore.to_map(request), runtime)
+        )
+
+    def update_data_source_simply(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
+    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_source(request, runtime)
+
+    async def update_data_source_simply_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
+    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_source_async(request, runtime)
+
     def update_table_add_column(
         self,
         request: dataworks_public_20200518_models.UpdateTableAddColumnRequest,

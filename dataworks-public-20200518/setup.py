@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dataworks-public20200518.
 
-Created on 31/03/2021
+Created on 09/04/2021
 
 @author: Alibaba Cloud SDK
 """
