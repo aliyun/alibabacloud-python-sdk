@@ -3492,11 +3492,9 @@ class ListNodesByOutputRequest(TeaModel):
         self,
         project_env: str = None,
         outputs: str = None,
-        output_node_list_as_map: bool = None,
     ):
         self.project_env = project_env
         self.outputs = outputs
-        self.output_node_list_as_map = output_node_list_as_map
 
     def validate(self):
         self.validate_required(self.project_env, 'project_env')
@@ -3512,8 +3510,6 @@ class ListNodesByOutputRequest(TeaModel):
             result['ProjectEnv'] = self.project_env
         if self.outputs is not None:
             result['Outputs'] = self.outputs
-        if self.output_node_list_as_map is not None:
-            result['OutputNodeListAsMap'] = self.output_node_list_as_map
         return result
 
     def from_map(self, m: dict = None):
@@ -3522,8 +3518,6 @@ class ListNodesByOutputRequest(TeaModel):
             self.project_env = m.get('ProjectEnv')
         if m.get('Outputs') is not None:
             self.outputs = m.get('Outputs')
-        if m.get('OutputNodeListAsMap') is not None:
-            self.output_node_list_as_map = m.get('OutputNodeListAsMap')
         return self
 
 
