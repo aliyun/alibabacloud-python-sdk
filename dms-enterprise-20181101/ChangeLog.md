@@ -1,3 +1,6 @@
+2021-04-12 Version: 1.16.0
+- Support GetDBTopology API.
+
 2021-03-30 Version: 1.15.1
 - Generated python 2018-11-01 for dms-enterprise.
 
