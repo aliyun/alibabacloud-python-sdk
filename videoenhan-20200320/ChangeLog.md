@@ -1,3 +1,6 @@
+2021-04-13 Version: 3.0.1
+- Release AddFaceVideoTemplate DeleteFaceVideoTemplate QueryFaceVideoTemplate MergeVideoModelFace.
+
 2020-12-30 Version: 3.0.0
 - AMP Version Change.
 
