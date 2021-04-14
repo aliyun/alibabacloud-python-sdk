@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -19,7 +20,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('dytnsapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -48,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dytnsapi_20200217_models.DescribePhoneNumberResaleResponse().from_map(
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberResaleResponse(),
             self.do_rpcrequest('DescribePhoneNumberResale', '2020-02-17', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -61,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dytnsapi_20200217_models.DescribePhoneNumberResaleResponse().from_map(
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberResaleResponse(),
             await self.do_rpcrequest_async('DescribePhoneNumberResale', '2020-02-17', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -88,7 +91,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dytnsapi_20200217_models.DescribePhoneNumberStatusResponse().from_map(
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberStatusResponse(),
             self.do_rpcrequest('DescribePhoneNumberStatus', '2020-02-17', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dytnsapi_20200217_models.DescribePhoneNumberStatusResponse().from_map(
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberStatusResponse(),
             await self.do_rpcrequest_async('DescribePhoneNumberStatus', '2020-02-17', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -119,6 +124,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_phone_number_status_with_options_async(request, runtime)
 
+    def pvr_callback_fcuwith_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.PvrCallbackFCUResponse(),
+            self.do_rpcrequest('PvrCallbackFCU', '2020-02-17', 'HTTPS', 'POST', 'AK', 'none', req, runtime)
+        )
+
+    async def pvr_callback_fcuwith_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.PvrCallbackFCUResponse(),
+            await self.do_rpcrequest_async('PvrCallbackFCU', '2020-02-17', 'HTTPS', 'POST', 'AK', 'none', req, runtime)
+        )
+
+    def pvr_callback_fcu(self) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pvr_callback_fcuwith_options(runtime)
+
+    async def pvr_callback_fcu_async(self) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pvr_callback_fcuwith_options_async(runtime)
+
     def query_phone_number_attribute_with_options(
         self,
         request: dytnsapi_20200217_models.QueryPhoneNumberAttributeRequest,
@@ -128,7 +161,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dytnsapi_20200217_models.QueryPhoneNumberAttributeResponse().from_map(
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.QueryPhoneNumberAttributeResponse(),
             self.do_rpcrequest('QueryPhoneNumberAttribute', '2020-02-17', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -141,7 +175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dytnsapi_20200217_models.QueryPhoneNumberAttributeResponse().from_map(
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.QueryPhoneNumberAttributeResponse(),
             await self.do_rpcrequest_async('QueryPhoneNumberAttribute', '2020-02-17', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 

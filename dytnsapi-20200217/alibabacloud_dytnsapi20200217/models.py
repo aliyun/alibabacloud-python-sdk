@@ -23,6 +23,10 @@ class DescribePhoneNumberResaleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -64,6 +68,10 @@ class DescribePhoneNumberResaleResponseBodyTwiceTelVerify(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.carrier is not None:
             result['Carrier'] = self.carrier
@@ -98,6 +106,10 @@ class DescribePhoneNumberResaleResponseBody(TeaModel):
             self.twice_tel_verify.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -139,6 +151,10 @@ class DescribePhoneNumberResaleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -173,6 +189,10 @@ class DescribePhoneNumberStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -212,6 +232,10 @@ class DescribePhoneNumberStatusResponseBodyPhoneStatus(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -250,6 +274,10 @@ class DescribePhoneNumberStatusResponseBody(TeaModel):
             self.phone_status.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.phone_status is not None:
             result['PhoneStatus'] = self.phone_status.to_map()
@@ -291,6 +319,10 @@ class DescribePhoneNumberStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -305,6 +337,33 @@ class DescribePhoneNumberStatusResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribePhoneNumberStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PvrCallbackFCUResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
         return self
 
 
@@ -325,6 +384,10 @@ class QueryPhoneNumberAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -370,6 +433,10 @@ class QueryPhoneNumberAttributeResponseBodyPhoneNumberAttribute(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.basic_carrier is not None:
             result['BasicCarrier'] = self.basic_carrier
@@ -420,6 +487,10 @@ class QueryPhoneNumberAttributeResponseBody(TeaModel):
             self.phone_number_attribute.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -461,6 +532,10 @@ class QueryPhoneNumberAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
