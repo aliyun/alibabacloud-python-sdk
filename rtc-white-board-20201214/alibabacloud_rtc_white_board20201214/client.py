@@ -40,133 +40,215 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def create_app_with_options(
+    def describe_apps_with_options(
         self,
-        request: rtc_white_board_20201214_models.CreateAppRequest,
+        request: rtc_white_board_20201214_models.DescribeAppsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.CreateAppResponse:
+    ) -> rtc_white_board_20201214_models.DescribeAppsResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='CreateApp',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
-            rtc_white_board_20201214_models.CreateAppResponse(),
-            self.call_api(params, req, runtime)
+            rtc_white_board_20201214_models.DescribeAppsResponse(),
+            self.do_rpcrequest('DescribeApps', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def create_app_with_options_async(
+    async def describe_apps_with_options_async(
         self,
-        request: rtc_white_board_20201214_models.CreateAppRequest,
+        request: rtc_white_board_20201214_models.DescribeAppsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.CreateAppResponse:
+    ) -> rtc_white_board_20201214_models.DescribeAppsResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='CreateApp',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
-            rtc_white_board_20201214_models.CreateAppResponse(),
-            await self.call_api_async(params, req, runtime)
+            rtc_white_board_20201214_models.DescribeAppsResponse(),
+            await self.do_rpcrequest_async('DescribeApps', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def create_app(
+    def describe_apps(
         self,
-        request: rtc_white_board_20201214_models.CreateAppRequest,
-    ) -> rtc_white_board_20201214_models.CreateAppResponse:
+        request: rtc_white_board_20201214_models.DescribeAppsRequest,
+    ) -> rtc_white_board_20201214_models.DescribeAppsResponse:
         runtime = util_models.RuntimeOptions()
-        return self.create_app_with_options(request, runtime)
+        return self.describe_apps_with_options(request, runtime)
 
-    async def create_app_async(
+    async def describe_apps_async(
         self,
-        request: rtc_white_board_20201214_models.CreateAppRequest,
-    ) -> rtc_white_board_20201214_models.CreateAppResponse:
+        request: rtc_white_board_20201214_models.DescribeAppsRequest,
+    ) -> rtc_white_board_20201214_models.DescribeAppsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.create_app_with_options_async(request, runtime)
+        return await self.describe_apps_with_options_async(request, runtime)
 
-    def create_white_board_with_options(
+    def set_app_callback_url_with_options(
         self,
-        request: rtc_white_board_20201214_models.CreateWhiteBoardRequest,
+        request: rtc_white_board_20201214_models.SetAppCallbackUrlRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.CreateWhiteBoardResponse:
+    ) -> rtc_white_board_20201214_models.SetAppCallbackUrlResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='CreateWhiteBoard',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
-            rtc_white_board_20201214_models.CreateWhiteBoardResponse(),
-            self.call_api(params, req, runtime)
+            rtc_white_board_20201214_models.SetAppCallbackUrlResponse(),
+            self.do_rpcrequest('SetAppCallbackUrl', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def create_white_board_with_options_async(
+    async def set_app_callback_url_with_options_async(
         self,
-        request: rtc_white_board_20201214_models.CreateWhiteBoardRequest,
+        request: rtc_white_board_20201214_models.SetAppCallbackUrlRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.CreateWhiteBoardResponse:
+    ) -> rtc_white_board_20201214_models.SetAppCallbackUrlResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='CreateWhiteBoard',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.SetAppCallbackUrlResponse(),
+            await self.do_rpcrequest_async('SetAppCallbackUrl', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_app_callback_url(
+        self,
+        request: rtc_white_board_20201214_models.SetAppCallbackUrlRequest,
+    ) -> rtc_white_board_20201214_models.SetAppCallbackUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_app_callback_url_with_options(request, runtime)
+
+    async def set_app_callback_url_async(
+        self,
+        request: rtc_white_board_20201214_models.SetAppCallbackUrlRequest,
+    ) -> rtc_white_board_20201214_models.SetAppCallbackUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_app_callback_url_with_options_async(request, runtime)
+
+    def set_app_name_with_options(
+        self,
+        request: rtc_white_board_20201214_models.SetAppNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.SetAppNameResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            rtc_white_board_20201214_models.CreateWhiteBoardResponse(),
-            await self.call_api_async(params, req, runtime)
+            rtc_white_board_20201214_models.SetAppNameResponse(),
+            self.do_rpcrequest('SetAppName', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def create_white_board(
+    async def set_app_name_with_options_async(
         self,
-        request: rtc_white_board_20201214_models.CreateWhiteBoardRequest,
-    ) -> rtc_white_board_20201214_models.CreateWhiteBoardResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_white_board_with_options(request, runtime)
+        request: rtc_white_board_20201214_models.SetAppNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.SetAppNameResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.SetAppNameResponse(),
+            await self.do_rpcrequest_async('SetAppName', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
 
-    async def create_white_board_async(
+    def set_app_name(
         self,
-        request: rtc_white_board_20201214_models.CreateWhiteBoardRequest,
-    ) -> rtc_white_board_20201214_models.CreateWhiteBoardResponse:
+        request: rtc_white_board_20201214_models.SetAppNameRequest,
+    ) -> rtc_white_board_20201214_models.SetAppNameResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.create_white_board_with_options_async(request, runtime)
+        return self.set_app_name_with_options(request, runtime)
+
+    async def set_app_name_async(
+        self,
+        request: rtc_white_board_20201214_models.SetAppNameRequest,
+    ) -> rtc_white_board_20201214_models.SetAppNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_app_name_with_options_async(request, runtime)
+
+    def describe_white_boards_with_options(
+        self,
+        request: rtc_white_board_20201214_models.DescribeWhiteBoardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.DescribeWhiteBoardsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.DescribeWhiteBoardsResponse(),
+            self.do_rpcrequest('DescribeWhiteBoards', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_white_boards_with_options_async(
+        self,
+        request: rtc_white_board_20201214_models.DescribeWhiteBoardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.DescribeWhiteBoardsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.DescribeWhiteBoardsResponse(),
+            await self.do_rpcrequest_async('DescribeWhiteBoards', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_white_boards(
+        self,
+        request: rtc_white_board_20201214_models.DescribeWhiteBoardsRequest,
+    ) -> rtc_white_board_20201214_models.DescribeWhiteBoardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_boards_with_options(request, runtime)
+
+    async def describe_white_boards_async(
+        self,
+        request: rtc_white_board_20201214_models.DescribeWhiteBoardsRequest,
+    ) -> rtc_white_board_20201214_models.DescribeWhiteBoardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_boards_with_options_async(request, runtime)
+
+    def set_app_domain_names_with_options(
+        self,
+        request: rtc_white_board_20201214_models.SetAppDomainNamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.SetAppDomainNamesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.SetAppDomainNamesResponse(),
+            self.do_rpcrequest('SetAppDomainNames', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def set_app_domain_names_with_options_async(
+        self,
+        request: rtc_white_board_20201214_models.SetAppDomainNamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.SetAppDomainNamesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.SetAppDomainNamesResponse(),
+            await self.do_rpcrequest_async('SetAppDomainNames', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_app_domain_names(
+        self,
+        request: rtc_white_board_20201214_models.SetAppDomainNamesRequest,
+    ) -> rtc_white_board_20201214_models.SetAppDomainNamesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_app_domain_names_with_options(request, runtime)
+
+    async def set_app_domain_names_async(
+        self,
+        request: rtc_white_board_20201214_models.SetAppDomainNamesRequest,
+    ) -> rtc_white_board_20201214_models.SetAppDomainNamesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_app_domain_names_with_options_async(request, runtime)
 
     def open_white_board_with_options(
         self,
@@ -177,20 +259,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='OpenWhiteBoard',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             rtc_white_board_20201214_models.OpenWhiteBoardResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('OpenWhiteBoard', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def open_white_board_with_options_async(
@@ -202,20 +273,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='OpenWhiteBoard',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             rtc_white_board_20201214_models.OpenWhiteBoardResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('OpenWhiteBoard', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def open_white_board(
@@ -241,20 +301,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='RefreshUsersPermissions',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             rtc_white_board_20201214_models.RefreshUsersPermissionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RefreshUsersPermissions', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def refresh_users_permissions_with_options_async(
@@ -266,20 +315,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='RefreshUsersPermissions',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             rtc_white_board_20201214_models.RefreshUsersPermissionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RefreshUsersPermissions', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def refresh_users_permissions(
@@ -296,197 +334,89 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.refresh_users_permissions_with_options_async(request, runtime)
 
-    def set_app_callback_url_with_options(
+    def create_app_with_options(
         self,
-        request: rtc_white_board_20201214_models.SetAppCallbackUrlRequest,
+        request: rtc_white_board_20201214_models.CreateAppRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.SetAppCallbackUrlResponse:
+    ) -> rtc_white_board_20201214_models.CreateAppResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='SetAppCallbackUrl',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
-            rtc_white_board_20201214_models.SetAppCallbackUrlResponse(),
-            self.call_api(params, req, runtime)
+            rtc_white_board_20201214_models.CreateAppResponse(),
+            self.do_rpcrequest('CreateApp', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def set_app_callback_url_with_options_async(
+    async def create_app_with_options_async(
         self,
-        request: rtc_white_board_20201214_models.SetAppCallbackUrlRequest,
+        request: rtc_white_board_20201214_models.CreateAppRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.SetAppCallbackUrlResponse:
+    ) -> rtc_white_board_20201214_models.CreateAppResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='SetAppCallbackUrl',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
-            rtc_white_board_20201214_models.SetAppCallbackUrlResponse(),
-            await self.call_api_async(params, req, runtime)
+            rtc_white_board_20201214_models.CreateAppResponse(),
+            await self.do_rpcrequest_async('CreateApp', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def set_app_callback_url(
+    def create_app(
         self,
-        request: rtc_white_board_20201214_models.SetAppCallbackUrlRequest,
-    ) -> rtc_white_board_20201214_models.SetAppCallbackUrlResponse:
+        request: rtc_white_board_20201214_models.CreateAppRequest,
+    ) -> rtc_white_board_20201214_models.CreateAppResponse:
         runtime = util_models.RuntimeOptions()
-        return self.set_app_callback_url_with_options(request, runtime)
+        return self.create_app_with_options(request, runtime)
 
-    async def set_app_callback_url_async(
+    async def create_app_async(
         self,
-        request: rtc_white_board_20201214_models.SetAppCallbackUrlRequest,
-    ) -> rtc_white_board_20201214_models.SetAppCallbackUrlResponse:
+        request: rtc_white_board_20201214_models.CreateAppRequest,
+    ) -> rtc_white_board_20201214_models.CreateAppResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.set_app_callback_url_with_options_async(request, runtime)
+        return await self.create_app_with_options_async(request, runtime)
 
-    def set_app_domain_names_with_options(
+    def create_white_board_with_options(
         self,
-        request: rtc_white_board_20201214_models.SetAppDomainNamesRequest,
+        request: rtc_white_board_20201214_models.CreateWhiteBoardRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.SetAppDomainNamesResponse:
+    ) -> rtc_white_board_20201214_models.CreateWhiteBoardResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='SetAppDomainNames',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
-            rtc_white_board_20201214_models.SetAppDomainNamesResponse(),
-            self.call_api(params, req, runtime)
+            rtc_white_board_20201214_models.CreateWhiteBoardResponse(),
+            self.do_rpcrequest('CreateWhiteBoard', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def set_app_domain_names_with_options_async(
+    async def create_white_board_with_options_async(
         self,
-        request: rtc_white_board_20201214_models.SetAppDomainNamesRequest,
+        request: rtc_white_board_20201214_models.CreateWhiteBoardRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.SetAppDomainNamesResponse:
+    ) -> rtc_white_board_20201214_models.CreateWhiteBoardResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='SetAppDomainNames',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
-            rtc_white_board_20201214_models.SetAppDomainNamesResponse(),
-            await self.call_api_async(params, req, runtime)
+            rtc_white_board_20201214_models.CreateWhiteBoardResponse(),
+            await self.do_rpcrequest_async('CreateWhiteBoard', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def set_app_domain_names(
+    def create_white_board(
         self,
-        request: rtc_white_board_20201214_models.SetAppDomainNamesRequest,
-    ) -> rtc_white_board_20201214_models.SetAppDomainNamesResponse:
+        request: rtc_white_board_20201214_models.CreateWhiteBoardRequest,
+    ) -> rtc_white_board_20201214_models.CreateWhiteBoardResponse:
         runtime = util_models.RuntimeOptions()
-        return self.set_app_domain_names_with_options(request, runtime)
+        return self.create_white_board_with_options(request, runtime)
 
-    async def set_app_domain_names_async(
+    async def create_white_board_async(
         self,
-        request: rtc_white_board_20201214_models.SetAppDomainNamesRequest,
-    ) -> rtc_white_board_20201214_models.SetAppDomainNamesResponse:
+        request: rtc_white_board_20201214_models.CreateWhiteBoardRequest,
+    ) -> rtc_white_board_20201214_models.CreateWhiteBoardResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.set_app_domain_names_with_options_async(request, runtime)
-
-    def set_app_name_with_options(
-        self,
-        request: rtc_white_board_20201214_models.SetAppNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.SetAppNameResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetAppName',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rtc_white_board_20201214_models.SetAppNameResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_app_name_with_options_async(
-        self,
-        request: rtc_white_board_20201214_models.SetAppNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_white_board_20201214_models.SetAppNameResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetAppName',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rtc_white_board_20201214_models.SetAppNameResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_app_name(
-        self,
-        request: rtc_white_board_20201214_models.SetAppNameRequest,
-    ) -> rtc_white_board_20201214_models.SetAppNameResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_app_name_with_options(request, runtime)
-
-    async def set_app_name_async(
-        self,
-        request: rtc_white_board_20201214_models.SetAppNameRequest,
-    ) -> rtc_white_board_20201214_models.SetAppNameResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_app_name_with_options_async(request, runtime)
+        return await self.create_white_board_with_options_async(request, runtime)
 
     def set_app_status_with_options(
         self,
@@ -497,20 +427,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='SetAppStatus',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             rtc_white_board_20201214_models.SetAppStatusResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('SetAppStatus', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def set_app_status_with_options_async(
@@ -522,20 +441,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='SetAppStatus',
-            version='2020-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             rtc_white_board_20201214_models.SetAppStatusResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('SetAppStatus', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def set_app_status(

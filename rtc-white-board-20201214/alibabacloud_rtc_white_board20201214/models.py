@@ -1,14 +1,407 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict
+from typing import List, Dict
 
 
-class CreateAppRequest(TeaModel):
+class DescribeAppsRequest(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
+        app_status: int = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # 白板应用唯一标识符，默认查询所有应用ID
+        self.app_id = app_id
+        # 白板应用状态，默认查询所有状态。（取值：1:启用，2:停用）
+        self.app_status = app_status
+        # 第几页，默认查询第1页。
+        self.page_num = page_num
+        # 每页显示个数，默认为10。
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
+        if self.app_status is not None:
+            result['AppStatus'] = self.app_status
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
+        if m.get('AppStatus') is not None:
+            self.app_status = m.get('AppStatus')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppsResponseBodyResultAppList(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        status: int = None,
+        callback_url: str = None,
+        domain_names: str = None,
+        create_time: str = None,
+    ):
+        # 白板应用唯一标识符
+        self.app_id = app_id
+        # 白板应用名
+        self.app_name = app_name
+        # 白板应用状态（取值：1:启用，2:停用）
+        self.status = status
+        # 白板应用回调地址URL
+        self.callback_url = callback_url
+        # 合法域名列表，使用英文逗号(,)分隔
+        self.domain_names = domain_names
+        # 白板应用创建时间
+        self.create_time = create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.callback_url is not None:
+            result['CallbackUrl'] = self.callback_url
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('CallbackUrl') is not None:
+            self.callback_url = m.get('CallbackUrl')
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        return self
+
+
+class DescribeAppsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        total_num: int = None,
+        total_page: int = None,
+        app_list: List[DescribeAppsResponseBodyResultAppList] = None,
+    ):
+        self.total_num = total_num
+        self.total_page = total_page
+        # App信息列表
+        self.app_list = app_list
+
+    def validate(self):
+        if self.app_list:
+            for k in self.app_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        result['AppList'] = []
+        if self.app_list is not None:
+            for k in self.app_list:
+                result['AppList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        self.app_list = []
+        if m.get('AppList') is not None:
+            for k in m.get('AppList'):
+                temp_model = DescribeAppsResponseBodyResultAppList()
+                self.app_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAppsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        response_success: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        result: DescribeAppsResponseBodyResult = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 请求结果
+        self.response_success = response_success
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_msg = error_msg
+        # 返回结果体
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Result') is not None:
+            temp_model = DescribeAppsResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class DescribeAppsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeAppsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeAppsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetAppCallbackUrlRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_callback_url: str = None,
+        app_callback_auth_key: str = None,
+    ):
+        # 白板应用唯一标识符
+        self.app_id = app_id
+        # 白板应用回调地址URL
+        self.app_callback_url = app_callback_url
+        # 白板应用回调鉴权码，由8~20位大小写字母、数字或下划线组成
+        self.app_callback_auth_key = app_callback_auth_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
+        if self.app_callback_url is not None:
+            result['AppCallbackUrl'] = self.app_callback_url
+        if self.app_callback_auth_key is not None:
+            result['AppCallbackAuthKey'] = self.app_callback_auth_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
+        if m.get('AppCallbackUrl') is not None:
+            self.app_callback_url = m.get('AppCallbackUrl')
+        if m.get('AppCallbackAuthKey') is not None:
+            self.app_callback_auth_key = m.get('AppCallbackAuthKey')
+        return self
+
+
+class SetAppCallbackUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        response_success: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        result: bool = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 请求结果
+        self.response_success = response_success
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_msg = error_msg
+        # 返回结果
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class SetAppCallbackUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SetAppCallbackUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SetAppCallbackUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetAppNameRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
         app_name: str = None,
     ):
+        # 白板应用唯一标识符
+        self.app_id = app_id
         # 白板应用名，由不超过32位的中文、英文、数字或下划线组成
         self.app_name = app_name
 
@@ -21,53 +414,29 @@ class CreateAppRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
         return self
 
 
-class CreateAppResponseBodyResult(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-    ):
-        # 白板应用唯一标识符
-        self.app_id = app_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppID'] = self.app_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppID') is not None:
-            self.app_id = m.get('AppID')
-        return self
-
-
-class CreateAppResponseBody(TeaModel):
+class SetAppNameResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         response_success: bool = None,
         error_code: str = None,
         error_msg: str = None,
-        result: CreateAppResponseBodyResult = None,
+        result: bool = None,
     ):
         # 请求ID
         self.request_id = request_id
@@ -77,12 +446,11 @@ class CreateAppResponseBody(TeaModel):
         self.error_code = error_code
         # 错误信息
         self.error_msg = error_msg
-        # 返回结果体
+        # 返回结果
         self.result = result
 
     def validate(self):
-        if self.result:
-            self.result.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -99,7 +467,7 @@ class CreateAppResponseBody(TeaModel):
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
         if self.result is not None:
-            result['Result'] = self.result.to_map()
+            result['Result'] = self.result
         return result
 
     def from_map(self, m: dict = None):
@@ -113,16 +481,15 @@ class CreateAppResponseBody(TeaModel):
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
         if m.get('Result') is not None:
-            temp_model = CreateAppResponseBodyResult()
-            self.result = temp_model.from_map(m['Result'])
+            self.result = m.get('Result')
         return self
 
 
-class CreateAppResponse(TeaModel):
+class SetAppNameResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: CreateAppResponseBody = None,
+        body: SetAppNameResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -150,21 +517,27 @@ class CreateAppResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = CreateAppResponseBody()
+            temp_model = SetAppNameResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
 
-class CreateWhiteBoardRequest(TeaModel):
+class DescribeWhiteBoardsRequest(TeaModel):
     def __init__(
         self,
-        user_id: str = None,
         app_id: str = None,
+        doc_status: int = None,
+        page_num: int = None,
+        page_size: int = None,
     ):
-        # 创建白板的用户ID（客户业务用户），由纯数字组成。
-        self.user_id = user_id
         # 白板应用唯一标识符
         self.app_id = app_id
+        # 白板文档状态，默认查询所有状态。（取值：1:启用，2:停用）
+        self.doc_status = doc_status
+        # 第几页，默认查询第1页
+        self.page_num = page_num
+        # 每页显示个数，默认为10
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -175,28 +548,48 @@ class CreateWhiteBoardRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.app_id is not None:
             result['AppID'] = self.app_id
+        if self.doc_status is not None:
+            result['DocStatus'] = self.doc_status
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('AppID') is not None:
             self.app_id = m.get('AppID')
+        if m.get('DocStatus') is not None:
+            self.doc_status = m.get('DocStatus')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
-class CreateWhiteBoardResponseBodyResult(TeaModel):
+class DescribeWhiteBoardsResponseBodyResultDocList(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         doc_key: str = None,
+        status: int = None,
+        create_user_id: str = None,
+        create_time: str = None,
     ):
-        # 文档唯一标识符，由大小写字母和数字组成
+        # 白板应用唯一标识符
+        self.app_id = app_id
+        # 文档唯一标识符
         self.doc_key = doc_key
+        # 文档状态（取值：1:启用，2:停用）
+        self.status = status
+        # 创建白板的用户ID
+        self.create_user_id = create_user_id
+        # 白板应用创建时间
+        self.create_time = create_time
 
     def validate(self):
         pass
@@ -207,25 +600,89 @@ class CreateWhiteBoardResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
         if self.doc_key is not None:
             result['DocKey'] = self.doc_key
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
         if m.get('DocKey') is not None:
             self.doc_key = m.get('DocKey')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         return self
 
 
-class CreateWhiteBoardResponseBody(TeaModel):
+class DescribeWhiteBoardsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        total_num: int = None,
+        total_page: int = None,
+        doc_list: List[DescribeWhiteBoardsResponseBodyResultDocList] = None,
+    ):
+        self.total_num = total_num
+        self.total_page = total_page
+        # App信息列表
+        self.doc_list = doc_list
+
+    def validate(self):
+        if self.doc_list:
+            for k in self.doc_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        result['DocList'] = []
+        if self.doc_list is not None:
+            for k in self.doc_list:
+                result['DocList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        self.doc_list = []
+        if m.get('DocList') is not None:
+            for k in m.get('DocList'):
+                temp_model = DescribeWhiteBoardsResponseBodyResultDocList()
+                self.doc_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWhiteBoardsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         response_success: bool = None,
         error_code: str = None,
         error_msg: str = None,
-        result: CreateWhiteBoardResponseBodyResult = None,
+        result: DescribeWhiteBoardsResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
@@ -271,16 +728,16 @@ class CreateWhiteBoardResponseBody(TeaModel):
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
         if m.get('Result') is not None:
-            temp_model = CreateWhiteBoardResponseBodyResult()
+            temp_model = DescribeWhiteBoardsResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
         return self
 
 
-class CreateWhiteBoardResponse(TeaModel):
+class DescribeWhiteBoardsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: CreateWhiteBoardResponseBody = None,
+        body: DescribeWhiteBoardsResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -308,7 +765,135 @@ class CreateWhiteBoardResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = CreateWhiteBoardResponseBody()
+            temp_model = DescribeWhiteBoardsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetAppDomainNamesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_domain_names: str = None,
+    ):
+        # 白板应用唯一标识符
+        self.app_id = app_id
+        # 所有会使用到白板应用的客户网站域名，多个使用英文逗号(,)分隔，最多传10个
+        self.app_domain_names = app_domain_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
+        if self.app_domain_names is not None:
+            result['AppDomainNames'] = self.app_domain_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
+        if m.get('AppDomainNames') is not None:
+            self.app_domain_names = m.get('AppDomainNames')
+        return self
+
+
+class SetAppDomainNamesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        response_success: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        result: bool = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 请求结果
+        self.response_success = response_success
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_msg = error_msg
+        # 返回结果
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class SetAppDomainNamesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SetAppDomainNamesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SetAppDomainNamesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -722,277 +1307,11 @@ class RefreshUsersPermissionsResponse(TeaModel):
         return self
 
 
-class SetAppCallbackUrlRequest(TeaModel):
+class CreateAppRequest(TeaModel):
     def __init__(
         self,
-        app_id: str = None,
-        app_callback_url: str = None,
-        app_callback_auth_key: str = None,
-    ):
-        # 白板应用唯一标识符
-        self.app_id = app_id
-        # 白板应用回调地址URL
-        self.app_callback_url = app_callback_url
-        # 白板应用回调鉴权码，由8~20位大小写字母、数字或下划线组成
-        self.app_callback_auth_key = app_callback_auth_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppID'] = self.app_id
-        if self.app_callback_url is not None:
-            result['AppCallbackUrl'] = self.app_callback_url
-        if self.app_callback_auth_key is not None:
-            result['AppCallbackAuthKey'] = self.app_callback_auth_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppID') is not None:
-            self.app_id = m.get('AppID')
-        if m.get('AppCallbackUrl') is not None:
-            self.app_callback_url = m.get('AppCallbackUrl')
-        if m.get('AppCallbackAuthKey') is not None:
-            self.app_callback_auth_key = m.get('AppCallbackAuthKey')
-        return self
-
-
-class SetAppCallbackUrlResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        response_success: bool = None,
-        error_code: str = None,
-        error_msg: str = None,
-        result: bool = None,
-    ):
-        # 请求ID
-        self.request_id = request_id
-        # 请求结果
-        self.response_success = response_success
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_msg = error_msg
-        # 返回结果
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.response_success is not None:
-            result['ResponseSuccess'] = self.response_success
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_msg is not None:
-            result['ErrorMsg'] = self.error_msg
-        if self.result is not None:
-            result['Result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResponseSuccess') is not None:
-            self.response_success = m.get('ResponseSuccess')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMsg') is not None:
-            self.error_msg = m.get('ErrorMsg')
-        if m.get('Result') is not None:
-            self.result = m.get('Result')
-        return self
-
-
-class SetAppCallbackUrlResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: SetAppCallbackUrlResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = SetAppCallbackUrlResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SetAppDomainNamesRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        app_domain_names: str = None,
-    ):
-        # 白板应用唯一标识符
-        self.app_id = app_id
-        # 所有会使用到白板应用的客户网站域名，多个使用英文逗号(,)分隔，最多传10个
-        self.app_domain_names = app_domain_names
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppID'] = self.app_id
-        if self.app_domain_names is not None:
-            result['AppDomainNames'] = self.app_domain_names
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppID') is not None:
-            self.app_id = m.get('AppID')
-        if m.get('AppDomainNames') is not None:
-            self.app_domain_names = m.get('AppDomainNames')
-        return self
-
-
-class SetAppDomainNamesResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        response_success: bool = None,
-        error_code: str = None,
-        error_msg: str = None,
-        result: bool = None,
-    ):
-        # 请求ID
-        self.request_id = request_id
-        # 请求结果
-        self.response_success = response_success
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_msg = error_msg
-        # 返回结果
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.response_success is not None:
-            result['ResponseSuccess'] = self.response_success
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_msg is not None:
-            result['ErrorMsg'] = self.error_msg
-        if self.result is not None:
-            result['Result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResponseSuccess') is not None:
-            self.response_success = m.get('ResponseSuccess')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMsg') is not None:
-            self.error_msg = m.get('ErrorMsg')
-        if m.get('Result') is not None:
-            self.result = m.get('Result')
-        return self
-
-
-class SetAppDomainNamesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: SetAppDomainNamesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = SetAppDomainNamesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SetAppNameRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
         app_name: str = None,
     ):
-        # 白板应用唯一标识符
-        self.app_id = app_id
         # 白板应用名，由不超过32位的中文、英文、数字或下划线组成
         self.app_name = app_name
 
@@ -1005,29 +1324,53 @@ class SetAppNameRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.app_id is not None:
-            result['AppID'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AppID') is not None:
-            self.app_id = m.get('AppID')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
         return self
 
 
-class SetAppNameResponseBody(TeaModel):
+class CreateAppResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # 白板应用唯一标识符
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
+        return self
+
+
+class CreateAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         response_success: bool = None,
         error_code: str = None,
         error_msg: str = None,
-        result: bool = None,
+        result: CreateAppResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
@@ -1037,11 +1380,12 @@ class SetAppNameResponseBody(TeaModel):
         self.error_code = error_code
         # 错误信息
         self.error_msg = error_msg
-        # 返回结果
+        # 返回结果体
         self.result = result
 
     def validate(self):
-        pass
+        if self.result:
+            self.result.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1058,7 +1402,7 @@ class SetAppNameResponseBody(TeaModel):
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
         if self.result is not None:
-            result['Result'] = self.result
+            result['Result'] = self.result.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1072,15 +1416,16 @@ class SetAppNameResponseBody(TeaModel):
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
         if m.get('Result') is not None:
-            self.result = m.get('Result')
+            temp_model = CreateAppResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
         return self
 
 
-class SetAppNameResponse(TeaModel):
+class CreateAppResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: SetAppNameResponseBody = None,
+        body: CreateAppResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -1108,7 +1453,165 @@ class SetAppNameResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = SetAppNameResponseBody()
+            temp_model = CreateAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWhiteBoardRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+        app_id: str = None,
+    ):
+        # 创建白板的用户ID（客户业务用户），由纯数字组成。
+        self.user_id = user_id
+        # 白板应用唯一标识符
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
+        return self
+
+
+class CreateWhiteBoardResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        doc_key: str = None,
+    ):
+        # 文档唯一标识符，由大小写字母和数字组成
+        self.doc_key = doc_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_key is not None:
+            result['DocKey'] = self.doc_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocKey') is not None:
+            self.doc_key = m.get('DocKey')
+        return self
+
+
+class CreateWhiteBoardResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        response_success: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        result: CreateWhiteBoardResponseBodyResult = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 请求结果
+        self.response_success = response_success
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_msg = error_msg
+        # 返回结果体
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Result') is not None:
+            temp_model = CreateWhiteBoardResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class CreateWhiteBoardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateWhiteBoardResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateWhiteBoardResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
