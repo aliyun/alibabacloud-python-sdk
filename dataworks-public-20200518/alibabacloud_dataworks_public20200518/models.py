@@ -4836,6 +4836,7 @@ class CreateImportMigrationRequest(TeaModel):
         name: str = None,
         package_type: str = None,
         package_file: str = None,
+        resource_group_map: str = None,
         workspace_map: str = None,
         calculate_engine_map: str = None,
         commit_rule: str = None,
@@ -4845,6 +4846,7 @@ class CreateImportMigrationRequest(TeaModel):
         self.name = name
         self.package_type = package_type
         self.package_file = package_file
+        self.resource_group_map = resource_group_map
         self.workspace_map = workspace_map
         self.calculate_engine_map = calculate_engine_map
         self.commit_rule = commit_rule
@@ -4870,6 +4872,8 @@ class CreateImportMigrationRequest(TeaModel):
             result['PackageType'] = self.package_type
         if self.package_file is not None:
             result['PackageFile'] = self.package_file
+        if self.resource_group_map is not None:
+            result['ResourceGroupMap'] = self.resource_group_map
         if self.workspace_map is not None:
             result['WorkspaceMap'] = self.workspace_map
         if self.calculate_engine_map is not None:
@@ -4890,6 +4894,8 @@ class CreateImportMigrationRequest(TeaModel):
             self.package_type = m.get('PackageType')
         if m.get('PackageFile') is not None:
             self.package_file = m.get('PackageFile')
+        if m.get('ResourceGroupMap') is not None:
+            self.resource_group_map = m.get('ResourceGroupMap')
         if m.get('WorkspaceMap') is not None:
             self.workspace_map = m.get('WorkspaceMap')
         if m.get('CalculateEngineMap') is not None:
@@ -4970,6 +4976,7 @@ class CreateImportMigrationAdvanceRequest(TeaModel):
         project_id: int = None,
         name: str = None,
         package_type: str = None,
+        resource_group_map: str = None,
         workspace_map: str = None,
         calculate_engine_map: str = None,
         commit_rule: str = None,
@@ -4979,6 +4986,7 @@ class CreateImportMigrationAdvanceRequest(TeaModel):
         self.project_id = project_id
         self.name = name
         self.package_type = package_type
+        self.resource_group_map = resource_group_map
         self.workspace_map = workspace_map
         self.calculate_engine_map = calculate_engine_map
         self.commit_rule = commit_rule
@@ -5004,6 +5012,8 @@ class CreateImportMigrationAdvanceRequest(TeaModel):
             result['Name'] = self.name
         if self.package_type is not None:
             result['PackageType'] = self.package_type
+        if self.resource_group_map is not None:
+            result['ResourceGroupMap'] = self.resource_group_map
         if self.workspace_map is not None:
             result['WorkspaceMap'] = self.workspace_map
         if self.calculate_engine_map is not None:
@@ -5024,6 +5034,8 @@ class CreateImportMigrationAdvanceRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('PackageType') is not None:
             self.package_type = m.get('PackageType')
+        if m.get('ResourceGroupMap') is not None:
+            self.resource_group_map = m.get('ResourceGroupMap')
         if m.get('WorkspaceMap') is not None:
             self.workspace_map = m.get('WorkspaceMap')
         if m.get('CalculateEngineMap') is not None:
