@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -48,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.AddFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.AddFaceResponse(),
             self.do_rpcrequest('AddFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -61,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.AddFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.AddFaceResponse(),
             await self.do_rpcrequest_async('AddFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -88,7 +91,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.DeleteFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.DeleteFaceResponse(),
             self.do_rpcrequest('DeleteFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.DeleteFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.DeleteFaceResponse(),
             await self.do_rpcrequest_async('DeleteFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -128,7 +133,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.DetectFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.DetectFaceResponse(),
             self.do_rpcrequest('DetectFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -141,7 +147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.DetectFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.DetectFaceResponse(),
             await self.do_rpcrequest_async('DetectFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -168,7 +175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.GetFaceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.GetFaceAttributeResponse(),
             self.do_rpcrequest('GetFaceAttribute', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -181,7 +189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.GetFaceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.GetFaceAttributeResponse(),
             await self.do_rpcrequest_async('GetFaceAttribute', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -208,7 +217,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.ListFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.ListFaceResponse(),
             self.do_rpcrequest('ListFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -221,7 +231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.ListFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.ListFaceResponse(),
             await self.do_rpcrequest_async('ListFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -244,7 +255,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> face_20181203_models.ListGroupResponse:
         req = open_api_models.OpenApiRequest()
-        return face_20181203_models.ListGroupResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.ListGroupResponse(),
             self.do_rpcrequest('ListGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -253,7 +265,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> face_20181203_models.ListGroupResponse:
         req = open_api_models.OpenApiRequest()
-        return face_20181203_models.ListGroupResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.ListGroupResponse(),
             await self.do_rpcrequest_async('ListGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -274,7 +287,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.RecognizeFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.RecognizeFaceResponse(),
             self.do_rpcrequest('RecognizeFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -287,7 +301,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.RecognizeFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.RecognizeFaceResponse(),
             await self.do_rpcrequest_async('RecognizeFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -314,7 +329,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.VerifyFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.VerifyFaceResponse(),
             self.do_rpcrequest('VerifyFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -327,7 +343,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return face_20181203_models.VerifyFaceResponse().from_map(
+        return TeaCore.from_map(
+            face_20181203_models.VerifyFaceResponse(),
             await self.do_rpcrequest_async('VerifyFace', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
