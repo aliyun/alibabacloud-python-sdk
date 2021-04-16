@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -48,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.BatchInsertMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.BatchInsertMembersResponse(),
             self.do_rpcrequest('BatchInsertMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -61,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.BatchInsertMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.BatchInsertMembersResponse(),
             await self.do_rpcrequest_async('BatchInsertMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -88,7 +91,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CancelPipelineResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CancelPipelineResponse(),
             self.do_rpcrequest('CancelPipeline', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CancelPipelineResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CancelPipelineResponse(),
             await self.do_rpcrequest_async('CancelPipeline', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -128,7 +133,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CheckAliyunAccountExistsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CheckAliyunAccountExistsResponse(),
             self.do_rpcrequest('CheckAliyunAccountExists', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -141,7 +147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CheckAliyunAccountExistsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CheckAliyunAccountExistsResponse(),
             await self.do_rpcrequest_async('CheckAliyunAccountExists', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -168,7 +175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateCommonGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateCommonGroupResponse(),
             self.do_rpcrequest('CreateCommonGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -181,7 +189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateCommonGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateCommonGroupResponse(),
             await self.do_rpcrequest_async('CreateCommonGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -208,7 +217,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateCredentialResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateCredentialResponse(),
             self.do_rpcrequest('CreateCredential', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -221,7 +231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateCredentialResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateCredentialResponse(),
             await self.do_rpcrequest_async('CreateCredential', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -248,7 +259,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateDevopsOrganizationResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateDevopsOrganizationResponse(),
             self.do_rpcrequest('CreateDevopsOrganization', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -261,7 +273,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateDevopsOrganizationResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateDevopsOrganizationResponse(),
             await self.do_rpcrequest_async('CreateDevopsOrganization', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -288,7 +301,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateDevopsProjectResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateDevopsProjectResponse(),
             self.do_rpcrequest('CreateDevopsProject', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -301,7 +315,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateDevopsProjectResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateDevopsProjectResponse(),
             await self.do_rpcrequest_async('CreateDevopsProject', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -328,7 +343,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateDevopsProjectSprintResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateDevopsProjectSprintResponse(),
             self.do_rpcrequest('CreateDevopsProjectSprint', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -341,7 +357,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateDevopsProjectSprintResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateDevopsProjectSprintResponse(),
             await self.do_rpcrequest_async('CreateDevopsProjectSprint', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -368,7 +385,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateDevopsProjectTaskResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateDevopsProjectTaskResponse(),
             self.do_rpcrequest('CreateDevopsProjectTask', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -381,7 +399,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateDevopsProjectTaskResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateDevopsProjectTaskResponse(),
             await self.do_rpcrequest_async('CreateDevopsProjectTask', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -408,7 +427,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreatePipelineResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreatePipelineResponse(),
             self.do_rpcrequest('CreatePipeline', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -421,7 +441,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreatePipelineResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreatePipelineResponse(),
             await self.do_rpcrequest_async('CreatePipeline', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -448,7 +469,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateServiceConnectionResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateServiceConnectionResponse(),
             self.do_rpcrequest('CreateServiceConnection', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -461,7 +483,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.CreateServiceConnectionResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.CreateServiceConnectionResponse(),
             await self.do_rpcrequest_async('CreateServiceConnection', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -488,7 +511,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteCommonGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteCommonGroupResponse(),
             self.do_rpcrequest('DeleteCommonGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -501,7 +525,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteCommonGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteCommonGroupResponse(),
             await self.do_rpcrequest_async('DeleteCommonGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -528,7 +553,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsOrganizationMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsOrganizationMembersResponse(),
             self.do_rpcrequest('DeleteDevopsOrganizationMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -541,7 +567,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsOrganizationMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsOrganizationMembersResponse(),
             await self.do_rpcrequest_async('DeleteDevopsOrganizationMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -568,7 +595,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsProjectResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsProjectResponse(),
             self.do_rpcrequest('DeleteDevopsProject', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -581,7 +609,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsProjectResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsProjectResponse(),
             await self.do_rpcrequest_async('DeleteDevopsProject', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -608,7 +637,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsProjectMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsProjectMembersResponse(),
             self.do_rpcrequest('DeleteDevopsProjectMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -621,7 +651,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsProjectMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsProjectMembersResponse(),
             await self.do_rpcrequest_async('DeleteDevopsProjectMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -648,7 +679,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsProjectSprintResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsProjectSprintResponse(),
             self.do_rpcrequest('DeleteDevopsProjectSprint', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -661,7 +693,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsProjectSprintResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsProjectSprintResponse(),
             await self.do_rpcrequest_async('DeleteDevopsProjectSprint', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -688,7 +721,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsProjectTaskResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsProjectTaskResponse(),
             self.do_rpcrequest('DeleteDevopsProjectTask', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -701,7 +735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeleteDevopsProjectTaskResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsProjectTaskResponse(),
             await self.do_rpcrequest_async('DeleteDevopsProjectTask', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -728,7 +763,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeletePipelineMemberResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeletePipelineMemberResponse(),
             self.do_rpcrequest('DeletePipelineMember', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -741,7 +777,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.DeletePipelineMemberResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeletePipelineMemberResponse(),
             await self.do_rpcrequest_async('DeletePipelineMember', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -768,7 +805,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ExecutePipelineResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ExecutePipelineResponse(),
             self.do_rpcrequest('ExecutePipeline', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -781,7 +819,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ExecutePipelineResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ExecutePipelineResponse(),
             await self.do_rpcrequest_async('ExecutePipeline', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -808,7 +847,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsOrganizationMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsOrganizationMembersResponse(),
             self.do_rpcrequest('GetDevopsOrganizationMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -821,7 +861,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsOrganizationMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsOrganizationMembersResponse(),
             await self.do_rpcrequest_async('GetDevopsOrganizationMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -848,7 +889,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsProjectInfoResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsProjectInfoResponse(),
             self.do_rpcrequest('GetDevopsProjectInfo', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -861,7 +903,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsProjectInfoResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsProjectInfoResponse(),
             await self.do_rpcrequest_async('GetDevopsProjectInfo', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -888,7 +931,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsProjectMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsProjectMembersResponse(),
             self.do_rpcrequest('GetDevopsProjectMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -901,7 +945,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsProjectMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsProjectMembersResponse(),
             await self.do_rpcrequest_async('GetDevopsProjectMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -928,7 +973,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsProjectSprintInfoResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsProjectSprintInfoResponse(),
             self.do_rpcrequest('GetDevopsProjectSprintInfo', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -941,7 +987,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsProjectSprintInfoResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsProjectSprintInfoResponse(),
             await self.do_rpcrequest_async('GetDevopsProjectSprintInfo', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -968,7 +1015,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsProjectTaskInfoResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsProjectTaskInfoResponse(),
             self.do_rpcrequest('GetDevopsProjectTaskInfo', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -981,7 +1029,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetDevopsProjectTaskInfoResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetDevopsProjectTaskInfoResponse(),
             await self.do_rpcrequest_async('GetDevopsProjectTaskInfo', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -999,6 +1048,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_devops_project_task_info_with_options_async(request, runtime)
 
+    def get_last_workspace_with_options(
+        self,
+        request: devops_rdc_20200303_models.GetLastWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_rdc_20200303_models.GetLastWorkspaceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetLastWorkspaceResponse(),
+            self.do_rpcrequest('GetLastWorkspace', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_last_workspace_with_options_async(
+        self,
+        request: devops_rdc_20200303_models.GetLastWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_rdc_20200303_models.GetLastWorkspaceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetLastWorkspaceResponse(),
+            await self.do_rpcrequest_async('GetLastWorkspace', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_last_workspace(
+        self,
+        request: devops_rdc_20200303_models.GetLastWorkspaceRequest,
+    ) -> devops_rdc_20200303_models.GetLastWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_last_workspace_with_options(request, runtime)
+
+    async def get_last_workspace_async(
+        self,
+        request: devops_rdc_20200303_models.GetLastWorkspaceRequest,
+    ) -> devops_rdc_20200303_models.GetLastWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_last_workspace_with_options_async(request, runtime)
+
     def get_pipeline_instance_build_number_status_with_options(
         self,
         request: devops_rdc_20200303_models.GetPipelineInstanceBuildNumberStatusRequest,
@@ -1008,7 +1099,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstanceBuildNumberStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstanceBuildNumberStatusResponse(),
             self.do_rpcrequest('GetPipelineInstanceBuildNumberStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1021,7 +1113,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstanceBuildNumberStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstanceBuildNumberStatusResponse(),
             await self.do_rpcrequest_async('GetPipelineInstanceBuildNumberStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1048,7 +1141,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstanceGroupStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstanceGroupStatusResponse(),
             self.do_rpcrequest('GetPipelineInstanceGroupStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1061,7 +1155,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstanceGroupStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstanceGroupStatusResponse(),
             await self.do_rpcrequest_async('GetPipelineInstanceGroupStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1088,7 +1183,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstanceInfoResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstanceInfoResponse(),
             self.do_rpcrequest('GetPipelineInstanceInfo', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1101,7 +1197,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstanceInfoResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstanceInfoResponse(),
             await self.do_rpcrequest_async('GetPipelineInstanceInfo', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1128,7 +1225,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstanceStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstanceStatusResponse(),
             self.do_rpcrequest('GetPipelineInstanceStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1141,7 +1239,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstanceStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstanceStatusResponse(),
             await self.do_rpcrequest_async('GetPipelineInstanceStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1168,7 +1267,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstHistoryResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstHistoryResponse(),
             self.do_rpcrequest('GetPipelineInstHistory', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1181,7 +1281,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineInstHistoryResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineInstHistoryResponse(),
             await self.do_rpcrequest_async('GetPipelineInstHistory', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1208,7 +1309,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineLogResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineLogResponse(),
             self.do_rpcrequest('GetPipelineLog', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1221,7 +1323,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineLogResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineLogResponse(),
             await self.do_rpcrequest_async('GetPipelineLog', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1248,7 +1351,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineStepLogResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineStepLogResponse(),
             self.do_rpcrequest('GetPipelineStepLog', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1261,7 +1365,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipelineStepLogResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipelineStepLogResponse(),
             await self.do_rpcrequest_async('GetPipelineStepLog', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1288,7 +1393,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipleineLatestInstanceStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipleineLatestInstanceStatusResponse(),
             self.do_rpcrequest('GetPipleineLatestInstanceStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1301,7 +1407,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetPipleineLatestInstanceStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetPipleineLatestInstanceStatusResponse(),
             await self.do_rpcrequest_async('GetPipleineLatestInstanceStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1328,7 +1435,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetProjectOptionResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetProjectOptionResponse(),
             self.do_rpcrequest('GetProjectOption', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1341,7 +1449,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetProjectOptionResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetProjectOptionResponse(),
             await self.do_rpcrequest_async('GetProjectOption', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1368,7 +1477,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetTaskDetailActivityResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetTaskDetailActivityResponse(),
             self.do_rpcrequest('GetTaskDetailActivity', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1381,7 +1491,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetTaskDetailActivityResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetTaskDetailActivityResponse(),
             await self.do_rpcrequest_async('GetTaskDetailActivity', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1408,7 +1519,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetTaskDetailBaseResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetTaskDetailBaseResponse(),
             self.do_rpcrequest('GetTaskDetailBase', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1421,7 +1533,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetTaskDetailBaseResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetTaskDetailBaseResponse(),
             await self.do_rpcrequest_async('GetTaskDetailBase', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1448,7 +1561,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetTaskListFilterResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetTaskListFilterResponse(),
             self.do_rpcrequest('GetTaskListFilter', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1461,7 +1575,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetTaskListFilterResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetTaskListFilterResponse(),
             await self.do_rpcrequest_async('GetTaskListFilter', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1488,7 +1603,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetUserByAliyunUidResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetUserByAliyunUidResponse(),
             self.do_rpcrequest('GetUserByAliyunUid', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1501,7 +1617,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetUserByAliyunUidResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetUserByAliyunUidResponse(),
             await self.do_rpcrequest_async('GetUserByAliyunUid', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1528,7 +1645,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetUserNameResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetUserNameResponse(),
             self.do_rpcrequest('GetUserName', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1541,7 +1659,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.GetUserNameResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.GetUserNameResponse(),
             await self.do_rpcrequest_async('GetUserName', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1568,7 +1687,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.InsertDevopsUserResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.InsertDevopsUserResponse(),
             self.do_rpcrequest('InsertDevopsUser', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1581,7 +1701,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.InsertDevopsUserResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.InsertDevopsUserResponse(),
             await self.do_rpcrequest_async('InsertDevopsUser', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1608,7 +1729,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.InsertPipelineMemberResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.InsertPipelineMemberResponse(),
             self.do_rpcrequest('InsertPipelineMember', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1621,7 +1743,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.InsertPipelineMemberResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.InsertPipelineMemberResponse(),
             await self.do_rpcrequest_async('InsertPipelineMember', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1648,7 +1771,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.InsertProjectMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.InsertProjectMembersResponse(),
             self.do_rpcrequest('InsertProjectMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1661,7 +1785,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.InsertProjectMembersResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.InsertProjectMembersResponse(),
             await self.do_rpcrequest_async('InsertProjectMembers', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1688,7 +1813,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListCommonGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListCommonGroupResponse(),
             self.do_rpcrequest('ListCommonGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1701,7 +1827,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListCommonGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListCommonGroupResponse(),
             await self.do_rpcrequest_async('ListCommonGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1728,7 +1855,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListCredentialsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListCredentialsResponse(),
             self.do_rpcrequest('ListCredentials', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1741,7 +1869,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListCredentialsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListCredentialsResponse(),
             await self.do_rpcrequest_async('ListCredentials', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1768,7 +1897,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectSprintsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectSprintsResponse(),
             self.do_rpcrequest('ListDevopsProjectSprints', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1781,7 +1911,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectSprintsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectSprintsResponse(),
             await self.do_rpcrequest_async('ListDevopsProjectSprints', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1808,7 +1939,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectTaskFlowResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectTaskFlowResponse(),
             self.do_rpcrequest('ListDevopsProjectTaskFlow', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1821,7 +1953,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectTaskFlowResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectTaskFlowResponse(),
             await self.do_rpcrequest_async('ListDevopsProjectTaskFlow', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1848,7 +1981,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectTaskFlowStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectTaskFlowStatusResponse(),
             self.do_rpcrequest('ListDevopsProjectTaskFlowStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1861,7 +1995,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectTaskFlowStatusResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectTaskFlowStatusResponse(),
             await self.do_rpcrequest_async('ListDevopsProjectTaskFlowStatus', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1888,7 +2023,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectTaskListResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectTaskListResponse(),
             self.do_rpcrequest('ListDevopsProjectTaskList', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1901,7 +2037,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectTaskListResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectTaskListResponse(),
             await self.do_rpcrequest_async('ListDevopsProjectTaskList', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1928,7 +2065,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectTasksResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectTasksResponse(),
             self.do_rpcrequest('ListDevopsProjectTasks', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1941,7 +2079,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsProjectTasksResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectTasksResponse(),
             await self.do_rpcrequest_async('ListDevopsProjectTasks', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1968,7 +2107,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsScenarioFieldConfigResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsScenarioFieldConfigResponse(),
             self.do_rpcrequest('ListDevopsScenarioFieldConfig', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1981,7 +2121,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListDevopsScenarioFieldConfigResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsScenarioFieldConfigResponse(),
             await self.do_rpcrequest_async('ListDevopsScenarioFieldConfig', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2008,7 +2149,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListPipelinesResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListPipelinesResponse(),
             self.do_rpcrequest('ListPipelines', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2021,7 +2163,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListPipelinesResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListPipelinesResponse(),
             await self.do_rpcrequest_async('ListPipelines', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2048,7 +2191,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListProjectCustomFieldsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListProjectCustomFieldsResponse(),
             self.do_rpcrequest('ListProjectCustomFields', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2061,7 +2205,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListProjectCustomFieldsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListProjectCustomFieldsResponse(),
             await self.do_rpcrequest_async('ListProjectCustomFields', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2088,7 +2233,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListServiceConnectionsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListServiceConnectionsResponse(),
             self.do_rpcrequest('ListServiceConnections', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2101,7 +2247,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListServiceConnectionsResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListServiceConnectionsResponse(),
             await self.do_rpcrequest_async('ListServiceConnections', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2128,7 +2275,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListSmartGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListSmartGroupResponse(),
             self.do_rpcrequest('ListSmartGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2141,7 +2289,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListSmartGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListSmartGroupResponse(),
             await self.do_rpcrequest_async('ListSmartGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2168,7 +2317,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListUserOrganizationResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListUserOrganizationResponse(),
             self.do_rpcrequest('ListUserOrganization', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2181,7 +2331,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.ListUserOrganizationResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListUserOrganizationResponse(),
             await self.do_rpcrequest_async('ListUserOrganization', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2208,7 +2359,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.TransferPipelineOwnerResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.TransferPipelineOwnerResponse(),
             self.do_rpcrequest('TransferPipelineOwner', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2221,7 +2373,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.TransferPipelineOwnerResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.TransferPipelineOwnerResponse(),
             await self.do_rpcrequest_async('TransferPipelineOwner', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2248,7 +2401,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateCommonGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateCommonGroupResponse(),
             self.do_rpcrequest('UpdateCommonGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2261,7 +2415,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateCommonGroupResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateCommonGroupResponse(),
             await self.do_rpcrequest_async('UpdateCommonGroup', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2288,7 +2443,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateDevopsProjectResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateDevopsProjectResponse(),
             self.do_rpcrequest('UpdateDevopsProject', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2301,7 +2457,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateDevopsProjectResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateDevopsProjectResponse(),
             await self.do_rpcrequest_async('UpdateDevopsProject', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2328,7 +2485,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateDevopsProjectSprintResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateDevopsProjectSprintResponse(),
             self.do_rpcrequest('UpdateDevopsProjectSprint', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2341,7 +2499,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateDevopsProjectSprintResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateDevopsProjectSprintResponse(),
             await self.do_rpcrequest_async('UpdateDevopsProjectSprint', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2368,7 +2527,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateDevopsProjectTaskResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateDevopsProjectTaskResponse(),
             self.do_rpcrequest('UpdateDevopsProjectTask', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2381,7 +2541,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateDevopsProjectTaskResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateDevopsProjectTaskResponse(),
             await self.do_rpcrequest_async('UpdateDevopsProjectTask', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2408,7 +2569,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdatePipelineMemberResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdatePipelineMemberResponse(),
             self.do_rpcrequest('UpdatePipelineMember', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2421,7 +2583,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdatePipelineMemberResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdatePipelineMemberResponse(),
             await self.do_rpcrequest_async('UpdatePipelineMember', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2448,7 +2611,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateTaskDetailResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateTaskDetailResponse(),
             self.do_rpcrequest('UpdateTaskDetail', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2461,7 +2625,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return devops_rdc_20200303_models.UpdateTaskDetailResponse().from_map(
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.UpdateTaskDetailResponse(),
             await self.do_rpcrequest_async('UpdateTaskDetail', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
