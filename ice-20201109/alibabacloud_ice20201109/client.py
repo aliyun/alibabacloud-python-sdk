@@ -793,6 +793,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_smart_job_with_options_async(request, runtime)
 
+    def submit_delogo_job_with_options(
+        self,
+        request: ice20201109_models.SubmitDelogoJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitDelogoJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitDelogoJobResponse(),
+            self.do_rpcrequest('SubmitDelogoJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_delogo_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitDelogoJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitDelogoJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitDelogoJobResponse(),
+            await self.do_rpcrequest_async('SubmitDelogoJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_delogo_job(
+        self,
+        request: ice20201109_models.SubmitDelogoJobRequest,
+    ) -> ice20201109_models.SubmitDelogoJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_delogo_job_with_options(request, runtime)
+
+    async def submit_delogo_job_async(
+        self,
+        request: ice20201109_models.SubmitDelogoJobRequest,
+    ) -> ice20201109_models.SubmitDelogoJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_delogo_job_with_options_async(request, runtime)
+
     def list_media_producing_jobs_with_options(
         self,
         request: ice20201109_models.ListMediaProducingJobsRequest,
@@ -878,6 +920,48 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_editing_project_materials_with_options_async(request, runtime)
+
+    def submit_audio_produce_job_with_options(
+        self,
+        request: ice20201109_models.SubmitAudioProduceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitAudioProduceJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitAudioProduceJobResponse(),
+            self.do_rpcrequest('SubmitAudioProduceJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_audio_produce_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitAudioProduceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitAudioProduceJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitAudioProduceJobResponse(),
+            await self.do_rpcrequest_async('SubmitAudioProduceJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_audio_produce_job(
+        self,
+        request: ice20201109_models.SubmitAudioProduceJobRequest,
+    ) -> ice20201109_models.SubmitAudioProduceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_audio_produce_job_with_options(request, runtime)
+
+    async def submit_audio_produce_job_async(
+        self,
+        request: ice20201109_models.SubmitAudioProduceJobRequest,
+    ) -> ice20201109_models.SubmitAudioProduceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_audio_produce_job_with_options_async(request, runtime)
 
     def submit_media_producing_job_with_options(
         self,
@@ -1047,6 +1131,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_all_public_media_tags_with_options_async(request, runtime)
 
+    def submit_matting_job_with_options(
+        self,
+        request: ice20201109_models.SubmitMattingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitMattingJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitMattingJobResponse(),
+            self.do_rpcrequest('SubmitMattingJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_matting_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitMattingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitMattingJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitMattingJobResponse(),
+            await self.do_rpcrequest_async('SubmitMattingJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_matting_job(
+        self,
+        request: ice20201109_models.SubmitMattingJobRequest,
+    ) -> ice20201109_models.SubmitMattingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_matting_job_with_options(request, runtime)
+
+    async def submit_matting_job_async(
+        self,
+        request: ice20201109_models.SubmitMattingJobRequest,
+    ) -> ice20201109_models.SubmitMattingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_matting_job_with_options_async(request, runtime)
+
     def register_media_info_with_options(
         self,
         request: ice20201109_models.RegisterMediaInfoRequest,
@@ -1172,6 +1298,48 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_public_media_basic_infos_with_options_async(request, runtime)
+
+    def submit_cover_job_with_options(
+        self,
+        request: ice20201109_models.SubmitCoverJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitCoverJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitCoverJobResponse(),
+            self.do_rpcrequest('SubmitCoverJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_cover_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitCoverJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitCoverJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitCoverJobResponse(),
+            await self.do_rpcrequest_async('SubmitCoverJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_cover_job(
+        self,
+        request: ice20201109_models.SubmitCoverJobRequest,
+    ) -> ice20201109_models.SubmitCoverJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_cover_job_with_options(request, runtime)
+
+    async def submit_cover_job_async(
+        self,
+        request: ice20201109_models.SubmitCoverJobRequest,
+    ) -> ice20201109_models.SubmitCoverJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_cover_job_with_options_async(request, runtime)
 
     def update_media_info_with_options(
         self,
@@ -1302,6 +1470,48 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetSmartHandleJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_smart_handle_job_with_options_async(request, runtime)
+
+    def submit_h2vjob_with_options(
+        self,
+        request: ice20201109_models.SubmitH2VJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitH2VJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitH2VJobResponse(),
+            self.do_rpcrequest('SubmitH2VJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_h2vjob_with_options_async(
+        self,
+        request: ice20201109_models.SubmitH2VJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitH2VJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitH2VJobResponse(),
+            await self.do_rpcrequest_async('SubmitH2VJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_h2vjob(
+        self,
+        request: ice20201109_models.SubmitH2VJobRequest,
+    ) -> ice20201109_models.SubmitH2VJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_h2vjob_with_options(request, runtime)
+
+    async def submit_h2vjob_async(
+        self,
+        request: ice20201109_models.SubmitH2VJobRequest,
+    ) -> ice20201109_models.SubmitH2VJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_h2vjob_with_options_async(request, runtime)
 
     def submit_pptcut_job_with_options(
         self,

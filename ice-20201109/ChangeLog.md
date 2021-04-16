@@ -1,3 +1,9 @@
+2021-04-16 Version: 1.0.5
+- Add a new API called SubmitH2VJob, which submit horizontal to vertical job.
+- Add a new API called SubmitDelogoJob, which submit delogo job.
+- Add a new API called SubmitMattingJob, which submit matting job.
+- Add a new API called SubmitAudioProduceJob, which produce audio from text.
+
 2021-03-26 Version: 1.0.3
 - Add a new API called AddEditingProjectMaterials, which adds one or more materials to the editing project.
 - Add a new API called GetEditingProjectMaterials, which gets all the materials in the editing project.

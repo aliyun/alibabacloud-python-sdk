@@ -406,12 +406,14 @@ class DescribeRelatedAuthorizationStatusResponseBody(TeaModel):
         ossauthorized: bool = None,
         mtsauthorized: bool = None,
         mnsauthorized: bool = None,
+        authorized: bool = None,
     ):
         # Id of the request
         self.request_id = request_id
         self.ossauthorized = ossauthorized
         self.mtsauthorized = mtsauthorized
         self.mnsauthorized = mnsauthorized
+        self.authorized = authorized
 
     def validate(self):
         pass
@@ -430,6 +432,8 @@ class DescribeRelatedAuthorizationStatusResponseBody(TeaModel):
             result['MTSAuthorized'] = self.mtsauthorized
         if self.mnsauthorized is not None:
             result['MNSAuthorized'] = self.mnsauthorized
+        if self.authorized is not None:
+            result['Authorized'] = self.authorized
         return result
 
     def from_map(self, m: dict = None):
@@ -442,6 +446,8 @@ class DescribeRelatedAuthorizationStatusResponseBody(TeaModel):
             self.mtsauthorized = m.get('MTSAuthorized')
         if m.get('MNSAuthorized') is not None:
             self.mnsauthorized = m.get('MNSAuthorized')
+        if m.get('Authorized') is not None:
+            self.authorized = m.get('Authorized')
         return self
 
 
@@ -600,6 +606,7 @@ class ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         create_time: str = None,
         modified_time: str = None,
         deleted_time: str = None,
+        sprite_images: str = None,
     ):
         # MediaId
         self.media_id = media_id
@@ -635,6 +642,8 @@ class ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         self.modified_time = modified_time
         # 媒资删除时间
         self.deleted_time = deleted_time
+        # 雪碧图
+        self.sprite_images = sprite_images
 
     def validate(self):
         pass
@@ -679,6 +688,8 @@ class ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.deleted_time is not None:
             result['DeletedTime'] = self.deleted_time
+        if self.sprite_images is not None:
+            result['SpriteImages'] = self.sprite_images
         return result
 
     def from_map(self, m: dict = None):
@@ -717,6 +728,8 @@ class ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('DeletedTime') is not None:
             self.deleted_time = m.get('DeletedTime')
+        if m.get('SpriteImages') is not None:
+            self.sprite_images = m.get('SpriteImages')
         return self
 
 
@@ -1335,6 +1348,7 @@ class AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         create_time: str = None,
         modified_time: str = None,
         deleted_time: str = None,
+        sprite_images: str = None,
     ):
         # MediaId
         self.media_id = media_id
@@ -1370,6 +1384,8 @@ class AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         self.modified_time = modified_time
         # 媒资删除时间
         self.deleted_time = deleted_time
+        # 雪碧图
+        self.sprite_images = sprite_images
 
     def validate(self):
         pass
@@ -1414,6 +1430,8 @@ class AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.deleted_time is not None:
             result['DeletedTime'] = self.deleted_time
+        if self.sprite_images is not None:
+            result['SpriteImages'] = self.sprite_images
         return result
 
     def from_map(self, m: dict = None):
@@ -1452,6 +1470,8 @@ class AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('DeletedTime') is not None:
             self.deleted_time = m.get('DeletedTime')
+        if m.get('SpriteImages') is not None:
+            self.sprite_images = m.get('SpriteImages')
         return self
 
 
@@ -1729,11 +1749,17 @@ class SubmitASRJobRequest(TeaModel):
         user_data: str = None,
         title: str = None,
         description: str = None,
+        start_time: str = None,
+        duration: str = None,
     ):
         self.input_file = input_file
         self.user_data = user_data
         self.title = title
         self.description = description
+        # 开始时间
+        self.start_time = start_time
+        # 持续时间
+        self.duration = duration
 
     def validate(self):
         pass
@@ -1752,6 +1778,10 @@ class SubmitASRJobRequest(TeaModel):
             result['Title'] = self.title
         if self.description is not None:
             result['Description'] = self.description
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.duration is not None:
+            result['Duration'] = self.duration
         return result
 
     def from_map(self, m: dict = None):
@@ -1764,6 +1794,10 @@ class SubmitASRJobRequest(TeaModel):
             self.title = m.get('Title')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         return self
 
 
@@ -2902,6 +2936,7 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
         create_time: str = None,
         modified_time: str = None,
         deleted_time: str = None,
+        sprite_images: str = None,
     ):
         # MediaId
         self.media_id = media_id
@@ -2933,6 +2968,8 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
         self.modified_time = modified_time
         # 媒资删除时间
         self.deleted_time = deleted_time
+        # 雪碧图
+        self.sprite_images = sprite_images
 
     def validate(self):
         pass
@@ -2973,6 +3010,8 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.deleted_time is not None:
             result['DeletedTime'] = self.deleted_time
+        if self.sprite_images is not None:
+            result['SpriteImages'] = self.sprite_images
         return result
 
     def from_map(self, m: dict = None):
@@ -3007,6 +3046,8 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('DeletedTime') is not None:
             self.deleted_time = m.get('DeletedTime')
+        if m.get('SpriteImages') is not None:
+            self.sprite_images = m.get('SpriteImages')
         return self
 
 
@@ -3989,6 +4030,155 @@ class SubmitSmartJobResponse(TeaModel):
         return self
 
 
+class SubmitDelogoJobRequest(TeaModel):
+    def __init__(
+        self,
+        input_file: str = None,
+        user_data: str = None,
+        title: str = None,
+        description: str = None,
+        output_config: str = None,
+        input_type: str = None,
+    ):
+        # 输入文件
+        self.input_file = input_file
+        self.user_data = user_data
+        self.title = title
+        self.description = description
+        # 输出bucket
+        self.output_config = output_config
+        # 输入文件类型
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_file is not None:
+            result['InputFile'] = self.input_file
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.input_type is not None:
+            result['InputType'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputFile') is not None:
+            self.input_file = m.get('InputFile')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('InputType') is not None:
+            self.input_type = m.get('InputType')
+        return self
+
+
+class SubmitDelogoJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        job_id: str = None,
+        output: str = None,
+        state: str = None,
+        user_data: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.job_id = job_id
+        self.output = output
+        self.state = state
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.state is not None:
+            result['State'] = self.state
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitDelogoJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SubmitDelogoJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SubmitDelogoJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListMediaProducingJobsRequest(TeaModel):
     def __init__(
         self,
@@ -4243,6 +4433,7 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         create_time: str = None,
         modified_time: str = None,
         deleted_time: str = None,
+        sprite_images: str = None,
     ):
         # MediaId
         self.media_id = media_id
@@ -4278,6 +4469,8 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         self.modified_time = modified_time
         # 媒资删除时间
         self.deleted_time = deleted_time
+        # 雪碧图
+        self.sprite_images = sprite_images
 
     def validate(self):
         pass
@@ -4322,6 +4515,8 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.deleted_time is not None:
             result['DeletedTime'] = self.deleted_time
+        if self.sprite_images is not None:
+            result['SpriteImages'] = self.sprite_images
         return result
 
     def from_map(self, m: dict = None):
@@ -4360,6 +4555,8 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('DeletedTime') is not None:
             self.deleted_time = m.get('DeletedTime')
+        if m.get('SpriteImages') is not None:
+            self.sprite_images = m.get('SpriteImages')
         return self
 
 
@@ -4626,6 +4823,142 @@ class GetEditingProjectMaterialsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetEditingProjectMaterialsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitAudioProduceJobRequest(TeaModel):
+    def __init__(
+        self,
+        editing_config: str = None,
+        output_config: str = None,
+        input_config: str = None,
+        title: str = None,
+        description: str = None,
+        user_data: str = None,
+    ):
+        self.editing_config = editing_config
+        self.output_config = output_config
+        self.input_config = input_config
+        self.title = title
+        self.description = description
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.editing_config is not None:
+            result['EditingConfig'] = self.editing_config
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.input_config is not None:
+            result['InputConfig'] = self.input_config
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EditingConfig') is not None:
+            self.editing_config = m.get('EditingConfig')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('InputConfig') is not None:
+            self.input_config = m.get('InputConfig')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitAudioProduceJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        job_id: str = None,
+        state: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 任务ID
+        self.job_id = job_id
+        # 任务状态
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class SubmitAudioProduceJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SubmitAudioProduceJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SubmitAudioProduceJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5151,6 +5484,155 @@ class ListAllPublicMediaTagsResponse(TeaModel):
         return self
 
 
+class SubmitMattingJobRequest(TeaModel):
+    def __init__(
+        self,
+        input_file: str = None,
+        user_data: str = None,
+        title: str = None,
+        description: str = None,
+        output_config: str = None,
+        input_type: str = None,
+    ):
+        # 输入文件
+        self.input_file = input_file
+        self.user_data = user_data
+        self.title = title
+        self.description = description
+        # 输出bucket
+        self.output_config = output_config
+        # 输入文件类型
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_file is not None:
+            result['InputFile'] = self.input_file
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.input_type is not None:
+            result['InputType'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputFile') is not None:
+            self.input_file = m.get('InputFile')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('InputType') is not None:
+            self.input_type = m.get('InputType')
+        return self
+
+
+class SubmitMattingJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        job_id: str = None,
+        output: str = None,
+        state: str = None,
+        user_data: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.job_id = job_id
+        self.output = output
+        self.state = state
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.state is not None:
+            result['State'] = self.state
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitMattingJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SubmitMattingJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SubmitMattingJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RegisterMediaInfoRequest(TeaModel):
     def __init__(
         self,
@@ -5166,6 +5648,7 @@ class RegisterMediaInfoRequest(TeaModel):
         user_data: str = None,
         overwrite: bool = None,
         client_token: str = None,
+        register_config: str = None,
     ):
         # 媒资媒体url
         self.input_url = input_url
@@ -5191,6 +5674,8 @@ class RegisterMediaInfoRequest(TeaModel):
         self.overwrite = overwrite
         # 客户端token
         self.client_token = client_token
+        # 注册媒资的配置
+        self.register_config = register_config
 
     def validate(self):
         pass
@@ -5225,6 +5710,8 @@ class RegisterMediaInfoRequest(TeaModel):
             result['Overwrite'] = self.overwrite
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.register_config is not None:
+            result['RegisterConfig'] = self.register_config
         return result
 
     def from_map(self, m: dict = None):
@@ -5253,6 +5740,8 @@ class RegisterMediaInfoRequest(TeaModel):
             self.overwrite = m.get('Overwrite')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('RegisterConfig') is not None:
+            self.register_config = m.get('RegisterConfig')
         return self
 
 
@@ -5994,6 +6483,148 @@ class ListPublicMediaBasicInfosResponse(TeaModel):
         return self
 
 
+class SubmitCoverJobRequest(TeaModel):
+    def __init__(
+        self,
+        input_file: str = None,
+        user_data: str = None,
+        title: str = None,
+        description: str = None,
+        output_config: str = None,
+    ):
+        # 输入文件
+        self.input_file = input_file
+        self.user_data = user_data
+        self.title = title
+        self.description = description
+        # 输出bucket
+        self.output_config = output_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_file is not None:
+            result['InputFile'] = self.input_file
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputFile') is not None:
+            self.input_file = m.get('InputFile')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        return self
+
+
+class SubmitCoverJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        job_id: str = None,
+        output: str = None,
+        state: str = None,
+        user_data: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.job_id = job_id
+        self.output = output
+        self.state = state
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.state is not None:
+            result['State'] = self.state
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitCoverJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SubmitCoverJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SubmitCoverJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateMediaInfoRequest(TeaModel):
     def __init__(
         self,
@@ -6618,6 +7249,155 @@ class GetSmartHandleJobResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetSmartHandleJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitH2VJobRequest(TeaModel):
+    def __init__(
+        self,
+        input_file: str = None,
+        user_data: str = None,
+        title: str = None,
+        description: str = None,
+        output_config: str = None,
+        input_type: str = None,
+    ):
+        # 输入文件
+        self.input_file = input_file
+        self.user_data = user_data
+        self.title = title
+        self.description = description
+        # 输出bucket
+        self.output_config = output_config
+        # 输入文件类型
+        self.input_type = input_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_file is not None:
+            result['InputFile'] = self.input_file
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.input_type is not None:
+            result['InputType'] = self.input_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputFile') is not None:
+            self.input_file = m.get('InputFile')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('InputType') is not None:
+            self.input_type = m.get('InputType')
+        return self
+
+
+class SubmitH2VJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        job_id: str = None,
+        output: str = None,
+        state: str = None,
+        user_data: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.job_id = job_id
+        self.output = output
+        self.state = state
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.state is not None:
+            result['State'] = self.state
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitH2VJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SubmitH2VJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SubmitH2VJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
