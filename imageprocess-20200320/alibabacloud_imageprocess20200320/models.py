@@ -2106,16 +2106,12 @@ class DetectKneeKeypointXRayResponse(TeaModel):
         return self
 
 
-class RunMedQARequest(TeaModel):
+class RunMedQARequestAnswerImageURLList(TeaModel):
     def __init__(
         self,
-        question: str = None,
-        org_id: str = None,
-        org_name: str = None,
+        answer_image_url: str = None,
     ):
-        self.question = question
-        self.org_id = org_id
-        self.org_name = org_name
+        self.answer_image_url = answer_image_url
 
     def validate(self):
         pass
@@ -2126,33 +2122,182 @@ class RunMedQARequest(TeaModel):
             return _map
 
         result = dict()
-        if self.question is not None:
-            result['Question'] = self.question
-        if self.org_id is not None:
-            result['OrgId'] = self.org_id
-        if self.org_name is not None:
-            result['OrgName'] = self.org_name
+        if self.answer_image_url is not None:
+            result['AnswerImageURL'] = self.answer_image_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Question') is not None:
-            self.question = m.get('Question')
+        if m.get('AnswerImageURL') is not None:
+            self.answer_image_url = m.get('AnswerImageURL')
+        return self
+
+
+class RunMedQARequestAnswerImageDataList(TeaModel):
+    def __init__(
+        self,
+        answer_image_data: bytes = None,
+    ):
+        self.answer_image_data = answer_image_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer_image_data is not None:
+            result['AnswerImageData'] = self.answer_image_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnswerImageData') is not None:
+            self.answer_image_data = m.get('AnswerImageData')
+        return self
+
+
+class RunMedQARequestAnswerTextList(TeaModel):
+    def __init__(
+        self,
+        answer_text: str = None,
+    ):
+        self.answer_text = answer_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer_text is not None:
+            result['AnswerText'] = self.answer_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnswerText') is not None:
+            self.answer_text = m.get('AnswerText')
+        return self
+
+
+class RunMedQARequest(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+        org_name: str = None,
+        session_id: str = None,
+        department: str = None,
+        question_type: str = None,
+        answer_image_urllist: List[RunMedQARequestAnswerImageURLList] = None,
+        answer_image_data_list: List[RunMedQARequestAnswerImageDataList] = None,
+        answer_text_list: List[RunMedQARequestAnswerTextList] = None,
+    ):
+        self.org_id = org_id
+        self.org_name = org_name
+        self.session_id = session_id
+        self.department = department
+        self.question_type = question_type
+        self.answer_image_urllist = answer_image_urllist
+        self.answer_image_data_list = answer_image_data_list
+        self.answer_text_list = answer_text_list
+
+    def validate(self):
+        if self.answer_image_urllist:
+            for k in self.answer_image_urllist:
+                if k:
+                    k.validate()
+        if self.answer_image_data_list:
+            for k in self.answer_image_data_list:
+                if k:
+                    k.validate()
+        if self.answer_text_list:
+            for k in self.answer_text_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.question_type is not None:
+            result['QuestionType'] = self.question_type
+        result['AnswerImageURLList'] = []
+        if self.answer_image_urllist is not None:
+            for k in self.answer_image_urllist:
+                result['AnswerImageURLList'].append(k.to_map() if k else None)
+        result['AnswerImageDataList'] = []
+        if self.answer_image_data_list is not None:
+            for k in self.answer_image_data_list:
+                result['AnswerImageDataList'].append(k.to_map() if k else None)
+        result['AnswerTextList'] = []
+        if self.answer_text_list is not None:
+            for k in self.answer_text_list:
+                result['AnswerTextList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('OrgId') is not None:
             self.org_id = m.get('OrgId')
         if m.get('OrgName') is not None:
             self.org_name = m.get('OrgName')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('QuestionType') is not None:
+            self.question_type = m.get('QuestionType')
+        self.answer_image_urllist = []
+        if m.get('AnswerImageURLList') is not None:
+            for k in m.get('AnswerImageURLList'):
+                temp_model = RunMedQARequestAnswerImageURLList()
+                self.answer_image_urllist.append(temp_model.from_map(k))
+        self.answer_image_data_list = []
+        if m.get('AnswerImageDataList') is not None:
+            for k in m.get('AnswerImageDataList'):
+                temp_model = RunMedQARequestAnswerImageDataList()
+                self.answer_image_data_list.append(temp_model.from_map(k))
+        self.answer_text_list = []
+        if m.get('AnswerTextList') is not None:
+            for k in m.get('AnswerTextList'):
+                temp_model = RunMedQARequestAnswerTextList()
+                self.answer_text_list.append(temp_model.from_map(k))
         return self
 
 
 class RunMedQAResponseBodyData(TeaModel):
     def __init__(
         self,
-        answer: str = None,
-        similar_question: List[str] = None,
+        session_id: str = None,
+        question_type: str = None,
+        question: str = None,
+        answer_type: str = None,
+        options: List[str] = None,
+        reports: Dict[str, str] = None,
     ):
-        self.answer = answer
-        self.similar_question = similar_question
+        self.session_id = session_id
+        self.question_type = question_type
+        self.question = question
+        self.answer_type = answer_type
+        self.options = options
+        self.reports = reports
 
     def validate(self):
         pass
@@ -2163,18 +2308,34 @@ class RunMedQAResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.answer is not None:
-            result['Answer'] = self.answer
-        if self.similar_question is not None:
-            result['SimilarQuestion'] = self.similar_question
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.question_type is not None:
+            result['QuestionType'] = self.question_type
+        if self.question is not None:
+            result['Question'] = self.question
+        if self.answer_type is not None:
+            result['AnswerType'] = self.answer_type
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.reports is not None:
+            result['Reports'] = self.reports
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Answer') is not None:
-            self.answer = m.get('Answer')
-        if m.get('SimilarQuestion') is not None:
-            self.similar_question = m.get('SimilarQuestion')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('QuestionType') is not None:
+            self.question_type = m.get('QuestionType')
+        if m.get('Question') is not None:
+            self.question = m.get('Question')
+        if m.get('AnswerType') is not None:
+            self.answer_type = m.get('AnswerType')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('Reports') is not None:
+            self.reports = m.get('Reports')
         return self
 
 

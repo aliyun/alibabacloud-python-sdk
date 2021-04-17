@@ -98,11 +98,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -160,11 +163,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -474,11 +480,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -536,11 +545,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -640,11 +652,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -702,11 +717,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -848,11 +866,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -910,11 +931,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1182,11 +1206,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1244,11 +1271,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
