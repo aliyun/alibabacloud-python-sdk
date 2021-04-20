@@ -760,15 +760,18 @@ class LivenessFaceVerifyResponseResultObject(TeaModel):
         passed: str = None,
         material_info: str = None,
         sub_code: str = None,
+        certify_id: str = None,
     ):
         self.passed = passed
         self.material_info = material_info
         self.sub_code = sub_code
+        self.certify_id = certify_id
 
     def validate(self):
         self.validate_required(self.passed, 'passed')
         self.validate_required(self.material_info, 'material_info')
         self.validate_required(self.sub_code, 'sub_code')
+        self.validate_required(self.certify_id, 'certify_id')
 
     def to_map(self):
         _map = super().to_map()
@@ -782,6 +785,8 @@ class LivenessFaceVerifyResponseResultObject(TeaModel):
             result['MaterialInfo'] = self.material_info
         if self.sub_code is not None:
             result['SubCode'] = self.sub_code
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
         return result
 
     def from_map(self, m: dict = None):
@@ -792,6 +797,8 @@ class LivenessFaceVerifyResponseResultObject(TeaModel):
             self.material_info = m.get('MaterialInfo')
         if m.get('SubCode') is not None:
             self.sub_code = m.get('SubCode')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
         return self
 
 
@@ -950,13 +957,16 @@ class CompareFaceVerifyResponseResultObject(TeaModel):
         self,
         passed: str = None,
         verify_score: float = None,
+        certify_id: str = None,
     ):
         self.passed = passed
         self.verify_score = verify_score
+        self.certify_id = certify_id
 
     def validate(self):
         self.validate_required(self.passed, 'passed')
         self.validate_required(self.verify_score, 'verify_score')
+        self.validate_required(self.certify_id, 'certify_id')
 
     def to_map(self):
         _map = super().to_map()
@@ -968,6 +978,8 @@ class CompareFaceVerifyResponseResultObject(TeaModel):
             result['Passed'] = self.passed
         if self.verify_score is not None:
             result['VerifyScore'] = self.verify_score
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
         return result
 
     def from_map(self, m: dict = None):
@@ -976,6 +988,8 @@ class CompareFaceVerifyResponseResultObject(TeaModel):
             self.passed = m.get('Passed')
         if m.get('VerifyScore') is not None:
             self.verify_score = m.get('VerifyScore')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
         return self
 
 
@@ -1759,17 +1773,20 @@ class ContrastFaceVerifyResponseResultObject(TeaModel):
         identity_info: str = None,
         material_info: str = None,
         sub_code: str = None,
+        certify_id: str = None,
     ):
         self.passed = passed
         self.identity_info = identity_info
         self.material_info = material_info
         self.sub_code = sub_code
+        self.certify_id = certify_id
 
     def validate(self):
         self.validate_required(self.passed, 'passed')
         self.validate_required(self.identity_info, 'identity_info')
         self.validate_required(self.material_info, 'material_info')
         self.validate_required(self.sub_code, 'sub_code')
+        self.validate_required(self.certify_id, 'certify_id')
 
     def to_map(self):
         _map = super().to_map()
@@ -1785,6 +1802,8 @@ class ContrastFaceVerifyResponseResultObject(TeaModel):
             result['MaterialInfo'] = self.material_info
         if self.sub_code is not None:
             result['SubCode'] = self.sub_code
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1797,6 +1816,8 @@ class ContrastFaceVerifyResponseResultObject(TeaModel):
             self.material_info = m.get('MaterialInfo')
         if m.get('SubCode') is not None:
             self.sub_code = m.get('SubCode')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
         return self
 
 
@@ -3740,13 +3761,11 @@ class CompareFacesRequest(TeaModel):
         source_image_type: str = None,
         source_image_value: str = None,
         target_image_value: str = None,
-        biz_type: str = None,
     ):
         self.target_image_type = target_image_type
         self.source_image_type = source_image_type
         self.source_image_value = source_image_value
         self.target_image_value = target_image_value
-        self.biz_type = biz_type
 
     def validate(self):
         pass
@@ -3765,8 +3784,6 @@ class CompareFacesRequest(TeaModel):
             result['SourceImageValue'] = self.source_image_value
         if self.target_image_value is not None:
             result['TargetImageValue'] = self.target_image_value
-        if self.biz_type is not None:
-            result['BizType'] = self.biz_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3779,8 +3796,6 @@ class CompareFacesRequest(TeaModel):
             self.source_image_value = m.get('SourceImageValue')
         if m.get('TargetImageValue') is not None:
             self.target_image_value = m.get('TargetImageValue')
-        if m.get('BizType') is not None:
-            self.biz_type = m.get('BizType')
         return self
 
 
