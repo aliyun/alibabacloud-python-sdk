@@ -3291,6 +3291,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_user_with_options_async(request, runtime)
 
+    def get_physical_database_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetPhysicalDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetPhysicalDatabaseResponse(),
+            self.do_rpcrequest('GetPhysicalDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_physical_database_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetPhysicalDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetPhysicalDatabaseResponse(),
+            await self.do_rpcrequest_async('GetPhysicalDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_physical_database(
+        self,
+        request: dms_enterprise_20181101_models.GetPhysicalDatabaseRequest,
+    ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_physical_database_with_options(request, runtime)
+
+    async def get_physical_database_async(
+        self,
+        request: dms_enterprise_20181101_models.GetPhysicalDatabaseRequest,
+    ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_physical_database_with_options_async(request, runtime)
+
     def get_struct_sync_exec_sql_detail_with_options(
         self,
         request: dms_enterprise_20181101_models.GetStructSyncExecSqlDetailRequest,

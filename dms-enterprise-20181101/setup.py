@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dms-enterprise20181101.
 
-Created on 12/04/2021
+Created on 22/04/2021
 
 @author: Alibaba Cloud SDK
 """
