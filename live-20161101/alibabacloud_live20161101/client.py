@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -105,7 +106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterComponentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterComponentResponse(),
             self.do_rpcrequest('AddCasterComponent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -118,7 +120,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterComponentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterComponentResponse(),
             await self.do_rpcrequest_async('AddCasterComponent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -145,7 +148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterEpisodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterEpisodeResponse(),
             self.do_rpcrequest('AddCasterEpisode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -158,7 +162,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterEpisodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterEpisodeResponse(),
             await self.do_rpcrequest_async('AddCasterEpisode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -185,7 +190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterEpisodeGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterEpisodeGroupResponse(),
             self.do_rpcrequest('AddCasterEpisodeGroup', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -198,7 +204,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterEpisodeGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterEpisodeGroupResponse(),
             await self.do_rpcrequest_async('AddCasterEpisodeGroup', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -225,7 +232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterEpisodeGroupContentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterEpisodeGroupContentResponse(),
             self.do_rpcrequest('AddCasterEpisodeGroupContent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -238,7 +246,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterEpisodeGroupContentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterEpisodeGroupContentResponse(),
             await self.do_rpcrequest_async('AddCasterEpisodeGroupContent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -265,7 +274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterLayoutResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterLayoutResponse(),
             self.do_rpcrequest('AddCasterLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -278,7 +288,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterLayoutResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterLayoutResponse(),
             await self.do_rpcrequest_async('AddCasterLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -305,7 +316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterProgramResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterProgramResponse(),
             self.do_rpcrequest('AddCasterProgram', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -318,7 +330,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterProgramResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterProgramResponse(),
             await self.do_rpcrequest_async('AddCasterProgram', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -345,7 +358,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterVideoResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterVideoResourceResponse(),
             self.do_rpcrequest('AddCasterVideoResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -358,7 +372,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCasterVideoResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCasterVideoResourceResponse(),
             await self.do_rpcrequest_async('AddCasterVideoResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -385,7 +400,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCustomLiveStreamTranscodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCustomLiveStreamTranscodeResponse(),
             self.do_rpcrequest('AddCustomLiveStreamTranscode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -398,7 +414,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddCustomLiveStreamTranscodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddCustomLiveStreamTranscodeResponse(),
             await self.do_rpcrequest_async('AddCustomLiveStreamTranscode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -416,6 +433,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_custom_live_stream_transcode_with_options_async(request, runtime)
 
+    def add_drmcertificate_with_options(
+        self,
+        request: live_20161101_models.AddDRMCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.AddDRMCertificateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.AddDRMCertificateResponse(),
+            self.do_rpcrequest('AddDRMCertificate', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_drmcertificate_with_options_async(
+        self,
+        request: live_20161101_models.AddDRMCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.AddDRMCertificateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.AddDRMCertificateResponse(),
+            await self.do_rpcrequest_async('AddDRMCertificate', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_drmcertificate(
+        self,
+        request: live_20161101_models.AddDRMCertificateRequest,
+    ) -> live_20161101_models.AddDRMCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_drmcertificate_with_options(request, runtime)
+
+    async def add_drmcertificate_async(
+        self,
+        request: live_20161101_models.AddDRMCertificateRequest,
+    ) -> live_20161101_models.AddDRMCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_drmcertificate_with_options_async(request, runtime)
+
     def add_live_app_record_config_with_options(
         self,
         request: live_20161101_models.AddLiveAppRecordConfigRequest,
@@ -425,7 +484,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveAppRecordConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveAppRecordConfigResponse(),
             self.do_rpcrequest('AddLiveAppRecordConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -438,7 +498,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveAppRecordConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveAppRecordConfigResponse(),
             await self.do_rpcrequest_async('AddLiveAppRecordConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -465,7 +526,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveAppSnapshotConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveAppSnapshotConfigResponse(),
             self.do_rpcrequest('AddLiveAppSnapshotConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -478,7 +540,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveAppSnapshotConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveAppSnapshotConfigResponse(),
             await self.do_rpcrequest_async('AddLiveAppSnapshotConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -505,7 +568,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveASRConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveASRConfigResponse(),
             self.do_rpcrequest('AddLiveASRConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -518,7 +582,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveASRConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveASRConfigResponse(),
             await self.do_rpcrequest_async('AddLiveASRConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -545,7 +610,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveAudioAuditConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveAudioAuditConfigResponse(),
             self.do_rpcrequest('AddLiveAudioAuditConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -558,7 +624,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveAudioAuditConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveAudioAuditConfigResponse(),
             await self.do_rpcrequest_async('AddLiveAudioAuditConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -585,7 +652,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveAudioAuditNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveAudioAuditNotifyConfigResponse(),
             self.do_rpcrequest('AddLiveAudioAuditNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -598,7 +666,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveAudioAuditNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveAudioAuditNotifyConfigResponse(),
             await self.do_rpcrequest_async('AddLiveAudioAuditNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -625,7 +694,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveDetectNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveDetectNotifyConfigResponse(),
             self.do_rpcrequest('AddLiveDetectNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -638,7 +708,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveDetectNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveDetectNotifyConfigResponse(),
             await self.do_rpcrequest_async('AddLiveDetectNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -665,7 +736,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveDomainResponse(),
             self.do_rpcrequest('AddLiveDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -678,7 +750,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveDomainResponse(),
             await self.do_rpcrequest_async('AddLiveDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -705,7 +778,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveDomainMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveDomainMappingResponse(),
             self.do_rpcrequest('AddLiveDomainMapping', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -718,7 +792,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveDomainMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveDomainMappingResponse(),
             await self.do_rpcrequest_async('AddLiveDomainMapping', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -745,7 +820,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveDomainPlayMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveDomainPlayMappingResponse(),
             self.do_rpcrequest('AddLiveDomainPlayMapping', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -758,7 +834,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveDomainPlayMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveDomainPlayMappingResponse(),
             await self.do_rpcrequest_async('AddLiveDomainPlayMapping', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -785,7 +862,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLivePullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLivePullStreamInfoConfigResponse(),
             self.do_rpcrequest('AddLivePullStreamInfoConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -798,7 +876,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLivePullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLivePullStreamInfoConfigResponse(),
             await self.do_rpcrequest_async('AddLivePullStreamInfoConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -825,7 +904,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveRecordNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveRecordNotifyConfigResponse(),
             self.do_rpcrequest('AddLiveRecordNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -838,7 +918,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveRecordNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveRecordNotifyConfigResponse(),
             await self.do_rpcrequest_async('AddLiveRecordNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -865,7 +946,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveRecordVodConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveRecordVodConfigResponse(),
             self.do_rpcrequest('AddLiveRecordVodConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -878,7 +960,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveRecordVodConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveRecordVodConfigResponse(),
             await self.do_rpcrequest_async('AddLiveRecordVodConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -905,7 +988,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveSnapshotDetectPornConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveSnapshotDetectPornConfigResponse(),
             self.do_rpcrequest('AddLiveSnapshotDetectPornConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -918,7 +1002,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveSnapshotDetectPornConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveSnapshotDetectPornConfigResponse(),
             await self.do_rpcrequest_async('AddLiveSnapshotDetectPornConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -945,7 +1030,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveStreamTranscodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveStreamTranscodeResponse(),
             self.do_rpcrequest('AddLiveStreamTranscode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -958,7 +1044,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddLiveStreamTranscodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddLiveStreamTranscodeResponse(),
             await self.do_rpcrequest_async('AddLiveStreamTranscode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -976,6 +1063,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_live_stream_transcode_with_options_async(request, runtime)
 
+    def add_multi_rate_config_with_options(
+        self,
+        request: live_20161101_models.AddMultiRateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.AddMultiRateConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.AddMultiRateConfigResponse(),
+            self.do_rpcrequest('AddMultiRateConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_multi_rate_config_with_options_async(
+        self,
+        request: live_20161101_models.AddMultiRateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.AddMultiRateConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.AddMultiRateConfigResponse(),
+            await self.do_rpcrequest_async('AddMultiRateConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_multi_rate_config(
+        self,
+        request: live_20161101_models.AddMultiRateConfigRequest,
+    ) -> live_20161101_models.AddMultiRateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_multi_rate_config_with_options(request, runtime)
+
+    async def add_multi_rate_config_async(
+        self,
+        request: live_20161101_models.AddMultiRateConfigRequest,
+    ) -> live_20161101_models.AddMultiRateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_multi_rate_config_with_options_async(request, runtime)
+
+    def add_playlist_items_with_options(
+        self,
+        request: live_20161101_models.AddPlaylistItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.AddPlaylistItemsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.AddPlaylistItemsResponse(),
+            self.do_rpcrequest('AddPlaylistItems', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_playlist_items_with_options_async(
+        self,
+        request: live_20161101_models.AddPlaylistItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.AddPlaylistItemsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.AddPlaylistItemsResponse(),
+            await self.do_rpcrequest_async('AddPlaylistItems', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_playlist_items(
+        self,
+        request: live_20161101_models.AddPlaylistItemsRequest,
+    ) -> live_20161101_models.AddPlaylistItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_playlist_items_with_options(request, runtime)
+
+    async def add_playlist_items_async(
+        self,
+        request: live_20161101_models.AddPlaylistItemsRequest,
+    ) -> live_20161101_models.AddPlaylistItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_playlist_items_with_options_async(request, runtime)
+
     def add_rts_live_stream_transcode_with_options(
         self,
         request: live_20161101_models.AddRtsLiveStreamTranscodeRequest,
@@ -985,7 +1156,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddRtsLiveStreamTranscodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddRtsLiveStreamTranscodeResponse(),
             self.do_rpcrequest('AddRtsLiveStreamTranscode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -998,7 +1170,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddRtsLiveStreamTranscodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddRtsLiveStreamTranscodeResponse(),
             await self.do_rpcrequest_async('AddRtsLiveStreamTranscode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1016,6 +1189,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_rts_live_stream_transcode_with_options_async(request, runtime)
 
+    def add_studio_layout_with_options(
+        self,
+        request: live_20161101_models.AddStudioLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.AddStudioLayoutResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.AddStudioLayoutResponse(),
+            self.do_rpcrequest('AddStudioLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_studio_layout_with_options_async(
+        self,
+        request: live_20161101_models.AddStudioLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.AddStudioLayoutResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.AddStudioLayoutResponse(),
+            await self.do_rpcrequest_async('AddStudioLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_studio_layout(
+        self,
+        request: live_20161101_models.AddStudioLayoutRequest,
+    ) -> live_20161101_models.AddStudioLayoutResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_studio_layout_with_options(request, runtime)
+
+    async def add_studio_layout_async(
+        self,
+        request: live_20161101_models.AddStudioLayoutRequest,
+    ) -> live_20161101_models.AddStudioLayoutResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_studio_layout_with_options_async(request, runtime)
+
     def add_trancode_seiwith_options(
         self,
         request: live_20161101_models.AddTrancodeSEIRequest,
@@ -1025,7 +1240,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddTrancodeSEIResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddTrancodeSEIResponse(),
             self.do_rpcrequest('AddTrancodeSEI', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1038,7 +1254,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AddTrancodeSEIResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AddTrancodeSEIResponse(),
             await self.do_rpcrequest_async('AddTrancodeSEI', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1065,7 +1282,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AllowPushStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AllowPushStreamResponse(),
             self.do_rpcrequest('AllowPushStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1078,7 +1296,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.AllowPushStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.AllowPushStreamResponse(),
             await self.do_rpcrequest_async('AllowPushStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1105,7 +1324,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ApplyBoardTokenResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ApplyBoardTokenResponse(),
             self.do_rpcrequest('ApplyBoardToken', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1118,7 +1338,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ApplyBoardTokenResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ApplyBoardTokenResponse(),
             await self.do_rpcrequest_async('ApplyBoardToken', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1145,7 +1366,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ApplyRecordTokenResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ApplyRecordTokenResponse(),
             self.do_rpcrequest('ApplyRecordToken', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1158,7 +1380,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ApplyRecordTokenResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ApplyRecordTokenResponse(),
             await self.do_rpcrequest_async('ApplyRecordToken', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1185,7 +1408,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.BatchDeleteLiveDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.BatchDeleteLiveDomainConfigsResponse(),
             self.do_rpcrequest('BatchDeleteLiveDomainConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1198,7 +1422,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.BatchDeleteLiveDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.BatchDeleteLiveDomainConfigsResponse(),
             await self.do_rpcrequest_async('BatchDeleteLiveDomainConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1225,7 +1450,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.BatchSetLiveDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.BatchSetLiveDomainConfigsResponse(),
             self.do_rpcrequest('BatchSetLiveDomainConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1238,7 +1464,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.BatchSetLiveDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.BatchSetLiveDomainConfigsResponse(),
             await self.do_rpcrequest_async('BatchSetLiveDomainConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1256,6 +1483,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_set_live_domain_configs_with_options_async(request, runtime)
 
+    def check_service_for_role_with_options(
+        self,
+        request: live_20161101_models.CheckServiceForRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.CheckServiceForRoleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.CheckServiceForRoleResponse(),
+            self.do_rpcrequest('CheckServiceForRole', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def check_service_for_role_with_options_async(
+        self,
+        request: live_20161101_models.CheckServiceForRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.CheckServiceForRoleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.CheckServiceForRoleResponse(),
+            await self.do_rpcrequest_async('CheckServiceForRole', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def check_service_for_role(
+        self,
+        request: live_20161101_models.CheckServiceForRoleRequest,
+    ) -> live_20161101_models.CheckServiceForRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_service_for_role_with_options(request, runtime)
+
+    async def check_service_for_role_async(
+        self,
+        request: live_20161101_models.CheckServiceForRoleRequest,
+    ) -> live_20161101_models.CheckServiceForRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_service_for_role_with_options_async(request, runtime)
+
+    def close_live_shift_with_options(
+        self,
+        request: live_20161101_models.CloseLiveShiftRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.CloseLiveShiftResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.CloseLiveShiftResponse(),
+            self.do_rpcrequest('CloseLiveShift', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def close_live_shift_with_options_async(
+        self,
+        request: live_20161101_models.CloseLiveShiftRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.CloseLiveShiftResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.CloseLiveShiftResponse(),
+            await self.do_rpcrequest_async('CloseLiveShift', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def close_live_shift(
+        self,
+        request: live_20161101_models.CloseLiveShiftRequest,
+    ) -> live_20161101_models.CloseLiveShiftResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.close_live_shift_with_options(request, runtime)
+
+    async def close_live_shift_async(
+        self,
+        request: live_20161101_models.CloseLiveShiftRequest,
+    ) -> live_20161101_models.CloseLiveShiftResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.close_live_shift_with_options_async(request, runtime)
+
     def complete_board_with_options(
         self,
         request: live_20161101_models.CompleteBoardRequest,
@@ -1265,7 +1576,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CompleteBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CompleteBoardResponse(),
             self.do_rpcrequest('CompleteBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1278,7 +1590,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CompleteBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CompleteBoardResponse(),
             await self.do_rpcrequest_async('CompleteBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1305,7 +1618,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CompleteBoardRecordResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CompleteBoardRecordResponse(),
             self.do_rpcrequest('CompleteBoardRecord', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1318,7 +1632,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CompleteBoardRecordResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CompleteBoardRecordResponse(),
             await self.do_rpcrequest_async('CompleteBoardRecord', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1345,7 +1660,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ControlHtmlResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ControlHtmlResourceResponse(),
             self.do_rpcrequest('ControlHtmlResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1358,7 +1674,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ControlHtmlResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ControlHtmlResourceResponse(),
             await self.do_rpcrequest_async('ControlHtmlResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1385,7 +1702,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CopyCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CopyCasterResponse(),
             self.do_rpcrequest('CopyCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1398,7 +1716,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CopyCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CopyCasterResponse(),
             await self.do_rpcrequest_async('CopyCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1425,7 +1744,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CopyCasterSceneConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CopyCasterSceneConfigResponse(),
             self.do_rpcrequest('CopyCasterSceneConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1438,7 +1758,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CopyCasterSceneConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CopyCasterSceneConfigResponse(),
             await self.do_rpcrequest_async('CopyCasterSceneConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1465,7 +1786,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateBoardResponse(),
             self.do_rpcrequest('CreateBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1478,7 +1800,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateBoardResponse(),
             await self.do_rpcrequest_async('CreateBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1505,7 +1828,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateCasterResponse(),
             self.do_rpcrequest('CreateCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1518,7 +1842,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateCasterResponse(),
             await self.do_rpcrequest_async('CreateCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1546,7 +1871,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.CreateLiveRealTimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateLiveRealTimeLogDeliveryResponse(),
             self.do_rpcrequest('CreateLiveRealTimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1560,7 +1886,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.CreateLiveRealTimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateLiveRealTimeLogDeliveryResponse(),
             await self.do_rpcrequest_async('CreateLiveRealTimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1587,7 +1914,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateLiveStreamRecordIndexFilesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateLiveStreamRecordIndexFilesResponse(),
             self.do_rpcrequest('CreateLiveStreamRecordIndexFiles', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1600,7 +1928,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateLiveStreamRecordIndexFilesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateLiveStreamRecordIndexFilesResponse(),
             await self.do_rpcrequest_async('CreateLiveStreamRecordIndexFiles', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1627,7 +1956,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateMixStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateMixStreamResponse(),
             self.do_rpcrequest('CreateMixStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1640,7 +1970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateMixStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateMixStreamResponse(),
             await self.do_rpcrequest_async('CreateMixStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1667,7 +1998,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateRoomResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateRoomResponse(),
             self.do_rpcrequest('CreateRoom', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1680,7 +2012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.CreateRoomResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.CreateRoomResponse(),
             await self.do_rpcrequest_async('CreateRoom', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1707,7 +2040,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteBoardResponse(),
             self.do_rpcrequest('DeleteBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1720,7 +2054,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteBoardResponse(),
             await self.do_rpcrequest_async('DeleteBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1747,7 +2082,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterResponse(),
             self.do_rpcrequest('DeleteCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1760,7 +2096,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterResponse(),
             await self.do_rpcrequest_async('DeleteCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1787,7 +2124,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterComponentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterComponentResponse(),
             self.do_rpcrequest('DeleteCasterComponent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1800,7 +2138,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterComponentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterComponentResponse(),
             await self.do_rpcrequest_async('DeleteCasterComponent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1827,7 +2166,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterEpisodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterEpisodeResponse(),
             self.do_rpcrequest('DeleteCasterEpisode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1840,7 +2180,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterEpisodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterEpisodeResponse(),
             await self.do_rpcrequest_async('DeleteCasterEpisode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1867,7 +2208,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterEpisodeGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterEpisodeGroupResponse(),
             self.do_rpcrequest('DeleteCasterEpisodeGroup', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1880,7 +2222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterEpisodeGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterEpisodeGroupResponse(),
             await self.do_rpcrequest_async('DeleteCasterEpisodeGroup', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1907,7 +2250,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterLayoutResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterLayoutResponse(),
             self.do_rpcrequest('DeleteCasterLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1920,7 +2264,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterLayoutResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterLayoutResponse(),
             await self.do_rpcrequest_async('DeleteCasterLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1947,7 +2292,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterProgramResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterProgramResponse(),
             self.do_rpcrequest('DeleteCasterProgram', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1960,7 +2306,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterProgramResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterProgramResponse(),
             await self.do_rpcrequest_async('DeleteCasterProgram', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1987,7 +2334,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterSceneConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterSceneConfigResponse(),
             self.do_rpcrequest('DeleteCasterSceneConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2000,7 +2348,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterSceneConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterSceneConfigResponse(),
             await self.do_rpcrequest_async('DeleteCasterSceneConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2027,7 +2376,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterVideoResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterVideoResourceResponse(),
             self.do_rpcrequest('DeleteCasterVideoResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2040,7 +2390,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteCasterVideoResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteCasterVideoResourceResponse(),
             await self.do_rpcrequest_async('DeleteCasterVideoResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2067,7 +2418,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteHtmlResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteHtmlResourceResponse(),
             self.do_rpcrequest('DeleteHtmlResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2080,7 +2432,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteHtmlResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteHtmlResourceResponse(),
             await self.do_rpcrequest_async('DeleteHtmlResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2107,7 +2460,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveAppRecordConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveAppRecordConfigResponse(),
             self.do_rpcrequest('DeleteLiveAppRecordConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2120,7 +2474,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveAppRecordConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveAppRecordConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveAppRecordConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2147,7 +2502,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveAppSnapshotConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveAppSnapshotConfigResponse(),
             self.do_rpcrequest('DeleteLiveAppSnapshotConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2160,7 +2516,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveAppSnapshotConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveAppSnapshotConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveAppSnapshotConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2187,7 +2544,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveASRConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveASRConfigResponse(),
             self.do_rpcrequest('DeleteLiveASRConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2200,7 +2558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveASRConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveASRConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveASRConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2227,7 +2586,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveAudioAuditConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveAudioAuditConfigResponse(),
             self.do_rpcrequest('DeleteLiveAudioAuditConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2240,7 +2600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveAudioAuditConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveAudioAuditConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveAudioAuditConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2267,7 +2628,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveAudioAuditNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveAudioAuditNotifyConfigResponse(),
             self.do_rpcrequest('DeleteLiveAudioAuditNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2280,7 +2642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveAudioAuditNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveAudioAuditNotifyConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveAudioAuditNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2307,7 +2670,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveDetectNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveDetectNotifyConfigResponse(),
             self.do_rpcrequest('DeleteLiveDetectNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2320,7 +2684,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveDetectNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveDetectNotifyConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveDetectNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2347,7 +2712,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveDomainResponse(),
             self.do_rpcrequest('DeleteLiveDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2360,7 +2726,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveDomainResponse(),
             await self.do_rpcrequest_async('DeleteLiveDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2387,7 +2754,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveDomainMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveDomainMappingResponse(),
             self.do_rpcrequest('DeleteLiveDomainMapping', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2400,7 +2768,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveDomainMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveDomainMappingResponse(),
             await self.do_rpcrequest_async('DeleteLiveDomainMapping', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2427,7 +2796,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveDomainPlayMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveDomainPlayMappingResponse(),
             self.do_rpcrequest('DeleteLiveDomainPlayMapping', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2440,7 +2810,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveDomainPlayMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveDomainPlayMappingResponse(),
             await self.do_rpcrequest_async('DeleteLiveDomainPlayMapping', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2467,7 +2838,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveLazyPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveLazyPullStreamInfoConfigResponse(),
             self.do_rpcrequest('DeleteLiveLazyPullStreamInfoConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2480,7 +2852,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveLazyPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveLazyPullStreamInfoConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveLazyPullStreamInfoConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2507,7 +2880,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLivePullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLivePullStreamInfoConfigResponse(),
             self.do_rpcrequest('DeleteLivePullStreamInfoConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2520,7 +2894,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLivePullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLivePullStreamInfoConfigResponse(),
             await self.do_rpcrequest_async('DeleteLivePullStreamInfoConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2548,7 +2923,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DeleteLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveRealtimeLogDeliveryResponse(),
             self.do_rpcrequest('DeleteLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2562,7 +2938,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DeleteLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveRealtimeLogDeliveryResponse(),
             await self.do_rpcrequest_async('DeleteLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2590,7 +2967,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DeleteLiveRealTimeLogLogstoreResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveRealTimeLogLogstoreResponse(),
             self.do_rpcrequest('DeleteLiveRealTimeLogLogstore', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2604,7 +2982,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DeleteLiveRealTimeLogLogstoreResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveRealTimeLogLogstoreResponse(),
             await self.do_rpcrequest_async('DeleteLiveRealTimeLogLogstore', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2631,7 +3010,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveRecordNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveRecordNotifyConfigResponse(),
             self.do_rpcrequest('DeleteLiveRecordNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2644,7 +3024,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveRecordNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveRecordNotifyConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveRecordNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2671,7 +3052,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveRecordVodConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveRecordVodConfigResponse(),
             self.do_rpcrequest('DeleteLiveRecordVodConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2684,7 +3066,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveRecordVodConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveRecordVodConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveRecordVodConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2711,7 +3094,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveSnapshotDetectPornConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveSnapshotDetectPornConfigResponse(),
             self.do_rpcrequest('DeleteLiveSnapshotDetectPornConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2724,7 +3108,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveSnapshotDetectPornConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveSnapshotDetectPornConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveSnapshotDetectPornConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2751,7 +3136,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveStreamsNotifyUrlConfigResponse(),
             self.do_rpcrequest('DeleteLiveStreamsNotifyUrlConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2764,7 +3150,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveStreamsNotifyUrlConfigResponse(),
             await self.do_rpcrequest_async('DeleteLiveStreamsNotifyUrlConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2791,7 +3178,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveStreamTranscodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveStreamTranscodeResponse(),
             self.do_rpcrequest('DeleteLiveStreamTranscode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2804,7 +3192,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteLiveStreamTranscodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteLiveStreamTranscodeResponse(),
             await self.do_rpcrequest_async('DeleteLiveStreamTranscode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2831,7 +3220,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteMixStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteMixStreamResponse(),
             self.do_rpcrequest('DeleteMixStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2844,7 +3234,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteMixStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteMixStreamResponse(),
             await self.do_rpcrequest_async('DeleteMixStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2862,6 +3253,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_mix_stream_with_options_async(request, runtime)
 
+    def delete_multi_rate_config_with_options(
+        self,
+        request: live_20161101_models.DeleteMultiRateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DeleteMultiRateConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DeleteMultiRateConfigResponse(),
+            self.do_rpcrequest('DeleteMultiRateConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_multi_rate_config_with_options_async(
+        self,
+        request: live_20161101_models.DeleteMultiRateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DeleteMultiRateConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DeleteMultiRateConfigResponse(),
+            await self.do_rpcrequest_async('DeleteMultiRateConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_multi_rate_config(
+        self,
+        request: live_20161101_models.DeleteMultiRateConfigRequest,
+    ) -> live_20161101_models.DeleteMultiRateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_multi_rate_config_with_options(request, runtime)
+
+    async def delete_multi_rate_config_async(
+        self,
+        request: live_20161101_models.DeleteMultiRateConfigRequest,
+    ) -> live_20161101_models.DeleteMultiRateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_multi_rate_config_with_options_async(request, runtime)
+
+    def delete_playlist_with_options(
+        self,
+        request: live_20161101_models.DeletePlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DeletePlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DeletePlaylistResponse(),
+            self.do_rpcrequest('DeletePlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_playlist_with_options_async(
+        self,
+        request: live_20161101_models.DeletePlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DeletePlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DeletePlaylistResponse(),
+            await self.do_rpcrequest_async('DeletePlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_playlist(
+        self,
+        request: live_20161101_models.DeletePlaylistRequest,
+    ) -> live_20161101_models.DeletePlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_playlist_with_options(request, runtime)
+
+    async def delete_playlist_async(
+        self,
+        request: live_20161101_models.DeletePlaylistRequest,
+    ) -> live_20161101_models.DeletePlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_playlist_with_options_async(request, runtime)
+
+    def delete_playlist_items_with_options(
+        self,
+        request: live_20161101_models.DeletePlaylistItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DeletePlaylistItemsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DeletePlaylistItemsResponse(),
+            self.do_rpcrequest('DeletePlaylistItems', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_playlist_items_with_options_async(
+        self,
+        request: live_20161101_models.DeletePlaylistItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DeletePlaylistItemsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DeletePlaylistItemsResponse(),
+            await self.do_rpcrequest_async('DeletePlaylistItems', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_playlist_items(
+        self,
+        request: live_20161101_models.DeletePlaylistItemsRequest,
+    ) -> live_20161101_models.DeletePlaylistItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_playlist_items_with_options(request, runtime)
+
+    async def delete_playlist_items_async(
+        self,
+        request: live_20161101_models.DeletePlaylistItemsRequest,
+    ) -> live_20161101_models.DeletePlaylistItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_playlist_items_with_options_async(request, runtime)
+
     def delete_room_with_options(
         self,
         request: live_20161101_models.DeleteRoomRequest,
@@ -2871,7 +3388,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteRoomResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteRoomResponse(),
             self.do_rpcrequest('DeleteRoom', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2884,7 +3402,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DeleteRoomResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DeleteRoomResponse(),
             await self.do_rpcrequest_async('DeleteRoom', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2902,6 +3421,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_room_with_options_async(request, runtime)
 
+    def delete_studio_layout_with_options(
+        self,
+        request: live_20161101_models.DeleteStudioLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DeleteStudioLayoutResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DeleteStudioLayoutResponse(),
+            self.do_rpcrequest('DeleteStudioLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_studio_layout_with_options_async(
+        self,
+        request: live_20161101_models.DeleteStudioLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DeleteStudioLayoutResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DeleteStudioLayoutResponse(),
+            await self.do_rpcrequest_async('DeleteStudioLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_studio_layout(
+        self,
+        request: live_20161101_models.DeleteStudioLayoutRequest,
+    ) -> live_20161101_models.DeleteStudioLayoutResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_studio_layout_with_options(request, runtime)
+
+    async def delete_studio_layout_async(
+        self,
+        request: live_20161101_models.DeleteStudioLayoutRequest,
+    ) -> live_20161101_models.DeleteStudioLayoutResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_studio_layout_with_options_async(request, runtime)
+
     def describe_board_events_with_options(
         self,
         request: live_20161101_models.DescribeBoardEventsRequest,
@@ -2911,7 +3472,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeBoardEventsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeBoardEventsResponse(),
             self.do_rpcrequest('DescribeBoardEvents', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2924,7 +3486,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeBoardEventsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeBoardEventsResponse(),
             await self.do_rpcrequest_async('DescribeBoardEvents', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2951,7 +3514,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeBoardsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeBoardsResponse(),
             self.do_rpcrequest('DescribeBoards', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2964,7 +3528,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeBoardsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeBoardsResponse(),
             await self.do_rpcrequest_async('DescribeBoards', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2991,7 +3556,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeBoardSnapshotResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeBoardSnapshotResponse(),
             self.do_rpcrequest('DescribeBoardSnapshot', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3004,7 +3570,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeBoardSnapshotResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeBoardSnapshotResponse(),
             await self.do_rpcrequest_async('DescribeBoardSnapshot', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3031,7 +3598,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterChannelsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterChannelsResponse(),
             self.do_rpcrequest('DescribeCasterChannels', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3044,7 +3612,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterChannelsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterChannelsResponse(),
             await self.do_rpcrequest_async('DescribeCasterChannels', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3071,7 +3640,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterComponentsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterComponentsResponse(),
             self.do_rpcrequest('DescribeCasterComponents', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3084,7 +3654,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterComponentsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterComponentsResponse(),
             await self.do_rpcrequest_async('DescribeCasterComponents', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3111,7 +3682,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterConfigResponse(),
             self.do_rpcrequest('DescribeCasterConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3124,7 +3696,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterConfigResponse(),
             await self.do_rpcrequest_async('DescribeCasterConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3151,7 +3724,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterLayoutsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterLayoutsResponse(),
             self.do_rpcrequest('DescribeCasterLayouts', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3164,7 +3738,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterLayoutsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterLayoutsResponse(),
             await self.do_rpcrequest_async('DescribeCasterLayouts', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3191,7 +3766,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterProgramResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterProgramResponse(),
             self.do_rpcrequest('DescribeCasterProgram', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3204,7 +3780,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterProgramResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterProgramResponse(),
             await self.do_rpcrequest_async('DescribeCasterProgram', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3231,7 +3808,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterRtcInfoResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterRtcInfoResponse(),
             self.do_rpcrequest('DescribeCasterRtcInfo', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3244,7 +3822,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterRtcInfoResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterRtcInfoResponse(),
             await self.do_rpcrequest_async('DescribeCasterRtcInfo', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3271,7 +3850,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCastersResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCastersResponse(),
             self.do_rpcrequest('DescribeCasters', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3284,7 +3864,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCastersResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCastersResponse(),
             await self.do_rpcrequest_async('DescribeCasters', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3311,7 +3892,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterSceneAudioResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterSceneAudioResponse(),
             self.do_rpcrequest('DescribeCasterSceneAudio', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3324,7 +3906,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterSceneAudioResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterSceneAudioResponse(),
             await self.do_rpcrequest_async('DescribeCasterSceneAudio', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3351,7 +3934,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterScenesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterScenesResponse(),
             self.do_rpcrequest('DescribeCasterScenes', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3364,7 +3948,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterScenesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterScenesResponse(),
             await self.do_rpcrequest_async('DescribeCasterScenes', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3391,7 +3976,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterStreamUrlResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterStreamUrlResponse(),
             self.do_rpcrequest('DescribeCasterStreamUrl', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3404,7 +3990,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterStreamUrlResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterStreamUrlResponse(),
             await self.do_rpcrequest_async('DescribeCasterStreamUrl', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3431,7 +4018,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterSyncGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterSyncGroupResponse(),
             self.do_rpcrequest('DescribeCasterSyncGroup', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3444,7 +4032,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterSyncGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterSyncGroupResponse(),
             await self.do_rpcrequest_async('DescribeCasterSyncGroup', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3471,7 +4060,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterVideoResourcesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterVideoResourcesResponse(),
             self.do_rpcrequest('DescribeCasterVideoResources', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3484,7 +4074,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeCasterVideoResourcesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeCasterVideoResourcesResponse(),
             await self.do_rpcrequest_async('DescribeCasterVideoResources', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3511,7 +4102,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeDomainUsageDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeDomainUsageDataResponse(),
             self.do_rpcrequest('DescribeDomainUsageData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3524,7 +4116,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeDomainUsageDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeDomainUsageDataResponse(),
             await self.do_rpcrequest_async('DescribeDomainUsageData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3542,6 +4135,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_usage_data_with_options_async(request, runtime)
 
+    def describe_drmcert_list_with_options(
+        self,
+        request: live_20161101_models.DescribeDRMCertListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeDRMCertListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeDRMCertListResponse(),
+            self.do_rpcrequest('DescribeDRMCertList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_drmcert_list_with_options_async(
+        self,
+        request: live_20161101_models.DescribeDRMCertListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeDRMCertListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeDRMCertListResponse(),
+            await self.do_rpcrequest_async('DescribeDRMCertList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_drmcert_list(
+        self,
+        request: live_20161101_models.DescribeDRMCertListRequest,
+    ) -> live_20161101_models.DescribeDRMCertListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_drmcert_list_with_options(request, runtime)
+
+    async def describe_drmcert_list_async(
+        self,
+        request: live_20161101_models.DescribeDRMCertListRequest,
+    ) -> live_20161101_models.DescribeDRMCertListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_drmcert_list_with_options_async(request, runtime)
+
     def describe_forbid_push_stream_room_list_with_options(
         self,
         request: live_20161101_models.DescribeForbidPushStreamRoomListRequest,
@@ -3551,7 +4186,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeForbidPushStreamRoomListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeForbidPushStreamRoomListResponse(),
             self.do_rpcrequest('DescribeForbidPushStreamRoomList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3564,7 +4200,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeForbidPushStreamRoomListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeForbidPushStreamRoomListResponse(),
             await self.do_rpcrequest_async('DescribeForbidPushStreamRoomList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3592,7 +4229,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeHlsLiveStreamRealTimeBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeHlsLiveStreamRealTimeBpsDataResponse(),
             self.do_rpcrequest('DescribeHlsLiveStreamRealTimeBpsData', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -3606,7 +4244,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeHlsLiveStreamRealTimeBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeHlsLiveStreamRealTimeBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeHlsLiveStreamRealTimeBpsData', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -3633,7 +4272,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeHtmlResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeHtmlResourceResponse(),
             self.do_rpcrequest('DescribeHtmlResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3646,7 +4286,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeHtmlResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeHtmlResourceResponse(),
             await self.do_rpcrequest_async('DescribeHtmlResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3673,7 +4314,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveAsrConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveAsrConfigResponse(),
             self.do_rpcrequest('DescribeLiveAsrConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3686,7 +4328,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveAsrConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveAsrConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveAsrConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3713,7 +4356,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveAudioAuditConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveAudioAuditConfigResponse(),
             self.do_rpcrequest('DescribeLiveAudioAuditConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3726,7 +4370,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveAudioAuditConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveAudioAuditConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveAudioAuditConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3753,7 +4398,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveAudioAuditNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveAudioAuditNotifyConfigResponse(),
             self.do_rpcrequest('DescribeLiveAudioAuditNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3766,7 +4412,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveAudioAuditNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveAudioAuditNotifyConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveAudioAuditNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3793,7 +4440,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveCertificateDetailResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveCertificateDetailResponse(),
             self.do_rpcrequest('DescribeLiveCertificateDetail', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3806,7 +4454,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveCertificateDetailResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveCertificateDetailResponse(),
             await self.do_rpcrequest_async('DescribeLiveCertificateDetail', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3833,7 +4482,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveCertificateListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveCertificateListResponse(),
             self.do_rpcrequest('DescribeLiveCertificateList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3846,7 +4496,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveCertificateListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveCertificateListResponse(),
             await self.do_rpcrequest_async('DescribeLiveCertificateList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3873,7 +4524,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDetectNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDetectNotifyConfigResponse(),
             self.do_rpcrequest('DescribeLiveDetectNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3886,7 +4538,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDetectNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDetectNotifyConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveDetectNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3913,7 +4566,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDetectPornDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDetectPornDataResponse(),
             self.do_rpcrequest('DescribeLiveDetectPornData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3926,7 +4580,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDetectPornDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDetectPornDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDetectPornData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3953,7 +4608,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainBpsDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainBpsData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3966,7 +4622,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainBpsData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3993,7 +4650,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainBpsDataByTimeStampResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainBpsDataByTimeStampResponse(),
             self.do_rpcrequest('DescribeLiveDomainBpsDataByTimeStamp', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4006,7 +4664,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainBpsDataByTimeStampResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainBpsDataByTimeStampResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainBpsDataByTimeStamp', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4033,7 +4692,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainCertificateInfoResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainCertificateInfoResponse(),
             self.do_rpcrequest('DescribeLiveDomainCertificateInfo', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4046,7 +4706,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainCertificateInfoResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainCertificateInfoResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainCertificateInfo', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4073,7 +4734,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainConfigsResponse(),
             self.do_rpcrequest('DescribeLiveDomainConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4086,7 +4748,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainConfigsResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4113,7 +4776,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainDetailResponse(),
             self.do_rpcrequest('DescribeLiveDomainDetail', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4126,7 +4790,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainDetailResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainDetail', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4153,7 +4818,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainFrameRateAndBitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainFrameRateAndBitRateDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainFrameRateAndBitRateData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4166,7 +4832,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainFrameRateAndBitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainFrameRateAndBitRateDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainFrameRateAndBitRateData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4193,7 +4860,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainLimitResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainLimitResponse(),
             self.do_rpcrequest('DescribeLiveDomainLimit', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4206,7 +4874,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainLimitResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainLimitResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainLimit', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4234,7 +4903,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveDomainMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainMappingResponse(),
             self.do_rpcrequest('DescribeLiveDomainMapping', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4248,7 +4918,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveDomainMappingResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainMappingResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainMapping', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4275,7 +4946,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainOnlineUserNumResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainOnlineUserNumResponse(),
             self.do_rpcrequest('DescribeLiveDomainOnlineUserNum', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4288,7 +4960,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainOnlineUserNumResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainOnlineUserNumResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainOnlineUserNum', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4315,7 +4988,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainPushBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainPushBpsDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainPushBpsData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4328,7 +5002,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainPushBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainPushBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainPushBpsData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4355,7 +5030,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainPushTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainPushTrafficDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainPushTrafficData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4368,7 +5044,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainPushTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainPushTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainPushTrafficData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4395,7 +5072,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainPvUvDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainPvUvDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainPvUvData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4408,7 +5086,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainPvUvDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainPvUvDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainPvUvData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4436,7 +5115,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveDomainRealTimeBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRealTimeBpsDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainRealTimeBpsData', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4450,7 +5130,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveDomainRealTimeBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRealTimeBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainRealTimeBpsData', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4477,7 +5158,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainRealTimeHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRealTimeHttpCodeDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainRealTimeHttpCodeData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4490,7 +5172,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainRealTimeHttpCodeDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRealTimeHttpCodeDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainRealTimeHttpCodeData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4518,7 +5201,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveDomainRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRealtimeLogDeliveryResponse(),
             self.do_rpcrequest('DescribeLiveDomainRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4532,7 +5216,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveDomainRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRealtimeLogDeliveryResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4559,7 +5244,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainRealTimeTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRealTimeTrafficDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainRealTimeTrafficData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4572,7 +5258,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainRealTimeTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRealTimeTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainRealTimeTrafficData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4599,7 +5286,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainRecordDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRecordDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainRecordData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4612,7 +5300,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainRecordDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainRecordDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainRecordData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4639,7 +5328,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainSnapshotDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainSnapshotDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainSnapshotData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4652,7 +5342,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainSnapshotDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainSnapshotDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainSnapshotData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4670,6 +5361,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_live_domain_snapshot_data_with_options_async(request, runtime)
 
+    def describe_live_domain_stream_transcode_data_with_options(
+        self,
+        request: live_20161101_models.DescribeLiveDomainStreamTranscodeDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeLiveDomainStreamTranscodeDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainStreamTranscodeDataResponse(),
+            self.do_rpcrequest('DescribeLiveDomainStreamTranscodeData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_live_domain_stream_transcode_data_with_options_async(
+        self,
+        request: live_20161101_models.DescribeLiveDomainStreamTranscodeDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeLiveDomainStreamTranscodeDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainStreamTranscodeDataResponse(),
+            await self.do_rpcrequest_async('DescribeLiveDomainStreamTranscodeData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_live_domain_stream_transcode_data(
+        self,
+        request: live_20161101_models.DescribeLiveDomainStreamTranscodeDataRequest,
+    ) -> live_20161101_models.DescribeLiveDomainStreamTranscodeDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_live_domain_stream_transcode_data_with_options(request, runtime)
+
+    async def describe_live_domain_stream_transcode_data_async(
+        self,
+        request: live_20161101_models.DescribeLiveDomainStreamTranscodeDataRequest,
+    ) -> live_20161101_models.DescribeLiveDomainStreamTranscodeDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_live_domain_stream_transcode_data_with_options_async(request, runtime)
+
     def describe_live_domain_time_shift_data_with_options(
         self,
         request: live_20161101_models.DescribeLiveDomainTimeShiftDataRequest,
@@ -4679,7 +5412,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainTimeShiftDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainTimeShiftDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainTimeShiftData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4692,7 +5426,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainTimeShiftDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainTimeShiftDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainTimeShiftData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4719,7 +5454,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainTrafficDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainTrafficData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4732,7 +5468,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainTrafficData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4759,7 +5496,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainTranscodeDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainTranscodeDataResponse(),
             self.do_rpcrequest('DescribeLiveDomainTranscodeData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4772,7 +5510,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveDomainTranscodeDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveDomainTranscodeDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveDomainTranscodeData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4799,7 +5538,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveLazyPullStreamConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveLazyPullStreamConfigResponse(),
             self.do_rpcrequest('DescribeLiveLazyPullStreamConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4812,7 +5552,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveLazyPullStreamConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveLazyPullStreamConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveLazyPullStreamConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4839,7 +5580,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLivePullStreamConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLivePullStreamConfigResponse(),
             self.do_rpcrequest('DescribeLivePullStreamConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4852,7 +5594,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLivePullStreamConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLivePullStreamConfigResponse(),
             await self.do_rpcrequest_async('DescribeLivePullStreamConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4879,7 +5622,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveRealtimeDeliveryAccResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRealtimeDeliveryAccResponse(),
             self.do_rpcrequest('DescribeLiveRealtimeDeliveryAcc', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4892,7 +5636,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveRealtimeDeliveryAccResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRealtimeDeliveryAccResponse(),
             await self.do_rpcrequest_async('DescribeLiveRealtimeDeliveryAcc', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4920,7 +5665,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveRealtimeLogAuthorizedResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRealtimeLogAuthorizedResponse(),
             self.do_rpcrequest('DescribeLiveRealtimeLogAuthorized', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4934,7 +5680,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveRealtimeLogAuthorizedResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRealtimeLogAuthorizedResponse(),
             await self.do_rpcrequest_async('DescribeLiveRealtimeLogAuthorized', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -4961,7 +5708,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveRecordConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRecordConfigResponse(),
             self.do_rpcrequest('DescribeLiveRecordConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4974,7 +5722,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveRecordConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRecordConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveRecordConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5001,7 +5750,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveRecordNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRecordNotifyConfigResponse(),
             self.do_rpcrequest('DescribeLiveRecordNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5014,7 +5764,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveRecordNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRecordNotifyConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveRecordNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5041,7 +5792,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveRecordVodConfigsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRecordVodConfigsResponse(),
             self.do_rpcrequest('DescribeLiveRecordVodConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5054,7 +5806,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveRecordVodConfigsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveRecordVodConfigsResponse(),
             await self.do_rpcrequest_async('DescribeLiveRecordVodConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5072,6 +5825,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_live_record_vod_configs_with_options_async(request, runtime)
 
+    def describe_live_shift_configs_with_options(
+        self,
+        request: live_20161101_models.DescribeLiveShiftConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeLiveShiftConfigsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveShiftConfigsResponse(),
+            self.do_rpcrequest('DescribeLiveShiftConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_live_shift_configs_with_options_async(
+        self,
+        request: live_20161101_models.DescribeLiveShiftConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeLiveShiftConfigsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveShiftConfigsResponse(),
+            await self.do_rpcrequest_async('DescribeLiveShiftConfigs', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_live_shift_configs(
+        self,
+        request: live_20161101_models.DescribeLiveShiftConfigsRequest,
+    ) -> live_20161101_models.DescribeLiveShiftConfigsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_live_shift_configs_with_options(request, runtime)
+
+    async def describe_live_shift_configs_async(
+        self,
+        request: live_20161101_models.DescribeLiveShiftConfigsRequest,
+    ) -> live_20161101_models.DescribeLiveShiftConfigsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_live_shift_configs_with_options_async(request, runtime)
+
     def describe_live_snapshot_config_with_options(
         self,
         request: live_20161101_models.DescribeLiveSnapshotConfigRequest,
@@ -5081,7 +5876,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveSnapshotConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveSnapshotConfigResponse(),
             self.do_rpcrequest('DescribeLiveSnapshotConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5094,7 +5890,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveSnapshotConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveSnapshotConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveSnapshotConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5121,7 +5918,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveSnapshotDetectPornConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveSnapshotDetectPornConfigResponse(),
             self.do_rpcrequest('DescribeLiveSnapshotDetectPornConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5134,7 +5932,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveSnapshotDetectPornConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveSnapshotDetectPornConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveSnapshotDetectPornConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5161,7 +5960,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamBitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamBitRateDataResponse(),
             self.do_rpcrequest('DescribeLiveStreamBitRateData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5174,7 +5974,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamBitRateDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamBitRateDataResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamBitRateData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5202,7 +6003,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveStreamCountResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamCountResponse(),
             self.do_rpcrequest('DescribeLiveStreamCount', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -5216,7 +6018,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DescribeLiveStreamCountResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamCountResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamCount', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -5243,7 +6046,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamDelayConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamDelayConfigResponse(),
             self.do_rpcrequest('DescribeLiveStreamDelayConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5256,7 +6060,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamDelayConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamDelayConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamDelayConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5283,7 +6088,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamHistoryUserNumResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamHistoryUserNumResponse(),
             self.do_rpcrequest('DescribeLiveStreamHistoryUserNum', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5296,7 +6102,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamHistoryUserNumResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamHistoryUserNumResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamHistoryUserNum', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5314,46 +6121,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_live_stream_history_user_num_with_options_async(request, runtime)
 
-    def describe_live_stream_online_user_num_with_options(
-        self,
-        request: live_20161101_models.DescribeLiveStreamOnlineUserNumRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> live_20161101_models.DescribeLiveStreamOnlineUserNumResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return live_20161101_models.DescribeLiveStreamOnlineUserNumResponse().from_map(
-            self.do_rpcrequest('DescribeLiveStreamOnlineUserNum', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_live_stream_online_user_num_with_options_async(
-        self,
-        request: live_20161101_models.DescribeLiveStreamOnlineUserNumRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> live_20161101_models.DescribeLiveStreamOnlineUserNumResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return live_20161101_models.DescribeLiveStreamOnlineUserNumResponse().from_map(
-            await self.do_rpcrequest_async('DescribeLiveStreamOnlineUserNum', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_live_stream_online_user_num(
-        self,
-        request: live_20161101_models.DescribeLiveStreamOnlineUserNumRequest,
-    ) -> live_20161101_models.DescribeLiveStreamOnlineUserNumResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_stream_online_user_num_with_options(request, runtime)
-
-    async def describe_live_stream_online_user_num_async(
-        self,
-        request: live_20161101_models.DescribeLiveStreamOnlineUserNumRequest,
-    ) -> live_20161101_models.DescribeLiveStreamOnlineUserNumResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_stream_online_user_num_with_options_async(request, runtime)
-
     def describe_live_stream_optimized_feature_config_with_options(
         self,
         request: live_20161101_models.DescribeLiveStreamOptimizedFeatureConfigRequest,
@@ -5363,7 +6130,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamOptimizedFeatureConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamOptimizedFeatureConfigResponse(),
             self.do_rpcrequest('DescribeLiveStreamOptimizedFeatureConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5376,7 +6144,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamOptimizedFeatureConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamOptimizedFeatureConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamOptimizedFeatureConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5403,7 +6172,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamRecordContentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamRecordContentResponse(),
             self.do_rpcrequest('DescribeLiveStreamRecordContent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5416,7 +6186,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamRecordContentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamRecordContentResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamRecordContent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5443,7 +6214,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamRecordIndexFileResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamRecordIndexFileResponse(),
             self.do_rpcrequest('DescribeLiveStreamRecordIndexFile', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5456,7 +6228,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamRecordIndexFileResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamRecordIndexFileResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamRecordIndexFile', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5483,7 +6256,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamRecordIndexFilesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamRecordIndexFilesResponse(),
             self.do_rpcrequest('DescribeLiveStreamRecordIndexFiles', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5496,7 +6270,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamRecordIndexFilesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamRecordIndexFilesResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamRecordIndexFiles', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5523,7 +6298,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsBlockListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsBlockListResponse(),
             self.do_rpcrequest('DescribeLiveStreamsBlockList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5536,7 +6312,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsBlockListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsBlockListResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamsBlockList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5563,7 +6340,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsControlHistoryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsControlHistoryResponse(),
             self.do_rpcrequest('DescribeLiveStreamsControlHistory', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5576,7 +6354,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsControlHistoryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsControlHistoryResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamsControlHistory', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5594,46 +6373,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_live_streams_control_history_with_options_async(request, runtime)
 
-    def describe_live_streams_frame_rate_and_bit_rate_data_with_options(
-        self,
-        request: live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataResponse().from_map(
-            self.do_rpcrequest('DescribeLiveStreamsFrameRateAndBitRateData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_live_streams_frame_rate_and_bit_rate_data_with_options_async(
-        self,
-        request: live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataResponse().from_map(
-            await self.do_rpcrequest_async('DescribeLiveStreamsFrameRateAndBitRateData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_live_streams_frame_rate_and_bit_rate_data(
-        self,
-        request: live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataRequest,
-    ) -> live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_streams_frame_rate_and_bit_rate_data_with_options(request, runtime)
-
-    async def describe_live_streams_frame_rate_and_bit_rate_data_async(
-        self,
-        request: live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataRequest,
-    ) -> live_20161101_models.DescribeLiveStreamsFrameRateAndBitRateDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_streams_frame_rate_and_bit_rate_data_with_options_async(request, runtime)
-
     def describe_live_stream_snapshot_info_with_options(
         self,
         request: live_20161101_models.DescribeLiveStreamSnapshotInfoRequest,
@@ -5643,7 +6382,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamSnapshotInfoResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamSnapshotInfoResponse(),
             self.do_rpcrequest('DescribeLiveStreamSnapshotInfo', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5656,7 +6396,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamSnapshotInfoResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamSnapshotInfoResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamSnapshotInfo', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5683,7 +6424,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsNotifyUrlConfigResponse(),
             self.do_rpcrequest('DescribeLiveStreamsNotifyUrlConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5696,7 +6438,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsNotifyUrlConfigResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamsNotifyUrlConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5723,7 +6466,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsOnlineListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsOnlineListResponse(),
             self.do_rpcrequest('DescribeLiveStreamsOnlineList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5736,7 +6480,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsOnlineListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsOnlineListResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamsOnlineList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5763,7 +6508,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsPublishListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsPublishListResponse(),
             self.do_rpcrequest('DescribeLiveStreamsPublishList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5776,7 +6522,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamsPublishListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamsPublishListResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamsPublishList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5803,7 +6550,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamTranscodeInfoResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamTranscodeInfoResponse(),
             self.do_rpcrequest('DescribeLiveStreamTranscodeInfo', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5816,7 +6564,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamTranscodeInfoResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamTranscodeInfoResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamTranscodeInfo', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5843,7 +6592,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamTranscodeStreamNumResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamTranscodeStreamNumResponse(),
             self.do_rpcrequest('DescribeLiveStreamTranscodeStreamNum', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5856,7 +6606,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveStreamTranscodeStreamNumResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveStreamTranscodeStreamNumResponse(),
             await self.do_rpcrequest_async('DescribeLiveStreamTranscodeStreamNum', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5883,7 +6634,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveTagResourcesResponse(),
             self.do_rpcrequest('DescribeLiveTagResources', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5896,7 +6648,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveTagResourcesResponse(),
             await self.do_rpcrequest_async('DescribeLiveTagResources', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5923,7 +6676,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveTopDomainsByFlowResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveTopDomainsByFlowResponse(),
             self.do_rpcrequest('DescribeLiveTopDomainsByFlow', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5936,7 +6690,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveTopDomainsByFlowResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveTopDomainsByFlowResponse(),
             await self.do_rpcrequest_async('DescribeLiveTopDomainsByFlow', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5963,7 +6718,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveUserDomainsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveUserDomainsResponse(),
             self.do_rpcrequest('DescribeLiveUserDomains', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5976,7 +6732,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveUserDomainsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveUserDomainsResponse(),
             await self.do_rpcrequest_async('DescribeLiveUserDomains', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6003,7 +6760,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveUserTagsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveUserTagsResponse(),
             self.do_rpcrequest('DescribeLiveUserTags', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6016,7 +6774,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveUserTagsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveUserTagsResponse(),
             await self.do_rpcrequest_async('DescribeLiveUserTags', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6043,7 +6802,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveVerifyContentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveVerifyContentResponse(),
             self.do_rpcrequest('DescribeLiveVerifyContent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6056,7 +6816,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeLiveVerifyContentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeLiveVerifyContentResponse(),
             await self.do_rpcrequest_async('DescribeLiveVerifyContent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6083,7 +6844,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeMixStreamListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeMixStreamListResponse(),
             self.do_rpcrequest('DescribeMixStreamList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6096,7 +6858,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeMixStreamListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeMixStreamListResponse(),
             await self.do_rpcrequest_async('DescribeMixStreamList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6123,7 +6886,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRecordResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRecordResponse(),
             self.do_rpcrequest('DescribeRecord', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6136,7 +6900,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRecordResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRecordResponse(),
             await self.do_rpcrequest_async('DescribeRecord', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6163,7 +6928,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRecordsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRecordsResponse(),
             self.do_rpcrequest('DescribeRecords', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6176,7 +6942,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRecordsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRecordsResponse(),
             await self.do_rpcrequest_async('DescribeRecords', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6203,7 +6970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRoomKickoutUserListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRoomKickoutUserListResponse(),
             self.do_rpcrequest('DescribeRoomKickoutUserList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6216,7 +6984,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRoomKickoutUserListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRoomKickoutUserListResponse(),
             await self.do_rpcrequest_async('DescribeRoomKickoutUserList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6243,7 +7012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRoomListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRoomListResponse(),
             self.do_rpcrequest('DescribeRoomList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6256,7 +7026,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRoomListResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRoomListResponse(),
             await self.do_rpcrequest_async('DescribeRoomList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6283,7 +7054,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRoomStatusResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRoomStatusResponse(),
             self.do_rpcrequest('DescribeRoomStatus', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6296,7 +7068,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeRoomStatusResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeRoomStatusResponse(),
             await self.do_rpcrequest_async('DescribeRoomStatus', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6314,6 +7087,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_room_status_with_options_async(request, runtime)
 
+    def describe_studio_layouts_with_options(
+        self,
+        request: live_20161101_models.DescribeStudioLayoutsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeStudioLayoutsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeStudioLayoutsResponse(),
+            self.do_rpcrequest('DescribeStudioLayouts', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_studio_layouts_with_options_async(
+        self,
+        request: live_20161101_models.DescribeStudioLayoutsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.DescribeStudioLayoutsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.DescribeStudioLayoutsResponse(),
+            await self.do_rpcrequest_async('DescribeStudioLayouts', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_studio_layouts(
+        self,
+        request: live_20161101_models.DescribeStudioLayoutsRequest,
+    ) -> live_20161101_models.DescribeStudioLayoutsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_studio_layouts_with_options(request, runtime)
+
+    async def describe_studio_layouts_async(
+        self,
+        request: live_20161101_models.DescribeStudioLayoutsRequest,
+    ) -> live_20161101_models.DescribeStudioLayoutsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_studio_layouts_with_options_async(request, runtime)
+
     def describe_up_bps_peak_data_with_options(
         self,
         request: live_20161101_models.DescribeUpBpsPeakDataRequest,
@@ -6323,7 +7138,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeUpBpsPeakDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeUpBpsPeakDataResponse(),
             self.do_rpcrequest('DescribeUpBpsPeakData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6336,7 +7152,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeUpBpsPeakDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeUpBpsPeakDataResponse(),
             await self.do_rpcrequest_async('DescribeUpBpsPeakData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6363,7 +7180,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeUpBpsPeakOfLineResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeUpBpsPeakOfLineResponse(),
             self.do_rpcrequest('DescribeUpBpsPeakOfLine', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6376,7 +7194,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeUpBpsPeakOfLineResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeUpBpsPeakOfLineResponse(),
             await self.do_rpcrequest_async('DescribeUpBpsPeakOfLine', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6403,7 +7222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeUpPeakPublishStreamDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeUpPeakPublishStreamDataResponse(),
             self.do_rpcrequest('DescribeUpPeakPublishStreamData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6416,7 +7236,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.DescribeUpPeakPublishStreamDataResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DescribeUpPeakPublishStreamDataResponse(),
             await self.do_rpcrequest_async('DescribeUpPeakPublishStreamData', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6444,7 +7265,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DisableLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DisableLiveRealtimeLogDeliveryResponse(),
             self.do_rpcrequest('DisableLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6458,7 +7280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.DisableLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.DisableLiveRealtimeLogDeliveryResponse(),
             await self.do_rpcrequest_async('DisableLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6485,7 +7308,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.EditHtmlResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.EditHtmlResourceResponse(),
             self.do_rpcrequest('EditHtmlResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6498,7 +7322,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.EditHtmlResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.EditHtmlResourceResponse(),
             await self.do_rpcrequest_async('EditHtmlResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6516,6 +7341,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.edit_html_resource_with_options_async(request, runtime)
 
+    def edit_playlist_with_options(
+        self,
+        request: live_20161101_models.EditPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.EditPlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.EditPlaylistResponse(),
+            self.do_rpcrequest('EditPlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def edit_playlist_with_options_async(
+        self,
+        request: live_20161101_models.EditPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.EditPlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.EditPlaylistResponse(),
+            await self.do_rpcrequest_async('EditPlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def edit_playlist(
+        self,
+        request: live_20161101_models.EditPlaylistRequest,
+    ) -> live_20161101_models.EditPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.edit_playlist_with_options(request, runtime)
+
+    async def edit_playlist_async(
+        self,
+        request: live_20161101_models.EditPlaylistRequest,
+    ) -> live_20161101_models.EditPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.edit_playlist_with_options_async(request, runtime)
+
     def effect_caster_urgent_with_options(
         self,
         request: live_20161101_models.EffectCasterUrgentRequest,
@@ -6525,7 +7392,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.EffectCasterUrgentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.EffectCasterUrgentResponse(),
             self.do_rpcrequest('EffectCasterUrgent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6538,7 +7406,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.EffectCasterUrgentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.EffectCasterUrgentResponse(),
             await self.do_rpcrequest_async('EffectCasterUrgent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6565,7 +7434,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.EffectCasterVideoResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.EffectCasterVideoResourceResponse(),
             self.do_rpcrequest('EffectCasterVideoResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6578,7 +7448,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.EffectCasterVideoResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.EffectCasterVideoResourceResponse(),
             await self.do_rpcrequest_async('EffectCasterVideoResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6606,7 +7477,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.EnableLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.EnableLiveRealtimeLogDeliveryResponse(),
             self.do_rpcrequest('EnableLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6620,7 +7492,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.EnableLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.EnableLiveRealtimeLogDeliveryResponse(),
             await self.do_rpcrequest_async('EnableLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6647,7 +7520,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ForbidLiveStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ForbidLiveStreamResponse(),
             self.do_rpcrequest('ForbidLiveStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6660,7 +7534,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ForbidLiveStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ForbidLiveStreamResponse(),
             await self.do_rpcrequest_async('ForbidLiveStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6687,7 +7562,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ForbidPushStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ForbidPushStreamResponse(),
             self.do_rpcrequest('ForbidPushStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6700,7 +7576,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ForbidPushStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ForbidPushStreamResponse(),
             await self.do_rpcrequest_async('ForbidPushStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6718,6 +7595,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.forbid_push_stream_with_options_async(request, runtime)
 
+    def get_multi_rate_config_with_options(
+        self,
+        request: live_20161101_models.GetMultiRateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.GetMultiRateConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.GetMultiRateConfigResponse(),
+            self.do_rpcrequest('GetMultiRateConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_multi_rate_config_with_options_async(
+        self,
+        request: live_20161101_models.GetMultiRateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.GetMultiRateConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.GetMultiRateConfigResponse(),
+            await self.do_rpcrequest_async('GetMultiRateConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_multi_rate_config(
+        self,
+        request: live_20161101_models.GetMultiRateConfigRequest,
+    ) -> live_20161101_models.GetMultiRateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_multi_rate_config_with_options(request, runtime)
+
+    async def get_multi_rate_config_async(
+        self,
+        request: live_20161101_models.GetMultiRateConfigRequest,
+    ) -> live_20161101_models.GetMultiRateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_multi_rate_config_with_options_async(request, runtime)
+
+    def get_multi_rate_config_list_with_options(
+        self,
+        request: live_20161101_models.GetMultiRateConfigListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.GetMultiRateConfigListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.GetMultiRateConfigListResponse(),
+            self.do_rpcrequest('GetMultiRateConfigList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_multi_rate_config_list_with_options_async(
+        self,
+        request: live_20161101_models.GetMultiRateConfigListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.GetMultiRateConfigListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.GetMultiRateConfigListResponse(),
+            await self.do_rpcrequest_async('GetMultiRateConfigList', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_multi_rate_config_list(
+        self,
+        request: live_20161101_models.GetMultiRateConfigListRequest,
+    ) -> live_20161101_models.GetMultiRateConfigListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_multi_rate_config_list_with_options(request, runtime)
+
+    async def get_multi_rate_config_list_async(
+        self,
+        request: live_20161101_models.GetMultiRateConfigListRequest,
+    ) -> live_20161101_models.GetMultiRateConfigListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_multi_rate_config_list_with_options_async(request, runtime)
+
     def join_board_with_options(
         self,
         request: live_20161101_models.JoinBoardRequest,
@@ -6727,7 +7688,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.JoinBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.JoinBoardResponse(),
             self.do_rpcrequest('JoinBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6740,7 +7702,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.JoinBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.JoinBoardResponse(),
             await self.do_rpcrequest_async('JoinBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6768,7 +7731,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.ListLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ListLiveRealtimeLogDeliveryResponse(),
             self.do_rpcrequest('ListLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6782,7 +7746,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.ListLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ListLiveRealtimeLogDeliveryResponse(),
             await self.do_rpcrequest_async('ListLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6810,7 +7775,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.ListLiveRealtimeLogDeliveryDomainsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ListLiveRealtimeLogDeliveryDomainsResponse(),
             self.do_rpcrequest('ListLiveRealtimeLogDeliveryDomains', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6824,7 +7790,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.ListLiveRealtimeLogDeliveryDomainsResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ListLiveRealtimeLogDeliveryDomainsResponse(),
             await self.do_rpcrequest_async('ListLiveRealtimeLogDeliveryDomains', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6852,7 +7819,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.ListLiveRealtimeLogDeliveryInfosResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ListLiveRealtimeLogDeliveryInfosResponse(),
             self.do_rpcrequest('ListLiveRealtimeLogDeliveryInfos', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6866,7 +7834,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.ListLiveRealtimeLogDeliveryInfosResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ListLiveRealtimeLogDeliveryInfosResponse(),
             await self.do_rpcrequest_async('ListLiveRealtimeLogDeliveryInfos', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -6884,6 +7853,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_live_realtime_log_delivery_infos_with_options_async(request, runtime)
 
+    def list_playlist_with_options(
+        self,
+        request: live_20161101_models.ListPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.ListPlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.ListPlaylistResponse(),
+            self.do_rpcrequest('ListPlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_playlist_with_options_async(
+        self,
+        request: live_20161101_models.ListPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.ListPlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.ListPlaylistResponse(),
+            await self.do_rpcrequest_async('ListPlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_playlist(
+        self,
+        request: live_20161101_models.ListPlaylistRequest,
+    ) -> live_20161101_models.ListPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_playlist_with_options(request, runtime)
+
+    async def list_playlist_async(
+        self,
+        request: live_20161101_models.ListPlaylistRequest,
+    ) -> live_20161101_models.ListPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_playlist_with_options_async(request, runtime)
+
+    def list_playlist_items_with_options(
+        self,
+        request: live_20161101_models.ListPlaylistItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.ListPlaylistItemsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.ListPlaylistItemsResponse(),
+            self.do_rpcrequest('ListPlaylistItems', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_playlist_items_with_options_async(
+        self,
+        request: live_20161101_models.ListPlaylistItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.ListPlaylistItemsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.ListPlaylistItemsResponse(),
+            await self.do_rpcrequest_async('ListPlaylistItems', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_playlist_items(
+        self,
+        request: live_20161101_models.ListPlaylistItemsRequest,
+    ) -> live_20161101_models.ListPlaylistItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_playlist_items_with_options(request, runtime)
+
+    async def list_playlist_items_async(
+        self,
+        request: live_20161101_models.ListPlaylistItemsRequest,
+    ) -> live_20161101_models.ListPlaylistItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_playlist_items_with_options_async(request, runtime)
+
     def modify_caster_component_with_options(
         self,
         request: live_20161101_models.ModifyCasterComponentRequest,
@@ -6893,7 +7946,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterComponentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterComponentResponse(),
             self.do_rpcrequest('ModifyCasterComponent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6906,7 +7960,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterComponentResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterComponentResponse(),
             await self.do_rpcrequest_async('ModifyCasterComponent', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6933,7 +7988,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterEpisodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterEpisodeResponse(),
             self.do_rpcrequest('ModifyCasterEpisode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6946,7 +8002,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterEpisodeResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterEpisodeResponse(),
             await self.do_rpcrequest_async('ModifyCasterEpisode', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6973,7 +8030,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterLayoutResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterLayoutResponse(),
             self.do_rpcrequest('ModifyCasterLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -6986,7 +8044,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterLayoutResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterLayoutResponse(),
             await self.do_rpcrequest_async('ModifyCasterLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7013,7 +8072,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterProgramResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterProgramResponse(),
             self.do_rpcrequest('ModifyCasterProgram', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7026,7 +8086,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterProgramResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterProgramResponse(),
             await self.do_rpcrequest_async('ModifyCasterProgram', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7053,7 +8114,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterVideoResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterVideoResourceResponse(),
             self.do_rpcrequest('ModifyCasterVideoResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7066,7 +8128,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyCasterVideoResourceResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyCasterVideoResourceResponse(),
             await self.do_rpcrequest_async('ModifyCasterVideoResource', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7093,7 +8156,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyLiveDomainSchdmByPropertyResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyLiveDomainSchdmByPropertyResponse(),
             self.do_rpcrequest('ModifyLiveDomainSchdmByProperty', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7106,7 +8170,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ModifyLiveDomainSchdmByPropertyResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyLiveDomainSchdmByPropertyResponse(),
             await self.do_rpcrequest_async('ModifyLiveDomainSchdmByProperty', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7134,7 +8199,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.ModifyLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyLiveRealtimeLogDeliveryResponse(),
             self.do_rpcrequest('ModifyLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -7148,7 +8214,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return live_20161101_models.ModifyLiveRealtimeLogDeliveryResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ModifyLiveRealtimeLogDeliveryResponse(),
             await self.do_rpcrequest_async('ModifyLiveRealtimeLogDelivery', '2016-11-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -7166,6 +8233,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_live_realtime_log_delivery_with_options_async(request, runtime)
 
+    def modify_studio_layout_with_options(
+        self,
+        request: live_20161101_models.ModifyStudioLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.ModifyStudioLayoutResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.ModifyStudioLayoutResponse(),
+            self.do_rpcrequest('ModifyStudioLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_studio_layout_with_options_async(
+        self,
+        request: live_20161101_models.ModifyStudioLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.ModifyStudioLayoutResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.ModifyStudioLayoutResponse(),
+            await self.do_rpcrequest_async('ModifyStudioLayout', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_studio_layout(
+        self,
+        request: live_20161101_models.ModifyStudioLayoutRequest,
+    ) -> live_20161101_models.ModifyStudioLayoutResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_studio_layout_with_options(request, runtime)
+
+    async def modify_studio_layout_async(
+        self,
+        request: live_20161101_models.ModifyStudioLayoutRequest,
+    ) -> live_20161101_models.ModifyStudioLayoutResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_studio_layout_with_options_async(request, runtime)
+
+    def open_live_shift_with_options(
+        self,
+        request: live_20161101_models.OpenLiveShiftRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.OpenLiveShiftResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.OpenLiveShiftResponse(),
+            self.do_rpcrequest('OpenLiveShift', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def open_live_shift_with_options_async(
+        self,
+        request: live_20161101_models.OpenLiveShiftRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.OpenLiveShiftResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.OpenLiveShiftResponse(),
+            await self.do_rpcrequest_async('OpenLiveShift', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def open_live_shift(
+        self,
+        request: live_20161101_models.OpenLiveShiftRequest,
+    ) -> live_20161101_models.OpenLiveShiftResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.open_live_shift_with_options(request, runtime)
+
+    async def open_live_shift_async(
+        self,
+        request: live_20161101_models.OpenLiveShiftRequest,
+    ) -> live_20161101_models.OpenLiveShiftResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.open_live_shift_with_options_async(request, runtime)
+
     def real_time_record_command_with_options(
         self,
         request: live_20161101_models.RealTimeRecordCommandRequest,
@@ -7175,7 +8326,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.RealTimeRecordCommandResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.RealTimeRecordCommandResponse(),
             self.do_rpcrequest('RealTimeRecordCommand', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7188,7 +8340,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.RealTimeRecordCommandResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.RealTimeRecordCommandResponse(),
             await self.do_rpcrequest_async('RealTimeRecordCommand', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7215,7 +8368,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.RealTimeSnapshotCommandResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.RealTimeSnapshotCommandResponse(),
             self.do_rpcrequest('RealTimeSnapshotCommand', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7228,7 +8382,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.RealTimeSnapshotCommandResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.RealTimeSnapshotCommandResponse(),
             await self.do_rpcrequest_async('RealTimeSnapshotCommand', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7255,7 +8410,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ResumeLiveStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ResumeLiveStreamResponse(),
             self.do_rpcrequest('ResumeLiveStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7268,7 +8424,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.ResumeLiveStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.ResumeLiveStreamResponse(),
             await self.do_rpcrequest_async('ResumeLiveStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7295,7 +8452,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SendRoomNotificationResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SendRoomNotificationResponse(),
             self.do_rpcrequest('SendRoomNotification', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7308,7 +8466,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SendRoomNotificationResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SendRoomNotificationResponse(),
             await self.do_rpcrequest_async('SendRoomNotification', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7335,7 +8494,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SendRoomUserNotificationResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SendRoomUserNotificationResponse(),
             self.do_rpcrequest('SendRoomUserNotification', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7348,7 +8508,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SendRoomUserNotificationResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SendRoomUserNotificationResponse(),
             await self.do_rpcrequest_async('SendRoomUserNotification', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7375,7 +8536,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetBoardCallbackResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetBoardCallbackResponse(),
             self.do_rpcrequest('SetBoardCallback', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7388,7 +8550,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetBoardCallbackResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetBoardCallbackResponse(),
             await self.do_rpcrequest_async('SetBoardCallback', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7415,7 +8578,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetCasterChannelResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetCasterChannelResponse(),
             self.do_rpcrequest('SetCasterChannel', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7428,7 +8592,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetCasterChannelResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetCasterChannelResponse(),
             await self.do_rpcrequest_async('SetCasterChannel', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7455,7 +8620,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetCasterConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetCasterConfigResponse(),
             self.do_rpcrequest('SetCasterConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7468,7 +8634,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetCasterConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetCasterConfigResponse(),
             await self.do_rpcrequest_async('SetCasterConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7495,7 +8662,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetCasterSceneConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetCasterSceneConfigResponse(),
             self.do_rpcrequest('SetCasterSceneConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7508,7 +8676,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetCasterSceneConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetCasterSceneConfigResponse(),
             await self.do_rpcrequest_async('SetCasterSceneConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7535,7 +8704,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetCasterSyncGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetCasterSyncGroupResponse(),
             self.do_rpcrequest('SetCasterSyncGroup', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7548,7 +8718,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetCasterSyncGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetCasterSyncGroupResponse(),
             await self.do_rpcrequest_async('SetCasterSyncGroup', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7575,7 +8746,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveDomainCertificateResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveDomainCertificateResponse(),
             self.do_rpcrequest('SetLiveDomainCertificate', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7588,7 +8760,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveDomainCertificateResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveDomainCertificateResponse(),
             await self.do_rpcrequest_async('SetLiveDomainCertificate', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7615,7 +8788,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveLazyPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveLazyPullStreamInfoConfigResponse(),
             self.do_rpcrequest('SetLiveLazyPullStreamInfoConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7628,7 +8802,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveLazyPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveLazyPullStreamInfoConfigResponse(),
             await self.do_rpcrequest_async('SetLiveLazyPullStreamInfoConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7655,7 +8830,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveStreamDelayConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveStreamDelayConfigResponse(),
             self.do_rpcrequest('SetLiveStreamDelayConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7668,7 +8844,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveStreamDelayConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveStreamDelayConfigResponse(),
             await self.do_rpcrequest_async('SetLiveStreamDelayConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7695,7 +8872,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveStreamOptimizedFeatureConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveStreamOptimizedFeatureConfigResponse(),
             self.do_rpcrequest('SetLiveStreamOptimizedFeatureConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7708,7 +8886,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveStreamOptimizedFeatureConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveStreamOptimizedFeatureConfigResponse(),
             await self.do_rpcrequest_async('SetLiveStreamOptimizedFeatureConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7735,7 +8914,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveStreamsNotifyUrlConfigResponse(),
             self.do_rpcrequest('SetLiveStreamsNotifyUrlConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7748,7 +8928,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.SetLiveStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.SetLiveStreamsNotifyUrlConfigResponse(),
             await self.do_rpcrequest_async('SetLiveStreamsNotifyUrlConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7775,7 +8956,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartBoardRecordResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartBoardRecordResponse(),
             self.do_rpcrequest('StartBoardRecord', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7788,7 +8970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartBoardRecordResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartBoardRecordResponse(),
             await self.do_rpcrequest_async('StartBoardRecord', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7815,7 +8998,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartCasterResponse(),
             self.do_rpcrequest('StartCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7828,7 +9012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartCasterResponse(),
             await self.do_rpcrequest_async('StartCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7855,7 +9040,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartCasterSceneResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartCasterSceneResponse(),
             self.do_rpcrequest('StartCasterScene', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7868,7 +9054,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartCasterSceneResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartCasterSceneResponse(),
             await self.do_rpcrequest_async('StartCasterScene', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7895,7 +9082,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartLiveDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartLiveDomainResponse(),
             self.do_rpcrequest('StartLiveDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7908,7 +9096,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartLiveDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartLiveDomainResponse(),
             await self.do_rpcrequest_async('StartLiveDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7935,7 +9124,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartLiveIndexResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartLiveIndexResponse(),
             self.do_rpcrequest('StartLiveIndex', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7948,7 +9138,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StartLiveIndexResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StartLiveIndexResponse(),
             await self.do_rpcrequest_async('StartLiveIndex', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7966,6 +9157,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_live_index_with_options_async(request, runtime)
 
+    def start_playlist_with_options(
+        self,
+        request: live_20161101_models.StartPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.StartPlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.StartPlaylistResponse(),
+            self.do_rpcrequest('StartPlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def start_playlist_with_options_async(
+        self,
+        request: live_20161101_models.StartPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.StartPlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.StartPlaylistResponse(),
+            await self.do_rpcrequest_async('StartPlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def start_playlist(
+        self,
+        request: live_20161101_models.StartPlaylistRequest,
+    ) -> live_20161101_models.StartPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_playlist_with_options(request, runtime)
+
+    async def start_playlist_async(
+        self,
+        request: live_20161101_models.StartPlaylistRequest,
+    ) -> live_20161101_models.StartPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_playlist_with_options_async(request, runtime)
+
     def stop_caster_with_options(
         self,
         request: live_20161101_models.StopCasterRequest,
@@ -7975,7 +9208,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StopCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StopCasterResponse(),
             self.do_rpcrequest('StopCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -7988,7 +9222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StopCasterResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StopCasterResponse(),
             await self.do_rpcrequest_async('StopCaster', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8015,7 +9250,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StopCasterSceneResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StopCasterSceneResponse(),
             self.do_rpcrequest('StopCasterScene', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8028,7 +9264,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StopCasterSceneResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StopCasterSceneResponse(),
             await self.do_rpcrequest_async('StopCasterScene', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8055,7 +9292,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StopLiveDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StopLiveDomainResponse(),
             self.do_rpcrequest('StopLiveDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8068,7 +9306,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StopLiveDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StopLiveDomainResponse(),
             await self.do_rpcrequest_async('StopLiveDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8095,7 +9334,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StopLiveIndexResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StopLiveIndexResponse(),
             self.do_rpcrequest('StopLiveIndex', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8108,7 +9348,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.StopLiveIndexResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.StopLiveIndexResponse(),
             await self.do_rpcrequest_async('StopLiveIndex', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8126,6 +9367,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_live_index_with_options_async(request, runtime)
 
+    def stop_playlist_with_options(
+        self,
+        request: live_20161101_models.StopPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.StopPlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.StopPlaylistResponse(),
+            self.do_rpcrequest('StopPlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def stop_playlist_with_options_async(
+        self,
+        request: live_20161101_models.StopPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.StopPlaylistResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_20161101_models.StopPlaylistResponse(),
+            await self.do_rpcrequest_async('StopPlaylist', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def stop_playlist(
+        self,
+        request: live_20161101_models.StopPlaylistRequest,
+    ) -> live_20161101_models.StopPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_playlist_with_options(request, runtime)
+
+    async def stop_playlist_async(
+        self,
+        request: live_20161101_models.StopPlaylistRequest,
+    ) -> live_20161101_models.StopPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_playlist_with_options_async(request, runtime)
+
     def tag_live_resources_with_options(
         self,
         request: live_20161101_models.TagLiveResourcesRequest,
@@ -8135,7 +9418,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.TagLiveResourcesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.TagLiveResourcesResponse(),
             self.do_rpcrequest('TagLiveResources', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8148,7 +9432,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.TagLiveResourcesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.TagLiveResourcesResponse(),
             await self.do_rpcrequest_async('TagLiveResources', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8175,7 +9460,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UnTagLiveResourcesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UnTagLiveResourcesResponse(),
             self.do_rpcrequest('UnTagLiveResources', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8188,7 +9474,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UnTagLiveResourcesResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UnTagLiveResourcesResponse(),
             await self.do_rpcrequest_async('UnTagLiveResources', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8215,7 +9502,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateBoardResponse(),
             self.do_rpcrequest('UpdateBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8228,7 +9516,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateBoardResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateBoardResponse(),
             await self.do_rpcrequest_async('UpdateBoard', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8255,7 +9544,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateBoardCallbackResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateBoardCallbackResponse(),
             self.do_rpcrequest('UpdateBoardCallback', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8268,7 +9558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateBoardCallbackResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateBoardCallbackResponse(),
             await self.do_rpcrequest_async('UpdateBoardCallback', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8295,7 +9586,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateCasterSceneAudioResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateCasterSceneAudioResponse(),
             self.do_rpcrequest('UpdateCasterSceneAudio', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8308,7 +9600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateCasterSceneAudioResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateCasterSceneAudioResponse(),
             await self.do_rpcrequest_async('UpdateCasterSceneAudio', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8335,7 +9628,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateCasterSceneConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateCasterSceneConfigResponse(),
             self.do_rpcrequest('UpdateCasterSceneConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8348,7 +9642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateCasterSceneConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateCasterSceneConfigResponse(),
             await self.do_rpcrequest_async('UpdateCasterSceneConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8375,7 +9670,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveAppSnapshotConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveAppSnapshotConfigResponse(),
             self.do_rpcrequest('UpdateLiveAppSnapshotConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8388,7 +9684,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveAppSnapshotConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveAppSnapshotConfigResponse(),
             await self.do_rpcrequest_async('UpdateLiveAppSnapshotConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8415,7 +9712,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveASRConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveASRConfigResponse(),
             self.do_rpcrequest('UpdateLiveASRConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8428,7 +9726,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveASRConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveASRConfigResponse(),
             await self.do_rpcrequest_async('UpdateLiveASRConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8455,7 +9754,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveAudioAuditConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveAudioAuditConfigResponse(),
             self.do_rpcrequest('UpdateLiveAudioAuditConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8468,7 +9768,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveAudioAuditConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveAudioAuditConfigResponse(),
             await self.do_rpcrequest_async('UpdateLiveAudioAuditConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8495,7 +9796,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveAudioAuditNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveAudioAuditNotifyConfigResponse(),
             self.do_rpcrequest('UpdateLiveAudioAuditNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8508,7 +9810,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveAudioAuditNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveAudioAuditNotifyConfigResponse(),
             await self.do_rpcrequest_async('UpdateLiveAudioAuditNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8535,7 +9838,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveDetectNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveDetectNotifyConfigResponse(),
             self.do_rpcrequest('UpdateLiveDetectNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8548,7 +9852,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveDetectNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveDetectNotifyConfigResponse(),
             await self.do_rpcrequest_async('UpdateLiveDetectNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8575,7 +9880,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveRecordNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveRecordNotifyConfigResponse(),
             self.do_rpcrequest('UpdateLiveRecordNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8588,7 +9894,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveRecordNotifyConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveRecordNotifyConfigResponse(),
             await self.do_rpcrequest_async('UpdateLiveRecordNotifyConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8615,7 +9922,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveSnapshotDetectPornConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveSnapshotDetectPornConfigResponse(),
             self.do_rpcrequest('UpdateLiveSnapshotDetectPornConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8628,7 +9936,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveSnapshotDetectPornConfigResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveSnapshotDetectPornConfigResponse(),
             await self.do_rpcrequest_async('UpdateLiveSnapshotDetectPornConfig', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8655,7 +9964,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveTopLevelDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveTopLevelDomainResponse(),
             self.do_rpcrequest('UpdateLiveTopLevelDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8668,7 +9978,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateLiveTopLevelDomainResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateLiveTopLevelDomainResponse(),
             await self.do_rpcrequest_async('UpdateLiveTopLevelDomain', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8695,7 +10006,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateMixStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateMixStreamResponse(),
             self.do_rpcrequest('UpdateMixStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8708,7 +10020,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.UpdateMixStreamResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.UpdateMixStreamResponse(),
             await self.do_rpcrequest_async('UpdateMixStream', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8735,7 +10048,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.VerifyLiveDomainOwnerResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.VerifyLiveDomainOwnerResponse(),
             self.do_rpcrequest('VerifyLiveDomainOwner', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -8748,7 +10062,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_20161101_models.VerifyLiveDomainOwnerResponse().from_map(
+        return TeaCore.from_map(
+            live_20161101_models.VerifyLiveDomainOwnerResponse(),
             await self.do_rpcrequest_async('VerifyLiveDomainOwner', '2016-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
