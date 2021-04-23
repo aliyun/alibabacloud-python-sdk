@@ -1,3 +1,6 @@
+2021-04-23 Version: 1.0.5
+- Release EstimateStereoVideoDepth.
+
 2021-04-09 Version: 1.0.4
 - Release ReconstructThreeDMultiView.
 

@@ -98,11 +98,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -160,11 +163,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -264,11 +270,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -326,11 +335,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -472,11 +484,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -534,11 +549,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -629,3 +647,175 @@ class Client(OpenApiClient):
     ) -> threedvision_20210131_models.EstimateStereoImageDepthResponse:
         runtime = util_models.RuntimeOptions()
         return await self.estimate_stereo_image_depth_with_options_async(request, runtime)
+
+    def estimate_stereo_video_depth_with_options(
+        self,
+        request: threedvision_20210131_models.EstimateStereoVideoDepthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> threedvision_20210131_models.EstimateStereoVideoDepthResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            threedvision_20210131_models.EstimateStereoVideoDepthResponse(),
+            self.do_rpcrequest('EstimateStereoVideoDepth', '2021-01-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def estimate_stereo_video_depth_with_options_async(
+        self,
+        request: threedvision_20210131_models.EstimateStereoVideoDepthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> threedvision_20210131_models.EstimateStereoVideoDepthResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            threedvision_20210131_models.EstimateStereoVideoDepthResponse(),
+            await self.do_rpcrequest_async('EstimateStereoVideoDepth', '2021-01-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def estimate_stereo_video_depth(
+        self,
+        request: threedvision_20210131_models.EstimateStereoVideoDepthRequest,
+    ) -> threedvision_20210131_models.EstimateStereoVideoDepthResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.estimate_stereo_video_depth_with_options(request, runtime)
+
+    async def estimate_stereo_video_depth_async(
+        self,
+        request: threedvision_20210131_models.EstimateStereoVideoDepthRequest,
+    ) -> threedvision_20210131_models.EstimateStereoVideoDepthResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.estimate_stereo_video_depth_with_options_async(request, runtime)
+
+    def estimate_stereo_video_depth_advance(
+        self,
+        request: threedvision_20210131_models.EstimateStereoVideoDepthAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> threedvision_20210131_models.EstimateStereoVideoDepthResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='threedvision',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        estimate_stereo_video_depth_req = threedvision_20210131_models.EstimateStereoVideoDepthRequest()
+        OpenApiUtilClient.convert(request, estimate_stereo_video_depth_req)
+        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.video_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        oss_client.post_object(upload_request, oss_runtime)
+        estimate_stereo_video_depth_req.video_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        estimate_stereo_video_depth_resp = self.estimate_stereo_video_depth_with_options(estimate_stereo_video_depth_req, runtime)
+        return estimate_stereo_video_depth_resp
+
+    async def estimate_stereo_video_depth_advance_async(
+        self,
+        request: threedvision_20210131_models.EstimateStereoVideoDepthAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> threedvision_20210131_models.EstimateStereoVideoDepthResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='threedvision',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        estimate_stereo_video_depth_req = threedvision_20210131_models.EstimateStereoVideoDepthRequest()
+        OpenApiUtilClient.convert(request, estimate_stereo_video_depth_req)
+        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+        oss_config.access_key_id = auth_response.access_key_id
+        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField(
+            filename=auth_response.object_key,
+            content=request.video_urlobject,
+            content_type=''
+        )
+        oss_header = oss_models.PostObjectRequestHeader(
+            access_key_id=auth_response.access_key_id,
+            policy=auth_response.encoded_policy,
+            signature=auth_response.signature,
+            key=auth_response.object_key,
+            file=file_obj,
+            success_action_status='201'
+        )
+        upload_request = oss_models.PostObjectRequest(
+            bucket_name=auth_response.bucket,
+            header=oss_header
+        )
+        await oss_client.post_object_async(upload_request, oss_runtime)
+        estimate_stereo_video_depth_req.video_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        estimate_stereo_video_depth_resp = await self.estimate_stereo_video_depth_with_options_async(estimate_stereo_video_depth_req, runtime)
+        return estimate_stereo_video_depth_resp
