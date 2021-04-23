@@ -1,3 +1,6 @@
+2021-04-23 Version: 1.2.0
+- Generated python 2020-02-25 for videosearch.
+
 2021-03-30 Version: 1.1.2
 - Generated python 2020-02-25 for videosearch.
 
