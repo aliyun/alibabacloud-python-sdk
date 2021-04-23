@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -19,67 +20,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-qingdao': 'cbn.aliyuncs.com',
-            'cn-beijing': 'cbn.aliyuncs.com',
-            'cn-chengdu': 'cbn.aliyuncs.com',
-            'cn-zhangjiakou': 'cbn.aliyuncs.com',
-            'cn-huhehaote': 'cbn.aliyuncs.com',
-            'cn-hangzhou': 'cbn.aliyuncs.com',
-            'cn-shanghai': 'cbn.aliyuncs.com',
-            'cn-shenzhen': 'cbn.aliyuncs.com',
-            'cn-heyuan': 'cbn.aliyuncs.com',
-            'cn-wulanchabu': 'cbn.aliyuncs.com',
-            'cn-hongkong': 'cbn.aliyuncs.com',
-            'ap-southeast-1': 'cbn.aliyuncs.com',
-            'ap-southeast-2': 'cbn.aliyuncs.com',
-            'ap-southeast-3': 'cbn.aliyuncs.com',
-            'ap-southeast-5': 'cbn.aliyuncs.com',
-            'ap-northeast-1': 'cbn.aliyuncs.com',
-            'eu-west-1': 'cbn.aliyuncs.com',
-            'us-west-1': 'cbn.aliyuncs.com',
-            'us-east-1': 'cbn.aliyuncs.com',
-            'eu-central-1': 'cbn.aliyuncs.com',
-            'me-east-1': 'cbn.aliyuncs.com',
-            'ap-south-1': 'cbn.aliyuncs.com',
-            'cn-shanghai-finance-1': 'cbn.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'cbn.aliyuncs.com',
-            'cn-north-2-gov-1': 'cbn.aliyuncs.com',
-            'ap-northeast-2-pop': 'cbn.aliyuncs.com',
-            'cn-beijing-finance-1': 'cbn.aliyuncs.com',
-            'cn-beijing-finance-pop': 'cbn.aliyuncs.com',
-            'cn-beijing-gov-1': 'cbn.aliyuncs.com',
-            'cn-beijing-nu16-b01': 'cbn.aliyuncs.com',
-            'cn-edge-1': 'cbn.aliyuncs.com',
-            'cn-fujian': 'cbn.aliyuncs.com',
-            'cn-haidian-cm12-c01': 'cbn.aliyuncs.com',
-            'cn-hangzhou-bj-b01': 'cbn.aliyuncs.com',
-            'cn-hangzhou-finance': 'cbn.aliyuncs.com',
-            'cn-hangzhou-internal-prod-1': 'cbn.aliyuncs.com',
-            'cn-hangzhou-internal-test-1': 'cbn.aliyuncs.com',
-            'cn-hangzhou-internal-test-2': 'cbn.aliyuncs.com',
-            'cn-hangzhou-internal-test-3': 'cbn.aliyuncs.com',
-            'cn-hangzhou-test-306': 'cbn.aliyuncs.com',
-            'cn-hongkong-finance-pop': 'cbn.aliyuncs.com',
-            'cn-huhehaote-nebula-1': 'cbn.aliyuncs.com',
-            'cn-qingdao-nebula': 'cbn.aliyuncs.com',
-            'cn-shanghai-et15-b01': 'cbn.aliyuncs.com',
-            'cn-shanghai-et2-b01': 'cbn.aliyuncs.com',
-            'cn-shanghai-inner': 'cbn.aliyuncs.com',
-            'cn-shanghai-internal-test-1': 'cbn.aliyuncs.com',
-            'cn-shenzhen-inner': 'cbn.aliyuncs.com',
-            'cn-shenzhen-st4-d01': 'cbn.aliyuncs.com',
-            'cn-shenzhen-su18-b01': 'cbn.aliyuncs.com',
-            'cn-wuhan': 'cbn.aliyuncs.com',
-            'cn-yushanfang': 'cbn.aliyuncs.com',
-            'cn-zhangbei': 'cbn.aliyuncs.com',
-            'cn-zhangbei-na61-b01': 'cbn.aliyuncs.com',
-            'cn-zhangjiakou-na62-a01': 'cbn.aliyuncs.com',
-            'cn-zhengzhou-nebula-1': 'cbn.aliyuncs.com',
-            'eu-west-1-oxs': 'cbn.aliyuncs.com',
-            'rus-west-1-pop': 'cbn-share.aliyuncs.com'
-        }
+        self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('cbn', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -108,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ActiveFlowLogResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ActiveFlowLogResponse(),
             self.do_rpcrequest('ActiveFlowLog', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -121,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ActiveFlowLogResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ActiveFlowLogResponse(),
             await self.do_rpcrequest_async('ActiveFlowLog', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -148,7 +91,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.AssociateCenBandwidthPackageResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.AssociateCenBandwidthPackageResponse(),
             self.do_rpcrequest('AssociateCenBandwidthPackage', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -161,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.AssociateCenBandwidthPackageResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.AssociateCenBandwidthPackageResponse(),
             await self.do_rpcrequest_async('AssociateCenBandwidthPackage', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -188,7 +133,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.AttachCenChildInstanceResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.AttachCenChildInstanceResponse(),
             self.do_rpcrequest('AttachCenChildInstance', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -201,7 +147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.AttachCenChildInstanceResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.AttachCenChildInstanceResponse(),
             await self.do_rpcrequest_async('AttachCenChildInstance', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -228,7 +175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenResponse(),
             self.do_rpcrequest('CreateCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -241,7 +189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenResponse(),
             await self.do_rpcrequest_async('CreateCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -268,7 +217,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateCenBandwidthPackageResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenBandwidthPackageResponse(),
             self.do_rpcrequest('CreateCenBandwidthPackage', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -281,7 +231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateCenBandwidthPackageResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenBandwidthPackageResponse(),
             await self.do_rpcrequest_async('CreateCenBandwidthPackage', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -308,7 +259,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse(),
             self.do_rpcrequest('CreateCenChildInstanceRouteEntryToCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -321,7 +273,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse(),
             await self.do_rpcrequest_async('CreateCenChildInstanceRouteEntryToCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -348,7 +301,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateCenRouteMapResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenRouteMapResponse(),
             self.do_rpcrequest('CreateCenRouteMap', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -361,7 +315,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateCenRouteMapResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenRouteMapResponse(),
             await self.do_rpcrequest_async('CreateCenRouteMap', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -388,7 +343,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateFlowlogResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateFlowlogResponse(),
             self.do_rpcrequest('CreateFlowlog', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -401,7 +357,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.CreateFlowlogResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateFlowlogResponse(),
             await self.do_rpcrequest_async('CreateFlowlog', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -428,7 +385,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeactiveFlowLogResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeactiveFlowLogResponse(),
             self.do_rpcrequest('DeactiveFlowLog', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -441,7 +399,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeactiveFlowLogResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeactiveFlowLogResponse(),
             await self.do_rpcrequest_async('DeactiveFlowLog', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -468,7 +427,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenResponse(),
             self.do_rpcrequest('DeleteCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -481,7 +441,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenResponse(),
             await self.do_rpcrequest_async('DeleteCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -508,7 +469,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteCenBandwidthPackageResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenBandwidthPackageResponse(),
             self.do_rpcrequest('DeleteCenBandwidthPackage', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -521,7 +483,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteCenBandwidthPackageResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenBandwidthPackageResponse(),
             await self.do_rpcrequest_async('DeleteCenBandwidthPackage', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -548,7 +511,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse(),
             self.do_rpcrequest('DeleteCenChildInstanceRouteEntryToCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -561,7 +525,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse(),
             await self.do_rpcrequest_async('DeleteCenChildInstanceRouteEntryToCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -588,7 +553,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteCenRouteMapResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenRouteMapResponse(),
             self.do_rpcrequest('DeleteCenRouteMap', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -601,7 +567,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteCenRouteMapResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteCenRouteMapResponse(),
             await self.do_rpcrequest_async('DeleteCenRouteMap', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -628,7 +595,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteFlowlogResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteFlowlogResponse(),
             self.do_rpcrequest('DeleteFlowlog', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -641,7 +609,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteFlowlogResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteFlowlogResponse(),
             await self.do_rpcrequest_async('DeleteFlowlog', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -668,7 +637,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteRouteServiceInCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteRouteServiceInCenResponse(),
             self.do_rpcrequest('DeleteRouteServiceInCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -681,7 +651,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DeleteRouteServiceInCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteRouteServiceInCenResponse(),
             await self.do_rpcrequest_async('DeleteRouteServiceInCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -708,7 +679,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse(),
             self.do_rpcrequest('DescribeCenAttachedChildInstanceAttribute', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -721,7 +693,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse(),
             await self.do_rpcrequest_async('DescribeCenAttachedChildInstanceAttribute', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -748,7 +721,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenAttachedChildInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenAttachedChildInstancesResponse(),
             self.do_rpcrequest('DescribeCenAttachedChildInstances', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -761,7 +735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenAttachedChildInstancesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenAttachedChildInstancesResponse(),
             await self.do_rpcrequest_async('DescribeCenAttachedChildInstances', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -788,7 +763,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenBandwidthPackagesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenBandwidthPackagesResponse(),
             self.do_rpcrequest('DescribeCenBandwidthPackages', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -801,7 +777,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenBandwidthPackagesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenBandwidthPackagesResponse(),
             await self.do_rpcrequest_async('DescribeCenBandwidthPackages', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -828,7 +805,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse(),
             self.do_rpcrequest('DescribeCenChildInstanceRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -841,7 +819,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse(),
             await self.do_rpcrequest_async('DescribeCenChildInstanceRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -868,7 +847,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse(),
             self.do_rpcrequest('DescribeCenGeographicSpanRemainingBandwidth', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -881,7 +861,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse(),
             await self.do_rpcrequest_async('DescribeCenGeographicSpanRemainingBandwidth', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -908,7 +889,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenGeographicSpansResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenGeographicSpansResponse(),
             self.do_rpcrequest('DescribeCenGeographicSpans', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -921,7 +903,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenGeographicSpansResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenGeographicSpansResponse(),
             await self.do_rpcrequest_async('DescribeCenGeographicSpans', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -948,7 +931,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse(),
             self.do_rpcrequest('DescribeCenInterRegionBandwidthLimits', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -961,7 +945,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse(),
             await self.do_rpcrequest_async('DescribeCenInterRegionBandwidthLimits', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -988,7 +973,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse(),
             self.do_rpcrequest('DescribeCenPrivateZoneRoutes', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1001,7 +987,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse(),
             await self.do_rpcrequest_async('DescribeCenPrivateZoneRoutes', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1028,7 +1015,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse(),
             self.do_rpcrequest('DescribeCenRegionDomainRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1041,7 +1029,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse(),
             await self.do_rpcrequest_async('DescribeCenRegionDomainRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1068,7 +1057,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenRouteMapsResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenRouteMapsResponse(),
             self.do_rpcrequest('DescribeCenRouteMaps', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1081,7 +1071,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenRouteMapsResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenRouteMapsResponse(),
             await self.do_rpcrequest_async('DescribeCenRouteMaps', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1108,7 +1099,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCensResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCensResponse(),
             self.do_rpcrequest('DescribeCens', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1121,7 +1113,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCensResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCensResponse(),
             await self.do_rpcrequest_async('DescribeCens', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1148,7 +1141,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenVbrHealthCheckResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenVbrHealthCheckResponse(),
             self.do_rpcrequest('DescribeCenVbrHealthCheck', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1161,7 +1155,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeCenVbrHealthCheckResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenVbrHealthCheckResponse(),
             await self.do_rpcrequest_async('DescribeCenVbrHealthCheck', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1188,7 +1183,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeChildInstanceRegionsResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeChildInstanceRegionsResponse(),
             self.do_rpcrequest('DescribeChildInstanceRegions', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1201,7 +1197,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeChildInstanceRegionsResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeChildInstanceRegionsResponse(),
             await self.do_rpcrequest_async('DescribeChildInstanceRegions', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1228,7 +1225,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeFlowlogsResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeFlowlogsResponse(),
             self.do_rpcrequest('DescribeFlowlogs', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1241,7 +1239,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeFlowlogsResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeFlowlogsResponse(),
             await self.do_rpcrequest_async('DescribeFlowlogs', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1268,7 +1267,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeGeographicRegionMembershipResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGeographicRegionMembershipResponse(),
             self.do_rpcrequest('DescribeGeographicRegionMembership', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1281,7 +1281,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeGeographicRegionMembershipResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGeographicRegionMembershipResponse(),
             await self.do_rpcrequest_async('DescribeGeographicRegionMembership', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1308,7 +1309,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeGrantRulesToCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGrantRulesToCenResponse(),
             self.do_rpcrequest('DescribeGrantRulesToCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1321,7 +1323,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeGrantRulesToCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGrantRulesToCenResponse(),
             await self.do_rpcrequest_async('DescribeGrantRulesToCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1348,7 +1351,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribePublishedRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribePublishedRouteEntriesResponse(),
             self.do_rpcrequest('DescribePublishedRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1361,7 +1365,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribePublishedRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribePublishedRouteEntriesResponse(),
             await self.do_rpcrequest_async('DescribePublishedRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1388,7 +1393,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeRouteConflictResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeRouteConflictResponse(),
             self.do_rpcrequest('DescribeRouteConflict', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1401,7 +1407,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeRouteConflictResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeRouteConflictResponse(),
             await self.do_rpcrequest_async('DescribeRouteConflict', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1428,7 +1435,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeRouteServicesInCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeRouteServicesInCenResponse(),
             self.do_rpcrequest('DescribeRouteServicesInCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1441,7 +1449,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DescribeRouteServicesInCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeRouteServicesInCenResponse(),
             await self.do_rpcrequest_async('DescribeRouteServicesInCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1468,7 +1477,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DetachCenChildInstanceResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DetachCenChildInstanceResponse(),
             self.do_rpcrequest('DetachCenChildInstance', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1481,7 +1491,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DetachCenChildInstanceResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DetachCenChildInstanceResponse(),
             await self.do_rpcrequest_async('DetachCenChildInstance', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1508,7 +1519,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DisableCenVbrHealthCheckResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DisableCenVbrHealthCheckResponse(),
             self.do_rpcrequest('DisableCenVbrHealthCheck', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1521,7 +1533,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.DisableCenVbrHealthCheckResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.DisableCenVbrHealthCheckResponse(),
             await self.do_rpcrequest_async('DisableCenVbrHealthCheck', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1548,7 +1561,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.EnableCenVbrHealthCheckResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.EnableCenVbrHealthCheckResponse(),
             self.do_rpcrequest('EnableCenVbrHealthCheck', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1561,7 +1575,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.EnableCenVbrHealthCheckResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.EnableCenVbrHealthCheckResponse(),
             await self.do_rpcrequest_async('EnableCenVbrHealthCheck', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1588,7 +1603,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTagResourcesResponse(),
             self.do_rpcrequest('ListTagResources', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1601,7 +1617,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTagResourcesResponse(),
             await self.do_rpcrequest_async('ListTagResources', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1628,7 +1645,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyCenAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenAttributeResponse(),
             self.do_rpcrequest('ModifyCenAttribute', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1641,7 +1659,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyCenAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenAttributeResponse(),
             await self.do_rpcrequest_async('ModifyCenAttribute', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1668,7 +1687,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse(),
             self.do_rpcrequest('ModifyCenBandwidthPackageAttribute', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1681,7 +1701,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse(),
             await self.do_rpcrequest_async('ModifyCenBandwidthPackageAttribute', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1708,7 +1729,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse(),
             self.do_rpcrequest('ModifyCenBandwidthPackageSpec', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1721,7 +1743,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse(),
             await self.do_rpcrequest_async('ModifyCenBandwidthPackageSpec', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1748,7 +1771,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyCenRouteMapResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenRouteMapResponse(),
             self.do_rpcrequest('ModifyCenRouteMap', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1761,7 +1785,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyCenRouteMapResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyCenRouteMapResponse(),
             await self.do_rpcrequest_async('ModifyCenRouteMap', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1788,7 +1813,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyFlowLogAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyFlowLogAttributeResponse(),
             self.do_rpcrequest('ModifyFlowLogAttribute', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1801,7 +1827,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ModifyFlowLogAttributeResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyFlowLogAttributeResponse(),
             await self.do_rpcrequest_async('ModifyFlowLogAttribute', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1828,7 +1855,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.PublishRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.PublishRouteEntriesResponse(),
             self.do_rpcrequest('PublishRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1841,7 +1869,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.PublishRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.PublishRouteEntriesResponse(),
             await self.do_rpcrequest_async('PublishRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1868,7 +1897,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ResolveAndRouteServiceInCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ResolveAndRouteServiceInCenResponse(),
             self.do_rpcrequest('ResolveAndRouteServiceInCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1881,7 +1911,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.ResolveAndRouteServiceInCenResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.ResolveAndRouteServiceInCenResponse(),
             await self.do_rpcrequest_async('ResolveAndRouteServiceInCen', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1908,7 +1939,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse(),
             self.do_rpcrequest('RoutePrivateZoneInCenToVpc', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1921,7 +1953,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse(),
             await self.do_rpcrequest_async('RoutePrivateZoneInCenToVpc', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1948,7 +1981,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse(),
             self.do_rpcrequest('SetCenInterRegionBandwidthLimit', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1961,7 +1995,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse(),
             await self.do_rpcrequest_async('SetCenInterRegionBandwidthLimit', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1988,7 +2023,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2001,7 +2037,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2028,7 +2065,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse(),
             self.do_rpcrequest('TempUpgradeCenBandwidthPackageSpec', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2041,7 +2079,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse(),
             await self.do_rpcrequest_async('TempUpgradeCenBandwidthPackageSpec', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2068,7 +2107,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.UnassociateCenBandwidthPackageResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.UnassociateCenBandwidthPackageResponse(),
             self.do_rpcrequest('UnassociateCenBandwidthPackage', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2081,7 +2121,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.UnassociateCenBandwidthPackageResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.UnassociateCenBandwidthPackageResponse(),
             await self.do_rpcrequest_async('UnassociateCenBandwidthPackage', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2108,7 +2149,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse(),
             self.do_rpcrequest('UnroutePrivateZoneInCenToVpc', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2121,7 +2163,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse(),
             await self.do_rpcrequest_async('UnroutePrivateZoneInCenToVpc', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2148,7 +2191,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2161,7 +2205,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2188,7 +2233,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.WithdrawPublishedRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.WithdrawPublishedRouteEntriesResponse(),
             self.do_rpcrequest('WithdrawPublishedRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2201,7 +2247,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cbn_20170912_models.WithdrawPublishedRouteEntriesResponse().from_map(
+        return TeaCore.from_map(
+            cbn_20170912_models.WithdrawPublishedRouteEntriesResponse(),
             await self.do_rpcrequest_async('WithdrawPublishedRouteEntries', '2017-09-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
