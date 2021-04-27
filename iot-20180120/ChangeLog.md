@@ -1,3 +1,6 @@
+2021-04-27 Version: 2.2.1
+- Update AMP API.
+
 2021-03-10 Version: 0.1.0
 - AMP Version Change.
 
