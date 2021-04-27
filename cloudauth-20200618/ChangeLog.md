@@ -1,3 +1,6 @@
+2021-04-27 Version: 2.0.3
+- Generated python 2020-06-18 for Cloudauth.
+
 2021-04-09 Version: 1.0.5
 - Add VerifyBankElement API.
 
