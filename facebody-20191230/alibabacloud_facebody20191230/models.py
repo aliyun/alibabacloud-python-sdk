@@ -103,6 +103,8 @@ class ExtractPedestrianFeatureAttrResponseBodyData(TeaModel):
         hair_score: float = None,
         lower_type: str = None,
         upper_color_score: float = None,
+        orientation: str = None,
+        orientation_score: float = None,
     ):
         self.quality_score = quality_score
         self.obj_type = obj_type
@@ -122,6 +124,8 @@ class ExtractPedestrianFeatureAttrResponseBodyData(TeaModel):
         self.hair_score = hair_score
         self.lower_type = lower_type
         self.upper_color_score = upper_color_score
+        self.orientation = orientation
+        self.orientation_score = orientation_score
 
     def validate(self):
         pass
@@ -168,6 +172,10 @@ class ExtractPedestrianFeatureAttrResponseBodyData(TeaModel):
             result['LowerType'] = self.lower_type
         if self.upper_color_score is not None:
             result['UpperColorScore'] = self.upper_color_score
+        if self.orientation is not None:
+            result['Orientation'] = self.orientation
+        if self.orientation_score is not None:
+            result['OrientationScore'] = self.orientation_score
         return result
 
     def from_map(self, m: dict = None):
@@ -208,6 +216,10 @@ class ExtractPedestrianFeatureAttrResponseBodyData(TeaModel):
             self.lower_type = m.get('LowerType')
         if m.get('UpperColorScore') is not None:
             self.upper_color_score = m.get('UpperColorScore')
+        if m.get('Orientation') is not None:
+            self.orientation = m.get('Orientation')
+        if m.get('OrientationScore') is not None:
+            self.orientation_score = m.get('OrientationScore')
         return self
 
 
@@ -770,7 +782,7 @@ class RecognizeFaceResponseBodyData(TeaModel):
         landmarks: List[float] = None,
         landmark_count: int = None,
         qualities: RecognizeFaceResponseBodyDataQualities = None,
-        beuaty_list: List[float] = None,
+        beauty_list: List[float] = None,
         hat_list: List[int] = None,
         face_probability_list: List[float] = None,
         glasses: List[int] = None,
@@ -778,6 +790,7 @@ class RecognizeFaceResponseBodyData(TeaModel):
         pose_list: List[float] = None,
         age_list: List[int] = None,
         dense_feature_length: int = None,
+        masks: List[int] = None,
     ):
         self.pupils = pupils
         self.gender_list = gender_list
@@ -787,7 +800,7 @@ class RecognizeFaceResponseBodyData(TeaModel):
         self.landmarks = landmarks
         self.landmark_count = landmark_count
         self.qualities = qualities
-        self.beuaty_list = beuaty_list
+        self.beauty_list = beauty_list
         self.hat_list = hat_list
         self.face_probability_list = face_probability_list
         self.glasses = glasses
@@ -795,6 +808,7 @@ class RecognizeFaceResponseBodyData(TeaModel):
         self.pose_list = pose_list
         self.age_list = age_list
         self.dense_feature_length = dense_feature_length
+        self.masks = masks
 
     def validate(self):
         if self.qualities:
@@ -822,8 +836,8 @@ class RecognizeFaceResponseBodyData(TeaModel):
             result['LandmarkCount'] = self.landmark_count
         if self.qualities is not None:
             result['Qualities'] = self.qualities.to_map()
-        if self.beuaty_list is not None:
-            result['BeuatyList'] = self.beuaty_list
+        if self.beauty_list is not None:
+            result['BeautyList'] = self.beauty_list
         if self.hat_list is not None:
             result['HatList'] = self.hat_list
         if self.face_probability_list is not None:
@@ -838,6 +852,8 @@ class RecognizeFaceResponseBodyData(TeaModel):
             result['AgeList'] = self.age_list
         if self.dense_feature_length is not None:
             result['DenseFeatureLength'] = self.dense_feature_length
+        if self.masks is not None:
+            result['Masks'] = self.masks
         return result
 
     def from_map(self, m: dict = None):
@@ -859,8 +875,8 @@ class RecognizeFaceResponseBodyData(TeaModel):
         if m.get('Qualities') is not None:
             temp_model = RecognizeFaceResponseBodyDataQualities()
             self.qualities = temp_model.from_map(m['Qualities'])
-        if m.get('BeuatyList') is not None:
-            self.beuaty_list = m.get('BeuatyList')
+        if m.get('BeautyList') is not None:
+            self.beauty_list = m.get('BeautyList')
         if m.get('HatList') is not None:
             self.hat_list = m.get('HatList')
         if m.get('FaceProbabilityList') is not None:
@@ -875,6 +891,8 @@ class RecognizeFaceResponseBodyData(TeaModel):
             self.age_list = m.get('AgeList')
         if m.get('DenseFeatureLength') is not None:
             self.dense_feature_length = m.get('DenseFeatureLength')
+        if m.get('Masks') is not None:
+            self.masks = m.get('Masks')
         return self
 
 
