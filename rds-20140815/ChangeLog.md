@@ -1,3 +1,6 @@
+2021-04-29 Version: 2.0.2
+- Update AMP API.
+
 2021-01-12 Version: 2.0.1
 - Generated python 2014-08-15 for Rds.
 
