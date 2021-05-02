@@ -1,3 +1,6 @@
+2021-05-02 Version: 2.2.2
+- Generated python 2018-01-20 for Iot.
+
 2021-04-27 Version: 2.2.1
 - Update AMP API.
 

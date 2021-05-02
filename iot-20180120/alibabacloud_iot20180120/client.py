@@ -1602,6 +1602,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_otatask_by_job_with_options_async(request, runtime)
 
+    def cancel_release_product_with_options(
+        self,
+        request: iot_20180120_models.CancelReleaseProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CancelReleaseProductResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CancelReleaseProductResponse(),
+            self.do_rpcrequest('CancelReleaseProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def cancel_release_product_with_options_async(
+        self,
+        request: iot_20180120_models.CancelReleaseProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CancelReleaseProductResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CancelReleaseProductResponse(),
+            await self.do_rpcrequest_async('CancelReleaseProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def cancel_release_product(
+        self,
+        request: iot_20180120_models.CancelReleaseProductRequest,
+    ) -> iot_20180120_models.CancelReleaseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_release_product_with_options(request, runtime)
+
+    async def cancel_release_product_async(
+        self,
+        request: iot_20180120_models.CancelReleaseProductRequest,
+    ) -> iot_20180120_models.CancelReleaseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_release_product_with_options_async(request, runtime)
+
     def clear_edge_instance_driver_configs_with_options(
         self,
         request: iot_20180120_models.ClearEdgeInstanceDriverConfigsRequest,
@@ -3869,6 +3911,48 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.DeleteSceneRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_scene_rule_with_options_async(request, runtime)
+
+    def delete_speech_with_options(
+        self,
+        request: iot_20180120_models.DeleteSpeechRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteSpeechResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteSpeechResponse(),
+            self.do_rpcrequest('DeleteSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_speech_with_options_async(
+        self,
+        request: iot_20180120_models.DeleteSpeechRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteSpeechResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteSpeechResponse(),
+            await self.do_rpcrequest_async('DeleteSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_speech(
+        self,
+        request: iot_20180120_models.DeleteSpeechRequest,
+    ) -> iot_20180120_models.DeleteSpeechResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_speech_with_options(request, runtime)
+
+    async def delete_speech_async(
+        self,
+        request: iot_20180120_models.DeleteSpeechRequest,
+    ) -> iot_20180120_models.DeleteSpeechResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_speech_with_options_async(request, runtime)
 
     def delete_subscribe_relation_with_options(
         self,
@@ -9459,6 +9543,48 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.ReleaseEdgeDriverVersionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.release_edge_driver_version_with_options_async(request, runtime)
+
+    def release_product_with_options(
+        self,
+        request: iot_20180120_models.ReleaseProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ReleaseProductResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ReleaseProductResponse(),
+            self.do_rpcrequest('ReleaseProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def release_product_with_options_async(
+        self,
+        request: iot_20180120_models.ReleaseProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ReleaseProductResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ReleaseProductResponse(),
+            await self.do_rpcrequest_async('ReleaseProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def release_product(
+        self,
+        request: iot_20180120_models.ReleaseProductRequest,
+    ) -> iot_20180120_models.ReleaseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.release_product_with_options(request, runtime)
+
+    async def release_product_async(
+        self,
+        request: iot_20180120_models.ReleaseProductRequest,
+    ) -> iot_20180120_models.ReleaseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.release_product_with_options_async(request, runtime)
 
     def remove_thing_topo_with_options(
         self,
