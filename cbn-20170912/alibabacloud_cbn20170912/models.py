@@ -76,11 +76,11 @@ class ActiveFlowLogRequest(TeaModel):
 class ActiveFlowLogResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         success: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.success = success
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -91,18 +91,18 @@ class ActiveFlowLogResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -475,11 +475,11 @@ class CreateCenRequest(TeaModel):
 class CreateCenResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         cen_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.cen_id = cen_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -490,18 +490,18 @@ class CreateCenResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -662,13 +662,13 @@ class CreateCenBandwidthPackageRequest(TeaModel):
 class CreateCenBandwidthPackageResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         cen_bandwidth_package_id: str = None,
         cen_bandwidth_package_order_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
         self.cen_bandwidth_package_order_id = cen_bandwidth_package_order_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -679,22 +679,22 @@ class CreateCenBandwidthPackageResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.cen_bandwidth_package_id is not None:
             result['CenBandwidthPackageId'] = self.cen_bandwidth_package_id
         if self.cen_bandwidth_package_order_id is not None:
             result['CenBandwidthPackageOrderId'] = self.cen_bandwidth_package_order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('CenBandwidthPackageId') is not None:
             self.cen_bandwidth_package_id = m.get('CenBandwidthPackageId')
         if m.get('CenBandwidthPackageOrderId') is not None:
             self.cen_bandwidth_package_order_id = m.get('CenBandwidthPackageOrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1096,11 +1096,11 @@ class CreateCenRouteMapRequest(TeaModel):
 class CreateCenRouteMapResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         route_map_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.route_map_id = route_map_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1111,18 +1111,18 @@ class CreateCenRouteMapResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.route_map_id is not None:
             result['RouteMapId'] = self.route_map_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('RouteMapId') is not None:
             self.route_map_id = m.get('RouteMapId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1254,12 +1254,12 @@ class CreateFlowlogResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        flow_log_id: str = None,
         success: str = None,
+        flow_log_id: str = None,
     ):
         self.request_id = request_id
-        self.flow_log_id = flow_log_id
         self.success = success
+        self.flow_log_id = flow_log_id
 
     def validate(self):
         pass
@@ -1272,20 +1272,20 @@ class CreateFlowlogResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.flow_log_id is not None:
-            result['FlowLogId'] = self.flow_log_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.flow_log_id is not None:
+            result['FlowLogId'] = self.flow_log_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('FlowLogId') is not None:
-            self.flow_log_id = m.get('FlowLogId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('FlowLogId') is not None:
+            self.flow_log_id = m.get('FlowLogId')
         return self
 
 
@@ -1398,11 +1398,11 @@ class DeactiveFlowLogRequest(TeaModel):
 class DeactiveFlowLogResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         success: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.success = success
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1413,18 +1413,18 @@ class DeactiveFlowLogResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2045,11 +2045,11 @@ class DeleteFlowlogRequest(TeaModel):
 class DeleteFlowlogResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         success: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.success = success
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2060,18 +2060,18 @@ class DeleteFlowlogResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2325,23 +2325,23 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(TeaModel):
         self,
         status: str = None,
         child_instance_type: str = None,
-        request_id: str = None,
-        cen_id: str = None,
-        child_instance_attach_time: str = None,
-        child_instance_owner_id: int = None,
-        child_instance_name: str = None,
-        child_instance_id: str = None,
         child_instance_region_id: str = None,
+        request_id: str = None,
+        child_instance_owner_id: int = None,
+        child_instance_id: str = None,
+        cen_id: str = None,
+        child_instance_name: str = None,
+        child_instance_attach_time: str = None,
     ):
         self.status = status
         self.child_instance_type = child_instance_type
-        self.request_id = request_id
-        self.cen_id = cen_id
-        self.child_instance_attach_time = child_instance_attach_time
-        self.child_instance_owner_id = child_instance_owner_id
-        self.child_instance_name = child_instance_name
-        self.child_instance_id = child_instance_id
         self.child_instance_region_id = child_instance_region_id
+        self.request_id = request_id
+        self.child_instance_owner_id = child_instance_owner_id
+        self.child_instance_id = child_instance_id
+        self.cen_id = cen_id
+        self.child_instance_name = child_instance_name
+        self.child_instance_attach_time = child_instance_attach_time
 
     def validate(self):
         pass
@@ -2356,20 +2356,20 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(TeaModel):
             result['Status'] = self.status
         if self.child_instance_type is not None:
             result['ChildInstanceType'] = self.child_instance_type
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.cen_id is not None:
-            result['CenId'] = self.cen_id
-        if self.child_instance_attach_time is not None:
-            result['ChildInstanceAttachTime'] = self.child_instance_attach_time
-        if self.child_instance_owner_id is not None:
-            result['ChildInstanceOwnerId'] = self.child_instance_owner_id
-        if self.child_instance_name is not None:
-            result['ChildInstanceName'] = self.child_instance_name
-        if self.child_instance_id is not None:
-            result['ChildInstanceId'] = self.child_instance_id
         if self.child_instance_region_id is not None:
             result['ChildInstanceRegionId'] = self.child_instance_region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.child_instance_owner_id is not None:
+            result['ChildInstanceOwnerId'] = self.child_instance_owner_id
+        if self.child_instance_id is not None:
+            result['ChildInstanceId'] = self.child_instance_id
+        if self.cen_id is not None:
+            result['CenId'] = self.cen_id
+        if self.child_instance_name is not None:
+            result['ChildInstanceName'] = self.child_instance_name
+        if self.child_instance_attach_time is not None:
+            result['ChildInstanceAttachTime'] = self.child_instance_attach_time
         return result
 
     def from_map(self, m: dict = None):
@@ -2378,20 +2378,20 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('ChildInstanceType') is not None:
             self.child_instance_type = m.get('ChildInstanceType')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('CenId') is not None:
-            self.cen_id = m.get('CenId')
-        if m.get('ChildInstanceAttachTime') is not None:
-            self.child_instance_attach_time = m.get('ChildInstanceAttachTime')
-        if m.get('ChildInstanceOwnerId') is not None:
-            self.child_instance_owner_id = m.get('ChildInstanceOwnerId')
-        if m.get('ChildInstanceName') is not None:
-            self.child_instance_name = m.get('ChildInstanceName')
-        if m.get('ChildInstanceId') is not None:
-            self.child_instance_id = m.get('ChildInstanceId')
         if m.get('ChildInstanceRegionId') is not None:
             self.child_instance_region_id = m.get('ChildInstanceRegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ChildInstanceOwnerId') is not None:
+            self.child_instance_owner_id = m.get('ChildInstanceOwnerId')
+        if m.get('ChildInstanceId') is not None:
+            self.child_instance_id = m.get('ChildInstanceId')
+        if m.get('CenId') is not None:
+            self.cen_id = m.get('CenId')
+        if m.get('ChildInstanceName') is not None:
+            self.child_instance_name = m.get('ChildInstanceName')
+        if m.get('ChildInstanceAttachTime') is not None:
+            self.child_instance_attach_time = m.get('ChildInstanceAttachTime')
         return self
 
 
@@ -2608,16 +2608,16 @@ class DescribeCenAttachedChildInstancesResponseBodyChildInstances(TeaModel):
 class DescribeCenAttachedChildInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         child_instances: DescribeCenAttachedChildInstancesResponseBodyChildInstances = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.child_instances = child_instances
 
     def validate(self):
@@ -2630,28 +2630,28 @@ class DescribeCenAttachedChildInstancesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.child_instances is not None:
             result['ChildInstances'] = self.child_instances.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('ChildInstances') is not None:
             temp_model = DescribeCenAttachedChildInstancesResponseBodyChildInstances()
             self.child_instances = temp_model.from_map(m['ChildInstances'])
@@ -2814,15 +2814,15 @@ class DescribeCenBandwidthPackagesRequest(TeaModel):
 class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit(TeaModel):
     def __init__(
         self,
+        bandwidth_limit: str = None,
         opposite_region_id: str = None,
         geographic_span_id: str = None,
         local_region_id: str = None,
-        bandwidth_limit: str = None,
     ):
+        self.bandwidth_limit = bandwidth_limit
         self.opposite_region_id = opposite_region_id
         self.geographic_span_id = geographic_span_id
         self.local_region_id = local_region_id
-        self.bandwidth_limit = bandwidth_limit
 
     def validate(self):
         pass
@@ -2833,26 +2833,26 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
             return _map
 
         result = dict()
+        if self.bandwidth_limit is not None:
+            result['BandwidthLimit'] = self.bandwidth_limit
         if self.opposite_region_id is not None:
             result['OppositeRegionId'] = self.opposite_region_id
         if self.geographic_span_id is not None:
             result['GeographicSpanId'] = self.geographic_span_id
         if self.local_region_id is not None:
             result['LocalRegionId'] = self.local_region_id
-        if self.bandwidth_limit is not None:
-            result['BandwidthLimit'] = self.bandwidth_limit
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthLimit') is not None:
+            self.bandwidth_limit = m.get('BandwidthLimit')
         if m.get('OppositeRegionId') is not None:
             self.opposite_region_id = m.get('OppositeRegionId')
         if m.get('GeographicSpanId') is not None:
             self.geographic_span_id = m.get('GeographicSpanId')
         if m.get('LocalRegionId') is not None:
             self.local_region_id = m.get('LocalRegionId')
-        if m.get('BandwidthLimit') is not None:
-            self.bandwidth_limit = m.get('BandwidthLimit')
         return self
 
 
@@ -2921,17 +2921,15 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
 class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage(TeaModel):
     def __init__(
         self,
-        creation_time: str = None,
-        status: str = None,
         reservation_active_time: str = None,
+        status: str = None,
+        creation_time: str = None,
         reservation_order_type: str = None,
         bandwidth_package_charge_type: str = None,
         cen_bandwidth_package_id: str = None,
-        orgin_inter_region_bandwidth_limits: DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits = None,
-        cen_ids: DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds = None,
-        geographic_region_aid: str = None,
-        ratio: str = None,
         reservation_internet_charge_type: str = None,
+        ratio: str = None,
+        geographic_region_aid: str = None,
         type_for_95: str = None,
         bandwidth: int = None,
         description: str = None,
@@ -2943,18 +2941,18 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         business_status: str = None,
         name: str = None,
         has_reservation_data: str = None,
+        orgin_inter_region_bandwidth_limits: DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits = None,
+        cen_ids: DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds = None,
     ):
-        self.creation_time = creation_time
-        self.status = status
         self.reservation_active_time = reservation_active_time
+        self.status = status
+        self.creation_time = creation_time
         self.reservation_order_type = reservation_order_type
         self.bandwidth_package_charge_type = bandwidth_package_charge_type
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
-        self.orgin_inter_region_bandwidth_limits = orgin_inter_region_bandwidth_limits
-        self.cen_ids = cen_ids
-        self.geographic_region_aid = geographic_region_aid
-        self.ratio = ratio
         self.reservation_internet_charge_type = reservation_internet_charge_type
+        self.ratio = ratio
+        self.geographic_region_aid = geographic_region_aid
         self.type_for_95 = type_for_95
         self.bandwidth = bandwidth
         self.description = description
@@ -2966,6 +2964,8 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         self.business_status = business_status
         self.name = name
         self.has_reservation_data = has_reservation_data
+        self.orgin_inter_region_bandwidth_limits = orgin_inter_region_bandwidth_limits
+        self.cen_ids = cen_ids
 
     def validate(self):
         if self.orgin_inter_region_bandwidth_limits:
@@ -2979,28 +2979,24 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
             return _map
 
         result = dict()
-        if self.creation_time is not None:
-            result['CreationTime'] = self.creation_time
-        if self.status is not None:
-            result['Status'] = self.status
         if self.reservation_active_time is not None:
             result['ReservationActiveTime'] = self.reservation_active_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
         if self.reservation_order_type is not None:
             result['ReservationOrderType'] = self.reservation_order_type
         if self.bandwidth_package_charge_type is not None:
             result['BandwidthPackageChargeType'] = self.bandwidth_package_charge_type
         if self.cen_bandwidth_package_id is not None:
             result['CenBandwidthPackageId'] = self.cen_bandwidth_package_id
-        if self.orgin_inter_region_bandwidth_limits is not None:
-            result['OrginInterRegionBandwidthLimits'] = self.orgin_inter_region_bandwidth_limits.to_map()
-        if self.cen_ids is not None:
-            result['CenIds'] = self.cen_ids.to_map()
-        if self.geographic_region_aid is not None:
-            result['GeographicRegionAId'] = self.geographic_region_aid
-        if self.ratio is not None:
-            result['Ratio'] = self.ratio
         if self.reservation_internet_charge_type is not None:
             result['ReservationInternetChargeType'] = self.reservation_internet_charge_type
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        if self.geographic_region_aid is not None:
+            result['GeographicRegionAId'] = self.geographic_region_aid
         if self.type_for_95 is not None:
             result['TypeFor95'] = self.type_for_95
         if self.bandwidth is not None:
@@ -3023,34 +3019,32 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
             result['Name'] = self.name
         if self.has_reservation_data is not None:
             result['HasReservationData'] = self.has_reservation_data
+        if self.orgin_inter_region_bandwidth_limits is not None:
+            result['OrginInterRegionBandwidthLimits'] = self.orgin_inter_region_bandwidth_limits.to_map()
+        if self.cen_ids is not None:
+            result['CenIds'] = self.cen_ids.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CreationTime') is not None:
-            self.creation_time = m.get('CreationTime')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
         if m.get('ReservationActiveTime') is not None:
             self.reservation_active_time = m.get('ReservationActiveTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
         if m.get('ReservationOrderType') is not None:
             self.reservation_order_type = m.get('ReservationOrderType')
         if m.get('BandwidthPackageChargeType') is not None:
             self.bandwidth_package_charge_type = m.get('BandwidthPackageChargeType')
         if m.get('CenBandwidthPackageId') is not None:
             self.cen_bandwidth_package_id = m.get('CenBandwidthPackageId')
-        if m.get('OrginInterRegionBandwidthLimits') is not None:
-            temp_model = DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits()
-            self.orgin_inter_region_bandwidth_limits = temp_model.from_map(m['OrginInterRegionBandwidthLimits'])
-        if m.get('CenIds') is not None:
-            temp_model = DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds()
-            self.cen_ids = temp_model.from_map(m['CenIds'])
-        if m.get('GeographicRegionAId') is not None:
-            self.geographic_region_aid = m.get('GeographicRegionAId')
-        if m.get('Ratio') is not None:
-            self.ratio = m.get('Ratio')
         if m.get('ReservationInternetChargeType') is not None:
             self.reservation_internet_charge_type = m.get('ReservationInternetChargeType')
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        if m.get('GeographicRegionAId') is not None:
+            self.geographic_region_aid = m.get('GeographicRegionAId')
         if m.get('TypeFor95') is not None:
             self.type_for_95 = m.get('TypeFor95')
         if m.get('Bandwidth') is not None:
@@ -3073,6 +3067,12 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
             self.name = m.get('Name')
         if m.get('HasReservationData') is not None:
             self.has_reservation_data = m.get('HasReservationData')
+        if m.get('OrginInterRegionBandwidthLimits') is not None:
+            temp_model = DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits()
+            self.orgin_inter_region_bandwidth_limits = temp_model.from_map(m['OrginInterRegionBandwidthLimits'])
+        if m.get('CenIds') is not None:
+            temp_model = DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds()
+            self.cen_ids = temp_model.from_map(m['CenIds'])
         return self
 
 
@@ -3114,16 +3114,16 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages(TeaModel):
 class DescribeCenBandwidthPackagesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         cen_bandwidth_packages: DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.cen_bandwidth_packages = cen_bandwidth_packages
 
     def validate(self):
@@ -3136,28 +3136,28 @@ class DescribeCenBandwidthPackagesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.cen_bandwidth_packages is not None:
             result['CenBandwidthPackages'] = self.cen_bandwidth_packages.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('CenBandwidthPackages') is not None:
             temp_model = DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages()
             self.cen_bandwidth_packages = temp_model.from_map(m['CenBandwidthPackages'])
@@ -3288,12 +3288,14 @@ class DescribeCenChildInstanceRouteEntriesRequest(TeaModel):
         return self
 
 
-class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths(TeaModel):
+class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord(TeaModel):
     def __init__(
         self,
-        as_path: List[str] = None,
+        route_map_id: str = None,
+        region_id: str = None,
     ):
-        self.as_path = as_path
+        self.route_map_id = route_map_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3304,14 +3306,53 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
             return _map
 
         result = dict()
-        if self.as_path is not None:
-            result['AsPath'] = self.as_path
+        if self.route_map_id is not None:
+            result['RouteMapId'] = self.route_map_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AsPath') is not None:
-            self.as_path = m.get('AsPath')
+        if m.get('RouteMapId') is not None:
+            self.route_map_id = m.get('RouteMapId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords(TeaModel):
+    def __init__(
+        self,
+        cen_route_map_record: List[DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord] = None,
+    ):
+        self.cen_route_map_record = cen_route_map_record
+
+    def validate(self):
+        if self.cen_route_map_record:
+            for k in self.cen_route_map_record:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CenRouteMapRecord'] = []
+        if self.cen_route_map_record is not None:
+            for k in self.cen_route_map_record:
+                result['CenRouteMapRecord'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cen_route_map_record = []
+        if m.get('CenRouteMapRecord') is not None:
+            for k in m.get('CenRouteMapRecord'):
+                temp_model = DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord()
+                self.cen_route_map_record.append(temp_model.from_map(k))
         return self
 
 
@@ -3428,14 +3469,12 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
         return self
 
 
-class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord(TeaModel):
+class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths(TeaModel):
     def __init__(
         self,
-        route_map_id: str = None,
-        region_id: str = None,
+        as_path: List[str] = None,
     ):
-        self.route_map_id = route_map_id
-        self.region_id = region_id
+        self.as_path = as_path
 
     def validate(self):
         pass
@@ -3446,53 +3485,14 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
             return _map
 
         result = dict()
-        if self.route_map_id is not None:
-            result['RouteMapId'] = self.route_map_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
+        if self.as_path is not None:
+            result['AsPath'] = self.as_path
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RouteMapId') is not None:
-            self.route_map_id = m.get('RouteMapId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
-class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords(TeaModel):
-    def __init__(
-        self,
-        cen_route_map_record: List[DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord] = None,
-    ):
-        self.cen_route_map_record = cen_route_map_record
-
-    def validate(self):
-        if self.cen_route_map_record:
-            for k in self.cen_route_map_record:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['CenRouteMapRecord'] = []
-        if self.cen_route_map_record is not None:
-            for k in self.cen_route_map_record:
-                result['CenRouteMapRecord'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.cen_route_map_record = []
-        if m.get('CenRouteMapRecord') is not None:
-            for k in m.get('CenRouteMapRecord'):
-                temp_model = DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord()
-                self.cen_route_map_record.append(temp_model.from_map(k))
+        if m.get('AsPath') is not None:
+            self.as_path = m.get('AsPath')
         return self
 
 
@@ -3506,12 +3506,12 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
         operational_mode: bool = None,
         next_hop_region_id: str = None,
         next_hop_instance_id: str = None,
+        destination_cidr_block: str = None,
         route_table_id: str = None,
-        as_paths: DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths = None,
+        cen_route_map_records: DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords = None,
         conflicts: DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts = None,
         communities: DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities = None,
-        destination_cidr_block: str = None,
-        cen_route_map_records: DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords = None,
+        as_paths: DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths = None,
     ):
         self.status = status
         self.type = type
@@ -3520,22 +3520,22 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
         self.operational_mode = operational_mode
         self.next_hop_region_id = next_hop_region_id
         self.next_hop_instance_id = next_hop_instance_id
+        self.destination_cidr_block = destination_cidr_block
         self.route_table_id = route_table_id
-        self.as_paths = as_paths
+        self.cen_route_map_records = cen_route_map_records
         self.conflicts = conflicts
         self.communities = communities
-        self.destination_cidr_block = destination_cidr_block
-        self.cen_route_map_records = cen_route_map_records
+        self.as_paths = as_paths
 
     def validate(self):
-        if self.as_paths:
-            self.as_paths.validate()
+        if self.cen_route_map_records:
+            self.cen_route_map_records.validate()
         if self.conflicts:
             self.conflicts.validate()
         if self.communities:
             self.communities.validate()
-        if self.cen_route_map_records:
-            self.cen_route_map_records.validate()
+        if self.as_paths:
+            self.as_paths.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3557,18 +3557,18 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
             result['NextHopRegionId'] = self.next_hop_region_id
         if self.next_hop_instance_id is not None:
             result['NextHopInstanceId'] = self.next_hop_instance_id
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.route_table_id is not None:
             result['RouteTableId'] = self.route_table_id
-        if self.as_paths is not None:
-            result['AsPaths'] = self.as_paths.to_map()
+        if self.cen_route_map_records is not None:
+            result['CenRouteMapRecords'] = self.cen_route_map_records.to_map()
         if self.conflicts is not None:
             result['Conflicts'] = self.conflicts.to_map()
         if self.communities is not None:
             result['Communities'] = self.communities.to_map()
-        if self.destination_cidr_block is not None:
-            result['DestinationCidrBlock'] = self.destination_cidr_block
-        if self.cen_route_map_records is not None:
-            result['CenRouteMapRecords'] = self.cen_route_map_records.to_map()
+        if self.as_paths is not None:
+            result['AsPaths'] = self.as_paths.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -3587,22 +3587,22 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
             self.next_hop_region_id = m.get('NextHopRegionId')
         if m.get('NextHopInstanceId') is not None:
             self.next_hop_instance_id = m.get('NextHopInstanceId')
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('RouteTableId') is not None:
             self.route_table_id = m.get('RouteTableId')
-        if m.get('AsPaths') is not None:
-            temp_model = DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths()
-            self.as_paths = temp_model.from_map(m['AsPaths'])
+        if m.get('CenRouteMapRecords') is not None:
+            temp_model = DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords()
+            self.cen_route_map_records = temp_model.from_map(m['CenRouteMapRecords'])
         if m.get('Conflicts') is not None:
             temp_model = DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts()
             self.conflicts = temp_model.from_map(m['Conflicts'])
         if m.get('Communities') is not None:
             temp_model = DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities()
             self.communities = temp_model.from_map(m['Communities'])
-        if m.get('DestinationCidrBlock') is not None:
-            self.destination_cidr_block = m.get('DestinationCidrBlock')
-        if m.get('CenRouteMapRecords') is not None:
-            temp_model = DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords()
-            self.cen_route_map_records = temp_model.from_map(m['CenRouteMapRecords'])
+        if m.get('AsPaths') is not None:
+            temp_model = DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths()
+            self.as_paths = temp_model.from_map(m['AsPaths'])
         return self
 
 
@@ -3644,16 +3644,16 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries(TeaModel):
 class DescribeCenChildInstanceRouteEntriesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         cen_route_entries: DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.cen_route_entries = cen_route_entries
 
     def validate(self):
@@ -3666,28 +3666,28 @@ class DescribeCenChildInstanceRouteEntriesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.cen_route_entries is not None:
             result['CenRouteEntries'] = self.cen_route_entries.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('CenRouteEntries') is not None:
             temp_model = DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries()
             self.cen_route_entries = temp_model.from_map(m['CenRouteEntries'])
@@ -3809,11 +3809,11 @@ class DescribeCenGeographicSpanRemainingBandwidthRequest(TeaModel):
 class DescribeCenGeographicSpanRemainingBandwidthResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         remaining_bandwidth: int = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.remaining_bandwidth = remaining_bandwidth
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3824,18 +3824,18 @@ class DescribeCenGeographicSpanRemainingBandwidthResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.remaining_bandwidth is not None:
             result['RemainingBandwidth'] = self.remaining_bandwidth
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('RemainingBandwidth') is not None:
             self.remaining_bandwidth = m.get('RemainingBandwidth')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3942,13 +3942,13 @@ class DescribeCenGeographicSpansRequest(TeaModel):
 class DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel(TeaModel):
     def __init__(
         self,
+        local_geo_region_id: str = None,
         geographic_span_id: str = None,
         opposite_geo_region_id: str = None,
-        local_geo_region_id: str = None,
     ):
+        self.local_geo_region_id = local_geo_region_id
         self.geographic_span_id = geographic_span_id
         self.opposite_geo_region_id = opposite_geo_region_id
-        self.local_geo_region_id = local_geo_region_id
 
     def validate(self):
         pass
@@ -3959,22 +3959,22 @@ class DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanMo
             return _map
 
         result = dict()
+        if self.local_geo_region_id is not None:
+            result['LocalGeoRegionId'] = self.local_geo_region_id
         if self.geographic_span_id is not None:
             result['GeographicSpanId'] = self.geographic_span_id
         if self.opposite_geo_region_id is not None:
             result['OppositeGeoRegionId'] = self.opposite_geo_region_id
-        if self.local_geo_region_id is not None:
-            result['LocalGeoRegionId'] = self.local_geo_region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('LocalGeoRegionId') is not None:
+            self.local_geo_region_id = m.get('LocalGeoRegionId')
         if m.get('GeographicSpanId') is not None:
             self.geographic_span_id = m.get('GeographicSpanId')
         if m.get('OppositeGeoRegionId') is not None:
             self.opposite_geo_region_id = m.get('OppositeGeoRegionId')
-        if m.get('LocalGeoRegionId') is not None:
-            self.local_geo_region_id = m.get('LocalGeoRegionId')
         return self
 
 
@@ -4016,16 +4016,16 @@ class DescribeCenGeographicSpansResponseBodyGeographicSpanModels(TeaModel):
 class DescribeCenGeographicSpansResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         geographic_span_models: DescribeCenGeographicSpansResponseBodyGeographicSpanModels = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.geographic_span_models = geographic_span_models
 
     def validate(self):
@@ -4038,28 +4038,28 @@ class DescribeCenGeographicSpansResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.geographic_span_models is not None:
             result['GeographicSpanModels'] = self.geographic_span_models.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('GeographicSpanModels') is not None:
             temp_model = DescribeCenGeographicSpansResponseBodyGeographicSpanModels()
             self.geographic_span_models = temp_model.from_map(m['GeographicSpanModels'])
@@ -4267,17 +4267,17 @@ class DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLi
 class DescribeCenInterRegionBandwidthLimitsResponseBody(TeaModel):
     def __init__(
         self,
-        cen_inter_region_bandwidth_limits: DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits = None,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
+        cen_inter_region_bandwidth_limits: DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits = None,
     ):
-        self.cen_inter_region_bandwidth_limits = cen_inter_region_bandwidth_limits
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
+        self.cen_inter_region_bandwidth_limits = cen_inter_region_bandwidth_limits
 
     def validate(self):
         if self.cen_inter_region_bandwidth_limits:
@@ -4289,31 +4289,31 @@ class DescribeCenInterRegionBandwidthLimitsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.cen_inter_region_bandwidth_limits is not None:
-            result['CenInterRegionBandwidthLimits'] = self.cen_inter_region_bandwidth_limits.to_map()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.cen_inter_region_bandwidth_limits is not None:
+            result['CenInterRegionBandwidthLimits'] = self.cen_inter_region_bandwidth_limits.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CenInterRegionBandwidthLimits') is not None:
-            temp_model = DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits()
-            self.cen_inter_region_bandwidth_limits = temp_model.from_map(m['CenInterRegionBandwidthLimits'])
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('CenInterRegionBandwidthLimits') is not None:
+            temp_model = DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits()
+            self.cen_inter_region_bandwidth_limits = temp_model.from_map(m['CenInterRegionBandwidthLimits'])
         return self
 
 
@@ -4421,14 +4421,14 @@ class DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo(Te
     def __init__(
         self,
         status: str = None,
-        host_vpc_id: str = None,
         access_region_id: str = None,
         host_region_id: str = None,
+        host_vpc_id: str = None,
     ):
         self.status = status
-        self.host_vpc_id = host_vpc_id
         self.access_region_id = access_region_id
         self.host_region_id = host_region_id
+        self.host_vpc_id = host_vpc_id
 
     def validate(self):
         pass
@@ -4441,24 +4441,24 @@ class DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo(Te
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.host_vpc_id is not None:
-            result['HostVpcId'] = self.host_vpc_id
         if self.access_region_id is not None:
             result['AccessRegionId'] = self.access_region_id
         if self.host_region_id is not None:
             result['HostRegionId'] = self.host_region_id
+        if self.host_vpc_id is not None:
+            result['HostVpcId'] = self.host_vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('HostVpcId') is not None:
-            self.host_vpc_id = m.get('HostVpcId')
         if m.get('AccessRegionId') is not None:
             self.access_region_id = m.get('AccessRegionId')
         if m.get('HostRegionId') is not None:
             self.host_region_id = m.get('HostRegionId')
+        if m.get('HostVpcId') is not None:
+            self.host_vpc_id = m.get('HostVpcId')
         return self
 
 
@@ -4500,21 +4500,21 @@ class DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos(TeaModel):
 class DescribeCenPrivateZoneRoutesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
-        page_size: int = None,
-        private_zone_infos: DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos = None,
-        page_number: int = None,
-        cen_id: str = None,
         private_zone_dns_servers: str = None,
+        cen_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+        private_zone_infos: DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
-        self.page_size = page_size
-        self.private_zone_infos = private_zone_infos
-        self.page_number = page_number
-        self.cen_id = cen_id
         self.private_zone_dns_servers = private_zone_dns_servers
+        self.cen_id = cen_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+        self.private_zone_infos = private_zone_infos
 
     def validate(self):
         if self.private_zone_infos:
@@ -4526,39 +4526,39 @@ class DescribeCenPrivateZoneRoutesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.private_zone_infos is not None:
-            result['PrivateZoneInfos'] = self.private_zone_infos.to_map()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.cen_id is not None:
-            result['CenId'] = self.cen_id
         if self.private_zone_dns_servers is not None:
             result['PrivateZoneDnsServers'] = self.private_zone_dns_servers
+        if self.cen_id is not None:
+            result['CenId'] = self.cen_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.private_zone_infos is not None:
+            result['PrivateZoneInfos'] = self.private_zone_infos.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('PrivateZoneDnsServers') is not None:
+            self.private_zone_dns_servers = m.get('PrivateZoneDnsServers')
+        if m.get('CenId') is not None:
+            self.cen_id = m.get('CenId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('PrivateZoneInfos') is not None:
             temp_model = DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos()
             self.private_zone_infos = temp_model.from_map(m['PrivateZoneInfos'])
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('CenId') is not None:
-            self.cen_id = m.get('CenId')
-        if m.get('PrivateZoneDnsServers') is not None:
-            self.private_zone_dns_servers = m.get('PrivateZoneDnsServers')
         return self
 
 
@@ -4674,128 +4674,6 @@ class DescribeCenRegionDomainRouteEntriesRequest(TeaModel):
         return self
 
 
-class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord(TeaModel):
-    def __init__(
-        self,
-        route_map_id: str = None,
-        region_id: str = None,
-    ):
-        self.route_map_id = route_map_id
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.route_map_id is not None:
-            result['RouteMapId'] = self.route_map_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RouteMapId') is not None:
-            self.route_map_id = m.get('RouteMapId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
-class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords(TeaModel):
-    def __init__(
-        self,
-        cen_out_route_map_record: List[DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord] = None,
-    ):
-        self.cen_out_route_map_record = cen_out_route_map_record
-
-    def validate(self):
-        if self.cen_out_route_map_record:
-            for k in self.cen_out_route_map_record:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['CenOutRouteMapRecord'] = []
-        if self.cen_out_route_map_record is not None:
-            for k in self.cen_out_route_map_record:
-                result['CenOutRouteMapRecord'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.cen_out_route_map_record = []
-        if m.get('CenOutRouteMapRecord') is not None:
-            for k in m.get('CenOutRouteMapRecord'):
-                temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord()
-                self.cen_out_route_map_record.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths(TeaModel):
-    def __init__(
-        self,
-        as_path: List[str] = None,
-    ):
-        self.as_path = as_path
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.as_path is not None:
-            result['AsPath'] = self.as_path
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AsPath') is not None:
-            self.as_path = m.get('AsPath')
-        return self
-
-
-class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities(TeaModel):
-    def __init__(
-        self,
-        community: List[str] = None,
-    ):
-        self.community = community
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.community is not None:
-            result['Community'] = self.community
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Community') is not None:
-            self.community = m.get('Community')
-        return self
-
-
 class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord(TeaModel):
     def __init__(
         self,
@@ -4864,44 +4742,17 @@ class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntr
         return self
 
 
-class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry(TeaModel):
+class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord(TeaModel):
     def __init__(
         self,
-        type: str = None,
-        status: str = None,
-        cen_out_route_map_records: DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords = None,
-        next_hop_type: str = None,
-        next_hop_instance_id: str = None,
-        next_hop_region_id: str = None,
-        as_paths: DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths = None,
-        to_other_region_status: str = None,
-        communities: DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities = None,
-        destination_cidr_block: str = None,
-        preference: int = None,
-        cen_route_map_records: DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords = None,
+        route_map_id: str = None,
+        region_id: str = None,
     ):
-        self.type = type
-        self.status = status
-        self.cen_out_route_map_records = cen_out_route_map_records
-        self.next_hop_type = next_hop_type
-        self.next_hop_instance_id = next_hop_instance_id
-        self.next_hop_region_id = next_hop_region_id
-        self.as_paths = as_paths
-        self.to_other_region_status = to_other_region_status
-        self.communities = communities
-        self.destination_cidr_block = destination_cidr_block
-        self.preference = preference
-        self.cen_route_map_records = cen_route_map_records
+        self.route_map_id = route_map_id
+        self.region_id = region_id
 
     def validate(self):
-        if self.cen_out_route_map_records:
-            self.cen_out_route_map_records.validate()
-        if self.as_paths:
-            self.as_paths.validate()
-        if self.communities:
-            self.communities.validate()
-        if self.cen_route_map_records:
-            self.cen_route_map_records.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4909,55 +4760,195 @@ class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntr
             return _map
 
         result = dict()
+        if self.route_map_id is not None:
+            result['RouteMapId'] = self.route_map_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteMapId') is not None:
+            self.route_map_id = m.get('RouteMapId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords(TeaModel):
+    def __init__(
+        self,
+        cen_out_route_map_record: List[DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord] = None,
+    ):
+        self.cen_out_route_map_record = cen_out_route_map_record
+
+    def validate(self):
+        if self.cen_out_route_map_record:
+            for k in self.cen_out_route_map_record:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CenOutRouteMapRecord'] = []
+        if self.cen_out_route_map_record is not None:
+            for k in self.cen_out_route_map_record:
+                result['CenOutRouteMapRecord'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cen_out_route_map_record = []
+        if m.get('CenOutRouteMapRecord') is not None:
+            for k in m.get('CenOutRouteMapRecord'):
+                temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord()
+                self.cen_out_route_map_record.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities(TeaModel):
+    def __init__(
+        self,
+        community: List[str] = None,
+    ):
+        self.community = community
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.community is not None:
+            result['Community'] = self.community
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Community') is not None:
+            self.community = m.get('Community')
+        return self
+
+
+class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths(TeaModel):
+    def __init__(
+        self,
+        as_path: List[str] = None,
+    ):
+        self.as_path = as_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.as_path is not None:
+            result['AsPath'] = self.as_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsPath') is not None:
+            self.as_path = m.get('AsPath')
+        return self
+
+
+class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry(TeaModel):
+    def __init__(
+        self,
+        to_other_region_status: str = None,
+        type: str = None,
+        status: str = None,
+        next_hop_type: str = None,
+        next_hop_instance_id: str = None,
+        next_hop_region_id: str = None,
+        destination_cidr_block: str = None,
+        preference: int = None,
+        cen_route_map_records: DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords = None,
+        cen_out_route_map_records: DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords = None,
+        communities: DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities = None,
+        as_paths: DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths = None,
+    ):
+        self.to_other_region_status = to_other_region_status
+        self.type = type
+        self.status = status
+        self.next_hop_type = next_hop_type
+        self.next_hop_instance_id = next_hop_instance_id
+        self.next_hop_region_id = next_hop_region_id
+        self.destination_cidr_block = destination_cidr_block
+        self.preference = preference
+        self.cen_route_map_records = cen_route_map_records
+        self.cen_out_route_map_records = cen_out_route_map_records
+        self.communities = communities
+        self.as_paths = as_paths
+
+    def validate(self):
+        if self.cen_route_map_records:
+            self.cen_route_map_records.validate()
+        if self.cen_out_route_map_records:
+            self.cen_out_route_map_records.validate()
+        if self.communities:
+            self.communities.validate()
+        if self.as_paths:
+            self.as_paths.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.to_other_region_status is not None:
+            result['ToOtherRegionStatus'] = self.to_other_region_status
         if self.type is not None:
             result['Type'] = self.type
         if self.status is not None:
             result['Status'] = self.status
-        if self.cen_out_route_map_records is not None:
-            result['CenOutRouteMapRecords'] = self.cen_out_route_map_records.to_map()
         if self.next_hop_type is not None:
             result['NextHopType'] = self.next_hop_type
         if self.next_hop_instance_id is not None:
             result['NextHopInstanceId'] = self.next_hop_instance_id
         if self.next_hop_region_id is not None:
             result['NextHopRegionId'] = self.next_hop_region_id
-        if self.as_paths is not None:
-            result['AsPaths'] = self.as_paths.to_map()
-        if self.to_other_region_status is not None:
-            result['ToOtherRegionStatus'] = self.to_other_region_status
-        if self.communities is not None:
-            result['Communities'] = self.communities.to_map()
         if self.destination_cidr_block is not None:
             result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.preference is not None:
             result['Preference'] = self.preference
         if self.cen_route_map_records is not None:
             result['CenRouteMapRecords'] = self.cen_route_map_records.to_map()
+        if self.cen_out_route_map_records is not None:
+            result['CenOutRouteMapRecords'] = self.cen_out_route_map_records.to_map()
+        if self.communities is not None:
+            result['Communities'] = self.communities.to_map()
+        if self.as_paths is not None:
+            result['AsPaths'] = self.as_paths.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ToOtherRegionStatus') is not None:
+            self.to_other_region_status = m.get('ToOtherRegionStatus')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('CenOutRouteMapRecords') is not None:
-            temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords()
-            self.cen_out_route_map_records = temp_model.from_map(m['CenOutRouteMapRecords'])
         if m.get('NextHopType') is not None:
             self.next_hop_type = m.get('NextHopType')
         if m.get('NextHopInstanceId') is not None:
             self.next_hop_instance_id = m.get('NextHopInstanceId')
         if m.get('NextHopRegionId') is not None:
             self.next_hop_region_id = m.get('NextHopRegionId')
-        if m.get('AsPaths') is not None:
-            temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths()
-            self.as_paths = temp_model.from_map(m['AsPaths'])
-        if m.get('ToOtherRegionStatus') is not None:
-            self.to_other_region_status = m.get('ToOtherRegionStatus')
-        if m.get('Communities') is not None:
-            temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities()
-            self.communities = temp_model.from_map(m['Communities'])
         if m.get('DestinationCidrBlock') is not None:
             self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('Preference') is not None:
@@ -4965,6 +4956,15 @@ class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntr
         if m.get('CenRouteMapRecords') is not None:
             temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords()
             self.cen_route_map_records = temp_model.from_map(m['CenRouteMapRecords'])
+        if m.get('CenOutRouteMapRecords') is not None:
+            temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords()
+            self.cen_out_route_map_records = temp_model.from_map(m['CenOutRouteMapRecords'])
+        if m.get('Communities') is not None:
+            temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities()
+            self.communities = temp_model.from_map(m['Communities'])
+        if m.get('AsPaths') is not None:
+            temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths()
+            self.as_paths = temp_model.from_map(m['AsPaths'])
         return self
 
 
@@ -5006,16 +5006,16 @@ class DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries(TeaModel):
 class DescribeCenRegionDomainRouteEntriesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         cen_route_entries: DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.cen_route_entries = cen_route_entries
 
     def validate(self):
@@ -5028,28 +5028,28 @@ class DescribeCenRegionDomainRouteEntriesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.cen_route_entries is not None:
             result['CenRouteEntries'] = self.cen_route_entries.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('CenRouteEntries') is not None:
             temp_model = DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries()
             self.cen_route_entries = temp_model.from_map(m['CenRouteEntries'])
@@ -5201,168 +5201,6 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds(TeaModel)
         return self
 
 
-class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet(TeaModel):
-    def __init__(
-        self,
-        match_community: List[str] = None,
-    ):
-        self.match_community = match_community
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.match_community is not None:
-            result['MatchCommunity'] = self.match_community
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MatchCommunity') is not None:
-            self.match_community = m.get('MatchCommunity')
-        return self
-
-
-class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath(TeaModel):
-    def __init__(
-        self,
-        as_path: List[str] = None,
-    ):
-        self.as_path = as_path
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.as_path is not None:
-            result['AsPath'] = self.as_path
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AsPath') is not None:
-            self.as_path = m.get('AsPath')
-        return self
-
-
-class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes(TeaModel):
-    def __init__(
-        self,
-        route_type: List[str] = None,
-    ):
-        self.route_type = route_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.route_type is not None:
-            result['RouteType'] = self.route_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RouteType') is not None:
-            self.route_type = m.get('RouteType')
-        return self
-
-
-class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds(TeaModel):
-    def __init__(
-        self,
-        destination_instance_id: List[str] = None,
-    ):
-        self.destination_instance_id = destination_instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.destination_instance_id is not None:
-            result['DestinationInstanceId'] = self.destination_instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DestinationInstanceId') is not None:
-            self.destination_instance_id = m.get('DestinationInstanceId')
-        return self
-
-
-class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns(TeaModel):
-    def __init__(
-        self,
-        match_asn: List[str] = None,
-    ):
-        self.match_asn = match_asn
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.match_asn is not None:
-            result['MatchAsn'] = self.match_asn
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MatchAsn') is not None:
-            self.match_asn = m.get('MatchAsn')
-        return self
-
-
-class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet(TeaModel):
-    def __init__(
-        self,
-        operate_community: List[str] = None,
-    ):
-        self.operate_community = operate_community
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.operate_community is not None:
-            result['OperateCommunity'] = self.operate_community
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OperateCommunity') is not None:
-            self.operate_community = m.get('OperateCommunity')
-        return self
-
-
 class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes(TeaModel):
     def __init__(
         self,
@@ -5498,6 +5336,87 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds(TeaMo
         return self
 
 
+class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet(TeaModel):
+    def __init__(
+        self,
+        match_community: List[str] = None,
+    ):
+        self.match_community = match_community
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_community is not None:
+            result['MatchCommunity'] = self.match_community
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MatchCommunity') is not None:
+            self.match_community = m.get('MatchCommunity')
+        return self
+
+
+class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath(TeaModel):
+    def __init__(
+        self,
+        as_path: List[str] = None,
+    ):
+        self.as_path = as_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.as_path is not None:
+            result['AsPath'] = self.as_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsPath') is not None:
+            self.as_path = m.get('AsPath')
+        return self
+
+
+class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes(TeaModel):
+    def __init__(
+        self,
+        route_type: List[str] = None,
+    ):
+        self.route_type = route_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_type is not None:
+            result['RouteType'] = self.route_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteType') is not None:
+            self.route_type = m.get('RouteType')
+        return self
+
+
 class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes(TeaModel):
     def __init__(
         self,
@@ -5525,84 +5444,153 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceT
         return self
 
 
+class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds(TeaModel):
+    def __init__(
+        self,
+        destination_instance_id: List[str] = None,
+    ):
+        self.destination_instance_id = destination_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_instance_id is not None:
+            result['DestinationInstanceId'] = self.destination_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationInstanceId') is not None:
+            self.destination_instance_id = m.get('DestinationInstanceId')
+        return self
+
+
+class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns(TeaModel):
+    def __init__(
+        self,
+        match_asn: List[str] = None,
+    ):
+        self.match_asn = match_asn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_asn is not None:
+            result['MatchAsn'] = self.match_asn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MatchAsn') is not None:
+            self.match_asn = m.get('MatchAsn')
+        return self
+
+
+class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet(TeaModel):
+    def __init__(
+        self,
+        operate_community: List[str] = None,
+    ):
+        self.operate_community = operate_community
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operate_community is not None:
+            result['OperateCommunity'] = self.operate_community
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperateCommunity') is not None:
+            self.operate_community = m.get('OperateCommunity')
+        return self
+
+
 class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
     def __init__(
         self,
+        route_map_id: str = None,
         status: str = None,
+        transmit_direction: str = None,
         source_instance_ids_reverse_match: bool = None,
-        source_region_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds = None,
-        match_community_set: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet = None,
+        cen_region_id: str = None,
+        cen_id: str = None,
         priority: int = None,
         community_operate_mode: str = None,
-        prepend_as_path: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath = None,
-        route_types: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes = None,
+        map_result: str = None,
+        community_match_mode: str = None,
         description: str = None,
-        destination_instance_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds = None,
-        match_asns: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns = None,
+        as_path_match_mode: str = None,
+        preference: int = None,
         destination_instance_ids_reverse_match: bool = None,
-        operate_community_set: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet = None,
+        cidr_match_mode: str = None,
         next_priority: int = None,
-        route_map_id: str = None,
-        transmit_direction: str = None,
+        source_region_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds = None,
         source_child_instance_types: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes = None,
         destination_route_table_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds = None,
         source_instance_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds = None,
-        cen_region_id: str = None,
         destination_cidr_blocks: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks = None,
-        cen_id: str = None,
         source_route_table_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds = None,
-        map_result: str = None,
-        community_match_mode: str = None,
+        match_community_set: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet = None,
+        prepend_as_path: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath = None,
+        route_types: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes = None,
         destination_child_instance_types: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes = None,
-        as_path_match_mode: str = None,
-        preference: int = None,
-        cidr_match_mode: str = None,
+        destination_instance_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds = None,
+        match_asns: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns = None,
+        operate_community_set: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet = None,
     ):
+        self.route_map_id = route_map_id
         self.status = status
+        self.transmit_direction = transmit_direction
         self.source_instance_ids_reverse_match = source_instance_ids_reverse_match
-        self.source_region_ids = source_region_ids
-        self.match_community_set = match_community_set
+        self.cen_region_id = cen_region_id
+        self.cen_id = cen_id
         self.priority = priority
         self.community_operate_mode = community_operate_mode
-        self.prepend_as_path = prepend_as_path
-        self.route_types = route_types
+        self.map_result = map_result
+        self.community_match_mode = community_match_mode
         self.description = description
-        self.destination_instance_ids = destination_instance_ids
-        self.match_asns = match_asns
+        self.as_path_match_mode = as_path_match_mode
+        self.preference = preference
         self.destination_instance_ids_reverse_match = destination_instance_ids_reverse_match
-        self.operate_community_set = operate_community_set
+        self.cidr_match_mode = cidr_match_mode
         self.next_priority = next_priority
-        self.route_map_id = route_map_id
-        self.transmit_direction = transmit_direction
+        self.source_region_ids = source_region_ids
         self.source_child_instance_types = source_child_instance_types
         self.destination_route_table_ids = destination_route_table_ids
         self.source_instance_ids = source_instance_ids
-        self.cen_region_id = cen_region_id
         self.destination_cidr_blocks = destination_cidr_blocks
-        self.cen_id = cen_id
         self.source_route_table_ids = source_route_table_ids
-        self.map_result = map_result
-        self.community_match_mode = community_match_mode
+        self.match_community_set = match_community_set
+        self.prepend_as_path = prepend_as_path
+        self.route_types = route_types
         self.destination_child_instance_types = destination_child_instance_types
-        self.as_path_match_mode = as_path_match_mode
-        self.preference = preference
-        self.cidr_match_mode = cidr_match_mode
+        self.destination_instance_ids = destination_instance_ids
+        self.match_asns = match_asns
+        self.operate_community_set = operate_community_set
 
     def validate(self):
         if self.source_region_ids:
             self.source_region_ids.validate()
-        if self.match_community_set:
-            self.match_community_set.validate()
-        if self.prepend_as_path:
-            self.prepend_as_path.validate()
-        if self.route_types:
-            self.route_types.validate()
-        if self.destination_instance_ids:
-            self.destination_instance_ids.validate()
-        if self.match_asns:
-            self.match_asns.validate()
-        if self.operate_community_set:
-            self.operate_community_set.validate()
         if self.source_child_instance_types:
             self.source_child_instance_types.validate()
         if self.destination_route_table_ids:
@@ -5613,8 +5601,20 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
             self.destination_cidr_blocks.validate()
         if self.source_route_table_ids:
             self.source_route_table_ids.validate()
+        if self.match_community_set:
+            self.match_community_set.validate()
+        if self.prepend_as_path:
+            self.prepend_as_path.validate()
+        if self.route_types:
+            self.route_types.validate()
         if self.destination_child_instance_types:
             self.destination_child_instance_types.validate()
+        if self.destination_instance_ids:
+            self.destination_instance_ids.validate()
+        if self.match_asns:
+            self.match_asns.validate()
+        if self.operate_community_set:
+            self.operate_community_set.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5622,107 +5622,103 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
             return _map
 
         result = dict()
+        if self.route_map_id is not None:
+            result['RouteMapId'] = self.route_map_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.transmit_direction is not None:
+            result['TransmitDirection'] = self.transmit_direction
         if self.source_instance_ids_reverse_match is not None:
             result['SourceInstanceIdsReverseMatch'] = self.source_instance_ids_reverse_match
-        if self.source_region_ids is not None:
-            result['SourceRegionIds'] = self.source_region_ids.to_map()
-        if self.match_community_set is not None:
-            result['MatchCommunitySet'] = self.match_community_set.to_map()
+        if self.cen_region_id is not None:
+            result['CenRegionId'] = self.cen_region_id
+        if self.cen_id is not None:
+            result['CenId'] = self.cen_id
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.community_operate_mode is not None:
             result['CommunityOperateMode'] = self.community_operate_mode
-        if self.prepend_as_path is not None:
-            result['PrependAsPath'] = self.prepend_as_path.to_map()
-        if self.route_types is not None:
-            result['RouteTypes'] = self.route_types.to_map()
+        if self.map_result is not None:
+            result['MapResult'] = self.map_result
+        if self.community_match_mode is not None:
+            result['CommunityMatchMode'] = self.community_match_mode
         if self.description is not None:
             result['Description'] = self.description
-        if self.destination_instance_ids is not None:
-            result['DestinationInstanceIds'] = self.destination_instance_ids.to_map()
-        if self.match_asns is not None:
-            result['MatchAsns'] = self.match_asns.to_map()
+        if self.as_path_match_mode is not None:
+            result['AsPathMatchMode'] = self.as_path_match_mode
+        if self.preference is not None:
+            result['Preference'] = self.preference
         if self.destination_instance_ids_reverse_match is not None:
             result['DestinationInstanceIdsReverseMatch'] = self.destination_instance_ids_reverse_match
-        if self.operate_community_set is not None:
-            result['OperateCommunitySet'] = self.operate_community_set.to_map()
+        if self.cidr_match_mode is not None:
+            result['CidrMatchMode'] = self.cidr_match_mode
         if self.next_priority is not None:
             result['NextPriority'] = self.next_priority
-        if self.route_map_id is not None:
-            result['RouteMapId'] = self.route_map_id
-        if self.transmit_direction is not None:
-            result['TransmitDirection'] = self.transmit_direction
+        if self.source_region_ids is not None:
+            result['SourceRegionIds'] = self.source_region_ids.to_map()
         if self.source_child_instance_types is not None:
             result['SourceChildInstanceTypes'] = self.source_child_instance_types.to_map()
         if self.destination_route_table_ids is not None:
             result['DestinationRouteTableIds'] = self.destination_route_table_ids.to_map()
         if self.source_instance_ids is not None:
             result['SourceInstanceIds'] = self.source_instance_ids.to_map()
-        if self.cen_region_id is not None:
-            result['CenRegionId'] = self.cen_region_id
         if self.destination_cidr_blocks is not None:
             result['DestinationCidrBlocks'] = self.destination_cidr_blocks.to_map()
-        if self.cen_id is not None:
-            result['CenId'] = self.cen_id
         if self.source_route_table_ids is not None:
             result['SourceRouteTableIds'] = self.source_route_table_ids.to_map()
-        if self.map_result is not None:
-            result['MapResult'] = self.map_result
-        if self.community_match_mode is not None:
-            result['CommunityMatchMode'] = self.community_match_mode
+        if self.match_community_set is not None:
+            result['MatchCommunitySet'] = self.match_community_set.to_map()
+        if self.prepend_as_path is not None:
+            result['PrependAsPath'] = self.prepend_as_path.to_map()
+        if self.route_types is not None:
+            result['RouteTypes'] = self.route_types.to_map()
         if self.destination_child_instance_types is not None:
             result['DestinationChildInstanceTypes'] = self.destination_child_instance_types.to_map()
-        if self.as_path_match_mode is not None:
-            result['AsPathMatchMode'] = self.as_path_match_mode
-        if self.preference is not None:
-            result['Preference'] = self.preference
-        if self.cidr_match_mode is not None:
-            result['CidrMatchMode'] = self.cidr_match_mode
+        if self.destination_instance_ids is not None:
+            result['DestinationInstanceIds'] = self.destination_instance_ids.to_map()
+        if self.match_asns is not None:
+            result['MatchAsns'] = self.match_asns.to_map()
+        if self.operate_community_set is not None:
+            result['OperateCommunitySet'] = self.operate_community_set.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RouteMapId') is not None:
+            self.route_map_id = m.get('RouteMapId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TransmitDirection') is not None:
+            self.transmit_direction = m.get('TransmitDirection')
         if m.get('SourceInstanceIdsReverseMatch') is not None:
             self.source_instance_ids_reverse_match = m.get('SourceInstanceIdsReverseMatch')
-        if m.get('SourceRegionIds') is not None:
-            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds()
-            self.source_region_ids = temp_model.from_map(m['SourceRegionIds'])
-        if m.get('MatchCommunitySet') is not None:
-            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet()
-            self.match_community_set = temp_model.from_map(m['MatchCommunitySet'])
+        if m.get('CenRegionId') is not None:
+            self.cen_region_id = m.get('CenRegionId')
+        if m.get('CenId') is not None:
+            self.cen_id = m.get('CenId')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('CommunityOperateMode') is not None:
             self.community_operate_mode = m.get('CommunityOperateMode')
-        if m.get('PrependAsPath') is not None:
-            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath()
-            self.prepend_as_path = temp_model.from_map(m['PrependAsPath'])
-        if m.get('RouteTypes') is not None:
-            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes()
-            self.route_types = temp_model.from_map(m['RouteTypes'])
+        if m.get('MapResult') is not None:
+            self.map_result = m.get('MapResult')
+        if m.get('CommunityMatchMode') is not None:
+            self.community_match_mode = m.get('CommunityMatchMode')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('DestinationInstanceIds') is not None:
-            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds()
-            self.destination_instance_ids = temp_model.from_map(m['DestinationInstanceIds'])
-        if m.get('MatchAsns') is not None:
-            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns()
-            self.match_asns = temp_model.from_map(m['MatchAsns'])
+        if m.get('AsPathMatchMode') is not None:
+            self.as_path_match_mode = m.get('AsPathMatchMode')
+        if m.get('Preference') is not None:
+            self.preference = m.get('Preference')
         if m.get('DestinationInstanceIdsReverseMatch') is not None:
             self.destination_instance_ids_reverse_match = m.get('DestinationInstanceIdsReverseMatch')
-        if m.get('OperateCommunitySet') is not None:
-            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet()
-            self.operate_community_set = temp_model.from_map(m['OperateCommunitySet'])
+        if m.get('CidrMatchMode') is not None:
+            self.cidr_match_mode = m.get('CidrMatchMode')
         if m.get('NextPriority') is not None:
             self.next_priority = m.get('NextPriority')
-        if m.get('RouteMapId') is not None:
-            self.route_map_id = m.get('RouteMapId')
-        if m.get('TransmitDirection') is not None:
-            self.transmit_direction = m.get('TransmitDirection')
+        if m.get('SourceRegionIds') is not None:
+            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds()
+            self.source_region_ids = temp_model.from_map(m['SourceRegionIds'])
         if m.get('SourceChildInstanceTypes') is not None:
             temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes()
             self.source_child_instance_types = temp_model.from_map(m['SourceChildInstanceTypes'])
@@ -5732,29 +5728,33 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
         if m.get('SourceInstanceIds') is not None:
             temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds()
             self.source_instance_ids = temp_model.from_map(m['SourceInstanceIds'])
-        if m.get('CenRegionId') is not None:
-            self.cen_region_id = m.get('CenRegionId')
         if m.get('DestinationCidrBlocks') is not None:
             temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks()
             self.destination_cidr_blocks = temp_model.from_map(m['DestinationCidrBlocks'])
-        if m.get('CenId') is not None:
-            self.cen_id = m.get('CenId')
         if m.get('SourceRouteTableIds') is not None:
             temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds()
             self.source_route_table_ids = temp_model.from_map(m['SourceRouteTableIds'])
-        if m.get('MapResult') is not None:
-            self.map_result = m.get('MapResult')
-        if m.get('CommunityMatchMode') is not None:
-            self.community_match_mode = m.get('CommunityMatchMode')
+        if m.get('MatchCommunitySet') is not None:
+            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet()
+            self.match_community_set = temp_model.from_map(m['MatchCommunitySet'])
+        if m.get('PrependAsPath') is not None:
+            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath()
+            self.prepend_as_path = temp_model.from_map(m['PrependAsPath'])
+        if m.get('RouteTypes') is not None:
+            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes()
+            self.route_types = temp_model.from_map(m['RouteTypes'])
         if m.get('DestinationChildInstanceTypes') is not None:
             temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes()
             self.destination_child_instance_types = temp_model.from_map(m['DestinationChildInstanceTypes'])
-        if m.get('AsPathMatchMode') is not None:
-            self.as_path_match_mode = m.get('AsPathMatchMode')
-        if m.get('Preference') is not None:
-            self.preference = m.get('Preference')
-        if m.get('CidrMatchMode') is not None:
-            self.cidr_match_mode = m.get('CidrMatchMode')
+        if m.get('DestinationInstanceIds') is not None:
+            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds()
+            self.destination_instance_ids = temp_model.from_map(m['DestinationInstanceIds'])
+        if m.get('MatchAsns') is not None:
+            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns()
+            self.match_asns = temp_model.from_map(m['MatchAsns'])
+        if m.get('OperateCommunitySet') is not None:
+            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet()
+            self.operate_community_set = temp_model.from_map(m['OperateCommunitySet'])
         return self
 
 
@@ -5796,16 +5796,16 @@ class DescribeCenRouteMapsResponseBodyRouteMaps(TeaModel):
 class DescribeCenRouteMapsResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         route_maps: DescribeCenRouteMapsResponseBodyRouteMaps = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.route_maps = route_maps
 
     def validate(self):
@@ -5818,28 +5818,28 @@ class DescribeCenRouteMapsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.route_maps is not None:
             result['RouteMaps'] = self.route_maps.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('RouteMaps') is not None:
             temp_model = DescribeCenRouteMapsResponseBodyRouteMaps()
             self.route_maps = temp_model.from_map(m['RouteMaps'])
@@ -6035,33 +6035,6 @@ class DescribeCensRequest(TeaModel):
         return self
 
 
-class DescribeCensResponseBodyCensCenCenBandwidthPackageIds(TeaModel):
-    def __init__(
-        self,
-        cen_bandwidth_package_id: List[str] = None,
-    ):
-        self.cen_bandwidth_package_id = cen_bandwidth_package_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cen_bandwidth_package_id is not None:
-            result['CenBandwidthPackageId'] = self.cen_bandwidth_package_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CenBandwidthPackageId') is not None:
-            self.cen_bandwidth_package_id = m.get('CenBandwidthPackageId')
-        return self
-
-
 class DescribeCensResponseBodyCensCenTagsTag(TeaModel):
     def __init__(
         self,
@@ -6130,32 +6103,59 @@ class DescribeCensResponseBodyCensCenTags(TeaModel):
         return self
 
 
+class DescribeCensResponseBodyCensCenCenBandwidthPackageIds(TeaModel):
+    def __init__(
+        self,
+        cen_bandwidth_package_id: List[str] = None,
+    ):
+        self.cen_bandwidth_package_id = cen_bandwidth_package_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cen_bandwidth_package_id is not None:
+            result['CenBandwidthPackageId'] = self.cen_bandwidth_package_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenBandwidthPackageId') is not None:
+            self.cen_bandwidth_package_id = m.get('CenBandwidthPackageId')
+        return self
+
+
 class DescribeCensResponseBodyCensCen(TeaModel):
     def __init__(
         self,
         status: str = None,
         creation_time: str = None,
-        cen_bandwidth_package_ids: DescribeCensResponseBodyCensCenCenBandwidthPackageIds = None,
         description: str = None,
         cen_id: str = None,
         protection_level: str = None,
-        tags: DescribeCensResponseBodyCensCenTags = None,
         name: str = None,
+        tags: DescribeCensResponseBodyCensCenTags = None,
+        cen_bandwidth_package_ids: DescribeCensResponseBodyCensCenCenBandwidthPackageIds = None,
     ):
         self.status = status
         self.creation_time = creation_time
-        self.cen_bandwidth_package_ids = cen_bandwidth_package_ids
         self.description = description
         self.cen_id = cen_id
         self.protection_level = protection_level
-        self.tags = tags
         self.name = name
+        self.tags = tags
+        self.cen_bandwidth_package_ids = cen_bandwidth_package_ids
 
     def validate(self):
-        if self.cen_bandwidth_package_ids:
-            self.cen_bandwidth_package_ids.validate()
         if self.tags:
             self.tags.validate()
+        if self.cen_bandwidth_package_ids:
+            self.cen_bandwidth_package_ids.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6167,18 +6167,18 @@ class DescribeCensResponseBodyCensCen(TeaModel):
             result['Status'] = self.status
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
-        if self.cen_bandwidth_package_ids is not None:
-            result['CenBandwidthPackageIds'] = self.cen_bandwidth_package_ids.to_map()
         if self.description is not None:
             result['Description'] = self.description
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
         if self.protection_level is not None:
             result['ProtectionLevel'] = self.protection_level
-        if self.tags is not None:
-            result['Tags'] = self.tags.to_map()
         if self.name is not None:
             result['Name'] = self.name
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
+        if self.cen_bandwidth_package_ids is not None:
+            result['CenBandwidthPackageIds'] = self.cen_bandwidth_package_ids.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -6187,20 +6187,20 @@ class DescribeCensResponseBodyCensCen(TeaModel):
             self.status = m.get('Status')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
-        if m.get('CenBandwidthPackageIds') is not None:
-            temp_model = DescribeCensResponseBodyCensCenCenBandwidthPackageIds()
-            self.cen_bandwidth_package_ids = temp_model.from_map(m['CenBandwidthPackageIds'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
         if m.get('ProtectionLevel') is not None:
             self.protection_level = m.get('ProtectionLevel')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Tags') is not None:
             temp_model = DescribeCensResponseBodyCensCenTags()
             self.tags = temp_model.from_map(m['Tags'])
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('CenBandwidthPackageIds') is not None:
+            temp_model = DescribeCensResponseBodyCensCenCenBandwidthPackageIds()
+            self.cen_bandwidth_package_ids = temp_model.from_map(m['CenBandwidthPackageIds'])
         return self
 
 
@@ -6242,16 +6242,16 @@ class DescribeCensResponseBodyCens(TeaModel):
 class DescribeCensResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         cens: DescribeCensResponseBodyCens = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.cens = cens
 
     def validate(self):
@@ -6264,28 +6264,28 @@ class DescribeCensResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.cens is not None:
             result['Cens'] = self.cens.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('Cens') is not None:
             temp_model = DescribeCensResponseBodyCens()
             self.cens = temp_model.from_map(m['Cens'])
@@ -6511,16 +6511,16 @@ class DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks(TeaModel):
 class DescribeCenVbrHealthCheckResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         vbr_health_checks: DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.vbr_health_checks = vbr_health_checks
 
     def validate(self):
@@ -6533,28 +6533,28 @@ class DescribeCenVbrHealthCheckResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.vbr_health_checks is not None:
             result['VbrHealthChecks'] = self.vbr_health_checks.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('VbrHealthChecks') is not None:
             temp_model = DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks()
             self.vbr_health_checks = temp_model.from_map(m['VbrHealthChecks'])
@@ -7013,19 +7013,19 @@ class DescribeFlowlogsResponseBodyFlowLogs(TeaModel):
 class DescribeFlowlogsResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: str = None,
-        flow_logs: DescribeFlowlogsResponseBodyFlowLogs = None,
         page_size: str = None,
-        request_id: str = None,
         page_number: str = None,
+        request_id: str = None,
+        total_count: str = None,
         success: str = None,
+        flow_logs: DescribeFlowlogsResponseBodyFlowLogs = None,
     ):
-        self.total_count = total_count
-        self.flow_logs = flow_logs
         self.page_size = page_size
-        self.request_id = request_id
         self.page_number = page_number
+        self.request_id = request_id
+        self.total_count = total_count
         self.success = success
+        self.flow_logs = flow_logs
 
     def validate(self):
         if self.flow_logs:
@@ -7037,35 +7037,35 @@ class DescribeFlowlogsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        if self.flow_logs is not None:
-            result['FlowLogs'] = self.flow_logs.to_map()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.success is not None:
             result['Success'] = self.success
+        if self.flow_logs is not None:
+            result['FlowLogs'] = self.flow_logs.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('FlowLogs') is not None:
             temp_model = DescribeFlowlogsResponseBodyFlowLogs()
             self.flow_logs = temp_model.from_map(m['FlowLogs'])
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -7234,17 +7234,17 @@ class DescribeGeographicRegionMembershipResponseBodyRegionIds(TeaModel):
 class DescribeGeographicRegionMembershipResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
-        region_ids: DescribeGeographicRegionMembershipResponseBodyRegionIds = None,
         page_number: int = None,
+        total_count: int = None,
+        region_ids: DescribeGeographicRegionMembershipResponseBodyRegionIds = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
-        self.region_ids = region_ids
         self.page_number = page_number
+        self.total_count = total_count
+        self.region_ids = region_ids
 
     def validate(self):
         if self.region_ids:
@@ -7256,31 +7256,31 @@ class DescribeGeographicRegionMembershipResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.region_ids is not None:
-            result['RegionIds'] = self.region_ids.to_map()
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('RegionIds') is not None:
             temp_model = DescribeGeographicRegionMembershipResponseBodyRegionIds()
             self.region_ids = temp_model.from_map(m['RegionIds'])
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
         return self
 
 
@@ -7713,22 +7713,22 @@ class DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRou
     def __init__(
         self,
         next_hop_id: str = None,
-        conflicts: DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts = None,
         publish_status: str = None,
         child_instance_route_table_id: str = None,
         next_hop_type: str = None,
         operational_mode: bool = None,
         destination_cidr_block: str = None,
         route_type: str = None,
+        conflicts: DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts = None,
     ):
         self.next_hop_id = next_hop_id
-        self.conflicts = conflicts
         self.publish_status = publish_status
         self.child_instance_route_table_id = child_instance_route_table_id
         self.next_hop_type = next_hop_type
         self.operational_mode = operational_mode
         self.destination_cidr_block = destination_cidr_block
         self.route_type = route_type
+        self.conflicts = conflicts
 
     def validate(self):
         if self.conflicts:
@@ -7742,8 +7742,6 @@ class DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRou
         result = dict()
         if self.next_hop_id is not None:
             result['NextHopId'] = self.next_hop_id
-        if self.conflicts is not None:
-            result['Conflicts'] = self.conflicts.to_map()
         if self.publish_status is not None:
             result['PublishStatus'] = self.publish_status
         if self.child_instance_route_table_id is not None:
@@ -7756,15 +7754,14 @@ class DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRou
             result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.route_type is not None:
             result['RouteType'] = self.route_type
+        if self.conflicts is not None:
+            result['Conflicts'] = self.conflicts.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('NextHopId') is not None:
             self.next_hop_id = m.get('NextHopId')
-        if m.get('Conflicts') is not None:
-            temp_model = DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts()
-            self.conflicts = temp_model.from_map(m['Conflicts'])
         if m.get('PublishStatus') is not None:
             self.publish_status = m.get('PublishStatus')
         if m.get('ChildInstanceRouteTableId') is not None:
@@ -7777,6 +7774,9 @@ class DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRou
             self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('RouteType') is not None:
             self.route_type = m.get('RouteType')
+        if m.get('Conflicts') is not None:
+            temp_model = DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts()
+            self.conflicts = temp_model.from_map(m['Conflicts'])
         return self
 
 
@@ -7818,16 +7818,16 @@ class DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries(TeaModel):
 class DescribePublishedRouteEntriesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         published_route_entries: DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.published_route_entries = published_route_entries
 
     def validate(self):
@@ -7840,28 +7840,28 @@ class DescribePublishedRouteEntriesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.published_route_entries is not None:
             result['PublishedRouteEntries'] = self.published_route_entries.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('PublishedRouteEntries') is not None:
             temp_model = DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries()
             self.published_route_entries = temp_model.from_map(m['PublishedRouteEntries'])
@@ -8081,16 +8081,16 @@ class DescribeRouteConflictResponseBodyRouteConflicts(TeaModel):
 class DescribeRouteConflictResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         route_conflicts: DescribeRouteConflictResponseBodyRouteConflicts = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.route_conflicts = route_conflicts
 
     def validate(self):
@@ -8103,28 +8103,28 @@ class DescribeRouteConflictResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.route_conflicts is not None:
             result['RouteConflicts'] = self.route_conflicts.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('RouteConflicts') is not None:
             temp_model = DescribeRouteConflictResponseBodyRouteConflicts()
             self.route_conflicts = temp_model.from_map(m['RouteConflicts'])
@@ -8289,21 +8289,21 @@ class DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry
         host: str = None,
         description: str = None,
         host_vpc_id: str = None,
-        cidrs: DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs = None,
         cen_id: str = None,
         access_region_id: str = None,
         host_region_id: str = None,
         update_interval: str = None,
+        cidrs: DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs = None,
     ):
         self.status = status
         self.host = host
         self.description = description
         self.host_vpc_id = host_vpc_id
-        self.cidrs = cidrs
         self.cen_id = cen_id
         self.access_region_id = access_region_id
         self.host_region_id = host_region_id
         self.update_interval = update_interval
+        self.cidrs = cidrs
 
     def validate(self):
         if self.cidrs:
@@ -8323,8 +8323,6 @@ class DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry
             result['Description'] = self.description
         if self.host_vpc_id is not None:
             result['HostVpcId'] = self.host_vpc_id
-        if self.cidrs is not None:
-            result['Cidrs'] = self.cidrs.to_map()
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
         if self.access_region_id is not None:
@@ -8333,6 +8331,8 @@ class DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry
             result['HostRegionId'] = self.host_region_id
         if self.update_interval is not None:
             result['UpdateInterval'] = self.update_interval
+        if self.cidrs is not None:
+            result['Cidrs'] = self.cidrs.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -8345,9 +8345,6 @@ class DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry
             self.description = m.get('Description')
         if m.get('HostVpcId') is not None:
             self.host_vpc_id = m.get('HostVpcId')
-        if m.get('Cidrs') is not None:
-            temp_model = DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs()
-            self.cidrs = temp_model.from_map(m['Cidrs'])
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
         if m.get('AccessRegionId') is not None:
@@ -8356,6 +8353,9 @@ class DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry
             self.host_region_id = m.get('HostRegionId')
         if m.get('UpdateInterval') is not None:
             self.update_interval = m.get('UpdateInterval')
+        if m.get('Cidrs') is not None:
+            temp_model = DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs()
+            self.cidrs = temp_model.from_map(m['Cidrs'])
         return self
 
 
@@ -8397,16 +8397,16 @@ class DescribeRouteServicesInCenResponseBodyRouteServiceEntries(TeaModel):
 class DescribeRouteServicesInCenResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         route_service_entries: DescribeRouteServicesInCenResponseBodyRouteServiceEntries = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.route_service_entries = route_service_entries
 
     def validate(self):
@@ -8419,28 +8419,28 @@ class DescribeRouteServicesInCenResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.route_service_entries is not None:
             result['RouteServiceEntries'] = self.route_service_entries.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('RouteServiceEntries') is not None:
             temp_model = DescribeRouteServicesInCenResponseBodyRouteServiceEntries()
             self.route_service_entries = temp_model.from_map(m['RouteServiceEntries'])
@@ -9929,11 +9929,11 @@ class ModifyFlowLogAttributeRequest(TeaModel):
 class ModifyFlowLogAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         success: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.success = success
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -9944,18 +9944,18 @@ class ModifyFlowLogAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
