@@ -17,6 +17,10 @@ class AddAddressBookRequestTagList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
@@ -63,6 +67,10 @@ class AddAddressBookRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -125,6 +133,10 @@ class AddAddressBookResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_uuid is not None:
             result['GroupUuid'] = self.group_uuid
@@ -157,6 +169,10 @@ class AddAddressBookResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -193,6 +209,7 @@ class AddControlPolicyRequest(TeaModel):
         dest_port_type: str = None,
         dest_port_group: str = None,
         release: str = None,
+        ip_version: str = None,
     ):
         self.source_ip = source_ip
         self.lang = lang
@@ -210,11 +227,16 @@ class AddControlPolicyRequest(TeaModel):
         self.dest_port_type = dest_port_type
         self.dest_port_group = dest_port_group
         self.release = release
+        self.ip_version = ip_version
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -248,6 +270,8 @@ class AddControlPolicyRequest(TeaModel):
             result['DestPortGroup'] = self.dest_port_group
         if self.release is not None:
             result['Release'] = self.release
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         return result
 
     def from_map(self, m: dict = None):
@@ -284,35 +308,41 @@ class AddControlPolicyRequest(TeaModel):
             self.dest_port_group = m.get('DestPortGroup')
         if m.get('Release') is not None:
             self.release = m.get('Release')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         return self
 
 
 class AddControlPolicyResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         acl_uuid: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.acl_uuid = acl_uuid
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.acl_uuid is not None:
             result['AclUuid'] = self.acl_uuid
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('AclUuid') is not None:
             self.acl_uuid = m.get('AclUuid')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -332,6 +362,10 @@ class AddControlPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -349,10 +383,153 @@ class AddControlPolicyResponse(TeaModel):
         return self
 
 
-class CreateVpcFirewallControlPolicyRequest(TeaModel):
+class AddInstanceMembersRequestMembers(TeaModel):
+    def __init__(
+        self,
+        member_desc: str = None,
+        member_uid: int = None,
+    ):
+        self.member_desc = member_desc
+        self.member_uid = member_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_desc is not None:
+            result['MemberDesc'] = self.member_desc
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemberDesc') is not None:
+            self.member_desc = m.get('MemberDesc')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        return self
+
+
+class AddInstanceMembersRequest(TeaModel):
     def __init__(
         self,
         source_ip: str = None,
+        lang: str = None,
+        members: List[AddInstanceMembersRequestMembers] = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.members = members
+
+    def validate(self):
+        if self.members:
+            for k in self.members:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        result['Members'] = []
+        if self.members is not None:
+            for k in self.members:
+                result['Members'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        self.members = []
+        if m.get('Members') is not None:
+            for k in m.get('Members'):
+                temp_model = AddInstanceMembersRequestMembers()
+                self.members.append(temp_model.from_map(k))
+        return self
+
+
+class AddInstanceMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddInstanceMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AddInstanceMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AddInstanceMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVpcFirewallControlPolicyRequest(TeaModel):
+    def __init__(
+        self,
         lang: str = None,
         acl_action: str = None,
         application_name: str = None,
@@ -368,7 +545,6 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         dest_port_type: str = None,
         dest_port_group: str = None,
     ):
-        self.source_ip = source_ip
         self.lang = lang
         self.acl_action = acl_action
         self.application_name = application_name
@@ -388,9 +564,11 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.acl_action is not None:
@@ -423,8 +601,6 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AclAction') is not None:
@@ -459,29 +635,33 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
 class CreateVpcFirewallControlPolicyResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         acl_uuid: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.acl_uuid = acl_uuid
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.acl_uuid is not None:
             result['AclUuid'] = self.acl_uuid
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('AclUuid') is not None:
             self.acl_uuid = m.get('AclUuid')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -501,6 +681,10 @@ class CreateVpcFirewallControlPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -533,6 +717,10 @@ class DeleteAddressBookRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -564,6 +752,10 @@ class DeleteAddressBookResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -592,6 +784,10 @@ class DeleteAddressBookResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -626,6 +822,10 @@ class DeleteControlPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -661,6 +861,10 @@ class DeleteControlPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -689,6 +893,10 @@ class DeleteControlPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -706,15 +914,116 @@ class DeleteControlPolicyResponse(TeaModel):
         return self
 
 
-class DeleteVpcFirewallControlPolicyRequest(TeaModel):
+class DeleteInstanceMembersRequest(TeaModel):
     def __init__(
         self,
         source_ip: str = None,
         lang: str = None,
+        member_uids: List[int] = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.member_uids = member_uids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.member_uids is not None:
+            result['MemberUids'] = self.member_uids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('MemberUids') is not None:
+            self.member_uids = m.get('MemberUids')
+        return self
+
+
+class DeleteInstanceMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteInstanceMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteInstanceMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteInstanceMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVpcFirewallControlPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
         acl_uuid: str = None,
         vpc_firewall_id: str = None,
     ):
-        self.source_ip = source_ip
         self.lang = lang
         self.acl_uuid = acl_uuid
         self.vpc_firewall_id = vpc_firewall_id
@@ -723,9 +1032,11 @@ class DeleteVpcFirewallControlPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.acl_uuid is not None:
@@ -736,8 +1047,6 @@ class DeleteVpcFirewallControlPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AclUuid') is not None:
@@ -758,6 +1067,10 @@ class DeleteVpcFirewallControlPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -786,6 +1099,10 @@ class DeleteVpcFirewallControlPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -803,21 +1120,638 @@ class DeleteVpcFirewallControlPolicyResponse(TeaModel):
         return self
 
 
-class DescribePolicyPriorUsedRequest(TeaModel):
+class DescribeAddressBookRequest(TeaModel):
     def __init__(
         self,
         source_ip: str = None,
         lang: str = None,
-        direction: str = None,
+        current_page: str = None,
+        page_size: str = None,
+        query: str = None,
+        group_type: str = None,
+        contain_port: str = None,
     ):
         self.source_ip = source_ip
         self.lang = lang
-        self.direction = direction
+        self.current_page = current_page
+        self.page_size = page_size
+        self.query = query
+        self.group_type = group_type
+        self.contain_port = contain_port
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.contain_port is not None:
+            result['ContainPort'] = self.contain_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('ContainPort') is not None:
+            self.contain_port = m.get('ContainPort')
+        return self
+
+
+class DescribeAddressBookResponseBodyAclsTagList(TeaModel):
+    def __init__(
+        self,
+        tag_value: str = None,
+        tag_key: str = None,
+    ):
+        self.tag_value = tag_value
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class DescribeAddressBookResponseBodyAcls(TeaModel):
+    def __init__(
+        self,
+        address_list_count: int = None,
+        group_uuid: str = None,
+        auto_add_tag_ecs: int = None,
+        description: str = None,
+        group_name: str = None,
+        reference_count: int = None,
+        group_type: str = None,
+        tag_relation: str = None,
+        global_: int = None,
+        tag_list: List[DescribeAddressBookResponseBodyAclsTagList] = None,
+        address_list: List[str] = None,
+    ):
+        self.address_list_count = address_list_count
+        self.group_uuid = group_uuid
+        self.auto_add_tag_ecs = auto_add_tag_ecs
+        self.description = description
+        self.group_name = group_name
+        self.reference_count = reference_count
+        self.group_type = group_type
+        self.tag_relation = tag_relation
+        self.global_ = global_
+        self.tag_list = tag_list
+        self.address_list = address_list
+
+    def validate(self):
+        if self.tag_list:
+            for k in self.tag_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_list_count is not None:
+            result['AddressListCount'] = self.address_list_count
+        if self.group_uuid is not None:
+            result['GroupUuid'] = self.group_uuid
+        if self.auto_add_tag_ecs is not None:
+            result['AutoAddTagEcs'] = self.auto_add_tag_ecs
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.reference_count is not None:
+            result['ReferenceCount'] = self.reference_count
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.tag_relation is not None:
+            result['TagRelation'] = self.tag_relation
+        if self.global_ is not None:
+            result['Global'] = self.global_
+        result['TagList'] = []
+        if self.tag_list is not None:
+            for k in self.tag_list:
+                result['TagList'].append(k.to_map() if k else None)
+        if self.address_list is not None:
+            result['AddressList'] = self.address_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressListCount') is not None:
+            self.address_list_count = m.get('AddressListCount')
+        if m.get('GroupUuid') is not None:
+            self.group_uuid = m.get('GroupUuid')
+        if m.get('AutoAddTagEcs') is not None:
+            self.auto_add_tag_ecs = m.get('AutoAddTagEcs')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('ReferenceCount') is not None:
+            self.reference_count = m.get('ReferenceCount')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('TagRelation') is not None:
+            self.tag_relation = m.get('TagRelation')
+        if m.get('Global') is not None:
+            self.global_ = m.get('Global')
+        self.tag_list = []
+        if m.get('TagList') is not None:
+            for k in m.get('TagList'):
+                temp_model = DescribeAddressBookResponseBodyAclsTagList()
+                self.tag_list.append(temp_model.from_map(k))
+        if m.get('AddressList') is not None:
+            self.address_list = m.get('AddressList')
+        return self
+
+
+class DescribeAddressBookResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_no: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+        acls: List[DescribeAddressBookResponseBodyAcls] = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.acls = acls
+
+    def validate(self):
+        if self.acls:
+            for k in self.acls:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Acls'] = []
+        if self.acls is not None:
+            for k in self.acls:
+                result['Acls'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.acls = []
+        if m.get('Acls') is not None:
+            for k in m.get('Acls'):
+                temp_model = DescribeAddressBookResponseBodyAcls()
+                self.acls.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAddressBookResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeAddressBookResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeAddressBookResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAssetListRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+        current_page: str = None,
+        page_size: str = None,
+        region_no: str = None,
+        status: str = None,
+        search_item: str = None,
+        type: str = None,
+        resource_type: str = None,
+        sg_status: str = None,
+        ip_version: str = None,
+        member_uid: int = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.current_page = current_page
+        self.page_size = page_size
+        self.region_no = region_no
+        self.status = status
+        self.search_item = search_item
+        self.type = type
+        self.resource_type = resource_type
+        self.sg_status = sg_status
+        self.ip_version = ip_version
+        self.member_uid = member_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.search_item is not None:
+            result['SearchItem'] = self.search_item
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.sg_status is not None:
+            result['SgStatus'] = self.sg_status
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SearchItem') is not None:
+            self.search_item = m.get('SearchItem')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SgStatus') is not None:
+            self.sg_status = m.get('SgStatus')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        return self
+
+
+class DescribeAssetListResponseBodyAssets(TeaModel):
+    def __init__(
+        self,
+        bind_instance_name: str = None,
+        type: str = None,
+        sg_status_time: int = None,
+        resource_instance_id: str = None,
+        member_uid: int = None,
+        intranet_address: str = None,
+        sync_status: str = None,
+        ali_uid: int = None,
+        protect_status: str = None,
+        internet_address: str = None,
+        bind_instance_id: str = None,
+        region_id: str = None,
+        region_status: str = None,
+        resource_type: str = None,
+        ip_version: int = None,
+        sg_status: str = None,
+        note: str = None,
+        name: str = None,
+    ):
+        self.bind_instance_name = bind_instance_name
+        self.type = type
+        self.sg_status_time = sg_status_time
+        self.resource_instance_id = resource_instance_id
+        self.member_uid = member_uid
+        self.intranet_address = intranet_address
+        self.sync_status = sync_status
+        self.ali_uid = ali_uid
+        self.protect_status = protect_status
+        self.internet_address = internet_address
+        self.bind_instance_id = bind_instance_id
+        self.region_id = region_id
+        self.region_status = region_status
+        self.resource_type = resource_type
+        self.ip_version = ip_version
+        self.sg_status = sg_status
+        self.note = note
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bind_instance_name is not None:
+            result['BindInstanceName'] = self.bind_instance_name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.sg_status_time is not None:
+            result['SgStatusTime'] = self.sg_status_time
+        if self.resource_instance_id is not None:
+            result['ResourceInstanceId'] = self.resource_instance_id
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.intranet_address is not None:
+            result['IntranetAddress'] = self.intranet_address
+        if self.sync_status is not None:
+            result['SyncStatus'] = self.sync_status
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.protect_status is not None:
+            result['ProtectStatus'] = self.protect_status
+        if self.internet_address is not None:
+            result['InternetAddress'] = self.internet_address
+        if self.bind_instance_id is not None:
+            result['BindInstanceId'] = self.bind_instance_id
+        if self.region_id is not None:
+            result['RegionID'] = self.region_id
+        if self.region_status is not None:
+            result['RegionStatus'] = self.region_status
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.sg_status is not None:
+            result['SgStatus'] = self.sg_status
+        if self.note is not None:
+            result['Note'] = self.note
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindInstanceName') is not None:
+            self.bind_instance_name = m.get('BindInstanceName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('SgStatusTime') is not None:
+            self.sg_status_time = m.get('SgStatusTime')
+        if m.get('ResourceInstanceId') is not None:
+            self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('IntranetAddress') is not None:
+            self.intranet_address = m.get('IntranetAddress')
+        if m.get('SyncStatus') is not None:
+            self.sync_status = m.get('SyncStatus')
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('ProtectStatus') is not None:
+            self.protect_status = m.get('ProtectStatus')
+        if m.get('InternetAddress') is not None:
+            self.internet_address = m.get('InternetAddress')
+        if m.get('BindInstanceId') is not None:
+            self.bind_instance_id = m.get('BindInstanceId')
+        if m.get('RegionID') is not None:
+            self.region_id = m.get('RegionID')
+        if m.get('RegionStatus') is not None:
+            self.region_status = m.get('RegionStatus')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('SgStatus') is not None:
+            self.sg_status = m.get('SgStatus')
+        if m.get('Note') is not None:
+            self.note = m.get('Note')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeAssetListResponseBody(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        request_id: str = None,
+        assets: List[DescribeAssetListResponseBodyAssets] = None,
+    ):
+        self.total_count = total_count
+        self.request_id = request_id
+        self.assets = assets
+
+    def validate(self):
+        if self.assets:
+            for k in self.assets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Assets'] = []
+        if self.assets is not None:
+            for k in self.assets:
+                result['Assets'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.assets = []
+        if m.get('Assets') is not None:
+            for k in m.get('Assets'):
+                temp_model = DescribeAssetListResponseBodyAssets()
+                self.assets.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAssetListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeAssetListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeAssetListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeControlPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+        direction: str = None,
+        current_page: str = None,
+        page_size: str = None,
+        source: str = None,
+        destination: str = None,
+        description: str = None,
+        proto: str = None,
+        acl_action: str = None,
+        release: str = None,
+        acl_uuid: str = None,
+        ip_version: str = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.direction = direction
+        self.current_page = current_page
+        self.page_size = page_size
+        self.source = source
+        self.destination = destination
+        self.description = description
+        self.proto = proto
+        self.acl_action = acl_action
+        self.release = release
+        self.acl_uuid = acl_uuid
+        self.ip_version = ip_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -825,6 +1759,26 @@ class DescribePolicyPriorUsedRequest(TeaModel):
             result['Lang'] = self.lang
         if self.direction is not None:
             result['Direction'] = self.direction
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.destination is not None:
+            result['Destination'] = self.destination
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.proto is not None:
+            result['Proto'] = self.proto
+        if self.acl_action is not None:
+            result['AclAction'] = self.acl_action
+        if self.release is not None:
+            result['Release'] = self.release
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         return result
 
     def from_map(self, m: dict = None):
@@ -835,41 +1789,1056 @@ class DescribePolicyPriorUsedRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('Direction') is not None:
             self.direction = m.get('Direction')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Destination') is not None:
+            self.destination = m.get('Destination')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Proto') is not None:
+            self.proto = m.get('Proto')
+        if m.get('AclAction') is not None:
+            self.acl_action = m.get('AclAction')
+        if m.get('Release') is not None:
+            self.release = m.get('Release')
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         return self
 
 
-class DescribePolicyPriorUsedResponseBody(TeaModel):
+class DescribeControlPolicyResponseBodyPolicys(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        start: int = None,
-        end: int = None,
+        direction: str = None,
+        destination_group_type: str = None,
+        hit_last_time: int = None,
+        destination: str = None,
+        order: int = None,
+        dest_port_group: str = None,
+        application_name: str = None,
+        source_type: str = None,
+        acl_uuid: str = None,
+        dest_port_type: str = None,
+        source: str = None,
+        destination_type: str = None,
+        hit_times: int = None,
+        dest_port: str = None,
+        ip_version: int = None,
+        source_group_type: str = None,
+        description: str = None,
+        dns_result_time: int = None,
+        acl_action: str = None,
+        release: str = None,
+        dns_result: str = None,
+        application_id: str = None,
+        proto: str = None,
+        destination_group_cidrs: List[str] = None,
+        dest_port_group_ports: List[str] = None,
+        source_group_cidrs: List[str] = None,
     ):
-        self.request_id = request_id
-        self.start = start
-        self.end = end
+        self.direction = direction
+        self.destination_group_type = destination_group_type
+        self.hit_last_time = hit_last_time
+        self.destination = destination
+        self.order = order
+        self.dest_port_group = dest_port_group
+        self.application_name = application_name
+        self.source_type = source_type
+        self.acl_uuid = acl_uuid
+        self.dest_port_type = dest_port_type
+        self.source = source
+        self.destination_type = destination_type
+        self.hit_times = hit_times
+        self.dest_port = dest_port
+        self.ip_version = ip_version
+        self.source_group_type = source_group_type
+        self.description = description
+        self.dns_result_time = dns_result_time
+        self.acl_action = acl_action
+        self.release = release
+        self.dns_result = dns_result
+        self.application_id = application_id
+        self.proto = proto
+        self.destination_group_cidrs = destination_group_cidrs
+        self.dest_port_group_ports = dest_port_group_ports
+        self.source_group_cidrs = source_group_cidrs
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.destination_group_type is not None:
+            result['DestinationGroupType'] = self.destination_group_type
+        if self.hit_last_time is not None:
+            result['HitLastTime'] = self.hit_last_time
+        if self.destination is not None:
+            result['Destination'] = self.destination
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.dest_port_group is not None:
+            result['DestPortGroup'] = self.dest_port_group
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.dest_port_type is not None:
+            result['DestPortType'] = self.dest_port_type
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.destination_type is not None:
+            result['DestinationType'] = self.destination_type
+        if self.hit_times is not None:
+            result['HitTimes'] = self.hit_times
+        if self.dest_port is not None:
+            result['DestPort'] = self.dest_port
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.source_group_type is not None:
+            result['SourceGroupType'] = self.source_group_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dns_result_time is not None:
+            result['DnsResultTime'] = self.dns_result_time
+        if self.acl_action is not None:
+            result['AclAction'] = self.acl_action
+        if self.release is not None:
+            result['Release'] = self.release
+        if self.dns_result is not None:
+            result['DnsResult'] = self.dns_result
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.proto is not None:
+            result['Proto'] = self.proto
+        if self.destination_group_cidrs is not None:
+            result['DestinationGroupCidrs'] = self.destination_group_cidrs
+        if self.dest_port_group_ports is not None:
+            result['DestPortGroupPorts'] = self.dest_port_group_ports
+        if self.source_group_cidrs is not None:
+            result['SourceGroupCidrs'] = self.source_group_cidrs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('DestinationGroupType') is not None:
+            self.destination_group_type = m.get('DestinationGroupType')
+        if m.get('HitLastTime') is not None:
+            self.hit_last_time = m.get('HitLastTime')
+        if m.get('Destination') is not None:
+            self.destination = m.get('Destination')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('DestPortGroup') is not None:
+            self.dest_port_group = m.get('DestPortGroup')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('DestPortType') is not None:
+            self.dest_port_type = m.get('DestPortType')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('DestinationType') is not None:
+            self.destination_type = m.get('DestinationType')
+        if m.get('HitTimes') is not None:
+            self.hit_times = m.get('HitTimes')
+        if m.get('DestPort') is not None:
+            self.dest_port = m.get('DestPort')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('SourceGroupType') is not None:
+            self.source_group_type = m.get('SourceGroupType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DnsResultTime') is not None:
+            self.dns_result_time = m.get('DnsResultTime')
+        if m.get('AclAction') is not None:
+            self.acl_action = m.get('AclAction')
+        if m.get('Release') is not None:
+            self.release = m.get('Release')
+        if m.get('DnsResult') is not None:
+            self.dns_result = m.get('DnsResult')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('Proto') is not None:
+            self.proto = m.get('Proto')
+        if m.get('DestinationGroupCidrs') is not None:
+            self.destination_group_cidrs = m.get('DestinationGroupCidrs')
+        if m.get('DestPortGroupPorts') is not None:
+            self.dest_port_group_ports = m.get('DestPortGroupPorts')
+        if m.get('SourceGroupCidrs') is not None:
+            self.source_group_cidrs = m.get('SourceGroupCidrs')
+        return self
+
+
+class DescribeControlPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_no: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+        policys: List[DescribeControlPolicyResponseBodyPolicys] = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.policys = policys
+
+    def validate(self):
+        if self.policys:
+            for k in self.policys:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Policys'] = []
+        if self.policys is not None:
+            for k in self.policys:
+                result['Policys'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.policys = []
+        if m.get('Policys') is not None:
+            for k in m.get('Policys'):
+                temp_model = DescribeControlPolicyResponseBodyPolicys()
+                self.policys.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeControlPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeControlPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeControlPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDomainResolveRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+        domain: str = None,
+        ip_version: str = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.domain = domain
+        self.ip_version = ip_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        return self
+
+
+class DescribeDomainResolveResponseBodyResolveResult(TeaModel):
+    def __init__(
+        self,
+        ip_addrs: str = None,
+        update_time: int = None,
+    ):
+        self.ip_addrs = ip_addrs
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_addrs is not None:
+            result['IpAddrs'] = self.ip_addrs
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpAddrs') is not None:
+            self.ip_addrs = m.get('IpAddrs')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeDomainResolveResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resolve_result: DescribeDomainResolveResponseBodyResolveResult = None,
+    ):
+        self.request_id = request_id
+        self.resolve_result = resolve_result
+
+    def validate(self):
+        if self.resolve_result:
+            self.resolve_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.start is not None:
-            result['Start'] = self.start
-        if self.end is not None:
-            result['End'] = self.end
+        if self.resolve_result is not None:
+            result['ResolveResult'] = self.resolve_result.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Start') is not None:
-            self.start = m.get('Start')
+        if m.get('ResolveResult') is not None:
+            temp_model = DescribeDomainResolveResponseBodyResolveResult()
+            self.resolve_result = temp_model.from_map(m['ResolveResult'])
+        return self
+
+
+class DescribeDomainResolveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDomainResolveResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainResolveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstanceMembersRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+        current_page: str = None,
+        page_size: str = None,
+        member_uid: str = None,
+        member_display_name: str = None,
+        member_desc: str = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.current_page = current_page
+        self.page_size = page_size
+        self.member_uid = member_uid
+        self.member_display_name = member_display_name
+        self.member_desc = member_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.member_display_name is not None:
+            result['MemberDisplayName'] = self.member_display_name
+        if self.member_desc is not None:
+            result['MemberDesc'] = self.member_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('MemberDisplayName') is not None:
+            self.member_display_name = m.get('MemberDisplayName')
+        if m.get('MemberDesc') is not None:
+            self.member_desc = m.get('MemberDesc')
+        return self
+
+
+class DescribeInstanceMembersResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeInstanceMembersResponseBodyMembers(TeaModel):
+    def __init__(
+        self,
+        member_desc: str = None,
+        member_display_name: str = None,
+        create_time: int = None,
+        member_uid: int = None,
+        member_status: str = None,
+        modify_time: int = None,
+    ):
+        self.member_desc = member_desc
+        self.member_display_name = member_display_name
+        self.create_time = create_time
+        self.member_uid = member_uid
+        self.member_status = member_status
+        self.modify_time = modify_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_desc is not None:
+            result['MemberDesc'] = self.member_desc
+        if self.member_display_name is not None:
+            result['MemberDisplayName'] = self.member_display_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.member_status is not None:
+            result['MemberStatus'] = self.member_status
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemberDesc') is not None:
+            self.member_desc = m.get('MemberDesc')
+        if m.get('MemberDisplayName') is not None:
+            self.member_display_name = m.get('MemberDisplayName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('MemberStatus') is not None:
+            self.member_status = m.get('MemberStatus')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        return self
+
+
+class DescribeInstanceMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        page_info: DescribeInstanceMembersResponseBodyPageInfo = None,
+        members: List[DescribeInstanceMembersResponseBodyMembers] = None,
+    ):
+        self.request_id = request_id
+        self.page_info = page_info
+        self.members = members
+
+    def validate(self):
+        if self.page_info:
+            self.page_info.validate()
+        if self.members:
+            for k in self.members:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        result['Members'] = []
+        if self.members is not None:
+            for k in self.members:
+                result['Members'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageInfo') is not None:
+            temp_model = DescribeInstanceMembersResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        self.members = []
+        if m.get('Members') is not None:
+            for k in m.get('Members'):
+                temp_model = DescribeInstanceMembersResponseBodyMembers()
+                self.members.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeInstanceMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeInstanceMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstanceRdAccountsRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+        current_page: str = None,
+        page_size: str = None,
+        member_uid: str = None,
+        member_display_name: str = None,
+        member_desc: str = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.current_page = current_page
+        self.page_size = page_size
+        self.member_uid = member_uid
+        self.member_display_name = member_display_name
+        self.member_desc = member_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.member_display_name is not None:
+            result['MemberDisplayName'] = self.member_display_name
+        if self.member_desc is not None:
+            result['MemberDesc'] = self.member_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('MemberDisplayName') is not None:
+            self.member_display_name = m.get('MemberDisplayName')
+        if m.get('MemberDesc') is not None:
+            self.member_desc = m.get('MemberDesc')
+        return self
+
+
+class DescribeInstanceRdAccountsResponseBodyAccounts(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        account_id: str = None,
+    ):
+        self.display_name = display_name
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class DescribeInstanceRdAccountsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        accounts: List[DescribeInstanceRdAccountsResponseBodyAccounts] = None,
+    ):
+        self.request_id = request_id
+        self.accounts = accounts
+
+    def validate(self):
+        if self.accounts:
+            for k in self.accounts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Accounts'] = []
+        if self.accounts is not None:
+            for k in self.accounts:
+                result['Accounts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.accounts = []
+        if m.get('Accounts') is not None:
+            for k in m.get('Accounts'):
+                temp_model = DescribeInstanceRdAccountsResponseBodyAccounts()
+                self.accounts.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeInstanceRdAccountsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeInstanceRdAccountsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceRdAccountsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribePolicyAdvancedConfigRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribePolicyAdvancedConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        internet_switch: str = None,
+        request_id: str = None,
+    ):
+        self.internet_switch = internet_switch
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.internet_switch is not None:
+            result['InternetSwitch'] = self.internet_switch
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InternetSwitch') is not None:
+            self.internet_switch = m.get('InternetSwitch')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribePolicyAdvancedConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribePolicyAdvancedConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribePolicyAdvancedConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribePolicyPriorUsedRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+        direction: str = None,
+        ip_version: str = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.direction = direction
+        self.ip_version = ip_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        return self
+
+
+class DescribePolicyPriorUsedResponseBody(TeaModel):
+    def __init__(
+        self,
+        end: int = None,
+        start: int = None,
+        request_id: str = None,
+    ):
+        self.end = end
+        self.start = start
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('End') is not None:
             self.end = m.get('End')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -889,6 +2858,10 @@ class DescribePolicyPriorUsedResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -906,10 +2879,171 @@ class DescribePolicyPriorUsedResponse(TeaModel):
         return self
 
 
+class DescribeVpcFirewallAclGroupListRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        firewall_configure_status: str = None,
+        current_page: str = None,
+        page_size: str = None,
+    ):
+        self.lang = lang
+        self.firewall_configure_status = firewall_configure_status
+        self.current_page = current_page
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.firewall_configure_status is not None:
+            result['FirewallConfigureStatus'] = self.firewall_configure_status
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('FirewallConfigureStatus') is not None:
+            self.firewall_configure_status = m.get('FirewallConfigureStatus')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
+    def __init__(
+        self,
+        acl_group_id: str = None,
+        acl_group_name: str = None,
+    ):
+        self.acl_group_id = acl_group_id
+        self.acl_group_name = acl_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_group_id is not None:
+            result['AclGroupId'] = self.acl_group_id
+        if self.acl_group_name is not None:
+            result['AclGroupName'] = self.acl_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclGroupId') is not None:
+            self.acl_group_id = m.get('AclGroupId')
+        if m.get('AclGroupName') is not None:
+            self.acl_group_name = m.get('AclGroupName')
+        return self
+
+
+class DescribeVpcFirewallAclGroupListResponseBody(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        request_id: str = None,
+        acl_group_list: List[DescribeVpcFirewallAclGroupListResponseBodyAclGroupList] = None,
+    ):
+        self.total_count = total_count
+        self.request_id = request_id
+        self.acl_group_list = acl_group_list
+
+    def validate(self):
+        if self.acl_group_list:
+            for k in self.acl_group_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['AclGroupList'] = []
+        if self.acl_group_list is not None:
+            for k in self.acl_group_list:
+                result['AclGroupList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.acl_group_list = []
+        if m.get('AclGroupList') is not None:
+            for k in m.get('AclGroupList'):
+                temp_model = DescribeVpcFirewallAclGroupListResponseBodyAclGroupList()
+                self.acl_group_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVpcFirewallAclGroupListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeVpcFirewallAclGroupListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeVpcFirewallAclGroupListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVpcFirewallControlPolicyRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         lang: str = None,
         vpc_firewall_id: str = None,
         current_page: str = None,
@@ -920,7 +3054,6 @@ class DescribeVpcFirewallControlPolicyRequest(TeaModel):
         proto: str = None,
         acl_action: str = None,
     ):
-        self.source_ip = source_ip
         self.lang = lang
         self.vpc_firewall_id = vpc_firewall_id
         self.current_page = current_page
@@ -935,9 +3068,11 @@ class DescribeVpcFirewallControlPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.vpc_firewall_id is not None:
@@ -960,8 +3095,6 @@ class DescribeVpcFirewallControlPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('VpcFirewallId') is not None:
@@ -989,47 +3122,51 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         direction: str = None,
         destination: str = None,
         order: int = None,
-        application_name: str = None,
-        source_type: str = None,
         dest_port_group: str = None,
+        source_type: str = None,
+        application_name: str = None,
         acl_uuid: str = None,
-        dest_port_group_ports: List[str] = None,
         dest_port_type: str = None,
         source: str = None,
         destination_type: str = None,
         hit_times: int = None,
-        source_group_cidrs: List[str] = None,
         dest_port: str = None,
-        destination_group_cidrs: List[str] = None,
         description: str = None,
         acl_action: str = None,
         application_id: str = None,
         proto: str = None,
+        destination_group_cidrs: List[str] = None,
+        dest_port_group_ports: List[str] = None,
+        source_group_cidrs: List[str] = None,
     ):
         self.direction = direction
         self.destination = destination
         self.order = order
-        self.application_name = application_name
-        self.source_type = source_type
         self.dest_port_group = dest_port_group
+        self.source_type = source_type
+        self.application_name = application_name
         self.acl_uuid = acl_uuid
-        self.dest_port_group_ports = dest_port_group_ports
         self.dest_port_type = dest_port_type
         self.source = source
         self.destination_type = destination_type
         self.hit_times = hit_times
-        self.source_group_cidrs = source_group_cidrs
         self.dest_port = dest_port
-        self.destination_group_cidrs = destination_group_cidrs
         self.description = description
         self.acl_action = acl_action
         self.application_id = application_id
         self.proto = proto
+        self.destination_group_cidrs = destination_group_cidrs
+        self.dest_port_group_ports = dest_port_group_ports
+        self.source_group_cidrs = source_group_cidrs
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.direction is not None:
             result['Direction'] = self.direction
@@ -1037,16 +3174,14 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             result['Destination'] = self.destination
         if self.order is not None:
             result['Order'] = self.order
-        if self.application_name is not None:
-            result['ApplicationName'] = self.application_name
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
         if self.dest_port_group is not None:
             result['DestPortGroup'] = self.dest_port_group
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
         if self.acl_uuid is not None:
             result['AclUuid'] = self.acl_uuid
-        if self.dest_port_group_ports is not None:
-            result['DestPortGroupPorts'] = self.dest_port_group_ports
         if self.dest_port_type is not None:
             result['DestPortType'] = self.dest_port_type
         if self.source is not None:
@@ -1055,12 +3190,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             result['DestinationType'] = self.destination_type
         if self.hit_times is not None:
             result['HitTimes'] = self.hit_times
-        if self.source_group_cidrs is not None:
-            result['SourceGroupCidrs'] = self.source_group_cidrs
         if self.dest_port is not None:
             result['DestPort'] = self.dest_port
-        if self.destination_group_cidrs is not None:
-            result['DestinationGroupCidrs'] = self.destination_group_cidrs
         if self.description is not None:
             result['Description'] = self.description
         if self.acl_action is not None:
@@ -1069,6 +3200,12 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             result['ApplicationId'] = self.application_id
         if self.proto is not None:
             result['Proto'] = self.proto
+        if self.destination_group_cidrs is not None:
+            result['DestinationGroupCidrs'] = self.destination_group_cidrs
+        if self.dest_port_group_ports is not None:
+            result['DestPortGroupPorts'] = self.dest_port_group_ports
+        if self.source_group_cidrs is not None:
+            result['SourceGroupCidrs'] = self.source_group_cidrs
         return result
 
     def from_map(self, m: dict = None):
@@ -1079,16 +3216,14 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             self.destination = m.get('Destination')
         if m.get('Order') is not None:
             self.order = m.get('Order')
-        if m.get('ApplicationName') is not None:
-            self.application_name = m.get('ApplicationName')
-        if m.get('SourceType') is not None:
-            self.source_type = m.get('SourceType')
         if m.get('DestPortGroup') is not None:
             self.dest_port_group = m.get('DestPortGroup')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
         if m.get('AclUuid') is not None:
             self.acl_uuid = m.get('AclUuid')
-        if m.get('DestPortGroupPorts') is not None:
-            self.dest_port_group_ports = m.get('DestPortGroupPorts')
         if m.get('DestPortType') is not None:
             self.dest_port_type = m.get('DestPortType')
         if m.get('Source') is not None:
@@ -1097,12 +3232,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             self.destination_type = m.get('DestinationType')
         if m.get('HitTimes') is not None:
             self.hit_times = m.get('HitTimes')
-        if m.get('SourceGroupCidrs') is not None:
-            self.source_group_cidrs = m.get('SourceGroupCidrs')
         if m.get('DestPort') is not None:
             self.dest_port = m.get('DestPort')
-        if m.get('DestinationGroupCidrs') is not None:
-            self.destination_group_cidrs = m.get('DestinationGroupCidrs')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('AclAction') is not None:
@@ -1111,6 +3242,12 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             self.application_id = m.get('ApplicationId')
         if m.get('Proto') is not None:
             self.proto = m.get('Proto')
+        if m.get('DestinationGroupCidrs') is not None:
+            self.destination_group_cidrs = m.get('DestinationGroupCidrs')
+        if m.get('DestPortGroupPorts') is not None:
+            self.dest_port_group_ports = m.get('DestPortGroupPorts')
+        if m.get('SourceGroupCidrs') is not None:
+            self.source_group_cidrs = m.get('SourceGroupCidrs')
         return self
 
 
@@ -1132,6 +3269,10 @@ class DescribeVpcFirewallControlPolicyResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -1173,6 +3314,10 @@ class DescribeVpcFirewallControlPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1193,11 +3338,9 @@ class DescribeVpcFirewallControlPolicyResponse(TeaModel):
 class DescribeVpcFirewallPolicyPriorUsedRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         lang: str = None,
         vpc_firewall_id: str = None,
     ):
-        self.source_ip = source_ip
         self.lang = lang
         self.vpc_firewall_id = vpc_firewall_id
 
@@ -1205,9 +3348,11 @@ class DescribeVpcFirewallPolicyPriorUsedRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.vpc_firewall_id is not None:
@@ -1216,8 +3361,6 @@ class DescribeVpcFirewallPolicyPriorUsedRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('VpcFirewallId') is not None:
@@ -1228,35 +3371,39 @@ class DescribeVpcFirewallPolicyPriorUsedRequest(TeaModel):
 class DescribeVpcFirewallPolicyPriorUsedResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        start: int = None,
         end: int = None,
+        start: int = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
-        self.start = start
         self.end = end
+        self.start = start
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.start is not None:
-            result['Start'] = self.start
         if self.end is not None:
             result['End'] = self.end
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Start') is not None:
-            self.start = m.get('Start')
         if m.get('End') is not None:
             self.end = m.get('End')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1276,6 +3423,10 @@ class DescribeVpcFirewallPolicyPriorUsedResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1306,6 +3457,10 @@ class ModifyAddressBookRequestTagList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
@@ -1352,6 +3507,10 @@ class ModifyAddressBookRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -1412,6 +3571,10 @@ class ModifyAddressBookResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1440,6 +3603,10 @@ class ModifyAddressBookResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1498,6 +3665,10 @@ class ModifyControlPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -1581,6 +3752,10 @@ class ModifyControlPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1609,6 +3784,10 @@ class ModifyControlPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1645,6 +3824,10 @@ class ModifyControlPolicyPositionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -1684,6 +3867,10 @@ class ModifyControlPolicyPositionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1712,6 +3899,10 @@ class ModifyControlPolicyPositionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1725,6 +3916,259 @@ class ModifyControlPolicyPositionResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ModifyControlPolicyPositionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyControlPolicyPriorityRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+        acl_uuid: str = None,
+        order: str = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.acl_uuid = acl_uuid
+        self.order = order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.acl_uuid is not None:
+            result['AclUuid'] = self.acl_uuid
+        if self.order is not None:
+            result['Order'] = self.order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('AclUuid') is not None:
+            self.acl_uuid = m.get('AclUuid')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        return self
+
+
+class ModifyControlPolicyPriorityResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyControlPolicyPriorityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyControlPolicyPriorityResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyControlPolicyPriorityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstanceMemberAttributesRequestMembers(TeaModel):
+    def __init__(
+        self,
+        member_desc: str = None,
+        member_uid: int = None,
+    ):
+        self.member_desc = member_desc
+        self.member_uid = member_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_desc is not None:
+            result['MemberDesc'] = self.member_desc
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemberDesc') is not None:
+            self.member_desc = m.get('MemberDesc')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        return self
+
+
+class ModifyInstanceMemberAttributesRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        lang: str = None,
+        members: List[ModifyInstanceMemberAttributesRequestMembers] = None,
+    ):
+        self.source_ip = source_ip
+        self.lang = lang
+        self.members = members
+
+    def validate(self):
+        if self.members:
+            for k in self.members:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        result['Members'] = []
+        if self.members is not None:
+            for k in self.members:
+                result['Members'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        self.members = []
+        if m.get('Members') is not None:
+            for k in m.get('Members'):
+                temp_model = ModifyInstanceMemberAttributesRequestMembers()
+                self.members.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyInstanceMemberAttributesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceMemberAttributesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyInstanceMemberAttributesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceMemberAttributesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1744,6 +4188,10 @@ class ModifyPolicyAdvancedConfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -1775,6 +4223,10 @@ class ModifyPolicyAdvancedConfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1803,6 +4255,10 @@ class ModifyPolicyAdvancedConfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1823,7 +4279,6 @@ class ModifyPolicyAdvancedConfigResponse(TeaModel):
 class ModifyVpcFirewallControlPolicyRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         lang: str = None,
         acl_action: str = None,
         application_name: str = None,
@@ -1839,7 +4294,6 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         dest_port_type: str = None,
         dest_port_group: str = None,
     ):
-        self.source_ip = source_ip
         self.lang = lang
         self.acl_action = acl_action
         self.application_name = application_name
@@ -1859,9 +4313,11 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.acl_action is not None:
@@ -1894,8 +4350,6 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AclAction') is not None:
@@ -1938,6 +4392,10 @@ class ModifyVpcFirewallControlPolicyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1966,6 +4424,10 @@ class ModifyVpcFirewallControlPolicyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1986,13 +4448,11 @@ class ModifyVpcFirewallControlPolicyResponse(TeaModel):
 class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         lang: str = None,
         vpc_firewall_id: str = None,
         new_order: str = None,
         old_order: str = None,
     ):
-        self.source_ip = source_ip
         self.lang = lang
         self.vpc_firewall_id = vpc_firewall_id
         self.new_order = new_order
@@ -2002,9 +4462,11 @@ class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.vpc_firewall_id is not None:
@@ -2017,8 +4479,6 @@ class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('VpcFirewallId') is not None:
@@ -2041,6 +4501,10 @@ class ModifyVpcFirewallControlPolicyPositionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2069,6 +4533,10 @@ class ModifyVpcFirewallControlPolicyPositionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2101,6 +4569,10 @@ class PutDisableAllFwSwitchRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -2132,6 +4604,10 @@ class PutDisableAllFwSwitchResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2160,6 +4636,10 @@ class PutDisableAllFwSwitchResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2196,6 +4676,10 @@ class PutDisableFwSwitchRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -2235,6 +4719,10 @@ class PutDisableFwSwitchResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2263,6 +4751,10 @@ class PutDisableFwSwitchResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2295,6 +4787,10 @@ class PutEnableAllFwSwitchRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -2326,6 +4822,10 @@ class PutEnableAllFwSwitchResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2354,6 +4854,10 @@ class PutEnableAllFwSwitchResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2390,6 +4894,10 @@ class PutEnableFwSwitchRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
@@ -2429,6 +4937,10 @@ class PutEnableFwSwitchResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2457,6 +4969,10 @@ class PutEnableFwSwitchResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2477,11 +4993,9 @@ class PutEnableFwSwitchResponse(TeaModel):
 class ResetVpcFirewallRuleHitCountRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         lang: str = None,
         acl_uuid: str = None,
     ):
-        self.source_ip = source_ip
         self.lang = lang
         self.acl_uuid = acl_uuid
 
@@ -2489,9 +5003,11 @@ class ResetVpcFirewallRuleHitCountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.acl_uuid is not None:
@@ -2500,8 +5016,6 @@ class ResetVpcFirewallRuleHitCountRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('AclUuid') is not None:
@@ -2520,6 +5034,10 @@ class ResetVpcFirewallRuleHitCountResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2548,6 +5066,10 @@ class ResetVpcFirewallRuleHitCountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

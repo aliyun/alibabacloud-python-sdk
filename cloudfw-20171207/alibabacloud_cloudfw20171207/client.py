@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -52,7 +53,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.AddAddressBookResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.AddAddressBookResponse(),
             self.do_rpcrequest('AddAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -65,7 +67,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.AddAddressBookResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.AddAddressBookResponse(),
             await self.do_rpcrequest_async('AddAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -92,7 +95,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.AddControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.AddControlPolicyResponse(),
             self.do_rpcrequest('AddControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -105,7 +109,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.AddControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.AddControlPolicyResponse(),
             await self.do_rpcrequest_async('AddControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -123,6 +128,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_control_policy_with_options_async(request, runtime)
 
+    def add_instance_members_with_options(
+        self,
+        request: cloudfw_20171207_models.AddInstanceMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.AddInstanceMembersResponse(),
+            self.do_rpcrequest('AddInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_instance_members_with_options_async(
+        self,
+        request: cloudfw_20171207_models.AddInstanceMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.AddInstanceMembersResponse(),
+            await self.do_rpcrequest_async('AddInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_instance_members(
+        self,
+        request: cloudfw_20171207_models.AddInstanceMembersRequest,
+    ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_instance_members_with_options(request, runtime)
+
+    async def add_instance_members_async(
+        self,
+        request: cloudfw_20171207_models.AddInstanceMembersRequest,
+    ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_instance_members_with_options_async(request, runtime)
+
     def create_vpc_firewall_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.CreateVpcFirewallControlPolicyRequest,
@@ -132,7 +179,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse(),
             self.do_rpcrequest('CreateVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -145,7 +193,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse(),
             await self.do_rpcrequest_async('CreateVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -172,7 +221,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DeleteAddressBookResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteAddressBookResponse(),
             self.do_rpcrequest('DeleteAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -185,7 +235,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DeleteAddressBookResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteAddressBookResponse(),
             await self.do_rpcrequest_async('DeleteAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -212,7 +263,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DeleteControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteControlPolicyResponse(),
             self.do_rpcrequest('DeleteControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -225,7 +277,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DeleteControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteControlPolicyResponse(),
             await self.do_rpcrequest_async('DeleteControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -243,6 +296,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_control_policy_with_options_async(request, runtime)
 
+    def delete_instance_members_with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteInstanceMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteInstanceMembersResponse(),
+            self.do_rpcrequest('DeleteInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_instance_members_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteInstanceMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteInstanceMembersResponse(),
+            await self.do_rpcrequest_async('DeleteInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_instance_members(
+        self,
+        request: cloudfw_20171207_models.DeleteInstanceMembersRequest,
+    ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_instance_members_with_options(request, runtime)
+
+    async def delete_instance_members_async(
+        self,
+        request: cloudfw_20171207_models.DeleteInstanceMembersRequest,
+    ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_instance_members_with_options_async(request, runtime)
+
     def delete_vpc_firewall_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.DeleteVpcFirewallControlPolicyRequest,
@@ -252,7 +347,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse(),
             self.do_rpcrequest('DeleteVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -265,7 +361,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse(),
             await self.do_rpcrequest_async('DeleteVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -283,6 +380,300 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_vpc_firewall_control_policy_with_options_async(request, runtime)
 
+    def describe_address_book_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAddressBookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAddressBookResponse(),
+            self.do_rpcrequest('DescribeAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_address_book_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAddressBookRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAddressBookResponse(),
+            await self.do_rpcrequest_async('DescribeAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_address_book(
+        self,
+        request: cloudfw_20171207_models.DescribeAddressBookRequest,
+    ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_address_book_with_options(request, runtime)
+
+    async def describe_address_book_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAddressBookRequest,
+    ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_address_book_with_options_async(request, runtime)
+
+    def describe_asset_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAssetListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAssetListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAssetListResponse(),
+            self.do_rpcrequest('DescribeAssetList', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_asset_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAssetListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAssetListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAssetListResponse(),
+            await self.do_rpcrequest_async('DescribeAssetList', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_asset_list(
+        self,
+        request: cloudfw_20171207_models.DescribeAssetListRequest,
+    ) -> cloudfw_20171207_models.DescribeAssetListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_asset_list_with_options(request, runtime)
+
+    async def describe_asset_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAssetListRequest,
+    ) -> cloudfw_20171207_models.DescribeAssetListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_asset_list_with_options_async(request, runtime)
+
+    def describe_control_policy_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeControlPolicyResponse(),
+            self.do_rpcrequest('DescribeControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_control_policy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeControlPolicyResponse(),
+            await self.do_rpcrequest_async('DescribeControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_control_policy(
+        self,
+        request: cloudfw_20171207_models.DescribeControlPolicyRequest,
+    ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_control_policy_with_options(request, runtime)
+
+    async def describe_control_policy_async(
+        self,
+        request: cloudfw_20171207_models.DescribeControlPolicyRequest,
+    ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_control_policy_with_options_async(request, runtime)
+
+    def describe_domain_resolve_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeDomainResolveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeDomainResolveResponse(),
+            self.do_rpcrequest('DescribeDomainResolve', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_domain_resolve_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeDomainResolveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeDomainResolveResponse(),
+            await self.do_rpcrequest_async('DescribeDomainResolve', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_domain_resolve(
+        self,
+        request: cloudfw_20171207_models.DescribeDomainResolveRequest,
+    ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_resolve_with_options(request, runtime)
+
+    async def describe_domain_resolve_async(
+        self,
+        request: cloudfw_20171207_models.DescribeDomainResolveRequest,
+    ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_resolve_with_options_async(request, runtime)
+
+    def describe_instance_members_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeInstanceMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInstanceMembersResponse(),
+            self.do_rpcrequest('DescribeInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_instance_members_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInstanceMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInstanceMembersResponse(),
+            await self.do_rpcrequest_async('DescribeInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_instance_members(
+        self,
+        request: cloudfw_20171207_models.DescribeInstanceMembersRequest,
+    ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_members_with_options(request, runtime)
+
+    async def describe_instance_members_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInstanceMembersRequest,
+    ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_members_with_options_async(request, runtime)
+
+    def describe_instance_rd_accounts_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeInstanceRdAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInstanceRdAccountsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInstanceRdAccountsResponse(),
+            self.do_rpcrequest('DescribeInstanceRdAccounts', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_instance_rd_accounts_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInstanceRdAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInstanceRdAccountsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInstanceRdAccountsResponse(),
+            await self.do_rpcrequest_async('DescribeInstanceRdAccounts', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_instance_rd_accounts(
+        self,
+        request: cloudfw_20171207_models.DescribeInstanceRdAccountsRequest,
+    ) -> cloudfw_20171207_models.DescribeInstanceRdAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_rd_accounts_with_options(request, runtime)
+
+    async def describe_instance_rd_accounts_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInstanceRdAccountsRequest,
+    ) -> cloudfw_20171207_models.DescribeInstanceRdAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_rd_accounts_with_options_async(request, runtime)
+
+    def describe_policy_advanced_config_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribePolicyAdvancedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse(),
+            self.do_rpcrequest('DescribePolicyAdvancedConfig', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_policy_advanced_config_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribePolicyAdvancedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse(),
+            await self.do_rpcrequest_async('DescribePolicyAdvancedConfig', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_policy_advanced_config(
+        self,
+        request: cloudfw_20171207_models.DescribePolicyAdvancedConfigRequest,
+    ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_policy_advanced_config_with_options(request, runtime)
+
+    async def describe_policy_advanced_config_async(
+        self,
+        request: cloudfw_20171207_models.DescribePolicyAdvancedConfigRequest,
+    ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_policy_advanced_config_with_options_async(request, runtime)
+
     def describe_policy_prior_used_with_options(
         self,
         request: cloudfw_20171207_models.DescribePolicyPriorUsedRequest,
@@ -292,7 +683,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DescribePolicyPriorUsedResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePolicyPriorUsedResponse(),
             self.do_rpcrequest('DescribePolicyPriorUsed', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -305,7 +697,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DescribePolicyPriorUsedResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribePolicyPriorUsedResponse(),
             await self.do_rpcrequest_async('DescribePolicyPriorUsed', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -323,6 +716,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_policy_prior_used_with_options_async(request, runtime)
 
+    def describe_vpc_firewall_acl_group_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallAclGroupListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse(),
+            self.do_rpcrequest('DescribeVpcFirewallAclGroupList', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_vpc_firewall_acl_group_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallAclGroupListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse(),
+            await self.do_rpcrequest_async('DescribeVpcFirewallAclGroupList', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_vpc_firewall_acl_group_list(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallAclGroupListRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_firewall_acl_group_list_with_options(request, runtime)
+
+    async def describe_vpc_firewall_acl_group_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallAclGroupListRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_firewall_acl_group_list_with_options_async(request, runtime)
+
     def describe_vpc_firewall_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.DescribeVpcFirewallControlPolicyRequest,
@@ -332,7 +767,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse(),
             self.do_rpcrequest('DescribeVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -345,7 +781,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse(),
             await self.do_rpcrequest_async('DescribeVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -372,7 +809,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse(),
             self.do_rpcrequest('DescribeVpcFirewallPolicyPriorUsed', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -385,7 +823,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse(),
             await self.do_rpcrequest_async('DescribeVpcFirewallPolicyPriorUsed', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -412,7 +851,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyAddressBookResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyAddressBookResponse(),
             self.do_rpcrequest('ModifyAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -425,7 +865,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyAddressBookResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyAddressBookResponse(),
             await self.do_rpcrequest_async('ModifyAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -452,7 +893,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyControlPolicyResponse(),
             self.do_rpcrequest('ModifyControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -465,7 +907,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyControlPolicyResponse(),
             await self.do_rpcrequest_async('ModifyControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -492,7 +935,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyControlPolicyPositionResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyControlPolicyPositionResponse(),
             self.do_rpcrequest('ModifyControlPolicyPosition', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -505,7 +949,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyControlPolicyPositionResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyControlPolicyPositionResponse(),
             await self.do_rpcrequest_async('ModifyControlPolicyPosition', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -523,6 +968,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_control_policy_position_with_options_async(request, runtime)
 
+    def modify_control_policy_priority_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyControlPolicyPriorityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyControlPolicyPriorityResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyControlPolicyPriorityResponse(),
+            self.do_rpcrequest('ModifyControlPolicyPriority', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_control_policy_priority_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyControlPolicyPriorityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyControlPolicyPriorityResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyControlPolicyPriorityResponse(),
+            await self.do_rpcrequest_async('ModifyControlPolicyPriority', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_control_policy_priority(
+        self,
+        request: cloudfw_20171207_models.ModifyControlPolicyPriorityRequest,
+    ) -> cloudfw_20171207_models.ModifyControlPolicyPriorityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_control_policy_priority_with_options(request, runtime)
+
+    async def modify_control_policy_priority_async(
+        self,
+        request: cloudfw_20171207_models.ModifyControlPolicyPriorityRequest,
+    ) -> cloudfw_20171207_models.ModifyControlPolicyPriorityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_control_policy_priority_with_options_async(request, runtime)
+
+    def modify_instance_member_attributes_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyInstanceMemberAttributesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse(),
+            self.do_rpcrequest('ModifyInstanceMemberAttributes', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_instance_member_attributes_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyInstanceMemberAttributesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse(),
+            await self.do_rpcrequest_async('ModifyInstanceMemberAttributes', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_instance_member_attributes(
+        self,
+        request: cloudfw_20171207_models.ModifyInstanceMemberAttributesRequest,
+    ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_member_attributes_with_options(request, runtime)
+
+    async def modify_instance_member_attributes_async(
+        self,
+        request: cloudfw_20171207_models.ModifyInstanceMemberAttributesRequest,
+    ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_member_attributes_with_options_async(request, runtime)
+
     def modify_policy_advanced_config_with_options(
         self,
         request: cloudfw_20171207_models.ModifyPolicyAdvancedConfigRequest,
@@ -532,7 +1061,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse(),
             self.do_rpcrequest('ModifyPolicyAdvancedConfig', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -545,7 +1075,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse(),
             await self.do_rpcrequest_async('ModifyPolicyAdvancedConfig', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -572,7 +1103,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse(),
             self.do_rpcrequest('ModifyVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -585,7 +1117,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse(),
             await self.do_rpcrequest_async('ModifyVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -612,7 +1145,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse(),
             self.do_rpcrequest('ModifyVpcFirewallControlPolicyPosition', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -625,7 +1159,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse(),
             await self.do_rpcrequest_async('ModifyVpcFirewallControlPolicyPosition', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -652,7 +1187,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.PutDisableAllFwSwitchResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.PutDisableAllFwSwitchResponse(),
             self.do_rpcrequest('PutDisableAllFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -665,7 +1201,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.PutDisableAllFwSwitchResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.PutDisableAllFwSwitchResponse(),
             await self.do_rpcrequest_async('PutDisableAllFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -692,7 +1229,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.PutDisableFwSwitchResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.PutDisableFwSwitchResponse(),
             self.do_rpcrequest('PutDisableFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -705,7 +1243,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.PutDisableFwSwitchResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.PutDisableFwSwitchResponse(),
             await self.do_rpcrequest_async('PutDisableFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -732,7 +1271,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.PutEnableAllFwSwitchResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.PutEnableAllFwSwitchResponse(),
             self.do_rpcrequest('PutEnableAllFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -745,7 +1285,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.PutEnableAllFwSwitchResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.PutEnableAllFwSwitchResponse(),
             await self.do_rpcrequest_async('PutEnableAllFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -772,7 +1313,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.PutEnableFwSwitchResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.PutEnableFwSwitchResponse(),
             self.do_rpcrequest('PutEnableFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -785,7 +1327,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.PutEnableFwSwitchResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.PutEnableFwSwitchResponse(),
             await self.do_rpcrequest_async('PutEnableFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -812,7 +1355,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse(),
             self.do_rpcrequest('ResetVpcFirewallRuleHitCount', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -825,7 +1369,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse().from_map(
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse(),
             await self.do_rpcrequest_async('ResetVpcFirewallRuleHitCount', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
