@@ -62,6 +62,7 @@ class DescribeAppsResponseBodyResultAppList(TeaModel):
         callback_url: str = None,
         domain_names: str = None,
         create_time: str = None,
+        callback_type: str = None,
     ):
         # 白板应用唯一标识符
         self.app_id = app_id
@@ -75,6 +76,8 @@ class DescribeAppsResponseBodyResultAppList(TeaModel):
         self.domain_names = domain_names
         # 白板应用创建时间
         self.create_time = create_time
+        # 白板应用回调类型
+        self.callback_type = callback_type
 
     def validate(self):
         pass
@@ -97,6 +100,8 @@ class DescribeAppsResponseBodyResultAppList(TeaModel):
             result['DomainNames'] = self.domain_names
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.callback_type is not None:
+            result['CallbackType'] = self.callback_type
         return result
 
     def from_map(self, m: dict = None):
@@ -113,6 +118,8 @@ class DescribeAppsResponseBodyResultAppList(TeaModel):
             self.domain_names = m.get('DomainNames')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CallbackType') is not None:
+            self.callback_type = m.get('CallbackType')
         return self
 
 
@@ -1303,6 +1310,134 @@ class RefreshUsersPermissionsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RefreshUsersPermissionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetAppCallbackTypeRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_callback_type: str = None,
+    ):
+        # 白板应用唯一标识符
+        self.app_id = app_id
+        # 白板应用回调类型
+        self.app_callback_type = app_callback_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
+        if self.app_callback_type is not None:
+            result['AppCallbackType'] = self.app_callback_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
+        if m.get('AppCallbackType') is not None:
+            self.app_callback_type = m.get('AppCallbackType')
+        return self
+
+
+class SetAppCallbackTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        response_success: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        result: bool = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 请求结果
+        self.response_success = response_success
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_msg = error_msg
+        # 返回结果
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class SetAppCallbackTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SetAppCallbackTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SetAppCallbackTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
