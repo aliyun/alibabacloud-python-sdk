@@ -25,6 +25,10 @@ class AddGroupMembersRequestRequestParamsInitMembers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -74,6 +78,10 @@ class AddGroupMembersRequestRequestParams(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_app_uid is not None:
             result['OperatorAppUid'] = self.operator_app_uid
@@ -115,6 +123,10 @@ class AddGroupMembersRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -147,6 +159,10 @@ class AddGroupMembersShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -178,6 +194,10 @@ class AddGroupMembersResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -214,6 +234,10 @@ class AddGroupMembersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -252,6 +276,10 @@ class AddGroupSilenceBlacklistRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_app_uid is not None:
             result['OperatorAppUid'] = self.operator_app_uid
@@ -292,6 +320,10 @@ class AddGroupSilenceBlacklistRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -324,6 +356,10 @@ class AddGroupSilenceBlacklistShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -355,6 +391,10 @@ class AddGroupSilenceBlacklistResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -391,6 +431,10 @@ class AddGroupSilenceBlacklistResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -426,6 +470,10 @@ class AddGroupSilenceWhitelistRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_app_uid is not None:
             result['OperatorAppUid'] = self.operator_app_uid
@@ -462,6 +510,10 @@ class AddGroupSilenceWhitelistRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -494,6 +546,10 @@ class AddGroupSilenceWhitelistShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -525,6 +581,10 @@ class AddGroupSilenceWhitelistResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -561,6 +621,10 @@ class AddGroupSilenceWhitelistResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -593,6 +657,10 @@ class CancelSilenceAllGroupMembersRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -624,6 +692,10 @@ class CancelSilenceAllGroupMembersRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -655,6 +727,10 @@ class CancelSilenceAllGroupMembersShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -686,6 +762,10 @@ class CancelSilenceAllGroupMembersResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -722,6 +802,10 @@ class CancelSilenceAllGroupMembersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -760,6 +844,10 @@ class CreateGroupRequestRequestParamsInitMembers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -818,6 +906,10 @@ class CreateGroupRequestRequestParams(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.uuid is not None:
             result['Uuid'] = self.uuid
@@ -871,6 +963,10 @@ class CreateGroupRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -903,6 +999,10 @@ class CreateGroupShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -930,6 +1030,10 @@ class CreateGroupResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -960,6 +1064,10 @@ class CreateGroupResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1001,6 +1109,10 @@ class CreateGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1026,15 +1138,23 @@ class CreateRoomRequestRequest(TeaModel):
         owner_nick: str = None,
         title: str = None,
     ):
+        # 应用appKey
         self.domain = domain
+        # 创建者id
         self.owner_id = owner_id
+        # 创建者昵称
         self.owner_nick = owner_nick
+        # 创建房间的标题
         self.title = title
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['domain'] = self.domain
@@ -1071,6 +1191,10 @@ class CreateRoomRequest(TeaModel):
             self.request.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request is not None:
             result['Request'] = self.request.to_map()
@@ -1089,12 +1213,17 @@ class CreateRoomResponseBodyResult(TeaModel):
         self,
         room_id: str = None,
     ):
+        # 房间id
         self.room_id = room_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.room_id is not None:
             result['roomId'] = self.room_id
@@ -1110,15 +1239,16 @@ class CreateRoomResponseBodyResult(TeaModel):
 class CreateRoomResponseBody(TeaModel):
     def __init__(
         self,
-        success: bool = None,
+        response_success: bool = None,
         error_code: str = None,
         error_msg: str = None,
         result: CreateRoomResponseBodyResult = None,
         request_id: str = None,
     ):
-        # Id of the request
-        self.success = success
+        self.response_success = response_success
+        # 错误码
         self.error_code = error_code
+        # 错误信息
         self.error_msg = error_msg
         self.result = result
         self.request_id = request_id
@@ -1128,9 +1258,13 @@ class CreateRoomResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.success is not None:
-            result['success'] = self.success
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
         if self.error_code is not None:
             result['errorCode'] = self.error_code
         if self.error_msg is not None:
@@ -1143,8 +1277,8 @@ class CreateRoomResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('success') is not None:
-            self.success = m.get('success')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
         if m.get('errorCode') is not None:
             self.error_code = m.get('errorCode')
         if m.get('errorMsg') is not None:
@@ -1173,6 +1307,10 @@ class CreateRoomResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1190,6 +1328,120 @@ class CreateRoomResponse(TeaModel):
         return self
 
 
+class DeleteAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # 应用id
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DeleteAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        message: str = None,
+        code: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 是否成功
+        self.success = success
+        # 错误信息
+        self.message = message
+        # 错误码
+        self.code = code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.code is not None:
+            result['Code'] = self.code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        return self
+
+
+class DeleteAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DestroyRoomRequestRequest(TeaModel):
     def __init__(
         self,
@@ -1197,14 +1449,21 @@ class DestroyRoomRequestRequest(TeaModel):
         room_id: str = None,
         open_id: str = None,
     ):
+        # 应用appKey
         self.domain = domain
+        # 房间id
         self.room_id = room_id
+        # 操作人id
         self.open_id = open_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['domain'] = self.domain
@@ -1237,6 +1496,10 @@ class DestroyRoomRequest(TeaModel):
             self.request.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request is not None:
             result['Request'] = self.request.to_map()
@@ -1257,18 +1520,25 @@ class DestroyRoomResponseBody(TeaModel):
         error_msg: str = None,
         request_id: str = None,
         result: bool = None,
-        success: bool = None,
+        response_success: bool = None,
     ):
+        # 错误码
         self.error_code = error_code
+        # 错误信息
         self.error_msg = error_msg
         self.request_id = request_id
+        # 是否销毁成功
         self.result = result
-        self.success = success
+        self.response_success = response_success
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.error_code is not None:
             result['errorCode'] = self.error_code
@@ -1278,8 +1548,8 @@ class DestroyRoomResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.result is not None:
             result['result'] = self.result
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
         return result
 
     def from_map(self, m: dict = None):
@@ -1292,8 +1562,8 @@ class DestroyRoomResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('result') is not None:
             self.result = m.get('result')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
         return self
 
 
@@ -1313,6 +1583,10 @@ class DestroyRoomResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1345,6 +1619,10 @@ class DismissGroupRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_app_uid is not None:
             result['OperatorAppUid'] = self.operator_app_uid
@@ -1376,6 +1654,10 @@ class DismissGroupRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -1407,6 +1689,10 @@ class DismissGroupShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -1438,6 +1724,10 @@ class DismissGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1474,6 +1764,10 @@ class DismissGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1487,6 +1781,609 @@ class DismissGroupResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DismissGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCommonConfigRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # 应用id
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetCommonConfigResponseBodyResultCommonConfigLoginConfig(TeaModel):
+    def __init__(
+        self,
+        login_type: int = None,
+    ):
+        # 登录类型
+        self.login_type = login_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.login_type is not None:
+            result['LoginType'] = self.login_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoginType') is not None:
+            self.login_type = m.get('LoginType')
+        return self
+
+
+class GetCommonConfigResponseBodyResultCommonConfigAppConfigs(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        platform: str = None,
+    ):
+        # appKey
+        self.app_key = app_key
+        # 平台
+        self.platform = platform
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        return self
+
+
+class GetCommonConfigResponseBodyResultCommonConfigMediaConfig(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+    ):
+        # 域名
+        self.domain = domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        return self
+
+
+class GetCommonConfigResponseBodyResultCommonConfigConnectionConfig(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+    ):
+        # 域名
+        self.domain = domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        return self
+
+
+class GetCommonConfigResponseBodyResultCommonConfig(TeaModel):
+    def __init__(
+        self,
+        login_config: GetCommonConfigResponseBodyResultCommonConfigLoginConfig = None,
+        app_configs: List[GetCommonConfigResponseBodyResultCommonConfigAppConfigs] = None,
+        media_config: GetCommonConfigResponseBodyResultCommonConfigMediaConfig = None,
+        connection_config: GetCommonConfigResponseBodyResultCommonConfigConnectionConfig = None,
+    ):
+        # 登录配置
+        self.login_config = login_config
+        # app配置
+        self.app_configs = app_configs
+        # 多媒体配置
+        self.media_config = media_config
+        # 长连接配置
+        self.connection_config = connection_config
+
+    def validate(self):
+        if self.login_config:
+            self.login_config.validate()
+        if self.app_configs:
+            for k in self.app_configs:
+                if k:
+                    k.validate()
+        if self.media_config:
+            self.media_config.validate()
+        if self.connection_config:
+            self.connection_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.login_config is not None:
+            result['LoginConfig'] = self.login_config.to_map()
+        result['AppConfigs'] = []
+        if self.app_configs is not None:
+            for k in self.app_configs:
+                result['AppConfigs'].append(k.to_map() if k else None)
+        if self.media_config is not None:
+            result['MediaConfig'] = self.media_config.to_map()
+        if self.connection_config is not None:
+            result['ConnectionConfig'] = self.connection_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoginConfig') is not None:
+            temp_model = GetCommonConfigResponseBodyResultCommonConfigLoginConfig()
+            self.login_config = temp_model.from_map(m['LoginConfig'])
+        self.app_configs = []
+        if m.get('AppConfigs') is not None:
+            for k in m.get('AppConfigs'):
+                temp_model = GetCommonConfigResponseBodyResultCommonConfigAppConfigs()
+                self.app_configs.append(temp_model.from_map(k))
+        if m.get('MediaConfig') is not None:
+            temp_model = GetCommonConfigResponseBodyResultCommonConfigMediaConfig()
+            self.media_config = temp_model.from_map(m['MediaConfig'])
+        if m.get('ConnectionConfig') is not None:
+            temp_model = GetCommonConfigResponseBodyResultCommonConfigConnectionConfig()
+            self.connection_config = temp_model.from_map(m['ConnectionConfig'])
+        return self
+
+
+class GetCommonConfigResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        common_config: GetCommonConfigResponseBodyResultCommonConfig = None,
+    ):
+        # 通用配置
+        self.common_config = common_config
+
+    def validate(self):
+        if self.common_config:
+            self.common_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_config is not None:
+            result['CommonConfig'] = self.common_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonConfig') is not None:
+            temp_model = GetCommonConfigResponseBodyResultCommonConfig()
+            self.common_config = temp_model.from_map(m['CommonConfig'])
+        return self
+
+
+class GetCommonConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        code: str = None,
+        message: str = None,
+        result: GetCommonConfigResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 是否成功
+        self.success = success
+        # 错误码
+        self.code = code
+        # 错误信息
+        self.message = message
+        # 返回值
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = GetCommonConfigResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetCommonConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetCommonConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetCommonConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetGroupByIdRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_cid: str = None,
+    ):
+        # 群会话ID
+        self.app_cid = app_cid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_cid is not None:
+            result['AppCid'] = self.app_cid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCid') is not None:
+            self.app_cid = m.get('AppCid')
+        return self
+
+
+class GetGroupByIdRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: GetGroupByIdRequestRequestParams = None,
+    ):
+        # APP ID, IMPaaS租户的ID
+        self.app_id = app_id
+        # 群会话信息获取的请求体
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = GetGroupByIdRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class GetGroupByIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # APP ID, IMPaaS租户的ID
+        self.app_id = app_id
+        # 群会话信息获取的请求体
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class GetGroupByIdResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        app_cid: str = None,
+        owner_app_uid: str = None,
+        icon_media_id: str = None,
+        title: str = None,
+        member_count: int = None,
+        member_limit: int = None,
+        extensions: Dict[str, str] = None,
+        ceate_time: int = None,
+    ):
+        # 群会话ID
+        self.app_cid = app_cid
+        # 群主ID
+        self.owner_app_uid = owner_app_uid
+        # 群图像
+        self.icon_media_id = icon_media_id
+        # 群名称
+        self.title = title
+        # 当前群人数
+        self.member_count = member_count
+        # 群人数上限
+        self.member_limit = member_limit
+        # 群扩展信息
+        self.extensions = extensions
+        # 群创建时间
+        self.ceate_time = ceate_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_cid is not None:
+            result['AppCid'] = self.app_cid
+        if self.owner_app_uid is not None:
+            result['OwnerAppUid'] = self.owner_app_uid
+        if self.icon_media_id is not None:
+            result['IconMediaId'] = self.icon_media_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.member_count is not None:
+            result['MemberCount'] = self.member_count
+        if self.member_limit is not None:
+            result['MemberLimit'] = self.member_limit
+        if self.extensions is not None:
+            result['Extensions'] = self.extensions
+        if self.ceate_time is not None:
+            result['CeateTime'] = self.ceate_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCid') is not None:
+            self.app_cid = m.get('AppCid')
+        if m.get('OwnerAppUid') is not None:
+            self.owner_app_uid = m.get('OwnerAppUid')
+        if m.get('IconMediaId') is not None:
+            self.icon_media_id = m.get('IconMediaId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('MemberCount') is not None:
+            self.member_count = m.get('MemberCount')
+        if m.get('MemberLimit') is not None:
+            self.member_limit = m.get('MemberLimit')
+        if m.get('Extensions') is not None:
+            self.extensions = m.get('Extensions')
+        if m.get('CeateTime') is not None:
+            self.ceate_time = m.get('CeateTime')
+        return self
+
+
+class GetGroupByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+        result: GetGroupByIdResponseBodyResult = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 错误码
+        self.code = code
+        # 错误信息
+        self.message = message
+        # 群信息获取的返回结果
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = GetGroupByIdResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetGroupByIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetGroupByIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetGroupByIdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1506,6 +2403,10 @@ class GetGroupMemberByIdsRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -1538,6 +2439,10 @@ class GetGroupMemberByIdsRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -1570,6 +2475,10 @@ class GetGroupMemberByIdsShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -1605,6 +2514,10 @@ class GetGroupMemberByIdsResponseBodyResultMembers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -1648,6 +2561,10 @@ class GetGroupMemberByIdsResponseBodyResult(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Members'] = []
         if self.members is not None:
@@ -1683,6 +2600,10 @@ class GetGroupMemberByIdsResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1724,6 +2645,10 @@ class GetGroupMemberByIdsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1737,6 +2662,282 @@ class GetGroupMemberByIdsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetGroupMemberByIdsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIMConfigRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # 应用名
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetIMConfigResponseBodyResultImConfigMsgConfig(TeaModel):
+    def __init__(
+        self,
+        client_msg_recall_time_interval_minute: int = None,
+    ):
+        # 消息撤回时间，分钟
+        self.client_msg_recall_time_interval_minute = client_msg_recall_time_interval_minute
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_msg_recall_time_interval_minute is not None:
+            result['ClientMsgRecallTimeIntervalMinute'] = self.client_msg_recall_time_interval_minute
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientMsgRecallTimeIntervalMinute') is not None:
+            self.client_msg_recall_time_interval_minute = m.get('ClientMsgRecallTimeIntervalMinute')
+        return self
+
+
+class GetIMConfigResponseBodyResultImConfigCallbackConfig(TeaModel):
+    def __init__(
+        self,
+        callback_url: str = None,
+        signature_key: str = None,
+        signature_value: str = None,
+        apis: Dict[str, bool] = None,
+    ):
+        # 回调url，支持外部url
+        self.callback_url = callback_url
+        # 加签密钥-key
+        self.signature_key = signature_key
+        # 加签密钥-value
+        self.signature_value = signature_value
+        # 已开通的回调方法Id列表
+        self.apis = apis
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback_url is not None:
+            result['CallbackUrl'] = self.callback_url
+        if self.signature_key is not None:
+            result['SignatureKey'] = self.signature_key
+        if self.signature_value is not None:
+            result['SignatureValue'] = self.signature_value
+        if self.apis is not None:
+            result['Apis'] = self.apis
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackUrl') is not None:
+            self.callback_url = m.get('CallbackUrl')
+        if m.get('SignatureKey') is not None:
+            self.signature_key = m.get('SignatureKey')
+        if m.get('SignatureValue') is not None:
+            self.signature_value = m.get('SignatureValue')
+        if m.get('Apis') is not None:
+            self.apis = m.get('Apis')
+        return self
+
+
+class GetIMConfigResponseBodyResultImConfig(TeaModel):
+    def __init__(
+        self,
+        msg_config: GetIMConfigResponseBodyResultImConfigMsgConfig = None,
+        callback_config: GetIMConfigResponseBodyResultImConfigCallbackConfig = None,
+    ):
+        # 消息配置
+        self.msg_config = msg_config
+        # 回调配置
+        self.callback_config = callback_config
+
+    def validate(self):
+        if self.msg_config:
+            self.msg_config.validate()
+        if self.callback_config:
+            self.callback_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.msg_config is not None:
+            result['MsgConfig'] = self.msg_config.to_map()
+        if self.callback_config is not None:
+            result['CallbackConfig'] = self.callback_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MsgConfig') is not None:
+            temp_model = GetIMConfigResponseBodyResultImConfigMsgConfig()
+            self.msg_config = temp_model.from_map(m['MsgConfig'])
+        if m.get('CallbackConfig') is not None:
+            temp_model = GetIMConfigResponseBodyResultImConfigCallbackConfig()
+            self.callback_config = temp_model.from_map(m['CallbackConfig'])
+        return self
+
+
+class GetIMConfigResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        im_config: GetIMConfigResponseBodyResultImConfig = None,
+    ):
+        # im相关配置
+        self.im_config = im_config
+
+    def validate(self):
+        if self.im_config:
+            self.im_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.im_config is not None:
+            result['ImConfig'] = self.im_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImConfig') is not None:
+            temp_model = GetIMConfigResponseBodyResultImConfig()
+            self.im_config = temp_model.from_map(m['ImConfig'])
+        return self
+
+
+class GetIMConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        code: str = None,
+        http_status_code: int = None,
+        messaage: str = None,
+        result: GetIMConfigResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        # 错误码
+        self.code = code
+        # 网络错误码
+        self.http_status_code = http_status_code
+        # 错误信息
+        self.messaage = messaage
+        # 返回结果
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.messaage is not None:
+            result['Messaage'] = self.messaage
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Messaage') is not None:
+            self.messaage = m.get('Messaage')
+        if m.get('Result') is not None:
+            temp_model = GetIMConfigResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetIMConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetIMConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetIMConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1759,6 +2960,10 @@ class GetLoginTokenRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -1794,6 +2999,10 @@ class GetLoginTokenRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -1825,6 +3034,10 @@ class GetLoginTokenShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -1859,6 +3072,10 @@ class GetLoginTokenResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_token is not None:
             result['AccessToken'] = self.access_token
@@ -1897,6 +3114,10 @@ class GetLoginTokenResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1938,6 +3159,10 @@ class GetLoginTokenResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1958,24 +3183,28 @@ class GetLoginTokenResponse(TeaModel):
 class GetMediaUploadUrlRequestRequestParams(TeaModel):
     def __init__(
         self,
-        type: int = None,
+        mime_type: str = None,
     ):
-        # 多媒体资源类型(取值参照文档中类型枚举值)
-        self.type = type
+        # 多媒体资源类型(文件后缀名)
+        self.mime_type = mime_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
+        if self.mime_type is not None:
+            result['MimeType'] = self.mime_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
+        if m.get('MimeType') is not None:
+            self.mime_type = m.get('MimeType')
         return self
 
 
@@ -1994,6 +3223,10 @@ class GetMediaUploadUrlRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -2025,6 +3258,10 @@ class GetMediaUploadUrlShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -2056,6 +3293,10 @@ class GetMediaUploadUrlResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.upload_url is not None:
             result['UploadUrl'] = self.upload_url
@@ -2091,6 +3332,10 @@ class GetMediaUploadUrlResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2132,6 +3377,10 @@ class GetMediaUploadUrlResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2164,6 +3413,10 @@ class GetMediaUrlRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.media_id is not None:
             result['MediaId'] = self.media_id
@@ -2195,6 +3448,10 @@ class GetMediaUrlRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -2226,6 +3483,10 @@ class GetMediaUrlShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -2254,6 +3515,10 @@ class GetMediaUrlResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -2284,6 +3549,10 @@ class GetMediaUrlResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2325,6 +3594,10 @@ class GetMediaUrlResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2354,6 +3627,10 @@ class GetMessageByIdRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
@@ -2382,6 +3659,10 @@ class GetMessageByIdRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -2414,6 +3695,10 @@ class GetMessageByIdShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -2462,6 +3747,10 @@ class GetMessageByIdResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
@@ -2520,6 +3809,10 @@ class GetMessageByIdResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2561,6 +3854,10 @@ class GetMessageByIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2574,6 +3871,258 @@ class GetMessageByIdResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetMessageByIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUserMuteSettingRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_uids: List[str] = None,
+    ):
+        # 用户列表
+        self.app_uids = app_uids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uids is not None:
+            result['AppUids'] = self.app_uids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUids') is not None:
+            self.app_uids = m.get('AppUids')
+        return self
+
+
+class GetUserMuteSettingRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: GetUserMuteSettingRequestRequestParams = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = GetUserMuteSettingRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class GetUserMuteSettingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class ResultUserMuteSettingsValue(TeaModel):
+    def __init__(
+        self,
+        mute: bool = None,
+        expire_time: int = None,
+    ):
+        self.mute = mute
+        self.expire_time = expire_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mute is not None:
+            result['Mute'] = self.mute
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mute') is not None:
+            self.mute = m.get('Mute')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        return self
+
+
+class GetUserMuteSettingResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        user_mute_settings: Dict[str, ResultUserMuteSettingsValue] = None,
+    ):
+        self.user_mute_settings = user_mute_settings
+
+    def validate(self):
+        if self.user_mute_settings:
+            for v in self.user_mute_settings.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['UserMuteSettings'] = {}
+        if self.user_mute_settings is not None:
+            for k, v in self.user_mute_settings.items():
+                result['UserMuteSettings'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.user_mute_settings = {}
+        if m.get('UserMuteSettings') is not None:
+            for k, v in m.get('UserMuteSettings').items():
+                temp_model = ResultUserMuteSettingsValue()
+                self.user_mute_settings[k] = temp_model.from_map(v)
+        return self
+
+
+class GetUserMuteSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+        result: GetUserMuteSettingResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.code = code
+        self.message = message
+        # 返回值
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = GetUserMuteSettingResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetUserMuteSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetUserMuteSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetUserMuteSettingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2611,6 +4160,10 @@ class ImportGroupChatConversationRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.uuid is not None:
             result['Uuid'] = self.uuid
@@ -2666,6 +4219,10 @@ class ImportGroupChatConversationRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -2697,6 +4254,10 @@ class ImportGroupChatConversationShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -2725,6 +4286,10 @@ class ImportGroupChatConversationResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -2755,6 +4320,10 @@ class ImportGroupChatConversationResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2796,6 +4365,10 @@ class ImportGroupChatConversationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2852,6 +4425,10 @@ class ImportGroupChatMemberRequestRequestParamsGroupChatMembers(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -2917,6 +4494,10 @@ class ImportGroupChatMemberRequestRequestParams(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -2953,6 +4534,10 @@ class ImportGroupChatMemberRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -2984,6 +4569,10 @@ class ImportGroupChatMemberShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -3015,6 +4604,10 @@ class ImportGroupChatMemberResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3051,6 +4644,10 @@ class ImportGroupChatMemberResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3104,6 +4701,10 @@ class ImportMessageRequestRequestParamsMessages(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.uuid is not None:
             result['Uuid'] = self.uuid
@@ -3162,6 +4763,10 @@ class ImportMessageRequestRequestParams(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Messages'] = []
         if self.messages is not None:
@@ -3194,6 +4799,10 @@ class ImportMessageRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -3225,6 +4834,10 @@ class ImportMessageShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -3256,6 +4869,10 @@ class ResultImportMessageResultValue(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.result is not None:
             result['result'] = self.result
@@ -3286,6 +4903,10 @@ class ImportMessageResponseBodyResult(TeaModel):
                     v.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ImportMessageResult'] = {}
         if self.import_message_result is not None:
@@ -3321,6 +4942,10 @@ class ImportMessageResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3362,6 +4987,10 @@ class ImportMessageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3399,6 +5028,10 @@ class ImportSingleConversationRequestRequestParamsConversation(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -3453,6 +5086,10 @@ class RequestParamsUserConversationsValue(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.top is not None:
             result['Top'] = self.top
@@ -3509,6 +5146,10 @@ class ImportSingleConversationRequestRequestParams(TeaModel):
                     v.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.conversation is not None:
             result['Conversation'] = self.conversation.to_map()
@@ -3546,6 +5187,10 @@ class ImportSingleConversationRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -3577,6 +5222,10 @@ class ImportSingleConversationShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -3608,6 +5257,10 @@ class ImportSingleConversationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3644,6 +5297,10 @@ class ImportSingleConversationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3666,12 +5323,17 @@ class InitTenantRequestRequest(TeaModel):
         self,
         domain: str = None,
     ):
+        # 应用appKey
         self.domain = domain
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['domain'] = self.domain
@@ -3696,6 +5358,10 @@ class InitTenantRequest(TeaModel):
             self.request.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request is not None:
             result['Request'] = self.request.to_map()
@@ -3712,16 +5378,18 @@ class InitTenantRequest(TeaModel):
 class InitTenantResponseBody(TeaModel):
     def __init__(
         self,
-        success: bool = None,
+        response_success: bool = None,
         error_code: str = None,
         error_msg: str = None,
         result: bool = None,
         request_id: str = None,
     ):
-        # Id of the request
-        self.success = success
+        self.response_success = response_success
+        # 错误码
         self.error_code = error_code
+        # 错误信息
         self.error_msg = error_msg
+        # 是否初始化成功
         self.result = result
         self.request_id = request_id
 
@@ -3729,9 +5397,13 @@ class InitTenantResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.success is not None:
-            result['success'] = self.success
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
         if self.error_code is not None:
             result['errorCode'] = self.error_code
         if self.error_msg is not None:
@@ -3744,8 +5416,8 @@ class InitTenantResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('success') is not None:
-            self.success = m.get('success')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
         if m.get('errorCode') is not None:
             self.error_code = m.get('errorCode')
         if m.get('errorMsg') is not None:
@@ -3773,6 +5445,10 @@ class InitTenantResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3808,6 +5484,10 @@ class KickOffRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -3843,6 +5523,10 @@ class KickOffRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -3874,6 +5558,10 @@ class KickOffShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -3905,6 +5593,10 @@ class KickOffResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3941,6 +5633,10 @@ class KickOffResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3954,6 +5650,836 @@ class KickOffResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = KickOffResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAppInfosRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        keyword: str = None,
+        page_size: int = None,
+        page_number: int = None,
+    ):
+        # 关键字类型，包含appName、appId两类
+        self.type = type
+        # 关键字
+        self.keyword = keyword
+        # 分页大小，大于0的任意数
+        self.page_size = page_size
+        # 页码，从1开始
+        self.page_number = page_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        return self
+
+
+class ListAppInfosRequest(TeaModel):
+    def __init__(
+        self,
+        request_params: ListAppInfosRequestRequestParams = None,
+    ):
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestParams') is not None:
+            temp_model = ListAppInfosRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class ListAppInfosShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        request_params_shrink: str = None,
+    ):
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class ListAppInfosResponseBodyResultAppInfos(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        create_time: str = None,
+        app_status: int = None,
+        prod_version: str = None,
+    ):
+        # 应用Id
+        self.app_id = app_id
+        # 应用名
+        self.app_name = app_name
+        # 创建时间
+        self.create_time = create_time
+        # 应用状态
+        self.app_status = app_status
+        # 产品版本
+        self.prod_version = prod_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.app_status is not None:
+            result['AppStatus'] = self.app_status
+        if self.prod_version is not None:
+            result['ProdVersion'] = self.prod_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('AppStatus') is not None:
+            self.app_status = m.get('AppStatus')
+        if m.get('ProdVersion') is not None:
+            self.prod_version = m.get('ProdVersion')
+        return self
+
+
+class ListAppInfosResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        app_infos: List[ListAppInfosResponseBodyResultAppInfos] = None,
+    ):
+        # 总数，用于分页
+        self.total_count = total_count
+        # 应用信息列表
+        self.app_infos = app_infos
+
+    def validate(self):
+        if self.app_infos:
+            for k in self.app_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['AppInfos'] = []
+        if self.app_infos is not None:
+            for k in self.app_infos:
+                result['AppInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.app_infos = []
+        if m.get('AppInfos') is not None:
+            for k in m.get('AppInfos'):
+                temp_model = ListAppInfosResponseBodyResultAppInfos()
+                self.app_infos.append(temp_model.from_map(k))
+        return self
+
+
+class ListAppInfosResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+        result: ListAppInfosResponseBodyResult = None,
+    ):
+        # desc
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        # httpStatusCode
+        self.http_status_code = http_status_code
+        # code
+        self.code = code
+        # success
+        self.success = success
+        # result
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Result') is not None:
+            temp_model = ListAppInfosResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class ListAppInfosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListAppInfosResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListAppInfosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDetailReportStatisticsRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        start_time: str = None,
+        end_time: str = None,
+        report_statistics_type: str = None,
+    ):
+        # 开始时间，utc
+        self.start_time = start_time
+        # 结束时间，utc
+        self.end_time = end_time
+        # 报表类型  user、groupChat、message
+        self.report_statistics_type = report_statistics_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.report_statistics_type is not None:
+            result['ReportStatisticsType'] = self.report_statistics_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ReportStatisticsType') is not None:
+            self.report_statistics_type = m.get('ReportStatisticsType')
+        return self
+
+
+class ListDetailReportStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: ListDetailReportStatisticsRequestRequestParams = None,
+    ):
+        # 应用Id
+        self.app_id = app_id
+        # 请求
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = ListDetailReportStatisticsRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class ListDetailReportStatisticsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # 应用Id
+        self.app_id = app_id
+        # 请求
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class ListDetailReportStatisticsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        data: List[Dict[str, Any]] = None,
+    ):
+        # 数据
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        return self
+
+
+class ListDetailReportStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+        result: ListDetailReportStatisticsResponseBodyResult = None,
+    ):
+        # desc
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        # httpStatusCode
+        self.http_status_code = http_status_code
+        # code
+        self.code = code
+        # success
+        self.success = success
+        # result
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Result') is not None:
+            temp_model = ListDetailReportStatisticsResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class ListDetailReportStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDetailReportStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDetailReportStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListGroupAllMembersRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_cid: str = None,
+    ):
+        # 会话ID
+        self.app_cid = app_cid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_cid is not None:
+            result['AppCid'] = self.app_cid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCid') is not None:
+            self.app_cid = m.get('AppCid')
+        return self
+
+
+class ListGroupAllMembersRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: ListGroupAllMembersRequestRequestParams = None,
+    ):
+        # App ID, IMPaaS租户的ID
+        self.app_id = app_id
+        # 拉取群成员列表的请求体
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = ListGroupAllMembersRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class ListGroupAllMembersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # App ID, IMPaaS租户的ID
+        self.app_id = app_id
+        # 拉取群成员列表的请求体
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class ListGroupAllMembersResponseBodyResultMembers(TeaModel):
+    def __init__(
+        self,
+        app_uid: str = None,
+        role: int = None,
+        nick: str = None,
+        join_time: int = None,
+        extensions: Dict[str, str] = None,
+    ):
+        # 群成员ID
+        self.app_uid = app_uid
+        # 群成员角色
+        self.role = role
+        # 群成员昵称
+        self.nick = nick
+        # 群成员入群时间
+        self.join_time = join_time
+        # 群成员扩展信息
+        self.extensions = extensions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uid is not None:
+            result['AppUid'] = self.app_uid
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.nick is not None:
+            result['Nick'] = self.nick
+        if self.join_time is not None:
+            result['JoinTime'] = self.join_time
+        if self.extensions is not None:
+            result['Extensions'] = self.extensions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUid') is not None:
+            self.app_uid = m.get('AppUid')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('Nick') is not None:
+            self.nick = m.get('Nick')
+        if m.get('JoinTime') is not None:
+            self.join_time = m.get('JoinTime')
+        if m.get('Extensions') is not None:
+            self.extensions = m.get('Extensions')
+        return self
+
+
+class ListGroupAllMembersResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        members: List[ListGroupAllMembersResponseBodyResultMembers] = None,
+    ):
+        # 群成员列表
+        self.members = members
+
+    def validate(self):
+        if self.members:
+            for k in self.members:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Members'] = []
+        if self.members is not None:
+            for k in self.members:
+                result['Members'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.members = []
+        if m.get('Members') is not None:
+            for k in m.get('Members'):
+                temp_model = ListGroupAllMembersResponseBodyResultMembers()
+                self.members.append(temp_model.from_map(k))
+        return self
+
+
+class ListGroupAllMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+        result: ListGroupAllMembersResponseBodyResult = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 错误码
+        self.code = code
+        # 错误信息
+        self.message = message
+        # 拉取群成员列表的结果
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = ListGroupAllMembersResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class ListGroupAllMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListGroupAllMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListGroupAllMembersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3973,6 +6499,10 @@ class ListGroupSilenceMembersRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_app_uid is not None:
             result['OperatorAppUid'] = self.operator_app_uid
@@ -4005,6 +6535,10 @@ class ListGroupSilenceMembersRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4037,6 +6571,10 @@ class ListGroupSilenceMembersShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4058,7 +6596,7 @@ class ListGroupSilenceMembersResponseBodyResult(TeaModel):
         self,
         app_cid: str = None,
         whitelist: List[str] = None,
-        blacklist: Dict[str, str] = None,
+        blacklist: Dict[str, int] = None,
     ):
         # 群会话id
         self.app_cid = app_cid
@@ -4071,6 +6609,10 @@ class ListGroupSilenceMembersResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -4110,6 +6652,10 @@ class ListGroupSilenceMembersResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4151,6 +6697,10 @@ class ListGroupSilenceMembersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4164,6 +6714,195 @@ class ListGroupSilenceMembersResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListGroupSilenceMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MuteUsersRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_uids: List[str] = None,
+        mute_duration: int = None,
+        mute: bool = None,
+    ):
+        # 需要禁言的用户
+        self.app_uids = app_uids
+        # 单位秒
+        self.mute_duration = mute_duration
+        # true: 禁言, false: 解除禁言
+        self.mute = mute
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uids is not None:
+            result['AppUids'] = self.app_uids
+        if self.mute_duration is not None:
+            result['MuteDuration'] = self.mute_duration
+        if self.mute is not None:
+            result['Mute'] = self.mute
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUids') is not None:
+            self.app_uids = m.get('AppUids')
+        if m.get('MuteDuration') is not None:
+            self.mute_duration = m.get('MuteDuration')
+        if m.get('Mute') is not None:
+            self.mute = m.get('Mute')
+        return self
+
+
+class MuteUsersRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: MuteUsersRequestRequestParams = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = MuteUsersRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class MuteUsersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class MuteUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class MuteUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: MuteUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = MuteUsersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4195,6 +6934,10 @@ class RecallMessageRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -4242,6 +6985,10 @@ class RecallMessageRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4273,6 +7020,10 @@ class RecallMessageShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4304,6 +7055,10 @@ class RecallMessageResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4340,6 +7095,10 @@ class RecallMessageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4370,6 +7129,10 @@ class RemoveExtensionByKeysRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4403,6 +7166,10 @@ class RemoveExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -4443,6 +7210,10 @@ class RemoveExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4475,6 +7246,10 @@ class RemoveGroupExtensionByKeysRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -4507,6 +7282,10 @@ class RemoveGroupExtensionByKeysRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4539,6 +7318,10 @@ class RemoveGroupExtensionByKeysShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4570,6 +7353,10 @@ class RemoveGroupExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4606,6 +7393,10 @@ class RemoveGroupExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4619,6 +7410,199 @@ class RemoveGroupExtensionByKeysResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RemoveGroupExtensionByKeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveGroupMemberExtensionByKeysRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_cid: str = None,
+        app_uid: str = None,
+        keys: List[str] = None,
+    ):
+        # 会话ID
+        self.app_cid = app_cid
+        # 用户ID
+        self.app_uid = app_uid
+        # 扩展信息中需要删除的key列表
+        self.keys = keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_cid is not None:
+            result['AppCid'] = self.app_cid
+        if self.app_uid is not None:
+            result['AppUid'] = self.app_uid
+        if self.keys is not None:
+            result['Keys'] = self.keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCid') is not None:
+            self.app_cid = m.get('AppCid')
+        if m.get('AppUid') is not None:
+            self.app_uid = m.get('AppUid')
+        if m.get('Keys') is not None:
+            self.keys = m.get('Keys')
+        return self
+
+
+class RemoveGroupMemberExtensionByKeysRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: RemoveGroupMemberExtensionByKeysRequestRequestParams = None,
+    ):
+        # App ID, IMPaaS租户的ID
+        self.app_id = app_id
+        # 删除群成员扩展信息的请求体
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = RemoveGroupMemberExtensionByKeysRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class RemoveGroupMemberExtensionByKeysShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # App ID, IMPaaS租户的ID
+        self.app_id = app_id
+        # 删除群成员扩展信息的请求体
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class RemoveGroupMemberExtensionByKeysResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 错误码
+        self.code = code
+        # 错误信息
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class RemoveGroupMemberExtensionByKeysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RemoveGroupMemberExtensionByKeysResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RemoveGroupMemberExtensionByKeysResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4638,6 +7622,10 @@ class RemoveGroupMembersRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_app_uid is not None:
             result['OperatorAppUid'] = self.operator_app_uid
@@ -4674,6 +7662,10 @@ class RemoveGroupMembersRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4706,6 +7698,10 @@ class RemoveGroupMembersShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4737,6 +7733,10 @@ class RemoveGroupMembersResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4773,6 +7773,10 @@ class RemoveGroupMembersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4808,6 +7812,10 @@ class RemoveGroupSilenceBlacklistRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_app_uid is not None:
             result['OperatorAppUid'] = self.operator_app_uid
@@ -4844,6 +7852,10 @@ class RemoveGroupSilenceBlacklistRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4876,6 +7888,10 @@ class RemoveGroupSilenceBlacklistShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -4907,6 +7923,10 @@ class RemoveGroupSilenceBlacklistResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4943,6 +7963,10 @@ class RemoveGroupSilenceBlacklistResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4978,6 +8002,10 @@ class RemoveGroupSilenceWhitelistRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.operator_app_uid is not None:
             result['OperatorAppUid'] = self.operator_app_uid
@@ -5014,6 +8042,10 @@ class RemoveGroupSilenceWhitelistRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -5046,6 +8078,10 @@ class RemoveGroupSilenceWhitelistShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -5077,6 +8113,10 @@ class RemoveGroupSilenceWhitelistResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5113,6 +8153,10 @@ class RemoveGroupSilenceWhitelistResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5148,6 +8192,10 @@ class RemoveMessageExtensionByKeysRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -5183,6 +8231,10 @@ class RemoveMessageExtensionByKeysRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -5214,6 +8266,10 @@ class RemoveMessageExtensionByKeysShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -5248,6 +8304,10 @@ class RemoveMessageExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5284,6 +8344,10 @@ class RemoveMessageExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5318,6 +8382,10 @@ class RemoveSingleChatExtensionByKeysRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -5353,6 +8421,10 @@ class RemoveSingleChatExtensionByKeysRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -5384,6 +8456,10 @@ class RemoveSingleChatExtensionByKeysShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -5415,6 +8491,10 @@ class RemoveSingleChatExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5451,6 +8531,10 @@ class RemoveSingleChatExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5485,6 +8569,10 @@ class RemoveUserConversationExtensionByKeysRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -5520,6 +8608,10 @@ class RemoveUserConversationExtensionByKeysRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -5551,6 +8643,10 @@ class RemoveUserConversationExtensionByKeysShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -5582,6 +8678,10 @@ class RemoveUserConversationExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5618,6 +8718,10 @@ class RemoveUserConversationExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5648,6 +8752,10 @@ class RemoveUserExtensionByKeysRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -5681,6 +8789,10 @@ class RemoveUserExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -5721,6 +8833,10 @@ class RemoveUserExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5756,6 +8872,10 @@ class SendMessageRequestRequestParamsOptionsReceiveScopeOption(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.receiver_ids is not None:
             result['ReceiverIds'] = self.receiver_ids
@@ -5788,6 +8908,10 @@ class RequestParamsOptionsSingleChatCreateRequestUserConversationValue(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.user_extensions is not None:
             result['UserExtensions'] = self.user_extensions
@@ -5824,6 +8948,10 @@ class SendMessageRequestRequestParamsOptionsSingleChatCreateRequest(TeaModel):
                     v.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -5874,6 +9002,10 @@ class SendMessageRequestRequestParamsOptions(TeaModel):
             self.single_chat_create_request.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.red_point_policy is not None:
             result['RedPointPolicy'] = self.red_point_policy
@@ -5930,6 +9062,10 @@ class SendMessageRequestRequestParams(TeaModel):
             self.options.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.uuid is not None:
             result['Uuid'] = self.uuid
@@ -5987,6 +9123,10 @@ class SendMessageRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6019,6 +9159,10 @@ class SendMessageShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6050,6 +9194,10 @@ class SendMessageResponseBodyResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
@@ -6084,6 +9232,10 @@ class SendMessageResponseBody(TeaModel):
             self.result.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6125,6 +9277,10 @@ class SendMessageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6155,6 +9311,10 @@ class SetExtensionByKeysRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6188,6 +9348,10 @@ class SetExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -6228,6 +9392,10 @@ class SetExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6259,6 +9427,10 @@ class SetGroupExtensionByKeysRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -6291,6 +9463,10 @@ class SetGroupExtensionByKeysRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6323,6 +9499,10 @@ class SetGroupExtensionByKeysShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6354,6 +9534,10 @@ class SetGroupExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6390,6 +9574,10 @@ class SetGroupExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6403,6 +9591,385 @@ class SetGroupExtensionByKeysResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SetGroupExtensionByKeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetGroupMemberExtensionByKeysRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_cid: str = None,
+        app_uid: str = None,
+        extensions: Dict[str, str] = None,
+    ):
+        # 会话ID
+        self.app_cid = app_cid
+        # 用户ID
+        self.app_uid = app_uid
+        # 扩展信息
+        self.extensions = extensions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_cid is not None:
+            result['AppCid'] = self.app_cid
+        if self.app_uid is not None:
+            result['AppUid'] = self.app_uid
+        if self.extensions is not None:
+            result['Extensions'] = self.extensions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCid') is not None:
+            self.app_cid = m.get('AppCid')
+        if m.get('AppUid') is not None:
+            self.app_uid = m.get('AppUid')
+        if m.get('Extensions') is not None:
+            self.extensions = m.get('Extensions')
+        return self
+
+
+class SetGroupMemberExtensionByKeysRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: SetGroupMemberExtensionByKeysRequestRequestParams = None,
+    ):
+        # App ID, IMPaaS租户的ID
+        self.app_id = app_id
+        # 设置群成员扩展信息的请求体
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = SetGroupMemberExtensionByKeysRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class SetGroupMemberExtensionByKeysShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # App ID, IMPaaS租户的ID
+        self.app_id = app_id
+        # 设置群成员扩展信息的请求体
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class SetGroupMemberExtensionByKeysResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 错误码
+        self.code = code
+        # 错误信息
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class SetGroupMemberExtensionByKeysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SetGroupMemberExtensionByKeysResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SetGroupMemberExtensionByKeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetGroupOwnerRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_cid: str = None,
+        new_owner_app_uid: str = None,
+    ):
+        # 会话ID
+        self.app_cid = app_cid
+        # 新群主
+        self.new_owner_app_uid = new_owner_app_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_cid is not None:
+            result['AppCid'] = self.app_cid
+        if self.new_owner_app_uid is not None:
+            result['NewOwnerAppUid'] = self.new_owner_app_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCid') is not None:
+            self.app_cid = m.get('AppCid')
+        if m.get('NewOwnerAppUid') is not None:
+            self.new_owner_app_uid = m.get('NewOwnerAppUid')
+        return self
+
+
+class SetGroupOwnerRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: SetGroupOwnerRequestRequestParams = None,
+    ):
+        # App ID，IMPaaS租户的ID
+        self.app_id = app_id
+        # 群主转让的请求体
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = SetGroupOwnerRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class SetGroupOwnerShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # App ID，IMPaaS租户的ID
+        self.app_id = app_id
+        # 群主转让的请求体
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class SetGroupOwnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+        # 错误码。
+        self.code = code
+        # 错误信息。
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class SetGroupOwnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SetGroupOwnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SetGroupOwnerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6425,6 +9992,10 @@ class SetMessageExtensionByKeysRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -6460,6 +10031,10 @@ class SetMessageExtensionByKeysRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6491,6 +10066,10 @@ class SetMessageExtensionByKeysShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6525,6 +10104,10 @@ class SetMessageExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6561,6 +10144,10 @@ class SetMessageExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6596,6 +10183,10 @@ class SetSingleChatExtensionByKeysRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -6632,6 +10223,10 @@ class SetSingleChatExtensionByKeysRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6664,6 +10259,10 @@ class SetSingleChatExtensionByKeysShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6695,6 +10294,10 @@ class SetSingleChatExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6731,6 +10334,10 @@ class SetSingleChatExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6766,6 +10373,10 @@ class SetUserConversationExtensionByKeysRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_uid is not None:
             result['AppUid'] = self.app_uid
@@ -6801,6 +10412,10 @@ class SetUserConversationExtensionByKeysRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6832,6 +10447,10 @@ class SetUserConversationExtensionByKeysShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6863,6 +10482,10 @@ class SetUserConversationExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6899,6 +10522,10 @@ class SetUserConversationExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6929,6 +10556,10 @@ class SetUserExtensionByKeysRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -6962,6 +10593,10 @@ class SetUserExtensionByKeysResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.message is not None:
             result['Message'] = self.message
@@ -7002,6 +10637,10 @@ class SetUserExtensionByKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7034,6 +10673,10 @@ class SilenceAllGroupMembersRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -7065,6 +10708,10 @@ class SilenceAllGroupMembersRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -7096,6 +10743,10 @@ class SilenceAllGroupMembersShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -7127,6 +10778,10 @@ class SilenceAllGroupMembersResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7163,6 +10818,10 @@ class SilenceAllGroupMembersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7176,6 +10835,753 @@ class SilenceAllGroupMembersResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SilenceAllGroupMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAppNameRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+    ):
+        # 应用名
+        self.app_name = app_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        return self
+
+
+class UpdateAppNameRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: UpdateAppNameRequestRequestParams = None,
+    ):
+        # 应用Id
+        self.app_id = app_id
+        # 请求
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = UpdateAppNameRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class UpdateAppNameShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # 应用Id
+        self.app_id = app_id
+        # 请求
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class UpdateAppNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+    ):
+        # desc
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        # httpStatusCode
+        self.http_status_code = http_status_code
+        # code
+        self.code = code
+        # success
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAppNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateAppNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateAppNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAppStatusRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        # 是否开启
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class UpdateAppStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: UpdateAppStatusRequestRequestParams = None,
+    ):
+        # 应用Id
+        self.app_id = app_id
+        # 请求
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = UpdateAppStatusRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class UpdateAppStatusShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # 应用Id
+        self.app_id = app_id
+        # 请求
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class UpdateAppStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        message: str = None,
+        code: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 是否成功
+        self.success = success
+        # 错误信息
+        self.message = message
+        # 错误码
+        self.code = code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.code is not None:
+            result['Code'] = self.code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        return self
+
+
+class UpdateAppStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateAppStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateAppStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCallbackConfigRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        callback_url: str = None,
+        signature_key: str = None,
+        signature_value: str = None,
+        apis: Dict[str, bool] = None,
+    ):
+        # 回调url
+        self.callback_url = callback_url
+        # 加签密钥-key
+        self.signature_key = signature_key
+        # 加签密钥-value
+        self.signature_value = signature_value
+        # 回调api列表
+        self.apis = apis
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback_url is not None:
+            result['CallbackUrl'] = self.callback_url
+        if self.signature_key is not None:
+            result['SignatureKey'] = self.signature_key
+        if self.signature_value is not None:
+            result['SignatureValue'] = self.signature_value
+        if self.apis is not None:
+            result['Apis'] = self.apis
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackUrl') is not None:
+            self.callback_url = m.get('CallbackUrl')
+        if m.get('SignatureKey') is not None:
+            self.signature_key = m.get('SignatureKey')
+        if m.get('SignatureValue') is not None:
+            self.signature_value = m.get('SignatureValue')
+        if m.get('Apis') is not None:
+            self.apis = m.get('Apis')
+        return self
+
+
+class UpdateCallbackConfigRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: UpdateCallbackConfigRequestRequestParams = None,
+    ):
+        # 应用Id
+        self.app_id = app_id
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = UpdateCallbackConfigRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class UpdateCallbackConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # 应用Id
+        self.app_id = app_id
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class UpdateCallbackConfigResponseBodyResultImConfigMsgConfig(TeaModel):
+    def __init__(
+        self,
+        msg_recall_time_interval: int = None,
+    ):
+        # 消息撤回时间间隔，毫秒
+        self.msg_recall_time_interval = msg_recall_time_interval
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.msg_recall_time_interval is not None:
+            result['MsgRecallTimeInterval'] = self.msg_recall_time_interval
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MsgRecallTimeInterval') is not None:
+            self.msg_recall_time_interval = m.get('MsgRecallTimeInterval')
+        return self
+
+
+class UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig(TeaModel):
+    def __init__(
+        self,
+        backend_url: str = None,
+        signature_key: str = None,
+        signature_value: str = None,
+        api_ids: List[str] = None,
+    ):
+        # 回调url
+        self.backend_url = backend_url
+        # 加签密钥-key
+        self.signature_key = signature_key
+        # 加签密钥-value
+        self.signature_value = signature_value
+        # 回调方法列表
+        self.api_ids = api_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_url is not None:
+            result['BackendUrl'] = self.backend_url
+        if self.signature_key is not None:
+            result['SignatureKey'] = self.signature_key
+        if self.signature_value is not None:
+            result['SignatureValue'] = self.signature_value
+        if self.api_ids is not None:
+            result['ApiIds'] = self.api_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendUrl') is not None:
+            self.backend_url = m.get('BackendUrl')
+        if m.get('SignatureKey') is not None:
+            self.signature_key = m.get('SignatureKey')
+        if m.get('SignatureValue') is not None:
+            self.signature_value = m.get('SignatureValue')
+        if m.get('ApiIds') is not None:
+            self.api_ids = m.get('ApiIds')
+        return self
+
+
+class UpdateCallbackConfigResponseBodyResultImConfig(TeaModel):
+    def __init__(
+        self,
+        msg_config: UpdateCallbackConfigResponseBodyResultImConfigMsgConfig = None,
+        callback_config: UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig = None,
+    ):
+        # 消息配置
+        self.msg_config = msg_config
+        # 回调配置
+        self.callback_config = callback_config
+
+    def validate(self):
+        if self.msg_config:
+            self.msg_config.validate()
+        if self.callback_config:
+            self.callback_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.msg_config is not None:
+            result['MsgConfig'] = self.msg_config.to_map()
+        if self.callback_config is not None:
+            result['CallbackConfig'] = self.callback_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MsgConfig') is not None:
+            temp_model = UpdateCallbackConfigResponseBodyResultImConfigMsgConfig()
+            self.msg_config = temp_model.from_map(m['MsgConfig'])
+        if m.get('CallbackConfig') is not None:
+            temp_model = UpdateCallbackConfigResponseBodyResultImConfigCallbackConfig()
+            self.callback_config = temp_model.from_map(m['CallbackConfig'])
+        return self
+
+
+class UpdateCallbackConfigResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        im_config: UpdateCallbackConfigResponseBodyResultImConfig = None,
+    ):
+        # im相关配置
+        self.im_config = im_config
+
+    def validate(self):
+        if self.im_config:
+            self.im_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.im_config is not None:
+            result['ImConfig'] = self.im_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImConfig') is not None:
+            temp_model = UpdateCallbackConfigResponseBodyResultImConfig()
+            self.im_config = temp_model.from_map(m['ImConfig'])
+        return self
+
+
+class UpdateCallbackConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+        result: UpdateCallbackConfigResponseBodyResult = None,
+    ):
+        # desc
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        # httpStatusCode
+        self.http_status_code = http_status_code
+        # code
+        self.code = code
+        # success
+        self.success = success
+        # result
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Result') is not None:
+            temp_model = UpdateCallbackConfigResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class UpdateCallbackConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateCallbackConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateCallbackConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7198,6 +11604,10 @@ class UpdateGroupIconRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -7233,6 +11643,10 @@ class UpdateGroupIconRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -7264,6 +11678,10 @@ class UpdateGroupIconShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -7295,6 +11713,10 @@ class UpdateGroupIconResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7331,6 +11753,10 @@ class UpdateGroupIconResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7353,15 +11779,15 @@ class UpdateGroupMembersRoleRequestRequestParams(TeaModel):
         self,
         app_cid: str = None,
         operator_app_uid: str = None,
-        rrole: int = None,
+        role: int = None,
         app_uids: List[str] = None,
     ):
         # 会话ID
         self.app_cid = app_cid
-        # 操作者uid
+        # 操作用户ID。
         self.operator_app_uid = operator_app_uid
-        # 角色
-        self.rrole = rrole
+        # 更新后的成员角色。取值： 2：管理员。 3：普通。 100~127：自定义。 不能为1。
+        self.role = role
         # 需要更改的uids
         self.app_uids = app_uids
 
@@ -7369,13 +11795,17 @@ class UpdateGroupMembersRoleRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
         if self.operator_app_uid is not None:
             result['OperatorAppUid'] = self.operator_app_uid
-        if self.rrole is not None:
-            result['Rrole'] = self.rrole
+        if self.role is not None:
+            result['Role'] = self.role
         if self.app_uids is not None:
             result['AppUids'] = self.app_uids
         return result
@@ -7386,8 +11816,8 @@ class UpdateGroupMembersRoleRequestRequestParams(TeaModel):
             self.app_cid = m.get('AppCid')
         if m.get('OperatorAppUid') is not None:
             self.operator_app_uid = m.get('OperatorAppUid')
-        if m.get('Rrole') is not None:
-            self.rrole = m.get('Rrole')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
         if m.get('AppUids') is not None:
             self.app_uids = m.get('AppUids')
         return self
@@ -7399,8 +11829,9 @@ class UpdateGroupMembersRoleRequest(TeaModel):
         app_id: str = None,
         request_params: UpdateGroupMembersRoleRequestRequestParams = None,
     ):
-        # AppId
+        # App ID。IMPaaS租户的ID。
         self.app_id = app_id
+        # 更新群成员角色请求体。
         self.request_params = request_params
 
     def validate(self):
@@ -7408,6 +11839,10 @@ class UpdateGroupMembersRoleRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -7431,14 +11866,19 @@ class UpdateGroupMembersRoleShrinkRequest(TeaModel):
         app_id: str = None,
         request_params_shrink: str = None,
     ):
-        # AppId
+        # App ID。IMPaaS租户的ID。
         self.app_id = app_id
+        # 更新群成员角色请求体。
         self.request_params_shrink = request_params_shrink
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -7462,14 +11902,21 @@ class UpdateGroupMembersRoleResponseBody(TeaModel):
         code: str = None,
         message: str = None,
     ):
+        # 请求ID。
         self.request_id = request_id
+        # 错误码。
         self.code = code
+        # 错误信息。
         self.message = message
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7506,6 +11953,10 @@ class UpdateGroupMembersRoleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7541,6 +11992,10 @@ class UpdateGroupTitleRequestRequestParams(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_cid is not None:
             result['AppCid'] = self.app_cid
@@ -7576,6 +12031,10 @@ class UpdateGroupTitleRequest(TeaModel):
             self.request_params.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -7607,6 +12066,10 @@ class UpdateGroupTitleShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
@@ -7638,6 +12101,10 @@ class UpdateGroupTitleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7674,6 +12141,10 @@ class UpdateGroupTitleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7691,19 +12162,225 @@ class UpdateGroupTitleResponse(TeaModel):
         return self
 
 
+class UpdateMsgRecallIntervalRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        client_msg_recall_interval_minute: int = None,
+    ):
+        # 消息撤回时间间隔
+        self.client_msg_recall_interval_minute = client_msg_recall_interval_minute
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_msg_recall_interval_minute is not None:
+            result['ClientMsgRecallIntervalMinute'] = self.client_msg_recall_interval_minute
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientMsgRecallIntervalMinute') is not None:
+            self.client_msg_recall_interval_minute = m.get('ClientMsgRecallIntervalMinute')
+        return self
+
+
+class UpdateMsgRecallIntervalRequest(TeaModel):
+    def __init__(
+        self,
+        request_params: UpdateMsgRecallIntervalRequestRequestParams = None,
+        app_id: str = None,
+    ):
+        # 请求
+        self.request_params = request_params
+        # 应用Id
+        self.app_id = app_id
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestParams') is not None:
+            temp_model = UpdateMsgRecallIntervalRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class UpdateMsgRecallIntervalShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        request_params_shrink: str = None,
+        app_id: str = None,
+    ):
+        # 请求
+        self.request_params_shrink = request_params_shrink
+        # 应用Id
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class UpdateMsgRecallIntervalResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        http_status_code: int = None,
+        code: str = None,
+        success: bool = None,
+        result: str = None,
+    ):
+        # desc
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        # httpStatusCode
+        self.http_status_code = http_status_code
+        # code
+        self.code = code
+        # success
+        self.success = success
+        # result
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class UpdateMsgRecallIntervalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateMsgRecallIntervalResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateMsgRecallIntervalResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateTenantStatusRequestRequest(TeaModel):
     def __init__(
         self,
         domain: str = None,
         status: int = None,
     ):
+        # 应用appKey
         self.domain = domain
+        # 应用状态
         self.status = status
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['domain'] = self.domain
@@ -7732,6 +12409,10 @@ class UpdateTenantStatusRequest(TeaModel):
             self.request.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request is not None:
             result['Request'] = self.request.to_map()
@@ -7748,16 +12429,19 @@ class UpdateTenantStatusRequest(TeaModel):
 class UpdateTenantStatusResponseBody(TeaModel):
     def __init__(
         self,
-        success: bool = None,
+        response_success: bool = None,
         error_code: str = None,
         error_msg: str = None,
         result: bool = None,
         request_id: str = None,
     ):
         # Id of the request
-        self.success = success
+        self.response_success = response_success
+        # 错误码
         self.error_code = error_code
+        # 错误信息
         self.error_msg = error_msg
+        # 是否更新成功
         self.result = result
         self.request_id = request_id
 
@@ -7765,9 +12449,13 @@ class UpdateTenantStatusResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.success is not None:
-            result['success'] = self.success
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
         if self.error_code is not None:
             result['errorCode'] = self.error_code
         if self.error_msg is not None:
@@ -7780,8 +12468,8 @@ class UpdateTenantStatusResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('success') is not None:
-            self.success = m.get('success')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
         if m.get('errorCode') is not None:
             self.error_code = m.get('errorCode')
         if m.get('errorMsg') is not None:
@@ -7809,6 +12497,10 @@ class UpdateTenantStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

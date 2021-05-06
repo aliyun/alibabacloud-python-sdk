@@ -54,7 +54,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.AddGroupMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.AddGroupMembersResponse(),
             self.do_rpcrequest('AddGroupMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -71,7 +72,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.AddGroupMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.AddGroupMembersResponse(),
             await self.do_rpcrequest_async('AddGroupMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -102,7 +104,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.AddGroupSilenceBlacklistResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.AddGroupSilenceBlacklistResponse(),
             self.do_rpcrequest('AddGroupSilenceBlacklist', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -119,7 +122,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.AddGroupSilenceBlacklistResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.AddGroupSilenceBlacklistResponse(),
             await self.do_rpcrequest_async('AddGroupSilenceBlacklist', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -150,7 +154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.AddGroupSilenceWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.AddGroupSilenceWhitelistResponse(),
             self.do_rpcrequest('AddGroupSilenceWhitelist', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -167,7 +172,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.AddGroupSilenceWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.AddGroupSilenceWhitelistResponse(),
             await self.do_rpcrequest_async('AddGroupSilenceWhitelist', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -198,7 +204,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.CancelSilenceAllGroupMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.CancelSilenceAllGroupMembersResponse(),
             self.do_rpcrequest('CancelSilenceAllGroupMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -215,7 +222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.CancelSilenceAllGroupMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.CancelSilenceAllGroupMembersResponse(),
             await self.do_rpcrequest_async('CancelSilenceAllGroupMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -246,7 +254,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.CreateGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.CreateGroupResponse(),
             self.do_rpcrequest('CreateGroup', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -263,7 +272,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.CreateGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.CreateGroupResponse(),
             await self.do_rpcrequest_async('CreateGroup', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -290,7 +300,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.CreateRoomResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.CreateRoomResponse(),
             self.do_rpcrequest('CreateRoom', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -303,7 +314,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.CreateRoomResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.CreateRoomResponse(),
             await self.do_rpcrequest_async('CreateRoom', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -321,6 +333,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_room_with_options_async(request, runtime)
 
+    def delete_app_with_options(
+        self,
+        request: live_interaction_20201214_models.DeleteAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.DeleteAppResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.DeleteAppResponse(),
+            self.do_rpcrequest('DeleteApp', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_app_with_options_async(
+        self,
+        request: live_interaction_20201214_models.DeleteAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.DeleteAppResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.DeleteAppResponse(),
+            await self.do_rpcrequest_async('DeleteApp', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_app(
+        self,
+        request: live_interaction_20201214_models.DeleteAppRequest,
+    ) -> live_interaction_20201214_models.DeleteAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_with_options(request, runtime)
+
+    async def delete_app_async(
+        self,
+        request: live_interaction_20201214_models.DeleteAppRequest,
+    ) -> live_interaction_20201214_models.DeleteAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_with_options_async(request, runtime)
+
     def destroy_room_with_options(
         self,
         request: live_interaction_20201214_models.DestroyRoomRequest,
@@ -330,7 +384,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.DestroyRoomResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.DestroyRoomResponse(),
             self.do_rpcrequest('DestroyRoom', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -343,7 +398,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.DestroyRoomResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.DestroyRoomResponse(),
             await self.do_rpcrequest_async('DestroyRoom', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -374,7 +430,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.DismissGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.DismissGroupResponse(),
             self.do_rpcrequest('DismissGroup', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -391,7 +448,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.DismissGroupResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.DismissGroupResponse(),
             await self.do_rpcrequest_async('DismissGroup', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -409,6 +467,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.dismiss_group_with_options_async(request, runtime)
 
+    def get_common_config_with_options(
+        self,
+        request: live_interaction_20201214_models.GetCommonConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.GetCommonConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetCommonConfigResponse(),
+            self.do_rpcrequest('GetCommonConfig', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_common_config_with_options_async(
+        self,
+        request: live_interaction_20201214_models.GetCommonConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.GetCommonConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetCommonConfigResponse(),
+            await self.do_rpcrequest_async('GetCommonConfig', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_common_config(
+        self,
+        request: live_interaction_20201214_models.GetCommonConfigRequest,
+    ) -> live_interaction_20201214_models.GetCommonConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_common_config_with_options(request, runtime)
+
+    async def get_common_config_async(
+        self,
+        request: live_interaction_20201214_models.GetCommonConfigRequest,
+    ) -> live_interaction_20201214_models.GetCommonConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_common_config_with_options_async(request, runtime)
+
+    def get_group_by_id_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.GetGroupByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.GetGroupByIdResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.GetGroupByIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetGroupByIdResponse(),
+            self.do_rpcrequest('GetGroupById', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_group_by_id_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.GetGroupByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.GetGroupByIdResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.GetGroupByIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetGroupByIdResponse(),
+            await self.do_rpcrequest_async('GetGroupById', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_group_by_id(
+        self,
+        request: live_interaction_20201214_models.GetGroupByIdRequest,
+    ) -> live_interaction_20201214_models.GetGroupByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_group_by_id_with_options(request, runtime)
+
+    async def get_group_by_id_async(
+        self,
+        request: live_interaction_20201214_models.GetGroupByIdRequest,
+    ) -> live_interaction_20201214_models.GetGroupByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_group_by_id_with_options_async(request, runtime)
+
     def get_group_member_by_ids_with_options(
         self,
         tmp_req: live_interaction_20201214_models.GetGroupMemberByIdsRequest,
@@ -422,7 +572,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetGroupMemberByIdsResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetGroupMemberByIdsResponse(),
             self.do_rpcrequest('GetGroupMemberByIds', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -439,7 +590,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetGroupMemberByIdsResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetGroupMemberByIdsResponse(),
             await self.do_rpcrequest_async('GetGroupMemberByIds', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -457,6 +609,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_group_member_by_ids_with_options_async(request, runtime)
 
+    def get_imconfig_with_options(
+        self,
+        request: live_interaction_20201214_models.GetIMConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.GetIMConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetIMConfigResponse(),
+            self.do_rpcrequest('GetIMConfig', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_imconfig_with_options_async(
+        self,
+        request: live_interaction_20201214_models.GetIMConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.GetIMConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetIMConfigResponse(),
+            await self.do_rpcrequest_async('GetIMConfig', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_imconfig(
+        self,
+        request: live_interaction_20201214_models.GetIMConfigRequest,
+    ) -> live_interaction_20201214_models.GetIMConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_imconfig_with_options(request, runtime)
+
+    async def get_imconfig_async(
+        self,
+        request: live_interaction_20201214_models.GetIMConfigRequest,
+    ) -> live_interaction_20201214_models.GetIMConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_imconfig_with_options_async(request, runtime)
+
     def get_login_token_with_options(
         self,
         tmp_req: live_interaction_20201214_models.GetLoginTokenRequest,
@@ -470,7 +664,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetLoginTokenResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetLoginTokenResponse(),
             self.do_rpcrequest('GetLoginToken', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -487,7 +682,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetLoginTokenResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetLoginTokenResponse(),
             await self.do_rpcrequest_async('GetLoginToken', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -518,7 +714,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetMediaUploadUrlResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetMediaUploadUrlResponse(),
             self.do_rpcrequest('GetMediaUploadUrl', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -535,7 +732,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetMediaUploadUrlResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetMediaUploadUrlResponse(),
             await self.do_rpcrequest_async('GetMediaUploadUrl', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -566,7 +764,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetMediaUrlResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetMediaUrlResponse(),
             self.do_rpcrequest('GetMediaUrl', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -583,7 +782,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetMediaUrlResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetMediaUrlResponse(),
             await self.do_rpcrequest_async('GetMediaUrl', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -614,7 +814,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetMessageByIdResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetMessageByIdResponse(),
             self.do_rpcrequest('GetMessageById', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -631,7 +832,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.GetMessageByIdResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetMessageByIdResponse(),
             await self.do_rpcrequest_async('GetMessageById', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -649,6 +851,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_message_by_id_with_options_async(request, runtime)
 
+    def get_user_mute_setting_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.GetUserMuteSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.GetUserMuteSettingResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.GetUserMuteSettingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetUserMuteSettingResponse(),
+            self.do_rpcrequest('GetUserMuteSetting', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_user_mute_setting_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.GetUserMuteSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.GetUserMuteSettingResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.GetUserMuteSettingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.GetUserMuteSettingResponse(),
+            await self.do_rpcrequest_async('GetUserMuteSetting', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_user_mute_setting(
+        self,
+        request: live_interaction_20201214_models.GetUserMuteSettingRequest,
+    ) -> live_interaction_20201214_models.GetUserMuteSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_mute_setting_with_options(request, runtime)
+
+    async def get_user_mute_setting_async(
+        self,
+        request: live_interaction_20201214_models.GetUserMuteSettingRequest,
+    ) -> live_interaction_20201214_models.GetUserMuteSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_mute_setting_with_options_async(request, runtime)
+
     def import_group_chat_conversation_with_options(
         self,
         tmp_req: live_interaction_20201214_models.ImportGroupChatConversationRequest,
@@ -662,7 +914,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ImportGroupChatConversationResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ImportGroupChatConversationResponse(),
             self.do_rpcrequest('ImportGroupChatConversation', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -679,7 +932,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ImportGroupChatConversationResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ImportGroupChatConversationResponse(),
             await self.do_rpcrequest_async('ImportGroupChatConversation', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -710,7 +964,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ImportGroupChatMemberResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ImportGroupChatMemberResponse(),
             self.do_rpcrequest('ImportGroupChatMember', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -727,7 +982,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ImportGroupChatMemberResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ImportGroupChatMemberResponse(),
             await self.do_rpcrequest_async('ImportGroupChatMember', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -758,7 +1014,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ImportMessageResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ImportMessageResponse(),
             self.do_rpcrequest('ImportMessage', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -775,7 +1032,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ImportMessageResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ImportMessageResponse(),
             await self.do_rpcrequest_async('ImportMessage', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -806,7 +1064,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ImportSingleConversationResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ImportSingleConversationResponse(),
             self.do_rpcrequest('ImportSingleConversation', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -823,7 +1082,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ImportSingleConversationResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ImportSingleConversationResponse(),
             await self.do_rpcrequest_async('ImportSingleConversation', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -850,7 +1110,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.InitTenantResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.InitTenantResponse(),
             self.do_rpcrequest('InitTenant', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -863,7 +1124,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.InitTenantResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.InitTenantResponse(),
             await self.do_rpcrequest_async('InitTenant', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -894,7 +1156,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.KickOffResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.KickOffResponse(),
             self.do_rpcrequest('KickOff', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -911,7 +1174,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.KickOffResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.KickOffResponse(),
             await self.do_rpcrequest_async('KickOff', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -929,6 +1193,156 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.kick_off_with_options_async(request, runtime)
 
+    def list_app_infos_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.ListAppInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.ListAppInfosResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.ListAppInfosShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ListAppInfosResponse(),
+            self.do_rpcrequest('ListAppInfos', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_app_infos_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.ListAppInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.ListAppInfosResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.ListAppInfosShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ListAppInfosResponse(),
+            await self.do_rpcrequest_async('ListAppInfos', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_app_infos(
+        self,
+        request: live_interaction_20201214_models.ListAppInfosRequest,
+    ) -> live_interaction_20201214_models.ListAppInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_app_infos_with_options(request, runtime)
+
+    async def list_app_infos_async(
+        self,
+        request: live_interaction_20201214_models.ListAppInfosRequest,
+    ) -> live_interaction_20201214_models.ListAppInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_app_infos_with_options_async(request, runtime)
+
+    def list_detail_report_statistics_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.ListDetailReportStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.ListDetailReportStatisticsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.ListDetailReportStatisticsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ListDetailReportStatisticsResponse(),
+            self.do_rpcrequest('ListDetailReportStatistics', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_detail_report_statistics_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.ListDetailReportStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.ListDetailReportStatisticsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.ListDetailReportStatisticsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ListDetailReportStatisticsResponse(),
+            await self.do_rpcrequest_async('ListDetailReportStatistics', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_detail_report_statistics(
+        self,
+        request: live_interaction_20201214_models.ListDetailReportStatisticsRequest,
+    ) -> live_interaction_20201214_models.ListDetailReportStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_detail_report_statistics_with_options(request, runtime)
+
+    async def list_detail_report_statistics_async(
+        self,
+        request: live_interaction_20201214_models.ListDetailReportStatisticsRequest,
+    ) -> live_interaction_20201214_models.ListDetailReportStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_detail_report_statistics_with_options_async(request, runtime)
+
+    def list_group_all_members_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.ListGroupAllMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.ListGroupAllMembersResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.ListGroupAllMembersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ListGroupAllMembersResponse(),
+            self.do_rpcrequest('ListGroupAllMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_group_all_members_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.ListGroupAllMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.ListGroupAllMembersResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.ListGroupAllMembersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ListGroupAllMembersResponse(),
+            await self.do_rpcrequest_async('ListGroupAllMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_group_all_members(
+        self,
+        request: live_interaction_20201214_models.ListGroupAllMembersRequest,
+    ) -> live_interaction_20201214_models.ListGroupAllMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_group_all_members_with_options(request, runtime)
+
+    async def list_group_all_members_async(
+        self,
+        request: live_interaction_20201214_models.ListGroupAllMembersRequest,
+    ) -> live_interaction_20201214_models.ListGroupAllMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_group_all_members_with_options_async(request, runtime)
+
     def list_group_silence_members_with_options(
         self,
         tmp_req: live_interaction_20201214_models.ListGroupSilenceMembersRequest,
@@ -942,7 +1356,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ListGroupSilenceMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ListGroupSilenceMembersResponse(),
             self.do_rpcrequest('ListGroupSilenceMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -959,7 +1374,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.ListGroupSilenceMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.ListGroupSilenceMembersResponse(),
             await self.do_rpcrequest_async('ListGroupSilenceMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -977,6 +1393,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_group_silence_members_with_options_async(request, runtime)
 
+    def mute_users_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.MuteUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.MuteUsersResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.MuteUsersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.MuteUsersResponse(),
+            self.do_rpcrequest('MuteUsers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def mute_users_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.MuteUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.MuteUsersResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.MuteUsersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.MuteUsersResponse(),
+            await self.do_rpcrequest_async('MuteUsers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def mute_users(
+        self,
+        request: live_interaction_20201214_models.MuteUsersRequest,
+    ) -> live_interaction_20201214_models.MuteUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mute_users_with_options(request, runtime)
+
+    async def mute_users_async(
+        self,
+        request: live_interaction_20201214_models.MuteUsersRequest,
+    ) -> live_interaction_20201214_models.MuteUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mute_users_with_options_async(request, runtime)
+
     def recall_message_with_options(
         self,
         tmp_req: live_interaction_20201214_models.RecallMessageRequest,
@@ -990,7 +1456,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RecallMessageResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RecallMessageResponse(),
             self.do_rpcrequest('RecallMessage', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1007,7 +1474,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RecallMessageResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RecallMessageResponse(),
             await self.do_rpcrequest_async('RecallMessage', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1034,7 +1502,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveExtensionByKeysResponse(),
             self.do_rpcrequest('RemoveExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1047,7 +1516,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveExtensionByKeysResponse(),
             await self.do_rpcrequest_async('RemoveExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1078,7 +1548,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveGroupExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupExtensionByKeysResponse(),
             self.do_rpcrequest('RemoveGroupExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1095,7 +1566,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveGroupExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupExtensionByKeysResponse(),
             await self.do_rpcrequest_async('RemoveGroupExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1113,6 +1585,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_group_extension_by_keys_with_options_async(request, runtime)
 
+    def remove_group_member_extension_by_keys_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysResponse(),
+            self.do_rpcrequest('RemoveGroupMemberExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def remove_group_member_extension_by_keys_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysResponse(),
+            await self.do_rpcrequest_async('RemoveGroupMemberExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def remove_group_member_extension_by_keys(
+        self,
+        request: live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysRequest,
+    ) -> live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_group_member_extension_by_keys_with_options(request, runtime)
+
+    async def remove_group_member_extension_by_keys_async(
+        self,
+        request: live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysRequest,
+    ) -> live_interaction_20201214_models.RemoveGroupMemberExtensionByKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_group_member_extension_by_keys_with_options_async(request, runtime)
+
     def remove_group_members_with_options(
         self,
         tmp_req: live_interaction_20201214_models.RemoveGroupMembersRequest,
@@ -1126,7 +1648,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveGroupMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupMembersResponse(),
             self.do_rpcrequest('RemoveGroupMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1143,7 +1666,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveGroupMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupMembersResponse(),
             await self.do_rpcrequest_async('RemoveGroupMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1174,7 +1698,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveGroupSilenceBlacklistResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupSilenceBlacklistResponse(),
             self.do_rpcrequest('RemoveGroupSilenceBlacklist', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1191,7 +1716,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveGroupSilenceBlacklistResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupSilenceBlacklistResponse(),
             await self.do_rpcrequest_async('RemoveGroupSilenceBlacklist', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1222,7 +1748,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveGroupSilenceWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupSilenceWhitelistResponse(),
             self.do_rpcrequest('RemoveGroupSilenceWhitelist', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1239,7 +1766,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveGroupSilenceWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveGroupSilenceWhitelistResponse(),
             await self.do_rpcrequest_async('RemoveGroupSilenceWhitelist', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1270,7 +1798,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveMessageExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveMessageExtensionByKeysResponse(),
             self.do_rpcrequest('RemoveMessageExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1287,7 +1816,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveMessageExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveMessageExtensionByKeysResponse(),
             await self.do_rpcrequest_async('RemoveMessageExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1318,7 +1848,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveSingleChatExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveSingleChatExtensionByKeysResponse(),
             self.do_rpcrequest('RemoveSingleChatExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1335,7 +1866,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveSingleChatExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveSingleChatExtensionByKeysResponse(),
             await self.do_rpcrequest_async('RemoveSingleChatExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1366,7 +1898,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveUserConversationExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveUserConversationExtensionByKeysResponse(),
             self.do_rpcrequest('RemoveUserConversationExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1383,7 +1916,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveUserConversationExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveUserConversationExtensionByKeysResponse(),
             await self.do_rpcrequest_async('RemoveUserConversationExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1410,7 +1944,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveUserExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveUserExtensionByKeysResponse(),
             self.do_rpcrequest('RemoveUserExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1423,7 +1958,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.RemoveUserExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.RemoveUserExtensionByKeysResponse(),
             await self.do_rpcrequest_async('RemoveUserExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1454,7 +1990,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SendMessageResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SendMessageResponse(),
             self.do_rpcrequest('SendMessage', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1471,7 +2008,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SendMessageResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SendMessageResponse(),
             await self.do_rpcrequest_async('SendMessage', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1498,7 +2036,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetExtensionByKeysResponse(),
             self.do_rpcrequest('SetExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1511,7 +2050,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetExtensionByKeysResponse(),
             await self.do_rpcrequest_async('SetExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1542,7 +2082,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetGroupExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetGroupExtensionByKeysResponse(),
             self.do_rpcrequest('SetGroupExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1559,7 +2100,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetGroupExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetGroupExtensionByKeysResponse(),
             await self.do_rpcrequest_async('SetGroupExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1577,6 +2119,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_group_extension_by_keys_with_options_async(request, runtime)
 
+    def set_group_member_extension_by_keys_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.SetGroupMemberExtensionByKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.SetGroupMemberExtensionByKeysResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.SetGroupMemberExtensionByKeysShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetGroupMemberExtensionByKeysResponse(),
+            self.do_rpcrequest('SetGroupMemberExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def set_group_member_extension_by_keys_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.SetGroupMemberExtensionByKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.SetGroupMemberExtensionByKeysResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.SetGroupMemberExtensionByKeysShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetGroupMemberExtensionByKeysResponse(),
+            await self.do_rpcrequest_async('SetGroupMemberExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_group_member_extension_by_keys(
+        self,
+        request: live_interaction_20201214_models.SetGroupMemberExtensionByKeysRequest,
+    ) -> live_interaction_20201214_models.SetGroupMemberExtensionByKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_group_member_extension_by_keys_with_options(request, runtime)
+
+    async def set_group_member_extension_by_keys_async(
+        self,
+        request: live_interaction_20201214_models.SetGroupMemberExtensionByKeysRequest,
+    ) -> live_interaction_20201214_models.SetGroupMemberExtensionByKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_group_member_extension_by_keys_with_options_async(request, runtime)
+
+    def set_group_owner_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.SetGroupOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.SetGroupOwnerResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.SetGroupOwnerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetGroupOwnerResponse(),
+            self.do_rpcrequest('SetGroupOwner', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def set_group_owner_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.SetGroupOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.SetGroupOwnerResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.SetGroupOwnerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetGroupOwnerResponse(),
+            await self.do_rpcrequest_async('SetGroupOwner', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_group_owner(
+        self,
+        request: live_interaction_20201214_models.SetGroupOwnerRequest,
+    ) -> live_interaction_20201214_models.SetGroupOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_group_owner_with_options(request, runtime)
+
+    async def set_group_owner_async(
+        self,
+        request: live_interaction_20201214_models.SetGroupOwnerRequest,
+    ) -> live_interaction_20201214_models.SetGroupOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_group_owner_with_options_async(request, runtime)
+
     def set_message_extension_by_keys_with_options(
         self,
         tmp_req: live_interaction_20201214_models.SetMessageExtensionByKeysRequest,
@@ -1590,7 +2232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetMessageExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetMessageExtensionByKeysResponse(),
             self.do_rpcrequest('SetMessageExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1607,7 +2250,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetMessageExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetMessageExtensionByKeysResponse(),
             await self.do_rpcrequest_async('SetMessageExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1638,7 +2282,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetSingleChatExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetSingleChatExtensionByKeysResponse(),
             self.do_rpcrequest('SetSingleChatExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1655,7 +2300,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetSingleChatExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetSingleChatExtensionByKeysResponse(),
             await self.do_rpcrequest_async('SetSingleChatExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1686,7 +2332,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetUserConversationExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetUserConversationExtensionByKeysResponse(),
             self.do_rpcrequest('SetUserConversationExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1703,7 +2350,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetUserConversationExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetUserConversationExtensionByKeysResponse(),
             await self.do_rpcrequest_async('SetUserConversationExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1730,7 +2378,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetUserExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetUserExtensionByKeysResponse(),
             self.do_rpcrequest('SetUserExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1743,7 +2392,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SetUserExtensionByKeysResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SetUserExtensionByKeysResponse(),
             await self.do_rpcrequest_async('SetUserExtensionByKeys', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1774,7 +2424,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SilenceAllGroupMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SilenceAllGroupMembersResponse(),
             self.do_rpcrequest('SilenceAllGroupMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1791,7 +2442,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.SilenceAllGroupMembersResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.SilenceAllGroupMembersResponse(),
             await self.do_rpcrequest_async('SilenceAllGroupMembers', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1809,6 +2461,156 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.silence_all_group_members_with_options_async(request, runtime)
 
+    def update_app_name_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.UpdateAppNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UpdateAppNameResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UpdateAppNameShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateAppNameResponse(),
+            self.do_rpcrequest('UpdateAppName', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_app_name_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.UpdateAppNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UpdateAppNameResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UpdateAppNameShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateAppNameResponse(),
+            await self.do_rpcrequest_async('UpdateAppName', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_app_name(
+        self,
+        request: live_interaction_20201214_models.UpdateAppNameRequest,
+    ) -> live_interaction_20201214_models.UpdateAppNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_app_name_with_options(request, runtime)
+
+    async def update_app_name_async(
+        self,
+        request: live_interaction_20201214_models.UpdateAppNameRequest,
+    ) -> live_interaction_20201214_models.UpdateAppNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_app_name_with_options_async(request, runtime)
+
+    def update_app_status_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.UpdateAppStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UpdateAppStatusResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UpdateAppStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateAppStatusResponse(),
+            self.do_rpcrequest('UpdateAppStatus', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_app_status_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.UpdateAppStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UpdateAppStatusResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UpdateAppStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateAppStatusResponse(),
+            await self.do_rpcrequest_async('UpdateAppStatus', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_app_status(
+        self,
+        request: live_interaction_20201214_models.UpdateAppStatusRequest,
+    ) -> live_interaction_20201214_models.UpdateAppStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_app_status_with_options(request, runtime)
+
+    async def update_app_status_async(
+        self,
+        request: live_interaction_20201214_models.UpdateAppStatusRequest,
+    ) -> live_interaction_20201214_models.UpdateAppStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_app_status_with_options_async(request, runtime)
+
+    def update_callback_config_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.UpdateCallbackConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UpdateCallbackConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UpdateCallbackConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateCallbackConfigResponse(),
+            self.do_rpcrequest('UpdateCallbackConfig', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_callback_config_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.UpdateCallbackConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UpdateCallbackConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UpdateCallbackConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateCallbackConfigResponse(),
+            await self.do_rpcrequest_async('UpdateCallbackConfig', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_callback_config(
+        self,
+        request: live_interaction_20201214_models.UpdateCallbackConfigRequest,
+    ) -> live_interaction_20201214_models.UpdateCallbackConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_callback_config_with_options(request, runtime)
+
+    async def update_callback_config_async(
+        self,
+        request: live_interaction_20201214_models.UpdateCallbackConfigRequest,
+    ) -> live_interaction_20201214_models.UpdateCallbackConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_callback_config_with_options_async(request, runtime)
+
     def update_group_icon_with_options(
         self,
         tmp_req: live_interaction_20201214_models.UpdateGroupIconRequest,
@@ -1822,7 +2624,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.UpdateGroupIconResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateGroupIconResponse(),
             self.do_rpcrequest('UpdateGroupIcon', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1839,7 +2642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.UpdateGroupIconResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateGroupIconResponse(),
             await self.do_rpcrequest_async('UpdateGroupIcon', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1870,7 +2674,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.UpdateGroupMembersRoleResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateGroupMembersRoleResponse(),
             self.do_rpcrequest('UpdateGroupMembersRole', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1887,7 +2692,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.UpdateGroupMembersRoleResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateGroupMembersRoleResponse(),
             await self.do_rpcrequest_async('UpdateGroupMembersRole', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1918,7 +2724,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.UpdateGroupTitleResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateGroupTitleResponse(),
             self.do_rpcrequest('UpdateGroupTitle', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1935,7 +2742,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.UpdateGroupTitleResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateGroupTitleResponse(),
             await self.do_rpcrequest_async('UpdateGroupTitle', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1953,6 +2761,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_group_title_with_options_async(request, runtime)
 
+    def update_msg_recall_interval_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.UpdateMsgRecallIntervalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UpdateMsgRecallIntervalResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UpdateMsgRecallIntervalShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateMsgRecallIntervalResponse(),
+            self.do_rpcrequest('UpdateMsgRecallInterval', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_msg_recall_interval_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.UpdateMsgRecallIntervalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UpdateMsgRecallIntervalResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UpdateMsgRecallIntervalShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateMsgRecallIntervalResponse(),
+            await self.do_rpcrequest_async('UpdateMsgRecallInterval', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_msg_recall_interval(
+        self,
+        request: live_interaction_20201214_models.UpdateMsgRecallIntervalRequest,
+    ) -> live_interaction_20201214_models.UpdateMsgRecallIntervalResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_msg_recall_interval_with_options(request, runtime)
+
+    async def update_msg_recall_interval_async(
+        self,
+        request: live_interaction_20201214_models.UpdateMsgRecallIntervalRequest,
+    ) -> live_interaction_20201214_models.UpdateMsgRecallIntervalResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_msg_recall_interval_with_options_async(request, runtime)
+
     def update_tenant_status_with_options(
         self,
         request: live_interaction_20201214_models.UpdateTenantStatusRequest,
@@ -1962,7 +2820,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.UpdateTenantStatusResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateTenantStatusResponse(),
             self.do_rpcrequest('UpdateTenantStatus', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1975,7 +2834,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return live_interaction_20201214_models.UpdateTenantStatusResponse().from_map(
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UpdateTenantStatusResponse(),
             await self.do_rpcrequest_async('UpdateTenantStatus', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
