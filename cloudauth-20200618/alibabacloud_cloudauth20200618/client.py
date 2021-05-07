@@ -129,29 +129,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         contrast_smart_verify_req = cloudauth_20200618_models.ContrastSmartVerifyRequest()
         OpenApiUtilClient.convert(request, contrast_smart_verify_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.face_pic_file_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        contrast_smart_verify_req.face_pic_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.face_pic_file_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.face_pic_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            contrast_smart_verify_req.face_pic_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         contrast_smart_verify_resp = self.contrast_smart_verify_with_options(contrast_smart_verify_req, runtime)
         return contrast_smart_verify_resp
 
@@ -194,29 +195,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         contrast_smart_verify_req = cloudauth_20200618_models.ContrastSmartVerifyRequest()
         OpenApiUtilClient.convert(request, contrast_smart_verify_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.face_pic_file_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        contrast_smart_verify_req.face_pic_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.face_pic_file_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.face_pic_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            contrast_smart_verify_req.face_pic_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         contrast_smart_verify_resp = await self.contrast_smart_verify_with_options_async(contrast_smart_verify_req, runtime)
         return contrast_smart_verify_resp
 
@@ -261,6 +263,48 @@ class Client(OpenApiClient):
     ) -> cloudauth_20200618_models.DescribeSmartVerifyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_smart_verify_with_options_async(request, runtime)
+
+    def describe_sms_detail_with_options(
+        self,
+        request: cloudauth_20200618_models.DescribeSmsDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20200618_models.DescribeSmsDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.DescribeSmsDetailResponse(),
+            self.do_rpcrequest('DescribeSmsDetail', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_sms_detail_with_options_async(
+        self,
+        request: cloudauth_20200618_models.DescribeSmsDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20200618_models.DescribeSmsDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.DescribeSmsDetailResponse(),
+            await self.do_rpcrequest_async('DescribeSmsDetail', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_sms_detail(
+        self,
+        request: cloudauth_20200618_models.DescribeSmsDetailRequest,
+    ) -> cloudauth_20200618_models.DescribeSmsDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sms_detail_with_options(request, runtime)
+
+    async def describe_sms_detail_async(
+        self,
+        request: cloudauth_20200618_models.DescribeSmsDetailRequest,
+    ) -> cloudauth_20200618_models.DescribeSmsDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sms_detail_with_options_async(request, runtime)
 
     def element_smart_verify_with_options(
         self,
@@ -343,29 +387,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         element_smart_verify_req = cloudauth_20200618_models.ElementSmartVerifyRequest()
         OpenApiUtilClient.convert(request, element_smart_verify_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.cert_file_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        element_smart_verify_req.cert_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.cert_file_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.cert_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            element_smart_verify_req.cert_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         element_smart_verify_resp = self.element_smart_verify_with_options(element_smart_verify_req, runtime)
         return element_smart_verify_resp
 
@@ -408,29 +453,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         element_smart_verify_req = cloudauth_20200618_models.ElementSmartVerifyRequest()
         OpenApiUtilClient.convert(request, element_smart_verify_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.cert_file_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        element_smart_verify_req.cert_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.cert_file_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.cert_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            element_smart_verify_req.cert_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         element_smart_verify_resp = await self.element_smart_verify_with_options_async(element_smart_verify_req, runtime)
         return element_smart_verify_resp
 
@@ -475,6 +521,48 @@ class Client(OpenApiClient):
     ) -> cloudauth_20200618_models.InitSmartVerifyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.init_smart_verify_with_options_async(request, runtime)
+
+    def send_sms_with_options(
+        self,
+        request: cloudauth_20200618_models.SendSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20200618_models.SendSmsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.SendSmsResponse(),
+            self.do_rpcrequest('SendSms', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_sms_with_options_async(
+        self,
+        request: cloudauth_20200618_models.SendSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20200618_models.SendSmsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudauth_20200618_models.SendSmsResponse(),
+            await self.do_rpcrequest_async('SendSms', '2020-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_sms(
+        self,
+        request: cloudauth_20200618_models.SendSmsRequest,
+    ) -> cloudauth_20200618_models.SendSmsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_sms_with_options(request, runtime)
+
+    async def send_sms_async(
+        self,
+        request: cloudauth_20200618_models.SendSmsRequest,
+    ) -> cloudauth_20200618_models.SendSmsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_sms_with_options_async(request, runtime)
 
     def verify_bank_element_with_options(
         self,
@@ -557,29 +645,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         verify_bank_element_req = cloudauth_20200618_models.VerifyBankElementRequest()
         OpenApiUtilClient.convert(request, verify_bank_element_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.bank_card_file_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        verify_bank_element_req.bank_card_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.bank_card_file_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.bank_card_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            verify_bank_element_req.bank_card_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         verify_bank_element_resp = self.verify_bank_element_with_options(verify_bank_element_req, runtime)
         return verify_bank_element_resp
 
@@ -622,28 +711,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         verify_bank_element_req = cloudauth_20200618_models.VerifyBankElementRequest()
         OpenApiUtilClient.convert(request, verify_bank_element_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.bank_card_file_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        verify_bank_element_req.bank_card_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.bank_card_file_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.bank_card_file_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            verify_bank_element_req.bank_card_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         verify_bank_element_resp = await self.verify_bank_element_with_options_async(verify_bank_element_req, runtime)
         return verify_bank_element_resp
