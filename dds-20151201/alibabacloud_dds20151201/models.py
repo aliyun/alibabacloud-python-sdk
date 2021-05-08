@@ -713,6 +713,7 @@ class CreateDBInstanceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
+        region_id: str = None,
         client_token: str = None,
         zone_id: str = None,
         engine: str = None,
@@ -745,6 +746,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
+        self.region_id = region_id
         self.client_token = client_token
         self.zone_id = zone_id
         self.engine = engine
@@ -791,6 +793,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.zone_id is not None:
@@ -857,6 +861,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('ZoneId') is not None:
@@ -1627,6 +1633,7 @@ class CreateShardingDBInstanceRequestConfigServer(TeaModel):
 class CreateShardingDBInstanceRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         security_token: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -1653,6 +1660,7 @@ class CreateShardingDBInstanceRequest(TeaModel):
         replica_set: List[CreateShardingDBInstanceRequestReplicaSet] = None,
         config_server: List[CreateShardingDBInstanceRequestConfigServer] = None,
     ):
+        self.region_id = region_id
         self.security_token = security_token
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1699,6 +1707,8 @@ class CreateShardingDBInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.owner_id is not None:
@@ -1759,6 +1769,8 @@ class CreateShardingDBInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         if m.get('OwnerId') is not None:
@@ -14805,8 +14817,11 @@ class ModifyNodeSpecRequest(TeaModel):
         from_app: str = None,
         auto_pay: bool = None,
         effective_time: str = None,
+        switch_time: str = None,
         order_type: str = None,
         readonly_replicas: int = None,
+        business_info: str = None,
+        coupon_no: str = None,
     ):
         self.security_token = security_token
         self.owner_id = owner_id
@@ -14821,8 +14836,11 @@ class ModifyNodeSpecRequest(TeaModel):
         self.from_app = from_app
         self.auto_pay = auto_pay
         self.effective_time = effective_time
+        self.switch_time = switch_time
         self.order_type = order_type
         self.readonly_replicas = readonly_replicas
+        self.business_info = business_info
+        self.coupon_no = coupon_no
 
     def validate(self):
         pass
@@ -14859,10 +14877,16 @@ class ModifyNodeSpecRequest(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.effective_time is not None:
             result['EffectiveTime'] = self.effective_time
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
         if self.order_type is not None:
             result['OrderType'] = self.order_type
         if self.readonly_replicas is not None:
             result['ReadonlyReplicas'] = self.readonly_replicas
+        if self.business_info is not None:
+            result['BusinessInfo'] = self.business_info
+        if self.coupon_no is not None:
+            result['CouponNo'] = self.coupon_no
         return result
 
     def from_map(self, m: dict = None):
@@ -14893,10 +14917,16 @@ class ModifyNodeSpecRequest(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('EffectiveTime') is not None:
             self.effective_time = m.get('EffectiveTime')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')
         if m.get('ReadonlyReplicas') is not None:
             self.readonly_replicas = m.get('ReadonlyReplicas')
+        if m.get('BusinessInfo') is not None:
+            self.business_info = m.get('BusinessInfo')
+        if m.get('CouponNo') is not None:
+            self.coupon_no = m.get('CouponNo')
         return self
 
 
