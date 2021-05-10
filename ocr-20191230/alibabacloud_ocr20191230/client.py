@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -56,7 +57,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeDrivingLicenseResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeDrivingLicenseResponse(),
             self.do_rpcrequest('RecognizeDrivingLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -69,7 +71,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeDrivingLicenseResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeDrivingLicenseResponse(),
             await self.do_rpcrequest_async('RecognizeDrivingLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -95,11 +98,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -123,29 +129,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_driving_license_req = ocr_20191230_models.RecognizeDrivingLicenseRequest()
         OpenApiUtilClient.convert(request, recognize_driving_license_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_driving_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_driving_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_driving_license_resp = self.recognize_driving_license_with_options(recognize_driving_license_req, runtime)
         return recognize_driving_license_resp
 
@@ -157,11 +164,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -185,29 +195,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_driving_license_req = ocr_20191230_models.RecognizeDrivingLicenseRequest()
         OpenApiUtilClient.convert(request, recognize_driving_license_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_driving_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_driving_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_driving_license_resp = await self.recognize_driving_license_with_options_async(recognize_driving_license_req, runtime)
         return recognize_driving_license_resp
 
@@ -220,7 +231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeChinapassportResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeChinapassportResponse(),
             self.do_rpcrequest('RecognizeChinapassport', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -233,7 +245,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeChinapassportResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeChinapassportResponse(),
             await self.do_rpcrequest_async('RecognizeChinapassport', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -259,11 +272,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -287,29 +303,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_chinapassport_req = ocr_20191230_models.RecognizeChinapassportRequest()
         OpenApiUtilClient.convert(request, recognize_chinapassport_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_chinapassport_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_chinapassport_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_chinapassport_resp = self.recognize_chinapassport_with_options(recognize_chinapassport_req, runtime)
         return recognize_chinapassport_resp
 
@@ -321,11 +338,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -349,29 +369,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_chinapassport_req = ocr_20191230_models.RecognizeChinapassportRequest()
         OpenApiUtilClient.convert(request, recognize_chinapassport_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_chinapassport_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_chinapassport_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_chinapassport_resp = await self.recognize_chinapassport_with_options_async(recognize_chinapassport_req, runtime)
         return recognize_chinapassport_resp
 
@@ -384,7 +405,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.TrimDocumentResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.TrimDocumentResponse(),
             self.do_rpcrequest('TrimDocument', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -397,7 +419,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.TrimDocumentResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.TrimDocumentResponse(),
             await self.do_rpcrequest_async('TrimDocument', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -423,11 +446,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -451,29 +477,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         trim_document_req = ocr_20191230_models.TrimDocumentRequest()
         OpenApiUtilClient.convert(request, trim_document_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.file_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        trim_document_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.file_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            trim_document_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         trim_document_resp = self.trim_document_with_options(trim_document_req, runtime)
         return trim_document_resp
 
@@ -485,11 +512,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -513,29 +543,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         trim_document_req = ocr_20191230_models.TrimDocumentRequest()
         OpenApiUtilClient.convert(request, trim_document_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.file_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        trim_document_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.file_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            trim_document_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         trim_document_resp = await self.trim_document_with_options_async(trim_document_req, runtime)
         return trim_document_resp
 
@@ -548,7 +579,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeTableResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTableResponse(),
             self.do_rpcrequest('RecognizeTable', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -561,7 +593,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeTableResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTableResponse(),
             await self.do_rpcrequest_async('RecognizeTable', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -587,11 +620,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -615,29 +651,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_table_req = ocr_20191230_models.RecognizeTableRequest()
         OpenApiUtilClient.convert(request, recognize_table_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_table_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_table_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_table_resp = self.recognize_table_with_options(recognize_table_req, runtime)
         return recognize_table_resp
 
@@ -649,11 +686,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -677,29 +717,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_table_req = ocr_20191230_models.RecognizeTableRequest()
         OpenApiUtilClient.convert(request, recognize_table_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_table_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_table_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_table_resp = await self.recognize_table_with_options_async(recognize_table_req, runtime)
         return recognize_table_resp
 
@@ -712,7 +753,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeIdentityCardResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeIdentityCardResponse(),
             self.do_rpcrequest('RecognizeIdentityCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -725,7 +767,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeIdentityCardResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeIdentityCardResponse(),
             await self.do_rpcrequest_async('RecognizeIdentityCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -751,11 +794,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -779,29 +825,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_identity_card_req = ocr_20191230_models.RecognizeIdentityCardRequest()
         OpenApiUtilClient.convert(request, recognize_identity_card_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_identity_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_identity_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_identity_card_resp = self.recognize_identity_card_with_options(recognize_identity_card_req, runtime)
         return recognize_identity_card_resp
 
@@ -813,11 +860,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -841,29 +891,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_identity_card_req = ocr_20191230_models.RecognizeIdentityCardRequest()
         OpenApiUtilClient.convert(request, recognize_identity_card_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_identity_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_identity_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_identity_card_resp = await self.recognize_identity_card_with_options_async(recognize_identity_card_req, runtime)
         return recognize_identity_card_resp
 
@@ -876,7 +927,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeBusinessLicenseResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBusinessLicenseResponse(),
             self.do_rpcrequest('RecognizeBusinessLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -889,7 +941,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeBusinessLicenseResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBusinessLicenseResponse(),
             await self.do_rpcrequest_async('RecognizeBusinessLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -915,11 +968,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -943,29 +999,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_business_license_req = ocr_20191230_models.RecognizeBusinessLicenseRequest()
         OpenApiUtilClient.convert(request, recognize_business_license_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_business_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_business_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_business_license_resp = self.recognize_business_license_with_options(recognize_business_license_req, runtime)
         return recognize_business_license_resp
 
@@ -977,11 +1034,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1005,29 +1065,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_business_license_req = ocr_20191230_models.RecognizeBusinessLicenseRequest()
         OpenApiUtilClient.convert(request, recognize_business_license_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_business_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_business_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_business_license_resp = await self.recognize_business_license_with_options_async(recognize_business_license_req, runtime)
         return recognize_business_license_resp
 
@@ -1040,7 +1101,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeBankCardResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBankCardResponse(),
             self.do_rpcrequest('RecognizeBankCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1053,7 +1115,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeBankCardResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBankCardResponse(),
             await self.do_rpcrequest_async('RecognizeBankCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1079,11 +1142,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1107,29 +1173,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_bank_card_req = ocr_20191230_models.RecognizeBankCardRequest()
         OpenApiUtilClient.convert(request, recognize_bank_card_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_bank_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_bank_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_bank_card_resp = self.recognize_bank_card_with_options(recognize_bank_card_req, runtime)
         return recognize_bank_card_resp
 
@@ -1141,11 +1208,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1169,29 +1239,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_bank_card_req = ocr_20191230_models.RecognizeBankCardRequest()
         OpenApiUtilClient.convert(request, recognize_bank_card_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_bank_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_bank_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_bank_card_resp = await self.recognize_bank_card_with_options_async(recognize_bank_card_req, runtime)
         return recognize_bank_card_resp
 
@@ -1204,7 +1275,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeVerificationcodeResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeVerificationcodeResponse(),
             self.do_rpcrequest('RecognizeVerificationcode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1217,7 +1289,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeVerificationcodeResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeVerificationcodeResponse(),
             await self.do_rpcrequest_async('RecognizeVerificationcode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1243,11 +1316,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1271,29 +1347,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_verificationcode_req = ocr_20191230_models.RecognizeVerificationcodeRequest()
         OpenApiUtilClient.convert(request, recognize_verificationcode_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_verificationcode_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_verificationcode_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_verificationcode_resp = self.recognize_verificationcode_with_options(recognize_verificationcode_req, runtime)
         return recognize_verificationcode_resp
 
@@ -1305,11 +1382,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1333,29 +1413,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_verificationcode_req = ocr_20191230_models.RecognizeVerificationcodeRequest()
         OpenApiUtilClient.convert(request, recognize_verificationcode_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_verificationcode_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_verificationcode_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_verificationcode_resp = await self.recognize_verificationcode_with_options_async(recognize_verificationcode_req, runtime)
         return recognize_verificationcode_resp
 
@@ -1368,7 +1449,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeAccountPageResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeAccountPageResponse(),
             self.do_rpcrequest('RecognizeAccountPage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1381,7 +1463,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeAccountPageResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeAccountPageResponse(),
             await self.do_rpcrequest_async('RecognizeAccountPage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1407,11 +1490,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1435,29 +1521,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_account_page_req = ocr_20191230_models.RecognizeAccountPageRequest()
         OpenApiUtilClient.convert(request, recognize_account_page_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_account_page_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_account_page_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_account_page_resp = self.recognize_account_page_with_options(recognize_account_page_req, runtime)
         return recognize_account_page_resp
 
@@ -1469,11 +1556,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1497,29 +1587,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_account_page_req = ocr_20191230_models.RecognizeAccountPageRequest()
         OpenApiUtilClient.convert(request, recognize_account_page_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_account_page_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_account_page_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_account_page_resp = await self.recognize_account_page_with_options_async(recognize_account_page_req, runtime)
         return recognize_account_page_resp
 
@@ -1532,7 +1623,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeCharacterResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeCharacterResponse(),
             self.do_rpcrequest('RecognizeCharacter', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1545,7 +1637,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeCharacterResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeCharacterResponse(),
             await self.do_rpcrequest_async('RecognizeCharacter', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1571,11 +1664,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1599,29 +1695,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_character_req = ocr_20191230_models.RecognizeCharacterRequest()
         OpenApiUtilClient.convert(request, recognize_character_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_character_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_character_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_character_resp = self.recognize_character_with_options(recognize_character_req, runtime)
         return recognize_character_resp
 
@@ -1633,11 +1730,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1661,29 +1761,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_character_req = ocr_20191230_models.RecognizeCharacterRequest()
         OpenApiUtilClient.convert(request, recognize_character_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_character_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_character_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_character_resp = await self.recognize_character_with_options_async(recognize_character_req, runtime)
         return recognize_character_resp
 
@@ -1696,7 +1797,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.GetAsyncJobResultResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.GetAsyncJobResultResponse(),
             self.do_rpcrequest('GetAsyncJobResult', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1709,7 +1811,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.GetAsyncJobResultResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.GetAsyncJobResultResponse(),
             await self.do_rpcrequest_async('GetAsyncJobResult', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1736,7 +1839,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeTakeoutOrderResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTakeoutOrderResponse(),
             self.do_rpcrequest('RecognizeTakeoutOrder', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1749,7 +1853,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeTakeoutOrderResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTakeoutOrderResponse(),
             await self.do_rpcrequest_async('RecognizeTakeoutOrder', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1775,11 +1880,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1803,29 +1911,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_takeout_order_req = ocr_20191230_models.RecognizeTakeoutOrderRequest()
         OpenApiUtilClient.convert(request, recognize_takeout_order_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_takeout_order_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_takeout_order_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_takeout_order_resp = self.recognize_takeout_order_with_options(recognize_takeout_order_req, runtime)
         return recognize_takeout_order_resp
 
@@ -1837,11 +1946,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1865,29 +1977,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_takeout_order_req = ocr_20191230_models.RecognizeTakeoutOrderRequest()
         OpenApiUtilClient.convert(request, recognize_takeout_order_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_takeout_order_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_takeout_order_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_takeout_order_resp = await self.recognize_takeout_order_with_options_async(recognize_takeout_order_req, runtime)
         return recognize_takeout_order_resp
 
@@ -1900,7 +2013,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeBusinessCardResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBusinessCardResponse(),
             self.do_rpcrequest('RecognizeBusinessCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1913,7 +2027,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeBusinessCardResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBusinessCardResponse(),
             await self.do_rpcrequest_async('RecognizeBusinessCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1939,11 +2054,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -1967,29 +2085,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_business_card_req = ocr_20191230_models.RecognizeBusinessCardRequest()
         OpenApiUtilClient.convert(request, recognize_business_card_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_business_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_business_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_business_card_resp = self.recognize_business_card_with_options(recognize_business_card_req, runtime)
         return recognize_business_card_resp
 
@@ -2001,11 +2120,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2029,29 +2151,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_business_card_req = ocr_20191230_models.RecognizeBusinessCardRequest()
         OpenApiUtilClient.convert(request, recognize_business_card_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_business_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_business_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_business_card_resp = await self.recognize_business_card_with_options_async(recognize_business_card_req, runtime)
         return recognize_business_card_resp
 
@@ -2064,7 +2187,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.DetectCardScreenshotResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.DetectCardScreenshotResponse(),
             self.do_rpcrequest('DetectCardScreenshot', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2077,7 +2201,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.DetectCardScreenshotResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.DetectCardScreenshotResponse(),
             await self.do_rpcrequest_async('DetectCardScreenshot', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2103,11 +2228,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2131,29 +2259,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         detect_card_screenshot_req = ocr_20191230_models.DetectCardScreenshotRequest()
         OpenApiUtilClient.convert(request, detect_card_screenshot_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        detect_card_screenshot_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            detect_card_screenshot_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         detect_card_screenshot_resp = self.detect_card_screenshot_with_options(detect_card_screenshot_req, runtime)
         return detect_card_screenshot_resp
 
@@ -2165,11 +2294,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2193,29 +2325,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         detect_card_screenshot_req = ocr_20191230_models.DetectCardScreenshotRequest()
         OpenApiUtilClient.convert(request, detect_card_screenshot_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        detect_card_screenshot_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            detect_card_screenshot_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         detect_card_screenshot_resp = await self.detect_card_screenshot_with_options_async(detect_card_screenshot_req, runtime)
         return detect_card_screenshot_resp
 
@@ -2228,7 +2361,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeDriverLicenseResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeDriverLicenseResponse(),
             self.do_rpcrequest('RecognizeDriverLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2241,7 +2375,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeDriverLicenseResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeDriverLicenseResponse(),
             await self.do_rpcrequest_async('RecognizeDriverLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2267,11 +2402,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2295,29 +2433,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_driver_license_req = ocr_20191230_models.RecognizeDriverLicenseRequest()
         OpenApiUtilClient.convert(request, recognize_driver_license_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_driver_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_driver_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_driver_license_resp = self.recognize_driver_license_with_options(recognize_driver_license_req, runtime)
         return recognize_driver_license_resp
 
@@ -2329,11 +2468,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2357,29 +2499,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_driver_license_req = ocr_20191230_models.RecognizeDriverLicenseRequest()
         OpenApiUtilClient.convert(request, recognize_driver_license_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_driver_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_driver_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_driver_license_resp = await self.recognize_driver_license_with_options_async(recognize_driver_license_req, runtime)
         return recognize_driver_license_resp
 
@@ -2392,7 +2535,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeLicensePlateResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeLicensePlateResponse(),
             self.do_rpcrequest('RecognizeLicensePlate', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2405,7 +2549,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeLicensePlateResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeLicensePlateResponse(),
             await self.do_rpcrequest_async('RecognizeLicensePlate', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2431,11 +2576,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2459,29 +2607,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_license_plate_req = ocr_20191230_models.RecognizeLicensePlateRequest()
         OpenApiUtilClient.convert(request, recognize_license_plate_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_license_plate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_license_plate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_license_plate_resp = self.recognize_license_plate_with_options(recognize_license_plate_req, runtime)
         return recognize_license_plate_resp
 
@@ -2493,11 +2642,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2521,29 +2673,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_license_plate_req = ocr_20191230_models.RecognizeLicensePlateRequest()
         OpenApiUtilClient.convert(request, recognize_license_plate_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_license_plate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_license_plate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_license_plate_resp = await self.recognize_license_plate_with_options_async(recognize_license_plate_req, runtime)
         return recognize_license_plate_resp
 
@@ -2556,7 +2709,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeStampResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeStampResponse(),
             self.do_rpcrequest('RecognizeStamp', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2569,7 +2723,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeStampResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeStampResponse(),
             await self.do_rpcrequest_async('RecognizeStamp', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2595,11 +2750,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2623,29 +2781,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_stamp_req = ocr_20191230_models.RecognizeStampRequest()
         OpenApiUtilClient.convert(request, recognize_stamp_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_stamp_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_stamp_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_stamp_resp = self.recognize_stamp_with_options(recognize_stamp_req, runtime)
         return recognize_stamp_resp
 
@@ -2657,11 +2816,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2685,29 +2847,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_stamp_req = ocr_20191230_models.RecognizeStampRequest()
         OpenApiUtilClient.convert(request, recognize_stamp_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_stamp_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_stamp_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_stamp_resp = await self.recognize_stamp_with_options_async(recognize_stamp_req, runtime)
         return recognize_stamp_resp
 
@@ -2720,7 +2883,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeTaxiInvoiceResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTaxiInvoiceResponse(),
             self.do_rpcrequest('RecognizeTaxiInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2733,7 +2897,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeTaxiInvoiceResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTaxiInvoiceResponse(),
             await self.do_rpcrequest_async('RecognizeTaxiInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2759,11 +2924,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2787,29 +2955,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_taxi_invoice_req = ocr_20191230_models.RecognizeTaxiInvoiceRequest()
         OpenApiUtilClient.convert(request, recognize_taxi_invoice_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_taxi_invoice_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_taxi_invoice_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_taxi_invoice_resp = self.recognize_taxi_invoice_with_options(recognize_taxi_invoice_req, runtime)
         return recognize_taxi_invoice_resp
 
@@ -2821,11 +2990,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2849,29 +3021,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_taxi_invoice_req = ocr_20191230_models.RecognizeTaxiInvoiceRequest()
         OpenApiUtilClient.convert(request, recognize_taxi_invoice_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_taxi_invoice_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_taxi_invoice_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_taxi_invoice_resp = await self.recognize_taxi_invoice_with_options_async(recognize_taxi_invoice_req, runtime)
         return recognize_taxi_invoice_resp
 
@@ -2884,7 +3057,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeVATInvoiceResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeVATInvoiceResponse(),
             self.do_rpcrequest('RecognizeVATInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2897,7 +3071,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeVATInvoiceResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeVATInvoiceResponse(),
             await self.do_rpcrequest_async('RecognizeVATInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2923,11 +3098,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -2951,29 +3129,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_vatinvoice_req = ocr_20191230_models.RecognizeVATInvoiceRequest()
         OpenApiUtilClient.convert(request, recognize_vatinvoice_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.file_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_vatinvoice_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.file_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_vatinvoice_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_vatinvoice_resp = self.recognize_vatinvoice_with_options(recognize_vatinvoice_req, runtime)
         return recognize_vatinvoice_resp
 
@@ -2985,11 +3164,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -3013,29 +3195,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_vatinvoice_req = ocr_20191230_models.RecognizeVATInvoiceRequest()
         OpenApiUtilClient.convert(request, recognize_vatinvoice_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.file_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_vatinvoice_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.file_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_vatinvoice_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_vatinvoice_resp = await self.recognize_vatinvoice_with_options_async(recognize_vatinvoice_req, runtime)
         return recognize_vatinvoice_resp
 
@@ -3048,7 +3231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizePassportMRZResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizePassportMRZResponse(),
             self.do_rpcrequest('RecognizePassportMRZ', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3061,7 +3245,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizePassportMRZResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizePassportMRZResponse(),
             await self.do_rpcrequest_async('RecognizePassportMRZ', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3087,11 +3272,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -3115,29 +3303,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_passport_mrzreq = ocr_20191230_models.RecognizePassportMRZRequest()
         OpenApiUtilClient.convert(request, recognize_passport_mrzreq)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_passport_mrzreq.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_passport_mrzreq.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_passport_mrzresp = self.recognize_passport_mrzwith_options(recognize_passport_mrzreq, runtime)
         return recognize_passport_mrzresp
 
@@ -3149,11 +3338,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -3177,29 +3369,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_passport_mrzreq = ocr_20191230_models.RecognizePassportMRZRequest()
         OpenApiUtilClient.convert(request, recognize_passport_mrzreq)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_passport_mrzreq.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_passport_mrzreq.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_passport_mrzresp = await self.recognize_passport_mrzwith_options_async(recognize_passport_mrzreq, runtime)
         return recognize_passport_mrzresp
 
@@ -3212,7 +3405,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeTrainTicketResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTrainTicketResponse(),
             self.do_rpcrequest('RecognizeTrainTicket', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3225,7 +3419,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeTrainTicketResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTrainTicketResponse(),
             await self.do_rpcrequest_async('RecognizeTrainTicket', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3251,11 +3446,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -3279,29 +3477,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_train_ticket_req = ocr_20191230_models.RecognizeTrainTicketRequest()
         OpenApiUtilClient.convert(request, recognize_train_ticket_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_train_ticket_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_train_ticket_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_train_ticket_resp = self.recognize_train_ticket_with_options(recognize_train_ticket_req, runtime)
         return recognize_train_ticket_resp
 
@@ -3313,11 +3512,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -3341,29 +3543,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_train_ticket_req = ocr_20191230_models.RecognizeTrainTicketRequest()
         OpenApiUtilClient.convert(request, recognize_train_ticket_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_train_ticket_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_train_ticket_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_train_ticket_resp = await self.recognize_train_ticket_with_options_async(recognize_train_ticket_req, runtime)
         return recognize_train_ticket_resp
 
@@ -3376,7 +3579,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizePoiNameResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizePoiNameResponse(),
             self.do_rpcrequest('RecognizePoiName', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3389,7 +3593,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizePoiNameResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizePoiNameResponse(),
             await self.do_rpcrequest_async('RecognizePoiName', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3415,11 +3620,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -3443,29 +3651,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_poi_name_req = ocr_20191230_models.RecognizePoiNameRequest()
         OpenApiUtilClient.convert(request, recognize_poi_name_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_poi_name_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_poi_name_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_poi_name_resp = self.recognize_poi_name_with_options(recognize_poi_name_req, runtime)
         return recognize_poi_name_resp
 
@@ -3477,11 +3686,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -3505,29 +3717,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_poi_name_req = ocr_20191230_models.RecognizePoiNameRequest()
         OpenApiUtilClient.convert(request, recognize_poi_name_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_poi_name_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_poi_name_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_poi_name_resp = await self.recognize_poi_name_with_options_async(recognize_poi_name_req, runtime)
         return recognize_poi_name_resp
 
@@ -3540,7 +3753,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeQrCodeResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeQrCodeResponse(),
             self.do_rpcrequest('RecognizeQrCode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3553,7 +3767,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeQrCodeResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeQrCodeResponse(),
             await self.do_rpcrequest_async('RecognizeQrCode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3580,7 +3795,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeVINCodeResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeVINCodeResponse(),
             self.do_rpcrequest('RecognizeVINCode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3593,7 +3809,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ocr_20191230_models.RecognizeVINCodeResponse().from_map(
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeVINCodeResponse(),
             await self.do_rpcrequest_async('RecognizeVINCode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3619,11 +3836,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -3647,29 +3867,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_vincode_req = ocr_20191230_models.RecognizeVINCodeRequest()
         OpenApiUtilClient.convert(request, recognize_vincode_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        recognize_vincode_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_vincode_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_vincode_resp = self.recognize_vincode_with_options(recognize_vincode_req, runtime)
         return recognize_vincode_resp
 
@@ -3681,11 +3902,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -3709,28 +3933,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_vincode_req = ocr_20191230_models.RecognizeVINCodeRequest()
         OpenApiUtilClient.convert(request, recognize_vincode_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_urlobject,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        recognize_vincode_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_vincode_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_vincode_resp = await self.recognize_vincode_with_options_async(recognize_vincode_req, runtime)
         return recognize_vincode_resp
