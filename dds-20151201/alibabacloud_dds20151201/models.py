@@ -6064,6 +6064,7 @@ class DescribeDBInstancesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
+        region_id: str = None,
         page_number: int = None,
         page_size: int = None,
         dbinstance_id: str = None,
@@ -6090,6 +6091,7 @@ class DescribeDBInstancesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
+        self.region_id = region_id
         self.page_number = page_number
         self.page_size = page_size
         self.dbinstance_id = dbinstance_id
@@ -6133,6 +6135,8 @@ class DescribeDBInstancesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -6189,6 +6193,8 @@ class DescribeDBInstancesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -8983,6 +8989,7 @@ class DescribeParameterTemplatesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
+        region_id: str = None,
         engine: str = None,
         engine_version: str = None,
     ):
@@ -8991,6 +8998,7 @@ class DescribeParameterTemplatesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
+        self.region_id = region_id
         self.engine = engine
         self.engine_version = engine_version
 
@@ -9013,6 +9021,8 @@ class DescribeParameterTemplatesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -9031,6 +9041,8 @@ class DescribeParameterTemplatesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -9228,6 +9240,7 @@ class DescribePriceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         owner_account: str = None,
+        region_id: str = None,
         order_type: str = None,
         dbinstances: str = None,
         commodity_code: str = None,
@@ -9242,6 +9255,7 @@ class DescribePriceRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
+        self.region_id = region_id
         self.order_type = order_type
         self.dbinstances = dbinstances
         self.commodity_code = commodity_code
@@ -9270,6 +9284,8 @@ class DescribePriceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.order_type is not None:
             result['OrderType'] = self.order_type
         if self.dbinstances is not None:
@@ -9300,6 +9316,8 @@ class DescribePriceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')
         if m.get('DBInstances') is not None:
