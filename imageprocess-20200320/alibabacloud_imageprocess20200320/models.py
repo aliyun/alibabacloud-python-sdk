@@ -3296,11 +3296,13 @@ class ScreenChestCTRequest(TeaModel):
         org_name: str = None,
         org_id: str = None,
         urllist: List[ScreenChestCTRequestURLList] = None,
+        mask: int = None,
     ):
         self.data_format = data_format
         self.org_name = org_name
         self.org_id = org_id
         self.urllist = urllist
+        self.mask = mask
 
     def validate(self):
         if self.urllist:
@@ -3324,6 +3326,8 @@ class ScreenChestCTRequest(TeaModel):
         if self.urllist is not None:
             for k in self.urllist:
                 result['URLList'].append(k.to_map() if k else None)
+        if self.mask is not None:
+            result['Mask'] = self.mask
         return result
 
     def from_map(self, m: dict = None):
@@ -3339,6 +3343,8 @@ class ScreenChestCTRequest(TeaModel):
             for k in m.get('URLList'):
                 temp_model = ScreenChestCTRequestURLList()
                 self.urllist.append(temp_model.from_map(k))
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
         return self
 
 
@@ -3748,11 +3754,13 @@ class ScreenChestCTResponseBodyData(TeaModel):
         cacs: ScreenChestCTResponseBodyDataCACS = None,
         covid: ScreenChestCTResponseBodyDataCovid = None,
         detect_rib_fracture: ScreenChestCTResponseBodyDataDetectRibFracture = None,
+        error_message: str = None,
     ):
         self.lung_nodule = lung_nodule
         self.cacs = cacs
         self.covid = covid
         self.detect_rib_fracture = detect_rib_fracture
+        self.error_message = error_message
 
     def validate(self):
         if self.lung_nodule:
@@ -3778,6 +3786,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
             result['Covid'] = self.covid.to_map()
         if self.detect_rib_fracture is not None:
             result['DetectRibFracture'] = self.detect_rib_fracture.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
@@ -3794,6 +3804,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
         if m.get('DetectRibFracture') is not None:
             temp_model = ScreenChestCTResponseBodyDataDetectRibFracture()
             self.detect_rib_fracture = temp_model.from_map(m['DetectRibFracture'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         return self
 
 

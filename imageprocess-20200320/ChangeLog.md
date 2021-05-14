@@ -1,3 +1,6 @@
+2021-05-14 Version: 2.0.5
+- Update ScreenChestCT.
+
 2021-04-17 Version: 2.0.4
 - Update RunMedQA.
 

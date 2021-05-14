@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_imageprocess20200320.
 
-Created on 17/04/2021
+Created on 14/05/2021
 
 @author: Alibaba Cloud SDK
 """
