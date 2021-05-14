@@ -5013,11 +5013,11 @@ class GetRealPersonVerificationResultRequest(TeaModel):
 class GetRealPersonVerificationResultResponseBodyData(TeaModel):
     def __init__(
         self,
-        pass_: bool = None,
+        passed: bool = None,
         identity_info: str = None,
         material_match: str = None,
     ):
-        self.pass_ = pass_
+        self.passed = passed
         self.identity_info = identity_info
         self.material_match = material_match
 
@@ -5030,8 +5030,8 @@ class GetRealPersonVerificationResultResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.pass_ is not None:
-            result['Pass'] = self.pass_
+        if self.passed is not None:
+            result['Passed'] = self.passed
         if self.identity_info is not None:
             result['IdentityInfo'] = self.identity_info
         if self.material_match is not None:
@@ -5040,8 +5040,8 @@ class GetRealPersonVerificationResultResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pass') is not None:
-            self.pass_ = m.get('Pass')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
         if m.get('IdentityInfo') is not None:
             self.identity_info = m.get('IdentityInfo')
         if m.get('MaterialMatch') is not None:
@@ -6077,6 +6077,172 @@ class MergeImageFaceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = MergeImageFaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExtractFingerPrintRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        image_data: bytes = None,
+    ):
+        self.image_url = image_url
+        self.image_data = image_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.image_data is not None:
+            result['ImageData'] = self.image_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('ImageData') is not None:
+            self.image_data = m.get('ImageData')
+        return self
+
+
+class ExtractFingerPrintAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+        image_data: bytes = None,
+    ):
+        self.image_urlobject = image_urlobject
+        self.image_data = image_data
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.image_data is not None:
+            result['ImageData'] = self.image_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageData') is not None:
+            self.image_data = m.get('ImageData')
+        return self
+
+
+class ExtractFingerPrintResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        finger_print: bytes = None,
+    ):
+        self.finger_print = finger_print
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.finger_print is not None:
+            result['FingerPrint'] = self.finger_print
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FingerPrint') is not None:
+            self.finger_print = m.get('FingerPrint')
+        return self
+
+
+class ExtractFingerPrintResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: ExtractFingerPrintResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = ExtractFingerPrintResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class ExtractFingerPrintResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ExtractFingerPrintResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ExtractFingerPrintResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7654,9 +7820,11 @@ class GenerateHumanSketchStyleRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
+        return_type: str = None,
     ):
         # A short description of struct
         self.image_url = image_url
+        self.return_type = return_type
 
     def validate(self):
         pass
@@ -7669,12 +7837,16 @@ class GenerateHumanSketchStyleRequest(TeaModel):
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
+        if self.return_type is not None:
+            result['ReturnType'] = self.return_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
+        if m.get('ReturnType') is not None:
+            self.return_type = m.get('ReturnType')
         return self
 
 
@@ -7682,8 +7854,10 @@ class GenerateHumanSketchStyleAdvanceRequest(TeaModel):
     def __init__(
         self,
         image_urlobject: BinaryIO = None,
+        return_type: str = None,
     ):
         self.image_urlobject = image_urlobject
+        self.return_type = return_type
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -7696,12 +7870,16 @@ class GenerateHumanSketchStyleAdvanceRequest(TeaModel):
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
+        if self.return_type is not None:
+            result['ReturnType'] = self.return_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURLObject') is not None:
             self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ReturnType') is not None:
+            self.return_type = m.get('ReturnType')
         return self
 
 

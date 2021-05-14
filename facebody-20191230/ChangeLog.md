@@ -1,3 +1,6 @@
+2021-05-14 Version: 2.0.11
+- Release ExtractFingerPrint.
+
 2021-04-29 Version: 2.0.10
 - Update RecognizeFace.
 
