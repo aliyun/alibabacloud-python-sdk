@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_drds20190123.
 
-Created on 30/03/2021
+Created on 14/05/2021
 
 @author: Alibaba Cloud SDK
 """
@@ -39,7 +39,6 @@ VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "alibabacloud_tea_util>=0.3.3, <1.0.0",
     "alibabacloud_tea_openapi>=0.2.4, <1.0.0",
-    "alibabacloud_openapi_util>=0.1.4, <1.0.0",
     "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
 ]
 

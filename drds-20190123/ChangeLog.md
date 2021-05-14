@@ -1,3 +1,9 @@
+2021-05-14 Version: 1.0.2
+- Support Private RDS management through OpenAPI.
+- ManagePrivateRds to do RDS information query and some management.
+- DescribeDrdsRdsInstances to find RDS under a certain DRDS instance.
+- UpdatePrivateRdsClass to Upgrade or Downgrade your Private RDS class.
+
 2021-03-30 Version: 1.0.1
 - Generated python 2019-01-23 for Drds.
 
