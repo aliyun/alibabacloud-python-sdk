@@ -435,6 +435,7 @@ class CreateDBClusterRequest(TeaModel):
         source_dbinstance_name: str = None,
         backup_set_id: str = None,
         restore_time: str = None,
+        elastic_ioresource: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -465,6 +466,7 @@ class CreateDBClusterRequest(TeaModel):
         self.source_dbinstance_name = source_dbinstance_name
         self.backup_set_id = backup_set_id
         self.restore_time = restore_time
+        self.elastic_ioresource = elastic_ioresource
 
     def validate(self):
         pass
@@ -533,6 +535,8 @@ class CreateDBClusterRequest(TeaModel):
             result['BackupSetID'] = self.backup_set_id
         if self.restore_time is not None:
             result['RestoreTime'] = self.restore_time
+        if self.elastic_ioresource is not None:
+            result['ElasticIOResource'] = self.elastic_ioresource
         return result
 
     def from_map(self, m: dict = None):
@@ -595,6 +599,8 @@ class CreateDBClusterRequest(TeaModel):
             self.backup_set_id = m.get('BackupSetID')
         if m.get('RestoreTime') is not None:
             self.restore_time = m.get('RestoreTime')
+        if m.get('ElasticIOResource') is not None:
+            self.elastic_ioresource = m.get('ElasticIOResource')
         return self
 
 
