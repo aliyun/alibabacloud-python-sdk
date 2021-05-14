@@ -482,6 +482,146 @@ class GetAsyncJobResultResponse(TeaModel):
         return self
 
 
+class EstimateStereoImageDepthRequest(TeaModel):
+    def __init__(
+        self,
+        left_image_url: str = None,
+        right_image_url: str = None,
+    ):
+        # A short description of struct
+        self.left_image_url = left_image_url
+        self.right_image_url = right_image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.left_image_url is not None:
+            result['LeftImageURL'] = self.left_image_url
+        if self.right_image_url is not None:
+            result['RightImageURL'] = self.right_image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LeftImageURL') is not None:
+            self.left_image_url = m.get('LeftImageURL')
+        if m.get('RightImageURL') is not None:
+            self.right_image_url = m.get('RightImageURL')
+        return self
+
+
+class EstimateStereoImageDepthResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        disparity_map_url: str = None,
+        disparity_vis_url: str = None,
+    ):
+        self.disparity_map_url = disparity_map_url
+        self.disparity_vis_url = disparity_vis_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disparity_map_url is not None:
+            result['DisparityMapURL'] = self.disparity_map_url
+        if self.disparity_vis_url is not None:
+            result['DisparityVisURL'] = self.disparity_vis_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisparityMapURL') is not None:
+            self.disparity_map_url = m.get('DisparityMapURL')
+        if m.get('DisparityVisURL') is not None:
+            self.disparity_vis_url = m.get('DisparityVisURL')
+        return self
+
+
+class EstimateStereoImageDepthResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: EstimateStereoImageDepthResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = EstimateStereoImageDepthResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class EstimateStereoImageDepthResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: EstimateStereoImageDepthResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = EstimateStereoImageDepthResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EstimateMonocularImageDepthRequest(TeaModel):
     def __init__(
         self,
@@ -643,147 +783,7 @@ class EstimateMonocularImageDepthResponse(TeaModel):
         return self
 
 
-class EstimateStereoImageDepthRequest(TeaModel):
-    def __init__(
-        self,
-        left_image_url: str = None,
-        right_image_url: str = None,
-    ):
-        # A short description of struct
-        self.left_image_url = left_image_url
-        self.right_image_url = right_image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.left_image_url is not None:
-            result['LeftImageURL'] = self.left_image_url
-        if self.right_image_url is not None:
-            result['RightImageURL'] = self.right_image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('LeftImageURL') is not None:
-            self.left_image_url = m.get('LeftImageURL')
-        if m.get('RightImageURL') is not None:
-            self.right_image_url = m.get('RightImageURL')
-        return self
-
-
-class EstimateStereoImageDepthResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        disparity_map_url: str = None,
-        disparity_vis_url: str = None,
-    ):
-        self.disparity_map_url = disparity_map_url
-        self.disparity_vis_url = disparity_vis_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.disparity_map_url is not None:
-            result['DisparityMapURL'] = self.disparity_map_url
-        if self.disparity_vis_url is not None:
-            result['DisparityVisURL'] = self.disparity_vis_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DisparityMapURL') is not None:
-            self.disparity_map_url = m.get('DisparityMapURL')
-        if m.get('DisparityVisURL') is not None:
-            self.disparity_vis_url = m.get('DisparityVisURL')
-        return self
-
-
-class EstimateStereoImageDepthResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: EstimateStereoImageDepthResponseBodyData = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = EstimateStereoImageDepthResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class EstimateStereoImageDepthResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: EstimateStereoImageDepthResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = EstimateStereoImageDepthResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class EstimateStereoVideoDepthRequest(TeaModel):
+class EstimateMonocularVideoDepthRequest(TeaModel):
     def __init__(
         self,
         video_url: str = None,
@@ -817,7 +817,7 @@ class EstimateStereoVideoDepthRequest(TeaModel):
         return self
 
 
-class EstimateStereoVideoDepthAdvanceRequest(TeaModel):
+class EstimateMonocularVideoDepthAdvanceRequest(TeaModel):
     def __init__(
         self,
         video_urlobject: BinaryIO = None,
@@ -850,7 +850,7 @@ class EstimateStereoVideoDepthAdvanceRequest(TeaModel):
         return self
 
 
-class EstimateStereoVideoDepthResponseBodyData(TeaModel):
+class EstimateMonocularVideoDepthResponseBodyData(TeaModel):
     def __init__(
         self,
         depth_url: str = None,
@@ -883,11 +883,11 @@ class EstimateStereoVideoDepthResponseBodyData(TeaModel):
         return self
 
 
-class EstimateStereoVideoDepthResponseBody(TeaModel):
+class EstimateMonocularVideoDepthResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: EstimateStereoVideoDepthResponseBodyData = None,
+        data: EstimateMonocularVideoDepthResponseBodyData = None,
     ):
         # Id of the request
         self.request_id = request_id
@@ -914,16 +914,16 @@ class EstimateStereoVideoDepthResponseBody(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
-            temp_model = EstimateStereoVideoDepthResponseBodyData()
+            temp_model = EstimateMonocularVideoDepthResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
         return self
 
 
-class EstimateStereoVideoDepthResponse(TeaModel):
+class EstimateMonocularVideoDepthResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: EstimateStereoVideoDepthResponseBody = None,
+        body: EstimateMonocularVideoDepthResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -951,7 +951,7 @@ class EstimateStereoVideoDepthResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = EstimateStereoVideoDepthResponseBody()
+            temp_model = EstimateMonocularVideoDepthResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
