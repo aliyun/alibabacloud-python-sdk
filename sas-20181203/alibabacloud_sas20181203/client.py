@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_sas20181203 import models as sas_20181203_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -19,11 +21,65 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'tds.aliyuncs.com',
             'ap-southeast-3': 'tds.ap-southeast-3.aliyuncs.com',
-            'cn-shanghai-et2-b01': 'tds.cn-shanghai-et2-b01.aliyuncs.com'
+            'ap-northeast-1': 'sas.aliyuncs.com',
+            'ap-northeast-2-pop': 'sas.aliyuncs.com',
+            'ap-south-1': 'sas.aliyuncs.com',
+            'ap-southeast-1': 'sas.aliyuncs.com',
+            'ap-southeast-2': 'sas.aliyuncs.com',
+            'ap-southeast-5': 'sas.aliyuncs.com',
+            'cn-beijing': 'sas.aliyuncs.com',
+            'cn-beijing-finance-1': 'sas.aliyuncs.com',
+            'cn-beijing-finance-pop': 'sas.aliyuncs.com',
+            'cn-beijing-gov-1': 'sas.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'sas.aliyuncs.com',
+            'cn-chengdu': 'sas.aliyuncs.com',
+            'cn-edge-1': 'sas.aliyuncs.com',
+            'cn-fujian': 'sas.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'sas.aliyuncs.com',
+            'cn-hangzhou-bj-b01': 'sas.aliyuncs.com',
+            'cn-hangzhou-finance': 'sas.aliyuncs.com',
+            'cn-hangzhou-internal-prod-1': 'sas.aliyuncs.com',
+            'cn-hangzhou-internal-test-1': 'sas.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'sas.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'sas.aliyuncs.com',
+            'cn-hangzhou-test-306': 'sas.aliyuncs.com',
+            'cn-hongkong': 'sas.aliyuncs.com',
+            'cn-hongkong-finance-pop': 'sas.aliyuncs.com',
+            'cn-huhehaote': 'sas.aliyuncs.com',
+            'cn-huhehaote-nebula-1': 'sas.aliyuncs.com',
+            'cn-north-2-gov-1': 'sas.aliyuncs.com',
+            'cn-qingdao': 'sas.aliyuncs.com',
+            'cn-qingdao-nebula': 'sas.aliyuncs.com',
+            'cn-shanghai': 'sas.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'sas.aliyuncs.com',
+            'cn-shanghai-et2-b01': 'sas.aliyuncs.com',
+            'cn-shanghai-finance-1': 'sas.aliyuncs.com',
+            'cn-shanghai-inner': 'sas.aliyuncs.com',
+            'cn-shanghai-internal-test-1': 'sas.aliyuncs.com',
+            'cn-shenzhen': 'sas.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'sas.aliyuncs.com',
+            'cn-shenzhen-inner': 'sas.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'sas.aliyuncs.com',
+            'cn-shenzhen-su18-b01': 'sas.aliyuncs.com',
+            'cn-wuhan': 'sas.aliyuncs.com',
+            'cn-wulanchabu': 'sas.aliyuncs.com',
+            'cn-yushanfang': 'sas.aliyuncs.com',
+            'cn-zhangbei': 'sas.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'sas.aliyuncs.com',
+            'cn-zhangjiakou': 'sas.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'sas.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'sas.aliyuncs.com',
+            'eu-central-1': 'sas.aliyuncs.com',
+            'eu-west-1': 'sas.aliyuncs.com',
+            'eu-west-1-oxs': 'sas.aliyuncs.com',
+            'me-east-1': 'sas.aliyuncs.com',
+            'rus-west-1-pop': 'sas.aliyuncs.com',
+            'us-east-1': 'sas.aliyuncs.com',
+            'us-west-1': 'sas.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('sas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -53,7 +109,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.AddVpcHoneyPotResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.AddVpcHoneyPotResponse(),
             self.do_rpcrequest('AddVpcHoneyPot', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -66,7 +123,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.AddVpcHoneyPotResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.AddVpcHoneyPotResponse(),
             await self.do_rpcrequest_async('AddVpcHoneyPot', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -84,6 +142,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_vpc_honey_pot_with_options_async(request, runtime)
 
+    def check_quara_file_id_with_options(
+        self,
+        request: sas_20181203_models.CheckQuaraFileIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CheckQuaraFileIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CheckQuaraFileIdResponse(),
+            self.do_rpcrequest('CheckQuaraFileId', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def check_quara_file_id_with_options_async(
+        self,
+        request: sas_20181203_models.CheckQuaraFileIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CheckQuaraFileIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CheckQuaraFileIdResponse(),
+            await self.do_rpcrequest_async('CheckQuaraFileId', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def check_quara_file_id(
+        self,
+        request: sas_20181203_models.CheckQuaraFileIdRequest,
+    ) -> sas_20181203_models.CheckQuaraFileIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_quara_file_id_with_options(request, runtime)
+
+    async def check_quara_file_id_async(
+        self,
+        request: sas_20181203_models.CheckQuaraFileIdRequest,
+    ) -> sas_20181203_models.CheckQuaraFileIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_quara_file_id_with_options_async(request, runtime)
+
+    def check_security_event_id_with_options(
+        self,
+        request: sas_20181203_models.CheckSecurityEventIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CheckSecurityEventIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CheckSecurityEventIdResponse(),
+            self.do_rpcrequest('CheckSecurityEventId', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def check_security_event_id_with_options_async(
+        self,
+        request: sas_20181203_models.CheckSecurityEventIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CheckSecurityEventIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CheckSecurityEventIdResponse(),
+            await self.do_rpcrequest_async('CheckSecurityEventId', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def check_security_event_id(
+        self,
+        request: sas_20181203_models.CheckSecurityEventIdRequest,
+    ) -> sas_20181203_models.CheckSecurityEventIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_security_event_id_with_options(request, runtime)
+
+    async def check_security_event_id_async(
+        self,
+        request: sas_20181203_models.CheckSecurityEventIdRequest,
+    ) -> sas_20181203_models.CheckSecurityEventIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_security_event_id_with_options_async(request, runtime)
+
     def create_anti_brute_force_rule_with_options(
         self,
         request: sas_20181203_models.CreateAntiBruteForceRuleRequest,
@@ -93,7 +235,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.CreateAntiBruteForceRuleResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.CreateAntiBruteForceRuleResponse(),
             self.do_rpcrequest('CreateAntiBruteForceRule', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -106,7 +249,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.CreateAntiBruteForceRuleResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.CreateAntiBruteForceRuleResponse(),
             await self.do_rpcrequest_async('CreateAntiBruteForceRule', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -124,6 +268,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_anti_brute_force_rule_with_options_async(request, runtime)
 
+    def create_backup_policy_with_options(
+        self,
+        tmp_req: sas_20181203_models.CreateBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateBackupPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.CreateBackupPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.policy):
+            request.policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateBackupPolicyResponse(),
+            self.do_rpcrequest('CreateBackupPolicy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_backup_policy_with_options_async(
+        self,
+        tmp_req: sas_20181203_models.CreateBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateBackupPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.CreateBackupPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.policy):
+            request.policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateBackupPolicyResponse(),
+            await self.do_rpcrequest_async('CreateBackupPolicy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_backup_policy(
+        self,
+        request: sas_20181203_models.CreateBackupPolicyRequest,
+    ) -> sas_20181203_models.CreateBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_backup_policy_with_options(request, runtime)
+
+    async def create_backup_policy_async(
+        self,
+        request: sas_20181203_models.CreateBackupPolicyRequest,
+    ) -> sas_20181203_models.CreateBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_backup_policy_with_options_async(request, runtime)
+
     def create_or_update_asset_group_with_options(
         self,
         request: sas_20181203_models.CreateOrUpdateAssetGroupRequest,
@@ -133,7 +327,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.CreateOrUpdateAssetGroupResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.CreateOrUpdateAssetGroupResponse(),
             self.do_rpcrequest('CreateOrUpdateAssetGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -146,7 +341,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.CreateOrUpdateAssetGroupResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.CreateOrUpdateAssetGroupResponse(),
             await self.do_rpcrequest_async('CreateOrUpdateAssetGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -164,6 +360,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_or_update_asset_group_with_options_async(request, runtime)
 
+    def create_restore_job_with_options(
+        self,
+        request: sas_20181203_models.CreateRestoreJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateRestoreJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateRestoreJobResponse(),
+            self.do_rpcrequest('CreateRestoreJob', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_restore_job_with_options_async(
+        self,
+        request: sas_20181203_models.CreateRestoreJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateRestoreJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateRestoreJobResponse(),
+            await self.do_rpcrequest_async('CreateRestoreJob', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_restore_job(
+        self,
+        request: sas_20181203_models.CreateRestoreJobRequest,
+    ) -> sas_20181203_models.CreateRestoreJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_restore_job_with_options(request, runtime)
+
+    async def create_restore_job_async(
+        self,
+        request: sas_20181203_models.CreateRestoreJobRequest,
+    ) -> sas_20181203_models.CreateRestoreJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_restore_job_with_options_async(request, runtime)
+
     def create_sas_order_with_options(
         self,
         request: sas_20181203_models.CreateSasOrderRequest,
@@ -173,7 +411,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.CreateSasOrderResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSasOrderResponse(),
             self.do_rpcrequest('CreateSasOrder', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -186,7 +425,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.CreateSasOrderResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSasOrderResponse(),
             await self.do_rpcrequest_async('CreateSasOrder', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -204,6 +444,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_sas_order_with_options_async(request, runtime)
 
+    def create_service_linked_role_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateServiceLinkedRoleResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.CreateServiceLinkedRoleResponse(),
+            self.do_rpcrequest('CreateServiceLinkedRole', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_service_linked_role_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateServiceLinkedRoleResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.CreateServiceLinkedRoleResponse(),
+            await self.do_rpcrequest_async('CreateServiceLinkedRole', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_service_linked_role(self) -> sas_20181203_models.CreateServiceLinkedRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_service_linked_role_with_options(runtime)
+
+    async def create_service_linked_role_async(self) -> sas_20181203_models.CreateServiceLinkedRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_service_linked_role_with_options_async(runtime)
+
     def create_similar_security_events_query_task_with_options(
         self,
         request: sas_20181203_models.CreateSimilarSecurityEventsQueryTaskRequest,
@@ -213,7 +481,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.CreateSimilarSecurityEventsQueryTaskResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSimilarSecurityEventsQueryTaskResponse(),
             self.do_rpcrequest('CreateSimilarSecurityEventsQueryTask', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -226,7 +495,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.CreateSimilarSecurityEventsQueryTaskResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSimilarSecurityEventsQueryTaskResponse(),
             await self.do_rpcrequest_async('CreateSimilarSecurityEventsQueryTask', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -244,6 +514,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_similar_security_events_query_task_with_options_async(request, runtime)
 
+    def delete_backup_policy_with_options(
+        self,
+        request: sas_20181203_models.DeleteBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBackupPolicyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBackupPolicyResponse(),
+            self.do_rpcrequest('DeleteBackupPolicy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_backup_policy_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBackupPolicyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBackupPolicyResponse(),
+            await self.do_rpcrequest_async('DeleteBackupPolicy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_backup_policy(
+        self,
+        request: sas_20181203_models.DeleteBackupPolicyRequest,
+    ) -> sas_20181203_models.DeleteBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backup_policy_with_options(request, runtime)
+
+    async def delete_backup_policy_async(
+        self,
+        request: sas_20181203_models.DeleteBackupPolicyRequest,
+    ) -> sas_20181203_models.DeleteBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backup_policy_with_options_async(request, runtime)
+
+    def delete_backup_policy_machine_with_options(
+        self,
+        request: sas_20181203_models.DeleteBackupPolicyMachineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBackupPolicyMachineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBackupPolicyMachineResponse(),
+            self.do_rpcrequest('DeleteBackupPolicyMachine', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_backup_policy_machine_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteBackupPolicyMachineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBackupPolicyMachineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBackupPolicyMachineResponse(),
+            await self.do_rpcrequest_async('DeleteBackupPolicyMachine', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_backup_policy_machine(
+        self,
+        request: sas_20181203_models.DeleteBackupPolicyMachineRequest,
+    ) -> sas_20181203_models.DeleteBackupPolicyMachineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backup_policy_machine_with_options(request, runtime)
+
+    async def delete_backup_policy_machine_async(
+        self,
+        request: sas_20181203_models.DeleteBackupPolicyMachineRequest,
+    ) -> sas_20181203_models.DeleteBackupPolicyMachineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backup_policy_machine_with_options_async(request, runtime)
+
     def delete_group_with_options(
         self,
         request: sas_20181203_models.DeleteGroupRequest,
@@ -253,7 +607,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DeleteGroupResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteGroupResponse(),
             self.do_rpcrequest('DeleteGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -266,7 +621,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DeleteGroupResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteGroupResponse(),
             await self.do_rpcrequest_async('DeleteGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -293,7 +649,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DeleteLoginBaseConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteLoginBaseConfigResponse(),
             self.do_rpcrequest('DeleteLoginBaseConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -306,7 +663,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DeleteLoginBaseConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteLoginBaseConfigResponse(),
             await self.do_rpcrequest_async('DeleteLoginBaseConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -333,7 +691,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DeleteTagWithUuidResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteTagWithUuidResponse(),
             self.do_rpcrequest('DeleteTagWithUuid', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -346,7 +705,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DeleteTagWithUuidResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteTagWithUuidResponse(),
             await self.do_rpcrequest_async('DeleteTagWithUuid', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -373,7 +733,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DeleteVpcHoneyPotResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteVpcHoneyPotResponse(),
             self.do_rpcrequest('DeleteVpcHoneyPot', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -386,7 +747,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DeleteVpcHoneyPotResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteVpcHoneyPotResponse(),
             await self.do_rpcrequest_async('DeleteVpcHoneyPot', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -413,7 +775,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAccesskeyLeakListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAccesskeyLeakListResponse(),
             self.do_rpcrequest('DescribeAccesskeyLeakList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -426,7 +789,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAccesskeyLeakListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAccesskeyLeakListResponse(),
             await self.do_rpcrequest_async('DescribeAccesskeyLeakList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -453,7 +817,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAffectedMaliciousFileImagesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAffectedMaliciousFileImagesResponse(),
             self.do_rpcrequest('DescribeAffectedMaliciousFileImages', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -466,7 +831,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAffectedMaliciousFileImagesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAffectedMaliciousFileImagesResponse(),
             await self.do_rpcrequest_async('DescribeAffectedMaliciousFileImages', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -493,7 +859,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAlarmEventDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAlarmEventDetailResponse(),
             self.do_rpcrequest('DescribeAlarmEventDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -506,7 +873,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAlarmEventDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAlarmEventDetailResponse(),
             await self.do_rpcrequest_async('DescribeAlarmEventDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -533,7 +901,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAlarmEventListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAlarmEventListResponse(),
             self.do_rpcrequest('DescribeAlarmEventList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -546,7 +915,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAlarmEventListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAlarmEventListResponse(),
             await self.do_rpcrequest_async('DescribeAlarmEventList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -564,45 +934,75 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_alarm_event_list_with_options_async(request, runtime)
 
-    def describe_all_entity_with_options(
+    def describe_alarm_event_stack_info_with_options(
         self,
-        request: sas_20181203_models.DescribeAllEntityRequest,
+        request: sas_20181203_models.DescribeAlarmEventStackInfoRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeAllEntityResponse:
+    ) -> sas_20181203_models.DescribeAlarmEventStackInfoResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAllEntityResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAlarmEventStackInfoResponse(),
+            self.do_rpcrequest('DescribeAlarmEventStackInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_alarm_event_stack_info_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeAlarmEventStackInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAlarmEventStackInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAlarmEventStackInfoResponse(),
+            await self.do_rpcrequest_async('DescribeAlarmEventStackInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_alarm_event_stack_info(
+        self,
+        request: sas_20181203_models.DescribeAlarmEventStackInfoRequest,
+    ) -> sas_20181203_models.DescribeAlarmEventStackInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_alarm_event_stack_info_with_options(request, runtime)
+
+    async def describe_alarm_event_stack_info_async(
+        self,
+        request: sas_20181203_models.DescribeAlarmEventStackInfoRequest,
+    ) -> sas_20181203_models.DescribeAlarmEventStackInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_alarm_event_stack_info_with_options_async(request, runtime)
+
+    def describe_all_entity_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAllEntityResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAllEntityResponse(),
             self.do_rpcrequest('DescribeAllEntity', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_all_entity_with_options_async(
         self,
-        request: sas_20181203_models.DescribeAllEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeAllEntityResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeAllEntityResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAllEntityResponse(),
             await self.do_rpcrequest_async('DescribeAllEntity', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_all_entity(
-        self,
-        request: sas_20181203_models.DescribeAllEntityRequest,
-    ) -> sas_20181203_models.DescribeAllEntityResponse:
+    def describe_all_entity(self) -> sas_20181203_models.DescribeAllEntityResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_all_entity_with_options(request, runtime)
+        return self.describe_all_entity_with_options(runtime)
 
-    async def describe_all_entity_async(
-        self,
-        request: sas_20181203_models.DescribeAllEntityRequest,
-    ) -> sas_20181203_models.DescribeAllEntityResponse:
+    async def describe_all_entity_async(self) -> sas_20181203_models.DescribeAllEntityResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_all_entity_with_options_async(request, runtime)
+        return await self.describe_all_entity_with_options_async(runtime)
 
     def describe_all_groups_with_options(
         self,
@@ -613,7 +1013,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAllGroupsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAllGroupsResponse(),
             self.do_rpcrequest('DescribeAllGroups', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -626,7 +1027,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAllGroupsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAllGroupsResponse(),
             await self.do_rpcrequest_async('DescribeAllGroups', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -653,7 +1055,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAllRegionsStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAllRegionsStatisticsResponse(),
             self.do_rpcrequest('DescribeAllRegionsStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -666,7 +1069,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAllRegionsStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAllRegionsStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeAllRegionsStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -693,7 +1097,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAntiBruteForceRulesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAntiBruteForceRulesResponse(),
             self.do_rpcrequest('DescribeAntiBruteForceRules', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -706,7 +1111,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAntiBruteForceRulesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAntiBruteForceRulesResponse(),
             await self.do_rpcrequest_async('DescribeAntiBruteForceRules', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -733,7 +1139,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAssetDetailByUuidResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAssetDetailByUuidResponse(),
             self.do_rpcrequest('DescribeAssetDetailByUuid', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -746,7 +1153,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAssetDetailByUuidResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAssetDetailByUuidResponse(),
             await self.do_rpcrequest_async('DescribeAssetDetailByUuid', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -773,7 +1181,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAssetDetailByUuidsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAssetDetailByUuidsResponse(),
             self.do_rpcrequest('DescribeAssetDetailByUuids', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -786,7 +1195,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAssetDetailByUuidsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAssetDetailByUuidsResponse(),
             await self.do_rpcrequest_async('DescribeAssetDetailByUuids', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -806,43 +1216,283 @@ class Client(OpenApiClient):
 
     def describe_auto_del_config_with_options(
         self,
-        request: sas_20181203_models.DescribeAutoDelConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeAutoDelConfigResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeAutoDelConfigResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAutoDelConfigResponse(),
             self.do_rpcrequest('DescribeAutoDelConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_auto_del_config_with_options_async(
         self,
-        request: sas_20181203_models.DescribeAutoDelConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeAutoDelConfigResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAutoDelConfigResponse(),
+            await self.do_rpcrequest_async('DescribeAutoDelConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_auto_del_config(self) -> sas_20181203_models.DescribeAutoDelConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_auto_del_config_with_options(runtime)
+
+    async def describe_auto_del_config_async(self) -> sas_20181203_models.DescribeAutoDelConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_auto_del_config_with_options_async(runtime)
+
+    def describe_backup_dirs_with_options(
+        self,
+        request: sas_20181203_models.DescribeBackupDirsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupDirsResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeAutoDelConfigResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAutoDelConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupDirsResponse(),
+            self.do_rpcrequest('DescribeBackupDirs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_auto_del_config(
+    async def describe_backup_dirs_with_options_async(
         self,
-        request: sas_20181203_models.DescribeAutoDelConfigRequest,
-    ) -> sas_20181203_models.DescribeAutoDelConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_auto_del_config_with_options(request, runtime)
+        request: sas_20181203_models.DescribeBackupDirsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupDirsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupDirsResponse(),
+            await self.do_rpcrequest_async('DescribeBackupDirs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
 
-    async def describe_auto_del_config_async(
+    def describe_backup_dirs(
         self,
-        request: sas_20181203_models.DescribeAutoDelConfigRequest,
-    ) -> sas_20181203_models.DescribeAutoDelConfigResponse:
+        request: sas_20181203_models.DescribeBackupDirsRequest,
+    ) -> sas_20181203_models.DescribeBackupDirsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_auto_del_config_with_options_async(request, runtime)
+        return self.describe_backup_dirs_with_options(request, runtime)
+
+    async def describe_backup_dirs_async(
+        self,
+        request: sas_20181203_models.DescribeBackupDirsRequest,
+    ) -> sas_20181203_models.DescribeBackupDirsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_dirs_with_options_async(request, runtime)
+
+    def describe_backup_files_with_options(
+        self,
+        request: sas_20181203_models.DescribeBackupFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupFilesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupFilesResponse(),
+            self.do_rpcrequest('DescribeBackupFiles', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_backup_files_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeBackupFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupFilesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupFilesResponse(),
+            await self.do_rpcrequest_async('DescribeBackupFiles', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_backup_files(
+        self,
+        request: sas_20181203_models.DescribeBackupFilesRequest,
+    ) -> sas_20181203_models.DescribeBackupFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_files_with_options(request, runtime)
+
+    async def describe_backup_files_async(
+        self,
+        request: sas_20181203_models.DescribeBackupFilesRequest,
+    ) -> sas_20181203_models.DescribeBackupFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_files_with_options_async(request, runtime)
+
+    def describe_backup_machine_status_with_options(
+        self,
+        request: sas_20181203_models.DescribeBackupMachineStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupMachineStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupMachineStatusResponse(),
+            self.do_rpcrequest('DescribeBackupMachineStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_backup_machine_status_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeBackupMachineStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupMachineStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupMachineStatusResponse(),
+            await self.do_rpcrequest_async('DescribeBackupMachineStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_backup_machine_status(
+        self,
+        request: sas_20181203_models.DescribeBackupMachineStatusRequest,
+    ) -> sas_20181203_models.DescribeBackupMachineStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_machine_status_with_options(request, runtime)
+
+    async def describe_backup_machine_status_async(
+        self,
+        request: sas_20181203_models.DescribeBackupMachineStatusRequest,
+    ) -> sas_20181203_models.DescribeBackupMachineStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_machine_status_with_options_async(request, runtime)
+
+    def describe_backup_policies_with_options(
+        self,
+        request: sas_20181203_models.DescribeBackupPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupPoliciesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupPoliciesResponse(),
+            self.do_rpcrequest('DescribeBackupPolicies', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_backup_policies_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeBackupPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupPoliciesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupPoliciesResponse(),
+            await self.do_rpcrequest_async('DescribeBackupPolicies', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_backup_policies(
+        self,
+        request: sas_20181203_models.DescribeBackupPoliciesRequest,
+    ) -> sas_20181203_models.DescribeBackupPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_policies_with_options(request, runtime)
+
+    async def describe_backup_policies_async(
+        self,
+        request: sas_20181203_models.DescribeBackupPoliciesRequest,
+    ) -> sas_20181203_models.DescribeBackupPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_policies_with_options_async(request, runtime)
+
+    def describe_backup_policy_with_options(
+        self,
+        request: sas_20181203_models.DescribeBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupPolicyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupPolicyResponse(),
+            self.do_rpcrequest('DescribeBackupPolicy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_backup_policy_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupPolicyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupPolicyResponse(),
+            await self.do_rpcrequest_async('DescribeBackupPolicy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_backup_policy(
+        self,
+        request: sas_20181203_models.DescribeBackupPolicyRequest,
+    ) -> sas_20181203_models.DescribeBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_policy_with_options(request, runtime)
+
+    async def describe_backup_policy_async(
+        self,
+        request: sas_20181203_models.DescribeBackupPolicyRequest,
+    ) -> sas_20181203_models.DescribeBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_policy_with_options_async(request, runtime)
+
+    def describe_backup_restore_count_with_options(
+        self,
+        request: sas_20181203_models.DescribeBackupRestoreCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupRestoreCountResponse(),
+            self.do_rpcrequest('DescribeBackupRestoreCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_backup_restore_count_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeBackupRestoreCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupRestoreCountResponse(),
+            await self.do_rpcrequest_async('DescribeBackupRestoreCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_backup_restore_count(
+        self,
+        request: sas_20181203_models.DescribeBackupRestoreCountRequest,
+    ) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_restore_count_with_options(request, runtime)
+
+    async def describe_backup_restore_count_async(
+        self,
+        request: sas_20181203_models.DescribeBackupRestoreCountRequest,
+    ) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_restore_count_with_options_async(request, runtime)
 
     def describe_brute_force_summary_with_options(
         self,
@@ -853,7 +1503,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeBruteForceSummaryResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBruteForceSummaryResponse(),
             self.do_rpcrequest('DescribeBruteForceSummary', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -866,7 +1517,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeBruteForceSummaryResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBruteForceSummaryResponse(),
             await self.do_rpcrequest_async('DescribeBruteForceSummary', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -893,7 +1545,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCheckEcsWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckEcsWarningsResponse(),
             self.do_rpcrequest('DescribeCheckEcsWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -906,7 +1559,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCheckEcsWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckEcsWarningsResponse(),
             await self.do_rpcrequest_async('DescribeCheckEcsWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -933,7 +1587,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCheckWarningDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningDetailResponse(),
             self.do_rpcrequest('DescribeCheckWarningDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -946,7 +1601,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCheckWarningDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningDetailResponse(),
             await self.do_rpcrequest_async('DescribeCheckWarningDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -973,7 +1629,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCheckWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningsResponse(),
             self.do_rpcrequest('DescribeCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -986,7 +1643,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCheckWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningsResponse(),
             await self.do_rpcrequest_async('DescribeCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1013,7 +1671,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCheckWarningSummaryResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningSummaryResponse(),
             self.do_rpcrequest('DescribeCheckWarningSummary', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1026,7 +1685,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCheckWarningSummaryResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningSummaryResponse(),
             await self.do_rpcrequest_async('DescribeCheckWarningSummary', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1053,7 +1713,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCloudCenterInstancesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCloudCenterInstancesResponse(),
             self.do_rpcrequest('DescribeCloudCenterInstances', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1066,7 +1727,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCloudCenterInstancesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCloudCenterInstancesResponse(),
             await self.do_rpcrequest_async('DescribeCloudCenterInstances', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1086,43 +1748,31 @@ class Client(OpenApiClient):
 
     def describe_cloud_product_field_statistics_with_options(
         self,
-        request: sas_20181203_models.DescribeCloudProductFieldStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeCloudProductFieldStatisticsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeCloudProductFieldStatisticsResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCloudProductFieldStatisticsResponse(),
             self.do_rpcrequest('DescribeCloudProductFieldStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_cloud_product_field_statistics_with_options_async(
         self,
-        request: sas_20181203_models.DescribeCloudProductFieldStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeCloudProductFieldStatisticsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeCloudProductFieldStatisticsResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCloudProductFieldStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeCloudProductFieldStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_cloud_product_field_statistics(
-        self,
-        request: sas_20181203_models.DescribeCloudProductFieldStatisticsRequest,
-    ) -> sas_20181203_models.DescribeCloudProductFieldStatisticsResponse:
+    def describe_cloud_product_field_statistics(self) -> sas_20181203_models.DescribeCloudProductFieldStatisticsResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_cloud_product_field_statistics_with_options(request, runtime)
+        return self.describe_cloud_product_field_statistics_with_options(runtime)
 
-    async def describe_cloud_product_field_statistics_async(
-        self,
-        request: sas_20181203_models.DescribeCloudProductFieldStatisticsRequest,
-    ) -> sas_20181203_models.DescribeCloudProductFieldStatisticsResponse:
+    async def describe_cloud_product_field_statistics_async(self) -> sas_20181203_models.DescribeCloudProductFieldStatisticsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_cloud_product_field_statistics_with_options_async(request, runtime)
+        return await self.describe_cloud_product_field_statistics_with_options_async(runtime)
 
     def describe_concern_necessity_with_options(
         self,
@@ -1133,7 +1783,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeConcernNecessityResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeConcernNecessityResponse(),
             self.do_rpcrequest('DescribeConcernNecessity', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1146,7 +1797,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeConcernNecessityResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeConcernNecessityResponse(),
             await self.do_rpcrequest_async('DescribeConcernNecessity', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1173,7 +1825,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeContainerStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerStatisticsResponse(),
             self.do_rpcrequest('DescribeContainerStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1186,7 +1839,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeContainerStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeContainerStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1213,7 +1867,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCriteriaResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCriteriaResponse(),
             self.do_rpcrequest('DescribeCriteria', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1226,7 +1881,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeCriteriaResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCriteriaResponse(),
             await self.do_rpcrequest_async('DescribeCriteria', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1253,7 +1909,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDialogMessagesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDialogMessagesResponse(),
             self.do_rpcrequest('DescribeDialogMessages', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1266,7 +1923,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDialogMessagesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDialogMessagesResponse(),
             await self.do_rpcrequest_async('DescribeDialogMessages', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1293,7 +1951,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDingTalkResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDingTalkResponse(),
             self.do_rpcrequest('DescribeDingTalk', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1306,7 +1965,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDingTalkResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDingTalkResponse(),
             await self.do_rpcrequest_async('DescribeDingTalk', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1333,7 +1993,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDomainCountResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainCountResponse(),
             self.do_rpcrequest('DescribeDomainCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1346,7 +2007,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDomainCountResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainCountResponse(),
             await self.do_rpcrequest_async('DescribeDomainCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1373,7 +2035,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainDetailResponse(),
             self.do_rpcrequest('DescribeDomainDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1386,7 +2049,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainDetailResponse(),
             await self.do_rpcrequest_async('DescribeDomainDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1413,7 +2077,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDomainListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainListResponse(),
             self.do_rpcrequest('DescribeDomainList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1426,7 +2091,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeDomainListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainListResponse(),
             await self.do_rpcrequest_async('DescribeDomainList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1444,45 +2110,89 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_list_with_options_async(request, runtime)
 
-    def describe_emg_vul_group_with_options(
+    def describe_emg_vul_item_with_options(
         self,
-        request: sas_20181203_models.DescribeEmgVulGroupRequest,
+        request: sas_20181203_models.DescribeEmgVulItemRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeEmgVulGroupResponse:
+    ) -> sas_20181203_models.DescribeEmgVulItemResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeEmgVulGroupResponse().from_map(
-            self.do_rpcrequest('DescribeEmgVulGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeEmgVulItemResponse(),
+            self.do_rpcrequest('DescribeEmgVulItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def describe_emg_vul_group_with_options_async(
+    async def describe_emg_vul_item_with_options_async(
         self,
-        request: sas_20181203_models.DescribeEmgVulGroupRequest,
+        request: sas_20181203_models.DescribeEmgVulItemRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeEmgVulGroupResponse:
+    ) -> sas_20181203_models.DescribeEmgVulItemResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeEmgVulGroupResponse().from_map(
-            await self.do_rpcrequest_async('DescribeEmgVulGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeEmgVulItemResponse(),
+            await self.do_rpcrequest_async('DescribeEmgVulItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_emg_vul_group(
+    def describe_emg_vul_item(
         self,
-        request: sas_20181203_models.DescribeEmgVulGroupRequest,
-    ) -> sas_20181203_models.DescribeEmgVulGroupResponse:
+        request: sas_20181203_models.DescribeEmgVulItemRequest,
+    ) -> sas_20181203_models.DescribeEmgVulItemResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_emg_vul_group_with_options(request, runtime)
+        return self.describe_emg_vul_item_with_options(request, runtime)
 
-    async def describe_emg_vul_group_async(
+    async def describe_emg_vul_item_async(
         self,
-        request: sas_20181203_models.DescribeEmgVulGroupRequest,
-    ) -> sas_20181203_models.DescribeEmgVulGroupResponse:
+        request: sas_20181203_models.DescribeEmgVulItemRequest,
+    ) -> sas_20181203_models.DescribeEmgVulItemResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_emg_vul_group_with_options_async(request, runtime)
+        return await self.describe_emg_vul_item_with_options_async(request, runtime)
+
+    def describe_exclude_system_path_with_options(
+        self,
+        request: sas_20181203_models.DescribeExcludeSystemPathRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeExcludeSystemPathResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExcludeSystemPathResponse(),
+            self.do_rpcrequest('DescribeExcludeSystemPath', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_exclude_system_path_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeExcludeSystemPathRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeExcludeSystemPathResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExcludeSystemPathResponse(),
+            await self.do_rpcrequest_async('DescribeExcludeSystemPath', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_exclude_system_path(
+        self,
+        request: sas_20181203_models.DescribeExcludeSystemPathRequest,
+    ) -> sas_20181203_models.DescribeExcludeSystemPathResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_exclude_system_path_with_options(request, runtime)
+
+    async def describe_exclude_system_path_async(
+        self,
+        request: sas_20181203_models.DescribeExcludeSystemPathRequest,
+    ) -> sas_20181203_models.DescribeExcludeSystemPathResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_exclude_system_path_with_options_async(request, runtime)
 
     def describe_export_info_with_options(
         self,
@@ -1493,7 +2203,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeExportInfoResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExportInfoResponse(),
             self.do_rpcrequest('DescribeExportInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1506,7 +2217,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeExportInfoResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExportInfoResponse(),
             await self.do_rpcrequest_async('DescribeExportInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1533,7 +2245,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeExposedInstanceCriteriaResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedInstanceCriteriaResponse(),
             self.do_rpcrequest('DescribeExposedInstanceCriteria', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1546,7 +2259,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeExposedInstanceCriteriaResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedInstanceCriteriaResponse(),
             await self.do_rpcrequest_async('DescribeExposedInstanceCriteria', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1573,7 +2287,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeExposedInstanceDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedInstanceDetailResponse(),
             self.do_rpcrequest('DescribeExposedInstanceDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1586,7 +2301,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeExposedInstanceDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedInstanceDetailResponse(),
             await self.do_rpcrequest_async('DescribeExposedInstanceDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1613,7 +2329,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeExposedInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedInstanceListResponse(),
             self.do_rpcrequest('DescribeExposedInstanceList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1626,7 +2343,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeExposedInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedInstanceListResponse(),
             await self.do_rpcrequest_async('DescribeExposedInstanceList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1646,43 +2364,73 @@ class Client(OpenApiClient):
 
     def describe_exposed_statistics_with_options(
         self,
-        request: sas_20181203_models.DescribeExposedStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeExposedStatisticsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeExposedStatisticsResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedStatisticsResponse(),
             self.do_rpcrequest('DescribeExposedStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_exposed_statistics_with_options_async(
         self,
-        request: sas_20181203_models.DescribeExposedStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeExposedStatisticsResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedStatisticsResponse(),
+            await self.do_rpcrequest_async('DescribeExposedStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_exposed_statistics(self) -> sas_20181203_models.DescribeExposedStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_exposed_statistics_with_options(runtime)
+
+    async def describe_exposed_statistics_async(self) -> sas_20181203_models.DescribeExposedStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_exposed_statistics_with_options_async(runtime)
+
+    def describe_exposed_statistics_detail_with_options(
+        self,
+        request: sas_20181203_models.DescribeExposedStatisticsDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeExposedStatisticsDetailResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeExposedStatisticsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeExposedStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedStatisticsDetailResponse(),
+            self.do_rpcrequest('DescribeExposedStatisticsDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_exposed_statistics(
+    async def describe_exposed_statistics_detail_with_options_async(
         self,
-        request: sas_20181203_models.DescribeExposedStatisticsRequest,
-    ) -> sas_20181203_models.DescribeExposedStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_exposed_statistics_with_options(request, runtime)
+        request: sas_20181203_models.DescribeExposedStatisticsDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeExposedStatisticsDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeExposedStatisticsDetailResponse(),
+            await self.do_rpcrequest_async('DescribeExposedStatisticsDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
 
-    async def describe_exposed_statistics_async(
+    def describe_exposed_statistics_detail(
         self,
-        request: sas_20181203_models.DescribeExposedStatisticsRequest,
-    ) -> sas_20181203_models.DescribeExposedStatisticsResponse:
+        request: sas_20181203_models.DescribeExposedStatisticsDetailRequest,
+    ) -> sas_20181203_models.DescribeExposedStatisticsDetailResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_exposed_statistics_with_options_async(request, runtime)
+        return self.describe_exposed_statistics_detail_with_options(request, runtime)
+
+    async def describe_exposed_statistics_detail_async(
+        self,
+        request: sas_20181203_models.DescribeExposedStatisticsDetailRequest,
+    ) -> sas_20181203_models.DescribeExposedStatisticsDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_exposed_statistics_detail_with_options_async(request, runtime)
 
     def describe_field_statistics_with_options(
         self,
@@ -1693,7 +2441,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeFieldStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeFieldStatisticsResponse(),
             self.do_rpcrequest('DescribeFieldStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1706,7 +2455,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeFieldStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeFieldStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeFieldStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1724,6 +2474,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_field_statistics_with_options_async(request, runtime)
 
+    def describe_front_vul_patch_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeFrontVulPatchListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeFrontVulPatchListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeFrontVulPatchListResponse(),
+            self.do_rpcrequest('DescribeFrontVulPatchList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_front_vul_patch_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeFrontVulPatchListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeFrontVulPatchListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeFrontVulPatchListResponse(),
+            await self.do_rpcrequest_async('DescribeFrontVulPatchList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_front_vul_patch_list(
+        self,
+        request: sas_20181203_models.DescribeFrontVulPatchListRequest,
+    ) -> sas_20181203_models.DescribeFrontVulPatchListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_front_vul_patch_list_with_options(request, runtime)
+
+    async def describe_front_vul_patch_list_async(
+        self,
+        request: sas_20181203_models.DescribeFrontVulPatchListRequest,
+    ) -> sas_20181203_models.DescribeFrontVulPatchListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_front_vul_patch_list_with_options_async(request, runtime)
+
     def describe_graph_4investigation_online_with_options(
         self,
         request: sas_20181203_models.DescribeGraph4InvestigationOnlineRequest,
@@ -1733,7 +2525,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGraph4InvestigationOnlineResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGraph4InvestigationOnlineResponse(),
             self.do_rpcrequest('DescribeGraph4InvestigationOnline', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1746,7 +2539,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGraph4InvestigationOnlineResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGraph4InvestigationOnlineResponse(),
             await self.do_rpcrequest_async('DescribeGraph4InvestigationOnline', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1773,7 +2567,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGroupedContainerInstancesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedContainerInstancesResponse(),
             self.do_rpcrequest('DescribeGroupedContainerInstances', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1786,7 +2581,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGroupedContainerInstancesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedContainerInstancesResponse(),
             await self.do_rpcrequest_async('DescribeGroupedContainerInstances', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1804,6 +2600,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_grouped_container_instances_with_options_async(request, runtime)
 
+    def describe_grouped_instances_with_options(
+        self,
+        request: sas_20181203_models.DescribeGroupedInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeGroupedInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedInstancesResponse(),
+            self.do_rpcrequest('DescribeGroupedInstances', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_grouped_instances_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeGroupedInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeGroupedInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedInstancesResponse(),
+            await self.do_rpcrequest_async('DescribeGroupedInstances', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_grouped_instances(
+        self,
+        request: sas_20181203_models.DescribeGroupedInstancesRequest,
+    ) -> sas_20181203_models.DescribeGroupedInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_grouped_instances_with_options(request, runtime)
+
+    async def describe_grouped_instances_async(
+        self,
+        request: sas_20181203_models.DescribeGroupedInstancesRequest,
+    ) -> sas_20181203_models.DescribeGroupedInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_grouped_instances_with_options_async(request, runtime)
+
     def describe_grouped_malicious_files_with_options(
         self,
         request: sas_20181203_models.DescribeGroupedMaliciousFilesRequest,
@@ -1813,7 +2651,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGroupedMaliciousFilesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedMaliciousFilesResponse(),
             self.do_rpcrequest('DescribeGroupedMaliciousFiles', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1826,7 +2665,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGroupedMaliciousFilesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedMaliciousFilesResponse(),
             await self.do_rpcrequest_async('DescribeGroupedMaliciousFiles', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1853,7 +2693,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGroupedTagsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedTagsResponse(),
             self.do_rpcrequest('DescribeGroupedTags', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1866,7 +2707,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGroupedTagsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedTagsResponse(),
             await self.do_rpcrequest_async('DescribeGroupedTags', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1893,7 +2735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGroupedVulResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedVulResponse(),
             self.do_rpcrequest('DescribeGroupedVul', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1906,7 +2749,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeGroupedVulResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeGroupedVulResponse(),
             await self.do_rpcrequest_async('DescribeGroupedVul', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1926,43 +2770,31 @@ class Client(OpenApiClient):
 
     def describe_honey_pot_auth_with_options(
         self,
-        request: sas_20181203_models.DescribeHoneyPotAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeHoneyPotAuthResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeHoneyPotAuthResponse(),
             self.do_rpcrequest('DescribeHoneyPotAuth', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_honey_pot_auth_with_options_async(
         self,
-        request: sas_20181203_models.DescribeHoneyPotAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeHoneyPotAuthResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeHoneyPotAuthResponse(),
             await self.do_rpcrequest_async('DescribeHoneyPotAuth', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_honey_pot_auth(
-        self,
-        request: sas_20181203_models.DescribeHoneyPotAuthRequest,
-    ) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
+    def describe_honey_pot_auth(self) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_honey_pot_auth_with_options(request, runtime)
+        return self.describe_honey_pot_auth_with_options(runtime)
 
-    async def describe_honey_pot_auth_async(
-        self,
-        request: sas_20181203_models.DescribeHoneyPotAuthRequest,
-    ) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
+    async def describe_honey_pot_auth_async(self) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_honey_pot_auth_with_options_async(request, runtime)
+        return await self.describe_honey_pot_auth_with_options_async(runtime)
 
     def describe_honey_pot_susp_statistics_with_options(
         self,
@@ -1973,7 +2805,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeHoneyPotSuspStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeHoneyPotSuspStatisticsResponse(),
             self.do_rpcrequest('DescribeHoneyPotSuspStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1986,7 +2819,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeHoneyPotSuspStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeHoneyPotSuspStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeHoneyPotSuspStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2013,7 +2847,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeImageGroupedVulListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageGroupedVulListResponse(),
             self.do_rpcrequest('DescribeImageGroupedVulList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2026,7 +2861,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeImageGroupedVulListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageGroupedVulListResponse(),
             await self.do_rpcrequest_async('DescribeImageGroupedVulList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2046,43 +2882,31 @@ class Client(OpenApiClient):
 
     def describe_image_statistics_with_options(
         self,
-        request: sas_20181203_models.DescribeImageStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeImageStatisticsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeImageStatisticsResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageStatisticsResponse(),
             self.do_rpcrequest('DescribeImageStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_image_statistics_with_options_async(
         self,
-        request: sas_20181203_models.DescribeImageStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeImageStatisticsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeImageStatisticsResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeImageStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_image_statistics(
-        self,
-        request: sas_20181203_models.DescribeImageStatisticsRequest,
-    ) -> sas_20181203_models.DescribeImageStatisticsResponse:
+    def describe_image_statistics(self) -> sas_20181203_models.DescribeImageStatisticsResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_image_statistics_with_options(request, runtime)
+        return self.describe_image_statistics_with_options(runtime)
 
-    async def describe_image_statistics_async(
-        self,
-        request: sas_20181203_models.DescribeImageStatisticsRequest,
-    ) -> sas_20181203_models.DescribeImageStatisticsResponse:
+    async def describe_image_statistics_async(self) -> sas_20181203_models.DescribeImageStatisticsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_image_statistics_with_options_async(request, runtime)
+        return await self.describe_image_statistics_with_options_async(runtime)
 
     def describe_image_vul_list_with_options(
         self,
@@ -2093,7 +2917,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeImageVulListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageVulListResponse(),
             self.do_rpcrequest('DescribeImageVulList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2106,7 +2931,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeImageVulListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageVulListResponse(),
             await self.do_rpcrequest_async('DescribeImageVulList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2133,7 +2959,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeInstallCaptchaResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstallCaptchaResponse(),
             self.do_rpcrequest('DescribeInstallCaptcha', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2146,7 +2973,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeInstallCaptchaResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstallCaptchaResponse(),
             await self.do_rpcrequest_async('DescribeInstallCaptcha', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2173,7 +3001,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeInstanceAntiBruteForceRulesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstanceAntiBruteForceRulesResponse(),
             self.do_rpcrequest('DescribeInstanceAntiBruteForceRules', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2186,7 +3015,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeInstanceAntiBruteForceRulesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstanceAntiBruteForceRulesResponse(),
             await self.do_rpcrequest_async('DescribeInstanceAntiBruteForceRules', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2213,7 +3043,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeInstanceStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstanceStatisticsResponse(),
             self.do_rpcrequest('DescribeInstanceStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2226,7 +3057,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeInstanceStatisticsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstanceStatisticsResponse(),
             await self.do_rpcrequest_async('DescribeInstanceStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2253,7 +3085,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeIpInfoResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeIpInfoResponse(),
             self.do_rpcrequest('DescribeIpInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2266,7 +3099,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeIpInfoResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeIpInfoResponse(),
             await self.do_rpcrequest_async('DescribeIpInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2284,45 +3118,75 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ip_info_with_options_async(request, runtime)
 
-    def describe_module_config_with_options(
+    def describe_logstore_storage_with_options(
         self,
-        request: sas_20181203_models.DescribeModuleConfigRequest,
+        request: sas_20181203_models.DescribeLogstoreStorageRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeModuleConfigResponse:
+    ) -> sas_20181203_models.DescribeLogstoreStorageResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeModuleConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeLogstoreStorageResponse(),
+            self.do_rpcrequest('DescribeLogstoreStorage', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_logstore_storage_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeLogstoreStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeLogstoreStorageResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeLogstoreStorageResponse(),
+            await self.do_rpcrequest_async('DescribeLogstoreStorage', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_logstore_storage(
+        self,
+        request: sas_20181203_models.DescribeLogstoreStorageRequest,
+    ) -> sas_20181203_models.DescribeLogstoreStorageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_logstore_storage_with_options(request, runtime)
+
+    async def describe_logstore_storage_async(
+        self,
+        request: sas_20181203_models.DescribeLogstoreStorageRequest,
+    ) -> sas_20181203_models.DescribeLogstoreStorageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_logstore_storage_with_options_async(request, runtime)
+
+    def describe_module_config_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeModuleConfigResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeModuleConfigResponse(),
             self.do_rpcrequest('DescribeModuleConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_module_config_with_options_async(
         self,
-        request: sas_20181203_models.DescribeModuleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeModuleConfigResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeModuleConfigResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeModuleConfigResponse(),
             await self.do_rpcrequest_async('DescribeModuleConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_module_config(
-        self,
-        request: sas_20181203_models.DescribeModuleConfigRequest,
-    ) -> sas_20181203_models.DescribeModuleConfigResponse:
+    def describe_module_config(self) -> sas_20181203_models.DescribeModuleConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_module_config_with_options(request, runtime)
+        return self.describe_module_config_with_options(runtime)
 
-    async def describe_module_config_async(
-        self,
-        request: sas_20181203_models.DescribeModuleConfigRequest,
-    ) -> sas_20181203_models.DescribeModuleConfigResponse:
+    async def describe_module_config_async(self) -> sas_20181203_models.DescribeModuleConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_module_config_with_options_async(request, runtime)
+        return await self.describe_module_config_with_options_async(runtime)
 
     def describe_notice_config_with_options(
         self,
@@ -2333,7 +3197,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeNoticeConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeNoticeConfigResponse(),
             self.do_rpcrequest('DescribeNoticeConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2346,7 +3211,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeNoticeConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeNoticeConfigResponse(),
             await self.do_rpcrequest_async('DescribeNoticeConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2373,7 +3239,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyCountResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyCountResponse(),
             self.do_rpcrequest('DescribePropertyCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2386,7 +3253,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyCountResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyCountResponse(),
             await self.do_rpcrequest_async('DescribePropertyCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2413,7 +3281,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyCronDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyCronDetailResponse(),
             self.do_rpcrequest('DescribePropertyCronDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2426,7 +3295,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyCronDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyCronDetailResponse(),
             await self.do_rpcrequest_async('DescribePropertyCronDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2453,7 +3323,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyPortDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyPortDetailResponse(),
             self.do_rpcrequest('DescribePropertyPortDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2466,7 +3337,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyPortDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyPortDetailResponse(),
             await self.do_rpcrequest_async('DescribePropertyPortDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2493,7 +3365,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyPortItemResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyPortItemResponse(),
             self.do_rpcrequest('DescribePropertyPortItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2506,7 +3379,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyPortItemResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyPortItemResponse(),
             await self.do_rpcrequest_async('DescribePropertyPortItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2533,7 +3407,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyProcDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyProcDetailResponse(),
             self.do_rpcrequest('DescribePropertyProcDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2546,7 +3421,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyProcDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyProcDetailResponse(),
             await self.do_rpcrequest_async('DescribePropertyProcDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2573,7 +3449,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyProcItemResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyProcItemResponse(),
             self.do_rpcrequest('DescribePropertyProcItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2586,7 +3463,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyProcItemResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyProcItemResponse(),
             await self.do_rpcrequest_async('DescribePropertyProcItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2613,7 +3491,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyScaDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyScaDetailResponse(),
             self.do_rpcrequest('DescribePropertyScaDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2626,7 +3505,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyScaDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyScaDetailResponse(),
             await self.do_rpcrequest_async('DescribePropertyScaDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2653,7 +3533,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertySoftwareDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertySoftwareDetailResponse(),
             self.do_rpcrequest('DescribePropertySoftwareDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2666,7 +3547,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertySoftwareDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertySoftwareDetailResponse(),
             await self.do_rpcrequest_async('DescribePropertySoftwareDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2693,7 +3575,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertySoftwareItemResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertySoftwareItemResponse(),
             self.do_rpcrequest('DescribePropertySoftwareItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2706,7 +3589,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertySoftwareItemResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertySoftwareItemResponse(),
             await self.do_rpcrequest_async('DescribePropertySoftwareItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2733,7 +3617,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyUsageNewestResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyUsageNewestResponse(),
             self.do_rpcrequest('DescribePropertyUsageNewest', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2746,7 +3631,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyUsageNewestResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyUsageNewestResponse(),
             await self.do_rpcrequest_async('DescribePropertyUsageNewest', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2773,7 +3659,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyUserDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyUserDetailResponse(),
             self.do_rpcrequest('DescribePropertyUserDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2786,7 +3673,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyUserDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyUserDetailResponse(),
             await self.do_rpcrequest_async('DescribePropertyUserDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2813,7 +3701,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyUserItemResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyUserItemResponse(),
             self.do_rpcrequest('DescribePropertyUserItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2826,7 +3715,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribePropertyUserItemResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyUserItemResponse(),
             await self.do_rpcrequest_async('DescribePropertyUserItem', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2844,6 +3734,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_property_user_item_with_options_async(request, runtime)
 
+    def describe_quara_file_download_info_with_options(
+        self,
+        request: sas_20181203_models.DescribeQuaraFileDownloadInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeQuaraFileDownloadInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeQuaraFileDownloadInfoResponse(),
+            self.do_rpcrequest('DescribeQuaraFileDownloadInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_quara_file_download_info_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeQuaraFileDownloadInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeQuaraFileDownloadInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeQuaraFileDownloadInfoResponse(),
+            await self.do_rpcrequest_async('DescribeQuaraFileDownloadInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_quara_file_download_info(
+        self,
+        request: sas_20181203_models.DescribeQuaraFileDownloadInfoRequest,
+    ) -> sas_20181203_models.DescribeQuaraFileDownloadInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_quara_file_download_info_with_options(request, runtime)
+
+    async def describe_quara_file_download_info_async(
+        self,
+        request: sas_20181203_models.DescribeQuaraFileDownloadInfoRequest,
+    ) -> sas_20181203_models.DescribeQuaraFileDownloadInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_quara_file_download_info_with_options_async(request, runtime)
+
+    def describe_restore_jobs_with_options(
+        self,
+        request: sas_20181203_models.DescribeRestoreJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeRestoreJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRestoreJobsResponse(),
+            self.do_rpcrequest('DescribeRestoreJobs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_restore_jobs_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeRestoreJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeRestoreJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRestoreJobsResponse(),
+            await self.do_rpcrequest_async('DescribeRestoreJobs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_restore_jobs(
+        self,
+        request: sas_20181203_models.DescribeRestoreJobsRequest,
+    ) -> sas_20181203_models.DescribeRestoreJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_restore_jobs_with_options(request, runtime)
+
+    async def describe_restore_jobs_async(
+        self,
+        request: sas_20181203_models.DescribeRestoreJobsRequest,
+    ) -> sas_20181203_models.DescribeRestoreJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_restore_jobs_with_options_async(request, runtime)
+
     def describe_risk_check_item_result_with_options(
         self,
         request: sas_20181203_models.DescribeRiskCheckItemResultRequest,
@@ -2853,7 +3827,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskCheckItemResultResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskCheckItemResultResponse(),
             self.do_rpcrequest('DescribeRiskCheckItemResult', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2866,7 +3841,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskCheckItemResultResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskCheckItemResultResponse(),
             await self.do_rpcrequest_async('DescribeRiskCheckItemResult', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2893,7 +3869,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskCheckResultResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskCheckResultResponse(),
             self.do_rpcrequest('DescribeRiskCheckResult', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2906,7 +3883,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskCheckResultResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskCheckResultResponse(),
             await self.do_rpcrequest_async('DescribeRiskCheckResult', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2933,7 +3911,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskCheckSummaryResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskCheckSummaryResponse(),
             self.do_rpcrequest('DescribeRiskCheckSummary', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2946,7 +3925,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskCheckSummaryResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskCheckSummaryResponse(),
             await self.do_rpcrequest_async('DescribeRiskCheckSummary', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2973,7 +3953,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskItemTypeResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskItemTypeResponse(),
             self.do_rpcrequest('DescribeRiskItemType', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2986,7 +3967,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskItemTypeResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskItemTypeResponse(),
             await self.do_rpcrequest_async('DescribeRiskItemType', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3013,7 +3995,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskListCheckResultResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskListCheckResultResponse(),
             self.do_rpcrequest('DescribeRiskListCheckResult', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3026,7 +4009,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeRiskListCheckResultResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeRiskListCheckResultResponse(),
             await self.do_rpcrequest_async('DescribeRiskListCheckResult', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3053,7 +4037,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSasAssetStatisticsColumnResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSasAssetStatisticsColumnResponse(),
             self.do_rpcrequest('DescribeSasAssetStatisticsColumn', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3066,7 +4051,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSasAssetStatisticsColumnResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSasAssetStatisticsColumnResponse(),
             await self.do_rpcrequest_async('DescribeSasAssetStatisticsColumn', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3084,6 +4070,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sas_asset_statistics_column_with_options_async(request, runtime)
 
+    def describe_scan_task_progress_with_options(
+        self,
+        request: sas_20181203_models.DescribeScanTaskProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeScanTaskProgressResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeScanTaskProgressResponse(),
+            self.do_rpcrequest('DescribeScanTaskProgress', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_scan_task_progress_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeScanTaskProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeScanTaskProgressResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeScanTaskProgressResponse(),
+            await self.do_rpcrequest_async('DescribeScanTaskProgress', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_scan_task_progress(
+        self,
+        request: sas_20181203_models.DescribeScanTaskProgressRequest,
+    ) -> sas_20181203_models.DescribeScanTaskProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_scan_task_progress_with_options(request, runtime)
+
+    async def describe_scan_task_progress_async(
+        self,
+        request: sas_20181203_models.DescribeScanTaskProgressRequest,
+    ) -> sas_20181203_models.DescribeScanTaskProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_scan_task_progress_with_options_async(request, runtime)
+
     def describe_search_condition_with_options(
         self,
         request: sas_20181203_models.DescribeSearchConditionRequest,
@@ -3093,7 +4121,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSearchConditionResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSearchConditionResponse(),
             self.do_rpcrequest('DescribeSearchCondition', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3106,7 +4135,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSearchConditionResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSearchConditionResponse(),
             await self.do_rpcrequest_async('DescribeSearchCondition', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3133,7 +4163,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecureSuggestionResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecureSuggestionResponse(),
             self.do_rpcrequest('DescribeSecureSuggestion', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3146,7 +4177,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecureSuggestionResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecureSuggestionResponse(),
             await self.do_rpcrequest_async('DescribeSecureSuggestion', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3173,7 +4205,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecurityCheckScheduleConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityCheckScheduleConfigResponse(),
             self.do_rpcrequest('DescribeSecurityCheckScheduleConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3186,7 +4219,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecurityCheckScheduleConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityCheckScheduleConfigResponse(),
             await self.do_rpcrequest_async('DescribeSecurityCheckScheduleConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3213,7 +4247,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecurityEventOperationsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityEventOperationsResponse(),
             self.do_rpcrequest('DescribeSecurityEventOperations', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3226,7 +4261,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecurityEventOperationsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityEventOperationsResponse(),
             await self.do_rpcrequest_async('DescribeSecurityEventOperations', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3253,7 +4289,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecurityEventOperationStatusResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityEventOperationStatusResponse(),
             self.do_rpcrequest('DescribeSecurityEventOperationStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3266,7 +4303,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecurityEventOperationStatusResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityEventOperationStatusResponse(),
             await self.do_rpcrequest_async('DescribeSecurityEventOperationStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3293,7 +4331,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecurityStatInfoResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityStatInfoResponse(),
             self.do_rpcrequest('DescribeSecurityStatInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3306,7 +4345,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSecurityStatInfoResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityStatInfoResponse(),
             await self.do_rpcrequest_async('DescribeSecurityStatInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3324,6 +4364,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_stat_info_with_options_async(request, runtime)
 
+    def describe_service_linked_role_status_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeServiceLinkedRoleStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeServiceLinkedRoleStatusResponse(),
+            self.do_rpcrequest('DescribeServiceLinkedRoleStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_service_linked_role_status_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeServiceLinkedRoleStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeServiceLinkedRoleStatusResponse(),
+            await self.do_rpcrequest_async('DescribeServiceLinkedRoleStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_service_linked_role_status(self) -> sas_20181203_models.DescribeServiceLinkedRoleStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_service_linked_role_status_with_options(runtime)
+
+    async def describe_service_linked_role_status_async(self) -> sas_20181203_models.DescribeServiceLinkedRoleStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_service_linked_role_status_with_options_async(runtime)
+
     def describe_similar_event_scenarios_with_options(
         self,
         request: sas_20181203_models.DescribeSimilarEventScenariosRequest,
@@ -3333,7 +4401,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSimilarEventScenariosResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSimilarEventScenariosResponse(),
             self.do_rpcrequest('DescribeSimilarEventScenarios', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3346,7 +4415,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSimilarEventScenariosResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSimilarEventScenariosResponse(),
             await self.do_rpcrequest_async('DescribeSimilarEventScenarios', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3373,7 +4443,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSimilarSecurityEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSimilarSecurityEventsResponse(),
             self.do_rpcrequest('DescribeSimilarSecurityEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3386,7 +4457,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSimilarSecurityEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSimilarSecurityEventsResponse(),
             await self.do_rpcrequest_async('DescribeSimilarSecurityEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3404,6 +4476,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_similar_security_events_with_options_async(request, runtime)
 
+    def describe_snapshots_with_options(
+        self,
+        request: sas_20181203_models.DescribeSnapshotsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSnapshotsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSnapshotsResponse(),
+            self.do_rpcrequest('DescribeSnapshots', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_snapshots_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSnapshotsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSnapshotsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSnapshotsResponse(),
+            await self.do_rpcrequest_async('DescribeSnapshots', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_snapshots(
+        self,
+        request: sas_20181203_models.DescribeSnapshotsRequest,
+    ) -> sas_20181203_models.DescribeSnapshotsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_snapshots_with_options(request, runtime)
+
+    async def describe_snapshots_async(
+        self,
+        request: sas_20181203_models.DescribeSnapshotsRequest,
+    ) -> sas_20181203_models.DescribeSnapshotsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_snapshots_with_options_async(request, runtime)
+
     def describe_strategy_exec_detail_with_options(
         self,
         request: sas_20181203_models.DescribeStrategyExecDetailRequest,
@@ -3413,7 +4527,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeStrategyExecDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeStrategyExecDetailResponse(),
             self.do_rpcrequest('DescribeStrategyExecDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3426,7 +4541,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeStrategyExecDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeStrategyExecDetailResponse(),
             await self.do_rpcrequest_async('DescribeStrategyExecDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3444,46 +4560,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_strategy_exec_detail_with_options_async(request, runtime)
 
-    def describe_stratety_with_options(
-        self,
-        request: sas_20181203_models.DescribeStratetyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeStratetyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeStratetyResponse().from_map(
-            self.do_rpcrequest('DescribeStratety', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_stratety_with_options_async(
-        self,
-        request: sas_20181203_models.DescribeStratetyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeStratetyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeStratetyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeStratety', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_stratety(
-        self,
-        request: sas_20181203_models.DescribeStratetyRequest,
-    ) -> sas_20181203_models.DescribeStratetyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_stratety_with_options(request, runtime)
-
-    async def describe_stratety_async(
-        self,
-        request: sas_20181203_models.DescribeStratetyRequest,
-    ) -> sas_20181203_models.DescribeStratetyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_stratety_with_options_async(request, runtime)
-
     def describe_summary_info_with_options(
         self,
         request: sas_20181203_models.DescribeSummaryInfoRequest,
@@ -3493,7 +4569,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSummaryInfoResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSummaryInfoResponse(),
             self.do_rpcrequest('DescribeSummaryInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3506,7 +4583,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSummaryInfoResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSummaryInfoResponse(),
             await self.do_rpcrequest_async('DescribeSummaryInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3524,6 +4602,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_summary_info_with_options_async(request, runtime)
 
+    def describe_support_region_with_options(
+        self,
+        request: sas_20181203_models.DescribeSupportRegionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSupportRegionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSupportRegionResponse(),
+            self.do_rpcrequest('DescribeSupportRegion', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_support_region_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSupportRegionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSupportRegionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSupportRegionResponse(),
+            await self.do_rpcrequest_async('DescribeSupportRegion', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_support_region(
+        self,
+        request: sas_20181203_models.DescribeSupportRegionRequest,
+    ) -> sas_20181203_models.DescribeSupportRegionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_support_region_with_options(request, runtime)
+
+    async def describe_support_region_async(
+        self,
+        request: sas_20181203_models.DescribeSupportRegionRequest,
+    ) -> sas_20181203_models.DescribeSupportRegionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_support_region_with_options_async(request, runtime)
+
     def describe_susp_event_detail_with_options(
         self,
         request: sas_20181203_models.DescribeSuspEventDetailRequest,
@@ -3533,7 +4653,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSuspEventDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSuspEventDetailResponse(),
             self.do_rpcrequest('DescribeSuspEventDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3546,7 +4667,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSuspEventDetailResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSuspEventDetailResponse(),
             await self.do_rpcrequest_async('DescribeSuspEventDetail', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3573,7 +4695,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSuspEventQuaraFilesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSuspEventQuaraFilesResponse(),
             self.do_rpcrequest('DescribeSuspEventQuaraFiles', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3586,7 +4709,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSuspEventQuaraFilesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSuspEventQuaraFilesResponse(),
             await self.do_rpcrequest_async('DescribeSuspEventQuaraFiles', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3613,7 +4737,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSuspEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSuspEventsResponse(),
             self.do_rpcrequest('DescribeSuspEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3626,7 +4751,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeSuspEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSuspEventsResponse(),
             await self.do_rpcrequest_async('DescribeSuspEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3644,6 +4770,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_susp_events_with_options_async(request, runtime)
 
+    def describe_user_backup_machines_with_options(
+        self,
+        request: sas_20181203_models.DescribeUserBackupMachinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUserBackupMachinesResponse(),
+            self.do_rpcrequest('DescribeUserBackupMachines', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_user_backup_machines_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeUserBackupMachinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUserBackupMachinesResponse(),
+            await self.do_rpcrequest_async('DescribeUserBackupMachines', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_user_backup_machines(
+        self,
+        request: sas_20181203_models.DescribeUserBackupMachinesRequest,
+    ) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_backup_machines_with_options(request, runtime)
+
+    async def describe_user_backup_machines_async(
+        self,
+        request: sas_20181203_models.DescribeUserBackupMachinesRequest,
+    ) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_backup_machines_with_options_async(request, runtime)
+
     def describe_user_baseline_authorization_with_options(
         self,
         request: sas_20181203_models.DescribeUserBaselineAuthorizationRequest,
@@ -3653,7 +4821,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeUserBaselineAuthorizationResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUserBaselineAuthorizationResponse(),
             self.do_rpcrequest('DescribeUserBaselineAuthorization', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3666,7 +4835,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeUserBaselineAuthorizationResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUserBaselineAuthorizationResponse(),
             await self.do_rpcrequest_async('DescribeUserBaselineAuthorization', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3693,7 +4863,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeUserLayoutAuthorizationResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUserLayoutAuthorizationResponse(),
             self.do_rpcrequest('DescribeUserLayoutAuthorization', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3706,7 +4877,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeUserLayoutAuthorizationResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUserLayoutAuthorizationResponse(),
             await self.do_rpcrequest_async('DescribeUserLayoutAuthorization', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3724,6 +4896,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_layout_authorization_with_options_async(request, runtime)
 
+    def describe_uuids_by_vul_names_with_options(
+        self,
+        request: sas_20181203_models.DescribeUuidsByVulNamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeUuidsByVulNamesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUuidsByVulNamesResponse(),
+            self.do_rpcrequest('DescribeUuidsByVulNames', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_uuids_by_vul_names_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeUuidsByVulNamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeUuidsByVulNamesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUuidsByVulNamesResponse(),
+            await self.do_rpcrequest_async('DescribeUuidsByVulNames', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_uuids_by_vul_names(
+        self,
+        request: sas_20181203_models.DescribeUuidsByVulNamesRequest,
+    ) -> sas_20181203_models.DescribeUuidsByVulNamesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_uuids_by_vul_names_with_options(request, runtime)
+
+    async def describe_uuids_by_vul_names_async(
+        self,
+        request: sas_20181203_models.DescribeUuidsByVulNamesRequest,
+    ) -> sas_20181203_models.DescribeUuidsByVulNamesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_uuids_by_vul_names_with_options_async(request, runtime)
+
     def describe_version_config_with_options(
         self,
         request: sas_20181203_models.DescribeVersionConfigRequest,
@@ -3733,7 +4947,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVersionConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVersionConfigResponse(),
             self.do_rpcrequest('DescribeVersionConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3746,7 +4961,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVersionConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVersionConfigResponse(),
             await self.do_rpcrequest_async('DescribeVersionConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3773,7 +4989,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVolDingdingMessageResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVolDingdingMessageResponse(),
             self.do_rpcrequest('DescribeVolDingdingMessage', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3786,7 +5003,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVolDingdingMessageResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVolDingdingMessageResponse(),
             await self.do_rpcrequest_async('DescribeVolDingdingMessage', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3806,43 +5024,31 @@ class Client(OpenApiClient):
 
     def describe_vpc_honey_pot_criteria_with_options(
         self,
-        request: sas_20181203_models.DescribeVpcHoneyPotCriteriaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse(),
             self.do_rpcrequest('DescribeVpcHoneyPotCriteria', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpc_honey_pot_criteria_with_options_async(
         self,
-        request: sas_20181203_models.DescribeVpcHoneyPotCriteriaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse(),
             await self.do_rpcrequest_async('DescribeVpcHoneyPotCriteria', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_vpc_honey_pot_criteria(
-        self,
-        request: sas_20181203_models.DescribeVpcHoneyPotCriteriaRequest,
-    ) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
+    def describe_vpc_honey_pot_criteria(self) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_vpc_honey_pot_criteria_with_options(request, runtime)
+        return self.describe_vpc_honey_pot_criteria_with_options(runtime)
 
-    async def describe_vpc_honey_pot_criteria_async(
-        self,
-        request: sas_20181203_models.DescribeVpcHoneyPotCriteriaRequest,
-    ) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
+    async def describe_vpc_honey_pot_criteria_async(self) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_vpc_honey_pot_criteria_with_options_async(request, runtime)
+        return await self.describe_vpc_honey_pot_criteria_with_options_async(runtime)
 
     def describe_vpc_honey_pot_list_with_options(
         self,
@@ -3853,7 +5059,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVpcHoneyPotListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVpcHoneyPotListResponse(),
             self.do_rpcrequest('DescribeVpcHoneyPotList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3866,7 +5073,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVpcHoneyPotListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVpcHoneyPotListResponse(),
             await self.do_rpcrequest_async('DescribeVpcHoneyPotList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3886,43 +5094,31 @@ class Client(OpenApiClient):
 
     def describe_vpc_list_with_options(
         self,
-        request: sas_20181203_models.DescribeVpcListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVpcListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeVpcListResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVpcListResponse(),
             self.do_rpcrequest('DescribeVpcList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpc_list_with_options_async(
         self,
-        request: sas_20181203_models.DescribeVpcListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVpcListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return sas_20181203_models.DescribeVpcListResponse().from_map(
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVpcListResponse(),
             await self.do_rpcrequest_async('DescribeVpcList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_vpc_list(
-        self,
-        request: sas_20181203_models.DescribeVpcListRequest,
-    ) -> sas_20181203_models.DescribeVpcListResponse:
+    def describe_vpc_list(self) -> sas_20181203_models.DescribeVpcListResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_vpc_list_with_options(request, runtime)
+        return self.describe_vpc_list_with_options(runtime)
 
-    async def describe_vpc_list_async(
-        self,
-        request: sas_20181203_models.DescribeVpcListRequest,
-    ) -> sas_20181203_models.DescribeVpcListResponse:
+    async def describe_vpc_list_async(self) -> sas_20181203_models.DescribeVpcListResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_vpc_list_with_options_async(request, runtime)
+        return await self.describe_vpc_list_with_options_async(runtime)
 
     def describe_vul_details_with_options(
         self,
@@ -3933,7 +5129,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVulDetailsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulDetailsResponse(),
             self.do_rpcrequest('DescribeVulDetails', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3946,7 +5143,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVulDetailsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulDetailsResponse(),
             await self.do_rpcrequest_async('DescribeVulDetails', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3973,7 +5171,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVulListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulListResponse(),
             self.do_rpcrequest('DescribeVulList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3986,7 +5185,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVulListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulListResponse(),
             await self.do_rpcrequest_async('DescribeVulList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4013,7 +5213,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVulWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulWhitelistResponse(),
             self.do_rpcrequest('DescribeVulWhitelist', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4026,7 +5227,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeVulWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulWhitelistResponse(),
             await self.do_rpcrequest_async('DescribeVulWhitelist', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4053,7 +5255,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeWarningMachinesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWarningMachinesResponse(),
             self.do_rpcrequest('DescribeWarningMachines', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4066,7 +5269,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeWarningMachinesResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWarningMachinesResponse(),
             await self.do_rpcrequest_async('DescribeWarningMachines', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4093,7 +5297,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeWebLockBindListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWebLockBindListResponse(),
             self.do_rpcrequest('DescribeWebLockBindList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4106,7 +5311,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeWebLockBindListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWebLockBindListResponse(),
             await self.do_rpcrequest_async('DescribeWebLockBindList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4133,7 +5339,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeWebLockConfigListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWebLockConfigListResponse(),
             self.do_rpcrequest('DescribeWebLockConfigList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4146,7 +5353,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.DescribeWebLockConfigListResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWebLockConfigListResponse(),
             await self.do_rpcrequest_async('DescribeWebLockConfigList', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4173,7 +5381,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ExportRecordResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ExportRecordResponse(),
             self.do_rpcrequest('ExportRecord', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4186,7 +5395,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ExportRecordResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ExportRecordResponse(),
             await self.do_rpcrequest_async('ExportRecord', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4213,7 +5423,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.FixCheckWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.FixCheckWarningsResponse(),
             self.do_rpcrequest('FixCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4226,7 +5437,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.FixCheckWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.FixCheckWarningsResponse(),
             await self.do_rpcrequest_async('FixCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4244,6 +5456,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.fix_check_warnings_with_options_async(request, runtime)
 
+    def get_backup_storage_count_with_options(
+        self,
+        request: sas_20181203_models.GetBackupStorageCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetBackupStorageCountResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetBackupStorageCountResponse(),
+            self.do_rpcrequest('GetBackupStorageCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_backup_storage_count_with_options_async(
+        self,
+        request: sas_20181203_models.GetBackupStorageCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetBackupStorageCountResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetBackupStorageCountResponse(),
+            await self.do_rpcrequest_async('GetBackupStorageCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_backup_storage_count(
+        self,
+        request: sas_20181203_models.GetBackupStorageCountRequest,
+    ) -> sas_20181203_models.GetBackupStorageCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_backup_storage_count_with_options(request, runtime)
+
+    async def get_backup_storage_count_async(
+        self,
+        request: sas_20181203_models.GetBackupStorageCountRequest,
+    ) -> sas_20181203_models.GetBackupStorageCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_backup_storage_count_with_options_async(request, runtime)
+
     def get_inc_iocs_with_options(
         self,
         request: sas_20181203_models.GetIncIOCsRequest,
@@ -4253,7 +5507,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.GetIncIOCsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.GetIncIOCsResponse(),
             self.do_rpcrequest('GetIncIOCs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4266,7 +5521,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.GetIncIOCsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.GetIncIOCsResponse(),
             await self.do_rpcrequest_async('GetIncIOCs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4293,7 +5549,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.GetIOCsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.GetIOCsResponse(),
             self.do_rpcrequest('GetIOCs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4306,7 +5563,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.GetIOCsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.GetIOCsResponse(),
             await self.do_rpcrequest_async('GetIOCs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4324,6 +5582,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_iocs_with_options_async(request, runtime)
 
+    def get_suspicious_statistics_with_options(
+        self,
+        request: sas_20181203_models.GetSuspiciousStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetSuspiciousStatisticsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetSuspiciousStatisticsResponse(),
+            self.do_rpcrequest('GetSuspiciousStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_suspicious_statistics_with_options_async(
+        self,
+        request: sas_20181203_models.GetSuspiciousStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetSuspiciousStatisticsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetSuspiciousStatisticsResponse(),
+            await self.do_rpcrequest_async('GetSuspiciousStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_suspicious_statistics(
+        self,
+        request: sas_20181203_models.GetSuspiciousStatisticsRequest,
+    ) -> sas_20181203_models.GetSuspiciousStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_suspicious_statistics_with_options(request, runtime)
+
+    async def get_suspicious_statistics_async(
+        self,
+        request: sas_20181203_models.GetSuspiciousStatisticsRequest,
+    ) -> sas_20181203_models.GetSuspiciousStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_suspicious_statistics_with_options_async(request, runtime)
+
+    def get_vul_statistics_with_options(
+        self,
+        request: sas_20181203_models.GetVulStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetVulStatisticsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetVulStatisticsResponse(),
+            self.do_rpcrequest('GetVulStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_vul_statistics_with_options_async(
+        self,
+        request: sas_20181203_models.GetVulStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetVulStatisticsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetVulStatisticsResponse(),
+            await self.do_rpcrequest_async('GetVulStatistics', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_vul_statistics(
+        self,
+        request: sas_20181203_models.GetVulStatisticsRequest,
+    ) -> sas_20181203_models.GetVulStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_vul_statistics_with_options(request, runtime)
+
+    async def get_vul_statistics_async(
+        self,
+        request: sas_20181203_models.GetVulStatisticsRequest,
+    ) -> sas_20181203_models.GetVulStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_vul_statistics_with_options_async(request, runtime)
+
     def handle_security_events_with_options(
         self,
         request: sas_20181203_models.HandleSecurityEventsRequest,
@@ -4333,7 +5675,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.HandleSecurityEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.HandleSecurityEventsResponse(),
             self.do_rpcrequest('HandleSecurityEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4346,7 +5689,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.HandleSecurityEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.HandleSecurityEventsResponse(),
             await self.do_rpcrequest_async('HandleSecurityEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4373,7 +5717,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.HandleSimilarSecurityEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.HandleSimilarSecurityEventsResponse(),
             self.do_rpcrequest('HandleSimilarSecurityEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4386,7 +5731,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.HandleSimilarSecurityEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.HandleSimilarSecurityEventsResponse(),
             await self.do_rpcrequest_async('HandleSimilarSecurityEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4413,7 +5759,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.IgnoreHcCheckWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.IgnoreHcCheckWarningsResponse(),
             self.do_rpcrequest('IgnoreHcCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4426,7 +5773,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.IgnoreHcCheckWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.IgnoreHcCheckWarningsResponse(),
             await self.do_rpcrequest_async('IgnoreHcCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4444,6 +5792,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.ignore_hc_check_warnings_with_options_async(request, runtime)
 
+    def install_backup_client_with_options(
+        self,
+        request: sas_20181203_models.InstallBackupClientRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.InstallBackupClientResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.InstallBackupClientResponse(),
+            self.do_rpcrequest('InstallBackupClient', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def install_backup_client_with_options_async(
+        self,
+        request: sas_20181203_models.InstallBackupClientRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.InstallBackupClientResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.InstallBackupClientResponse(),
+            await self.do_rpcrequest_async('InstallBackupClient', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def install_backup_client(
+        self,
+        request: sas_20181203_models.InstallBackupClientRequest,
+    ) -> sas_20181203_models.InstallBackupClientResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.install_backup_client_with_options(request, runtime)
+
+    async def install_backup_client_async(
+        self,
+        request: sas_20181203_models.InstallBackupClientRequest,
+    ) -> sas_20181203_models.InstallBackupClientResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.install_backup_client_with_options_async(request, runtime)
+
     def modify_anti_brute_force_rule_with_options(
         self,
         request: sas_20181203_models.ModifyAntiBruteForceRuleRequest,
@@ -4453,7 +5843,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyAntiBruteForceRuleResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyAntiBruteForceRuleResponse(),
             self.do_rpcrequest('ModifyAntiBruteForceRule', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4466,7 +5857,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyAntiBruteForceRuleResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyAntiBruteForceRuleResponse(),
             await self.do_rpcrequest_async('ModifyAntiBruteForceRule', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4484,6 +5876,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_anti_brute_force_rule_with_options_async(request, runtime)
 
+    def modify_asset_group_with_options(
+        self,
+        request: sas_20181203_models.ModifyAssetGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyAssetGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyAssetGroupResponse(),
+            self.do_rpcrequest('ModifyAssetGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_asset_group_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyAssetGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyAssetGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyAssetGroupResponse(),
+            await self.do_rpcrequest_async('ModifyAssetGroup', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_asset_group(
+        self,
+        request: sas_20181203_models.ModifyAssetGroupRequest,
+    ) -> sas_20181203_models.ModifyAssetGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_asset_group_with_options(request, runtime)
+
+    async def modify_asset_group_async(
+        self,
+        request: sas_20181203_models.ModifyAssetGroupRequest,
+    ) -> sas_20181203_models.ModifyAssetGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_asset_group_with_options_async(request, runtime)
+
+    def modify_backup_policy_with_options(
+        self,
+        tmp_req: sas_20181203_models.ModifyBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyBackupPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.ModifyBackupPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.policy):
+            request.policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyBackupPolicyResponse(),
+            self.do_rpcrequest('ModifyBackupPolicy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_backup_policy_with_options_async(
+        self,
+        tmp_req: sas_20181203_models.ModifyBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyBackupPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.ModifyBackupPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.policy):
+            request.policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyBackupPolicyResponse(),
+            await self.do_rpcrequest_async('ModifyBackupPolicy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_backup_policy(
+        self,
+        request: sas_20181203_models.ModifyBackupPolicyRequest,
+    ) -> sas_20181203_models.ModifyBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_backup_policy_with_options(request, runtime)
+
+    async def modify_backup_policy_async(
+        self,
+        request: sas_20181203_models.ModifyBackupPolicyRequest,
+    ) -> sas_20181203_models.ModifyBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_backup_policy_with_options_async(request, runtime)
+
+    def modify_backup_policy_status_with_options(
+        self,
+        request: sas_20181203_models.ModifyBackupPolicyStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyBackupPolicyStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyBackupPolicyStatusResponse(),
+            self.do_rpcrequest('ModifyBackupPolicyStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_backup_policy_status_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyBackupPolicyStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyBackupPolicyStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyBackupPolicyStatusResponse(),
+            await self.do_rpcrequest_async('ModifyBackupPolicyStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_backup_policy_status(
+        self,
+        request: sas_20181203_models.ModifyBackupPolicyStatusRequest,
+    ) -> sas_20181203_models.ModifyBackupPolicyStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_backup_policy_status_with_options(request, runtime)
+
+    async def modify_backup_policy_status_async(
+        self,
+        request: sas_20181203_models.ModifyBackupPolicyStatusRequest,
+    ) -> sas_20181203_models.ModifyBackupPolicyStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_backup_policy_status_with_options_async(request, runtime)
+
     def modify_create_vul_whitelist_with_options(
         self,
         request: sas_20181203_models.ModifyCreateVulWhitelistRequest,
@@ -4493,7 +6019,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyCreateVulWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyCreateVulWhitelistResponse(),
             self.do_rpcrequest('ModifyCreateVulWhitelist', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4506,7 +6033,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyCreateVulWhitelistResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyCreateVulWhitelistResponse(),
             await self.do_rpcrequest_async('ModifyCreateVulWhitelist', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4533,7 +6061,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyEmgVulSubmitResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyEmgVulSubmitResponse(),
             self.do_rpcrequest('ModifyEmgVulSubmit', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4546,7 +6075,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyEmgVulSubmitResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyEmgVulSubmitResponse(),
             await self.do_rpcrequest_async('ModifyEmgVulSubmit', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4573,7 +6103,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyGroupPropertyResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyGroupPropertyResponse(),
             self.do_rpcrequest('ModifyGroupProperty', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4586,7 +6117,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyGroupPropertyResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyGroupPropertyResponse(),
             await self.do_rpcrequest_async('ModifyGroupProperty', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4613,7 +6145,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyInstanceAntiBruteForceRuleResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyInstanceAntiBruteForceRuleResponse(),
             self.do_rpcrequest('ModifyInstanceAntiBruteForceRule', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4626,7 +6159,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyInstanceAntiBruteForceRuleResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyInstanceAntiBruteForceRuleResponse(),
             await self.do_rpcrequest_async('ModifyInstanceAntiBruteForceRule', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4653,7 +6187,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyLoginBaseConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyLoginBaseConfigResponse(),
             self.do_rpcrequest('ModifyLoginBaseConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4666,7 +6201,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyLoginBaseConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyLoginBaseConfigResponse(),
             await self.do_rpcrequest_async('ModifyLoginBaseConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4693,7 +6229,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyLoginSwitchConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyLoginSwitchConfigResponse(),
             self.do_rpcrequest('ModifyLoginSwitchConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4706,7 +6243,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyLoginSwitchConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyLoginSwitchConfigResponse(),
             await self.do_rpcrequest_async('ModifyLoginSwitchConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4733,7 +6271,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyNoticeConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyNoticeConfigResponse(),
             self.do_rpcrequest('ModifyNoticeConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4746,7 +6285,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyNoticeConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyNoticeConfigResponse(),
             await self.do_rpcrequest_async('ModifyNoticeConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4764,6 +6304,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_notice_config_with_options_async(request, runtime)
 
+    def modify_open_log_shipper_with_options(
+        self,
+        request: sas_20181203_models.ModifyOpenLogShipperRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyOpenLogShipperResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyOpenLogShipperResponse(),
+            self.do_rpcrequest('ModifyOpenLogShipper', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_open_log_shipper_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyOpenLogShipperRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyOpenLogShipperResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyOpenLogShipperResponse(),
+            await self.do_rpcrequest_async('ModifyOpenLogShipper', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_open_log_shipper(
+        self,
+        request: sas_20181203_models.ModifyOpenLogShipperRequest,
+    ) -> sas_20181203_models.ModifyOpenLogShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_open_log_shipper_with_options(request, runtime)
+
+    async def modify_open_log_shipper_async(
+        self,
+        request: sas_20181203_models.ModifyOpenLogShipperRequest,
+    ) -> sas_20181203_models.ModifyOpenLogShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_open_log_shipper_with_options_async(request, runtime)
+
     def modify_operate_vul_with_options(
         self,
         request: sas_20181203_models.ModifyOperateVulRequest,
@@ -4773,7 +6355,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyOperateVulResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyOperateVulResponse(),
             self.do_rpcrequest('ModifyOperateVul', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4786,7 +6369,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyOperateVulResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyOperateVulResponse(),
             await self.do_rpcrequest_async('ModifyOperateVul', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4813,7 +6397,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyPushAllTaskResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyPushAllTaskResponse(),
             self.do_rpcrequest('ModifyPushAllTask', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4826,7 +6411,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyPushAllTaskResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyPushAllTaskResponse(),
             await self.do_rpcrequest_async('ModifyPushAllTask', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4853,7 +6439,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyRiskCheckStatusResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyRiskCheckStatusResponse(),
             self.do_rpcrequest('ModifyRiskCheckStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4866,7 +6453,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyRiskCheckStatusResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyRiskCheckStatusResponse(),
             await self.do_rpcrequest_async('ModifyRiskCheckStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4893,7 +6481,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyRiskSingleResultStatusResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyRiskSingleResultStatusResponse(),
             self.do_rpcrequest('ModifyRiskSingleResultStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4906,7 +6495,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyRiskSingleResultStatusResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyRiskSingleResultStatusResponse(),
             await self.do_rpcrequest_async('ModifyRiskSingleResultStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4933,7 +6523,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifySecurityCheckScheduleConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifySecurityCheckScheduleConfigResponse(),
             self.do_rpcrequest('ModifySecurityCheckScheduleConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4946,7 +6537,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifySecurityCheckScheduleConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifySecurityCheckScheduleConfigResponse(),
             await self.do_rpcrequest_async('ModifySecurityCheckScheduleConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4973,7 +6565,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyStartVulScanResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyStartVulScanResponse(),
             self.do_rpcrequest('ModifyStartVulScan', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4986,7 +6579,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyStartVulScanResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyStartVulScanResponse(),
             await self.do_rpcrequest_async('ModifyStartVulScan', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5013,7 +6607,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyTagWithUuidResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyTagWithUuidResponse(),
             self.do_rpcrequest('ModifyTagWithUuid', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5026,7 +6621,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyTagWithUuidResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyTagWithUuidResponse(),
             await self.do_rpcrequest_async('ModifyTagWithUuid', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5053,7 +6649,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyVpcHoneyPotResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyVpcHoneyPotResponse(),
             self.do_rpcrequest('ModifyVpcHoneyPot', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5066,7 +6663,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyVpcHoneyPotResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyVpcHoneyPotResponse(),
             await self.do_rpcrequest_async('ModifyVpcHoneyPot', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5093,7 +6691,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyVulTargetConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyVulTargetConfigResponse(),
             self.do_rpcrequest('ModifyVulTargetConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5106,7 +6705,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyVulTargetConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyVulTargetConfigResponse(),
             await self.do_rpcrequest_async('ModifyVulTargetConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5133,7 +6733,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockCreateConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockCreateConfigResponse(),
             self.do_rpcrequest('ModifyWebLockCreateConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5146,7 +6747,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockCreateConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockCreateConfigResponse(),
             await self.do_rpcrequest_async('ModifyWebLockCreateConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5173,7 +6775,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockDeleteConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockDeleteConfigResponse(),
             self.do_rpcrequest('ModifyWebLockDeleteConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5186,7 +6789,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockDeleteConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockDeleteConfigResponse(),
             await self.do_rpcrequest_async('ModifyWebLockDeleteConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5213,7 +6817,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockStartResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockStartResponse(),
             self.do_rpcrequest('ModifyWebLockStart', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5226,7 +6831,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockStartResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockStartResponse(),
             await self.do_rpcrequest_async('ModifyWebLockStart', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5244,6 +6850,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_lock_start_with_options_async(request, runtime)
 
+    def modify_web_lock_status_with_options(
+        self,
+        request: sas_20181203_models.ModifyWebLockStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyWebLockStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockStatusResponse(),
+            self.do_rpcrequest('ModifyWebLockStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_web_lock_status_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyWebLockStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyWebLockStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockStatusResponse(),
+            await self.do_rpcrequest_async('ModifyWebLockStatus', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_web_lock_status(
+        self,
+        request: sas_20181203_models.ModifyWebLockStatusRequest,
+    ) -> sas_20181203_models.ModifyWebLockStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_web_lock_status_with_options(request, runtime)
+
+    async def modify_web_lock_status_async(
+        self,
+        request: sas_20181203_models.ModifyWebLockStatusRequest,
+    ) -> sas_20181203_models.ModifyWebLockStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_web_lock_status_with_options_async(request, runtime)
+
     def modify_web_lock_unbind_with_options(
         self,
         request: sas_20181203_models.ModifyWebLockUnbindRequest,
@@ -5253,7 +6901,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockUnbindResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockUnbindResponse(),
             self.do_rpcrequest('ModifyWebLockUnbind', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5266,7 +6915,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockUnbindResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockUnbindResponse(),
             await self.do_rpcrequest_async('ModifyWebLockUnbind', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5293,7 +6943,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockUpdateConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockUpdateConfigResponse(),
             self.do_rpcrequest('ModifyWebLockUpdateConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5306,7 +6957,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ModifyWebLockUpdateConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockUpdateConfigResponse(),
             await self.do_rpcrequest_async('ModifyWebLockUpdateConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5333,7 +6985,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.OperateSuspiciousTargetConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.OperateSuspiciousTargetConfigResponse(),
             self.do_rpcrequest('OperateSuspiciousTargetConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5346,7 +6999,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.OperateSuspiciousTargetConfigResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.OperateSuspiciousTargetConfigResponse(),
             await self.do_rpcrequest_async('OperateSuspiciousTargetConfig', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5364,6 +7018,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.operate_suspicious_target_config_with_options_async(request, runtime)
 
+    def operate_vuls_with_options(
+        self,
+        request: sas_20181203_models.OperateVulsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateVulsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateVulsResponse(),
+            self.do_rpcrequest('OperateVuls', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def operate_vuls_with_options_async(
+        self,
+        request: sas_20181203_models.OperateVulsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateVulsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateVulsResponse(),
+            await self.do_rpcrequest_async('OperateVuls', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def operate_vuls(
+        self,
+        request: sas_20181203_models.OperateVulsRequest,
+    ) -> sas_20181203_models.OperateVulsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.operate_vuls_with_options(request, runtime)
+
+    async def operate_vuls_async(
+        self,
+        request: sas_20181203_models.OperateVulsRequest,
+    ) -> sas_20181203_models.OperateVulsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.operate_vuls_with_options_async(request, runtime)
+
     def operation_susp_events_with_options(
         self,
         request: sas_20181203_models.OperationSuspEventsRequest,
@@ -5373,7 +7069,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.OperationSuspEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.OperationSuspEventsResponse(),
             self.do_rpcrequest('OperationSuspEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5386,7 +7083,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.OperationSuspEventsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.OperationSuspEventsResponse(),
             await self.do_rpcrequest_async('OperationSuspEvents', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5413,7 +7111,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.PauseClientResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.PauseClientResponse(),
             self.do_rpcrequest('PauseClient', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5426,7 +7125,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.PauseClientResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.PauseClientResponse(),
             await self.do_rpcrequest_async('PauseClient', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5453,7 +7153,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.RefreshContainerAssetsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.RefreshContainerAssetsResponse(),
             self.do_rpcrequest('RefreshContainerAssets', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5466,7 +7167,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.RefreshContainerAssetsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.RefreshContainerAssetsResponse(),
             await self.do_rpcrequest_async('RefreshContainerAssets', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5493,7 +7195,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.RollbackSuspEventQuaraFileResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.RollbackSuspEventQuaraFileResponse(),
             self.do_rpcrequest('RollbackSuspEventQuaraFile', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5506,7 +7209,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.RollbackSuspEventQuaraFileResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.RollbackSuspEventQuaraFileResponse(),
             await self.do_rpcrequest_async('RollbackSuspEventQuaraFile', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5533,7 +7237,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.SasInstallCodeResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.SasInstallCodeResponse(),
             self.do_rpcrequest('SasInstallCode', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5546,7 +7251,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.SasInstallCodeResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.SasInstallCodeResponse(),
             await self.do_rpcrequest_async('SasInstallCode', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5573,7 +7279,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.StartBaselineSecurityCheckResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.StartBaselineSecurityCheckResponse(),
             self.do_rpcrequest('StartBaselineSecurityCheck', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5586,7 +7293,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.StartBaselineSecurityCheckResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.StartBaselineSecurityCheckResponse(),
             await self.do_rpcrequest_async('StartBaselineSecurityCheck', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5613,7 +7321,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.StartImageVulScanResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.StartImageVulScanResponse(),
             self.do_rpcrequest('StartImageVulScan', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5626,7 +7335,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.StartImageVulScanResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.StartImageVulScanResponse(),
             await self.do_rpcrequest_async('StartImageVulScan', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5644,6 +7354,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_image_vul_scan_with_options_async(request, runtime)
 
+    def start_virus_scan_task_with_options(
+        self,
+        request: sas_20181203_models.StartVirusScanTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.StartVirusScanTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.StartVirusScanTaskResponse(),
+            self.do_rpcrequest('StartVirusScanTask', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def start_virus_scan_task_with_options_async(
+        self,
+        request: sas_20181203_models.StartVirusScanTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.StartVirusScanTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.StartVirusScanTaskResponse(),
+            await self.do_rpcrequest_async('StartVirusScanTask', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def start_virus_scan_task(
+        self,
+        request: sas_20181203_models.StartVirusScanTaskRequest,
+    ) -> sas_20181203_models.StartVirusScanTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_virus_scan_task_with_options(request, runtime)
+
+    async def start_virus_scan_task_async(
+        self,
+        request: sas_20181203_models.StartVirusScanTaskRequest,
+    ) -> sas_20181203_models.StartVirusScanTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_virus_scan_task_with_options_async(request, runtime)
+
+    def unbind_aegis_with_options(
+        self,
+        request: sas_20181203_models.UnbindAegisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UnbindAegisResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UnbindAegisResponse(),
+            self.do_rpcrequest('UnbindAegis', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def unbind_aegis_with_options_async(
+        self,
+        request: sas_20181203_models.UnbindAegisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UnbindAegisResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UnbindAegisResponse(),
+            await self.do_rpcrequest_async('UnbindAegis', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def unbind_aegis(
+        self,
+        request: sas_20181203_models.UnbindAegisRequest,
+    ) -> sas_20181203_models.UnbindAegisResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_aegis_with_options(request, runtime)
+
+    async def unbind_aegis_async(
+        self,
+        request: sas_20181203_models.UnbindAegisRequest,
+    ) -> sas_20181203_models.UnbindAegisResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_aegis_with_options_async(request, runtime)
+
+    def uninstall_backup_client_with_options(
+        self,
+        request: sas_20181203_models.UninstallBackupClientRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UninstallBackupClientResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UninstallBackupClientResponse(),
+            self.do_rpcrequest('UninstallBackupClient', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def uninstall_backup_client_with_options_async(
+        self,
+        request: sas_20181203_models.UninstallBackupClientRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UninstallBackupClientResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UninstallBackupClientResponse(),
+            await self.do_rpcrequest_async('UninstallBackupClient', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def uninstall_backup_client(
+        self,
+        request: sas_20181203_models.UninstallBackupClientRequest,
+    ) -> sas_20181203_models.UninstallBackupClientResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.uninstall_backup_client_with_options(request, runtime)
+
+    async def uninstall_backup_client_async(
+        self,
+        request: sas_20181203_models.UninstallBackupClientRequest,
+    ) -> sas_20181203_models.UninstallBackupClientResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.uninstall_backup_client_with_options_async(request, runtime)
+
     def validate_hc_warnings_with_options(
         self,
         request: sas_20181203_models.ValidateHcWarningsRequest,
@@ -5653,7 +7489,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ValidateHcWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ValidateHcWarningsResponse(),
             self.do_rpcrequest('ValidateHcWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -5666,7 +7503,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sas_20181203_models.ValidateHcWarningsResponse().from_map(
+        return TeaCore.from_map(
+            sas_20181203_models.ValidateHcWarningsResponse(),
             await self.do_rpcrequest_async('ValidateHcWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
