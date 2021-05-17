@@ -14245,7 +14245,7 @@ class DescribeInstallCaptchaRequest(TeaModel):
 class DescribeInstallCaptchaResponseBody(TeaModel):
     def __init__(
         self,
-        deadline: int = None,
+        deadline: str = None,
         request_id: str = None,
         captcha_code: str = None,
     ):
