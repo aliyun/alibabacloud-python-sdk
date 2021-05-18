@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import BinaryIO, Dict, List
+from typing import BinaryIO, Dict, List, Any
 
 
 class CreateDocTranslateTaskRequest(TeaModel):
@@ -25,6 +25,10 @@ class CreateDocTranslateTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_language is not None:
             result['SourceLanguage'] = self.source_language
@@ -78,6 +82,10 @@ class CreateDocTranslateTaskAdvanceRequest(TeaModel):
         self.validate_required(self.file_url_object, 'file_url_object')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.file_url_object is not None:
             result['FileUrlObject'] = self.file_url_object
@@ -114,34 +122,38 @@ class CreateDocTranslateTaskResponseBody(TeaModel):
     def __init__(
         self,
         status: str = None,
-        task_id: str = None,
         request_id: str = None,
+        task_id: str = None,
     ):
         self.status = status
-        self.task_id = task_id
         self.request_id = request_id
+        self.task_id = task_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -161,6 +173,10 @@ class CreateDocTranslateTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -197,6 +213,10 @@ class CreateImageTranslateTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url_list is not None:
             result['UrlList'] = self.url_list
@@ -236,6 +256,10 @@ class CreateImageTranslateTaskResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -251,34 +275,40 @@ class CreateImageTranslateTaskResponseBodyData(TeaModel):
 class CreateImageTranslateTaskResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: CreateImageTranslateTaskResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -286,8 +316,6 @@ class CreateImageTranslateTaskResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = CreateImageTranslateTaskResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -307,6 +335,10 @@ class CreateImageTranslateTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -324,6 +356,145 @@ class CreateImageTranslateTaskResponse(TeaModel):
         return self
 
 
+class GetBatchTranslateRequest(TeaModel):
+    def __init__(
+        self,
+        format_type: str = None,
+        target_language: str = None,
+        source_language: str = None,
+        scene: str = None,
+        api_type: str = None,
+        source_text: str = None,
+    ):
+        self.format_type = format_type
+        self.target_language = target_language
+        self.source_language = source_language
+        self.scene = scene
+        self.api_type = api_type
+        self.source_text = source_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.format_type is not None:
+            result['FormatType'] = self.format_type
+        if self.target_language is not None:
+            result['TargetLanguage'] = self.target_language
+        if self.source_language is not None:
+            result['SourceLanguage'] = self.source_language
+        if self.scene is not None:
+            result['Scene'] = self.scene
+        if self.api_type is not None:
+            result['ApiType'] = self.api_type
+        if self.source_text is not None:
+            result['SourceText'] = self.source_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FormatType') is not None:
+            self.format_type = m.get('FormatType')
+        if m.get('TargetLanguage') is not None:
+            self.target_language = m.get('TargetLanguage')
+        if m.get('SourceLanguage') is not None:
+            self.source_language = m.get('SourceLanguage')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
+        if m.get('ApiType') is not None:
+            self.api_type = m.get('ApiType')
+        if m.get('SourceText') is not None:
+            self.source_text = m.get('SourceText')
+        return self
+
+
+class GetBatchTranslateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        translated_list: List[Dict[str, Any]] = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.translated_list = translated_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.translated_list is not None:
+            result['TranslatedList'] = self.translated_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TranslatedList') is not None:
+            self.translated_list = m.get('TranslatedList')
+        return self
+
+
+class GetBatchTranslateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetBatchTranslateResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetBatchTranslateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDetectLanguageRequest(TeaModel):
     def __init__(
         self,
@@ -335,6 +506,10 @@ class GetDetectLanguageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_text is not None:
             result['SourceText'] = self.source_text
@@ -350,29 +525,33 @@ class GetDetectLanguageRequest(TeaModel):
 class GetDetectLanguageResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         detected_language: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.detected_language = detected_language
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.detected_language is not None:
             result['DetectedLanguage'] = self.detected_language
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('DetectedLanguage') is not None:
             self.detected_language = m.get('DetectedLanguage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -392,6 +571,10 @@ class GetDetectLanguageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -420,6 +603,10 @@ class GetDocTranslateTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -436,58 +623,62 @@ class GetDocTranslateTaskResponseBody(TeaModel):
     def __init__(
         self,
         status: str = None,
-        translate_error_message: str = None,
-        task_id: str = None,
         request_id: str = None,
-        page_count: int = None,
         translate_file_url: str = None,
         translate_error_code: str = None,
+        page_count: int = None,
+        task_id: str = None,
+        translate_error_message: str = None,
     ):
         self.status = status
-        self.translate_error_message = translate_error_message
-        self.task_id = task_id
         self.request_id = request_id
-        self.page_count = page_count
         self.translate_file_url = translate_file_url
         self.translate_error_code = translate_error_code
+        self.page_count = page_count
+        self.task_id = task_id
+        self.translate_error_message = translate_error_message
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.translate_error_message is not None:
-            result['TranslateErrorMessage'] = self.translate_error_message
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
         if self.translate_file_url is not None:
             result['TranslateFileUrl'] = self.translate_file_url
         if self.translate_error_code is not None:
             result['TranslateErrorCode'] = self.translate_error_code
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.translate_error_message is not None:
+            result['TranslateErrorMessage'] = self.translate_error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('TranslateErrorMessage') is not None:
-            self.translate_error_message = m.get('TranslateErrorMessage')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
         if m.get('TranslateFileUrl') is not None:
             self.translate_file_url = m.get('TranslateFileUrl')
         if m.get('TranslateErrorCode') is not None:
             self.translate_error_code = m.get('TranslateErrorCode')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TranslateErrorMessage') is not None:
+            self.translate_error_message = m.get('TranslateErrorMessage')
         return self
 
 
@@ -507,6 +698,10 @@ class GetDocTranslateTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -537,6 +732,10 @@ class GetImageDiagnoseRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -564,6 +763,10 @@ class GetImageDiagnoseResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.language is not None:
             result['Language'] = self.language
@@ -579,34 +782,40 @@ class GetImageDiagnoseResponseBodyData(TeaModel):
 class GetImageDiagnoseResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: GetImageDiagnoseResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -614,8 +823,6 @@ class GetImageDiagnoseResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GetImageDiagnoseResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -635,6 +842,10 @@ class GetImageDiagnoseResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -669,6 +880,10 @@ class GetImageTranslateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -708,6 +923,10 @@ class GetImageTranslateResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -731,34 +950,40 @@ class GetImageTranslateResponseBodyData(TeaModel):
 class GetImageTranslateResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: GetImageTranslateResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -766,8 +991,6 @@ class GetImageTranslateResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GetImageTranslateResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -787,6 +1010,10 @@ class GetImageTranslateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -815,6 +1042,10 @@ class GetImageTranslateTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -838,6 +1069,10 @@ class GetImageTranslateTaskResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_data is not None:
             result['ImageData'] = self.image_data
@@ -853,34 +1088,40 @@ class GetImageTranslateTaskResponseBodyData(TeaModel):
 class GetImageTranslateTaskResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: GetImageTranslateTaskResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -888,8 +1129,6 @@ class GetImageTranslateTaskResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GetImageTranslateTaskResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -909,6 +1148,10 @@ class GetImageTranslateTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -945,6 +1188,10 @@ class GetTitleDiagnoseRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.title is not None:
             result['Title'] = self.title
@@ -1002,6 +1249,10 @@ class GetTitleDiagnoseResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duplicate_words is not None:
             result['DuplicateWords'] = self.duplicate_words
@@ -1053,34 +1304,40 @@ class GetTitleDiagnoseResponseBodyData(TeaModel):
 class GetTitleDiagnoseResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: GetTitleDiagnoseResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -1088,8 +1345,6 @@ class GetTitleDiagnoseResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GetTitleDiagnoseResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -1109,6 +1364,10 @@ class GetTitleDiagnoseResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1149,6 +1408,10 @@ class GetTitleGenerateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.title is not None:
             result['Title'] = self.title
@@ -1196,6 +1459,10 @@ class GetTitleGenerateResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.titles is not None:
             result['Titles'] = self.titles
@@ -1211,34 +1478,40 @@ class GetTitleGenerateResponseBodyData(TeaModel):
 class GetTitleGenerateResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: GetTitleGenerateResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -1246,8 +1519,6 @@ class GetTitleGenerateResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GetTitleGenerateResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -1267,6 +1538,10 @@ class GetTitleGenerateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1303,6 +1578,10 @@ class GetTitleIntelligenceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.platform is not None:
             result['Platform'] = self.platform
@@ -1342,6 +1621,10 @@ class GetTitleIntelligenceResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.titles is not None:
             result['Titles'] = self.titles
@@ -1357,34 +1640,40 @@ class GetTitleIntelligenceResponseBodyData(TeaModel):
 class GetTitleIntelligenceResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: GetTitleIntelligenceResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -1392,8 +1681,6 @@ class GetTitleIntelligenceResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GetTitleIntelligenceResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -1413,6 +1700,10 @@ class GetTitleIntelligenceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1430,6 +1721,215 @@ class GetTitleIntelligenceResponse(TeaModel):
         return self
 
 
+class GetTranslateReportRequest(TeaModel):
+    def __init__(
+        self,
+        begin_time: str = None,
+        end_time: str = None,
+        api_name: str = None,
+        group: str = None,
+    ):
+        self.begin_time = begin_time
+        self.end_time = end_time
+        self.api_name = api_name
+        self.group = group
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.group is not None:
+            result['Group'] = self.group
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        return self
+
+
+class GetTranslateReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTranslateReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetTranslateReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetTranslateReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OpenAlimtServiceRequest(TeaModel):
     def __init__(
         self,
@@ -1443,6 +1943,10 @@ class OpenAlimtServiceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1462,29 +1966,33 @@ class OpenAlimtServiceRequest(TeaModel):
 class OpenAlimtServiceResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         order_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.order_id = order_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1504,6 +2012,10 @@ class OpenAlimtServiceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1540,6 +2052,10 @@ class TranslateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format_type is not None:
             result['FormatType'] = self.format_type
@@ -1571,63 +2087,73 @@ class TranslateRequest(TeaModel):
 class TranslateResponseBodyData(TeaModel):
     def __init__(
         self,
-        word_count: str = None,
         translated: str = None,
+        word_count: str = None,
     ):
-        self.word_count = word_count
         self.translated = translated
+        self.word_count = word_count
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.word_count is not None:
-            result['WordCount'] = self.word_count
         if self.translated is not None:
             result['Translated'] = self.translated
+        if self.word_count is not None:
+            result['WordCount'] = self.word_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WordCount') is not None:
-            self.word_count = m.get('WordCount')
         if m.get('Translated') is not None:
             self.translated = m.get('Translated')
+        if m.get('WordCount') is not None:
+            self.word_count = m.get('WordCount')
         return self
 
 
 class TranslateResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: TranslateResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -1635,8 +2161,6 @@ class TranslateResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = TranslateResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -1656,6 +2180,10 @@ class TranslateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1692,6 +2220,10 @@ class TranslateCertificateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.source_language is not None:
             result['SourceLanguage'] = self.source_language
@@ -1739,6 +2271,10 @@ class TranslateCertificateAdvanceRequest(TeaModel):
         self.validate_required(self.image_url_object, 'image_url_object')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url_object is not None:
             result['ImageUrlObject'] = self.image_url_object
@@ -1770,41 +2306,45 @@ class TranslateCertificateAdvanceRequest(TeaModel):
 class TranslateCertificateResponseBodyDataTranslatedValues(TeaModel):
     def __init__(
         self,
+        key_translation: str = None,
         key: str = None,
         value: str = None,
         value_translation: str = None,
-        key_translation: str = None,
     ):
+        self.key_translation = key_translation
         self.key = key
         self.value = value
         self.value_translation = value_translation
-        self.key_translation = key_translation
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.key_translation is not None:
+            result['KeyTranslation'] = self.key_translation
         if self.key is not None:
             result['Key'] = self.key
         if self.value is not None:
             result['Value'] = self.value
         if self.value_translation is not None:
             result['ValueTranslation'] = self.value_translation
-        if self.key_translation is not None:
-            result['KeyTranslation'] = self.key_translation
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('KeyTranslation') is not None:
+            self.key_translation = m.get('KeyTranslation')
         if m.get('Key') is not None:
             self.key = m.get('Key')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         if m.get('ValueTranslation') is not None:
             self.value_translation = m.get('ValueTranslation')
-        if m.get('KeyTranslation') is not None:
-            self.key_translation = m.get('KeyTranslation')
         return self
 
 
@@ -1822,6 +2362,10 @@ class TranslateCertificateResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TranslatedValues'] = []
         if self.translated_values is not None:
@@ -1853,6 +2397,10 @@ class TranslateCertificateResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1886,6 +2434,10 @@ class TranslateCertificateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1922,6 +2474,10 @@ class TranslateECommerceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format_type is not None:
             result['FormatType'] = self.format_type
@@ -1953,63 +2509,73 @@ class TranslateECommerceRequest(TeaModel):
 class TranslateECommerceResponseBodyData(TeaModel):
     def __init__(
         self,
-        word_count: str = None,
         translated: str = None,
+        word_count: str = None,
     ):
-        self.word_count = word_count
         self.translated = translated
+        self.word_count = word_count
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.word_count is not None:
-            result['WordCount'] = self.word_count
         if self.translated is not None:
             result['Translated'] = self.translated
+        if self.word_count is not None:
+            result['WordCount'] = self.word_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WordCount') is not None:
-            self.word_count = m.get('WordCount')
         if m.get('Translated') is not None:
             self.translated = m.get('Translated')
+        if m.get('WordCount') is not None:
+            self.word_count = m.get('WordCount')
         return self
 
 
 class TranslateECommerceResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: TranslateECommerceResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -2017,8 +2583,6 @@ class TranslateECommerceResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = TranslateECommerceResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -2038,6 +2602,10 @@ class TranslateECommerceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2074,6 +2642,10 @@ class TranslateGeneralRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.format_type is not None:
             result['FormatType'] = self.format_type
@@ -2105,63 +2677,73 @@ class TranslateGeneralRequest(TeaModel):
 class TranslateGeneralResponseBodyData(TeaModel):
     def __init__(
         self,
-        word_count: str = None,
         translated: str = None,
+        word_count: str = None,
     ):
-        self.word_count = word_count
         self.translated = translated
+        self.word_count = word_count
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.word_count is not None:
-            result['WordCount'] = self.word_count
         if self.translated is not None:
             result['Translated'] = self.translated
+        if self.word_count is not None:
+            result['WordCount'] = self.word_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WordCount') is not None:
-            self.word_count = m.get('WordCount')
         if m.get('Translated') is not None:
             self.translated = m.get('Translated')
+        if m.get('WordCount') is not None:
+            self.word_count = m.get('WordCount')
         return self
 
 
 class TranslateGeneralResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         message: str = None,
         request_id: str = None,
         data: TranslateGeneralResponseBodyData = None,
-        code: int = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
         self.data = data
-        self.code = code
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -2169,8 +2751,6 @@ class TranslateGeneralResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = TranslateGeneralResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         return self
 
 
@@ -2190,6 +2770,10 @@ class TranslateGeneralResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

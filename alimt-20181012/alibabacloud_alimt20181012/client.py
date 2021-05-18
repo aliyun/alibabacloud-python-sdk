@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -112,7 +113,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.CreateDocTranslateTaskResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.CreateDocTranslateTaskResponse(),
             self.do_rpcrequest('CreateDocTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -125,7 +127,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.CreateDocTranslateTaskResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.CreateDocTranslateTaskResponse(),
             await self.do_rpcrequest_async('CreateDocTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -151,11 +154,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -179,29 +185,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         create_doc_translate_task_req = alimt_20181012_models.CreateDocTranslateTaskRequest()
         OpenApiUtilClient.convert(request, create_doc_translate_task_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.file_url_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        create_doc_translate_task_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            create_doc_translate_task_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         create_doc_translate_task_resp = self.create_doc_translate_task_with_options(create_doc_translate_task_req, runtime)
         return create_doc_translate_task_resp
 
@@ -213,11 +220,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -241,29 +251,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         create_doc_translate_task_req = alimt_20181012_models.CreateDocTranslateTaskRequest()
         OpenApiUtilClient.convert(request, create_doc_translate_task_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.file_url_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        create_doc_translate_task_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            create_doc_translate_task_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         create_doc_translate_task_resp = await self.create_doc_translate_task_with_options_async(create_doc_translate_task_req, runtime)
         return create_doc_translate_task_resp
 
@@ -276,7 +287,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.CreateImageTranslateTaskResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.CreateImageTranslateTaskResponse(),
             self.do_rpcrequest('CreateImageTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -289,7 +301,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.CreateImageTranslateTaskResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.CreateImageTranslateTaskResponse(),
             await self.do_rpcrequest_async('CreateImageTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -307,6 +320,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_image_translate_task_with_options_async(request, runtime)
 
+    def get_batch_translate_with_options(
+        self,
+        request: alimt_20181012_models.GetBatchTranslateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetBatchTranslateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetBatchTranslateResponse(),
+            self.do_rpcrequest('GetBatchTranslate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_batch_translate_with_options_async(
+        self,
+        request: alimt_20181012_models.GetBatchTranslateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetBatchTranslateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetBatchTranslateResponse(),
+            await self.do_rpcrequest_async('GetBatchTranslate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_batch_translate(
+        self,
+        request: alimt_20181012_models.GetBatchTranslateRequest,
+    ) -> alimt_20181012_models.GetBatchTranslateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_batch_translate_with_options(request, runtime)
+
+    async def get_batch_translate_async(
+        self,
+        request: alimt_20181012_models.GetBatchTranslateRequest,
+    ) -> alimt_20181012_models.GetBatchTranslateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_batch_translate_with_options_async(request, runtime)
+
     def get_detect_language_with_options(
         self,
         request: alimt_20181012_models.GetDetectLanguageRequest,
@@ -316,7 +371,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetDetectLanguageResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetDetectLanguageResponse(),
             self.do_rpcrequest('GetDetectLanguage', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -329,7 +385,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetDetectLanguageResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetDetectLanguageResponse(),
             await self.do_rpcrequest_async('GetDetectLanguage', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -357,7 +414,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return alimt_20181012_models.GetDocTranslateTaskResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetDocTranslateTaskResponse(),
             self.do_rpcrequest('GetDocTranslateTask', '2018-10-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -371,7 +429,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return alimt_20181012_models.GetDocTranslateTaskResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetDocTranslateTaskResponse(),
             await self.do_rpcrequest_async('GetDocTranslateTask', '2018-10-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -398,7 +457,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetImageDiagnoseResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetImageDiagnoseResponse(),
             self.do_rpcrequest('GetImageDiagnose', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -411,7 +471,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetImageDiagnoseResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetImageDiagnoseResponse(),
             await self.do_rpcrequest_async('GetImageDiagnose', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -438,7 +499,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetImageTranslateResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetImageTranslateResponse(),
             self.do_rpcrequest('GetImageTranslate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -451,7 +513,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetImageTranslateResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetImageTranslateResponse(),
             await self.do_rpcrequest_async('GetImageTranslate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -478,7 +541,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetImageTranslateTaskResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetImageTranslateTaskResponse(),
             self.do_rpcrequest('GetImageTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -491,7 +555,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetImageTranslateTaskResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetImageTranslateTaskResponse(),
             await self.do_rpcrequest_async('GetImageTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -518,7 +583,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetTitleDiagnoseResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTitleDiagnoseResponse(),
             self.do_rpcrequest('GetTitleDiagnose', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -531,7 +597,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetTitleDiagnoseResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTitleDiagnoseResponse(),
             await self.do_rpcrequest_async('GetTitleDiagnose', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -558,7 +625,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetTitleGenerateResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTitleGenerateResponse(),
             self.do_rpcrequest('GetTitleGenerate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -571,7 +639,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetTitleGenerateResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTitleGenerateResponse(),
             await self.do_rpcrequest_async('GetTitleGenerate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -598,7 +667,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetTitleIntelligenceResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTitleIntelligenceResponse(),
             self.do_rpcrequest('GetTitleIntelligence', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -611,7 +681,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.GetTitleIntelligenceResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTitleIntelligenceResponse(),
             await self.do_rpcrequest_async('GetTitleIntelligence', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -629,6 +700,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_title_intelligence_with_options_async(request, runtime)
 
+    def get_translate_report_with_options(
+        self,
+        request: alimt_20181012_models.GetTranslateReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetTranslateReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTranslateReportResponse(),
+            self.do_rpcrequest('GetTranslateReport', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_translate_report_with_options_async(
+        self,
+        request: alimt_20181012_models.GetTranslateReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetTranslateReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTranslateReportResponse(),
+            await self.do_rpcrequest_async('GetTranslateReport', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_translate_report(
+        self,
+        request: alimt_20181012_models.GetTranslateReportRequest,
+    ) -> alimt_20181012_models.GetTranslateReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_translate_report_with_options(request, runtime)
+
+    async def get_translate_report_async(
+        self,
+        request: alimt_20181012_models.GetTranslateReportRequest,
+    ) -> alimt_20181012_models.GetTranslateReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_translate_report_with_options_async(request, runtime)
+
+    def get_user_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetUserResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            alimt_20181012_models.GetUserResponse(),
+            self.do_rpcrequest('GetUser', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_user_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetUserResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            alimt_20181012_models.GetUserResponse(),
+            await self.do_rpcrequest_async('GetUser', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_user(self) -> alimt_20181012_models.GetUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_with_options(runtime)
+
+    async def get_user_async(self) -> alimt_20181012_models.GetUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_with_options_async(runtime)
+
     def open_alimt_service_with_options(
         self,
         request: alimt_20181012_models.OpenAlimtServiceRequest,
@@ -638,7 +779,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.OpenAlimtServiceResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.OpenAlimtServiceResponse(),
             self.do_rpcrequest('OpenAlimtService', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -651,7 +793,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.OpenAlimtServiceResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.OpenAlimtServiceResponse(),
             await self.do_rpcrequest_async('OpenAlimtService', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -678,7 +821,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.TranslateResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateResponse(),
             self.do_rpcrequest('Translate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -691,7 +835,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.TranslateResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateResponse(),
             await self.do_rpcrequest_async('Translate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -718,7 +863,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.TranslateCertificateResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateCertificateResponse(),
             self.do_rpcrequest('TranslateCertificate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -731,7 +877,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.TranslateCertificateResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateCertificateResponse(),
             await self.do_rpcrequest_async('TranslateCertificate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -757,11 +904,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -785,29 +935,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         translate_certificate_req = alimt_20181012_models.TranslateCertificateRequest()
         OpenApiUtilClient.convert(request, translate_certificate_req)
-        auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_url_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        oss_client.post_object(upload_request, oss_runtime)
-        translate_certificate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            translate_certificate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         translate_certificate_resp = self.translate_certificate_with_options(translate_certificate_req, runtime)
         return translate_certificate_resp
 
@@ -819,11 +970,14 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
-            endpoint='openplatform.aliyuncs.com',
+            endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
         )
@@ -847,29 +1001,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         translate_certificate_req = alimt_20181012_models.TranslateCertificateRequest()
         OpenApiUtilClient.convert(request, translate_certificate_req)
-        auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-        oss_config.access_key_id = auth_response.access_key_id
-        oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-        oss_client = OSSClient(oss_config)
-        file_obj = file_form_models.FileField(
-            filename=auth_response.object_key,
-            content=request.image_url_object,
-            content_type=''
-        )
-        oss_header = oss_models.PostObjectRequestHeader(
-            access_key_id=auth_response.access_key_id,
-            policy=auth_response.encoded_policy,
-            signature=auth_response.signature,
-            key=auth_response.object_key,
-            file=file_obj,
-            success_action_status='201'
-        )
-        upload_request = oss_models.PostObjectRequest(
-            bucket_name=auth_response.bucket,
-            header=oss_header
-        )
-        await oss_client.post_object_async(upload_request, oss_runtime)
-        translate_certificate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        if not UtilClient.is_unset(request.image_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            translate_certificate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         translate_certificate_resp = await self.translate_certificate_with_options_async(translate_certificate_req, runtime)
         return translate_certificate_resp
 
@@ -882,7 +1037,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.TranslateECommerceResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateECommerceResponse(),
             self.do_rpcrequest('TranslateECommerce', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -895,7 +1051,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.TranslateECommerceResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateECommerceResponse(),
             await self.do_rpcrequest_async('TranslateECommerce', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -922,7 +1079,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.TranslateGeneralResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateGeneralResponse(),
             self.do_rpcrequest('TranslateGeneral', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -935,7 +1093,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alimt_20181012_models.TranslateGeneralResponse().from_map(
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateGeneralResponse(),
             await self.do_rpcrequest_async('TranslateGeneral', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
