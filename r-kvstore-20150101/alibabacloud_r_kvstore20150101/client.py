@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -95,7 +96,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.AddShardingNodeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AddShardingNodeResponse(),
             self.do_rpcrequest('AddShardingNode', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -108,7 +110,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.AddShardingNodeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AddShardingNodeResponse(),
             await self.do_rpcrequest_async('AddShardingNode', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -135,7 +138,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.AllocateDirectConnectionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
             self.do_rpcrequest('AllocateDirectConnection', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -148,7 +152,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.AllocateDirectConnectionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AllocateDirectConnectionResponse(),
             await self.do_rpcrequest_async('AllocateDirectConnection', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -175,7 +180,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
             self.do_rpcrequest('AllocateInstancePublicConnection', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -188,7 +194,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse(),
             await self.do_rpcrequest_async('AllocateInstancePublicConnection', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -215,7 +222,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateAccountResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateAccountResponse(),
             self.do_rpcrequest('CreateAccount', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -228,7 +236,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateAccountResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateAccountResponse(),
             await self.do_rpcrequest_async('CreateAccount', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -255,7 +264,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateBackupResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateBackupResponse(),
             self.do_rpcrequest('CreateBackup', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -268,7 +278,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateBackupResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateBackupResponse(),
             await self.do_rpcrequest_async('CreateBackup', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -295,7 +306,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
             self.do_rpcrequest('CreateCacheAnalysisTask', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -308,7 +320,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse(),
             await self.do_rpcrequest_async('CreateCacheAnalysisTask', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -335,7 +348,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
             self.do_rpcrequest('CreateGlobalDistributeCache', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -348,7 +362,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse(),
             await self.do_rpcrequest_async('CreateGlobalDistributeCache', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -375,7 +390,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateInstanceResponse(),
             self.do_rpcrequest('CreateInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -388,7 +404,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateInstanceResponse(),
             await self.do_rpcrequest_async('CreateInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -406,6 +423,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
+    def create_instances_with_options(
+        self,
+        request: r_kvstore_20150101_models.CreateInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateInstancesResponse(),
+            self.do_rpcrequest('CreateInstances', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_instances_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.CreateInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateInstancesResponse(),
+            await self.do_rpcrequest_async('CreateInstances', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_instances(
+        self,
+        request: r_kvstore_20150101_models.CreateInstancesRequest,
+    ) -> r_kvstore_20150101_models.CreateInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_instances_with_options(request, runtime)
+
+    async def create_instances_async(
+        self,
+        request: r_kvstore_20150101_models.CreateInstancesRequest,
+    ) -> r_kvstore_20150101_models.CreateInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_instances_with_options_async(request, runtime)
+
     def create_tair_instance_with_options(
         self,
         request: r_kvstore_20150101_models.CreateTairInstanceRequest,
@@ -415,7 +474,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateTairInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTairInstanceResponse(),
             self.do_rpcrequest('CreateTairInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -428,7 +488,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateTairInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTairInstanceResponse(),
             await self.do_rpcrequest_async('CreateTairInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -455,7 +516,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateUserClusterHostResponse(),
             self.do_rpcrequest('CreateUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -468,7 +530,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.CreateUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateUserClusterHostResponse(),
             await self.do_rpcrequest_async('CreateUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -495,7 +558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DeleteAccountResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteAccountResponse(),
             self.do_rpcrequest('DeleteAccount', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -508,7 +572,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DeleteAccountResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteAccountResponse(),
             await self.do_rpcrequest_async('DeleteAccount', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -535,7 +600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DeleteInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteInstanceResponse(),
             self.do_rpcrequest('DeleteInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -548,7 +614,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DeleteInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteInstanceResponse(),
             await self.do_rpcrequest_async('DeleteInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -575,7 +642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DeleteShardingNodeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteShardingNodeResponse(),
             self.do_rpcrequest('DeleteShardingNode', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -588,7 +656,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DeleteShardingNodeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteShardingNodeResponse(),
             await self.do_rpcrequest_async('DeleteShardingNode', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -615,7 +684,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DeleteUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteUserClusterHostResponse(),
             self.do_rpcrequest('DeleteUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -628,7 +698,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DeleteUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteUserClusterHostResponse(),
             await self.do_rpcrequest_async('DeleteUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -655,7 +726,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeAccountsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAccountsResponse(),
             self.do_rpcrequest('DescribeAccounts', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -668,7 +740,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeAccountsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAccountsResponse(),
             await self.do_rpcrequest_async('DescribeAccounts', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -695,7 +768,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeActiveOperationTaskResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
             self.do_rpcrequest('DescribeActiveOperationTask', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -708,7 +782,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeActiveOperationTaskResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
             await self.do_rpcrequest_async('DescribeActiveOperationTask', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -735,7 +810,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeAuditRecordsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
             self.do_rpcrequest('DescribeAuditRecords', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -748,7 +824,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeAuditRecordsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAuditRecordsResponse(),
             await self.do_rpcrequest_async('DescribeAuditRecords', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -775,7 +852,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeAvailableResourceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
             self.do_rpcrequest('DescribeAvailableResource', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -788,7 +866,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeAvailableResourceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeAvailableResourceResponse(),
             await self.do_rpcrequest_async('DescribeAvailableResource', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -815,7 +894,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
             self.do_rpcrequest('DescribeBackupPolicy', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -828,7 +908,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupPolicyResponse(),
             await self.do_rpcrequest_async('DescribeBackupPolicy', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -855,7 +936,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeBackupsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupsResponse(),
             self.do_rpcrequest('DescribeBackups', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -868,7 +950,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeBackupsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupsResponse(),
             await self.do_rpcrequest_async('DescribeBackups', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -895,7 +978,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeBackupTasksResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupTasksResponse(),
             self.do_rpcrequest('DescribeBackupTasks', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -908,7 +992,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeBackupTasksResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeBackupTasksResponse(),
             await self.do_rpcrequest_async('DescribeBackupTasks', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -935,7 +1020,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
             self.do_rpcrequest('DescribeCacheAnalysisReport', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -948,7 +1034,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse(),
             await self.do_rpcrequest_async('DescribeCacheAnalysisReport', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -975,7 +1062,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
             self.do_rpcrequest('DescribeCacheAnalysisReportList', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -988,7 +1076,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse(),
             await self.do_rpcrequest_async('DescribeCacheAnalysisReportList', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1015,7 +1104,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeClusterMemberInfoResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
             self.do_rpcrequest('DescribeClusterMemberInfo', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1028,7 +1118,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeClusterMemberInfoResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeClusterMemberInfoResponse(),
             await self.do_rpcrequest_async('DescribeClusterMemberInfo', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1055,7 +1146,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
             self.do_rpcrequest('DescribeDBInstanceNetInfo', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1068,7 +1160,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse(),
             await self.do_rpcrequest_async('DescribeDBInstanceNetInfo', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1095,7 +1188,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
             self.do_rpcrequest('DescribeDedicatedClusterInstanceList', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1108,7 +1202,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse(),
             await self.do_rpcrequest_async('DescribeDedicatedClusterInstanceList', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1135,7 +1230,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeEngineVersionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeEngineVersionResponse(),
             self.do_rpcrequest('DescribeEngineVersion', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1148,7 +1244,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeEngineVersionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeEngineVersionResponse(),
             await self.do_rpcrequest_async('DescribeEngineVersion', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1175,7 +1272,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
             self.do_rpcrequest('DescribeGlobalDistributeCache', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1188,7 +1286,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse(),
             await self.do_rpcrequest_async('DescribeGlobalDistributeCache', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1215,7 +1314,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
             self.do_rpcrequest('DescribeHistoryMonitorValues', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1228,7 +1328,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse(),
             await self.do_rpcrequest_async('DescribeHistoryMonitorValues', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1255,7 +1356,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
             self.do_rpcrequest('DescribeInstanceAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1268,7 +1370,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceAttributeResponse(),
             await self.do_rpcrequest_async('DescribeInstanceAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1295,7 +1398,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
             self.do_rpcrequest('DescribeInstanceAutoRenewalAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1308,7 +1412,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse(),
             await self.do_rpcrequest_async('DescribeInstanceAutoRenewalAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1335,7 +1440,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstanceConfigResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
             self.do_rpcrequest('DescribeInstanceConfig', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1348,7 +1454,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstanceConfigResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceConfigResponse(),
             await self.do_rpcrequest_async('DescribeInstanceConfig', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1375,7 +1482,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstancesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstancesResponse(),
             self.do_rpcrequest('DescribeInstances', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1388,7 +1496,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstancesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstancesResponse(),
             await self.do_rpcrequest_async('DescribeInstances', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1415,7 +1524,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstanceSSLResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
             self.do_rpcrequest('DescribeInstanceSSL', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1428,7 +1538,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeInstanceSSLResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeInstanceSSLResponse(),
             await self.do_rpcrequest_async('DescribeInstanceSSL', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1455,7 +1566,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeIntranetAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
             self.do_rpcrequest('DescribeIntranetAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1468,7 +1580,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeIntranetAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeIntranetAttributeResponse(),
             await self.do_rpcrequest_async('DescribeIntranetAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1495,7 +1608,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
             self.do_rpcrequest('DescribeLogicInstanceTopology', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1508,7 +1622,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse(),
             await self.do_rpcrequest_async('DescribeLogicInstanceTopology', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1535,7 +1650,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeMonitorItemsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
             self.do_rpcrequest('DescribeMonitorItems', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1548,7 +1664,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeMonitorItemsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeMonitorItemsResponse(),
             await self.do_rpcrequest_async('DescribeMonitorItems', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1575,7 +1692,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeParametersResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParametersResponse(),
             self.do_rpcrequest('DescribeParameters', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1588,7 +1706,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeParametersResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParametersResponse(),
             await self.do_rpcrequest_async('DescribeParameters', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1615,7 +1734,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeParameterTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
             self.do_rpcrequest('DescribeParameterTemplates', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1628,7 +1748,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeParameterTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterTemplatesResponse(),
             await self.do_rpcrequest_async('DescribeParameterTemplates', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1655,7 +1776,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribePriceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribePriceResponse(),
             self.do_rpcrequest('DescribePrice', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1668,7 +1790,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribePriceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribePriceResponse(),
             await self.do_rpcrequest_async('DescribePrice', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1695,7 +1818,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRegionsResponse(),
             self.do_rpcrequest('DescribeRegions', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1708,7 +1832,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRegionsResponse(),
             await self.do_rpcrequest_async('DescribeRegions', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1735,7 +1860,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeRoleZoneInfoResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
             self.do_rpcrequest('DescribeRoleZoneInfo', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1748,7 +1874,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeRoleZoneInfoResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRoleZoneInfoResponse(),
             await self.do_rpcrequest_async('DescribeRoleZoneInfo', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1775,7 +1902,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeRunningLogRecordsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
             self.do_rpcrequest('DescribeRunningLogRecords', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1788,7 +1916,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeRunningLogRecordsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeRunningLogRecordsResponse(),
             await self.do_rpcrequest_async('DescribeRunningLogRecords', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1815,7 +1944,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
             self.do_rpcrequest('DescribeSecurityGroupConfiguration', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1828,7 +1958,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse(),
             await self.do_rpcrequest_async('DescribeSecurityGroupConfiguration', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1855,7 +1986,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeSecurityIpsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
             self.do_rpcrequest('DescribeSecurityIps', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1868,7 +2000,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeSecurityIpsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSecurityIpsResponse(),
             await self.do_rpcrequest_async('DescribeSecurityIps', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1895,7 +2028,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeSlowLogRecordsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
             self.do_rpcrequest('DescribeSlowLogRecords', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1908,7 +2042,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeSlowLogRecordsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeSlowLogRecordsResponse(),
             await self.do_rpcrequest_async('DescribeSlowLogRecords', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1935,7 +2070,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeTasksResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTasksResponse(),
             self.do_rpcrequest('DescribeTasks', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1948,7 +2084,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeTasksResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeTasksResponse(),
             await self.do_rpcrequest_async('DescribeTasks', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1975,7 +2112,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeUserClusterHostResponse(),
             self.do_rpcrequest('DescribeUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1988,7 +2126,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeUserClusterHostResponse(),
             await self.do_rpcrequest_async('DescribeUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2015,7 +2154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeUserClusterHostInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeUserClusterHostInstanceResponse(),
             self.do_rpcrequest('DescribeUserClusterHostInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2028,7 +2168,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeUserClusterHostInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeUserClusterHostInstanceResponse(),
             await self.do_rpcrequest_async('DescribeUserClusterHostInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2055,7 +2196,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeZonesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeZonesResponse(),
             self.do_rpcrequest('DescribeZones', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2068,7 +2210,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.DescribeZonesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeZonesResponse(),
             await self.do_rpcrequest_async('DescribeZones', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2095,7 +2238,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.EnableAdditionalBandwidthResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
             self.do_rpcrequest('EnableAdditionalBandwidth', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2108,7 +2252,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.EnableAdditionalBandwidthResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.EnableAdditionalBandwidthResponse(),
             await self.do_rpcrequest_async('EnableAdditionalBandwidth', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2135,7 +2280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.FlushExpireKeysResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushExpireKeysResponse(),
             self.do_rpcrequest('FlushExpireKeys', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2148,7 +2294,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.FlushExpireKeysResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushExpireKeysResponse(),
             await self.do_rpcrequest_async('FlushExpireKeys', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2175,7 +2322,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.FlushInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushInstanceResponse(),
             self.do_rpcrequest('FlushInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2188,7 +2336,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.FlushInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.FlushInstanceResponse(),
             await self.do_rpcrequest_async('FlushInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2215,7 +2364,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.GrantAccountPrivilegeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
             self.do_rpcrequest('GrantAccountPrivilege', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2228,7 +2378,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.GrantAccountPrivilegeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.GrantAccountPrivilegeResponse(),
             await self.do_rpcrequest_async('GrantAccountPrivilege', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2255,7 +2406,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.InitializeKvstorePermissionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
             self.do_rpcrequest('InitializeKvstorePermission', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2268,7 +2420,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.InitializeKvstorePermissionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.InitializeKvstorePermissionResponse(),
             await self.do_rpcrequest_async('InitializeKvstorePermission', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2295,7 +2448,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ListTagResourcesResponse(),
             self.do_rpcrequest('ListTagResources', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2308,7 +2462,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ListTagResourcesResponse(),
             await self.do_rpcrequest_async('ListTagResources', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2335,7 +2490,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.MigrateToOtherZoneResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
             self.do_rpcrequest('MigrateToOtherZone', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2348,7 +2504,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.MigrateToOtherZoneResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.MigrateToOtherZoneResponse(),
             await self.do_rpcrequest_async('MigrateToOtherZone', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2375,7 +2532,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyAccountDescriptionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
             self.do_rpcrequest('ModifyAccountDescription', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2388,7 +2546,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyAccountDescriptionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAccountDescriptionResponse(),
             await self.do_rpcrequest_async('ModifyAccountDescription', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2415,7 +2574,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyAccountPasswordResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
             self.do_rpcrequest('ModifyAccountPassword', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2428,7 +2588,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyAccountPasswordResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAccountPasswordResponse(),
             await self.do_rpcrequest_async('ModifyAccountPassword', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2455,7 +2616,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyActiveOperationTaskResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
             self.do_rpcrequest('ModifyActiveOperationTask', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2468,7 +2630,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyActiveOperationTaskResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
             await self.do_rpcrequest_async('ModifyActiveOperationTask', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2495,7 +2658,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyAuditLogConfigResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
             self.do_rpcrequest('ModifyAuditLogConfig', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2508,7 +2672,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyAuditLogConfigResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyAuditLogConfigResponse(),
             await self.do_rpcrequest_async('ModifyAuditLogConfig', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2535,7 +2700,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
             self.do_rpcrequest('ModifyBackupPolicy', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2548,7 +2714,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyBackupPolicyResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyBackupPolicyResponse(),
             await self.do_rpcrequest_async('ModifyBackupPolicy', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2575,7 +2742,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
             self.do_rpcrequest('ModifyDBInstanceConnectionString', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2588,7 +2756,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse(),
             await self.do_rpcrequest_async('ModifyDBInstanceConnectionString', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2615,7 +2784,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
             self.do_rpcrequest('ModifyInstanceAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2628,7 +2798,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceAttributeResponse(),
             await self.do_rpcrequest_async('ModifyInstanceAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2655,7 +2826,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
             self.do_rpcrequest('ModifyInstanceAutoRenewalAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2668,7 +2840,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse(),
             await self.do_rpcrequest_async('ModifyInstanceAutoRenewalAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2695,7 +2868,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceConfigResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
             self.do_rpcrequest('ModifyInstanceConfig', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2708,7 +2882,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceConfigResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceConfigResponse(),
             await self.do_rpcrequest_async('ModifyInstanceConfig', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2735,7 +2910,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
             self.do_rpcrequest('ModifyInstanceMaintainTime', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2748,7 +2924,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse(),
             await self.do_rpcrequest_async('ModifyInstanceMaintainTime', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2775,7 +2952,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
             self.do_rpcrequest('ModifyInstanceMajorVersion', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2788,7 +2966,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse(),
             await self.do_rpcrequest_async('ModifyInstanceMajorVersion', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2815,7 +2994,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
             self.do_rpcrequest('ModifyInstanceMinorVersion', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2828,7 +3008,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse(),
             await self.do_rpcrequest_async('ModifyInstanceMinorVersion', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2855,7 +3036,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
             self.do_rpcrequest('ModifyInstanceNetExpireTime', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2868,7 +3050,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse(),
             await self.do_rpcrequest_async('ModifyInstanceNetExpireTime', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2895,7 +3078,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceSpecResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
             self.do_rpcrequest('ModifyInstanceSpec', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2908,7 +3092,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceSpecResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceSpecResponse(),
             await self.do_rpcrequest_async('ModifyInstanceSpec', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2935,7 +3120,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceSSLResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
             self.do_rpcrequest('ModifyInstanceSSL', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2948,7 +3134,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceSSLResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceSSLResponse(),
             await self.do_rpcrequest_async('ModifyInstanceSSL', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2975,7 +3162,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
             self.do_rpcrequest('ModifyInstanceVpcAuthMode', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2988,7 +3176,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse(),
             await self.do_rpcrequest_async('ModifyInstanceVpcAuthMode', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3015,7 +3204,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyIntranetAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
             self.do_rpcrequest('ModifyIntranetAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3028,7 +3218,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyIntranetAttributeResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyIntranetAttributeResponse(),
             await self.do_rpcrequest_async('ModifyIntranetAttribute', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3055,7 +3246,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyNodeSpecResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyNodeSpecResponse(),
             self.do_rpcrequest('ModifyNodeSpec', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3068,7 +3260,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyNodeSpecResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyNodeSpecResponse(),
             await self.do_rpcrequest_async('ModifyNodeSpec', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3095,7 +3288,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyResourceGroupResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyResourceGroupResponse(),
             self.do_rpcrequest('ModifyResourceGroup', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3108,7 +3302,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyResourceGroupResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyResourceGroupResponse(),
             await self.do_rpcrequest_async('ModifyResourceGroup', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3135,7 +3330,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
             self.do_rpcrequest('ModifySecurityGroupConfiguration', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3148,7 +3344,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse(),
             await self.do_rpcrequest_async('ModifySecurityGroupConfiguration', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3175,7 +3372,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifySecurityIpsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifySecurityIpsResponse(),
             self.do_rpcrequest('ModifySecurityIps', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3188,7 +3386,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifySecurityIpsResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifySecurityIpsResponse(),
             await self.do_rpcrequest_async('ModifySecurityIps', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3215,7 +3414,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyUserClusterHostResponse(),
             self.do_rpcrequest('ModifyUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3228,7 +3428,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ModifyUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyUserClusterHostResponse(),
             await self.do_rpcrequest_async('ModifyUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3255,7 +3456,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ReleaseDirectConnectionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
             self.do_rpcrequest('ReleaseDirectConnection', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3268,7 +3470,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ReleaseDirectConnectionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReleaseDirectConnectionResponse(),
             await self.do_rpcrequest_async('ReleaseDirectConnection', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3295,7 +3498,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
             self.do_rpcrequest('ReleaseInstancePublicConnection', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3308,7 +3512,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse(),
             await self.do_rpcrequest_async('ReleaseInstancePublicConnection', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3326,6 +3531,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.release_instance_public_connection_with_options_async(request, runtime)
 
+    def renew_additional_bandwidth_with_options(
+        self,
+        request: r_kvstore_20150101_models.RenewAdditionalBandwidthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
+            self.do_rpcrequest('RenewAdditionalBandwidth', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def renew_additional_bandwidth_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.RenewAdditionalBandwidthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RenewAdditionalBandwidthResponse(),
+            await self.do_rpcrequest_async('RenewAdditionalBandwidth', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def renew_additional_bandwidth(
+        self,
+        request: r_kvstore_20150101_models.RenewAdditionalBandwidthRequest,
+    ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.renew_additional_bandwidth_with_options(request, runtime)
+
+    async def renew_additional_bandwidth_async(
+        self,
+        request: r_kvstore_20150101_models.RenewAdditionalBandwidthRequest,
+    ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_additional_bandwidth_with_options_async(request, runtime)
+
     def renew_instance_with_options(
         self,
         request: r_kvstore_20150101_models.RenewInstanceRequest,
@@ -3335,7 +3582,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.RenewInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RenewInstanceResponse(),
             self.do_rpcrequest('RenewInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3348,7 +3596,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.RenewInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RenewInstanceResponse(),
             await self.do_rpcrequest_async('RenewInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3375,7 +3624,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ReplaceUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReplaceUserClusterHostResponse(),
             self.do_rpcrequest('ReplaceUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3388,7 +3638,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ReplaceUserClusterHostResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ReplaceUserClusterHostResponse(),
             await self.do_rpcrequest_async('ReplaceUserClusterHost', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3415,7 +3666,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ResetAccountPasswordResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResetAccountPasswordResponse(),
             self.do_rpcrequest('ResetAccountPassword', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3428,7 +3680,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.ResetAccountPasswordResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ResetAccountPasswordResponse(),
             await self.do_rpcrequest_async('ResetAccountPassword', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3455,7 +3708,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.RestartInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestartInstanceResponse(),
             self.do_rpcrequest('RestartInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3468,7 +3722,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.RestartInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestartInstanceResponse(),
             await self.do_rpcrequest_async('RestartInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3495,7 +3750,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.RestoreInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestoreInstanceResponse(),
             self.do_rpcrequest('RestoreInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3508,7 +3764,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.RestoreInstanceResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.RestoreInstanceResponse(),
             await self.do_rpcrequest_async('RestoreInstance', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3535,7 +3792,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.SwitchInstanceHAResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceHAResponse(),
             self.do_rpcrequest('SwitchInstanceHA', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3548,7 +3806,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.SwitchInstanceHAResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceHAResponse(),
             await self.do_rpcrequest_async('SwitchInstanceHA', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3566,6 +3825,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.switch_instance_hawith_options_async(request, runtime)
 
+    def switch_instance_proxy_with_options(
+        self,
+        request: r_kvstore_20150101_models.SwitchInstanceProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
+            self.do_rpcrequest('SwitchInstanceProxy', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def switch_instance_proxy_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.SwitchInstanceProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchInstanceProxyResponse(),
+            await self.do_rpcrequest_async('SwitchInstanceProxy', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def switch_instance_proxy(
+        self,
+        request: r_kvstore_20150101_models.SwitchInstanceProxyRequest,
+    ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.switch_instance_proxy_with_options(request, runtime)
+
+    async def switch_instance_proxy_async(
+        self,
+        request: r_kvstore_20150101_models.SwitchInstanceProxyRequest,
+    ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_instance_proxy_with_options_async(request, runtime)
+
     def switch_network_with_options(
         self,
         request: r_kvstore_20150101_models.SwitchNetworkRequest,
@@ -3575,7 +3876,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.SwitchNetworkResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchNetworkResponse(),
             self.do_rpcrequest('SwitchNetwork', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3588,7 +3890,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.SwitchNetworkResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SwitchNetworkResponse(),
             await self.do_rpcrequest_async('SwitchNetwork', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3615,7 +3918,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.SyncDtsStatusResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SyncDtsStatusResponse(),
             self.do_rpcrequest('SyncDtsStatus', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3628,7 +3932,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.SyncDtsStatusResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.SyncDtsStatusResponse(),
             await self.do_rpcrequest_async('SyncDtsStatus', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3655,7 +3960,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3668,7 +3974,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3686,6 +3993,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
+    def transform_instance_charge_type_with_options(
+        self,
+        request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
+            self.do_rpcrequest('TransformInstanceChargeType', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def transform_instance_charge_type_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformInstanceChargeTypeResponse(),
+            await self.do_rpcrequest_async('TransformInstanceChargeType', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def transform_instance_charge_type(
+        self,
+        request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
+    ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.transform_instance_charge_type_with_options(request, runtime)
+
+    async def transform_instance_charge_type_async(
+        self,
+        request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
+    ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.transform_instance_charge_type_with_options_async(request, runtime)
+
     def transform_to_pre_paid_with_options(
         self,
         request: r_kvstore_20150101_models.TransformToPrePaidRequest,
@@ -3695,7 +4044,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.TransformToPrePaidResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformToPrePaidResponse(),
             self.do_rpcrequest('TransformToPrePaid', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3708,7 +4058,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.TransformToPrePaidResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformToPrePaidResponse(),
             await self.do_rpcrequest_async('TransformToPrePaid', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3735,7 +4086,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3748,7 +4100,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return r_kvstore_20150101_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2015-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
