@@ -277,12 +277,12 @@ class AddBackendServersResponseBodyBackendServers(TeaModel):
 class AddBackendServersResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         load_balancer_id: str = None,
+        request_id: str = None,
         backend_servers: AddBackendServersResponseBodyBackendServers = None,
     ):
-        self.request_id = request_id
         self.load_balancer_id = load_balancer_id
+        self.request_id = request_id
         self.backend_servers = backend_servers
 
     def validate(self):
@@ -295,20 +295,20 @@ class AddBackendServersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.backend_servers is not None:
             result['BackendServers'] = self.backend_servers.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('BackendServers') is not None:
             temp_model = AddBackendServersResponseBodyBackendServers()
             self.backend_servers = temp_model.from_map(m['BackendServers'])
@@ -917,11 +917,11 @@ class CreateAccessControlListRequest(TeaModel):
 class CreateAccessControlListResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         acl_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.acl_id = acl_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -932,18 +932,18 @@ class CreateAccessControlListResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1063,12 +1063,12 @@ class CreateDomainExtensionResponseBody(TeaModel):
     def __init__(
         self,
         listener_port: int = None,
-        domain_extension_id: str = None,
         request_id: str = None,
+        domain_extension_id: str = None,
     ):
         self.listener_port = listener_port
-        self.domain_extension_id = domain_extension_id
         self.request_id = request_id
+        self.domain_extension_id = domain_extension_id
 
     def validate(self):
         pass
@@ -1081,20 +1081,20 @@ class CreateDomainExtensionResponseBody(TeaModel):
         result = dict()
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
-        if self.domain_extension_id is not None:
-            result['DomainExtensionId'] = self.domain_extension_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.domain_extension_id is not None:
+            result['DomainExtensionId'] = self.domain_extension_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ListenerPort') is not None:
             self.listener_port = m.get('ListenerPort')
-        if m.get('DomainExtensionId') is not None:
-            self.domain_extension_id = m.get('DomainExtensionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('DomainExtensionId') is not None:
+            self.domain_extension_id = m.get('DomainExtensionId')
         return self
 
 
@@ -1309,26 +1309,26 @@ class CreateLoadBalancerRequest(TeaModel):
 class CreateLoadBalancerResponseBody(TeaModel):
     def __init__(
         self,
-        load_balancer_name: str = None,
         vpc_id: str = None,
+        address_ipversion: str = None,
+        v_switch_id: str = None,
         request_id: str = None,
+        load_balancer_name: str = None,
+        load_balancer_id: str = None,
         resource_group_id: str = None,
         address: str = None,
         network_type: str = None,
-        address_ipversion: str = None,
-        v_switch_id: str = None,
-        load_balancer_id: str = None,
         order_id: int = None,
     ):
-        self.load_balancer_name = load_balancer_name
         self.vpc_id = vpc_id
+        self.address_ipversion = address_ipversion
+        self.v_switch_id = v_switch_id
         self.request_id = request_id
+        self.load_balancer_name = load_balancer_name
+        self.load_balancer_id = load_balancer_id
         self.resource_group_id = resource_group_id
         self.address = address
         self.network_type = network_type
-        self.address_ipversion = address_ipversion
-        self.v_switch_id = v_switch_id
-        self.load_balancer_id = load_balancer_id
         self.order_id = order_id
 
     def validate(self):
@@ -1340,48 +1340,48 @@ class CreateLoadBalancerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.load_balancer_name is not None:
-            result['LoadBalancerName'] = self.load_balancer_name
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.address_ipversion is not None:
+            result['AddressIPVersion'] = self.address_ipversion
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.load_balancer_name is not None:
+            result['LoadBalancerName'] = self.load_balancer_name
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.address is not None:
             result['Address'] = self.address
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
-        if self.address_ipversion is not None:
-            result['AddressIPVersion'] = self.address_ipversion
-        if self.v_switch_id is not None:
-            result['VSwitchId'] = self.v_switch_id
-        if self.load_balancer_id is not None:
-            result['LoadBalancerId'] = self.load_balancer_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LoadBalancerName') is not None:
-            self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('AddressIPVersion') is not None:
+            self.address_ipversion = m.get('AddressIPVersion')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('LoadBalancerName') is not None:
+            self.load_balancer_name = m.get('LoadBalancerName')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Address') is not None:
             self.address = m.get('Address')
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
-        if m.get('AddressIPVersion') is not None:
-            self.address_ipversion = m.get('AddressIPVersion')
-        if m.get('VSwitchId') is not None:
-            self.v_switch_id = m.get('VSwitchId')
-        if m.get('LoadBalancerId') is not None:
-            self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         return self
@@ -2696,12 +2696,12 @@ class CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers(TeaModel
 class CreateMasterSlaveServerGroupResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         master_slave_server_group_id: str = None,
+        request_id: str = None,
         master_slave_backend_servers: CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers = None,
     ):
-        self.request_id = request_id
         self.master_slave_server_group_id = master_slave_server_group_id
+        self.request_id = request_id
         self.master_slave_backend_servers = master_slave_backend_servers
 
     def validate(self):
@@ -2714,20 +2714,20 @@ class CreateMasterSlaveServerGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.master_slave_server_group_id is not None:
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.master_slave_backend_servers is not None:
             result['MasterSlaveBackendServers'] = self.master_slave_backend_servers.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('MasterSlaveServerGroupId') is not None:
             self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('MasterSlaveBackendServers') is not None:
             temp_model = CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers()
             self.master_slave_backend_servers = temp_model.from_map(m['MasterSlaveBackendServers'])
@@ -3064,11 +3064,11 @@ class CreateTLSCipherPolicyRequest(TeaModel):
 class CreateTLSCipherPolicyResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         tlscipher_policy_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.tlscipher_policy_id = tlscipher_policy_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3079,18 +3079,18 @@ class CreateTLSCipherPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.tlscipher_policy_id is not None:
             result['TLSCipherPolicyId'] = self.tlscipher_policy_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('TLSCipherPolicyId') is not None:
             self.tlscipher_policy_id = m.get('TLSCipherPolicyId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4726,15 +4726,15 @@ class DescribeAccessControlListAttributeResponseBodyAclEntrys(TeaModel):
 class DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener(TeaModel):
     def __init__(
         self,
+        listener_port: int = None,
         acl_type: str = None,
         protocol: str = None,
         load_balancer_id: str = None,
-        listener_port: int = None,
     ):
+        self.listener_port = listener_port
         self.acl_type = acl_type
         self.protocol = protocol
         self.load_balancer_id = load_balancer_id
-        self.listener_port = listener_port
 
     def validate(self):
         pass
@@ -4745,26 +4745,26 @@ class DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListe
             return _map
 
         result = dict()
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
         if self.acl_type is not None:
             result['AclType'] = self.acl_type
         if self.protocol is not None:
             result['Protocol'] = self.protocol
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
-        if self.listener_port is not None:
-            result['ListenerPort'] = self.listener_port
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
         if m.get('AclType') is not None:
             self.acl_type = m.get('AclType')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
-        if m.get('ListenerPort') is not None:
-            self.listener_port = m.get('ListenerPort')
         return self
 
 
@@ -4806,21 +4806,21 @@ class DescribeAccessControlListAttributeResponseBodyRelatedListeners(TeaModel):
 class DescribeAccessControlListAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        acl_entrys: DescribeAccessControlListAttributeResponseBodyAclEntrys = None,
-        request_id: str = None,
-        resource_group_id: str = None,
         acl_id: str = None,
         address_ipversion: str = None,
-        related_listeners: DescribeAccessControlListAttributeResponseBodyRelatedListeners = None,
+        request_id: str = None,
         acl_name: str = None,
+        resource_group_id: str = None,
+        acl_entrys: DescribeAccessControlListAttributeResponseBodyAclEntrys = None,
+        related_listeners: DescribeAccessControlListAttributeResponseBodyRelatedListeners = None,
     ):
-        self.acl_entrys = acl_entrys
-        self.request_id = request_id
-        self.resource_group_id = resource_group_id
         self.acl_id = acl_id
         self.address_ipversion = address_ipversion
-        self.related_listeners = related_listeners
+        self.request_id = request_id
         self.acl_name = acl_name
+        self.resource_group_id = resource_group_id
+        self.acl_entrys = acl_entrys
+        self.related_listeners = related_listeners
 
     def validate(self):
         if self.acl_entrys:
@@ -4834,40 +4834,40 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.acl_entrys is not None:
-            result['AclEntrys'] = self.acl_entrys.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
         if self.address_ipversion is not None:
             result['AddressIPVersion'] = self.address_ipversion
-        if self.related_listeners is not None:
-            result['RelatedListeners'] = self.related_listeners.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.acl_name is not None:
             result['AclName'] = self.acl_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.acl_entrys is not None:
+            result['AclEntrys'] = self.acl_entrys.to_map()
+        if self.related_listeners is not None:
+            result['RelatedListeners'] = self.related_listeners.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AclEntrys') is not None:
-            temp_model = DescribeAccessControlListAttributeResponseBodyAclEntrys()
-            self.acl_entrys = temp_model.from_map(m['AclEntrys'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
         if m.get('AddressIPVersion') is not None:
             self.address_ipversion = m.get('AddressIPVersion')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('AclName') is not None:
+            self.acl_name = m.get('AclName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('AclEntrys') is not None:
+            temp_model = DescribeAccessControlListAttributeResponseBodyAclEntrys()
+            self.acl_entrys = temp_model.from_map(m['AclEntrys'])
         if m.get('RelatedListeners') is not None:
             temp_model = DescribeAccessControlListAttributeResponseBodyRelatedListeners()
             self.related_listeners = temp_model.from_map(m['RelatedListeners'])
-        if m.get('AclName') is not None:
-            self.acl_name = m.get('AclName')
         return self
 
 
@@ -4994,13 +4994,13 @@ class DescribeAccessControlListsResponseBodyAclsAcl(TeaModel):
         self,
         acl_id: str = None,
         address_ipversion: str = None,
-        resource_group_id: str = None,
         acl_name: str = None,
+        resource_group_id: str = None,
     ):
         self.acl_id = acl_id
         self.address_ipversion = address_ipversion
-        self.resource_group_id = resource_group_id
         self.acl_name = acl_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -5015,10 +5015,10 @@ class DescribeAccessControlListsResponseBodyAclsAcl(TeaModel):
             result['AclId'] = self.acl_id
         if self.address_ipversion is not None:
             result['AddressIPVersion'] = self.address_ipversion
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         if self.acl_name is not None:
             result['AclName'] = self.acl_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5027,10 +5027,10 @@ class DescribeAccessControlListsResponseBodyAclsAcl(TeaModel):
             self.acl_id = m.get('AclId')
         if m.get('AddressIPVersion') is not None:
             self.address_ipversion = m.get('AddressIPVersion')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('AclName') is not None:
             self.acl_name = m.get('AclName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -5072,19 +5072,19 @@ class DescribeAccessControlListsResponseBodyAcls(TeaModel):
 class DescribeAccessControlListsResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
+        page_number: int = None,
         page_size: int = None,
         request_id: str = None,
-        page_number: int = None,
-        acls: DescribeAccessControlListsResponseBodyAcls = None,
+        total_count: int = None,
         count: int = None,
+        acls: DescribeAccessControlListsResponseBodyAcls = None,
     ):
-        self.total_count = total_count
+        self.page_number = page_number
         self.page_size = page_size
         self.request_id = request_id
-        self.page_number = page_number
-        self.acls = acls
+        self.total_count = total_count
         self.count = count
+        self.acls = acls
 
     def validate(self):
         if self.acls:
@@ -5096,35 +5096,35 @@ class DescribeAccessControlListsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.acls is not None:
-            result['Acls'] = self.acls.to_map()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.count is not None:
             result['Count'] = self.count
+        if self.acls is not None:
+            result['Acls'] = self.acls.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         if m.get('Acls') is not None:
             temp_model = DescribeAccessControlListsResponseBodyAcls()
             self.acls = temp_model.from_map(m['Acls'])
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
         return self
 
 
@@ -5231,11 +5231,11 @@ class DescribeAvailableResourceRequest(TeaModel):
 class DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource(TeaModel):
     def __init__(
         self,
-        address_ipversion: str = None,
         address_type: str = None,
+        address_ipversion: str = None,
     ):
-        self.address_ipversion = address_ipversion
         self.address_type = address_type
+        self.address_ipversion = address_ipversion
 
     def validate(self):
         pass
@@ -5246,18 +5246,18 @@ class DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSu
             return _map
 
         result = dict()
-        if self.address_ipversion is not None:
-            result['AddressIPVersion'] = self.address_ipversion
         if self.address_type is not None:
             result['AddressType'] = self.address_type
+        if self.address_ipversion is not None:
+            result['AddressIPVersion'] = self.address_ipversion
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AddressIPVersion') is not None:
-            self.address_ipversion = m.get('AddressIPVersion')
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
+        if m.get('AddressIPVersion') is not None:
+            self.address_ipversion = m.get('AddressIPVersion')
         return self
 
 
@@ -5300,12 +5300,12 @@ class DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource(T
     def __init__(
         self,
         slave_zone_id: str = None,
-        support_resources: DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources = None,
         master_zone_id: str = None,
+        support_resources: DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources = None,
     ):
         self.slave_zone_id = slave_zone_id
-        self.support_resources = support_resources
         self.master_zone_id = master_zone_id
+        self.support_resources = support_resources
 
     def validate(self):
         if self.support_resources:
@@ -5319,21 +5319,21 @@ class DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource(T
         result = dict()
         if self.slave_zone_id is not None:
             result['SlaveZoneId'] = self.slave_zone_id
-        if self.support_resources is not None:
-            result['SupportResources'] = self.support_resources.to_map()
         if self.master_zone_id is not None:
             result['MasterZoneId'] = self.master_zone_id
+        if self.support_resources is not None:
+            result['SupportResources'] = self.support_resources.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('SlaveZoneId') is not None:
             self.slave_zone_id = m.get('SlaveZoneId')
+        if m.get('MasterZoneId') is not None:
+            self.master_zone_id = m.get('MasterZoneId')
         if m.get('SupportResources') is not None:
             temp_model = DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources()
             self.support_resources = temp_model.from_map(m['SupportResources'])
-        if m.get('MasterZoneId') is not None:
-            self.master_zone_id = m.get('MasterZoneId')
         return self
 
 
@@ -5755,19 +5755,19 @@ class DescribeDomainExtensionAttributeRequest(TeaModel):
 class DescribeDomainExtensionAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        listener_port: int = None,
-        domain_extension_id: str = None,
-        request_id: str = None,
-        server_certificate_id: str = None,
-        load_balancer_id: str = None,
         domain: str = None,
+        request_id: str = None,
+        load_balancer_id: str = None,
+        listener_port: int = None,
+        server_certificate_id: str = None,
+        domain_extension_id: str = None,
     ):
-        self.listener_port = listener_port
-        self.domain_extension_id = domain_extension_id
-        self.request_id = request_id
-        self.server_certificate_id = server_certificate_id
-        self.load_balancer_id = load_balancer_id
         self.domain = domain
+        self.request_id = request_id
+        self.load_balancer_id = load_balancer_id
+        self.listener_port = listener_port
+        self.server_certificate_id = server_certificate_id
+        self.domain_extension_id = domain_extension_id
 
     def validate(self):
         pass
@@ -5778,34 +5778,34 @@ class DescribeDomainExtensionAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_port is not None:
-            result['ListenerPort'] = self.listener_port
-        if self.domain_extension_id is not None:
-            result['DomainExtensionId'] = self.domain_extension_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.server_certificate_id is not None:
-            result['ServerCertificateId'] = self.server_certificate_id
-        if self.load_balancer_id is not None:
-            result['LoadBalancerId'] = self.load_balancer_id
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
+        if self.server_certificate_id is not None:
+            result['ServerCertificateId'] = self.server_certificate_id
+        if self.domain_extension_id is not None:
+            result['DomainExtensionId'] = self.domain_extension_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerPort') is not None:
-            self.listener_port = m.get('ListenerPort')
-        if m.get('DomainExtensionId') is not None:
-            self.domain_extension_id = m.get('DomainExtensionId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ServerCertificateId') is not None:
-            self.server_certificate_id = m.get('ServerCertificateId')
-        if m.get('LoadBalancerId') is not None:
-            self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
+        if m.get('ServerCertificateId') is not None:
+            self.server_certificate_id = m.get('ServerCertificateId')
+        if m.get('DomainExtensionId') is not None:
+            self.domain_extension_id = m.get('DomainExtensionId')
         return self
 
 
@@ -5918,12 +5918,12 @@ class DescribeDomainExtensionsRequest(TeaModel):
 class DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension(TeaModel):
     def __init__(
         self,
-        domain: str = None,
         server_certificate_id: str = None,
+        domain: str = None,
         domain_extension_id: str = None,
     ):
-        self.domain = domain
         self.server_certificate_id = server_certificate_id
+        self.domain = domain
         self.domain_extension_id = domain_extension_id
 
     def validate(self):
@@ -5935,20 +5935,20 @@ class DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension(TeaMod
             return _map
 
         result = dict()
-        if self.domain is not None:
-            result['Domain'] = self.domain
         if self.server_certificate_id is not None:
             result['ServerCertificateId'] = self.server_certificate_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
         if self.domain_extension_id is not None:
             result['DomainExtensionId'] = self.domain_extension_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Domain') is not None:
-            self.domain = m.get('Domain')
         if m.get('ServerCertificateId') is not None:
             self.server_certificate_id = m.get('ServerCertificateId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         if m.get('DomainExtensionId') is not None:
             self.domain_extension_id = m.get('DomainExtensionId')
         return self
@@ -6133,8 +6133,6 @@ class DescribeHealthStatusRequest(TeaModel):
 class DescribeHealthStatusResponseBodyBackendServersBackendServer(TeaModel):
     def __init__(
         self,
-        type: str = None,
-        eni_host: str = None,
         protocol: str = None,
         server_health_status: str = None,
         listener_port: int = None,
@@ -6142,8 +6140,6 @@ class DescribeHealthStatusResponseBodyBackendServersBackendServer(TeaModel):
         port: int = None,
         server_id: str = None,
     ):
-        self.type = type
-        self.eni_host = eni_host
         self.protocol = protocol
         self.server_health_status = server_health_status
         self.listener_port = listener_port
@@ -6160,10 +6156,6 @@ class DescribeHealthStatusResponseBodyBackendServersBackendServer(TeaModel):
             return _map
 
         result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.eni_host is not None:
-            result['EniHost'] = self.eni_host
         if self.protocol is not None:
             result['Protocol'] = self.protocol
         if self.server_health_status is not None:
@@ -6180,10 +6172,6 @@ class DescribeHealthStatusResponseBodyBackendServersBackendServer(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('EniHost') is not None:
-            self.eni_host = m.get('EniHost')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
         if m.get('ServerHealthStatus') is not None:
@@ -6378,13 +6366,13 @@ class DescribeListenerAccessControlAttributeRequest(TeaModel):
 class DescribeListenerAccessControlAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        source_items: str = None,
         access_control_status: str = None,
         request_id: str = None,
-        source_items: str = None,
     ):
+        self.source_items = source_items
         self.access_control_status = access_control_status
         self.request_id = request_id
-        self.source_items = source_items
 
     def validate(self):
         pass
@@ -6395,22 +6383,22 @@ class DescribeListenerAccessControlAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.source_items is not None:
+            result['SourceItems'] = self.source_items
         if self.access_control_status is not None:
             result['AccessControlStatus'] = self.access_control_status
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.source_items is not None:
-            result['SourceItems'] = self.source_items
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SourceItems') is not None:
+            self.source_items = m.get('SourceItems')
         if m.get('AccessControlStatus') is not None:
             self.access_control_status = m.get('AccessControlStatus')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('SourceItems') is not None:
-            self.source_items = m.get('SourceItems')
         return self
 
 
@@ -6508,6 +6496,33 @@ class DescribeLoadBalancerAttributeRequest(TeaModel):
         return self
 
 
+class DescribeLoadBalancerAttributeResponseBodyListenerPorts(TeaModel):
+    def __init__(
+        self,
+        listener_port: List[int] = None,
+    ):
+        self.listener_port = listener_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
+        return self
+
+
 class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal(TeaModel):
     def __init__(
         self,
@@ -6573,6 +6588,92 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal(TeaModel
             for k in m.get('ListenerPortAndProtocal'):
                 temp_model = DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal()
                 self.listener_port_and_protocal.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol(TeaModel):
+    def __init__(
+        self,
+        listener_port: int = None,
+        listener_protocol: str = None,
+        listener_forward: str = None,
+        description: str = None,
+        forward_port: int = None,
+    ):
+        self.listener_port = listener_port
+        self.listener_protocol = listener_protocol
+        self.listener_forward = listener_forward
+        self.description = description
+        self.forward_port = forward_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
+        if self.listener_protocol is not None:
+            result['ListenerProtocol'] = self.listener_protocol
+        if self.listener_forward is not None:
+            result['ListenerForward'] = self.listener_forward
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.forward_port is not None:
+            result['ForwardPort'] = self.forward_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
+        if m.get('ListenerProtocol') is not None:
+            self.listener_protocol = m.get('ListenerProtocol')
+        if m.get('ListenerForward') is not None:
+            self.listener_forward = m.get('ListenerForward')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ForwardPort') is not None:
+            self.forward_port = m.get('ForwardPort')
+        return self
+
+
+class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol(TeaModel):
+    def __init__(
+        self,
+        listener_port_and_protocol: List[DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol] = None,
+    ):
+        self.listener_port_and_protocol = listener_port_and_protocol
+
+    def validate(self):
+        if self.listener_port_and_protocol:
+            for k in self.listener_port_and_protocol:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ListenerPortAndProtocol'] = []
+        if self.listener_port_and_protocol is not None:
+            for k in self.listener_port_and_protocol:
+                result['ListenerPortAndProtocol'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.listener_port_and_protocol = []
+        if m.get('ListenerPortAndProtocol') is not None:
+            for k in m.get('ListenerPortAndProtocol'):
+                temp_model = DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol()
+                self.listener_port_and_protocol.append(temp_model.from_map(k))
         return self
 
 
@@ -6656,201 +6757,88 @@ class DescribeLoadBalancerAttributeResponseBodyBackendServers(TeaModel):
         return self
 
 
-class DescribeLoadBalancerAttributeResponseBodyListenerPorts(TeaModel):
-    def __init__(
-        self,
-        listener_port: List[int] = None,
-    ):
-        self.listener_port = listener_port
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.listener_port is not None:
-            result['ListenerPort'] = self.listener_port
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ListenerPort') is not None:
-            self.listener_port = m.get('ListenerPort')
-        return self
-
-
-class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol(TeaModel):
-    def __init__(
-        self,
-        listener_protocol: str = None,
-        listener_forward: str = None,
-        description: str = None,
-        listener_port: int = None,
-        forward_port: int = None,
-    ):
-        self.listener_protocol = listener_protocol
-        self.listener_forward = listener_forward
-        self.description = description
-        self.listener_port = listener_port
-        self.forward_port = forward_port
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.listener_protocol is not None:
-            result['ListenerProtocol'] = self.listener_protocol
-        if self.listener_forward is not None:
-            result['ListenerForward'] = self.listener_forward
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.listener_port is not None:
-            result['ListenerPort'] = self.listener_port
-        if self.forward_port is not None:
-            result['ForwardPort'] = self.forward_port
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ListenerProtocol') is not None:
-            self.listener_protocol = m.get('ListenerProtocol')
-        if m.get('ListenerForward') is not None:
-            self.listener_forward = m.get('ListenerForward')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('ListenerPort') is not None:
-            self.listener_port = m.get('ListenerPort')
-        if m.get('ForwardPort') is not None:
-            self.forward_port = m.get('ForwardPort')
-        return self
-
-
-class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol(TeaModel):
-    def __init__(
-        self,
-        listener_port_and_protocol: List[DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol] = None,
-    ):
-        self.listener_port_and_protocol = listener_port_and_protocol
-
-    def validate(self):
-        if self.listener_port_and_protocol:
-            for k in self.listener_port_and_protocol:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ListenerPortAndProtocol'] = []
-        if self.listener_port_and_protocol is not None:
-            for k in self.listener_port_and_protocol:
-                result['ListenerPortAndProtocol'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.listener_port_and_protocol = []
-        if m.get('ListenerPortAndProtocol') is not None:
-            for k in m.get('ListenerPortAndProtocol'):
-                temp_model = DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol()
-                self.listener_port_and_protocol.append(temp_model.from_map(k))
-        return self
-
-
 class DescribeLoadBalancerAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        address: str = None,
-        resource_group_id: str = None,
-        listener_ports_and_protocal: DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal = None,
-        backend_servers: DescribeLoadBalancerAttributeResponseBodyBackendServers = None,
-        load_balancer_spec: str = None,
-        modification_protection_reason: str = None,
-        listener_ports: DescribeLoadBalancerAttributeResponseBodyListenerPorts = None,
-        request_id: str = None,
-        v_switch_id: str = None,
-        renewal_status: str = None,
-        pay_type: str = None,
-        internet_charge_type: str = None,
         vpc_id: str = None,
-        delete_protection: str = None,
-        end_time_stamp: int = None,
-        load_balancer_status: str = None,
-        auto_release_time: int = None,
-        renewal_duration: int = None,
-        end_time: str = None,
-        address_ipversion: str = None,
-        load_balancer_id: str = None,
-        listener_ports_and_protocol: DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol = None,
-        modification_protection_status: str = None,
-        network_type: str = None,
-        bandwidth: int = None,
-        master_zone_id: str = None,
-        create_time: str = None,
-        renewal_cyc_unit: str = None,
-        slave_zone_id: str = None,
-        region_id_alias: str = None,
-        load_balancer_name: str = None,
-        region_id: str = None,
-        address_type: str = None,
         create_time_stamp: int = None,
+        create_time: str = None,
+        load_balancer_id: str = None,
+        pay_type: str = None,
+        address_type: str = None,
+        network_type: str = None,
+        address_ipversion: str = None,
+        renewal_cyc_unit: str = None,
+        request_id: str = None,
+        bandwidth: int = None,
+        load_balancer_name: str = None,
+        address: str = None,
+        slave_zone_id: str = None,
+        end_time_stamp: int = None,
+        master_zone_id: str = None,
+        load_balancer_spec: str = None,
+        auto_release_time: int = None,
+        modification_protection_reason: str = None,
+        region_id: str = None,
+        modification_protection_status: str = None,
+        end_time: str = None,
+        v_switch_id: str = None,
+        load_balancer_status: str = None,
+        resource_group_id: str = None,
+        internet_charge_type: str = None,
+        delete_protection: str = None,
+        region_id_alias: str = None,
+        renewal_status: str = None,
+        renewal_duration: int = None,
+        listener_ports: DescribeLoadBalancerAttributeResponseBodyListenerPorts = None,
+        listener_ports_and_protocal: DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal = None,
+        listener_ports_and_protocol: DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol = None,
+        backend_servers: DescribeLoadBalancerAttributeResponseBodyBackendServers = None,
     ):
-        self.address = address
-        self.resource_group_id = resource_group_id
-        self.listener_ports_and_protocal = listener_ports_and_protocal
-        self.backend_servers = backend_servers
-        self.load_balancer_spec = load_balancer_spec
-        self.modification_protection_reason = modification_protection_reason
-        self.listener_ports = listener_ports
-        self.request_id = request_id
-        self.v_switch_id = v_switch_id
-        self.renewal_status = renewal_status
-        self.pay_type = pay_type
-        self.internet_charge_type = internet_charge_type
         self.vpc_id = vpc_id
-        self.delete_protection = delete_protection
-        self.end_time_stamp = end_time_stamp
-        self.load_balancer_status = load_balancer_status
-        self.auto_release_time = auto_release_time
-        self.renewal_duration = renewal_duration
-        self.end_time = end_time
-        self.address_ipversion = address_ipversion
-        self.load_balancer_id = load_balancer_id
-        self.listener_ports_and_protocol = listener_ports_and_protocol
-        self.modification_protection_status = modification_protection_status
-        self.network_type = network_type
-        self.bandwidth = bandwidth
-        self.master_zone_id = master_zone_id
-        self.create_time = create_time
-        self.renewal_cyc_unit = renewal_cyc_unit
-        self.slave_zone_id = slave_zone_id
-        self.region_id_alias = region_id_alias
-        self.load_balancer_name = load_balancer_name
-        self.region_id = region_id
-        self.address_type = address_type
         self.create_time_stamp = create_time_stamp
+        self.create_time = create_time
+        self.load_balancer_id = load_balancer_id
+        self.pay_type = pay_type
+        self.address_type = address_type
+        self.network_type = network_type
+        self.address_ipversion = address_ipversion
+        self.renewal_cyc_unit = renewal_cyc_unit
+        self.request_id = request_id
+        self.bandwidth = bandwidth
+        self.load_balancer_name = load_balancer_name
+        self.address = address
+        self.slave_zone_id = slave_zone_id
+        self.end_time_stamp = end_time_stamp
+        self.master_zone_id = master_zone_id
+        self.load_balancer_spec = load_balancer_spec
+        self.auto_release_time = auto_release_time
+        self.modification_protection_reason = modification_protection_reason
+        self.region_id = region_id
+        self.modification_protection_status = modification_protection_status
+        self.end_time = end_time
+        self.v_switch_id = v_switch_id
+        self.load_balancer_status = load_balancer_status
+        self.resource_group_id = resource_group_id
+        self.internet_charge_type = internet_charge_type
+        self.delete_protection = delete_protection
+        self.region_id_alias = region_id_alias
+        self.renewal_status = renewal_status
+        self.renewal_duration = renewal_duration
+        self.listener_ports = listener_ports
+        self.listener_ports_and_protocal = listener_ports_and_protocal
+        self.listener_ports_and_protocol = listener_ports_and_protocol
+        self.backend_servers = backend_servers
 
     def validate(self):
-        if self.listener_ports_and_protocal:
-            self.listener_ports_and_protocal.validate()
-        if self.backend_servers:
-            self.backend_servers.validate()
         if self.listener_ports:
             self.listener_ports.validate()
+        if self.listener_ports_and_protocal:
+            self.listener_ports_and_protocal.validate()
         if self.listener_ports_and_protocol:
             self.listener_ports_and_protocol.validate()
+        if self.backend_servers:
+            self.backend_servers.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6858,150 +6846,150 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.address is not None:
-            result['Address'] = self.address
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.listener_ports_and_protocal is not None:
-            result['ListenerPortsAndProtocal'] = self.listener_ports_and_protocal.to_map()
-        if self.backend_servers is not None:
-            result['BackendServers'] = self.backend_servers.to_map()
-        if self.load_balancer_spec is not None:
-            result['LoadBalancerSpec'] = self.load_balancer_spec
-        if self.modification_protection_reason is not None:
-            result['ModificationProtectionReason'] = self.modification_protection_reason
-        if self.listener_ports is not None:
-            result['ListenerPorts'] = self.listener_ports.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.v_switch_id is not None:
-            result['VSwitchId'] = self.v_switch_id
-        if self.renewal_status is not None:
-            result['RenewalStatus'] = self.renewal_status
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
-        if self.internet_charge_type is not None:
-            result['InternetChargeType'] = self.internet_charge_type
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
-        if self.delete_protection is not None:
-            result['DeleteProtection'] = self.delete_protection
-        if self.end_time_stamp is not None:
-            result['EndTimeStamp'] = self.end_time_stamp
-        if self.load_balancer_status is not None:
-            result['LoadBalancerStatus'] = self.load_balancer_status
-        if self.auto_release_time is not None:
-            result['AutoReleaseTime'] = self.auto_release_time
-        if self.renewal_duration is not None:
-            result['RenewalDuration'] = self.renewal_duration
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.address_ipversion is not None:
-            result['AddressIPVersion'] = self.address_ipversion
-        if self.load_balancer_id is not None:
-            result['LoadBalancerId'] = self.load_balancer_id
-        if self.listener_ports_and_protocol is not None:
-            result['ListenerPortsAndProtocol'] = self.listener_ports_and_protocol.to_map()
-        if self.modification_protection_status is not None:
-            result['ModificationProtectionStatus'] = self.modification_protection_status
-        if self.network_type is not None:
-            result['NetworkType'] = self.network_type
-        if self.bandwidth is not None:
-            result['Bandwidth'] = self.bandwidth
-        if self.master_zone_id is not None:
-            result['MasterZoneId'] = self.master_zone_id
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.renewal_cyc_unit is not None:
-            result['RenewalCycUnit'] = self.renewal_cyc_unit
-        if self.slave_zone_id is not None:
-            result['SlaveZoneId'] = self.slave_zone_id
-        if self.region_id_alias is not None:
-            result['RegionIdAlias'] = self.region_id_alias
-        if self.load_balancer_name is not None:
-            result['LoadBalancerName'] = self.load_balancer_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.address_type is not None:
-            result['AddressType'] = self.address_type
         if self.create_time_stamp is not None:
             result['CreateTimeStamp'] = self.create_time_stamp
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.address_ipversion is not None:
+            result['AddressIPVersion'] = self.address_ipversion
+        if self.renewal_cyc_unit is not None:
+            result['RenewalCycUnit'] = self.renewal_cyc_unit
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.load_balancer_name is not None:
+            result['LoadBalancerName'] = self.load_balancer_name
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.slave_zone_id is not None:
+            result['SlaveZoneId'] = self.slave_zone_id
+        if self.end_time_stamp is not None:
+            result['EndTimeStamp'] = self.end_time_stamp
+        if self.master_zone_id is not None:
+            result['MasterZoneId'] = self.master_zone_id
+        if self.load_balancer_spec is not None:
+            result['LoadBalancerSpec'] = self.load_balancer_spec
+        if self.auto_release_time is not None:
+            result['AutoReleaseTime'] = self.auto_release_time
+        if self.modification_protection_reason is not None:
+            result['ModificationProtectionReason'] = self.modification_protection_reason
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.modification_protection_status is not None:
+            result['ModificationProtectionStatus'] = self.modification_protection_status
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.load_balancer_status is not None:
+            result['LoadBalancerStatus'] = self.load_balancer_status
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.delete_protection is not None:
+            result['DeleteProtection'] = self.delete_protection
+        if self.region_id_alias is not None:
+            result['RegionIdAlias'] = self.region_id_alias
+        if self.renewal_status is not None:
+            result['RenewalStatus'] = self.renewal_status
+        if self.renewal_duration is not None:
+            result['RenewalDuration'] = self.renewal_duration
+        if self.listener_ports is not None:
+            result['ListenerPorts'] = self.listener_ports.to_map()
+        if self.listener_ports_and_protocal is not None:
+            result['ListenerPortsAndProtocal'] = self.listener_ports_and_protocal.to_map()
+        if self.listener_ports_and_protocol is not None:
+            result['ListenerPortsAndProtocol'] = self.listener_ports_and_protocol.to_map()
+        if self.backend_servers is not None:
+            result['BackendServers'] = self.backend_servers.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('CreateTimeStamp') is not None:
+            self.create_time_stamp = m.get('CreateTimeStamp')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('AddressIPVersion') is not None:
+            self.address_ipversion = m.get('AddressIPVersion')
+        if m.get('RenewalCycUnit') is not None:
+            self.renewal_cyc_unit = m.get('RenewalCycUnit')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('LoadBalancerName') is not None:
+            self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('Address') is not None:
             self.address = m.get('Address')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('ListenerPortsAndProtocal') is not None:
-            temp_model = DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal()
-            self.listener_ports_and_protocal = temp_model.from_map(m['ListenerPortsAndProtocal'])
-        if m.get('BackendServers') is not None:
-            temp_model = DescribeLoadBalancerAttributeResponseBodyBackendServers()
-            self.backend_servers = temp_model.from_map(m['BackendServers'])
+        if m.get('SlaveZoneId') is not None:
+            self.slave_zone_id = m.get('SlaveZoneId')
+        if m.get('EndTimeStamp') is not None:
+            self.end_time_stamp = m.get('EndTimeStamp')
+        if m.get('MasterZoneId') is not None:
+            self.master_zone_id = m.get('MasterZoneId')
         if m.get('LoadBalancerSpec') is not None:
             self.load_balancer_spec = m.get('LoadBalancerSpec')
+        if m.get('AutoReleaseTime') is not None:
+            self.auto_release_time = m.get('AutoReleaseTime')
         if m.get('ModificationProtectionReason') is not None:
             self.modification_protection_reason = m.get('ModificationProtectionReason')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ModificationProtectionStatus') is not None:
+            self.modification_protection_status = m.get('ModificationProtectionStatus')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('LoadBalancerStatus') is not None:
+            self.load_balancer_status = m.get('LoadBalancerStatus')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('DeleteProtection') is not None:
+            self.delete_protection = m.get('DeleteProtection')
+        if m.get('RegionIdAlias') is not None:
+            self.region_id_alias = m.get('RegionIdAlias')
+        if m.get('RenewalStatus') is not None:
+            self.renewal_status = m.get('RenewalStatus')
+        if m.get('RenewalDuration') is not None:
+            self.renewal_duration = m.get('RenewalDuration')
         if m.get('ListenerPorts') is not None:
             temp_model = DescribeLoadBalancerAttributeResponseBodyListenerPorts()
             self.listener_ports = temp_model.from_map(m['ListenerPorts'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('VSwitchId') is not None:
-            self.v_switch_id = m.get('VSwitchId')
-        if m.get('RenewalStatus') is not None:
-            self.renewal_status = m.get('RenewalStatus')
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
-        if m.get('InternetChargeType') is not None:
-            self.internet_charge_type = m.get('InternetChargeType')
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
-        if m.get('DeleteProtection') is not None:
-            self.delete_protection = m.get('DeleteProtection')
-        if m.get('EndTimeStamp') is not None:
-            self.end_time_stamp = m.get('EndTimeStamp')
-        if m.get('LoadBalancerStatus') is not None:
-            self.load_balancer_status = m.get('LoadBalancerStatus')
-        if m.get('AutoReleaseTime') is not None:
-            self.auto_release_time = m.get('AutoReleaseTime')
-        if m.get('RenewalDuration') is not None:
-            self.renewal_duration = m.get('RenewalDuration')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('AddressIPVersion') is not None:
-            self.address_ipversion = m.get('AddressIPVersion')
-        if m.get('LoadBalancerId') is not None:
-            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('ListenerPortsAndProtocal') is not None:
+            temp_model = DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal()
+            self.listener_ports_and_protocal = temp_model.from_map(m['ListenerPortsAndProtocal'])
         if m.get('ListenerPortsAndProtocol') is not None:
             temp_model = DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol()
             self.listener_ports_and_protocol = temp_model.from_map(m['ListenerPortsAndProtocol'])
-        if m.get('ModificationProtectionStatus') is not None:
-            self.modification_protection_status = m.get('ModificationProtectionStatus')
-        if m.get('NetworkType') is not None:
-            self.network_type = m.get('NetworkType')
-        if m.get('Bandwidth') is not None:
-            self.bandwidth = m.get('Bandwidth')
-        if m.get('MasterZoneId') is not None:
-            self.master_zone_id = m.get('MasterZoneId')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('RenewalCycUnit') is not None:
-            self.renewal_cyc_unit = m.get('RenewalCycUnit')
-        if m.get('SlaveZoneId') is not None:
-            self.slave_zone_id = m.get('SlaveZoneId')
-        if m.get('RegionIdAlias') is not None:
-            self.region_id_alias = m.get('RegionIdAlias')
-        if m.get('LoadBalancerName') is not None:
-            self.load_balancer_name = m.get('LoadBalancerName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('AddressType') is not None:
-            self.address_type = m.get('AddressType')
-        if m.get('CreateTimeStamp') is not None:
-            self.create_time_stamp = m.get('CreateTimeStamp')
+        if m.get('BackendServers') is not None:
+            temp_model = DescribeLoadBalancerAttributeResponseBodyBackendServers()
+            self.backend_servers = temp_model.from_map(m['BackendServers'])
         return self
 
 
@@ -7109,14 +7097,14 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule(TeaModel):
     def __init__(
         self,
         vserver_group_id: str = None,
-        domain: str = None,
         url: str = None,
+        domain: str = None,
         rule_name: str = None,
         rule_id: str = None,
     ):
         self.vserver_group_id = vserver_group_id
-        self.domain = domain
         self.url = url
+        self.domain = domain
         self.rule_name = rule_name
         self.rule_id = rule_id
 
@@ -7131,10 +7119,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule(TeaModel):
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.domain is not None:
-            result['Domain'] = self.domain
         if self.url is not None:
             result['Url'] = self.url
+        if self.domain is not None:
+            result['Domain'] = self.domain
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.rule_id is not None:
@@ -7145,10 +7133,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule(TeaModel):
         m = m or dict()
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Domain') is not None:
-            self.domain = m.get('Domain')
         if m.get('Url') is not None:
             self.url = m.get('Url')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('RuleId') is not None:
@@ -7194,77 +7182,77 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules(TeaModel):
 class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        cookie_timeout: int = None,
+        acl_type: str = None,
         vserver_group_id: str = None,
-        description: str = None,
-        unhealthy_threshold: int = None,
-        health_check_uri: str = None,
-        scheduler: str = None,
-        health_check: str = None,
-        idle_timeout: int = None,
-        backend_server_port: int = None,
-        xforwarded_for__slbid: str = None,
-        health_check_connect_port: int = None,
-        bandwidth: int = None,
-        security_status: str = None,
-        gzip: str = None,
-        sticky_session_type: str = None,
-        xforwarded_for__slbip: str = None,
-        health_check_http_code: str = None,
         status: str = None,
         cookie: str = None,
+        gzip: str = None,
+        health_check_connect_port: int = None,
+        request_id: str = None,
+        description: str = None,
+        bandwidth: int = None,
+        health_check_timeout: int = None,
+        acl_status: str = None,
+        backend_server_port: int = None,
+        cookie_timeout: int = None,
+        health_check_domain: str = None,
+        unhealthy_threshold: int = None,
+        forward_port: int = None,
+        xforwarded_for__slbid: str = None,
+        security_status: str = None,
+        health_check_http_code: str = None,
+        listener_forward: str = None,
+        xforwarded_for: str = None,
+        idle_timeout: int = None,
         request_timeout: int = None,
         listener_port: int = None,
         health_check_interval: int = None,
-        request_id: str = None,
+        health_check_uri: str = None,
+        sticky_session_type: str = None,
         acl_id: str = None,
-        health_check_timeout: int = None,
-        rules: DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules = None,
-        listener_forward: str = None,
-        sticky_session: str = None,
-        acl_status: str = None,
-        forward_port: int = None,
+        scheduler: str = None,
         healthy_threshold: int = None,
-        xforwarded_for: str = None,
-        health_check_domain: str = None,
-        acl_type: str = None,
         xforwarded_for_proto: str = None,
+        xforwarded_for__slbip: str = None,
+        sticky_session: str = None,
+        health_check: str = None,
+        rules: DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules = None,
     ):
-        self.cookie_timeout = cookie_timeout
+        self.acl_type = acl_type
         self.vserver_group_id = vserver_group_id
-        self.description = description
-        self.unhealthy_threshold = unhealthy_threshold
-        self.health_check_uri = health_check_uri
-        self.scheduler = scheduler
-        self.health_check = health_check
-        self.idle_timeout = idle_timeout
-        self.backend_server_port = backend_server_port
-        self.xforwarded_for__slbid = xforwarded_for__slbid
-        self.health_check_connect_port = health_check_connect_port
-        self.bandwidth = bandwidth
-        self.security_status = security_status
-        self.gzip = gzip
-        self.sticky_session_type = sticky_session_type
-        self.xforwarded_for__slbip = xforwarded_for__slbip
-        self.health_check_http_code = health_check_http_code
         self.status = status
         self.cookie = cookie
+        self.gzip = gzip
+        self.health_check_connect_port = health_check_connect_port
+        self.request_id = request_id
+        self.description = description
+        self.bandwidth = bandwidth
+        self.health_check_timeout = health_check_timeout
+        self.acl_status = acl_status
+        self.backend_server_port = backend_server_port
+        self.cookie_timeout = cookie_timeout
+        self.health_check_domain = health_check_domain
+        self.unhealthy_threshold = unhealthy_threshold
+        self.forward_port = forward_port
+        self.xforwarded_for__slbid = xforwarded_for__slbid
+        self.security_status = security_status
+        self.health_check_http_code = health_check_http_code
+        self.listener_forward = listener_forward
+        self.xforwarded_for = xforwarded_for
+        self.idle_timeout = idle_timeout
         self.request_timeout = request_timeout
         self.listener_port = listener_port
         self.health_check_interval = health_check_interval
-        self.request_id = request_id
+        self.health_check_uri = health_check_uri
+        self.sticky_session_type = sticky_session_type
         self.acl_id = acl_id
-        self.health_check_timeout = health_check_timeout
-        self.rules = rules
-        self.listener_forward = listener_forward
-        self.sticky_session = sticky_session
-        self.acl_status = acl_status
-        self.forward_port = forward_port
+        self.scheduler = scheduler
         self.healthy_threshold = healthy_threshold
-        self.xforwarded_for = xforwarded_for
-        self.health_check_domain = health_check_domain
-        self.acl_type = acl_type
         self.xforwarded_for_proto = xforwarded_for_proto
+        self.xforwarded_for__slbip = xforwarded_for__slbip
+        self.sticky_session = sticky_session
+        self.health_check = health_check
+        self.rules = rules
 
     def validate(self):
         if self.rules:
@@ -7276,151 +7264,151 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.cookie_timeout is not None:
-            result['CookieTimeout'] = self.cookie_timeout
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.unhealthy_threshold is not None:
-            result['UnhealthyThreshold'] = self.unhealthy_threshold
-        if self.health_check_uri is not None:
-            result['HealthCheckURI'] = self.health_check_uri
-        if self.scheduler is not None:
-            result['Scheduler'] = self.scheduler
-        if self.health_check is not None:
-            result['HealthCheck'] = self.health_check
-        if self.idle_timeout is not None:
-            result['IdleTimeout'] = self.idle_timeout
-        if self.backend_server_port is not None:
-            result['BackendServerPort'] = self.backend_server_port
-        if self.xforwarded_for__slbid is not None:
-            result['XForwardedFor_SLBID'] = self.xforwarded_for__slbid
-        if self.health_check_connect_port is not None:
-            result['HealthCheckConnectPort'] = self.health_check_connect_port
-        if self.bandwidth is not None:
-            result['Bandwidth'] = self.bandwidth
-        if self.security_status is not None:
-            result['SecurityStatus'] = self.security_status
-        if self.gzip is not None:
-            result['Gzip'] = self.gzip
-        if self.sticky_session_type is not None:
-            result['StickySessionType'] = self.sticky_session_type
-        if self.xforwarded_for__slbip is not None:
-            result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
-        if self.health_check_http_code is not None:
-            result['HealthCheckHttpCode'] = self.health_check_http_code
         if self.status is not None:
             result['Status'] = self.status
         if self.cookie is not None:
             result['Cookie'] = self.cookie
+        if self.gzip is not None:
+            result['Gzip'] = self.gzip
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.health_check_timeout is not None:
+            result['HealthCheckTimeout'] = self.health_check_timeout
+        if self.acl_status is not None:
+            result['AclStatus'] = self.acl_status
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
+        if self.cookie_timeout is not None:
+            result['CookieTimeout'] = self.cookie_timeout
+        if self.health_check_domain is not None:
+            result['HealthCheckDomain'] = self.health_check_domain
+        if self.unhealthy_threshold is not None:
+            result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.forward_port is not None:
+            result['ForwardPort'] = self.forward_port
+        if self.xforwarded_for__slbid is not None:
+            result['XForwardedFor_SLBID'] = self.xforwarded_for__slbid
+        if self.security_status is not None:
+            result['SecurityStatus'] = self.security_status
+        if self.health_check_http_code is not None:
+            result['HealthCheckHttpCode'] = self.health_check_http_code
+        if self.listener_forward is not None:
+            result['ListenerForward'] = self.listener_forward
+        if self.xforwarded_for is not None:
+            result['XForwardedFor'] = self.xforwarded_for
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
         if self.request_timeout is not None:
             result['RequestTimeout'] = self.request_timeout
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
         if self.health_check_interval is not None:
             result['HealthCheckInterval'] = self.health_check_interval
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.health_check_uri is not None:
+            result['HealthCheckURI'] = self.health_check_uri
+        if self.sticky_session_type is not None:
+            result['StickySessionType'] = self.sticky_session_type
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
-        if self.health_check_timeout is not None:
-            result['HealthCheckTimeout'] = self.health_check_timeout
-        if self.rules is not None:
-            result['Rules'] = self.rules.to_map()
-        if self.listener_forward is not None:
-            result['ListenerForward'] = self.listener_forward
-        if self.sticky_session is not None:
-            result['StickySession'] = self.sticky_session
-        if self.acl_status is not None:
-            result['AclStatus'] = self.acl_status
-        if self.forward_port is not None:
-            result['ForwardPort'] = self.forward_port
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
         if self.healthy_threshold is not None:
             result['HealthyThreshold'] = self.healthy_threshold
-        if self.xforwarded_for is not None:
-            result['XForwardedFor'] = self.xforwarded_for
-        if self.health_check_domain is not None:
-            result['HealthCheckDomain'] = self.health_check_domain
-        if self.acl_type is not None:
-            result['AclType'] = self.acl_type
         if self.xforwarded_for_proto is not None:
             result['XForwardedFor_proto'] = self.xforwarded_for_proto
+        if self.xforwarded_for__slbip is not None:
+            result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
+        if self.sticky_session is not None:
+            result['StickySession'] = self.sticky_session
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
+        if self.rules is not None:
+            result['Rules'] = self.rules.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CookieTimeout') is not None:
-            self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('UnhealthyThreshold') is not None:
-            self.unhealthy_threshold = m.get('UnhealthyThreshold')
-        if m.get('HealthCheckURI') is not None:
-            self.health_check_uri = m.get('HealthCheckURI')
-        if m.get('Scheduler') is not None:
-            self.scheduler = m.get('Scheduler')
-        if m.get('HealthCheck') is not None:
-            self.health_check = m.get('HealthCheck')
-        if m.get('IdleTimeout') is not None:
-            self.idle_timeout = m.get('IdleTimeout')
-        if m.get('BackendServerPort') is not None:
-            self.backend_server_port = m.get('BackendServerPort')
-        if m.get('XForwardedFor_SLBID') is not None:
-            self.xforwarded_for__slbid = m.get('XForwardedFor_SLBID')
-        if m.get('HealthCheckConnectPort') is not None:
-            self.health_check_connect_port = m.get('HealthCheckConnectPort')
-        if m.get('Bandwidth') is not None:
-            self.bandwidth = m.get('Bandwidth')
-        if m.get('SecurityStatus') is not None:
-            self.security_status = m.get('SecurityStatus')
-        if m.get('Gzip') is not None:
-            self.gzip = m.get('Gzip')
-        if m.get('StickySessionType') is not None:
-            self.sticky_session_type = m.get('StickySessionType')
-        if m.get('XForwardedFor_SLBIP') is not None:
-            self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
-        if m.get('HealthCheckHttpCode') is not None:
-            self.health_check_http_code = m.get('HealthCheckHttpCode')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Cookie') is not None:
             self.cookie = m.get('Cookie')
+        if m.get('Gzip') is not None:
+            self.gzip = m.get('Gzip')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('HealthCheckTimeout') is not None:
+            self.health_check_timeout = m.get('HealthCheckTimeout')
+        if m.get('AclStatus') is not None:
+            self.acl_status = m.get('AclStatus')
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
+        if m.get('CookieTimeout') is not None:
+            self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('HealthCheckDomain') is not None:
+            self.health_check_domain = m.get('HealthCheckDomain')
+        if m.get('UnhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('ForwardPort') is not None:
+            self.forward_port = m.get('ForwardPort')
+        if m.get('XForwardedFor_SLBID') is not None:
+            self.xforwarded_for__slbid = m.get('XForwardedFor_SLBID')
+        if m.get('SecurityStatus') is not None:
+            self.security_status = m.get('SecurityStatus')
+        if m.get('HealthCheckHttpCode') is not None:
+            self.health_check_http_code = m.get('HealthCheckHttpCode')
+        if m.get('ListenerForward') is not None:
+            self.listener_forward = m.get('ListenerForward')
+        if m.get('XForwardedFor') is not None:
+            self.xforwarded_for = m.get('XForwardedFor')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
         if m.get('RequestTimeout') is not None:
             self.request_timeout = m.get('RequestTimeout')
         if m.get('ListenerPort') is not None:
             self.listener_port = m.get('ListenerPort')
         if m.get('HealthCheckInterval') is not None:
             self.health_check_interval = m.get('HealthCheckInterval')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('HealthCheckURI') is not None:
+            self.health_check_uri = m.get('HealthCheckURI')
+        if m.get('StickySessionType') is not None:
+            self.sticky_session_type = m.get('StickySessionType')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
-        if m.get('HealthCheckTimeout') is not None:
-            self.health_check_timeout = m.get('HealthCheckTimeout')
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
+        if m.get('HealthyThreshold') is not None:
+            self.healthy_threshold = m.get('HealthyThreshold')
+        if m.get('XForwardedFor_proto') is not None:
+            self.xforwarded_for_proto = m.get('XForwardedFor_proto')
+        if m.get('XForwardedFor_SLBIP') is not None:
+            self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
+        if m.get('StickySession') is not None:
+            self.sticky_session = m.get('StickySession')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
         if m.get('Rules') is not None:
             temp_model = DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules()
             self.rules = temp_model.from_map(m['Rules'])
-        if m.get('ListenerForward') is not None:
-            self.listener_forward = m.get('ListenerForward')
-        if m.get('StickySession') is not None:
-            self.sticky_session = m.get('StickySession')
-        if m.get('AclStatus') is not None:
-            self.acl_status = m.get('AclStatus')
-        if m.get('ForwardPort') is not None:
-            self.forward_port = m.get('ForwardPort')
-        if m.get('HealthyThreshold') is not None:
-            self.healthy_threshold = m.get('HealthyThreshold')
-        if m.get('XForwardedFor') is not None:
-            self.xforwarded_for = m.get('XForwardedFor')
-        if m.get('HealthCheckDomain') is not None:
-            self.health_check_domain = m.get('HealthCheckDomain')
-        if m.get('AclType') is not None:
-            self.acl_type = m.get('AclType')
-        if m.get('XForwardedFor_proto') is not None:
-            self.xforwarded_for_proto = m.get('XForwardedFor_proto')
         return self
 
 
@@ -7524,92 +7512,18 @@ class DescribeLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         return self
 
 
-class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension(TeaModel):
-    def __init__(
-        self,
-        domain: str = None,
-        server_certificate_id: str = None,
-        domain_extension_id: str = None,
-    ):
-        self.domain = domain
-        self.server_certificate_id = server_certificate_id
-        self.domain_extension_id = domain_extension_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain is not None:
-            result['Domain'] = self.domain
-        if self.server_certificate_id is not None:
-            result['ServerCertificateId'] = self.server_certificate_id
-        if self.domain_extension_id is not None:
-            result['DomainExtensionId'] = self.domain_extension_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Domain') is not None:
-            self.domain = m.get('Domain')
-        if m.get('ServerCertificateId') is not None:
-            self.server_certificate_id = m.get('ServerCertificateId')
-        if m.get('DomainExtensionId') is not None:
-            self.domain_extension_id = m.get('DomainExtensionId')
-        return self
-
-
-class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions(TeaModel):
-    def __init__(
-        self,
-        domain_extension: List[DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension] = None,
-    ):
-        self.domain_extension = domain_extension
-
-    def validate(self):
-        if self.domain_extension:
-            for k in self.domain_extension:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['DomainExtension'] = []
-        if self.domain_extension is not None:
-            for k in self.domain_extension:
-                result['DomainExtension'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.domain_extension = []
-        if m.get('DomainExtension') is not None:
-            for k in m.get('DomainExtension'):
-                temp_model = DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension()
-                self.domain_extension.append(temp_model.from_map(k))
-        return self
-
-
 class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule(TeaModel):
     def __init__(
         self,
         vserver_group_id: str = None,
-        domain: str = None,
         url: str = None,
+        domain: str = None,
         rule_name: str = None,
         rule_id: str = None,
     ):
         self.vserver_group_id = vserver_group_id
-        self.domain = domain
         self.url = url
+        self.domain = domain
         self.rule_name = rule_name
         self.rule_id = rule_id
 
@@ -7624,10 +7538,10 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule(TeaModel):
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.domain is not None:
-            result['Domain'] = self.domain
         if self.url is not None:
             result['Url'] = self.url
+        if self.domain is not None:
+            result['Domain'] = self.domain
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.rule_id is not None:
@@ -7638,10 +7552,10 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule(TeaModel):
         m = m or dict()
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Domain') is not None:
-            self.domain = m.get('Domain')
         if m.get('Url') is not None:
             self.url = m.get('Url')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('RuleId') is not None:
@@ -7684,104 +7598,19 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules(TeaModel):
         return self
 
 
-class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
+class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension(TeaModel):
     def __init__(
         self,
-        unhealthy_threshold: int = None,
-        health_check_uri: str = None,
-        health_check: str = None,
-        domain_extensions: DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions = None,
-        backend_server_port: int = None,
-        xforwarded_for__slbport: str = None,
-        sticky_session_type: str = None,
-        status: str = None,
-        cookie: str = None,
-        request_timeout: int = None,
-        tlscipher_policy: str = None,
-        health_check_interval: int = None,
-        request_id: str = None,
-        cacertificate_id: str = None,
-        health_check_timeout: int = None,
-        acl_status: str = None,
-        healthy_threshold: int = None,
-        health_check_domain: str = None,
-        acl_type: str = None,
-        xforwarded_for_proto: str = None,
-        enable_http_2: str = None,
-        cookie_timeout: int = None,
-        vserver_group_id: str = None,
-        description: str = None,
-        scheduler: str = None,
-        idle_timeout: int = None,
-        xforwarded_for__slbid: str = None,
-        health_check_connect_port: int = None,
-        bandwidth: int = None,
-        security_status: str = None,
-        gzip: str = None,
         server_certificate_id: str = None,
-        xforwarded_for__slbip: str = None,
-        health_check_http_code: str = None,
-        listener_port: int = None,
-        xforwarded_for__client_cert_subject_dn: str = None,
-        acl_id: str = None,
-        rules: DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules = None,
-        xforwarded_for__client_cert_issuer_dn: str = None,
-        sticky_session: str = None,
-        xforwarded_for: str = None,
-        xforwarded_for__client_src_port: str = None,
-        xforwarded_for__client_cert_client_verify: str = None,
-        xforwarded_for__client_cert_fingerprint: str = None,
+        domain: str = None,
+        domain_extension_id: str = None,
     ):
-        self.unhealthy_threshold = unhealthy_threshold
-        self.health_check_uri = health_check_uri
-        self.health_check = health_check
-        self.domain_extensions = domain_extensions
-        self.backend_server_port = backend_server_port
-        self.xforwarded_for__slbport = xforwarded_for__slbport
-        self.sticky_session_type = sticky_session_type
-        self.status = status
-        self.cookie = cookie
-        self.request_timeout = request_timeout
-        self.tlscipher_policy = tlscipher_policy
-        self.health_check_interval = health_check_interval
-        self.request_id = request_id
-        self.cacertificate_id = cacertificate_id
-        self.health_check_timeout = health_check_timeout
-        self.acl_status = acl_status
-        self.healthy_threshold = healthy_threshold
-        self.health_check_domain = health_check_domain
-        self.acl_type = acl_type
-        self.xforwarded_for_proto = xforwarded_for_proto
-        self.enable_http_2 = enable_http_2
-        self.cookie_timeout = cookie_timeout
-        self.vserver_group_id = vserver_group_id
-        self.description = description
-        self.scheduler = scheduler
-        self.idle_timeout = idle_timeout
-        self.xforwarded_for__slbid = xforwarded_for__slbid
-        self.health_check_connect_port = health_check_connect_port
-        self.bandwidth = bandwidth
-        self.security_status = security_status
-        self.gzip = gzip
         self.server_certificate_id = server_certificate_id
-        self.xforwarded_for__slbip = xforwarded_for__slbip
-        self.health_check_http_code = health_check_http_code
-        self.listener_port = listener_port
-        self.xforwarded_for__client_cert_subject_dn = xforwarded_for__client_cert_subject_dn
-        self.acl_id = acl_id
-        self.rules = rules
-        self.xforwarded_for__client_cert_issuer_dn = xforwarded_for__client_cert_issuer_dn
-        self.sticky_session = sticky_session
-        self.xforwarded_for = xforwarded_for
-        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
-        self.xforwarded_for__client_cert_client_verify = xforwarded_for__client_cert_client_verify
-        self.xforwarded_for__client_cert_fingerprint = xforwarded_for__client_cert_fingerprint
+        self.domain = domain
+        self.domain_extension_id = domain_extension_id
 
     def validate(self):
-        if self.domain_extensions:
-            self.domain_extensions.validate()
-        if self.rules:
-            self.rules.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -7789,188 +7618,347 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.unhealthy_threshold is not None:
-            result['UnhealthyThreshold'] = self.unhealthy_threshold
-        if self.health_check_uri is not None:
-            result['HealthCheckURI'] = self.health_check_uri
-        if self.health_check is not None:
-            result['HealthCheck'] = self.health_check
-        if self.domain_extensions is not None:
-            result['DomainExtensions'] = self.domain_extensions.to_map()
-        if self.backend_server_port is not None:
-            result['BackendServerPort'] = self.backend_server_port
-        if self.xforwarded_for__slbport is not None:
-            result['XForwardedFor_SLBPORT'] = self.xforwarded_for__slbport
-        if self.sticky_session_type is not None:
-            result['StickySessionType'] = self.sticky_session_type
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.cookie is not None:
-            result['Cookie'] = self.cookie
-        if self.request_timeout is not None:
-            result['RequestTimeout'] = self.request_timeout
-        if self.tlscipher_policy is not None:
-            result['TLSCipherPolicy'] = self.tlscipher_policy
-        if self.health_check_interval is not None:
-            result['HealthCheckInterval'] = self.health_check_interval
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.cacertificate_id is not None:
-            result['CACertificateId'] = self.cacertificate_id
-        if self.health_check_timeout is not None:
-            result['HealthCheckTimeout'] = self.health_check_timeout
-        if self.acl_status is not None:
-            result['AclStatus'] = self.acl_status
-        if self.healthy_threshold is not None:
-            result['HealthyThreshold'] = self.healthy_threshold
-        if self.health_check_domain is not None:
-            result['HealthCheckDomain'] = self.health_check_domain
-        if self.acl_type is not None:
-            result['AclType'] = self.acl_type
-        if self.xforwarded_for_proto is not None:
-            result['XForwardedFor_proto'] = self.xforwarded_for_proto
-        if self.enable_http_2 is not None:
-            result['EnableHttp2'] = self.enable_http_2
-        if self.cookie_timeout is not None:
-            result['CookieTimeout'] = self.cookie_timeout
-        if self.vserver_group_id is not None:
-            result['VServerGroupId'] = self.vserver_group_id
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.scheduler is not None:
-            result['Scheduler'] = self.scheduler
-        if self.idle_timeout is not None:
-            result['IdleTimeout'] = self.idle_timeout
-        if self.xforwarded_for__slbid is not None:
-            result['XForwardedFor_SLBID'] = self.xforwarded_for__slbid
-        if self.health_check_connect_port is not None:
-            result['HealthCheckConnectPort'] = self.health_check_connect_port
-        if self.bandwidth is not None:
-            result['Bandwidth'] = self.bandwidth
-        if self.security_status is not None:
-            result['SecurityStatus'] = self.security_status
-        if self.gzip is not None:
-            result['Gzip'] = self.gzip
         if self.server_certificate_id is not None:
             result['ServerCertificateId'] = self.server_certificate_id
-        if self.xforwarded_for__slbip is not None:
-            result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
-        if self.health_check_http_code is not None:
-            result['HealthCheckHttpCode'] = self.health_check_http_code
-        if self.listener_port is not None:
-            result['ListenerPort'] = self.listener_port
-        if self.xforwarded_for__client_cert_subject_dn is not None:
-            result['XForwardedFor_ClientCertSubjectDN'] = self.xforwarded_for__client_cert_subject_dn
-        if self.acl_id is not None:
-            result['AclId'] = self.acl_id
-        if self.rules is not None:
-            result['Rules'] = self.rules.to_map()
-        if self.xforwarded_for__client_cert_issuer_dn is not None:
-            result['XForwardedFor_ClientCertIssuerDN'] = self.xforwarded_for__client_cert_issuer_dn
-        if self.sticky_session is not None:
-            result['StickySession'] = self.sticky_session
-        if self.xforwarded_for is not None:
-            result['XForwardedFor'] = self.xforwarded_for
-        if self.xforwarded_for__client_src_port is not None:
-            result['XForwardedFor_ClientSrcPort'] = self.xforwarded_for__client_src_port
-        if self.xforwarded_for__client_cert_client_verify is not None:
-            result['XForwardedFor_ClientCertClientVerify'] = self.xforwarded_for__client_cert_client_verify
-        if self.xforwarded_for__client_cert_fingerprint is not None:
-            result['XForwardedFor_ClientCertFingerprint'] = self.xforwarded_for__client_cert_fingerprint
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.domain_extension_id is not None:
+            result['DomainExtensionId'] = self.domain_extension_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UnhealthyThreshold') is not None:
-            self.unhealthy_threshold = m.get('UnhealthyThreshold')
-        if m.get('HealthCheckURI') is not None:
-            self.health_check_uri = m.get('HealthCheckURI')
-        if m.get('HealthCheck') is not None:
-            self.health_check = m.get('HealthCheck')
-        if m.get('DomainExtensions') is not None:
-            temp_model = DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions()
-            self.domain_extensions = temp_model.from_map(m['DomainExtensions'])
+        if m.get('ServerCertificateId') is not None:
+            self.server_certificate_id = m.get('ServerCertificateId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('DomainExtensionId') is not None:
+            self.domain_extension_id = m.get('DomainExtensionId')
+        return self
+
+
+class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions(TeaModel):
+    def __init__(
+        self,
+        domain_extension: List[DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension] = None,
+    ):
+        self.domain_extension = domain_extension
+
+    def validate(self):
+        if self.domain_extension:
+            for k in self.domain_extension:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainExtension'] = []
+        if self.domain_extension is not None:
+            for k in self.domain_extension:
+                result['DomainExtension'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_extension = []
+        if m.get('DomainExtension') is not None:
+            for k in m.get('DomainExtension'):
+                temp_model = DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension()
+                self.domain_extension.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        acl_type: str = None,
+        xforwarded_for__client_cert_client_verify: str = None,
+        cacertificate_id: str = None,
+        request_id: str = None,
+        health_check_connect_port: int = None,
+        backend_server_port: int = None,
+        cookie_timeout: int = None,
+        health_check_domain: str = None,
+        xforwarded_for: str = None,
+        xforwarded_for__client_cert_fingerprint: str = None,
+        idle_timeout: int = None,
+        listener_port: int = None,
+        health_check_uri: str = None,
+        xforwarded_for__slbport: str = None,
+        sticky_session_type: str = None,
+        scheduler: str = None,
+        xforwarded_for_proto: str = None,
+        tlscipher_policy: str = None,
+        status: str = None,
+        vserver_group_id: str = None,
+        xforwarded_for__client_src_port: str = None,
+        cookie: str = None,
+        gzip: str = None,
+        enable_http_2: str = None,
+        bandwidth: int = None,
+        description: str = None,
+        health_check_timeout: int = None,
+        acl_status: str = None,
+        unhealthy_threshold: int = None,
+        xforwarded_for__slbid: str = None,
+        xforwarded_for__client_cert_subject_dn: str = None,
+        security_status: str = None,
+        health_check_http_code: str = None,
+        request_timeout: int = None,
+        health_check_interval: int = None,
+        server_certificate_id: str = None,
+        acl_id: str = None,
+        xforwarded_for__client_cert_issuer_dn: str = None,
+        healthy_threshold: int = None,
+        xforwarded_for__slbip: str = None,
+        sticky_session: str = None,
+        health_check: str = None,
+        rules: DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules = None,
+        domain_extensions: DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions = None,
+    ):
+        self.acl_type = acl_type
+        self.xforwarded_for__client_cert_client_verify = xforwarded_for__client_cert_client_verify
+        self.cacertificate_id = cacertificate_id
+        self.request_id = request_id
+        self.health_check_connect_port = health_check_connect_port
+        self.backend_server_port = backend_server_port
+        self.cookie_timeout = cookie_timeout
+        self.health_check_domain = health_check_domain
+        self.xforwarded_for = xforwarded_for
+        self.xforwarded_for__client_cert_fingerprint = xforwarded_for__client_cert_fingerprint
+        self.idle_timeout = idle_timeout
+        self.listener_port = listener_port
+        self.health_check_uri = health_check_uri
+        self.xforwarded_for__slbport = xforwarded_for__slbport
+        self.sticky_session_type = sticky_session_type
+        self.scheduler = scheduler
+        self.xforwarded_for_proto = xforwarded_for_proto
+        self.tlscipher_policy = tlscipher_policy
+        self.status = status
+        self.vserver_group_id = vserver_group_id
+        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
+        self.cookie = cookie
+        self.gzip = gzip
+        self.enable_http_2 = enable_http_2
+        self.bandwidth = bandwidth
+        self.description = description
+        self.health_check_timeout = health_check_timeout
+        self.acl_status = acl_status
+        self.unhealthy_threshold = unhealthy_threshold
+        self.xforwarded_for__slbid = xforwarded_for__slbid
+        self.xforwarded_for__client_cert_subject_dn = xforwarded_for__client_cert_subject_dn
+        self.security_status = security_status
+        self.health_check_http_code = health_check_http_code
+        self.request_timeout = request_timeout
+        self.health_check_interval = health_check_interval
+        self.server_certificate_id = server_certificate_id
+        self.acl_id = acl_id
+        self.xforwarded_for__client_cert_issuer_dn = xforwarded_for__client_cert_issuer_dn
+        self.healthy_threshold = healthy_threshold
+        self.xforwarded_for__slbip = xforwarded_for__slbip
+        self.sticky_session = sticky_session
+        self.health_check = health_check
+        self.rules = rules
+        self.domain_extensions = domain_extensions
+
+    def validate(self):
+        if self.rules:
+            self.rules.validate()
+        if self.domain_extensions:
+            self.domain_extensions.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
+        if self.xforwarded_for__client_cert_client_verify is not None:
+            result['XForwardedFor_ClientCertClientVerify'] = self.xforwarded_for__client_cert_client_verify
+        if self.cacertificate_id is not None:
+            result['CACertificateId'] = self.cacertificate_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
+        if self.cookie_timeout is not None:
+            result['CookieTimeout'] = self.cookie_timeout
+        if self.health_check_domain is not None:
+            result['HealthCheckDomain'] = self.health_check_domain
+        if self.xforwarded_for is not None:
+            result['XForwardedFor'] = self.xforwarded_for
+        if self.xforwarded_for__client_cert_fingerprint is not None:
+            result['XForwardedFor_ClientCertFingerprint'] = self.xforwarded_for__client_cert_fingerprint
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
+        if self.health_check_uri is not None:
+            result['HealthCheckURI'] = self.health_check_uri
+        if self.xforwarded_for__slbport is not None:
+            result['XForwardedFor_SLBPORT'] = self.xforwarded_for__slbport
+        if self.sticky_session_type is not None:
+            result['StickySessionType'] = self.sticky_session_type
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
+        if self.xforwarded_for_proto is not None:
+            result['XForwardedFor_proto'] = self.xforwarded_for_proto
+        if self.tlscipher_policy is not None:
+            result['TLSCipherPolicy'] = self.tlscipher_policy
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vserver_group_id is not None:
+            result['VServerGroupId'] = self.vserver_group_id
+        if self.xforwarded_for__client_src_port is not None:
+            result['XForwardedFor_ClientSrcPort'] = self.xforwarded_for__client_src_port
+        if self.cookie is not None:
+            result['Cookie'] = self.cookie
+        if self.gzip is not None:
+            result['Gzip'] = self.gzip
+        if self.enable_http_2 is not None:
+            result['EnableHttp2'] = self.enable_http_2
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.health_check_timeout is not None:
+            result['HealthCheckTimeout'] = self.health_check_timeout
+        if self.acl_status is not None:
+            result['AclStatus'] = self.acl_status
+        if self.unhealthy_threshold is not None:
+            result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.xforwarded_for__slbid is not None:
+            result['XForwardedFor_SLBID'] = self.xforwarded_for__slbid
+        if self.xforwarded_for__client_cert_subject_dn is not None:
+            result['XForwardedFor_ClientCertSubjectDN'] = self.xforwarded_for__client_cert_subject_dn
+        if self.security_status is not None:
+            result['SecurityStatus'] = self.security_status
+        if self.health_check_http_code is not None:
+            result['HealthCheckHttpCode'] = self.health_check_http_code
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
+        if self.health_check_interval is not None:
+            result['HealthCheckInterval'] = self.health_check_interval
+        if self.server_certificate_id is not None:
+            result['ServerCertificateId'] = self.server_certificate_id
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.xforwarded_for__client_cert_issuer_dn is not None:
+            result['XForwardedFor_ClientCertIssuerDN'] = self.xforwarded_for__client_cert_issuer_dn
+        if self.healthy_threshold is not None:
+            result['HealthyThreshold'] = self.healthy_threshold
+        if self.xforwarded_for__slbip is not None:
+            result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
+        if self.sticky_session is not None:
+            result['StickySession'] = self.sticky_session
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
+        if self.rules is not None:
+            result['Rules'] = self.rules.to_map()
+        if self.domain_extensions is not None:
+            result['DomainExtensions'] = self.domain_extensions.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
+        if m.get('XForwardedFor_ClientCertClientVerify') is not None:
+            self.xforwarded_for__client_cert_client_verify = m.get('XForwardedFor_ClientCertClientVerify')
+        if m.get('CACertificateId') is not None:
+            self.cacertificate_id = m.get('CACertificateId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('BackendServerPort') is not None:
             self.backend_server_port = m.get('BackendServerPort')
+        if m.get('CookieTimeout') is not None:
+            self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('HealthCheckDomain') is not None:
+            self.health_check_domain = m.get('HealthCheckDomain')
+        if m.get('XForwardedFor') is not None:
+            self.xforwarded_for = m.get('XForwardedFor')
+        if m.get('XForwardedFor_ClientCertFingerprint') is not None:
+            self.xforwarded_for__client_cert_fingerprint = m.get('XForwardedFor_ClientCertFingerprint')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
+        if m.get('HealthCheckURI') is not None:
+            self.health_check_uri = m.get('HealthCheckURI')
         if m.get('XForwardedFor_SLBPORT') is not None:
             self.xforwarded_for__slbport = m.get('XForwardedFor_SLBPORT')
         if m.get('StickySessionType') is not None:
             self.sticky_session_type = m.get('StickySessionType')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Cookie') is not None:
-            self.cookie = m.get('Cookie')
-        if m.get('RequestTimeout') is not None:
-            self.request_timeout = m.get('RequestTimeout')
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
+        if m.get('XForwardedFor_proto') is not None:
+            self.xforwarded_for_proto = m.get('XForwardedFor_proto')
         if m.get('TLSCipherPolicy') is not None:
             self.tlscipher_policy = m.get('TLSCipherPolicy')
-        if m.get('HealthCheckInterval') is not None:
-            self.health_check_interval = m.get('HealthCheckInterval')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('CACertificateId') is not None:
-            self.cacertificate_id = m.get('CACertificateId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VServerGroupId') is not None:
+            self.vserver_group_id = m.get('VServerGroupId')
+        if m.get('XForwardedFor_ClientSrcPort') is not None:
+            self.xforwarded_for__client_src_port = m.get('XForwardedFor_ClientSrcPort')
+        if m.get('Cookie') is not None:
+            self.cookie = m.get('Cookie')
+        if m.get('Gzip') is not None:
+            self.gzip = m.get('Gzip')
+        if m.get('EnableHttp2') is not None:
+            self.enable_http_2 = m.get('EnableHttp2')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('HealthCheckTimeout') is not None:
             self.health_check_timeout = m.get('HealthCheckTimeout')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('HealthyThreshold') is not None:
-            self.healthy_threshold = m.get('HealthyThreshold')
-        if m.get('HealthCheckDomain') is not None:
-            self.health_check_domain = m.get('HealthCheckDomain')
-        if m.get('AclType') is not None:
-            self.acl_type = m.get('AclType')
-        if m.get('XForwardedFor_proto') is not None:
-            self.xforwarded_for_proto = m.get('XForwardedFor_proto')
-        if m.get('EnableHttp2') is not None:
-            self.enable_http_2 = m.get('EnableHttp2')
-        if m.get('CookieTimeout') is not None:
-            self.cookie_timeout = m.get('CookieTimeout')
-        if m.get('VServerGroupId') is not None:
-            self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Scheduler') is not None:
-            self.scheduler = m.get('Scheduler')
-        if m.get('IdleTimeout') is not None:
-            self.idle_timeout = m.get('IdleTimeout')
+        if m.get('UnhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('UnhealthyThreshold')
         if m.get('XForwardedFor_SLBID') is not None:
             self.xforwarded_for__slbid = m.get('XForwardedFor_SLBID')
-        if m.get('HealthCheckConnectPort') is not None:
-            self.health_check_connect_port = m.get('HealthCheckConnectPort')
-        if m.get('Bandwidth') is not None:
-            self.bandwidth = m.get('Bandwidth')
-        if m.get('SecurityStatus') is not None:
-            self.security_status = m.get('SecurityStatus')
-        if m.get('Gzip') is not None:
-            self.gzip = m.get('Gzip')
-        if m.get('ServerCertificateId') is not None:
-            self.server_certificate_id = m.get('ServerCertificateId')
-        if m.get('XForwardedFor_SLBIP') is not None:
-            self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
-        if m.get('HealthCheckHttpCode') is not None:
-            self.health_check_http_code = m.get('HealthCheckHttpCode')
-        if m.get('ListenerPort') is not None:
-            self.listener_port = m.get('ListenerPort')
         if m.get('XForwardedFor_ClientCertSubjectDN') is not None:
             self.xforwarded_for__client_cert_subject_dn = m.get('XForwardedFor_ClientCertSubjectDN')
+        if m.get('SecurityStatus') is not None:
+            self.security_status = m.get('SecurityStatus')
+        if m.get('HealthCheckHttpCode') is not None:
+            self.health_check_http_code = m.get('HealthCheckHttpCode')
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
+        if m.get('HealthCheckInterval') is not None:
+            self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('ServerCertificateId') is not None:
+            self.server_certificate_id = m.get('ServerCertificateId')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('XForwardedFor_ClientCertIssuerDN') is not None:
+            self.xforwarded_for__client_cert_issuer_dn = m.get('XForwardedFor_ClientCertIssuerDN')
+        if m.get('HealthyThreshold') is not None:
+            self.healthy_threshold = m.get('HealthyThreshold')
+        if m.get('XForwardedFor_SLBIP') is not None:
+            self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
+        if m.get('StickySession') is not None:
+            self.sticky_session = m.get('StickySession')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
         if m.get('Rules') is not None:
             temp_model = DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules()
             self.rules = temp_model.from_map(m['Rules'])
-        if m.get('XForwardedFor_ClientCertIssuerDN') is not None:
-            self.xforwarded_for__client_cert_issuer_dn = m.get('XForwardedFor_ClientCertIssuerDN')
-        if m.get('StickySession') is not None:
-            self.sticky_session = m.get('StickySession')
-        if m.get('XForwardedFor') is not None:
-            self.xforwarded_for = m.get('XForwardedFor')
-        if m.get('XForwardedFor_ClientSrcPort') is not None:
-            self.xforwarded_for__client_src_port = m.get('XForwardedFor_ClientSrcPort')
-        if m.get('XForwardedFor_ClientCertClientVerify') is not None:
-            self.xforwarded_for__client_cert_client_verify = m.get('XForwardedFor_ClientCertClientVerify')
-        if m.get('XForwardedFor_ClientCertFingerprint') is not None:
-            self.xforwarded_for__client_cert_fingerprint = m.get('XForwardedFor_ClientCertFingerprint')
+        if m.get('DomainExtensions') is not None:
+            temp_model = DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions()
+            self.domain_extensions = temp_model.from_map(m['DomainExtensions'])
         return self
 
 
@@ -8007,6 +7995,911 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeLoadBalancerHTTPSListenerAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeLoadBalancerListenersRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        owner_account: str = None,
+        next_token: str = None,
+        max_results: int = None,
+        listener_protocol: str = None,
+        load_balancer_id: List[str] = None,
+    ):
+        self.region_id = region_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.owner_account = owner_account
+        self.next_token = next_token
+        self.max_results = max_results
+        self.listener_protocol = listener_protocol
+        self.load_balancer_id = load_balancer_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.listener_protocol is not None:
+            result['ListenerProtocol'] = self.listener_protocol
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('ListenerProtocol') is not None:
+            self.listener_protocol = m.get('ListenerProtocol')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        return self
+
+
+class DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig(TeaModel):
+    def __init__(
+        self,
+        health_check_http_version: str = None,
+        xforwarded_for__client_src_port: str = None,
+        cookie: str = None,
+        gzip: str = None,
+        health_check_connect_port: int = None,
+        health_check_timeout: int = None,
+        health_check_type: str = None,
+        cookie_timeout: int = None,
+        health_check_domain: str = None,
+        unhealthy_threshold: int = None,
+        xforwarded_for__slbid: str = None,
+        forward_port: int = None,
+        health_check_http_code: str = None,
+        listener_forward: str = None,
+        xforwarded_for: str = None,
+        idle_timeout: int = None,
+        request_timeout: int = None,
+        health_check_interval: int = None,
+        xforwarded_for__slbport: str = None,
+        health_check_uri: str = None,
+        sticky_session_type: str = None,
+        healthy_threshold: int = None,
+        xforwarded_for_proto: str = None,
+        xforwarded_for__slbip: str = None,
+        sticky_session: str = None,
+        health_check_method: str = None,
+        health_check: str = None,
+    ):
+        self.health_check_http_version = health_check_http_version
+        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
+        self.cookie = cookie
+        self.gzip = gzip
+        self.health_check_connect_port = health_check_connect_port
+        self.health_check_timeout = health_check_timeout
+        self.health_check_type = health_check_type
+        self.cookie_timeout = cookie_timeout
+        self.health_check_domain = health_check_domain
+        self.unhealthy_threshold = unhealthy_threshold
+        self.xforwarded_for__slbid = xforwarded_for__slbid
+        self.forward_port = forward_port
+        self.health_check_http_code = health_check_http_code
+        self.listener_forward = listener_forward
+        self.xforwarded_for = xforwarded_for
+        self.idle_timeout = idle_timeout
+        self.request_timeout = request_timeout
+        self.health_check_interval = health_check_interval
+        self.xforwarded_for__slbport = xforwarded_for__slbport
+        self.health_check_uri = health_check_uri
+        self.sticky_session_type = sticky_session_type
+        self.healthy_threshold = healthy_threshold
+        self.xforwarded_for_proto = xforwarded_for_proto
+        self.xforwarded_for__slbip = xforwarded_for__slbip
+        self.sticky_session = sticky_session
+        self.health_check_method = health_check_method
+        self.health_check = health_check
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.health_check_http_version is not None:
+            result['HealthCheckHttpVersion'] = self.health_check_http_version
+        if self.xforwarded_for__client_src_port is not None:
+            result['XForwardedFor_ClientSrcPort'] = self.xforwarded_for__client_src_port
+        if self.cookie is not None:
+            result['Cookie'] = self.cookie
+        if self.gzip is not None:
+            result['Gzip'] = self.gzip
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.health_check_timeout is not None:
+            result['HealthCheckTimeout'] = self.health_check_timeout
+        if self.health_check_type is not None:
+            result['HealthCheckType'] = self.health_check_type
+        if self.cookie_timeout is not None:
+            result['CookieTimeout'] = self.cookie_timeout
+        if self.health_check_domain is not None:
+            result['HealthCheckDomain'] = self.health_check_domain
+        if self.unhealthy_threshold is not None:
+            result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.xforwarded_for__slbid is not None:
+            result['XForwardedFor_SLBID'] = self.xforwarded_for__slbid
+        if self.forward_port is not None:
+            result['ForwardPort'] = self.forward_port
+        if self.health_check_http_code is not None:
+            result['HealthCheckHttpCode'] = self.health_check_http_code
+        if self.listener_forward is not None:
+            result['ListenerForward'] = self.listener_forward
+        if self.xforwarded_for is not None:
+            result['XForwardedFor'] = self.xforwarded_for
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
+        if self.health_check_interval is not None:
+            result['HealthCheckInterval'] = self.health_check_interval
+        if self.xforwarded_for__slbport is not None:
+            result['XForwardedFor_SLBPORT'] = self.xforwarded_for__slbport
+        if self.health_check_uri is not None:
+            result['HealthCheckURI'] = self.health_check_uri
+        if self.sticky_session_type is not None:
+            result['StickySessionType'] = self.sticky_session_type
+        if self.healthy_threshold is not None:
+            result['HealthyThreshold'] = self.healthy_threshold
+        if self.xforwarded_for_proto is not None:
+            result['XForwardedFor_proto'] = self.xforwarded_for_proto
+        if self.xforwarded_for__slbip is not None:
+            result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
+        if self.sticky_session is not None:
+            result['StickySession'] = self.sticky_session
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HealthCheckHttpVersion') is not None:
+            self.health_check_http_version = m.get('HealthCheckHttpVersion')
+        if m.get('XForwardedFor_ClientSrcPort') is not None:
+            self.xforwarded_for__client_src_port = m.get('XForwardedFor_ClientSrcPort')
+        if m.get('Cookie') is not None:
+            self.cookie = m.get('Cookie')
+        if m.get('Gzip') is not None:
+            self.gzip = m.get('Gzip')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
+        if m.get('HealthCheckTimeout') is not None:
+            self.health_check_timeout = m.get('HealthCheckTimeout')
+        if m.get('HealthCheckType') is not None:
+            self.health_check_type = m.get('HealthCheckType')
+        if m.get('CookieTimeout') is not None:
+            self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('HealthCheckDomain') is not None:
+            self.health_check_domain = m.get('HealthCheckDomain')
+        if m.get('UnhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('XForwardedFor_SLBID') is not None:
+            self.xforwarded_for__slbid = m.get('XForwardedFor_SLBID')
+        if m.get('ForwardPort') is not None:
+            self.forward_port = m.get('ForwardPort')
+        if m.get('HealthCheckHttpCode') is not None:
+            self.health_check_http_code = m.get('HealthCheckHttpCode')
+        if m.get('ListenerForward') is not None:
+            self.listener_forward = m.get('ListenerForward')
+        if m.get('XForwardedFor') is not None:
+            self.xforwarded_for = m.get('XForwardedFor')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
+        if m.get('HealthCheckInterval') is not None:
+            self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('XForwardedFor_SLBPORT') is not None:
+            self.xforwarded_for__slbport = m.get('XForwardedFor_SLBPORT')
+        if m.get('HealthCheckURI') is not None:
+            self.health_check_uri = m.get('HealthCheckURI')
+        if m.get('StickySessionType') is not None:
+            self.sticky_session_type = m.get('StickySessionType')
+        if m.get('HealthyThreshold') is not None:
+            self.healthy_threshold = m.get('HealthyThreshold')
+        if m.get('XForwardedFor_proto') is not None:
+            self.xforwarded_for_proto = m.get('XForwardedFor_proto')
+        if m.get('XForwardedFor_SLBIP') is not None:
+            self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
+        if m.get('StickySession') is not None:
+            self.sticky_session = m.get('StickySession')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
+        return self
+
+
+class DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig(TeaModel):
+    def __init__(
+        self,
+        xforwarded_for__client_cert_client_verify: str = None,
+        health_check_http_version: str = None,
+        xforwarded_for__client_src_port: str = None,
+        cookie: str = None,
+        gzip: str = None,
+        enable_http_2: str = None,
+        cacertificate_id: str = None,
+        health_check_connect_port: int = None,
+        health_check_timeout: int = None,
+        health_check_type: str = None,
+        cookie_timeout: int = None,
+        health_check_domain: str = None,
+        unhealthy_threshold: int = None,
+        xforwarded_for__slbid: str = None,
+        xforwarded_for__client_cert_subject_dn: str = None,
+        health_check_http_code: str = None,
+        xforwarded_for__client_cert_fingerprint: str = None,
+        xforwarded_for: str = None,
+        request_timeout: int = None,
+        idle_timeout: int = None,
+        server_certificate_id: str = None,
+        health_check_interval: int = None,
+        xforwarded_for__slbport: str = None,
+        health_check_uri: str = None,
+        sticky_session_type: str = None,
+        xforwarded_for__client_cert_issuer_dn: str = None,
+        healthy_threshold: int = None,
+        xforwarded_for_proto: str = None,
+        xforwarded_for__slbip: str = None,
+        sticky_session: str = None,
+        health_check_method: str = None,
+        tlscipher_policy: str = None,
+        health_check: str = None,
+    ):
+        self.xforwarded_for__client_cert_client_verify = xforwarded_for__client_cert_client_verify
+        self.health_check_http_version = health_check_http_version
+        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
+        self.cookie = cookie
+        self.gzip = gzip
+        self.enable_http_2 = enable_http_2
+        self.cacertificate_id = cacertificate_id
+        self.health_check_connect_port = health_check_connect_port
+        self.health_check_timeout = health_check_timeout
+        self.health_check_type = health_check_type
+        self.cookie_timeout = cookie_timeout
+        self.health_check_domain = health_check_domain
+        self.unhealthy_threshold = unhealthy_threshold
+        self.xforwarded_for__slbid = xforwarded_for__slbid
+        self.xforwarded_for__client_cert_subject_dn = xforwarded_for__client_cert_subject_dn
+        self.health_check_http_code = health_check_http_code
+        self.xforwarded_for__client_cert_fingerprint = xforwarded_for__client_cert_fingerprint
+        self.xforwarded_for = xforwarded_for
+        self.request_timeout = request_timeout
+        self.idle_timeout = idle_timeout
+        self.server_certificate_id = server_certificate_id
+        self.health_check_interval = health_check_interval
+        self.xforwarded_for__slbport = xforwarded_for__slbport
+        self.health_check_uri = health_check_uri
+        self.sticky_session_type = sticky_session_type
+        self.xforwarded_for__client_cert_issuer_dn = xforwarded_for__client_cert_issuer_dn
+        self.healthy_threshold = healthy_threshold
+        self.xforwarded_for_proto = xforwarded_for_proto
+        self.xforwarded_for__slbip = xforwarded_for__slbip
+        self.sticky_session = sticky_session
+        self.health_check_method = health_check_method
+        self.tlscipher_policy = tlscipher_policy
+        self.health_check = health_check
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.xforwarded_for__client_cert_client_verify is not None:
+            result['XForwardedFor_ClientCertClientVerify'] = self.xforwarded_for__client_cert_client_verify
+        if self.health_check_http_version is not None:
+            result['HealthCheckHttpVersion'] = self.health_check_http_version
+        if self.xforwarded_for__client_src_port is not None:
+            result['XForwardedFor_ClientSrcPort'] = self.xforwarded_for__client_src_port
+        if self.cookie is not None:
+            result['Cookie'] = self.cookie
+        if self.gzip is not None:
+            result['Gzip'] = self.gzip
+        if self.enable_http_2 is not None:
+            result['EnableHttp2'] = self.enable_http_2
+        if self.cacertificate_id is not None:
+            result['CACertificateId'] = self.cacertificate_id
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.health_check_timeout is not None:
+            result['HealthCheckTimeout'] = self.health_check_timeout
+        if self.health_check_type is not None:
+            result['HealthCheckType'] = self.health_check_type
+        if self.cookie_timeout is not None:
+            result['CookieTimeout'] = self.cookie_timeout
+        if self.health_check_domain is not None:
+            result['HealthCheckDomain'] = self.health_check_domain
+        if self.unhealthy_threshold is not None:
+            result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.xforwarded_for__slbid is not None:
+            result['XForwardedFor_SLBID'] = self.xforwarded_for__slbid
+        if self.xforwarded_for__client_cert_subject_dn is not None:
+            result['XForwardedFor_ClientCertSubjectDN'] = self.xforwarded_for__client_cert_subject_dn
+        if self.health_check_http_code is not None:
+            result['HealthCheckHttpCode'] = self.health_check_http_code
+        if self.xforwarded_for__client_cert_fingerprint is not None:
+            result['XForwardedFor_ClientCertFingerprint'] = self.xforwarded_for__client_cert_fingerprint
+        if self.xforwarded_for is not None:
+            result['XForwardedFor'] = self.xforwarded_for
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
+        if self.server_certificate_id is not None:
+            result['ServerCertificateId'] = self.server_certificate_id
+        if self.health_check_interval is not None:
+            result['HealthCheckInterval'] = self.health_check_interval
+        if self.xforwarded_for__slbport is not None:
+            result['XForwardedFor_SLBPORT'] = self.xforwarded_for__slbport
+        if self.health_check_uri is not None:
+            result['HealthCheckURI'] = self.health_check_uri
+        if self.sticky_session_type is not None:
+            result['StickySessionType'] = self.sticky_session_type
+        if self.xforwarded_for__client_cert_issuer_dn is not None:
+            result['XForwardedFor_ClientCertIssuerDN'] = self.xforwarded_for__client_cert_issuer_dn
+        if self.healthy_threshold is not None:
+            result['HealthyThreshold'] = self.healthy_threshold
+        if self.xforwarded_for_proto is not None:
+            result['XForwardedFor_proto'] = self.xforwarded_for_proto
+        if self.xforwarded_for__slbip is not None:
+            result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
+        if self.sticky_session is not None:
+            result['StickySession'] = self.sticky_session
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
+        if self.tlscipher_policy is not None:
+            result['TLSCipherPolicy'] = self.tlscipher_policy
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('XForwardedFor_ClientCertClientVerify') is not None:
+            self.xforwarded_for__client_cert_client_verify = m.get('XForwardedFor_ClientCertClientVerify')
+        if m.get('HealthCheckHttpVersion') is not None:
+            self.health_check_http_version = m.get('HealthCheckHttpVersion')
+        if m.get('XForwardedFor_ClientSrcPort') is not None:
+            self.xforwarded_for__client_src_port = m.get('XForwardedFor_ClientSrcPort')
+        if m.get('Cookie') is not None:
+            self.cookie = m.get('Cookie')
+        if m.get('Gzip') is not None:
+            self.gzip = m.get('Gzip')
+        if m.get('EnableHttp2') is not None:
+            self.enable_http_2 = m.get('EnableHttp2')
+        if m.get('CACertificateId') is not None:
+            self.cacertificate_id = m.get('CACertificateId')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
+        if m.get('HealthCheckTimeout') is not None:
+            self.health_check_timeout = m.get('HealthCheckTimeout')
+        if m.get('HealthCheckType') is not None:
+            self.health_check_type = m.get('HealthCheckType')
+        if m.get('CookieTimeout') is not None:
+            self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('HealthCheckDomain') is not None:
+            self.health_check_domain = m.get('HealthCheckDomain')
+        if m.get('UnhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('XForwardedFor_SLBID') is not None:
+            self.xforwarded_for__slbid = m.get('XForwardedFor_SLBID')
+        if m.get('XForwardedFor_ClientCertSubjectDN') is not None:
+            self.xforwarded_for__client_cert_subject_dn = m.get('XForwardedFor_ClientCertSubjectDN')
+        if m.get('HealthCheckHttpCode') is not None:
+            self.health_check_http_code = m.get('HealthCheckHttpCode')
+        if m.get('XForwardedFor_ClientCertFingerprint') is not None:
+            self.xforwarded_for__client_cert_fingerprint = m.get('XForwardedFor_ClientCertFingerprint')
+        if m.get('XForwardedFor') is not None:
+            self.xforwarded_for = m.get('XForwardedFor')
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
+        if m.get('ServerCertificateId') is not None:
+            self.server_certificate_id = m.get('ServerCertificateId')
+        if m.get('HealthCheckInterval') is not None:
+            self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('XForwardedFor_SLBPORT') is not None:
+            self.xforwarded_for__slbport = m.get('XForwardedFor_SLBPORT')
+        if m.get('HealthCheckURI') is not None:
+            self.health_check_uri = m.get('HealthCheckURI')
+        if m.get('StickySessionType') is not None:
+            self.sticky_session_type = m.get('StickySessionType')
+        if m.get('XForwardedFor_ClientCertIssuerDN') is not None:
+            self.xforwarded_for__client_cert_issuer_dn = m.get('XForwardedFor_ClientCertIssuerDN')
+        if m.get('HealthyThreshold') is not None:
+            self.healthy_threshold = m.get('HealthyThreshold')
+        if m.get('XForwardedFor_proto') is not None:
+            self.xforwarded_for_proto = m.get('XForwardedFor_proto')
+        if m.get('XForwardedFor_SLBIP') is not None:
+            self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
+        if m.get('StickySession') is not None:
+            self.sticky_session = m.get('StickySession')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
+        if m.get('TLSCipherPolicy') is not None:
+            self.tlscipher_policy = m.get('TLSCipherPolicy')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
+        return self
+
+
+class DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig(TeaModel):
+    def __init__(
+        self,
+        health_check_http_code: str = None,
+        connection_drain_timeout: int = None,
+        persistence_timeout: int = None,
+        health_check_interval: int = None,
+        health_check_uri: str = None,
+        health_check_connect_port: int = None,
+        established_timeout: int = None,
+        health_check_type: str = None,
+        health_check_connect_timeout: int = None,
+        master_slave_server_group_id: str = None,
+        healthy_threshold: int = None,
+        health_check_domain: str = None,
+        unhealthy_threshold: int = None,
+        connection_drain: str = None,
+        health_check_method: str = None,
+        health_check: str = None,
+    ):
+        self.health_check_http_code = health_check_http_code
+        self.connection_drain_timeout = connection_drain_timeout
+        self.persistence_timeout = persistence_timeout
+        self.health_check_interval = health_check_interval
+        self.health_check_uri = health_check_uri
+        self.health_check_connect_port = health_check_connect_port
+        self.established_timeout = established_timeout
+        self.health_check_type = health_check_type
+        self.health_check_connect_timeout = health_check_connect_timeout
+        self.master_slave_server_group_id = master_slave_server_group_id
+        self.healthy_threshold = healthy_threshold
+        self.health_check_domain = health_check_domain
+        self.unhealthy_threshold = unhealthy_threshold
+        self.connection_drain = connection_drain
+        self.health_check_method = health_check_method
+        self.health_check = health_check
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.health_check_http_code is not None:
+            result['HealthCheckHttpCode'] = self.health_check_http_code
+        if self.connection_drain_timeout is not None:
+            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
+        if self.persistence_timeout is not None:
+            result['PersistenceTimeout'] = self.persistence_timeout
+        if self.health_check_interval is not None:
+            result['HealthCheckInterval'] = self.health_check_interval
+        if self.health_check_uri is not None:
+            result['HealthCheckURI'] = self.health_check_uri
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.established_timeout is not None:
+            result['EstablishedTimeout'] = self.established_timeout
+        if self.health_check_type is not None:
+            result['HealthCheckType'] = self.health_check_type
+        if self.health_check_connect_timeout is not None:
+            result['HealthCheckConnectTimeout'] = self.health_check_connect_timeout
+        if self.master_slave_server_group_id is not None:
+            result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
+        if self.healthy_threshold is not None:
+            result['HealthyThreshold'] = self.healthy_threshold
+        if self.health_check_domain is not None:
+            result['HealthCheckDomain'] = self.health_check_domain
+        if self.unhealthy_threshold is not None:
+            result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.connection_drain is not None:
+            result['ConnectionDrain'] = self.connection_drain
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HealthCheckHttpCode') is not None:
+            self.health_check_http_code = m.get('HealthCheckHttpCode')
+        if m.get('ConnectionDrainTimeout') is not None:
+            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
+        if m.get('PersistenceTimeout') is not None:
+            self.persistence_timeout = m.get('PersistenceTimeout')
+        if m.get('HealthCheckInterval') is not None:
+            self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('HealthCheckURI') is not None:
+            self.health_check_uri = m.get('HealthCheckURI')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
+        if m.get('EstablishedTimeout') is not None:
+            self.established_timeout = m.get('EstablishedTimeout')
+        if m.get('HealthCheckType') is not None:
+            self.health_check_type = m.get('HealthCheckType')
+        if m.get('HealthCheckConnectTimeout') is not None:
+            self.health_check_connect_timeout = m.get('HealthCheckConnectTimeout')
+        if m.get('MasterSlaveServerGroupId') is not None:
+            self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
+        if m.get('HealthyThreshold') is not None:
+            self.healthy_threshold = m.get('HealthyThreshold')
+        if m.get('HealthCheckDomain') is not None:
+            self.health_check_domain = m.get('HealthCheckDomain')
+        if m.get('UnhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('ConnectionDrain') is not None:
+            self.connection_drain = m.get('ConnectionDrain')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
+        return self
+
+
+class DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig(TeaModel):
+    def __init__(
+        self,
+        connection_drain_timeout: int = None,
+        health_check_interval: int = None,
+        health_check_exp: str = None,
+        health_check_connect_port: int = None,
+        health_check_connect_timeout: int = None,
+        master_slave_server_group_id: str = None,
+        healthy_threshold: int = None,
+        unhealthy_threshold: int = None,
+        connection_drain: str = None,
+        health_check_req: str = None,
+        health_check: str = None,
+    ):
+        self.connection_drain_timeout = connection_drain_timeout
+        self.health_check_interval = health_check_interval
+        self.health_check_exp = health_check_exp
+        self.health_check_connect_port = health_check_connect_port
+        self.health_check_connect_timeout = health_check_connect_timeout
+        self.master_slave_server_group_id = master_slave_server_group_id
+        self.healthy_threshold = healthy_threshold
+        self.unhealthy_threshold = unhealthy_threshold
+        self.connection_drain = connection_drain
+        self.health_check_req = health_check_req
+        self.health_check = health_check
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_drain_timeout is not None:
+            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
+        if self.health_check_interval is not None:
+            result['HealthCheckInterval'] = self.health_check_interval
+        if self.health_check_exp is not None:
+            result['HealthCheckExp'] = self.health_check_exp
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.health_check_connect_timeout is not None:
+            result['HealthCheckConnectTimeout'] = self.health_check_connect_timeout
+        if self.master_slave_server_group_id is not None:
+            result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
+        if self.healthy_threshold is not None:
+            result['HealthyThreshold'] = self.healthy_threshold
+        if self.unhealthy_threshold is not None:
+            result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.connection_drain is not None:
+            result['ConnectionDrain'] = self.connection_drain
+        if self.health_check_req is not None:
+            result['HealthCheckReq'] = self.health_check_req
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionDrainTimeout') is not None:
+            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
+        if m.get('HealthCheckInterval') is not None:
+            self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('HealthCheckExp') is not None:
+            self.health_check_exp = m.get('HealthCheckExp')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
+        if m.get('HealthCheckConnectTimeout') is not None:
+            self.health_check_connect_timeout = m.get('HealthCheckConnectTimeout')
+        if m.get('MasterSlaveServerGroupId') is not None:
+            self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
+        if m.get('HealthyThreshold') is not None:
+            self.healthy_threshold = m.get('HealthyThreshold')
+        if m.get('UnhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('ConnectionDrain') is not None:
+            self.connection_drain = m.get('ConnectionDrain')
+        if m.get('HealthCheckReq') is not None:
+            self.health_check_req = m.get('HealthCheckReq')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
+        return self
+
+
+class DescribeLoadBalancerListenersResponseBodyListeners(TeaModel):
+    def __init__(
+        self,
+        acl_type: str = None,
+        status: str = None,
+        vserver_group_id: str = None,
+        listener_protocol: str = None,
+        load_balancer_id: str = None,
+        listener_port: int = None,
+        acl_id: str = None,
+        scheduler: str = None,
+        bandwidth: int = None,
+        description: str = None,
+        acl_status: str = None,
+        backend_server_port: int = None,
+        httplistener_config: DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig = None,
+        httpslistener_config: DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig = None,
+        tcplistener_config: DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig = None,
+        udplistener_config: DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig = None,
+    ):
+        self.acl_type = acl_type
+        self.status = status
+        self.vserver_group_id = vserver_group_id
+        self.listener_protocol = listener_protocol
+        self.load_balancer_id = load_balancer_id
+        self.listener_port = listener_port
+        self.acl_id = acl_id
+        self.scheduler = scheduler
+        self.bandwidth = bandwidth
+        self.description = description
+        self.acl_status = acl_status
+        self.backend_server_port = backend_server_port
+        self.httplistener_config = httplistener_config
+        self.httpslistener_config = httpslistener_config
+        self.tcplistener_config = tcplistener_config
+        self.udplistener_config = udplistener_config
+
+    def validate(self):
+        if self.httplistener_config:
+            self.httplistener_config.validate()
+        if self.httpslistener_config:
+            self.httpslistener_config.validate()
+        if self.tcplistener_config:
+            self.tcplistener_config.validate()
+        if self.udplistener_config:
+            self.udplistener_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vserver_group_id is not None:
+            result['VServerGroupId'] = self.vserver_group_id
+        if self.listener_protocol is not None:
+            result['ListenerProtocol'] = self.listener_protocol
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.acl_status is not None:
+            result['AclStatus'] = self.acl_status
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
+        if self.httplistener_config is not None:
+            result['HTTPListenerConfig'] = self.httplistener_config.to_map()
+        if self.httpslistener_config is not None:
+            result['HTTPSListenerConfig'] = self.httpslistener_config.to_map()
+        if self.tcplistener_config is not None:
+            result['TCPListenerConfig'] = self.tcplistener_config.to_map()
+        if self.udplistener_config is not None:
+            result['UDPListenerConfig'] = self.udplistener_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VServerGroupId') is not None:
+            self.vserver_group_id = m.get('VServerGroupId')
+        if m.get('ListenerProtocol') is not None:
+            self.listener_protocol = m.get('ListenerProtocol')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('AclStatus') is not None:
+            self.acl_status = m.get('AclStatus')
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
+        if m.get('HTTPListenerConfig') is not None:
+            temp_model = DescribeLoadBalancerListenersResponseBodyListenersHTTPListenerConfig()
+            self.httplistener_config = temp_model.from_map(m['HTTPListenerConfig'])
+        if m.get('HTTPSListenerConfig') is not None:
+            temp_model = DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig()
+            self.httpslistener_config = temp_model.from_map(m['HTTPSListenerConfig'])
+        if m.get('TCPListenerConfig') is not None:
+            temp_model = DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig()
+            self.tcplistener_config = temp_model.from_map(m['TCPListenerConfig'])
+        if m.get('UDPListenerConfig') is not None:
+            temp_model = DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig()
+            self.udplistener_config = temp_model.from_map(m['UDPListenerConfig'])
+        return self
+
+
+class DescribeLoadBalancerListenersResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        max_results: int = None,
+        listeners: List[DescribeLoadBalancerListenersResponseBodyListeners] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+        self.max_results = max_results
+        self.listeners = listeners
+
+    def validate(self):
+        if self.listeners:
+            for k in self.listeners:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        result['Listeners'] = []
+        if self.listeners is not None:
+            for k in self.listeners:
+                result['Listeners'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        self.listeners = []
+        if m.get('Listeners') is not None:
+            for k in m.get('Listeners'):
+                temp_model = DescribeLoadBalancerListenersResponseBodyListeners()
+                self.listeners.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeLoadBalancerListenersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeLoadBalancerListenersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeLoadBalancerListenersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8188,16 +9081,20 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         network_type: str = None,
         address_ipversion: str = None,
         load_balancer_name: str = None,
+        bandwidth: int = None,
         address: str = None,
         slave_zone_id: str = None,
         master_zone_id: str = None,
-        modification_protection_reason: str = None,
+        internet_charge_type_alias: str = None,
+        load_balancer_spec: str = None,
         region_id: str = None,
+        modification_protection_reason: str = None,
         modification_protection_status: str = None,
         v_switch_id: str = None,
         load_balancer_status: str = None,
         resource_group_id: str = None,
         internet_charge_type: str = None,
+        delete_protection: str = None,
         region_id_alias: str = None,
     ):
         self.vpc_id = vpc_id
@@ -8209,16 +9106,20 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         self.network_type = network_type
         self.address_ipversion = address_ipversion
         self.load_balancer_name = load_balancer_name
+        self.bandwidth = bandwidth
         self.address = address
         self.slave_zone_id = slave_zone_id
         self.master_zone_id = master_zone_id
-        self.modification_protection_reason = modification_protection_reason
+        self.internet_charge_type_alias = internet_charge_type_alias
+        self.load_balancer_spec = load_balancer_spec
         self.region_id = region_id
+        self.modification_protection_reason = modification_protection_reason
         self.modification_protection_status = modification_protection_status
         self.v_switch_id = v_switch_id
         self.load_balancer_status = load_balancer_status
         self.resource_group_id = resource_group_id
         self.internet_charge_type = internet_charge_type
+        self.delete_protection = delete_protection
         self.region_id_alias = region_id_alias
 
     def validate(self):
@@ -8248,16 +9149,22 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             result['AddressIPVersion'] = self.address_ipversion
         if self.load_balancer_name is not None:
             result['LoadBalancerName'] = self.load_balancer_name
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.address is not None:
             result['Address'] = self.address
         if self.slave_zone_id is not None:
             result['SlaveZoneId'] = self.slave_zone_id
         if self.master_zone_id is not None:
             result['MasterZoneId'] = self.master_zone_id
-        if self.modification_protection_reason is not None:
-            result['ModificationProtectionReason'] = self.modification_protection_reason
+        if self.internet_charge_type_alias is not None:
+            result['InternetChargeTypeAlias'] = self.internet_charge_type_alias
+        if self.load_balancer_spec is not None:
+            result['LoadBalancerSpec'] = self.load_balancer_spec
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.modification_protection_reason is not None:
+            result['ModificationProtectionReason'] = self.modification_protection_reason
         if self.modification_protection_status is not None:
             result['ModificationProtectionStatus'] = self.modification_protection_status
         if self.v_switch_id is not None:
@@ -8268,6 +9175,8 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
+        if self.delete_protection is not None:
+            result['DeleteProtection'] = self.delete_protection
         if self.region_id_alias is not None:
             result['RegionIdAlias'] = self.region_id_alias
         return result
@@ -8292,16 +9201,22 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             self.address_ipversion = m.get('AddressIPVersion')
         if m.get('LoadBalancerName') is not None:
             self.load_balancer_name = m.get('LoadBalancerName')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('Address') is not None:
             self.address = m.get('Address')
         if m.get('SlaveZoneId') is not None:
             self.slave_zone_id = m.get('SlaveZoneId')
         if m.get('MasterZoneId') is not None:
             self.master_zone_id = m.get('MasterZoneId')
-        if m.get('ModificationProtectionReason') is not None:
-            self.modification_protection_reason = m.get('ModificationProtectionReason')
+        if m.get('InternetChargeTypeAlias') is not None:
+            self.internet_charge_type_alias = m.get('InternetChargeTypeAlias')
+        if m.get('LoadBalancerSpec') is not None:
+            self.load_balancer_spec = m.get('LoadBalancerSpec')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ModificationProtectionReason') is not None:
+            self.modification_protection_reason = m.get('ModificationProtectionReason')
         if m.get('ModificationProtectionStatus') is not None:
             self.modification_protection_status = m.get('ModificationProtectionStatus')
         if m.get('VSwitchId') is not None:
@@ -8312,6 +9227,8 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('DeleteProtection') is not None:
+            self.delete_protection = m.get('DeleteProtection')
         if m.get('RegionIdAlias') is not None:
             self.region_id_alias = m.get('RegionIdAlias')
         return self
@@ -8355,16 +9272,16 @@ class DescribeLoadBalancersResponseBodyLoadBalancers(TeaModel):
 class DescribeLoadBalancersResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
-        page_size: int = None,
         page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
         load_balancers: DescribeLoadBalancersResponseBodyLoadBalancers = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
-        self.page_size = page_size
         self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
         self.load_balancers = load_balancers
 
     def validate(self):
@@ -8377,28 +9294,28 @@ class DescribeLoadBalancersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.load_balancers is not None:
             result['LoadBalancers'] = self.load_balancers.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('LoadBalancers') is not None:
             temp_model = DescribeLoadBalancersResponseBodyLoadBalancers()
             self.load_balancers = temp_model.from_map(m['LoadBalancers'])
@@ -8509,62 +9426,62 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
         vserver_group_id: str = None,
-        description: str = None,
-        syn_proxy: str = None,
-        unhealthy_threshold: int = None,
-        health_check_uri: str = None,
-        scheduler: str = None,
-        health_check: str = None,
-        backend_server_port: int = None,
-        connection_drain_timeout: int = None,
-        persistence_timeout: int = None,
-        health_check_connect_port: int = None,
-        health_check_method: str = None,
-        bandwidth: int = None,
-        health_check_http_code: str = None,
-        established_timeout: int = None,
         status: str = None,
+        acl_type: str = None,
+        connection_drain_timeout: int = None,
+        request_id: str = None,
+        health_check_connect_port: int = None,
+        description: str = None,
+        bandwidth: int = None,
+        health_check_type: str = None,
+        master_slave_server_group_id: str = None,
+        backend_server_port: int = None,
+        acl_status: str = None,
+        health_check_domain: str = None,
+        unhealthy_threshold: int = None,
+        health_check_http_code: str = None,
+        persistence_timeout: int = None,
         listener_port: int = None,
         health_check_interval: int = None,
-        request_id: str = None,
+        health_check_uri: str = None,
         acl_id: str = None,
+        syn_proxy: str = None,
+        scheduler: str = None,
+        established_timeout: int = None,
         health_check_connect_timeout: int = None,
-        connection_drain: str = None,
-        acl_status: str = None,
         healthy_threshold: int = None,
-        master_slave_server_group_id: str = None,
-        health_check_domain: str = None,
-        acl_type: str = None,
-        health_check_type: str = None,
+        connection_drain: str = None,
+        health_check_method: str = None,
+        health_check: str = None,
     ):
         self.vserver_group_id = vserver_group_id
-        self.description = description
-        self.syn_proxy = syn_proxy
-        self.unhealthy_threshold = unhealthy_threshold
-        self.health_check_uri = health_check_uri
-        self.scheduler = scheduler
-        self.health_check = health_check
-        self.backend_server_port = backend_server_port
-        self.connection_drain_timeout = connection_drain_timeout
-        self.persistence_timeout = persistence_timeout
-        self.health_check_connect_port = health_check_connect_port
-        self.health_check_method = health_check_method
-        self.bandwidth = bandwidth
-        self.health_check_http_code = health_check_http_code
-        self.established_timeout = established_timeout
         self.status = status
+        self.acl_type = acl_type
+        self.connection_drain_timeout = connection_drain_timeout
+        self.request_id = request_id
+        self.health_check_connect_port = health_check_connect_port
+        self.description = description
+        self.bandwidth = bandwidth
+        self.health_check_type = health_check_type
+        self.master_slave_server_group_id = master_slave_server_group_id
+        self.backend_server_port = backend_server_port
+        self.acl_status = acl_status
+        self.health_check_domain = health_check_domain
+        self.unhealthy_threshold = unhealthy_threshold
+        self.health_check_http_code = health_check_http_code
+        self.persistence_timeout = persistence_timeout
         self.listener_port = listener_port
         self.health_check_interval = health_check_interval
-        self.request_id = request_id
+        self.health_check_uri = health_check_uri
         self.acl_id = acl_id
+        self.syn_proxy = syn_proxy
+        self.scheduler = scheduler
+        self.established_timeout = established_timeout
         self.health_check_connect_timeout = health_check_connect_timeout
-        self.connection_drain = connection_drain
-        self.acl_status = acl_status
         self.healthy_threshold = healthy_threshold
-        self.master_slave_server_group_id = master_slave_server_group_id
-        self.health_check_domain = health_check_domain
-        self.acl_type = acl_type
-        self.health_check_type = health_check_type
+        self.connection_drain = connection_drain
+        self.health_check_method = health_check_method
+        self.health_check = health_check
 
     def validate(self):
         pass
@@ -8577,120 +9494,120 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.syn_proxy is not None:
-            result['SynProxy'] = self.syn_proxy
-        if self.unhealthy_threshold is not None:
-            result['UnhealthyThreshold'] = self.unhealthy_threshold
-        if self.health_check_uri is not None:
-            result['HealthCheckURI'] = self.health_check_uri
-        if self.scheduler is not None:
-            result['Scheduler'] = self.scheduler
-        if self.health_check is not None:
-            result['HealthCheck'] = self.health_check
-        if self.backend_server_port is not None:
-            result['BackendServerPort'] = self.backend_server_port
-        if self.connection_drain_timeout is not None:
-            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
-        if self.persistence_timeout is not None:
-            result['PersistenceTimeout'] = self.persistence_timeout
-        if self.health_check_connect_port is not None:
-            result['HealthCheckConnectPort'] = self.health_check_connect_port
-        if self.health_check_method is not None:
-            result['HealthCheckMethod'] = self.health_check_method
-        if self.bandwidth is not None:
-            result['Bandwidth'] = self.bandwidth
-        if self.health_check_http_code is not None:
-            result['HealthCheckHttpCode'] = self.health_check_http_code
-        if self.established_timeout is not None:
-            result['EstablishedTimeout'] = self.established_timeout
         if self.status is not None:
             result['Status'] = self.status
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
+        if self.connection_drain_timeout is not None:
+            result['ConnectionDrainTimeout'] = self.connection_drain_timeout
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.health_check_type is not None:
+            result['HealthCheckType'] = self.health_check_type
+        if self.master_slave_server_group_id is not None:
+            result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
+        if self.acl_status is not None:
+            result['AclStatus'] = self.acl_status
+        if self.health_check_domain is not None:
+            result['HealthCheckDomain'] = self.health_check_domain
+        if self.unhealthy_threshold is not None:
+            result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.health_check_http_code is not None:
+            result['HealthCheckHttpCode'] = self.health_check_http_code
+        if self.persistence_timeout is not None:
+            result['PersistenceTimeout'] = self.persistence_timeout
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
         if self.health_check_interval is not None:
             result['HealthCheckInterval'] = self.health_check_interval
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.health_check_uri is not None:
+            result['HealthCheckURI'] = self.health_check_uri
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.syn_proxy is not None:
+            result['SynProxy'] = self.syn_proxy
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
+        if self.established_timeout is not None:
+            result['EstablishedTimeout'] = self.established_timeout
         if self.health_check_connect_timeout is not None:
             result['HealthCheckConnectTimeout'] = self.health_check_connect_timeout
-        if self.connection_drain is not None:
-            result['ConnectionDrain'] = self.connection_drain
-        if self.acl_status is not None:
-            result['AclStatus'] = self.acl_status
         if self.healthy_threshold is not None:
             result['HealthyThreshold'] = self.healthy_threshold
-        if self.master_slave_server_group_id is not None:
-            result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
-        if self.health_check_domain is not None:
-            result['HealthCheckDomain'] = self.health_check_domain
-        if self.acl_type is not None:
-            result['AclType'] = self.acl_type
-        if self.health_check_type is not None:
-            result['HealthCheckType'] = self.health_check_type
+        if self.connection_drain is not None:
+            result['ConnectionDrain'] = self.connection_drain
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('SynProxy') is not None:
-            self.syn_proxy = m.get('SynProxy')
-        if m.get('UnhealthyThreshold') is not None:
-            self.unhealthy_threshold = m.get('UnhealthyThreshold')
-        if m.get('HealthCheckURI') is not None:
-            self.health_check_uri = m.get('HealthCheckURI')
-        if m.get('Scheduler') is not None:
-            self.scheduler = m.get('Scheduler')
-        if m.get('HealthCheck') is not None:
-            self.health_check = m.get('HealthCheck')
-        if m.get('BackendServerPort') is not None:
-            self.backend_server_port = m.get('BackendServerPort')
-        if m.get('ConnectionDrainTimeout') is not None:
-            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
-        if m.get('PersistenceTimeout') is not None:
-            self.persistence_timeout = m.get('PersistenceTimeout')
-        if m.get('HealthCheckConnectPort') is not None:
-            self.health_check_connect_port = m.get('HealthCheckConnectPort')
-        if m.get('HealthCheckMethod') is not None:
-            self.health_check_method = m.get('HealthCheckMethod')
-        if m.get('Bandwidth') is not None:
-            self.bandwidth = m.get('Bandwidth')
-        if m.get('HealthCheckHttpCode') is not None:
-            self.health_check_http_code = m.get('HealthCheckHttpCode')
-        if m.get('EstablishedTimeout') is not None:
-            self.established_timeout = m.get('EstablishedTimeout')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
+        if m.get('ConnectionDrainTimeout') is not None:
+            self.connection_drain_timeout = m.get('ConnectionDrainTimeout')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('HealthCheckType') is not None:
+            self.health_check_type = m.get('HealthCheckType')
+        if m.get('MasterSlaveServerGroupId') is not None:
+            self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
+        if m.get('AclStatus') is not None:
+            self.acl_status = m.get('AclStatus')
+        if m.get('HealthCheckDomain') is not None:
+            self.health_check_domain = m.get('HealthCheckDomain')
+        if m.get('UnhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('HealthCheckHttpCode') is not None:
+            self.health_check_http_code = m.get('HealthCheckHttpCode')
+        if m.get('PersistenceTimeout') is not None:
+            self.persistence_timeout = m.get('PersistenceTimeout')
         if m.get('ListenerPort') is not None:
             self.listener_port = m.get('ListenerPort')
         if m.get('HealthCheckInterval') is not None:
             self.health_check_interval = m.get('HealthCheckInterval')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('HealthCheckURI') is not None:
+            self.health_check_uri = m.get('HealthCheckURI')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('SynProxy') is not None:
+            self.syn_proxy = m.get('SynProxy')
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
+        if m.get('EstablishedTimeout') is not None:
+            self.established_timeout = m.get('EstablishedTimeout')
         if m.get('HealthCheckConnectTimeout') is not None:
             self.health_check_connect_timeout = m.get('HealthCheckConnectTimeout')
-        if m.get('ConnectionDrain') is not None:
-            self.connection_drain = m.get('ConnectionDrain')
-        if m.get('AclStatus') is not None:
-            self.acl_status = m.get('AclStatus')
         if m.get('HealthyThreshold') is not None:
             self.healthy_threshold = m.get('HealthyThreshold')
-        if m.get('MasterSlaveServerGroupId') is not None:
-            self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
-        if m.get('HealthCheckDomain') is not None:
-            self.health_check_domain = m.get('HealthCheckDomain')
-        if m.get('AclType') is not None:
-            self.acl_type = m.get('AclType')
-        if m.get('HealthCheckType') is not None:
-            self.health_check_type = m.get('HealthCheckType')
+        if m.get('ConnectionDrain') is not None:
+            self.connection_drain = m.get('ConnectionDrain')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
         return self
 
 
@@ -8798,46 +9715,46 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
         vserver_group_id: str = None,
-        description: str = None,
-        unhealthy_threshold: int = None,
-        scheduler: str = None,
-        health_check: str = None,
-        backend_server_port: int = None,
-        health_check_connect_port: int = None,
-        bandwidth: int = None,
         status: str = None,
+        acl_type: str = None,
+        request_id: str = None,
+        health_check_connect_port: int = None,
+        description: str = None,
+        bandwidth: int = None,
+        master_slave_server_group_id: str = None,
+        backend_server_port: int = None,
+        acl_status: str = None,
+        unhealthy_threshold: int = None,
         listener_port: int = None,
         health_check_interval: int = None,
-        request_id: str = None,
-        acl_id: str = None,
-        health_check_connect_timeout: int = None,
-        acl_status: str = None,
-        health_check_req: str = None,
         health_check_exp: str = None,
+        acl_id: str = None,
+        scheduler: str = None,
+        health_check_connect_timeout: int = None,
         healthy_threshold: int = None,
-        master_slave_server_group_id: str = None,
-        acl_type: str = None,
+        health_check_req: str = None,
+        health_check: str = None,
     ):
         self.vserver_group_id = vserver_group_id
-        self.description = description
-        self.unhealthy_threshold = unhealthy_threshold
-        self.scheduler = scheduler
-        self.health_check = health_check
-        self.backend_server_port = backend_server_port
-        self.health_check_connect_port = health_check_connect_port
-        self.bandwidth = bandwidth
         self.status = status
+        self.acl_type = acl_type
+        self.request_id = request_id
+        self.health_check_connect_port = health_check_connect_port
+        self.description = description
+        self.bandwidth = bandwidth
+        self.master_slave_server_group_id = master_slave_server_group_id
+        self.backend_server_port = backend_server_port
+        self.acl_status = acl_status
+        self.unhealthy_threshold = unhealthy_threshold
         self.listener_port = listener_port
         self.health_check_interval = health_check_interval
-        self.request_id = request_id
-        self.acl_id = acl_id
-        self.health_check_connect_timeout = health_check_connect_timeout
-        self.acl_status = acl_status
-        self.health_check_req = health_check_req
         self.health_check_exp = health_check_exp
+        self.acl_id = acl_id
+        self.scheduler = scheduler
+        self.health_check_connect_timeout = health_check_connect_timeout
         self.healthy_threshold = healthy_threshold
-        self.master_slave_server_group_id = master_slave_server_group_id
-        self.acl_type = acl_type
+        self.health_check_req = health_check_req
+        self.health_check = health_check
 
     def validate(self):
         pass
@@ -8850,88 +9767,88 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.unhealthy_threshold is not None:
-            result['UnhealthyThreshold'] = self.unhealthy_threshold
-        if self.scheduler is not None:
-            result['Scheduler'] = self.scheduler
-        if self.health_check is not None:
-            result['HealthCheck'] = self.health_check
-        if self.backend_server_port is not None:
-            result['BackendServerPort'] = self.backend_server_port
-        if self.health_check_connect_port is not None:
-            result['HealthCheckConnectPort'] = self.health_check_connect_port
-        if self.bandwidth is not None:
-            result['Bandwidth'] = self.bandwidth
         if self.status is not None:
             result['Status'] = self.status
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.master_slave_server_group_id is not None:
+            result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
+        if self.acl_status is not None:
+            result['AclStatus'] = self.acl_status
+        if self.unhealthy_threshold is not None:
+            result['UnhealthyThreshold'] = self.unhealthy_threshold
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
         if self.health_check_interval is not None:
             result['HealthCheckInterval'] = self.health_check_interval
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.acl_id is not None:
-            result['AclId'] = self.acl_id
-        if self.health_check_connect_timeout is not None:
-            result['HealthCheckConnectTimeout'] = self.health_check_connect_timeout
-        if self.acl_status is not None:
-            result['AclStatus'] = self.acl_status
-        if self.health_check_req is not None:
-            result['HealthCheckReq'] = self.health_check_req
         if self.health_check_exp is not None:
             result['HealthCheckExp'] = self.health_check_exp
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
+        if self.health_check_connect_timeout is not None:
+            result['HealthCheckConnectTimeout'] = self.health_check_connect_timeout
         if self.healthy_threshold is not None:
             result['HealthyThreshold'] = self.healthy_threshold
-        if self.master_slave_server_group_id is not None:
-            result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
-        if self.acl_type is not None:
-            result['AclType'] = self.acl_type
+        if self.health_check_req is not None:
+            result['HealthCheckReq'] = self.health_check_req
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('UnhealthyThreshold') is not None:
-            self.unhealthy_threshold = m.get('UnhealthyThreshold')
-        if m.get('Scheduler') is not None:
-            self.scheduler = m.get('Scheduler')
-        if m.get('HealthCheck') is not None:
-            self.health_check = m.get('HealthCheck')
-        if m.get('BackendServerPort') is not None:
-            self.backend_server_port = m.get('BackendServerPort')
-        if m.get('HealthCheckConnectPort') is not None:
-            self.health_check_connect_port = m.get('HealthCheckConnectPort')
-        if m.get('Bandwidth') is not None:
-            self.bandwidth = m.get('Bandwidth')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('MasterSlaveServerGroupId') is not None:
+            self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
+        if m.get('AclStatus') is not None:
+            self.acl_status = m.get('AclStatus')
+        if m.get('UnhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('UnhealthyThreshold')
         if m.get('ListenerPort') is not None:
             self.listener_port = m.get('ListenerPort')
         if m.get('HealthCheckInterval') is not None:
             self.health_check_interval = m.get('HealthCheckInterval')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('AclId') is not None:
-            self.acl_id = m.get('AclId')
-        if m.get('HealthCheckConnectTimeout') is not None:
-            self.health_check_connect_timeout = m.get('HealthCheckConnectTimeout')
-        if m.get('AclStatus') is not None:
-            self.acl_status = m.get('AclStatus')
-        if m.get('HealthCheckReq') is not None:
-            self.health_check_req = m.get('HealthCheckReq')
         if m.get('HealthCheckExp') is not None:
             self.health_check_exp = m.get('HealthCheckExp')
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
+        if m.get('HealthCheckConnectTimeout') is not None:
+            self.health_check_connect_timeout = m.get('HealthCheckConnectTimeout')
         if m.get('HealthyThreshold') is not None:
             self.healthy_threshold = m.get('HealthyThreshold')
-        if m.get('MasterSlaveServerGroupId') is not None:
-            self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
-        if m.get('AclType') is not None:
-            self.acl_type = m.get('AclType')
+        if m.get('HealthCheckReq') is not None:
+            self.health_check_req = m.get('HealthCheckReq')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
         return self
 
 
@@ -9125,15 +10042,15 @@ class DescribeMasterSlaveServerGroupAttributeResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        master_slave_server_group_id: str = None,
         load_balancer_id: str = None,
         master_slave_server_group_name: str = None,
+        master_slave_server_group_id: str = None,
         master_slave_backend_servers: DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers = None,
     ):
         self.request_id = request_id
-        self.master_slave_server_group_id = master_slave_server_group_id
         self.load_balancer_id = load_balancer_id
         self.master_slave_server_group_name = master_slave_server_group_name
+        self.master_slave_server_group_id = master_slave_server_group_id
         self.master_slave_backend_servers = master_slave_backend_servers
 
     def validate(self):
@@ -9148,12 +10065,12 @@ class DescribeMasterSlaveServerGroupAttributeResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.master_slave_server_group_id is not None:
-            result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.master_slave_server_group_name is not None:
             result['MasterSlaveServerGroupName'] = self.master_slave_server_group_name
+        if self.master_slave_server_group_id is not None:
+            result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
         if self.master_slave_backend_servers is not None:
             result['MasterSlaveBackendServers'] = self.master_slave_backend_servers.to_map()
         return result
@@ -9162,12 +10079,12 @@ class DescribeMasterSlaveServerGroupAttributeResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('MasterSlaveServerGroupId') is not None:
-            self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('MasterSlaveServerGroupName') is not None:
             self.master_slave_server_group_name = m.get('MasterSlaveServerGroupName')
+        if m.get('MasterSlaveServerGroupId') is not None:
+            self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
         if m.get('MasterSlaveBackendServers') is not None:
             temp_model = DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers()
             self.master_slave_backend_servers = temp_model.from_map(m['MasterSlaveBackendServers'])
@@ -9277,11 +10194,11 @@ class DescribeMasterSlaveServerGroupsRequest(TeaModel):
 class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener(TeaModel):
     def __init__(
         self,
-        protocol: str = None,
         port: int = None,
+        protocol: str = None,
     ):
-        self.protocol = protocol
         self.port = port
+        self.protocol = protocol
 
     def validate(self):
         pass
@@ -9292,18 +10209,18 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
             return _map
 
         result = dict()
-        if self.protocol is not None:
-            result['Protocol'] = self.protocol
         if self.port is not None:
             result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Protocol') is not None:
-            self.protocol = m.get('Protocol')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
         return self
 
 
@@ -9374,13 +10291,13 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
 class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup(TeaModel):
     def __init__(
         self,
+        master_slave_server_group_name: str = None,
         master_slave_server_group_id: str = None,
         associated_objects: DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects = None,
-        master_slave_server_group_name: str = None,
     ):
+        self.master_slave_server_group_name = master_slave_server_group_name
         self.master_slave_server_group_id = master_slave_server_group_id
         self.associated_objects = associated_objects
-        self.master_slave_server_group_name = master_slave_server_group_name
 
     def validate(self):
         if self.associated_objects:
@@ -9392,23 +10309,23 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
             return _map
 
         result = dict()
+        if self.master_slave_server_group_name is not None:
+            result['MasterSlaveServerGroupName'] = self.master_slave_server_group_name
         if self.master_slave_server_group_id is not None:
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
         if self.associated_objects is not None:
             result['AssociatedObjects'] = self.associated_objects.to_map()
-        if self.master_slave_server_group_name is not None:
-            result['MasterSlaveServerGroupName'] = self.master_slave_server_group_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MasterSlaveServerGroupName') is not None:
+            self.master_slave_server_group_name = m.get('MasterSlaveServerGroupName')
         if m.get('MasterSlaveServerGroupId') is not None:
             self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
         if m.get('AssociatedObjects') is not None:
             temp_model = DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects()
             self.associated_objects = temp_model.from_map(m['AssociatedObjects'])
-        if m.get('MasterSlaveServerGroupName') is not None:
-            self.master_slave_server_group_name = m.get('MasterSlaveServerGroupName')
         return self
 
 
@@ -9579,12 +10496,12 @@ class DescribeRegionsRequest(TeaModel):
 class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
     def __init__(
         self,
-        local_name: str = None,
         region_endpoint: str = None,
+        local_name: str = None,
         region_id: str = None,
     ):
-        self.local_name = local_name
         self.region_endpoint = region_endpoint
+        self.local_name = local_name
         self.region_id = region_id
 
     def validate(self):
@@ -9596,20 +10513,20 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
             return _map
 
         result = dict()
-        if self.local_name is not None:
-            result['LocalName'] = self.local_name
         if self.region_endpoint is not None:
             result['RegionEndpoint'] = self.region_endpoint
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LocalName') is not None:
-            self.local_name = m.get('LocalName')
         if m.get('RegionEndpoint') is not None:
             self.region_endpoint = m.get('RegionEndpoint')
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -9782,53 +10699,53 @@ class DescribeRuleAttributeRequest(TeaModel):
 class DescribeRuleAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        cookie: str = None,
-        cookie_timeout: int = None,
+        health_check_http_code: str = None,
         vserver_group_id: str = None,
+        domain: str = None,
+        cookie: str = None,
+        load_balancer_id: str = None,
         listener_port: str = None,
         health_check_interval: int = None,
-        request_id: str = None,
-        unhealthy_threshold: int = None,
-        health_check_uri: str = None,
-        scheduler: str = None,
-        rule_id: str = None,
-        health_check: str = None,
-        load_balancer_id: str = None,
-        health_check_timeout: int = None,
         url: str = None,
-        sticky_session: str = None,
-        health_check_connect_port: int = None,
-        healthy_threshold: int = None,
-        listener_sync: str = None,
-        health_check_domain: str = None,
+        health_check_uri: str = None,
         sticky_session_type: str = None,
-        domain: str = None,
-        health_check_http_code: str = None,
         rule_name: str = None,
+        rule_id: str = None,
+        health_check_connect_port: int = None,
+        scheduler: str = None,
+        request_id: str = None,
+        health_check_timeout: int = None,
+        listener_sync: str = None,
+        healthy_threshold: int = None,
+        cookie_timeout: int = None,
+        health_check_domain: str = None,
+        unhealthy_threshold: int = None,
+        sticky_session: str = None,
+        health_check: str = None,
     ):
-        self.cookie = cookie
-        self.cookie_timeout = cookie_timeout
+        self.health_check_http_code = health_check_http_code
         self.vserver_group_id = vserver_group_id
+        self.domain = domain
+        self.cookie = cookie
+        self.load_balancer_id = load_balancer_id
         self.listener_port = listener_port
         self.health_check_interval = health_check_interval
-        self.request_id = request_id
-        self.unhealthy_threshold = unhealthy_threshold
-        self.health_check_uri = health_check_uri
-        self.scheduler = scheduler
-        self.rule_id = rule_id
-        self.health_check = health_check
-        self.load_balancer_id = load_balancer_id
-        self.health_check_timeout = health_check_timeout
         self.url = url
-        self.sticky_session = sticky_session
-        self.health_check_connect_port = health_check_connect_port
-        self.healthy_threshold = healthy_threshold
-        self.listener_sync = listener_sync
-        self.health_check_domain = health_check_domain
+        self.health_check_uri = health_check_uri
         self.sticky_session_type = sticky_session_type
-        self.domain = domain
-        self.health_check_http_code = health_check_http_code
         self.rule_name = rule_name
+        self.rule_id = rule_id
+        self.health_check_connect_port = health_check_connect_port
+        self.scheduler = scheduler
+        self.request_id = request_id
+        self.health_check_timeout = health_check_timeout
+        self.listener_sync = listener_sync
+        self.healthy_threshold = healthy_threshold
+        self.cookie_timeout = cookie_timeout
+        self.health_check_domain = health_check_domain
+        self.unhealthy_threshold = unhealthy_threshold
+        self.sticky_session = sticky_session
+        self.health_check = health_check
 
     def validate(self):
         pass
@@ -9839,102 +10756,102 @@ class DescribeRuleAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.cookie is not None:
-            result['Cookie'] = self.cookie
-        if self.cookie_timeout is not None:
-            result['CookieTimeout'] = self.cookie_timeout
+        if self.health_check_http_code is not None:
+            result['HealthCheckHttpCode'] = self.health_check_http_code
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.cookie is not None:
+            result['Cookie'] = self.cookie
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
         if self.health_check_interval is not None:
             result['HealthCheckInterval'] = self.health_check_interval
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.unhealthy_threshold is not None:
-            result['UnhealthyThreshold'] = self.unhealthy_threshold
-        if self.health_check_uri is not None:
-            result['HealthCheckURI'] = self.health_check_uri
-        if self.scheduler is not None:
-            result['Scheduler'] = self.scheduler
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
-        if self.health_check is not None:
-            result['HealthCheck'] = self.health_check
-        if self.load_balancer_id is not None:
-            result['LoadBalancerId'] = self.load_balancer_id
-        if self.health_check_timeout is not None:
-            result['HealthCheckTimeout'] = self.health_check_timeout
         if self.url is not None:
             result['Url'] = self.url
-        if self.sticky_session is not None:
-            result['StickySession'] = self.sticky_session
-        if self.health_check_connect_port is not None:
-            result['HealthCheckConnectPort'] = self.health_check_connect_port
-        if self.healthy_threshold is not None:
-            result['HealthyThreshold'] = self.healthy_threshold
-        if self.listener_sync is not None:
-            result['ListenerSync'] = self.listener_sync
-        if self.health_check_domain is not None:
-            result['HealthCheckDomain'] = self.health_check_domain
+        if self.health_check_uri is not None:
+            result['HealthCheckURI'] = self.health_check_uri
         if self.sticky_session_type is not None:
             result['StickySessionType'] = self.sticky_session_type
-        if self.domain is not None:
-            result['Domain'] = self.domain
-        if self.health_check_http_code is not None:
-            result['HealthCheckHttpCode'] = self.health_check_http_code
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.health_check_timeout is not None:
+            result['HealthCheckTimeout'] = self.health_check_timeout
+        if self.listener_sync is not None:
+            result['ListenerSync'] = self.listener_sync
+        if self.healthy_threshold is not None:
+            result['HealthyThreshold'] = self.healthy_threshold
+        if self.cookie_timeout is not None:
+            result['CookieTimeout'] = self.cookie_timeout
+        if self.health_check_domain is not None:
+            result['HealthCheckDomain'] = self.health_check_domain
+        if self.unhealthy_threshold is not None:
+            result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.sticky_session is not None:
+            result['StickySession'] = self.sticky_session
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Cookie') is not None:
-            self.cookie = m.get('Cookie')
-        if m.get('CookieTimeout') is not None:
-            self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('HealthCheckHttpCode') is not None:
+            self.health_check_http_code = m.get('HealthCheckHttpCode')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Cookie') is not None:
+            self.cookie = m.get('Cookie')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('ListenerPort') is not None:
             self.listener_port = m.get('ListenerPort')
         if m.get('HealthCheckInterval') is not None:
             self.health_check_interval = m.get('HealthCheckInterval')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('UnhealthyThreshold') is not None:
-            self.unhealthy_threshold = m.get('UnhealthyThreshold')
-        if m.get('HealthCheckURI') is not None:
-            self.health_check_uri = m.get('HealthCheckURI')
-        if m.get('Scheduler') is not None:
-            self.scheduler = m.get('Scheduler')
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
-        if m.get('HealthCheck') is not None:
-            self.health_check = m.get('HealthCheck')
-        if m.get('LoadBalancerId') is not None:
-            self.load_balancer_id = m.get('LoadBalancerId')
-        if m.get('HealthCheckTimeout') is not None:
-            self.health_check_timeout = m.get('HealthCheckTimeout')
         if m.get('Url') is not None:
             self.url = m.get('Url')
-        if m.get('StickySession') is not None:
-            self.sticky_session = m.get('StickySession')
-        if m.get('HealthCheckConnectPort') is not None:
-            self.health_check_connect_port = m.get('HealthCheckConnectPort')
-        if m.get('HealthyThreshold') is not None:
-            self.healthy_threshold = m.get('HealthyThreshold')
-        if m.get('ListenerSync') is not None:
-            self.listener_sync = m.get('ListenerSync')
-        if m.get('HealthCheckDomain') is not None:
-            self.health_check_domain = m.get('HealthCheckDomain')
+        if m.get('HealthCheckURI') is not None:
+            self.health_check_uri = m.get('HealthCheckURI')
         if m.get('StickySessionType') is not None:
             self.sticky_session_type = m.get('StickySessionType')
-        if m.get('Domain') is not None:
-            self.domain = m.get('Domain')
-        if m.get('HealthCheckHttpCode') is not None:
-            self.health_check_http_code = m.get('HealthCheckHttpCode')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('HealthCheckTimeout') is not None:
+            self.health_check_timeout = m.get('HealthCheckTimeout')
+        if m.get('ListenerSync') is not None:
+            self.listener_sync = m.get('ListenerSync')
+        if m.get('HealthyThreshold') is not None:
+            self.healthy_threshold = m.get('HealthyThreshold')
+        if m.get('CookieTimeout') is not None:
+            self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('HealthCheckDomain') is not None:
+            self.health_check_domain = m.get('HealthCheckDomain')
+        if m.get('UnhealthyThreshold') is not None:
+            self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('StickySession') is not None:
+            self.sticky_session = m.get('StickySession')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
         return self
 
 
@@ -10047,18 +10964,18 @@ class DescribeRulesRequest(TeaModel):
 class DescribeRulesResponseBodyRulesRule(TeaModel):
     def __init__(
         self,
-        vserver_group_id: str = None,
         health_check_http_code: str = None,
+        vserver_group_id: str = None,
         domain: str = None,
         cookie: str = None,
-        url: str = None,
         health_check_interval: int = None,
+        url: str = None,
         health_check_uri: str = None,
-        rule_id: str = None,
-        rule_name: str = None,
         sticky_session_type: str = None,
-        scheduler: str = None,
+        rule_name: str = None,
+        rule_id: str = None,
         health_check_connect_port: int = None,
+        scheduler: str = None,
         health_check_timeout: int = None,
         listener_sync: str = None,
         healthy_threshold: int = None,
@@ -10068,18 +10985,18 @@ class DescribeRulesResponseBodyRulesRule(TeaModel):
         sticky_session: str = None,
         health_check: str = None,
     ):
-        self.vserver_group_id = vserver_group_id
         self.health_check_http_code = health_check_http_code
+        self.vserver_group_id = vserver_group_id
         self.domain = domain
         self.cookie = cookie
-        self.url = url
         self.health_check_interval = health_check_interval
+        self.url = url
         self.health_check_uri = health_check_uri
-        self.rule_id = rule_id
-        self.rule_name = rule_name
         self.sticky_session_type = sticky_session_type
-        self.scheduler = scheduler
+        self.rule_name = rule_name
+        self.rule_id = rule_id
         self.health_check_connect_port = health_check_connect_port
+        self.scheduler = scheduler
         self.health_check_timeout = health_check_timeout
         self.listener_sync = listener_sync
         self.healthy_threshold = healthy_threshold
@@ -10098,30 +11015,30 @@ class DescribeRulesResponseBodyRulesRule(TeaModel):
             return _map
 
         result = dict()
-        if self.vserver_group_id is not None:
-            result['VServerGroupId'] = self.vserver_group_id
         if self.health_check_http_code is not None:
             result['HealthCheckHttpCode'] = self.health_check_http_code
+        if self.vserver_group_id is not None:
+            result['VServerGroupId'] = self.vserver_group_id
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.cookie is not None:
             result['Cookie'] = self.cookie
-        if self.url is not None:
-            result['Url'] = self.url
         if self.health_check_interval is not None:
             result['HealthCheckInterval'] = self.health_check_interval
+        if self.url is not None:
+            result['Url'] = self.url
         if self.health_check_uri is not None:
             result['HealthCheckURI'] = self.health_check_uri
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
-        if self.rule_name is not None:
-            result['RuleName'] = self.rule_name
         if self.sticky_session_type is not None:
             result['StickySessionType'] = self.sticky_session_type
-        if self.scheduler is not None:
-            result['Scheduler'] = self.scheduler
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
         if self.health_check_timeout is not None:
             result['HealthCheckTimeout'] = self.health_check_timeout
         if self.listener_sync is not None:
@@ -10142,30 +11059,30 @@ class DescribeRulesResponseBodyRulesRule(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VServerGroupId') is not None:
-            self.vserver_group_id = m.get('VServerGroupId')
         if m.get('HealthCheckHttpCode') is not None:
             self.health_check_http_code = m.get('HealthCheckHttpCode')
+        if m.get('VServerGroupId') is not None:
+            self.vserver_group_id = m.get('VServerGroupId')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('Cookie') is not None:
             self.cookie = m.get('Cookie')
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
         if m.get('HealthCheckInterval') is not None:
             self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         if m.get('HealthCheckURI') is not None:
             self.health_check_uri = m.get('HealthCheckURI')
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
-        if m.get('RuleName') is not None:
-            self.rule_name = m.get('RuleName')
         if m.get('StickySessionType') is not None:
             self.sticky_session_type = m.get('StickySessionType')
-        if m.get('Scheduler') is not None:
-            self.scheduler = m.get('Scheduler')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
         if m.get('HealthCheckTimeout') is not None:
             self.health_check_timeout = m.get('HealthCheckTimeout')
         if m.get('ListenerSync') is not None:
@@ -10385,8 +11302,8 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateS
 class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(TeaModel):
     def __init__(
         self,
-        ali_cloud_certificate_name: str = None,
         create_time_stamp: int = None,
+        ali_cloud_certificate_name: str = None,
         expire_time: str = None,
         create_time: str = None,
         server_certificate_id: str = None,
@@ -10394,14 +11311,14 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
         region_id: str = None,
         server_certificate_name: str = None,
         fingerprint: str = None,
-        subject_alternative_names: DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames = None,
         common_name: str = None,
         resource_group_id: str = None,
         is_ali_cloud_certificate: int = None,
         ali_cloud_certificate_id: str = None,
+        subject_alternative_names: DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames = None,
     ):
-        self.ali_cloud_certificate_name = ali_cloud_certificate_name
         self.create_time_stamp = create_time_stamp
+        self.ali_cloud_certificate_name = ali_cloud_certificate_name
         self.expire_time = expire_time
         self.create_time = create_time
         self.server_certificate_id = server_certificate_id
@@ -10409,11 +11326,11 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
         self.region_id = region_id
         self.server_certificate_name = server_certificate_name
         self.fingerprint = fingerprint
-        self.subject_alternative_names = subject_alternative_names
         self.common_name = common_name
         self.resource_group_id = resource_group_id
         self.is_ali_cloud_certificate = is_ali_cloud_certificate
         self.ali_cloud_certificate_id = ali_cloud_certificate_id
+        self.subject_alternative_names = subject_alternative_names
 
     def validate(self):
         if self.subject_alternative_names:
@@ -10425,10 +11342,10 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
             return _map
 
         result = dict()
-        if self.ali_cloud_certificate_name is not None:
-            result['AliCloudCertificateName'] = self.ali_cloud_certificate_name
         if self.create_time_stamp is not None:
             result['CreateTimeStamp'] = self.create_time_stamp
+        if self.ali_cloud_certificate_name is not None:
+            result['AliCloudCertificateName'] = self.ali_cloud_certificate_name
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.create_time is not None:
@@ -10443,8 +11360,6 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
             result['ServerCertificateName'] = self.server_certificate_name
         if self.fingerprint is not None:
             result['Fingerprint'] = self.fingerprint
-        if self.subject_alternative_names is not None:
-            result['SubjectAlternativeNames'] = self.subject_alternative_names.to_map()
         if self.common_name is not None:
             result['CommonName'] = self.common_name
         if self.resource_group_id is not None:
@@ -10453,14 +11368,16 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
             result['IsAliCloudCertificate'] = self.is_ali_cloud_certificate
         if self.ali_cloud_certificate_id is not None:
             result['AliCloudCertificateId'] = self.ali_cloud_certificate_id
+        if self.subject_alternative_names is not None:
+            result['SubjectAlternativeNames'] = self.subject_alternative_names.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AliCloudCertificateName') is not None:
-            self.ali_cloud_certificate_name = m.get('AliCloudCertificateName')
         if m.get('CreateTimeStamp') is not None:
             self.create_time_stamp = m.get('CreateTimeStamp')
+        if m.get('AliCloudCertificateName') is not None:
+            self.ali_cloud_certificate_name = m.get('AliCloudCertificateName')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('CreateTime') is not None:
@@ -10475,9 +11392,6 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
             self.server_certificate_name = m.get('ServerCertificateName')
         if m.get('Fingerprint') is not None:
             self.fingerprint = m.get('Fingerprint')
-        if m.get('SubjectAlternativeNames') is not None:
-            temp_model = DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames()
-            self.subject_alternative_names = temp_model.from_map(m['SubjectAlternativeNames'])
         if m.get('CommonName') is not None:
             self.common_name = m.get('CommonName')
         if m.get('ResourceGroupId') is not None:
@@ -10486,6 +11400,9 @@ class DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate(
             self.is_ali_cloud_certificate = m.get('IsAliCloudCertificate')
         if m.get('AliCloudCertificateId') is not None:
             self.ali_cloud_certificate_id = m.get('AliCloudCertificateId')
+        if m.get('SubjectAlternativeNames') is not None:
+            temp_model = DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames()
+            self.subject_alternative_names = temp_model.from_map(m['SubjectAlternativeNames'])
         return self
 
 
@@ -10680,12 +11597,12 @@ class DescribeTagsRequest(TeaModel):
 class DescribeTagsResponseBodyTagSetsTagSet(TeaModel):
     def __init__(
         self,
-        instance_count: int = None,
         tag_value: str = None,
+        instance_count: int = None,
         tag_key: str = None,
     ):
-        self.instance_count = instance_count
         self.tag_value = tag_value
+        self.instance_count = instance_count
         self.tag_key = tag_key
 
     def validate(self):
@@ -10697,20 +11614,20 @@ class DescribeTagsResponseBodyTagSetsTagSet(TeaModel):
             return _map
 
         result = dict()
-        if self.instance_count is not None:
-            result['InstanceCount'] = self.instance_count
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
+        if self.instance_count is not None:
+            result['InstanceCount'] = self.instance_count
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('InstanceCount') is not None:
-            self.instance_count = m.get('InstanceCount')
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+        if m.get('InstanceCount') is not None:
+            self.instance_count = m.get('InstanceCount')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
         return self
@@ -10754,16 +11671,16 @@ class DescribeTagsResponseBodyTagSets(TeaModel):
 class DescribeTagsResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
         page_size: int = None,
         page_number: int = None,
+        total_count: int = None,
         tag_sets: DescribeTagsResponseBodyTagSets = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
         self.page_size = page_size
         self.page_number = page_number
+        self.total_count = total_count
         self.tag_sets = tag_sets
 
     def validate(self):
@@ -10776,28 +11693,28 @@ class DescribeTagsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.tag_sets is not None:
             result['TagSets'] = self.tag_sets.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('TagSets') is not None:
             temp_model = DescribeTagsResponseBodyTagSets()
             self.tag_sets = temp_model.from_map(m['TagSets'])
@@ -10988,14 +11905,14 @@ class DescribeVServerGroupAttributeResponseBody(TeaModel):
     def __init__(
         self,
         vserver_group_id: str = None,
-        request_id: str = None,
         vserver_group_name: str = None,
+        request_id: str = None,
         load_balancer_id: str = None,
         backend_servers: DescribeVServerGroupAttributeResponseBodyBackendServers = None,
     ):
         self.vserver_group_id = vserver_group_id
-        self.request_id = request_id
         self.vserver_group_name = vserver_group_name
+        self.request_id = request_id
         self.load_balancer_id = load_balancer_id
         self.backend_servers = backend_servers
 
@@ -11011,10 +11928,10 @@ class DescribeVServerGroupAttributeResponseBody(TeaModel):
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.vserver_group_name is not None:
             result['VServerGroupName'] = self.vserver_group_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
         if self.backend_servers is not None:
@@ -11025,10 +11942,10 @@ class DescribeVServerGroupAttributeResponseBody(TeaModel):
         m = m or dict()
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('VServerGroupName') is not None:
             self.vserver_group_name = m.get('VServerGroupName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('BackendServers') is not None:
@@ -11146,11 +12063,11 @@ class DescribeVServerGroupsRequest(TeaModel):
 class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener(TeaModel):
     def __init__(
         self,
-        protocol: str = None,
         port: int = None,
+        protocol: str = None,
     ):
-        self.protocol = protocol
         self.port = port
+        self.protocol = protocol
 
     def validate(self):
         pass
@@ -11161,18 +12078,18 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
             return _map
 
         result = dict()
-        if self.protocol is not None:
-            result['Protocol'] = self.protocol
         if self.port is not None:
             result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Protocol') is not None:
-            self.protocol = m.get('Protocol')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
         return self
 
 
@@ -11214,13 +12131,13 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
 class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule(TeaModel):
     def __init__(
         self,
-        domain: str = None,
         url: str = None,
+        domain: str = None,
         rule_name: str = None,
         rule_id: str = None,
     ):
-        self.domain = domain
         self.url = url
+        self.domain = domain
         self.rule_name = rule_name
         self.rule_id = rule_id
 
@@ -11233,10 +12150,10 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
             return _map
 
         result = dict()
-        if self.domain is not None:
-            result['Domain'] = self.domain
         if self.url is not None:
             result['Url'] = self.url
+        if self.domain is not None:
+            result['Domain'] = self.domain
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.rule_id is not None:
@@ -11245,10 +12162,10 @@ class DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObject
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Domain') is not None:
-            self.domain = m.get('Domain')
         if m.get('Url') is not None:
             self.url = m.get('Url')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('RuleId') is not None:
@@ -11531,11 +12448,11 @@ class DescribeZonesRequest(TeaModel):
 class DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone(TeaModel):
     def __init__(
         self,
-        local_name: str = None,
         zone_id: str = None,
+        local_name: str = None,
     ):
-        self.local_name = local_name
         self.zone_id = zone_id
+        self.local_name = local_name
 
     def validate(self):
         pass
@@ -11546,18 +12463,18 @@ class DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone(TeaModel):
             return _map
 
         result = dict()
-        if self.local_name is not None:
-            result['LocalName'] = self.local_name
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LocalName') is not None:
-            self.local_name = m.get('LocalName')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
         return self
 
 
@@ -11599,12 +12516,12 @@ class DescribeZonesResponseBodyZonesZoneSlaveZones(TeaModel):
 class DescribeZonesResponseBodyZonesZone(TeaModel):
     def __init__(
         self,
-        local_name: str = None,
         zone_id: str = None,
+        local_name: str = None,
         slave_zones: DescribeZonesResponseBodyZonesZoneSlaveZones = None,
     ):
-        self.local_name = local_name
         self.zone_id = zone_id
+        self.local_name = local_name
         self.slave_zones = slave_zones
 
     def validate(self):
@@ -11617,20 +12534,20 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
             return _map
 
         result = dict()
-        if self.local_name is not None:
-            result['LocalName'] = self.local_name
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
         if self.slave_zones is not None:
             result['SlaveZones'] = self.slave_zones.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LocalName') is not None:
-            self.local_name = m.get('LocalName')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
         if m.get('SlaveZones') is not None:
             temp_model = DescribeZonesResponseBodyZonesZoneSlaveZones()
             self.slave_zones = temp_model.from_map(m['SlaveZones'])
@@ -11863,13 +12780,13 @@ class ListTagResourcesRequest(TeaModel):
 class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
     def __init__(
         self,
-        resource_type: str = None,
         tag_value: str = None,
+        resource_type: str = None,
         resource_id: str = None,
         tag_key: str = None,
     ):
-        self.resource_type = resource_type
         self.tag_value = tag_value
+        self.resource_type = resource_type
         self.resource_id = resource_id
         self.tag_key = tag_key
 
@@ -11882,10 +12799,10 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
             return _map
 
         result = dict()
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.tag_key is not None:
@@ -11894,10 +12811,10 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('TagKey') is not None:
@@ -12108,13 +13025,13 @@ class ListTLSCipherPoliciesRequest(TeaModel):
 class ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners(TeaModel):
     def __init__(
         self,
+        port: int = None,
         protocol: str = None,
         load_balancer_id: str = None,
-        port: int = None,
     ):
+        self.port = port
         self.protocol = protocol
         self.load_balancer_id = load_balancer_id
-        self.port = port
 
     def validate(self):
         pass
@@ -12125,22 +13042,22 @@ class ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners(TeaModel
             return _map
 
         result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
         if self.protocol is not None:
             result['Protocol'] = self.protocol
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
-        if self.port is not None:
-            result['Port'] = self.port
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
         return self
 
 
@@ -12148,20 +13065,20 @@ class ListTLSCipherPoliciesResponseBodyTLSCipherPolicies(TeaModel):
     def __init__(
         self,
         status: str = None,
-        relate_listeners: List[ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners] = None,
-        create_time: int = None,
-        ciphers: List[str] = None,
         instance_id: str = None,
         name: str = None,
+        create_time: int = None,
+        relate_listeners: List[ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners] = None,
         tlsversions: List[str] = None,
+        ciphers: List[str] = None,
     ):
         self.status = status
-        self.relate_listeners = relate_listeners
-        self.create_time = create_time
-        self.ciphers = ciphers
         self.instance_id = instance_id
         self.name = name
+        self.create_time = create_time
+        self.relate_listeners = relate_listeners
         self.tlsversions = tlsversions
+        self.ciphers = ciphers
 
     def validate(self):
         if self.relate_listeners:
@@ -12177,58 +13094,58 @@ class ListTLSCipherPoliciesResponseBodyTLSCipherPolicies(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        result['RelateListeners'] = []
-        if self.relate_listeners is not None:
-            for k in self.relate_listeners:
-                result['RelateListeners'].append(k.to_map() if k else None)
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.ciphers is not None:
-            result['Ciphers'] = self.ciphers
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['RelateListeners'] = []
+        if self.relate_listeners is not None:
+            for k in self.relate_listeners:
+                result['RelateListeners'].append(k.to_map() if k else None)
         if self.tlsversions is not None:
             result['TLSVersions'] = self.tlsversions
+        if self.ciphers is not None:
+            result['Ciphers'] = self.ciphers
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         self.relate_listeners = []
         if m.get('RelateListeners') is not None:
             for k in m.get('RelateListeners'):
                 temp_model = ListTLSCipherPoliciesResponseBodyTLSCipherPoliciesRelateListeners()
                 self.relate_listeners.append(temp_model.from_map(k))
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('Ciphers') is not None:
-            self.ciphers = m.get('Ciphers')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('TLSVersions') is not None:
             self.tlsversions = m.get('TLSVersions')
+        if m.get('Ciphers') is not None:
+            self.ciphers = m.get('Ciphers')
         return self
 
 
 class ListTLSCipherPoliciesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         next_token: str = None,
         request_id: str = None,
-        tlscipher_policies: List[ListTLSCipherPoliciesResponseBodyTLSCipherPolicies] = None,
+        total_count: int = None,
         is_truncated: bool = None,
+        tlscipher_policies: List[ListTLSCipherPoliciesResponseBodyTLSCipherPolicies] = None,
     ):
-        self.total_count = total_count
         self.next_token = next_token
         self.request_id = request_id
-        self.tlscipher_policies = tlscipher_policies
+        self.total_count = total_count
         self.is_truncated = is_truncated
+        self.tlscipher_policies = tlscipher_policies
 
     def validate(self):
         if self.tlscipher_policies:
@@ -12242,35 +13159,35 @@ class ListTLSCipherPoliciesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.is_truncated is not None:
+            result['IsTruncated'] = self.is_truncated
         result['TLSCipherPolicies'] = []
         if self.tlscipher_policies is not None:
             for k in self.tlscipher_policies:
                 result['TLSCipherPolicies'].append(k.to_map() if k else None)
-        if self.is_truncated is not None:
-            result['IsTruncated'] = self.is_truncated
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('IsTruncated') is not None:
+            self.is_truncated = m.get('IsTruncated')
         self.tlscipher_policies = []
         if m.get('TLSCipherPolicies') is not None:
             for k in m.get('TLSCipherPolicies'):
                 temp_model = ListTLSCipherPoliciesResponseBodyTLSCipherPolicies()
                 self.tlscipher_policies.append(temp_model.from_map(k))
-        if m.get('IsTruncated') is not None:
-            self.is_truncated = m.get('IsTruncated')
         return self
 
 
@@ -12383,11 +13300,11 @@ class ModifyLoadBalancerInstanceSpecRequest(TeaModel):
 class ModifyLoadBalancerInstanceSpecResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         order_id: int = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.order_id = order_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -12398,18 +13315,18 @@ class ModifyLoadBalancerInstanceSpecResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -12528,11 +13445,11 @@ class ModifyLoadBalancerInternetSpecRequest(TeaModel):
 class ModifyLoadBalancerInternetSpecResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         order_id: int = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.order_id = order_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -12543,18 +13460,18 @@ class ModifyLoadBalancerInternetSpecResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -12679,11 +13596,11 @@ class ModifyLoadBalancerPayTypeRequest(TeaModel):
 class ModifyLoadBalancerPayTypeResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         order_id: int = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.order_id = order_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -12694,18 +13611,18 @@ class ModifyLoadBalancerPayTypeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -13252,12 +14169,12 @@ class RemoveBackendServersResponseBodyBackendServers(TeaModel):
 class RemoveBackendServersResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         load_balancer_id: str = None,
+        request_id: str = None,
         backend_servers: RemoveBackendServersResponseBodyBackendServers = None,
     ):
-        self.request_id = request_id
         self.load_balancer_id = load_balancer_id
+        self.request_id = request_id
         self.backend_servers = backend_servers
 
     def validate(self):
@@ -13270,20 +14187,20 @@ class RemoveBackendServersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.backend_servers is not None:
             result['BackendServers'] = self.backend_servers.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('BackendServers') is not None:
             temp_model = RemoveBackendServersResponseBodyBackendServers()
             self.backend_servers = temp_model.from_map(m['BackendServers'])
@@ -13661,13 +14578,11 @@ class RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer(Te
         self,
         type: str = None,
         weight: int = None,
-        description: str = None,
         port: int = None,
         server_id: str = None,
     ):
         self.type = type
         self.weight = weight
-        self.description = description
         self.port = port
         self.server_id = server_id
 
@@ -13684,8 +14599,6 @@ class RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer(Te
             result['Type'] = self.type
         if self.weight is not None:
             result['Weight'] = self.weight
-        if self.description is not None:
-            result['Description'] = self.description
         if self.port is not None:
             result['Port'] = self.port
         if self.server_id is not None:
@@ -13698,8 +14611,6 @@ class RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer(Te
             self.type = m.get('Type')
         if m.get('Weight') is not None:
             self.weight = m.get('Weight')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
         if m.get('Port') is not None:
             self.port = m.get('Port')
         if m.get('ServerId') is not None:
@@ -13886,11 +14797,11 @@ class SetAccessControlListAttributeRequest(TeaModel):
 class SetAccessControlListAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         acl_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.acl_id = acl_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -13901,18 +14812,18 @@ class SetAccessControlListAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -14099,12 +15010,12 @@ class SetBackendServersResponseBodyBackendServers(TeaModel):
 class SetBackendServersResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         load_balancer_id: str = None,
+        request_id: str = None,
         backend_servers: SetBackendServersResponseBodyBackendServers = None,
     ):
-        self.request_id = request_id
         self.load_balancer_id = load_balancer_id
+        self.request_id = request_id
         self.backend_servers = backend_servers
 
     def validate(self):
@@ -14117,20 +15028,20 @@ class SetBackendServersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.backend_servers is not None:
             result['BackendServers'] = self.backend_servers.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('BackendServers') is not None:
             temp_model = SetBackendServersResponseBodyBackendServers()
             self.backend_servers = temp_model.from_map(m['BackendServers'])
@@ -16855,13 +17766,13 @@ class SetVServerGroupAttributeResponseBody(TeaModel):
     def __init__(
         self,
         vserver_group_id: str = None,
-        request_id: str = None,
         vserver_group_name: str = None,
+        request_id: str = None,
         backend_servers: SetVServerGroupAttributeResponseBodyBackendServers = None,
     ):
         self.vserver_group_id = vserver_group_id
-        self.request_id = request_id
         self.vserver_group_name = vserver_group_name
+        self.request_id = request_id
         self.backend_servers = backend_servers
 
     def validate(self):
@@ -16876,10 +17787,10 @@ class SetVServerGroupAttributeResponseBody(TeaModel):
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.vserver_group_name is not None:
             result['VServerGroupName'] = self.vserver_group_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.backend_servers is not None:
             result['BackendServers'] = self.backend_servers.to_map()
         return result
@@ -16888,10 +17799,10 @@ class SetVServerGroupAttributeResponseBody(TeaModel):
         m = m or dict()
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('VServerGroupName') is not None:
             self.vserver_group_name = m.get('VServerGroupName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('BackendServers') is not None:
             temp_model = SetVServerGroupAttributeResponseBodyBackendServers()
             self.backend_servers = temp_model.from_map(m['BackendServers'])
@@ -17586,27 +18497,27 @@ class UploadCACertificateRequest(TeaModel):
 class UploadCACertificateResponseBody(TeaModel):
     def __init__(
         self,
-        fingerprint: str = None,
+        create_time_stamp: int = None,
         request_id: str = None,
+        expire_time: str = None,
+        fingerprint: str = None,
+        create_time: str = None,
+        common_name: str = None,
         resource_group_id: str = None,
+        cacertificate_name: str = None,
         expire_time_stamp: int = None,
         cacertificate_id: str = None,
-        create_time: str = None,
-        cacertificate_name: str = None,
-        expire_time: str = None,
-        create_time_stamp: int = None,
-        common_name: str = None,
     ):
-        self.fingerprint = fingerprint
+        self.create_time_stamp = create_time_stamp
         self.request_id = request_id
+        self.expire_time = expire_time
+        self.fingerprint = fingerprint
+        self.create_time = create_time
+        self.common_name = common_name
         self.resource_group_id = resource_group_id
+        self.cacertificate_name = cacertificate_name
         self.expire_time_stamp = expire_time_stamp
         self.cacertificate_id = cacertificate_id
-        self.create_time = create_time
-        self.cacertificate_name = cacertificate_name
-        self.expire_time = expire_time
-        self.create_time_stamp = create_time_stamp
-        self.common_name = common_name
 
     def validate(self):
         pass
@@ -17617,50 +18528,50 @@ class UploadCACertificateResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.fingerprint is not None:
-            result['Fingerprint'] = self.fingerprint
+        if self.create_time_stamp is not None:
+            result['CreateTimeStamp'] = self.create_time_stamp
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.fingerprint is not None:
+            result['Fingerprint'] = self.fingerprint
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.cacertificate_name is not None:
+            result['CACertificateName'] = self.cacertificate_name
         if self.expire_time_stamp is not None:
             result['ExpireTimeStamp'] = self.expire_time_stamp
         if self.cacertificate_id is not None:
             result['CACertificateId'] = self.cacertificate_id
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.cacertificate_name is not None:
-            result['CACertificateName'] = self.cacertificate_name
-        if self.expire_time is not None:
-            result['ExpireTime'] = self.expire_time
-        if self.create_time_stamp is not None:
-            result['CreateTimeStamp'] = self.create_time_stamp
-        if self.common_name is not None:
-            result['CommonName'] = self.common_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Fingerprint') is not None:
-            self.fingerprint = m.get('Fingerprint')
+        if m.get('CreateTimeStamp') is not None:
+            self.create_time_stamp = m.get('CreateTimeStamp')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Fingerprint') is not None:
+            self.fingerprint = m.get('Fingerprint')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('CACertificateName') is not None:
+            self.cacertificate_name = m.get('CACertificateName')
         if m.get('ExpireTimeStamp') is not None:
             self.expire_time_stamp = m.get('ExpireTimeStamp')
         if m.get('CACertificateId') is not None:
             self.cacertificate_id = m.get('CACertificateId')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('CACertificateName') is not None:
-            self.cacertificate_name = m.get('CACertificateName')
-        if m.get('ExpireTime') is not None:
-            self.expire_time = m.get('ExpireTime')
-        if m.get('CreateTimeStamp') is not None:
-            self.create_time_stamp = m.get('CreateTimeStamp')
-        if m.get('CommonName') is not None:
-            self.common_name = m.get('CommonName')
         return self
 
 
@@ -17824,37 +18735,37 @@ class UploadServerCertificateResponseBodySubjectAlternativeNames(TeaModel):
 class UploadServerCertificateResponseBody(TeaModel):
     def __init__(
         self,
-        fingerprint: str = None,
-        expire_time_stamp: int = None,
-        request_id: str = None,
-        resource_group_id: str = None,
-        create_time: str = None,
-        subject_alternative_names: UploadServerCertificateResponseBodySubjectAlternativeNames = None,
-        ali_cloud_certificate_id: str = None,
         ali_cloud_certificate_name: str = None,
-        is_ali_cloud_certificate: int = None,
-        server_certificate_id: str = None,
-        server_certificate_name: str = None,
-        region_id: str = None,
-        expire_time: str = None,
         create_time_stamp: int = None,
+        expire_time: str = None,
+        create_time: str = None,
+        server_certificate_id: str = None,
+        expire_time_stamp: int = None,
+        region_id: str = None,
+        request_id: str = None,
+        fingerprint: str = None,
+        server_certificate_name: str = None,
         common_name: str = None,
+        resource_group_id: str = None,
+        ali_cloud_certificate_id: str = None,
+        is_ali_cloud_certificate: int = None,
+        subject_alternative_names: UploadServerCertificateResponseBodySubjectAlternativeNames = None,
     ):
-        self.fingerprint = fingerprint
-        self.expire_time_stamp = expire_time_stamp
-        self.request_id = request_id
-        self.resource_group_id = resource_group_id
-        self.create_time = create_time
-        self.subject_alternative_names = subject_alternative_names
-        self.ali_cloud_certificate_id = ali_cloud_certificate_id
         self.ali_cloud_certificate_name = ali_cloud_certificate_name
-        self.is_ali_cloud_certificate = is_ali_cloud_certificate
-        self.server_certificate_id = server_certificate_id
-        self.server_certificate_name = server_certificate_name
-        self.region_id = region_id
-        self.expire_time = expire_time
         self.create_time_stamp = create_time_stamp
+        self.expire_time = expire_time
+        self.create_time = create_time
+        self.server_certificate_id = server_certificate_id
+        self.expire_time_stamp = expire_time_stamp
+        self.region_id = region_id
+        self.request_id = request_id
+        self.fingerprint = fingerprint
+        self.server_certificate_name = server_certificate_name
         self.common_name = common_name
+        self.resource_group_id = resource_group_id
+        self.ali_cloud_certificate_id = ali_cloud_certificate_id
+        self.is_ali_cloud_certificate = is_ali_cloud_certificate
+        self.subject_alternative_names = subject_alternative_names
 
     def validate(self):
         if self.subject_alternative_names:
@@ -17866,71 +18777,71 @@ class UploadServerCertificateResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.fingerprint is not None:
-            result['Fingerprint'] = self.fingerprint
-        if self.expire_time_stamp is not None:
-            result['ExpireTimeStamp'] = self.expire_time_stamp
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.subject_alternative_names is not None:
-            result['SubjectAlternativeNames'] = self.subject_alternative_names.to_map()
-        if self.ali_cloud_certificate_id is not None:
-            result['AliCloudCertificateId'] = self.ali_cloud_certificate_id
         if self.ali_cloud_certificate_name is not None:
             result['AliCloudCertificateName'] = self.ali_cloud_certificate_name
-        if self.is_ali_cloud_certificate is not None:
-            result['IsAliCloudCertificate'] = self.is_ali_cloud_certificate
-        if self.server_certificate_id is not None:
-            result['ServerCertificateId'] = self.server_certificate_id
-        if self.server_certificate_name is not None:
-            result['ServerCertificateName'] = self.server_certificate_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.expire_time is not None:
-            result['ExpireTime'] = self.expire_time
         if self.create_time_stamp is not None:
             result['CreateTimeStamp'] = self.create_time_stamp
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.server_certificate_id is not None:
+            result['ServerCertificateId'] = self.server_certificate_id
+        if self.expire_time_stamp is not None:
+            result['ExpireTimeStamp'] = self.expire_time_stamp
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.fingerprint is not None:
+            result['Fingerprint'] = self.fingerprint
+        if self.server_certificate_name is not None:
+            result['ServerCertificateName'] = self.server_certificate_name
         if self.common_name is not None:
             result['CommonName'] = self.common_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.ali_cloud_certificate_id is not None:
+            result['AliCloudCertificateId'] = self.ali_cloud_certificate_id
+        if self.is_ali_cloud_certificate is not None:
+            result['IsAliCloudCertificate'] = self.is_ali_cloud_certificate
+        if self.subject_alternative_names is not None:
+            result['SubjectAlternativeNames'] = self.subject_alternative_names.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Fingerprint') is not None:
-            self.fingerprint = m.get('Fingerprint')
-        if m.get('ExpireTimeStamp') is not None:
-            self.expire_time_stamp = m.get('ExpireTimeStamp')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('AliCloudCertificateName') is not None:
+            self.ali_cloud_certificate_name = m.get('AliCloudCertificateName')
+        if m.get('CreateTimeStamp') is not None:
+            self.create_time_stamp = m.get('CreateTimeStamp')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ServerCertificateId') is not None:
+            self.server_certificate_id = m.get('ServerCertificateId')
+        if m.get('ExpireTimeStamp') is not None:
+            self.expire_time_stamp = m.get('ExpireTimeStamp')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Fingerprint') is not None:
+            self.fingerprint = m.get('Fingerprint')
+        if m.get('ServerCertificateName') is not None:
+            self.server_certificate_name = m.get('ServerCertificateName')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('AliCloudCertificateId') is not None:
+            self.ali_cloud_certificate_id = m.get('AliCloudCertificateId')
+        if m.get('IsAliCloudCertificate') is not None:
+            self.is_ali_cloud_certificate = m.get('IsAliCloudCertificate')
         if m.get('SubjectAlternativeNames') is not None:
             temp_model = UploadServerCertificateResponseBodySubjectAlternativeNames()
             self.subject_alternative_names = temp_model.from_map(m['SubjectAlternativeNames'])
-        if m.get('AliCloudCertificateId') is not None:
-            self.ali_cloud_certificate_id = m.get('AliCloudCertificateId')
-        if m.get('AliCloudCertificateName') is not None:
-            self.ali_cloud_certificate_name = m.get('AliCloudCertificateName')
-        if m.get('IsAliCloudCertificate') is not None:
-            self.is_ali_cloud_certificate = m.get('IsAliCloudCertificate')
-        if m.get('ServerCertificateId') is not None:
-            self.server_certificate_id = m.get('ServerCertificateId')
-        if m.get('ServerCertificateName') is not None:
-            self.server_certificate_name = m.get('ServerCertificateName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ExpireTime') is not None:
-            self.expire_time = m.get('ExpireTime')
-        if m.get('CreateTimeStamp') is not None:
-            self.create_time_stamp = m.get('CreateTimeStamp')
-        if m.get('CommonName') is not None:
-            self.common_name = m.get('CommonName')
         return self
 
 

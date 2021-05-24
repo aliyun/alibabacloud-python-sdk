@@ -1639,6 +1639,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_httpslistener_attribute_with_options_async(request, runtime)
 
+    def describe_load_balancer_listeners_with_options(
+        self,
+        request: slb_20140515_models.DescribeLoadBalancerListenersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.DescribeLoadBalancerListenersResponse(),
+            self.do_rpcrequest('DescribeLoadBalancerListeners', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_load_balancer_listeners_with_options_async(
+        self,
+        request: slb_20140515_models.DescribeLoadBalancerListenersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.DescribeLoadBalancerListenersResponse(),
+            await self.do_rpcrequest_async('DescribeLoadBalancerListeners', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_load_balancer_listeners(
+        self,
+        request: slb_20140515_models.DescribeLoadBalancerListenersRequest,
+    ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_load_balancer_listeners_with_options(request, runtime)
+
+    async def describe_load_balancer_listeners_async(
+        self,
+        request: slb_20140515_models.DescribeLoadBalancerListenersRequest,
+    ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_load_balancer_listeners_with_options_async(request, runtime)
+
     def describe_load_balancers_with_options(
         self,
         request: slb_20140515_models.DescribeLoadBalancersRequest,
