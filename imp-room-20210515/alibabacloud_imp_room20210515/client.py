@@ -132,3 +132,87 @@ class Client(OpenApiClient):
     ) -> imp_room_20210515_models.CreateRoomResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_room_with_options_async(request, runtime)
+
+    def destroy_room_with_options(
+        self,
+        request: imp_room_20210515_models.DestroyRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_room_20210515_models.DestroyRoomResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_room_20210515_models.DestroyRoomResponse(),
+            self.do_rpcrequest('DestroyRoom', '2021-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def destroy_room_with_options_async(
+        self,
+        request: imp_room_20210515_models.DestroyRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_room_20210515_models.DestroyRoomResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_room_20210515_models.DestroyRoomResponse(),
+            await self.do_rpcrequest_async('DestroyRoom', '2021-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def destroy_room(
+        self,
+        request: imp_room_20210515_models.DestroyRoomRequest,
+    ) -> imp_room_20210515_models.DestroyRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.destroy_room_with_options(request, runtime)
+
+    async def destroy_room_async(
+        self,
+        request: imp_room_20210515_models.DestroyRoomRequest,
+    ) -> imp_room_20210515_models.DestroyRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.destroy_room_with_options_async(request, runtime)
+
+    def create_instance_with_options(
+        self,
+        request: imp_room_20210515_models.CreateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_room_20210515_models.CreateInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_room_20210515_models.CreateInstanceResponse(),
+            self.do_rpcrequest('CreateInstance', '2021-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_instance_with_options_async(
+        self,
+        request: imp_room_20210515_models.CreateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_room_20210515_models.CreateInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_room_20210515_models.CreateInstanceResponse(),
+            await self.do_rpcrequest_async('CreateInstance', '2021-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_instance(
+        self,
+        request: imp_room_20210515_models.CreateInstanceRequest,
+    ) -> imp_room_20210515_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_instance_with_options(request, runtime)
+
+    async def create_instance_async(
+        self,
+        request: imp_room_20210515_models.CreateInstanceRequest,
+    ) -> imp_room_20210515_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_instance_with_options_async(request, runtime)
