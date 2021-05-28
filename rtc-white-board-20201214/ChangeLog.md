@@ -1,3 +1,6 @@
+2021-05-28 Version: 2.0.5
+- WhiteBoard SDK V2_0_5.
+
 2021-05-06 Version: 2.0.4
 - WhiteBoard SDK V2_0_4.
 

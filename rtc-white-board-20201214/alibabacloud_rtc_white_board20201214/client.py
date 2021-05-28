@@ -82,6 +82,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_apps_with_options_async(request, runtime)
 
+    def pause_white_board_recording_with_options(
+        self,
+        request: rtc_white_board_20201214_models.PauseWhiteBoardRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.PauseWhiteBoardRecordingResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.PauseWhiteBoardRecordingResponse(),
+            self.do_rpcrequest('PauseWhiteBoardRecording', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def pause_white_board_recording_with_options_async(
+        self,
+        request: rtc_white_board_20201214_models.PauseWhiteBoardRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.PauseWhiteBoardRecordingResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.PauseWhiteBoardRecordingResponse(),
+            await self.do_rpcrequest_async('PauseWhiteBoardRecording', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def pause_white_board_recording(
+        self,
+        request: rtc_white_board_20201214_models.PauseWhiteBoardRecordingRequest,
+    ) -> rtc_white_board_20201214_models.PauseWhiteBoardRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pause_white_board_recording_with_options(request, runtime)
+
+    async def pause_white_board_recording_async(
+        self,
+        request: rtc_white_board_20201214_models.PauseWhiteBoardRecordingRequest,
+    ) -> rtc_white_board_20201214_models.PauseWhiteBoardRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pause_white_board_recording_with_options_async(request, runtime)
+
     def set_app_callback_url_with_options(
         self,
         request: rtc_white_board_20201214_models.SetAppCallbackUrlRequest,
@@ -123,6 +165,48 @@ class Client(OpenApiClient):
     ) -> rtc_white_board_20201214_models.SetAppCallbackUrlResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_app_callback_url_with_options_async(request, runtime)
+
+    def start_white_board_recording_with_options(
+        self,
+        request: rtc_white_board_20201214_models.StartWhiteBoardRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.StartWhiteBoardRecordingResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.StartWhiteBoardRecordingResponse(),
+            self.do_rpcrequest('StartWhiteBoardRecording', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def start_white_board_recording_with_options_async(
+        self,
+        request: rtc_white_board_20201214_models.StartWhiteBoardRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.StartWhiteBoardRecordingResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.StartWhiteBoardRecordingResponse(),
+            await self.do_rpcrequest_async('StartWhiteBoardRecording', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def start_white_board_recording(
+        self,
+        request: rtc_white_board_20201214_models.StartWhiteBoardRecordingRequest,
+    ) -> rtc_white_board_20201214_models.StartWhiteBoardRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_white_board_recording_with_options(request, runtime)
+
+    async def start_white_board_recording_async(
+        self,
+        request: rtc_white_board_20201214_models.StartWhiteBoardRecordingRequest,
+    ) -> rtc_white_board_20201214_models.StartWhiteBoardRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_white_board_recording_with_options_async(request, runtime)
 
     def set_app_name_with_options(
         self,
@@ -207,6 +291,48 @@ class Client(OpenApiClient):
     ) -> rtc_white_board_20201214_models.DescribeWhiteBoardsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_white_boards_with_options_async(request, runtime)
+
+    def resume_white_board_recording_with_options(
+        self,
+        request: rtc_white_board_20201214_models.ResumeWhiteBoardRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.ResumeWhiteBoardRecordingResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.ResumeWhiteBoardRecordingResponse(),
+            self.do_rpcrequest('ResumeWhiteBoardRecording', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def resume_white_board_recording_with_options_async(
+        self,
+        request: rtc_white_board_20201214_models.ResumeWhiteBoardRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.ResumeWhiteBoardRecordingResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.ResumeWhiteBoardRecordingResponse(),
+            await self.do_rpcrequest_async('ResumeWhiteBoardRecording', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def resume_white_board_recording(
+        self,
+        request: rtc_white_board_20201214_models.ResumeWhiteBoardRecordingRequest,
+    ) -> rtc_white_board_20201214_models.ResumeWhiteBoardRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.resume_white_board_recording_with_options(request, runtime)
+
+    async def resume_white_board_recording_async(
+        self,
+        request: rtc_white_board_20201214_models.ResumeWhiteBoardRecordingRequest,
+    ) -> rtc_white_board_20201214_models.ResumeWhiteBoardRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_white_board_recording_with_options_async(request, runtime)
 
     def set_app_domain_names_with_options(
         self,
@@ -543,3 +669,45 @@ class Client(OpenApiClient):
     ) -> rtc_white_board_20201214_models.SetAppStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_app_status_with_options_async(request, runtime)
+
+    def stop_white_board_recording_with_options(
+        self,
+        request: rtc_white_board_20201214_models.StopWhiteBoardRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.StopWhiteBoardRecordingResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.StopWhiteBoardRecordingResponse(),
+            self.do_rpcrequest('StopWhiteBoardRecording', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def stop_white_board_recording_with_options_async(
+        self,
+        request: rtc_white_board_20201214_models.StopWhiteBoardRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.StopWhiteBoardRecordingResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.StopWhiteBoardRecordingResponse(),
+            await self.do_rpcrequest_async('StopWhiteBoardRecording', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def stop_white_board_recording(
+        self,
+        request: rtc_white_board_20201214_models.StopWhiteBoardRecordingRequest,
+    ) -> rtc_white_board_20201214_models.StopWhiteBoardRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_white_board_recording_with_options(request, runtime)
+
+    async def stop_white_board_recording_async(
+        self,
+        request: rtc_white_board_20201214_models.StopWhiteBoardRecordingRequest,
+    ) -> rtc_white_board_20201214_models.StopWhiteBoardRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_white_board_recording_with_options_async(request, runtime)
