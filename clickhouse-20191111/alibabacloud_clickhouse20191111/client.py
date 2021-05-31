@@ -506,6 +506,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbconfig_with_options_async(request, runtime)
 
+    def create_ports_for_click_house_with_options(
+        self,
+        request: clickhouse_20191111_models.CreatePortsForClickHouseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CreatePortsForClickHouseResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CreatePortsForClickHouseResponse(),
+            self.do_rpcrequest('CreatePortsForClickHouse', '2019-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_ports_for_click_house_with_options_async(
+        self,
+        request: clickhouse_20191111_models.CreatePortsForClickHouseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> clickhouse_20191111_models.CreatePortsForClickHouseResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            clickhouse_20191111_models.CreatePortsForClickHouseResponse(),
+            await self.do_rpcrequest_async('CreatePortsForClickHouse', '2019-11-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_ports_for_click_house(
+        self,
+        request: clickhouse_20191111_models.CreatePortsForClickHouseRequest,
+    ) -> clickhouse_20191111_models.CreatePortsForClickHouseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_ports_for_click_house_with_options(request, runtime)
+
+    async def create_ports_for_click_house_async(
+        self,
+        request: clickhouse_20191111_models.CreatePortsForClickHouseRequest,
+    ) -> clickhouse_20191111_models.CreatePortsForClickHouseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ports_for_click_house_with_options_async(request, runtime)
+
     def delete_dbcluster_with_options(
         self,
         request: clickhouse_20191111_models.DeleteDBClusterRequest,

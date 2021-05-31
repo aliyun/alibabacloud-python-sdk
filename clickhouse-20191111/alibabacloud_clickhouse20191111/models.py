@@ -1756,6 +1756,134 @@ class ModifyDBConfigResponse(TeaModel):
         return self
 
 
+class CreatePortsForClickHouseRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        port_type: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        owner_account: str = None,
+        region_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.port_type = port_type
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.owner_account = owner_account
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.port_type is not None:
+            result['PortType'] = self.port_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('PortType') is not None:
+            self.port_type = m.get('PortType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreatePortsForClickHouseResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePortsForClickHouseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreatePortsForClickHouseResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreatePortsForClickHouseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDBClusterRequest(TeaModel):
     def __init__(
         self,
@@ -5572,6 +5700,10 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         zone_id: str = None,
         category: str = None,
         engine: str = None,
+        support_mysql_port: str = None,
+        is_support_mysql_port: str = None,
+        support_https_port: str = None,
+        is_support_https_port: str = None,
     ):
         self.vpc_id = vpc_id
         self.support_backup = support_backup
@@ -5609,6 +5741,10 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         self.zone_id = zone_id
         self.category = category
         self.engine = engine
+        self.support_mysql_port = support_mysql_port
+        self.is_support_mysql_port = is_support_mysql_port
+        self.support_https_port = support_https_port
+        self.is_support_https_port = is_support_https_port
 
     def validate(self):
         if self.tags:
@@ -5694,6 +5830,14 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             result['Category'] = self.category
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.support_mysql_port is not None:
+            result['SupportMysqlPort'] = self.support_mysql_port
+        if self.is_support_mysql_port is not None:
+            result['IsSupportMysqlPort'] = self.is_support_mysql_port
+        if self.support_https_port is not None:
+            result['SupportHttpsPort'] = self.support_https_port
+        if self.is_support_https_port is not None:
+            result['IsSupportHttpsPort'] = self.is_support_https_port
         return result
 
     def from_map(self, m: dict = None):
@@ -5772,6 +5916,14 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             self.category = m.get('Category')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('SupportMysqlPort') is not None:
+            self.support_mysql_port = m.get('SupportMysqlPort')
+        if m.get('IsSupportMysqlPort') is not None:
+            self.is_support_mysql_port = m.get('IsSupportMysqlPort')
+        if m.get('SupportHttpsPort') is not None:
+            self.support_https_port = m.get('SupportHttpsPort')
+        if m.get('IsSupportHttpsPort') is not None:
+            self.is_support_https_port = m.get('IsSupportHttpsPort')
         return self
 
 
@@ -9928,14 +10080,14 @@ class AllocateClusterPublicConnectionRequest(TeaModel):
         resource_owner_id: int = None,
         owner_account: str = None,
         dbcluster_id: str = None,
-        connection_string_prefix: str = None,
+        port_type: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.owner_account = owner_account
         self.dbcluster_id = dbcluster_id
-        self.connection_string_prefix = connection_string_prefix
+        self.port_type = port_type
 
     def validate(self):
         pass
@@ -9956,8 +10108,8 @@ class AllocateClusterPublicConnectionRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
-        if self.connection_string_prefix is not None:
-            result['ConnectionStringPrefix'] = self.connection_string_prefix
+        if self.port_type is not None:
+            result['PortType'] = self.port_type
         return result
 
     def from_map(self, m: dict = None):
@@ -9972,8 +10124,8 @@ class AllocateClusterPublicConnectionRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
-        if m.get('ConnectionStringPrefix') is not None:
-            self.connection_string_prefix = m.get('ConnectionStringPrefix')
+        if m.get('PortType') is not None:
+            self.port_type = m.get('PortType')
         return self
 
 
@@ -11215,14 +11367,14 @@ class ModifyDBClusterRequest(TeaModel):
         return self
 
 
-class ModifyDBClusterResponseBody(TeaModel):
+class ModifyDBClusterResponseBodyDBCluster(TeaModel):
     def __init__(
         self,
-        dbcluster: str = None,
-        request_id: str = None,
+        db_cluster_id: str = None,
+        order_id: str = None,
     ):
-        self.dbcluster = dbcluster
-        self.request_id = request_id
+        self.db_cluster_id = db_cluster_id
+        self.order_id = order_id
 
     def validate(self):
         pass
@@ -11233,8 +11385,42 @@ class ModifyDBClusterResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.db_cluster_id is not None:
+            result['dbClusterId'] = self.db_cluster_id
+        if self.order_id is not None:
+            result['orderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dbClusterId') is not None:
+            self.db_cluster_id = m.get('dbClusterId')
+        if m.get('orderId') is not None:
+            self.order_id = m.get('orderId')
+        return self
+
+
+class ModifyDBClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster: ModifyDBClusterResponseBodyDBCluster = None,
+        request_id: str = None,
+    ):
+        self.dbcluster = dbcluster
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dbcluster:
+            self.dbcluster.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.dbcluster is not None:
-            result['DBCluster'] = self.dbcluster
+            result['DBCluster'] = self.dbcluster.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -11242,7 +11428,8 @@ class ModifyDBClusterResponseBody(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DBCluster') is not None:
-            self.dbcluster = m.get('DBCluster')
+            temp_model = ModifyDBClusterResponseBodyDBCluster()
+            self.dbcluster = temp_model.from_map(m['DBCluster'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
