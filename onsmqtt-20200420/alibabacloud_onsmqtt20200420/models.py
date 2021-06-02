@@ -21,6 +21,10 @@ class ApplyTokenRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resources is not None:
             result['Resources'] = self.resources
@@ -48,29 +52,33 @@ class ApplyTokenRequest(TeaModel):
 class ApplyTokenResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         token: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.token = token
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.token is not None:
             result['Token'] = self.token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Token') is not None:
             self.token = m.get('Token')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -90,6 +98,10 @@ class ApplyTokenResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -120,6 +132,10 @@ class BatchQuerySessionByClientIdsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -149,6 +165,10 @@ class BatchQuerySessionByClientIdsResponseBodyOnlineStatusList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.online_status is not None:
             result['OnlineStatus'] = self.online_status
@@ -181,6 +201,10 @@ class BatchQuerySessionByClientIdsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -218,6 +242,10 @@ class BatchQuerySessionByClientIdsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -248,6 +276,10 @@ class CreateGroupIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -275,6 +307,10 @@ class CreateGroupIdResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -303,6 +339,10 @@ class CreateGroupIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -333,6 +373,10 @@ class DeleteGroupIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -360,6 +404,10 @@ class DeleteGroupIdResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -388,6 +436,10 @@ class DeleteGroupIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -418,6 +470,10 @@ class GetDeviceCredentialRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_id is not None:
             result['ClientId'] = self.client_id
@@ -455,6 +511,10 @@ class GetDeviceCredentialResponseBodyDeviceCredential(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -501,6 +561,10 @@ class GetDeviceCredentialResponseBody(TeaModel):
             self.device_credential.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -534,6 +598,10 @@ class GetDeviceCredentialResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -562,6 +630,10 @@ class ListGroupIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -578,46 +650,50 @@ class ListGroupIdResponseBodyData(TeaModel):
     def __init__(
         self,
         update_time: int = None,
+        instance_id: str = None,
         independent_naming: bool = None,
         group_id: str = None,
         create_time: int = None,
-        instance_id: str = None,
     ):
         self.update_time = update_time
+        self.instance_id = instance_id
         self.independent_naming = independent_naming
         self.group_id = group_id
         self.create_time = create_time
-        self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.independent_naming is not None:
             result['IndependentNaming'] = self.independent_naming
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('IndependentNaming') is not None:
             self.independent_naming = m.get('IndependentNaming')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         return self
 
 
@@ -637,6 +713,10 @@ class ListGroupIdResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -674,6 +754,10 @@ class ListGroupIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -691,6 +775,858 @@ class ListGroupIdResponse(TeaModel):
         return self
 
 
+class QueryMqttTraceDeviceRequest(TeaModel):
+    def __init__(
+        self,
+        mqtt_region_id: str = None,
+        instance_id: str = None,
+        reverse: bool = None,
+        client_id: str = None,
+        begin_time: int = None,
+        end_time: int = None,
+        current_page: int = None,
+        page_size: int = None,
+    ):
+        self.mqtt_region_id = mqtt_region_id
+        self.instance_id = instance_id
+        self.reverse = reverse
+        self.client_id = client_id
+        self.begin_time = begin_time
+        self.end_time = end_time
+        self.current_page = current_page
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mqtt_region_id is not None:
+            result['MqttRegionId'] = self.mqtt_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MqttRegionId') is not None:
+            self.mqtt_region_id = m.get('MqttRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class QueryMqttTraceDeviceResponseBodyDeviceInfoList(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+        time: str = None,
+        action_code: str = None,
+        action: str = None,
+        action_info: str = None,
+    ):
+        self.channel_id = channel_id
+        self.time = time
+        self.action_code = action_code
+        self.action = action
+        self.action_info = action_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.action_code is not None:
+            result['ActionCode'] = self.action_code
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.action_info is not None:
+            result['ActionInfo'] = self.action_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('ActionCode') is not None:
+            self.action_code = m.get('ActionCode')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ActionInfo') is not None:
+            self.action_info = m.get('ActionInfo')
+        return self
+
+
+class QueryMqttTraceDeviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        request_id: str = None,
+        page_size: int = None,
+        total: int = None,
+        device_info_list: List[QueryMqttTraceDeviceResponseBodyDeviceInfoList] = None,
+    ):
+        self.current_page = current_page
+        self.request_id = request_id
+        self.page_size = page_size
+        self.total = total
+        self.device_info_list = device_info_list
+
+    def validate(self):
+        if self.device_info_list:
+            for k in self.device_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        result['DeviceInfoList'] = []
+        if self.device_info_list is not None:
+            for k in self.device_info_list:
+                result['DeviceInfoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        self.device_info_list = []
+        if m.get('DeviceInfoList') is not None:
+            for k in m.get('DeviceInfoList'):
+                temp_model = QueryMqttTraceDeviceResponseBodyDeviceInfoList()
+                self.device_info_list.append(temp_model.from_map(k))
+        return self
+
+
+class QueryMqttTraceDeviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryMqttTraceDeviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryMqttTraceDeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryMqttTraceMessageOfClientRequest(TeaModel):
+    def __init__(
+        self,
+        mqtt_region_id: str = None,
+        instance_id: str = None,
+        client_id: str = None,
+        begin_time: int = None,
+        end_time: int = None,
+        current_page: int = None,
+        page_size: int = None,
+        reverse: bool = None,
+    ):
+        self.mqtt_region_id = mqtt_region_id
+        self.instance_id = instance_id
+        self.client_id = client_id
+        self.begin_time = begin_time
+        self.end_time = end_time
+        self.current_page = current_page
+        self.page_size = page_size
+        self.reverse = reverse
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mqtt_region_id is not None:
+            result['MqttRegionId'] = self.mqtt_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MqttRegionId') is not None:
+            self.mqtt_region_id = m.get('MqttRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
+        return self
+
+
+class QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList(TeaModel):
+    def __init__(
+        self,
+        time: str = None,
+        action: str = None,
+        action_code: str = None,
+        action_info: str = None,
+        msg_id: str = None,
+        client_id: str = None,
+    ):
+        self.time = time
+        self.action = action
+        self.action_code = action_code
+        self.action_info = action_info
+        self.msg_id = msg_id
+        self.client_id = client_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.action_code is not None:
+            result['ActionCode'] = self.action_code
+        if self.action_info is not None:
+            result['ActionInfo'] = self.action_info
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ActionCode') is not None:
+            self.action_code = m.get('ActionCode')
+        if m.get('ActionInfo') is not None:
+            self.action_info = m.get('ActionInfo')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        return self
+
+
+class QueryMqttTraceMessageOfClientResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        request_id: str = None,
+        page_size: int = None,
+        total: int = None,
+        message_of_client_list: List[QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList] = None,
+    ):
+        self.current_page = current_page
+        self.request_id = request_id
+        self.page_size = page_size
+        self.total = total
+        self.message_of_client_list = message_of_client_list
+
+    def validate(self):
+        if self.message_of_client_list:
+            for k in self.message_of_client_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        result['MessageOfClientList'] = []
+        if self.message_of_client_list is not None:
+            for k in self.message_of_client_list:
+                result['MessageOfClientList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        self.message_of_client_list = []
+        if m.get('MessageOfClientList') is not None:
+            for k in m.get('MessageOfClientList'):
+                temp_model = QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList()
+                self.message_of_client_list.append(temp_model.from_map(k))
+        return self
+
+
+class QueryMqttTraceMessageOfClientResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryMqttTraceMessageOfClientResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryMqttTraceMessageOfClientResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryMqttTraceMessagePublishRequest(TeaModel):
+    def __init__(
+        self,
+        mqtt_region_id: str = None,
+        instance_id: str = None,
+        msg_id: str = None,
+        begin_time: int = None,
+        end_time: int = None,
+    ):
+        self.mqtt_region_id = mqtt_region_id
+        self.instance_id = instance_id
+        self.msg_id = msg_id
+        self.begin_time = begin_time
+        self.end_time = end_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mqtt_region_id is not None:
+            result['MqttRegionId'] = self.mqtt_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MqttRegionId') is not None:
+            self.mqtt_region_id = m.get('MqttRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        return self
+
+
+class QueryMqttTraceMessagePublishResponseBodyMessageTraceLists(TeaModel):
+    def __init__(
+        self,
+        time: str = None,
+        action: str = None,
+        action_code: str = None,
+        action_info: str = None,
+        msg_id: str = None,
+        client_id: str = None,
+    ):
+        self.time = time
+        self.action = action
+        self.action_code = action_code
+        self.action_info = action_info
+        self.msg_id = msg_id
+        self.client_id = client_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.action_code is not None:
+            result['ActionCode'] = self.action_code
+        if self.action_info is not None:
+            result['ActionInfo'] = self.action_info
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ActionCode') is not None:
+            self.action_code = m.get('ActionCode')
+        if m.get('ActionInfo') is not None:
+            self.action_info = m.get('ActionInfo')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        return self
+
+
+class QueryMqttTraceMessagePublishResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        message_trace_lists: List[QueryMqttTraceMessagePublishResponseBodyMessageTraceLists] = None,
+    ):
+        self.request_id = request_id
+        self.message_trace_lists = message_trace_lists
+
+    def validate(self):
+        if self.message_trace_lists:
+            for k in self.message_trace_lists:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['MessageTraceLists'] = []
+        if self.message_trace_lists is not None:
+            for k in self.message_trace_lists:
+                result['MessageTraceLists'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.message_trace_lists = []
+        if m.get('MessageTraceLists') is not None:
+            for k in m.get('MessageTraceLists'):
+                temp_model = QueryMqttTraceMessagePublishResponseBodyMessageTraceLists()
+                self.message_trace_lists.append(temp_model.from_map(k))
+        return self
+
+
+class QueryMqttTraceMessagePublishResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryMqttTraceMessagePublishResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryMqttTraceMessagePublishResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryMqttTraceMessageSubscribeRequest(TeaModel):
+    def __init__(
+        self,
+        mqtt_region_id: str = None,
+        instance_id: str = None,
+        reverse: bool = None,
+        client_id: str = None,
+        begin_time: int = None,
+        end_time: int = None,
+        current_page: int = None,
+        page_size: int = None,
+        msg_id: str = None,
+    ):
+        self.mqtt_region_id = mqtt_region_id
+        self.instance_id = instance_id
+        self.reverse = reverse
+        self.client_id = client_id
+        self.begin_time = begin_time
+        self.end_time = end_time
+        self.current_page = current_page
+        self.page_size = page_size
+        self.msg_id = msg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mqtt_region_id is not None:
+            result['MqttRegionId'] = self.mqtt_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MqttRegionId') is not None:
+            self.mqtt_region_id = m.get('MqttRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        return self
+
+
+class QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists(TeaModel):
+    def __init__(
+        self,
+        time: str = None,
+        action: str = None,
+        action_code: str = None,
+        action_info: str = None,
+        msg_id: str = None,
+        client_id: str = None,
+    ):
+        self.time = time
+        self.action = action
+        self.action_code = action_code
+        self.action_info = action_info
+        self.msg_id = msg_id
+        self.client_id = client_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.action_code is not None:
+            result['ActionCode'] = self.action_code
+        if self.action_info is not None:
+            result['ActionInfo'] = self.action_info
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ActionCode') is not None:
+            self.action_code = m.get('ActionCode')
+        if m.get('ActionInfo') is not None:
+            self.action_info = m.get('ActionInfo')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        return self
+
+
+class QueryMqttTraceMessageSubscribeResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        request_id: str = None,
+        page_size: int = None,
+        total: int = None,
+        message_trace_lists: List[QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists] = None,
+    ):
+        self.current_page = current_page
+        self.request_id = request_id
+        self.page_size = page_size
+        self.total = total
+        self.message_trace_lists = message_trace_lists
+
+    def validate(self):
+        if self.message_trace_lists:
+            for k in self.message_trace_lists:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        result['MessageTraceLists'] = []
+        if self.message_trace_lists is not None:
+            for k in self.message_trace_lists:
+                result['MessageTraceLists'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        self.message_trace_lists = []
+        if m.get('MessageTraceLists') is not None:
+            for k in m.get('MessageTraceLists'):
+                temp_model = QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists()
+                self.message_trace_lists.append(temp_model.from_map(k))
+        return self
+
+
+class QueryMqttTraceMessageSubscribeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryMqttTraceMessageSubscribeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryMqttTraceMessageSubscribeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QuerySessionByClientIdRequest(TeaModel):
     def __init__(
         self,
@@ -704,6 +1640,10 @@ class QuerySessionByClientIdRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_id is not None:
             result['ClientId'] = self.client_id
@@ -723,29 +1663,33 @@ class QuerySessionByClientIdRequest(TeaModel):
 class QuerySessionByClientIdResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         online_status: bool = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.online_status = online_status
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.online_status is not None:
             result['OnlineStatus'] = self.online_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('OnlineStatus') is not None:
             self.online_status = m.get('OnlineStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -765,6 +1709,10 @@ class QuerySessionByClientIdResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -795,6 +1743,10 @@ class QueryTokenRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.token is not None:
             result['Token'] = self.token
@@ -814,29 +1766,33 @@ class QueryTokenRequest(TeaModel):
 class QueryTokenResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         token_status: bool = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.token_status = token_status
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.token_status is not None:
             result['TokenStatus'] = self.token_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('TokenStatus') is not None:
             self.token_status = m.get('TokenStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -856,6 +1812,10 @@ class QueryTokenResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -886,6 +1846,10 @@ class RefreshDeviceCredentialRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_id is not None:
             result['ClientId'] = self.client_id
@@ -923,6 +1887,10 @@ class RefreshDeviceCredentialResponseBodyDeviceCredential(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -969,6 +1937,10 @@ class RefreshDeviceCredentialResponseBody(TeaModel):
             self.device_credential.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1002,6 +1974,10 @@ class RefreshDeviceCredentialResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1032,6 +2008,10 @@ class RegisterDeviceCredentialRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_id is not None:
             result['ClientId'] = self.client_id
@@ -1069,6 +2049,10 @@ class RegisterDeviceCredentialResponseBodyDeviceCredential(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -1115,6 +2099,10 @@ class RegisterDeviceCredentialResponseBody(TeaModel):
             self.device_credential.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1148,6 +2136,10 @@ class RegisterDeviceCredentialResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1178,6 +2170,10 @@ class RevokeTokenRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.token is not None:
             result['Token'] = self.token
@@ -1205,6 +2201,10 @@ class RevokeTokenResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1233,6 +2233,10 @@ class RevokeTokenResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1265,6 +2269,10 @@ class SendMessageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.mqtt_topic is not None:
             result['MqttTopic'] = self.mqtt_topic
@@ -1288,29 +2296,33 @@ class SendMessageRequest(TeaModel):
 class SendMessageResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         msg_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.msg_id = msg_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('MsgId') is not None:
             self.msg_id = m.get('MsgId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1330,6 +2342,10 @@ class SendMessageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1360,6 +2376,10 @@ class UnRegisterDeviceCredentialRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_id is not None:
             result['ClientId'] = self.client_id
@@ -1387,6 +2407,10 @@ class UnRegisterDeviceCredentialResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1415,6 +2439,10 @@ class UnRegisterDeviceCredentialResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

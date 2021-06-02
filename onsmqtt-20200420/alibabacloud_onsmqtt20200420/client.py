@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -48,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.ApplyTokenResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.ApplyTokenResponse(),
             self.do_rpcrequest('ApplyToken', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -61,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.ApplyTokenResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.ApplyTokenResponse(),
             await self.do_rpcrequest_async('ApplyToken', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -88,7 +91,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse(),
             self.do_rpcrequest('BatchQuerySessionByClientIds', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.BatchQuerySessionByClientIdsResponse(),
             await self.do_rpcrequest_async('BatchQuerySessionByClientIds', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -128,7 +133,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.CreateGroupIdResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.CreateGroupIdResponse(),
             self.do_rpcrequest('CreateGroupId', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -141,7 +147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.CreateGroupIdResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.CreateGroupIdResponse(),
             await self.do_rpcrequest_async('CreateGroupId', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -168,7 +175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.DeleteGroupIdResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.DeleteGroupIdResponse(),
             self.do_rpcrequest('DeleteGroupId', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -181,7 +189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.DeleteGroupIdResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.DeleteGroupIdResponse(),
             await self.do_rpcrequest_async('DeleteGroupId', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -208,7 +217,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.GetDeviceCredentialResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.GetDeviceCredentialResponse(),
             self.do_rpcrequest('GetDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -221,7 +231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.GetDeviceCredentialResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.GetDeviceCredentialResponse(),
             await self.do_rpcrequest_async('GetDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -248,7 +259,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.ListGroupIdResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.ListGroupIdResponse(),
             self.do_rpcrequest('ListGroupId', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -261,7 +273,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.ListGroupIdResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.ListGroupIdResponse(),
             await self.do_rpcrequest_async('ListGroupId', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -279,6 +292,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_group_id_with_options_async(request, runtime)
 
+    def query_mqtt_trace_device_with_options(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse(),
+            self.do_rpcrequest('QueryMqttTraceDevice', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_mqtt_trace_device_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse(),
+            await self.do_rpcrequest_async('QueryMqttTraceDevice', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_mqtt_trace_device(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceDeviceRequest,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_mqtt_trace_device_with_options(request, runtime)
+
+    async def query_mqtt_trace_device_async(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceDeviceRequest,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_mqtt_trace_device_with_options_async(request, runtime)
+
+    def query_mqtt_trace_message_of_client_with_options(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse(),
+            self.do_rpcrequest('QueryMqttTraceMessageOfClient', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_mqtt_trace_message_of_client_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse(),
+            await self.do_rpcrequest_async('QueryMqttTraceMessageOfClient', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_mqtt_trace_message_of_client(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientRequest,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_mqtt_trace_message_of_client_with_options(request, runtime)
+
+    async def query_mqtt_trace_message_of_client_async(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientRequest,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessageOfClientResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_mqtt_trace_message_of_client_with_options_async(request, runtime)
+
+    def query_mqtt_trace_message_publish_with_options(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessagePublishRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse(),
+            self.do_rpcrequest('QueryMqttTraceMessagePublish', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_mqtt_trace_message_publish_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessagePublishRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse(),
+            await self.do_rpcrequest_async('QueryMqttTraceMessagePublish', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_mqtt_trace_message_publish(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessagePublishRequest,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_mqtt_trace_message_publish_with_options(request, runtime)
+
+    async def query_mqtt_trace_message_publish_async(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessagePublishRequest,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessagePublishResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_mqtt_trace_message_publish_with_options_async(request, runtime)
+
+    def query_mqtt_trace_message_subscribe_with_options(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse(),
+            self.do_rpcrequest('QueryMqttTraceMessageSubscribe', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_mqtt_trace_message_subscribe_with_options_async(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse(),
+            await self.do_rpcrequest_async('QueryMqttTraceMessageSubscribe', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_mqtt_trace_message_subscribe(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeRequest,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_mqtt_trace_message_subscribe_with_options(request, runtime)
+
+    async def query_mqtt_trace_message_subscribe_async(
+        self,
+        request: ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeRequest,
+    ) -> ons_mqtt_20200420_models.QueryMqttTraceMessageSubscribeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_mqtt_trace_message_subscribe_with_options_async(request, runtime)
+
     def query_session_by_client_id_with_options(
         self,
         request: ons_mqtt_20200420_models.QuerySessionByClientIdRequest,
@@ -288,7 +469,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.QuerySessionByClientIdResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QuerySessionByClientIdResponse(),
             self.do_rpcrequest('QuerySessionByClientId', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -301,7 +483,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.QuerySessionByClientIdResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QuerySessionByClientIdResponse(),
             await self.do_rpcrequest_async('QuerySessionByClientId', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -328,7 +511,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.QueryTokenResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryTokenResponse(),
             self.do_rpcrequest('QueryToken', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -341,7 +525,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.QueryTokenResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.QueryTokenResponse(),
             await self.do_rpcrequest_async('QueryToken', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -368,7 +553,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.RefreshDeviceCredentialResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.RefreshDeviceCredentialResponse(),
             self.do_rpcrequest('RefreshDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -381,7 +567,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.RefreshDeviceCredentialResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.RefreshDeviceCredentialResponse(),
             await self.do_rpcrequest_async('RefreshDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -408,7 +595,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.RegisterDeviceCredentialResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.RegisterDeviceCredentialResponse(),
             self.do_rpcrequest('RegisterDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -421,7 +609,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.RegisterDeviceCredentialResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.RegisterDeviceCredentialResponse(),
             await self.do_rpcrequest_async('RegisterDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -448,7 +637,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.RevokeTokenResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.RevokeTokenResponse(),
             self.do_rpcrequest('RevokeToken', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -461,7 +651,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.RevokeTokenResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.RevokeTokenResponse(),
             await self.do_rpcrequest_async('RevokeToken', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -488,7 +679,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.SendMessageResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.SendMessageResponse(),
             self.do_rpcrequest('SendMessage', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -501,7 +693,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.SendMessageResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.SendMessageResponse(),
             await self.do_rpcrequest_async('SendMessage', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -528,7 +721,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse(),
             self.do_rpcrequest('UnRegisterDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -541,7 +735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse().from_map(
+        return TeaCore.from_map(
+            ons_mqtt_20200420_models.UnRegisterDeviceCredentialResponse(),
             await self.do_rpcrequest_async('UnRegisterDeviceCredential', '2020-04-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
