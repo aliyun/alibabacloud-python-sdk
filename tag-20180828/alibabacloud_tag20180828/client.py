@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -83,6 +84,48 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def describe_regions_with_options(
+        self,
+        request: tag_20180828_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.DescribeRegionsResponse(),
+            self.do_rpcrequest('DescribeRegions', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: tag_20180828_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.DescribeRegionsResponse(),
+            await self.do_rpcrequest_async('DescribeRegions', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_regions(
+        self,
+        request: tag_20180828_models.DescribeRegionsRequest,
+    ) -> tag_20180828_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_regions_with_options(request, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: tag_20180828_models.DescribeRegionsRequest,
+    ) -> tag_20180828_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_regions_with_options_async(request, runtime)
+
     def list_tag_keys_with_options(
         self,
         request: tag_20180828_models.ListTagKeysRequest,
@@ -92,7 +135,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagKeysResponse(),
             self.do_rpcrequest('ListTagKeys', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -105,7 +149,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagKeysResponse(),
             await self.do_rpcrequest_async('ListTagKeys', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -132,7 +177,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagResourcesResponse(),
             self.do_rpcrequest('ListTagResources', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -145,7 +191,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagResourcesResponse(),
             await self.do_rpcrequest_async('ListTagResources', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -172,7 +219,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.ListTagValuesResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagValuesResponse(),
             self.do_rpcrequest('ListTagValues', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -185,7 +233,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.ListTagValuesResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagValuesResponse(),
             await self.do_rpcrequest_async('ListTagValues', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -212,7 +261,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -225,7 +275,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -252,7 +303,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -265,7 +317,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return tag_20180828_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            tag_20180828_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
