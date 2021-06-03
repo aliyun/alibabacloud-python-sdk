@@ -921,6 +921,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_editing_project_materials_with_options_async(request, runtime)
 
+    def get_default_storage_location_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            ice20201109_models.GetDefaultStorageLocationResponse(),
+            self.do_rpcrequest('GetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_default_storage_location_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            ice20201109_models.GetDefaultStorageLocationResponse(),
+            await self.do_rpcrequest_async('GetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_default_storage_location(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_default_storage_location_with_options(runtime)
+
+    async def get_default_storage_location_async(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_default_storage_location_with_options_async(runtime)
+
     def submit_audio_produce_job_with_options(
         self,
         request: ice20201109_models.SubmitAudioProduceJobRequest,
@@ -1340,6 +1368,48 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitCoverJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_cover_job_with_options_async(request, runtime)
+
+    def set_default_storage_location_with_options(
+        self,
+        request: ice20201109_models.SetDefaultStorageLocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetDefaultStorageLocationResponse(),
+            self.do_rpcrequest('SetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def set_default_storage_location_with_options_async(
+        self,
+        request: ice20201109_models.SetDefaultStorageLocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetDefaultStorageLocationResponse(),
+            await self.do_rpcrequest_async('SetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_default_storage_location(
+        self,
+        request: ice20201109_models.SetDefaultStorageLocationRequest,
+    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_default_storage_location_with_options(request, runtime)
+
+    async def set_default_storage_location_async(
+        self,
+        request: ice20201109_models.SetDefaultStorageLocationRequest,
+    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_default_storage_location_with_options_async(request, runtime)
 
     def update_media_info_with_options(
         self,

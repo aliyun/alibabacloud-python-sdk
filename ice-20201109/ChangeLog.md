@@ -1,3 +1,6 @@
+2021-06-03 Version: 1.0.7
+- SubmitMediaProducingJob return MediaId in the result.
+
 2021-04-16 Version: 1.0.5
 - Add a new API called SubmitH2VJob, which submit horizontal to vertical job.
 - Add a new API called SubmitDelogoJob, which submit delogo job.
