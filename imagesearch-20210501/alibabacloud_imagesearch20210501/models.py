@@ -150,7 +150,6 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
         pic: str = None,
         price: str = None,
         promotion_price: str = None,
-        price_after_coupon: str = None,
         user_type: int = None,
         provcity: str = None,
         seller_nick_name: str = None,
@@ -158,26 +157,22 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
         month_sell_count: int = None,
         level_one_category_name: str = None,
         category_name: str = None,
-        coupon_activity_id: str = None,
         coupon_total_count: str = None,
-        coupon_send_count: str = None,
         coupon_remain_count: int = None,
         coupon_start_time: str = None,
         coupon_end_time: str = None,
         coupon_start_fee: str = None,
         coupon_amount: int = None,
         coupon_sale_text_info: str = None,
-        cal_tk_rate: str = None,
+        commission_rate: str = None,
         coupon_share_url: str = None,
         click_url: str = None,
-        short_url: str = None,
     ):
         self.item_id = item_id
         self.item_name = item_name
         self.pic = pic
         self.price = price
         self.promotion_price = promotion_price
-        self.price_after_coupon = price_after_coupon
         self.user_type = user_type
         self.provcity = provcity
         self.seller_nick_name = seller_nick_name
@@ -185,19 +180,16 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
         self.month_sell_count = month_sell_count
         self.level_one_category_name = level_one_category_name
         self.category_name = category_name
-        self.coupon_activity_id = coupon_activity_id
         self.coupon_total_count = coupon_total_count
-        self.coupon_send_count = coupon_send_count
         self.coupon_remain_count = coupon_remain_count
         self.coupon_start_time = coupon_start_time
         self.coupon_end_time = coupon_end_time
         self.coupon_start_fee = coupon_start_fee
         self.coupon_amount = coupon_amount
         self.coupon_sale_text_info = coupon_sale_text_info
-        self.cal_tk_rate = cal_tk_rate
+        self.commission_rate = commission_rate
         self.coupon_share_url = coupon_share_url
         self.click_url = click_url
-        self.short_url = short_url
 
     def validate(self):
         pass
@@ -218,8 +210,6 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
             result['Price'] = self.price
         if self.promotion_price is not None:
             result['PromotionPrice'] = self.promotion_price
-        if self.price_after_coupon is not None:
-            result['PriceAfterCoupon'] = self.price_after_coupon
         if self.user_type is not None:
             result['UserType'] = self.user_type
         if self.provcity is not None:
@@ -234,12 +224,8 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
             result['LevelOneCategoryName'] = self.level_one_category_name
         if self.category_name is not None:
             result['CategoryName'] = self.category_name
-        if self.coupon_activity_id is not None:
-            result['CouponActivityId'] = self.coupon_activity_id
         if self.coupon_total_count is not None:
             result['CouponTotalCount'] = self.coupon_total_count
-        if self.coupon_send_count is not None:
-            result['CouponSendCount'] = self.coupon_send_count
         if self.coupon_remain_count is not None:
             result['CouponRemainCount'] = self.coupon_remain_count
         if self.coupon_start_time is not None:
@@ -252,14 +238,12 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
             result['CouponAmount'] = self.coupon_amount
         if self.coupon_sale_text_info is not None:
             result['CouponSaleTextInfo'] = self.coupon_sale_text_info
-        if self.cal_tk_rate is not None:
-            result['CalTkRate'] = self.cal_tk_rate
+        if self.commission_rate is not None:
+            result['CommissionRate'] = self.commission_rate
         if self.coupon_share_url is not None:
             result['CouponShareUrl'] = self.coupon_share_url
         if self.click_url is not None:
             result['ClickUrl'] = self.click_url
-        if self.short_url is not None:
-            result['ShortUrl'] = self.short_url
         return result
 
     def from_map(self, m: dict = None):
@@ -274,8 +258,6 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
             self.price = m.get('Price')
         if m.get('PromotionPrice') is not None:
             self.promotion_price = m.get('PromotionPrice')
-        if m.get('PriceAfterCoupon') is not None:
-            self.price_after_coupon = m.get('PriceAfterCoupon')
         if m.get('UserType') is not None:
             self.user_type = m.get('UserType')
         if m.get('Provcity') is not None:
@@ -290,12 +272,8 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
             self.level_one_category_name = m.get('LevelOneCategoryName')
         if m.get('CategoryName') is not None:
             self.category_name = m.get('CategoryName')
-        if m.get('CouponActivityId') is not None:
-            self.coupon_activity_id = m.get('CouponActivityId')
         if m.get('CouponTotalCount') is not None:
             self.coupon_total_count = m.get('CouponTotalCount')
-        if m.get('CouponSendCount') is not None:
-            self.coupon_send_count = m.get('CouponSendCount')
         if m.get('CouponRemainCount') is not None:
             self.coupon_remain_count = m.get('CouponRemainCount')
         if m.get('CouponStartTime') is not None:
@@ -308,14 +286,12 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
             self.coupon_amount = m.get('CouponAmount')
         if m.get('CouponSaleTextInfo') is not None:
             self.coupon_sale_text_info = m.get('CouponSaleTextInfo')
-        if m.get('CalTkRate') is not None:
-            self.cal_tk_rate = m.get('CalTkRate')
+        if m.get('CommissionRate') is not None:
+            self.commission_rate = m.get('CommissionRate')
         if m.get('CouponShareUrl') is not None:
             self.coupon_share_url = m.get('CouponShareUrl')
         if m.get('ClickUrl') is not None:
             self.click_url = m.get('ClickUrl')
-        if m.get('ShortUrl') is not None:
-            self.short_url = m.get('ShortUrl')
         return self
 
 
@@ -710,7 +686,6 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
         pic: str = None,
         price: str = None,
         promotion_price: str = None,
-        price_after_coupon: str = None,
         user_type: int = None,
         provcity: str = None,
         seller_nick_name: str = None,
@@ -718,26 +693,22 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
         month_sell_count: int = None,
         level_one_category_name: str = None,
         category_name: str = None,
-        coupon_activity_id: str = None,
         coupon_total_count: str = None,
-        coupon_send_count: str = None,
         coupon_remain_count: int = None,
         coupon_start_time: str = None,
         coupon_end_time: str = None,
         coupon_start_fee: str = None,
         coupon_amount: int = None,
         coupon_sale_text_info: str = None,
-        cal_tk_rate: str = None,
+        commission_rate: str = None,
         coupon_share_url: str = None,
         click_url: str = None,
-        short_url: str = None,
     ):
         self.item_id = item_id
         self.item_name = item_name
         self.pic = pic
         self.price = price
         self.promotion_price = promotion_price
-        self.price_after_coupon = price_after_coupon
         self.user_type = user_type
         self.provcity = provcity
         self.seller_nick_name = seller_nick_name
@@ -745,19 +716,16 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
         self.month_sell_count = month_sell_count
         self.level_one_category_name = level_one_category_name
         self.category_name = category_name
-        self.coupon_activity_id = coupon_activity_id
         self.coupon_total_count = coupon_total_count
-        self.coupon_send_count = coupon_send_count
         self.coupon_remain_count = coupon_remain_count
         self.coupon_start_time = coupon_start_time
         self.coupon_end_time = coupon_end_time
         self.coupon_start_fee = coupon_start_fee
         self.coupon_amount = coupon_amount
         self.coupon_sale_text_info = coupon_sale_text_info
-        self.cal_tk_rate = cal_tk_rate
+        self.commission_rate = commission_rate
         self.coupon_share_url = coupon_share_url
         self.click_url = click_url
-        self.short_url = short_url
 
     def validate(self):
         pass
@@ -778,8 +746,6 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
             result['Price'] = self.price
         if self.promotion_price is not None:
             result['PromotionPrice'] = self.promotion_price
-        if self.price_after_coupon is not None:
-            result['PriceAfterCoupon'] = self.price_after_coupon
         if self.user_type is not None:
             result['UserType'] = self.user_type
         if self.provcity is not None:
@@ -794,12 +760,8 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
             result['LevelOneCategoryName'] = self.level_one_category_name
         if self.category_name is not None:
             result['CategoryName'] = self.category_name
-        if self.coupon_activity_id is not None:
-            result['CouponActivityId'] = self.coupon_activity_id
         if self.coupon_total_count is not None:
             result['CouponTotalCount'] = self.coupon_total_count
-        if self.coupon_send_count is not None:
-            result['CouponSendCount'] = self.coupon_send_count
         if self.coupon_remain_count is not None:
             result['CouponRemainCount'] = self.coupon_remain_count
         if self.coupon_start_time is not None:
@@ -812,14 +774,12 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
             result['CouponAmount'] = self.coupon_amount
         if self.coupon_sale_text_info is not None:
             result['CouponSaleTextInfo'] = self.coupon_sale_text_info
-        if self.cal_tk_rate is not None:
-            result['CalTkRate'] = self.cal_tk_rate
+        if self.commission_rate is not None:
+            result['CommissionRate'] = self.commission_rate
         if self.coupon_share_url is not None:
             result['CouponShareUrl'] = self.coupon_share_url
         if self.click_url is not None:
             result['ClickUrl'] = self.click_url
-        if self.short_url is not None:
-            result['ShortUrl'] = self.short_url
         return result
 
     def from_map(self, m: dict = None):
@@ -834,8 +794,6 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
             self.price = m.get('Price')
         if m.get('PromotionPrice') is not None:
             self.promotion_price = m.get('PromotionPrice')
-        if m.get('PriceAfterCoupon') is not None:
-            self.price_after_coupon = m.get('PriceAfterCoupon')
         if m.get('UserType') is not None:
             self.user_type = m.get('UserType')
         if m.get('Provcity') is not None:
@@ -850,12 +808,8 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
             self.level_one_category_name = m.get('LevelOneCategoryName')
         if m.get('CategoryName') is not None:
             self.category_name = m.get('CategoryName')
-        if m.get('CouponActivityId') is not None:
-            self.coupon_activity_id = m.get('CouponActivityId')
         if m.get('CouponTotalCount') is not None:
             self.coupon_total_count = m.get('CouponTotalCount')
-        if m.get('CouponSendCount') is not None:
-            self.coupon_send_count = m.get('CouponSendCount')
         if m.get('CouponRemainCount') is not None:
             self.coupon_remain_count = m.get('CouponRemainCount')
         if m.get('CouponStartTime') is not None:
@@ -868,14 +822,12 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
             self.coupon_amount = m.get('CouponAmount')
         if m.get('CouponSaleTextInfo') is not None:
             self.coupon_sale_text_info = m.get('CouponSaleTextInfo')
-        if m.get('CalTkRate') is not None:
-            self.cal_tk_rate = m.get('CalTkRate')
+        if m.get('CommissionRate') is not None:
+            self.commission_rate = m.get('CommissionRate')
         if m.get('CouponShareUrl') is not None:
             self.coupon_share_url = m.get('CouponShareUrl')
         if m.get('ClickUrl') is not None:
             self.click_url = m.get('ClickUrl')
-        if m.get('ShortUrl') is not None:
-            self.short_url = m.get('ShortUrl')
         return self
 
 
