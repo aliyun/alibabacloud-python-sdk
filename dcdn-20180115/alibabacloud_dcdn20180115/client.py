@@ -475,6 +475,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_stop_dcdn_domain_with_options_async(request, runtime)
 
+    def commit_staging_routine_code_with_options(
+        self,
+        request: dcdn_20180115_models.CommitStagingRoutineCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CommitStagingRoutineCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CommitStagingRoutineCodeResponse(),
+            self.do_rpcrequest('CommitStagingRoutineCode', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def commit_staging_routine_code_with_options_async(
+        self,
+        request: dcdn_20180115_models.CommitStagingRoutineCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CommitStagingRoutineCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CommitStagingRoutineCodeResponse(),
+            await self.do_rpcrequest_async('CommitStagingRoutineCode', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def commit_staging_routine_code(
+        self,
+        request: dcdn_20180115_models.CommitStagingRoutineCodeRequest,
+    ) -> dcdn_20180115_models.CommitStagingRoutineCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.commit_staging_routine_code_with_options(request, runtime)
+
+    async def commit_staging_routine_code_async(
+        self,
+        request: dcdn_20180115_models.CommitStagingRoutineCodeRequest,
+    ) -> dcdn_20180115_models.CommitStagingRoutineCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.commit_staging_routine_code_with_options_async(request, runtime)
+
     def create_dcdn_certificate_signing_request_with_options(
         self,
         request: dcdn_20180115_models.CreateDcdnCertificateSigningRequestRequest,
@@ -654,6 +696,56 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_dcdn_sub_task_with_options_async(request, runtime)
+
+    def create_routine_with_options(
+        self,
+        tmp_req: dcdn_20180115_models.CreateRoutineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateRoutineResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.CreateRoutineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.env_conf):
+            request.env_conf_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.env_conf, 'EnvConf', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateRoutineResponse(),
+            self.do_rpcrequest('CreateRoutine', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_routine_with_options_async(
+        self,
+        tmp_req: dcdn_20180115_models.CreateRoutineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateRoutineResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.CreateRoutineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.env_conf):
+            request.env_conf_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.env_conf, 'EnvConf', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateRoutineResponse(),
+            await self.do_rpcrequest_async('CreateRoutine', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_routine(
+        self,
+        request: dcdn_20180115_models.CreateRoutineRequest,
+    ) -> dcdn_20180115_models.CreateRoutineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_routine_with_options(request, runtime)
+
+    async def create_routine_async(
+        self,
+        request: dcdn_20180115_models.CreateRoutineRequest,
+    ) -> dcdn_20180115_models.CreateRoutineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_routine_with_options_async(request, runtime)
 
     def delete_dcdn_deliver_task_with_options(
         self,
@@ -949,6 +1041,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dcdn_sub_task_with_options_async(request, runtime)
 
+    def delete_routine_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteRoutineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteRoutineResponse(),
+            self.do_rpcrequest('DeleteRoutine', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_routine_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteRoutineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteRoutineResponse(),
+            await self.do_rpcrequest_async('DeleteRoutine', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_routine(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineRequest,
+    ) -> dcdn_20180115_models.DeleteRoutineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_routine_with_options(request, runtime)
+
+    async def delete_routine_async(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineRequest,
+    ) -> dcdn_20180115_models.DeleteRoutineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_routine_with_options_async(request, runtime)
+
+    def delete_routine_code_revision_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineCodeRevisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteRoutineCodeRevisionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteRoutineCodeRevisionResponse(),
+            self.do_rpcrequest('DeleteRoutineCodeRevision', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_routine_code_revision_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineCodeRevisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteRoutineCodeRevisionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteRoutineCodeRevisionResponse(),
+            await self.do_rpcrequest_async('DeleteRoutineCodeRevision', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_routine_code_revision(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineCodeRevisionRequest,
+    ) -> dcdn_20180115_models.DeleteRoutineCodeRevisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_routine_code_revision_with_options(request, runtime)
+
+    async def delete_routine_code_revision_async(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineCodeRevisionRequest,
+    ) -> dcdn_20180115_models.DeleteRoutineCodeRevisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_routine_code_revision_with_options_async(request, runtime)
+
+    def delete_routine_conf_envs_with_options(
+        self,
+        tmp_req: dcdn_20180115_models.DeleteRoutineConfEnvsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteRoutineConfEnvsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.DeleteRoutineConfEnvsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.envs):
+            request.envs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteRoutineConfEnvsResponse(),
+            self.do_rpcrequest('DeleteRoutineConfEnvs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_routine_conf_envs_with_options_async(
+        self,
+        tmp_req: dcdn_20180115_models.DeleteRoutineConfEnvsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteRoutineConfEnvsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.DeleteRoutineConfEnvsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.envs):
+            request.envs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteRoutineConfEnvsResponse(),
+            await self.do_rpcrequest_async('DeleteRoutineConfEnvs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_routine_conf_envs(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineConfEnvsRequest,
+    ) -> dcdn_20180115_models.DeleteRoutineConfEnvsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_routine_conf_envs_with_options(request, runtime)
+
+    async def delete_routine_conf_envs_async(
+        self,
+        request: dcdn_20180115_models.DeleteRoutineConfEnvsRequest,
+    ) -> dcdn_20180115_models.DeleteRoutineConfEnvsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_routine_conf_envs_with_options_async(request, runtime)
+
     def describe_dcdn_bgp_bps_data_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnBgpBpsDataRequest,
@@ -1032,6 +1258,50 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnBgpTrafficDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_bgp_traffic_data_with_options_async(request, runtime)
+
+    def describe_dcdn_blocked_regions_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnBlockedRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnBlockedRegionsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnBlockedRegionsResponse(),
+            self.do_rpcrequest('DescribeDcdnBlockedRegions', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dcdn_blocked_regions_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnBlockedRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnBlockedRegionsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnBlockedRegionsResponse(),
+            await self.do_rpcrequest_async('DescribeDcdnBlockedRegions', '2018-01-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dcdn_blocked_regions(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnBlockedRegionsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnBlockedRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_blocked_regions_with_options(request, runtime)
+
+    async def describe_dcdn_blocked_regions_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnBlockedRegionsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnBlockedRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_blocked_regions_with_options_async(request, runtime)
 
     def describe_dcdn_certificate_detail_with_options(
         self,
@@ -3229,6 +3499,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_refresh_quota_with_options_async(request, runtime)
 
+    def describe_dcdn_refresh_task_by_id_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnRefreshTaskByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnRefreshTaskByIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnRefreshTaskByIdResponse(),
+            self.do_rpcrequest('DescribeDcdnRefreshTaskById', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dcdn_refresh_task_by_id_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnRefreshTaskByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnRefreshTaskByIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnRefreshTaskByIdResponse(),
+            await self.do_rpcrequest_async('DescribeDcdnRefreshTaskById', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dcdn_refresh_task_by_id(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnRefreshTaskByIdRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnRefreshTaskByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_refresh_task_by_id_with_options(request, runtime)
+
+    async def describe_dcdn_refresh_task_by_id_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnRefreshTaskByIdRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnRefreshTaskByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_refresh_task_by_id_with_options_async(request, runtime)
+
     def describe_dcdn_refresh_tasks_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnRefreshTasksRequest,
@@ -4111,6 +4423,216 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_waf_domain_with_options_async(request, runtime)
 
+    def describe_routine_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineResponse(),
+            self.do_rpcrequest('DescribeRoutine', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_routine_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineResponse(),
+            await self.do_rpcrequest_async('DescribeRoutine', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_routine(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_routine_with_options(request, runtime)
+
+    async def describe_routine_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_routine_with_options_async(request, runtime)
+
+    def describe_routine_canary_envs_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineCanaryEnvsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineCanaryEnvsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineCanaryEnvsResponse(),
+            self.do_rpcrequest('DescribeRoutineCanaryEnvs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_routine_canary_envs_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineCanaryEnvsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineCanaryEnvsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineCanaryEnvsResponse(),
+            await self.do_rpcrequest_async('DescribeRoutineCanaryEnvs', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_routine_canary_envs(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineCanaryEnvsRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineCanaryEnvsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_routine_canary_envs_with_options(request, runtime)
+
+    async def describe_routine_canary_envs_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineCanaryEnvsRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineCanaryEnvsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_routine_canary_envs_with_options_async(request, runtime)
+
+    def describe_routine_code_revision_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineCodeRevisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineCodeRevisionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineCodeRevisionResponse(),
+            self.do_rpcrequest('DescribeRoutineCodeRevision', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_routine_code_revision_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineCodeRevisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineCodeRevisionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineCodeRevisionResponse(),
+            await self.do_rpcrequest_async('DescribeRoutineCodeRevision', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_routine_code_revision(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineCodeRevisionRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineCodeRevisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_routine_code_revision_with_options(request, runtime)
+
+    async def describe_routine_code_revision_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineCodeRevisionRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineCodeRevisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_routine_code_revision_with_options_async(request, runtime)
+
+    def describe_routine_spec_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineSpecResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineSpecResponse(),
+            self.do_rpcrequest('DescribeRoutineSpec', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_routine_spec_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineSpecResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineSpecResponse(),
+            await self.do_rpcrequest_async('DescribeRoutineSpec', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_routine_spec(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineSpecRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineSpecResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_routine_spec_with_options(request, runtime)
+
+    async def describe_routine_spec_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineSpecRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineSpecResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_routine_spec_with_options_async(request, runtime)
+
+    def describe_routine_user_info_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineUserInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineUserInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineUserInfoResponse(),
+            self.do_rpcrequest('DescribeRoutineUserInfo', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_routine_user_info_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineUserInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRoutineUserInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRoutineUserInfoResponse(),
+            await self.do_rpcrequest_async('DescribeRoutineUserInfo', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_routine_user_info(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineUserInfoRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_routine_user_info_with_options(request, runtime)
+
+    async def describe_routine_user_info_async(
+        self,
+        request: dcdn_20180115_models.DescribeRoutineUserInfoRequest,
+    ) -> dcdn_20180115_models.DescribeRoutineUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_routine_user_info_with_options_async(request, runtime)
+
     def describe_user_dcdn_ipa_status_with_options(
         self,
         request: dcdn_20180115_models.DescribeUserDcdnIpaStatusRequest,
@@ -4194,6 +4716,48 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeUserDcdnStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_dcdn_status_with_options_async(request, runtime)
+
+    def describe_user_er_status_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeUserErStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeUserErStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeUserErStatusResponse(),
+            self.do_rpcrequest('DescribeUserErStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_user_er_status_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeUserErStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeUserErStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeUserErStatusResponse(),
+            await self.do_rpcrequest_async('DescribeUserErStatus', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_user_er_status(
+        self,
+        request: dcdn_20180115_models.DescribeUserErStatusRequest,
+    ) -> dcdn_20180115_models.DescribeUserErStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_er_status_with_options(request, runtime)
+
+    async def describe_user_er_status_async(
+        self,
+        request: dcdn_20180115_models.DescribeUserErStatusRequest,
+    ) -> dcdn_20180115_models.DescribeUserErStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_er_status_with_options_async(request, runtime)
 
     def describe_user_logservice_status_with_options(
         self,
@@ -4320,6 +4884,56 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DisableDcdnOfflineLogDeliveryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.disable_dcdn_offline_log_delivery_with_options_async(request, runtime)
+
+    def edit_routine_conf_with_options(
+        self,
+        tmp_req: dcdn_20180115_models.EditRoutineConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.EditRoutineConfResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.EditRoutineConfShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.env_conf):
+            request.env_conf_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.env_conf, 'EnvConf', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.EditRoutineConfResponse(),
+            self.do_rpcrequest('EditRoutineConf', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def edit_routine_conf_with_options_async(
+        self,
+        tmp_req: dcdn_20180115_models.EditRoutineConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.EditRoutineConfResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.EditRoutineConfShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.env_conf):
+            request.env_conf_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.env_conf, 'EnvConf', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.EditRoutineConfResponse(),
+            await self.do_rpcrequest_async('EditRoutineConf', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def edit_routine_conf(
+        self,
+        request: dcdn_20180115_models.EditRoutineConfRequest,
+    ) -> dcdn_20180115_models.EditRoutineConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.edit_routine_conf_with_options(request, runtime)
+
+    async def edit_routine_conf_async(
+        self,
+        request: dcdn_20180115_models.EditRoutineConfRequest,
+    ) -> dcdn_20180115_models.EditRoutineConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.edit_routine_conf_with_options_async(request, runtime)
 
     def enable_dcdn_domain_offline_log_delivery_with_options(
         self,
@@ -4530,6 +5144,56 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.PublishDcdnStagingConfigToProductionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.publish_dcdn_staging_config_to_production_with_options_async(request, runtime)
+
+    def publish_routine_code_revision_with_options(
+        self,
+        tmp_req: dcdn_20180115_models.PublishRoutineCodeRevisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.PublishRoutineCodeRevisionResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.PublishRoutineCodeRevisionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.envs):
+            request.envs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.PublishRoutineCodeRevisionResponse(),
+            self.do_rpcrequest('PublishRoutineCodeRevision', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def publish_routine_code_revision_with_options_async(
+        self,
+        tmp_req: dcdn_20180115_models.PublishRoutineCodeRevisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.PublishRoutineCodeRevisionResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.PublishRoutineCodeRevisionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.envs):
+            request.envs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.envs, 'Envs', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.PublishRoutineCodeRevisionResponse(),
+            await self.do_rpcrequest_async('PublishRoutineCodeRevision', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def publish_routine_code_revision(
+        self,
+        request: dcdn_20180115_models.PublishRoutineCodeRevisionRequest,
+    ) -> dcdn_20180115_models.PublishRoutineCodeRevisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.publish_routine_code_revision_with_options(request, runtime)
+
+    async def publish_routine_code_revision_async(
+        self,
+        request: dcdn_20180115_models.PublishRoutineCodeRevisionRequest,
+    ) -> dcdn_20180115_models.PublishRoutineCodeRevisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_routine_code_revision_with_options_async(request, runtime)
 
     def refresh_dcdn_object_caches_with_options(
         self,
@@ -4782,6 +5446,56 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.SetDcdnDomainStagingConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_dcdn_domain_staging_config_with_options_async(request, runtime)
+
+    def set_routine_subdomain_with_options(
+        self,
+        tmp_req: dcdn_20180115_models.SetRoutineSubdomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.SetRoutineSubdomainResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.SetRoutineSubdomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.subdomains):
+            request.subdomains_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subdomains, 'Subdomains', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetRoutineSubdomainResponse(),
+            self.do_rpcrequest('SetRoutineSubdomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def set_routine_subdomain_with_options_async(
+        self,
+        tmp_req: dcdn_20180115_models.SetRoutineSubdomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.SetRoutineSubdomainResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dcdn_20180115_models.SetRoutineSubdomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.subdomains):
+            request.subdomains_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subdomains, 'Subdomains', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetRoutineSubdomainResponse(),
+            await self.do_rpcrequest_async('SetRoutineSubdomain', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_routine_subdomain(
+        self,
+        request: dcdn_20180115_models.SetRoutineSubdomainRequest,
+    ) -> dcdn_20180115_models.SetRoutineSubdomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_routine_subdomain_with_options(request, runtime)
+
+    async def set_routine_subdomain_async(
+        self,
+        request: dcdn_20180115_models.SetRoutineSubdomainRequest,
+    ) -> dcdn_20180115_models.SetRoutineSubdomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_routine_subdomain_with_options_async(request, runtime)
 
     def start_dcdn_domain_with_options(
         self,
@@ -5214,6 +5928,90 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.UpdateDcdnSubTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_dcdn_sub_task_with_options_async(request, runtime)
+
+    def upload_routine_code_with_options(
+        self,
+        request: dcdn_20180115_models.UploadRoutineCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.UploadRoutineCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.UploadRoutineCodeResponse(),
+            self.do_rpcrequest('UploadRoutineCode', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def upload_routine_code_with_options_async(
+        self,
+        request: dcdn_20180115_models.UploadRoutineCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.UploadRoutineCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.UploadRoutineCodeResponse(),
+            await self.do_rpcrequest_async('UploadRoutineCode', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def upload_routine_code(
+        self,
+        request: dcdn_20180115_models.UploadRoutineCodeRequest,
+    ) -> dcdn_20180115_models.UploadRoutineCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_routine_code_with_options(request, runtime)
+
+    async def upload_routine_code_async(
+        self,
+        request: dcdn_20180115_models.UploadRoutineCodeRequest,
+    ) -> dcdn_20180115_models.UploadRoutineCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_routine_code_with_options_async(request, runtime)
+
+    def upload_staging_routine_code_with_options(
+        self,
+        request: dcdn_20180115_models.UploadStagingRoutineCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.UploadStagingRoutineCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.UploadStagingRoutineCodeResponse(),
+            self.do_rpcrequest('UploadStagingRoutineCode', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def upload_staging_routine_code_with_options_async(
+        self,
+        request: dcdn_20180115_models.UploadStagingRoutineCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.UploadStagingRoutineCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.UploadStagingRoutineCodeResponse(),
+            await self.do_rpcrequest_async('UploadStagingRoutineCode', '2018-01-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def upload_staging_routine_code(
+        self,
+        request: dcdn_20180115_models.UploadStagingRoutineCodeRequest,
+    ) -> dcdn_20180115_models.UploadStagingRoutineCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_staging_routine_code_with_options(request, runtime)
+
+    async def upload_staging_routine_code_async(
+        self,
+        request: dcdn_20180115_models.UploadStagingRoutineCodeRequest,
+    ) -> dcdn_20180115_models.UploadStagingRoutineCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_staging_routine_code_with_options_async(request, runtime)
 
     def verify_dcdn_domain_owner_with_options(
         self,
