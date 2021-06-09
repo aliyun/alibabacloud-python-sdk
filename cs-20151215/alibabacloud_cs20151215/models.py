@@ -19,6 +19,10 @@ class Runtime(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -53,6 +57,10 @@ class Taint(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['key'] = self.key
@@ -94,6 +102,10 @@ class DataDisk(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.category is not None:
             result['category'] = self.category
@@ -133,6 +145,10 @@ class Tag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['key'] = self.key
@@ -167,6 +183,10 @@ class Addon(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -208,6 +228,10 @@ class MaintenanceWindow(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
@@ -259,6 +283,10 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_ids is not None:
             result['resource_ids'] = self.resource_ids
@@ -316,6 +344,10 @@ class ListTagResourcesShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_ids_shrink is not None:
             result['resource_ids'] = self.resource_ids_shrink
@@ -365,6 +397,10 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_key is not None:
             result['tag_key'] = self.tag_key
@@ -404,6 +440,10 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['tag_resource'] = []
         if self.tag_resource is not None:
@@ -440,6 +480,10 @@ class ListTagResourcesResponseBody(TeaModel):
             self.tag_resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['next_token'] = self.next_token
@@ -477,6 +521,10 @@ class ListTagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -515,6 +563,10 @@ class UntagResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region_id is not None:
             result['region_id'] = self.region_id
@@ -550,6 +602,10 @@ class UntagResourcesResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -595,6 +651,10 @@ class ModifyClusterRequest(TeaModel):
             self.maintenance_window.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.api_server_eip is not None:
             result['api_server_eip'] = self.api_server_eip
@@ -654,6 +714,10 @@ class ModifyClusterResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -690,6 +754,10 @@ class ModifyClusterResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -734,6 +802,10 @@ class DescribeClusterAttachScriptsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.nodepool_id is not None:
             result['nodepool_id'] = self.nodepool_id
@@ -780,6 +852,10 @@ class DescribeClusterAttachScriptsResponse(TeaModel):
         self.validate_required(self.body, 'body')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -814,6 +890,10 @@ class RemoveClusterNodesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.drain_node is not None:
             result['drain_node'] = self.drain_node
@@ -845,6 +925,10 @@ class RemoveClusterNodesResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -878,6 +962,10 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region is not None:
             result['Region'] = self.region
@@ -932,6 +1020,10 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_id is not None:
             result['image_id'] = self.image_id
@@ -1002,6 +1094,10 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.capabilities is not None:
             result['capabilities'] = self.capabilities
@@ -1062,6 +1158,10 @@ class DescribeKubernetesVersionMetadataResponse(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1110,6 +1210,10 @@ class DescribeClusterLogsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['ID'] = self.id
@@ -1160,6 +1264,10 @@ class DescribeClusterLogsResponse(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1202,6 +1310,10 @@ class CreateKubernetesTriggerRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -1250,6 +1362,10 @@ class CreateKubernetesTriggerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['id'] = self.id
@@ -1294,6 +1410,10 @@ class CreateKubernetesTriggerResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1338,6 +1458,10 @@ class GrantPermissionsRequestBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster is not None:
             result['cluster'] = self.cluster
@@ -1385,6 +1509,10 @@ class GrantPermissionsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['body'] = []
         if self.body is not None:
@@ -1413,6 +1541,10 @@ class GrantPermissionsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1525,6 +1657,10 @@ class DescribeClusterDetailResponseBody(TeaModel):
             self.maintenance_window.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -1671,6 +1807,10 @@ class DescribeClusterDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1699,6 +1839,10 @@ class PauseComponentUpgradeResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1726,6 +1870,10 @@ class DescribeClustersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -1757,6 +1905,10 @@ class DescribeClustersResponseBodyTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['key'] = self.key
@@ -1872,6 +2024,10 @@ class DescribeClustersResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -2019,6 +2175,10 @@ class DescribeClustersResponse(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2067,6 +2227,10 @@ class DescribeUserPermissionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_id is not None:
             result['resource_id'] = self.resource_id
@@ -2117,6 +2281,10 @@ class DescribeUserPermissionResponse(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2168,6 +2336,10 @@ class ModifyClusterNodePoolRequestAutoScaling(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.eip_bandwidth is not None:
             result['eip_bandwidth'] = self.eip_bandwidth
@@ -2241,6 +2413,10 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cms_enabled is not None:
             result['cms_enabled'] = self.cms_enabled
@@ -2302,6 +2478,10 @@ class ModifyClusterNodePoolRequestNodepoolInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -2333,6 +2513,10 @@ class ModifyClusterNodePoolRequestScalingGroupSpotPriceLimit(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['instance_type'] = self.instance_type
@@ -2444,6 +2628,10 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['data_disks'] = []
         if self.data_disks is not None:
@@ -2579,6 +2767,10 @@ class ModifyClusterNodePoolRequestTeeConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tee_enable is not None:
             result['tee_enable'] = self.tee_enable
@@ -2612,6 +2804,10 @@ class ModifyClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_upgrade is not None:
             result['auto_upgrade'] = self.auto_upgrade
@@ -2655,6 +2851,10 @@ class ModifyClusterNodePoolRequestManagement(TeaModel):
             self.upgrade_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
@@ -2717,6 +2917,10 @@ class ModifyClusterNodePoolRequest(TeaModel):
             self.management.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
@@ -2774,6 +2978,10 @@ class ModifyClusterNodePoolResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['task_id'] = self.task_id
@@ -2806,6 +3014,10 @@ class ModifyClusterNodePoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2834,6 +3046,10 @@ class ResumeUpgradeClusterResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2858,6 +3074,10 @@ class OpenAckServiceRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['type'] = self.type
@@ -2885,6 +3105,10 @@ class OpenAckServiceResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['request_id'] = self.request_id
@@ -2917,6 +3141,10 @@ class OpenAckServiceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2946,6 +3174,10 @@ class ScaleClusterNodePoolRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.count is not None:
             result['count'] = self.count
@@ -2970,6 +3202,10 @@ class ScaleClusterNodePoolResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_id is not None:
             result['task_id'] = self.task_id
@@ -2998,6 +3234,10 @@ class ScaleClusterNodePoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3045,6 +3285,10 @@ class DescribeClusterNodePoolDetailResponseBodyAutoScaling(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.eip_bandwidth is not None:
             result['eip_bandwidth'] = self.eip_bandwidth
@@ -3118,6 +3362,10 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cms_enabled is not None:
             result['cms_enabled'] = self.cms_enabled
@@ -3197,6 +3445,10 @@ class DescribeClusterNodePoolDetailResponseBodyNodepoolInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -3252,6 +3504,10 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit(TeaMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['instance_type'] = self.instance_type
@@ -3372,6 +3628,10 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_renew is not None:
             result['auto_renew'] = self.auto_renew
@@ -3540,6 +3800,10 @@ class DescribeClusterNodePoolDetailResponseBodyStatus(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.failed_nodes is not None:
             result['failed_nodes'] = self.failed_nodes
@@ -3592,6 +3856,10 @@ class DescribeClusterNodePoolDetailResponseBodyTeeConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tee_enable is not None:
             result['tee_enable'] = self.tee_enable
@@ -3625,6 +3893,10 @@ class DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_upgrade is not None:
             result['auto_upgrade'] = self.auto_upgrade
@@ -3668,6 +3940,10 @@ class DescribeClusterNodePoolDetailResponseBodyManagement(TeaModel):
             self.upgrade_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
@@ -3732,6 +4008,10 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
             self.management.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
@@ -3791,6 +4071,10 @@ class DescribeClusterNodePoolDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3838,6 +4122,10 @@ class CreateClusterNodePoolRequestAutoScaling(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
@@ -3911,6 +4199,10 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cms_enabled is not None:
             result['cms_enabled'] = self.cms_enabled
@@ -3972,6 +4264,10 @@ class CreateClusterNodePoolRequestNodepoolInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -4003,6 +4299,10 @@ class CreateClusterNodePoolRequestScalingGroupSpotPriceLimit(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['instance_type'] = self.instance_type
@@ -4034,6 +4334,10 @@ class CreateClusterNodePoolRequestScalingGroupTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['key'] = self.key
@@ -4148,6 +4452,10 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_renew is not None:
             result['auto_renew'] = self.auto_renew
@@ -4287,6 +4595,10 @@ class CreateClusterNodePoolRequestTeeConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tee_enable is not None:
             result['tee_enable'] = self.tee_enable
@@ -4320,6 +4632,10 @@ class CreateClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_upgrade is not None:
             result['auto_upgrade'] = self.auto_upgrade
@@ -4363,6 +4679,10 @@ class CreateClusterNodePoolRequestManagement(TeaModel):
             self.upgrade_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
@@ -4425,6 +4745,10 @@ class CreateClusterNodePoolRequest(TeaModel):
             self.management.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
@@ -4479,6 +4803,10 @@ class CreateClusterNodePoolResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.nodepool_id is not None:
             result['nodepool_id'] = self.nodepool_id
@@ -4507,6 +4835,10 @@ class CreateClusterNodePoolResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4528,23 +4860,34 @@ class DescribeClusterUserKubeconfigRequest(TeaModel):
     def __init__(
         self,
         private_ip_address: bool = None,
+        temporary_duration_minutes: int = None,
     ):
         # ApiServer是否为内网地址。
         self.private_ip_address = private_ip_address
+        # 临时kubeconfig有效期，单位：分钟。  最小值：15（15分钟）  最大值：4320（3天）。
+        self.temporary_duration_minutes = temporary_duration_minutes
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
+        if self.temporary_duration_minutes is not None:
+            result['TemporaryDurationMinutes'] = self.temporary_duration_minutes
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('PrivateIpAddress') is not None:
             self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('TemporaryDurationMinutes') is not None:
+            self.temporary_duration_minutes = m.get('TemporaryDurationMinutes')
         return self
 
 
@@ -4552,23 +4895,34 @@ class DescribeClusterUserKubeconfigResponseBody(TeaModel):
     def __init__(
         self,
         config: str = None,
+        expiration: str = None,
     ):
         # kubeconfig内容。
         self.config = config
+        # kubeconfig过期时间。格式：RFC3339 格式的 UTC 时间。
+        self.expiration = expiration
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.config is not None:
             result['config'] = self.config
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('config') is not None:
             self.config = m.get('config')
+        if m.get('expiration') is not None:
+            self.expiration = m.get('expiration')
         return self
 
 
@@ -4588,6 +4942,10 @@ class DescribeClusterUserKubeconfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4617,6 +4975,10 @@ class ScaleClusterRequestTags(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['key'] = self.key
@@ -4647,6 +5009,10 @@ class ScaleClusterRequestTaints(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.effect is not None:
             result['effect'] = self.effect
@@ -4685,6 +5051,10 @@ class ScaleClusterRequestWorkerDataDisks(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.category is not None:
             result['category'] = self.category
@@ -4782,6 +5152,10 @@ class ScaleClusterRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cloud_monitor_flags is not None:
             result['cloud_monitor_flags'] = self.cloud_monitor_flags
@@ -4899,6 +5273,10 @@ class ScaleClusterResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -4935,6 +5313,10 @@ class ScaleClusterResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4966,6 +5348,10 @@ class DescribeClusterAddonUpgradeStatusResponse(TeaModel):
         self.validate_required(self.body, 'body')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4997,6 +5383,10 @@ class DescribeAddonsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.region is not None:
             result['region'] = self.region
@@ -5025,6 +5415,10 @@ class DescribeAddonsResponseBodyComponentGroupsItems(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -5055,6 +5449,10 @@ class DescribeAddonsResponseBodyComponentGroups(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_name is not None:
             result['group_name'] = self.group_name
@@ -5100,6 +5498,10 @@ class StandardComponentsValue(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -5150,6 +5552,10 @@ class DescribeAddonsResponseBody(TeaModel):
                     v.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ComponentGroups'] = []
         if self.component_groups is not None:
@@ -5192,6 +5598,10 @@ class DescribeAddonsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5450,6 +5860,10 @@ class CreateClusterRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -5785,6 +6199,10 @@ class CreateClusterResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -5821,6 +6239,10 @@ class CreateClusterResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5856,6 +6278,10 @@ class UpgradeClusterRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.component_name is not None:
             result['component_name'] = self.component_name
@@ -5887,6 +6313,10 @@ class UpgradeClusterResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5911,6 +6341,10 @@ class CancelWorkflowRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.action is not None:
             result['action'] = self.action
@@ -5934,6 +6368,10 @@ class CancelWorkflowResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5998,6 +6436,10 @@ class AttachInstancesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instances is not None:
             result['instances'] = self.instances
@@ -6082,6 +6524,10 @@ class AttachInstancesResponseBodyList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['code'] = self.code
@@ -6120,6 +6566,10 @@ class AttachInstancesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['list'] = []
         if self.list is not None:
@@ -6157,6 +6607,10 @@ class AttachInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6192,6 +6646,10 @@ class DescribeTemplatesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_type is not None:
             result['template_type'] = self.template_type
@@ -6251,6 +6709,10 @@ class DescribeTemplatesResponseBodyTemplates(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.acl is not None:
             result['acl'] = self.acl
@@ -6317,6 +6779,10 @@ class DescribeTemplatesResponseBodyPageInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['page_number'] = self.page_number
@@ -6357,6 +6823,10 @@ class DescribeTemplatesResponseBody(TeaModel):
             self.page_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['templates'] = []
         if self.templates is not None:
@@ -6395,6 +6865,10 @@ class DescribeTemplatesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6423,6 +6897,10 @@ class PauseClusterUpgradeResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6446,6 +6924,10 @@ class DeleteTemplateResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6470,6 +6952,10 @@ class DescribeTemplateAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_type is not None:
             result['template_type'] = self.template_type
@@ -6521,6 +7007,10 @@ class DescribeTemplateAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['id'] = self.id
@@ -6587,6 +7077,10 @@ class DescribeTemplateAttributeResponse(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6632,6 +7126,10 @@ class CreateTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -6672,6 +7170,10 @@ class CreateTemplateResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.template_id is not None:
             result['template_id'] = self.template_id
@@ -6700,6 +7202,10 @@ class CreateTemplateResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6741,6 +7247,10 @@ class DescribeClusterNodesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_ids is not None:
             result['instanceIds'] = self.instance_ids
@@ -6838,6 +7348,10 @@ class DescribeClusterNodesResponseBodyNodes(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['creation_time'] = self.creation_time
@@ -6944,6 +7458,10 @@ class DescribeClusterNodesResponseBodyPage(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['page_number'] = self.page_number
@@ -6984,6 +7502,10 @@ class DescribeClusterNodesResponseBody(TeaModel):
             self.page.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['nodes'] = []
         if self.nodes is not None:
@@ -7022,6 +7544,10 @@ class DescribeClusterNodesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7057,6 +7583,10 @@ class DeleteClusterRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.retain_all_resources is not None:
             result['retain_all_resources'] = self.retain_all_resources
@@ -7095,6 +7625,10 @@ class DeleteClusterShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.retain_all_resources is not None:
             result['retain_all_resources'] = self.retain_all_resources
@@ -7126,6 +7660,10 @@ class DeleteClusterResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7149,6 +7687,10 @@ class CancelComponentUpgradeResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7172,6 +7714,10 @@ class MigrateClusterResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7198,6 +7744,10 @@ class DescribeClusterAddonsVersionResponse(TeaModel):
         self.validate_required(self.body, 'body')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7226,6 +7776,10 @@ class DescribeExternalAgentRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
@@ -7250,6 +7804,10 @@ class DescribeExternalAgentResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.config is not None:
             result['config'] = self.config
@@ -7278,6 +7836,10 @@ class DescribeExternalAgentResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7307,6 +7869,10 @@ class UnInstallClusterAddonsRequestAddons(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -7334,6 +7900,10 @@ class UnInstallClusterAddonsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['addons'] = []
         if self.addons is not None:
@@ -7362,6 +7932,10 @@ class UnInstallClusterAddonsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7385,6 +7959,10 @@ class ResumeComponentUpgradeResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7418,6 +7996,10 @@ class DescribeClustersV1Request(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -7542,6 +8124,10 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             self.maintenance_window.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -7690,6 +8276,10 @@ class DescribeClustersV1ResponseBodyPageInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_number is not None:
             result['page_number'] = self.page_number
@@ -7730,6 +8320,10 @@ class DescribeClustersV1ResponseBody(TeaModel):
             self.page_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['clusters'] = []
         if self.clusters is not None:
@@ -7768,6 +8362,10 @@ class DescribeClustersV1Response(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7800,6 +8398,10 @@ class ModifyClusterConfigurationRequestCustomizeConfigConfigs(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['key'] = self.key
@@ -7834,6 +8436,10 @@ class ModifyClusterConfigurationRequestCustomizeConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -7870,6 +8476,10 @@ class ModifyClusterConfigurationRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['customize_config'] = []
         if self.customize_config is not None:
@@ -7898,6 +8508,10 @@ class ModifyClusterConfigurationResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7925,6 +8539,10 @@ class DescribeTaskInfoResponseBodyTaskResult(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.data is not None:
             result['data'] = self.data
@@ -7974,6 +8592,10 @@ class DescribeTaskInfoResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -8031,6 +8653,10 @@ class DescribeTaskInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8090,6 +8716,10 @@ class DescirbeWorkflowResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.create_time is not None:
             result['create_time'] = self.create_time
@@ -8158,6 +8788,10 @@ class DescirbeWorkflowResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8186,6 +8820,10 @@ class CancelClusterUpgradeResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8209,6 +8847,10 @@ class RemoveWorkflowResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8245,6 +8887,10 @@ class UpdateTemplateRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.description is not None:
             result['description'] = self.description
@@ -8284,6 +8930,10 @@ class UpdateTemplateResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8314,6 +8964,10 @@ class UpgradeClusterAddonsRequestBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.component_name is not None:
             result['component_name'] = self.component_name
@@ -8349,6 +9003,10 @@ class UpgradeClusterAddonsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['body'] = []
         if self.body is not None:
@@ -8377,6 +9035,10 @@ class UpgradeClusterAddonsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8403,6 +9065,10 @@ class DescribeClusterNamespacesResponse(TeaModel):
         self.validate_required(self.body, 'body')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8430,6 +9096,10 @@ class DeleteKubernetesTriggerResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8466,6 +9136,10 @@ class DescribeUserQuotaResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.amk_cluster_quota is not None:
             result['amk_cluster_quota'] = self.amk_cluster_quota
@@ -8510,6 +9184,10 @@ class DescribeUserQuotaResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8538,6 +9216,10 @@ class DeleteClusterNodepoolResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8562,6 +9244,10 @@ class DescribeClusterAddonsUpgradeStatusRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.component_ids is not None:
             result['componentIds'] = self.component_ids
@@ -8586,6 +9272,10 @@ class DescribeClusterAddonsUpgradeStatusShrinkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.component_ids_shrink is not None:
             result['componentIds'] = self.component_ids_shrink
@@ -8612,6 +9302,10 @@ class DescribeClusterAddonsUpgradeStatusResponse(TeaModel):
         self.validate_required(self.body, 'body')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8646,6 +9340,10 @@ class DescribeWorkflowsResponseBodyJobs(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -8681,6 +9379,10 @@ class DescribeWorkflowsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['jobs'] = []
         if self.jobs is not None:
@@ -8714,6 +9416,10 @@ class DescribeWorkflowsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8749,6 +9455,10 @@ class InstallClusterAddonsRequestBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['name'] = self.name
@@ -8784,6 +9494,10 @@ class InstallClusterAddonsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['body'] = []
         if self.body is not None:
@@ -8812,6 +9526,10 @@ class InstallClusterAddonsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8854,6 +9572,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.eip_bandwidth is not None:
             result['eip_bandwidth'] = self.eip_bandwidth
@@ -8927,6 +9649,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cms_enabled is not None:
             result['cms_enabled'] = self.cms_enabled
@@ -9006,6 +9732,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.created is not None:
             result['created'] = self.created
@@ -9061,6 +9791,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupSpotPriceLimit(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['instance_type'] = self.instance_type
@@ -9181,6 +9915,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_renew is not None:
             result['auto_renew'] = self.auto_renew
@@ -9349,6 +10087,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsStatus(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.failed_nodes is not None:
             result['failed_nodes'] = self.failed_nodes
@@ -9401,6 +10143,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsTeeConfig(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tee_enable is not None:
             result['tee_enable'] = self.tee_enable
@@ -9434,6 +10180,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig(TeaMo
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_upgrade is not None:
             result['auto_upgrade'] = self.auto_upgrade
@@ -9477,6 +10227,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagement(TeaModel):
             self.upgrade_config.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.enable is not None:
             result['enable'] = self.enable
@@ -9541,6 +10295,10 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
             self.management.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
@@ -9599,6 +10357,10 @@ class DescribeClusterNodePoolsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['nodepools'] = []
         if self.nodepools is not None:
@@ -9632,6 +10394,10 @@ class DescribeClusterNodePoolsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9661,6 +10427,10 @@ class DescribeClusterV2UserKubeconfigRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
@@ -9685,6 +10455,10 @@ class DescribeClusterV2UserKubeconfigResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.config is not None:
             result['config'] = self.config
@@ -9713,6 +10487,10 @@ class DescribeClusterV2UserKubeconfigResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9796,6 +10574,10 @@ class StartWorkflowRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.workflow_type is not None:
             result['workflow_type'] = self.workflow_type
@@ -9892,6 +10674,10 @@ class StartWorkflowResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.job_name is not None:
             result['JobName'] = self.job_name
@@ -9920,6 +10706,10 @@ class StartWorkflowResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10021,6 +10811,10 @@ class ScaleOutClusterRequest(TeaModel):
             self.runtime.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.count is not None:
             result['count'] = self.count
@@ -10147,6 +10941,10 @@ class ScaleOutClusterResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -10183,6 +10981,10 @@ class ScaleOutClusterResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10221,6 +11023,10 @@ class DescribeEventsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -10263,6 +11069,10 @@ class DescribeEventsResponseBodyEventsData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.level is not None:
             result['level'] = self.level
@@ -10314,6 +11124,10 @@ class DescribeEventsResponseBodyEvents(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.event_id is not None:
             result['event_id'] = self.event_id
@@ -10369,6 +11183,10 @@ class DescribeEventsResponseBodyPageInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page_size is not None:
             result['page_size'] = self.page_size
@@ -10407,6 +11225,10 @@ class DescribeEventsResponseBody(TeaModel):
             self.page_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['events'] = []
         if self.events is not None:
@@ -10445,6 +11267,10 @@ class DescribeEventsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10473,6 +11299,10 @@ class UpdateK8sClusterUserConfigExpireResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10509,6 +11339,10 @@ class TagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.resource_ids is not None:
             result['resource_ids'] = self.resource_ids
@@ -10549,6 +11383,10 @@ class TagResourcesResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10576,6 +11414,10 @@ class ModifyClusterTagsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['body'] = []
         if self.body is not None:
@@ -10604,6 +11446,10 @@ class ModifyClusterTagsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10637,6 +11483,10 @@ class GetKubernetesTriggerRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.namespace is not None:
             result['Namespace'] = self.namespace
@@ -10691,6 +11541,10 @@ class GetKubernetesTriggerResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['id'] = self.id
@@ -10745,6 +11599,10 @@ class GetKubernetesTriggerResponse(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10781,6 +11639,10 @@ class GetUpgradeStatusResponseBodyUpgradeTask(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['status'] = self.status
@@ -10822,6 +11684,10 @@ class GetUpgradeStatusResponseBody(TeaModel):
             self.upgrade_task.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.error_message is not None:
             result['error_message'] = self.error_message
@@ -10867,6 +11733,10 @@ class GetUpgradeStatusResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10911,6 +11781,10 @@ class DescribeClusterResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
@@ -10961,6 +11835,10 @@ class DescribeClusterResourcesResponse(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11000,6 +11878,10 @@ class DeleteClusterNodesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.drain_node is not None:
             result['drain_node'] = self.drain_node
@@ -11031,6 +11913,10 @@ class DeleteClusterNodesResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

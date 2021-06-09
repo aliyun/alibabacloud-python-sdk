@@ -1,3 +1,6 @@
+2021-06-09 Version: 2.4.2
+- AMP Version.
+
 2021-03-16 Version: 2.4.1
 - DescribeClusterNamespaces add response body.
 
