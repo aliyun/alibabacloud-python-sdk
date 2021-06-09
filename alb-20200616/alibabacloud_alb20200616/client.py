@@ -20,7 +20,29 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'central'
+        self._endpoint_map = {
+            'cn-beijing': 'alb.cn-beijing.aliyuncs.com',
+            'cn-zhangjiakou': 'alb.cn-zhangjiakou.aliyuncs.com',
+            'cn-hangzhou': 'alb.cn-hangzhou.aliyuncs.com',
+            'cn-shanghai': 'alb.cn-shanghai.aliyuncs.com',
+            'cn-shenzhen': 'alb.cn-shenzhen.aliyuncs.com',
+            'cn-hongkong': 'alb.cn-hongkong.aliyuncs.com',
+            'ap-southeast-1': 'alb.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-2': 'alb.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-5': 'alb.ap-southeast-5.aliyuncs.com',
+            'us-east-1': 'alb.us-east-1.aliyuncs.com',
+            'eu-central-1': 'alb.eu-central-1.aliyuncs.com',
+            'ap-south-1': 'alb.ap-south-1.aliyuncs.com',
+            'ap-northeast-1': 'alb.ap-northeast-1.aliyuncs.com',
+            'ap-southeast-3': 'alb.ap-southeast-3.aliyuncs.com',
+            'cn-chengdu': 'alb.cn-chengdu.aliyuncs.com',
+            'cn-huhehaote': 'alb.cn-huhehaote.aliyuncs.com',
+            'cn-qingdao': 'alb.cn-qingdao.aliyuncs.com',
+            'cn-wulanchabu': 'alb.cn-wulanchabu.aliyuncs.com',
+            'eu-west-1': 'alb.eu-west-1.aliyuncs.com',
+            'us-west-1': 'alb.us-west-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('alb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -543,48 +565,6 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.EnableDeletionProtectionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.enable_deletion_protection_with_options_async(request, runtime)
-
-    def get_listener_health_status_with_options(
-        self,
-        request: alb_20200616_models.GetListenerHealthStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alb_20200616_models.GetListenerHealthStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            alb_20200616_models.GetListenerHealthStatusResponse(),
-            self.do_rpcrequest('GetListenerHealthStatus', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_listener_health_status_with_options_async(
-        self,
-        request: alb_20200616_models.GetListenerHealthStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alb_20200616_models.GetListenerHealthStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            alb_20200616_models.GetListenerHealthStatusResponse(),
-            await self.do_rpcrequest_async('GetListenerHealthStatus', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_listener_health_status(
-        self,
-        request: alb_20200616_models.GetListenerHealthStatusRequest,
-    ) -> alb_20200616_models.GetListenerHealthStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_listener_health_status_with_options(request, runtime)
-
-    async def get_listener_health_status_async(
-        self,
-        request: alb_20200616_models.GetListenerHealthStatusRequest,
-    ) -> alb_20200616_models.GetListenerHealthStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_listener_health_status_with_options_async(request, runtime)
 
     def update_listener_attribute_with_options(
         self,
