@@ -1651,6 +1651,116 @@ class ListClusterFromGrafanaResponse(TeaModel):
         return self
 
 
+class InstallEventerRequest(TeaModel):
+    def __init__(
+        self,
+        proxy_user_id: str = None,
+        region_id: str = None,
+        cluster_id: str = None,
+    ):
+        self.proxy_user_id = proxy_user_id
+        self.region_id = region_id
+        self.cluster_id = cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_user_id is not None:
+            result['ProxyUserId'] = self.proxy_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyUserId') is not None:
+            self.proxy_user_id = m.get('ProxyUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        return self
+
+
+class InstallEventerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        return self
+
+
+class InstallEventerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: InstallEventerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = InstallEventerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDashboardsRequest(TeaModel):
     def __init__(
         self,
@@ -9847,9 +9957,13 @@ class GetTraceRequest(TeaModel):
         self,
         trace_id: str = None,
         region_id: str = None,
+        start_time: int = None,
+        end_time: int = None,
     ):
         self.trace_id = trace_id
         self.region_id = region_id
+        self.start_time = start_time
+        self.end_time = end_time
 
     def validate(self):
         pass
@@ -9864,6 +9978,10 @@ class GetTraceRequest(TeaModel):
             result['TraceID'] = self.trace_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         return result
 
     def from_map(self, m: dict = None):
@@ -9872,6 +9990,10 @@ class GetTraceRequest(TeaModel):
             self.trace_id = m.get('TraceID')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         return self
 
 

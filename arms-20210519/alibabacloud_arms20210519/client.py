@@ -486,6 +486,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_from_grafana_with_options_async(request, runtime)
 
+    def install_eventer_with_options(
+        self,
+        request: arms20210519_models.InstallEventerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20210519_models.InstallEventerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            arms20210519_models.InstallEventerResponse(),
+            self.do_rpcrequest('InstallEventer', '2021-05-19', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def install_eventer_with_options_async(
+        self,
+        request: arms20210519_models.InstallEventerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20210519_models.InstallEventerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            arms20210519_models.InstallEventerResponse(),
+            await self.do_rpcrequest_async('InstallEventer', '2021-05-19', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def install_eventer(
+        self,
+        request: arms20210519_models.InstallEventerRequest,
+    ) -> arms20210519_models.InstallEventerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.install_eventer_with_options(request, runtime)
+
+    async def install_eventer_async(
+        self,
+        request: arms20210519_models.InstallEventerRequest,
+    ) -> arms20210519_models.InstallEventerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.install_eventer_with_options_async(request, runtime)
+
     def list_dashboards_with_options(
         self,
         request: arms20210519_models.ListDashboardsRequest,
