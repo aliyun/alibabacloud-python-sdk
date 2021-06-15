@@ -4,6 +4,186 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class AddAccountRelationRequest(TeaModel):
+    def __init__(
+        self,
+        relation_type: str = None,
+        parent_user_id: int = None,
+        child_nick: str = None,
+        child_user_id: int = None,
+        request_id: str = None,
+        permission_codes: List[str] = None,
+        role_codes: List[str] = None,
+    ):
+        self.relation_type = relation_type
+        self.parent_user_id = parent_user_id
+        self.child_nick = child_nick
+        self.child_user_id = child_user_id
+        self.request_id = request_id
+        self.permission_codes = permission_codes
+        self.role_codes = role_codes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.relation_type is not None:
+            result['RelationType'] = self.relation_type
+        if self.parent_user_id is not None:
+            result['ParentUserId'] = self.parent_user_id
+        if self.child_nick is not None:
+            result['ChildNick'] = self.child_nick
+        if self.child_user_id is not None:
+            result['ChildUserId'] = self.child_user_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.permission_codes is not None:
+            result['PermissionCodes'] = self.permission_codes
+        if self.role_codes is not None:
+            result['RoleCodes'] = self.role_codes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RelationType') is not None:
+            self.relation_type = m.get('RelationType')
+        if m.get('ParentUserId') is not None:
+            self.parent_user_id = m.get('ParentUserId')
+        if m.get('ChildNick') is not None:
+            self.child_nick = m.get('ChildNick')
+        if m.get('ChildUserId') is not None:
+            self.child_user_id = m.get('ChildUserId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PermissionCodes') is not None:
+            self.permission_codes = m.get('PermissionCodes')
+        if m.get('RoleCodes') is not None:
+            self.role_codes = m.get('RoleCodes')
+        return self
+
+
+class AddAccountRelationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        host_id: str = None,
+    ):
+        self.host_id = host_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host_id is not None:
+            result['HostId'] = self.host_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
+        return self
+
+
+class AddAccountRelationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: AddAccountRelationResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = AddAccountRelationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class AddAccountRelationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AddAccountRelationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AddAccountRelationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AllocateCostUnitResourceRequestResourceInstanceList(TeaModel):
     def __init__(
         self,
@@ -732,6 +912,180 @@ class ChangeResellerConsumeAmountResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ChangeResellerConsumeAmountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ConfirmRelationRequest(TeaModel):
+    def __init__(
+        self,
+        relation_type: str = None,
+        parent_user_id: int = None,
+        confirm_code: str = None,
+        child_user_id: int = None,
+        request_id: str = None,
+        permission_codes: List[str] = None,
+    ):
+        self.relation_type = relation_type
+        self.parent_user_id = parent_user_id
+        self.confirm_code = confirm_code
+        self.child_user_id = child_user_id
+        self.request_id = request_id
+        self.permission_codes = permission_codes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.relation_type is not None:
+            result['RelationType'] = self.relation_type
+        if self.parent_user_id is not None:
+            result['ParentUserId'] = self.parent_user_id
+        if self.confirm_code is not None:
+            result['ConfirmCode'] = self.confirm_code
+        if self.child_user_id is not None:
+            result['ChildUserId'] = self.child_user_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.permission_codes is not None:
+            result['PermissionCodes'] = self.permission_codes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RelationType') is not None:
+            self.relation_type = m.get('RelationType')
+        if m.get('ParentUserId') is not None:
+            self.parent_user_id = m.get('ParentUserId')
+        if m.get('ConfirmCode') is not None:
+            self.confirm_code = m.get('ConfirmCode')
+        if m.get('ChildUserId') is not None:
+            self.child_user_id = m.get('ChildUserId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PermissionCodes') is not None:
+            self.permission_codes = m.get('PermissionCodes')
+        return self
+
+
+class ConfirmRelationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        host_id: str = None,
+    ):
+        self.host_id = host_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host_id is not None:
+            result['HostId'] = self.host_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
+        return self
+
+
+class ConfirmRelationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: ConfirmRelationResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = ConfirmRelationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class ConfirmRelationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ConfirmRelationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ConfirmRelationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2210,10 +2564,10 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
         list_price_unit: str = None,
         resource_group: str = None,
         pip_code: str = None,
-        pretax_amount: float = None,
         service_period_unit: str = None,
-        product_name: str = None,
+        pretax_amount: float = None,
         commodity_code: str = None,
+        product_name: str = None,
         nick_name: str = None,
         product_detail: str = None,
         usage: str = None,
@@ -2250,10 +2604,10 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
         self.list_price_unit = list_price_unit
         self.resource_group = resource_group
         self.pip_code = pip_code
-        self.pretax_amount = pretax_amount
         self.service_period_unit = service_period_unit
-        self.product_name = product_name
+        self.pretax_amount = pretax_amount
         self.commodity_code = commodity_code
+        self.product_name = product_name
         self.nick_name = nick_name
         self.product_detail = product_detail
         self.usage = usage
@@ -2317,14 +2671,14 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
             result['ResourceGroup'] = self.resource_group
         if self.pip_code is not None:
             result['PipCode'] = self.pip_code
-        if self.pretax_amount is not None:
-            result['PretaxAmount'] = self.pretax_amount
         if self.service_period_unit is not None:
             result['ServicePeriodUnit'] = self.service_period_unit
-        if self.product_name is not None:
-            result['ProductName'] = self.product_name
+        if self.pretax_amount is not None:
+            result['PretaxAmount'] = self.pretax_amount
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
         if self.product_detail is not None:
@@ -2399,14 +2753,14 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
             self.resource_group = m.get('ResourceGroup')
         if m.get('PipCode') is not None:
             self.pip_code = m.get('PipCode')
-        if m.get('PretaxAmount') is not None:
-            self.pretax_amount = m.get('PretaxAmount')
         if m.get('ServicePeriodUnit') is not None:
             self.service_period_unit = m.get('ServicePeriodUnit')
-        if m.get('ProductName') is not None:
-            self.product_name = m.get('ProductName')
+        if m.get('PretaxAmount') is not None:
+            self.pretax_amount = m.get('PretaxAmount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
         if m.get('NickName') is not None:
             self.nick_name = m.get('NickName')
         if m.get('ProductDetail') is not None:
@@ -2447,21 +2801,21 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
 class DescribeInstanceBillResponseBodyData(TeaModel):
     def __init__(
         self,
-        items: List[DescribeInstanceBillResponseBodyDataItems] = None,
         next_token: str = None,
         billing_cycle: str = None,
         max_results: int = None,
         account_id: str = None,
         total_count: int = None,
         account_name: str = None,
+        items: List[DescribeInstanceBillResponseBodyDataItems] = None,
     ):
-        self.items = items
         self.next_token = next_token
         self.billing_cycle = billing_cycle
         self.max_results = max_results
         self.account_id = account_id
         self.total_count = total_count
         self.account_name = account_name
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -2475,10 +2829,6 @@ class DescribeInstanceBillResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        result['Items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['Items'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.billing_cycle is not None:
@@ -2491,15 +2841,14 @@ class DescribeInstanceBillResponseBodyData(TeaModel):
             result['TotalCount'] = self.total_count
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.items = []
-        if m.get('Items') is not None:
-            for k in m.get('Items'):
-                temp_model = DescribeInstanceBillResponseBodyDataItems()
-                self.items.append(temp_model.from_map(k))
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('BillingCycle') is not None:
@@ -2512,23 +2861,28 @@ class DescribeInstanceBillResponseBodyData(TeaModel):
             self.total_count = m.get('TotalCount')
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeInstanceBillResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
         return self
 
 
 class DescribeInstanceBillResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         message: str = None,
         request_id: str = None,
-        data: DescribeInstanceBillResponseBodyData = None,
-        code: str = None,
         success: bool = None,
+        data: DescribeInstanceBillResponseBodyData = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
-        self.data = data
-        self.code = code
         self.success = success
+        self.data = data
 
     def validate(self):
         if self.data:
@@ -2540,31 +2894,31 @@ class DescribeInstanceBillResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('Data') is not None:
             temp_model = DescribeInstanceBillResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -2601,6 +2955,616 @@ class DescribeInstanceBillResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeInstanceBillResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResourceCoverageDetailRequest(TeaModel):
+    def __init__(
+        self,
+        start_period: str = None,
+        end_period: str = None,
+        period_type: str = None,
+        next_token: str = None,
+        max_results: int = None,
+        bill_owner_id: int = None,
+        resource_type: str = None,
+    ):
+        self.start_period = start_period
+        self.end_period = end_period
+        self.period_type = period_type
+        self.next_token = next_token
+        self.max_results = max_results
+        self.bill_owner_id = bill_owner_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.start_period is not None:
+            result['StartPeriod'] = self.start_period
+        if self.end_period is not None:
+            result['EndPeriod'] = self.end_period
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.bill_owner_id is not None:
+            result['BillOwnerId'] = self.bill_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StartPeriod') is not None:
+            self.start_period = m.get('StartPeriod')
+        if m.get('EndPeriod') is not None:
+            self.end_period = m.get('EndPeriod')
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('BillOwnerId') is not None:
+            self.bill_owner_id = m.get('BillOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeResourceCoverageDetailResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        product_name: str = None,
+        total_quantity: float = None,
+        region_no: str = None,
+        user_id: str = None,
+        commodity_name: str = None,
+        capacity_unit: str = None,
+        instance_id: str = None,
+        currency: str = None,
+        zone_name: str = None,
+        instance_spec: str = None,
+        end_time: str = None,
+        start_time: str = None,
+        payment_amount: float = None,
+        coverage_percentage: float = None,
+        region: str = None,
+        deduct_quantity: float = None,
+        zone: str = None,
+        user_name: str = None,
+        product_code: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.product_name = product_name
+        self.total_quantity = total_quantity
+        self.region_no = region_no
+        self.user_id = user_id
+        self.commodity_name = commodity_name
+        self.capacity_unit = capacity_unit
+        self.instance_id = instance_id
+        self.currency = currency
+        self.zone_name = zone_name
+        self.instance_spec = instance_spec
+        self.end_time = end_time
+        self.start_time = start_time
+        self.payment_amount = payment_amount
+        self.coverage_percentage = coverage_percentage
+        self.region = region
+        self.deduct_quantity = deduct_quantity
+        self.zone = zone
+        self.user_name = user_name
+        self.product_code = product_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.total_quantity is not None:
+            result['TotalQuantity'] = self.total_quantity
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.commodity_name is not None:
+            result['CommodityName'] = self.commodity_name
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        if self.instance_spec is not None:
+            result['InstanceSpec'] = self.instance_spec
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.payment_amount is not None:
+            result['PaymentAmount'] = self.payment_amount
+        if self.coverage_percentage is not None:
+            result['CoveragePercentage'] = self.coverage_percentage
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.deduct_quantity is not None:
+            result['DeductQuantity'] = self.deduct_quantity
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('TotalQuantity') is not None:
+            self.total_quantity = m.get('TotalQuantity')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('CommodityName') is not None:
+            self.commodity_name = m.get('CommodityName')
+        if m.get('CapacityUnit') is not None:
+            self.capacity_unit = m.get('CapacityUnit')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        if m.get('InstanceSpec') is not None:
+            self.instance_spec = m.get('InstanceSpec')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('PaymentAmount') is not None:
+            self.payment_amount = m.get('PaymentAmount')
+        if m.get('CoveragePercentage') is not None:
+            self.coverage_percentage = m.get('CoveragePercentage')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('DeductQuantity') is not None:
+            self.deduct_quantity = m.get('DeductQuantity')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        return self
+
+
+class DescribeResourceCoverageDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        total_count: int = None,
+        max_results: int = None,
+        items: List[DescribeResourceCoverageDetailResponseBodyDataItems] = None,
+    ):
+        self.next_token = next_token
+        self.total_count = total_count
+        self.max_results = max_results
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeResourceCoverageDetailResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeResourceCoverageDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: DescribeResourceCoverageDetailResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = DescribeResourceCoverageDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class DescribeResourceCoverageDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeResourceCoverageDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeResourceCoverageDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResourceCoverageTotalRequest(TeaModel):
+    def __init__(
+        self,
+        start_period: str = None,
+        end_period: str = None,
+        period_type: str = None,
+        bill_owner_id: int = None,
+        resource_type: str = None,
+    ):
+        self.start_period = start_period
+        self.end_period = end_period
+        self.period_type = period_type
+        self.bill_owner_id = bill_owner_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.start_period is not None:
+            result['StartPeriod'] = self.start_period
+        if self.end_period is not None:
+            result['EndPeriod'] = self.end_period
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+        if self.bill_owner_id is not None:
+            result['BillOwnerId'] = self.bill_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StartPeriod') is not None:
+            self.start_period = m.get('StartPeriod')
+        if m.get('EndPeriod') is not None:
+            self.end_period = m.get('EndPeriod')
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+        if m.get('BillOwnerId') is not None:
+            self.bill_owner_id = m.get('BillOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage(TeaModel):
+    def __init__(
+        self,
+        coverage_percentage: float = None,
+        period: str = None,
+    ):
+        self.coverage_percentage = coverage_percentage
+        self.period = period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coverage_percentage is not None:
+            result['CoveragePercentage'] = self.coverage_percentage
+        if self.period is not None:
+            result['Period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoveragePercentage') is not None:
+            self.coverage_percentage = m.get('CoveragePercentage')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        return self
+
+
+class DescribeResourceCoverageTotalResponseBodyDataTotalCoverage(TeaModel):
+    def __init__(
+        self,
+        capacity_unit: str = None,
+        deduct_quantity: float = None,
+        coverage_percentage: float = None,
+        total_quantity: float = None,
+    ):
+        self.capacity_unit = capacity_unit
+        self.deduct_quantity = deduct_quantity
+        self.coverage_percentage = coverage_percentage
+        self.total_quantity = total_quantity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit
+        if self.deduct_quantity is not None:
+            result['DeductQuantity'] = self.deduct_quantity
+        if self.coverage_percentage is not None:
+            result['CoveragePercentage'] = self.coverage_percentage
+        if self.total_quantity is not None:
+            result['TotalQuantity'] = self.total_quantity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CapacityUnit') is not None:
+            self.capacity_unit = m.get('CapacityUnit')
+        if m.get('DeductQuantity') is not None:
+            self.deduct_quantity = m.get('DeductQuantity')
+        if m.get('CoveragePercentage') is not None:
+            self.coverage_percentage = m.get('CoveragePercentage')
+        if m.get('TotalQuantity') is not None:
+            self.total_quantity = m.get('TotalQuantity')
+        return self
+
+
+class DescribeResourceCoverageTotalResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        period_coverage: List[DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage] = None,
+        total_coverage: DescribeResourceCoverageTotalResponseBodyDataTotalCoverage = None,
+    ):
+        self.period_coverage = period_coverage
+        self.total_coverage = total_coverage
+
+    def validate(self):
+        if self.period_coverage:
+            for k in self.period_coverage:
+                if k:
+                    k.validate()
+        if self.total_coverage:
+            self.total_coverage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PeriodCoverage'] = []
+        if self.period_coverage is not None:
+            for k in self.period_coverage:
+                result['PeriodCoverage'].append(k.to_map() if k else None)
+        if self.total_coverage is not None:
+            result['TotalCoverage'] = self.total_coverage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.period_coverage = []
+        if m.get('PeriodCoverage') is not None:
+            for k in m.get('PeriodCoverage'):
+                temp_model = DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage()
+                self.period_coverage.append(temp_model.from_map(k))
+        if m.get('TotalCoverage') is not None:
+            temp_model = DescribeResourceCoverageTotalResponseBodyDataTotalCoverage()
+            self.total_coverage = temp_model.from_map(m['TotalCoverage'])
+        return self
+
+
+class DescribeResourceCoverageTotalResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: DescribeResourceCoverageTotalResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = DescribeResourceCoverageTotalResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class DescribeResourceCoverageTotalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeResourceCoverageTotalResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeResourceCoverageTotalResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3142,6 +4106,640 @@ class DescribeResourcePackageProductResponse(TeaModel):
         return self
 
 
+class DescribeResourceUsageDetailRequest(TeaModel):
+    def __init__(
+        self,
+        start_period: str = None,
+        end_period: str = None,
+        period_type: str = None,
+        next_token: str = None,
+        max_results: int = None,
+        bill_owner_id: int = None,
+        resource_type: str = None,
+    ):
+        self.start_period = start_period
+        self.end_period = end_period
+        self.period_type = period_type
+        self.next_token = next_token
+        self.max_results = max_results
+        self.bill_owner_id = bill_owner_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.start_period is not None:
+            result['StartPeriod'] = self.start_period
+        if self.end_period is not None:
+            result['EndPeriod'] = self.end_period
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.bill_owner_id is not None:
+            result['BillOwnerId'] = self.bill_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StartPeriod') is not None:
+            self.start_period = m.get('StartPeriod')
+        if m.get('EndPeriod') is not None:
+            self.end_period = m.get('EndPeriod')
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('BillOwnerId') is not None:
+            self.bill_owner_id = m.get('BillOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeResourceUsageDetailResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        usage_percentage: float = None,
+        resource_instance_id: str = None,
+        total_quantity: float = None,
+        reservation_cost: str = None,
+        region_no: str = None,
+        user_id: str = None,
+        status_name: str = None,
+        capacity_unit: str = None,
+        potential_saved_cost: str = None,
+        currency: str = None,
+        zone_name: str = None,
+        instance_spec: str = None,
+        end_time: str = None,
+        postpaid_cost: str = None,
+        image_type: str = None,
+        start_time: str = None,
+        region: str = None,
+        deduct_quantity: float = None,
+        saved_cost: str = None,
+        zone: str = None,
+        user_name: str = None,
+        quantity: int = None,
+    ):
+        self.status = status
+        self.usage_percentage = usage_percentage
+        self.resource_instance_id = resource_instance_id
+        self.total_quantity = total_quantity
+        self.reservation_cost = reservation_cost
+        self.region_no = region_no
+        self.user_id = user_id
+        self.status_name = status_name
+        self.capacity_unit = capacity_unit
+        self.potential_saved_cost = potential_saved_cost
+        self.currency = currency
+        self.zone_name = zone_name
+        self.instance_spec = instance_spec
+        self.end_time = end_time
+        self.postpaid_cost = postpaid_cost
+        self.image_type = image_type
+        self.start_time = start_time
+        self.region = region
+        self.deduct_quantity = deduct_quantity
+        self.saved_cost = saved_cost
+        self.zone = zone
+        self.user_name = user_name
+        self.quantity = quantity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.usage_percentage is not None:
+            result['UsagePercentage'] = self.usage_percentage
+        if self.resource_instance_id is not None:
+            result['ResourceInstanceId'] = self.resource_instance_id
+        if self.total_quantity is not None:
+            result['TotalQuantity'] = self.total_quantity
+        if self.reservation_cost is not None:
+            result['ReservationCost'] = self.reservation_cost
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.status_name is not None:
+            result['StatusName'] = self.status_name
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit
+        if self.potential_saved_cost is not None:
+            result['PotentialSavedCost'] = self.potential_saved_cost
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        if self.instance_spec is not None:
+            result['InstanceSpec'] = self.instance_spec
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.postpaid_cost is not None:
+            result['PostpaidCost'] = self.postpaid_cost
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.deduct_quantity is not None:
+            result['DeductQuantity'] = self.deduct_quantity
+        if self.saved_cost is not None:
+            result['SavedCost'] = self.saved_cost
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.quantity is not None:
+            result['Quantity'] = self.quantity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UsagePercentage') is not None:
+            self.usage_percentage = m.get('UsagePercentage')
+        if m.get('ResourceInstanceId') is not None:
+            self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('TotalQuantity') is not None:
+            self.total_quantity = m.get('TotalQuantity')
+        if m.get('ReservationCost') is not None:
+            self.reservation_cost = m.get('ReservationCost')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('StatusName') is not None:
+            self.status_name = m.get('StatusName')
+        if m.get('CapacityUnit') is not None:
+            self.capacity_unit = m.get('CapacityUnit')
+        if m.get('PotentialSavedCost') is not None:
+            self.potential_saved_cost = m.get('PotentialSavedCost')
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        if m.get('InstanceSpec') is not None:
+            self.instance_spec = m.get('InstanceSpec')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PostpaidCost') is not None:
+            self.postpaid_cost = m.get('PostpaidCost')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('DeductQuantity') is not None:
+            self.deduct_quantity = m.get('DeductQuantity')
+        if m.get('SavedCost') is not None:
+            self.saved_cost = m.get('SavedCost')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('Quantity') is not None:
+            self.quantity = m.get('Quantity')
+        return self
+
+
+class DescribeResourceUsageDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        total_count: int = None,
+        max_results: int = None,
+        items: List[DescribeResourceUsageDetailResponseBodyDataItems] = None,
+    ):
+        self.next_token = next_token
+        self.total_count = total_count
+        self.max_results = max_results
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeResourceUsageDetailResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeResourceUsageDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: DescribeResourceUsageDetailResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = DescribeResourceUsageDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class DescribeResourceUsageDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeResourceUsageDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeResourceUsageDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResourceUsageTotalRequest(TeaModel):
+    def __init__(
+        self,
+        start_period: str = None,
+        end_period: str = None,
+        period_type: str = None,
+        bill_owner_id: int = None,
+        resource_type: str = None,
+    ):
+        self.start_period = start_period
+        self.end_period = end_period
+        self.period_type = period_type
+        self.bill_owner_id = bill_owner_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.start_period is not None:
+            result['StartPeriod'] = self.start_period
+        if self.end_period is not None:
+            result['EndPeriod'] = self.end_period
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+        if self.bill_owner_id is not None:
+            result['BillOwnerId'] = self.bill_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StartPeriod') is not None:
+            self.start_period = m.get('StartPeriod')
+        if m.get('EndPeriod') is not None:
+            self.end_period = m.get('EndPeriod')
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+        if m.get('BillOwnerId') is not None:
+            self.bill_owner_id = m.get('BillOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeResourceUsageTotalResponseBodyDataPeriodCoverage(TeaModel):
+    def __init__(
+        self,
+        usage_percentage: float = None,
+        period: str = None,
+    ):
+        self.usage_percentage = usage_percentage
+        self.period = period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.usage_percentage is not None:
+            result['UsagePercentage'] = self.usage_percentage
+        if self.period is not None:
+            result['Period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UsagePercentage') is not None:
+            self.usage_percentage = m.get('UsagePercentage')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        return self
+
+
+class DescribeResourceUsageTotalResponseBodyDataTotalUsage(TeaModel):
+    def __init__(
+        self,
+        postpaid_cost: float = None,
+        saved_cost: float = None,
+        usage_percentage: float = None,
+        potential_saved_cost: float = None,
+        reservation_cost: float = None,
+    ):
+        self.postpaid_cost = postpaid_cost
+        self.saved_cost = saved_cost
+        self.usage_percentage = usage_percentage
+        self.potential_saved_cost = potential_saved_cost
+        self.reservation_cost = reservation_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.postpaid_cost is not None:
+            result['PostpaidCost'] = self.postpaid_cost
+        if self.saved_cost is not None:
+            result['SavedCost'] = self.saved_cost
+        if self.usage_percentage is not None:
+            result['UsagePercentage'] = self.usage_percentage
+        if self.potential_saved_cost is not None:
+            result['PotentialSavedCost'] = self.potential_saved_cost
+        if self.reservation_cost is not None:
+            result['ReservationCost'] = self.reservation_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PostpaidCost') is not None:
+            self.postpaid_cost = m.get('PostpaidCost')
+        if m.get('SavedCost') is not None:
+            self.saved_cost = m.get('SavedCost')
+        if m.get('UsagePercentage') is not None:
+            self.usage_percentage = m.get('UsagePercentage')
+        if m.get('PotentialSavedCost') is not None:
+            self.potential_saved_cost = m.get('PotentialSavedCost')
+        if m.get('ReservationCost') is not None:
+            self.reservation_cost = m.get('ReservationCost')
+        return self
+
+
+class DescribeResourceUsageTotalResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        period_coverage: List[DescribeResourceUsageTotalResponseBodyDataPeriodCoverage] = None,
+        total_usage: DescribeResourceUsageTotalResponseBodyDataTotalUsage = None,
+    ):
+        self.period_coverage = period_coverage
+        self.total_usage = total_usage
+
+    def validate(self):
+        if self.period_coverage:
+            for k in self.period_coverage:
+                if k:
+                    k.validate()
+        if self.total_usage:
+            self.total_usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PeriodCoverage'] = []
+        if self.period_coverage is not None:
+            for k in self.period_coverage:
+                result['PeriodCoverage'].append(k.to_map() if k else None)
+        if self.total_usage is not None:
+            result['TotalUsage'] = self.total_usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.period_coverage = []
+        if m.get('PeriodCoverage') is not None:
+            for k in m.get('PeriodCoverage'):
+                temp_model = DescribeResourceUsageTotalResponseBodyDataPeriodCoverage()
+                self.period_coverage.append(temp_model.from_map(k))
+        if m.get('TotalUsage') is not None:
+            temp_model = DescribeResourceUsageTotalResponseBodyDataTotalUsage()
+            self.total_usage = temp_model.from_map(m['TotalUsage'])
+        return self
+
+
+class DescribeResourceUsageTotalResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: DescribeResourceUsageTotalResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = DescribeResourceUsageTotalResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class DescribeResourceUsageTotalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeResourceUsageTotalResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeResourceUsageTotalResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSplitItemBillRequestTagFilter(TeaModel):
     def __init__(
         self,
@@ -3285,18 +4883,18 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
         deducted_by_cash_coupons: float = None,
         subscription_type: str = None,
         instance_spec: str = None,
-        billing_item: str = None,
         deducted_by_coupons: float = None,
+        billing_item: str = None,
         region: str = None,
         outstanding_amount: float = None,
         cost_unit: str = None,
         list_price_unit: str = None,
         resource_group: str = None,
         pip_code: str = None,
-        pretax_amount: float = None,
         service_period_unit: str = None,
-        product_name: str = None,
+        pretax_amount: float = None,
         commodity_code: str = None,
+        product_name: str = None,
         split_product_detail: str = None,
         nick_name: str = None,
         product_detail: str = None,
@@ -3332,18 +4930,18 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
         self.subscription_type = subscription_type
         self.instance_spec = instance_spec
-        self.billing_item = billing_item
         self.deducted_by_coupons = deducted_by_coupons
+        self.billing_item = billing_item
         self.region = region
         self.outstanding_amount = outstanding_amount
         self.cost_unit = cost_unit
         self.list_price_unit = list_price_unit
         self.resource_group = resource_group
         self.pip_code = pip_code
-        self.pretax_amount = pretax_amount
         self.service_period_unit = service_period_unit
-        self.product_name = product_name
+        self.pretax_amount = pretax_amount
         self.commodity_code = commodity_code
+        self.product_name = product_name
         self.split_product_detail = split_product_detail
         self.nick_name = nick_name
         self.product_detail = product_detail
@@ -3400,10 +4998,10 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
             result['SubscriptionType'] = self.subscription_type
         if self.instance_spec is not None:
             result['InstanceSpec'] = self.instance_spec
-        if self.billing_item is not None:
-            result['BillingItem'] = self.billing_item
         if self.deducted_by_coupons is not None:
             result['DeductedByCoupons'] = self.deducted_by_coupons
+        if self.billing_item is not None:
+            result['BillingItem'] = self.billing_item
         if self.region is not None:
             result['Region'] = self.region
         if self.outstanding_amount is not None:
@@ -3416,14 +5014,14 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
             result['ResourceGroup'] = self.resource_group
         if self.pip_code is not None:
             result['PipCode'] = self.pip_code
-        if self.pretax_amount is not None:
-            result['PretaxAmount'] = self.pretax_amount
         if self.service_period_unit is not None:
             result['ServicePeriodUnit'] = self.service_period_unit
-        if self.product_name is not None:
-            result['ProductName'] = self.product_name
+        if self.pretax_amount is not None:
+            result['PretaxAmount'] = self.pretax_amount
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
         if self.split_product_detail is not None:
             result['SplitProductDetail'] = self.split_product_detail
         if self.nick_name is not None:
@@ -3496,10 +5094,10 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
             self.subscription_type = m.get('SubscriptionType')
         if m.get('InstanceSpec') is not None:
             self.instance_spec = m.get('InstanceSpec')
-        if m.get('BillingItem') is not None:
-            self.billing_item = m.get('BillingItem')
         if m.get('DeductedByCoupons') is not None:
             self.deducted_by_coupons = m.get('DeductedByCoupons')
+        if m.get('BillingItem') is not None:
+            self.billing_item = m.get('BillingItem')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('OutstandingAmount') is not None:
@@ -3512,14 +5110,14 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
             self.resource_group = m.get('ResourceGroup')
         if m.get('PipCode') is not None:
             self.pip_code = m.get('PipCode')
-        if m.get('PretaxAmount') is not None:
-            self.pretax_amount = m.get('PretaxAmount')
         if m.get('ServicePeriodUnit') is not None:
             self.service_period_unit = m.get('ServicePeriodUnit')
-        if m.get('ProductName') is not None:
-            self.product_name = m.get('ProductName')
+        if m.get('PretaxAmount') is not None:
+            self.pretax_amount = m.get('PretaxAmount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
         if m.get('SplitProductDetail') is not None:
             self.split_product_detail = m.get('SplitProductDetail')
         if m.get('NickName') is not None:
@@ -3570,21 +5168,21 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
 class DescribeSplitItemBillResponseBodyData(TeaModel):
     def __init__(
         self,
-        items: List[DescribeSplitItemBillResponseBodyDataItems] = None,
         next_token: str = None,
         billing_cycle: str = None,
         max_results: int = None,
         account_id: str = None,
         total_count: int = None,
         account_name: str = None,
+        items: List[DescribeSplitItemBillResponseBodyDataItems] = None,
     ):
-        self.items = items
         self.next_token = next_token
         self.billing_cycle = billing_cycle
         self.max_results = max_results
         self.account_id = account_id
         self.total_count = total_count
         self.account_name = account_name
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -3598,10 +5196,6 @@ class DescribeSplitItemBillResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        result['Items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['Items'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.billing_cycle is not None:
@@ -3614,15 +5208,14 @@ class DescribeSplitItemBillResponseBodyData(TeaModel):
             result['TotalCount'] = self.total_count
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.items = []
-        if m.get('Items') is not None:
-            for k in m.get('Items'):
-                temp_model = DescribeSplitItemBillResponseBodyDataItems()
-                self.items.append(temp_model.from_map(k))
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('BillingCycle') is not None:
@@ -3635,23 +5228,28 @@ class DescribeSplitItemBillResponseBodyData(TeaModel):
             self.total_count = m.get('TotalCount')
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeSplitItemBillResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
         return self
 
 
 class DescribeSplitItemBillResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         message: str = None,
         request_id: str = None,
-        data: DescribeSplitItemBillResponseBodyData = None,
-        code: str = None,
         success: bool = None,
+        data: DescribeSplitItemBillResponseBodyData = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
-        self.data = data
-        self.code = code
         self.success = success
+        self.data = data
 
     def validate(self):
         if self.data:
@@ -3663,31 +5261,31 @@ class DescribeSplitItemBillResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('Data') is not None:
             temp_model = DescribeSplitItemBillResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -5695,6 +7293,192 @@ class GetSubscriptionPriceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetSubscriptionPriceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAccountRelationRequest(TeaModel):
+    def __init__(
+        self,
+        relation_type: str = None,
+        relation_operation: str = None,
+        parent_user_id: int = None,
+        child_nick: str = None,
+        child_user_id: int = None,
+        request_id: str = None,
+        role_codes: List[str] = None,
+        permission_codes: List[str] = None,
+    ):
+        self.relation_type = relation_type
+        self.relation_operation = relation_operation
+        self.parent_user_id = parent_user_id
+        self.child_nick = child_nick
+        self.child_user_id = child_user_id
+        self.request_id = request_id
+        self.role_codes = role_codes
+        self.permission_codes = permission_codes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.relation_type is not None:
+            result['RelationType'] = self.relation_type
+        if self.relation_operation is not None:
+            result['RelationOperation'] = self.relation_operation
+        if self.parent_user_id is not None:
+            result['ParentUserId'] = self.parent_user_id
+        if self.child_nick is not None:
+            result['ChildNick'] = self.child_nick
+        if self.child_user_id is not None:
+            result['ChildUserId'] = self.child_user_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.role_codes is not None:
+            result['RoleCodes'] = self.role_codes
+        if self.permission_codes is not None:
+            result['PermissionCodes'] = self.permission_codes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RelationType') is not None:
+            self.relation_type = m.get('RelationType')
+        if m.get('RelationOperation') is not None:
+            self.relation_operation = m.get('RelationOperation')
+        if m.get('ParentUserId') is not None:
+            self.parent_user_id = m.get('ParentUserId')
+        if m.get('ChildNick') is not None:
+            self.child_nick = m.get('ChildNick')
+        if m.get('ChildUserId') is not None:
+            self.child_user_id = m.get('ChildUserId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RoleCodes') is not None:
+            self.role_codes = m.get('RoleCodes')
+        if m.get('PermissionCodes') is not None:
+            self.permission_codes = m.get('PermissionCodes')
+        return self
+
+
+class ModifyAccountRelationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        host_id: str = None,
+    ):
+        self.host_id = host_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host_id is not None:
+            result['HostId'] = self.host_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
+        return self
+
+
+class ModifyAccountRelationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: ModifyAccountRelationResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = ModifyAccountRelationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class ModifyAccountRelationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyAccountRelationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyAccountRelationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9951,6 +11735,346 @@ class QueryCustomerAddressListResponse(TeaModel):
         return self
 
 
+class QueryDPUtilizationDetailRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_spec: str = None,
+        commodity_code: str = None,
+        deducted_instance_id: str = None,
+        start_time: str = None,
+        end_time: str = None,
+        last_token: str = None,
+        limit: int = None,
+        include_share: bool = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_spec = instance_spec
+        self.commodity_code = commodity_code
+        self.deducted_instance_id = deducted_instance_id
+        self.start_time = start_time
+        self.end_time = end_time
+        self.last_token = last_token
+        self.limit = limit
+        self.include_share = include_share
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_spec is not None:
+            result['InstanceSpec'] = self.instance_spec
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.deducted_instance_id is not None:
+            result['DeductedInstanceId'] = self.deducted_instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.last_token is not None:
+            result['LastToken'] = self.last_token
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.include_share is not None:
+            result['IncludeShare'] = self.include_share
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceSpec') is not None:
+            self.instance_spec = m.get('InstanceSpec')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('DeductedInstanceId') is not None:
+            self.deducted_instance_id = m.get('DeductedInstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('LastToken') is not None:
+            self.last_token = m.get('LastToken')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('IncludeShare') is not None:
+            self.include_share = m.get('IncludeShare')
+        return self
+
+
+class QueryDPUtilizationDetailResponseBodyDataDetailListDetailList(TeaModel):
+    def __init__(
+        self,
+        deducted_instance_id: str = None,
+        instance_id: str = None,
+        deduct_hours: float = None,
+        share_uid: int = None,
+        deduct_date: str = None,
+        instance_spec: str = None,
+        deducted_commodity_code: str = None,
+        deducted_product_detail: str = None,
+        deduct_measure: float = None,
+        region: str = None,
+        deduct_quantity: float = None,
+        deduct_factor_total: float = None,
+        res_code: str = None,
+        uid: int = None,
+    ):
+        self.deducted_instance_id = deducted_instance_id
+        self.instance_id = instance_id
+        self.deduct_hours = deduct_hours
+        self.share_uid = share_uid
+        self.deduct_date = deduct_date
+        self.instance_spec = instance_spec
+        self.deducted_commodity_code = deducted_commodity_code
+        self.deducted_product_detail = deducted_product_detail
+        self.deduct_measure = deduct_measure
+        self.region = region
+        self.deduct_quantity = deduct_quantity
+        self.deduct_factor_total = deduct_factor_total
+        self.res_code = res_code
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deducted_instance_id is not None:
+            result['DeductedInstanceId'] = self.deducted_instance_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.deduct_hours is not None:
+            result['DeductHours'] = self.deduct_hours
+        if self.share_uid is not None:
+            result['ShareUid'] = self.share_uid
+        if self.deduct_date is not None:
+            result['DeductDate'] = self.deduct_date
+        if self.instance_spec is not None:
+            result['InstanceSpec'] = self.instance_spec
+        if self.deducted_commodity_code is not None:
+            result['DeductedCommodityCode'] = self.deducted_commodity_code
+        if self.deducted_product_detail is not None:
+            result['DeductedProductDetail'] = self.deducted_product_detail
+        if self.deduct_measure is not None:
+            result['DeductMeasure'] = self.deduct_measure
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.deduct_quantity is not None:
+            result['DeductQuantity'] = self.deduct_quantity
+        if self.deduct_factor_total is not None:
+            result['DeductFactorTotal'] = self.deduct_factor_total
+        if self.res_code is not None:
+            result['ResCode'] = self.res_code
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeductedInstanceId') is not None:
+            self.deducted_instance_id = m.get('DeductedInstanceId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('DeductHours') is not None:
+            self.deduct_hours = m.get('DeductHours')
+        if m.get('ShareUid') is not None:
+            self.share_uid = m.get('ShareUid')
+        if m.get('DeductDate') is not None:
+            self.deduct_date = m.get('DeductDate')
+        if m.get('InstanceSpec') is not None:
+            self.instance_spec = m.get('InstanceSpec')
+        if m.get('DeductedCommodityCode') is not None:
+            self.deducted_commodity_code = m.get('DeductedCommodityCode')
+        if m.get('DeductedProductDetail') is not None:
+            self.deducted_product_detail = m.get('DeductedProductDetail')
+        if m.get('DeductMeasure') is not None:
+            self.deduct_measure = m.get('DeductMeasure')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('DeductQuantity') is not None:
+            self.deduct_quantity = m.get('DeductQuantity')
+        if m.get('DeductFactorTotal') is not None:
+            self.deduct_factor_total = m.get('DeductFactorTotal')
+        if m.get('ResCode') is not None:
+            self.res_code = m.get('ResCode')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class QueryDPUtilizationDetailResponseBodyDataDetailList(TeaModel):
+    def __init__(
+        self,
+        detail_list: List[QueryDPUtilizationDetailResponseBodyDataDetailListDetailList] = None,
+    ):
+        self.detail_list = detail_list
+
+    def validate(self):
+        if self.detail_list:
+            for k in self.detail_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DetailList'] = []
+        if self.detail_list is not None:
+            for k in self.detail_list:
+                result['DetailList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detail_list = []
+        if m.get('DetailList') is not None:
+            for k in m.get('DetailList'):
+                temp_model = QueryDPUtilizationDetailResponseBodyDataDetailListDetailList()
+                self.detail_list.append(temp_model.from_map(k))
+        return self
+
+
+class QueryDPUtilizationDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        detail_list: QueryDPUtilizationDetailResponseBodyDataDetailList = None,
+    ):
+        self.next_token = next_token
+        self.detail_list = detail_list
+
+    def validate(self):
+        if self.detail_list:
+            self.detail_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.detail_list is not None:
+            result['DetailList'] = self.detail_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('DetailList') is not None:
+            temp_model = QueryDPUtilizationDetailResponseBodyDataDetailList()
+            self.detail_list = temp_model.from_map(m['DetailList'])
+        return self
+
+
+class QueryDPUtilizationDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: QueryDPUtilizationDetailResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = QueryDPUtilizationDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class QueryDPUtilizationDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryDPUtilizationDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryDPUtilizationDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryEvaluateListRequest(TeaModel):
     def __init__(
         self,
@@ -10480,17 +12604,17 @@ class QueryFinancialAccountInfoResponseBodyData(TeaModel):
 class QueryFinancialAccountInfoResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         message: str = None,
         request_id: str = None,
-        data: QueryFinancialAccountInfoResponseBodyData = None,
-        code: str = None,
         success: bool = None,
+        data: QueryFinancialAccountInfoResponseBodyData = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
-        self.data = data
-        self.code = code
         self.success = success
+        self.data = data
 
     def validate(self):
         if self.data:
@@ -10502,31 +12626,31 @@ class QueryFinancialAccountInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('Data') is not None:
             temp_model = QueryFinancialAccountInfoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -11221,13 +13345,13 @@ class QueryInstanceByTagResponseBodyTagResourceTag(TeaModel):
 class QueryInstanceByTagResponseBodyTagResource(TeaModel):
     def __init__(
         self,
+        resource_id: str = None,
         resource_type: str = None,
         tag: List[QueryInstanceByTagResponseBodyTagResourceTag] = None,
-        resource_id: str = None,
     ):
+        self.resource_id = resource_id
         self.resource_type = resource_type
         self.tag = tag
-        self.resource_id = resource_id
 
     def validate(self):
         if self.tag:
@@ -11241,18 +13365,20 @@ class QueryInstanceByTagResponseBodyTagResource(TeaModel):
             return _map
 
         result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         self.tag = []
@@ -11260,27 +13386,25 @@ class QueryInstanceByTagResponseBodyTagResource(TeaModel):
             for k in m.get('Tag'):
                 temp_model = QueryInstanceByTagResponseBodyTagResourceTag()
                 self.tag.append(temp_model.from_map(k))
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
         return self
 
 
 class QueryInstanceByTagResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         message: str = None,
         next_token: str = None,
         request_id: str = None,
-        tag_resource: List[QueryInstanceByTagResponseBodyTagResource] = None,
-        code: str = None,
         success: bool = None,
+        tag_resource: List[QueryInstanceByTagResponseBodyTagResource] = None,
     ):
+        self.code = code
         self.message = message
         self.next_token = next_token
         self.request_id = request_id
-        self.tag_resource = tag_resource
-        self.code = code
         self.success = success
+        self.tag_resource = tag_resource
 
     def validate(self):
         if self.tag_resource:
@@ -11294,39 +13418,39 @@ class QueryInstanceByTagResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         result['TagResource'] = []
         if self.tag_resource is not None:
             for k in self.tag_resource:
                 result['TagResource'].append(k.to_map() if k else None)
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         self.tag_resource = []
         if m.get('TagResource') is not None:
             for k in m.get('TagResource'):
                 temp_model = QueryInstanceByTagResponseBodyTagResource()
                 self.tag_resource.append(temp_model.from_map(k))
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -13421,20 +15545,20 @@ class QueryPermissionListResponseBodyData(TeaModel):
         end_time: str = None,
         relation_type: str = None,
         start_time: str = None,
-        permission_list: List[QueryPermissionListResponseBodyDataPermissionList] = None,
         state: str = None,
         master_id: int = None,
         member_id: int = None,
         setup_time: str = None,
+        permission_list: List[QueryPermissionListResponseBodyDataPermissionList] = None,
     ):
         self.end_time = end_time
         self.relation_type = relation_type
         self.start_time = start_time
-        self.permission_list = permission_list
         self.state = state
         self.master_id = master_id
         self.member_id = member_id
         self.setup_time = setup_time
+        self.permission_list = permission_list
 
     def validate(self):
         if self.permission_list:
@@ -13454,10 +15578,6 @@ class QueryPermissionListResponseBodyData(TeaModel):
             result['RelationType'] = self.relation_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-        result['PermissionList'] = []
-        if self.permission_list is not None:
-            for k in self.permission_list:
-                result['PermissionList'].append(k.to_map() if k else None)
         if self.state is not None:
             result['State'] = self.state
         if self.master_id is not None:
@@ -13466,6 +15586,10 @@ class QueryPermissionListResponseBodyData(TeaModel):
             result['MemberId'] = self.member_id
         if self.setup_time is not None:
             result['SetupTime'] = self.setup_time
+        result['PermissionList'] = []
+        if self.permission_list is not None:
+            for k in self.permission_list:
+                result['PermissionList'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -13476,11 +15600,6 @@ class QueryPermissionListResponseBodyData(TeaModel):
             self.relation_type = m.get('RelationType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-        self.permission_list = []
-        if m.get('PermissionList') is not None:
-            for k in m.get('PermissionList'):
-                temp_model = QueryPermissionListResponseBodyDataPermissionList()
-                self.permission_list.append(temp_model.from_map(k))
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('MasterId') is not None:
@@ -13489,23 +15608,28 @@ class QueryPermissionListResponseBodyData(TeaModel):
             self.member_id = m.get('MemberId')
         if m.get('SetupTime') is not None:
             self.setup_time = m.get('SetupTime')
+        self.permission_list = []
+        if m.get('PermissionList') is not None:
+            for k in m.get('PermissionList'):
+                temp_model = QueryPermissionListResponseBodyDataPermissionList()
+                self.permission_list.append(temp_model.from_map(k))
         return self
 
 
 class QueryPermissionListResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         message: str = None,
         request_id: str = None,
-        data: QueryPermissionListResponseBodyData = None,
-        code: str = None,
         success: bool = None,
+        data: QueryPermissionListResponseBodyData = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
-        self.data = data
-        self.code = code
         self.success = success
+        self.data = data
 
     def validate(self):
         if self.data:
@@ -13517,31 +15641,31 @@ class QueryPermissionListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('Data') is not None:
             temp_model = QueryPermissionListResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -14569,17 +16693,17 @@ class QueryRelationListResponseBodyData(TeaModel):
 class QueryRelationListResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         message: str = None,
         request_id: str = None,
-        data: QueryRelationListResponseBodyData = None,
-        code: str = None,
         success: bool = None,
+        data: QueryRelationListResponseBodyData = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
-        self.data = data
-        self.code = code
         self.success = success
+        self.data = data
 
     def validate(self):
         if self.data:
@@ -14591,31 +16715,31 @@ class QueryRelationListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('Data') is not None:
             temp_model = QueryRelationListResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -15246,15 +17370,15 @@ class QuerySavingsPlansDeductLogResponseBodyDataItems(TeaModel):
 class QuerySavingsPlansDeductLogResponseBodyData(TeaModel):
     def __init__(
         self,
-        items: List[QuerySavingsPlansDeductLogResponseBodyDataItems] = None,
         page_num: int = None,
         page_size: int = None,
         total_count: int = None,
+        items: List[QuerySavingsPlansDeductLogResponseBodyDataItems] = None,
     ):
-        self.items = items
         self.page_num = page_num
         self.page_size = page_size
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -15268,48 +17392,48 @@ class QuerySavingsPlansDeductLogResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        result['Items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['Items'].append(k.to_map() if k else None)
         if self.page_num is not None:
             result['PageNum'] = self.page_num
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.items = []
-        if m.get('Items') is not None:
-            for k in m.get('Items'):
-                temp_model = QuerySavingsPlansDeductLogResponseBodyDataItems()
-                self.items.append(temp_model.from_map(k))
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = QuerySavingsPlansDeductLogResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
         return self
 
 
 class QuerySavingsPlansDeductLogResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         message: str = None,
         request_id: str = None,
-        data: QuerySavingsPlansDeductLogResponseBodyData = None,
-        code: str = None,
         success: bool = None,
+        data: QuerySavingsPlansDeductLogResponseBodyData = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
-        self.data = data
-        self.code = code
         self.success = success
+        self.data = data
 
     def validate(self):
         if self.data:
@@ -15321,31 +17445,31 @@ class QuerySavingsPlansDeductLogResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('Data') is not None:
             temp_model = QuerySavingsPlansDeductLogResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -15528,35 +17652,35 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
         self,
         status: str = None,
         savings_type: str = None,
-        tags: List[QuerySavingsPlansInstanceResponseBodyDataItemsTags] = None,
-        prepay_fee: str = None,
         utilization: str = None,
+        prepay_fee: str = None,
         instance_id: str = None,
         currency: str = None,
         end_time: str = None,
         start_time: str = None,
-        instance_family: str = None,
         allocation_status: str = None,
+        instance_family: str = None,
         region: str = None,
         total_save: str = None,
         pool_value: str = None,
         pay_mode: str = None,
+        tags: List[QuerySavingsPlansInstanceResponseBodyDataItemsTags] = None,
     ):
         self.status = status
         self.savings_type = savings_type
-        self.tags = tags
-        self.prepay_fee = prepay_fee
         self.utilization = utilization
+        self.prepay_fee = prepay_fee
         self.instance_id = instance_id
         self.currency = currency
         self.end_time = end_time
         self.start_time = start_time
-        self.instance_family = instance_family
         self.allocation_status = allocation_status
+        self.instance_family = instance_family
         self.region = region
         self.total_save = total_save
         self.pool_value = pool_value
         self.pay_mode = pay_mode
+        self.tags = tags
 
     def validate(self):
         if self.tags:
@@ -15574,14 +17698,10 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
             result['Status'] = self.status
         if self.savings_type is not None:
             result['SavingsType'] = self.savings_type
-        result['Tags'] = []
-        if self.tags is not None:
-            for k in self.tags:
-                result['Tags'].append(k.to_map() if k else None)
-        if self.prepay_fee is not None:
-            result['PrepayFee'] = self.prepay_fee
         if self.utilization is not None:
             result['Utilization'] = self.utilization
+        if self.prepay_fee is not None:
+            result['PrepayFee'] = self.prepay_fee
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.currency is not None:
@@ -15590,10 +17710,10 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
             result['EndTime'] = self.end_time
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-        if self.instance_family is not None:
-            result['InstanceFamily'] = self.instance_family
         if self.allocation_status is not None:
             result['AllocationStatus'] = self.allocation_status
+        if self.instance_family is not None:
+            result['InstanceFamily'] = self.instance_family
         if self.region is not None:
             result['Region'] = self.region
         if self.total_save is not None:
@@ -15602,6 +17722,10 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
             result['PoolValue'] = self.pool_value
         if self.pay_mode is not None:
             result['PayMode'] = self.pay_mode
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15610,15 +17734,10 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
             self.status = m.get('Status')
         if m.get('SavingsType') is not None:
             self.savings_type = m.get('SavingsType')
-        self.tags = []
-        if m.get('Tags') is not None:
-            for k in m.get('Tags'):
-                temp_model = QuerySavingsPlansInstanceResponseBodyDataItemsTags()
-                self.tags.append(temp_model.from_map(k))
-        if m.get('PrepayFee') is not None:
-            self.prepay_fee = m.get('PrepayFee')
         if m.get('Utilization') is not None:
             self.utilization = m.get('Utilization')
+        if m.get('PrepayFee') is not None:
+            self.prepay_fee = m.get('PrepayFee')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Currency') is not None:
@@ -15627,10 +17746,10 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-        if m.get('InstanceFamily') is not None:
-            self.instance_family = m.get('InstanceFamily')
         if m.get('AllocationStatus') is not None:
             self.allocation_status = m.get('AllocationStatus')
+        if m.get('InstanceFamily') is not None:
+            self.instance_family = m.get('InstanceFamily')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('TotalSave') is not None:
@@ -15639,21 +17758,26 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(TeaModel):
             self.pool_value = m.get('PoolValue')
         if m.get('PayMode') is not None:
             self.pay_mode = m.get('PayMode')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = QuerySavingsPlansInstanceResponseBodyDataItemsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
 class QuerySavingsPlansInstanceResponseBodyData(TeaModel):
     def __init__(
         self,
-        items: List[QuerySavingsPlansInstanceResponseBodyDataItems] = None,
         page_num: int = None,
         page_size: int = None,
         total_count: int = None,
+        items: List[QuerySavingsPlansInstanceResponseBodyDataItems] = None,
     ):
-        self.items = items
         self.page_num = page_num
         self.page_size = page_size
         self.total_count = total_count
+        self.items = items
 
     def validate(self):
         if self.items:
@@ -15667,48 +17791,48 @@ class QuerySavingsPlansInstanceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        result['Items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['Items'].append(k.to_map() if k else None)
         if self.page_num is not None:
             result['PageNum'] = self.page_num
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.items = []
-        if m.get('Items') is not None:
-            for k in m.get('Items'):
-                temp_model = QuerySavingsPlansInstanceResponseBodyDataItems()
-                self.items.append(temp_model.from_map(k))
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = QuerySavingsPlansInstanceResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
         return self
 
 
 class QuerySavingsPlansInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         message: str = None,
         request_id: str = None,
-        data: QuerySavingsPlansInstanceResponseBodyData = None,
-        code: str = None,
         success: bool = None,
+        data: QuerySavingsPlansInstanceResponseBodyData = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
-        self.data = data
-        self.code = code
         self.success = success
+        self.data = data
 
     def validate(self):
         if self.data:
@@ -15720,31 +17844,31 @@ class QuerySavingsPlansInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('Data') is not None:
             temp_model = QuerySavingsPlansInstanceResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -17519,6 +19643,168 @@ class QueryUserOmsDataResponse(TeaModel):
         return self
 
 
+class RelieveAccountRelationRequest(TeaModel):
+    def __init__(
+        self,
+        relation_type: str = None,
+        parent_user_id: int = None,
+        child_user_id: int = None,
+        request_id: str = None,
+    ):
+        self.relation_type = relation_type
+        self.parent_user_id = parent_user_id
+        self.child_user_id = child_user_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.relation_type is not None:
+            result['RelationType'] = self.relation_type
+        if self.parent_user_id is not None:
+            result['ParentUserId'] = self.parent_user_id
+        if self.child_user_id is not None:
+            result['ChildUserId'] = self.child_user_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RelationType') is not None:
+            self.relation_type = m.get('RelationType')
+        if m.get('ParentUserId') is not None:
+            self.parent_user_id = m.get('ParentUserId')
+        if m.get('ChildUserId') is not None:
+            self.child_user_id = m.get('ChildUserId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RelieveAccountRelationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        host_id: str = None,
+    ):
+        self.host_id = host_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host_id is not None:
+            result['HostId'] = self.host_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
+        return self
+
+
+class RelieveAccountRelationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: RelieveAccountRelationResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Data') is not None:
+            temp_model = RelieveAccountRelationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RelieveAccountRelationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RelieveAccountRelationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RelieveAccountRelationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RenewInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -17945,14 +20231,14 @@ class SaveUserCreditRequest(TeaModel):
 class SaveUserCreditResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         message: str = None,
         request_id: str = None,
-        code: str = None,
         success: bool = None,
     ):
+        self.code = code
         self.message = message
         self.request_id = request_id
-        self.code = code
         self.success = success
 
     def validate(self):
@@ -17964,24 +20250,24 @@ class SaveUserCreditResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.code is not None:
-            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -18150,16 +20436,16 @@ class SetCreditLabelActionRequest(TeaModel):
 class SetCreditLabelActionResponseBody(TeaModel):
     def __init__(
         self,
-        message: str = None,
-        request_id: str = None,
-        data: bool = None,
         code: str = None,
+        message: str = None,
+        data: bool = None,
+        request_id: str = None,
         success: bool = None,
     ):
-        self.message = message
-        self.request_id = request_id
-        self.data = data
         self.code = code
+        self.message = message
+        self.data = data
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -18171,28 +20457,28 @@ class SetCreditLabelActionResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
         if self.code is not None:
             result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -18983,16 +21269,16 @@ class TagResourcesRequest(TeaModel):
 class TagResourcesResponseBody(TeaModel):
     def __init__(
         self,
-        message: str = None,
-        request_id: str = None,
-        data: bool = None,
         code: str = None,
+        message: str = None,
+        data: bool = None,
+        request_id: str = None,
         success: bool = None,
     ):
-        self.message = message
-        self.request_id = request_id
-        self.data = data
         self.code = code
+        self.message = message
+        self.data = data
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -19004,28 +21290,28 @@ class TagResourcesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
         if self.code is not None:
             result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -19231,16 +21517,16 @@ class UntagResourcesRequest(TeaModel):
 class UntagResourcesResponseBody(TeaModel):
     def __init__(
         self,
-        message: str = None,
-        request_id: str = None,
-        data: bool = None,
         code: str = None,
+        message: str = None,
+        data: bool = None,
+        request_id: str = None,
         success: bool = None,
     ):
-        self.message = message
-        self.request_id = request_id
-        self.data = data
         self.code = code
+        self.message = message
+        self.data = data
+        self.request_id = request_id
         self.success = success
 
     def validate(self):
@@ -19252,28 +21538,28 @@ class UntagResourcesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
         if self.code is not None:
             result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
