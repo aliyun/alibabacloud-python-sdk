@@ -1,3 +1,6 @@
+2021-06-15 Version: 2.2.2
+- Add a new relative position interface to allow users to adjust the position of each scene before submitting.
+
 2021-06-02 Version: 2.2.1
 - Add apis.
 

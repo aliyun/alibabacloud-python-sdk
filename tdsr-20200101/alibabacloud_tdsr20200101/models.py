@@ -1442,6 +1442,127 @@ class OptimizeRightAngleResponse(TeaModel):
         return self
 
 
+class AddRelativePositionRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+        relative_position: str = None,
+    ):
+        # 场景ID
+        self.scene_id = scene_id
+        # 相对位置信息
+        self.relative_position = relative_position
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.relative_position is not None:
+            result['RelativePosition'] = self.relative_position
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('RelativePosition') is not None:
+            self.relative_position = m.get('RelativePosition')
+        return self
+
+
+class AddRelativePositionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        success: bool = None,
+        message: str = None,
+    ):
+        # 请求ID，与入参requestId对应
+        self.request_id = request_id
+        # 返回码
+        self.code = code
+        # 是否请求成功
+        self.success = success
+        # 错误消息
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class AddRelativePositionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AddRelativePositionResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AddRelativePositionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DetailSceneRequest(TeaModel):
     def __init__(
         self,

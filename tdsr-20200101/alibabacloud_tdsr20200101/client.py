@@ -505,6 +505,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.optimize_right_angle_with_options_async(request, runtime)
 
+    def add_relative_position_with_options(
+        self,
+        request: tdsr_20200101_models.AddRelativePositionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.AddRelativePositionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.AddRelativePositionResponse(),
+            self.do_rpcrequest('AddRelativePosition', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_relative_position_with_options_async(
+        self,
+        request: tdsr_20200101_models.AddRelativePositionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.AddRelativePositionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.AddRelativePositionResponse(),
+            await self.do_rpcrequest_async('AddRelativePosition', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_relative_position(
+        self,
+        request: tdsr_20200101_models.AddRelativePositionRequest,
+    ) -> tdsr_20200101_models.AddRelativePositionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_relative_position_with_options(request, runtime)
+
+    async def add_relative_position_async(
+        self,
+        request: tdsr_20200101_models.AddRelativePositionRequest,
+    ) -> tdsr_20200101_models.AddRelativePositionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_relative_position_with_options_async(request, runtime)
+
     def detail_scene_with_options(
         self,
         request: tdsr_20200101_models.DetailSceneRequest,
