@@ -68,7 +68,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.DeleteSessionResponse(),
-            self.do_roarequest('DeleteSession', '2021-05-09', 'HTTPS', 'DELETE', 'AK', f'/v1/sessions/{session_id}', 'string', req, runtime)
+            self.do_roarequest('DeleteSession', '2021-05-09', 'HTTPS', 'DELETE', 'AK', f'/v1/sessions/{session_id}', 'json', req, runtime)
         )
 
     async def delete_session_with_options_async(
@@ -82,7 +82,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.DeleteSessionResponse(),
-            await self.do_roarequest_async('DeleteSession', '2021-05-09', 'HTTPS', 'DELETE', 'AK', f'/v1/sessions/{session_id}', 'string', req, runtime)
+            await self.do_roarequest_async('DeleteSession', '2021-05-09', 'HTTPS', 'DELETE', 'AK', f'/v1/sessions/{session_id}', 'json', req, runtime)
         )
 
     def get_instance(
@@ -112,7 +112,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.GetInstanceResponse(),
-            self.do_roarequest('GetInstance', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/instances/{instance_id}', 'string', req, runtime)
+            self.do_roarequest('GetInstance', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/instances/{instance_id}', 'json', req, runtime)
         )
 
     async def get_instance_with_options_async(
@@ -126,7 +126,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.GetInstanceResponse(),
-            await self.do_roarequest_async('GetInstance', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/instances/{instance_id}', 'string', req, runtime)
+            await self.do_roarequest_async('GetInstance', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/instances/{instance_id}', 'json', req, runtime)
         )
 
     def heart_beat(
@@ -165,7 +165,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.HeartBeatResponse(),
-            self.do_roarequest('HeartBeat', '2021-05-09', 'HTTPS', 'PUT', 'AK', f'/v1/sessions/', 'string', req, runtime)
+            self.do_roarequest('HeartBeat', '2021-05-09', 'HTTPS', 'PUT', 'AK', f'/v1/sessions/', 'json', req, runtime)
         )
 
     async def heart_beat_with_options_async(
@@ -188,7 +188,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.HeartBeatResponse(),
-            await self.do_roarequest_async('HeartBeat', '2021-05-09', 'HTTPS', 'PUT', 'AK', f'/v1/sessions/', 'string', req, runtime)
+            await self.do_roarequest_async('HeartBeat', '2021-05-09', 'HTTPS', 'PUT', 'AK', f'/v1/sessions/', 'json', req, runtime)
         )
 
     def un_register_instance(
@@ -218,7 +218,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.UnRegisterInstanceResponse(),
-            self.do_roarequest('UnRegisterInstance', '2021-05-09', 'HTTPS', 'PUT', 'AK', f'/v1/instances/{instance_id}', 'string', req, runtime)
+            self.do_roarequest('UnRegisterInstance', '2021-05-09', 'HTTPS', 'PUT', 'AK', f'/v1/instances/{instance_id}', 'json', req, runtime)
         )
 
     async def un_register_instance_with_options_async(
@@ -232,7 +232,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.UnRegisterInstanceResponse(),
-            await self.do_roarequest_async('UnRegisterInstance', '2021-05-09', 'HTTPS', 'PUT', 'AK', f'/v1/instances/{instance_id}', 'string', req, runtime)
+            await self.do_roarequest_async('UnRegisterInstance', '2021-05-09', 'HTTPS', 'PUT', 'AK', f'/v1/instances/{instance_id}', 'json', req, runtime)
         )
 
     def create_session(
@@ -267,7 +267,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.CreateSessionResponse(),
-            self.do_roarequest('CreateSession', '2021-05-09', 'HTTPS', 'POST', 'AK', f'/v1/sessions/', 'string', req, runtime)
+            self.do_roarequest('CreateSession', '2021-05-09', 'HTTPS', 'POST', 'AK', f'/v1/sessions/', 'json', req, runtime)
         )
 
     async def create_session_with_options_async(
@@ -286,7 +286,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.CreateSessionResponse(),
-            await self.do_roarequest_async('CreateSession', '2021-05-09', 'HTTPS', 'POST', 'AK', f'/v1/sessions/', 'string', req, runtime)
+            await self.do_roarequest_async('CreateSession', '2021-05-09', 'HTTPS', 'POST', 'AK', f'/v1/sessions/', 'json', req, runtime)
         )
 
     def register_instance(
@@ -331,7 +331,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.RegisterInstanceResponse(),
-            self.do_roarequest('RegisterInstance', '2021-05-09', 'HTTPS', 'POST', 'AK', f'/v1/instances/', 'string', req, runtime)
+            self.do_roarequest('RegisterInstance', '2021-05-09', 'HTTPS', 'POST', 'AK', f'/v1/instances/', 'json', req, runtime)
         )
 
     async def register_instance_with_options_async(
@@ -360,7 +360,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.RegisterInstanceResponse(),
-            await self.do_roarequest_async('RegisterInstance', '2021-05-09', 'HTTPS', 'POST', 'AK', f'/v1/instances/', 'string', req, runtime)
+            await self.do_roarequest_async('RegisterInstance', '2021-05-09', 'HTTPS', 'POST', 'AK', f'/v1/instances/', 'json', req, runtime)
         )
 
     def get_session(
@@ -390,7 +390,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.GetSessionResponse(),
-            self.do_roarequest('GetSession', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/sessions/{session_id}', 'string', req, runtime)
+            self.do_roarequest('GetSession', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/sessions/{session_id}', 'json', req, runtime)
         )
 
     async def get_session_with_options_async(
@@ -404,7 +404,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.GetSessionResponse(),
-            await self.do_roarequest_async('GetSession', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/sessions/{session_id}', 'string', req, runtime)
+            await self.do_roarequest_async('GetSession', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/sessions/{session_id}', 'json', req, runtime)
         )
 
     def list_sessions(
@@ -441,7 +441,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.ListSessionsResponse(),
-            self.do_roarequest('ListSessions', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/sessions/', 'string', req, runtime)
+            self.do_roarequest('ListSessions', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/sessions/', 'json', req, runtime)
         )
 
     async def list_sessions_with_options_async(
@@ -462,5 +462,5 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             tunnel__service_20210509_models.ListSessionsResponse(),
-            await self.do_roarequest_async('ListSessions', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/sessions/', 'string', req, runtime)
+            await self.do_roarequest_async('ListSessions', '2021-05-09', 'HTTPS', 'GET', 'AK', f'/v1/sessions/', 'json', req, runtime)
         )
