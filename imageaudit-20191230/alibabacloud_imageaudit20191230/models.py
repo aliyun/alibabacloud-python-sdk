@@ -4,6 +4,379 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class ScanTextRequestTasks(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class ScanTextRequestLabels(TeaModel):
+    def __init__(
+        self,
+        label: str = None,
+    ):
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class ScanTextRequest(TeaModel):
+    def __init__(
+        self,
+        tasks: List[ScanTextRequestTasks] = None,
+        labels: List[ScanTextRequestLabels] = None,
+    ):
+        self.tasks = tasks
+        self.labels = labels
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = ScanTextRequestTasks()
+                self.tasks.append(temp_model.from_map(k))
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = ScanTextRequestLabels()
+                self.labels.append(temp_model.from_map(k))
+        return self
+
+
+class ScanTextResponseBodyDataElementsResultsDetailsContexts(TeaModel):
+    def __init__(
+        self,
+        context: str = None,
+    ):
+        self.context = context
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
+        return self
+
+
+class ScanTextResponseBodyDataElementsResultsDetails(TeaModel):
+    def __init__(
+        self,
+        label: str = None,
+        contexts: List[ScanTextResponseBodyDataElementsResultsDetailsContexts] = None,
+    ):
+        self.label = label
+        self.contexts = contexts
+
+    def validate(self):
+        if self.contexts:
+            for k in self.contexts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        result['Contexts'] = []
+        if self.contexts is not None:
+            for k in self.contexts:
+                result['Contexts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        self.contexts = []
+        if m.get('Contexts') is not None:
+            for k in m.get('Contexts'):
+                temp_model = ScanTextResponseBodyDataElementsResultsDetailsContexts()
+                self.contexts.append(temp_model.from_map(k))
+        return self
+
+
+class ScanTextResponseBodyDataElementsResults(TeaModel):
+    def __init__(
+        self,
+        suggestion: str = None,
+        label: str = None,
+        rate: float = None,
+        details: List[ScanTextResponseBodyDataElementsResultsDetails] = None,
+    ):
+        self.suggestion = suggestion
+        self.label = label
+        self.rate = rate
+        self.details = details
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = ScanTextResponseBodyDataElementsResultsDetails()
+                self.details.append(temp_model.from_map(k))
+        return self
+
+
+class ScanTextResponseBodyDataElements(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        results: List[ScanTextResponseBodyDataElementsResults] = None,
+    ):
+        self.task_id = task_id
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = ScanTextResponseBodyDataElementsResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class ScanTextResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        elements: List[ScanTextResponseBodyDataElements] = None,
+    ):
+        self.elements = elements
+
+    def validate(self):
+        if self.elements:
+            for k in self.elements:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Elements'] = []
+        if self.elements is not None:
+            for k in self.elements:
+                result['Elements'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.elements = []
+        if m.get('Elements') is not None:
+            for k in m.get('Elements'):
+                temp_model = ScanTextResponseBodyDataElements()
+                self.elements.append(temp_model.from_map(k))
+        return self
+
+
+class ScanTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: ScanTextResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = ScanTextResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class ScanTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ScanTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ScanTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ScanImageRequestTask(TeaModel):
     def __init__(
         self,
@@ -23,6 +396,10 @@ class ScanImageRequestTask(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_time_millisecond is not None:
             result['ImageTimeMillisecond'] = self.image_time_millisecond
@@ -67,6 +444,10 @@ class ScanImageRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Task'] = []
         if self.task is not None:
@@ -103,6 +484,10 @@ class ScanImageResponseBodyDataResultsSubResultsSfaceDataListFaces(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
@@ -145,6 +530,10 @@ class ScanImageResponseBodyDataResultsSubResultsSfaceDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -189,6 +578,10 @@ class ScanImageResponseBodyDataResultsSubResultsHintWordsInfoList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.context is not None:
             result['Context'] = self.context
@@ -218,6 +611,10 @@ class ScanImageResponseBodyDataResultsSubResultsProgramCodeDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -255,6 +652,10 @@ class ScanImageResponseBodyDataResultsSubResultsFrames(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['URL'] = self.url
@@ -292,6 +693,10 @@ class ScanImageResponseBodyDataResultsSubResultsLogoDataList(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
@@ -372,6 +777,10 @@ class ScanImageResponseBodyDataResultsSubResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SfaceDataList'] = []
         if self.sface_data_list is not None:
@@ -465,6 +874,10 @@ class ScanImageResponseBodyDataResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -508,6 +921,10 @@ class ScanImageResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Results'] = []
         if self.results is not None:
@@ -539,6 +956,10 @@ class ScanImageResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -572,6 +993,10 @@ class ScanImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -585,339 +1010,6 @@ class ScanImageResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ScanImageResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ScanTextRequestTasks(TeaModel):
-    def __init__(
-        self,
-        content: str = None,
-    ):
-        self.content = content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        return self
-
-
-class ScanTextRequestLabels(TeaModel):
-    def __init__(
-        self,
-        label: str = None,
-    ):
-        self.label = label
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.label is not None:
-            result['Label'] = self.label
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Label') is not None:
-            self.label = m.get('Label')
-        return self
-
-
-class ScanTextRequest(TeaModel):
-    def __init__(
-        self,
-        tasks: List[ScanTextRequestTasks] = None,
-        labels: List[ScanTextRequestLabels] = None,
-    ):
-        self.tasks = tasks
-        self.labels = labels
-
-    def validate(self):
-        if self.tasks:
-            for k in self.tasks:
-                if k:
-                    k.validate()
-        if self.labels:
-            for k in self.labels:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['Tasks'] = []
-        if self.tasks is not None:
-            for k in self.tasks:
-                result['Tasks'].append(k.to_map() if k else None)
-        result['Labels'] = []
-        if self.labels is not None:
-            for k in self.labels:
-                result['Labels'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.tasks = []
-        if m.get('Tasks') is not None:
-            for k in m.get('Tasks'):
-                temp_model = ScanTextRequestTasks()
-                self.tasks.append(temp_model.from_map(k))
-        self.labels = []
-        if m.get('Labels') is not None:
-            for k in m.get('Labels'):
-                temp_model = ScanTextRequestLabels()
-                self.labels.append(temp_model.from_map(k))
-        return self
-
-
-class ScanTextResponseBodyDataElementsResultsDetailsContexts(TeaModel):
-    def __init__(
-        self,
-        context: str = None,
-    ):
-        self.context = context
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.context is not None:
-            result['Context'] = self.context
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Context') is not None:
-            self.context = m.get('Context')
-        return self
-
-
-class ScanTextResponseBodyDataElementsResultsDetails(TeaModel):
-    def __init__(
-        self,
-        label: str = None,
-        contexts: List[ScanTextResponseBodyDataElementsResultsDetailsContexts] = None,
-    ):
-        self.label = label
-        self.contexts = contexts
-
-    def validate(self):
-        if self.contexts:
-            for k in self.contexts:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.label is not None:
-            result['Label'] = self.label
-        result['Contexts'] = []
-        if self.contexts is not None:
-            for k in self.contexts:
-                result['Contexts'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Label') is not None:
-            self.label = m.get('Label')
-        self.contexts = []
-        if m.get('Contexts') is not None:
-            for k in m.get('Contexts'):
-                temp_model = ScanTextResponseBodyDataElementsResultsDetailsContexts()
-                self.contexts.append(temp_model.from_map(k))
-        return self
-
-
-class ScanTextResponseBodyDataElementsResults(TeaModel):
-    def __init__(
-        self,
-        suggestion: str = None,
-        label: str = None,
-        rate: float = None,
-        details: List[ScanTextResponseBodyDataElementsResultsDetails] = None,
-    ):
-        self.suggestion = suggestion
-        self.label = label
-        self.rate = rate
-        self.details = details
-
-    def validate(self):
-        if self.details:
-            for k in self.details:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.suggestion is not None:
-            result['Suggestion'] = self.suggestion
-        if self.label is not None:
-            result['Label'] = self.label
-        if self.rate is not None:
-            result['Rate'] = self.rate
-        result['Details'] = []
-        if self.details is not None:
-            for k in self.details:
-                result['Details'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Suggestion') is not None:
-            self.suggestion = m.get('Suggestion')
-        if m.get('Label') is not None:
-            self.label = m.get('Label')
-        if m.get('Rate') is not None:
-            self.rate = m.get('Rate')
-        self.details = []
-        if m.get('Details') is not None:
-            for k in m.get('Details'):
-                temp_model = ScanTextResponseBodyDataElementsResultsDetails()
-                self.details.append(temp_model.from_map(k))
-        return self
-
-
-class ScanTextResponseBodyDataElements(TeaModel):
-    def __init__(
-        self,
-        task_id: str = None,
-        results: List[ScanTextResponseBodyDataElementsResults] = None,
-    ):
-        self.task_id = task_id
-        self.results = results
-
-    def validate(self):
-        if self.results:
-            for k in self.results:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        result['Results'] = []
-        if self.results is not None:
-            for k in self.results:
-                result['Results'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        self.results = []
-        if m.get('Results') is not None:
-            for k in m.get('Results'):
-                temp_model = ScanTextResponseBodyDataElementsResults()
-                self.results.append(temp_model.from_map(k))
-        return self
-
-
-class ScanTextResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        elements: List[ScanTextResponseBodyDataElements] = None,
-    ):
-        self.elements = elements
-
-    def validate(self):
-        if self.elements:
-            for k in self.elements:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['Elements'] = []
-        if self.elements is not None:
-            for k in self.elements:
-                result['Elements'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.elements = []
-        if m.get('Elements') is not None:
-            for k in m.get('Elements'):
-                temp_model = ScanTextResponseBodyDataElements()
-                self.elements.append(temp_model.from_map(k))
-        return self
-
-
-class ScanTextResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: ScanTextResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = ScanTextResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class ScanTextResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ScanTextResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ScanTextResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

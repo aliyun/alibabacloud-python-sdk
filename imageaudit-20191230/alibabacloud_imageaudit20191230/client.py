@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -39,46 +40,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def scan_image_with_options(
-        self,
-        request: imageaudit_20191230_models.ScanImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageaudit_20191230_models.ScanImageResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return imageaudit_20191230_models.ScanImageResponse().from_map(
-            self.do_rpcrequest('ScanImage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def scan_image_with_options_async(
-        self,
-        request: imageaudit_20191230_models.ScanImageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageaudit_20191230_models.ScanImageResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return imageaudit_20191230_models.ScanImageResponse().from_map(
-            await self.do_rpcrequest_async('ScanImage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def scan_image(
-        self,
-        request: imageaudit_20191230_models.ScanImageRequest,
-    ) -> imageaudit_20191230_models.ScanImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.scan_image_with_options(request, runtime)
-
-    async def scan_image_async(
-        self,
-        request: imageaudit_20191230_models.ScanImageRequest,
-    ) -> imageaudit_20191230_models.ScanImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.scan_image_with_options_async(request, runtime)
-
     def scan_text_with_options(
         self,
         request: imageaudit_20191230_models.ScanTextRequest,
@@ -88,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return imageaudit_20191230_models.ScanTextResponse().from_map(
+        return TeaCore.from_map(
+            imageaudit_20191230_models.ScanTextResponse(),
             self.do_rpcrequest('ScanText', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return imageaudit_20191230_models.ScanTextResponse().from_map(
+        return TeaCore.from_map(
+            imageaudit_20191230_models.ScanTextResponse(),
             await self.do_rpcrequest_async('ScanText', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -118,3 +81,45 @@ class Client(OpenApiClient):
     ) -> imageaudit_20191230_models.ScanTextResponse:
         runtime = util_models.RuntimeOptions()
         return await self.scan_text_with_options_async(request, runtime)
+
+    def scan_image_with_options(
+        self,
+        request: imageaudit_20191230_models.ScanImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageaudit_20191230_models.ScanImageResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageaudit_20191230_models.ScanImageResponse(),
+            self.do_rpcrequest('ScanImage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def scan_image_with_options_async(
+        self,
+        request: imageaudit_20191230_models.ScanImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageaudit_20191230_models.ScanImageResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imageaudit_20191230_models.ScanImageResponse(),
+            await self.do_rpcrequest_async('ScanImage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def scan_image(
+        self,
+        request: imageaudit_20191230_models.ScanImageRequest,
+    ) -> imageaudit_20191230_models.ScanImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.scan_image_with_options(request, runtime)
+
+    async def scan_image_async(
+        self,
+        request: imageaudit_20191230_models.ScanImageRequest,
+    ) -> imageaudit_20191230_models.ScanImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.scan_image_with_options_async(request, runtime)
