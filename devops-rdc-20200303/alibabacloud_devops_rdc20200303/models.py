@@ -46,17 +46,17 @@ class BatchInsertMembersRequest(TeaModel):
 class BatchInsertMembersResponseBody(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         request_id: str = None,
         object: bool = None,
-        error_code: str = None,
-        error_message: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
+        self.error_message = error_message
         self.request_id = request_id
         self.object = object
-        self.error_code = error_code
-        self.error_message = error_message
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -67,30 +67,30 @@ class BatchInsertMembersResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -180,15 +180,15 @@ class CancelPipelineResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        error_message: str = None,
         object: bool = None,
         error_code: str = None,
-        error_message: str = None,
         success: bool = None,
     ):
         self.request_id = request_id
+        self.error_message = error_message
         self.object = object
         self.error_code = error_code
-        self.error_message = error_message
         self.success = success
 
     def validate(self):
@@ -202,12 +202,12 @@ class CancelPipelineResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.object is not None:
             result['Object'] = self.object
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -216,12 +216,12 @@ class CancelPipelineResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('Object') is not None:
             self.object = m.get('Object')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -294,17 +294,17 @@ class CheckAliyunAccountExistsRequest(TeaModel):
 class CheckAliyunAccountExistsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
+        request_id: str = None,
         object: bool = None,
-        error_code: str = None,
         successful: bool = None,
+        error_code: str = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
+        self.request_id = request_id
         self.object = object
-        self.error_code = error_code
         self.successful = successful
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -315,30 +315,30 @@ class CheckAliyunAccountExistsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('Successful') is not None:
             self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -460,17 +460,17 @@ class CreateCommonGroupResponseBodyObject(TeaModel):
 class CreateCommonGroupResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: CreateCommonGroupResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: CreateCommonGroupResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -482,31 +482,31 @@ class CreateCommonGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = CreateCommonGroupResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -607,17 +607,17 @@ class CreateCredentialRequest(TeaModel):
 class CreateCredentialResponseBody(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         request_id: str = None,
         object: int = None,
-        error_code: str = None,
-        error_message: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
+        self.error_message = error_message
         self.request_id = request_id
         self.object = object
-        self.error_code = error_code
-        self.error_message = error_message
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -628,30 +628,30 @@ class CreateCredentialResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -740,17 +740,17 @@ class CreateDevopsOrganizationRequest(TeaModel):
 class CreateDevopsOrganizationResponseBody(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         request_id: str = None,
         object: str = None,
-        error_code: str = None,
-        error_message: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
+        self.error_message = error_message
         self.request_id = request_id
         self.object = object
-        self.error_code = error_code
-        self.error_message = error_message
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -761,30 +761,30 @@ class CreateDevopsOrganizationResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -867,17 +867,17 @@ class CreateDevopsProjectRequest(TeaModel):
 class CreateDevopsProjectResponseBody(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         request_id: str = None,
         object: str = None,
-        error_code: str = None,
-        error_message: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
+        self.error_message = error_message
         self.request_id = request_id
         self.object = object
-        self.error_code = error_code
-        self.error_message = error_message
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -888,30 +888,30 @@ class CreateDevopsProjectResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -1067,10 +1067,10 @@ class CreateDevopsProjectSprintResponseBodyObject(TeaModel):
         is_deleted: bool = None,
         updated: str = None,
         due_date: str = None,
-        name: str = None,
         created: str = None,
-        plan_to_do: CreateDevopsProjectSprintResponseBodyObjectPlanToDo = None,
+        name: str = None,
         id: str = None,
+        plan_to_do: CreateDevopsProjectSprintResponseBodyObjectPlanToDo = None,
     ):
         self.status = status
         self.project_id = project_id
@@ -1082,10 +1082,10 @@ class CreateDevopsProjectSprintResponseBodyObject(TeaModel):
         self.is_deleted = is_deleted
         self.updated = updated
         self.due_date = due_date
-        self.name = name
         self.created = created
-        self.plan_to_do = plan_to_do
+        self.name = name
         self.id = id
+        self.plan_to_do = plan_to_do
 
     def validate(self):
         if self.plan_to_do:
@@ -1117,14 +1117,14 @@ class CreateDevopsProjectSprintResponseBodyObject(TeaModel):
             result['Updated'] = self.updated
         if self.due_date is not None:
             result['DueDate'] = self.due_date
-        if self.name is not None:
-            result['Name'] = self.name
         if self.created is not None:
             result['Created'] = self.created
-        if self.plan_to_do is not None:
-            result['PlanToDo'] = self.plan_to_do.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
         if self.id is not None:
             result['Id'] = self.id
+        if self.plan_to_do is not None:
+            result['PlanToDo'] = self.plan_to_do.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1149,32 +1149,32 @@ class CreateDevopsProjectSprintResponseBodyObject(TeaModel):
             self.updated = m.get('Updated')
         if m.get('DueDate') is not None:
             self.due_date = m.get('DueDate')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Created') is not None:
             self.created = m.get('Created')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('PlanToDo') is not None:
             temp_model = CreateDevopsProjectSprintResponseBodyObjectPlanToDo()
             self.plan_to_do = temp_model.from_map(m['PlanToDo'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         return self
 
 
 class CreateDevopsProjectSprintResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: CreateDevopsProjectSprintResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: CreateDevopsProjectSprintResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -1186,31 +1186,31 @@ class CreateDevopsProjectSprintResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = CreateDevopsProjectSprintResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -1373,8 +1373,8 @@ class CreateDevopsProjectTaskResponseBodyObject(TeaModel):
         content: str = None,
         rating: int = None,
         pos: int = None,
-        start_date: str = None,
         story_point: str = None,
+        start_date: str = None,
         creator_id: str = None,
         source: str = None,
         organization_id: str = None,
@@ -1399,8 +1399,8 @@ class CreateDevopsProjectTaskResponseBodyObject(TeaModel):
         self.content = content
         self.rating = rating
         self.pos = pos
-        self.start_date = start_date
         self.story_point = story_point
+        self.start_date = start_date
         self.creator_id = creator_id
         self.source = source
         self.organization_id = organization_id
@@ -1448,10 +1448,10 @@ class CreateDevopsProjectTaskResponseBodyObject(TeaModel):
             result['Rating'] = self.rating
         if self.pos is not None:
             result['Pos'] = self.pos
-        if self.start_date is not None:
-            result['StartDate'] = self.start_date
         if self.story_point is not None:
             result['StoryPoint'] = self.story_point
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
         if self.creator_id is not None:
             result['CreatorId'] = self.creator_id
         if self.source is not None:
@@ -1502,10 +1502,10 @@ class CreateDevopsProjectTaskResponseBodyObject(TeaModel):
             self.rating = m.get('Rating')
         if m.get('Pos') is not None:
             self.pos = m.get('Pos')
-        if m.get('StartDate') is not None:
-            self.start_date = m.get('StartDate')
         if m.get('StoryPoint') is not None:
             self.story_point = m.get('StoryPoint')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
         if m.get('CreatorId') is not None:
             self.creator_id = m.get('CreatorId')
         if m.get('Source') is not None:
@@ -1530,17 +1530,17 @@ class CreateDevopsProjectTaskResponseBodyObject(TeaModel):
 class CreateDevopsProjectTaskResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: CreateDevopsProjectTaskResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: CreateDevopsProjectTaskResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -1552,31 +1552,31 @@ class CreateDevopsProjectTaskResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = CreateDevopsProjectTaskResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -1659,17 +1659,17 @@ class CreatePipelineRequest(TeaModel):
 class CreatePipelineResponseBody(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         request_id: str = None,
         object: int = None,
-        error_code: str = None,
-        error_message: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
+        self.error_message = error_message
         self.request_id = request_id
         self.object = object
-        self.error_code = error_code
-        self.error_message = error_message
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -1680,30 +1680,30 @@ class CreatePipelineResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -1786,17 +1786,17 @@ class CreateServiceConnectionRequest(TeaModel):
 class CreateServiceConnectionResponseBody(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         request_id: str = None,
         object: int = None,
-        error_code: str = None,
-        error_message: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
+        self.error_message = error_message
         self.request_id = request_id
         self.object = object
-        self.error_code = error_code
-        self.error_message = error_message
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -1807,30 +1807,30 @@ class CreateServiceConnectionResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -1940,17 +1940,17 @@ class DeleteCommonGroupResponseBodyObject(TeaModel):
 class DeleteCommonGroupResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: DeleteCommonGroupResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: DeleteCommonGroupResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -1962,31 +1962,31 @@ class DeleteCommonGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = DeleteCommonGroupResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -2023,6 +2023,121 @@ class DeleteCommonGroupResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteCommonGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDevopsOrganizationRequest(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+    ):
+        self.org_id = org_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        return self
+
+
+class DeleteDevopsOrganizationResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        request_id: str = None,
+        object: str = None,
+        success: bool = None,
+        error_code: str = None,
+    ):
+        self.error_message = error_message
+        self.request_id = request_id
+        self.object = object
+        self.success = success
+        self.error_code = error_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.object is not None:
+            result['Object'] = self.object
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        return self
+
+
+class DeleteDevopsOrganizationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteDevopsOrganizationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteDevopsOrganizationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2069,17 +2184,17 @@ class DeleteDevopsOrganizationMembersRequest(TeaModel):
 class DeleteDevopsOrganizationMembersResponseBody(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         request_id: str = None,
         object: bool = None,
-        error_code: str = None,
-        error_message: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
+        self.error_message = error_message
         self.request_id = request_id
         self.object = object
-        self.error_code = error_code
-        self.error_message = error_message
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -2090,30 +2205,30 @@ class DeleteDevopsOrganizationMembersResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -2191,16 +2306,16 @@ class DeleteDevopsProjectResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: str = None,
-        error_code: str = None,
         error_message: str = None,
+        object: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
+        self.object = object
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -2213,28 +2328,28 @@ class DeleteDevopsProjectResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.object is not None:
+            result['Object'] = self.object
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -2317,17 +2432,17 @@ class DeleteDevopsProjectMembersRequest(TeaModel):
 class DeleteDevopsProjectMembersResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
+        request_id: str = None,
         object: bool = None,
-        error_code: str = None,
         successful: bool = None,
+        error_code: str = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
+        self.request_id = request_id
         self.object = object
-        self.error_code = error_code
         self.successful = successful
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -2338,30 +2453,30 @@ class DeleteDevopsProjectMembersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('Successful') is not None:
             self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -2438,17 +2553,17 @@ class DeleteDevopsProjectSprintRequest(TeaModel):
 class DeleteDevopsProjectSprintResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
+        request_id: str = None,
         object: bool = None,
-        error_code: str = None,
         successful: bool = None,
+        error_code: str = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
+        self.request_id = request_id
         self.object = object
-        self.error_code = error_code
         self.successful = successful
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -2459,30 +2574,30 @@ class DeleteDevopsProjectSprintResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('Successful') is not None:
             self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -2559,17 +2674,17 @@ class DeleteDevopsProjectTaskRequest(TeaModel):
 class DeleteDevopsProjectTaskResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
+        request_id: str = None,
         object: bool = None,
-        error_code: str = None,
         successful: bool = None,
+        error_code: str = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
+        self.request_id = request_id
         self.object = object
-        self.error_code = error_code
         self.successful = successful
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -2580,30 +2695,30 @@ class DeleteDevopsProjectTaskResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('Successful') is not None:
             self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -2693,15 +2808,15 @@ class DeletePipelineMemberResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        error_message: str = None,
         object: bool = None,
         error_code: str = None,
-        error_message: str = None,
         success: bool = None,
     ):
         self.request_id = request_id
+        self.error_message = error_message
         self.object = object
         self.error_code = error_code
-        self.error_message = error_message
         self.success = success
 
     def validate(self):
@@ -2715,12 +2830,12 @@ class DeletePipelineMemberResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.object is not None:
             result['Object'] = self.object
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -2729,12 +2844,12 @@ class DeletePipelineMemberResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('Object') is not None:
             self.object = m.get('Object')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -2826,16 +2941,16 @@ class ExecutePipelineResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: int = None,
-        error_code: str = None,
         error_message: str = None,
+        object: int = None,
         success: bool = None,
+        error_code: str = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
+        self.object = object
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -2848,28 +2963,28 @@ class ExecutePipelineResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.object is not None:
+            result['Object'] = self.object
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -3003,17 +3118,17 @@ class GetDevopsOrganizationMembersResponseBodyObject(TeaModel):
 class GetDevopsOrganizationMembersResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[GetDevopsOrganizationMembersResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[GetDevopsOrganizationMembersResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -3027,35 +3142,35 @@ class GetDevopsOrganizationMembersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = GetDevopsOrganizationMembersResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -3143,17 +3258,17 @@ class GetDevopsProjectInfoResponseBodyObject(TeaModel):
         root_collection_id: str = None,
         is_deleted: bool = None,
         updated: str = None,
-        is_archived: bool = None,
         name: str = None,
+        is_archived: bool = None,
         end_date: str = None,
         logo: str = None,
         start_date: str = None,
         pinyin: str = None,
         creator_id: str = None,
         source_id: str = None,
-        organization_id: str = None,
-        is_suspended: bool = None,
         default_collection_id: str = None,
+        is_suspended: bool = None,
+        organization_id: str = None,
         visibility: str = None,
         py: str = None,
         category: str = None,
@@ -3173,17 +3288,17 @@ class GetDevopsProjectInfoResponseBodyObject(TeaModel):
         self.root_collection_id = root_collection_id
         self.is_deleted = is_deleted
         self.updated = updated
-        self.is_archived = is_archived
         self.name = name
+        self.is_archived = is_archived
         self.end_date = end_date
         self.logo = logo
         self.start_date = start_date
         self.pinyin = pinyin
         self.creator_id = creator_id
         self.source_id = source_id
-        self.organization_id = organization_id
-        self.is_suspended = is_suspended
         self.default_collection_id = default_collection_id
+        self.is_suspended = is_suspended
+        self.organization_id = organization_id
         self.visibility = visibility
         self.py = py
         self.category = category
@@ -3223,10 +3338,10 @@ class GetDevopsProjectInfoResponseBodyObject(TeaModel):
             result['IsDeleted'] = self.is_deleted
         if self.updated is not None:
             result['Updated'] = self.updated
-        if self.is_archived is not None:
-            result['IsArchived'] = self.is_archived
         if self.name is not None:
             result['Name'] = self.name
+        if self.is_archived is not None:
+            result['IsArchived'] = self.is_archived
         if self.end_date is not None:
             result['EndDate'] = self.end_date
         if self.logo is not None:
@@ -3239,12 +3354,12 @@ class GetDevopsProjectInfoResponseBodyObject(TeaModel):
             result['CreatorId'] = self.creator_id
         if self.source_id is not None:
             result['SourceId'] = self.source_id
-        if self.organization_id is not None:
-            result['OrganizationId'] = self.organization_id
-        if self.is_suspended is not None:
-            result['IsSuspended'] = self.is_suspended
         if self.default_collection_id is not None:
             result['DefaultCollectionId'] = self.default_collection_id
+        if self.is_suspended is not None:
+            result['IsSuspended'] = self.is_suspended
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
         if self.visibility is not None:
             result['Visibility'] = self.visibility
         if self.py is not None:
@@ -3285,10 +3400,10 @@ class GetDevopsProjectInfoResponseBodyObject(TeaModel):
             self.is_deleted = m.get('IsDeleted')
         if m.get('Updated') is not None:
             self.updated = m.get('Updated')
-        if m.get('IsArchived') is not None:
-            self.is_archived = m.get('IsArchived')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('IsArchived') is not None:
+            self.is_archived = m.get('IsArchived')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
         if m.get('Logo') is not None:
@@ -3301,12 +3416,12 @@ class GetDevopsProjectInfoResponseBodyObject(TeaModel):
             self.creator_id = m.get('CreatorId')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
-        if m.get('OrganizationId') is not None:
-            self.organization_id = m.get('OrganizationId')
-        if m.get('IsSuspended') is not None:
-            self.is_suspended = m.get('IsSuspended')
         if m.get('DefaultCollectionId') is not None:
             self.default_collection_id = m.get('DefaultCollectionId')
+        if m.get('IsSuspended') is not None:
+            self.is_suspended = m.get('IsSuspended')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
         if m.get('Visibility') is not None:
             self.visibility = m.get('Visibility')
         if m.get('Py') is not None:
@@ -3327,17 +3442,17 @@ class GetDevopsProjectInfoResponseBodyObject(TeaModel):
 class GetDevopsProjectInfoResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: GetDevopsProjectInfoResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: GetDevopsProjectInfoResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -3349,31 +3464,31 @@ class GetDevopsProjectInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = GetDevopsProjectInfoResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -3419,9 +3534,13 @@ class GetDevopsProjectMembersRequest(TeaModel):
         self,
         org_id: str = None,
         project_id: str = None,
+        page_size: int = None,
+        page_token: str = None,
     ):
         self.org_id = org_id
         self.project_id = project_id
+        self.page_size = page_size
+        self.page_token = page_token
 
     def validate(self):
         pass
@@ -3436,6 +3555,10 @@ class GetDevopsProjectMembersRequest(TeaModel):
             result['OrgId'] = self.org_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_token is not None:
+            result['PageToken'] = self.page_token
         return result
 
     def from_map(self, m: dict = None):
@@ -3444,6 +3567,10 @@ class GetDevopsProjectMembersRequest(TeaModel):
             self.org_id = m.get('OrgId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageToken') is not None:
+            self.page_token = m.get('PageToken')
         return self
 
 
@@ -3514,16 +3641,20 @@ class GetDevopsProjectMembersResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_msg: str = None,
-        object: List[GetDevopsProjectMembersResponseBodyObject] = None,
+        next_page_token: str = None,
         error_code: str = None,
+        error_msg: str = None,
         successful: bool = None,
+        total: int = None,
+        object: List[GetDevopsProjectMembersResponseBodyObject] = None,
     ):
         self.request_id = request_id
-        self.error_msg = error_msg
-        self.object = object
+        self.next_page_token = next_page_token
         self.error_code = error_code
+        self.error_msg = error_msg
         self.successful = successful
+        self.total = total
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -3539,33 +3670,41 @@ class GetDevopsProjectMembersResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.total is not None:
+            result['Total'] = self.total
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = GetDevopsProjectMembersResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -3682,30 +3821,30 @@ class GetDevopsProjectSprintInfoResponseBodyObject(TeaModel):
     def __init__(
         self,
         status: str = None,
-        project_id: str = None,
-        start_date: str = None,
-        creator_id: str = None,
         accomplished: str = None,
+        project_id: str = None,
         is_deleted: bool = None,
+        start_date: str = None,
         updated: str = None,
+        creator_id: str = None,
         due_date: str = None,
         name: str = None,
         created: str = None,
-        plan_to_do: GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo = None,
         id: str = None,
+        plan_to_do: GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo = None,
     ):
         self.status = status
-        self.project_id = project_id
-        self.start_date = start_date
-        self.creator_id = creator_id
         self.accomplished = accomplished
+        self.project_id = project_id
         self.is_deleted = is_deleted
+        self.start_date = start_date
         self.updated = updated
+        self.creator_id = creator_id
         self.due_date = due_date
         self.name = name
         self.created = created
-        self.plan_to_do = plan_to_do
         self.id = id
+        self.plan_to_do = plan_to_do
 
     def validate(self):
         if self.plan_to_do:
@@ -3719,74 +3858,74 @@ class GetDevopsProjectSprintInfoResponseBodyObject(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.start_date is not None:
-            result['StartDate'] = self.start_date
-        if self.creator_id is not None:
-            result['CreatorId'] = self.creator_id
         if self.accomplished is not None:
             result['Accomplished'] = self.accomplished
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.is_deleted is not None:
             result['IsDeleted'] = self.is_deleted
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
         if self.updated is not None:
             result['Updated'] = self.updated
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
         if self.due_date is not None:
             result['DueDate'] = self.due_date
         if self.name is not None:
             result['Name'] = self.name
         if self.created is not None:
             result['Created'] = self.created
-        if self.plan_to_do is not None:
-            result['PlanToDo'] = self.plan_to_do.to_map()
         if self.id is not None:
             result['Id'] = self.id
+        if self.plan_to_do is not None:
+            result['PlanToDo'] = self.plan_to_do.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('StartDate') is not None:
-            self.start_date = m.get('StartDate')
-        if m.get('CreatorId') is not None:
-            self.creator_id = m.get('CreatorId')
         if m.get('Accomplished') is not None:
             self.accomplished = m.get('Accomplished')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('IsDeleted') is not None:
             self.is_deleted = m.get('IsDeleted')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
         if m.get('Updated') is not None:
             self.updated = m.get('Updated')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
         if m.get('DueDate') is not None:
             self.due_date = m.get('DueDate')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Created') is not None:
             self.created = m.get('Created')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('PlanToDo') is not None:
             temp_model = GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo()
             self.plan_to_do = temp_model.from_map(m['PlanToDo'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         return self
 
 
 class GetDevopsProjectSprintInfoResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: GetDevopsProjectSprintInfoResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: GetDevopsProjectSprintInfoResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -3798,31 +3937,31 @@ class GetDevopsProjectSprintInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = GetDevopsProjectSprintInfoResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -3901,49 +4040,49 @@ class GetDevopsProjectTaskInfoResponseBodyObject(TeaModel):
         self,
         executor_id: str = None,
         project_id: str = None,
-        story_point: str = None,
         start_date: str = None,
-        is_top_in_project: bool = None,
+        story_point: str = None,
         priority: str = None,
+        is_top_in_project: bool = None,
         creator_id: str = None,
         organization_id: str = None,
         task_type: str = None,
-        tasklist_id: str = None,
         visible: str = None,
+        tasklist_id: str = None,
         is_done: bool = None,
         is_deleted: bool = None,
         taskflowstatus_id: str = None,
         note: str = None,
         sprint_id: str = None,
         updated: str = None,
-        involve_members: List[str] = None,
         due_date: str = None,
         created: str = None,
         content: str = None,
         id: str = None,
+        involve_members: List[str] = None,
     ):
         self.executor_id = executor_id
         self.project_id = project_id
-        self.story_point = story_point
         self.start_date = start_date
-        self.is_top_in_project = is_top_in_project
+        self.story_point = story_point
         self.priority = priority
+        self.is_top_in_project = is_top_in_project
         self.creator_id = creator_id
         self.organization_id = organization_id
         self.task_type = task_type
-        self.tasklist_id = tasklist_id
         self.visible = visible
+        self.tasklist_id = tasklist_id
         self.is_done = is_done
         self.is_deleted = is_deleted
         self.taskflowstatus_id = taskflowstatus_id
         self.note = note
         self.sprint_id = sprint_id
         self.updated = updated
-        self.involve_members = involve_members
         self.due_date = due_date
         self.created = created
         self.content = content
         self.id = id
+        self.involve_members = involve_members
 
     def validate(self):
         pass
@@ -3958,24 +4097,24 @@ class GetDevopsProjectTaskInfoResponseBodyObject(TeaModel):
             result['ExecutorId'] = self.executor_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.story_point is not None:
-            result['StoryPoint'] = self.story_point
         if self.start_date is not None:
             result['StartDate'] = self.start_date
-        if self.is_top_in_project is not None:
-            result['IsTopInProject'] = self.is_top_in_project
+        if self.story_point is not None:
+            result['StoryPoint'] = self.story_point
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.is_top_in_project is not None:
+            result['IsTopInProject'] = self.is_top_in_project
         if self.creator_id is not None:
             result['CreatorId'] = self.creator_id
         if self.organization_id is not None:
             result['OrganizationId'] = self.organization_id
         if self.task_type is not None:
             result['TaskType'] = self.task_type
-        if self.tasklist_id is not None:
-            result['TasklistId'] = self.tasklist_id
         if self.visible is not None:
             result['Visible'] = self.visible
+        if self.tasklist_id is not None:
+            result['TasklistId'] = self.tasklist_id
         if self.is_done is not None:
             result['IsDone'] = self.is_done
         if self.is_deleted is not None:
@@ -3988,8 +4127,6 @@ class GetDevopsProjectTaskInfoResponseBodyObject(TeaModel):
             result['SprintId'] = self.sprint_id
         if self.updated is not None:
             result['Updated'] = self.updated
-        if self.involve_members is not None:
-            result['InvolveMembers'] = self.involve_members
         if self.due_date is not None:
             result['DueDate'] = self.due_date
         if self.created is not None:
@@ -3998,6 +4135,8 @@ class GetDevopsProjectTaskInfoResponseBodyObject(TeaModel):
             result['Content'] = self.content
         if self.id is not None:
             result['Id'] = self.id
+        if self.involve_members is not None:
+            result['InvolveMembers'] = self.involve_members
         return result
 
     def from_map(self, m: dict = None):
@@ -4006,24 +4145,24 @@ class GetDevopsProjectTaskInfoResponseBodyObject(TeaModel):
             self.executor_id = m.get('ExecutorId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('StoryPoint') is not None:
-            self.story_point = m.get('StoryPoint')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
-        if m.get('IsTopInProject') is not None:
-            self.is_top_in_project = m.get('IsTopInProject')
+        if m.get('StoryPoint') is not None:
+            self.story_point = m.get('StoryPoint')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('IsTopInProject') is not None:
+            self.is_top_in_project = m.get('IsTopInProject')
         if m.get('CreatorId') is not None:
             self.creator_id = m.get('CreatorId')
         if m.get('OrganizationId') is not None:
             self.organization_id = m.get('OrganizationId')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
-        if m.get('TasklistId') is not None:
-            self.tasklist_id = m.get('TasklistId')
         if m.get('Visible') is not None:
             self.visible = m.get('Visible')
+        if m.get('TasklistId') is not None:
+            self.tasklist_id = m.get('TasklistId')
         if m.get('IsDone') is not None:
             self.is_done = m.get('IsDone')
         if m.get('IsDeleted') is not None:
@@ -4036,8 +4175,6 @@ class GetDevopsProjectTaskInfoResponseBodyObject(TeaModel):
             self.sprint_id = m.get('SprintId')
         if m.get('Updated') is not None:
             self.updated = m.get('Updated')
-        if m.get('InvolveMembers') is not None:
-            self.involve_members = m.get('InvolveMembers')
         if m.get('DueDate') is not None:
             self.due_date = m.get('DueDate')
         if m.get('Created') is not None:
@@ -4046,23 +4183,25 @@ class GetDevopsProjectTaskInfoResponseBodyObject(TeaModel):
             self.content = m.get('Content')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InvolveMembers') is not None:
+            self.involve_members = m.get('InvolveMembers')
         return self
 
 
 class GetDevopsProjectTaskInfoResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: GetDevopsProjectTaskInfoResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: GetDevopsProjectTaskInfoResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -4074,31 +4213,31 @@ class GetDevopsProjectTaskInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = GetDevopsProjectTaskInfoResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -4175,17 +4314,17 @@ class GetLastWorkspaceRequest(TeaModel):
 class GetLastWorkspaceResponseBody(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         request_id: str = None,
         object: str = None,
-        error_code: str = None,
-        error_message: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
+        self.error_message = error_message
         self.request_id = request_id
         self.object = object
-        self.error_code = error_code
-        self.error_message = error_message
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -4196,30 +4335,30 @@ class GetLastWorkspaceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -4309,12 +4448,12 @@ class GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponen
     def __init__(
         self,
         status: str = None,
-        job_id: int = None,
         name: str = None,
+        job_id: int = None,
     ):
         self.status = status
-        self.job_id = job_id
         self.name = name
+        self.job_id = job_id
 
     def validate(self):
         pass
@@ -4327,20 +4466,20 @@ class GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponen
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         return self
 
 
@@ -4395,12 +4534,12 @@ class GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups(TeaModel):
     def __init__(
         self,
         status: str = None,
-        stages: List[GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages] = None,
         name: str = None,
+        stages: List[GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages] = None,
     ):
         self.status = status
-        self.stages = stages
         self.name = name
+        self.stages = stages
 
     def validate(self):
         if self.stages:
@@ -4416,25 +4555,25 @@ class GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
+        if self.name is not None:
+            result['Name'] = self.name
         result['Stages'] = []
         if self.stages is not None:
             for k in self.stages:
                 result['Stages'].append(k.to_map() if k else None)
-        if self.name is not None:
-            result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         self.stages = []
         if m.get('Stages') is not None:
             for k in m.get('Stages'):
                 temp_model = GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages()
                 self.stages.append(temp_model.from_map(k))
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         return self
 
 
@@ -4483,16 +4622,16 @@ class GetPipelineInstanceBuildNumberStatusResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: GetPipelineInstanceBuildNumberStatusResponseBodyObject = None,
-        error_code: str = None,
         error_message: str = None,
         success: bool = None,
+        error_code: str = None,
+        object: GetPipelineInstanceBuildNumberStatusResponseBodyObject = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
         self.success = success
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -4506,29 +4645,29 @@ class GetPipelineInstanceBuildNumberStatusResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Object') is not None:
-            temp_model = GetPipelineInstanceBuildNumberStatusResponseBodyObject()
-            self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Object') is not None:
+            temp_model = GetPipelineInstanceBuildNumberStatusResponseBodyObject()
+            self.object = temp_model.from_map(m['Object'])
         return self
 
 
@@ -4618,12 +4757,12 @@ class GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents(Tea
     def __init__(
         self,
         status: str = None,
-        job_id: str = None,
         name: str = None,
+        job_id: str = None,
     ):
         self.status = status
-        self.job_id = job_id
         self.name = name
+        self.job_id = job_id
 
     def validate(self):
         pass
@@ -4636,20 +4775,20 @@ class GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents(Tea
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         return self
 
 
@@ -4704,12 +4843,12 @@ class GetPipelineInstanceGroupStatusResponseBodyObjectGroups(TeaModel):
     def __init__(
         self,
         status: str = None,
-        stages: List[GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages] = None,
         name: str = None,
+        stages: List[GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages] = None,
     ):
         self.status = status
-        self.stages = stages
         self.name = name
+        self.stages = stages
 
     def validate(self):
         if self.stages:
@@ -4725,25 +4864,25 @@ class GetPipelineInstanceGroupStatusResponseBodyObjectGroups(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
+        if self.name is not None:
+            result['Name'] = self.name
         result['Stages'] = []
         if self.stages is not None:
             for k in self.stages:
                 result['Stages'].append(k.to_map() if k else None)
-        if self.name is not None:
-            result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         self.stages = []
         if m.get('Stages') is not None:
             for k in m.get('Stages'):
                 temp_model = GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages()
                 self.stages.append(temp_model.from_map(k))
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         return self
 
 
@@ -4792,16 +4931,16 @@ class GetPipelineInstanceGroupStatusResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: GetPipelineInstanceGroupStatusResponseBodyObject = None,
-        error_code: str = None,
         error_message: str = None,
         success: bool = None,
+        error_code: str = None,
+        object: GetPipelineInstanceGroupStatusResponseBodyObject = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
         self.success = success
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -4815,29 +4954,29 @@ class GetPipelineInstanceGroupStatusResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Object') is not None:
-            temp_model = GetPipelineInstanceGroupStatusResponseBodyObject()
-            self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Object') is not None:
+            temp_model = GetPipelineInstanceGroupStatusResponseBodyObject()
+            self.object = temp_model.from_map(m['Object'])
         return self
 
 
@@ -4926,21 +5065,21 @@ class GetPipelineInstanceInfoRequest(TeaModel):
 class GetPipelineInstanceInfoResponseBodyObject(TeaModel):
     def __init__(
         self,
+        employee_id: str = None,
         end_time: int = None,
         status: str = None,
         start_time: int = None,
-        package_download_urls: List[str] = None,
-        employee_id: str = None,
-        docker_images: List[str] = None,
         sources: str = None,
+        docker_images: List[str] = None,
+        package_download_urls: List[str] = None,
     ):
+        self.employee_id = employee_id
         self.end_time = end_time
         self.status = status
         self.start_time = start_time
-        self.package_download_urls = package_download_urls
-        self.employee_id = employee_id
-        self.docker_images = docker_images
         self.sources = sources
+        self.docker_images = docker_images
+        self.package_download_urls = package_download_urls
 
     def validate(self):
         pass
@@ -4951,55 +5090,55 @@ class GetPipelineInstanceInfoResponseBodyObject(TeaModel):
             return _map
 
         result = dict()
+        if self.employee_id is not None:
+            result['EmployeeId'] = self.employee_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.status is not None:
             result['Status'] = self.status
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-        if self.package_download_urls is not None:
-            result['PackageDownloadUrls'] = self.package_download_urls
-        if self.employee_id is not None:
-            result['EmployeeId'] = self.employee_id
-        if self.docker_images is not None:
-            result['DockerImages'] = self.docker_images
         if self.sources is not None:
             result['Sources'] = self.sources
+        if self.docker_images is not None:
+            result['DockerImages'] = self.docker_images
+        if self.package_download_urls is not None:
+            result['PackageDownloadUrls'] = self.package_download_urls
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EmployeeId') is not None:
+            self.employee_id = m.get('EmployeeId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-        if m.get('PackageDownloadUrls') is not None:
-            self.package_download_urls = m.get('PackageDownloadUrls')
-        if m.get('EmployeeId') is not None:
-            self.employee_id = m.get('EmployeeId')
-        if m.get('DockerImages') is not None:
-            self.docker_images = m.get('DockerImages')
         if m.get('Sources') is not None:
             self.sources = m.get('Sources')
+        if m.get('DockerImages') is not None:
+            self.docker_images = m.get('DockerImages')
+        if m.get('PackageDownloadUrls') is not None:
+            self.package_download_urls = m.get('PackageDownloadUrls')
         return self
 
 
 class GetPipelineInstanceInfoResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        object: GetPipelineInstanceInfoResponseBodyObject = None,
-        error_code: str = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
+        error_code: str = None,
+        object: GetPipelineInstanceInfoResponseBodyObject = None,
     ):
-        self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -5011,31 +5150,31 @@ class GetPipelineInstanceInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = GetPipelineInstanceInfoResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -5125,15 +5264,15 @@ class GetPipelineInstanceStatusResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        error_message: str = None,
         object: str = None,
         error_code: str = None,
-        error_message: str = None,
         success: bool = None,
     ):
         self.request_id = request_id
+        self.error_message = error_message
         self.object = object
         self.error_code = error_code
-        self.error_message = error_message
         self.success = success
 
     def validate(self):
@@ -5147,12 +5286,12 @@ class GetPipelineInstanceStatusResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.object is not None:
             result['Object'] = self.object
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -5161,12 +5300,12 @@ class GetPipelineInstanceStatusResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('Object') is not None:
             self.object = m.get('Object')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -5272,87 +5411,6 @@ class GetPipelineInstHistoryRequest(TeaModel):
         return self
 
 
-class GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult(TeaModel):
-    def __init__(
-        self,
-        engine_pipeline_number: int = None,
-        mix_flow_inst_id: str = None,
-        engine_pipeline_name: str = None,
-        engine_pipeline_id: int = None,
-        engine_pipeline_inst_id: int = None,
-        time_stamp: str = None,
-        trigger_mode: str = None,
-        sources: str = None,
-        caches: str = None,
-        date_time: str = None,
-    ):
-        self.engine_pipeline_number = engine_pipeline_number
-        self.mix_flow_inst_id = mix_flow_inst_id
-        self.engine_pipeline_name = engine_pipeline_name
-        self.engine_pipeline_id = engine_pipeline_id
-        self.engine_pipeline_inst_id = engine_pipeline_inst_id
-        self.time_stamp = time_stamp
-        self.trigger_mode = trigger_mode
-        self.sources = sources
-        self.caches = caches
-        self.date_time = date_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.engine_pipeline_number is not None:
-            result['EnginePipelineNumber'] = self.engine_pipeline_number
-        if self.mix_flow_inst_id is not None:
-            result['MixFlowInstId'] = self.mix_flow_inst_id
-        if self.engine_pipeline_name is not None:
-            result['EnginePipelineName'] = self.engine_pipeline_name
-        if self.engine_pipeline_id is not None:
-            result['EnginePipelineId'] = self.engine_pipeline_id
-        if self.engine_pipeline_inst_id is not None:
-            result['EnginePipelineInstId'] = self.engine_pipeline_inst_id
-        if self.time_stamp is not None:
-            result['TimeStamp'] = self.time_stamp
-        if self.trigger_mode is not None:
-            result['TriggerMode'] = self.trigger_mode
-        if self.sources is not None:
-            result['Sources'] = self.sources
-        if self.caches is not None:
-            result['Caches'] = self.caches
-        if self.date_time is not None:
-            result['DateTime'] = self.date_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EnginePipelineNumber') is not None:
-            self.engine_pipeline_number = m.get('EnginePipelineNumber')
-        if m.get('MixFlowInstId') is not None:
-            self.mix_flow_inst_id = m.get('MixFlowInstId')
-        if m.get('EnginePipelineName') is not None:
-            self.engine_pipeline_name = m.get('EnginePipelineName')
-        if m.get('EnginePipelineId') is not None:
-            self.engine_pipeline_id = m.get('EnginePipelineId')
-        if m.get('EnginePipelineInstId') is not None:
-            self.engine_pipeline_inst_id = m.get('EnginePipelineInstId')
-        if m.get('TimeStamp') is not None:
-            self.time_stamp = m.get('TimeStamp')
-        if m.get('TriggerMode') is not None:
-            self.trigger_mode = m.get('TriggerMode')
-        if m.get('Sources') is not None:
-            self.sources = m.get('Sources')
-        if m.get('Caches') is not None:
-            self.caches = m.get('Caches')
-        if m.get('DateTime') is not None:
-            self.date_time = m.get('DateTime')
-        return self
-
-
 class GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups(TeaModel):
     def __init__(
         self,
@@ -5452,50 +5510,131 @@ class GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups(TeaModel)
         return self
 
 
+class GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult(TeaModel):
+    def __init__(
+        self,
+        engine_pipeline_number: int = None,
+        mix_flow_inst_id: str = None,
+        engine_pipeline_name: str = None,
+        engine_pipeline_id: int = None,
+        engine_pipeline_inst_id: int = None,
+        time_stamp: str = None,
+        trigger_mode: str = None,
+        sources: str = None,
+        caches: str = None,
+        date_time: str = None,
+    ):
+        self.engine_pipeline_number = engine_pipeline_number
+        self.mix_flow_inst_id = mix_flow_inst_id
+        self.engine_pipeline_name = engine_pipeline_name
+        self.engine_pipeline_id = engine_pipeline_id
+        self.engine_pipeline_inst_id = engine_pipeline_inst_id
+        self.time_stamp = time_stamp
+        self.trigger_mode = trigger_mode
+        self.sources = sources
+        self.caches = caches
+        self.date_time = date_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine_pipeline_number is not None:
+            result['EnginePipelineNumber'] = self.engine_pipeline_number
+        if self.mix_flow_inst_id is not None:
+            result['MixFlowInstId'] = self.mix_flow_inst_id
+        if self.engine_pipeline_name is not None:
+            result['EnginePipelineName'] = self.engine_pipeline_name
+        if self.engine_pipeline_id is not None:
+            result['EnginePipelineId'] = self.engine_pipeline_id
+        if self.engine_pipeline_inst_id is not None:
+            result['EnginePipelineInstId'] = self.engine_pipeline_inst_id
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.trigger_mode is not None:
+            result['TriggerMode'] = self.trigger_mode
+        if self.sources is not None:
+            result['Sources'] = self.sources
+        if self.caches is not None:
+            result['Caches'] = self.caches
+        if self.date_time is not None:
+            result['DateTime'] = self.date_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnginePipelineNumber') is not None:
+            self.engine_pipeline_number = m.get('EnginePipelineNumber')
+        if m.get('MixFlowInstId') is not None:
+            self.mix_flow_inst_id = m.get('MixFlowInstId')
+        if m.get('EnginePipelineName') is not None:
+            self.engine_pipeline_name = m.get('EnginePipelineName')
+        if m.get('EnginePipelineId') is not None:
+            self.engine_pipeline_id = m.get('EnginePipelineId')
+        if m.get('EnginePipelineInstId') is not None:
+            self.engine_pipeline_inst_id = m.get('EnginePipelineInstId')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('TriggerMode') is not None:
+            self.trigger_mode = m.get('TriggerMode')
+        if m.get('Sources') is not None:
+            self.sources = m.get('Sources')
+        if m.get('Caches') is not None:
+            self.caches = m.get('Caches')
+        if m.get('DateTime') is not None:
+            self.date_time = m.get('DateTime')
+        return self
+
+
 class GetPipelineInstHistoryResponseBodyDataDataListFlowInstance(TeaModel):
     def __init__(
         self,
         status: str = None,
         stages: Dict[str, Any] = None,
-        result: GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult = None,
         create_time: int = None,
         status_name: str = None,
         running_status: str = None,
-        stage_topo: str = None,
         creator: str = None,
+        stage_topo: str = None,
         modifier: str = None,
-        groups: List[GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups] = None,
         auto_driven_status: bool = None,
         result_status: str = None,
         id: int = None,
         system_code: str = None,
         modify_time: int = None,
         system_id: str = None,
+        groups: List[GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups] = None,
+        result: GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult = None,
     ):
         self.status = status
         self.stages = stages
-        self.result = result
         self.create_time = create_time
         self.status_name = status_name
         self.running_status = running_status
-        self.stage_topo = stage_topo
         self.creator = creator
+        self.stage_topo = stage_topo
         self.modifier = modifier
-        self.groups = groups
         self.auto_driven_status = auto_driven_status
         self.result_status = result_status
         self.id = id
         self.system_code = system_code
         self.modify_time = modify_time
         self.system_id = system_id
+        self.groups = groups
+        self.result = result
 
     def validate(self):
-        if self.result:
-            self.result.validate()
         if self.groups:
             for k in self.groups:
                 if k:
                     k.validate()
+        if self.result:
+            self.result.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5507,24 +5646,18 @@ class GetPipelineInstHistoryResponseBodyDataDataListFlowInstance(TeaModel):
             result['Status'] = self.status
         if self.stages is not None:
             result['Stages'] = self.stages
-        if self.result is not None:
-            result['Result'] = self.result.to_map()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.status_name is not None:
             result['StatusName'] = self.status_name
         if self.running_status is not None:
             result['RunningStatus'] = self.running_status
-        if self.stage_topo is not None:
-            result['StageTopo'] = self.stage_topo
         if self.creator is not None:
             result['Creator'] = self.creator
+        if self.stage_topo is not None:
+            result['StageTopo'] = self.stage_topo
         if self.modifier is not None:
             result['Modifier'] = self.modifier
-        result['Groups'] = []
-        if self.groups is not None:
-            for k in self.groups:
-                result['Groups'].append(k.to_map() if k else None)
         if self.auto_driven_status is not None:
             result['AutoDrivenStatus'] = self.auto_driven_status
         if self.result_status is not None:
@@ -5537,6 +5670,12 @@ class GetPipelineInstHistoryResponseBodyDataDataListFlowInstance(TeaModel):
             result['ModifyTime'] = self.modify_time
         if self.system_id is not None:
             result['SystemId'] = self.system_id
+        result['Groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['Groups'].append(k.to_map() if k else None)
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -5545,26 +5684,18 @@ class GetPipelineInstHistoryResponseBodyDataDataListFlowInstance(TeaModel):
             self.status = m.get('Status')
         if m.get('Stages') is not None:
             self.stages = m.get('Stages')
-        if m.get('Result') is not None:
-            temp_model = GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult()
-            self.result = temp_model.from_map(m['Result'])
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('StatusName') is not None:
             self.status_name = m.get('StatusName')
         if m.get('RunningStatus') is not None:
             self.running_status = m.get('RunningStatus')
-        if m.get('StageTopo') is not None:
-            self.stage_topo = m.get('StageTopo')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+        if m.get('StageTopo') is not None:
+            self.stage_topo = m.get('StageTopo')
         if m.get('Modifier') is not None:
             self.modifier = m.get('Modifier')
-        self.groups = []
-        if m.get('Groups') is not None:
-            for k in m.get('Groups'):
-                temp_model = GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups()
-                self.groups.append(temp_model.from_map(k))
         if m.get('AutoDrivenStatus') is not None:
             self.auto_driven_status = m.get('AutoDrivenStatus')
         if m.get('ResultStatus') is not None:
@@ -5577,6 +5708,14 @@ class GetPipelineInstHistoryResponseBodyDataDataListFlowInstance(TeaModel):
             self.modify_time = m.get('ModifyTime')
         if m.get('SystemId') is not None:
             self.system_id = m.get('SystemId')
+        self.groups = []
+        if m.get('Groups') is not None:
+            for k in m.get('Groups'):
+                temp_model = GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups()
+                self.groups.append(temp_model.from_map(k))
+        if m.get('Result') is not None:
+            temp_model = GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult()
+            self.result = temp_model.from_map(m['Result'])
         return self
 
 
@@ -5586,34 +5725,34 @@ class GetPipelineInstHistoryResponseBodyDataDataList(TeaModel):
         status: str = None,
         create_time: int = None,
         status_name: str = None,
-        deletion: str = None,
-        pipeline_config_id: int = None,
         trigger_mode: int = None,
+        pipeline_config_id: int = None,
+        deletion: str = None,
         creator: str = None,
         inst_number: int = None,
         modifier: str = None,
-        flow_instance: GetPipelineInstHistoryResponseBodyDataDataListFlowInstance = None,
         packages: str = None,
         flow_inst_id: int = None,
         pipeline_id: int = None,
         id: int = None,
         modify_time: int = None,
+        flow_instance: GetPipelineInstHistoryResponseBodyDataDataListFlowInstance = None,
     ):
         self.status = status
         self.create_time = create_time
         self.status_name = status_name
-        self.deletion = deletion
-        self.pipeline_config_id = pipeline_config_id
         self.trigger_mode = trigger_mode
+        self.pipeline_config_id = pipeline_config_id
+        self.deletion = deletion
         self.creator = creator
         self.inst_number = inst_number
         self.modifier = modifier
-        self.flow_instance = flow_instance
         self.packages = packages
         self.flow_inst_id = flow_inst_id
         self.pipeline_id = pipeline_id
         self.id = id
         self.modify_time = modify_time
+        self.flow_instance = flow_instance
 
     def validate(self):
         if self.flow_instance:
@@ -5631,20 +5770,18 @@ class GetPipelineInstHistoryResponseBodyDataDataList(TeaModel):
             result['CreateTime'] = self.create_time
         if self.status_name is not None:
             result['StatusName'] = self.status_name
-        if self.deletion is not None:
-            result['Deletion'] = self.deletion
-        if self.pipeline_config_id is not None:
-            result['PipelineConfigId'] = self.pipeline_config_id
         if self.trigger_mode is not None:
             result['TriggerMode'] = self.trigger_mode
+        if self.pipeline_config_id is not None:
+            result['PipelineConfigId'] = self.pipeline_config_id
+        if self.deletion is not None:
+            result['Deletion'] = self.deletion
         if self.creator is not None:
             result['Creator'] = self.creator
         if self.inst_number is not None:
             result['InstNumber'] = self.inst_number
         if self.modifier is not None:
             result['Modifier'] = self.modifier
-        if self.flow_instance is not None:
-            result['FlowInstance'] = self.flow_instance.to_map()
         if self.packages is not None:
             result['Packages'] = self.packages
         if self.flow_inst_id is not None:
@@ -5655,6 +5792,8 @@ class GetPipelineInstHistoryResponseBodyDataDataList(TeaModel):
             result['Id'] = self.id
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
+        if self.flow_instance is not None:
+            result['FlowInstance'] = self.flow_instance.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -5665,21 +5804,18 @@ class GetPipelineInstHistoryResponseBodyDataDataList(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('StatusName') is not None:
             self.status_name = m.get('StatusName')
-        if m.get('Deletion') is not None:
-            self.deletion = m.get('Deletion')
-        if m.get('PipelineConfigId') is not None:
-            self.pipeline_config_id = m.get('PipelineConfigId')
         if m.get('TriggerMode') is not None:
             self.trigger_mode = m.get('TriggerMode')
+        if m.get('PipelineConfigId') is not None:
+            self.pipeline_config_id = m.get('PipelineConfigId')
+        if m.get('Deletion') is not None:
+            self.deletion = m.get('Deletion')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
         if m.get('InstNumber') is not None:
             self.inst_number = m.get('InstNumber')
         if m.get('Modifier') is not None:
             self.modifier = m.get('Modifier')
-        if m.get('FlowInstance') is not None:
-            temp_model = GetPipelineInstHistoryResponseBodyDataDataListFlowInstance()
-            self.flow_instance = temp_model.from_map(m['FlowInstance'])
         if m.get('Packages') is not None:
             self.packages = m.get('Packages')
         if m.get('FlowInstId') is not None:
@@ -5690,17 +5826,20 @@ class GetPipelineInstHistoryResponseBodyDataDataList(TeaModel):
             self.id = m.get('Id')
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')
+        if m.get('FlowInstance') is not None:
+            temp_model = GetPipelineInstHistoryResponseBodyDataDataListFlowInstance()
+            self.flow_instance = temp_model.from_map(m['FlowInstance'])
         return self
 
 
 class GetPipelineInstHistoryResponseBodyData(TeaModel):
     def __init__(
         self,
-        data_list: List[GetPipelineInstHistoryResponseBodyDataDataList] = None,
         total: int = None,
+        data_list: List[GetPipelineInstHistoryResponseBodyDataDataList] = None,
     ):
-        self.data_list = data_list
         self.total = total
+        self.data_list = data_list
 
     def validate(self):
         if self.data_list:
@@ -5714,23 +5853,23 @@ class GetPipelineInstHistoryResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.total is not None:
+            result['Total'] = self.total
         result['DataList'] = []
         if self.data_list is not None:
             for k in self.data_list:
                 result['DataList'].append(k.to_map() if k else None)
-        if self.total is not None:
-            result['Total'] = self.total
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
         self.data_list = []
         if m.get('DataList') is not None:
             for k in m.get('DataList'):
                 temp_model = GetPipelineInstHistoryResponseBodyDataDataList()
                 self.data_list.append(temp_model.from_map(k))
-        if m.get('Total') is not None:
-            self.total = m.get('Total')
         return self
 
 
@@ -5738,16 +5877,16 @@ class GetPipelineInstHistoryResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: GetPipelineInstHistoryResponseBodyData = None,
-        error_code: str = None,
         error_message: str = None,
         success: bool = None,
+        error_code: str = None,
+        data: GetPipelineInstHistoryResponseBodyData = None,
     ):
         self.request_id = request_id
-        self.data = data
-        self.error_code = error_code
         self.error_message = error_message
         self.success = success
+        self.error_code = error_code
+        self.data = data
 
     def validate(self):
         if self.data:
@@ -5761,29 +5900,29 @@ class GetPipelineInstHistoryResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = GetPipelineInstHistoryResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Data') is not None:
+            temp_model = GetPipelineInstHistoryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -5873,12 +6012,12 @@ class GetPipelineLogResponseBodyObjectBuildProcessNodes(TeaModel):
     def __init__(
         self,
         status: str = None,
-        node_name: str = None,
         node_index: int = None,
+        node_name: str = None,
     ):
         self.status = status
-        self.node_name = node_name
         self.node_index = node_index
+        self.node_name = node_name
 
     def validate(self):
         pass
@@ -5891,34 +6030,34 @@ class GetPipelineLogResponseBodyObjectBuildProcessNodes(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.node_name is not None:
-            result['NodeName'] = self.node_name
         if self.node_index is not None:
             result['NodeIndex'] = self.node_index
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('NodeName') is not None:
-            self.node_name = m.get('NodeName')
         if m.get('NodeIndex') is not None:
             self.node_index = m.get('NodeIndex')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
         return self
 
 
 class GetPipelineLogResponseBodyObject(TeaModel):
     def __init__(
         self,
+        action_name: str = None,
         start_time: str = None,
         job_id: int = None,
-        action_name: str = None,
         build_process_nodes: List[GetPipelineLogResponseBodyObjectBuildProcessNodes] = None,
     ):
+        self.action_name = action_name
         self.start_time = start_time
         self.job_id = job_id
-        self.action_name = action_name
         self.build_process_nodes = build_process_nodes
 
     def validate(self):
@@ -5933,12 +6072,12 @@ class GetPipelineLogResponseBodyObject(TeaModel):
             return _map
 
         result = dict()
+        if self.action_name is not None:
+            result['ActionName'] = self.action_name
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.action_name is not None:
-            result['ActionName'] = self.action_name
         result['BuildProcessNodes'] = []
         if self.build_process_nodes is not None:
             for k in self.build_process_nodes:
@@ -5947,12 +6086,12 @@ class GetPipelineLogResponseBodyObject(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActionName') is not None:
+            self.action_name = m.get('ActionName')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('ActionName') is not None:
-            self.action_name = m.get('ActionName')
         self.build_process_nodes = []
         if m.get('BuildProcessNodes') is not None:
             for k in m.get('BuildProcessNodes'):
@@ -5965,16 +6104,16 @@ class GetPipelineLogResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: List[GetPipelineLogResponseBodyObject] = None,
-        error_code: str = None,
         error_message: str = None,
         success: bool = None,
+        error_code: str = None,
+        object: List[GetPipelineLogResponseBodyObject] = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
         self.success = success
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -5990,33 +6129,33 @@ class GetPipelineLogResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['Object'] = []
-        if self.object is not None:
-            for k in self.object:
-                result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['Object'] = []
+        if self.object is not None:
+            for k in self.object:
+                result['Object'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = GetPipelineLogResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -6123,13 +6262,13 @@ class GetPipelineStepLogRequest(TeaModel):
 class GetPipelineStepLogResponseBodyObject(TeaModel):
     def __init__(
         self,
-        logs: str = None,
         last: int = None,
         more: bool = None,
+        logs: str = None,
     ):
-        self.logs = logs
         self.last = last
         self.more = more
+        self.logs = logs
 
     def validate(self):
         pass
@@ -6140,22 +6279,22 @@ class GetPipelineStepLogResponseBodyObject(TeaModel):
             return _map
 
         result = dict()
-        if self.logs is not None:
-            result['Logs'] = self.logs
         if self.last is not None:
             result['Last'] = self.last
         if self.more is not None:
             result['More'] = self.more
+        if self.logs is not None:
+            result['Logs'] = self.logs
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Logs') is not None:
-            self.logs = m.get('Logs')
         if m.get('Last') is not None:
             self.last = m.get('Last')
         if m.get('More') is not None:
             self.more = m.get('More')
+        if m.get('Logs') is not None:
+            self.logs = m.get('Logs')
         return self
 
 
@@ -6163,16 +6302,16 @@ class GetPipelineStepLogResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: GetPipelineStepLogResponseBodyObject = None,
-        error_code: str = None,
         error_message: str = None,
         success: bool = None,
+        error_code: str = None,
+        object: GetPipelineStepLogResponseBodyObject = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
         self.success = success
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -6186,29 +6325,29 @@ class GetPipelineStepLogResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Object') is not None:
-            temp_model = GetPipelineStepLogResponseBodyObject()
-            self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Object') is not None:
+            temp_model = GetPipelineStepLogResponseBodyObject()
+            self.object = temp_model.from_map(m['Object'])
         return self
 
 
@@ -6292,12 +6431,12 @@ class GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents(Te
     def __init__(
         self,
         status: str = None,
-        job_id: int = None,
         name: str = None,
+        job_id: int = None,
     ):
         self.status = status
-        self.job_id = job_id
         self.name = name
+        self.job_id = job_id
 
     def validate(self):
         pass
@@ -6310,20 +6449,20 @@ class GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents(Te
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         return self
 
 
@@ -6378,12 +6517,12 @@ class GetPipleineLatestInstanceStatusResponseBodyObjectGroups(TeaModel):
     def __init__(
         self,
         status: str = None,
-        stages: List[GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages] = None,
         name: str = None,
+        stages: List[GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages] = None,
     ):
         self.status = status
-        self.stages = stages
         self.name = name
+        self.stages = stages
 
     def validate(self):
         if self.stages:
@@ -6399,25 +6538,25 @@ class GetPipleineLatestInstanceStatusResponseBodyObjectGroups(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
+        if self.name is not None:
+            result['Name'] = self.name
         result['Stages'] = []
         if self.stages is not None:
             for k in self.stages:
                 result['Stages'].append(k.to_map() if k else None)
-        if self.name is not None:
-            result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         self.stages = []
         if m.get('Stages') is not None:
             for k in m.get('Stages'):
                 temp_model = GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages()
                 self.stages.append(temp_model.from_map(k))
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         return self
 
 
@@ -6466,16 +6605,16 @@ class GetPipleineLatestInstanceStatusResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: GetPipleineLatestInstanceStatusResponseBodyObject = None,
-        error_code: str = None,
         error_message: str = None,
         success: bool = None,
+        error_code: str = None,
+        object: GetPipleineLatestInstanceStatusResponseBodyObject = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
         self.success = success
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -6489,29 +6628,29 @@ class GetPipleineLatestInstanceStatusResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Object') is not None:
-            temp_model = GetPipleineLatestInstanceStatusResponseBodyObject()
-            self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Object') is not None:
+            temp_model = GetPipleineLatestInstanceStatusResponseBodyObject()
+            self.object = temp_model.from_map(m['Object'])
         return self
 
 
@@ -6602,9 +6741,13 @@ class GetProjectOptionResponseBodyObject(TeaModel):
         self,
         value: str = None,
         name: str = None,
+        scope_name: str = None,
+        kind: str = None,
     ):
         self.value = value
         self.name = name
+        self.scope_name = scope_name
+        self.kind = kind
 
     def validate(self):
         pass
@@ -6619,6 +6762,10 @@ class GetProjectOptionResponseBodyObject(TeaModel):
             result['Value'] = self.value
         if self.name is not None:
             result['Name'] = self.name
+        if self.scope_name is not None:
+            result['ScopeName'] = self.scope_name
+        if self.kind is not None:
+            result['Kind'] = self.kind
         return result
 
     def from_map(self, m: dict = None):
@@ -6627,23 +6774,27 @@ class GetProjectOptionResponseBodyObject(TeaModel):
             self.value = m.get('Value')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ScopeName') is not None:
+            self.scope_name = m.get('ScopeName')
+        if m.get('Kind') is not None:
+            self.kind = m.get('Kind')
         return self
 
 
 class GetProjectOptionResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[GetProjectOptionResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[GetProjectOptionResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -6657,35 +6808,35 @@ class GetProjectOptionResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = GetProjectOptionResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -6768,14 +6919,14 @@ class GetTaskDetailActivityRequest(TeaModel):
 class GetTaskDetailActivityResponseBodyObject(TeaModel):
     def __init__(
         self,
-        action: str = None,
         updated: str = None,
+        action: str = None,
         title: str = None,
         created: str = None,
         content: Dict[str, Any] = None,
     ):
-        self.action = action
         self.updated = updated
+        self.action = action
         self.title = title
         self.created = created
         self.content = content
@@ -6789,10 +6940,10 @@ class GetTaskDetailActivityResponseBodyObject(TeaModel):
             return _map
 
         result = dict()
-        if self.action is not None:
-            result['Action'] = self.action
         if self.updated is not None:
             result['Updated'] = self.updated
+        if self.action is not None:
+            result['Action'] = self.action
         if self.title is not None:
             result['Title'] = self.title
         if self.created is not None:
@@ -6803,10 +6954,10 @@ class GetTaskDetailActivityResponseBodyObject(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Action') is not None:
-            self.action = m.get('Action')
         if m.get('Updated') is not None:
             self.updated = m.get('Updated')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('Created') is not None:
@@ -6819,19 +6970,19 @@ class GetTaskDetailActivityResponseBodyObject(TeaModel):
 class GetTaskDetailActivityResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         http_status_code: int = None,
         error_msg: str = None,
-        object: List[GetTaskDetailActivityResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[GetTaskDetailActivityResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.http_status_code = http_status_code
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -6845,39 +6996,39 @@ class GetTaskDetailActivityResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = GetTaskDetailActivityResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -6957,13 +7108,99 @@ class GetTaskDetailBaseRequest(TeaModel):
         return self
 
 
-class GetTaskDetailBaseResponseBodyObjectTasklist(TeaModel):
+class GetTaskDetailBaseResponseBodyObjectCustomfieldsValue(TeaModel):
     def __init__(
         self,
+        id: str = None,
         title: str = None,
+    ):
+        self.id = id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetTaskDetailBaseResponseBodyObjectCustomfields(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        customfield_id: str = None,
+        value: List[GetTaskDetailBaseResponseBodyObjectCustomfieldsValue] = None,
+        values: List[str] = None,
+    ):
+        self.type = type
+        self.customfield_id = customfield_id
+        self.value = value
+        self.values = values
+
+    def validate(self):
+        if self.value:
+            for k in self.value:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.customfield_id is not None:
+            result['CustomfieldId'] = self.customfield_id
+        result['Value'] = []
+        if self.value is not None:
+            for k in self.value:
+                result['Value'].append(k.to_map() if k else None)
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('CustomfieldId') is not None:
+            self.customfield_id = m.get('CustomfieldId')
+        self.value = []
+        if m.get('Value') is not None:
+            for k in m.get('Value'):
+                temp_model = GetTaskDetailBaseResponseBodyObjectCustomfieldsValue()
+                self.value.append(temp_model.from_map(k))
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class GetTaskDetailBaseResponseBodyObjectSubtasks(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
         id: str = None,
     ):
-        self.title = title
+        self.content = content
         self.id = id
 
     def validate(self):
@@ -6975,130 +7212,22 @@ class GetTaskDetailBaseResponseBodyObjectTasklist(TeaModel):
             return _map
 
         result = dict()
-        if self.title is not None:
-            result['Title'] = self.title
+        if self.content is not None:
+            result['Content'] = self.content
         if self.id is not None:
             result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         return self
 
 
-class GetTaskDetailBaseResponseBodyObjectBadges(TeaModel):
-    def __init__(
-        self,
-        likes_count: int = None,
-        objectlinks_count: int = None,
-        attachments_count: int = None,
-        comments_count: int = None,
-    ):
-        self.likes_count = likes_count
-        self.objectlinks_count = objectlinks_count
-        self.attachments_count = attachments_count
-        self.comments_count = comments_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.likes_count is not None:
-            result['LikesCount'] = self.likes_count
-        if self.objectlinks_count is not None:
-            result['ObjectlinksCount'] = self.objectlinks_count
-        if self.attachments_count is not None:
-            result['AttachmentsCount'] = self.attachments_count
-        if self.comments_count is not None:
-            result['CommentsCount'] = self.comments_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('LikesCount') is not None:
-            self.likes_count = m.get('LikesCount')
-        if m.get('ObjectlinksCount') is not None:
-            self.objectlinks_count = m.get('ObjectlinksCount')
-        if m.get('AttachmentsCount') is not None:
-            self.attachments_count = m.get('AttachmentsCount')
-        if m.get('CommentsCount') is not None:
-            self.comments_count = m.get('CommentsCount')
-        return self
-
-
-class GetTaskDetailBaseResponseBodyObjectReminder(TeaModel):
-    def __init__(
-        self,
-        type: str = None,
-        members: List[str] = None,
-        date: str = None,
-        member_roles: List[str] = None,
-        method: str = None,
-        creator_id: str = None,
-        rules: List[str] = None,
-    ):
-        self.type = type
-        self.members = members
-        self.date = date
-        self.member_roles = member_roles
-        self.method = method
-        self.creator_id = creator_id
-        self.rules = rules
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.members is not None:
-            result['Members'] = self.members
-        if self.date is not None:
-            result['Date'] = self.date
-        if self.member_roles is not None:
-            result['MemberRoles'] = self.member_roles
-        if self.method is not None:
-            result['Method'] = self.method
-        if self.creator_id is not None:
-            result['CreatorId'] = self.creator_id
-        if self.rules is not None:
-            result['Rules'] = self.rules
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('Members') is not None:
-            self.members = m.get('Members')
-        if m.get('Date') is not None:
-            self.date = m.get('Date')
-        if m.get('MemberRoles') is not None:
-            self.member_roles = m.get('MemberRoles')
-        if m.get('Method') is not None:
-            self.method = m.get('Method')
-        if m.get('CreatorId') is not None:
-            self.creator_id = m.get('CreatorId')
-        if m.get('Rules') is not None:
-            self.rules = m.get('Rules')
-        return self
-
-
-class GetTaskDetailBaseResponseBodyObjectStage(TeaModel):
+class GetTaskDetailBaseResponseBodyObjectInvolvers(TeaModel):
     def __init__(
         self,
         name: str = None,
@@ -7176,78 +7305,6 @@ class GetTaskDetailBaseResponseBodyObjectScenariofieldconfig(TeaModel):
         return self
 
 
-class GetTaskDetailBaseResponseBodyObjectWorkTime(TeaModel):
-    def __init__(
-        self,
-        used_time: int = None,
-        total_time: int = None,
-        unit: str = None,
-    ):
-        self.used_time = used_time
-        self.total_time = total_time
-        self.unit = unit
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.used_time is not None:
-            result['UsedTime'] = self.used_time
-        if self.total_time is not None:
-            result['TotalTime'] = self.total_time
-        if self.unit is not None:
-            result['Unit'] = self.unit
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('UsedTime') is not None:
-            self.used_time = m.get('UsedTime')
-        if m.get('TotalTime') is not None:
-            self.total_time = m.get('TotalTime')
-        if m.get('Unit') is not None:
-            self.unit = m.get('Unit')
-        return self
-
-
-class GetTaskDetailBaseResponseBodyObjectCreator(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        id: str = None,
-    ):
-        self.name = name
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
 class GetTaskDetailBaseResponseBodyObjectExecutor(TeaModel):
     def __init__(
         self,
@@ -7287,6 +7344,180 @@ class GetTaskDetailBaseResponseBodyObjectExecutor(TeaModel):
         return self
 
 
+class GetTaskDetailBaseResponseBodyObjectTasklist(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        title: str = None,
+    ):
+        self.id = id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetTaskDetailBaseResponseBodyObjectTaskflowstatus(TeaModel):
+    def __init__(
+        self,
+        taskflow_id: str = None,
+        name: str = None,
+        id: str = None,
+        kind: str = None,
+    ):
+        self.taskflow_id = taskflow_id
+        self.name = name
+        self.id = id
+        self.kind = kind
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.taskflow_id is not None:
+            result['TaskflowId'] = self.taskflow_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.kind is not None:
+            result['Kind'] = self.kind
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskflowId') is not None:
+            self.taskflow_id = m.get('TaskflowId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Kind') is not None:
+            self.kind = m.get('Kind')
+        return self
+
+
+class GetTaskDetailBaseResponseBodyObjectCreator(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        id: str = None,
+    ):
+        self.name = name
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetTaskDetailBaseResponseBodyObjectReminder(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        date: str = None,
+        method: str = None,
+        creator_id: str = None,
+        member_roles: List[str] = None,
+        members: List[str] = None,
+        rules: List[str] = None,
+    ):
+        self.type = type
+        self.date = date
+        self.method = method
+        self.creator_id = creator_id
+        self.member_roles = member_roles
+        self.members = members
+        self.rules = rules
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.member_roles is not None:
+            result['MemberRoles'] = self.member_roles
+        if self.members is not None:
+            result['Members'] = self.members
+        if self.rules is not None:
+            result['Rules'] = self.rules
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('MemberRoles') is not None:
+            self.member_roles = m.get('MemberRoles')
+        if m.get('Members') is not None:
+            self.members = m.get('Members')
+        if m.get('Rules') is not None:
+            self.rules = m.get('Rules')
+        return self
+
+
 class GetTaskDetailBaseResponseBodyObjectSubtaskCount(TeaModel):
     def __init__(
         self,
@@ -7320,7 +7551,91 @@ class GetTaskDetailBaseResponseBodyObjectSubtaskCount(TeaModel):
         return self
 
 
-class GetTaskDetailBaseResponseBodyObjectInvolvers(TeaModel):
+class GetTaskDetailBaseResponseBodyObjectWorkTime(TeaModel):
+    def __init__(
+        self,
+        used_time: int = None,
+        total_time: int = None,
+        unit: str = None,
+    ):
+        self.used_time = used_time
+        self.total_time = total_time
+        self.unit = unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.used_time is not None:
+            result['UsedTime'] = self.used_time
+        if self.total_time is not None:
+            result['TotalTime'] = self.total_time
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UsedTime') is not None:
+            self.used_time = m.get('UsedTime')
+        if m.get('TotalTime') is not None:
+            self.total_time = m.get('TotalTime')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        return self
+
+
+class GetTaskDetailBaseResponseBodyObjectBadges(TeaModel):
+    def __init__(
+        self,
+        likes_count: int = None,
+        objectlinks_count: int = None,
+        attachments_count: int = None,
+        comments_count: int = None,
+    ):
+        self.likes_count = likes_count
+        self.objectlinks_count = objectlinks_count
+        self.attachments_count = attachments_count
+        self.comments_count = comments_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.likes_count is not None:
+            result['LikesCount'] = self.likes_count
+        if self.objectlinks_count is not None:
+            result['ObjectlinksCount'] = self.objectlinks_count
+        if self.attachments_count is not None:
+            result['AttachmentsCount'] = self.attachments_count
+        if self.comments_count is not None:
+            result['CommentsCount'] = self.comments_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LikesCount') is not None:
+            self.likes_count = m.get('LikesCount')
+        if m.get('ObjectlinksCount') is not None:
+            self.objectlinks_count = m.get('ObjectlinksCount')
+        if m.get('AttachmentsCount') is not None:
+            self.attachments_count = m.get('AttachmentsCount')
+        if m.get('CommentsCount') is not None:
+            self.comments_count = m.get('CommentsCount')
+        return self
+
+
+class GetTaskDetailBaseResponseBodyObjectStage(TeaModel):
     def __init__(
         self,
         name: str = None,
@@ -7346,170 +7661,6 @@ class GetTaskDetailBaseResponseBodyObjectInvolvers(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
-class GetTaskDetailBaseResponseBodyObjectSubtasks(TeaModel):
-    def __init__(
-        self,
-        content: str = None,
-        id: str = None,
-    ):
-        self.content = content
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
-class GetTaskDetailBaseResponseBodyObjectCustomfieldsValue(TeaModel):
-    def __init__(
-        self,
-        title: str = None,
-        id: str = None,
-    ):
-        self.title = title
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.title is not None:
-            result['Title'] = self.title
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
-class GetTaskDetailBaseResponseBodyObjectCustomfields(TeaModel):
-    def __init__(
-        self,
-        type: str = None,
-        value: List[GetTaskDetailBaseResponseBodyObjectCustomfieldsValue] = None,
-        values: List[str] = None,
-        customfield_id: str = None,
-    ):
-        self.type = type
-        self.value = value
-        self.values = values
-        self.customfield_id = customfield_id
-
-    def validate(self):
-        if self.value:
-            for k in self.value:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
-        result['Value'] = []
-        if self.value is not None:
-            for k in self.value:
-                result['Value'].append(k.to_map() if k else None)
-        if self.values is not None:
-            result['Values'] = self.values
-        if self.customfield_id is not None:
-            result['CustomfieldId'] = self.customfield_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        self.value = []
-        if m.get('Value') is not None:
-            for k in m.get('Value'):
-                temp_model = GetTaskDetailBaseResponseBodyObjectCustomfieldsValue()
-                self.value.append(temp_model.from_map(k))
-        if m.get('Values') is not None:
-            self.values = m.get('Values')
-        if m.get('CustomfieldId') is not None:
-            self.customfield_id = m.get('CustomfieldId')
-        return self
-
-
-class GetTaskDetailBaseResponseBodyObjectTaskflowstatus(TeaModel):
-    def __init__(
-        self,
-        taskflow_id: str = None,
-        kind: str = None,
-        name: str = None,
-        id: str = None,
-    ):
-        self.taskflow_id = taskflow_id
-        self.kind = kind
-        self.name = name
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.taskflow_id is not None:
-            result['TaskflowId'] = self.taskflow_id
-        if self.kind is not None:
-            result['Kind'] = self.kind
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TaskflowId') is not None:
-            self.taskflow_id = m.get('TaskflowId')
-        if m.get('Kind') is not None:
-            self.kind = m.get('Kind')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -7520,161 +7671,161 @@ class GetTaskDetailBaseResponseBodyObjectTaskflowstatus(TeaModel):
 class GetTaskDetailBaseResponseBodyObject(TeaModel):
     def __init__(
         self,
+        is_favorite: bool = None,
         organization: str = None,
+        executor_id: str = None,
         scenariofieldconfig_id: str = None,
         project_id: str = None,
         is_top_in_project: bool = None,
-        tasklist: GetTaskDetailBaseResponseBodyObjectTasklist = None,
-        badges: GetTaskDetailBaseResponseBodyObjectBadges = None,
-        ancestor_ids: List[str] = None,
+        priority: int = None,
         share_status: int = None,
-        reminder: GetTaskDetailBaseResponseBodyObjectReminder = None,
-        ancestors: List[str] = None,
+        accomplished: str = None,
         taskflowstatus_id: str = None,
-        updated: str = None,
         note: str = None,
+        updated: str = None,
+        unique_id: int = None,
         is_archived: bool = None,
         content: str = None,
+        comments_count: int = None,
         rating: int = None,
+        recurrence: str = None,
+        object_type: str = None,
         progress: int = None,
-        stage: GetTaskDetailBaseResponseBodyObjectStage = None,
-        labels: List[str] = None,
+        until_date: str = None,
         start_date: str = None,
+        story_point: str = None,
+        objectlinks_count: int = None,
         sprint: str = None,
         creator_id: str = None,
+        source: str = None,
         source_id: str = None,
         organization_id: str = None,
         source_date: str = None,
-        is_favorite: bool = None,
-        executor_id: str = None,
-        scenariofieldconfig: GetTaskDetailBaseResponseBodyObjectScenariofieldconfig = None,
-        work_time: GetTaskDetailBaseResponseBodyObjectWorkTime = None,
-        tag_ids: List[str] = None,
-        priority: int = None,
-        creator: GetTaskDetailBaseResponseBodyObjectCreator = None,
-        executor: GetTaskDetailBaseResponseBodyObjectExecutor = None,
-        accomplished: str = None,
-        involve_members: List[str] = None,
-        unique_id: int = None,
-        comments_count: int = None,
-        recurrence: str = None,
-        object_type: str = None,
-        subtask_count: GetTaskDetailBaseResponseBodyObjectSubtaskCount = None,
-        until_date: str = None,
-        story_point: str = None,
-        objectlinks_count: int = None,
-        source: str = None,
         likes_count: int = None,
         stage_id: str = None,
-        divisions: List[str] = None,
         visible: str = None,
         is_done: bool = None,
-        involvers: List[GetTaskDetailBaseResponseBodyObjectInvolvers] = None,
         parent: str = None,
         sprint_id: str = None,
-        due_date: str = None,
         attachments_count: int = None,
-        subtasks: List[GetTaskDetailBaseResponseBodyObjectSubtasks] = None,
-        customfields: List[GetTaskDetailBaseResponseBodyObjectCustomfields] = None,
+        due_date: str = None,
         created: str = None,
         task_id: str = None,
-        taskflowstatus: GetTaskDetailBaseResponseBodyObjectTaskflowstatus = None,
         id: str = None,
+        customfields: List[GetTaskDetailBaseResponseBodyObjectCustomfields] = None,
+        subtasks: List[GetTaskDetailBaseResponseBodyObjectSubtasks] = None,
+        involvers: List[GetTaskDetailBaseResponseBodyObjectInvolvers] = None,
+        labels: List[str] = None,
+        divisions: List[str] = None,
+        ancestors: List[str] = None,
+        involve_members: List[str] = None,
+        tag_ids: List[str] = None,
+        ancestor_ids: List[str] = None,
+        scenariofieldconfig: GetTaskDetailBaseResponseBodyObjectScenariofieldconfig = None,
+        executor: GetTaskDetailBaseResponseBodyObjectExecutor = None,
+        tasklist: GetTaskDetailBaseResponseBodyObjectTasklist = None,
+        taskflowstatus: GetTaskDetailBaseResponseBodyObjectTaskflowstatus = None,
+        creator: GetTaskDetailBaseResponseBodyObjectCreator = None,
+        reminder: GetTaskDetailBaseResponseBodyObjectReminder = None,
+        subtask_count: GetTaskDetailBaseResponseBodyObjectSubtaskCount = None,
+        work_time: GetTaskDetailBaseResponseBodyObjectWorkTime = None,
+        badges: GetTaskDetailBaseResponseBodyObjectBadges = None,
+        stage: GetTaskDetailBaseResponseBodyObjectStage = None,
     ):
+        self.is_favorite = is_favorite
         self.organization = organization
+        self.executor_id = executor_id
         self.scenariofieldconfig_id = scenariofieldconfig_id
         self.project_id = project_id
         self.is_top_in_project = is_top_in_project
-        self.tasklist = tasklist
-        self.badges = badges
-        self.ancestor_ids = ancestor_ids
+        self.priority = priority
         self.share_status = share_status
-        self.reminder = reminder
-        self.ancestors = ancestors
+        self.accomplished = accomplished
         self.taskflowstatus_id = taskflowstatus_id
-        self.updated = updated
         self.note = note
+        self.updated = updated
+        self.unique_id = unique_id
         self.is_archived = is_archived
         self.content = content
+        self.comments_count = comments_count
         self.rating = rating
+        self.recurrence = recurrence
+        self.object_type = object_type
         self.progress = progress
-        self.stage = stage
-        self.labels = labels
+        self.until_date = until_date
         self.start_date = start_date
+        self.story_point = story_point
+        self.objectlinks_count = objectlinks_count
         self.sprint = sprint
         self.creator_id = creator_id
+        self.source = source
         self.source_id = source_id
         self.organization_id = organization_id
         self.source_date = source_date
-        self.is_favorite = is_favorite
-        self.executor_id = executor_id
-        self.scenariofieldconfig = scenariofieldconfig
-        self.work_time = work_time
-        self.tag_ids = tag_ids
-        self.priority = priority
-        self.creator = creator
-        self.executor = executor
-        self.accomplished = accomplished
-        self.involve_members = involve_members
-        self.unique_id = unique_id
-        self.comments_count = comments_count
-        self.recurrence = recurrence
-        self.object_type = object_type
-        self.subtask_count = subtask_count
-        self.until_date = until_date
-        self.story_point = story_point
-        self.objectlinks_count = objectlinks_count
-        self.source = source
         self.likes_count = likes_count
         self.stage_id = stage_id
-        self.divisions = divisions
         self.visible = visible
         self.is_done = is_done
-        self.involvers = involvers
         self.parent = parent
         self.sprint_id = sprint_id
-        self.due_date = due_date
         self.attachments_count = attachments_count
-        self.subtasks = subtasks
-        self.customfields = customfields
+        self.due_date = due_date
         self.created = created
         self.task_id = task_id
-        self.taskflowstatus = taskflowstatus
         self.id = id
+        self.customfields = customfields
+        self.subtasks = subtasks
+        self.involvers = involvers
+        self.labels = labels
+        self.divisions = divisions
+        self.ancestors = ancestors
+        self.involve_members = involve_members
+        self.tag_ids = tag_ids
+        self.ancestor_ids = ancestor_ids
+        self.scenariofieldconfig = scenariofieldconfig
+        self.executor = executor
+        self.tasklist = tasklist
+        self.taskflowstatus = taskflowstatus
+        self.creator = creator
+        self.reminder = reminder
+        self.subtask_count = subtask_count
+        self.work_time = work_time
+        self.badges = badges
+        self.stage = stage
 
     def validate(self):
-        if self.tasklist:
-            self.tasklist.validate()
-        if self.badges:
-            self.badges.validate()
-        if self.reminder:
-            self.reminder.validate()
-        if self.stage:
-            self.stage.validate()
-        if self.scenariofieldconfig:
-            self.scenariofieldconfig.validate()
-        if self.work_time:
-            self.work_time.validate()
-        if self.creator:
-            self.creator.validate()
-        if self.executor:
-            self.executor.validate()
-        if self.subtask_count:
-            self.subtask_count.validate()
-        if self.involvers:
-            for k in self.involvers:
+        if self.customfields:
+            for k in self.customfields:
                 if k:
                     k.validate()
         if self.subtasks:
             for k in self.subtasks:
                 if k:
                     k.validate()
-        if self.customfields:
-            for k in self.customfields:
+        if self.involvers:
+            for k in self.involvers:
                 if k:
                     k.validate()
+        if self.scenariofieldconfig:
+            self.scenariofieldconfig.validate()
+        if self.executor:
+            self.executor.validate()
+        if self.tasklist:
+            self.tasklist.validate()
         if self.taskflowstatus:
             self.taskflowstatus.validate()
+        if self.creator:
+            self.creator.validate()
+        if self.reminder:
+            self.reminder.validate()
+        if self.subtask_count:
+            self.subtask_count.validate()
+        if self.work_time:
+            self.work_time.validate()
+        if self.badges:
+            self.badges.validate()
+        if self.stage:
+            self.stage.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7682,292 +7833,292 @@ class GetTaskDetailBaseResponseBodyObject(TeaModel):
             return _map
 
         result = dict()
+        if self.is_favorite is not None:
+            result['IsFavorite'] = self.is_favorite
         if self.organization is not None:
             result['Organization'] = self.organization
+        if self.executor_id is not None:
+            result['ExecutorId'] = self.executor_id
         if self.scenariofieldconfig_id is not None:
             result['ScenariofieldconfigId'] = self.scenariofieldconfig_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.is_top_in_project is not None:
             result['IsTopInProject'] = self.is_top_in_project
-        if self.tasklist is not None:
-            result['Tasklist'] = self.tasklist.to_map()
-        if self.badges is not None:
-            result['Badges'] = self.badges.to_map()
-        if self.ancestor_ids is not None:
-            result['AncestorIds'] = self.ancestor_ids
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.share_status is not None:
             result['ShareStatus'] = self.share_status
-        if self.reminder is not None:
-            result['Reminder'] = self.reminder.to_map()
-        if self.ancestors is not None:
-            result['Ancestors'] = self.ancestors
+        if self.accomplished is not None:
+            result['Accomplished'] = self.accomplished
         if self.taskflowstatus_id is not None:
             result['TaskflowstatusId'] = self.taskflowstatus_id
-        if self.updated is not None:
-            result['Updated'] = self.updated
         if self.note is not None:
             result['Note'] = self.note
+        if self.updated is not None:
+            result['Updated'] = self.updated
+        if self.unique_id is not None:
+            result['UniqueId'] = self.unique_id
         if self.is_archived is not None:
             result['IsArchived'] = self.is_archived
         if self.content is not None:
             result['Content'] = self.content
+        if self.comments_count is not None:
+            result['CommentsCount'] = self.comments_count
         if self.rating is not None:
             result['Rating'] = self.rating
+        if self.recurrence is not None:
+            result['Recurrence'] = self.recurrence
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
         if self.progress is not None:
             result['Progress'] = self.progress
-        if self.stage is not None:
-            result['Stage'] = self.stage.to_map()
-        if self.labels is not None:
-            result['Labels'] = self.labels
+        if self.until_date is not None:
+            result['UntilDate'] = self.until_date
         if self.start_date is not None:
             result['StartDate'] = self.start_date
+        if self.story_point is not None:
+            result['StoryPoint'] = self.story_point
+        if self.objectlinks_count is not None:
+            result['ObjectlinksCount'] = self.objectlinks_count
         if self.sprint is not None:
             result['Sprint'] = self.sprint
         if self.creator_id is not None:
             result['CreatorId'] = self.creator_id
+        if self.source is not None:
+            result['Source'] = self.source
         if self.source_id is not None:
             result['SourceId'] = self.source_id
         if self.organization_id is not None:
             result['OrganizationId'] = self.organization_id
         if self.source_date is not None:
             result['SourceDate'] = self.source_date
-        if self.is_favorite is not None:
-            result['IsFavorite'] = self.is_favorite
-        if self.executor_id is not None:
-            result['ExecutorId'] = self.executor_id
-        if self.scenariofieldconfig is not None:
-            result['Scenariofieldconfig'] = self.scenariofieldconfig.to_map()
-        if self.work_time is not None:
-            result['WorkTime'] = self.work_time.to_map()
-        if self.tag_ids is not None:
-            result['TagIds'] = self.tag_ids
-        if self.priority is not None:
-            result['Priority'] = self.priority
-        if self.creator is not None:
-            result['Creator'] = self.creator.to_map()
-        if self.executor is not None:
-            result['Executor'] = self.executor.to_map()
-        if self.accomplished is not None:
-            result['Accomplished'] = self.accomplished
-        if self.involve_members is not None:
-            result['InvolveMembers'] = self.involve_members
-        if self.unique_id is not None:
-            result['UniqueId'] = self.unique_id
-        if self.comments_count is not None:
-            result['CommentsCount'] = self.comments_count
-        if self.recurrence is not None:
-            result['Recurrence'] = self.recurrence
-        if self.object_type is not None:
-            result['ObjectType'] = self.object_type
-        if self.subtask_count is not None:
-            result['SubtaskCount'] = self.subtask_count.to_map()
-        if self.until_date is not None:
-            result['UntilDate'] = self.until_date
-        if self.story_point is not None:
-            result['StoryPoint'] = self.story_point
-        if self.objectlinks_count is not None:
-            result['ObjectlinksCount'] = self.objectlinks_count
-        if self.source is not None:
-            result['Source'] = self.source
         if self.likes_count is not None:
             result['LikesCount'] = self.likes_count
         if self.stage_id is not None:
             result['StageId'] = self.stage_id
-        if self.divisions is not None:
-            result['Divisions'] = self.divisions
         if self.visible is not None:
             result['Visible'] = self.visible
         if self.is_done is not None:
             result['IsDone'] = self.is_done
-        result['Involvers'] = []
-        if self.involvers is not None:
-            for k in self.involvers:
-                result['Involvers'].append(k.to_map() if k else None)
         if self.parent is not None:
             result['Parent'] = self.parent
         if self.sprint_id is not None:
             result['SprintId'] = self.sprint_id
-        if self.due_date is not None:
-            result['DueDate'] = self.due_date
         if self.attachments_count is not None:
             result['AttachmentsCount'] = self.attachments_count
-        result['Subtasks'] = []
-        if self.subtasks is not None:
-            for k in self.subtasks:
-                result['Subtasks'].append(k.to_map() if k else None)
-        result['Customfields'] = []
-        if self.customfields is not None:
-            for k in self.customfields:
-                result['Customfields'].append(k.to_map() if k else None)
+        if self.due_date is not None:
+            result['DueDate'] = self.due_date
         if self.created is not None:
             result['Created'] = self.created
         if self.task_id is not None:
             result['TaskId'] = self.task_id
-        if self.taskflowstatus is not None:
-            result['Taskflowstatus'] = self.taskflowstatus.to_map()
         if self.id is not None:
             result['Id'] = self.id
+        result['Customfields'] = []
+        if self.customfields is not None:
+            for k in self.customfields:
+                result['Customfields'].append(k.to_map() if k else None)
+        result['Subtasks'] = []
+        if self.subtasks is not None:
+            for k in self.subtasks:
+                result['Subtasks'].append(k.to_map() if k else None)
+        result['Involvers'] = []
+        if self.involvers is not None:
+            for k in self.involvers:
+                result['Involvers'].append(k.to_map() if k else None)
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.divisions is not None:
+            result['Divisions'] = self.divisions
+        if self.ancestors is not None:
+            result['Ancestors'] = self.ancestors
+        if self.involve_members is not None:
+            result['InvolveMembers'] = self.involve_members
+        if self.tag_ids is not None:
+            result['TagIds'] = self.tag_ids
+        if self.ancestor_ids is not None:
+            result['AncestorIds'] = self.ancestor_ids
+        if self.scenariofieldconfig is not None:
+            result['Scenariofieldconfig'] = self.scenariofieldconfig.to_map()
+        if self.executor is not None:
+            result['Executor'] = self.executor.to_map()
+        if self.tasklist is not None:
+            result['Tasklist'] = self.tasklist.to_map()
+        if self.taskflowstatus is not None:
+            result['Taskflowstatus'] = self.taskflowstatus.to_map()
+        if self.creator is not None:
+            result['Creator'] = self.creator.to_map()
+        if self.reminder is not None:
+            result['Reminder'] = self.reminder.to_map()
+        if self.subtask_count is not None:
+            result['SubtaskCount'] = self.subtask_count.to_map()
+        if self.work_time is not None:
+            result['WorkTime'] = self.work_time.to_map()
+        if self.badges is not None:
+            result['Badges'] = self.badges.to_map()
+        if self.stage is not None:
+            result['Stage'] = self.stage.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IsFavorite') is not None:
+            self.is_favorite = m.get('IsFavorite')
         if m.get('Organization') is not None:
             self.organization = m.get('Organization')
+        if m.get('ExecutorId') is not None:
+            self.executor_id = m.get('ExecutorId')
         if m.get('ScenariofieldconfigId') is not None:
             self.scenariofieldconfig_id = m.get('ScenariofieldconfigId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('IsTopInProject') is not None:
             self.is_top_in_project = m.get('IsTopInProject')
-        if m.get('Tasklist') is not None:
-            temp_model = GetTaskDetailBaseResponseBodyObjectTasklist()
-            self.tasklist = temp_model.from_map(m['Tasklist'])
-        if m.get('Badges') is not None:
-            temp_model = GetTaskDetailBaseResponseBodyObjectBadges()
-            self.badges = temp_model.from_map(m['Badges'])
-        if m.get('AncestorIds') is not None:
-            self.ancestor_ids = m.get('AncestorIds')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('ShareStatus') is not None:
             self.share_status = m.get('ShareStatus')
-        if m.get('Reminder') is not None:
-            temp_model = GetTaskDetailBaseResponseBodyObjectReminder()
-            self.reminder = temp_model.from_map(m['Reminder'])
-        if m.get('Ancestors') is not None:
-            self.ancestors = m.get('Ancestors')
+        if m.get('Accomplished') is not None:
+            self.accomplished = m.get('Accomplished')
         if m.get('TaskflowstatusId') is not None:
             self.taskflowstatus_id = m.get('TaskflowstatusId')
-        if m.get('Updated') is not None:
-            self.updated = m.get('Updated')
         if m.get('Note') is not None:
             self.note = m.get('Note')
+        if m.get('Updated') is not None:
+            self.updated = m.get('Updated')
+        if m.get('UniqueId') is not None:
+            self.unique_id = m.get('UniqueId')
         if m.get('IsArchived') is not None:
             self.is_archived = m.get('IsArchived')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CommentsCount') is not None:
+            self.comments_count = m.get('CommentsCount')
         if m.get('Rating') is not None:
             self.rating = m.get('Rating')
+        if m.get('Recurrence') is not None:
+            self.recurrence = m.get('Recurrence')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
-        if m.get('Stage') is not None:
-            temp_model = GetTaskDetailBaseResponseBodyObjectStage()
-            self.stage = temp_model.from_map(m['Stage'])
-        if m.get('Labels') is not None:
-            self.labels = m.get('Labels')
+        if m.get('UntilDate') is not None:
+            self.until_date = m.get('UntilDate')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
+        if m.get('StoryPoint') is not None:
+            self.story_point = m.get('StoryPoint')
+        if m.get('ObjectlinksCount') is not None:
+            self.objectlinks_count = m.get('ObjectlinksCount')
         if m.get('Sprint') is not None:
             self.sprint = m.get('Sprint')
         if m.get('CreatorId') is not None:
             self.creator_id = m.get('CreatorId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
         if m.get('OrganizationId') is not None:
             self.organization_id = m.get('OrganizationId')
         if m.get('SourceDate') is not None:
             self.source_date = m.get('SourceDate')
-        if m.get('IsFavorite') is not None:
-            self.is_favorite = m.get('IsFavorite')
-        if m.get('ExecutorId') is not None:
-            self.executor_id = m.get('ExecutorId')
-        if m.get('Scenariofieldconfig') is not None:
-            temp_model = GetTaskDetailBaseResponseBodyObjectScenariofieldconfig()
-            self.scenariofieldconfig = temp_model.from_map(m['Scenariofieldconfig'])
-        if m.get('WorkTime') is not None:
-            temp_model = GetTaskDetailBaseResponseBodyObjectWorkTime()
-            self.work_time = temp_model.from_map(m['WorkTime'])
-        if m.get('TagIds') is not None:
-            self.tag_ids = m.get('TagIds')
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
-        if m.get('Creator') is not None:
-            temp_model = GetTaskDetailBaseResponseBodyObjectCreator()
-            self.creator = temp_model.from_map(m['Creator'])
-        if m.get('Executor') is not None:
-            temp_model = GetTaskDetailBaseResponseBodyObjectExecutor()
-            self.executor = temp_model.from_map(m['Executor'])
-        if m.get('Accomplished') is not None:
-            self.accomplished = m.get('Accomplished')
-        if m.get('InvolveMembers') is not None:
-            self.involve_members = m.get('InvolveMembers')
-        if m.get('UniqueId') is not None:
-            self.unique_id = m.get('UniqueId')
-        if m.get('CommentsCount') is not None:
-            self.comments_count = m.get('CommentsCount')
-        if m.get('Recurrence') is not None:
-            self.recurrence = m.get('Recurrence')
-        if m.get('ObjectType') is not None:
-            self.object_type = m.get('ObjectType')
-        if m.get('SubtaskCount') is not None:
-            temp_model = GetTaskDetailBaseResponseBodyObjectSubtaskCount()
-            self.subtask_count = temp_model.from_map(m['SubtaskCount'])
-        if m.get('UntilDate') is not None:
-            self.until_date = m.get('UntilDate')
-        if m.get('StoryPoint') is not None:
-            self.story_point = m.get('StoryPoint')
-        if m.get('ObjectlinksCount') is not None:
-            self.objectlinks_count = m.get('ObjectlinksCount')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
         if m.get('LikesCount') is not None:
             self.likes_count = m.get('LikesCount')
         if m.get('StageId') is not None:
             self.stage_id = m.get('StageId')
-        if m.get('Divisions') is not None:
-            self.divisions = m.get('Divisions')
         if m.get('Visible') is not None:
             self.visible = m.get('Visible')
         if m.get('IsDone') is not None:
             self.is_done = m.get('IsDone')
-        self.involvers = []
-        if m.get('Involvers') is not None:
-            for k in m.get('Involvers'):
-                temp_model = GetTaskDetailBaseResponseBodyObjectInvolvers()
-                self.involvers.append(temp_model.from_map(k))
         if m.get('Parent') is not None:
             self.parent = m.get('Parent')
         if m.get('SprintId') is not None:
             self.sprint_id = m.get('SprintId')
-        if m.get('DueDate') is not None:
-            self.due_date = m.get('DueDate')
         if m.get('AttachmentsCount') is not None:
             self.attachments_count = m.get('AttachmentsCount')
-        self.subtasks = []
-        if m.get('Subtasks') is not None:
-            for k in m.get('Subtasks'):
-                temp_model = GetTaskDetailBaseResponseBodyObjectSubtasks()
-                self.subtasks.append(temp_model.from_map(k))
+        if m.get('DueDate') is not None:
+            self.due_date = m.get('DueDate')
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         self.customfields = []
         if m.get('Customfields') is not None:
             for k in m.get('Customfields'):
                 temp_model = GetTaskDetailBaseResponseBodyObjectCustomfields()
                 self.customfields.append(temp_model.from_map(k))
-        if m.get('Created') is not None:
-            self.created = m.get('Created')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
+        self.subtasks = []
+        if m.get('Subtasks') is not None:
+            for k in m.get('Subtasks'):
+                temp_model = GetTaskDetailBaseResponseBodyObjectSubtasks()
+                self.subtasks.append(temp_model.from_map(k))
+        self.involvers = []
+        if m.get('Involvers') is not None:
+            for k in m.get('Involvers'):
+                temp_model = GetTaskDetailBaseResponseBodyObjectInvolvers()
+                self.involvers.append(temp_model.from_map(k))
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Divisions') is not None:
+            self.divisions = m.get('Divisions')
+        if m.get('Ancestors') is not None:
+            self.ancestors = m.get('Ancestors')
+        if m.get('InvolveMembers') is not None:
+            self.involve_members = m.get('InvolveMembers')
+        if m.get('TagIds') is not None:
+            self.tag_ids = m.get('TagIds')
+        if m.get('AncestorIds') is not None:
+            self.ancestor_ids = m.get('AncestorIds')
+        if m.get('Scenariofieldconfig') is not None:
+            temp_model = GetTaskDetailBaseResponseBodyObjectScenariofieldconfig()
+            self.scenariofieldconfig = temp_model.from_map(m['Scenariofieldconfig'])
+        if m.get('Executor') is not None:
+            temp_model = GetTaskDetailBaseResponseBodyObjectExecutor()
+            self.executor = temp_model.from_map(m['Executor'])
+        if m.get('Tasklist') is not None:
+            temp_model = GetTaskDetailBaseResponseBodyObjectTasklist()
+            self.tasklist = temp_model.from_map(m['Tasklist'])
         if m.get('Taskflowstatus') is not None:
             temp_model = GetTaskDetailBaseResponseBodyObjectTaskflowstatus()
             self.taskflowstatus = temp_model.from_map(m['Taskflowstatus'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('Creator') is not None:
+            temp_model = GetTaskDetailBaseResponseBodyObjectCreator()
+            self.creator = temp_model.from_map(m['Creator'])
+        if m.get('Reminder') is not None:
+            temp_model = GetTaskDetailBaseResponseBodyObjectReminder()
+            self.reminder = temp_model.from_map(m['Reminder'])
+        if m.get('SubtaskCount') is not None:
+            temp_model = GetTaskDetailBaseResponseBodyObjectSubtaskCount()
+            self.subtask_count = temp_model.from_map(m['SubtaskCount'])
+        if m.get('WorkTime') is not None:
+            temp_model = GetTaskDetailBaseResponseBodyObjectWorkTime()
+            self.work_time = temp_model.from_map(m['WorkTime'])
+        if m.get('Badges') is not None:
+            temp_model = GetTaskDetailBaseResponseBodyObjectBadges()
+            self.badges = temp_model.from_map(m['Badges'])
+        if m.get('Stage') is not None:
+            temp_model = GetTaskDetailBaseResponseBodyObjectStage()
+            self.stage = temp_model.from_map(m['Stage'])
         return self
 
 
 class GetTaskDetailBaseResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: GetTaskDetailBaseResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: GetTaskDetailBaseResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -7979,31 +8130,31 @@ class GetTaskDetailBaseResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = GetTaskDetailBaseResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -8185,6 +8336,131 @@ class GetTaskListFilterRequest(TeaModel):
         return self
 
 
+class GetTaskListFilterResponseBodyObjectResultCustomfieldsValue(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        title: str = None,
+    ):
+        self.id = id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetTaskListFilterResponseBodyObjectResultCustomfields(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        customfield_id: str = None,
+        values: str = None,
+        value: List[GetTaskListFilterResponseBodyObjectResultCustomfieldsValue] = None,
+    ):
+        self.type = type
+        self.customfield_id = customfield_id
+        self.values = values
+        self.value = value
+
+    def validate(self):
+        if self.value:
+            for k in self.value:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.customfield_id is not None:
+            result['CustomfieldId'] = self.customfield_id
+        if self.values is not None:
+            result['Values'] = self.values
+        result['Value'] = []
+        if self.value is not None:
+            for k in self.value:
+                result['Value'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('CustomfieldId') is not None:
+            self.customfield_id = m.get('CustomfieldId')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        self.value = []
+        if m.get('Value') is not None:
+            for k in m.get('Value'):
+                temp_model = GetTaskListFilterResponseBodyObjectResultCustomfieldsValue()
+                self.value.append(temp_model.from_map(k))
+        return self
+
+
+class GetTaskListFilterResponseBodyObjectResultWorkTime(TeaModel):
+    def __init__(
+        self,
+        used_time: int = None,
+        total_time: int = None,
+        unit: str = None,
+    ):
+        self.used_time = used_time
+        self.total_time = total_time
+        self.unit = unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.used_time is not None:
+            result['UsedTime'] = self.used_time
+        if self.total_time is not None:
+            result['TotalTime'] = self.total_time
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UsedTime') is not None:
+            self.used_time = m.get('UsedTime')
+        if m.get('TotalTime') is not None:
+            self.total_time = m.get('TotalTime')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        return self
+
+
 class GetTaskListFilterResponseBodyObjectResultBadges(TeaModel):
     def __init__(
         self,
@@ -8230,19 +8506,52 @@ class GetTaskListFilterResponseBodyObjectResultBadges(TeaModel):
         return self
 
 
+class GetTaskListFilterResponseBodyObjectResultSubtaskCount(TeaModel):
+    def __init__(
+        self,
+        done: int = None,
+        total: int = None,
+    ):
+        self.done = done
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.done is not None:
+            result['Done'] = self.done
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Done') is not None:
+            self.done = m.get('Done')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
 class GetTaskListFilterResponseBodyObjectResultReminder(TeaModel):
     def __init__(
         self,
         type: str = None,
-        members: List[str] = None,
         date: str = None,
         creator_id: str = None,
+        members: List[str] = None,
         rules: List[str] = None,
     ):
         self.type = type
-        self.members = members
         self.date = date
         self.creator_id = creator_id
+        self.members = members
         self.rules = rules
 
     def validate(self):
@@ -8256,12 +8565,12 @@ class GetTaskListFilterResponseBodyObjectResultReminder(TeaModel):
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
-        if self.members is not None:
-            result['Members'] = self.members
         if self.date is not None:
             result['Date'] = self.date
         if self.creator_id is not None:
             result['CreatorId'] = self.creator_id
+        if self.members is not None:
+            result['Members'] = self.members
         if self.rules is not None:
             result['Rules'] = self.rules
         return result
@@ -8270,14 +8579,53 @@ class GetTaskListFilterResponseBodyObjectResultReminder(TeaModel):
         m = m or dict()
         if m.get('Type') is not None:
             self.type = m.get('Type')
-        if m.get('Members') is not None:
-            self.members = m.get('Members')
         if m.get('Date') is not None:
             self.date = m.get('Date')
         if m.get('CreatorId') is not None:
             self.creator_id = m.get('CreatorId')
+        if m.get('Members') is not None:
+            self.members = m.get('Members')
         if m.get('Rules') is not None:
             self.rules = m.get('Rules')
+        return self
+
+
+class GetTaskListFilterResponseBodyObjectResultCreator(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        avatar_url: str = None,
+        id: str = None,
+    ):
+        self.name = name
+        self.avatar_url = avatar_url
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         return self
 
 
@@ -8314,93 +8662,15 @@ class GetTaskListFilterResponseBodyObjectResultStage(TeaModel):
         return self
 
 
-class GetTaskListFilterResponseBodyObjectResultWorkTime(TeaModel):
-    def __init__(
-        self,
-        used_time: int = None,
-        total_time: int = None,
-        unit: str = None,
-    ):
-        self.used_time = used_time
-        self.total_time = total_time
-        self.unit = unit
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.used_time is not None:
-            result['UsedTime'] = self.used_time
-        if self.total_time is not None:
-            result['TotalTime'] = self.total_time
-        if self.unit is not None:
-            result['Unit'] = self.unit
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('UsedTime') is not None:
-            self.used_time = m.get('UsedTime')
-        if m.get('TotalTime') is not None:
-            self.total_time = m.get('TotalTime')
-        if m.get('Unit') is not None:
-            self.unit = m.get('Unit')
-        return self
-
-
-class GetTaskListFilterResponseBodyObjectResultCreator(TeaModel):
-    def __init__(
-        self,
-        avatar_url: str = None,
-        name: str = None,
-        id: str = None,
-    ):
-        self.avatar_url = avatar_url
-        self.name = name
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.avatar_url is not None:
-            result['AvatarUrl'] = self.avatar_url
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AvatarUrl') is not None:
-            self.avatar_url = m.get('AvatarUrl')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
 class GetTaskListFilterResponseBodyObjectResultExecutor(TeaModel):
     def __init__(
         self,
-        avatar_url: str = None,
         name: str = None,
+        avatar_url: str = None,
         id: str = None,
     ):
-        self.avatar_url = avatar_url
         self.name = name
+        self.avatar_url = avatar_url
         self.id = id
 
     def validate(self):
@@ -8412,20 +8682,20 @@ class GetTaskListFilterResponseBodyObjectResultExecutor(TeaModel):
             return _map
 
         result = dict()
-        if self.avatar_url is not None:
-            result['AvatarUrl'] = self.avatar_url
         if self.name is not None:
             result['Name'] = self.name
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
         if self.id is not None:
             result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AvatarUrl') is not None:
-            self.avatar_url = m.get('AvatarUrl')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         return self
@@ -8435,15 +8705,15 @@ class GetTaskListFilterResponseBodyObjectResultTaskFlowStatus(TeaModel):
     def __init__(
         self,
         task_flow_id: str = None,
+        name: str = None,
         pos: int = None,
         kind: str = None,
-        name: str = None,
         id: str = None,
     ):
         self.task_flow_id = task_flow_id
+        self.name = name
         self.pos = pos
         self.kind = kind
-        self.name = name
         self.id = id
 
     def validate(self):
@@ -8457,12 +8727,12 @@ class GetTaskListFilterResponseBodyObjectResultTaskFlowStatus(TeaModel):
         result = dict()
         if self.task_flow_id is not None:
             result['TaskFlowId'] = self.task_flow_id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.pos is not None:
             result['Pos'] = self.pos
         if self.kind is not None:
             result['Kind'] = self.kind
-        if self.name is not None:
-            result['Name'] = self.name
         if self.id is not None:
             result['Id'] = self.id
         return result
@@ -8471,276 +8741,157 @@ class GetTaskListFilterResponseBodyObjectResultTaskFlowStatus(TeaModel):
         m = m or dict()
         if m.get('TaskFlowId') is not None:
             self.task_flow_id = m.get('TaskFlowId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Pos') is not None:
             self.pos = m.get('Pos')
         if m.get('Kind') is not None:
             self.kind = m.get('Kind')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Id') is not None:
             self.id = m.get('Id')
-        return self
-
-
-class GetTaskListFilterResponseBodyObjectResultSubtaskCount(TeaModel):
-    def __init__(
-        self,
-        done: int = None,
-        total: int = None,
-    ):
-        self.done = done
-        self.total = total
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.done is not None:
-            result['Done'] = self.done
-        if self.total is not None:
-            result['Total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Done') is not None:
-            self.done = m.get('Done')
-        if m.get('Total') is not None:
-            self.total = m.get('Total')
-        return self
-
-
-class GetTaskListFilterResponseBodyObjectResultCustomfieldsValue(TeaModel):
-    def __init__(
-        self,
-        title: str = None,
-        id: str = None,
-    ):
-        self.title = title
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.title is not None:
-            result['Title'] = self.title
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
-class GetTaskListFilterResponseBodyObjectResultCustomfields(TeaModel):
-    def __init__(
-        self,
-        type: str = None,
-        value: List[GetTaskListFilterResponseBodyObjectResultCustomfieldsValue] = None,
-        values: str = None,
-        customfield_id: str = None,
-    ):
-        self.type = type
-        self.value = value
-        self.values = values
-        self.customfield_id = customfield_id
-
-    def validate(self):
-        if self.value:
-            for k in self.value:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
-        result['Value'] = []
-        if self.value is not None:
-            for k in self.value:
-                result['Value'].append(k.to_map() if k else None)
-        if self.values is not None:
-            result['Values'] = self.values
-        if self.customfield_id is not None:
-            result['CustomfieldId'] = self.customfield_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        self.value = []
-        if m.get('Value') is not None:
-            for k in m.get('Value'):
-                temp_model = GetTaskListFilterResponseBodyObjectResultCustomfieldsValue()
-                self.value.append(temp_model.from_map(k))
-        if m.get('Values') is not None:
-            self.values = m.get('Values')
-        if m.get('CustomfieldId') is not None:
-            self.customfield_id = m.get('CustomfieldId')
         return self
 
 
 class GetTaskListFilterResponseBodyObjectResult(TeaModel):
     def __init__(
         self,
+        is_favorite: bool = None,
+        executor_id: str = None,
         project_id: str = None,
+        priority: int = None,
         is_top_in_project: bool = None,
-        badges: GetTaskListFilterResponseBodyObjectResultBadges = None,
-        ancestor_ids: List[str] = None,
+        scenariof_feld_config_id: str = None,
         share_status: int = None,
-        reminder: GetTaskListFilterResponseBodyObjectResultReminder = None,
+        accomplished: str = None,
+        task_list_id: str = None,
         note: str = None,
         updated: str = None,
+        unique_id: int = None,
         is_archived: bool = None,
         content: str = None,
         rating: int = None,
+        comments_count: int = None,
         task_flow_status_id: str = None,
+        recurrence: str = None,
+        object_type: str = None,
         progress: int = None,
-        stage: GetTaskListFilterResponseBodyObjectResultStage = None,
-        labels: List[str] = None,
+        until_date: str = None,
         pos: int = None,
+        story_point: str = None,
+        objectlinks_count: int = None,
         start_date: str = None,
         sprint: str = None,
         creator_id: str = None,
-        source_id: str = None,
-        organization_id: str = None,
-        source_date: str = None,
-        is_favorite: bool = None,
-        executor_id: str = None,
-        work_time: GetTaskListFilterResponseBodyObjectResultWorkTime = None,
-        tag_ids: List[str] = None,
-        priority: int = None,
-        scenariof_feld_config_id: str = None,
-        creator: GetTaskListFilterResponseBodyObjectResultCreator = None,
-        executor: GetTaskListFilterResponseBodyObjectResultExecutor = None,
-        accomplished: str = None,
-        task_list_id: str = None,
-        involve_members: List[str] = None,
-        unique_id: int = None,
-        task_flow_status: GetTaskListFilterResponseBodyObjectResultTaskFlowStatus = None,
-        comments_count: int = None,
-        recurrence: str = None,
-        object_type: str = None,
-        subtask_count: GetTaskListFilterResponseBodyObjectResultSubtaskCount = None,
-        until_date: str = None,
-        story_point: str = None,
-        objectlinks_count: int = None,
         source: str = None,
+        source_id: str = None,
+        source_date: str = None,
+        organization_id: str = None,
         likes_count: int = None,
         stage_id: str = None,
-        divisions: List[str] = None,
         visible: str = None,
         is_done: bool = None,
         parent: str = None,
         sprint_id: str = None,
-        due_date: str = None,
         attachments_count: int = None,
-        customfields: List[GetTaskListFilterResponseBodyObjectResultCustomfields] = None,
-        created: str = None,
+        due_date: str = None,
         task_unique_id: str = None,
+        created: str = None,
         task_id: str = None,
         id: str = None,
+        customfields: List[GetTaskListFilterResponseBodyObjectResultCustomfields] = None,
+        involve_members: List[str] = None,
+        tag_ids: List[str] = None,
+        labels: List[str] = None,
+        divisions: List[str] = None,
+        ancestor_ids: List[str] = None,
+        work_time: GetTaskListFilterResponseBodyObjectResultWorkTime = None,
+        badges: GetTaskListFilterResponseBodyObjectResultBadges = None,
+        subtask_count: GetTaskListFilterResponseBodyObjectResultSubtaskCount = None,
+        reminder: GetTaskListFilterResponseBodyObjectResultReminder = None,
+        creator: GetTaskListFilterResponseBodyObjectResultCreator = None,
+        stage: GetTaskListFilterResponseBodyObjectResultStage = None,
+        executor: GetTaskListFilterResponseBodyObjectResultExecutor = None,
+        task_flow_status: GetTaskListFilterResponseBodyObjectResultTaskFlowStatus = None,
     ):
+        self.is_favorite = is_favorite
+        self.executor_id = executor_id
         self.project_id = project_id
+        self.priority = priority
         self.is_top_in_project = is_top_in_project
-        self.badges = badges
-        self.ancestor_ids = ancestor_ids
+        self.scenariof_feld_config_id = scenariof_feld_config_id
         self.share_status = share_status
-        self.reminder = reminder
+        self.accomplished = accomplished
+        self.task_list_id = task_list_id
         self.note = note
         self.updated = updated
+        self.unique_id = unique_id
         self.is_archived = is_archived
         self.content = content
         self.rating = rating
+        self.comments_count = comments_count
         self.task_flow_status_id = task_flow_status_id
+        self.recurrence = recurrence
+        self.object_type = object_type
         self.progress = progress
-        self.stage = stage
-        self.labels = labels
+        self.until_date = until_date
         self.pos = pos
+        self.story_point = story_point
+        self.objectlinks_count = objectlinks_count
         self.start_date = start_date
         self.sprint = sprint
         self.creator_id = creator_id
-        self.source_id = source_id
-        self.organization_id = organization_id
-        self.source_date = source_date
-        self.is_favorite = is_favorite
-        self.executor_id = executor_id
-        self.work_time = work_time
-        self.tag_ids = tag_ids
-        self.priority = priority
-        self.scenariof_feld_config_id = scenariof_feld_config_id
-        self.creator = creator
-        self.executor = executor
-        self.accomplished = accomplished
-        self.task_list_id = task_list_id
-        self.involve_members = involve_members
-        self.unique_id = unique_id
-        self.task_flow_status = task_flow_status
-        self.comments_count = comments_count
-        self.recurrence = recurrence
-        self.object_type = object_type
-        self.subtask_count = subtask_count
-        self.until_date = until_date
-        self.story_point = story_point
-        self.objectlinks_count = objectlinks_count
         self.source = source
+        self.source_id = source_id
+        self.source_date = source_date
+        self.organization_id = organization_id
         self.likes_count = likes_count
         self.stage_id = stage_id
-        self.divisions = divisions
         self.visible = visible
         self.is_done = is_done
         self.parent = parent
         self.sprint_id = sprint_id
-        self.due_date = due_date
         self.attachments_count = attachments_count
-        self.customfields = customfields
-        self.created = created
+        self.due_date = due_date
         self.task_unique_id = task_unique_id
+        self.created = created
         self.task_id = task_id
         self.id = id
+        self.customfields = customfields
+        self.involve_members = involve_members
+        self.tag_ids = tag_ids
+        self.labels = labels
+        self.divisions = divisions
+        self.ancestor_ids = ancestor_ids
+        self.work_time = work_time
+        self.badges = badges
+        self.subtask_count = subtask_count
+        self.reminder = reminder
+        self.creator = creator
+        self.stage = stage
+        self.executor = executor
+        self.task_flow_status = task_flow_status
 
     def validate(self):
-        if self.badges:
-            self.badges.validate()
-        if self.reminder:
-            self.reminder.validate()
-        if self.stage:
-            self.stage.validate()
-        if self.work_time:
-            self.work_time.validate()
-        if self.creator:
-            self.creator.validate()
-        if self.executor:
-            self.executor.validate()
-        if self.task_flow_status:
-            self.task_flow_status.validate()
-        if self.subtask_count:
-            self.subtask_count.validate()
         if self.customfields:
             for k in self.customfields:
                 if k:
                     k.validate()
+        if self.work_time:
+            self.work_time.validate()
+        if self.badges:
+            self.badges.validate()
+        if self.subtask_count:
+            self.subtask_count.validate()
+        if self.reminder:
+            self.reminder.validate()
+        if self.creator:
+            self.creator.validate()
+        if self.stage:
+            self.stage.validate()
+        if self.executor:
+            self.executor.validate()
+        if self.task_flow_status:
+            self.task_flow_status.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8748,98 +8899,72 @@ class GetTaskListFilterResponseBodyObjectResult(TeaModel):
             return _map
 
         result = dict()
+        if self.is_favorite is not None:
+            result['IsFavorite'] = self.is_favorite
+        if self.executor_id is not None:
+            result['ExecutorId'] = self.executor_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.is_top_in_project is not None:
             result['IsTopInProject'] = self.is_top_in_project
-        if self.badges is not None:
-            result['Badges'] = self.badges.to_map()
-        if self.ancestor_ids is not None:
-            result['AncestorIds'] = self.ancestor_ids
+        if self.scenariof_feld_config_id is not None:
+            result['ScenariofFeldConfigId'] = self.scenariof_feld_config_id
         if self.share_status is not None:
             result['ShareStatus'] = self.share_status
-        if self.reminder is not None:
-            result['Reminder'] = self.reminder.to_map()
+        if self.accomplished is not None:
+            result['Accomplished'] = self.accomplished
+        if self.task_list_id is not None:
+            result['TaskListId'] = self.task_list_id
         if self.note is not None:
             result['Note'] = self.note
         if self.updated is not None:
             result['Updated'] = self.updated
+        if self.unique_id is not None:
+            result['UniqueId'] = self.unique_id
         if self.is_archived is not None:
             result['IsArchived'] = self.is_archived
         if self.content is not None:
             result['Content'] = self.content
         if self.rating is not None:
             result['Rating'] = self.rating
+        if self.comments_count is not None:
+            result['CommentsCount'] = self.comments_count
         if self.task_flow_status_id is not None:
             result['TaskFlowStatusId'] = self.task_flow_status_id
+        if self.recurrence is not None:
+            result['Recurrence'] = self.recurrence
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
         if self.progress is not None:
             result['Progress'] = self.progress
-        if self.stage is not None:
-            result['Stage'] = self.stage.to_map()
-        if self.labels is not None:
-            result['Labels'] = self.labels
+        if self.until_date is not None:
+            result['UntilDate'] = self.until_date
         if self.pos is not None:
             result['Pos'] = self.pos
+        if self.story_point is not None:
+            result['StoryPoint'] = self.story_point
+        if self.objectlinks_count is not None:
+            result['ObjectlinksCount'] = self.objectlinks_count
         if self.start_date is not None:
             result['StartDate'] = self.start_date
         if self.sprint is not None:
             result['Sprint'] = self.sprint
         if self.creator_id is not None:
             result['CreatorId'] = self.creator_id
-        if self.source_id is not None:
-            result['SourceId'] = self.source_id
-        if self.organization_id is not None:
-            result['OrganizationId'] = self.organization_id
-        if self.source_date is not None:
-            result['SourceDate'] = self.source_date
-        if self.is_favorite is not None:
-            result['IsFavorite'] = self.is_favorite
-        if self.executor_id is not None:
-            result['ExecutorId'] = self.executor_id
-        if self.work_time is not None:
-            result['WorkTime'] = self.work_time.to_map()
-        if self.tag_ids is not None:
-            result['TagIds'] = self.tag_ids
-        if self.priority is not None:
-            result['Priority'] = self.priority
-        if self.scenariof_feld_config_id is not None:
-            result['ScenariofFeldConfigId'] = self.scenariof_feld_config_id
-        if self.creator is not None:
-            result['Creator'] = self.creator.to_map()
-        if self.executor is not None:
-            result['Executor'] = self.executor.to_map()
-        if self.accomplished is not None:
-            result['Accomplished'] = self.accomplished
-        if self.task_list_id is not None:
-            result['TaskListId'] = self.task_list_id
-        if self.involve_members is not None:
-            result['InvolveMembers'] = self.involve_members
-        if self.unique_id is not None:
-            result['UniqueId'] = self.unique_id
-        if self.task_flow_status is not None:
-            result['TaskFlowStatus'] = self.task_flow_status.to_map()
-        if self.comments_count is not None:
-            result['CommentsCount'] = self.comments_count
-        if self.recurrence is not None:
-            result['Recurrence'] = self.recurrence
-        if self.object_type is not None:
-            result['ObjectType'] = self.object_type
-        if self.subtask_count is not None:
-            result['SubtaskCount'] = self.subtask_count.to_map()
-        if self.until_date is not None:
-            result['UntilDate'] = self.until_date
-        if self.story_point is not None:
-            result['StoryPoint'] = self.story_point
-        if self.objectlinks_count is not None:
-            result['ObjectlinksCount'] = self.objectlinks_count
         if self.source is not None:
             result['Source'] = self.source
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_date is not None:
+            result['SourceDate'] = self.source_date
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
         if self.likes_count is not None:
             result['LikesCount'] = self.likes_count
         if self.stage_id is not None:
             result['StageId'] = self.stage_id
-        if self.divisions is not None:
-            result['Divisions'] = self.divisions
         if self.visible is not None:
             result['Visible'] = self.visible
         if self.is_done is not None:
@@ -8848,126 +8973,118 @@ class GetTaskListFilterResponseBodyObjectResult(TeaModel):
             result['Parent'] = self.parent
         if self.sprint_id is not None:
             result['SprintId'] = self.sprint_id
-        if self.due_date is not None:
-            result['DueDate'] = self.due_date
         if self.attachments_count is not None:
             result['AttachmentsCount'] = self.attachments_count
-        result['Customfields'] = []
-        if self.customfields is not None:
-            for k in self.customfields:
-                result['Customfields'].append(k.to_map() if k else None)
-        if self.created is not None:
-            result['Created'] = self.created
+        if self.due_date is not None:
+            result['DueDate'] = self.due_date
         if self.task_unique_id is not None:
             result['TaskUniqueId'] = self.task_unique_id
+        if self.created is not None:
+            result['Created'] = self.created
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.id is not None:
             result['Id'] = self.id
+        result['Customfields'] = []
+        if self.customfields is not None:
+            for k in self.customfields:
+                result['Customfields'].append(k.to_map() if k else None)
+        if self.involve_members is not None:
+            result['InvolveMembers'] = self.involve_members
+        if self.tag_ids is not None:
+            result['TagIds'] = self.tag_ids
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.divisions is not None:
+            result['Divisions'] = self.divisions
+        if self.ancestor_ids is not None:
+            result['AncestorIds'] = self.ancestor_ids
+        if self.work_time is not None:
+            result['WorkTime'] = self.work_time.to_map()
+        if self.badges is not None:
+            result['Badges'] = self.badges.to_map()
+        if self.subtask_count is not None:
+            result['SubtaskCount'] = self.subtask_count.to_map()
+        if self.reminder is not None:
+            result['Reminder'] = self.reminder.to_map()
+        if self.creator is not None:
+            result['Creator'] = self.creator.to_map()
+        if self.stage is not None:
+            result['Stage'] = self.stage.to_map()
+        if self.executor is not None:
+            result['Executor'] = self.executor.to_map()
+        if self.task_flow_status is not None:
+            result['TaskFlowStatus'] = self.task_flow_status.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IsFavorite') is not None:
+            self.is_favorite = m.get('IsFavorite')
+        if m.get('ExecutorId') is not None:
+            self.executor_id = m.get('ExecutorId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('IsTopInProject') is not None:
             self.is_top_in_project = m.get('IsTopInProject')
-        if m.get('Badges') is not None:
-            temp_model = GetTaskListFilterResponseBodyObjectResultBadges()
-            self.badges = temp_model.from_map(m['Badges'])
-        if m.get('AncestorIds') is not None:
-            self.ancestor_ids = m.get('AncestorIds')
+        if m.get('ScenariofFeldConfigId') is not None:
+            self.scenariof_feld_config_id = m.get('ScenariofFeldConfigId')
         if m.get('ShareStatus') is not None:
             self.share_status = m.get('ShareStatus')
-        if m.get('Reminder') is not None:
-            temp_model = GetTaskListFilterResponseBodyObjectResultReminder()
-            self.reminder = temp_model.from_map(m['Reminder'])
+        if m.get('Accomplished') is not None:
+            self.accomplished = m.get('Accomplished')
+        if m.get('TaskListId') is not None:
+            self.task_list_id = m.get('TaskListId')
         if m.get('Note') is not None:
             self.note = m.get('Note')
         if m.get('Updated') is not None:
             self.updated = m.get('Updated')
+        if m.get('UniqueId') is not None:
+            self.unique_id = m.get('UniqueId')
         if m.get('IsArchived') is not None:
             self.is_archived = m.get('IsArchived')
         if m.get('Content') is not None:
             self.content = m.get('Content')
         if m.get('Rating') is not None:
             self.rating = m.get('Rating')
+        if m.get('CommentsCount') is not None:
+            self.comments_count = m.get('CommentsCount')
         if m.get('TaskFlowStatusId') is not None:
             self.task_flow_status_id = m.get('TaskFlowStatusId')
+        if m.get('Recurrence') is not None:
+            self.recurrence = m.get('Recurrence')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
-        if m.get('Stage') is not None:
-            temp_model = GetTaskListFilterResponseBodyObjectResultStage()
-            self.stage = temp_model.from_map(m['Stage'])
-        if m.get('Labels') is not None:
-            self.labels = m.get('Labels')
+        if m.get('UntilDate') is not None:
+            self.until_date = m.get('UntilDate')
         if m.get('Pos') is not None:
             self.pos = m.get('Pos')
+        if m.get('StoryPoint') is not None:
+            self.story_point = m.get('StoryPoint')
+        if m.get('ObjectlinksCount') is not None:
+            self.objectlinks_count = m.get('ObjectlinksCount')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
         if m.get('Sprint') is not None:
             self.sprint = m.get('Sprint')
         if m.get('CreatorId') is not None:
             self.creator_id = m.get('CreatorId')
-        if m.get('SourceId') is not None:
-            self.source_id = m.get('SourceId')
-        if m.get('OrganizationId') is not None:
-            self.organization_id = m.get('OrganizationId')
-        if m.get('SourceDate') is not None:
-            self.source_date = m.get('SourceDate')
-        if m.get('IsFavorite') is not None:
-            self.is_favorite = m.get('IsFavorite')
-        if m.get('ExecutorId') is not None:
-            self.executor_id = m.get('ExecutorId')
-        if m.get('WorkTime') is not None:
-            temp_model = GetTaskListFilterResponseBodyObjectResultWorkTime()
-            self.work_time = temp_model.from_map(m['WorkTime'])
-        if m.get('TagIds') is not None:
-            self.tag_ids = m.get('TagIds')
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
-        if m.get('ScenariofFeldConfigId') is not None:
-            self.scenariof_feld_config_id = m.get('ScenariofFeldConfigId')
-        if m.get('Creator') is not None:
-            temp_model = GetTaskListFilterResponseBodyObjectResultCreator()
-            self.creator = temp_model.from_map(m['Creator'])
-        if m.get('Executor') is not None:
-            temp_model = GetTaskListFilterResponseBodyObjectResultExecutor()
-            self.executor = temp_model.from_map(m['Executor'])
-        if m.get('Accomplished') is not None:
-            self.accomplished = m.get('Accomplished')
-        if m.get('TaskListId') is not None:
-            self.task_list_id = m.get('TaskListId')
-        if m.get('InvolveMembers') is not None:
-            self.involve_members = m.get('InvolveMembers')
-        if m.get('UniqueId') is not None:
-            self.unique_id = m.get('UniqueId')
-        if m.get('TaskFlowStatus') is not None:
-            temp_model = GetTaskListFilterResponseBodyObjectResultTaskFlowStatus()
-            self.task_flow_status = temp_model.from_map(m['TaskFlowStatus'])
-        if m.get('CommentsCount') is not None:
-            self.comments_count = m.get('CommentsCount')
-        if m.get('Recurrence') is not None:
-            self.recurrence = m.get('Recurrence')
-        if m.get('ObjectType') is not None:
-            self.object_type = m.get('ObjectType')
-        if m.get('SubtaskCount') is not None:
-            temp_model = GetTaskListFilterResponseBodyObjectResultSubtaskCount()
-            self.subtask_count = temp_model.from_map(m['SubtaskCount'])
-        if m.get('UntilDate') is not None:
-            self.until_date = m.get('UntilDate')
-        if m.get('StoryPoint') is not None:
-            self.story_point = m.get('StoryPoint')
-        if m.get('ObjectlinksCount') is not None:
-            self.objectlinks_count = m.get('ObjectlinksCount')
         if m.get('Source') is not None:
             self.source = m.get('Source')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceDate') is not None:
+            self.source_date = m.get('SourceDate')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
         if m.get('LikesCount') is not None:
             self.likes_count = m.get('LikesCount')
         if m.get('StageId') is not None:
             self.stage_id = m.get('StageId')
-        if m.get('Divisions') is not None:
-            self.divisions = m.get('Divisions')
         if m.get('Visible') is not None:
             self.visible = m.get('Visible')
         if m.get('IsDone') is not None:
@@ -8976,23 +9093,57 @@ class GetTaskListFilterResponseBodyObjectResult(TeaModel):
             self.parent = m.get('Parent')
         if m.get('SprintId') is not None:
             self.sprint_id = m.get('SprintId')
-        if m.get('DueDate') is not None:
-            self.due_date = m.get('DueDate')
         if m.get('AttachmentsCount') is not None:
             self.attachments_count = m.get('AttachmentsCount')
+        if m.get('DueDate') is not None:
+            self.due_date = m.get('DueDate')
+        if m.get('TaskUniqueId') is not None:
+            self.task_unique_id = m.get('TaskUniqueId')
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         self.customfields = []
         if m.get('Customfields') is not None:
             for k in m.get('Customfields'):
                 temp_model = GetTaskListFilterResponseBodyObjectResultCustomfields()
                 self.customfields.append(temp_model.from_map(k))
-        if m.get('Created') is not None:
-            self.created = m.get('Created')
-        if m.get('TaskUniqueId') is not None:
-            self.task_unique_id = m.get('TaskUniqueId')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('InvolveMembers') is not None:
+            self.involve_members = m.get('InvolveMembers')
+        if m.get('TagIds') is not None:
+            self.tag_ids = m.get('TagIds')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Divisions') is not None:
+            self.divisions = m.get('Divisions')
+        if m.get('AncestorIds') is not None:
+            self.ancestor_ids = m.get('AncestorIds')
+        if m.get('WorkTime') is not None:
+            temp_model = GetTaskListFilterResponseBodyObjectResultWorkTime()
+            self.work_time = temp_model.from_map(m['WorkTime'])
+        if m.get('Badges') is not None:
+            temp_model = GetTaskListFilterResponseBodyObjectResultBadges()
+            self.badges = temp_model.from_map(m['Badges'])
+        if m.get('SubtaskCount') is not None:
+            temp_model = GetTaskListFilterResponseBodyObjectResultSubtaskCount()
+            self.subtask_count = temp_model.from_map(m['SubtaskCount'])
+        if m.get('Reminder') is not None:
+            temp_model = GetTaskListFilterResponseBodyObjectResultReminder()
+            self.reminder = temp_model.from_map(m['Reminder'])
+        if m.get('Creator') is not None:
+            temp_model = GetTaskListFilterResponseBodyObjectResultCreator()
+            self.creator = temp_model.from_map(m['Creator'])
+        if m.get('Stage') is not None:
+            temp_model = GetTaskListFilterResponseBodyObjectResultStage()
+            self.stage = temp_model.from_map(m['Stage'])
+        if m.get('Executor') is not None:
+            temp_model = GetTaskListFilterResponseBodyObjectResultExecutor()
+            self.executor = temp_model.from_map(m['Executor'])
+        if m.get('TaskFlowStatus') is not None:
+            temp_model = GetTaskListFilterResponseBodyObjectResultTaskFlowStatus()
+            self.task_flow_status = temp_model.from_map(m['TaskFlowStatus'])
         return self
 
 
@@ -9000,12 +9151,12 @@ class GetTaskListFilterResponseBodyObject(TeaModel):
     def __init__(
         self,
         next_page_token: str = None,
-        result: List[GetTaskListFilterResponseBodyObjectResult] = None,
         total_size: int = None,
+        result: List[GetTaskListFilterResponseBodyObjectResult] = None,
     ):
         self.next_page_token = next_page_token
-        self.result = result
         self.total_size = total_size
+        self.result = result
 
     def validate(self):
         if self.result:
@@ -9021,42 +9172,42 @@ class GetTaskListFilterResponseBodyObject(TeaModel):
         result = dict()
         if self.next_page_token is not None:
             result['NextPageToken'] = self.next_page_token
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
         result['Result'] = []
         if self.result is not None:
             for k in self.result:
                 result['Result'].append(k.to_map() if k else None)
-        if self.total_size is not None:
-            result['TotalSize'] = self.total_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('NextPageToken') is not None:
             self.next_page_token = m.get('NextPageToken')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
                 temp_model = GetTaskListFilterResponseBodyObjectResult()
                 self.result.append(temp_model.from_map(k))
-        if m.get('TotalSize') is not None:
-            self.total_size = m.get('TotalSize')
         return self
 
 
 class GetTaskListFilterResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: GetTaskListFilterResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: str = None,
+        error_code: str = None,
+        object: GetTaskListFilterResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -9068,31 +9219,31 @@ class GetTaskListFilterResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = GetTaskListFilterResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -9226,17 +9377,17 @@ class GetUserByAliyunUidResponseBodyObject(TeaModel):
 class GetUserByAliyunUidResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: GetUserByAliyunUidResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: GetUserByAliyunUidResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -9248,31 +9399,31 @@ class GetUserByAliyunUidResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = GetUserByAliyunUidResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -9349,17 +9500,17 @@ class GetUserNameRequest(TeaModel):
 class GetUserNameResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
+        request_id: str = None,
         object: str = None,
-        error_code: str = None,
         successful: bool = None,
+        error_code: str = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
+        self.request_id = request_id
         self.object = object
-        self.error_code = error_code
         self.successful = successful
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -9370,30 +9521,30 @@ class GetUserNameResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('Successful') is not None:
             self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -9483,16 +9634,16 @@ class InsertDevopsUserResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: str = None,
-        error_code: str = None,
         error_message: str = None,
+        object: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
+        self.object = object
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -9505,28 +9656,28 @@ class InsertDevopsUserResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.object is not None:
+            result['Object'] = self.object
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -9622,15 +9773,15 @@ class InsertPipelineMemberResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        error_message: str = None,
         object: bool = None,
         error_code: str = None,
-        error_message: str = None,
         success: bool = None,
     ):
         self.request_id = request_id
+        self.error_message = error_message
         self.object = object
         self.error_code = error_code
-        self.error_message = error_message
         self.success = success
 
     def validate(self):
@@ -9644,12 +9795,12 @@ class InsertPipelineMemberResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.object is not None:
             result['Object'] = self.object
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -9658,12 +9809,12 @@ class InsertPipelineMemberResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('Object') is not None:
             self.object = m.get('Object')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -9748,17 +9899,17 @@ class InsertProjectMembersRequest(TeaModel):
 class InsertProjectMembersResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
+        request_id: str = None,
         object: bool = None,
-        error_code: str = None,
         successful: bool = None,
+        error_code: str = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
+        self.request_id = request_id
         self.object = object
-        self.error_code = error_code
         self.successful = successful
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -9769,30 +9920,30 @@ class InsertProjectMembersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('Successful') is not None:
             self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -9956,17 +10107,17 @@ class ListCommonGroupResponseBodyObject(TeaModel):
 class ListCommonGroupResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[ListCommonGroupResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[ListCommonGroupResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -9980,35 +10131,35 @@ class ListCommonGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = ListCommonGroupResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -10086,16 +10237,16 @@ class ListCredentialsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: List[Dict[str, Any]] = None,
-        error_code: str = None,
         error_message: str = None,
         success: bool = None,
+        error_code: str = None,
+        object: List[Dict[str, Any]] = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
         self.success = success
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         pass
@@ -10108,28 +10259,28 @@ class ListCredentialsResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
         return self
 
 
@@ -10166,6 +10317,305 @@ class ListCredentialsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListCredentialsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDevopsProjectsRequest(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+        page_size: int = None,
+        order_by: str = None,
+        page_token: str = None,
+        select_by: str = None,
+    ):
+        self.org_id = org_id
+        self.page_size = page_size
+        self.order_by = order_by
+        self.page_token = page_token
+        self.select_by = select_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_token is not None:
+            result['PageToken'] = self.page_token
+        if self.select_by is not None:
+            result['SelectBy'] = self.select_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageToken') is not None:
+            self.page_token = m.get('PageToken')
+        if m.get('SelectBy') is not None:
+            self.select_by = m.get('SelectBy')
+        return self
+
+
+class ListDevopsProjectsResponseBodyObjectResult(TeaModel):
+    def __init__(
+        self,
+        logo: str = None,
+        is_star: bool = None,
+        creator_id: str = None,
+        members_count: int = None,
+        organization_id: str = None,
+        visibility: str = None,
+        is_template: bool = None,
+        description: str = None,
+        updated: str = None,
+        created: str = None,
+        is_archived: bool = None,
+        name: str = None,
+        is_public: bool = None,
+        tasks_count: int = None,
+        role_id: int = None,
+        id: str = None,
+    ):
+        self.logo = logo
+        self.is_star = is_star
+        self.creator_id = creator_id
+        self.members_count = members_count
+        self.organization_id = organization_id
+        self.visibility = visibility
+        self.is_template = is_template
+        self.description = description
+        self.updated = updated
+        self.created = created
+        self.is_archived = is_archived
+        self.name = name
+        self.is_public = is_public
+        self.tasks_count = tasks_count
+        self.role_id = role_id
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logo is not None:
+            result['Logo'] = self.logo
+        if self.is_star is not None:
+            result['IsStar'] = self.is_star
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.members_count is not None:
+            result['MembersCount'] = self.members_count
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        if self.visibility is not None:
+            result['Visibility'] = self.visibility
+        if self.is_template is not None:
+            result['IsTemplate'] = self.is_template
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.updated is not None:
+            result['Updated'] = self.updated
+        if self.created is not None:
+            result['Created'] = self.created
+        if self.is_archived is not None:
+            result['IsArchived'] = self.is_archived
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.is_public is not None:
+            result['IsPublic'] = self.is_public
+        if self.tasks_count is not None:
+            result['TasksCount'] = self.tasks_count
+        if self.role_id is not None:
+            result['RoleId'] = self.role_id
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Logo') is not None:
+            self.logo = m.get('Logo')
+        if m.get('IsStar') is not None:
+            self.is_star = m.get('IsStar')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('MembersCount') is not None:
+            self.members_count = m.get('MembersCount')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        if m.get('Visibility') is not None:
+            self.visibility = m.get('Visibility')
+        if m.get('IsTemplate') is not None:
+            self.is_template = m.get('IsTemplate')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Updated') is not None:
+            self.updated = m.get('Updated')
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('IsArchived') is not None:
+            self.is_archived = m.get('IsArchived')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('IsPublic') is not None:
+            self.is_public = m.get('IsPublic')
+        if m.get('TasksCount') is not None:
+            self.tasks_count = m.get('TasksCount')
+        if m.get('RoleId') is not None:
+            self.role_id = m.get('RoleId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class ListDevopsProjectsResponseBodyObject(TeaModel):
+    def __init__(
+        self,
+        next_page_token: str = None,
+        result: List[ListDevopsProjectsResponseBodyObjectResult] = None,
+    ):
+        self.next_page_token = next_page_token
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListDevopsProjectsResponseBodyObjectResult()
+                self.result.append(temp_model.from_map(k))
+        return self
+
+
+class ListDevopsProjectsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_msg: str = None,
+        request_id: str = None,
+        successful: bool = None,
+        error_code: str = None,
+        object: ListDevopsProjectsResponseBodyObject = None,
+    ):
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.successful = successful
+        self.error_code = error_code
+        self.object = object
+
+    def validate(self):
+        if self.object:
+            self.object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Object') is not None:
+            temp_model = ListDevopsProjectsResponseBodyObject()
+            self.object = temp_model.from_map(m['Object'])
+        return self
+
+
+class ListDevopsProjectsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDevopsProjectsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDevopsProjectsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10246,30 +10696,30 @@ class ListDevopsProjectSprintsResponseBodyObject(TeaModel):
     def __init__(
         self,
         status: str = None,
-        project_id: str = None,
-        start_date: str = None,
-        creator_id: str = None,
         accomplished: str = None,
+        project_id: str = None,
         is_deleted: bool = None,
+        start_date: str = None,
         updated: str = None,
+        creator_id: str = None,
         due_date: str = None,
         name: str = None,
         created: str = None,
-        plan_to_do: ListDevopsProjectSprintsResponseBodyObjectPlanToDo = None,
         id: str = None,
+        plan_to_do: ListDevopsProjectSprintsResponseBodyObjectPlanToDo = None,
     ):
         self.status = status
-        self.project_id = project_id
-        self.start_date = start_date
-        self.creator_id = creator_id
         self.accomplished = accomplished
+        self.project_id = project_id
         self.is_deleted = is_deleted
+        self.start_date = start_date
         self.updated = updated
+        self.creator_id = creator_id
         self.due_date = due_date
         self.name = name
         self.created = created
-        self.plan_to_do = plan_to_do
         self.id = id
+        self.plan_to_do = plan_to_do
 
     def validate(self):
         if self.plan_to_do:
@@ -10283,74 +10733,74 @@ class ListDevopsProjectSprintsResponseBodyObject(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.start_date is not None:
-            result['StartDate'] = self.start_date
-        if self.creator_id is not None:
-            result['CreatorId'] = self.creator_id
         if self.accomplished is not None:
             result['Accomplished'] = self.accomplished
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.is_deleted is not None:
             result['IsDeleted'] = self.is_deleted
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
         if self.updated is not None:
             result['Updated'] = self.updated
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
         if self.due_date is not None:
             result['DueDate'] = self.due_date
         if self.name is not None:
             result['Name'] = self.name
         if self.created is not None:
             result['Created'] = self.created
-        if self.plan_to_do is not None:
-            result['PlanToDo'] = self.plan_to_do.to_map()
         if self.id is not None:
             result['Id'] = self.id
+        if self.plan_to_do is not None:
+            result['PlanToDo'] = self.plan_to_do.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('StartDate') is not None:
-            self.start_date = m.get('StartDate')
-        if m.get('CreatorId') is not None:
-            self.creator_id = m.get('CreatorId')
         if m.get('Accomplished') is not None:
             self.accomplished = m.get('Accomplished')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('IsDeleted') is not None:
             self.is_deleted = m.get('IsDeleted')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
         if m.get('Updated') is not None:
             self.updated = m.get('Updated')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
         if m.get('DueDate') is not None:
             self.due_date = m.get('DueDate')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Created') is not None:
             self.created = m.get('Created')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('PlanToDo') is not None:
             temp_model = ListDevopsProjectSprintsResponseBodyObjectPlanToDo()
             self.plan_to_do = temp_model.from_map(m['PlanToDo'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         return self
 
 
 class ListDevopsProjectSprintsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[ListDevopsProjectSprintsResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[ListDevopsProjectSprintsResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -10364,35 +10814,35 @@ class ListDevopsProjectSprintsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = ListDevopsProjectSprintsResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -10508,17 +10958,17 @@ class ListDevopsProjectTaskFlowResponseBodyObject(TeaModel):
 class ListDevopsProjectTaskFlowResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[ListDevopsProjectTaskFlowResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[ListDevopsProjectTaskFlowResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -10532,35 +10982,35 @@ class ListDevopsProjectTaskFlowResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = ListDevopsProjectTaskFlowResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -10718,17 +11168,17 @@ class ListDevopsProjectTaskFlowStatusResponseBodyObject(TeaModel):
 class ListDevopsProjectTaskFlowStatusResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[ListDevopsProjectTaskFlowStatusResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[ListDevopsProjectTaskFlowStatusResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -10742,35 +11192,35 @@ class ListDevopsProjectTaskFlowStatusResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = ListDevopsProjectTaskFlowStatusResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -10909,17 +11359,17 @@ class ListDevopsProjectTaskListResponseBodyObject(TeaModel):
 class ListDevopsProjectTaskListResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: ListDevopsProjectTaskListResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: ListDevopsProjectTaskListResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -10931,31 +11381,31 @@ class ListDevopsProjectTaskListResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = ListDevopsProjectTaskListResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -11107,17 +11557,17 @@ class ListDevopsProjectTasksResponseBodyObject(TeaModel):
 class ListDevopsProjectTasksResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[ListDevopsProjectTasksResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[ListDevopsProjectTasksResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -11131,35 +11581,35 @@ class ListDevopsProjectTasksResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = ListDevopsProjectTasksResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -11237,9 +11687,11 @@ class ListDevopsScenarioFieldConfigResponseBodyObject(TeaModel):
     def __init__(
         self,
         type: str = None,
+        name: str = None,
         id: str = None,
     ):
         self.type = type
+        self.name = name
         self.id = id
 
     def validate(self):
@@ -11253,6 +11705,8 @@ class ListDevopsScenarioFieldConfigResponseBodyObject(TeaModel):
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
+        if self.name is not None:
+            result['Name'] = self.name
         if self.id is not None:
             result['Id'] = self.id
         return result
@@ -11261,6 +11715,8 @@ class ListDevopsScenarioFieldConfigResponseBodyObject(TeaModel):
         m = m or dict()
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         return self
@@ -11269,17 +11725,17 @@ class ListDevopsScenarioFieldConfigResponseBodyObject(TeaModel):
 class ListDevopsScenarioFieldConfigResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[ListDevopsScenarioFieldConfigResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[ListDevopsScenarioFieldConfigResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -11293,35 +11749,35 @@ class ListDevopsScenarioFieldConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = ListDevopsScenarioFieldConfigResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -11459,15 +11915,15 @@ class ListPipelinesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        error_message: str = None,
         object: Dict[str, Any] = None,
         error_code: str = None,
-        error_message: str = None,
         success: bool = None,
     ):
         self.request_id = request_id
+        self.error_message = error_message
         self.object = object
         self.error_code = error_code
-        self.error_message = error_message
         self.success = success
 
     def validate(self):
@@ -11481,12 +11937,12 @@ class ListPipelinesResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.object is not None:
             result['Object'] = self.object
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -11495,12 +11951,12 @@ class ListPipelinesResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('Object') is not None:
             self.object = m.get('Object')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -11613,16 +12069,16 @@ class ListProjectCustomFieldsResponseBodyObject(TeaModel):
     def __init__(
         self,
         type: str = None,
-        subtype: str = None,
-        values: List[ListProjectCustomFieldsResponseBodyObjectValues] = None,
         custom_field_id: str = None,
+        subtype: str = None,
         name: str = None,
+        values: List[ListProjectCustomFieldsResponseBodyObjectValues] = None,
     ):
         self.type = type
-        self.subtype = subtype
-        self.values = values
         self.custom_field_id = custom_field_id
+        self.subtype = subtype
         self.name = name
+        self.values = values
 
     def validate(self):
         if self.values:
@@ -11638,50 +12094,50 @@ class ListProjectCustomFieldsResponseBodyObject(TeaModel):
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
+        if self.custom_field_id is not None:
+            result['CustomFieldId'] = self.custom_field_id
         if self.subtype is not None:
             result['Subtype'] = self.subtype
+        if self.name is not None:
+            result['Name'] = self.name
         result['Values'] = []
         if self.values is not None:
             for k in self.values:
                 result['Values'].append(k.to_map() if k else None)
-        if self.custom_field_id is not None:
-            result['CustomFieldId'] = self.custom_field_id
-        if self.name is not None:
-            result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('CustomFieldId') is not None:
+            self.custom_field_id = m.get('CustomFieldId')
         if m.get('Subtype') is not None:
             self.subtype = m.get('Subtype')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         self.values = []
         if m.get('Values') is not None:
             for k in m.get('Values'):
                 temp_model = ListProjectCustomFieldsResponseBodyObjectValues()
                 self.values.append(temp_model.from_map(k))
-        if m.get('CustomFieldId') is not None:
-            self.custom_field_id = m.get('CustomFieldId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         return self
 
 
 class ListProjectCustomFieldsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[ListProjectCustomFieldsResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[ListProjectCustomFieldsResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -11695,35 +12151,35 @@ class ListProjectCustomFieldsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = ListProjectCustomFieldsResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -11807,16 +12263,16 @@ class ListServiceConnectionsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object: List[Dict[str, Any]] = None,
-        error_code: str = None,
         error_message: str = None,
         success: bool = None,
+        error_code: str = None,
+        object: List[Dict[str, Any]] = None,
     ):
         self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
         self.success = success
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         pass
@@ -11829,28 +12285,28 @@ class ListServiceConnectionsResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object is not None:
-            result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
         return self
 
 
@@ -11960,17 +12416,17 @@ class ListSmartGroupResponseBodyObject(TeaModel):
 class ListSmartGroupResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: List[ListSmartGroupResponseBodyObject] = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: List[ListSmartGroupResponseBodyObject] = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -11984,35 +12440,35 @@ class ListSmartGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.successful is not None:
+            result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.successful is not None:
-            result['Successful'] = self.successful
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = ListSmartGroupResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -12116,17 +12572,17 @@ class ListUserOrganizationResponseBodyObject(TeaModel):
 class ListUserOrganizationResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        object: List[ListUserOrganizationResponseBodyObject] = None,
-        error_code: str = None,
         error_message: str = None,
+        request_id: str = None,
         success: bool = None,
+        error_code: str = None,
+        object: List[ListUserOrganizationResponseBodyObject] = None,
     ):
-        self.request_id = request_id
-        self.object = object
-        self.error_code = error_code
         self.error_message = error_message
+        self.request_id = request_id
         self.success = success
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -12140,35 +12596,35 @@ class ListUserOrganizationResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         result['Object'] = []
         if self.object is not None:
             for k in self.object:
                 result['Object'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         self.object = []
         if m.get('Object') is not None:
             for k in m.get('Object'):
                 temp_model = ListUserOrganizationResponseBodyObject()
                 self.object.append(temp_model.from_map(k))
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -12258,15 +12714,15 @@ class TransferPipelineOwnerResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        error_message: str = None,
         object: Dict[str, Any] = None,
         error_code: str = None,
-        error_message: str = None,
         success: bool = None,
     ):
         self.request_id = request_id
+        self.error_message = error_message
         self.object = object
         self.error_code = error_code
-        self.error_message = error_message
         self.success = success
 
     def validate(self):
@@ -12280,12 +12736,12 @@ class TransferPipelineOwnerResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.object is not None:
             result['Object'] = self.object
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -12294,12 +12750,12 @@ class TransferPipelineOwnerResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('Object') is not None:
             self.object = m.get('Object')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -12429,17 +12885,17 @@ class UpdateCommonGroupResponseBodyObject(TeaModel):
 class UpdateCommonGroupResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
-        object: UpdateCommonGroupResponseBodyObject = None,
-        error_code: str = None,
+        request_id: str = None,
         successful: bool = None,
+        error_code: str = None,
+        object: UpdateCommonGroupResponseBodyObject = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
-        self.object = object
-        self.error_code = error_code
+        self.request_id = request_id
         self.successful = successful
+        self.error_code = error_code
+        self.object = object
 
     def validate(self):
         if self.object:
@@ -12451,31 +12907,31 @@ class UpdateCommonGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.object is not None:
-            result['Object'] = self.object.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.object is not None:
+            result['Object'] = self.object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Successful') is not None:
+            self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('Object') is not None:
             temp_model = UpdateCommonGroupResponseBodyObject()
             self.object = temp_model.from_map(m['Object'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Successful') is not None:
-            self.successful = m.get('Successful')
         return self
 
 
@@ -12564,17 +13020,17 @@ class UpdateDevopsProjectRequest(TeaModel):
 class UpdateDevopsProjectResponseBody(TeaModel):
     def __init__(
         self,
+        error_message: str = None,
         request_id: str = None,
         object: str = None,
-        error_code: str = None,
-        error_message: str = None,
         success: bool = None,
+        error_code: str = None,
     ):
+        self.error_message = error_message
         self.request_id = request_id
         self.object = object
-        self.error_code = error_code
-        self.error_message = error_message
         self.success = success
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -12585,30 +13041,30 @@ class UpdateDevopsProjectResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -12721,17 +13177,17 @@ class UpdateDevopsProjectSprintRequest(TeaModel):
 class UpdateDevopsProjectSprintResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
+        request_id: str = None,
         object: bool = None,
-        error_code: str = None,
         successful: bool = None,
+        error_code: str = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
+        self.request_id = request_id
         self.object = object
-        self.error_code = error_code
         self.successful = successful
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -12742,30 +13198,30 @@ class UpdateDevopsProjectSprintResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('Successful') is not None:
             self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -12914,17 +13370,17 @@ class UpdateDevopsProjectTaskRequest(TeaModel):
 class UpdateDevopsProjectTaskResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
+        request_id: str = None,
         object: bool = None,
-        error_code: str = None,
         successful: bool = None,
+        error_code: str = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
+        self.request_id = request_id
         self.object = object
-        self.error_code = error_code
         self.successful = successful
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -12935,30 +13391,30 @@ class UpdateDevopsProjectTaskResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('Successful') is not None:
             self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 
@@ -13054,15 +13510,15 @@ class UpdatePipelineMemberResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        error_message: str = None,
         object: bool = None,
         error_code: str = None,
-        error_message: str = None,
         success: bool = None,
     ):
         self.request_id = request_id
+        self.error_message = error_message
         self.object = object
         self.error_code = error_code
-        self.error_message = error_message
         self.success = success
 
     def validate(self):
@@ -13076,12 +13532,12 @@ class UpdatePipelineMemberResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.object is not None:
             result['Object'] = self.object
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -13090,12 +13546,12 @@ class UpdatePipelineMemberResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('Object') is not None:
             self.object = m.get('Object')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -13270,17 +13726,17 @@ class UpdateTaskDetailRequest(TeaModel):
 class UpdateTaskDetailResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         error_msg: str = None,
+        request_id: str = None,
         object: bool = None,
-        error_code: str = None,
         successful: bool = None,
+        error_code: str = None,
     ):
-        self.request_id = request_id
         self.error_msg = error_msg
+        self.request_id = request_id
         self.object = object
-        self.error_code = error_code
         self.successful = successful
+        self.error_code = error_code
 
     def validate(self):
         pass
@@ -13291,30 +13747,30 @@ class UpdateTaskDetailResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.object is not None:
             result['Object'] = self.object
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
         if self.successful is not None:
             result['Successful'] = self.successful
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Object') is not None:
             self.object = m.get('Object')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
         if m.get('Successful') is not None:
             self.successful = m.get('Successful')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         return self
 
 

@@ -544,6 +544,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_common_group_with_options_async(request, runtime)
 
+    def delete_devops_organization_with_options(
+        self,
+        request: devops_rdc_20200303_models.DeleteDevopsOrganizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_rdc_20200303_models.DeleteDevopsOrganizationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsOrganizationResponse(),
+            self.do_rpcrequest('DeleteDevopsOrganization', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_devops_organization_with_options_async(
+        self,
+        request: devops_rdc_20200303_models.DeleteDevopsOrganizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_rdc_20200303_models.DeleteDevopsOrganizationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.DeleteDevopsOrganizationResponse(),
+            await self.do_rpcrequest_async('DeleteDevopsOrganization', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_devops_organization(
+        self,
+        request: devops_rdc_20200303_models.DeleteDevopsOrganizationRequest,
+    ) -> devops_rdc_20200303_models.DeleteDevopsOrganizationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_devops_organization_with_options(request, runtime)
+
+    async def delete_devops_organization_async(
+        self,
+        request: devops_rdc_20200303_models.DeleteDevopsOrganizationRequest,
+    ) -> devops_rdc_20200303_models.DeleteDevopsOrganizationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_devops_organization_with_options_async(request, runtime)
+
     def delete_devops_organization_members_with_options(
         self,
         request: devops_rdc_20200303_models.DeleteDevopsOrganizationMembersRequest,
@@ -1887,6 +1929,48 @@ class Client(OpenApiClient):
     ) -> devops_rdc_20200303_models.ListCredentialsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_credentials_with_options_async(request, runtime)
+
+    def list_devops_projects_with_options(
+        self,
+        request: devops_rdc_20200303_models.ListDevopsProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_rdc_20200303_models.ListDevopsProjectsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectsResponse(),
+            self.do_rpcrequest('ListDevopsProjects', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_devops_projects_with_options_async(
+        self,
+        request: devops_rdc_20200303_models.ListDevopsProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_rdc_20200303_models.ListDevopsProjectsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            devops_rdc_20200303_models.ListDevopsProjectsResponse(),
+            await self.do_rpcrequest_async('ListDevopsProjects', '2020-03-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_devops_projects(
+        self,
+        request: devops_rdc_20200303_models.ListDevopsProjectsRequest,
+    ) -> devops_rdc_20200303_models.ListDevopsProjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_devops_projects_with_options(request, runtime)
+
+    async def list_devops_projects_async(
+        self,
+        request: devops_rdc_20200303_models.ListDevopsProjectsRequest,
+    ) -> devops_rdc_20200303_models.ListDevopsProjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_devops_projects_with_options_async(request, runtime)
 
     def list_devops_project_sprints_with_options(
         self,
