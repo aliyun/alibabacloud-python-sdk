@@ -25,61 +25,61 @@ class Client(OpenApiClient):
         self._endpoint_map = {
             'cn-hangzhou': 'tds.aliyuncs.com',
             'ap-southeast-3': 'tds.ap-southeast-3.aliyuncs.com',
-            'ap-northeast-1': 'sas.aliyuncs.com',
-            'ap-northeast-2-pop': 'sas.aliyuncs.com',
-            'ap-south-1': 'sas.aliyuncs.com',
-            'ap-southeast-1': 'sas.aliyuncs.com',
-            'ap-southeast-2': 'sas.aliyuncs.com',
-            'ap-southeast-5': 'sas.aliyuncs.com',
-            'cn-beijing': 'sas.aliyuncs.com',
-            'cn-beijing-finance-1': 'sas.aliyuncs.com',
-            'cn-beijing-finance-pop': 'sas.aliyuncs.com',
-            'cn-beijing-gov-1': 'sas.aliyuncs.com',
-            'cn-beijing-nu16-b01': 'sas.aliyuncs.com',
-            'cn-chengdu': 'sas.aliyuncs.com',
-            'cn-edge-1': 'sas.aliyuncs.com',
-            'cn-fujian': 'sas.aliyuncs.com',
-            'cn-haidian-cm12-c01': 'sas.aliyuncs.com',
-            'cn-hangzhou-bj-b01': 'sas.aliyuncs.com',
-            'cn-hangzhou-finance': 'sas.aliyuncs.com',
-            'cn-hangzhou-internal-prod-1': 'sas.aliyuncs.com',
-            'cn-hangzhou-internal-test-1': 'sas.aliyuncs.com',
-            'cn-hangzhou-internal-test-2': 'sas.aliyuncs.com',
-            'cn-hangzhou-internal-test-3': 'sas.aliyuncs.com',
-            'cn-hangzhou-test-306': 'sas.aliyuncs.com',
-            'cn-hongkong': 'sas.aliyuncs.com',
-            'cn-hongkong-finance-pop': 'sas.aliyuncs.com',
-            'cn-huhehaote': 'sas.aliyuncs.com',
-            'cn-huhehaote-nebula-1': 'sas.aliyuncs.com',
-            'cn-north-2-gov-1': 'sas.aliyuncs.com',
-            'cn-qingdao': 'sas.aliyuncs.com',
-            'cn-qingdao-nebula': 'sas.aliyuncs.com',
-            'cn-shanghai': 'sas.aliyuncs.com',
-            'cn-shanghai-et15-b01': 'sas.aliyuncs.com',
-            'cn-shanghai-et2-b01': 'sas.aliyuncs.com',
-            'cn-shanghai-finance-1': 'sas.aliyuncs.com',
-            'cn-shanghai-inner': 'sas.aliyuncs.com',
-            'cn-shanghai-internal-test-1': 'sas.aliyuncs.com',
-            'cn-shenzhen': 'sas.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'sas.aliyuncs.com',
-            'cn-shenzhen-inner': 'sas.aliyuncs.com',
-            'cn-shenzhen-st4-d01': 'sas.aliyuncs.com',
-            'cn-shenzhen-su18-b01': 'sas.aliyuncs.com',
-            'cn-wuhan': 'sas.aliyuncs.com',
-            'cn-wulanchabu': 'sas.aliyuncs.com',
-            'cn-yushanfang': 'sas.aliyuncs.com',
-            'cn-zhangbei': 'sas.aliyuncs.com',
-            'cn-zhangbei-na61-b01': 'sas.aliyuncs.com',
-            'cn-zhangjiakou': 'sas.aliyuncs.com',
-            'cn-zhangjiakou-na62-a01': 'sas.aliyuncs.com',
-            'cn-zhengzhou-nebula-1': 'sas.aliyuncs.com',
-            'eu-central-1': 'sas.aliyuncs.com',
-            'eu-west-1': 'sas.aliyuncs.com',
-            'eu-west-1-oxs': 'sas.aliyuncs.com',
-            'me-east-1': 'sas.aliyuncs.com',
-            'rus-west-1-pop': 'sas.aliyuncs.com',
-            'us-east-1': 'sas.aliyuncs.com',
-            'us-west-1': 'sas.aliyuncs.com'
+            'ap-northeast-1': 'tds.aliyuncs.com',
+            'ap-northeast-2-pop': 'tds.aliyuncs.com',
+            'ap-south-1': 'tds.aliyuncs.com',
+            'ap-southeast-1': 'tds.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-2': 'tds.aliyuncs.com',
+            'ap-southeast-5': 'tds.aliyuncs.com',
+            'cn-beijing': 'tds.aliyuncs.com',
+            'cn-beijing-finance-1': 'tds.aliyuncs.com',
+            'cn-beijing-finance-pop': 'tds.aliyuncs.com',
+            'cn-beijing-gov-1': 'tds.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'tds.aliyuncs.com',
+            'cn-chengdu': 'tds.aliyuncs.com',
+            'cn-edge-1': 'tds.aliyuncs.com',
+            'cn-fujian': 'tds.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'tds.aliyuncs.com',
+            'cn-hangzhou-bj-b01': 'tds.aliyuncs.com',
+            'cn-hangzhou-finance': 'tds.aliyuncs.com',
+            'cn-hangzhou-internal-prod-1': 'tds.aliyuncs.com',
+            'cn-hangzhou-internal-test-1': 'tds.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'tds.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'tds.aliyuncs.com',
+            'cn-hangzhou-test-306': 'tds.aliyuncs.com',
+            'cn-hongkong': 'tds.aliyuncs.com',
+            'cn-hongkong-finance-pop': 'tds.aliyuncs.com',
+            'cn-huhehaote': 'tds.aliyuncs.com',
+            'cn-huhehaote-nebula-1': 'tds.aliyuncs.com',
+            'cn-north-2-gov-1': 'tds.aliyuncs.com',
+            'cn-qingdao': 'tds.aliyuncs.com',
+            'cn-qingdao-nebula': 'tds.aliyuncs.com',
+            'cn-shanghai': 'tds.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'tds.aliyuncs.com',
+            'cn-shanghai-et2-b01': 'tds.aliyuncs.com',
+            'cn-shanghai-finance-1': 'tds.aliyuncs.com',
+            'cn-shanghai-inner': 'tds.aliyuncs.com',
+            'cn-shanghai-internal-test-1': 'tds.aliyuncs.com',
+            'cn-shenzhen': 'tds.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'tds.aliyuncs.com',
+            'cn-shenzhen-inner': 'tds.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'tds.aliyuncs.com',
+            'cn-shenzhen-su18-b01': 'tds.aliyuncs.com',
+            'cn-wuhan': 'tds.aliyuncs.com',
+            'cn-wulanchabu': 'tds.aliyuncs.com',
+            'cn-yushanfang': 'tds.aliyuncs.com',
+            'cn-zhangbei': 'tds.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'tds.aliyuncs.com',
+            'cn-zhangjiakou': 'tds.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'tds.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'tds.aliyuncs.com',
+            'eu-central-1': 'tds.aliyuncs.com',
+            'eu-west-1': 'tds.aliyuncs.com',
+            'eu-west-1-oxs': 'tds.aliyuncs.com',
+            'me-east-1': 'tds.aliyuncs.com',
+            'rus-west-1-pop': 'tds.aliyuncs.com',
+            'us-east-1': 'tds.aliyuncs.com',
+            'us-west-1': 'tds.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('sas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -267,6 +267,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CreateAntiBruteForceRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_anti_brute_force_rule_with_options_async(request, runtime)
+
+    def create_asset_with_options(
+        self,
+        request: sas_20181203_models.CreateAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateAssetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateAssetResponse(),
+            self.do_rpcrequest('CreateAsset', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_asset_with_options_async(
+        self,
+        request: sas_20181203_models.CreateAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateAssetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateAssetResponse(),
+            await self.do_rpcrequest_async('CreateAsset', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_asset(
+        self,
+        request: sas_20181203_models.CreateAssetRequest,
+    ) -> sas_20181203_models.CreateAssetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_asset_with_options(request, runtime)
+
+    async def create_asset_async(
+        self,
+        request: sas_20181203_models.CreateAssetRequest,
+    ) -> sas_20181203_models.CreateAssetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_asset_with_options_async(request, runtime)
 
     def create_backup_policy_with_options(
         self,
@@ -514,6 +556,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_similar_security_events_query_task_with_options_async(request, runtime)
 
+    def delete_asset_with_options(
+        self,
+        request: sas_20181203_models.DeleteAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteAssetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteAssetResponse(),
+            self.do_rpcrequest('DeleteAsset', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_asset_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteAssetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteAssetResponse(),
+            await self.do_rpcrequest_async('DeleteAsset', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_asset(
+        self,
+        request: sas_20181203_models.DeleteAssetRequest,
+    ) -> sas_20181203_models.DeleteAssetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_asset_with_options(request, runtime)
+
+    async def delete_asset_async(
+        self,
+        request: sas_20181203_models.DeleteAssetRequest,
+    ) -> sas_20181203_models.DeleteAssetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_asset_with_options_async(request, runtime)
+
     def delete_backup_policy_with_options(
         self,
         request: sas_20181203_models.DeleteBackupPolicyRequest,
@@ -681,6 +765,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteLoginBaseConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_login_base_config_with_options_async(request, runtime)
+
+    def delete_strategy_with_options(
+        self,
+        request: sas_20181203_models.DeleteStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteStrategyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteStrategyResponse(),
+            self.do_rpcrequest('DeleteStrategy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_strategy_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteStrategyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteStrategyResponse(),
+            await self.do_rpcrequest_async('DeleteStrategy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_strategy(
+        self,
+        request: sas_20181203_models.DeleteStrategyRequest,
+    ) -> sas_20181203_models.DeleteStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_strategy_with_options(request, runtime)
+
+    async def delete_strategy_async(
+        self,
+        request: sas_20181203_models.DeleteStrategyRequest,
+    ) -> sas_20181203_models.DeleteStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_strategy_with_options_async(request, runtime)
 
     def delete_tag_with_uuid_with_options(
         self,
@@ -1241,6 +1367,48 @@ class Client(OpenApiClient):
     async def describe_auto_del_config_async(self) -> sas_20181203_models.DescribeAutoDelConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_auto_del_config_with_options_async(runtime)
+
+    def describe_backup_clients_with_options(
+        self,
+        request: sas_20181203_models.DescribeBackupClientsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupClientsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupClientsResponse(),
+            self.do_rpcrequest('DescribeBackupClients', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_backup_clients_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeBackupClientsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupClientsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupClientsResponse(),
+            await self.do_rpcrequest_async('DescribeBackupClients', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_backup_clients(
+        self,
+        request: sas_20181203_models.DescribeBackupClientsRequest,
+    ) -> sas_20181203_models.DescribeBackupClientsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_clients_with_options(request, runtime)
+
+    async def describe_backup_clients_async(
+        self,
+        request: sas_20181203_models.DescribeBackupClientsRequest,
+    ) -> sas_20181203_models.DescribeBackupClientsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_clients_with_options_async(request, runtime)
 
     def describe_backup_dirs_with_options(
         self,
@@ -2880,6 +3048,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_grouped_vul_list_with_options_async(request, runtime)
 
+    def describe_image_scan_auth_count_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageScanAuthCountResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageScanAuthCountResponse(),
+            self.do_rpcrequest('DescribeImageScanAuthCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_image_scan_auth_count_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageScanAuthCountResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageScanAuthCountResponse(),
+            await self.do_rpcrequest_async('DescribeImageScanAuthCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_image_scan_auth_count(self) -> sas_20181203_models.DescribeImageScanAuthCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_scan_auth_count_with_options(runtime)
+
+    async def describe_image_scan_auth_count_async(self) -> sas_20181203_models.DescribeImageScanAuthCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_scan_auth_count_with_options_async(runtime)
+
     def describe_image_statistics_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -4518,6 +4714,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_snapshots_with_options_async(request, runtime)
 
+    def describe_strategy_with_options(
+        self,
+        request: sas_20181203_models.DescribeStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeStrategyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeStrategyResponse(),
+            self.do_rpcrequest('DescribeStrategy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_strategy_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeStrategyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeStrategyResponse(),
+            await self.do_rpcrequest_async('DescribeStrategy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_strategy(
+        self,
+        request: sas_20181203_models.DescribeStrategyRequest,
+    ) -> sas_20181203_models.DescribeStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_strategy_with_options(request, runtime)
+
+    async def describe_strategy_async(
+        self,
+        request: sas_20181203_models.DescribeStrategyRequest,
+    ) -> sas_20181203_models.DescribeStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_strategy_with_options_async(request, runtime)
+
     def describe_strategy_exec_detail_with_options(
         self,
         request: sas_20181203_models.DescribeStrategyExecDetailRequest,
@@ -4559,6 +4797,90 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeStrategyExecDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_strategy_exec_detail_with_options_async(request, runtime)
+
+    def describe_strategy_process_with_options(
+        self,
+        request: sas_20181203_models.DescribeStrategyProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeStrategyProcessResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeStrategyProcessResponse(),
+            self.do_rpcrequest('DescribeStrategyProcess', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_strategy_process_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeStrategyProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeStrategyProcessResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeStrategyProcessResponse(),
+            await self.do_rpcrequest_async('DescribeStrategyProcess', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_strategy_process(
+        self,
+        request: sas_20181203_models.DescribeStrategyProcessRequest,
+    ) -> sas_20181203_models.DescribeStrategyProcessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_strategy_process_with_options(request, runtime)
+
+    async def describe_strategy_process_async(
+        self,
+        request: sas_20181203_models.DescribeStrategyProcessRequest,
+    ) -> sas_20181203_models.DescribeStrategyProcessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_strategy_process_with_options_async(request, runtime)
+
+    def describe_strategy_target_with_options(
+        self,
+        request: sas_20181203_models.DescribeStrategyTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeStrategyTargetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeStrategyTargetResponse(),
+            self.do_rpcrequest('DescribeStrategyTarget', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_strategy_target_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeStrategyTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeStrategyTargetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeStrategyTargetResponse(),
+            await self.do_rpcrequest_async('DescribeStrategyTarget', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_strategy_target(
+        self,
+        request: sas_20181203_models.DescribeStrategyTargetRequest,
+    ) -> sas_20181203_models.DescribeStrategyTargetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_strategy_target_with_options(request, runtime)
+
+    async def describe_strategy_target_async(
+        self,
+        request: sas_20181203_models.DescribeStrategyTargetRequest,
+    ) -> sas_20181203_models.DescribeStrategyTargetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_strategy_target_with_options_async(request, runtime)
 
     def describe_summary_info_with_options(
         self,
@@ -5372,6 +5694,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_lock_config_list_with_options_async(request, runtime)
 
+    def exec_strategy_with_options(
+        self,
+        request: sas_20181203_models.ExecStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ExecStrategyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ExecStrategyResponse(),
+            self.do_rpcrequest('ExecStrategy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def exec_strategy_with_options_async(
+        self,
+        request: sas_20181203_models.ExecStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ExecStrategyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ExecStrategyResponse(),
+            await self.do_rpcrequest_async('ExecStrategy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def exec_strategy(
+        self,
+        request: sas_20181203_models.ExecStrategyRequest,
+    ) -> sas_20181203_models.ExecStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.exec_strategy_with_options(request, runtime)
+
+    async def exec_strategy_async(
+        self,
+        request: sas_20181203_models.ExecStrategyRequest,
+    ) -> sas_20181203_models.ExecStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.exec_strategy_with_options_async(request, runtime)
+
     def export_record_with_options(
         self,
         request: sas_20181203_models.ExportRecordRequest,
@@ -5581,6 +5945,90 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetIOCsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_iocs_with_options_async(request, runtime)
+
+    def get_local_install_script_with_options(
+        self,
+        request: sas_20181203_models.GetLocalInstallScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetLocalInstallScriptResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetLocalInstallScriptResponse(),
+            self.do_rpcrequest('GetLocalInstallScript', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_local_install_script_with_options_async(
+        self,
+        request: sas_20181203_models.GetLocalInstallScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetLocalInstallScriptResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetLocalInstallScriptResponse(),
+            await self.do_rpcrequest_async('GetLocalInstallScript', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_local_install_script(
+        self,
+        request: sas_20181203_models.GetLocalInstallScriptRequest,
+    ) -> sas_20181203_models.GetLocalInstallScriptResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_local_install_script_with_options(request, runtime)
+
+    async def get_local_install_script_async(
+        self,
+        request: sas_20181203_models.GetLocalInstallScriptRequest,
+    ) -> sas_20181203_models.GetLocalInstallScriptResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_local_install_script_with_options_async(request, runtime)
+
+    def get_local_uninstall_script_with_options(
+        self,
+        request: sas_20181203_models.GetLocalUninstallScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetLocalUninstallScriptResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetLocalUninstallScriptResponse(),
+            self.do_rpcrequest('GetLocalUninstallScript', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_local_uninstall_script_with_options_async(
+        self,
+        request: sas_20181203_models.GetLocalUninstallScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetLocalUninstallScriptResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetLocalUninstallScriptResponse(),
+            await self.do_rpcrequest_async('GetLocalUninstallScript', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_local_uninstall_script(
+        self,
+        request: sas_20181203_models.GetLocalUninstallScriptRequest,
+    ) -> sas_20181203_models.GetLocalUninstallScriptResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_local_uninstall_script_with_options(request, runtime)
+
+    async def get_local_uninstall_script_async(
+        self,
+        request: sas_20181203_models.GetLocalUninstallScriptRequest,
+    ) -> sas_20181203_models.GetLocalUninstallScriptResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_local_uninstall_script_with_options_async(request, runtime)
 
     def get_suspicious_statistics_with_options(
         self,
@@ -6597,6 +7045,90 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ModifyStartVulScanResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_start_vul_scan_with_options_async(request, runtime)
+
+    def modify_strategy_with_options(
+        self,
+        request: sas_20181203_models.ModifyStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyStrategyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyStrategyResponse(),
+            self.do_rpcrequest('ModifyStrategy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_strategy_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyStrategyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyStrategyResponse(),
+            await self.do_rpcrequest_async('ModifyStrategy', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_strategy(
+        self,
+        request: sas_20181203_models.ModifyStrategyRequest,
+    ) -> sas_20181203_models.ModifyStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_strategy_with_options(request, runtime)
+
+    async def modify_strategy_async(
+        self,
+        request: sas_20181203_models.ModifyStrategyRequest,
+    ) -> sas_20181203_models.ModifyStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_strategy_with_options_async(request, runtime)
+
+    def modify_strategy_target_with_options(
+        self,
+        request: sas_20181203_models.ModifyStrategyTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyStrategyTargetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyStrategyTargetResponse(),
+            self.do_rpcrequest('ModifyStrategyTarget', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_strategy_target_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyStrategyTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyStrategyTargetResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyStrategyTargetResponse(),
+            await self.do_rpcrequest_async('ModifyStrategyTarget', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_strategy_target(
+        self,
+        request: sas_20181203_models.ModifyStrategyTargetRequest,
+    ) -> sas_20181203_models.ModifyStrategyTargetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_strategy_target_with_options(request, runtime)
+
+    async def modify_strategy_target_async(
+        self,
+        request: sas_20181203_models.ModifyStrategyTargetRequest,
+    ) -> sas_20181203_models.ModifyStrategyTargetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_strategy_target_with_options_async(request, runtime)
 
     def modify_tag_with_uuid_with_options(
         self,
