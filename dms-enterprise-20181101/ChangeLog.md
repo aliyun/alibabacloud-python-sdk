@@ -1,3 +1,6 @@
+2021-06-28 Version: 1.19.0
+- Support GetSQLReviewOptimizeDetail,ListSQLReviewOriginSQL Order API.
+
 2021-04-22 Version: 1.17.0
 - Support GetPhysicalDatabase API.
 

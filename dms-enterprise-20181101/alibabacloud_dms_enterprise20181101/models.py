@@ -5796,6 +5796,293 @@ class GetDBTopologyResponse(TeaModel):
         return self
 
 
+class GetSQLReviewCheckResultStatusRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult(TeaModel):
+    def __init__(
+        self,
+        new: int = None,
+        unknown: int = None,
+        check_not_pass: int = None,
+        check_pass: int = None,
+        force_pass: int = None,
+        force_not_pass: int = None,
+    ):
+        self.new = new
+        self.unknown = unknown
+        self.check_not_pass = check_not_pass
+        self.check_pass = check_pass
+        self.force_pass = force_pass
+        self.force_not_pass = force_not_pass
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new is not None:
+            result['New'] = self.new
+        if self.unknown is not None:
+            result['Unknown'] = self.unknown
+        if self.check_not_pass is not None:
+            result['CheckNotPass'] = self.check_not_pass
+        if self.check_pass is not None:
+            result['CheckPass'] = self.check_pass
+        if self.force_pass is not None:
+            result['ForcePass'] = self.force_pass
+        if self.force_not_pass is not None:
+            result['ForceNotPass'] = self.force_not_pass
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('New') is not None:
+            self.new = m.get('New')
+        if m.get('Unknown') is not None:
+            self.unknown = m.get('Unknown')
+        if m.get('CheckNotPass') is not None:
+            self.check_not_pass = m.get('CheckNotPass')
+        if m.get('CheckPass') is not None:
+            self.check_pass = m.get('CheckPass')
+        if m.get('ForcePass') is not None:
+            self.force_pass = m.get('ForcePass')
+        if m.get('ForceNotPass') is not None:
+            self.force_not_pass = m.get('ForceNotPass')
+        return self
+
+
+class GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult(TeaModel):
+    def __init__(
+        self,
+        must_improve: int = None,
+        potential_issue: int = None,
+        suggest_improve: int = None,
+        use_dms_toolkit: int = None,
+        use_dms_dml_unlock: int = None,
+        table_index_suggest: int = None,
+    ):
+        self.must_improve = must_improve
+        self.potential_issue = potential_issue
+        self.suggest_improve = suggest_improve
+        self.use_dms_toolkit = use_dms_toolkit
+        self.use_dms_dml_unlock = use_dms_dml_unlock
+        self.table_index_suggest = table_index_suggest
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.must_improve is not None:
+            result['MustImprove'] = self.must_improve
+        if self.potential_issue is not None:
+            result['PotentialIssue'] = self.potential_issue
+        if self.suggest_improve is not None:
+            result['SuggestImprove'] = self.suggest_improve
+        if self.use_dms_toolkit is not None:
+            result['UseDmsToolkit'] = self.use_dms_toolkit
+        if self.use_dms_dml_unlock is not None:
+            result['UseDmsDmlUnlock'] = self.use_dms_dml_unlock
+        if self.table_index_suggest is not None:
+            result['TableIndexSuggest'] = self.table_index_suggest
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MustImprove') is not None:
+            self.must_improve = m.get('MustImprove')
+        if m.get('PotentialIssue') is not None:
+            self.potential_issue = m.get('PotentialIssue')
+        if m.get('SuggestImprove') is not None:
+            self.suggest_improve = m.get('SuggestImprove')
+        if m.get('UseDmsToolkit') is not None:
+            self.use_dms_toolkit = m.get('UseDmsToolkit')
+        if m.get('UseDmsDmlUnlock') is not None:
+            self.use_dms_dml_unlock = m.get('UseDmsDmlUnlock')
+        if m.get('TableIndexSuggest') is not None:
+            self.table_index_suggest = m.get('TableIndexSuggest')
+        return self
+
+
+class GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus(TeaModel):
+    def __init__(
+        self,
+        total_sqlcount: int = None,
+        checked_count: int = None,
+        check_status_result: GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult = None,
+        sqlreview_result: GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult = None,
+    ):
+        self.total_sqlcount = total_sqlcount
+        self.checked_count = checked_count
+        self.check_status_result = check_status_result
+        self.sqlreview_result = sqlreview_result
+
+    def validate(self):
+        if self.check_status_result:
+            self.check_status_result.validate()
+        if self.sqlreview_result:
+            self.sqlreview_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_sqlcount is not None:
+            result['TotalSQLCount'] = self.total_sqlcount
+        if self.checked_count is not None:
+            result['CheckedCount'] = self.checked_count
+        if self.check_status_result is not None:
+            result['CheckStatusResult'] = self.check_status_result.to_map()
+        if self.sqlreview_result is not None:
+            result['SQLReviewResult'] = self.sqlreview_result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalSQLCount') is not None:
+            self.total_sqlcount = m.get('TotalSQLCount')
+        if m.get('CheckedCount') is not None:
+            self.checked_count = m.get('CheckedCount')
+        if m.get('CheckStatusResult') is not None:
+            temp_model = GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusCheckStatusResult()
+            self.check_status_result = temp_model.from_map(m['CheckStatusResult'])
+        if m.get('SQLReviewResult') is not None:
+            temp_model = GetSQLReviewCheckResultStatusResponseBodyCheckResultStatusSQLReviewResult()
+            self.sqlreview_result = temp_model.from_map(m['SQLReviewResult'])
+        return self
+
+
+class GetSQLReviewCheckResultStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        success: bool = None,
+        check_result_status: GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus = None,
+    ):
+        self.request_id = request_id
+        self.error_code = error_code
+        self.error_message = error_message
+        self.success = success
+        self.check_result_status = check_result_status
+
+    def validate(self):
+        if self.check_result_status:
+            self.check_result_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.check_result_status is not None:
+            result['CheckResultStatus'] = self.check_result_status.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('CheckResultStatus') is not None:
+            temp_model = GetSQLReviewCheckResultStatusResponseBodyCheckResultStatus()
+            self.check_result_status = temp_model.from_map(m['CheckResultStatus'])
+        return self
+
+
+class GetSQLReviewCheckResultStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetSQLReviewCheckResultStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetSQLReviewCheckResultStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SyncDatabaseMetaRequest(TeaModel):
     def __init__(
         self,
@@ -8683,6 +8970,349 @@ class GetApprovalDetailResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetApprovalDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSQLReviewOriginSQLRequestOrderActionDetailPage(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListSQLReviewOriginSQLRequestOrderActionDetail(TeaModel):
+    def __init__(
+        self,
+        file_id: int = None,
+        sqlreview_result: str = None,
+        check_status_result: str = None,
+        page: ListSQLReviewOriginSQLRequestOrderActionDetailPage = None,
+    ):
+        self.file_id = file_id
+        self.sqlreview_result = sqlreview_result
+        self.check_status_result = check_status_result
+        self.page = page
+
+    def validate(self):
+        if self.page:
+            self.page.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.sqlreview_result is not None:
+            result['SQLReviewResult'] = self.sqlreview_result
+        if self.check_status_result is not None:
+            result['CheckStatusResult'] = self.check_status_result
+        if self.page is not None:
+            result['Page'] = self.page.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('SQLReviewResult') is not None:
+            self.sqlreview_result = m.get('SQLReviewResult')
+        if m.get('CheckStatusResult') is not None:
+            self.check_status_result = m.get('CheckStatusResult')
+        if m.get('Page') is not None:
+            temp_model = ListSQLReviewOriginSQLRequestOrderActionDetailPage()
+            self.page = temp_model.from_map(m['Page'])
+        return self
+
+
+class ListSQLReviewOriginSQLRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        order_action_detail: ListSQLReviewOriginSQLRequestOrderActionDetail = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.order_action_detail = order_action_detail
+        self.tid = tid
+
+    def validate(self):
+        if self.order_action_detail:
+            self.order_action_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_action_detail is not None:
+            result['OrderActionDetail'] = self.order_action_detail.to_map()
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderActionDetail') is not None:
+            temp_model = ListSQLReviewOriginSQLRequestOrderActionDetail()
+            self.order_action_detail = temp_model.from_map(m['OrderActionDetail'])
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListSQLReviewOriginSQLShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        order_action_detail_shrink: str = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.order_action_detail_shrink = order_action_detail_shrink
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_action_detail_shrink is not None:
+            result['OrderActionDetail'] = self.order_action_detail_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderActionDetail') is not None:
+            self.order_action_detail_shrink = m.get('OrderActionDetail')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListSQLReviewOriginSQLResponseBodyOriginSQLList(TeaModel):
+    def __init__(
+        self,
+        sqlid: int = None,
+        file_id: int = None,
+        file_name: str = None,
+        sqlcontent: str = None,
+        check_status: str = None,
+        status_desc: str = None,
+        checked_time: str = None,
+        sql_hash: str = None,
+        review_summary: str = None,
+        sqlreview_query_key: str = None,
+    ):
+        self.sqlid = sqlid
+        self.file_id = file_id
+        self.file_name = file_name
+        self.sqlcontent = sqlcontent
+        self.check_status = check_status
+        self.status_desc = status_desc
+        self.checked_time = checked_time
+        self.sql_hash = sql_hash
+        self.review_summary = review_summary
+        self.sqlreview_query_key = sqlreview_query_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sqlid is not None:
+            result['SQLId'] = self.sqlid
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.sqlcontent is not None:
+            result['SQLContent'] = self.sqlcontent
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
+        if self.checked_time is not None:
+            result['CheckedTime'] = self.checked_time
+        if self.sql_hash is not None:
+            result['SqlHash'] = self.sql_hash
+        if self.review_summary is not None:
+            result['ReviewSummary'] = self.review_summary
+        if self.sqlreview_query_key is not None:
+            result['SQLReviewQueryKey'] = self.sqlreview_query_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SQLId') is not None:
+            self.sqlid = m.get('SQLId')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('SQLContent') is not None:
+            self.sqlcontent = m.get('SQLContent')
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
+        if m.get('CheckedTime') is not None:
+            self.checked_time = m.get('CheckedTime')
+        if m.get('SqlHash') is not None:
+            self.sql_hash = m.get('SqlHash')
+        if m.get('ReviewSummary') is not None:
+            self.review_summary = m.get('ReviewSummary')
+        if m.get('SQLReviewQueryKey') is not None:
+            self.sqlreview_query_key = m.get('SQLReviewQueryKey')
+        return self
+
+
+class ListSQLReviewOriginSQLResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        success: bool = None,
+        total_count: int = None,
+        origin_sqllist: List[ListSQLReviewOriginSQLResponseBodyOriginSQLList] = None,
+    ):
+        self.request_id = request_id
+        self.error_code = error_code
+        self.error_message = error_message
+        self.success = success
+        self.total_count = total_count
+        self.origin_sqllist = origin_sqllist
+
+    def validate(self):
+        if self.origin_sqllist:
+            for k in self.origin_sqllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['OriginSQLList'] = []
+        if self.origin_sqllist is not None:
+            for k in self.origin_sqllist:
+                result['OriginSQLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.origin_sqllist = []
+        if m.get('OriginSQLList') is not None:
+            for k in m.get('OriginSQLList'):
+                temp_model = ListSQLReviewOriginSQLResponseBodyOriginSQLList()
+                self.origin_sqllist.append(temp_model.from_map(k))
+        return self
+
+
+class ListSQLReviewOriginSQLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListSQLReviewOriginSQLResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListSQLReviewOriginSQLResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14841,6 +15471,226 @@ class ListOrdersResponse(TeaModel):
         return self
 
 
+class CreateSQLReviewOrderRequestParam(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        db_id: int = None,
+        attachment_key_list: List[str] = None,
+    ):
+        self.project_name = project_name
+        self.db_id = db_id
+        self.attachment_key_list = attachment_key_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.attachment_key_list is not None:
+            result['AttachmentKeyList'] = self.attachment_key_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('AttachmentKeyList') is not None:
+            self.attachment_key_list = m.get('AttachmentKeyList')
+        return self
+
+
+class CreateSQLReviewOrderRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list: List[int] = None,
+        param: CreateSQLReviewOrderRequestParam = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list = related_user_list
+        self.param = param
+        self.tid = tid
+
+    def validate(self):
+        if self.param:
+            self.param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list is not None:
+            result['RelatedUserList'] = self.related_user_list
+        if self.param is not None:
+            result['Param'] = self.param.to_map()
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            temp_model = CreateSQLReviewOrderRequestParam()
+            self.param = temp_model.from_map(m['Param'])
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateSQLReviewOrderShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        related_user_list_shrink: str = None,
+        param_shrink: str = None,
+        tid: int = None,
+    ):
+        self.comment = comment
+        self.related_user_list_shrink = related_user_list_shrink
+        self.param_shrink = param_shrink
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.related_user_list_shrink is not None:
+            result['RelatedUserList'] = self.related_user_list_shrink
+        if self.param_shrink is not None:
+            result['Param'] = self.param_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list_shrink = m.get('RelatedUserList')
+        if m.get('Param') is not None:
+            self.param_shrink = m.get('Param')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateSQLReviewOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        create_order_result: List[int] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.create_order_result = create_order_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.create_order_result is not None:
+            result['CreateOrderResult'] = self.create_order_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('CreateOrderResult') is not None:
+            self.create_order_result = m.get('CreateOrderResult')
+        return self
+
+
+class CreateSQLReviewOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateSQLReviewOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateSQLReviewOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetOrderBaseInfoRequest(TeaModel):
     def __init__(
         self,
@@ -15118,6 +15968,333 @@ class GetOrderBaseInfoResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetOrderBaseInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSQLReviewOptimizeDetailRequest(TeaModel):
+    def __init__(
+        self,
+        sqlreview_query_key: str = None,
+        tid: int = None,
+    ):
+        self.sqlreview_query_key = sqlreview_query_key
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sqlreview_query_key is not None:
+            result['SQLReviewQueryKey'] = self.sqlreview_query_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SQLReviewQueryKey') is not None:
+            self.sqlreview_query_key = m.get('SQLReviewQueryKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts(TeaModel):
+    def __init__(
+        self,
+        op_type: str = None,
+        content: str = None,
+        table_name: str = None,
+    ):
+        self.op_type = op_type
+        self.content = content
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_type is not None:
+            result['OpType'] = self.op_type
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpType') is not None:
+            self.op_type = m.get('OpType')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults(TeaModel):
+    def __init__(
+        self,
+        rule_name: str = None,
+        feedback: str = None,
+        comments: str = None,
+        messages: List[str] = None,
+        scripts: List[GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts] = None,
+        rule_type: str = None,
+    ):
+        self.rule_name = rule_name
+        self.feedback = feedback
+        self.comments = comments
+        self.messages = messages
+        self.scripts = scripts
+        self.rule_type = rule_type
+
+    def validate(self):
+        if self.scripts:
+            for k in self.scripts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.feedback is not None:
+            result['Feedback'] = self.feedback
+        if self.comments is not None:
+            result['Comments'] = self.comments
+        if self.messages is not None:
+            result['Messages'] = self.messages
+        result['Scripts'] = []
+        if self.scripts is not None:
+            for k in self.scripts:
+                result['Scripts'].append(k.to_map() if k else None)
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Feedback') is not None:
+            self.feedback = m.get('Feedback')
+        if m.get('Comments') is not None:
+            self.comments = m.get('Comments')
+        if m.get('Messages') is not None:
+            self.messages = m.get('Messages')
+        self.scripts = []
+        if m.get('Scripts') is not None:
+            for k in m.get('Scripts'):
+                temp_model = GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts()
+                self.scripts.append(temp_model.from_map(k))
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        return self
+
+
+class GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        results: List[GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults] = None,
+        occur_error: bool = None,
+    ):
+        self.error_message = error_message
+        self.results = results
+        self.occur_error = occur_error
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        if self.occur_error is not None:
+            result['OccurError'] = self.occur_error
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('OccurError') is not None:
+            self.occur_error = m.get('OccurError')
+        return self
+
+
+class GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail(TeaModel):
+    def __init__(
+        self,
+        query_key: str = None,
+        instance_id: int = None,
+        db_id: int = None,
+        sql_type: str = None,
+        quality_result: GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult = None,
+    ):
+        self.query_key = query_key
+        self.instance_id = instance_id
+        self.db_id = db_id
+        self.sql_type = sql_type
+        self.quality_result = quality_result
+
+    def validate(self):
+        if self.quality_result:
+            self.quality_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_key is not None:
+            result['QueryKey'] = self.query_key
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.quality_result is not None:
+            result['QualityResult'] = self.quality_result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryKey') is not None:
+            self.query_key = m.get('QueryKey')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('QualityResult') is not None:
+            temp_model = GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult()
+            self.quality_result = temp_model.from_map(m['QualityResult'])
+        return self
+
+
+class GetSQLReviewOptimizeDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        success: bool = None,
+        optimize_detail: GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail = None,
+    ):
+        self.request_id = request_id
+        self.error_code = error_code
+        self.error_message = error_message
+        self.success = success
+        self.optimize_detail = optimize_detail
+
+    def validate(self):
+        if self.optimize_detail:
+            self.optimize_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.optimize_detail is not None:
+            result['OptimizeDetail'] = self.optimize_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('OptimizeDetail') is not None:
+            temp_model = GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail()
+            self.optimize_detail = temp_model.from_map(m['OptimizeDetail'])
+        return self
+
+
+class GetSQLReviewOptimizeDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetSQLReviewOptimizeDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetSQLReviewOptimizeDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

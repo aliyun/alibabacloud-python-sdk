@@ -951,6 +951,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_dbtopology_with_options_async(request, runtime)
 
+    def get_sqlreview_check_result_status_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse(),
+            self.do_rpcrequest('GetSQLReviewCheckResultStatus', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_sqlreview_check_result_status_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse(),
+            await self.do_rpcrequest_async('GetSQLReviewCheckResultStatus', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_sqlreview_check_result_status(
+        self,
+        request: dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusRequest,
+    ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sqlreview_check_result_status_with_options(request, runtime)
+
+    async def get_sqlreview_check_result_status_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusRequest,
+    ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sqlreview_check_result_status_with_options_async(request, runtime)
+
     def sync_database_meta_with_options(
         self,
         request: dms_enterprise_20181101_models.SyncDatabaseMetaRequest,
@@ -1496,6 +1538,56 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_approval_detail_with_options_async(request, runtime)
+
+    def list_sqlreview_origin_sqlwith_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.ListSQLReviewOriginSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.ListSQLReviewOriginSQLShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_action_detail):
+            request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.order_action_detail), 'OrderActionDetail', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse(),
+            self.do_rpcrequest('ListSQLReviewOriginSQL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_sqlreview_origin_sqlwith_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.ListSQLReviewOriginSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.ListSQLReviewOriginSQLShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_action_detail):
+            request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.order_action_detail), 'OrderActionDetail', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse(),
+            await self.do_rpcrequest_async('ListSQLReviewOriginSQL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_sqlreview_origin_sql(
+        self,
+        request: dms_enterprise_20181101_models.ListSQLReviewOriginSQLRequest,
+    ) -> dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_sqlreview_origin_sqlwith_options(request, runtime)
+
+    async def list_sqlreview_origin_sql_async(
+        self,
+        request: dms_enterprise_20181101_models.ListSQLReviewOriginSQLRequest,
+    ) -> dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_sqlreview_origin_sqlwith_options_async(request, runtime)
 
     def get_user_active_tenant_with_options(
         self,
@@ -2613,6 +2705,60 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_orders_with_options_async(request, runtime)
 
+    def create_sqlreview_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateSQLReviewOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateSQLReviewOrderResponse(),
+            self.do_rpcrequest('CreateSQLReviewOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_sqlreview_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateSQLReviewOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateSQLReviewOrderResponse(),
+            await self.do_rpcrequest_async('CreateSQLReviewOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_sqlreview_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_sqlreview_order_with_options(request, runtime)
+
+    async def create_sqlreview_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sqlreview_order_with_options_async(request, runtime)
+
     def get_order_base_info_with_options(
         self,
         request: dms_enterprise_20181101_models.GetOrderBaseInfoRequest,
@@ -2654,6 +2800,48 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetOrderBaseInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_order_base_info_with_options_async(request, runtime)
+
+    def get_sqlreview_optimize_detail_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse(),
+            self.do_rpcrequest('GetSQLReviewOptimizeDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_sqlreview_optimize_detail_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse(),
+            await self.do_rpcrequest_async('GetSQLReviewOptimizeDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_sqlreview_optimize_detail(
+        self,
+        request: dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sqlreview_optimize_detail_with_options(request, runtime)
+
+    async def get_sqlreview_optimize_detail_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sqlreview_optimize_detail_with_options_async(request, runtime)
 
     def list_user_tenants_with_options(
         self,
