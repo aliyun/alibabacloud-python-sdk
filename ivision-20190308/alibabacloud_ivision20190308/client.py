@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -50,7 +51,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.CreateFaceGroupResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.CreateFaceGroupResponse(),
             self.do_rpcrequest('CreateFaceGroup', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -64,7 +66,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.CreateFaceGroupResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.CreateFaceGroupResponse(),
             await self.do_rpcrequest_async('CreateFaceGroup', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -82,6 +85,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_face_group_with_options_async(request, runtime)
 
+    def create_file_predict_with_options(
+        self,
+        request: ivision_20190308_models.CreateFilePredictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ivision_20190308_models.CreateFilePredictResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ivision_20190308_models.CreateFilePredictResponse(),
+            self.do_rpcrequest('CreateFilePredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_file_predict_with_options_async(
+        self,
+        request: ivision_20190308_models.CreateFilePredictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ivision_20190308_models.CreateFilePredictResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ivision_20190308_models.CreateFilePredictResponse(),
+            await self.do_rpcrequest_async('CreateFilePredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_file_predict(
+        self,
+        request: ivision_20190308_models.CreateFilePredictRequest,
+    ) -> ivision_20190308_models.CreateFilePredictResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_file_predict_with_options(request, runtime)
+
+    async def create_file_predict_async(
+        self,
+        request: ivision_20190308_models.CreateFilePredictRequest,
+    ) -> ivision_20190308_models.CreateFilePredictResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_file_predict_with_options_async(request, runtime)
+
     def create_stream_predict_with_options(
         self,
         request: ivision_20190308_models.CreateStreamPredictRequest,
@@ -91,7 +136,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.CreateStreamPredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.CreateStreamPredictResponse(),
             self.do_rpcrequest('CreateStreamPredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -104,7 +150,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.CreateStreamPredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.CreateStreamPredictResponse(),
             await self.do_rpcrequest_async('CreateStreamPredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -132,7 +179,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.DeleteFaceGroupResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DeleteFaceGroupResponse(),
             self.do_rpcrequest('DeleteFaceGroup', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -146,7 +194,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.DeleteFaceGroupResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DeleteFaceGroupResponse(),
             await self.do_rpcrequest_async('DeleteFaceGroup', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -164,6 +213,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_face_group_with_options_async(request, runtime)
 
+    def delete_file_predict_with_options(
+        self,
+        request: ivision_20190308_models.DeleteFilePredictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ivision_20190308_models.DeleteFilePredictResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ivision_20190308_models.DeleteFilePredictResponse(),
+            self.do_rpcrequest('DeleteFilePredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_file_predict_with_options_async(
+        self,
+        request: ivision_20190308_models.DeleteFilePredictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ivision_20190308_models.DeleteFilePredictResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ivision_20190308_models.DeleteFilePredictResponse(),
+            await self.do_rpcrequest_async('DeleteFilePredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_file_predict(
+        self,
+        request: ivision_20190308_models.DeleteFilePredictRequest,
+    ) -> ivision_20190308_models.DeleteFilePredictResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_file_predict_with_options(request, runtime)
+
+    async def delete_file_predict_async(
+        self,
+        request: ivision_20190308_models.DeleteFilePredictRequest,
+    ) -> ivision_20190308_models.DeleteFilePredictResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_file_predict_with_options_async(request, runtime)
+
     def delete_stream_predict_with_options(
         self,
         request: ivision_20190308_models.DeleteStreamPredictRequest,
@@ -173,7 +264,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.DeleteStreamPredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DeleteStreamPredictResponse(),
             self.do_rpcrequest('DeleteStreamPredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -186,7 +278,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.DeleteStreamPredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DeleteStreamPredictResponse(),
             await self.do_rpcrequest_async('DeleteStreamPredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -214,7 +307,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.DescribeFaceGroupsResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DescribeFaceGroupsResponse(),
             self.do_rpcrequest('DescribeFaceGroups', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -228,7 +322,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.DescribeFaceGroupsResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DescribeFaceGroupsResponse(),
             await self.do_rpcrequest_async('DescribeFaceGroups', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -255,7 +350,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.DescribeStreamPredictResultResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DescribeStreamPredictResultResponse(),
             self.do_rpcrequest('DescribeStreamPredictResult', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -268,7 +364,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.DescribeStreamPredictResultResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DescribeStreamPredictResultResponse(),
             await self.do_rpcrequest_async('DescribeStreamPredictResult', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -295,7 +392,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.DescribeStreamPredictsResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DescribeStreamPredictsResponse(),
             self.do_rpcrequest('DescribeStreamPredicts', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -308,7 +406,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.DescribeStreamPredictsResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.DescribeStreamPredictsResponse(),
             await self.do_rpcrequest_async('DescribeStreamPredicts', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -335,7 +434,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.GetAlgorithmDetailResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.GetAlgorithmDetailResponse(),
             self.do_rpcrequest('GetAlgorithmDetail', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -348,7 +448,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.GetAlgorithmDetailResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.GetAlgorithmDetailResponse(),
             await self.do_rpcrequest_async('GetAlgorithmDetail', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -375,7 +476,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.GetAlgorithmHistogramsResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.GetAlgorithmHistogramsResponse(),
             self.do_rpcrequest('GetAlgorithmHistograms', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -388,7 +490,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.GetAlgorithmHistogramsResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.GetAlgorithmHistogramsResponse(),
             await self.do_rpcrequest_async('GetAlgorithmHistograms', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -416,7 +519,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.ImagePredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.ImagePredictResponse(),
             self.do_rpcrequest('ImagePredict', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -430,7 +534,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.ImagePredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.ImagePredictResponse(),
             await self.do_rpcrequest_async('ImagePredict', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -457,7 +562,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.ListMyAlgorithmResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.ListMyAlgorithmResponse(),
             self.do_rpcrequest('ListMyAlgorithm', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -470,7 +576,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.ListMyAlgorithmResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.ListMyAlgorithmResponse(),
             await self.do_rpcrequest_async('ListMyAlgorithm', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -497,7 +604,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.PredictPictureResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.PredictPictureResponse(),
             self.do_rpcrequest('PredictPicture', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -510,7 +618,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.PredictPictureResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.PredictPictureResponse(),
             await self.do_rpcrequest_async('PredictPicture', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -538,7 +647,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.RegisterFaceResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.RegisterFaceResponse(),
             self.do_rpcrequest('RegisterFace', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -552,7 +662,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.RegisterFaceResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.RegisterFaceResponse(),
             await self.do_rpcrequest_async('RegisterFace', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -580,7 +691,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.SearchFaceResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.SearchFaceResponse(),
             self.do_rpcrequest('SearchFace', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -594,7 +706,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.SearchFaceResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.SearchFaceResponse(),
             await self.do_rpcrequest_async('SearchFace', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -621,7 +734,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.StartStreamPredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.StartStreamPredictResponse(),
             self.do_rpcrequest('StartStreamPredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -634,7 +748,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.StartStreamPredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.StartStreamPredictResponse(),
             await self.do_rpcrequest_async('StartStreamPredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -661,7 +776,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.StopStreamPredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.StopStreamPredictResponse(),
             self.do_rpcrequest('StopStreamPredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -674,7 +790,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return ivision_20190308_models.StopStreamPredictResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.StopStreamPredictResponse(),
             await self.do_rpcrequest_async('StopStreamPredict', '2019-03-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -702,7 +819,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.UnregisterFaceResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.UnregisterFaceResponse(),
             self.do_rpcrequest('UnregisterFace', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -716,7 +834,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return ivision_20190308_models.UnregisterFaceResponse().from_map(
+        return TeaCore.from_map(
+            ivision_20190308_models.UnregisterFaceResponse(),
             await self.do_rpcrequest_async('UnregisterFace', '2019-03-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
