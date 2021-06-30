@@ -1580,6 +1580,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_data_consistency_with_options_async(request, runtime)
 
+    def query_prom_install_status_with_options(
+        self,
+        request: arms20210519_models.QueryPromInstallStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20210519_models.QueryPromInstallStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            arms20210519_models.QueryPromInstallStatusResponse(),
+            self.do_rpcrequest('QueryPromInstallStatus', '2021-05-19', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_prom_install_status_with_options_async(
+        self,
+        request: arms20210519_models.QueryPromInstallStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20210519_models.QueryPromInstallStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            arms20210519_models.QueryPromInstallStatusResponse(),
+            await self.do_rpcrequest_async('QueryPromInstallStatus', '2021-05-19', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_prom_install_status(
+        self,
+        request: arms20210519_models.QueryPromInstallStatusRequest,
+    ) -> arms20210519_models.QueryPromInstallStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_prom_install_status_with_options(request, runtime)
+
+    async def query_prom_install_status_async(
+        self,
+        request: arms20210519_models.QueryPromInstallStatusRequest,
+    ) -> arms20210519_models.QueryPromInstallStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_prom_install_status_with_options_async(request, runtime)
+
     def describe_trace_location_with_options(
         self,
         request: arms20210519_models.DescribeTraceLocationRequest,
@@ -2881,6 +2923,48 @@ class Client(OpenApiClient):
     ) -> arms20210519_models.UpdateAlertContactResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_alert_contact_with_options_async(request, runtime)
+
+    def uninstall_prom_cluster_with_options(
+        self,
+        request: arms20210519_models.UninstallPromClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20210519_models.UninstallPromClusterResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            arms20210519_models.UninstallPromClusterResponse(),
+            self.do_rpcrequest('UninstallPromCluster', '2021-05-19', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def uninstall_prom_cluster_with_options_async(
+        self,
+        request: arms20210519_models.UninstallPromClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20210519_models.UninstallPromClusterResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            arms20210519_models.UninstallPromClusterResponse(),
+            await self.do_rpcrequest_async('UninstallPromCluster', '2021-05-19', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def uninstall_prom_cluster(
+        self,
+        request: arms20210519_models.UninstallPromClusterRequest,
+    ) -> arms20210519_models.UninstallPromClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.uninstall_prom_cluster_with_options(request, runtime)
+
+    async def uninstall_prom_cluster_async(
+        self,
+        request: arms20210519_models.UninstallPromClusterRequest,
+    ) -> arms20210519_models.UninstallPromClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.uninstall_prom_cluster_with_options_async(request, runtime)
 
     def create_webhook_with_options(
         self,
