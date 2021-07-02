@@ -889,6 +889,329 @@ class RunCTRegistrationResponse(TeaModel):
         return self
 
 
+class AnalyzeChestVesselRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class AnalyzeChestVesselRequest(TeaModel):
+    def __init__(
+        self,
+        urllist: List[AnalyzeChestVesselRequestURLList] = None,
+        data_format: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        data_source_type: str = None,
+    ):
+        self.urllist = urllist
+        self.data_format = data_format
+        self.org_id = org_id
+        self.org_name = org_name
+        self.data_source_type = data_source_type
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = AnalyzeChestVesselRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        return self
+
+
+class AnalyzeChestVesselResponseBodyDataAortaInfo(TeaModel):
+    def __init__(
+        self,
+        max_area_index: int = None,
+        max_area: float = None,
+        max_diameter: float = None,
+        label_value: int = None,
+        coordinates: List[List[float]] = None,
+        area: List[float] = None,
+    ):
+        self.max_area_index = max_area_index
+        self.max_area = max_area
+        self.max_diameter = max_diameter
+        self.label_value = label_value
+        self.coordinates = coordinates
+        self.area = area
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_area_index is not None:
+            result['MaxAreaIndex'] = self.max_area_index
+        if self.max_area is not None:
+            result['MaxArea'] = self.max_area
+        if self.max_diameter is not None:
+            result['MaxDiameter'] = self.max_diameter
+        if self.label_value is not None:
+            result['LabelValue'] = self.label_value
+        if self.coordinates is not None:
+            result['Coordinates'] = self.coordinates
+        if self.area is not None:
+            result['Area'] = self.area
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxAreaIndex') is not None:
+            self.max_area_index = m.get('MaxAreaIndex')
+        if m.get('MaxArea') is not None:
+            self.max_area = m.get('MaxArea')
+        if m.get('MaxDiameter') is not None:
+            self.max_diameter = m.get('MaxDiameter')
+        if m.get('LabelValue') is not None:
+            self.label_value = m.get('LabelValue')
+        if m.get('Coordinates') is not None:
+            self.coordinates = m.get('Coordinates')
+        if m.get('Area') is not None:
+            self.area = m.get('Area')
+        return self
+
+
+class AnalyzeChestVesselResponseBodyDataPulmonaryInfo(TeaModel):
+    def __init__(
+        self,
+        max_area_index: int = None,
+        max_area: float = None,
+        max_diameter: float = None,
+        label_value: int = None,
+        coordinates: List[List[float]] = None,
+        area: List[float] = None,
+        nearest_aorta_area: float = None,
+    ):
+        self.max_area_index = max_area_index
+        self.max_area = max_area
+        self.max_diameter = max_diameter
+        self.label_value = label_value
+        self.coordinates = coordinates
+        self.area = area
+        self.nearest_aorta_area = nearest_aorta_area
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_area_index is not None:
+            result['MaxAreaIndex'] = self.max_area_index
+        if self.max_area is not None:
+            result['MaxArea'] = self.max_area
+        if self.max_diameter is not None:
+            result['MaxDiameter'] = self.max_diameter
+        if self.label_value is not None:
+            result['LabelValue'] = self.label_value
+        if self.coordinates is not None:
+            result['Coordinates'] = self.coordinates
+        if self.area is not None:
+            result['Area'] = self.area
+        if self.nearest_aorta_area is not None:
+            result['NearestAortaArea'] = self.nearest_aorta_area
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxAreaIndex') is not None:
+            self.max_area_index = m.get('MaxAreaIndex')
+        if m.get('MaxArea') is not None:
+            self.max_area = m.get('MaxArea')
+        if m.get('MaxDiameter') is not None:
+            self.max_diameter = m.get('MaxDiameter')
+        if m.get('LabelValue') is not None:
+            self.label_value = m.get('LabelValue')
+        if m.get('Coordinates') is not None:
+            self.coordinates = m.get('Coordinates')
+        if m.get('Area') is not None:
+            self.area = m.get('Area')
+        if m.get('NearestAortaArea') is not None:
+            self.nearest_aorta_area = m.get('NearestAortaArea')
+        return self
+
+
+class AnalyzeChestVesselResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aorta_info: AnalyzeChestVesselResponseBodyDataAortaInfo = None,
+        pulmonary_info: AnalyzeChestVesselResponseBodyDataPulmonaryInfo = None,
+        result_url: str = None,
+    ):
+        self.aorta_info = aorta_info
+        self.pulmonary_info = pulmonary_info
+        self.result_url = result_url
+
+    def validate(self):
+        if self.aorta_info:
+            self.aorta_info.validate()
+        if self.pulmonary_info:
+            self.pulmonary_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aorta_info is not None:
+            result['AortaInfo'] = self.aorta_info.to_map()
+        if self.pulmonary_info is not None:
+            result['PulmonaryInfo'] = self.pulmonary_info.to_map()
+        if self.result_url is not None:
+            result['ResultURL'] = self.result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AortaInfo') is not None:
+            temp_model = AnalyzeChestVesselResponseBodyDataAortaInfo()
+            self.aorta_info = temp_model.from_map(m['AortaInfo'])
+        if m.get('PulmonaryInfo') is not None:
+            temp_model = AnalyzeChestVesselResponseBodyDataPulmonaryInfo()
+            self.pulmonary_info = temp_model.from_map(m['PulmonaryInfo'])
+        if m.get('ResultURL') is not None:
+            self.result_url = m.get('ResultURL')
+        return self
+
+
+class AnalyzeChestVesselResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: AnalyzeChestVesselResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = AnalyzeChestVesselResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class AnalyzeChestVesselResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AnalyzeChestVesselResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AnalyzeChestVesselResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TranslateMedRequest(TeaModel):
     def __init__(
         self,
