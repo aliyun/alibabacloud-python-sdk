@@ -98,13 +98,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -164,13 +169,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -222,354 +232,6 @@ class Client(OpenApiClient):
         recognize_driving_license_resp = await self.recognize_driving_license_with_options_async(recognize_driving_license_req, runtime)
         return recognize_driving_license_resp
 
-    def recognize_chinapassport_with_options(
-        self,
-        request: ocr_20191230_models.RecognizeChinapassportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeChinapassportResponse(),
-            self.do_rpcrequest('RecognizeChinapassport', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def recognize_chinapassport_with_options_async(
-        self,
-        request: ocr_20191230_models.RecognizeChinapassportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeChinapassportResponse(),
-            await self.do_rpcrequest_async('RecognizeChinapassport', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def recognize_chinapassport(
-        self,
-        request: ocr_20191230_models.RecognizeChinapassportRequest,
-    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_chinapassport_with_options(request, runtime)
-
-    async def recognize_chinapassport_async(
-        self,
-        request: ocr_20191230_models.RecognizeChinapassportRequest,
-    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_chinapassport_with_options_async(request, runtime)
-
-    def recognize_chinapassport_advance(
-        self,
-        request: ocr_20191230_models.RecognizeChinapassportAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_chinapassport_req = ocr_20191230_models.RecognizeChinapassportRequest()
-        OpenApiUtilClient.convert(request, recognize_chinapassport_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            recognize_chinapassport_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_chinapassport_resp = self.recognize_chinapassport_with_options(recognize_chinapassport_req, runtime)
-        return recognize_chinapassport_resp
-
-    async def recognize_chinapassport_advance_async(
-        self,
-        request: ocr_20191230_models.RecognizeChinapassportAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_chinapassport_req = ocr_20191230_models.RecognizeChinapassportRequest()
-        OpenApiUtilClient.convert(request, recognize_chinapassport_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            recognize_chinapassport_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_chinapassport_resp = await self.recognize_chinapassport_with_options_async(recognize_chinapassport_req, runtime)
-        return recognize_chinapassport_resp
-
-    def trim_document_with_options(
-        self,
-        request: ocr_20191230_models.TrimDocumentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.TrimDocumentResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.TrimDocumentResponse(),
-            self.do_rpcrequest('TrimDocument', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def trim_document_with_options_async(
-        self,
-        request: ocr_20191230_models.TrimDocumentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.TrimDocumentResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.TrimDocumentResponse(),
-            await self.do_rpcrequest_async('TrimDocument', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def trim_document(
-        self,
-        request: ocr_20191230_models.TrimDocumentRequest,
-    ) -> ocr_20191230_models.TrimDocumentResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.trim_document_with_options(request, runtime)
-
-    async def trim_document_async(
-        self,
-        request: ocr_20191230_models.TrimDocumentRequest,
-    ) -> ocr_20191230_models.TrimDocumentResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.trim_document_with_options_async(request, runtime)
-
-    def trim_document_advance(
-        self,
-        request: ocr_20191230_models.TrimDocumentAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.TrimDocumentResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        trim_document_req = ocr_20191230_models.TrimDocumentRequest()
-        OpenApiUtilClient.convert(request, trim_document_req)
-        if not UtilClient.is_unset(request.file_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.file_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            trim_document_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        trim_document_resp = self.trim_document_with_options(trim_document_req, runtime)
-        return trim_document_resp
-
-    async def trim_document_advance_async(
-        self,
-        request: ocr_20191230_models.TrimDocumentAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.TrimDocumentResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        trim_document_req = ocr_20191230_models.TrimDocumentRequest()
-        OpenApiUtilClient.convert(request, trim_document_req)
-        if not UtilClient.is_unset(request.file_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.file_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            trim_document_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        trim_document_resp = await self.trim_document_with_options_async(trim_document_req, runtime)
-        return trim_document_resp
-
     def recognize_table_with_options(
         self,
         request: ocr_20191230_models.RecognizeTableRequest,
@@ -620,13 +282,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -686,13 +353,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -794,13 +466,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -860,13 +537,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -918,354 +600,6 @@ class Client(OpenApiClient):
         recognize_identity_card_resp = await self.recognize_identity_card_with_options_async(recognize_identity_card_req, runtime)
         return recognize_identity_card_resp
 
-    def recognize_business_license_with_options(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessLicenseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeBusinessLicenseResponse(),
-            self.do_rpcrequest('RecognizeBusinessLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def recognize_business_license_with_options_async(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessLicenseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeBusinessLicenseResponse(),
-            await self.do_rpcrequest_async('RecognizeBusinessLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def recognize_business_license(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessLicenseRequest,
-    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_business_license_with_options(request, runtime)
-
-    async def recognize_business_license_async(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessLicenseRequest,
-    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_business_license_with_options_async(request, runtime)
-
-    def recognize_business_license_advance(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessLicenseAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_business_license_req = ocr_20191230_models.RecognizeBusinessLicenseRequest()
-        OpenApiUtilClient.convert(request, recognize_business_license_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            recognize_business_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_business_license_resp = self.recognize_business_license_with_options(recognize_business_license_req, runtime)
-        return recognize_business_license_resp
-
-    async def recognize_business_license_advance_async(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessLicenseAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_business_license_req = ocr_20191230_models.RecognizeBusinessLicenseRequest()
-        OpenApiUtilClient.convert(request, recognize_business_license_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            recognize_business_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_business_license_resp = await self.recognize_business_license_with_options_async(recognize_business_license_req, runtime)
-        return recognize_business_license_resp
-
-    def recognize_bank_card_with_options(
-        self,
-        request: ocr_20191230_models.RecognizeBankCardRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBankCardResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeBankCardResponse(),
-            self.do_rpcrequest('RecognizeBankCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def recognize_bank_card_with_options_async(
-        self,
-        request: ocr_20191230_models.RecognizeBankCardRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBankCardResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeBankCardResponse(),
-            await self.do_rpcrequest_async('RecognizeBankCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def recognize_bank_card(
-        self,
-        request: ocr_20191230_models.RecognizeBankCardRequest,
-    ) -> ocr_20191230_models.RecognizeBankCardResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_bank_card_with_options(request, runtime)
-
-    async def recognize_bank_card_async(
-        self,
-        request: ocr_20191230_models.RecognizeBankCardRequest,
-    ) -> ocr_20191230_models.RecognizeBankCardResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_bank_card_with_options_async(request, runtime)
-
-    def recognize_bank_card_advance(
-        self,
-        request: ocr_20191230_models.RecognizeBankCardAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBankCardResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_bank_card_req = ocr_20191230_models.RecognizeBankCardRequest()
-        OpenApiUtilClient.convert(request, recognize_bank_card_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            recognize_bank_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_bank_card_resp = self.recognize_bank_card_with_options(recognize_bank_card_req, runtime)
-        return recognize_bank_card_resp
-
-    async def recognize_bank_card_advance_async(
-        self,
-        request: ocr_20191230_models.RecognizeBankCardAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBankCardResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_bank_card_req = ocr_20191230_models.RecognizeBankCardRequest()
-        OpenApiUtilClient.convert(request, recognize_bank_card_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            recognize_bank_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_bank_card_resp = await self.recognize_bank_card_with_options_async(recognize_bank_card_req, runtime)
-        return recognize_bank_card_resp
-
     def recognize_verificationcode_with_options(
         self,
         request: ocr_20191230_models.RecognizeVerificationcodeRequest,
@@ -1316,13 +650,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -1382,13 +721,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -1440,180 +784,6 @@ class Client(OpenApiClient):
         recognize_verificationcode_resp = await self.recognize_verificationcode_with_options_async(recognize_verificationcode_req, runtime)
         return recognize_verificationcode_resp
 
-    def recognize_account_page_with_options(
-        self,
-        request: ocr_20191230_models.RecognizeAccountPageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeAccountPageResponse(),
-            self.do_rpcrequest('RecognizeAccountPage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def recognize_account_page_with_options_async(
-        self,
-        request: ocr_20191230_models.RecognizeAccountPageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeAccountPageResponse(),
-            await self.do_rpcrequest_async('RecognizeAccountPage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def recognize_account_page(
-        self,
-        request: ocr_20191230_models.RecognizeAccountPageRequest,
-    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_account_page_with_options(request, runtime)
-
-    async def recognize_account_page_async(
-        self,
-        request: ocr_20191230_models.RecognizeAccountPageRequest,
-    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_account_page_with_options_async(request, runtime)
-
-    def recognize_account_page_advance(
-        self,
-        request: ocr_20191230_models.RecognizeAccountPageAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_account_page_req = ocr_20191230_models.RecognizeAccountPageRequest()
-        OpenApiUtilClient.convert(request, recognize_account_page_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            recognize_account_page_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_account_page_resp = self.recognize_account_page_with_options(recognize_account_page_req, runtime)
-        return recognize_account_page_resp
-
-    async def recognize_account_page_advance_async(
-        self,
-        request: ocr_20191230_models.RecognizeAccountPageAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_account_page_req = ocr_20191230_models.RecognizeAccountPageRequest()
-        OpenApiUtilClient.convert(request, recognize_account_page_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            recognize_account_page_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_account_page_resp = await self.recognize_account_page_with_options_async(recognize_account_page_req, runtime)
-        return recognize_account_page_resp
-
     def recognize_character_with_options(
         self,
         request: ocr_20191230_models.RecognizeCharacterRequest,
@@ -1664,13 +834,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -1730,13 +905,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -1880,13 +1060,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -1946,13 +1131,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -2004,354 +1194,6 @@ class Client(OpenApiClient):
         recognize_takeout_order_resp = await self.recognize_takeout_order_with_options_async(recognize_takeout_order_req, runtime)
         return recognize_takeout_order_resp
 
-    def recognize_business_card_with_options(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessCardRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeBusinessCardResponse(),
-            self.do_rpcrequest('RecognizeBusinessCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def recognize_business_card_with_options_async(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessCardRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeBusinessCardResponse(),
-            await self.do_rpcrequest_async('RecognizeBusinessCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def recognize_business_card(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessCardRequest,
-    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_business_card_with_options(request, runtime)
-
-    async def recognize_business_card_async(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessCardRequest,
-    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_business_card_with_options_async(request, runtime)
-
-    def recognize_business_card_advance(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessCardAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_business_card_req = ocr_20191230_models.RecognizeBusinessCardRequest()
-        OpenApiUtilClient.convert(request, recognize_business_card_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            recognize_business_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_business_card_resp = self.recognize_business_card_with_options(recognize_business_card_req, runtime)
-        return recognize_business_card_resp
-
-    async def recognize_business_card_advance_async(
-        self,
-        request: ocr_20191230_models.RecognizeBusinessCardAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_business_card_req = ocr_20191230_models.RecognizeBusinessCardRequest()
-        OpenApiUtilClient.convert(request, recognize_business_card_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            recognize_business_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_business_card_resp = await self.recognize_business_card_with_options_async(recognize_business_card_req, runtime)
-        return recognize_business_card_resp
-
-    def detect_card_screenshot_with_options(
-        self,
-        request: ocr_20191230_models.DetectCardScreenshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.DetectCardScreenshotResponse(),
-            self.do_rpcrequest('DetectCardScreenshot', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def detect_card_screenshot_with_options_async(
-        self,
-        request: ocr_20191230_models.DetectCardScreenshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.DetectCardScreenshotResponse(),
-            await self.do_rpcrequest_async('DetectCardScreenshot', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def detect_card_screenshot(
-        self,
-        request: ocr_20191230_models.DetectCardScreenshotRequest,
-    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_card_screenshot_with_options(request, runtime)
-
-    async def detect_card_screenshot_async(
-        self,
-        request: ocr_20191230_models.DetectCardScreenshotRequest,
-    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_card_screenshot_with_options_async(request, runtime)
-
-    def detect_card_screenshot_advance(
-        self,
-        request: ocr_20191230_models.DetectCardScreenshotAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_card_screenshot_req = ocr_20191230_models.DetectCardScreenshotRequest()
-        OpenApiUtilClient.convert(request, detect_card_screenshot_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            detect_card_screenshot_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        detect_card_screenshot_resp = self.detect_card_screenshot_with_options(detect_card_screenshot_req, runtime)
-        return detect_card_screenshot_resp
-
-    async def detect_card_screenshot_advance_async(
-        self,
-        request: ocr_20191230_models.DetectCardScreenshotAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_card_screenshot_req = ocr_20191230_models.DetectCardScreenshotRequest()
-        OpenApiUtilClient.convert(request, detect_card_screenshot_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            detect_card_screenshot_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        detect_card_screenshot_resp = await self.detect_card_screenshot_with_options_async(detect_card_screenshot_req, runtime)
-        return detect_card_screenshot_resp
-
     def recognize_driver_license_with_options(
         self,
         request: ocr_20191230_models.RecognizeDriverLicenseRequest,
@@ -2402,13 +1244,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -2468,13 +1315,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -2576,13 +1428,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -2642,13 +1499,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -2700,180 +1562,6 @@ class Client(OpenApiClient):
         recognize_license_plate_resp = await self.recognize_license_plate_with_options_async(recognize_license_plate_req, runtime)
         return recognize_license_plate_resp
 
-    def recognize_stamp_with_options(
-        self,
-        request: ocr_20191230_models.RecognizeStampRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeStampResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeStampResponse(),
-            self.do_rpcrequest('RecognizeStamp', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def recognize_stamp_with_options_async(
-        self,
-        request: ocr_20191230_models.RecognizeStampRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeStampResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeStampResponse(),
-            await self.do_rpcrequest_async('RecognizeStamp', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def recognize_stamp(
-        self,
-        request: ocr_20191230_models.RecognizeStampRequest,
-    ) -> ocr_20191230_models.RecognizeStampResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_stamp_with_options(request, runtime)
-
-    async def recognize_stamp_async(
-        self,
-        request: ocr_20191230_models.RecognizeStampRequest,
-    ) -> ocr_20191230_models.RecognizeStampResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_stamp_with_options_async(request, runtime)
-
-    def recognize_stamp_advance(
-        self,
-        request: ocr_20191230_models.RecognizeStampAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeStampResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_stamp_req = ocr_20191230_models.RecognizeStampRequest()
-        OpenApiUtilClient.convert(request, recognize_stamp_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            recognize_stamp_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_stamp_resp = self.recognize_stamp_with_options(recognize_stamp_req, runtime)
-        return recognize_stamp_resp
-
-    async def recognize_stamp_advance_async(
-        self,
-        request: ocr_20191230_models.RecognizeStampAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeStampResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_stamp_req = ocr_20191230_models.RecognizeStampRequest()
-        OpenApiUtilClient.convert(request, recognize_stamp_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            recognize_stamp_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_stamp_resp = await self.recognize_stamp_with_options_async(recognize_stamp_req, runtime)
-        return recognize_stamp_resp
-
     def recognize_taxi_invoice_with_options(
         self,
         request: ocr_20191230_models.RecognizeTaxiInvoiceRequest,
@@ -2924,13 +1612,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -2990,13 +1683,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -3098,13 +1796,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -3164,13 +1867,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -3272,13 +1980,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -3338,13 +2051,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -3396,180 +2114,6 @@ class Client(OpenApiClient):
         recognize_passport_mrzresp = await self.recognize_passport_mrzwith_options_async(recognize_passport_mrzreq, runtime)
         return recognize_passport_mrzresp
 
-    def recognize_train_ticket_with_options(
-        self,
-        request: ocr_20191230_models.RecognizeTrainTicketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeTrainTicketResponse(),
-            self.do_rpcrequest('RecognizeTrainTicket', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def recognize_train_ticket_with_options_async(
-        self,
-        request: ocr_20191230_models.RecognizeTrainTicketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ocr_20191230_models.RecognizeTrainTicketResponse(),
-            await self.do_rpcrequest_async('RecognizeTrainTicket', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def recognize_train_ticket(
-        self,
-        request: ocr_20191230_models.RecognizeTrainTicketRequest,
-    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_train_ticket_with_options(request, runtime)
-
-    async def recognize_train_ticket_async(
-        self,
-        request: ocr_20191230_models.RecognizeTrainTicketRequest,
-    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_train_ticket_with_options_async(request, runtime)
-
-    def recognize_train_ticket_advance(
-        self,
-        request: ocr_20191230_models.RecognizeTrainTicketAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_train_ticket_req = ocr_20191230_models.RecognizeTrainTicketRequest()
-        OpenApiUtilClient.convert(request, recognize_train_ticket_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            recognize_train_ticket_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_train_ticket_resp = self.recognize_train_ticket_with_options(recognize_train_ticket_req, runtime)
-        return recognize_train_ticket_resp
-
-    async def recognize_train_ticket_advance_async(
-        self,
-        request: ocr_20191230_models.RecognizeTrainTicketAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='ocr',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        recognize_train_ticket_req = ocr_20191230_models.RecognizeTrainTicketRequest()
-        OpenApiUtilClient.convert(request, recognize_train_ticket_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            recognize_train_ticket_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        recognize_train_ticket_resp = await self.recognize_train_ticket_with_options_async(recognize_train_ticket_req, runtime)
-        return recognize_train_ticket_resp
-
     def recognize_poi_name_with_options(
         self,
         request: ocr_20191230_models.RecognizePoiNameRequest,
@@ -3620,13 +2164,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -3686,13 +2235,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -3836,13 +2390,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = self._credential.get_access_key_id()
         access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -3902,13 +2461,18 @@ class Client(OpenApiClient):
         # Step 0: init client
         access_key_id = await self._credential.get_access_key_id_async()
         access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.is_unset(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
         auth_config = rpc_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
-            type='access_key',
+            security_token=security_token,
+            type=credential_type,
             endpoint=open_platform_endpoint,
             protocol=self._protocol,
             region_id=self._region_id
@@ -3959,3 +2523,2211 @@ class Client(OpenApiClient):
             recognize_vincode_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         recognize_vincode_resp = await self.recognize_vincode_with_options_async(recognize_vincode_req, runtime)
         return recognize_vincode_resp
+
+    def recognize_chinapassport_with_options(
+        self,
+        request: ocr_20191230_models.RecognizeChinapassportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeChinapassportResponse(),
+            self.do_rpcrequest('RecognizeChinapassport', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_chinapassport_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizeChinapassportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeChinapassportResponse(),
+            await self.do_rpcrequest_async('RecognizeChinapassport', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_chinapassport(
+        self,
+        request: ocr_20191230_models.RecognizeChinapassportRequest,
+    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_chinapassport_with_options(request, runtime)
+
+    async def recognize_chinapassport_async(
+        self,
+        request: ocr_20191230_models.RecognizeChinapassportRequest,
+    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_chinapassport_with_options_async(request, runtime)
+
+    def recognize_chinapassport_advance(
+        self,
+        request: ocr_20191230_models.RecognizeChinapassportAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_chinapassport_req = ocr_20191230_models.RecognizeChinapassportRequest()
+        OpenApiUtilClient.convert(request, recognize_chinapassport_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_chinapassport_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_chinapassport_resp = self.recognize_chinapassport_with_options(recognize_chinapassport_req, runtime)
+        return recognize_chinapassport_resp
+
+    async def recognize_chinapassport_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizeChinapassportAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeChinapassportResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_chinapassport_req = ocr_20191230_models.RecognizeChinapassportRequest()
+        OpenApiUtilClient.convert(request, recognize_chinapassport_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_chinapassport_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_chinapassport_resp = await self.recognize_chinapassport_with_options_async(recognize_chinapassport_req, runtime)
+        return recognize_chinapassport_resp
+
+    def trim_document_with_options(
+        self,
+        request: ocr_20191230_models.TrimDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.TrimDocumentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.TrimDocumentResponse(),
+            self.do_rpcrequest('TrimDocument', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def trim_document_with_options_async(
+        self,
+        request: ocr_20191230_models.TrimDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.TrimDocumentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.TrimDocumentResponse(),
+            await self.do_rpcrequest_async('TrimDocument', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def trim_document(
+        self,
+        request: ocr_20191230_models.TrimDocumentRequest,
+    ) -> ocr_20191230_models.TrimDocumentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.trim_document_with_options(request, runtime)
+
+    async def trim_document_async(
+        self,
+        request: ocr_20191230_models.TrimDocumentRequest,
+    ) -> ocr_20191230_models.TrimDocumentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.trim_document_with_options_async(request, runtime)
+
+    def trim_document_advance(
+        self,
+        request: ocr_20191230_models.TrimDocumentAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.TrimDocumentResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        trim_document_req = ocr_20191230_models.TrimDocumentRequest()
+        OpenApiUtilClient.convert(request, trim_document_req)
+        if not UtilClient.is_unset(request.file_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            trim_document_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        trim_document_resp = self.trim_document_with_options(trim_document_req, runtime)
+        return trim_document_resp
+
+    async def trim_document_advance_async(
+        self,
+        request: ocr_20191230_models.TrimDocumentAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.TrimDocumentResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        trim_document_req = ocr_20191230_models.TrimDocumentRequest()
+        OpenApiUtilClient.convert(request, trim_document_req)
+        if not UtilClient.is_unset(request.file_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            trim_document_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        trim_document_resp = await self.trim_document_with_options_async(trim_document_req, runtime)
+        return trim_document_resp
+
+    def recognize_pdf_with_options(
+        self,
+        request: ocr_20191230_models.RecognizePdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizePdfResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizePdfResponse(),
+            self.do_rpcrequest('RecognizePdf', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_pdf_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizePdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizePdfResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizePdfResponse(),
+            await self.do_rpcrequest_async('RecognizePdf', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_pdf(
+        self,
+        request: ocr_20191230_models.RecognizePdfRequest,
+    ) -> ocr_20191230_models.RecognizePdfResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_pdf_with_options(request, runtime)
+
+    async def recognize_pdf_async(
+        self,
+        request: ocr_20191230_models.RecognizePdfRequest,
+    ) -> ocr_20191230_models.RecognizePdfResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_pdf_with_options_async(request, runtime)
+
+    def recognize_pdf_advance(
+        self,
+        request: ocr_20191230_models.RecognizePdfAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizePdfResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_pdf_req = ocr_20191230_models.RecognizePdfRequest()
+        OpenApiUtilClient.convert(request, recognize_pdf_req)
+        if not UtilClient.is_unset(request.file_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_pdf_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_pdf_resp = self.recognize_pdf_with_options(recognize_pdf_req, runtime)
+        return recognize_pdf_resp
+
+    async def recognize_pdf_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizePdfAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizePdfResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_pdf_req = ocr_20191230_models.RecognizePdfRequest()
+        OpenApiUtilClient.convert(request, recognize_pdf_req)
+        if not UtilClient.is_unset(request.file_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_pdf_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_pdf_resp = await self.recognize_pdf_with_options_async(recognize_pdf_req, runtime)
+        return recognize_pdf_resp
+
+    def recognize_business_license_with_options(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessLicenseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBusinessLicenseResponse(),
+            self.do_rpcrequest('RecognizeBusinessLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_business_license_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessLicenseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBusinessLicenseResponse(),
+            await self.do_rpcrequest_async('RecognizeBusinessLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_business_license(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessLicenseRequest,
+    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_business_license_with_options(request, runtime)
+
+    async def recognize_business_license_async(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessLicenseRequest,
+    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_business_license_with_options_async(request, runtime)
+
+    def recognize_business_license_advance(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessLicenseAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_business_license_req = ocr_20191230_models.RecognizeBusinessLicenseRequest()
+        OpenApiUtilClient.convert(request, recognize_business_license_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_business_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_business_license_resp = self.recognize_business_license_with_options(recognize_business_license_req, runtime)
+        return recognize_business_license_resp
+
+    async def recognize_business_license_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessLicenseAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_business_license_req = ocr_20191230_models.RecognizeBusinessLicenseRequest()
+        OpenApiUtilClient.convert(request, recognize_business_license_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_business_license_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_business_license_resp = await self.recognize_business_license_with_options_async(recognize_business_license_req, runtime)
+        return recognize_business_license_resp
+
+    def recognize_bank_card_with_options(
+        self,
+        request: ocr_20191230_models.RecognizeBankCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBankCardResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBankCardResponse(),
+            self.do_rpcrequest('RecognizeBankCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_bank_card_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizeBankCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBankCardResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBankCardResponse(),
+            await self.do_rpcrequest_async('RecognizeBankCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_bank_card(
+        self,
+        request: ocr_20191230_models.RecognizeBankCardRequest,
+    ) -> ocr_20191230_models.RecognizeBankCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_bank_card_with_options(request, runtime)
+
+    async def recognize_bank_card_async(
+        self,
+        request: ocr_20191230_models.RecognizeBankCardRequest,
+    ) -> ocr_20191230_models.RecognizeBankCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_bank_card_with_options_async(request, runtime)
+
+    def recognize_bank_card_advance(
+        self,
+        request: ocr_20191230_models.RecognizeBankCardAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBankCardResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_bank_card_req = ocr_20191230_models.RecognizeBankCardRequest()
+        OpenApiUtilClient.convert(request, recognize_bank_card_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_bank_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_bank_card_resp = self.recognize_bank_card_with_options(recognize_bank_card_req, runtime)
+        return recognize_bank_card_resp
+
+    async def recognize_bank_card_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizeBankCardAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBankCardResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_bank_card_req = ocr_20191230_models.RecognizeBankCardRequest()
+        OpenApiUtilClient.convert(request, recognize_bank_card_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_bank_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_bank_card_resp = await self.recognize_bank_card_with_options_async(recognize_bank_card_req, runtime)
+        return recognize_bank_card_resp
+
+    def recognize_account_page_with_options(
+        self,
+        request: ocr_20191230_models.RecognizeAccountPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeAccountPageResponse(),
+            self.do_rpcrequest('RecognizeAccountPage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_account_page_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizeAccountPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeAccountPageResponse(),
+            await self.do_rpcrequest_async('RecognizeAccountPage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_account_page(
+        self,
+        request: ocr_20191230_models.RecognizeAccountPageRequest,
+    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_account_page_with_options(request, runtime)
+
+    async def recognize_account_page_async(
+        self,
+        request: ocr_20191230_models.RecognizeAccountPageRequest,
+    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_account_page_with_options_async(request, runtime)
+
+    def recognize_account_page_advance(
+        self,
+        request: ocr_20191230_models.RecognizeAccountPageAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_account_page_req = ocr_20191230_models.RecognizeAccountPageRequest()
+        OpenApiUtilClient.convert(request, recognize_account_page_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_account_page_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_account_page_resp = self.recognize_account_page_with_options(recognize_account_page_req, runtime)
+        return recognize_account_page_resp
+
+    async def recognize_account_page_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizeAccountPageAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeAccountPageResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_account_page_req = ocr_20191230_models.RecognizeAccountPageRequest()
+        OpenApiUtilClient.convert(request, recognize_account_page_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_account_page_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_account_page_resp = await self.recognize_account_page_with_options_async(recognize_account_page_req, runtime)
+        return recognize_account_page_resp
+
+    def recognize_business_card_with_options(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBusinessCardResponse(),
+            self.do_rpcrequest('RecognizeBusinessCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_business_card_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeBusinessCardResponse(),
+            await self.do_rpcrequest_async('RecognizeBusinessCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_business_card(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessCardRequest,
+    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_business_card_with_options(request, runtime)
+
+    async def recognize_business_card_async(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessCardRequest,
+    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_business_card_with_options_async(request, runtime)
+
+    def recognize_business_card_advance(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessCardAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_business_card_req = ocr_20191230_models.RecognizeBusinessCardRequest()
+        OpenApiUtilClient.convert(request, recognize_business_card_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_business_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_business_card_resp = self.recognize_business_card_with_options(recognize_business_card_req, runtime)
+        return recognize_business_card_resp
+
+    async def recognize_business_card_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizeBusinessCardAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_business_card_req = ocr_20191230_models.RecognizeBusinessCardRequest()
+        OpenApiUtilClient.convert(request, recognize_business_card_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_business_card_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_business_card_resp = await self.recognize_business_card_with_options_async(recognize_business_card_req, runtime)
+        return recognize_business_card_resp
+
+    def detect_card_screenshot_with_options(
+        self,
+        request: ocr_20191230_models.DetectCardScreenshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.DetectCardScreenshotResponse(),
+            self.do_rpcrequest('DetectCardScreenshot', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def detect_card_screenshot_with_options_async(
+        self,
+        request: ocr_20191230_models.DetectCardScreenshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.DetectCardScreenshotResponse(),
+            await self.do_rpcrequest_async('DetectCardScreenshot', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def detect_card_screenshot(
+        self,
+        request: ocr_20191230_models.DetectCardScreenshotRequest,
+    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_card_screenshot_with_options(request, runtime)
+
+    async def detect_card_screenshot_async(
+        self,
+        request: ocr_20191230_models.DetectCardScreenshotRequest,
+    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_card_screenshot_with_options_async(request, runtime)
+
+    def detect_card_screenshot_advance(
+        self,
+        request: ocr_20191230_models.DetectCardScreenshotAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        detect_card_screenshot_req = ocr_20191230_models.DetectCardScreenshotRequest()
+        OpenApiUtilClient.convert(request, detect_card_screenshot_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            detect_card_screenshot_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        detect_card_screenshot_resp = self.detect_card_screenshot_with_options(detect_card_screenshot_req, runtime)
+        return detect_card_screenshot_resp
+
+    async def detect_card_screenshot_advance_async(
+        self,
+        request: ocr_20191230_models.DetectCardScreenshotAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.DetectCardScreenshotResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        detect_card_screenshot_req = ocr_20191230_models.DetectCardScreenshotRequest()
+        OpenApiUtilClient.convert(request, detect_card_screenshot_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            detect_card_screenshot_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        detect_card_screenshot_resp = await self.detect_card_screenshot_with_options_async(detect_card_screenshot_req, runtime)
+        return detect_card_screenshot_resp
+
+    def recognize_stamp_with_options(
+        self,
+        request: ocr_20191230_models.RecognizeStampRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeStampResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeStampResponse(),
+            self.do_rpcrequest('RecognizeStamp', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_stamp_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizeStampRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeStampResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeStampResponse(),
+            await self.do_rpcrequest_async('RecognizeStamp', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_stamp(
+        self,
+        request: ocr_20191230_models.RecognizeStampRequest,
+    ) -> ocr_20191230_models.RecognizeStampResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_stamp_with_options(request, runtime)
+
+    async def recognize_stamp_async(
+        self,
+        request: ocr_20191230_models.RecognizeStampRequest,
+    ) -> ocr_20191230_models.RecognizeStampResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_stamp_with_options_async(request, runtime)
+
+    def recognize_stamp_advance(
+        self,
+        request: ocr_20191230_models.RecognizeStampAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeStampResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_stamp_req = ocr_20191230_models.RecognizeStampRequest()
+        OpenApiUtilClient.convert(request, recognize_stamp_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_stamp_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_stamp_resp = self.recognize_stamp_with_options(recognize_stamp_req, runtime)
+        return recognize_stamp_resp
+
+    async def recognize_stamp_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizeStampAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeStampResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_stamp_req = ocr_20191230_models.RecognizeStampRequest()
+        OpenApiUtilClient.convert(request, recognize_stamp_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_stamp_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_stamp_resp = await self.recognize_stamp_with_options_async(recognize_stamp_req, runtime)
+        return recognize_stamp_resp
+
+    def recognize_quota_invoice_with_options(
+        self,
+        request: ocr_20191230_models.RecognizeQuotaInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeQuotaInvoiceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeQuotaInvoiceResponse(),
+            self.do_rpcrequest('RecognizeQuotaInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_quota_invoice_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizeQuotaInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeQuotaInvoiceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeQuotaInvoiceResponse(),
+            await self.do_rpcrequest_async('RecognizeQuotaInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_quota_invoice(
+        self,
+        request: ocr_20191230_models.RecognizeQuotaInvoiceRequest,
+    ) -> ocr_20191230_models.RecognizeQuotaInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_quota_invoice_with_options(request, runtime)
+
+    async def recognize_quota_invoice_async(
+        self,
+        request: ocr_20191230_models.RecognizeQuotaInvoiceRequest,
+    ) -> ocr_20191230_models.RecognizeQuotaInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_quota_invoice_with_options_async(request, runtime)
+
+    def recognize_quota_invoice_advance(
+        self,
+        request: ocr_20191230_models.RecognizeQuotaInvoiceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeQuotaInvoiceResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_quota_invoice_req = ocr_20191230_models.RecognizeQuotaInvoiceRequest()
+        OpenApiUtilClient.convert(request, recognize_quota_invoice_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_quota_invoice_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_quota_invoice_resp = self.recognize_quota_invoice_with_options(recognize_quota_invoice_req, runtime)
+        return recognize_quota_invoice_resp
+
+    async def recognize_quota_invoice_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizeQuotaInvoiceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeQuotaInvoiceResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_quota_invoice_req = ocr_20191230_models.RecognizeQuotaInvoiceRequest()
+        OpenApiUtilClient.convert(request, recognize_quota_invoice_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_quota_invoice_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_quota_invoice_resp = await self.recognize_quota_invoice_with_options_async(recognize_quota_invoice_req, runtime)
+        return recognize_quota_invoice_resp
+
+    def recognize_train_ticket_with_options(
+        self,
+        request: ocr_20191230_models.RecognizeTrainTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTrainTicketResponse(),
+            self.do_rpcrequest('RecognizeTrainTicket', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_train_ticket_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizeTrainTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTrainTicketResponse(),
+            await self.do_rpcrequest_async('RecognizeTrainTicket', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_train_ticket(
+        self,
+        request: ocr_20191230_models.RecognizeTrainTicketRequest,
+    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_train_ticket_with_options(request, runtime)
+
+    async def recognize_train_ticket_async(
+        self,
+        request: ocr_20191230_models.RecognizeTrainTicketRequest,
+    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_train_ticket_with_options_async(request, runtime)
+
+    def recognize_train_ticket_advance(
+        self,
+        request: ocr_20191230_models.RecognizeTrainTicketAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_train_ticket_req = ocr_20191230_models.RecognizeTrainTicketRequest()
+        OpenApiUtilClient.convert(request, recognize_train_ticket_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_train_ticket_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_train_ticket_resp = self.recognize_train_ticket_with_options(recognize_train_ticket_req, runtime)
+        return recognize_train_ticket_resp
+
+    async def recognize_train_ticket_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizeTrainTicketAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_train_ticket_req = ocr_20191230_models.RecognizeTrainTicketRequest()
+        OpenApiUtilClient.convert(request, recognize_train_ticket_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_train_ticket_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_train_ticket_resp = await self.recognize_train_ticket_with_options_async(recognize_train_ticket_req, runtime)
+        return recognize_train_ticket_resp
+
+    def recognize_ticket_invoice_with_options(
+        self,
+        request: ocr_20191230_models.RecognizeTicketInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeTicketInvoiceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTicketInvoiceResponse(),
+            self.do_rpcrequest('RecognizeTicketInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recognize_ticket_invoice_with_options_async(
+        self,
+        request: ocr_20191230_models.RecognizeTicketInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeTicketInvoiceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ocr_20191230_models.RecognizeTicketInvoiceResponse(),
+            await self.do_rpcrequest_async('RecognizeTicketInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recognize_ticket_invoice(
+        self,
+        request: ocr_20191230_models.RecognizeTicketInvoiceRequest,
+    ) -> ocr_20191230_models.RecognizeTicketInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_ticket_invoice_with_options(request, runtime)
+
+    async def recognize_ticket_invoice_async(
+        self,
+        request: ocr_20191230_models.RecognizeTicketInvoiceRequest,
+    ) -> ocr_20191230_models.RecognizeTicketInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_ticket_invoice_with_options_async(request, runtime)
+
+    def recognize_ticket_invoice_advance(
+        self,
+        request: ocr_20191230_models.RecognizeTicketInvoiceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeTicketInvoiceResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_ticket_invoice_req = ocr_20191230_models.RecognizeTicketInvoiceRequest()
+        OpenApiUtilClient.convert(request, recognize_ticket_invoice_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            recognize_ticket_invoice_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_ticket_invoice_resp = self.recognize_ticket_invoice_with_options(recognize_ticket_invoice_req, runtime)
+        return recognize_ticket_invoice_resp
+
+    async def recognize_ticket_invoice_advance_async(
+        self,
+        request: ocr_20191230_models.RecognizeTicketInvoiceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_20191230_models.RecognizeTicketInvoiceResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='ocr',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_ticket_invoice_req = ocr_20191230_models.RecognizeTicketInvoiceRequest()
+        OpenApiUtilClient.convert(request, recognize_ticket_invoice_req)
+        if not UtilClient.is_unset(request.image_urlobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_urlobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            recognize_ticket_invoice_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        recognize_ticket_invoice_resp = await self.recognize_ticket_invoice_with_options_async(recognize_ticket_invoice_req, runtime)
+        return recognize_ticket_invoice_resp

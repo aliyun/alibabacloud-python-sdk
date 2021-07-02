@@ -1,3 +1,6 @@
+2021-07-02 Version: 2.0.3
+- Release RecognizeQuotaInvoice RecognizeTicketInvoice RecognizePdf.
+
 2021-05-10 Version: 2.0.2
 - Update RecognizeDriverLicense RecognizeLicensePlate.
 

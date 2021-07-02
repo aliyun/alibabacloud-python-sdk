@@ -342,462 +342,6 @@ class RecognizeDrivingLicenseResponse(TeaModel):
         return self
 
 
-class RecognizeChinapassportRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeChinapassportAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class RecognizeChinapassportResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        type: str = None,
-        sex: str = None,
-        authority: str = None,
-        issue_place_raw: str = None,
-        success: bool = None,
-        line_one: str = None,
-        expiry_date: str = None,
-        birth_place: str = None,
-        passport_no: str = None,
-        birth_place_raw: str = None,
-        issue_date: str = None,
-        source_country: str = None,
-        birth_date: str = None,
-        name_chinese_raw: str = None,
-        issue_place: str = None,
-        name_chinese: str = None,
-        line_zero: str = None,
-        country: str = None,
-        birth_day: str = None,
-        expiry_day: str = None,
-        name: str = None,
-        person_id: str = None,
-    ):
-        self.type = type
-        self.sex = sex
-        self.authority = authority
-        self.issue_place_raw = issue_place_raw
-        self.success = success
-        self.line_one = line_one
-        self.expiry_date = expiry_date
-        self.birth_place = birth_place
-        self.passport_no = passport_no
-        self.birth_place_raw = birth_place_raw
-        self.issue_date = issue_date
-        self.source_country = source_country
-        self.birth_date = birth_date
-        self.name_chinese_raw = name_chinese_raw
-        self.issue_place = issue_place
-        self.name_chinese = name_chinese
-        self.line_zero = line_zero
-        self.country = country
-        self.birth_day = birth_day
-        self.expiry_day = expiry_day
-        self.name = name
-        self.person_id = person_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.sex is not None:
-            result['Sex'] = self.sex
-        if self.authority is not None:
-            result['Authority'] = self.authority
-        if self.issue_place_raw is not None:
-            result['IssuePlaceRaw'] = self.issue_place_raw
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.line_one is not None:
-            result['LineOne'] = self.line_one
-        if self.expiry_date is not None:
-            result['ExpiryDate'] = self.expiry_date
-        if self.birth_place is not None:
-            result['BirthPlace'] = self.birth_place
-        if self.passport_no is not None:
-            result['PassportNo'] = self.passport_no
-        if self.birth_place_raw is not None:
-            result['BirthPlaceRaw'] = self.birth_place_raw
-        if self.issue_date is not None:
-            result['IssueDate'] = self.issue_date
-        if self.source_country is not None:
-            result['SourceCountry'] = self.source_country
-        if self.birth_date is not None:
-            result['BirthDate'] = self.birth_date
-        if self.name_chinese_raw is not None:
-            result['NameChineseRaw'] = self.name_chinese_raw
-        if self.issue_place is not None:
-            result['IssuePlace'] = self.issue_place
-        if self.name_chinese is not None:
-            result['NameChinese'] = self.name_chinese
-        if self.line_zero is not None:
-            result['LineZero'] = self.line_zero
-        if self.country is not None:
-            result['Country'] = self.country
-        if self.birth_day is not None:
-            result['BirthDay'] = self.birth_day
-        if self.expiry_day is not None:
-            result['ExpiryDay'] = self.expiry_day
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.person_id is not None:
-            result['PersonId'] = self.person_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('Sex') is not None:
-            self.sex = m.get('Sex')
-        if m.get('Authority') is not None:
-            self.authority = m.get('Authority')
-        if m.get('IssuePlaceRaw') is not None:
-            self.issue_place_raw = m.get('IssuePlaceRaw')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('LineOne') is not None:
-            self.line_one = m.get('LineOne')
-        if m.get('ExpiryDate') is not None:
-            self.expiry_date = m.get('ExpiryDate')
-        if m.get('BirthPlace') is not None:
-            self.birth_place = m.get('BirthPlace')
-        if m.get('PassportNo') is not None:
-            self.passport_no = m.get('PassportNo')
-        if m.get('BirthPlaceRaw') is not None:
-            self.birth_place_raw = m.get('BirthPlaceRaw')
-        if m.get('IssueDate') is not None:
-            self.issue_date = m.get('IssueDate')
-        if m.get('SourceCountry') is not None:
-            self.source_country = m.get('SourceCountry')
-        if m.get('BirthDate') is not None:
-            self.birth_date = m.get('BirthDate')
-        if m.get('NameChineseRaw') is not None:
-            self.name_chinese_raw = m.get('NameChineseRaw')
-        if m.get('IssuePlace') is not None:
-            self.issue_place = m.get('IssuePlace')
-        if m.get('NameChinese') is not None:
-            self.name_chinese = m.get('NameChinese')
-        if m.get('LineZero') is not None:
-            self.line_zero = m.get('LineZero')
-        if m.get('Country') is not None:
-            self.country = m.get('Country')
-        if m.get('BirthDay') is not None:
-            self.birth_day = m.get('BirthDay')
-        if m.get('ExpiryDay') is not None:
-            self.expiry_day = m.get('ExpiryDay')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('PersonId') is not None:
-            self.person_id = m.get('PersonId')
-        return self
-
-
-class RecognizeChinapassportResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: RecognizeChinapassportResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = RecognizeChinapassportResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class RecognizeChinapassportResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: RecognizeChinapassportResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = RecognizeChinapassportResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class TrimDocumentRequest(TeaModel):
-    def __init__(
-        self,
-        file_url: str = None,
-        file_type: str = None,
-        output_type: str = None,
-    ):
-        self.file_url = file_url
-        self.file_type = file_type
-        self.output_type = output_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.file_url is not None:
-            result['FileURL'] = self.file_url
-        if self.file_type is not None:
-            result['FileType'] = self.file_type
-        if self.output_type is not None:
-            result['OutputType'] = self.output_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FileURL') is not None:
-            self.file_url = m.get('FileURL')
-        if m.get('FileType') is not None:
-            self.file_type = m.get('FileType')
-        if m.get('OutputType') is not None:
-            self.output_type = m.get('OutputType')
-        return self
-
-
-class TrimDocumentAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        file_urlobject: BinaryIO = None,
-        file_type: str = None,
-        output_type: str = None,
-    ):
-        self.file_urlobject = file_urlobject
-        self.file_type = file_type
-        self.output_type = output_type
-
-    def validate(self):
-        self.validate_required(self.file_urlobject, 'file_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.file_urlobject is not None:
-            result['FileURLObject'] = self.file_urlobject
-        if self.file_type is not None:
-            result['FileType'] = self.file_type
-        if self.output_type is not None:
-            result['OutputType'] = self.output_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FileURLObject') is not None:
-            self.file_urlobject = m.get('FileURLObject')
-        if m.get('FileType') is not None:
-            self.file_type = m.get('FileType')
-        if m.get('OutputType') is not None:
-            self.output_type = m.get('OutputType')
-        return self
-
-
-class TrimDocumentResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        content: str = None,
-    ):
-        self.content = content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        return self
-
-
-class TrimDocumentResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: TrimDocumentResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = TrimDocumentResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class TrimDocumentResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: TrimDocumentResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = TrimDocumentResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RecognizeTableRequest(TeaModel):
     def __init__(
         self,
@@ -1656,593 +1200,6 @@ class RecognizeIdentityCardResponse(TeaModel):
         return self
 
 
-class RecognizeBusinessLicenseRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeBusinessLicenseAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class RecognizeBusinessLicenseResponseBodyDataStamp(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeBusinessLicenseResponseBodyDataTitle(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeBusinessLicenseResponseBodyDataEmblem(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeBusinessLicenseResponseBodyDataQRCode(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeBusinessLicenseResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        type: str = None,
-        stamp: RecognizeBusinessLicenseResponseBodyDataStamp = None,
-        establish_date: str = None,
-        valid_period: str = None,
-        business: str = None,
-        angle: float = None,
-        register_number: str = None,
-        address: str = None,
-        capital: str = None,
-        title: RecognizeBusinessLicenseResponseBodyDataTitle = None,
-        emblem: RecognizeBusinessLicenseResponseBodyDataEmblem = None,
-        name: str = None,
-        qrcode: RecognizeBusinessLicenseResponseBodyDataQRCode = None,
-        legal_person: str = None,
-    ):
-        self.type = type
-        self.stamp = stamp
-        self.establish_date = establish_date
-        self.valid_period = valid_period
-        self.business = business
-        self.angle = angle
-        self.register_number = register_number
-        self.address = address
-        self.capital = capital
-        self.title = title
-        self.emblem = emblem
-        self.name = name
-        self.qrcode = qrcode
-        self.legal_person = legal_person
-
-    def validate(self):
-        if self.stamp:
-            self.stamp.validate()
-        if self.title:
-            self.title.validate()
-        if self.emblem:
-            self.emblem.validate()
-        if self.qrcode:
-            self.qrcode.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.stamp is not None:
-            result['Stamp'] = self.stamp.to_map()
-        if self.establish_date is not None:
-            result['EstablishDate'] = self.establish_date
-        if self.valid_period is not None:
-            result['ValidPeriod'] = self.valid_period
-        if self.business is not None:
-            result['Business'] = self.business
-        if self.angle is not None:
-            result['Angle'] = self.angle
-        if self.register_number is not None:
-            result['RegisterNumber'] = self.register_number
-        if self.address is not None:
-            result['Address'] = self.address
-        if self.capital is not None:
-            result['Capital'] = self.capital
-        if self.title is not None:
-            result['Title'] = self.title.to_map()
-        if self.emblem is not None:
-            result['Emblem'] = self.emblem.to_map()
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.qrcode is not None:
-            result['QRCode'] = self.qrcode.to_map()
-        if self.legal_person is not None:
-            result['LegalPerson'] = self.legal_person
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('Stamp') is not None:
-            temp_model = RecognizeBusinessLicenseResponseBodyDataStamp()
-            self.stamp = temp_model.from_map(m['Stamp'])
-        if m.get('EstablishDate') is not None:
-            self.establish_date = m.get('EstablishDate')
-        if m.get('ValidPeriod') is not None:
-            self.valid_period = m.get('ValidPeriod')
-        if m.get('Business') is not None:
-            self.business = m.get('Business')
-        if m.get('Angle') is not None:
-            self.angle = m.get('Angle')
-        if m.get('RegisterNumber') is not None:
-            self.register_number = m.get('RegisterNumber')
-        if m.get('Address') is not None:
-            self.address = m.get('Address')
-        if m.get('Capital') is not None:
-            self.capital = m.get('Capital')
-        if m.get('Title') is not None:
-            temp_model = RecognizeBusinessLicenseResponseBodyDataTitle()
-            self.title = temp_model.from_map(m['Title'])
-        if m.get('Emblem') is not None:
-            temp_model = RecognizeBusinessLicenseResponseBodyDataEmblem()
-            self.emblem = temp_model.from_map(m['Emblem'])
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('QRCode') is not None:
-            temp_model = RecognizeBusinessLicenseResponseBodyDataQRCode()
-            self.qrcode = temp_model.from_map(m['QRCode'])
-        if m.get('LegalPerson') is not None:
-            self.legal_person = m.get('LegalPerson')
-        return self
-
-
-class RecognizeBusinessLicenseResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: RecognizeBusinessLicenseResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = RecognizeBusinessLicenseResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class RecognizeBusinessLicenseResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: RecognizeBusinessLicenseResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = RecognizeBusinessLicenseResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RecognizeBankCardRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeBankCardAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class RecognizeBankCardResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        card_number: str = None,
-        valid_date: str = None,
-        bank_name: str = None,
-    ):
-        self.card_number = card_number
-        self.valid_date = valid_date
-        self.bank_name = bank_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.card_number is not None:
-            result['CardNumber'] = self.card_number
-        if self.valid_date is not None:
-            result['ValidDate'] = self.valid_date
-        if self.bank_name is not None:
-            result['BankName'] = self.bank_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CardNumber') is not None:
-            self.card_number = m.get('CardNumber')
-        if m.get('ValidDate') is not None:
-            self.valid_date = m.get('ValidDate')
-        if m.get('BankName') is not None:
-            self.bank_name = m.get('BankName')
-        return self
-
-
-class RecognizeBankCardResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: RecognizeBankCardResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = RecognizeBankCardResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class RecognizeBankCardResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: RecognizeBankCardResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = RecognizeBankCardResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RecognizeVerificationcodeRequest(TeaModel):
     def __init__(
         self,
@@ -2392,500 +1349,6 @@ class RecognizeVerificationcodeResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RecognizeVerificationcodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RecognizeAccountPageRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeAccountPageAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class RecognizeAccountPageResponseBodyDataTitleArea(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeAccountPageResponseBodyDataRegisterStampAreas(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeAccountPageResponseBodyDataOtherStampAreas(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeAccountPageResponseBodyDataUndertakeStampAreas(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeAccountPageResponseBodyDataInvalidStampAreas(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeAccountPageResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        gender: str = None,
-        title_area: RecognizeAccountPageResponseBodyDataTitleArea = None,
-        angle: float = None,
-        register_stamp_areas: List[RecognizeAccountPageResponseBodyDataRegisterStampAreas] = None,
-        nationality: str = None,
-        birth_place: str = None,
-        other_stamp_areas: List[RecognizeAccountPageResponseBodyDataOtherStampAreas] = None,
-        undertake_stamp_areas: List[RecognizeAccountPageResponseBodyDataUndertakeStampAreas] = None,
-        birth_date: str = None,
-        relation: str = None,
-        native_place: str = None,
-        name: str = None,
-        idnumber: str = None,
-        invalid_stamp_areas: List[RecognizeAccountPageResponseBodyDataInvalidStampAreas] = None,
-    ):
-        self.gender = gender
-        self.title_area = title_area
-        self.angle = angle
-        self.register_stamp_areas = register_stamp_areas
-        self.nationality = nationality
-        self.birth_place = birth_place
-        self.other_stamp_areas = other_stamp_areas
-        self.undertake_stamp_areas = undertake_stamp_areas
-        self.birth_date = birth_date
-        self.relation = relation
-        self.native_place = native_place
-        self.name = name
-        self.idnumber = idnumber
-        self.invalid_stamp_areas = invalid_stamp_areas
-
-    def validate(self):
-        if self.title_area:
-            self.title_area.validate()
-        if self.register_stamp_areas:
-            for k in self.register_stamp_areas:
-                if k:
-                    k.validate()
-        if self.other_stamp_areas:
-            for k in self.other_stamp_areas:
-                if k:
-                    k.validate()
-        if self.undertake_stamp_areas:
-            for k in self.undertake_stamp_areas:
-                if k:
-                    k.validate()
-        if self.invalid_stamp_areas:
-            for k in self.invalid_stamp_areas:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.gender is not None:
-            result['Gender'] = self.gender
-        if self.title_area is not None:
-            result['TitleArea'] = self.title_area.to_map()
-        if self.angle is not None:
-            result['Angle'] = self.angle
-        result['RegisterStampAreas'] = []
-        if self.register_stamp_areas is not None:
-            for k in self.register_stamp_areas:
-                result['RegisterStampAreas'].append(k.to_map() if k else None)
-        if self.nationality is not None:
-            result['Nationality'] = self.nationality
-        if self.birth_place is not None:
-            result['BirthPlace'] = self.birth_place
-        result['OtherStampAreas'] = []
-        if self.other_stamp_areas is not None:
-            for k in self.other_stamp_areas:
-                result['OtherStampAreas'].append(k.to_map() if k else None)
-        result['UndertakeStampAreas'] = []
-        if self.undertake_stamp_areas is not None:
-            for k in self.undertake_stamp_areas:
-                result['UndertakeStampAreas'].append(k.to_map() if k else None)
-        if self.birth_date is not None:
-            result['BirthDate'] = self.birth_date
-        if self.relation is not None:
-            result['Relation'] = self.relation
-        if self.native_place is not None:
-            result['NativePlace'] = self.native_place
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.idnumber is not None:
-            result['IDNumber'] = self.idnumber
-        result['InvalidStampAreas'] = []
-        if self.invalid_stamp_areas is not None:
-            for k in self.invalid_stamp_areas:
-                result['InvalidStampAreas'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Gender') is not None:
-            self.gender = m.get('Gender')
-        if m.get('TitleArea') is not None:
-            temp_model = RecognizeAccountPageResponseBodyDataTitleArea()
-            self.title_area = temp_model.from_map(m['TitleArea'])
-        if m.get('Angle') is not None:
-            self.angle = m.get('Angle')
-        self.register_stamp_areas = []
-        if m.get('RegisterStampAreas') is not None:
-            for k in m.get('RegisterStampAreas'):
-                temp_model = RecognizeAccountPageResponseBodyDataRegisterStampAreas()
-                self.register_stamp_areas.append(temp_model.from_map(k))
-        if m.get('Nationality') is not None:
-            self.nationality = m.get('Nationality')
-        if m.get('BirthPlace') is not None:
-            self.birth_place = m.get('BirthPlace')
-        self.other_stamp_areas = []
-        if m.get('OtherStampAreas') is not None:
-            for k in m.get('OtherStampAreas'):
-                temp_model = RecognizeAccountPageResponseBodyDataOtherStampAreas()
-                self.other_stamp_areas.append(temp_model.from_map(k))
-        self.undertake_stamp_areas = []
-        if m.get('UndertakeStampAreas') is not None:
-            for k in m.get('UndertakeStampAreas'):
-                temp_model = RecognizeAccountPageResponseBodyDataUndertakeStampAreas()
-                self.undertake_stamp_areas.append(temp_model.from_map(k))
-        if m.get('BirthDate') is not None:
-            self.birth_date = m.get('BirthDate')
-        if m.get('Relation') is not None:
-            self.relation = m.get('Relation')
-        if m.get('NativePlace') is not None:
-            self.native_place = m.get('NativePlace')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('IDNumber') is not None:
-            self.idnumber = m.get('IDNumber')
-        self.invalid_stamp_areas = []
-        if m.get('InvalidStampAreas') is not None:
-            for k in m.get('InvalidStampAreas'):
-                temp_model = RecognizeAccountPageResponseBodyDataInvalidStampAreas()
-                self.invalid_stamp_areas.append(temp_model.from_map(k))
-        return self
-
-
-class RecognizeAccountPageResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: RecognizeAccountPageResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = RecognizeAccountPageResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class RecognizeAccountPageResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: RecognizeAccountPageResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = RecognizeAccountPageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3523,436 +1986,6 @@ class RecognizeTakeoutOrderResponse(TeaModel):
         return self
 
 
-class RecognizeBusinessCardRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeBusinessCardAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class RecognizeBusinessCardResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        companies: List[str] = None,
-        titles: List[str] = None,
-        emails: List[str] = None,
-        departments: List[str] = None,
-        office_phone_numbers: List[str] = None,
-        name: str = None,
-        cell_phone_numbers: List[str] = None,
-        addresses: List[str] = None,
-    ):
-        self.companies = companies
-        self.titles = titles
-        self.emails = emails
-        self.departments = departments
-        self.office_phone_numbers = office_phone_numbers
-        self.name = name
-        self.cell_phone_numbers = cell_phone_numbers
-        self.addresses = addresses
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.companies is not None:
-            result['Companies'] = self.companies
-        if self.titles is not None:
-            result['Titles'] = self.titles
-        if self.emails is not None:
-            result['Emails'] = self.emails
-        if self.departments is not None:
-            result['Departments'] = self.departments
-        if self.office_phone_numbers is not None:
-            result['OfficePhoneNumbers'] = self.office_phone_numbers
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.cell_phone_numbers is not None:
-            result['CellPhoneNumbers'] = self.cell_phone_numbers
-        if self.addresses is not None:
-            result['Addresses'] = self.addresses
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Companies') is not None:
-            self.companies = m.get('Companies')
-        if m.get('Titles') is not None:
-            self.titles = m.get('Titles')
-        if m.get('Emails') is not None:
-            self.emails = m.get('Emails')
-        if m.get('Departments') is not None:
-            self.departments = m.get('Departments')
-        if m.get('OfficePhoneNumbers') is not None:
-            self.office_phone_numbers = m.get('OfficePhoneNumbers')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('CellPhoneNumbers') is not None:
-            self.cell_phone_numbers = m.get('CellPhoneNumbers')
-        if m.get('Addresses') is not None:
-            self.addresses = m.get('Addresses')
-        return self
-
-
-class RecognizeBusinessCardResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: RecognizeBusinessCardResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = RecognizeBusinessCardResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class RecognizeBusinessCardResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: RecognizeBusinessCardResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = RecognizeBusinessCardResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DetectCardScreenshotRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class DetectCardScreenshotAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class DetectCardScreenshotResponseBodyDataSpoofResultResultMap(TeaModel):
-    def __init__(
-        self,
-        screen_threshold: float = None,
-        screen_score: float = None,
-    ):
-        self.screen_threshold = screen_threshold
-        self.screen_score = screen_score
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.screen_threshold is not None:
-            result['ScreenThreshold'] = self.screen_threshold
-        if self.screen_score is not None:
-            result['ScreenScore'] = self.screen_score
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ScreenThreshold') is not None:
-            self.screen_threshold = m.get('ScreenThreshold')
-        if m.get('ScreenScore') is not None:
-            self.screen_score = m.get('ScreenScore')
-        return self
-
-
-class DetectCardScreenshotResponseBodyDataSpoofResult(TeaModel):
-    def __init__(
-        self,
-        is_spoof: bool = None,
-        result_map: DetectCardScreenshotResponseBodyDataSpoofResultResultMap = None,
-    ):
-        self.is_spoof = is_spoof
-        self.result_map = result_map
-
-    def validate(self):
-        if self.result_map:
-            self.result_map.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.is_spoof is not None:
-            result['IsSpoof'] = self.is_spoof
-        if self.result_map is not None:
-            result['ResultMap'] = self.result_map.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('IsSpoof') is not None:
-            self.is_spoof = m.get('IsSpoof')
-        if m.get('ResultMap') is not None:
-            temp_model = DetectCardScreenshotResponseBodyDataSpoofResultResultMap()
-            self.result_map = temp_model.from_map(m['ResultMap'])
-        return self
-
-
-class DetectCardScreenshotResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        is_blur: bool = None,
-        is_card: bool = None,
-        spoof_result: DetectCardScreenshotResponseBodyDataSpoofResult = None,
-    ):
-        self.is_blur = is_blur
-        self.is_card = is_card
-        self.spoof_result = spoof_result
-
-    def validate(self):
-        if self.spoof_result:
-            self.spoof_result.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.is_blur is not None:
-            result['IsBlur'] = self.is_blur
-        if self.is_card is not None:
-            result['IsCard'] = self.is_card
-        if self.spoof_result is not None:
-            result['SpoofResult'] = self.spoof_result.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('IsBlur') is not None:
-            self.is_blur = m.get('IsBlur')
-        if m.get('IsCard') is not None:
-            self.is_card = m.get('IsCard')
-        if m.get('SpoofResult') is not None:
-            temp_model = DetectCardScreenshotResponseBodyDataSpoofResult()
-            self.spoof_result = temp_model.from_map(m['SpoofResult'])
-        return self
-
-
-class DetectCardScreenshotResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: DetectCardScreenshotResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = DetectCardScreenshotResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class DetectCardScreenshotResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DetectCardScreenshotResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DetectCardScreenshotResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RecognizeDriverLicenseRequest(TeaModel):
     def __init__(
         self,
@@ -4552,331 +2585,6 @@ class RecognizeLicensePlateResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RecognizeLicensePlateResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RecognizeStampRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeStampAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class RecognizeStampResponseBodyDataResultsText(TeaModel):
-    def __init__(
-        self,
-        confidence: float = None,
-        content: str = None,
-    ):
-        self.confidence = confidence
-        self.content = content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.confidence is not None:
-            result['Confidence'] = self.confidence
-        if self.content is not None:
-            result['Content'] = self.content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Confidence') is not None:
-            self.confidence = m.get('Confidence')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        return self
-
-
-class RecognizeStampResponseBodyDataResultsRoi(TeaModel):
-    def __init__(
-        self,
-        top: int = None,
-        width: int = None,
-        height: int = None,
-        left: int = None,
-    ):
-        self.top = top
-        self.width = width
-        self.height = height
-        self.left = left
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.top is not None:
-            result['Top'] = self.top
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.left is not None:
-            result['Left'] = self.left
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Top') is not None:
-            self.top = m.get('Top')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Left') is not None:
-            self.left = m.get('Left')
-        return self
-
-
-class RecognizeStampResponseBodyDataResultsGeneralText(TeaModel):
-    def __init__(
-        self,
-        confidence: float = None,
-        content: str = None,
-    ):
-        self.confidence = confidence
-        self.content = content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.confidence is not None:
-            result['Confidence'] = self.confidence
-        if self.content is not None:
-            result['Content'] = self.content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Confidence') is not None:
-            self.confidence = m.get('Confidence')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        return self
-
-
-class RecognizeStampResponseBodyDataResults(TeaModel):
-    def __init__(
-        self,
-        text: RecognizeStampResponseBodyDataResultsText = None,
-        roi: RecognizeStampResponseBodyDataResultsRoi = None,
-        general_text: List[RecognizeStampResponseBodyDataResultsGeneralText] = None,
-    ):
-        self.text = text
-        self.roi = roi
-        self.general_text = general_text
-
-    def validate(self):
-        if self.text:
-            self.text.validate()
-        if self.roi:
-            self.roi.validate()
-        if self.general_text:
-            for k in self.general_text:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.text is not None:
-            result['Text'] = self.text.to_map()
-        if self.roi is not None:
-            result['Roi'] = self.roi.to_map()
-        result['GeneralText'] = []
-        if self.general_text is not None:
-            for k in self.general_text:
-                result['GeneralText'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Text') is not None:
-            temp_model = RecognizeStampResponseBodyDataResultsText()
-            self.text = temp_model.from_map(m['Text'])
-        if m.get('Roi') is not None:
-            temp_model = RecognizeStampResponseBodyDataResultsRoi()
-            self.roi = temp_model.from_map(m['Roi'])
-        self.general_text = []
-        if m.get('GeneralText') is not None:
-            for k in m.get('GeneralText'):
-                temp_model = RecognizeStampResponseBodyDataResultsGeneralText()
-                self.general_text.append(temp_model.from_map(k))
-        return self
-
-
-class RecognizeStampResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        results: List[RecognizeStampResponseBodyDataResults] = None,
-    ):
-        self.results = results
-
-    def validate(self):
-        if self.results:
-            for k in self.results:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Results'] = []
-        if self.results is not None:
-            for k in self.results:
-                result['Results'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.results = []
-        if m.get('Results') is not None:
-            for k in m.get('Results'):
-                temp_model = RecognizeStampResponseBodyDataResults()
-                self.results.append(temp_model.from_map(k))
-        return self
-
-
-class RecognizeStampResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: RecognizeStampResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = RecognizeStampResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class RecognizeStampResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: RecognizeStampResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = RecognizeStampResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5940,201 +3648,6 @@ class RecognizePassportMRZResponse(TeaModel):
         return self
 
 
-class RecognizeTrainTicketRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeTrainTicketAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class RecognizeTrainTicketResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        price: float = None,
-        destination: str = None,
-        departure_station: str = None,
-        date: str = None,
-        number: str = None,
-        seat: str = None,
-        name: str = None,
-        level: str = None,
-    ):
-        self.price = price
-        self.destination = destination
-        self.departure_station = departure_station
-        self.date = date
-        self.number = number
-        self.seat = seat
-        self.name = name
-        self.level = level
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.price is not None:
-            result['Price'] = self.price
-        if self.destination is not None:
-            result['Destination'] = self.destination
-        if self.departure_station is not None:
-            result['DepartureStation'] = self.departure_station
-        if self.date is not None:
-            result['Date'] = self.date
-        if self.number is not None:
-            result['Number'] = self.number
-        if self.seat is not None:
-            result['Seat'] = self.seat
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.level is not None:
-            result['Level'] = self.level
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Price') is not None:
-            self.price = m.get('Price')
-        if m.get('Destination') is not None:
-            self.destination = m.get('Destination')
-        if m.get('DepartureStation') is not None:
-            self.departure_station = m.get('DepartureStation')
-        if m.get('Date') is not None:
-            self.date = m.get('Date')
-        if m.get('Number') is not None:
-            self.number = m.get('Number')
-        if m.get('Seat') is not None:
-            self.seat = m.get('Seat')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
-        return self
-
-
-class RecognizeTrainTicketResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: RecognizeTrainTicketResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = RecognizeTrainTicketResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class RecognizeTrainTicketResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: RecognizeTrainTicketResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = RecognizeTrainTicketResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RecognizePoiNameRequest(TeaModel):
     def __init__(
         self,
@@ -6834,6 +4347,3592 @@ class RecognizeVINCodeResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RecognizeVINCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeChinapassportRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeChinapassportAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeChinapassportResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        sex: str = None,
+        authority: str = None,
+        issue_place_raw: str = None,
+        success: bool = None,
+        line_one: str = None,
+        expiry_date: str = None,
+        birth_place: str = None,
+        passport_no: str = None,
+        birth_place_raw: str = None,
+        issue_date: str = None,
+        source_country: str = None,
+        birth_date: str = None,
+        name_chinese_raw: str = None,
+        issue_place: str = None,
+        name_chinese: str = None,
+        line_zero: str = None,
+        country: str = None,
+        birth_day: str = None,
+        expiry_day: str = None,
+        name: str = None,
+        person_id: str = None,
+    ):
+        self.type = type
+        self.sex = sex
+        self.authority = authority
+        self.issue_place_raw = issue_place_raw
+        self.success = success
+        self.line_one = line_one
+        self.expiry_date = expiry_date
+        self.birth_place = birth_place
+        self.passport_no = passport_no
+        self.birth_place_raw = birth_place_raw
+        self.issue_date = issue_date
+        self.source_country = source_country
+        self.birth_date = birth_date
+        self.name_chinese_raw = name_chinese_raw
+        self.issue_place = issue_place
+        self.name_chinese = name_chinese
+        self.line_zero = line_zero
+        self.country = country
+        self.birth_day = birth_day
+        self.expiry_day = expiry_day
+        self.name = name
+        self.person_id = person_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.sex is not None:
+            result['Sex'] = self.sex
+        if self.authority is not None:
+            result['Authority'] = self.authority
+        if self.issue_place_raw is not None:
+            result['IssuePlaceRaw'] = self.issue_place_raw
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.line_one is not None:
+            result['LineOne'] = self.line_one
+        if self.expiry_date is not None:
+            result['ExpiryDate'] = self.expiry_date
+        if self.birth_place is not None:
+            result['BirthPlace'] = self.birth_place
+        if self.passport_no is not None:
+            result['PassportNo'] = self.passport_no
+        if self.birth_place_raw is not None:
+            result['BirthPlaceRaw'] = self.birth_place_raw
+        if self.issue_date is not None:
+            result['IssueDate'] = self.issue_date
+        if self.source_country is not None:
+            result['SourceCountry'] = self.source_country
+        if self.birth_date is not None:
+            result['BirthDate'] = self.birth_date
+        if self.name_chinese_raw is not None:
+            result['NameChineseRaw'] = self.name_chinese_raw
+        if self.issue_place is not None:
+            result['IssuePlace'] = self.issue_place
+        if self.name_chinese is not None:
+            result['NameChinese'] = self.name_chinese
+        if self.line_zero is not None:
+            result['LineZero'] = self.line_zero
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.birth_day is not None:
+            result['BirthDay'] = self.birth_day
+        if self.expiry_day is not None:
+            result['ExpiryDay'] = self.expiry_day
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.person_id is not None:
+            result['PersonId'] = self.person_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Sex') is not None:
+            self.sex = m.get('Sex')
+        if m.get('Authority') is not None:
+            self.authority = m.get('Authority')
+        if m.get('IssuePlaceRaw') is not None:
+            self.issue_place_raw = m.get('IssuePlaceRaw')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('LineOne') is not None:
+            self.line_one = m.get('LineOne')
+        if m.get('ExpiryDate') is not None:
+            self.expiry_date = m.get('ExpiryDate')
+        if m.get('BirthPlace') is not None:
+            self.birth_place = m.get('BirthPlace')
+        if m.get('PassportNo') is not None:
+            self.passport_no = m.get('PassportNo')
+        if m.get('BirthPlaceRaw') is not None:
+            self.birth_place_raw = m.get('BirthPlaceRaw')
+        if m.get('IssueDate') is not None:
+            self.issue_date = m.get('IssueDate')
+        if m.get('SourceCountry') is not None:
+            self.source_country = m.get('SourceCountry')
+        if m.get('BirthDate') is not None:
+            self.birth_date = m.get('BirthDate')
+        if m.get('NameChineseRaw') is not None:
+            self.name_chinese_raw = m.get('NameChineseRaw')
+        if m.get('IssuePlace') is not None:
+            self.issue_place = m.get('IssuePlace')
+        if m.get('NameChinese') is not None:
+            self.name_chinese = m.get('NameChinese')
+        if m.get('LineZero') is not None:
+            self.line_zero = m.get('LineZero')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('BirthDay') is not None:
+            self.birth_day = m.get('BirthDay')
+        if m.get('ExpiryDay') is not None:
+            self.expiry_day = m.get('ExpiryDay')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonId') is not None:
+            self.person_id = m.get('PersonId')
+        return self
+
+
+class RecognizeChinapassportResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeChinapassportResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeChinapassportResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeChinapassportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeChinapassportResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeChinapassportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TrimDocumentRequest(TeaModel):
+    def __init__(
+        self,
+        file_url: str = None,
+        file_type: str = None,
+        output_type: str = None,
+    ):
+        self.file_url = file_url
+        self.file_type = file_type
+        self.output_type = output_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url is not None:
+            result['FileURL'] = self.file_url
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.output_type is not None:
+            result['OutputType'] = self.output_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileURL') is not None:
+            self.file_url = m.get('FileURL')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('OutputType') is not None:
+            self.output_type = m.get('OutputType')
+        return self
+
+
+class TrimDocumentAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        file_urlobject: BinaryIO = None,
+        file_type: str = None,
+        output_type: str = None,
+    ):
+        self.file_urlobject = file_urlobject
+        self.file_type = file_type
+        self.output_type = output_type
+
+    def validate(self):
+        self.validate_required(self.file_urlobject, 'file_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_urlobject is not None:
+            result['FileURLObject'] = self.file_urlobject
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.output_type is not None:
+            result['OutputType'] = self.output_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileURLObject') is not None:
+            self.file_urlobject = m.get('FileURLObject')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('OutputType') is not None:
+            self.output_type = m.get('OutputType')
+        return self
+
+
+class TrimDocumentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class TrimDocumentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: TrimDocumentResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = TrimDocumentResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class TrimDocumentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: TrimDocumentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = TrimDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizePdfRequest(TeaModel):
+    def __init__(
+        self,
+        file_url: str = None,
+    ):
+        # A short description of struct
+        self.file_url = file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url is not None:
+            result['FileURL'] = self.file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileURL') is not None:
+            self.file_url = m.get('FileURL')
+        return self
+
+
+class RecognizePdfAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        file_urlobject: BinaryIO = None,
+    ):
+        self.file_urlobject = file_urlobject
+
+    def validate(self):
+        self.validate_required(self.file_urlobject, 'file_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_urlobject is not None:
+            result['FileURLObject'] = self.file_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileURLObject') is not None:
+            self.file_urlobject = m.get('FileURLObject')
+        return self
+
+
+class RecognizePdfResponseBodyDataWordsInfoPositions(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizePdfResponseBodyDataWordsInfo(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        word: str = None,
+        height: int = None,
+        width: int = None,
+        x: int = None,
+        y: int = None,
+        positions: List[RecognizePdfResponseBodyDataWordsInfoPositions] = None,
+    ):
+        self.angle = angle
+        self.word = word
+        self.height = height
+        self.width = width
+        self.x = x
+        self.y = y
+        self.positions = positions
+
+    def validate(self):
+        if self.positions:
+            for k in self.positions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.word is not None:
+            result['Word'] = self.word
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        result['Positions'] = []
+        if self.positions is not None:
+            for k in self.positions:
+                result['Positions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        self.positions = []
+        if m.get('Positions') is not None:
+            for k in m.get('Positions'):
+                temp_model = RecognizePdfResponseBodyDataWordsInfoPositions()
+                self.positions.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizePdfResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        width: int = None,
+        org_height: int = None,
+        org_width: int = None,
+        page_index: int = None,
+        angle: int = None,
+        words_info: List[RecognizePdfResponseBodyDataWordsInfo] = None,
+    ):
+        self.height = height
+        self.width = width
+        self.org_height = org_height
+        self.org_width = org_width
+        self.page_index = page_index
+        self.angle = angle
+        self.words_info = words_info
+
+    def validate(self):
+        if self.words_info:
+            for k in self.words_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.org_height is not None:
+            result['OrgHeight'] = self.org_height
+        if self.org_width is not None:
+            result['OrgWidth'] = self.org_width
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        result['WordsInfo'] = []
+        if self.words_info is not None:
+            for k in self.words_info:
+                result['WordsInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('OrgHeight') is not None:
+            self.org_height = m.get('OrgHeight')
+        if m.get('OrgWidth') is not None:
+            self.org_width = m.get('OrgWidth')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        self.words_info = []
+        if m.get('WordsInfo') is not None:
+            for k in m.get('WordsInfo'):
+                temp_model = RecognizePdfResponseBodyDataWordsInfo()
+                self.words_info.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizePdfResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizePdfResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizePdfResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizePdfResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizePdfResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizePdfResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeBusinessLicenseRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeBusinessLicenseAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeBusinessLicenseResponseBodyDataStamp(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeBusinessLicenseResponseBodyDataTitle(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeBusinessLicenseResponseBodyDataEmblem(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeBusinessLicenseResponseBodyDataQRCode(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeBusinessLicenseResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        stamp: RecognizeBusinessLicenseResponseBodyDataStamp = None,
+        establish_date: str = None,
+        valid_period: str = None,
+        business: str = None,
+        angle: float = None,
+        register_number: str = None,
+        address: str = None,
+        capital: str = None,
+        title: RecognizeBusinessLicenseResponseBodyDataTitle = None,
+        emblem: RecognizeBusinessLicenseResponseBodyDataEmblem = None,
+        name: str = None,
+        qrcode: RecognizeBusinessLicenseResponseBodyDataQRCode = None,
+        legal_person: str = None,
+    ):
+        self.type = type
+        self.stamp = stamp
+        self.establish_date = establish_date
+        self.valid_period = valid_period
+        self.business = business
+        self.angle = angle
+        self.register_number = register_number
+        self.address = address
+        self.capital = capital
+        self.title = title
+        self.emblem = emblem
+        self.name = name
+        self.qrcode = qrcode
+        self.legal_person = legal_person
+
+    def validate(self):
+        if self.stamp:
+            self.stamp.validate()
+        if self.title:
+            self.title.validate()
+        if self.emblem:
+            self.emblem.validate()
+        if self.qrcode:
+            self.qrcode.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.stamp is not None:
+            result['Stamp'] = self.stamp.to_map()
+        if self.establish_date is not None:
+            result['EstablishDate'] = self.establish_date
+        if self.valid_period is not None:
+            result['ValidPeriod'] = self.valid_period
+        if self.business is not None:
+            result['Business'] = self.business
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.register_number is not None:
+            result['RegisterNumber'] = self.register_number
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.capital is not None:
+            result['Capital'] = self.capital
+        if self.title is not None:
+            result['Title'] = self.title.to_map()
+        if self.emblem is not None:
+            result['Emblem'] = self.emblem.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.qrcode is not None:
+            result['QRCode'] = self.qrcode.to_map()
+        if self.legal_person is not None:
+            result['LegalPerson'] = self.legal_person
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Stamp') is not None:
+            temp_model = RecognizeBusinessLicenseResponseBodyDataStamp()
+            self.stamp = temp_model.from_map(m['Stamp'])
+        if m.get('EstablishDate') is not None:
+            self.establish_date = m.get('EstablishDate')
+        if m.get('ValidPeriod') is not None:
+            self.valid_period = m.get('ValidPeriod')
+        if m.get('Business') is not None:
+            self.business = m.get('Business')
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('RegisterNumber') is not None:
+            self.register_number = m.get('RegisterNumber')
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Capital') is not None:
+            self.capital = m.get('Capital')
+        if m.get('Title') is not None:
+            temp_model = RecognizeBusinessLicenseResponseBodyDataTitle()
+            self.title = temp_model.from_map(m['Title'])
+        if m.get('Emblem') is not None:
+            temp_model = RecognizeBusinessLicenseResponseBodyDataEmblem()
+            self.emblem = temp_model.from_map(m['Emblem'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QRCode') is not None:
+            temp_model = RecognizeBusinessLicenseResponseBodyDataQRCode()
+            self.qrcode = temp_model.from_map(m['QRCode'])
+        if m.get('LegalPerson') is not None:
+            self.legal_person = m.get('LegalPerson')
+        return self
+
+
+class RecognizeBusinessLicenseResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeBusinessLicenseResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeBusinessLicenseResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeBusinessLicenseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeBusinessLicenseResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeBusinessLicenseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeBankCardRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeBankCardAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeBankCardResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        card_number: str = None,
+        valid_date: str = None,
+        bank_name: str = None,
+    ):
+        self.card_number = card_number
+        self.valid_date = valid_date
+        self.bank_name = bank_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_number is not None:
+            result['CardNumber'] = self.card_number
+        if self.valid_date is not None:
+            result['ValidDate'] = self.valid_date
+        if self.bank_name is not None:
+            result['BankName'] = self.bank_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CardNumber') is not None:
+            self.card_number = m.get('CardNumber')
+        if m.get('ValidDate') is not None:
+            self.valid_date = m.get('ValidDate')
+        if m.get('BankName') is not None:
+            self.bank_name = m.get('BankName')
+        return self
+
+
+class RecognizeBankCardResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeBankCardResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeBankCardResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeBankCardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeBankCardResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeBankCardResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeAccountPageRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeAccountPageAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeAccountPageResponseBodyDataTitleArea(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeAccountPageResponseBodyDataRegisterStampAreas(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeAccountPageResponseBodyDataOtherStampAreas(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeAccountPageResponseBodyDataUndertakeStampAreas(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeAccountPageResponseBodyDataInvalidStampAreas(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeAccountPageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        gender: str = None,
+        title_area: RecognizeAccountPageResponseBodyDataTitleArea = None,
+        angle: float = None,
+        register_stamp_areas: List[RecognizeAccountPageResponseBodyDataRegisterStampAreas] = None,
+        nationality: str = None,
+        birth_place: str = None,
+        other_stamp_areas: List[RecognizeAccountPageResponseBodyDataOtherStampAreas] = None,
+        undertake_stamp_areas: List[RecognizeAccountPageResponseBodyDataUndertakeStampAreas] = None,
+        birth_date: str = None,
+        relation: str = None,
+        native_place: str = None,
+        name: str = None,
+        idnumber: str = None,
+        invalid_stamp_areas: List[RecognizeAccountPageResponseBodyDataInvalidStampAreas] = None,
+    ):
+        self.gender = gender
+        self.title_area = title_area
+        self.angle = angle
+        self.register_stamp_areas = register_stamp_areas
+        self.nationality = nationality
+        self.birth_place = birth_place
+        self.other_stamp_areas = other_stamp_areas
+        self.undertake_stamp_areas = undertake_stamp_areas
+        self.birth_date = birth_date
+        self.relation = relation
+        self.native_place = native_place
+        self.name = name
+        self.idnumber = idnumber
+        self.invalid_stamp_areas = invalid_stamp_areas
+
+    def validate(self):
+        if self.title_area:
+            self.title_area.validate()
+        if self.register_stamp_areas:
+            for k in self.register_stamp_areas:
+                if k:
+                    k.validate()
+        if self.other_stamp_areas:
+            for k in self.other_stamp_areas:
+                if k:
+                    k.validate()
+        if self.undertake_stamp_areas:
+            for k in self.undertake_stamp_areas:
+                if k:
+                    k.validate()
+        if self.invalid_stamp_areas:
+            for k in self.invalid_stamp_areas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gender is not None:
+            result['Gender'] = self.gender
+        if self.title_area is not None:
+            result['TitleArea'] = self.title_area.to_map()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        result['RegisterStampAreas'] = []
+        if self.register_stamp_areas is not None:
+            for k in self.register_stamp_areas:
+                result['RegisterStampAreas'].append(k.to_map() if k else None)
+        if self.nationality is not None:
+            result['Nationality'] = self.nationality
+        if self.birth_place is not None:
+            result['BirthPlace'] = self.birth_place
+        result['OtherStampAreas'] = []
+        if self.other_stamp_areas is not None:
+            for k in self.other_stamp_areas:
+                result['OtherStampAreas'].append(k.to_map() if k else None)
+        result['UndertakeStampAreas'] = []
+        if self.undertake_stamp_areas is not None:
+            for k in self.undertake_stamp_areas:
+                result['UndertakeStampAreas'].append(k.to_map() if k else None)
+        if self.birth_date is not None:
+            result['BirthDate'] = self.birth_date
+        if self.relation is not None:
+            result['Relation'] = self.relation
+        if self.native_place is not None:
+            result['NativePlace'] = self.native_place
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.idnumber is not None:
+            result['IDNumber'] = self.idnumber
+        result['InvalidStampAreas'] = []
+        if self.invalid_stamp_areas is not None:
+            for k in self.invalid_stamp_areas:
+                result['InvalidStampAreas'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Gender') is not None:
+            self.gender = m.get('Gender')
+        if m.get('TitleArea') is not None:
+            temp_model = RecognizeAccountPageResponseBodyDataTitleArea()
+            self.title_area = temp_model.from_map(m['TitleArea'])
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        self.register_stamp_areas = []
+        if m.get('RegisterStampAreas') is not None:
+            for k in m.get('RegisterStampAreas'):
+                temp_model = RecognizeAccountPageResponseBodyDataRegisterStampAreas()
+                self.register_stamp_areas.append(temp_model.from_map(k))
+        if m.get('Nationality') is not None:
+            self.nationality = m.get('Nationality')
+        if m.get('BirthPlace') is not None:
+            self.birth_place = m.get('BirthPlace')
+        self.other_stamp_areas = []
+        if m.get('OtherStampAreas') is not None:
+            for k in m.get('OtherStampAreas'):
+                temp_model = RecognizeAccountPageResponseBodyDataOtherStampAreas()
+                self.other_stamp_areas.append(temp_model.from_map(k))
+        self.undertake_stamp_areas = []
+        if m.get('UndertakeStampAreas') is not None:
+            for k in m.get('UndertakeStampAreas'):
+                temp_model = RecognizeAccountPageResponseBodyDataUndertakeStampAreas()
+                self.undertake_stamp_areas.append(temp_model.from_map(k))
+        if m.get('BirthDate') is not None:
+            self.birth_date = m.get('BirthDate')
+        if m.get('Relation') is not None:
+            self.relation = m.get('Relation')
+        if m.get('NativePlace') is not None:
+            self.native_place = m.get('NativePlace')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('IDNumber') is not None:
+            self.idnumber = m.get('IDNumber')
+        self.invalid_stamp_areas = []
+        if m.get('InvalidStampAreas') is not None:
+            for k in m.get('InvalidStampAreas'):
+                temp_model = RecognizeAccountPageResponseBodyDataInvalidStampAreas()
+                self.invalid_stamp_areas.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeAccountPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeAccountPageResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeAccountPageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeAccountPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeAccountPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeAccountPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeBusinessCardRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeBusinessCardAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeBusinessCardResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        companies: List[str] = None,
+        titles: List[str] = None,
+        emails: List[str] = None,
+        departments: List[str] = None,
+        office_phone_numbers: List[str] = None,
+        name: str = None,
+        cell_phone_numbers: List[str] = None,
+        addresses: List[str] = None,
+    ):
+        self.companies = companies
+        self.titles = titles
+        self.emails = emails
+        self.departments = departments
+        self.office_phone_numbers = office_phone_numbers
+        self.name = name
+        self.cell_phone_numbers = cell_phone_numbers
+        self.addresses = addresses
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.companies is not None:
+            result['Companies'] = self.companies
+        if self.titles is not None:
+            result['Titles'] = self.titles
+        if self.emails is not None:
+            result['Emails'] = self.emails
+        if self.departments is not None:
+            result['Departments'] = self.departments
+        if self.office_phone_numbers is not None:
+            result['OfficePhoneNumbers'] = self.office_phone_numbers
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.cell_phone_numbers is not None:
+            result['CellPhoneNumbers'] = self.cell_phone_numbers
+        if self.addresses is not None:
+            result['Addresses'] = self.addresses
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Companies') is not None:
+            self.companies = m.get('Companies')
+        if m.get('Titles') is not None:
+            self.titles = m.get('Titles')
+        if m.get('Emails') is not None:
+            self.emails = m.get('Emails')
+        if m.get('Departments') is not None:
+            self.departments = m.get('Departments')
+        if m.get('OfficePhoneNumbers') is not None:
+            self.office_phone_numbers = m.get('OfficePhoneNumbers')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('CellPhoneNumbers') is not None:
+            self.cell_phone_numbers = m.get('CellPhoneNumbers')
+        if m.get('Addresses') is not None:
+            self.addresses = m.get('Addresses')
+        return self
+
+
+class RecognizeBusinessCardResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeBusinessCardResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeBusinessCardResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeBusinessCardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeBusinessCardResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeBusinessCardResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetectCardScreenshotRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class DetectCardScreenshotAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class DetectCardScreenshotResponseBodyDataSpoofResultResultMap(TeaModel):
+    def __init__(
+        self,
+        screen_threshold: float = None,
+        screen_score: float = None,
+    ):
+        self.screen_threshold = screen_threshold
+        self.screen_score = screen_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.screen_threshold is not None:
+            result['ScreenThreshold'] = self.screen_threshold
+        if self.screen_score is not None:
+            result['ScreenScore'] = self.screen_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ScreenThreshold') is not None:
+            self.screen_threshold = m.get('ScreenThreshold')
+        if m.get('ScreenScore') is not None:
+            self.screen_score = m.get('ScreenScore')
+        return self
+
+
+class DetectCardScreenshotResponseBodyDataSpoofResult(TeaModel):
+    def __init__(
+        self,
+        is_spoof: bool = None,
+        result_map: DetectCardScreenshotResponseBodyDataSpoofResultResultMap = None,
+    ):
+        self.is_spoof = is_spoof
+        self.result_map = result_map
+
+    def validate(self):
+        if self.result_map:
+            self.result_map.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_spoof is not None:
+            result['IsSpoof'] = self.is_spoof
+        if self.result_map is not None:
+            result['ResultMap'] = self.result_map.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsSpoof') is not None:
+            self.is_spoof = m.get('IsSpoof')
+        if m.get('ResultMap') is not None:
+            temp_model = DetectCardScreenshotResponseBodyDataSpoofResultResultMap()
+            self.result_map = temp_model.from_map(m['ResultMap'])
+        return self
+
+
+class DetectCardScreenshotResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        is_blur: bool = None,
+        is_card: bool = None,
+        spoof_result: DetectCardScreenshotResponseBodyDataSpoofResult = None,
+    ):
+        self.is_blur = is_blur
+        self.is_card = is_card
+        self.spoof_result = spoof_result
+
+    def validate(self):
+        if self.spoof_result:
+            self.spoof_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_blur is not None:
+            result['IsBlur'] = self.is_blur
+        if self.is_card is not None:
+            result['IsCard'] = self.is_card
+        if self.spoof_result is not None:
+            result['SpoofResult'] = self.spoof_result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsBlur') is not None:
+            self.is_blur = m.get('IsBlur')
+        if m.get('IsCard') is not None:
+            self.is_card = m.get('IsCard')
+        if m.get('SpoofResult') is not None:
+            temp_model = DetectCardScreenshotResponseBodyDataSpoofResult()
+            self.spoof_result = temp_model.from_map(m['SpoofResult'])
+        return self
+
+
+class DetectCardScreenshotResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: DetectCardScreenshotResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = DetectCardScreenshotResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class DetectCardScreenshotResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DetectCardScreenshotResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DetectCardScreenshotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeStampRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeStampAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeStampResponseBodyDataResultsText(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        content: str = None,
+    ):
+        self.confidence = confidence
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class RecognizeStampResponseBodyDataResultsRoi(TeaModel):
+    def __init__(
+        self,
+        top: int = None,
+        width: int = None,
+        height: int = None,
+        left: int = None,
+    ):
+        self.top = top
+        self.width = width
+        self.height = height
+        self.left = left
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        return self
+
+
+class RecognizeStampResponseBodyDataResultsGeneralText(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        content: str = None,
+    ):
+        self.confidence = confidence
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class RecognizeStampResponseBodyDataResults(TeaModel):
+    def __init__(
+        self,
+        text: RecognizeStampResponseBodyDataResultsText = None,
+        roi: RecognizeStampResponseBodyDataResultsRoi = None,
+        general_text: List[RecognizeStampResponseBodyDataResultsGeneralText] = None,
+    ):
+        self.text = text
+        self.roi = roi
+        self.general_text = general_text
+
+    def validate(self):
+        if self.text:
+            self.text.validate()
+        if self.roi:
+            self.roi.validate()
+        if self.general_text:
+            for k in self.general_text:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['Text'] = self.text.to_map()
+        if self.roi is not None:
+            result['Roi'] = self.roi.to_map()
+        result['GeneralText'] = []
+        if self.general_text is not None:
+            for k in self.general_text:
+                result['GeneralText'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            temp_model = RecognizeStampResponseBodyDataResultsText()
+            self.text = temp_model.from_map(m['Text'])
+        if m.get('Roi') is not None:
+            temp_model = RecognizeStampResponseBodyDataResultsRoi()
+            self.roi = temp_model.from_map(m['Roi'])
+        self.general_text = []
+        if m.get('GeneralText') is not None:
+            for k in m.get('GeneralText'):
+                temp_model = RecognizeStampResponseBodyDataResultsGeneralText()
+                self.general_text.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeStampResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        results: List[RecognizeStampResponseBodyDataResults] = None,
+    ):
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = RecognizeStampResponseBodyDataResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeStampResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeStampResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeStampResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeStampResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeStampResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeStampResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeQuotaInvoiceRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeQuotaInvoiceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeQuotaInvoiceResponseBodyDataContent(TeaModel):
+    def __init__(
+        self,
+        sum_amount: str = None,
+        invoice_code: str = None,
+        invoice_no: str = None,
+        invoice_amount: str = None,
+        invoice_details: str = None,
+    ):
+        self.sum_amount = sum_amount
+        self.invoice_code = invoice_code
+        self.invoice_no = invoice_no
+        self.invoice_amount = invoice_amount
+        self.invoice_details = invoice_details
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sum_amount is not None:
+            result['SumAmount'] = self.sum_amount
+        if self.invoice_code is not None:
+            result['InvoiceCode'] = self.invoice_code
+        if self.invoice_no is not None:
+            result['InvoiceNo'] = self.invoice_no
+        if self.invoice_amount is not None:
+            result['InvoiceAmount'] = self.invoice_amount
+        if self.invoice_details is not None:
+            result['InvoiceDetails'] = self.invoice_details
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SumAmount') is not None:
+            self.sum_amount = m.get('SumAmount')
+        if m.get('InvoiceCode') is not None:
+            self.invoice_code = m.get('InvoiceCode')
+        if m.get('InvoiceNo') is not None:
+            self.invoice_no = m.get('InvoiceNo')
+        if m.get('InvoiceAmount') is not None:
+            self.invoice_amount = m.get('InvoiceAmount')
+        if m.get('InvoiceDetails') is not None:
+            self.invoice_details = m.get('InvoiceDetails')
+        return self
+
+
+class RecognizeQuotaInvoiceResponseBodyDataKeyValueInfosValuePositions(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeQuotaInvoiceResponseBodyDataKeyValueInfos(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+        value_positions: List[RecognizeQuotaInvoiceResponseBodyDataKeyValueInfosValuePositions] = None,
+        value_score: float = None,
+    ):
+        self.key = key
+        self.value = value
+        self.value_positions = value_positions
+        self.value_score = value_score
+
+    def validate(self):
+        if self.value_positions:
+            for k in self.value_positions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        result['ValuePositions'] = []
+        if self.value_positions is not None:
+            for k in self.value_positions:
+                result['ValuePositions'].append(k.to_map() if k else None)
+        if self.value_score is not None:
+            result['ValueScore'] = self.value_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        self.value_positions = []
+        if m.get('ValuePositions') is not None:
+            for k in m.get('ValuePositions'):
+                temp_model = RecognizeQuotaInvoiceResponseBodyDataKeyValueInfosValuePositions()
+                self.value_positions.append(temp_model.from_map(k))
+        if m.get('ValueScore') is not None:
+            self.value_score = m.get('ValueScore')
+        return self
+
+
+class RecognizeQuotaInvoiceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        height: int = None,
+        width: int = None,
+        org_height: int = None,
+        org_width: int = None,
+        content: RecognizeQuotaInvoiceResponseBodyDataContent = None,
+        key_value_infos: List[RecognizeQuotaInvoiceResponseBodyDataKeyValueInfos] = None,
+    ):
+        self.angle = angle
+        self.height = height
+        self.width = width
+        self.org_height = org_height
+        self.org_width = org_width
+        self.content = content
+        self.key_value_infos = key_value_infos
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+        if self.key_value_infos:
+            for k in self.key_value_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.org_height is not None:
+            result['OrgHeight'] = self.org_height
+        if self.org_width is not None:
+            result['OrgWidth'] = self.org_width
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        result['KeyValueInfos'] = []
+        if self.key_value_infos is not None:
+            for k in self.key_value_infos:
+                result['KeyValueInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('OrgHeight') is not None:
+            self.org_height = m.get('OrgHeight')
+        if m.get('OrgWidth') is not None:
+            self.org_width = m.get('OrgWidth')
+        if m.get('Content') is not None:
+            temp_model = RecognizeQuotaInvoiceResponseBodyDataContent()
+            self.content = temp_model.from_map(m['Content'])
+        self.key_value_infos = []
+        if m.get('KeyValueInfos') is not None:
+            for k in m.get('KeyValueInfos'):
+                temp_model = RecognizeQuotaInvoiceResponseBodyDataKeyValueInfos()
+                self.key_value_infos.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeQuotaInvoiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeQuotaInvoiceResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeQuotaInvoiceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeQuotaInvoiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeQuotaInvoiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeQuotaInvoiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeTrainTicketRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeTrainTicketAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeTrainTicketResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        price: float = None,
+        destination: str = None,
+        departure_station: str = None,
+        date: str = None,
+        number: str = None,
+        seat: str = None,
+        name: str = None,
+        level: str = None,
+    ):
+        self.price = price
+        self.destination = destination
+        self.departure_station = departure_station
+        self.date = date
+        self.number = number
+        self.seat = seat
+        self.name = name
+        self.level = level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.price is not None:
+            result['Price'] = self.price
+        if self.destination is not None:
+            result['Destination'] = self.destination
+        if self.departure_station is not None:
+            result['DepartureStation'] = self.departure_station
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.number is not None:
+            result['Number'] = self.number
+        if self.seat is not None:
+            result['Seat'] = self.seat
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.level is not None:
+            result['Level'] = self.level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Price') is not None:
+            self.price = m.get('Price')
+        if m.get('Destination') is not None:
+            self.destination = m.get('Destination')
+        if m.get('DepartureStation') is not None:
+            self.departure_station = m.get('DepartureStation')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        if m.get('Seat') is not None:
+            self.seat = m.get('Seat')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        return self
+
+
+class RecognizeTrainTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeTrainTicketResponseBodyData = None,
+    ):
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeTrainTicketResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeTrainTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeTrainTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeTrainTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeTicketInvoiceRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        # A short description of struct
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeTicketInvoiceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeTicketInvoiceResponseBodyDataResultsContent(TeaModel):
+    def __init__(
+        self,
+        invoice_code: str = None,
+        invoice_number: str = None,
+        invoice_date: str = None,
+        anti_fake_code: str = None,
+        payee_name: str = None,
+        payee_register_no: str = None,
+        payer_name: str = None,
+        payer_register_no: str = None,
+        sum_amount: str = None,
+    ):
+        self.invoice_code = invoice_code
+        self.invoice_number = invoice_number
+        self.invoice_date = invoice_date
+        self.anti_fake_code = anti_fake_code
+        self.payee_name = payee_name
+        self.payee_register_no = payee_register_no
+        self.payer_name = payer_name
+        self.payer_register_no = payer_register_no
+        self.sum_amount = sum_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.invoice_code is not None:
+            result['InvoiceCode'] = self.invoice_code
+        if self.invoice_number is not None:
+            result['InvoiceNumber'] = self.invoice_number
+        if self.invoice_date is not None:
+            result['InvoiceDate'] = self.invoice_date
+        if self.anti_fake_code is not None:
+            result['AntiFakeCode'] = self.anti_fake_code
+        if self.payee_name is not None:
+            result['PayeeName'] = self.payee_name
+        if self.payee_register_no is not None:
+            result['PayeeRegisterNo'] = self.payee_register_no
+        if self.payer_name is not None:
+            result['PayerName'] = self.payer_name
+        if self.payer_register_no is not None:
+            result['PayerRegisterNo'] = self.payer_register_no
+        if self.sum_amount is not None:
+            result['SumAmount'] = self.sum_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InvoiceCode') is not None:
+            self.invoice_code = m.get('InvoiceCode')
+        if m.get('InvoiceNumber') is not None:
+            self.invoice_number = m.get('InvoiceNumber')
+        if m.get('InvoiceDate') is not None:
+            self.invoice_date = m.get('InvoiceDate')
+        if m.get('AntiFakeCode') is not None:
+            self.anti_fake_code = m.get('AntiFakeCode')
+        if m.get('PayeeName') is not None:
+            self.payee_name = m.get('PayeeName')
+        if m.get('PayeeRegisterNo') is not None:
+            self.payee_register_no = m.get('PayeeRegisterNo')
+        if m.get('PayerName') is not None:
+            self.payer_name = m.get('PayerName')
+        if m.get('PayerRegisterNo') is not None:
+            self.payer_register_no = m.get('PayerRegisterNo')
+        if m.get('SumAmount') is not None:
+            self.sum_amount = m.get('SumAmount')
+        return self
+
+
+class RecognizeTicketInvoiceResponseBodyDataResultsKeyValueInfosValuePositions(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeTicketInvoiceResponseBodyDataResultsKeyValueInfos(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+        value_positions: List[RecognizeTicketInvoiceResponseBodyDataResultsKeyValueInfosValuePositions] = None,
+        value_score: float = None,
+    ):
+        self.key = key
+        self.value = value
+        self.value_positions = value_positions
+        self.value_score = value_score
+
+    def validate(self):
+        if self.value_positions:
+            for k in self.value_positions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        result['ValuePositions'] = []
+        if self.value_positions is not None:
+            for k in self.value_positions:
+                result['ValuePositions'].append(k.to_map() if k else None)
+        if self.value_score is not None:
+            result['ValueScore'] = self.value_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        self.value_positions = []
+        if m.get('ValuePositions') is not None:
+            for k in m.get('ValuePositions'):
+                temp_model = RecognizeTicketInvoiceResponseBodyDataResultsKeyValueInfosValuePositions()
+                self.value_positions.append(temp_model.from_map(k))
+        if m.get('ValueScore') is not None:
+            self.value_score = m.get('ValueScore')
+        return self
+
+
+class RecognizeTicketInvoiceResponseBodyDataResultsSliceRectangle(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeTicketInvoiceResponseBodyDataResults(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        content: RecognizeTicketInvoiceResponseBodyDataResultsContent = None,
+        type: str = None,
+        key_value_infos: List[RecognizeTicketInvoiceResponseBodyDataResultsKeyValueInfos] = None,
+        slice_rectangle: List[RecognizeTicketInvoiceResponseBodyDataResultsSliceRectangle] = None,
+    ):
+        self.index = index
+        self.content = content
+        self.type = type
+        self.key_value_infos = key_value_infos
+        self.slice_rectangle = slice_rectangle
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+        if self.key_value_infos:
+            for k in self.key_value_infos:
+                if k:
+                    k.validate()
+        if self.slice_rectangle:
+            for k in self.slice_rectangle:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        result['KeyValueInfos'] = []
+        if self.key_value_infos is not None:
+            for k in self.key_value_infos:
+                result['KeyValueInfos'].append(k.to_map() if k else None)
+        result['SliceRectangle'] = []
+        if self.slice_rectangle is not None:
+            for k in self.slice_rectangle:
+                result['SliceRectangle'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Content') is not None:
+            temp_model = RecognizeTicketInvoiceResponseBodyDataResultsContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        self.key_value_infos = []
+        if m.get('KeyValueInfos') is not None:
+            for k in m.get('KeyValueInfos'):
+                temp_model = RecognizeTicketInvoiceResponseBodyDataResultsKeyValueInfos()
+                self.key_value_infos.append(temp_model.from_map(k))
+        self.slice_rectangle = []
+        if m.get('SliceRectangle') is not None:
+            for k in m.get('SliceRectangle'):
+                temp_model = RecognizeTicketInvoiceResponseBodyDataResultsSliceRectangle()
+                self.slice_rectangle.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeTicketInvoiceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        height: int = None,
+        width: int = None,
+        org_height: int = None,
+        org_width: int = None,
+        results: List[RecognizeTicketInvoiceResponseBodyDataResults] = None,
+    ):
+        self.count = count
+        self.height = height
+        self.width = width
+        self.org_height = org_height
+        self.org_width = org_width
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.org_height is not None:
+            result['OrgHeight'] = self.org_height
+        if self.org_width is not None:
+            result['OrgWidth'] = self.org_width
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('OrgHeight') is not None:
+            self.org_height = m.get('OrgHeight')
+        if m.get('OrgWidth') is not None:
+            self.org_width = m.get('OrgWidth')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = RecognizeTicketInvoiceResponseBodyDataResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeTicketInvoiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RecognizeTicketInvoiceResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RecognizeTicketInvoiceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RecognizeTicketInvoiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeTicketInvoiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeTicketInvoiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
