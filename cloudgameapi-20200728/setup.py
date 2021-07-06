@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_cloudgameapi20200728.
 
-Created on 22/06/2021
+Created on 06/07/2021
 
 @author: Alibaba Cloud SDK
 """

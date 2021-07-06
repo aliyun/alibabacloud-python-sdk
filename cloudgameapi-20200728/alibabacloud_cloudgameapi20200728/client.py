@@ -963,3 +963,129 @@ class Client(OpenApiClient):
     ) -> cloud_game_api20200728_models.StopGameSessionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_game_session_with_options_async(request, runtime)
+
+    def submit_internal_purchase_charge_data_with_options(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataResponse(),
+            self.do_rpcrequest('SubmitInternalPurchaseChargeData', '2020-07-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_internal_purchase_charge_data_with_options_async(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataResponse(),
+            await self.do_rpcrequest_async('SubmitInternalPurchaseChargeData', '2020-07-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_internal_purchase_charge_data(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataRequest,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_internal_purchase_charge_data_with_options(request, runtime)
+
+    async def submit_internal_purchase_charge_data_async(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataRequest,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseChargeDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_internal_purchase_charge_data_with_options_async(request, runtime)
+
+    def submit_internal_purchase_orders_with_options(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseOrdersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.SubmitInternalPurchaseOrdersResponse(),
+            self.do_rpcrequest('SubmitInternalPurchaseOrders', '2020-07-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_internal_purchase_orders_with_options_async(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseOrdersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.SubmitInternalPurchaseOrdersResponse(),
+            await self.do_rpcrequest_async('SubmitInternalPurchaseOrders', '2020-07-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_internal_purchase_orders(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseOrdersRequest,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_internal_purchase_orders_with_options(request, runtime)
+
+    async def submit_internal_purchase_orders_async(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseOrdersRequest,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_internal_purchase_orders_with_options_async(request, runtime)
+
+    def submit_internal_purchase_ready_flag_with_options(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagResponse(),
+            self.do_rpcrequest('SubmitInternalPurchaseReadyFlag', '2020-07-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_internal_purchase_ready_flag_with_options_async(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagResponse(),
+            await self.do_rpcrequest_async('SubmitInternalPurchaseReadyFlag', '2020-07-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_internal_purchase_ready_flag(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagRequest,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_internal_purchase_ready_flag_with_options(request, runtime)
+
+    async def submit_internal_purchase_ready_flag_async(
+        self,
+        request: cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagRequest,
+    ) -> cloud_game_api20200728_models.SubmitInternalPurchaseReadyFlagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_internal_purchase_ready_flag_with_options_async(request, runtime)
