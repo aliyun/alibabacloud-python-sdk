@@ -3073,6 +3073,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_data_correct_backup_files_with_options_async(request, runtime)
 
+    def list_data_correct_pre_check_sqlwith_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse(),
+            self.do_rpcrequest('ListDataCorrectPreCheckSQL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_data_correct_pre_check_sqlwith_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse(),
+            await self.do_rpcrequest_async('ListDataCorrectPreCheckSQL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_data_correct_pre_check_sql(
+        self,
+        request: dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLRequest,
+    ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_correct_pre_check_sqlwith_options(request, runtime)
+
+    async def list_data_correct_pre_check_sql_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLRequest,
+    ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_correct_pre_check_sqlwith_options_async(request, runtime)
+
     def register_instance_with_options(
         self,
         request: dms_enterprise_20181101_models.RegisterInstanceRequest,
@@ -3268,6 +3310,48 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ExecuteDataCorrectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.execute_data_correct_with_options_async(request, runtime)
+
+    def list_data_correct_pre_check_dbwith_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDataCorrectPreCheckDBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse(),
+            self.do_rpcrequest('ListDataCorrectPreCheckDB', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_data_correct_pre_check_dbwith_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataCorrectPreCheckDBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse(),
+            await self.do_rpcrequest_async('ListDataCorrectPreCheckDB', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_data_correct_pre_check_db(
+        self,
+        request: dms_enterprise_20181101_models.ListDataCorrectPreCheckDBRequest,
+    ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_correct_pre_check_dbwith_options(request, runtime)
+
+    async def list_data_correct_pre_check_db_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataCorrectPreCheckDBRequest,
+    ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_correct_pre_check_dbwith_options_async(request, runtime)
 
     def list_tables_with_options(
         self,

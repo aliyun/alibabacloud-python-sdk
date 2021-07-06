@@ -17343,6 +17343,211 @@ class GetDataCorrectBackupFilesResponse(TeaModel):
         return self
 
 
+class ListDataCorrectPreCheckSQLRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        db_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.db_id = db_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList(TeaModel):
+    def __init__(
+        self,
+        check_sql: str = None,
+        affect_rows: int = None,
+        db_id: int = None,
+        sqlreview_query_key: str = None,
+        sql_review_status: str = None,
+        sql_type: str = None,
+    ):
+        self.check_sql = check_sql
+        self.affect_rows = affect_rows
+        self.db_id = db_id
+        self.sqlreview_query_key = sqlreview_query_key
+        self.sql_review_status = sql_review_status
+        self.sql_type = sql_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_sql is not None:
+            result['CheckSQL'] = self.check_sql
+        if self.affect_rows is not None:
+            result['AffectRows'] = self.affect_rows
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.sqlreview_query_key is not None:
+            result['SQLReviewQueryKey'] = self.sqlreview_query_key
+        if self.sql_review_status is not None:
+            result['SqlReviewStatus'] = self.sql_review_status
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckSQL') is not None:
+            self.check_sql = m.get('CheckSQL')
+        if m.get('AffectRows') is not None:
+            self.affect_rows = m.get('AffectRows')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('SQLReviewQueryKey') is not None:
+            self.sqlreview_query_key = m.get('SQLReviewQueryKey')
+        if m.get('SqlReviewStatus') is not None:
+            self.sql_review_status = m.get('SqlReviewStatus')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        return self
+
+
+class ListDataCorrectPreCheckSQLResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        pre_check_sqllist: List[ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.pre_check_sqllist = pre_check_sqllist
+
+    def validate(self):
+        if self.pre_check_sqllist:
+            for k in self.pre_check_sqllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['PreCheckSQLList'] = []
+        if self.pre_check_sqllist is not None:
+            for k in self.pre_check_sqllist:
+                result['PreCheckSQLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        self.pre_check_sqllist = []
+        if m.get('PreCheckSQLList') is not None:
+            for k in m.get('PreCheckSQLList'):
+                temp_model = ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList()
+                self.pre_check_sqllist.append(temp_model.from_map(k))
+        return self
+
+
+class ListDataCorrectPreCheckSQLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDataCorrectPreCheckSQLResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDataCorrectPreCheckSQLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RegisterInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -18269,6 +18474,187 @@ class ExecuteDataCorrectResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ExecuteDataCorrectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataCorrectPreCheckDBRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataCorrectPreCheckDBResponseBodyPreCheckDBList(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        search_name: str = None,
+        sql_num: int = None,
+    ):
+        self.db_id = db_id
+        self.search_name = search_name
+        self.sql_num = sql_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.search_name is not None:
+            result['SearchName'] = self.search_name
+        if self.sql_num is not None:
+            result['SqlNum'] = self.sql_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('SearchName') is not None:
+            self.search_name = m.get('SearchName')
+        if m.get('SqlNum') is not None:
+            self.sql_num = m.get('SqlNum')
+        return self
+
+
+class ListDataCorrectPreCheckDBResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        pre_check_dblist: List[ListDataCorrectPreCheckDBResponseBodyPreCheckDBList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.pre_check_dblist = pre_check_dblist
+
+    def validate(self):
+        if self.pre_check_dblist:
+            for k in self.pre_check_dblist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['PreCheckDBList'] = []
+        if self.pre_check_dblist is not None:
+            for k in self.pre_check_dblist:
+                result['PreCheckDBList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        self.pre_check_dblist = []
+        if m.get('PreCheckDBList') is not None:
+            for k in m.get('PreCheckDBList'):
+                temp_model = ListDataCorrectPreCheckDBResponseBodyPreCheckDBList()
+                self.pre_check_dblist.append(temp_model.from_map(k))
+        return self
+
+
+class ListDataCorrectPreCheckDBResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDataCorrectPreCheckDBResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDataCorrectPreCheckDBResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
