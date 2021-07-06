@@ -2561,6 +2561,8 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         spot_instance_pools: int = None,
         spot_instance_remedy: bool = None,
         compensate_with_on_demand: bool = None,
+        internet_charge_type: str = None,
+        internet_max_bandwidth_out: int = None,
     ):
         # 数据盘配置。
         self.data_disks = data_disks
@@ -2612,6 +2614,10 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         self.spot_instance_remedy = spot_instance_remedy
         # 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
         self.compensate_with_on_demand = compensate_with_on_demand
+        # 节点公网IP网络计费类型
+        self.internet_charge_type = internet_charge_type
+        # 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：1~100
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out
 
     def validate(self):
         if self.data_disks:
@@ -2689,6 +2695,10 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
             result['spot_instance_remedy'] = self.spot_instance_remedy
         if self.compensate_with_on_demand is not None:
             result['compensate_with_on_demand'] = self.compensate_with_on_demand
+        if self.internet_charge_type is not None:
+            result['internet_charge_type'] = self.internet_charge_type
+        if self.internet_max_bandwidth_out is not None:
+            result['internet_max_bandwidth_out'] = self.internet_max_bandwidth_out
         return result
 
     def from_map(self, m: dict = None):
@@ -2752,6 +2762,10 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
             self.spot_instance_remedy = m.get('spot_instance_remedy')
         if m.get('compensate_with_on_demand') is not None:
             self.compensate_with_on_demand = m.get('compensate_with_on_demand')
+        if m.get('internet_charge_type') is not None:
+            self.internet_charge_type = m.get('internet_charge_type')
+        if m.get('internet_max_bandwidth_out') is not None:
+            self.internet_max_bandwidth_out = m.get('internet_max_bandwidth_out')
         return self
 
 
@@ -3555,6 +3569,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         vswitch_ids: List[str] = None,
         login_password: str = None,
         key_pair: str = None,
+        internet_charge_type: str = None,
+        internet_max_bandwidth_out: int = None,
     ):
         # 节点是否开启自动续费。
         self.auto_renew = auto_renew
@@ -3612,6 +3628,10 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.login_password = login_password
         # 密钥对名称
         self.key_pair = key_pair
+        # 节点公网IP网络计费类型
+        self.internet_charge_type = internet_charge_type
+        # 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：1~100
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out
 
     def validate(self):
         if self.data_disks:
@@ -3695,6 +3715,10 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             result['login_password'] = self.login_password
         if self.key_pair is not None:
             result['key_pair'] = self.key_pair
+        if self.internet_charge_type is not None:
+            result['internet_charge_type'] = self.internet_charge_type
+        if self.internet_max_bandwidth_out is not None:
+            result['internet_max_bandwidth_out'] = self.internet_max_bandwidth_out
         return result
 
     def from_map(self, m: dict = None):
@@ -3764,6 +3788,10 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             self.login_password = m.get('login_password')
         if m.get('key_pair') is not None:
             self.key_pair = m.get('key_pair')
+        if m.get('internet_charge_type') is not None:
+            self.internet_charge_type = m.get('internet_charge_type')
+        if m.get('internet_max_bandwidth_out') is not None:
+            self.internet_max_bandwidth_out = m.get('internet_max_bandwidth_out')
         return self
 
 
@@ -4383,6 +4411,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         spot_instance_pools: int = None,
         spot_instance_remedy: bool = None,
         compensate_with_on_demand: bool = None,
+        internet_charge_type: str = None,
+        internet_max_bandwidth_out: int = None,
     ):
         # 节点是否开启自动续费
         self.auto_renew = auto_renew
@@ -4436,6 +4466,10 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.spot_instance_remedy = spot_instance_remedy
         # 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
         self.compensate_with_on_demand = compensate_with_on_demand
+        # 节点公网IP网络计费类型
+        self.internet_charge_type = internet_charge_type
+        # 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：1~100
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out
 
     def validate(self):
         if self.data_disks:
@@ -4515,6 +4549,10 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             result['spot_instance_remedy'] = self.spot_instance_remedy
         if self.compensate_with_on_demand is not None:
             result['compensate_with_on_demand'] = self.compensate_with_on_demand
+        if self.internet_charge_type is not None:
+            result['internet_charge_type'] = self.internet_charge_type
+        if self.internet_max_bandwidth_out is not None:
+            result['internet_max_bandwidth_out'] = self.internet_max_bandwidth_out
         return result
 
     def from_map(self, m: dict = None):
@@ -4580,6 +4618,10 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             self.spot_instance_remedy = m.get('spot_instance_remedy')
         if m.get('compensate_with_on_demand') is not None:
             self.compensate_with_on_demand = m.get('compensate_with_on_demand')
+        if m.get('internet_charge_type') is not None:
+            self.internet_charge_type = m.get('internet_charge_type')
+        if m.get('internet_max_bandwidth_out') is not None:
+            self.internet_max_bandwidth_out = m.get('internet_max_bandwidth_out')
         return self
 
 
@@ -9842,6 +9884,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         vswitch_ids: List[str] = None,
         login_password: str = None,
         key_pair: str = None,
+        internet_charge_type: str = None,
+        internet_max_bandwidth_out: int = None,
     ):
         # 自动续费	
         self.auto_renew = auto_renew
@@ -9899,6 +9943,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.login_password = login_password
         # 密钥对名称，和login_password二选一。
         self.key_pair = key_pair
+        # 节点公网IP网络计费类型
+        self.internet_charge_type = internet_charge_type
+        # 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：1~100
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out
 
     def validate(self):
         if self.data_disks:
@@ -9982,6 +10030,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             result['login_password'] = self.login_password
         if self.key_pair is not None:
             result['key_pair'] = self.key_pair
+        if self.internet_charge_type is not None:
+            result['internet_charge_type'] = self.internet_charge_type
+        if self.internet_max_bandwidth_out is not None:
+            result['internet_max_bandwidth_out'] = self.internet_max_bandwidth_out
         return result
 
     def from_map(self, m: dict = None):
@@ -10051,6 +10103,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             self.login_password = m.get('login_password')
         if m.get('key_pair') is not None:
             self.key_pair = m.get('key_pair')
+        if m.get('internet_charge_type') is not None:
+            self.internet_charge_type = m.get('internet_charge_type')
+        if m.get('internet_max_bandwidth_out') is not None:
+            self.internet_max_bandwidth_out = m.get('internet_max_bandwidth_out')
         return self
 
 
@@ -10727,6 +10783,55 @@ class StartWorkflowResponse(TeaModel):
         return self
 
 
+class ScaleOutClusterRequestWorkerDataDisks(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        size: str = None,
+        encrypted: str = None,
+        auto_snapshot_policy_id: str = None,
+    ):
+        # 数据盘类型,默认值：cloud_efficiency
+        self.category = category
+        # 数据盘大小，单位为GiB。  取值范围：[40,32768]
+        self.size = size
+        # 是否对数据盘加密
+        self.encrypted = encrypted
+        # 自动快照策略ID，云盘会按照快照策略自动备份。
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.size is not None:
+            result['size'] = self.size
+        if self.encrypted is not None:
+            result['encrypted'] = self.encrypted
+        if self.auto_snapshot_policy_id is not None:
+            result['auto_snapshot_policy_id'] = self.auto_snapshot_policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('encrypted') is not None:
+            self.encrypted = m.get('encrypted')
+        if m.get('auto_snapshot_policy_id') is not None:
+            self.auto_snapshot_policy_id = m.get('auto_snapshot_policy_id')
+        return self
+
+
 class ScaleOutClusterRequest(TeaModel):
     def __init__(
         self,
@@ -10742,7 +10847,7 @@ class ScaleOutClusterRequest(TeaModel):
         worker_instance_types: List[str] = None,
         worker_system_disk_category: str = None,
         worker_system_disk_size: int = None,
-        worker_data_disks: List[DataDisk] = None,
+        worker_data_disks: List[ScaleOutClusterRequestWorkerDataDisks] = None,
         cloud_monitor_flags: bool = None,
         cpu_policy: str = None,
         image_id: str = None,
@@ -10895,7 +11000,7 @@ class ScaleOutClusterRequest(TeaModel):
         self.worker_data_disks = []
         if m.get('worker_data_disks') is not None:
             for k in m.get('worker_data_disks'):
-                temp_model = DataDisk()
+                temp_model = ScaleOutClusterRequestWorkerDataDisks()
                 self.worker_data_disks.append(temp_model.from_map(k))
         if m.get('cloud_monitor_flags') is not None:
             self.cloud_monitor_flags = m.get('cloud_monitor_flags')

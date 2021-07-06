@@ -1,3 +1,7 @@
+2021-07-06 Version: 2.4.3
+- Fixed an issue with inconsistent size types in the WorkdataDisks in ScaleOutCluster.
+- CreateClusterNodePool support public network IP.
+
 2021-06-09 Version: 2.4.2
 - AMP Version.
 
