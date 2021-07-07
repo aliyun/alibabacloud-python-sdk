@@ -593,6 +593,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dbnodes_with_options_async(request, runtime)
 
+    def create_global_database_network_with_options(
+        self,
+        request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
+            self.do_rpcrequest('CreateGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_global_database_network_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
+            await self.do_rpcrequest_async('CreateGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_global_database_network(
+        self,
+        request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_global_database_network_with_options(request, runtime)
+
+    async def create_global_database_network_async(
+        self,
+        request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_global_database_network_with_options_async(request, runtime)
+
     def create_parameter_group_with_options(
         self,
         request: polardb_20170801_models.CreateParameterGroupRequest,
@@ -970,6 +1012,48 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.DeleteDBNodesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbnodes_with_options_async(request, runtime)
+
+    def delete_global_database_network_with_options(
+        self,
+        request: polardb_20170801_models.DeleteGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
+            self.do_rpcrequest('DeleteGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_global_database_network_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
+            await self.do_rpcrequest_async('DeleteGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_global_database_network(
+        self,
+        request: polardb_20170801_models.DeleteGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_global_database_network_with_options(request, runtime)
+
+    async def delete_global_database_network_async(
+        self,
+        request: polardb_20170801_models.DeleteGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_global_database_network_with_options_async(request, runtime)
 
     def delete_parameter_group_with_options(
         self,
@@ -2104,6 +2188,48 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.DescribeDetachedBackupsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_detached_backups_with_options_async(request, runtime)
+
+    def describe_global_database_network_with_options(
+        self,
+        request: polardb_20170801_models.DescribeGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
+            self.do_rpcrequest('DescribeGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_global_database_network_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
+            await self.do_rpcrequest_async('DescribeGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_global_database_network(
+        self,
+        request: polardb_20170801_models.DescribeGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_database_network_with_options(request, runtime)
+
+    async def describe_global_database_network_async(
+        self,
+        request: polardb_20170801_models.DescribeGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_database_network_with_options_async(request, runtime)
 
     def describe_global_database_networks_with_options(
         self,
@@ -3535,6 +3661,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbnode_class_with_options_async(request, runtime)
 
+    def modify_global_database_network_with_options(
+        self,
+        request: polardb_20170801_models.ModifyGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
+            self.do_rpcrequest('ModifyGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_global_database_network_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyGlobalDatabaseNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
+            await self.do_rpcrequest_async('ModifyGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_global_database_network(
+        self,
+        request: polardb_20170801_models.ModifyGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_database_network_with_options(request, runtime)
+
+    async def modify_global_database_network_async(
+        self,
+        request: polardb_20170801_models.ModifyGlobalDatabaseNetworkRequest,
+    ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_database_network_with_options_async(request, runtime)
+
     def modify_log_backup_policy_with_options(
         self,
         request: polardb_20170801_models.ModifyLogBackupPolicyRequest,
@@ -3618,6 +3786,48 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.ModifyPendingMaintenanceActionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_pending_maintenance_action_with_options_async(request, runtime)
+
+    def remove_dbcluster_from_gdnwith_options(
+        self,
+        request: polardb_20170801_models.RemoveDBClusterFromGDNRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
+            self.do_rpcrequest('RemoveDBClusterFromGDN', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def remove_dbcluster_from_gdnwith_options_async(
+        self,
+        request: polardb_20170801_models.RemoveDBClusterFromGDNRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
+            await self.do_rpcrequest_async('RemoveDBClusterFromGDN', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def remove_dbcluster_from_gdn(
+        self,
+        request: polardb_20170801_models.RemoveDBClusterFromGDNRequest,
+    ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_dbcluster_from_gdnwith_options(request, runtime)
+
+    async def remove_dbcluster_from_gdn_async(
+        self,
+        request: polardb_20170801_models.RemoveDBClusterFromGDNRequest,
+    ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_dbcluster_from_gdnwith_options_async(request, runtime)
 
     def reset_account_with_options(
         self,
@@ -3828,6 +4038,48 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
+
+    def transform_dbcluster_pay_type_with_options(
+        self,
+        request: polardb_20170801_models.TransformDBClusterPayTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.TransformDBClusterPayTypeResponse(),
+            self.do_rpcrequest('TransformDBClusterPayType', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def transform_dbcluster_pay_type_with_options_async(
+        self,
+        request: polardb_20170801_models.TransformDBClusterPayTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.TransformDBClusterPayTypeResponse(),
+            await self.do_rpcrequest_async('TransformDBClusterPayType', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def transform_dbcluster_pay_type(
+        self,
+        request: polardb_20170801_models.TransformDBClusterPayTypeRequest,
+    ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.transform_dbcluster_pay_type_with_options(request, runtime)
+
+    async def transform_dbcluster_pay_type_async(
+        self,
+        request: polardb_20170801_models.TransformDBClusterPayTypeRequest,
+    ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.transform_dbcluster_pay_type_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,
