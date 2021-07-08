@@ -3134,6 +3134,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dispatch_rule_with_options_async(request, runtime)
 
+    def get_prometheus_remote_action_token_with_options(
+        self,
+        request: arms20210519_models.GetPrometheusRemoteActionTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20210519_models.GetPrometheusRemoteActionTokenResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            arms20210519_models.GetPrometheusRemoteActionTokenResponse(),
+            self.do_rpcrequest('GetPrometheusRemoteActionToken', '2021-05-19', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_prometheus_remote_action_token_with_options_async(
+        self,
+        request: arms20210519_models.GetPrometheusRemoteActionTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20210519_models.GetPrometheusRemoteActionTokenResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            arms20210519_models.GetPrometheusRemoteActionTokenResponse(),
+            await self.do_rpcrequest_async('GetPrometheusRemoteActionToken', '2021-05-19', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_prometheus_remote_action_token(
+        self,
+        request: arms20210519_models.GetPrometheusRemoteActionTokenRequest,
+    ) -> arms20210519_models.GetPrometheusRemoteActionTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_prometheus_remote_action_token_with_options(request, runtime)
+
+    async def get_prometheus_remote_action_token_async(
+        self,
+        request: arms20210519_models.GetPrometheusRemoteActionTokenRequest,
+    ) -> arms20210519_models.GetPrometheusRemoteActionTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_prometheus_remote_action_token_with_options_async(request, runtime)
+
     def list_prometheus_alert_templates_with_options(
         self,
         request: arms20210519_models.ListPrometheusAlertTemplatesRequest,
