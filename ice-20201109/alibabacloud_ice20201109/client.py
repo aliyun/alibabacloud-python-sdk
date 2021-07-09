@@ -143,34 +143,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_smart_jobs_with_options_async(request, runtime)
 
-    def describe_ice_product_status_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeIceProductStatusResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            ice20201109_models.DescribeIceProductStatusResponse(),
-            self.do_rpcrequest('DescribeIceProductStatus', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_ice_product_status_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeIceProductStatusResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            ice20201109_models.DescribeIceProductStatusResponse(),
-            await self.do_rpcrequest_async('DescribeIceProductStatus', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_ice_product_status(self) -> ice20201109_models.DescribeIceProductStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_ice_product_status_with_options(runtime)
-
-    async def describe_ice_product_status_async(self) -> ice20201109_models.DescribeIceProductStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_ice_product_status_with_options_async(runtime)
-
     def describe_related_authorization_status_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -198,6 +170,614 @@ class Client(OpenApiClient):
     async def describe_related_authorization_status_async(self) -> ice20201109_models.DescribeRelatedAuthorizationStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_related_authorization_status_with_options_async(runtime)
+
+    def delete_smart_job_with_options(
+        self,
+        request: ice20201109_models.DeleteSmartJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteSmartJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteSmartJobResponse(),
+            self.do_rpcrequest('DeleteSmartJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_smart_job_with_options_async(
+        self,
+        request: ice20201109_models.DeleteSmartJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteSmartJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteSmartJobResponse(),
+            await self.do_rpcrequest_async('DeleteSmartJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_smart_job(
+        self,
+        request: ice20201109_models.DeleteSmartJobRequest,
+    ) -> ice20201109_models.DeleteSmartJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_smart_job_with_options(request, runtime)
+
+    async def delete_smart_job_async(
+        self,
+        request: ice20201109_models.DeleteSmartJobRequest,
+    ) -> ice20201109_models.DeleteSmartJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_smart_job_with_options_async(request, runtime)
+
+    def add_template_with_options(
+        self,
+        request: ice20201109_models.AddTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.AddTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.AddTemplateResponse(),
+            self.do_rpcrequest('AddTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def add_template_with_options_async(
+        self,
+        request: ice20201109_models.AddTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.AddTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.AddTemplateResponse(),
+            await self.do_rpcrequest_async('AddTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def add_template(
+        self,
+        request: ice20201109_models.AddTemplateRequest,
+    ) -> ice20201109_models.AddTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_template_with_options(request, runtime)
+
+    async def add_template_async(
+        self,
+        request: ice20201109_models.AddTemplateRequest,
+    ) -> ice20201109_models.AddTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_template_with_options_async(request, runtime)
+
+    def update_editing_project_with_options(
+        self,
+        request: ice20201109_models.UpdateEditingProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateEditingProjectResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateEditingProjectResponse(),
+            self.do_rpcrequest('UpdateEditingProject', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_editing_project_with_options_async(
+        self,
+        request: ice20201109_models.UpdateEditingProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateEditingProjectResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateEditingProjectResponse(),
+            await self.do_rpcrequest_async('UpdateEditingProject', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_editing_project(
+        self,
+        request: ice20201109_models.UpdateEditingProjectRequest,
+    ) -> ice20201109_models.UpdateEditingProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_editing_project_with_options(request, runtime)
+
+    async def update_editing_project_async(
+        self,
+        request: ice20201109_models.UpdateEditingProjectRequest,
+    ) -> ice20201109_models.UpdateEditingProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_editing_project_with_options_async(request, runtime)
+
+    def list_media_producing_jobs_with_options(
+        self,
+        request: ice20201109_models.ListMediaProducingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListMediaProducingJobsResponse(),
+            self.do_rpcrequest('ListMediaProducingJobs', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_media_producing_jobs_with_options_async(
+        self,
+        request: ice20201109_models.ListMediaProducingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListMediaProducingJobsResponse(),
+            await self.do_rpcrequest_async('ListMediaProducingJobs', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_media_producing_jobs(
+        self,
+        request: ice20201109_models.ListMediaProducingJobsRequest,
+    ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_media_producing_jobs_with_options(request, runtime)
+
+    async def list_media_producing_jobs_async(
+        self,
+        request: ice20201109_models.ListMediaProducingJobsRequest,
+    ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_media_producing_jobs_with_options_async(request, runtime)
+
+    def get_editing_project_materials_with_options(
+        self,
+        request: ice20201109_models.GetEditingProjectMaterialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetEditingProjectMaterialsResponse(),
+            self.do_rpcrequest('GetEditingProjectMaterials', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def get_editing_project_materials_with_options_async(
+        self,
+        request: ice20201109_models.GetEditingProjectMaterialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetEditingProjectMaterialsResponse(),
+            await self.do_rpcrequest_async('GetEditingProjectMaterials', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def get_editing_project_materials(
+        self,
+        request: ice20201109_models.GetEditingProjectMaterialsRequest,
+    ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_editing_project_materials_with_options(request, runtime)
+
+    async def get_editing_project_materials_async(
+        self,
+        request: ice20201109_models.GetEditingProjectMaterialsRequest,
+    ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_editing_project_materials_with_options_async(request, runtime)
+
+    def get_default_storage_location_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            ice20201109_models.GetDefaultStorageLocationResponse(),
+            self.do_rpcrequest('GetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_default_storage_location_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            ice20201109_models.GetDefaultStorageLocationResponse(),
+            await self.do_rpcrequest_async('GetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_default_storage_location(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_default_storage_location_with_options(runtime)
+
+    async def get_default_storage_location_async(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_default_storage_location_with_options_async(runtime)
+
+    def delete_media_infos_with_options(
+        self,
+        request: ice20201109_models.DeleteMediaInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaInfosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteMediaInfosResponse(),
+            self.do_rpcrequest('DeleteMediaInfos', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_media_infos_with_options_async(
+        self,
+        request: ice20201109_models.DeleteMediaInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaInfosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteMediaInfosResponse(),
+            await self.do_rpcrequest_async('DeleteMediaInfos', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_media_infos(
+        self,
+        request: ice20201109_models.DeleteMediaInfosRequest,
+    ) -> ice20201109_models.DeleteMediaInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_media_infos_with_options(request, runtime)
+
+    async def delete_media_infos_async(
+        self,
+        request: ice20201109_models.DeleteMediaInfosRequest,
+    ) -> ice20201109_models.DeleteMediaInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_media_infos_with_options_async(request, runtime)
+
+    def set_event_callback_with_options(
+        self,
+        request: ice20201109_models.SetEventCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetEventCallbackResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetEventCallbackResponse(),
+            self.do_rpcrequest('SetEventCallback', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def set_event_callback_with_options_async(
+        self,
+        request: ice20201109_models.SetEventCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetEventCallbackResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetEventCallbackResponse(),
+            await self.do_rpcrequest_async('SetEventCallback', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_event_callback(
+        self,
+        request: ice20201109_models.SetEventCallbackRequest,
+    ) -> ice20201109_models.SetEventCallbackResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_event_callback_with_options(request, runtime)
+
+    async def set_event_callback_async(
+        self,
+        request: ice20201109_models.SetEventCallbackRequest,
+    ) -> ice20201109_models.SetEventCallbackResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_event_callback_with_options_async(request, runtime)
+
+    def register_media_info_with_options(
+        self,
+        request: ice20201109_models.RegisterMediaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.RegisterMediaInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.RegisterMediaInfoResponse(),
+            self.do_rpcrequest('RegisterMediaInfo', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def register_media_info_with_options_async(
+        self,
+        request: ice20201109_models.RegisterMediaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.RegisterMediaInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.RegisterMediaInfoResponse(),
+            await self.do_rpcrequest_async('RegisterMediaInfo', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def register_media_info(
+        self,
+        request: ice20201109_models.RegisterMediaInfoRequest,
+    ) -> ice20201109_models.RegisterMediaInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.register_media_info_with_options(request, runtime)
+
+    async def register_media_info_async(
+        self,
+        request: ice20201109_models.RegisterMediaInfoRequest,
+    ) -> ice20201109_models.RegisterMediaInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.register_media_info_with_options_async(request, runtime)
+
+    def create_editing_project_with_options(
+        self,
+        request: ice20201109_models.CreateEditingProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateEditingProjectResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateEditingProjectResponse(),
+            self.do_rpcrequest('CreateEditingProject', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_editing_project_with_options_async(
+        self,
+        request: ice20201109_models.CreateEditingProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateEditingProjectResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateEditingProjectResponse(),
+            await self.do_rpcrequest_async('CreateEditingProject', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_editing_project(
+        self,
+        request: ice20201109_models.CreateEditingProjectRequest,
+    ) -> ice20201109_models.CreateEditingProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_editing_project_with_options(request, runtime)
+
+    async def create_editing_project_async(
+        self,
+        request: ice20201109_models.CreateEditingProjectRequest,
+    ) -> ice20201109_models.CreateEditingProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_editing_project_with_options_async(request, runtime)
+
+    def batch_get_media_infos_with_options(
+        self,
+        request: ice20201109_models.BatchGetMediaInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.BatchGetMediaInfosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.BatchGetMediaInfosResponse(),
+            self.do_rpcrequest('BatchGetMediaInfos', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def batch_get_media_infos_with_options_async(
+        self,
+        request: ice20201109_models.BatchGetMediaInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.BatchGetMediaInfosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.BatchGetMediaInfosResponse(),
+            await self.do_rpcrequest_async('BatchGetMediaInfos', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def batch_get_media_infos(
+        self,
+        request: ice20201109_models.BatchGetMediaInfosRequest,
+    ) -> ice20201109_models.BatchGetMediaInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_get_media_infos_with_options(request, runtime)
+
+    async def batch_get_media_infos_async(
+        self,
+        request: ice20201109_models.BatchGetMediaInfosRequest,
+    ) -> ice20201109_models.BatchGetMediaInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_get_media_infos_with_options_async(request, runtime)
+
+    def set_default_storage_location_with_options(
+        self,
+        request: ice20201109_models.SetDefaultStorageLocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetDefaultStorageLocationResponse(),
+            self.do_rpcrequest('SetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def set_default_storage_location_with_options_async(
+        self,
+        request: ice20201109_models.SetDefaultStorageLocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetDefaultStorageLocationResponse(),
+            await self.do_rpcrequest_async('SetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_default_storage_location(
+        self,
+        request: ice20201109_models.SetDefaultStorageLocationRequest,
+    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_default_storage_location_with_options(request, runtime)
+
+    async def set_default_storage_location_async(
+        self,
+        request: ice20201109_models.SetDefaultStorageLocationRequest,
+    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_default_storage_location_with_options_async(request, runtime)
+
+    def update_media_info_with_options(
+        self,
+        request: ice20201109_models.UpdateMediaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateMediaInfoResponse(),
+            self.do_rpcrequest('UpdateMediaInfo', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_media_info_with_options_async(
+        self,
+        request: ice20201109_models.UpdateMediaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateMediaInfoResponse(),
+            await self.do_rpcrequest_async('UpdateMediaInfo', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_media_info(
+        self,
+        request: ice20201109_models.UpdateMediaInfoRequest,
+    ) -> ice20201109_models.UpdateMediaInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_media_info_with_options(request, runtime)
+
+    async def update_media_info_async(
+        self,
+        request: ice20201109_models.UpdateMediaInfoRequest,
+    ) -> ice20201109_models.UpdateMediaInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_media_info_with_options_async(request, runtime)
+
+    def get_media_producing_job_with_options(
+        self,
+        request: ice20201109_models.GetMediaProducingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaProducingJobResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaProducingJobResponse(),
+            self.do_rpcrequest('GetMediaProducingJob', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def get_media_producing_job_with_options_async(
+        self,
+        request: ice20201109_models.GetMediaProducingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaProducingJobResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaProducingJobResponse(),
+            await self.do_rpcrequest_async('GetMediaProducingJob', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def get_media_producing_job(
+        self,
+        request: ice20201109_models.GetMediaProducingJobRequest,
+    ) -> ice20201109_models.GetMediaProducingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_producing_job_with_options(request, runtime)
+
+    async def get_media_producing_job_async(
+        self,
+        request: ice20201109_models.GetMediaProducingJobRequest,
+    ) -> ice20201109_models.GetMediaProducingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_producing_job_with_options_async(request, runtime)
+
+    def describe_ice_product_status_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeIceProductStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            ice20201109_models.DescribeIceProductStatusResponse(),
+            self.do_rpcrequest('DescribeIceProductStatus', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_ice_product_status_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeIceProductStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            ice20201109_models.DescribeIceProductStatusResponse(),
+            await self.do_rpcrequest_async('DescribeIceProductStatus', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_ice_product_status(self) -> ice20201109_models.DescribeIceProductStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ice_product_status_with_options(runtime)
+
+    async def describe_ice_product_status_async(self) -> ice20201109_models.DescribeIceProductStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ice_product_status_with_options_async(runtime)
 
     def list_media_basic_infos_with_options(
         self,
@@ -455,47 +1035,93 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_editing_project_with_options_async(request, runtime)
 
-    def delete_smart_job_with_options(
+    def list_sys_templates_with_options(
         self,
-        request: ice20201109_models.DeleteSmartJobRequest,
+        request: ice20201109_models.ListSysTemplatesRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteSmartJobResponse:
+    ) -> ice20201109_models.ListSysTemplatesResponse:
         UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=query
         )
         return TeaCore.from_map(
-            ice20201109_models.DeleteSmartJobResponse(),
-            self.do_rpcrequest('DeleteSmartJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            ice20201109_models.ListSysTemplatesResponse(),
+            self.do_rpcrequest('ListSysTemplates', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
-    async def delete_smart_job_with_options_async(
+    async def list_sys_templates_with_options_async(
         self,
-        request: ice20201109_models.DeleteSmartJobRequest,
+        request: ice20201109_models.ListSysTemplatesRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteSmartJobResponse:
+    ) -> ice20201109_models.ListSysTemplatesResponse:
         UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=query
         )
         return TeaCore.from_map(
-            ice20201109_models.DeleteSmartJobResponse(),
-            await self.do_rpcrequest_async('DeleteSmartJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            ice20201109_models.ListSysTemplatesResponse(),
+            await self.do_rpcrequest_async('ListSysTemplates', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
-    def delete_smart_job(
+    def list_sys_templates(
         self,
-        request: ice20201109_models.DeleteSmartJobRequest,
-    ) -> ice20201109_models.DeleteSmartJobResponse:
+        request: ice20201109_models.ListSysTemplatesRequest,
+    ) -> ice20201109_models.ListSysTemplatesResponse:
         runtime = util_models.RuntimeOptions()
-        return self.delete_smart_job_with_options(request, runtime)
+        return self.list_sys_templates_with_options(request, runtime)
 
-    async def delete_smart_job_async(
+    async def list_sys_templates_async(
         self,
-        request: ice20201109_models.DeleteSmartJobRequest,
-    ) -> ice20201109_models.DeleteSmartJobResponse:
+        request: ice20201109_models.ListSysTemplatesRequest,
+    ) -> ice20201109_models.ListSysTemplatesResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.delete_smart_job_with_options_async(request, runtime)
+        return await self.list_sys_templates_with_options_async(request, runtime)
+
+    def delete_template_with_options(
+        self,
+        request: ice20201109_models.DeleteTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteTemplateResponse(),
+            self.do_rpcrequest('DeleteTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_template_with_options_async(
+        self,
+        request: ice20201109_models.DeleteTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteTemplateResponse(),
+            await self.do_rpcrequest_async('DeleteTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def delete_template(
+        self,
+        request: ice20201109_models.DeleteTemplateRequest,
+    ) -> ice20201109_models.DeleteTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_template_with_options(request, runtime)
+
+    async def delete_template_async(
+        self,
+        request: ice20201109_models.DeleteTemplateRequest,
+    ) -> ice20201109_models.DeleteTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_template_with_options_async(request, runtime)
 
     def submit_irjob_with_options(
         self,
@@ -583,48 +1209,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_editing_project_materials_with_options_async(request, runtime)
 
-    def update_editing_project_with_options(
-        self,
-        request: ice20201109_models.UpdateEditingProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.UpdateEditingProjectResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.UpdateEditingProjectResponse(),
-            self.do_rpcrequest('UpdateEditingProject', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_editing_project_with_options_async(
-        self,
-        request: ice20201109_models.UpdateEditingProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.UpdateEditingProjectResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.UpdateEditingProjectResponse(),
-            await self.do_rpcrequest_async('UpdateEditingProject', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_editing_project(
-        self,
-        request: ice20201109_models.UpdateEditingProjectRequest,
-    ) -> ice20201109_models.UpdateEditingProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_editing_project_with_options(request, runtime)
-
-    async def update_editing_project_async(
-        self,
-        request: ice20201109_models.UpdateEditingProjectRequest,
-    ) -> ice20201109_models.UpdateEditingProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_editing_project_with_options_async(request, runtime)
-
     def search_editing_project_with_options(
         self,
         request: ice20201109_models.SearchEditingProjectRequest,
@@ -666,6 +1250,48 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SearchEditingProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.search_editing_project_with_options_async(request, runtime)
+
+    def list_templates_with_options(
+        self,
+        request: ice20201109_models.ListTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListTemplatesResponse(),
+            self.do_rpcrequest('ListTemplates', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_templates_with_options_async(
+        self,
+        request: ice20201109_models.ListTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListTemplatesResponse(),
+            await self.do_rpcrequest_async('ListTemplates', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_templates(
+        self,
+        request: ice20201109_models.ListTemplatesRequest,
+    ) -> ice20201109_models.ListTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_templates_with_options(request, runtime)
+
+    async def list_templates_async(
+        self,
+        request: ice20201109_models.ListTemplatesRequest,
+    ) -> ice20201109_models.ListTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_templates_with_options_async(request, runtime)
 
     def delete_editing_projects_with_options(
         self,
@@ -835,119 +1461,49 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_delogo_job_with_options_async(request, runtime)
 
-    def list_media_producing_jobs_with_options(
+    def update_template_with_options(
         self,
-        request: ice20201109_models.ListMediaProducingJobsRequest,
+        request: ice20201109_models.UpdateTemplateRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListMediaProducingJobsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListMediaProducingJobsResponse(),
-            self.do_rpcrequest('ListMediaProducingJobs', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_media_producing_jobs_with_options_async(
-        self,
-        request: ice20201109_models.ListMediaProducingJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListMediaProducingJobsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListMediaProducingJobsResponse(),
-            await self.do_rpcrequest_async('ListMediaProducingJobs', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_media_producing_jobs(
-        self,
-        request: ice20201109_models.ListMediaProducingJobsRequest,
-    ) -> ice20201109_models.ListMediaProducingJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_media_producing_jobs_with_options(request, runtime)
-
-    async def list_media_producing_jobs_async(
-        self,
-        request: ice20201109_models.ListMediaProducingJobsRequest,
-    ) -> ice20201109_models.ListMediaProducingJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_media_producing_jobs_with_options_async(request, runtime)
-
-    def get_editing_project_materials_with_options(
-        self,
-        request: ice20201109_models.GetEditingProjectMaterialsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+    ) -> ice20201109_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=query
         )
         return TeaCore.from_map(
-            ice20201109_models.GetEditingProjectMaterialsResponse(),
-            self.do_rpcrequest('GetEditingProjectMaterials', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            ice20201109_models.UpdateTemplateResponse(),
+            self.do_rpcrequest('UpdateTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
-    async def get_editing_project_materials_with_options_async(
+    async def update_template_with_options_async(
         self,
-        request: ice20201109_models.GetEditingProjectMaterialsRequest,
+        request: ice20201109_models.UpdateTemplateRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+    ) -> ice20201109_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=query
         )
         return TeaCore.from_map(
-            ice20201109_models.GetEditingProjectMaterialsResponse(),
-            await self.do_rpcrequest_async('GetEditingProjectMaterials', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            ice20201109_models.UpdateTemplateResponse(),
+            await self.do_rpcrequest_async('UpdateTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
-    def get_editing_project_materials(
+    def update_template(
         self,
-        request: ice20201109_models.GetEditingProjectMaterialsRequest,
-    ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        request: ice20201109_models.UpdateTemplateRequest,
+    ) -> ice20201109_models.UpdateTemplateResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_editing_project_materials_with_options(request, runtime)
+        return self.update_template_with_options(request, runtime)
 
-    async def get_editing_project_materials_async(
+    async def update_template_async(
         self,
-        request: ice20201109_models.GetEditingProjectMaterialsRequest,
-    ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        request: ice20201109_models.UpdateTemplateRequest,
+    ) -> ice20201109_models.UpdateTemplateResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_editing_project_materials_with_options_async(request, runtime)
-
-    def get_default_storage_location_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetDefaultStorageLocationResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            ice20201109_models.GetDefaultStorageLocationResponse(),
-            self.do_rpcrequest('GetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_default_storage_location_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetDefaultStorageLocationResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            ice20201109_models.GetDefaultStorageLocationResponse(),
-            await self.do_rpcrequest_async('GetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_default_storage_location(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_default_storage_location_with_options(runtime)
-
-    async def get_default_storage_location_async(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_default_storage_location_with_options_async(runtime)
+        return await self.update_template_with_options_async(request, runtime)
 
     def submit_audio_produce_job_with_options(
         self,
@@ -1032,48 +1588,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_media_producing_job_with_options_async(request, runtime)
-
-    def delete_media_infos_with_options(
-        self,
-        request: ice20201109_models.DeleteMediaInfosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteMediaInfosResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteMediaInfosResponse(),
-            self.do_rpcrequest('DeleteMediaInfos', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_media_infos_with_options_async(
-        self,
-        request: ice20201109_models.DeleteMediaInfosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteMediaInfosResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteMediaInfosResponse(),
-            await self.do_rpcrequest_async('DeleteMediaInfos', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_media_infos(
-        self,
-        request: ice20201109_models.DeleteMediaInfosRequest,
-    ) -> ice20201109_models.DeleteMediaInfosResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_media_infos_with_options(request, runtime)
-
-    async def delete_media_infos_async(
-        self,
-        request: ice20201109_models.DeleteMediaInfosRequest,
-    ) -> ice20201109_models.DeleteMediaInfosResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_media_infos_with_options_async(request, runtime)
 
     def update_smart_job_with_options(
         self,
@@ -1201,89 +1715,33 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_matting_job_with_options_async(request, runtime)
 
-    def register_media_info_with_options(
+    def get_event_callback_with_options(
         self,
-        request: ice20201109_models.RegisterMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.RegisterMediaInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+    ) -> ice20201109_models.GetEventCallbackResponse:
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
-            ice20201109_models.RegisterMediaInfoResponse(),
-            self.do_rpcrequest('RegisterMediaInfo', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            ice20201109_models.GetEventCallbackResponse(),
+            self.do_rpcrequest('GetEventCallback', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def register_media_info_with_options_async(
+    async def get_event_callback_with_options_async(
         self,
-        request: ice20201109_models.RegisterMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.RegisterMediaInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+    ) -> ice20201109_models.GetEventCallbackResponse:
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
-            ice20201109_models.RegisterMediaInfoResponse(),
-            await self.do_rpcrequest_async('RegisterMediaInfo', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            ice20201109_models.GetEventCallbackResponse(),
+            await self.do_rpcrequest_async('GetEventCallback', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def register_media_info(
-        self,
-        request: ice20201109_models.RegisterMediaInfoRequest,
-    ) -> ice20201109_models.RegisterMediaInfoResponse:
+    def get_event_callback(self) -> ice20201109_models.GetEventCallbackResponse:
         runtime = util_models.RuntimeOptions()
-        return self.register_media_info_with_options(request, runtime)
+        return self.get_event_callback_with_options(runtime)
 
-    async def register_media_info_async(
-        self,
-        request: ice20201109_models.RegisterMediaInfoRequest,
-    ) -> ice20201109_models.RegisterMediaInfoResponse:
+    async def get_event_callback_async(self) -> ice20201109_models.GetEventCallbackResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.register_media_info_with_options_async(request, runtime)
-
-    def create_editing_project_with_options(
-        self,
-        request: ice20201109_models.CreateEditingProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CreateEditingProjectResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CreateEditingProjectResponse(),
-            self.do_rpcrequest('CreateEditingProject', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_editing_project_with_options_async(
-        self,
-        request: ice20201109_models.CreateEditingProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CreateEditingProjectResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CreateEditingProjectResponse(),
-            await self.do_rpcrequest_async('CreateEditingProject', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_editing_project(
-        self,
-        request: ice20201109_models.CreateEditingProjectRequest,
-    ) -> ice20201109_models.CreateEditingProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_editing_project_with_options(request, runtime)
-
-    async def create_editing_project_async(
-        self,
-        request: ice20201109_models.CreateEditingProjectRequest,
-    ) -> ice20201109_models.CreateEditingProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_editing_project_with_options_async(request, runtime)
+        return await self.get_event_callback_with_options_async(runtime)
 
     def list_public_media_basic_infos_with_options(
         self,
@@ -1368,134 +1826,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitCoverJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_cover_job_with_options_async(request, runtime)
-
-    def set_default_storage_location_with_options(
-        self,
-        request: ice20201109_models.SetDefaultStorageLocationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SetDefaultStorageLocationResponse(),
-            self.do_rpcrequest('SetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def set_default_storage_location_with_options_async(
-        self,
-        request: ice20201109_models.SetDefaultStorageLocationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SetDefaultStorageLocationResponse(),
-            await self.do_rpcrequest_async('SetDefaultStorageLocation', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def set_default_storage_location(
-        self,
-        request: ice20201109_models.SetDefaultStorageLocationRequest,
-    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_default_storage_location_with_options(request, runtime)
-
-    async def set_default_storage_location_async(
-        self,
-        request: ice20201109_models.SetDefaultStorageLocationRequest,
-    ) -> ice20201109_models.SetDefaultStorageLocationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_default_storage_location_with_options_async(request, runtime)
-
-    def update_media_info_with_options(
-        self,
-        request: ice20201109_models.UpdateMediaInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.UpdateMediaInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.UpdateMediaInfoResponse(),
-            self.do_rpcrequest('UpdateMediaInfo', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_media_info_with_options_async(
-        self,
-        request: ice20201109_models.UpdateMediaInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.UpdateMediaInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            ice20201109_models.UpdateMediaInfoResponse(),
-            await self.do_rpcrequest_async('UpdateMediaInfo', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_media_info(
-        self,
-        request: ice20201109_models.UpdateMediaInfoRequest,
-    ) -> ice20201109_models.UpdateMediaInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_media_info_with_options(request, runtime)
-
-    async def update_media_info_async(
-        self,
-        request: ice20201109_models.UpdateMediaInfoRequest,
-    ) -> ice20201109_models.UpdateMediaInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_media_info_with_options_async(request, runtime)
-
-    def get_media_producing_job_with_options(
-        self,
-        request: ice20201109_models.GetMediaProducingJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaProducingJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaProducingJobResponse(),
-            self.do_rpcrequest('GetMediaProducingJob', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def get_media_producing_job_with_options_async(
-        self,
-        request: ice20201109_models.GetMediaProducingJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaProducingJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaProducingJobResponse(),
-            await self.do_rpcrequest_async('GetMediaProducingJob', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def get_media_producing_job(
-        self,
-        request: ice20201109_models.GetMediaProducingJobRequest,
-    ) -> ice20201109_models.GetMediaProducingJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_media_producing_job_with_options(request, runtime)
-
-    async def get_media_producing_job_async(
-        self,
-        request: ice20201109_models.GetMediaProducingJobRequest,
-    ) -> ice20201109_models.GetMediaProducingJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_media_producing_job_with_options_async(request, runtime)
 
     def get_smart_handle_job_with_options(
         self,

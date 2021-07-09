@@ -1,3 +1,13 @@
+2021-07-09 Version: 1.0.8
+- Add a new API called ListSysTemplates, which list system templates.
+- Add a new API called ListTemplates, which list user templates.
+- Add a new API called AddTemplate, which add a new templates.
+- Add a new API called UpdateTemplate, which update template configs.
+- Add a new API called DeleteTemplate, which delete templates.
+- Add vod output config in SubmitH2VJob.
+- Add vod output config in SubmitDelogoJob.
+- Add vod output config in SubmitMattingJob.
+
 2021-06-03 Version: 1.0.7
 - SubmitMediaProducingJob return MediaId in the result.
 
