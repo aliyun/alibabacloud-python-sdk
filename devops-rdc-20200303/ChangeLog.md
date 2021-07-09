@@ -1,3 +1,6 @@
+2021-07-09 Version: 2.0.2
+- Fix ListPIpelineTemplates.
+
 2021-06-16 Version: 1.0.2
 - Generated python 2020-03-03 for devops-rdc.
 
