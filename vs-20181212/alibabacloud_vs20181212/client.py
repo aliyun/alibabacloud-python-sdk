@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -39,6 +40,48 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_device_with_options(
+        self,
+        request: vs_20181212_models.AddDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.AddDeviceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.AddDeviceResponse(),
+            self.do_rpcrequest('AddDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_device_with_options_async(
+        self,
+        request: vs_20181212_models.AddDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.AddDeviceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.AddDeviceResponse(),
+            await self.do_rpcrequest_async('AddDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_device(
+        self,
+        request: vs_20181212_models.AddDeviceRequest,
+    ) -> vs_20181212_models.AddDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_device_with_options(request, runtime)
+
+    async def add_device_async(
+        self,
+        request: vs_20181212_models.AddDeviceRequest,
+    ) -> vs_20181212_models.AddDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_device_with_options_async(request, runtime)
+
     def add_vs_pull_stream_info_config_with_options(
         self,
         request: vs_20181212_models.AddVsPullStreamInfoConfigRequest,
@@ -48,7 +91,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.AddVsPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.AddVsPullStreamInfoConfigResponse(),
             self.do_rpcrequest('AddVsPullStreamInfoConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -61,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.AddVsPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.AddVsPullStreamInfoConfigResponse(),
             await self.do_rpcrequest_async('AddVsPullStreamInfoConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -88,7 +133,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindDirectoriesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindDirectoriesResponse(),
             self.do_rpcrequest('BatchBindDirectories', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindDirectoriesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindDirectoriesResponse(),
             await self.do_rpcrequest_async('BatchBindDirectories', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -128,7 +175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindParentPlatformDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindParentPlatformDevicesResponse(),
             self.do_rpcrequest('BatchBindParentPlatformDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -141,7 +189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindParentPlatformDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindParentPlatformDevicesResponse(),
             await self.do_rpcrequest_async('BatchBindParentPlatformDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -168,7 +217,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindPurchasedDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindPurchasedDevicesResponse(),
             self.do_rpcrequest('BatchBindPurchasedDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -181,7 +231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindPurchasedDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindPurchasedDevicesResponse(),
             await self.do_rpcrequest_async('BatchBindPurchasedDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -208,7 +259,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindTemplateResponse(),
             self.do_rpcrequest('BatchBindTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -221,7 +273,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindTemplateResponse(),
             await self.do_rpcrequest_async('BatchBindTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -248,7 +301,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindTemplatesResponse(),
             self.do_rpcrequest('BatchBindTemplates', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -261,7 +315,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchBindTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchBindTemplatesResponse(),
             await self.do_rpcrequest_async('BatchBindTemplates', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -288,7 +343,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchDeleteDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchDeleteDevicesResponse(),
             self.do_rpcrequest('BatchDeleteDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -301,7 +357,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchDeleteDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchDeleteDevicesResponse(),
             await self.do_rpcrequest_async('BatchDeleteDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -328,7 +385,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchDeleteVsDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchDeleteVsDomainConfigsResponse(),
             self.do_rpcrequest('BatchDeleteVsDomainConfigs', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -341,7 +399,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchDeleteVsDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchDeleteVsDomainConfigsResponse(),
             await self.do_rpcrequest_async('BatchDeleteVsDomainConfigs', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -368,7 +427,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchForbidVsStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchForbidVsStreamResponse(),
             self.do_rpcrequest('BatchForbidVsStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -381,7 +441,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchForbidVsStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchForbidVsStreamResponse(),
             await self.do_rpcrequest_async('BatchForbidVsStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -408,7 +469,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchResumeVsStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchResumeVsStreamResponse(),
             self.do_rpcrequest('BatchResumeVsStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -421,7 +483,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchResumeVsStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchResumeVsStreamResponse(),
             await self.do_rpcrequest_async('BatchResumeVsStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -448,7 +511,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchSetVsDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchSetVsDomainConfigsResponse(),
             self.do_rpcrequest('BatchSetVsDomainConfigs', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -461,7 +525,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchSetVsDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchSetVsDomainConfigsResponse(),
             await self.do_rpcrequest_async('BatchSetVsDomainConfigs', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -488,7 +553,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchStartDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchStartDevicesResponse(),
             self.do_rpcrequest('BatchStartDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -501,7 +567,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchStartDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchStartDevicesResponse(),
             await self.do_rpcrequest_async('BatchStartDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -528,7 +595,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchStartStreamsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchStartStreamsResponse(),
             self.do_rpcrequest('BatchStartStreams', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -541,7 +609,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchStartStreamsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchStartStreamsResponse(),
             await self.do_rpcrequest_async('BatchStartStreams', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -568,7 +637,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchStopDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchStopDevicesResponse(),
             self.do_rpcrequest('BatchStopDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -581,7 +651,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchStopDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchStopDevicesResponse(),
             await self.do_rpcrequest_async('BatchStopDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -608,7 +679,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchStopStreamsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchStopStreamsResponse(),
             self.do_rpcrequest('BatchStopStreams', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -621,7 +693,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchStopStreamsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchStopStreamsResponse(),
             await self.do_rpcrequest_async('BatchStopStreams', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -648,7 +721,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindDirectoriesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindDirectoriesResponse(),
             self.do_rpcrequest('BatchUnbindDirectories', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -661,7 +735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindDirectoriesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindDirectoriesResponse(),
             await self.do_rpcrequest_async('BatchUnbindDirectories', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -688,7 +763,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindParentPlatformDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindParentPlatformDevicesResponse(),
             self.do_rpcrequest('BatchUnbindParentPlatformDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -701,7 +777,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindParentPlatformDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindParentPlatformDevicesResponse(),
             await self.do_rpcrequest_async('BatchUnbindParentPlatformDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -728,7 +805,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindPurchasedDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindPurchasedDevicesResponse(),
             self.do_rpcrequest('BatchUnbindPurchasedDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -741,7 +819,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindPurchasedDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindPurchasedDevicesResponse(),
             await self.do_rpcrequest_async('BatchUnbindPurchasedDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -768,7 +847,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindTemplateResponse(),
             self.do_rpcrequest('BatchUnbindTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -781,7 +861,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindTemplateResponse(),
             await self.do_rpcrequest_async('BatchUnbindTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -808,7 +889,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindTemplatesResponse(),
             self.do_rpcrequest('BatchUnbindTemplates', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -821,7 +903,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BatchUnbindTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BatchUnbindTemplatesResponse(),
             await self.do_rpcrequest_async('BatchUnbindTemplates', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -848,7 +931,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BindDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BindDirectoryResponse(),
             self.do_rpcrequest('BindDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -861,7 +945,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BindDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BindDirectoryResponse(),
             await self.do_rpcrequest_async('BindDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -888,7 +973,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BindParentPlatformDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BindParentPlatformDeviceResponse(),
             self.do_rpcrequest('BindParentPlatformDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -901,7 +987,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BindParentPlatformDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BindParentPlatformDeviceResponse(),
             await self.do_rpcrequest_async('BindParentPlatformDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -928,7 +1015,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BindPurchasedDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BindPurchasedDeviceResponse(),
             self.do_rpcrequest('BindPurchasedDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -941,7 +1029,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BindPurchasedDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BindPurchasedDeviceResponse(),
             await self.do_rpcrequest_async('BindPurchasedDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -968,7 +1057,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BindTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BindTemplateResponse(),
             self.do_rpcrequest('BindTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -981,7 +1071,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.BindTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.BindTemplateResponse(),
             await self.do_rpcrequest_async('BindTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1008,7 +1099,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ContinuousAdjustResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ContinuousAdjustResponse(),
             self.do_rpcrequest('ContinuousAdjust', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1021,7 +1113,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ContinuousAdjustResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ContinuousAdjustResponse(),
             await self.do_rpcrequest_async('ContinuousAdjust', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1048,7 +1141,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ContinuousMoveResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ContinuousMoveResponse(),
             self.do_rpcrequest('ContinuousMove', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1061,7 +1155,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ContinuousMoveResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ContinuousMoveResponse(),
             await self.do_rpcrequest_async('ContinuousMove', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1088,7 +1183,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateDeviceResponse(),
             self.do_rpcrequest('CreateDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1101,7 +1197,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateDeviceResponse(),
             await self.do_rpcrequest_async('CreateDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1128,7 +1225,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateDeviceAlarmResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateDeviceAlarmResponse(),
             self.do_rpcrequest('CreateDeviceAlarm', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1141,7 +1239,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateDeviceAlarmResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateDeviceAlarmResponse(),
             await self.do_rpcrequest_async('CreateDeviceAlarm', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1159,6 +1258,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_device_alarm_with_options_async(request, runtime)
 
+    def create_device_snapshot_with_options(
+        self,
+        request: vs_20181212_models.CreateDeviceSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.CreateDeviceSnapshotResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.CreateDeviceSnapshotResponse(),
+            self.do_rpcrequest('CreateDeviceSnapshot', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_device_snapshot_with_options_async(
+        self,
+        request: vs_20181212_models.CreateDeviceSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.CreateDeviceSnapshotResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.CreateDeviceSnapshotResponse(),
+            await self.do_rpcrequest_async('CreateDeviceSnapshot', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_device_snapshot(
+        self,
+        request: vs_20181212_models.CreateDeviceSnapshotRequest,
+    ) -> vs_20181212_models.CreateDeviceSnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_device_snapshot_with_options(request, runtime)
+
+    async def create_device_snapshot_async(
+        self,
+        request: vs_20181212_models.CreateDeviceSnapshotRequest,
+    ) -> vs_20181212_models.CreateDeviceSnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_device_snapshot_with_options_async(request, runtime)
+
     def create_directory_with_options(
         self,
         request: vs_20181212_models.CreateDirectoryRequest,
@@ -1168,7 +1309,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateDirectoryResponse(),
             self.do_rpcrequest('CreateDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1181,7 +1323,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateDirectoryResponse(),
             await self.do_rpcrequest_async('CreateDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1208,7 +1351,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateGroupResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateGroupResponse(),
             self.do_rpcrequest('CreateGroup', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1221,7 +1365,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateGroupResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateGroupResponse(),
             await self.do_rpcrequest_async('CreateGroup', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1248,7 +1393,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateParentPlatformResponse(),
             self.do_rpcrequest('CreateParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1261,7 +1407,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateParentPlatformResponse(),
             await self.do_rpcrequest_async('CreateParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1288,7 +1435,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateStreamSnapshotResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateStreamSnapshotResponse(),
             self.do_rpcrequest('CreateStreamSnapshot', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1301,7 +1449,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateStreamSnapshotResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateStreamSnapshotResponse(),
             await self.do_rpcrequest_async('CreateStreamSnapshot', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1328,7 +1477,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateTemplateResponse(),
             self.do_rpcrequest('CreateTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1341,7 +1491,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.CreateTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.CreateTemplateResponse(),
             await self.do_rpcrequest_async('CreateTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1359,6 +1510,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_template_with_options_async(request, runtime)
 
+    def delete_bucket_with_options(
+        self,
+        request: vs_20181212_models.DeleteBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DeleteBucketResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteBucketResponse(),
+            self.do_rpcrequest('DeleteBucket', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_bucket_with_options_async(
+        self,
+        request: vs_20181212_models.DeleteBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DeleteBucketResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteBucketResponse(),
+            await self.do_rpcrequest_async('DeleteBucket', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_bucket(
+        self,
+        request: vs_20181212_models.DeleteBucketRequest,
+    ) -> vs_20181212_models.DeleteBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_bucket_with_options(request, runtime)
+
+    async def delete_bucket_async(
+        self,
+        request: vs_20181212_models.DeleteBucketRequest,
+    ) -> vs_20181212_models.DeleteBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_bucket_with_options_async(request, runtime)
+
     def delete_device_with_options(
         self,
         request: vs_20181212_models.DeleteDeviceRequest,
@@ -1368,7 +1561,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteDeviceResponse(),
             self.do_rpcrequest('DeleteDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1381,7 +1575,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteDeviceResponse(),
             await self.do_rpcrequest_async('DeleteDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1408,7 +1603,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteDirectoryResponse(),
             self.do_rpcrequest('DeleteDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1421,7 +1617,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteDirectoryResponse(),
             await self.do_rpcrequest_async('DeleteDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1448,7 +1645,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteGroupResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteGroupResponse(),
             self.do_rpcrequest('DeleteGroup', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1461,7 +1659,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteGroupResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteGroupResponse(),
             await self.do_rpcrequest_async('DeleteGroup', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1488,7 +1687,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteParentPlatformResponse(),
             self.do_rpcrequest('DeleteParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1501,7 +1701,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteParentPlatformResponse(),
             await self.do_rpcrequest_async('DeleteParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1528,7 +1729,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeletePresetResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeletePresetResponse(),
             self.do_rpcrequest('DeletePreset', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1541,7 +1743,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeletePresetResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeletePresetResponse(),
             await self.do_rpcrequest_async('DeletePreset', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1568,7 +1771,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteTemplateResponse(),
             self.do_rpcrequest('DeleteTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1581,7 +1785,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteTemplateResponse(),
             await self.do_rpcrequest_async('DeleteTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1608,7 +1813,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteVsPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteVsPullStreamInfoConfigResponse(),
             self.do_rpcrequest('DeleteVsPullStreamInfoConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1621,7 +1827,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteVsPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteVsPullStreamInfoConfigResponse(),
             await self.do_rpcrequest_async('DeleteVsPullStreamInfoConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1648,7 +1855,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteVsStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteVsStreamsNotifyUrlConfigResponse(),
             self.do_rpcrequest('DeleteVsStreamsNotifyUrlConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1661,7 +1869,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DeleteVsStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteVsStreamsNotifyUrlConfigResponse(),
             await self.do_rpcrequest_async('DeleteVsStreamsNotifyUrlConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1688,7 +1897,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeAccountStatResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeAccountStatResponse(),
             self.do_rpcrequest('DescribeAccountStat', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1701,7 +1911,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeAccountStatResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeAccountStatResponse(),
             await self.do_rpcrequest_async('DescribeAccountStat', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1728,7 +1939,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDeviceResponse(),
             self.do_rpcrequest('DescribeDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1741,7 +1953,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDeviceResponse(),
             await self.do_rpcrequest_async('DescribeDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1768,7 +1981,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDeviceChannelsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDeviceChannelsResponse(),
             self.do_rpcrequest('DescribeDeviceChannels', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1781,7 +1995,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDeviceChannelsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDeviceChannelsResponse(),
             await self.do_rpcrequest_async('DescribeDeviceChannels', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1808,7 +2023,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDeviceGatewayResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDeviceGatewayResponse(),
             self.do_rpcrequest('DescribeDeviceGateway', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1821,7 +2037,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDeviceGatewayResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDeviceGatewayResponse(),
             await self.do_rpcrequest_async('DescribeDeviceGateway', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1848,7 +2065,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDevicesResponse(),
             self.do_rpcrequest('DescribeDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1861,7 +2079,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDevicesResponse(),
             await self.do_rpcrequest_async('DescribeDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1888,7 +2107,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDeviceURLResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDeviceURLResponse(),
             self.do_rpcrequest('DescribeDeviceURL', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1901,7 +2121,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDeviceURLResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDeviceURLResponse(),
             await self.do_rpcrequest_async('DescribeDeviceURL', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1928,7 +2149,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDirectoriesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDirectoriesResponse(),
             self.do_rpcrequest('DescribeDirectories', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1941,7 +2163,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDirectoriesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDirectoriesResponse(),
             await self.do_rpcrequest_async('DescribeDirectories', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1968,7 +2191,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDirectoryResponse(),
             self.do_rpcrequest('DescribeDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1981,7 +2205,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeDirectoryResponse(),
             await self.do_rpcrequest_async('DescribeDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2008,7 +2233,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeGroupResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeGroupResponse(),
             self.do_rpcrequest('DescribeGroup', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2021,7 +2247,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeGroupResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeGroupResponse(),
             await self.do_rpcrequest_async('DescribeGroup', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2048,7 +2275,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeGroupsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeGroupsResponse(),
             self.do_rpcrequest('DescribeGroups', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2061,7 +2289,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeGroupsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeGroupsResponse(),
             await self.do_rpcrequest_async('DescribeGroups', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2088,7 +2317,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeParentPlatformResponse(),
             self.do_rpcrequest('DescribeParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2101,7 +2331,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeParentPlatformResponse(),
             await self.do_rpcrequest_async('DescribeParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2128,7 +2359,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeParentPlatformDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeParentPlatformDevicesResponse(),
             self.do_rpcrequest('DescribeParentPlatformDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2141,7 +2373,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeParentPlatformDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeParentPlatformDevicesResponse(),
             await self.do_rpcrequest_async('DescribeParentPlatformDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2168,7 +2401,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeParentPlatformsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeParentPlatformsResponse(),
             self.do_rpcrequest('DescribeParentPlatforms', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2181,7 +2415,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeParentPlatformsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeParentPlatformsResponse(),
             await self.do_rpcrequest_async('DescribeParentPlatforms', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2208,7 +2443,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribePresetsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribePresetsResponse(),
             self.do_rpcrequest('DescribePresets', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2221,7 +2457,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribePresetsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribePresetsResponse(),
             await self.do_rpcrequest_async('DescribePresets', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2248,7 +2485,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribePurchasedDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribePurchasedDeviceResponse(),
             self.do_rpcrequest('DescribePurchasedDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2261,7 +2499,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribePurchasedDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribePurchasedDeviceResponse(),
             await self.do_rpcrequest_async('DescribePurchasedDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2288,7 +2527,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribePurchasedDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribePurchasedDevicesResponse(),
             self.do_rpcrequest('DescribePurchasedDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2301,7 +2541,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribePurchasedDevicesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribePurchasedDevicesResponse(),
             await self.do_rpcrequest_async('DescribePurchasedDevices', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2328,7 +2569,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeRecordsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeRecordsResponse(),
             self.do_rpcrequest('DescribeRecords', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2341,7 +2583,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeRecordsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeRecordsResponse(),
             await self.do_rpcrequest_async('DescribeRecords', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2368,7 +2611,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeStreamResponse(),
             self.do_rpcrequest('DescribeStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2381,7 +2625,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeStreamResponse(),
             await self.do_rpcrequest_async('DescribeStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2408,7 +2653,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeStreamsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeStreamsResponse(),
             self.do_rpcrequest('DescribeStreams', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2421,7 +2667,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeStreamsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeStreamsResponse(),
             await self.do_rpcrequest_async('DescribeStreams', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2448,7 +2695,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeStreamURLResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeStreamURLResponse(),
             self.do_rpcrequest('DescribeStreamURL', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2461,7 +2709,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeStreamURLResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeStreamURLResponse(),
             await self.do_rpcrequest_async('DescribeStreamURL', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2488,7 +2737,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeStreamVodListResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeStreamVodListResponse(),
             self.do_rpcrequest('DescribeStreamVodList', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2501,7 +2751,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeStreamVodListResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeStreamVodListResponse(),
             await self.do_rpcrequest_async('DescribeStreamVodList', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2528,7 +2779,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeTemplateResponse(),
             self.do_rpcrequest('DescribeTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2541,7 +2793,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeTemplateResponse(),
             await self.do_rpcrequest_async('DescribeTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2568,7 +2821,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeTemplatesResponse(),
             self.do_rpcrequest('DescribeTemplates', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2581,7 +2835,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeTemplatesResponse(),
             await self.do_rpcrequest_async('DescribeTemplates', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2608,7 +2863,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVodStreamURLResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVodStreamURLResponse(),
             self.do_rpcrequest('DescribeVodStreamURL', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2621,7 +2877,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVodStreamURLResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVodStreamURLResponse(),
             await self.do_rpcrequest_async('DescribeVodStreamURL', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2648,7 +2905,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsCertificateDetailResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsCertificateDetailResponse(),
             self.do_rpcrequest('DescribeVsCertificateDetail', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2661,7 +2919,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsCertificateDetailResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsCertificateDetailResponse(),
             await self.do_rpcrequest_async('DescribeVsCertificateDetail', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2688,7 +2947,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsCertificateListResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsCertificateListResponse(),
             self.do_rpcrequest('DescribeVsCertificateList', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2701,7 +2961,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsCertificateListResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsCertificateListResponse(),
             await self.do_rpcrequest_async('DescribeVsCertificateList', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2728,7 +2989,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainBpsDataResponse(),
             self.do_rpcrequest('DescribeVsDomainBpsData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2741,7 +3003,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainBpsData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2768,7 +3031,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainCertificateInfoResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainCertificateInfoResponse(),
             self.do_rpcrequest('DescribeVsDomainCertificateInfo', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2781,7 +3045,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainCertificateInfoResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainCertificateInfoResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainCertificateInfo', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2808,7 +3073,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainConfigsResponse(),
             self.do_rpcrequest('DescribeVsDomainConfigs', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2821,7 +3087,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainConfigsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainConfigsResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainConfigs', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2848,7 +3115,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainDetailResponse(),
             self.do_rpcrequest('DescribeVsDomainDetail', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2861,7 +3129,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainDetailResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainDetailResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainDetail', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2888,7 +3157,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainPvDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainPvDataResponse(),
             self.do_rpcrequest('DescribeVsDomainPvData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2901,7 +3171,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainPvDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainPvDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainPvData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2928,7 +3199,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainPvUvDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainPvUvDataResponse(),
             self.do_rpcrequest('DescribeVsDomainPvUvData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2941,7 +3213,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainPvUvDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainPvUvDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainPvUvData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2968,7 +3241,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainRecordDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainRecordDataResponse(),
             self.do_rpcrequest('DescribeVsDomainRecordData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2981,7 +3255,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainRecordDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainRecordDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainRecordData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3008,7 +3283,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainRegionDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainRegionDataResponse(),
             self.do_rpcrequest('DescribeVsDomainRegionData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3021,7 +3297,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainRegionDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainRegionDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainRegionData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3048,7 +3325,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainReqBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainReqBpsDataResponse(),
             self.do_rpcrequest('DescribeVsDomainReqBpsData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3061,7 +3339,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainReqBpsDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainReqBpsDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainReqBpsData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3088,7 +3367,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainReqTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainReqTrafficDataResponse(),
             self.do_rpcrequest('DescribeVsDomainReqTrafficData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3101,7 +3381,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainReqTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainReqTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainReqTrafficData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3128,7 +3409,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainSnapshotDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainSnapshotDataResponse(),
             self.do_rpcrequest('DescribeVsDomainSnapshotData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3141,7 +3423,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainSnapshotDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainSnapshotDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainSnapshotData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3168,7 +3451,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainTrafficDataResponse(),
             self.do_rpcrequest('DescribeVsDomainTrafficData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3181,7 +3465,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainTrafficDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainTrafficDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainTrafficData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3208,7 +3493,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainUvDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainUvDataResponse(),
             self.do_rpcrequest('DescribeVsDomainUvData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3221,7 +3507,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsDomainUvDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsDomainUvDataResponse(),
             await self.do_rpcrequest_async('DescribeVsDomainUvData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3248,7 +3535,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsPullStreamInfoConfigResponse(),
             self.do_rpcrequest('DescribeVsPullStreamInfoConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3261,7 +3549,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsPullStreamInfoConfigResponse(),
             await self.do_rpcrequest_async('DescribeVsPullStreamInfoConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3279,6 +3568,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_pull_stream_info_config_with_options_async(request, runtime)
 
+    def describe_vs_storage_usage_data_with_options(
+        self,
+        request: vs_20181212_models.DescribeVsStorageUsageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribeVsStorageUsageDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsStorageUsageDataResponse(),
+            self.do_rpcrequest('DescribeVsStorageUsageData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_vs_storage_usage_data_with_options_async(
+        self,
+        request: vs_20181212_models.DescribeVsStorageUsageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribeVsStorageUsageDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsStorageUsageDataResponse(),
+            await self.do_rpcrequest_async('DescribeVsStorageUsageData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_vs_storage_usage_data(
+        self,
+        request: vs_20181212_models.DescribeVsStorageUsageDataRequest,
+    ) -> vs_20181212_models.DescribeVsStorageUsageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vs_storage_usage_data_with_options(request, runtime)
+
+    async def describe_vs_storage_usage_data_async(
+        self,
+        request: vs_20181212_models.DescribeVsStorageUsageDataRequest,
+    ) -> vs_20181212_models.DescribeVsStorageUsageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vs_storage_usage_data_with_options_async(request, runtime)
+
     def describe_vs_streams_notify_url_config_with_options(
         self,
         request: vs_20181212_models.DescribeVsStreamsNotifyUrlConfigRequest,
@@ -3288,7 +3619,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsStreamsNotifyUrlConfigResponse(),
             self.do_rpcrequest('DescribeVsStreamsNotifyUrlConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3301,7 +3633,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsStreamsNotifyUrlConfigResponse(),
             await self.do_rpcrequest_async('DescribeVsStreamsNotifyUrlConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3328,7 +3661,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsStreamsOnlineListResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsStreamsOnlineListResponse(),
             self.do_rpcrequest('DescribeVsStreamsOnlineList', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3341,7 +3675,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsStreamsOnlineListResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsStreamsOnlineListResponse(),
             await self.do_rpcrequest_async('DescribeVsStreamsOnlineList', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3368,7 +3703,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsStreamsPublishListResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsStreamsPublishListResponse(),
             self.do_rpcrequest('DescribeVsStreamsPublishList', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3381,7 +3717,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsStreamsPublishListResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsStreamsPublishListResponse(),
             await self.do_rpcrequest_async('DescribeVsStreamsPublishList', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3408,7 +3745,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsTopDomainsByFlowResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsTopDomainsByFlowResponse(),
             self.do_rpcrequest('DescribeVsTopDomainsByFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3421,7 +3759,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsTopDomainsByFlowResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsTopDomainsByFlowResponse(),
             await self.do_rpcrequest_async('DescribeVsTopDomainsByFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3448,7 +3787,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsUpPeakPublishStreamDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsUpPeakPublishStreamDataResponse(),
             self.do_rpcrequest('DescribeVsUpPeakPublishStreamData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3461,7 +3801,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsUpPeakPublishStreamDataResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsUpPeakPublishStreamDataResponse(),
             await self.do_rpcrequest_async('DescribeVsUpPeakPublishStreamData', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3488,7 +3829,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsUserResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsUserResourcePackageResponse(),
             self.do_rpcrequest('DescribeVsUserResourcePackage', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3501,7 +3843,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.DescribeVsUserResourcePackageResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsUserResourcePackageResponse(),
             await self.do_rpcrequest_async('DescribeVsUserResourcePackage', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3528,7 +3871,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ForbidVsStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ForbidVsStreamResponse(),
             self.do_rpcrequest('ForbidVsStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3541,7 +3885,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ForbidVsStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ForbidVsStreamResponse(),
             await self.do_rpcrequest_async('ForbidVsStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3559,6 +3904,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.forbid_vs_stream_with_options_async(request, runtime)
 
+    def get_bucket_info_with_options(
+        self,
+        request: vs_20181212_models.GetBucketInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.GetBucketInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.GetBucketInfoResponse(),
+            self.do_rpcrequest('GetBucketInfo', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_bucket_info_with_options_async(
+        self,
+        request: vs_20181212_models.GetBucketInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.GetBucketInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.GetBucketInfoResponse(),
+            await self.do_rpcrequest_async('GetBucketInfo', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_bucket_info(
+        self,
+        request: vs_20181212_models.GetBucketInfoRequest,
+    ) -> vs_20181212_models.GetBucketInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_bucket_info_with_options(request, runtime)
+
+    async def get_bucket_info_async(
+        self,
+        request: vs_20181212_models.GetBucketInfoRequest,
+    ) -> vs_20181212_models.GetBucketInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_bucket_info_with_options_async(request, runtime)
+
     def goto_preset_with_options(
         self,
         request: vs_20181212_models.GotoPresetRequest,
@@ -3568,7 +3955,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.GotoPresetResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.GotoPresetResponse(),
             self.do_rpcrequest('GotoPreset', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3581,7 +3969,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.GotoPresetResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.GotoPresetResponse(),
             await self.do_rpcrequest_async('GotoPreset', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3599,6 +3988,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.goto_preset_with_options_async(request, runtime)
 
+    def list_buckets_with_options(
+        self,
+        request: vs_20181212_models.ListBucketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListBucketsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListBucketsResponse(),
+            self.do_rpcrequest('ListBuckets', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_buckets_with_options_async(
+        self,
+        request: vs_20181212_models.ListBucketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListBucketsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListBucketsResponse(),
+            await self.do_rpcrequest_async('ListBuckets', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_buckets(
+        self,
+        request: vs_20181212_models.ListBucketsRequest,
+    ) -> vs_20181212_models.ListBucketsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_buckets_with_options(request, runtime)
+
+    async def list_buckets_async(
+        self,
+        request: vs_20181212_models.ListBucketsRequest,
+    ) -> vs_20181212_models.ListBucketsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_buckets_with_options_async(request, runtime)
+
+    def list_device_channels_with_options(
+        self,
+        request: vs_20181212_models.ListDeviceChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListDeviceChannelsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListDeviceChannelsResponse(),
+            self.do_rpcrequest('ListDeviceChannels', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_device_channels_with_options_async(
+        self,
+        request: vs_20181212_models.ListDeviceChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListDeviceChannelsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListDeviceChannelsResponse(),
+            await self.do_rpcrequest_async('ListDeviceChannels', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_device_channels(
+        self,
+        request: vs_20181212_models.ListDeviceChannelsRequest,
+    ) -> vs_20181212_models.ListDeviceChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_device_channels_with_options(request, runtime)
+
+    async def list_device_channels_async(
+        self,
+        request: vs_20181212_models.ListDeviceChannelsRequest,
+    ) -> vs_20181212_models.ListDeviceChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_device_channels_with_options_async(request, runtime)
+
+    def list_device_records_with_options(
+        self,
+        request: vs_20181212_models.ListDeviceRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListDeviceRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListDeviceRecordsResponse(),
+            self.do_rpcrequest('ListDeviceRecords', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_device_records_with_options_async(
+        self,
+        request: vs_20181212_models.ListDeviceRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListDeviceRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListDeviceRecordsResponse(),
+            await self.do_rpcrequest_async('ListDeviceRecords', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_device_records(
+        self,
+        request: vs_20181212_models.ListDeviceRecordsRequest,
+    ) -> vs_20181212_models.ListDeviceRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_device_records_with_options(request, runtime)
+
+    async def list_device_records_async(
+        self,
+        request: vs_20181212_models.ListDeviceRecordsRequest,
+    ) -> vs_20181212_models.ListDeviceRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_device_records_with_options_async(request, runtime)
+
+    def list_objects_with_options(
+        self,
+        request: vs_20181212_models.ListObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListObjectsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListObjectsResponse(),
+            self.do_rpcrequest('ListObjects', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_objects_with_options_async(
+        self,
+        request: vs_20181212_models.ListObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListObjectsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListObjectsResponse(),
+            await self.do_rpcrequest_async('ListObjects', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_objects(
+        self,
+        request: vs_20181212_models.ListObjectsRequest,
+    ) -> vs_20181212_models.ListObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_objects_with_options(request, runtime)
+
+    async def list_objects_async(
+        self,
+        request: vs_20181212_models.ListObjectsRequest,
+    ) -> vs_20181212_models.ListObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_objects_with_options_async(request, runtime)
+
     def modify_device_with_options(
         self,
         request: vs_20181212_models.ModifyDeviceRequest,
@@ -3608,7 +4165,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDeviceResponse(),
             self.do_rpcrequest('ModifyDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3621,7 +4179,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDeviceResponse(),
             await self.do_rpcrequest_async('ModifyDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3648,7 +4207,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDeviceAlarmResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDeviceAlarmResponse(),
             self.do_rpcrequest('ModifyDeviceAlarm', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3661,7 +4221,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDeviceAlarmResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDeviceAlarmResponse(),
             await self.do_rpcrequest_async('ModifyDeviceAlarm', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3688,7 +4249,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDeviceCaptureResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDeviceCaptureResponse(),
             self.do_rpcrequest('ModifyDeviceCapture', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3701,7 +4263,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDeviceCaptureResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDeviceCaptureResponse(),
             await self.do_rpcrequest_async('ModifyDeviceCapture', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3728,7 +4291,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDeviceChannelsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDeviceChannelsResponse(),
             self.do_rpcrequest('ModifyDeviceChannels', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3741,7 +4305,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDeviceChannelsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDeviceChannelsResponse(),
             await self.do_rpcrequest_async('ModifyDeviceChannels', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3768,7 +4333,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDirectoryResponse(),
             self.do_rpcrequest('ModifyDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3781,7 +4347,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyDirectoryResponse(),
             await self.do_rpcrequest_async('ModifyDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3808,7 +4375,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyGroupResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyGroupResponse(),
             self.do_rpcrequest('ModifyGroup', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3821,7 +4389,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyGroupResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyGroupResponse(),
             await self.do_rpcrequest_async('ModifyGroup', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3848,7 +4417,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyParentPlatformResponse(),
             self.do_rpcrequest('ModifyParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3861,7 +4431,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyParentPlatformResponse(),
             await self.do_rpcrequest_async('ModifyParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3888,7 +4459,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyTemplateResponse(),
             self.do_rpcrequest('ModifyTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3901,7 +4473,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ModifyTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ModifyTemplateResponse(),
             await self.do_rpcrequest_async('ModifyTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3924,7 +4497,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.OpenVsServiceResponse:
         req = open_api_models.OpenApiRequest()
-        return vs_20181212_models.OpenVsServiceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.OpenVsServiceResponse(),
             self.do_rpcrequest('OpenVsService', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3933,7 +4507,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.OpenVsServiceResponse:
         req = open_api_models.OpenApiRequest()
-        return vs_20181212_models.OpenVsServiceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.OpenVsServiceResponse(),
             await self.do_rpcrequest_async('OpenVsService', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3945,6 +4520,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_vs_service_with_options_async(runtime)
 
+    def prepare_upload_with_options(
+        self,
+        request: vs_20181212_models.PrepareUploadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.PrepareUploadResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.PrepareUploadResponse(),
+            self.do_rpcrequest('PrepareUpload', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def prepare_upload_with_options_async(
+        self,
+        request: vs_20181212_models.PrepareUploadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.PrepareUploadResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.PrepareUploadResponse(),
+            await self.do_rpcrequest_async('PrepareUpload', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def prepare_upload(
+        self,
+        request: vs_20181212_models.PrepareUploadRequest,
+    ) -> vs_20181212_models.PrepareUploadResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.prepare_upload_with_options(request, runtime)
+
+    async def prepare_upload_async(
+        self,
+        request: vs_20181212_models.PrepareUploadRequest,
+    ) -> vs_20181212_models.PrepareUploadResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.prepare_upload_with_options_async(request, runtime)
+
+    def put_bucket_with_options(
+        self,
+        request: vs_20181212_models.PutBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.PutBucketResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.PutBucketResponse(),
+            self.do_rpcrequest('PutBucket', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def put_bucket_with_options_async(
+        self,
+        request: vs_20181212_models.PutBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.PutBucketResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.PutBucketResponse(),
+            await self.do_rpcrequest_async('PutBucket', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def put_bucket(
+        self,
+        request: vs_20181212_models.PutBucketRequest,
+    ) -> vs_20181212_models.PutBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.put_bucket_with_options(request, runtime)
+
+    async def put_bucket_async(
+        self,
+        request: vs_20181212_models.PutBucketRequest,
+    ) -> vs_20181212_models.PutBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.put_bucket_with_options_async(request, runtime)
+
     def resume_vs_stream_with_options(
         self,
         request: vs_20181212_models.ResumeVsStreamRequest,
@@ -3954,7 +4613,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ResumeVsStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ResumeVsStreamResponse(),
             self.do_rpcrequest('ResumeVsStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3967,7 +4627,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.ResumeVsStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.ResumeVsStreamResponse(),
             await self.do_rpcrequest_async('ResumeVsStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3994,7 +4655,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.SetPresetResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.SetPresetResponse(),
             self.do_rpcrequest('SetPreset', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4007,7 +4669,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.SetPresetResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.SetPresetResponse(),
             await self.do_rpcrequest_async('SetPreset', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4034,7 +4697,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.SetVsDomainCertificateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.SetVsDomainCertificateResponse(),
             self.do_rpcrequest('SetVsDomainCertificate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4047,7 +4711,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.SetVsDomainCertificateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.SetVsDomainCertificateResponse(),
             await self.do_rpcrequest_async('SetVsDomainCertificate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4074,7 +4739,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.SetVsStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.SetVsStreamsNotifyUrlConfigResponse(),
             self.do_rpcrequest('SetVsStreamsNotifyUrlConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4087,7 +4753,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.SetVsStreamsNotifyUrlConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.SetVsStreamsNotifyUrlConfigResponse(),
             await self.do_rpcrequest_async('SetVsStreamsNotifyUrlConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4114,7 +4781,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartDeviceResponse(),
             self.do_rpcrequest('StartDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4127,7 +4795,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartDeviceResponse(),
             await self.do_rpcrequest_async('StartDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4154,7 +4823,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartParentPlatformResponse(),
             self.do_rpcrequest('StartParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4167,7 +4837,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartParentPlatformResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartParentPlatformResponse(),
             await self.do_rpcrequest_async('StartParentPlatform', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4194,7 +4865,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartRecordStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartRecordStreamResponse(),
             self.do_rpcrequest('StartRecordStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4207,7 +4879,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartRecordStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartRecordStreamResponse(),
             await self.do_rpcrequest_async('StartRecordStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4234,7 +4907,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartStreamResponse(),
             self.do_rpcrequest('StartStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4247,7 +4921,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartStreamResponse(),
             await self.do_rpcrequest_async('StartStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4274,7 +4949,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartTransferStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartTransferStreamResponse(),
             self.do_rpcrequest('StartTransferStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4287,7 +4963,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StartTransferStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StartTransferStreamResponse(),
             await self.do_rpcrequest_async('StartTransferStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4314,7 +4991,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopAdjustResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopAdjustResponse(),
             self.do_rpcrequest('StopAdjust', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4327,7 +5005,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopAdjustResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopAdjustResponse(),
             await self.do_rpcrequest_async('StopAdjust', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4354,7 +5033,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopDeviceResponse(),
             self.do_rpcrequest('StopDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4367,7 +5047,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopDeviceResponse(),
             await self.do_rpcrequest_async('StopDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4394,7 +5075,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopMoveResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopMoveResponse(),
             self.do_rpcrequest('StopMove', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4407,7 +5089,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopMoveResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopMoveResponse(),
             await self.do_rpcrequest_async('StopMove', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4434,7 +5117,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopRecordStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopRecordStreamResponse(),
             self.do_rpcrequest('StopRecordStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4447,7 +5131,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopRecordStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopRecordStreamResponse(),
             await self.do_rpcrequest_async('StopRecordStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4474,7 +5159,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopStreamResponse(),
             self.do_rpcrequest('StopStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4487,7 +5173,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopStreamResponse(),
             await self.do_rpcrequest_async('StopStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4514,7 +5201,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopTransferStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopTransferStreamResponse(),
             self.do_rpcrequest('StopTransferStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4527,7 +5215,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.StopTransferStreamResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.StopTransferStreamResponse(),
             await self.do_rpcrequest_async('StopTransferStream', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4554,7 +5243,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.SyncCatalogsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.SyncCatalogsResponse(),
             self.do_rpcrequest('SyncCatalogs', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4567,7 +5257,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.SyncCatalogsResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.SyncCatalogsResponse(),
             await self.do_rpcrequest_async('SyncCatalogs', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4585,6 +5276,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.sync_catalogs_with_options_async(request, runtime)
 
+    def sync_device_channels_with_options(
+        self,
+        request: vs_20181212_models.SyncDeviceChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.SyncDeviceChannelsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.SyncDeviceChannelsResponse(),
+            self.do_rpcrequest('SyncDeviceChannels', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def sync_device_channels_with_options_async(
+        self,
+        request: vs_20181212_models.SyncDeviceChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.SyncDeviceChannelsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.SyncDeviceChannelsResponse(),
+            await self.do_rpcrequest_async('SyncDeviceChannels', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def sync_device_channels(
+        self,
+        request: vs_20181212_models.SyncDeviceChannelsRequest,
+    ) -> vs_20181212_models.SyncDeviceChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.sync_device_channels_with_options(request, runtime)
+
+    async def sync_device_channels_async(
+        self,
+        request: vs_20181212_models.SyncDeviceChannelsRequest,
+    ) -> vs_20181212_models.SyncDeviceChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_device_channels_with_options_async(request, runtime)
+
     def unbind_directory_with_options(
         self,
         request: vs_20181212_models.UnbindDirectoryRequest,
@@ -4594,7 +5327,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnbindDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnbindDirectoryResponse(),
             self.do_rpcrequest('UnbindDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4607,7 +5341,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnbindDirectoryResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnbindDirectoryResponse(),
             await self.do_rpcrequest_async('UnbindDirectory', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4634,7 +5369,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnbindParentPlatformDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnbindParentPlatformDeviceResponse(),
             self.do_rpcrequest('UnbindParentPlatformDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4647,7 +5383,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnbindParentPlatformDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnbindParentPlatformDeviceResponse(),
             await self.do_rpcrequest_async('UnbindParentPlatformDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4674,7 +5411,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnbindPurchasedDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnbindPurchasedDeviceResponse(),
             self.do_rpcrequest('UnbindPurchasedDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4687,7 +5425,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnbindPurchasedDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnbindPurchasedDeviceResponse(),
             await self.do_rpcrequest_async('UnbindPurchasedDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4714,7 +5453,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnbindTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnbindTemplateResponse(),
             self.do_rpcrequest('UnbindTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4727,7 +5467,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnbindTemplateResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnbindTemplateResponse(),
             await self.do_rpcrequest_async('UnbindTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4754,7 +5495,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnlockDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnlockDeviceResponse(),
             self.do_rpcrequest('UnlockDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4767,7 +5509,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UnlockDeviceResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UnlockDeviceResponse(),
             await self.do_rpcrequest_async('UnlockDevice', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4785,6 +5528,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.unlock_device_with_options_async(request, runtime)
 
+    def update_bucket_info_with_options(
+        self,
+        request: vs_20181212_models.UpdateBucketInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UpdateBucketInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UpdateBucketInfoResponse(),
+            self.do_rpcrequest('UpdateBucketInfo', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_bucket_info_with_options_async(
+        self,
+        request: vs_20181212_models.UpdateBucketInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UpdateBucketInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UpdateBucketInfoResponse(),
+            await self.do_rpcrequest_async('UpdateBucketInfo', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_bucket_info(
+        self,
+        request: vs_20181212_models.UpdateBucketInfoRequest,
+    ) -> vs_20181212_models.UpdateBucketInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_bucket_info_with_options(request, runtime)
+
+    async def update_bucket_info_async(
+        self,
+        request: vs_20181212_models.UpdateBucketInfoRequest,
+    ) -> vs_20181212_models.UpdateBucketInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_bucket_info_with_options_async(request, runtime)
+
     def update_vs_pull_stream_info_config_with_options(
         self,
         request: vs_20181212_models.UpdateVsPullStreamInfoConfigRequest,
@@ -4794,7 +5579,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UpdateVsPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UpdateVsPullStreamInfoConfigResponse(),
             self.do_rpcrequest('UpdateVsPullStreamInfoConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4807,7 +5593,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return vs_20181212_models.UpdateVsPullStreamInfoConfigResponse().from_map(
+        return TeaCore.from_map(
+            vs_20181212_models.UpdateVsPullStreamInfoConfigResponse(),
             await self.do_rpcrequest_async('UpdateVsPullStreamInfoConfig', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -4824,3 +5611,45 @@ class Client(OpenApiClient):
     ) -> vs_20181212_models.UpdateVsPullStreamInfoConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_vs_pull_stream_info_config_with_options_async(request, runtime)
+
+    def upload_device_record_with_options(
+        self,
+        request: vs_20181212_models.UploadDeviceRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UploadDeviceRecordResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UploadDeviceRecordResponse(),
+            self.do_rpcrequest('UploadDeviceRecord', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def upload_device_record_with_options_async(
+        self,
+        request: vs_20181212_models.UploadDeviceRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UploadDeviceRecordResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UploadDeviceRecordResponse(),
+            await self.do_rpcrequest_async('UploadDeviceRecord', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def upload_device_record(
+        self,
+        request: vs_20181212_models.UploadDeviceRecordRequest,
+    ) -> vs_20181212_models.UploadDeviceRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_device_record_with_options(request, runtime)
+
+    async def upload_device_record_async(
+        self,
+        request: vs_20181212_models.UploadDeviceRecordRequest,
+    ) -> vs_20181212_models.UploadDeviceRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_device_record_with_options_async(request, runtime)
