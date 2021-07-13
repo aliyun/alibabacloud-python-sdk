@@ -1552,6 +1552,80 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeAddons', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/components/metadata', 'json', req, runtime)
         )
 
+    def create_autoscaling_config(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateAutoscalingConfigRequest,
+    ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_autoscaling_config_with_options(cluster_id, request, headers, runtime)
+
+    async def create_autoscaling_config_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateAutoscalingConfigRequest,
+    ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_autoscaling_config_with_options_async(cluster_id, request, headers, runtime)
+
+    def create_autoscaling_config_with_options(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateAutoscalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cool_down_duration):
+            body['cool_down_duration'] = request.cool_down_duration
+        if not UtilClient.is_unset(request.unneeded_duration):
+            body['unneeded_duration'] = request.unneeded_duration
+        if not UtilClient.is_unset(request.utilization_threshold):
+            body['utilization_threshold'] = request.utilization_threshold
+        if not UtilClient.is_unset(request.gpu_utilization_threshold):
+            body['gpu_utilization_threshold'] = request.gpu_utilization_threshold
+        if not UtilClient.is_unset(request.scan_interval):
+            body['scan_interval'] = request.scan_interval
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CreateAutoscalingConfigResponse(),
+            self.do_roarequest('CreateAutoscalingConfig', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/cluster/{cluster_id}/autoscale/config/', 'none', req, runtime)
+        )
+
+    async def create_autoscaling_config_with_options_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateAutoscalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cool_down_duration):
+            body['cool_down_duration'] = request.cool_down_duration
+        if not UtilClient.is_unset(request.unneeded_duration):
+            body['unneeded_duration'] = request.unneeded_duration
+        if not UtilClient.is_unset(request.utilization_threshold):
+            body['utilization_threshold'] = request.utilization_threshold
+        if not UtilClient.is_unset(request.gpu_utilization_threshold):
+            body['gpu_utilization_threshold'] = request.gpu_utilization_threshold
+        if not UtilClient.is_unset(request.scan_interval):
+            body['scan_interval'] = request.scan_interval
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CreateAutoscalingConfigResponse(),
+            await self.do_roarequest_async('CreateAutoscalingConfig', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/cluster/{cluster_id}/autoscale/config/', 'none', req, runtime)
+        )
+
     def create_cluster(
         self,
         request: cs20151215_models.CreateClusterRequest,

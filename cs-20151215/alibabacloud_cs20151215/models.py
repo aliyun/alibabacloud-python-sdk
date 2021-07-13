@@ -5661,6 +5661,89 @@ class DescribeAddonsResponse(TeaModel):
         return self
 
 
+class CreateAutoscalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        cool_down_duration: str = None,
+        unneeded_duration: str = None,
+        utilization_threshold: str = None,
+        gpu_utilization_threshold: str = None,
+        scan_interval: str = None,
+    ):
+        # 静默时间，扩容出的节点，在静默时间过后，方可进入缩容判断
+        self.cool_down_duration = cool_down_duration
+        # 缩容触发时延，节点缩容时需要连续满足触发时延所设定的时间，方可进行缩容
+        self.unneeded_duration = unneeded_duration
+        # 缩容阈值，节点上 Request 的资源与总资源量的比值
+        self.utilization_threshold = utilization_threshold
+        # GPU缩容阈值，节点上 Request 的资源与总资源量的比值
+        self.gpu_utilization_threshold = gpu_utilization_threshold
+        # 弹性灵敏度，判断伸缩的间隔时间
+        self.scan_interval = scan_interval
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cool_down_duration is not None:
+            result['cool_down_duration'] = self.cool_down_duration
+        if self.unneeded_duration is not None:
+            result['unneeded_duration'] = self.unneeded_duration
+        if self.utilization_threshold is not None:
+            result['utilization_threshold'] = self.utilization_threshold
+        if self.gpu_utilization_threshold is not None:
+            result['gpu_utilization_threshold'] = self.gpu_utilization_threshold
+        if self.scan_interval is not None:
+            result['scan_interval'] = self.scan_interval
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cool_down_duration') is not None:
+            self.cool_down_duration = m.get('cool_down_duration')
+        if m.get('unneeded_duration') is not None:
+            self.unneeded_duration = m.get('unneeded_duration')
+        if m.get('utilization_threshold') is not None:
+            self.utilization_threshold = m.get('utilization_threshold')
+        if m.get('gpu_utilization_threshold') is not None:
+            self.gpu_utilization_threshold = m.get('gpu_utilization_threshold')
+        if m.get('scan_interval') is not None:
+            self.scan_interval = m.get('scan_interval')
+        return self
+
+
+class CreateAutoscalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class CreateClusterRequest(TeaModel):
     def __init__(
         self,

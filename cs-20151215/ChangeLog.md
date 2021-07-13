@@ -1,3 +1,6 @@
+2021-07-13 Version: 2.4.4
+- Publish CreateAutosaclingConfig API.
+
 2021-07-06 Version: 2.4.3
 - Fixed an issue with inconsistent size types in the WorkdataDisks in ScaleOutCluster.
 - CreateClusterNodePool support public network IP.
