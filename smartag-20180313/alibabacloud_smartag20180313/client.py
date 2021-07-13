@@ -250,48 +250,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sag_route_list_with_options_async(request, runtime)
 
-    def describe_policy_based_routings_with_options(
-        self,
-        request: smartag_20180313_models.DescribePolicyBasedRoutingsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribePolicyBasedRoutingsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribePolicyBasedRoutingsResponse(),
-            self.do_rpcrequest('DescribePolicyBasedRoutings', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_policy_based_routings_with_options_async(
-        self,
-        request: smartag_20180313_models.DescribePolicyBasedRoutingsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribePolicyBasedRoutingsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribePolicyBasedRoutingsResponse(),
-            await self.do_rpcrequest_async('DescribePolicyBasedRoutings', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_policy_based_routings(
-        self,
-        request: smartag_20180313_models.DescribePolicyBasedRoutingsRequest,
-    ) -> smartag_20180313_models.DescribePolicyBasedRoutingsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_policy_based_routings_with_options(request, runtime)
-
-    async def describe_policy_based_routings_async(
-        self,
-        request: smartag_20180313_models.DescribePolicyBasedRoutingsRequest,
-    ) -> smartag_20180313_models.DescribePolicyBasedRoutingsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_policy_based_routings_with_options_async(request, runtime)
-
     def probe_access_point_network_quality_with_options(
         self,
         request: smartag_20180313_models.ProbeAccessPointNetworkQualityRequest,
@@ -963,48 +921,6 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.CreateQosResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_qos_with_options_async(request, runtime)
-
-    def modify_sag_ecroute_backup_with_options(
-        self,
-        request: smartag_20180313_models.ModifySagECRouteBackupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.ModifySagECRouteBackupResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.ModifySagECRouteBackupResponse(),
-            self.do_rpcrequest('ModifySagECRouteBackup', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_sag_ecroute_backup_with_options_async(
-        self,
-        request: smartag_20180313_models.ModifySagECRouteBackupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.ModifySagECRouteBackupResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.ModifySagECRouteBackupResponse(),
-            await self.do_rpcrequest_async('ModifySagECRouteBackup', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_sag_ecroute_backup(
-        self,
-        request: smartag_20180313_models.ModifySagECRouteBackupRequest,
-    ) -> smartag_20180313_models.ModifySagECRouteBackupResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_sag_ecroute_backup_with_options(request, runtime)
-
-    async def modify_sag_ecroute_backup_async(
-        self,
-        request: smartag_20180313_models.ModifySagECRouteBackupRequest,
-    ) -> smartag_20180313_models.ModifySagECRouteBackupResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_sag_ecroute_backup_with_options_async(request, runtime)
 
     def discribe_smart_access_gateway_diagnosis_report_with_options(
         self,
@@ -2728,48 +2644,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.kick_out_clients_with_options_async(request, runtime)
 
-    def describe_sag_routeable_address_with_options(
-        self,
-        request: smartag_20180313_models.DescribeSagRouteableAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribeSagRouteableAddressResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribeSagRouteableAddressResponse(),
-            self.do_rpcrequest('DescribeSagRouteableAddress', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_sag_routeable_address_with_options_async(
-        self,
-        request: smartag_20180313_models.DescribeSagRouteableAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribeSagRouteableAddressResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribeSagRouteableAddressResponse(),
-            await self.do_rpcrequest_async('DescribeSagRouteableAddress', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_sag_routeable_address(
-        self,
-        request: smartag_20180313_models.DescribeSagRouteableAddressRequest,
-    ) -> smartag_20180313_models.DescribeSagRouteableAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sag_routeable_address_with_options(request, runtime)
-
-    async def describe_sag_routeable_address_async(
-        self,
-        request: smartag_20180313_models.DescribeSagRouteableAddressRequest,
-    ) -> smartag_20180313_models.DescribeSagRouteableAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sag_routeable_address_with_options_async(request, runtime)
-
     def modify_sag_port_role_with_options(
         self,
         request: smartag_20180313_models.ModifySagPortRoleRequest,
@@ -2979,48 +2853,6 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.UpdateSmartAGEnterpriseCodeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_smart_agenterprise_code_with_options_async(request, runtime)
-
-    def describe_pbr_interfaces_with_options(
-        self,
-        request: smartag_20180313_models.DescribePbrInterfacesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribePbrInterfacesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribePbrInterfacesResponse(),
-            self.do_rpcrequest('DescribePbrInterfaces', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_pbr_interfaces_with_options_async(
-        self,
-        request: smartag_20180313_models.DescribePbrInterfacesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribePbrInterfacesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribePbrInterfacesResponse(),
-            await self.do_rpcrequest_async('DescribePbrInterfaces', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_pbr_interfaces(
-        self,
-        request: smartag_20180313_models.DescribePbrInterfacesRequest,
-    ) -> smartag_20180313_models.DescribePbrInterfacesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_pbr_interfaces_with_options(request, runtime)
-
-    async def describe_pbr_interfaces_async(
-        self,
-        request: smartag_20180313_models.DescribePbrInterfacesRequest,
-    ) -> smartag_20180313_models.DescribePbrInterfacesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_pbr_interfaces_with_options_async(request, runtime)
 
     def associate_aclwith_options(
         self,
@@ -5122,48 +4954,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.grant_sag_instance_to_ccn_with_options_async(request, runtime)
 
-    def orchestrate_sag_ecroute_backup_with_options(
-        self,
-        request: smartag_20180313_models.OrchestrateSagECRouteBackupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.OrchestrateSagECRouteBackupResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.OrchestrateSagECRouteBackupResponse(),
-            self.do_rpcrequest('OrchestrateSagECRouteBackup', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def orchestrate_sag_ecroute_backup_with_options_async(
-        self,
-        request: smartag_20180313_models.OrchestrateSagECRouteBackupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.OrchestrateSagECRouteBackupResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.OrchestrateSagECRouteBackupResponse(),
-            await self.do_rpcrequest_async('OrchestrateSagECRouteBackup', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def orchestrate_sag_ecroute_backup(
-        self,
-        request: smartag_20180313_models.OrchestrateSagECRouteBackupRequest,
-    ) -> smartag_20180313_models.OrchestrateSagECRouteBackupResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.orchestrate_sag_ecroute_backup_with_options(request, runtime)
-
-    async def orchestrate_sag_ecroute_backup_async(
-        self,
-        request: smartag_20180313_models.OrchestrateSagECRouteBackupRequest,
-    ) -> smartag_20180313_models.OrchestrateSagECRouteBackupResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.orchestrate_sag_ecroute_backup_with_options_async(request, runtime)
-
     def modify_smart_access_gateway_with_options(
         self,
         request: smartag_20180313_models.ModifySmartAccessGatewayRequest,
@@ -5248,48 +5038,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_smart_access_gateway_version_with_options_async(request, runtime)
 
-    def modify_sag_cidr_with_options(
-        self,
-        request: smartag_20180313_models.ModifySagCidrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.ModifySagCidrResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.ModifySagCidrResponse(),
-            self.do_rpcrequest('ModifySagCidr', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_sag_cidr_with_options_async(
-        self,
-        request: smartag_20180313_models.ModifySagCidrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.ModifySagCidrResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.ModifySagCidrResponse(),
-            await self.do_rpcrequest_async('ModifySagCidr', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_sag_cidr(
-        self,
-        request: smartag_20180313_models.ModifySagCidrRequest,
-    ) -> smartag_20180313_models.ModifySagCidrResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_sag_cidr_with_options(request, runtime)
-
-    async def modify_sag_cidr_async(
-        self,
-        request: smartag_20180313_models.ModifySagCidrRequest,
-    ) -> smartag_20180313_models.ModifySagCidrResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_sag_cidr_with_options_async(request, runtime)
-
     def describe_sag_drop_top_nwith_options(
         self,
         request: smartag_20180313_models.DescribeSagDropTopNRequest,
@@ -5373,48 +5121,6 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.DescribeSagLanListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_sag_lan_list_with_options_async(request, runtime)
-
-    def describe_pbr_rules_with_options(
-        self,
-        request: smartag_20180313_models.DescribePbrRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribePbrRulesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribePbrRulesResponse(),
-            self.do_rpcrequest('DescribePbrRules', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_pbr_rules_with_options_async(
-        self,
-        request: smartag_20180313_models.DescribePbrRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribePbrRulesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribePbrRulesResponse(),
-            await self.do_rpcrequest_async('DescribePbrRules', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_pbr_rules(
-        self,
-        request: smartag_20180313_models.DescribePbrRulesRequest,
-    ) -> smartag_20180313_models.DescribePbrRulesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_pbr_rules_with_options(request, runtime)
-
-    async def describe_pbr_rules_async(
-        self,
-        request: smartag_20180313_models.DescribePbrRulesRequest,
-    ) -> smartag_20180313_models.DescribePbrRulesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_pbr_rules_with_options_async(request, runtime)
 
     def describe_aclattribute_with_options(
         self,
@@ -6045,48 +5751,6 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.DeleteDnatEntryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_dnat_entry_with_options_async(request, runtime)
-
-    def set_sag_routeable_address_with_options(
-        self,
-        request: smartag_20180313_models.SetSagRouteableAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.SetSagRouteableAddressResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.SetSagRouteableAddressResponse(),
-            self.do_rpcrequest('SetSagRouteableAddress', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def set_sag_routeable_address_with_options_async(
-        self,
-        request: smartag_20180313_models.SetSagRouteableAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.SetSagRouteableAddressResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.SetSagRouteableAddressResponse(),
-            await self.do_rpcrequest_async('SetSagRouteableAddress', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def set_sag_routeable_address(
-        self,
-        request: smartag_20180313_models.SetSagRouteableAddressRequest,
-    ) -> smartag_20180313_models.SetSagRouteableAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_sag_routeable_address_with_options(request, runtime)
-
-    async def set_sag_routeable_address_async(
-        self,
-        request: smartag_20180313_models.SetSagRouteableAddressRequest,
-    ) -> smartag_20180313_models.SetSagRouteableAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_sag_routeable_address_with_options_async(request, runtime)
 
     def modify_aclwith_options(
         self,
@@ -7011,48 +6675,6 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.CreateQosPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_qos_policy_with_options_async(request, runtime)
-
-    def describe_sag_ecroute_backup_attribute_with_options(
-        self,
-        request: smartag_20180313_models.DescribeSagECRouteBackupAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribeSagECRouteBackupAttributeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribeSagECRouteBackupAttributeResponse(),
-            self.do_rpcrequest('DescribeSagECRouteBackupAttribute', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_sag_ecroute_backup_attribute_with_options_async(
-        self,
-        request: smartag_20180313_models.DescribeSagECRouteBackupAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DescribeSagECRouteBackupAttributeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DescribeSagECRouteBackupAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeSagECRouteBackupAttribute', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_sag_ecroute_backup_attribute(
-        self,
-        request: smartag_20180313_models.DescribeSagECRouteBackupAttributeRequest,
-    ) -> smartag_20180313_models.DescribeSagECRouteBackupAttributeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sag_ecroute_backup_attribute_with_options(request, runtime)
-
-    async def describe_sag_ecroute_backup_attribute_async(
-        self,
-        request: smartag_20180313_models.DescribeSagECRouteBackupAttributeRequest,
-    ) -> smartag_20180313_models.DescribeSagECRouteBackupAttributeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sag_ecroute_backup_attribute_with_options_async(request, runtime)
 
     def describe_flow_log_sags_with_options(
         self,
