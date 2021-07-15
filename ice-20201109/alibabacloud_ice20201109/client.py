@@ -497,6 +497,50 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_event_callback_with_options_async(request, runtime)
 
+    def get_template_with_options(
+        self,
+        request: ice20201109_models.GetTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetTemplateResponse(),
+            self.do_rpcrequest('GetTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def get_template_with_options_async(
+        self,
+        request: ice20201109_models.GetTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetTemplateResponse(),
+            await self.do_rpcrequest_async('GetTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def get_template(
+        self,
+        request: ice20201109_models.GetTemplateRequest,
+    ) -> ice20201109_models.GetTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_template_with_options(request, runtime)
+
+    async def get_template_async(
+        self,
+        request: ice20201109_models.GetTemplateRequest,
+    ) -> ice20201109_models.GetTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_template_with_options_async(request, runtime)
+
     def register_media_info_with_options(
         self,
         request: ice20201109_models.RegisterMediaInfoRequest,

@@ -1,3 +1,6 @@
+2021-07-15 Version: 1.0.9
+- Fix bugs.
+
 2021-07-09 Version: 1.0.8
 - Add a new API called ListSysTemplates, which list system templates.
 - Add a new API called ListTemplates, which list user templates.

@@ -530,7 +530,6 @@ class DeleteSmartJobResponse(TeaModel):
 class AddTemplateRequest(TeaModel):
     def __init__(
         self,
-        template_id: str = None,
         name: str = None,
         type: str = None,
         config: str = None,
@@ -540,14 +539,21 @@ class AddTemplateRequest(TeaModel):
         source: str = None,
         related_mediaids: str = None,
     ):
-        self.template_id = template_id
+        # 模板名称
         self.name = name
+        # 模板类型，取值范围：Timeline
         self.type = type
+        # 参见Timeline模板Config文档
         self.config = config
+        # 模板封面
         self.cover_url = cover_url
+        # 预览视频媒资id
         self.preview_media = preview_media
+        # 模板状态
         self.status = status
+        # 模板创建来源，默认OpenAPI
         self.source = source
+        # 模板相关素材，模板编辑器使用
         self.related_mediaids = related_mediaids
 
     def validate(self):
@@ -559,8 +565,6 @@ class AddTemplateRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
         if self.name is not None:
             result['Name'] = self.name
         if self.type is not None:
@@ -581,8 +585,6 @@ class AddTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Type') is not None:
@@ -615,14 +617,23 @@ class AddTemplateResponseBodyTemplate(TeaModel):
         create_source: str = None,
         modified_source: str = None,
     ):
+        # 模板Id
         self.template_id = template_id
+        # 模板名称
         self.name = name
+        # 模板类型
         self.type = type
+        # 参见Timeline模板Config文档
         self.config = config
+        # 模板封面
         self.cover_url = cover_url
+        # 预览视频媒资id
         self.preview_media = preview_media
+        # 模板状态
         self.status = status
+        # 模板创建来源
         self.create_source = create_source
+        # 模板修改来源
         self.modified_source = modified_source
 
     def validate(self):
@@ -683,8 +694,9 @@ class AddTemplateResponseBody(TeaModel):
         request_id: str = None,
         template: AddTemplateResponseBodyTemplate = None,
     ):
-        # Id of the request
+        # 请求ID
         self.request_id = request_id
+        # 模板信息
         self.template = template
 
     def validate(self):
@@ -1651,7 +1663,7 @@ class DeleteMediaInfosResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        ignored_list: str = None,
+        ignored_list: List[str] = None,
     ):
         # 请求ID
         self.request_id = request_id
@@ -1814,6 +1826,212 @@ class SetEventCallbackResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SetEventCallbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+    ):
+        # 模板Id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class GetTemplateResponseBodyTemplate(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+        name: str = None,
+        type: str = None,
+        config: str = None,
+        preview_media: str = None,
+        status: str = None,
+        create_source: str = None,
+        modified_source: str = None,
+        preview_media_status: str = None,
+        creation_time: str = None,
+        modified_time: str = None,
+        cover_url: str = None,
+    ):
+        # 模板ID
+        self.template_id = template_id
+        # 模板名称
+        self.name = name
+        # 模板类型
+        self.type = type
+        # 模板配置
+        self.config = config
+        # 预览素材
+        self.preview_media = preview_media
+        # 模板状态
+        self.status = status
+        # 创建来源
+        self.create_source = create_source
+        # 修改来源
+        self.modified_source = modified_source
+        # 预览素材状态
+        self.preview_media_status = preview_media_status
+        # 创建时间
+        self.creation_time = creation_time
+        # 修改时间
+        self.modified_time = modified_time
+        # 封面URL
+        self.cover_url = cover_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.preview_media is not None:
+            result['PreviewMedia'] = self.preview_media
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.create_source is not None:
+            result['CreateSource'] = self.create_source
+        if self.modified_source is not None:
+            result['ModifiedSource'] = self.modified_source
+        if self.preview_media_status is not None:
+            result['PreviewMediaStatus'] = self.preview_media_status
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.cover_url is not None:
+            result['CoverURL'] = self.cover_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('PreviewMedia') is not None:
+            self.preview_media = m.get('PreviewMedia')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('CreateSource') is not None:
+            self.create_source = m.get('CreateSource')
+        if m.get('ModifiedSource') is not None:
+            self.modified_source = m.get('ModifiedSource')
+        if m.get('PreviewMediaStatus') is not None:
+            self.preview_media_status = m.get('PreviewMediaStatus')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('CoverURL') is not None:
+            self.cover_url = m.get('CoverURL')
+        return self
+
+
+class GetTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template: GetTemplateResponseBodyTemplate = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.template = template
+
+    def validate(self):
+        if self.template:
+            self.template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template is not None:
+            result['Template'] = self.template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Template') is not None:
+            temp_model = GetTemplateResponseBodyTemplate()
+            self.template = temp_model.from_map(m['Template'])
+        return self
+
+
+class GetTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5033,6 +5251,7 @@ class DeleteTemplateRequest(TeaModel):
         self,
         template_ids: str = None,
     ):
+        # 模板id，多个id用英文逗号隔开
         self.template_ids = template_ids
 
     def validate(self):
@@ -5060,7 +5279,7 @@ class DeleteTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -5660,17 +5879,20 @@ class ListTemplatesRequest(TeaModel):
     def __init__(
         self,
         type: str = None,
-        next_token: str = None,
         status: str = None,
         create_source: str = None,
         keyword: str = None,
         sort_type: str = None,
     ):
+        # 模板类型
         self.type = type
-        self.next_token = next_token
+        # 模板状态
         self.status = status
+        # 创建来源
         self.create_source = create_source
+        # 搜索关键词，可以根据模板id和title搜索
         self.keyword = keyword
+        # 排序参数，默认根据创建时间倒序
         self.sort_type = sort_type
 
     def validate(self):
@@ -5684,8 +5906,6 @@ class ListTemplatesRequest(TeaModel):
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
         if self.status is not None:
             result['Status'] = self.status
         if self.create_source is not None:
@@ -5700,8 +5920,6 @@ class ListTemplatesRequest(TeaModel):
         m = m or dict()
         if m.get('Type') is not None:
             self.type = m.get('Type')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('CreateSource') is not None:
@@ -5728,22 +5946,31 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         creation_time: str = None,
         modified_time: str = None,
         cover_url: str = None,
-        clips_param: str = None,
     ):
+        # 模板ID
         self.template_id = template_id
+        # 模板名称
         self.name = name
+        # 模板类型
         self.type = type
+        # 模板配置
         self.config = config
+        # 预览素材
         self.preview_media = preview_media
+        # 模板状态
         self.status = status
+        # 创建来源
         self.create_source = create_source
+        # 修改来源
         self.modified_source = modified_source
+        # 预览素材状态
         self.preview_media_status = preview_media_status
+        # 创建时间
         self.creation_time = creation_time
+        # 修改时间
         self.modified_time = modified_time
+        # 封面URL
         self.cover_url = cover_url
-        # ClipsParam
-        self.clips_param = clips_param
 
     def validate(self):
         pass
@@ -5778,8 +6005,6 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
-        if self.clips_param is not None:
-            result['ClipsParam'] = self.clips_param
         return result
 
     def from_map(self, m: dict = None):
@@ -5808,8 +6033,6 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
-        if m.get('ClipsParam') is not None:
-            self.clips_param = m.get('ClipsParam')
         return self
 
 
@@ -5818,18 +6041,12 @@ class ListTemplatesResponseBody(TeaModel):
         self,
         request_id: str = None,
         total_count: int = None,
-        next_token: str = None,
-        max_results: int = None,
         templates: List[ListTemplatesResponseBodyTemplates] = None,
     ):
-        # Id of the request
+        # 请求ID
         self.request_id = request_id
-        # TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
+        # 本次请求条件下的数据总量。
         self.total_count = total_count
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-        self.next_token = next_token
-        # MaxResults本次请求所返回的最大记录条数
-        self.max_results = max_results
         self.templates = templates
 
     def validate(self):
@@ -5848,10 +6065,6 @@ class ListTemplatesResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
         result['Templates'] = []
         if self.templates is not None:
             for k in self.templates:
@@ -5864,10 +6077,6 @@ class ListTemplatesResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
         self.templates = []
         if m.get('Templates') is not None:
             for k in m.get('Templates'):
@@ -7336,16 +7545,21 @@ class UpdateTemplateRequest(TeaModel):
         preview_media: str = None,
         status: str = None,
         source: str = None,
-        related_mediaids: str = None,
     ):
+        # 模板ID
         self.template_id = template_id
+        # 模板名称
         self.name = name
+        # 参见Timeline模板Config文档
         self.config = config
+        # 模板封面
         self.cover_url = cover_url
+        # 预览视频媒资id
         self.preview_media = preview_media
+        # 模板状态
         self.status = status
+        # 修改来源，默认OpenAPI
         self.source = source
-        self.related_mediaids = related_mediaids
 
     def validate(self):
         pass
@@ -7370,8 +7584,6 @@ class UpdateTemplateRequest(TeaModel):
             result['Status'] = self.status
         if self.source is not None:
             result['Source'] = self.source
-        if self.related_mediaids is not None:
-            result['RelatedMediaids'] = self.related_mediaids
         return result
 
     def from_map(self, m: dict = None):
@@ -7390,8 +7602,6 @@ class UpdateTemplateRequest(TeaModel):
             self.status = m.get('Status')
         if m.get('Source') is not None:
             self.source = m.get('Source')
-        if m.get('RelatedMediaids') is not None:
-            self.related_mediaids = m.get('RelatedMediaids')
         return self
 
 
@@ -7400,7 +7610,7 @@ class UpdateTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # 请求ID
         self.request_id = request_id
 
     def validate(self):
