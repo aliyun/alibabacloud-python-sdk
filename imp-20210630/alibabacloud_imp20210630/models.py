@@ -114,16 +114,10 @@ class CreateLiveResponseBody(TeaModel):
         self,
         request_id: str = None,
         result: CreateLiveResponseBodyResult = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # 请求ID。
         self.request_id = request_id
         self.result = result
-        # 错误码，请求异常时返回。
-        self.error_code = error_code
-        # 错误信息，请求异常时返回。
-        self.error_message = error_message
 
     def validate(self):
         if self.result:
@@ -139,10 +133,6 @@ class CreateLiveResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.result is not None:
             result['Result'] = self.result.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
@@ -152,10 +142,6 @@ class CreateLiveResponseBody(TeaModel):
         if m.get('Result') is not None:
             temp_model = CreateLiveResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -228,15 +214,9 @@ class DeleteAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -249,20 +229,12 @@ class DeleteAppResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -370,13 +342,9 @@ class UpdateRoomResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # Id of the request
         self.request_id = request_id
-        self.error_code = error_code
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -389,20 +357,12 @@ class UpdateRoomResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -587,16 +547,10 @@ class GetAppTemplateResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
         result: GetAppTemplateResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
         # 返回结果
         self.result = result
 
@@ -612,10 +566,6 @@ class GetAppTemplateResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result.to_map()
         return result
@@ -624,10 +574,6 @@ class GetAppTemplateResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             temp_model = GetAppTemplateResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
@@ -896,15 +842,11 @@ class GetRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
         result: GetRoomResponseBodyResult = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # Id of the request
         self.request_id = request_id
         # 查询房间信息返回结果。
         self.result = result
-        self.error_code = error_code
-        self.error_message = error_message
 
     def validate(self):
         if self.result:
@@ -920,10 +862,6 @@ class GetRoomResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.result is not None:
             result['Result'] = self.result.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
@@ -933,10 +871,6 @@ class GetRoomResponseBody(TeaModel):
         if m.get('Result') is not None:
             temp_model = GetRoomResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -1079,16 +1013,10 @@ class CreateAppTemplateResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
         result: CreateAppTemplateResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
         # 返回结果
         self.result = result
 
@@ -1104,10 +1032,6 @@ class CreateAppTemplateResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result.to_map()
         return result
@@ -1116,10 +1040,6 @@ class CreateAppTemplateResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             temp_model = CreateAppTemplateResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
@@ -1329,16 +1249,10 @@ class ListAppsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
         result: ListAppsResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
         # 返回结果体
         self.result = result
 
@@ -1354,10 +1268,6 @@ class ListAppsResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result.to_map()
         return result
@@ -1366,10 +1276,6 @@ class ListAppsResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             temp_model = ListAppsResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
@@ -1672,15 +1578,11 @@ class ListRoomsResponseBody(TeaModel):
         self,
         request_id: str = None,
         result: ListRoomsResponseBodyResult = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # 请求ID。
         self.request_id = request_id
         # API请求的返回结果结构体。
         self.result = result
-        self.error_code = error_code
-        self.error_message = error_message
 
     def validate(self):
         if self.result:
@@ -1696,10 +1598,6 @@ class ListRoomsResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.result is not None:
             result['Result'] = self.result.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
@@ -1709,10 +1607,6 @@ class ListRoomsResponseBody(TeaModel):
         if m.get('Result') is not None:
             temp_model = ListRoomsResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -1785,15 +1679,9 @@ class DeleteAppTemplateResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -1806,20 +1694,12 @@ class DeleteAppTemplateResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -2069,16 +1949,10 @@ class ListAppTemplatesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
         result: ListAppTemplatesResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
         # 返回结果
         self.result = result
 
@@ -2094,10 +1968,6 @@ class ListAppTemplatesResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result.to_map()
         return result
@@ -2106,10 +1976,6 @@ class ListAppTemplatesResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             temp_model = ListAppTemplatesResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
@@ -2368,16 +2234,10 @@ class ListComponentsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
         result: ListComponentsResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
         # 返回结果体
         self.result = result
 
@@ -2393,10 +2253,6 @@ class ListComponentsResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result.to_map()
         return result
@@ -2405,10 +2261,6 @@ class ListComponentsResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             temp_model = ListComponentsResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
@@ -2498,15 +2350,9 @@ class UpdateLiveResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -2519,20 +2365,12 @@ class UpdateLiveResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -2688,15 +2526,9 @@ class UpdateAppTemplateConfigResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -2709,20 +2541,12 @@ class UpdateAppTemplateConfigResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -2816,15 +2640,9 @@ class StopLiveResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # Id of the request
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -2837,20 +2655,12 @@ class StopLiveResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -2993,16 +2803,10 @@ class GetAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
         result: GetAppResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
         # 返回结果
         self.result = result
 
@@ -3018,10 +2822,6 @@ class GetAppResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result.to_map()
         return result
@@ -3030,10 +2830,6 @@ class GetAppResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             temp_model = GetAppResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
@@ -3109,15 +2905,9 @@ class DeleteLiveResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -3130,20 +2920,12 @@ class DeleteLiveResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -3336,16 +3118,10 @@ class GetLiveDomainStatusResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
         result: GetLiveDomainStatusResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
         # 返回结果
         self.result = result
 
@@ -3361,10 +3137,6 @@ class GetLiveDomainStatusResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result.to_map()
         return result
@@ -3373,10 +3145,6 @@ class GetLiveDomainStatusResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             temp_model = GetLiveDomainStatusResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
@@ -3516,16 +3284,10 @@ class GetAuthTokenResponseBody(TeaModel):
         self,
         request_id: str = None,
         result: GetAuthTokenResponseBodyResult = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # Id of the request
         self.request_id = request_id
         self.result = result
-        # 错误码，请求异常时返回
-        self.error_code = error_code
-        # 错误码信息，请求异常时返回
-        self.error_message = error_message
 
     def validate(self):
         if self.result:
@@ -3541,10 +3303,6 @@ class GetAuthTokenResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.result is not None:
             result['Result'] = self.result.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
@@ -3554,10 +3312,6 @@ class GetAuthTokenResponseBody(TeaModel):
         if m.get('Result') is not None:
             temp_model = GetAuthTokenResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -3637,15 +3391,9 @@ class UpdateAppTemplateResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -3658,20 +3406,12 @@ class UpdateAppTemplateResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -3716,16 +3456,10 @@ class GetImpProductStatusResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
         result: bool = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
         # 开通状态
         self.result = result
 
@@ -3740,10 +3474,6 @@ class GetImpProductStatusResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result
         return result
@@ -3752,10 +3482,6 @@ class GetImpProductStatusResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             self.result = m.get('Result')
         return self
@@ -3894,16 +3620,10 @@ class PublishLiveResponseBody(TeaModel):
         self,
         request_id: str = None,
         result: PublishLiveResponseBodyResult = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # Id of the request
         self.request_id = request_id
         self.result = result
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         if self.result:
@@ -3919,10 +3639,6 @@ class PublishLiveResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.result is not None:
             result['Result'] = self.result.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
@@ -3932,10 +3648,6 @@ class PublishLiveResponseBody(TeaModel):
         if m.get('Result') is not None:
             temp_model = PublishLiveResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -4199,16 +3911,10 @@ class GetLiveResponseBody(TeaModel):
         self,
         request_id: str = None,
         result: GetLiveResponseBodyResult = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # Id of the request
         self.request_id = request_id
         self.result = result
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         if self.result:
@@ -4224,10 +3930,6 @@ class GetLiveResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.result is not None:
             result['Result'] = self.result.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
@@ -4237,10 +3939,6 @@ class GetLiveResponseBody(TeaModel):
         if m.get('Result') is not None:
             temp_model = GetLiveResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -4320,13 +4018,9 @@ class DeleteRoomResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # Id of the request
         self.request_id = request_id
-        self.error_code = error_code
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -4339,20 +4033,12 @@ class DeleteRoomResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -4460,16 +4146,10 @@ class CreateAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
         result: CreateAppResponseBodyResult = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
         # 返回结果
         self.result = result
 
@@ -4485,10 +4165,6 @@ class CreateAppResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         if self.result is not None:
             result['Result'] = self.result.to_map()
         return result
@@ -4497,10 +4173,6 @@ class CreateAppResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         if m.get('Result') is not None:
             temp_model = CreateAppResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
@@ -4647,15 +4319,11 @@ class CreateRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
         result: CreateRoomResponseBodyResult = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # Id of the request
         self.request_id = request_id
         # API请求的返回结果结构体。
         self.result = result
-        self.error_code = error_code
-        self.error_message = error_message
 
     def validate(self):
         if self.result:
@@ -4671,10 +4339,6 @@ class CreateRoomResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.result is not None:
             result['Result'] = self.result.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
@@ -4684,10 +4348,6 @@ class CreateRoomResponseBody(TeaModel):
         if m.get('Result') is not None:
             temp_model = CreateRoomResponseBodyResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
@@ -4774,15 +4434,9 @@ class UpdateAppResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        error_code: str = None,
-        error_message: str = None,
     ):
         # 请求ID
         self.request_id = request_id
-        # 错误码
-        self.error_code = error_code
-        # 错误信息
-        self.error_message = error_message
 
     def validate(self):
         pass
@@ -4795,20 +4449,12 @@ class UpdateAppResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
         return self
 
 
