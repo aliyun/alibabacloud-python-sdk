@@ -35,13 +35,8 @@ class Client(OpenApiClient):
             'eu-central-1': 'alb.eu-central-1.aliyuncs.com',
             'ap-south-1': 'alb.ap-south-1.aliyuncs.com',
             'ap-northeast-1': 'alb.ap-northeast-1.aliyuncs.com',
-            'ap-southeast-3': 'alb.ap-southeast-3.aliyuncs.com',
             'cn-chengdu': 'alb.cn-chengdu.aliyuncs.com',
-            'cn-huhehaote': 'alb.cn-huhehaote.aliyuncs.com',
-            'cn-qingdao': 'alb.cn-qingdao.aliyuncs.com',
-            'cn-wulanchabu': 'alb.cn-wulanchabu.aliyuncs.com',
-            'eu-west-1': 'alb.eu-west-1.aliyuncs.com',
-            'us-west-1': 'alb.us-west-1.aliyuncs.com'
+            'cn-wulanchabu': 'alb.cn-wulanchabu.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('alb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1336,6 +1331,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_load_balancer_edition_with_options_async(request, runtime)
 
+    def update_rules_attribute_with_options(
+        self,
+        request: alb_20200616_models.UpdateRulesAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.UpdateRulesAttributeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.UpdateRulesAttributeResponse(),
+            self.do_rpcrequest('UpdateRulesAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_rules_attribute_with_options_async(
+        self,
+        request: alb_20200616_models.UpdateRulesAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.UpdateRulesAttributeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.UpdateRulesAttributeResponse(),
+            await self.do_rpcrequest_async('UpdateRulesAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_rules_attribute(
+        self,
+        request: alb_20200616_models.UpdateRulesAttributeRequest,
+    ) -> alb_20200616_models.UpdateRulesAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_rules_attribute_with_options(request, runtime)
+
+    async def update_rules_attribute_async(
+        self,
+        request: alb_20200616_models.UpdateRulesAttributeRequest,
+    ) -> alb_20200616_models.UpdateRulesAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_rules_attribute_with_options_async(request, runtime)
+
     def list_listeners_with_options(
         self,
         request: alb_20200616_models.ListListenersRequest,
@@ -2217,6 +2254,48 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.RemoveServersFromServerGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.remove_servers_from_server_group_with_options_async(request, runtime)
+
+    def replace_servers_in_server_group_with_options(
+        self,
+        request: alb_20200616_models.ReplaceServersInServerGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.ReplaceServersInServerGroupResponse(),
+            self.do_rpcrequest('ReplaceServersInServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def replace_servers_in_server_group_with_options_async(
+        self,
+        request: alb_20200616_models.ReplaceServersInServerGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.ReplaceServersInServerGroupResponse(),
+            await self.do_rpcrequest_async('ReplaceServersInServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def replace_servers_in_server_group(
+        self,
+        request: alb_20200616_models.ReplaceServersInServerGroupRequest,
+    ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.replace_servers_in_server_group_with_options(request, runtime)
+
+    async def replace_servers_in_server_group_async(
+        self,
+        request: alb_20200616_models.ReplaceServersInServerGroupRequest,
+    ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.replace_servers_in_server_group_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
