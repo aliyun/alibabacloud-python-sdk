@@ -127,48 +127,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_task_status_with_options_async(request, runtime)
 
-    def get_scene_data_with_options(
-        self,
-        request: tdsr_20200101_models.GetSceneDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetSceneDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetSceneDataResponse(),
-            self.do_rpcrequest('GetSceneData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_scene_data_with_options_async(
-        self,
-        request: tdsr_20200101_models.GetSceneDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetSceneDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetSceneDataResponse(),
-            await self.do_rpcrequest_async('GetSceneData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_scene_data(
-        self,
-        request: tdsr_20200101_models.GetSceneDataRequest,
-    ) -> tdsr_20200101_models.GetSceneDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_scene_data_with_options(request, runtime)
-
-    async def get_scene_data_async(
-        self,
-        request: tdsr_20200101_models.GetSceneDataRequest,
-    ) -> tdsr_20200101_models.GetSceneDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_scene_data_with_options_async(request, runtime)
-
     def link_image_with_options(
         self,
         request: tdsr_20200101_models.LinkImageRequest,
@@ -294,48 +252,6 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateConnDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_conn_data_with_options_async(request, runtime)
-
-    def bucket_is_exist_with_options(
-        self,
-        request: tdsr_20200101_models.BucketIsExistRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.BucketIsExistResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.BucketIsExistResponse(),
-            self.do_rpcrequest('BucketIsExist', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def bucket_is_exist_with_options_async(
-        self,
-        request: tdsr_20200101_models.BucketIsExistRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.BucketIsExistResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.BucketIsExistResponse(),
-            await self.do_rpcrequest_async('BucketIsExist', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def bucket_is_exist(
-        self,
-        request: tdsr_20200101_models.BucketIsExistRequest,
-    ) -> tdsr_20200101_models.BucketIsExistResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.bucket_is_exist_with_options(request, runtime)
-
-    async def bucket_is_exist_async(
-        self,
-        request: tdsr_20200101_models.BucketIsExistRequest,
-    ) -> tdsr_20200101_models.BucketIsExistResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.bucket_is_exist_with_options_async(request, runtime)
 
     def rectify_image_with_options(
         self,
@@ -925,48 +841,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.save_hotspot_tag_with_options_async(request, runtime)
 
-    def check_permission_with_options(
-        self,
-        request: tdsr_20200101_models.CheckPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.CheckPermissionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.CheckPermissionResponse(),
-            self.do_rpcrequest('CheckPermission', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def check_permission_with_options_async(
-        self,
-        request: tdsr_20200101_models.CheckPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.CheckPermissionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.CheckPermissionResponse(),
-            await self.do_rpcrequest_async('CheckPermission', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def check_permission(
-        self,
-        request: tdsr_20200101_models.CheckPermissionRequest,
-    ) -> tdsr_20200101_models.CheckPermissionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.check_permission_with_options(request, runtime)
-
-    async def check_permission_async(
-        self,
-        request: tdsr_20200101_models.CheckPermissionRequest,
-    ) -> tdsr_20200101_models.CheckPermissionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.check_permission_with_options_async(request, runtime)
-
     def delete_project_with_options(
         self,
         request: tdsr_20200101_models.DeleteProjectRequest,
@@ -1261,48 +1135,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_project_with_options_async(request, runtime)
 
-    def list_main_scenes_with_options(
-        self,
-        request: tdsr_20200101_models.ListMainScenesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.ListMainScenesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.ListMainScenesResponse(),
-            self.do_rpcrequest('ListMainScenes', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_main_scenes_with_options_async(
-        self,
-        request: tdsr_20200101_models.ListMainScenesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.ListMainScenesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.ListMainScenesResponse(),
-            await self.do_rpcrequest_async('ListMainScenes', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_main_scenes(
-        self,
-        request: tdsr_20200101_models.ListMainScenesRequest,
-    ) -> tdsr_20200101_models.ListMainScenesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_main_scenes_with_options(request, runtime)
-
-    async def list_main_scenes_async(
-        self,
-        request: tdsr_20200101_models.ListMainScenesRequest,
-    ) -> tdsr_20200101_models.ListMainScenesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_main_scenes_with_options_async(request, runtime)
-
     def detail_sub_scene_with_options(
         self,
         request: tdsr_20200101_models.DetailSubSceneRequest,
@@ -1429,6 +1261,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_sub_scene_with_options_async(request, runtime)
 
+    def get_job_with_options(
+        self,
+        request: tdsr_20200101_models.GetJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetJobResponse(),
+            self.do_rpcrequest('GetJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_job_with_options_async(
+        self,
+        request: tdsr_20200101_models.GetJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetJobResponse(),
+            await self.do_rpcrequest_async('GetJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_job(
+        self,
+        request: tdsr_20200101_models.GetJobRequest,
+    ) -> tdsr_20200101_models.GetJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_job_with_options(request, runtime)
+
+    async def get_job_async(
+        self,
+        request: tdsr_20200101_models.GetJobRequest,
+    ) -> tdsr_20200101_models.GetJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_job_with_options_async(request, runtime)
+
     def create_project_with_options(
         self,
         request: tdsr_20200101_models.CreateProjectRequest,
@@ -1470,118 +1344,6 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.CreateProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_project_with_options_async(request, runtime)
-
-    def drop_bucket_with_options(
-        self,
-        request: tdsr_20200101_models.DropBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.DropBucketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.DropBucketResponse(),
-            self.do_rpcrequest('DropBucket', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def drop_bucket_with_options_async(
-        self,
-        request: tdsr_20200101_models.DropBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.DropBucketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.DropBucketResponse(),
-            await self.do_rpcrequest_async('DropBucket', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def drop_bucket(
-        self,
-        request: tdsr_20200101_models.DropBucketRequest,
-    ) -> tdsr_20200101_models.DropBucketResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.drop_bucket_with_options(request, runtime)
-
-    async def drop_bucket_async(
-        self,
-        request: tdsr_20200101_models.DropBucketRequest,
-    ) -> tdsr_20200101_models.DropBucketResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.drop_bucket_with_options_async(request, runtime)
-
-    def get_user_bucket_config_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetUserBucketConfigResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetUserBucketConfigResponse(),
-            self.do_rpcrequest('GetUserBucketConfig', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_user_bucket_config_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetUserBucketConfigResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetUserBucketConfigResponse(),
-            await self.do_rpcrequest_async('GetUserBucketConfig', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_user_bucket_config(self) -> tdsr_20200101_models.GetUserBucketConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_user_bucket_config_with_options(runtime)
-
-    async def get_user_bucket_config_async(self) -> tdsr_20200101_models.GetUserBucketConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_user_bucket_config_with_options_async(runtime)
-
-    def add_bucket_with_options(
-        self,
-        request: tdsr_20200101_models.AddBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.AddBucketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.AddBucketResponse(),
-            self.do_rpcrequest('AddBucket', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def add_bucket_with_options_async(
-        self,
-        request: tdsr_20200101_models.AddBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.AddBucketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.AddBucketResponse(),
-            await self.do_rpcrequest_async('AddBucket', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def add_bucket(
-        self,
-        request: tdsr_20200101_models.AddBucketRequest,
-    ) -> tdsr_20200101_models.AddBucketResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_bucket_with_options(request, runtime)
-
-    async def add_bucket_async(
-        self,
-        request: tdsr_20200101_models.AddBucketRequest,
-    ) -> tdsr_20200101_models.AddBucketResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_bucket_with_options_async(request, runtime)
 
     def save_hotspot_config_with_options(
         self,
@@ -1666,90 +1428,6 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetWindowConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_window_config_with_options_async(request, runtime)
-
-    def statis_query_by_type_with_options(
-        self,
-        request: tdsr_20200101_models.StatisQueryByTypeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.StatisQueryByTypeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.StatisQueryByTypeResponse(),
-            self.do_rpcrequest('StatisQueryByType', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def statis_query_by_type_with_options_async(
-        self,
-        request: tdsr_20200101_models.StatisQueryByTypeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.StatisQueryByTypeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.StatisQueryByTypeResponse(),
-            await self.do_rpcrequest_async('StatisQueryByType', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def statis_query_by_type(
-        self,
-        request: tdsr_20200101_models.StatisQueryByTypeRequest,
-    ) -> tdsr_20200101_models.StatisQueryByTypeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.statis_query_by_type_with_options(request, runtime)
-
-    async def statis_query_by_type_async(
-        self,
-        request: tdsr_20200101_models.StatisQueryByTypeRequest,
-    ) -> tdsr_20200101_models.StatisQueryByTypeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.statis_query_by_type_with_options_async(request, runtime)
-
-    def statis_export_scene_info_with_options(
-        self,
-        request: tdsr_20200101_models.StatisExportSceneInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.StatisExportSceneInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.StatisExportSceneInfoResponse(),
-            self.do_rpcrequest('StatisExportSceneInfo', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def statis_export_scene_info_with_options_async(
-        self,
-        request: tdsr_20200101_models.StatisExportSceneInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.StatisExportSceneInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.StatisExportSceneInfoResponse(),
-            await self.do_rpcrequest_async('StatisExportSceneInfo', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def statis_export_scene_info(
-        self,
-        request: tdsr_20200101_models.StatisExportSceneInfoRequest,
-    ) -> tdsr_20200101_models.StatisExportSceneInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.statis_export_scene_info_with_options(request, runtime)
-
-    async def statis_export_scene_info_async(
-        self,
-        request: tdsr_20200101_models.StatisExportSceneInfoRequest,
-    ) -> tdsr_20200101_models.StatisExportSceneInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.statis_export_scene_info_with_options_async(request, runtime)
 
     def get_hotspot_config_with_options(
         self,
@@ -1877,48 +1555,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.temp_preview_with_options_async(request, runtime)
 
-    def publish_scene_with_options(
-        self,
-        request: tdsr_20200101_models.PublishSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.PublishSceneResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.PublishSceneResponse(),
-            self.do_rpcrequest('PublishScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def publish_scene_with_options_async(
-        self,
-        request: tdsr_20200101_models.PublishSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.PublishSceneResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.PublishSceneResponse(),
-            await self.do_rpcrequest_async('PublishScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def publish_scene(
-        self,
-        request: tdsr_20200101_models.PublishSceneRequest,
-    ) -> tdsr_20200101_models.PublishSceneResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.publish_scene_with_options(request, runtime)
-
-    async def publish_scene_async(
-        self,
-        request: tdsr_20200101_models.PublishSceneRequest,
-    ) -> tdsr_20200101_models.PublishSceneResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.publish_scene_with_options_async(request, runtime)
-
     def detail_project_with_options(
         self,
         request: tdsr_20200101_models.DetailProjectRequest,
@@ -2045,48 +1681,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.drop_sub_scene_with_options_async(request, runtime)
 
-    def is_enable_oss_with_options(
-        self,
-        request: tdsr_20200101_models.IsEnableOssRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.IsEnableOssResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.IsEnableOssResponse(),
-            self.do_rpcrequest('IsEnableOss', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def is_enable_oss_with_options_async(
-        self,
-        request: tdsr_20200101_models.IsEnableOssRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.IsEnableOssResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.IsEnableOssResponse(),
-            await self.do_rpcrequest_async('IsEnableOss', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def is_enable_oss(
-        self,
-        request: tdsr_20200101_models.IsEnableOssRequest,
-    ) -> tdsr_20200101_models.IsEnableOssResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.is_enable_oss_with_options(request, runtime)
-
-    async def is_enable_oss_async(
-        self,
-        request: tdsr_20200101_models.IsEnableOssRequest,
-    ) -> tdsr_20200101_models.IsEnableOssResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.is_enable_oss_with_options_async(request, runtime)
-
     def get_hotspot_tag_with_options(
         self,
         request: tdsr_20200101_models.GetHotspotTagRequest,
@@ -2170,34 +1764,6 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DropProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.drop_project_with_options_async(request, runtime)
-
-    def get_user_oss_status_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetUserOssStatusResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetUserOssStatusResponse(),
-            self.do_rpcrequest('GetUserOssStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_user_oss_status_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetUserOssStatusResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetUserOssStatusResponse(),
-            await self.do_rpcrequest_async('GetUserOssStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_user_oss_status(self) -> tdsr_20200101_models.GetUserOssStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_user_oss_status_with_options(runtime)
-
-    async def get_user_oss_status_async(self) -> tdsr_20200101_models.GetUserOssStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_user_oss_status_with_options_async(runtime)
 
     def list_project_with_options(
         self,
@@ -2283,48 +1849,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_origin_layout_data_with_options_async(request, runtime)
 
-    def statis_list_scene_info_with_options(
-        self,
-        request: tdsr_20200101_models.StatisListSceneInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.StatisListSceneInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.StatisListSceneInfoResponse(),
-            self.do_rpcrequest('StatisListSceneInfo', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def statis_list_scene_info_with_options_async(
-        self,
-        request: tdsr_20200101_models.StatisListSceneInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.StatisListSceneInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.StatisListSceneInfoResponse(),
-            await self.do_rpcrequest_async('StatisListSceneInfo', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def statis_list_scene_info(
-        self,
-        request: tdsr_20200101_models.StatisListSceneInfoRequest,
-    ) -> tdsr_20200101_models.StatisListSceneInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.statis_list_scene_info_with_options(request, runtime)
-
-    async def statis_list_scene_info_async(
-        self,
-        request: tdsr_20200101_models.StatisListSceneInfoRequest,
-    ) -> tdsr_20200101_models.StatisListSceneInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.statis_list_scene_info_with_options_async(request, runtime)
-
     def scene_publish_with_options(
         self,
         request: tdsr_20200101_models.ScenePublishRequest,
@@ -2366,48 +1890,6 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ScenePublishResponse:
         runtime = util_models.RuntimeOptions()
         return await self.scene_publish_with_options_async(request, runtime)
-
-    def save_file_with_options(
-        self,
-        request: tdsr_20200101_models.SaveFileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.SaveFileResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.SaveFileResponse(),
-            self.do_rpcrequest('SaveFile', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def save_file_with_options_async(
-        self,
-        request: tdsr_20200101_models.SaveFileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.SaveFileResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.SaveFileResponse(),
-            await self.do_rpcrequest_async('SaveFile', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def save_file(
-        self,
-        request: tdsr_20200101_models.SaveFileRequest,
-    ) -> tdsr_20200101_models.SaveFileResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.save_file_with_options(request, runtime)
-
-    async def save_file_async(
-        self,
-        request: tdsr_20200101_models.SaveFileRequest,
-    ) -> tdsr_20200101_models.SaveFileResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.save_file_with_options_async(request, runtime)
 
     def get_rectify_image_with_options(
         self,
@@ -2492,132 +1974,6 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_project_with_options_async(request, runtime)
-
-    def update_bucket_with_options(
-        self,
-        request: tdsr_20200101_models.UpdateBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.UpdateBucketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.UpdateBucketResponse(),
-            self.do_rpcrequest('UpdateBucket', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_bucket_with_options_async(
-        self,
-        request: tdsr_20200101_models.UpdateBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.UpdateBucketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.UpdateBucketResponse(),
-            await self.do_rpcrequest_async('UpdateBucket', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_bucket(
-        self,
-        request: tdsr_20200101_models.UpdateBucketRequest,
-    ) -> tdsr_20200101_models.UpdateBucketResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_bucket_with_options(request, runtime)
-
-    async def update_bucket_async(
-        self,
-        request: tdsr_20200101_models.UpdateBucketRequest,
-    ) -> tdsr_20200101_models.UpdateBucketResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_bucket_with_options_async(request, runtime)
-
-    def statis_query_by_day_with_options(
-        self,
-        request: tdsr_20200101_models.StatisQueryByDayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.StatisQueryByDayResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.StatisQueryByDayResponse(),
-            self.do_rpcrequest('StatisQueryByDay', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def statis_query_by_day_with_options_async(
-        self,
-        request: tdsr_20200101_models.StatisQueryByDayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.StatisQueryByDayResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.StatisQueryByDayResponse(),
-            await self.do_rpcrequest_async('StatisQueryByDay', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def statis_query_by_day(
-        self,
-        request: tdsr_20200101_models.StatisQueryByDayRequest,
-    ) -> tdsr_20200101_models.StatisQueryByDayResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.statis_query_by_day_with_options(request, runtime)
-
-    async def statis_query_by_day_async(
-        self,
-        request: tdsr_20200101_models.StatisQueryByDayRequest,
-    ) -> tdsr_20200101_models.StatisQueryByDayResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.statis_query_by_day_with_options_async(request, runtime)
-
-    def get_scene_list_with_options(
-        self,
-        request: tdsr_20200101_models.GetSceneListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetSceneListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetSceneListResponse(),
-            self.do_rpcrequest('GetSceneList', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_scene_list_with_options_async(
-        self,
-        request: tdsr_20200101_models.GetSceneListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetSceneListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetSceneListResponse(),
-            await self.do_rpcrequest_async('GetSceneList', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_scene_list(
-        self,
-        request: tdsr_20200101_models.GetSceneListRequest,
-    ) -> tdsr_20200101_models.GetSceneListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_scene_list_with_options(request, runtime)
-
-    async def get_scene_list_async(
-        self,
-        request: tdsr_20200101_models.GetSceneListRequest,
-    ) -> tdsr_20200101_models.GetSceneListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_scene_list_with_options_async(request, runtime)
 
     def get_sub_scene_task_status_with_options(
         self,
