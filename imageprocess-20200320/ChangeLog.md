@@ -1,3 +1,6 @@
+2021-07-19 Version: 2.0.7
+- Update ScreenChestCT.
+
 2021-07-02 Version: 2.0.6
 - Release AnalyzeChestVessel.
 

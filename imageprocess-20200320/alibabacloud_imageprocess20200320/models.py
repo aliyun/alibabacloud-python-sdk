@@ -4070,6 +4070,170 @@ class ScreenChestCTResponseBodyDataDetectRibFracture(TeaModel):
         return self
 
 
+class ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo(TeaModel):
+    def __init__(
+        self,
+        max_area_index: int = None,
+        max_area: float = None,
+        max_diameter: float = None,
+        label_value: int = None,
+        coordinates: List[List[float]] = None,
+        area: List[float] = None,
+    ):
+        self.max_area_index = max_area_index
+        self.max_area = max_area
+        self.max_diameter = max_diameter
+        self.label_value = label_value
+        self.coordinates = coordinates
+        self.area = area
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_area_index is not None:
+            result['MaxAreaIndex'] = self.max_area_index
+        if self.max_area is not None:
+            result['MaxArea'] = self.max_area
+        if self.max_diameter is not None:
+            result['MaxDiameter'] = self.max_diameter
+        if self.label_value is not None:
+            result['LabelValue'] = self.label_value
+        if self.coordinates is not None:
+            result['Coordinates'] = self.coordinates
+        if self.area is not None:
+            result['Area'] = self.area
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxAreaIndex') is not None:
+            self.max_area_index = m.get('MaxAreaIndex')
+        if m.get('MaxArea') is not None:
+            self.max_area = m.get('MaxArea')
+        if m.get('MaxDiameter') is not None:
+            self.max_diameter = m.get('MaxDiameter')
+        if m.get('LabelValue') is not None:
+            self.label_value = m.get('LabelValue')
+        if m.get('Coordinates') is not None:
+            self.coordinates = m.get('Coordinates')
+        if m.get('Area') is not None:
+            self.area = m.get('Area')
+        return self
+
+
+class ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo(TeaModel):
+    def __init__(
+        self,
+        max_area_index: int = None,
+        max_area: float = None,
+        max_diameter: float = None,
+        label_value: int = None,
+        coordinates: List[List[float]] = None,
+        area: List[float] = None,
+        nearest_aorta_area: float = None,
+    ):
+        self.max_area_index = max_area_index
+        self.max_area = max_area
+        self.max_diameter = max_diameter
+        self.label_value = label_value
+        self.coordinates = coordinates
+        self.area = area
+        self.nearest_aorta_area = nearest_aorta_area
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_area_index is not None:
+            result['MaxAreaIndex'] = self.max_area_index
+        if self.max_area is not None:
+            result['MaxArea'] = self.max_area
+        if self.max_diameter is not None:
+            result['MaxDiameter'] = self.max_diameter
+        if self.label_value is not None:
+            result['LabelValue'] = self.label_value
+        if self.coordinates is not None:
+            result['Coordinates'] = self.coordinates
+        if self.area is not None:
+            result['Area'] = self.area
+        if self.nearest_aorta_area is not None:
+            result['NearestAortaArea'] = self.nearest_aorta_area
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxAreaIndex') is not None:
+            self.max_area_index = m.get('MaxAreaIndex')
+        if m.get('MaxArea') is not None:
+            self.max_area = m.get('MaxArea')
+        if m.get('MaxDiameter') is not None:
+            self.max_diameter = m.get('MaxDiameter')
+        if m.get('LabelValue') is not None:
+            self.label_value = m.get('LabelValue')
+        if m.get('Coordinates') is not None:
+            self.coordinates = m.get('Coordinates')
+        if m.get('Area') is not None:
+            self.area = m.get('Area')
+        if m.get('NearestAortaArea') is not None:
+            self.nearest_aorta_area = m.get('NearestAortaArea')
+        return self
+
+
+class ScreenChestCTResponseBodyDataAnalyzeChestVessel(TeaModel):
+    def __init__(
+        self,
+        aorta_info: ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo = None,
+        pulmonary_info: ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo = None,
+        result_url: str = None,
+    ):
+        self.aorta_info = aorta_info
+        self.pulmonary_info = pulmonary_info
+        self.result_url = result_url
+
+    def validate(self):
+        if self.aorta_info:
+            self.aorta_info.validate()
+        if self.pulmonary_info:
+            self.pulmonary_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aorta_info is not None:
+            result['AortaInfo'] = self.aorta_info.to_map()
+        if self.pulmonary_info is not None:
+            result['PulmonaryInfo'] = self.pulmonary_info.to_map()
+        if self.result_url is not None:
+            result['ResultURL'] = self.result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AortaInfo') is not None:
+            temp_model = ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo()
+            self.aorta_info = temp_model.from_map(m['AortaInfo'])
+        if m.get('PulmonaryInfo') is not None:
+            temp_model = ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo()
+            self.pulmonary_info = temp_model.from_map(m['PulmonaryInfo'])
+        if m.get('ResultURL') is not None:
+            self.result_url = m.get('ResultURL')
+        return self
+
+
 class ScreenChestCTResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -4078,12 +4242,14 @@ class ScreenChestCTResponseBodyData(TeaModel):
         covid: ScreenChestCTResponseBodyDataCovid = None,
         detect_rib_fracture: ScreenChestCTResponseBodyDataDetectRibFracture = None,
         error_message: str = None,
+        analyze_chest_vessel: ScreenChestCTResponseBodyDataAnalyzeChestVessel = None,
     ):
         self.lung_nodule = lung_nodule
         self.cacs = cacs
         self.covid = covid
         self.detect_rib_fracture = detect_rib_fracture
         self.error_message = error_message
+        self.analyze_chest_vessel = analyze_chest_vessel
 
     def validate(self):
         if self.lung_nodule:
@@ -4094,6 +4260,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
             self.covid.validate()
         if self.detect_rib_fracture:
             self.detect_rib_fracture.validate()
+        if self.analyze_chest_vessel:
+            self.analyze_chest_vessel.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4111,6 +4279,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
             result['DetectRibFracture'] = self.detect_rib_fracture.to_map()
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        if self.analyze_chest_vessel is not None:
+            result['AnalyzeChestVessel'] = self.analyze_chest_vessel.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -4129,6 +4299,9 @@ class ScreenChestCTResponseBodyData(TeaModel):
             self.detect_rib_fracture = temp_model.from_map(m['DetectRibFracture'])
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        if m.get('AnalyzeChestVessel') is not None:
+            temp_model = ScreenChestCTResponseBodyDataAnalyzeChestVessel()
+            self.analyze_chest_vessel = temp_model.from_map(m['AnalyzeChestVessel'])
         return self
 
 
