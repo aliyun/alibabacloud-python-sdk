@@ -83,6 +83,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_execution_with_options_async(request, runtime)
 
+    def change_resource_group_with_options(
+        self,
+        request: oos_20190601_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ChangeResourceGroupResponse(),
+            self.do_rpcrequest('ChangeResourceGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: oos_20190601_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ChangeResourceGroupResponse(),
+            await self.do_rpcrequest_async('ChangeResourceGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: oos_20190601_models.ChangeResourceGroupRequest,
+    ) -> oos_20190601_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: oos_20190601_models.ChangeResourceGroupRequest,
+    ) -> oos_20190601_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
+    def create_application_with_options(
+        self,
+        request: oos_20190601_models.CreateApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateApplicationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateApplicationResponse(),
+            self.do_rpcrequest('CreateApplication', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_application_with_options_async(
+        self,
+        request: oos_20190601_models.CreateApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateApplicationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateApplicationResponse(),
+            await self.do_rpcrequest_async('CreateApplication', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_application(
+        self,
+        request: oos_20190601_models.CreateApplicationRequest,
+    ) -> oos_20190601_models.CreateApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_application_with_options(request, runtime)
+
+    async def create_application_async(
+        self,
+        request: oos_20190601_models.CreateApplicationRequest,
+    ) -> oos_20190601_models.CreateApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_application_with_options_async(request, runtime)
+
+    def create_application_group_with_options(
+        self,
+        request: oos_20190601_models.CreateApplicationGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateApplicationGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateApplicationGroupResponse(),
+            self.do_rpcrequest('CreateApplicationGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_application_group_with_options_async(
+        self,
+        request: oos_20190601_models.CreateApplicationGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateApplicationGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateApplicationGroupResponse(),
+            await self.do_rpcrequest_async('CreateApplicationGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_application_group(
+        self,
+        request: oos_20190601_models.CreateApplicationGroupRequest,
+    ) -> oos_20190601_models.CreateApplicationGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_application_group_with_options(request, runtime)
+
+    async def create_application_group_async(
+        self,
+        request: oos_20190601_models.CreateApplicationGroupRequest,
+    ) -> oos_20190601_models.CreateApplicationGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_application_group_with_options_async(request, runtime)
+
     def create_parameter_with_options(
         self,
         tmp_req: oos_20190601_models.CreateParameterRequest,
@@ -316,6 +442,90 @@ class Client(OpenApiClient):
     ) -> oos_20190601_models.CreateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_template_with_options_async(request, runtime)
+
+    def delete_application_with_options(
+        self,
+        request: oos_20190601_models.DeleteApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DeleteApplicationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteApplicationResponse(),
+            self.do_rpcrequest('DeleteApplication', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_application_with_options_async(
+        self,
+        request: oos_20190601_models.DeleteApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DeleteApplicationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteApplicationResponse(),
+            await self.do_rpcrequest_async('DeleteApplication', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_application(
+        self,
+        request: oos_20190601_models.DeleteApplicationRequest,
+    ) -> oos_20190601_models.DeleteApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_application_with_options(request, runtime)
+
+    async def delete_application_async(
+        self,
+        request: oos_20190601_models.DeleteApplicationRequest,
+    ) -> oos_20190601_models.DeleteApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_application_with_options_async(request, runtime)
+
+    def delete_application_group_with_options(
+        self,
+        request: oos_20190601_models.DeleteApplicationGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DeleteApplicationGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteApplicationGroupResponse(),
+            self.do_rpcrequest('DeleteApplicationGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_application_group_with_options_async(
+        self,
+        request: oos_20190601_models.DeleteApplicationGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DeleteApplicationGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DeleteApplicationGroupResponse(),
+            await self.do_rpcrequest_async('DeleteApplicationGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_application_group(
+        self,
+        request: oos_20190601_models.DeleteApplicationGroupRequest,
+    ) -> oos_20190601_models.DeleteApplicationGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_application_group_with_options(request, runtime)
+
+    async def delete_application_group_async(
+        self,
+        request: oos_20190601_models.DeleteApplicationGroupRequest,
+    ) -> oos_20190601_models.DeleteApplicationGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_application_group_with_options_async(request, runtime)
 
     def delete_executions_with_options(
         self,
@@ -694,6 +904,90 @@ class Client(OpenApiClient):
     ) -> oos_20190601_models.GenerateExecutionPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.generate_execution_policy_with_options_async(request, runtime)
+
+    def get_application_with_options(
+        self,
+        request: oos_20190601_models.GetApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetApplicationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetApplicationResponse(),
+            self.do_rpcrequest('GetApplication', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_application_with_options_async(
+        self,
+        request: oos_20190601_models.GetApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetApplicationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetApplicationResponse(),
+            await self.do_rpcrequest_async('GetApplication', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_application(
+        self,
+        request: oos_20190601_models.GetApplicationRequest,
+    ) -> oos_20190601_models.GetApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_application_with_options(request, runtime)
+
+    async def get_application_async(
+        self,
+        request: oos_20190601_models.GetApplicationRequest,
+    ) -> oos_20190601_models.GetApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_application_with_options_async(request, runtime)
+
+    def get_application_group_with_options(
+        self,
+        request: oos_20190601_models.GetApplicationGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetApplicationGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetApplicationGroupResponse(),
+            self.do_rpcrequest('GetApplicationGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_application_group_with_options_async(
+        self,
+        request: oos_20190601_models.GetApplicationGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetApplicationGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetApplicationGroupResponse(),
+            await self.do_rpcrequest_async('GetApplicationGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_application_group(
+        self,
+        request: oos_20190601_models.GetApplicationGroupRequest,
+    ) -> oos_20190601_models.GetApplicationGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_application_group_with_options(request, runtime)
+
+    async def get_application_group_async(
+        self,
+        request: oos_20190601_models.GetApplicationGroupRequest,
+    ) -> oos_20190601_models.GetApplicationGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_application_group_with_options_async(request, runtime)
 
     def get_execution_template_with_options(
         self,
@@ -1198,6 +1492,90 @@ class Client(OpenApiClient):
     ) -> oos_20190601_models.ListActionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_actions_with_options_async(request, runtime)
+
+    def list_application_groups_with_options(
+        self,
+        request: oos_20190601_models.ListApplicationGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListApplicationGroupsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListApplicationGroupsResponse(),
+            self.do_rpcrequest('ListApplicationGroups', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_application_groups_with_options_async(
+        self,
+        request: oos_20190601_models.ListApplicationGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListApplicationGroupsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListApplicationGroupsResponse(),
+            await self.do_rpcrequest_async('ListApplicationGroups', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_application_groups(
+        self,
+        request: oos_20190601_models.ListApplicationGroupsRequest,
+    ) -> oos_20190601_models.ListApplicationGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_application_groups_with_options(request, runtime)
+
+    async def list_application_groups_async(
+        self,
+        request: oos_20190601_models.ListApplicationGroupsRequest,
+    ) -> oos_20190601_models.ListApplicationGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_application_groups_with_options_async(request, runtime)
+
+    def list_applications_with_options(
+        self,
+        request: oos_20190601_models.ListApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListApplicationsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListApplicationsResponse(),
+            self.do_rpcrequest('ListApplications', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_applications_with_options_async(
+        self,
+        request: oos_20190601_models.ListApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListApplicationsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListApplicationsResponse(),
+            await self.do_rpcrequest_async('ListApplications', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_applications(
+        self,
+        request: oos_20190601_models.ListApplicationsRequest,
+    ) -> oos_20190601_models.ListApplicationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_applications_with_options(request, runtime)
+
+    async def list_applications_async(
+        self,
+        request: oos_20190601_models.ListApplicationsRequest,
+    ) -> oos_20190601_models.ListApplicationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_applications_with_options_async(request, runtime)
 
     def list_execution_logs_with_options(
         self,
@@ -2458,6 +2836,48 @@ class Client(OpenApiClient):
     ) -> oos_20190601_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_application_group_with_options(
+        self,
+        request: oos_20190601_models.UpdateApplicationGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdateApplicationGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateApplicationGroupResponse(),
+            self.do_rpcrequest('UpdateApplicationGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_application_group_with_options_async(
+        self,
+        request: oos_20190601_models.UpdateApplicationGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdateApplicationGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateApplicationGroupResponse(),
+            await self.do_rpcrequest_async('UpdateApplicationGroup', '2019-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_application_group(
+        self,
+        request: oos_20190601_models.UpdateApplicationGroupRequest,
+    ) -> oos_20190601_models.UpdateApplicationGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_application_group_with_options(request, runtime)
+
+    async def update_application_group_async(
+        self,
+        request: oos_20190601_models.UpdateApplicationGroupRequest,
+    ) -> oos_20190601_models.UpdateApplicationGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_application_group_with_options_async(request, runtime)
 
     def update_execution_with_options(
         self,

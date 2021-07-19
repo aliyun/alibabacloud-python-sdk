@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
 
 
 class CancelExecutionRequest(TeaModel):
@@ -101,6 +101,606 @@ class CancelExecutionResponse(TeaModel):
         return self
 
 
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_id: str = None,
+        new_resource_group_id: str = None,
+        resource_type: str = None,
+    ):
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.new_resource_group_id = new_resource_group_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        name: str = None,
+        description: str = None,
+        type: str = None,
+        resource_group_id: str = None,
+        cloud_monitor_contact_group_list: str = None,
+        cloud_monitor_enable_subscribe_event: bool = None,
+        cloud_monitor_enable_install_agent: bool = None,
+        cloud_monitor_template_id_list: str = None,
+        cloud_monitor_rule_enabled: bool = None,
+    ):
+        self.region_id = region_id
+        self.name = name
+        self.description = description
+        self.type = type
+        self.resource_group_id = resource_group_id
+        self.cloud_monitor_contact_group_list = cloud_monitor_contact_group_list
+        self.cloud_monitor_enable_subscribe_event = cloud_monitor_enable_subscribe_event
+        self.cloud_monitor_enable_install_agent = cloud_monitor_enable_install_agent
+        self.cloud_monitor_template_id_list = cloud_monitor_template_id_list
+        self.cloud_monitor_rule_enabled = cloud_monitor_rule_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.cloud_monitor_contact_group_list is not None:
+            result['CloudMonitorContactGroupList'] = self.cloud_monitor_contact_group_list
+        if self.cloud_monitor_enable_subscribe_event is not None:
+            result['CloudMonitorEnableSubscribeEvent'] = self.cloud_monitor_enable_subscribe_event
+        if self.cloud_monitor_enable_install_agent is not None:
+            result['CloudMonitorEnableInstallAgent'] = self.cloud_monitor_enable_install_agent
+        if self.cloud_monitor_template_id_list is not None:
+            result['CloudMonitorTemplateIdList'] = self.cloud_monitor_template_id_list
+        if self.cloud_monitor_rule_enabled is not None:
+            result['CloudMonitorRuleEnabled'] = self.cloud_monitor_rule_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('CloudMonitorContactGroupList') is not None:
+            self.cloud_monitor_contact_group_list = m.get('CloudMonitorContactGroupList')
+        if m.get('CloudMonitorEnableSubscribeEvent') is not None:
+            self.cloud_monitor_enable_subscribe_event = m.get('CloudMonitorEnableSubscribeEvent')
+        if m.get('CloudMonitorEnableInstallAgent') is not None:
+            self.cloud_monitor_enable_install_agent = m.get('CloudMonitorEnableInstallAgent')
+        if m.get('CloudMonitorTemplateIdList') is not None:
+            self.cloud_monitor_template_id_list = m.get('CloudMonitorTemplateIdList')
+        if m.get('CloudMonitorRuleEnabled') is not None:
+            self.cloud_monitor_rule_enabled = m.get('CloudMonitorRuleEnabled')
+        return self
+
+
+class CreateApplicationResponseBodyApplicationCloudMonitorRule(TeaModel):
+    def __init__(
+        self,
+        enable_subscribe_event: bool = None,
+        enable_install_agent: bool = None,
+        enabled: bool = None,
+        contact_group_list: List[str] = None,
+        template_id_list: List[int] = None,
+    ):
+        self.enable_subscribe_event = enable_subscribe_event
+        self.enable_install_agent = enable_install_agent
+        self.enabled = enabled
+        self.contact_group_list = contact_group_list
+        self.template_id_list = template_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_subscribe_event is not None:
+            result['EnableSubscribeEvent'] = self.enable_subscribe_event
+        if self.enable_install_agent is not None:
+            result['EnableInstallAgent'] = self.enable_install_agent
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.contact_group_list is not None:
+            result['ContactGroupList'] = self.contact_group_list
+        if self.template_id_list is not None:
+            result['TemplateIdList'] = self.template_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableSubscribeEvent') is not None:
+            self.enable_subscribe_event = m.get('EnableSubscribeEvent')
+        if m.get('EnableInstallAgent') is not None:
+            self.enable_install_agent = m.get('EnableInstallAgent')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('ContactGroupList') is not None:
+            self.contact_group_list = m.get('ContactGroupList')
+        if m.get('TemplateIdList') is not None:
+            self.template_id_list = m.get('TemplateIdList')
+        return self
+
+
+class CreateApplicationResponseBodyApplication(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        is_system: bool = None,
+        description: str = None,
+        update_date: str = None,
+        name: str = None,
+        create_date: str = None,
+        cloud_monitor_rule: CreateApplicationResponseBodyApplicationCloudMonitorRule = None,
+    ):
+        self.type = type
+        self.is_system = is_system
+        self.description = description
+        self.update_date = update_date
+        self.name = name
+        self.create_date = create_date
+        self.cloud_monitor_rule = cloud_monitor_rule
+
+    def validate(self):
+        if self.cloud_monitor_rule:
+            self.cloud_monitor_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.is_system is not None:
+            result['IsSystem'] = self.is_system
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.cloud_monitor_rule is not None:
+            result['CloudMonitorRule'] = self.cloud_monitor_rule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('IsSystem') is not None:
+            self.is_system = m.get('IsSystem')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('CloudMonitorRule') is not None:
+            temp_model = CreateApplicationResponseBodyApplicationCloudMonitorRule()
+            self.cloud_monitor_rule = temp_model.from_map(m['CloudMonitorRule'])
+        return self
+
+
+class CreateApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        application: CreateApplicationResponseBodyApplication = None,
+    ):
+        self.request_id = request_id
+        self.application = application
+
+    def validate(self):
+        if self.application:
+            self.application.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.application is not None:
+            result['Application'] = self.application.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Application') is not None:
+            temp_model = CreateApplicationResponseBodyApplication()
+            self.application = temp_model.from_map(m['Application'])
+        return self
+
+
+class CreateApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateApplicationGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        application_name: str = None,
+        description: str = None,
+        deploy_region_id: str = None,
+        environment: str = None,
+        create_type: str = None,
+        import_cluster_id: str = None,
+        name: str = None,
+    ):
+        self.region_id = region_id
+        self.application_name = application_name
+        self.description = description
+        self.deploy_region_id = deploy_region_id
+        self.environment = environment
+        self.create_type = create_type
+        self.import_cluster_id = import_cluster_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.deploy_region_id is not None:
+            result['DeployRegionId'] = self.deploy_region_id
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
+        if self.import_cluster_id is not None:
+            result['ImportClusterId'] = self.import_cluster_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DeployRegionId') is not None:
+            self.deploy_region_id = m.get('DeployRegionId')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
+        if m.get('ImportClusterId') is not None:
+            self.import_cluster_id = m.get('ImportClusterId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateApplicationGroupResponseBodyApplicationGroup(TeaModel):
+    def __init__(
+        self,
+        deploy_region_id: str = None,
+        description: str = None,
+        updated_date: str = None,
+        created_date: str = None,
+        application_name: str = None,
+        name: str = None,
+        environment: str = None,
+        create_type: str = None,
+        scaling_group_id: str = None,
+        import_cluster_id: str = None,
+    ):
+        self.deploy_region_id = deploy_region_id
+        self.description = description
+        self.updated_date = updated_date
+        self.created_date = created_date
+        self.application_name = application_name
+        self.name = name
+        self.environment = environment
+        self.create_type = create_type
+        self.scaling_group_id = scaling_group_id
+        self.import_cluster_id = import_cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_region_id is not None:
+            result['DeployRegionId'] = self.deploy_region_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.updated_date is not None:
+            result['UpdatedDate'] = self.updated_date
+        if self.created_date is not None:
+            result['CreatedDate'] = self.created_date
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.import_cluster_id is not None:
+            result['ImportClusterId'] = self.import_cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeployRegionId') is not None:
+            self.deploy_region_id = m.get('DeployRegionId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('UpdatedDate') is not None:
+            self.updated_date = m.get('UpdatedDate')
+        if m.get('CreatedDate') is not None:
+            self.created_date = m.get('CreatedDate')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ImportClusterId') is not None:
+            self.import_cluster_id = m.get('ImportClusterId')
+        return self
+
+
+class CreateApplicationGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        application_group: CreateApplicationGroupResponseBodyApplicationGroup = None,
+    ):
+        self.request_id = request_id
+        self.application_group = application_group
+
+    def validate(self):
+        if self.application_group:
+            self.application_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.application_group is not None:
+            result['ApplicationGroup'] = self.application_group.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ApplicationGroup') is not None:
+            temp_model = CreateApplicationGroupResponseBodyApplicationGroup()
+            self.application_group = temp_model.from_map(m['ApplicationGroup'])
+        return self
+
+
+class CreateApplicationGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateApplicationGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateApplicationGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateParameterRequest(TeaModel):
     def __init__(
         self,
@@ -112,6 +712,7 @@ class CreateParameterRequest(TeaModel):
         client_token: str = None,
         constraints: str = None,
         tags: Dict[str, Any] = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
@@ -121,6 +722,7 @@ class CreateParameterRequest(TeaModel):
         self.client_token = client_token
         self.constraints = constraints
         self.tags = tags
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -147,6 +749,8 @@ class CreateParameterRequest(TeaModel):
             result['Constraints'] = self.constraints
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -167,6 +771,8 @@ class CreateParameterRequest(TeaModel):
             self.constraints = m.get('Constraints')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -181,6 +787,7 @@ class CreateParameterShrinkRequest(TeaModel):
         client_token: str = None,
         constraints: str = None,
         tags_shrink: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
@@ -190,6 +797,7 @@ class CreateParameterShrinkRequest(TeaModel):
         self.client_token = client_token
         self.constraints = constraints
         self.tags_shrink = tags_shrink
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -216,6 +824,8 @@ class CreateParameterShrinkRequest(TeaModel):
             result['Constraints'] = self.constraints
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -236,6 +846,8 @@ class CreateParameterShrinkRequest(TeaModel):
             self.constraints = m.get('Constraints')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -246,11 +858,12 @@ class CreateParameterResponseBodyParameter(TeaModel):
         updated_date: str = None,
         updated_by: str = None,
         tags: Dict[str, Any] = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -259,11 +872,12 @@ class CreateParameterResponseBodyParameter(TeaModel):
         self.updated_date = updated_date
         self.updated_by = updated_by
         self.tags = tags
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -285,16 +899,18 @@ class CreateParameterResponseBodyParameter(TeaModel):
             result['UpdatedBy'] = self.updated_by
         if self.tags is not None:
             result['Tags'] = self.tags
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -313,16 +929,18 @@ class CreateParameterResponseBodyParameter(TeaModel):
             self.updated_by = m.get('UpdatedBy')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -545,11 +1163,11 @@ class CreatePatchBaselineResponseBodyPatchBaseline(TeaModel):
 class CreatePatchBaselineResponseBody(TeaModel):
     def __init__(
         self,
-        patch_baseline: CreatePatchBaselineResponseBodyPatchBaseline = None,
         request_id: str = None,
+        patch_baseline: CreatePatchBaselineResponseBodyPatchBaseline = None,
     ):
-        self.patch_baseline = patch_baseline
         self.request_id = request_id
+        self.patch_baseline = patch_baseline
 
     def validate(self):
         if self.patch_baseline:
@@ -561,19 +1179,19 @@ class CreatePatchBaselineResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.patch_baseline is not None:
-            result['PatchBaseline'] = self.patch_baseline.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.patch_baseline is not None:
+            result['PatchBaseline'] = self.patch_baseline.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('PatchBaseline') is not None:
             temp_model = CreatePatchBaselineResponseBodyPatchBaseline()
             self.patch_baseline = temp_model.from_map(m['PatchBaseline'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -626,6 +1244,7 @@ class CreateSecretParameterRequest(TeaModel):
         client_token: str = None,
         constraints: str = None,
         tags: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
@@ -636,6 +1255,7 @@ class CreateSecretParameterRequest(TeaModel):
         self.client_token = client_token
         self.constraints = constraints
         self.tags = tags
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -664,6 +1284,8 @@ class CreateSecretParameterRequest(TeaModel):
             result['Constraints'] = self.constraints
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -686,6 +1308,8 @@ class CreateSecretParameterRequest(TeaModel):
             self.constraints = m.get('Constraints')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -697,11 +1321,12 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
         updated_by: str = None,
         key_id: str = None,
         tags: str = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -711,11 +1336,12 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
         self.updated_by = updated_by
         self.key_id = key_id
         self.tags = tags
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -739,16 +1365,18 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
             result['KeyId'] = self.key_id
         if self.tags is not None:
             result['Tags'] = self.tags
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -769,16 +1397,18 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
             self.key_id = m.get('KeyId')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -874,6 +1504,7 @@ class CreateStateConfigurationRequest(TeaModel):
         targets: str = None,
         client_token: str = None,
         tags: Dict[str, Any] = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.description = description
@@ -886,6 +1517,7 @@ class CreateStateConfigurationRequest(TeaModel):
         self.targets = targets
         self.client_token = client_token
         self.tags = tags
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -918,6 +1550,8 @@ class CreateStateConfigurationRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -944,6 +1578,8 @@ class CreateStateConfigurationRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -961,6 +1597,7 @@ class CreateStateConfigurationShrinkRequest(TeaModel):
         targets: str = None,
         client_token: str = None,
         tags_shrink: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.description = description
@@ -973,6 +1610,7 @@ class CreateStateConfigurationShrinkRequest(TeaModel):
         self.targets = targets
         self.client_token = client_token
         self.tags_shrink = tags_shrink
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -1005,6 +1643,8 @@ class CreateStateConfigurationShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1031,36 +1671,40 @@ class CreateStateConfigurationShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
 class CreateStateConfigurationResponseBodyStateConfiguration(TeaModel):
     def __init__(
         self,
-        targets: str = None,
         create_time: str = None,
+        targets: str = None,
         tags: Dict[str, Any] = None,
-        schedule_expression: str = None,
         state_configuration_id: str = None,
+        schedule_expression: str = None,
         template_name: str = None,
         template_version: str = None,
-        schedule_type: str = None,
         configure_mode: str = None,
+        schedule_type: str = None,
         parameters: Dict[str, Any] = None,
         description: str = None,
+        resource_group_id: str = None,
         template_id: str = None,
     ):
-        self.targets = targets
         self.create_time = create_time
+        self.targets = targets
         self.tags = tags
-        self.schedule_expression = schedule_expression
         self.state_configuration_id = state_configuration_id
+        self.schedule_expression = schedule_expression
         self.template_name = template_name
         self.template_version = template_version
-        self.schedule_type = schedule_type
         self.configure_mode = configure_mode
+        self.schedule_type = schedule_type
         self.parameters = parameters
         self.description = description
+        self.resource_group_id = resource_group_id
         self.template_id = template_id
 
     def validate(self):
@@ -1072,56 +1716,60 @@ class CreateStateConfigurationResponseBodyStateConfiguration(TeaModel):
             return _map
 
         result = dict()
-        if self.targets is not None:
-            result['Targets'] = self.targets
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.targets is not None:
+            result['Targets'] = self.targets
         if self.tags is not None:
             result['Tags'] = self.tags
-        if self.schedule_expression is not None:
-            result['ScheduleExpression'] = self.schedule_expression
         if self.state_configuration_id is not None:
             result['StateConfigurationId'] = self.state_configuration_id
+        if self.schedule_expression is not None:
+            result['ScheduleExpression'] = self.schedule_expression
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
         if self.template_version is not None:
             result['TemplateVersion'] = self.template_version
-        if self.schedule_type is not None:
-            result['ScheduleType'] = self.schedule_type
         if self.configure_mode is not None:
             result['ConfigureMode'] = self.configure_mode
+        if self.schedule_type is not None:
+            result['ScheduleType'] = self.schedule_type
         if self.parameters is not None:
             result['Parameters'] = self.parameters
         if self.description is not None:
             result['Description'] = self.description
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Targets') is not None:
-            self.targets = m.get('Targets')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('Targets') is not None:
+            self.targets = m.get('Targets')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
-        if m.get('ScheduleExpression') is not None:
-            self.schedule_expression = m.get('ScheduleExpression')
         if m.get('StateConfigurationId') is not None:
             self.state_configuration_id = m.get('StateConfigurationId')
+        if m.get('ScheduleExpression') is not None:
+            self.schedule_expression = m.get('ScheduleExpression')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
         if m.get('TemplateVersion') is not None:
             self.template_version = m.get('TemplateVersion')
-        if m.get('ScheduleType') is not None:
-            self.schedule_type = m.get('ScheduleType')
         if m.get('ConfigureMode') is not None:
             self.configure_mode = m.get('ConfigureMode')
+        if m.get('ScheduleType') is not None:
+            self.schedule_type = m.get('ScheduleType')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
@@ -1207,12 +1855,14 @@ class CreateTemplateRequest(TeaModel):
         content: str = None,
         tags: Dict[str, Any] = None,
         version_name: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
         self.content = content
         self.tags = tags
         self.version_name = version_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -1233,6 +1883,8 @@ class CreateTemplateRequest(TeaModel):
             result['Tags'] = self.tags
         if self.version_name is not None:
             result['VersionName'] = self.version_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1247,6 +1899,8 @@ class CreateTemplateRequest(TeaModel):
             self.tags = m.get('Tags')
         if m.get('VersionName') is not None:
             self.version_name = m.get('VersionName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -1258,12 +1912,14 @@ class CreateTemplateShrinkRequest(TeaModel):
         content: str = None,
         tags_shrink: str = None,
         version_name: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
         self.content = content
         self.tags_shrink = tags_shrink
         self.version_name = version_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -1284,6 +1940,8 @@ class CreateTemplateShrinkRequest(TeaModel):
             result['Tags'] = self.tags_shrink
         if self.version_name is not None:
             result['VersionName'] = self.version_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1298,6 +1956,8 @@ class CreateTemplateShrinkRequest(TeaModel):
             self.tags_shrink = m.get('Tags')
         if m.get('VersionName') is not None:
             self.version_name = m.get('VersionName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -1312,10 +1972,11 @@ class CreateTemplateResponseBodyTemplate(TeaModel):
         template_version: str = None,
         template_format: str = None,
         description: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
         created_date: str = None,
-        has_trigger: bool = None,
         template_id: str = None,
+        has_trigger: bool = None,
         share_type: str = None,
     ):
         self.hash = hash
@@ -1326,10 +1987,11 @@ class CreateTemplateResponseBodyTemplate(TeaModel):
         self.template_version = template_version
         self.template_format = template_format
         self.description = description
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
         self.created_date = created_date
-        self.has_trigger = has_trigger
         self.template_id = template_id
+        self.has_trigger = has_trigger
         self.share_type = share_type
 
     def validate(self):
@@ -1357,14 +2019,16 @@ class CreateTemplateResponseBodyTemplate(TeaModel):
             result['TemplateFormat'] = self.template_format
         if self.description is not None:
             result['Description'] = self.description
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
-        if self.has_trigger is not None:
-            result['HasTrigger'] = self.has_trigger
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.has_trigger is not None:
+            result['HasTrigger'] = self.has_trigger
         if self.share_type is not None:
             result['ShareType'] = self.share_type
         return result
@@ -1387,14 +2051,16 @@ class CreateTemplateResponseBodyTemplate(TeaModel):
             self.template_format = m.get('TemplateFormat')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
-        if m.get('HasTrigger') is not None:
-            self.has_trigger = m.get('HasTrigger')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('HasTrigger') is not None:
+            self.has_trigger = m.get('HasTrigger')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
         return self
@@ -1403,12 +2069,12 @@ class CreateTemplateResponseBodyTemplate(TeaModel):
 class CreateTemplateResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         template_type: str = None,
+        request_id: str = None,
         template: CreateTemplateResponseBodyTemplate = None,
     ):
-        self.request_id = request_id
         self.template_type = template_type
+        self.request_id = request_id
         self.template = template
 
     def validate(self):
@@ -1421,20 +2087,20 @@ class CreateTemplateResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.template is not None:
             result['Template'] = self.template.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Template') is not None:
             temp_model = CreateTemplateResponseBodyTemplate()
             self.template = temp_model.from_map(m['Template'])
@@ -1474,6 +2140,200 @@ class CreateTemplateResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        name: str = None,
+    ):
+        self.region_id = region_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DeleteApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteApplicationGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        name: str = None,
+    ):
+        self.region_id = region_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DeleteApplicationGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteApplicationGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteApplicationGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteApplicationGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2211,12 +3071,12 @@ class DescribeRegionsRequest(TeaModel):
 class DescribeRegionsResponseBodyRegions(TeaModel):
     def __init__(
         self,
-        local_name: str = None,
         region_endpoint: str = None,
+        local_name: str = None,
         region_id: str = None,
     ):
-        self.local_name = local_name
         self.region_endpoint = region_endpoint
+        self.local_name = local_name
         self.region_id = region_id
 
     def validate(self):
@@ -2228,20 +3088,20 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
             return _map
 
         result = dict()
-        if self.local_name is not None:
-            result['LocalName'] = self.local_name
         if self.region_endpoint is not None:
             result['RegionEndpoint'] = self.region_endpoint
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LocalName') is not None:
-            self.local_name = m.get('LocalName')
         if m.get('RegionEndpoint') is not None:
             self.region_endpoint = m.get('RegionEndpoint')
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -2434,6 +3294,413 @@ class GenerateExecutionPolicyResponse(TeaModel):
         return self
 
 
+class GetApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        name: str = None,
+    ):
+        self.region_id = region_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetApplicationResponseBodyApplicationCloudMonitorRule(TeaModel):
+    def __init__(
+        self,
+        enable_subscribe_event: bool = None,
+        enable_install_agent: bool = None,
+        enabled: bool = None,
+        contact_group_list: List[str] = None,
+        template_id_list: List[int] = None,
+    ):
+        self.enable_subscribe_event = enable_subscribe_event
+        self.enable_install_agent = enable_install_agent
+        self.enabled = enabled
+        self.contact_group_list = contact_group_list
+        self.template_id_list = template_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_subscribe_event is not None:
+            result['EnableSubscribeEvent'] = self.enable_subscribe_event
+        if self.enable_install_agent is not None:
+            result['EnableInstallAgent'] = self.enable_install_agent
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.contact_group_list is not None:
+            result['ContactGroupList'] = self.contact_group_list
+        if self.template_id_list is not None:
+            result['TemplateIdList'] = self.template_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableSubscribeEvent') is not None:
+            self.enable_subscribe_event = m.get('EnableSubscribeEvent')
+        if m.get('EnableInstallAgent') is not None:
+            self.enable_install_agent = m.get('EnableInstallAgent')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('ContactGroupList') is not None:
+            self.contact_group_list = m.get('ContactGroupList')
+        if m.get('TemplateIdList') is not None:
+            self.template_id_list = m.get('TemplateIdList')
+        return self
+
+
+class GetApplicationResponseBodyApplication(TeaModel):
+    def __init__(
+        self,
+        is_system: str = None,
+        description: str = None,
+        updated_date: str = None,
+        resource_group_id: str = None,
+        created_date: str = None,
+        name: str = None,
+        cloud_monitor_rule: GetApplicationResponseBodyApplicationCloudMonitorRule = None,
+    ):
+        self.is_system = is_system
+        self.description = description
+        self.updated_date = updated_date
+        self.resource_group_id = resource_group_id
+        self.created_date = created_date
+        self.name = name
+        self.cloud_monitor_rule = cloud_monitor_rule
+
+    def validate(self):
+        if self.cloud_monitor_rule:
+            self.cloud_monitor_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_system is not None:
+            result['IsSystem'] = self.is_system
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.updated_date is not None:
+            result['UpdatedDate'] = self.updated_date
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.created_date is not None:
+            result['CreatedDate'] = self.created_date
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.cloud_monitor_rule is not None:
+            result['CloudMonitorRule'] = self.cloud_monitor_rule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsSystem') is not None:
+            self.is_system = m.get('IsSystem')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('UpdatedDate') is not None:
+            self.updated_date = m.get('UpdatedDate')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('CreatedDate') is not None:
+            self.created_date = m.get('CreatedDate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('CloudMonitorRule') is not None:
+            temp_model = GetApplicationResponseBodyApplicationCloudMonitorRule()
+            self.cloud_monitor_rule = temp_model.from_map(m['CloudMonitorRule'])
+        return self
+
+
+class GetApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        application: GetApplicationResponseBodyApplication = None,
+    ):
+        self.request_id = request_id
+        self.application = application
+
+    def validate(self):
+        if self.application:
+            self.application.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.application is not None:
+            result['Application'] = self.application.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Application') is not None:
+            temp_model = GetApplicationResponseBodyApplication()
+            self.application = temp_model.from_map(m['Application'])
+        return self
+
+
+class GetApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetApplicationGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        name: str = None,
+    ):
+        self.region_id = region_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
+    def __init__(
+        self,
+        deploy_region_id: str = None,
+        description: str = None,
+        updated_date: str = None,
+        created_date: str = None,
+        application_name: str = None,
+        name: str = None,
+        environment: str = None,
+        create_type: str = None,
+        scaling_group_id: str = None,
+        import_cluster_id: str = None,
+    ):
+        self.deploy_region_id = deploy_region_id
+        self.description = description
+        self.updated_date = updated_date
+        self.created_date = created_date
+        self.application_name = application_name
+        self.name = name
+        self.environment = environment
+        self.create_type = create_type
+        self.scaling_group_id = scaling_group_id
+        self.import_cluster_id = import_cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_region_id is not None:
+            result['DeployRegionId'] = self.deploy_region_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.updated_date is not None:
+            result['UpdatedDate'] = self.updated_date
+        if self.created_date is not None:
+            result['CreatedDate'] = self.created_date
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.import_cluster_id is not None:
+            result['ImportClusterId'] = self.import_cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeployRegionId') is not None:
+            self.deploy_region_id = m.get('DeployRegionId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('UpdatedDate') is not None:
+            self.updated_date = m.get('UpdatedDate')
+        if m.get('CreatedDate') is not None:
+            self.created_date = m.get('CreatedDate')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ImportClusterId') is not None:
+            self.import_cluster_id = m.get('ImportClusterId')
+        return self
+
+
+class GetApplicationGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        application_group: GetApplicationGroupResponseBodyApplicationGroup = None,
+    ):
+        self.request_id = request_id
+        self.application_group = application_group
+
+    def validate(self):
+        if self.application_group:
+            self.application_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.application_group is not None:
+            result['ApplicationGroup'] = self.application_group.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ApplicationGroup') is not None:
+            temp_model = GetApplicationGroupResponseBodyApplicationGroup()
+            self.application_group = temp_model.from_map(m['ApplicationGroup'])
+        return self
+
+
+class GetApplicationGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetApplicationGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetApplicationGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetExecutionTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -2563,12 +3830,12 @@ class GetExecutionTemplateResponseBodyTemplate(TeaModel):
 class GetExecutionTemplateResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         content: str = None,
+        request_id: str = None,
         template: GetExecutionTemplateResponseBodyTemplate = None,
     ):
-        self.request_id = request_id
         self.content = content
+        self.request_id = request_id
         self.template = template
 
     def validate(self):
@@ -2581,20 +3848,20 @@ class GetExecutionTemplateResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.content is not None:
             result['Content'] = self.content
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.template is not None:
             result['Template'] = self.template.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Template') is not None:
             temp_model = GetExecutionTemplateResponseBodyTemplate()
             self.template = temp_model.from_map(m['Template'])
@@ -2692,11 +3959,11 @@ class GetInventorySchemaRequest(TeaModel):
 class GetInventorySchemaResponseBodySchemasAttributes(TeaModel):
     def __init__(
         self,
-        data_type: str = None,
         name: str = None,
+        data_type: str = None,
     ):
-        self.data_type = data_type
         self.name = name
+        self.data_type = data_type
 
     def validate(self):
         pass
@@ -2707,18 +3974,18 @@ class GetInventorySchemaResponseBodySchemasAttributes(TeaModel):
             return _map
 
         result = dict()
-        if self.data_type is not None:
-            result['DataType'] = self.data_type
         if self.name is not None:
             result['Name'] = self.name
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DataType') is not None:
-            self.data_type = m.get('DataType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         return self
 
 
@@ -2726,12 +3993,12 @@ class GetInventorySchemaResponseBodySchemas(TeaModel):
     def __init__(
         self,
         version: str = None,
-        attributes: List[GetInventorySchemaResponseBodySchemasAttributes] = None,
         type_name: str = None,
+        attributes: List[GetInventorySchemaResponseBodySchemasAttributes] = None,
     ):
         self.version = version
-        self.attributes = attributes
         self.type_name = type_name
+        self.attributes = attributes
 
     def validate(self):
         if self.attributes:
@@ -2747,25 +4014,25 @@ class GetInventorySchemaResponseBodySchemas(TeaModel):
         result = dict()
         if self.version is not None:
             result['Version'] = self.version
+        if self.type_name is not None:
+            result['TypeName'] = self.type_name
         result['Attributes'] = []
         if self.attributes is not None:
             for k in self.attributes:
                 result['Attributes'].append(k.to_map() if k else None)
-        if self.type_name is not None:
-            result['TypeName'] = self.type_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Version') is not None:
             self.version = m.get('Version')
+        if m.get('TypeName') is not None:
+            self.type_name = m.get('TypeName')
         self.attributes = []
         if m.get('Attributes') is not None:
             for k in m.get('Attributes'):
                 temp_model = GetInventorySchemaResponseBodySchemasAttributes()
                 self.attributes.append(temp_model.from_map(k))
-        if m.get('TypeName') is not None:
-            self.type_name = m.get('TypeName')
         return self
 
 
@@ -2865,10 +4132,12 @@ class GetParameterRequest(TeaModel):
         region_id: str = None,
         name: str = None,
         parameter_version: int = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
         self.parameter_version = parameter_version
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -2885,6 +4154,8 @@ class GetParameterRequest(TeaModel):
             result['Name'] = self.name
         if self.parameter_version is not None:
             result['ParameterVersion'] = self.parameter_version
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2895,6 +4166,8 @@ class GetParameterRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('ParameterVersion') is not None:
             self.parameter_version = m.get('ParameterVersion')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -2906,11 +4179,12 @@ class GetParameterResponseBodyParameter(TeaModel):
         updated_by: str = None,
         tags: Dict[str, Any] = None,
         value: str = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -2920,11 +4194,12 @@ class GetParameterResponseBodyParameter(TeaModel):
         self.updated_by = updated_by
         self.tags = tags
         self.value = value
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -2948,16 +4223,18 @@ class GetParameterResponseBodyParameter(TeaModel):
             result['Tags'] = self.tags
         if self.value is not None:
             result['Value'] = self.value
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -2978,16 +4255,18 @@ class GetParameterResponseBodyParameter(TeaModel):
             self.tags = m.get('Tags')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -3110,11 +4389,12 @@ class GetParametersResponseBodyParameters(TeaModel):
         updated_by: str = None,
         tags: Dict[str, Any] = None,
         value: str = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -3124,11 +4404,12 @@ class GetParametersResponseBodyParameters(TeaModel):
         self.updated_by = updated_by
         self.tags = tags
         self.value = value
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -3152,16 +4433,18 @@ class GetParametersResponseBodyParameters(TeaModel):
             result['Tags'] = self.tags
         if self.value is not None:
             result['Value'] = self.value
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -3182,16 +4465,18 @@ class GetParametersResponseBodyParameters(TeaModel):
             self.tags = m.get('Tags')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -3204,13 +4489,13 @@ class GetParametersResponseBodyParameters(TeaModel):
 class GetParametersResponseBody(TeaModel):
     def __init__(
         self,
-        parameters: List[GetParametersResponseBodyParameters] = None,
         request_id: str = None,
         invalid_parameters: List[str] = None,
+        parameters: List[GetParametersResponseBodyParameters] = None,
     ):
-        self.parameters = parameters
         self.request_id = request_id
         self.invalid_parameters = invalid_parameters
+        self.parameters = parameters
 
     def validate(self):
         if self.parameters:
@@ -3224,27 +4509,27 @@ class GetParametersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Parameters'] = []
-        if self.parameters is not None:
-            for k in self.parameters:
-                result['Parameters'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.invalid_parameters is not None:
             result['InvalidParameters'] = self.invalid_parameters
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('InvalidParameters') is not None:
+            self.invalid_parameters = m.get('InvalidParameters')
         self.parameters = []
         if m.get('Parameters') is not None:
             for k in m.get('Parameters'):
                 temp_model = GetParametersResponseBodyParameters()
                 self.parameters.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('InvalidParameters') is not None:
-            self.invalid_parameters = m.get('InvalidParameters')
         return self
 
 
@@ -3343,11 +4628,11 @@ class GetParametersByPathResponseBodyParameters(TeaModel):
         updated_date: str = None,
         updated_by: str = None,
         value: str = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -3356,11 +4641,11 @@ class GetParametersByPathResponseBodyParameters(TeaModel):
         self.updated_date = updated_date
         self.updated_by = updated_by
         self.value = value
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -3382,16 +4667,16 @@ class GetParametersByPathResponseBodyParameters(TeaModel):
             result['UpdatedBy'] = self.updated_by
         if self.value is not None:
             result['Value'] = self.value
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -3410,16 +4695,16 @@ class GetParametersByPathResponseBodyParameters(TeaModel):
             self.updated_by = m.get('UpdatedBy')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -3432,17 +4717,17 @@ class GetParametersByPathResponseBodyParameters(TeaModel):
 class GetParametersByPathResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
-        parameters: List[GetParametersByPathResponseBodyParameters] = None,
         next_token: str = None,
         request_id: str = None,
+        total_count: int = None,
         max_results: int = None,
+        parameters: List[GetParametersByPathResponseBodyParameters] = None,
     ):
-        self.total_count = total_count
-        self.parameters = parameters
         self.next_token = next_token
         self.request_id = request_id
+        self.total_count = total_count
         self.max_results = max_results
+        self.parameters = parameters
 
     def validate(self):
         if self.parameters:
@@ -3456,35 +4741,35 @@ class GetParametersByPathResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        result['Parameters'] = []
-        if self.parameters is not None:
-            for k in self.parameters:
-                result['Parameters'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         self.parameters = []
         if m.get('Parameters') is not None:
             for k in m.get('Parameters'):
                 temp_model = GetParametersByPathResponseBodyParameters()
                 self.parameters.append(temp_model.from_map(k))
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
         return self
 
 
@@ -3562,6 +4847,7 @@ class GetPatchBaselineResponseBodyPatchBaseline(TeaModel):
     def __init__(
         self,
         operation_system: str = None,
+        is_default: bool = None,
         description: str = None,
         updated_date: str = None,
         updated_by: str = None,
@@ -3573,6 +4859,7 @@ class GetPatchBaselineResponseBodyPatchBaseline(TeaModel):
         share_type: str = None,
     ):
         self.operation_system = operation_system
+        self.is_default = is_default
         self.description = description
         self.updated_date = updated_date
         self.updated_by = updated_by
@@ -3594,6 +4881,8 @@ class GetPatchBaselineResponseBodyPatchBaseline(TeaModel):
         result = dict()
         if self.operation_system is not None:
             result['OperationSystem'] = self.operation_system
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
         if self.description is not None:
             result['Description'] = self.description
         if self.updated_date is not None:
@@ -3618,6 +4907,8 @@ class GetPatchBaselineResponseBodyPatchBaseline(TeaModel):
         m = m or dict()
         if m.get('OperationSystem') is not None:
             self.operation_system = m.get('OperationSystem')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('UpdatedDate') is not None:
@@ -3642,11 +4933,11 @@ class GetPatchBaselineResponseBodyPatchBaseline(TeaModel):
 class GetPatchBaselineResponseBody(TeaModel):
     def __init__(
         self,
-        patch_baseline: GetPatchBaselineResponseBodyPatchBaseline = None,
         request_id: str = None,
+        patch_baseline: GetPatchBaselineResponseBodyPatchBaseline = None,
     ):
-        self.patch_baseline = patch_baseline
         self.request_id = request_id
+        self.patch_baseline = patch_baseline
 
     def validate(self):
         if self.patch_baseline:
@@ -3658,19 +4949,19 @@ class GetPatchBaselineResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.patch_baseline is not None:
-            result['PatchBaseline'] = self.patch_baseline.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.patch_baseline is not None:
+            result['PatchBaseline'] = self.patch_baseline.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('PatchBaseline') is not None:
             temp_model = GetPatchBaselineResponseBodyPatchBaseline()
             self.patch_baseline = temp_model.from_map(m['PatchBaseline'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3765,11 +5056,12 @@ class GetSecretParameterResponseBodyParameter(TeaModel):
         key_id: str = None,
         tags: Dict[str, Any] = None,
         value: str = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -3780,11 +5072,12 @@ class GetSecretParameterResponseBodyParameter(TeaModel):
         self.key_id = key_id
         self.tags = tags
         self.value = value
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -3810,16 +5103,18 @@ class GetSecretParameterResponseBodyParameter(TeaModel):
             result['Tags'] = self.tags
         if self.value is not None:
             result['Value'] = self.value
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -3842,16 +5137,18 @@ class GetSecretParameterResponseBodyParameter(TeaModel):
             self.tags = m.get('Tags')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -3981,11 +5278,12 @@ class GetSecretParametersResponseBodyParameters(TeaModel):
         key_id: str = None,
         tags: Dict[str, Any] = None,
         value: str = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -3996,11 +5294,12 @@ class GetSecretParametersResponseBodyParameters(TeaModel):
         self.key_id = key_id
         self.tags = tags
         self.value = value
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -4026,16 +5325,18 @@ class GetSecretParametersResponseBodyParameters(TeaModel):
             result['Tags'] = self.tags
         if self.value is not None:
             result['Value'] = self.value
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -4058,16 +5359,18 @@ class GetSecretParametersResponseBodyParameters(TeaModel):
             self.tags = m.get('Tags')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -4080,13 +5383,13 @@ class GetSecretParametersResponseBodyParameters(TeaModel):
 class GetSecretParametersResponseBody(TeaModel):
     def __init__(
         self,
-        parameters: List[GetSecretParametersResponseBodyParameters] = None,
         request_id: str = None,
         invalid_parameters: List[str] = None,
+        parameters: List[GetSecretParametersResponseBodyParameters] = None,
     ):
-        self.parameters = parameters
         self.request_id = request_id
         self.invalid_parameters = invalid_parameters
+        self.parameters = parameters
 
     def validate(self):
         if self.parameters:
@@ -4100,27 +5403,27 @@ class GetSecretParametersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Parameters'] = []
-        if self.parameters is not None:
-            for k in self.parameters:
-                result['Parameters'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.invalid_parameters is not None:
             result['InvalidParameters'] = self.invalid_parameters
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('InvalidParameters') is not None:
+            self.invalid_parameters = m.get('InvalidParameters')
         self.parameters = []
         if m.get('Parameters') is not None:
             for k in m.get('Parameters'):
                 temp_model = GetSecretParametersResponseBodyParameters()
                 self.parameters.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('InvalidParameters') is not None:
-            self.invalid_parameters = m.get('InvalidParameters')
         return self
 
 
@@ -4226,11 +5529,11 @@ class GetSecretParametersByPathResponseBodyParameters(TeaModel):
         updated_by: str = None,
         key_id: str = None,
         value: str = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -4240,11 +5543,11 @@ class GetSecretParametersByPathResponseBodyParameters(TeaModel):
         self.updated_by = updated_by
         self.key_id = key_id
         self.value = value
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -4268,16 +5571,16 @@ class GetSecretParametersByPathResponseBodyParameters(TeaModel):
             result['KeyId'] = self.key_id
         if self.value is not None:
             result['Value'] = self.value
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -4298,16 +5601,16 @@ class GetSecretParametersByPathResponseBodyParameters(TeaModel):
             self.key_id = m.get('KeyId')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -4320,17 +5623,17 @@ class GetSecretParametersByPathResponseBodyParameters(TeaModel):
 class GetSecretParametersByPathResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
-        parameters: List[GetSecretParametersByPathResponseBodyParameters] = None,
         next_token: str = None,
         request_id: str = None,
+        total_count: int = None,
         max_results: int = None,
+        parameters: List[GetSecretParametersByPathResponseBodyParameters] = None,
     ):
-        self.total_count = total_count
-        self.parameters = parameters
         self.next_token = next_token
         self.request_id = request_id
+        self.total_count = total_count
         self.max_results = max_results
+        self.parameters = parameters
 
     def validate(self):
         if self.parameters:
@@ -4344,35 +5647,35 @@ class GetSecretParametersByPathResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        result['Parameters'] = []
-        if self.parameters is not None:
-            for k in self.parameters:
-                result['Parameters'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         self.parameters = []
         if m.get('Parameters') is not None:
             for k in m.get('Parameters'):
                 temp_model = GetSecretParametersByPathResponseBodyParameters()
                 self.parameters.append(temp_model.from_map(k))
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
         return self
 
 
@@ -4445,15 +5748,17 @@ class GetServiceSettingsResponseBodyServiceSettings(TeaModel):
         self,
         delivery_oss_bucket_name: str = None,
         delivery_oss_key_prefix: str = None,
-        delivery_sls_enabled: bool = None,
         delivery_oss_enabled: bool = None,
+        delivery_sls_enabled: bool = None,
         delivery_sls_project_name: str = None,
+        rdc_enterprise_id: str = None,
     ):
         self.delivery_oss_bucket_name = delivery_oss_bucket_name
         self.delivery_oss_key_prefix = delivery_oss_key_prefix
-        self.delivery_sls_enabled = delivery_sls_enabled
         self.delivery_oss_enabled = delivery_oss_enabled
+        self.delivery_sls_enabled = delivery_sls_enabled
         self.delivery_sls_project_name = delivery_sls_project_name
+        self.rdc_enterprise_id = rdc_enterprise_id
 
     def validate(self):
         pass
@@ -4468,12 +5773,14 @@ class GetServiceSettingsResponseBodyServiceSettings(TeaModel):
             result['DeliveryOssBucketName'] = self.delivery_oss_bucket_name
         if self.delivery_oss_key_prefix is not None:
             result['DeliveryOssKeyPrefix'] = self.delivery_oss_key_prefix
-        if self.delivery_sls_enabled is not None:
-            result['DeliverySlsEnabled'] = self.delivery_sls_enabled
         if self.delivery_oss_enabled is not None:
             result['DeliveryOssEnabled'] = self.delivery_oss_enabled
+        if self.delivery_sls_enabled is not None:
+            result['DeliverySlsEnabled'] = self.delivery_sls_enabled
         if self.delivery_sls_project_name is not None:
             result['DeliverySlsProjectName'] = self.delivery_sls_project_name
+        if self.rdc_enterprise_id is not None:
+            result['RdcEnterpriseId'] = self.rdc_enterprise_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4482,12 +5789,14 @@ class GetServiceSettingsResponseBodyServiceSettings(TeaModel):
             self.delivery_oss_bucket_name = m.get('DeliveryOssBucketName')
         if m.get('DeliveryOssKeyPrefix') is not None:
             self.delivery_oss_key_prefix = m.get('DeliveryOssKeyPrefix')
-        if m.get('DeliverySlsEnabled') is not None:
-            self.delivery_sls_enabled = m.get('DeliverySlsEnabled')
         if m.get('DeliveryOssEnabled') is not None:
             self.delivery_oss_enabled = m.get('DeliveryOssEnabled')
+        if m.get('DeliverySlsEnabled') is not None:
+            self.delivery_sls_enabled = m.get('DeliverySlsEnabled')
         if m.get('DeliverySlsProjectName') is not None:
             self.delivery_sls_project_name = m.get('DeliverySlsProjectName')
+        if m.get('RdcEnterpriseId') is not None:
+            self.rdc_enterprise_id = m.get('RdcEnterpriseId')
         return self
 
 
@@ -4614,12 +5923,13 @@ class GetTemplateResponseBodyTemplate(TeaModel):
         hash: str = None,
         updated_date: str = None,
         updated_by: str = None,
-        tags: Dict[str, Any] = None,
         template_type: str = None,
+        tags: Dict[str, Any] = None,
         template_name: str = None,
         template_version: str = None,
         template_format: str = None,
         description: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
         created_date: str = None,
         version_name: str = None,
@@ -4630,12 +5940,13 @@ class GetTemplateResponseBodyTemplate(TeaModel):
         self.hash = hash
         self.updated_date = updated_date
         self.updated_by = updated_by
-        self.tags = tags
         self.template_type = template_type
+        self.tags = tags
         self.template_name = template_name
         self.template_version = template_version
         self.template_format = template_format
         self.description = description
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
         self.created_date = created_date
         self.version_name = version_name
@@ -4658,10 +5969,10 @@ class GetTemplateResponseBodyTemplate(TeaModel):
             result['UpdatedDate'] = self.updated_date
         if self.updated_by is not None:
             result['UpdatedBy'] = self.updated_by
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
         if self.template_version is not None:
@@ -4670,6 +5981,8 @@ class GetTemplateResponseBodyTemplate(TeaModel):
             result['TemplateFormat'] = self.template_format
         if self.description is not None:
             result['Description'] = self.description
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
         if self.created_date is not None:
@@ -4692,10 +6005,10 @@ class GetTemplateResponseBodyTemplate(TeaModel):
             self.updated_date = m.get('UpdatedDate')
         if m.get('UpdatedBy') is not None:
             self.updated_by = m.get('UpdatedBy')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
         if m.get('TemplateVersion') is not None:
@@ -4704,6 +6017,8 @@ class GetTemplateResponseBodyTemplate(TeaModel):
             self.template_format = m.get('TemplateFormat')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
         if m.get('CreatedDate') is not None:
@@ -4722,12 +6037,12 @@ class GetTemplateResponseBodyTemplate(TeaModel):
 class GetTemplateResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         content: str = None,
+        request_id: str = None,
         template: GetTemplateResponseBodyTemplate = None,
     ):
-        self.request_id = request_id
         self.content = content
+        self.request_id = request_id
         self.template = template
 
     def validate(self):
@@ -4740,20 +6055,20 @@ class GetTemplateResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.content is not None:
             result['Content'] = self.content
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.template is not None:
             result['Template'] = self.template.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Template') is not None:
             temp_model = GetTemplateResponseBodyTemplate()
             self.template = temp_model.from_map(m['Template'])
@@ -4845,6 +6160,7 @@ class ListActionsRequest(TeaModel):
 class ListActionsResponseBodyActions(TeaModel):
     def __init__(
         self,
+        popularity: int = None,
         action_type: str = None,
         description: str = None,
         created_date: str = None,
@@ -4852,6 +6168,7 @@ class ListActionsResponseBodyActions(TeaModel):
         oosaction_name: str = None,
         properties: str = None,
     ):
+        self.popularity = popularity
         self.action_type = action_type
         self.description = description
         self.created_date = created_date
@@ -4868,6 +6185,8 @@ class ListActionsResponseBodyActions(TeaModel):
             return _map
 
         result = dict()
+        if self.popularity is not None:
+            result['Popularity'] = self.popularity
         if self.action_type is not None:
             result['ActionType'] = self.action_type
         if self.description is not None:
@@ -4884,6 +6203,8 @@ class ListActionsResponseBodyActions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Popularity') is not None:
+            self.popularity = m.get('Popularity')
         if m.get('ActionType') is not None:
             self.action_type = m.get('ActionType')
         if m.get('Description') is not None:
@@ -4904,13 +6225,13 @@ class ListActionsResponseBody(TeaModel):
         self,
         next_token: str = None,
         request_id: str = None,
-        actions: List[ListActionsResponseBodyActions] = None,
         max_results: int = None,
+        actions: List[ListActionsResponseBodyActions] = None,
     ):
         self.next_token = next_token
         self.request_id = request_id
-        self.actions = actions
         self.max_results = max_results
+        self.actions = actions
 
     def validate(self):
         if self.actions:
@@ -4928,12 +6249,12 @@ class ListActionsResponseBody(TeaModel):
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
         result['Actions'] = []
         if self.actions is not None:
             for k in self.actions:
                 result['Actions'].append(k.to_map() if k else None)
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
         return result
 
     def from_map(self, m: dict = None):
@@ -4942,13 +6263,13 @@ class ListActionsResponseBody(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         self.actions = []
         if m.get('Actions') is not None:
             for k in m.get('Actions'):
                 temp_model = ListActionsResponseBodyActions()
                 self.actions.append(temp_model.from_map(k))
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
         return self
 
 
@@ -4985,6 +6306,491 @@ class ListActionsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListActionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        application_name: str = None,
+        deploy_region_id: bool = None,
+        environment: bool = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.region_id = region_id
+        self.application_name = application_name
+        self.deploy_region_id = deploy_region_id
+        self.environment = environment
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.deploy_region_id is not None:
+            result['DeployRegionId'] = self.deploy_region_id
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('DeployRegionId') is not None:
+            self.deploy_region_id = m.get('DeployRegionId')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListApplicationGroupsResponseBodyApplicationGroups(TeaModel):
+    def __init__(
+        self,
+        deploy_region_id: str = None,
+        description: str = None,
+        updated_date: str = None,
+        created_date: str = None,
+        application_name: str = None,
+        name: str = None,
+        environment: str = None,
+        create_type: str = None,
+        scaling_group_id: str = None,
+        import_cluster_id: str = None,
+    ):
+        self.deploy_region_id = deploy_region_id
+        self.description = description
+        self.updated_date = updated_date
+        self.created_date = created_date
+        self.application_name = application_name
+        self.name = name
+        self.environment = environment
+        self.create_type = create_type
+        self.scaling_group_id = scaling_group_id
+        self.import_cluster_id = import_cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_region_id is not None:
+            result['DeployRegionId'] = self.deploy_region_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.updated_date is not None:
+            result['UpdatedDate'] = self.updated_date
+        if self.created_date is not None:
+            result['CreatedDate'] = self.created_date
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.import_cluster_id is not None:
+            result['ImportClusterId'] = self.import_cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeployRegionId') is not None:
+            self.deploy_region_id = m.get('DeployRegionId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('UpdatedDate') is not None:
+            self.updated_date = m.get('UpdatedDate')
+        if m.get('CreatedDate') is not None:
+            self.created_date = m.get('CreatedDate')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ImportClusterId') is not None:
+            self.import_cluster_id = m.get('ImportClusterId')
+        return self
+
+
+class ListApplicationGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        max_results: int = None,
+        application_groups: List[ListApplicationGroupsResponseBodyApplicationGroups] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.max_results = max_results
+        self.application_groups = application_groups
+
+    def validate(self):
+        if self.application_groups:
+            for k in self.application_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        result['ApplicationGroups'] = []
+        if self.application_groups is not None:
+            for k in self.application_groups:
+                result['ApplicationGroups'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        self.application_groups = []
+        if m.get('ApplicationGroups') is not None:
+            for k in m.get('ApplicationGroups'):
+                temp_model = ListApplicationGroupsResponseBodyApplicationGroups()
+                self.application_groups.append(temp_model.from_map(k))
+        return self
+
+
+class ListApplicationGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListApplicationGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListApplicationGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationsRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        is_system: bool = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.region_id = region_id
+        self.is_system = is_system
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.is_system is not None:
+            result['IsSystem'] = self.is_system
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('IsSystem') is not None:
+            self.is_system = m.get('IsSystem')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListApplicationsResponseBodyApplicationsCloudMonitorRule(TeaModel):
+    def __init__(
+        self,
+        enable_subscribe_event: bool = None,
+        enable_install_agent: bool = None,
+        enabled: bool = None,
+        contact_group_list: List[str] = None,
+        template_id_list: List[int] = None,
+    ):
+        self.enable_subscribe_event = enable_subscribe_event
+        self.enable_install_agent = enable_install_agent
+        self.enabled = enabled
+        self.contact_group_list = contact_group_list
+        self.template_id_list = template_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_subscribe_event is not None:
+            result['EnableSubscribeEvent'] = self.enable_subscribe_event
+        if self.enable_install_agent is not None:
+            result['EnableInstallAgent'] = self.enable_install_agent
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.contact_group_list is not None:
+            result['ContactGroupList'] = self.contact_group_list
+        if self.template_id_list is not None:
+            result['TemplateIdList'] = self.template_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableSubscribeEvent') is not None:
+            self.enable_subscribe_event = m.get('EnableSubscribeEvent')
+        if m.get('EnableInstallAgent') is not None:
+            self.enable_install_agent = m.get('EnableInstallAgent')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('ContactGroupList') is not None:
+            self.contact_group_list = m.get('ContactGroupList')
+        if m.get('TemplateIdList') is not None:
+            self.template_id_list = m.get('TemplateIdList')
+        return self
+
+
+class ListApplicationsResponseBodyApplications(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        is_system: bool = None,
+        description: str = None,
+        update_date: str = None,
+        resource_group_id: str = None,
+        created_date: str = None,
+        name: str = None,
+        cloud_monitor_rule: ListApplicationsResponseBodyApplicationsCloudMonitorRule = None,
+    ):
+        self.type = type
+        self.is_system = is_system
+        self.description = description
+        self.update_date = update_date
+        self.resource_group_id = resource_group_id
+        self.created_date = created_date
+        self.name = name
+        self.cloud_monitor_rule = cloud_monitor_rule
+
+    def validate(self):
+        if self.cloud_monitor_rule:
+            self.cloud_monitor_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.is_system is not None:
+            result['IsSystem'] = self.is_system
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.created_date is not None:
+            result['CreatedDate'] = self.created_date
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.cloud_monitor_rule is not None:
+            result['CloudMonitorRule'] = self.cloud_monitor_rule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('IsSystem') is not None:
+            self.is_system = m.get('IsSystem')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('CreatedDate') is not None:
+            self.created_date = m.get('CreatedDate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('CloudMonitorRule') is not None:
+            temp_model = ListApplicationsResponseBodyApplicationsCloudMonitorRule()
+            self.cloud_monitor_rule = temp_model.from_map(m['CloudMonitorRule'])
+        return self
+
+
+class ListApplicationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        max_results: int = None,
+        applications: List[ListApplicationsResponseBodyApplications] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.max_results = max_results
+        self.applications = applications
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = ListApplicationsResponseBodyApplications()
+                self.applications.append(temp_model.from_map(k))
+        return self
+
+
+class ListApplicationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListApplicationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListApplicationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5096,15 +6902,15 @@ class ListExecutionLogsResponseBody(TeaModel):
         self,
         next_token: str = None,
         request_id: str = None,
-        execution_logs: List[ListExecutionLogsResponseBodyExecutionLogs] = None,
-        max_results: int = None,
         is_truncated: bool = None,
+        max_results: int = None,
+        execution_logs: List[ListExecutionLogsResponseBodyExecutionLogs] = None,
     ):
         self.next_token = next_token
         self.request_id = request_id
-        self.execution_logs = execution_logs
-        self.max_results = max_results
         self.is_truncated = is_truncated
+        self.max_results = max_results
+        self.execution_logs = execution_logs
 
     def validate(self):
         if self.execution_logs:
@@ -5122,14 +6928,14 @@ class ListExecutionLogsResponseBody(TeaModel):
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.is_truncated is not None:
+            result['IsTruncated'] = self.is_truncated
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
         result['ExecutionLogs'] = []
         if self.execution_logs is not None:
             for k in self.execution_logs:
                 result['ExecutionLogs'].append(k.to_map() if k else None)
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.is_truncated is not None:
-            result['IsTruncated'] = self.is_truncated
         return result
 
     def from_map(self, m: dict = None):
@@ -5138,15 +6944,15 @@ class ListExecutionLogsResponseBody(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('IsTruncated') is not None:
+            self.is_truncated = m.get('IsTruncated')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         self.execution_logs = []
         if m.get('ExecutionLogs') is not None:
             for k in m.get('ExecutionLogs'):
                 temp_model = ListExecutionLogsResponseBodyExecutionLogs()
                 self.execution_logs.append(temp_model.from_map(k))
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('IsTruncated') is not None:
-            self.is_truncated = m.get('IsTruncated')
         return self
 
 
@@ -5224,13 +7030,13 @@ class ListExecutionRiskyTasksResponseBodyRiskyTasks(TeaModel):
     def __init__(
         self,
         service: str = None,
-        task: List[str] = None,
         api: str = None,
+        task: List[str] = None,
         template: List[str] = None,
     ):
         self.service = service
-        self.task = task
         self.api = api
+        self.task = task
         self.template = template
 
     def validate(self):
@@ -5244,10 +7050,10 @@ class ListExecutionRiskyTasksResponseBodyRiskyTasks(TeaModel):
         result = dict()
         if self.service is not None:
             result['Service'] = self.service
-        if self.task is not None:
-            result['Task'] = self.task
         if self.api is not None:
             result['API'] = self.api
+        if self.task is not None:
+            result['Task'] = self.task
         if self.template is not None:
             result['Template'] = self.template
         return result
@@ -5256,10 +7062,10 @@ class ListExecutionRiskyTasksResponseBodyRiskyTasks(TeaModel):
         m = m or dict()
         if m.get('Service') is not None:
             self.service = m.get('Service')
-        if m.get('Task') is not None:
-            self.task = m.get('Task')
         if m.get('API') is not None:
             self.api = m.get('API')
+        if m.get('Task') is not None:
+            self.task = m.get('Task')
         if m.get('Template') is not None:
             self.template = m.get('Template')
         return self
@@ -5367,6 +7173,7 @@ class ListExecutionsRequest(TeaModel):
         sort_order: str = None,
         resource_id: str = None,
         resource_template_name: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
@@ -5389,6 +7196,7 @@ class ListExecutionsRequest(TeaModel):
         self.sort_order = sort_order
         self.resource_id = resource_id
         self.resource_template_name = resource_template_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -5441,6 +7249,8 @@ class ListExecutionsRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_template_name is not None:
             result['ResourceTemplateName'] = self.resource_template_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5487,6 +7297,8 @@ class ListExecutionsRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceTemplateName') is not None:
             self.resource_template_name = m.get('ResourceTemplateName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -5514,6 +7326,7 @@ class ListExecutionsShrinkRequest(TeaModel):
         sort_order: str = None,
         resource_id: str = None,
         resource_template_name: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
@@ -5536,6 +7349,7 @@ class ListExecutionsShrinkRequest(TeaModel):
         self.sort_order = sort_order
         self.resource_id = resource_id
         self.resource_template_name = resource_template_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -5588,6 +7402,8 @@ class ListExecutionsShrinkRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_template_name is not None:
             result['ResourceTemplateName'] = self.resource_template_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5634,6 +7450,8 @@ class ListExecutionsShrinkRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceTemplateName') is not None:
             self.resource_template_name = m.get('ResourceTemplateName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -5690,25 +7508,26 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
         template_name: str = None,
         template_version: str = None,
         create_date: str = None,
-        current_tasks: List[ListExecutionsResponseBodyExecutionsCurrentTasks] = None,
-        description: str = None,
         update_date: str = None,
-        parent_execution_id: str = None,
+        description: str = None,
         last_trigger_time: str = None,
+        parent_execution_id: str = None,
         last_trigger_status: str = None,
         status_message: str = None,
         outputs: str = None,
-        end_date: str = None,
         executed_by: str = None,
+        end_date: str = None,
         is_parent: bool = None,
         start_date: str = None,
         execution_id: str = None,
         parameters: Dict[str, Any] = None,
         counters: Dict[str, Any] = None,
+        resource_group_id: str = None,
         category: str = None,
         template_id: str = None,
         ram_role: str = None,
         resource_status: str = None,
+        current_tasks: List[ListExecutionsResponseBodyExecutionsCurrentTasks] = None,
     ):
         self.status = status
         self.waiting_status = waiting_status
@@ -5721,25 +7540,26 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
         self.template_name = template_name
         self.template_version = template_version
         self.create_date = create_date
-        self.current_tasks = current_tasks
-        self.description = description
         self.update_date = update_date
-        self.parent_execution_id = parent_execution_id
+        self.description = description
         self.last_trigger_time = last_trigger_time
+        self.parent_execution_id = parent_execution_id
         self.last_trigger_status = last_trigger_status
         self.status_message = status_message
         self.outputs = outputs
-        self.end_date = end_date
         self.executed_by = executed_by
+        self.end_date = end_date
         self.is_parent = is_parent
         self.start_date = start_date
         self.execution_id = execution_id
         self.parameters = parameters
         self.counters = counters
+        self.resource_group_id = resource_group_id
         self.category = category
         self.template_id = template_id
         self.ram_role = ram_role
         self.resource_status = resource_status
+        self.current_tasks = current_tasks
 
     def validate(self):
         if self.current_tasks:
@@ -5775,28 +7595,24 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
             result['TemplateVersion'] = self.template_version
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
-        result['CurrentTasks'] = []
-        if self.current_tasks is not None:
-            for k in self.current_tasks:
-                result['CurrentTasks'].append(k.to_map() if k else None)
-        if self.description is not None:
-            result['Description'] = self.description
         if self.update_date is not None:
             result['UpdateDate'] = self.update_date
-        if self.parent_execution_id is not None:
-            result['ParentExecutionId'] = self.parent_execution_id
+        if self.description is not None:
+            result['Description'] = self.description
         if self.last_trigger_time is not None:
             result['LastTriggerTime'] = self.last_trigger_time
+        if self.parent_execution_id is not None:
+            result['ParentExecutionId'] = self.parent_execution_id
         if self.last_trigger_status is not None:
             result['LastTriggerStatus'] = self.last_trigger_status
         if self.status_message is not None:
             result['StatusMessage'] = self.status_message
         if self.outputs is not None:
             result['Outputs'] = self.outputs
-        if self.end_date is not None:
-            result['EndDate'] = self.end_date
         if self.executed_by is not None:
             result['ExecutedBy'] = self.executed_by
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
         if self.is_parent is not None:
             result['IsParent'] = self.is_parent
         if self.start_date is not None:
@@ -5807,6 +7623,8 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
             result['Parameters'] = self.parameters
         if self.counters is not None:
             result['Counters'] = self.counters
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.category is not None:
             result['Category'] = self.category
         if self.template_id is not None:
@@ -5815,6 +7633,10 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
             result['RamRole'] = self.ram_role
         if self.resource_status is not None:
             result['ResourceStatus'] = self.resource_status
+        result['CurrentTasks'] = []
+        if self.current_tasks is not None:
+            for k in self.current_tasks:
+                result['CurrentTasks'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5841,29 +7663,24 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
             self.template_version = m.get('TemplateVersion')
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
-        self.current_tasks = []
-        if m.get('CurrentTasks') is not None:
-            for k in m.get('CurrentTasks'):
-                temp_model = ListExecutionsResponseBodyExecutionsCurrentTasks()
-                self.current_tasks.append(temp_model.from_map(k))
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
         if m.get('UpdateDate') is not None:
             self.update_date = m.get('UpdateDate')
-        if m.get('ParentExecutionId') is not None:
-            self.parent_execution_id = m.get('ParentExecutionId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('LastTriggerTime') is not None:
             self.last_trigger_time = m.get('LastTriggerTime')
+        if m.get('ParentExecutionId') is not None:
+            self.parent_execution_id = m.get('ParentExecutionId')
         if m.get('LastTriggerStatus') is not None:
             self.last_trigger_status = m.get('LastTriggerStatus')
         if m.get('StatusMessage') is not None:
             self.status_message = m.get('StatusMessage')
         if m.get('Outputs') is not None:
             self.outputs = m.get('Outputs')
-        if m.get('EndDate') is not None:
-            self.end_date = m.get('EndDate')
         if m.get('ExecutedBy') is not None:
             self.executed_by = m.get('ExecutedBy')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
         if m.get('IsParent') is not None:
             self.is_parent = m.get('IsParent')
         if m.get('StartDate') is not None:
@@ -5874,6 +7691,8 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('Counters') is not None:
             self.counters = m.get('Counters')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('TemplateId') is not None:
@@ -5882,21 +7701,26 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
             self.ram_role = m.get('RamRole')
         if m.get('ResourceStatus') is not None:
             self.resource_status = m.get('ResourceStatus')
+        self.current_tasks = []
+        if m.get('CurrentTasks') is not None:
+            for k in m.get('CurrentTasks'):
+                temp_model = ListExecutionsResponseBodyExecutionsCurrentTasks()
+                self.current_tasks.append(temp_model.from_map(k))
         return self
 
 
 class ListExecutionsResponseBody(TeaModel):
     def __init__(
         self,
-        executions: List[ListExecutionsResponseBodyExecutions] = None,
         next_token: str = None,
         request_id: str = None,
         max_results: int = None,
+        executions: List[ListExecutionsResponseBodyExecutions] = None,
     ):
-        self.executions = executions
         self.next_token = next_token
         self.request_id = request_id
         self.max_results = max_results
+        self.executions = executions
 
     def validate(self):
         if self.executions:
@@ -5910,31 +7734,31 @@ class ListExecutionsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Executions'] = []
-        if self.executions is not None:
-            for k in self.executions:
-                result['Executions'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        result['Executions'] = []
+        if self.executions is not None:
+            for k in self.executions:
+                result['Executions'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.executions = []
-        if m.get('Executions') is not None:
-            for k in m.get('Executions'):
-                temp_model = ListExecutionsResponseBodyExecutions()
-                self.executions.append(temp_model.from_map(k))
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        self.executions = []
+        if m.get('Executions') is not None:
+            for k in m.get('Executions'):
+                temp_model = ListExecutionsResponseBodyExecutions()
+                self.executions.append(temp_model.from_map(k))
         return self
 
 
@@ -5982,11 +7806,13 @@ class ListInstancePatchesRequest(TeaModel):
         instance_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        patch_statuses: str = None,
     ):
         self.region_id = region_id
         self.instance_id = instance_id
         self.max_results = max_results
         self.next_token = next_token
+        self.patch_statuses = patch_statuses
 
     def validate(self):
         pass
@@ -6005,6 +7831,8 @@ class ListInstancePatchesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.patch_statuses is not None:
+            result['PatchStatuses'] = self.patch_statuses
         return result
 
     def from_map(self, m: dict = None):
@@ -6017,6 +7845,8 @@ class ListInstancePatchesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PatchStatuses') is not None:
+            self.patch_statuses = m.get('PatchStatuses')
         return self
 
 
@@ -6216,30 +8046,30 @@ class ListInstancePatchStatesResponseBodyInstancePatchStates(TeaModel):
     def __init__(
         self,
         missing_count: str = None,
-        installed_other_count: str = None,
-        owner_information: str = None,
         operation_end_time: str = None,
+        owner_information: str = None,
+        installed_other_count: str = None,
         instance_id: str = None,
         operation_type: str = None,
         operation_start_time: str = None,
         failed_count: str = None,
         baseline_id: str = None,
-        installed_rejected_count: str = None,
         installed_pending_reboot_count: str = None,
+        installed_rejected_count: str = None,
         patch_group: str = None,
         installed_count: str = None,
     ):
         self.missing_count = missing_count
-        self.installed_other_count = installed_other_count
-        self.owner_information = owner_information
         self.operation_end_time = operation_end_time
+        self.owner_information = owner_information
+        self.installed_other_count = installed_other_count
         self.instance_id = instance_id
         self.operation_type = operation_type
         self.operation_start_time = operation_start_time
         self.failed_count = failed_count
         self.baseline_id = baseline_id
-        self.installed_rejected_count = installed_rejected_count
         self.installed_pending_reboot_count = installed_pending_reboot_count
+        self.installed_rejected_count = installed_rejected_count
         self.patch_group = patch_group
         self.installed_count = installed_count
 
@@ -6254,12 +8084,12 @@ class ListInstancePatchStatesResponseBodyInstancePatchStates(TeaModel):
         result = dict()
         if self.missing_count is not None:
             result['MissingCount'] = self.missing_count
-        if self.installed_other_count is not None:
-            result['InstalledOtherCount'] = self.installed_other_count
-        if self.owner_information is not None:
-            result['OwnerInformation'] = self.owner_information
         if self.operation_end_time is not None:
             result['OperationEndTime'] = self.operation_end_time
+        if self.owner_information is not None:
+            result['OwnerInformation'] = self.owner_information
+        if self.installed_other_count is not None:
+            result['InstalledOtherCount'] = self.installed_other_count
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.operation_type is not None:
@@ -6270,10 +8100,10 @@ class ListInstancePatchStatesResponseBodyInstancePatchStates(TeaModel):
             result['FailedCount'] = self.failed_count
         if self.baseline_id is not None:
             result['BaselineId'] = self.baseline_id
-        if self.installed_rejected_count is not None:
-            result['InstalledRejectedCount'] = self.installed_rejected_count
         if self.installed_pending_reboot_count is not None:
             result['InstalledPendingRebootCount'] = self.installed_pending_reboot_count
+        if self.installed_rejected_count is not None:
+            result['InstalledRejectedCount'] = self.installed_rejected_count
         if self.patch_group is not None:
             result['PatchGroup'] = self.patch_group
         if self.installed_count is not None:
@@ -6284,12 +8114,12 @@ class ListInstancePatchStatesResponseBodyInstancePatchStates(TeaModel):
         m = m or dict()
         if m.get('MissingCount') is not None:
             self.missing_count = m.get('MissingCount')
-        if m.get('InstalledOtherCount') is not None:
-            self.installed_other_count = m.get('InstalledOtherCount')
-        if m.get('OwnerInformation') is not None:
-            self.owner_information = m.get('OwnerInformation')
         if m.get('OperationEndTime') is not None:
             self.operation_end_time = m.get('OperationEndTime')
+        if m.get('OwnerInformation') is not None:
+            self.owner_information = m.get('OwnerInformation')
+        if m.get('InstalledOtherCount') is not None:
+            self.installed_other_count = m.get('InstalledOtherCount')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OperationType') is not None:
@@ -6300,10 +8130,10 @@ class ListInstancePatchStatesResponseBodyInstancePatchStates(TeaModel):
             self.failed_count = m.get('FailedCount')
         if m.get('BaselineId') is not None:
             self.baseline_id = m.get('BaselineId')
-        if m.get('InstalledRejectedCount') is not None:
-            self.installed_rejected_count = m.get('InstalledRejectedCount')
         if m.get('InstalledPendingRebootCount') is not None:
             self.installed_pending_reboot_count = m.get('InstalledPendingRebootCount')
+        if m.get('InstalledRejectedCount') is not None:
+            self.installed_rejected_count = m.get('InstalledRejectedCount')
         if m.get('PatchGroup') is not None:
             self.patch_group = m.get('PatchGroup')
         if m.get('InstalledCount') is not None:
@@ -6518,15 +8348,15 @@ class ListInstanceStateReportsResponseBodyStateReports(TeaModel):
 class ListInstanceStateReportsResponseBody(TeaModel):
     def __init__(
         self,
-        state_reports: List[ListInstanceStateReportsResponseBodyStateReports] = None,
         next_token: str = None,
         request_id: str = None,
         max_results: int = None,
+        state_reports: List[ListInstanceStateReportsResponseBodyStateReports] = None,
     ):
-        self.state_reports = state_reports
         self.next_token = next_token
         self.request_id = request_id
         self.max_results = max_results
+        self.state_reports = state_reports
 
     def validate(self):
         if self.state_reports:
@@ -6540,31 +8370,31 @@ class ListInstanceStateReportsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['StateReports'] = []
-        if self.state_reports is not None:
-            for k in self.state_reports:
-                result['StateReports'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        result['StateReports'] = []
+        if self.state_reports is not None:
+            for k in self.state_reports:
+                result['StateReports'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.state_reports = []
-        if m.get('StateReports') is not None:
-            for k in m.get('StateReports'):
-                temp_model = ListInstanceStateReportsResponseBodyStateReports()
-                self.state_reports.append(temp_model.from_map(k))
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        self.state_reports = []
+        if m.get('StateReports') is not None:
+            for k in m.get('StateReports'):
+                temp_model = ListInstanceStateReportsResponseBodyStateReports()
+                self.state_reports.append(temp_model.from_map(k))
         return self
 
 
@@ -6706,22 +8536,22 @@ class ListInventoryEntriesRequest(TeaModel):
 class ListInventoryEntriesResponseBody(TeaModel):
     def __init__(
         self,
-        type_name: str = None,
-        capture_time: str = None,
         next_token: str = None,
         request_id: str = None,
         schema_version: str = None,
-        instance_id: str = None,
         max_results: int = None,
+        capture_time: str = None,
+        type_name: str = None,
+        instance_id: str = None,
         entries: List[Dict[str, Any]] = None,
     ):
-        self.type_name = type_name
-        self.capture_time = capture_time
         self.next_token = next_token
         self.request_id = request_id
         self.schema_version = schema_version
-        self.instance_id = instance_id
         self.max_results = max_results
+        self.capture_time = capture_time
+        self.type_name = type_name
+        self.instance_id = instance_id
         self.entries = entries
 
     def validate(self):
@@ -6733,40 +8563,40 @@ class ListInventoryEntriesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.type_name is not None:
-            result['TypeName'] = self.type_name
-        if self.capture_time is not None:
-            result['CaptureTime'] = self.capture_time
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.schema_version is not None:
             result['SchemaVersion'] = self.schema_version
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.capture_time is not None:
+            result['CaptureTime'] = self.capture_time
+        if self.type_name is not None:
+            result['TypeName'] = self.type_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.entries is not None:
             result['Entries'] = self.entries
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TypeName') is not None:
-            self.type_name = m.get('TypeName')
-        if m.get('CaptureTime') is not None:
-            self.capture_time = m.get('CaptureTime')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SchemaVersion') is not None:
             self.schema_version = m.get('SchemaVersion')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        if m.get('CaptureTime') is not None:
+            self.capture_time = m.get('CaptureTime')
+        if m.get('TypeName') is not None:
+            self.type_name = m.get('TypeName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('Entries') is not None:
             self.entries = m.get('Entries')
         return self
@@ -6822,6 +8652,7 @@ class ListParametersRequest(TeaModel):
         path: str = None,
         recursive: bool = None,
         tags: Dict[str, Any] = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
@@ -6833,6 +8664,7 @@ class ListParametersRequest(TeaModel):
         self.path = path
         self.recursive = recursive
         self.tags = tags
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -6863,6 +8695,8 @@ class ListParametersRequest(TeaModel):
             result['Recursive'] = self.recursive
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6887,6 +8721,8 @@ class ListParametersRequest(TeaModel):
             self.recursive = m.get('Recursive')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -6903,6 +8739,7 @@ class ListParametersShrinkRequest(TeaModel):
         path: str = None,
         recursive: bool = None,
         tags_shrink: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
@@ -6914,6 +8751,7 @@ class ListParametersShrinkRequest(TeaModel):
         self.path = path
         self.recursive = recursive
         self.tags_shrink = tags_shrink
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -6944,6 +8782,8 @@ class ListParametersShrinkRequest(TeaModel):
             result['Recursive'] = self.recursive
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6968,6 +8808,8 @@ class ListParametersShrinkRequest(TeaModel):
             self.recursive = m.get('Recursive')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -6975,25 +8817,27 @@ class ListParametersResponseBodyParameters(TeaModel):
     def __init__(
         self,
         type: str = None,
-        description: str = None,
         updated_date: str = None,
         updated_by: str = None,
-        created_by: str = None,
-        parameter_version: str = None,
-        created_date: str = None,
         tags: Dict[str, Any] = None,
+        description: str = None,
+        created_by: str = None,
+        resource_group_id: str = None,
+        created_date: str = None,
+        parameter_version: str = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
     ):
         self.type = type
-        self.description = description
         self.updated_date = updated_date
         self.updated_by = updated_by
-        self.created_by = created_by
-        self.parameter_version = parameter_version
-        self.created_date = created_date
         self.tags = tags
+        self.description = description
+        self.created_by = created_by
+        self.resource_group_id = resource_group_id
+        self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -7009,20 +8853,22 @@ class ListParametersResponseBodyParameters(TeaModel):
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
-        if self.description is not None:
-            result['Description'] = self.description
         if self.updated_date is not None:
             result['UpdatedDate'] = self.updated_date
         if self.updated_by is not None:
             result['UpdatedBy'] = self.updated_by
-        if self.created_by is not None:
-            result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
-        if self.created_date is not None:
-            result['CreatedDate'] = self.created_date
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.created_by is not None:
+            result['CreatedBy'] = self.created_by
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.created_date is not None:
+            result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -7035,20 +8881,22 @@ class ListParametersResponseBodyParameters(TeaModel):
         m = m or dict()
         if m.get('Type') is not None:
             self.type = m.get('Type')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
         if m.get('UpdatedDate') is not None:
             self.updated_date = m.get('UpdatedDate')
         if m.get('UpdatedBy') is not None:
             self.updated_by = m.get('UpdatedBy')
-        if m.get('CreatedBy') is not None:
-            self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
-        if m.get('CreatedDate') is not None:
-            self.created_date = m.get('CreatedDate')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('CreatedBy') is not None:
+            self.created_by = m.get('CreatedBy')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('CreatedDate') is not None:
+            self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -7061,17 +8909,17 @@ class ListParametersResponseBodyParameters(TeaModel):
 class ListParametersResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
-        parameters: List[ListParametersResponseBodyParameters] = None,
         next_token: str = None,
         request_id: str = None,
+        total_count: int = None,
         max_results: int = None,
+        parameters: List[ListParametersResponseBodyParameters] = None,
     ):
-        self.total_count = total_count
-        self.parameters = parameters
         self.next_token = next_token
         self.request_id = request_id
+        self.total_count = total_count
         self.max_results = max_results
+        self.parameters = parameters
 
     def validate(self):
         if self.parameters:
@@ -7085,35 +8933,35 @@ class ListParametersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        result['Parameters'] = []
-        if self.parameters is not None:
-            for k in self.parameters:
-                result['Parameters'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         self.parameters = []
         if m.get('Parameters') is not None:
             for k in m.get('Parameters'):
                 temp_model = ListParametersResponseBodyParameters()
                 self.parameters.append(temp_model.from_map(k))
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
         return self
 
 
@@ -7208,15 +9056,15 @@ class ListParameterVersionsRequest(TeaModel):
 class ListParameterVersionsResponseBodyParameterVersions(TeaModel):
     def __init__(
         self,
+        parameter_version: int = None,
         value: str = None,
         updated_date: str = None,
         updated_by: str = None,
-        parameter_version: int = None,
     ):
+        self.parameter_version = parameter_version
         self.value = value
         self.updated_date = updated_date
         self.updated_by = updated_by
-        self.parameter_version = parameter_version
 
     def validate(self):
         pass
@@ -7227,26 +9075,26 @@ class ListParameterVersionsResponseBodyParameterVersions(TeaModel):
             return _map
 
         result = dict()
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.value is not None:
             result['Value'] = self.value
         if self.updated_date is not None:
             result['UpdatedDate'] = self.updated_date
         if self.updated_by is not None:
             result['UpdatedBy'] = self.updated_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         if m.get('UpdatedDate') is not None:
             self.updated_date = m.get('UpdatedDate')
         if m.get('UpdatedBy') is not None:
             self.updated_by = m.get('UpdatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         return self
 
 
@@ -7254,28 +9102,28 @@ class ListParameterVersionsResponseBody(TeaModel):
     def __init__(
         self,
         type: str = None,
-        total_count: int = None,
-        parameter_versions: List[ListParameterVersionsResponseBodyParameterVersions] = None,
-        description: str = None,
-        created_by: str = None,
         next_token: str = None,
         request_id: str = None,
+        description: str = None,
         max_results: int = None,
+        created_by: str = None,
         created_date: str = None,
-        id: str = None,
         name: str = None,
+        total_count: int = None,
+        id: str = None,
+        parameter_versions: List[ListParameterVersionsResponseBodyParameterVersions] = None,
     ):
         self.type = type
-        self.total_count = total_count
-        self.parameter_versions = parameter_versions
-        self.description = description
-        self.created_by = created_by
         self.next_token = next_token
         self.request_id = request_id
+        self.description = description
         self.max_results = max_results
+        self.created_by = created_by
         self.created_date = created_date
-        self.id = id
         self.name = name
+        self.total_count = total_count
+        self.id = id
+        self.parameter_versions = parameter_versions
 
     def validate(self):
         if self.parameter_versions:
@@ -7291,57 +9139,57 @@ class ListParameterVersionsResponseBody(TeaModel):
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        result['ParameterVersions'] = []
-        if self.parameter_versions is not None:
-            for k in self.parameter_versions:
-                result['ParameterVersions'].append(k.to_map() if k else None)
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.created_by is not None:
-            result['CreatedBy'] = self.created_by
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.description is not None:
+            result['Description'] = self.description
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.created_by is not None:
+            result['CreatedBy'] = self.created_by
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
-        if self.id is not None:
-            result['Id'] = self.id
         if self.name is not None:
             result['Name'] = self.name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.id is not None:
+            result['Id'] = self.id
+        result['ParameterVersions'] = []
+        if self.parameter_versions is not None:
+            for k in self.parameter_versions:
+                result['ParameterVersions'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('CreatedBy') is not None:
+            self.created_by = m.get('CreatedBy')
+        if m.get('CreatedDate') is not None:
+            self.created_date = m.get('CreatedDate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         self.parameter_versions = []
         if m.get('ParameterVersions') is not None:
             for k in m.get('ParameterVersions'):
                 temp_model = ListParameterVersionsResponseBodyParameterVersions()
                 self.parameter_versions.append(temp_model.from_map(k))
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('CreatedBy') is not None:
-            self.created_by = m.get('CreatedBy')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('CreatedDate') is not None:
-            self.created_date = m.get('CreatedDate')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         return self
 
 
@@ -7711,13 +9559,13 @@ class ListResourceExecutionStatusResponseBody(TeaModel):
         self,
         next_token: str = None,
         request_id: str = None,
-        resource_execution_status: List[ListResourceExecutionStatusResponseBodyResourceExecutionStatus] = None,
         max_results: int = None,
+        resource_execution_status: List[ListResourceExecutionStatusResponseBodyResourceExecutionStatus] = None,
     ):
         self.next_token = next_token
         self.request_id = request_id
-        self.resource_execution_status = resource_execution_status
         self.max_results = max_results
+        self.resource_execution_status = resource_execution_status
 
     def validate(self):
         if self.resource_execution_status:
@@ -7735,12 +9583,12 @@ class ListResourceExecutionStatusResponseBody(TeaModel):
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
         result['ResourceExecutionStatus'] = []
         if self.resource_execution_status is not None:
             for k in self.resource_execution_status:
                 result['ResourceExecutionStatus'].append(k.to_map() if k else None)
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
         return result
 
     def from_map(self, m: dict = None):
@@ -7749,13 +9597,13 @@ class ListResourceExecutionStatusResponseBody(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         self.resource_execution_status = []
         if m.get('ResourceExecutionStatus') is not None:
             for k in m.get('ResourceExecutionStatus'):
                 temp_model = ListResourceExecutionStatusResponseBodyResourceExecutionStatus()
                 self.resource_execution_status.append(temp_model.from_map(k))
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
         return self
 
 
@@ -7808,6 +9656,7 @@ class ListSecretParametersRequest(TeaModel):
         path: str = None,
         recursive: bool = None,
         tags: Dict[str, Any] = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
@@ -7818,6 +9667,7 @@ class ListSecretParametersRequest(TeaModel):
         self.path = path
         self.recursive = recursive
         self.tags = tags
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -7846,6 +9696,8 @@ class ListSecretParametersRequest(TeaModel):
             result['Recursive'] = self.recursive
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7868,6 +9720,8 @@ class ListSecretParametersRequest(TeaModel):
             self.recursive = m.get('Recursive')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -7883,6 +9737,7 @@ class ListSecretParametersShrinkRequest(TeaModel):
         path: str = None,
         recursive: bool = None,
         tags_shrink: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
@@ -7893,6 +9748,7 @@ class ListSecretParametersShrinkRequest(TeaModel):
         self.path = path
         self.recursive = recursive
         self.tags_shrink = tags_shrink
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -7921,6 +9777,8 @@ class ListSecretParametersShrinkRequest(TeaModel):
             result['Recursive'] = self.recursive
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7943,6 +9801,8 @@ class ListSecretParametersShrinkRequest(TeaModel):
             self.recursive = m.get('Recursive')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -7955,9 +9815,10 @@ class ListSecretParametersResponseBodyParameters(TeaModel):
         key_id: str = None,
         tags: Dict[str, Any] = None,
         description: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
-        parameter_version: str = None,
         created_date: str = None,
+        parameter_version: str = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -7968,9 +9829,10 @@ class ListSecretParametersResponseBodyParameters(TeaModel):
         self.key_id = key_id
         self.tags = tags
         self.description = description
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -7996,12 +9858,14 @@ class ListSecretParametersResponseBodyParameters(TeaModel):
             result['Tags'] = self.tags
         if self.description is not None:
             result['Description'] = self.description
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -8024,12 +9888,14 @@ class ListSecretParametersResponseBodyParameters(TeaModel):
             self.tags = m.get('Tags')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -8042,15 +9908,15 @@ class ListSecretParametersResponseBodyParameters(TeaModel):
 class ListSecretParametersResponseBody(TeaModel):
     def __init__(
         self,
-        parameters: List[ListSecretParametersResponseBodyParameters] = None,
         next_token: str = None,
         request_id: str = None,
         max_results: int = None,
+        parameters: List[ListSecretParametersResponseBodyParameters] = None,
     ):
-        self.parameters = parameters
         self.next_token = next_token
         self.request_id = request_id
         self.max_results = max_results
+        self.parameters = parameters
 
     def validate(self):
         if self.parameters:
@@ -8064,31 +9930,31 @@ class ListSecretParametersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Parameters'] = []
-        if self.parameters is not None:
-            for k in self.parameters:
-                result['Parameters'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.parameters = []
-        if m.get('Parameters') is not None:
-            for k in m.get('Parameters'):
-                temp_model = ListSecretParametersResponseBodyParameters()
-                self.parameters.append(temp_model.from_map(k))
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = ListSecretParametersResponseBodyParameters()
+                self.parameters.append(temp_model.from_map(k))
         return self
 
 
@@ -8189,15 +10055,15 @@ class ListSecretParameterVersionsRequest(TeaModel):
 class ListSecretParameterVersionsResponseBodyParameterVersions(TeaModel):
     def __init__(
         self,
+        parameter_version: int = None,
         value: str = None,
         updated_date: str = None,
         updated_by: str = None,
-        parameter_version: int = None,
     ):
+        self.parameter_version = parameter_version
         self.value = value
         self.updated_date = updated_date
         self.updated_by = updated_by
-        self.parameter_version = parameter_version
 
     def validate(self):
         pass
@@ -8208,26 +10074,26 @@ class ListSecretParameterVersionsResponseBodyParameterVersions(TeaModel):
             return _map
 
         result = dict()
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.value is not None:
             result['Value'] = self.value
         if self.updated_date is not None:
             result['UpdatedDate'] = self.updated_date
         if self.updated_by is not None:
             result['UpdatedBy'] = self.updated_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         if m.get('UpdatedDate') is not None:
             self.updated_date = m.get('UpdatedDate')
         if m.get('UpdatedBy') is not None:
             self.updated_by = m.get('UpdatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         return self
 
 
@@ -8235,28 +10101,28 @@ class ListSecretParameterVersionsResponseBody(TeaModel):
     def __init__(
         self,
         type: str = None,
-        total_count: int = None,
-        parameter_versions: List[ListSecretParameterVersionsResponseBodyParameterVersions] = None,
-        description: str = None,
-        created_by: str = None,
         next_token: str = None,
         request_id: str = None,
+        description: str = None,
         max_results: int = None,
+        created_by: str = None,
         created_date: str = None,
-        id: str = None,
         name: str = None,
+        total_count: int = None,
+        id: str = None,
+        parameter_versions: List[ListSecretParameterVersionsResponseBodyParameterVersions] = None,
     ):
         self.type = type
-        self.total_count = total_count
-        self.parameter_versions = parameter_versions
-        self.description = description
-        self.created_by = created_by
         self.next_token = next_token
         self.request_id = request_id
+        self.description = description
         self.max_results = max_results
+        self.created_by = created_by
         self.created_date = created_date
-        self.id = id
         self.name = name
+        self.total_count = total_count
+        self.id = id
+        self.parameter_versions = parameter_versions
 
     def validate(self):
         if self.parameter_versions:
@@ -8272,57 +10138,57 @@ class ListSecretParameterVersionsResponseBody(TeaModel):
         result = dict()
         if self.type is not None:
             result['Type'] = self.type
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        result['ParameterVersions'] = []
-        if self.parameter_versions is not None:
-            for k in self.parameter_versions:
-                result['ParameterVersions'].append(k.to_map() if k else None)
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.created_by is not None:
-            result['CreatedBy'] = self.created_by
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.description is not None:
+            result['Description'] = self.description
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.created_by is not None:
+            result['CreatedBy'] = self.created_by
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
-        if self.id is not None:
-            result['Id'] = self.id
         if self.name is not None:
             result['Name'] = self.name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.id is not None:
+            result['Id'] = self.id
+        result['ParameterVersions'] = []
+        if self.parameter_versions is not None:
+            for k in self.parameter_versions:
+                result['ParameterVersions'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('CreatedBy') is not None:
+            self.created_by = m.get('CreatedBy')
+        if m.get('CreatedDate') is not None:
+            self.created_date = m.get('CreatedDate')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         self.parameter_versions = []
         if m.get('ParameterVersions') is not None:
             for k in m.get('ParameterVersions'):
                 temp_model = ListSecretParameterVersionsResponseBodyParameterVersions()
                 self.parameter_versions.append(temp_model.from_map(k))
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('CreatedBy') is not None:
-            self.created_by = m.get('CreatedBy')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('CreatedDate') is not None:
-            self.created_date = m.get('CreatedDate')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         return self
 
 
@@ -8371,8 +10237,9 @@ class ListStateConfigurationsRequest(TeaModel):
         template_version: str = None,
         state_configuration_ids: str = None,
         tags: Dict[str, Any] = None,
-        max_results: str = None,
+        max_results: int = None,
         next_token: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
@@ -8381,6 +10248,7 @@ class ListStateConfigurationsRequest(TeaModel):
         self.tags = tags
         self.max_results = max_results
         self.next_token = next_token
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -8405,6 +10273,8 @@ class ListStateConfigurationsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8423,6 +10293,8 @@ class ListStateConfigurationsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -8434,8 +10306,9 @@ class ListStateConfigurationsShrinkRequest(TeaModel):
         template_version: str = None,
         state_configuration_ids: str = None,
         tags_shrink: str = None,
-        max_results: str = None,
+        max_results: int = None,
         next_token: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
@@ -8444,6 +10317,7 @@ class ListStateConfigurationsShrinkRequest(TeaModel):
         self.tags_shrink = tags_shrink
         self.max_results = max_results
         self.next_token = next_token
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -8468,6 +10342,8 @@ class ListStateConfigurationsShrinkRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8486,6 +10362,8 @@ class ListStateConfigurationsShrinkRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -8493,31 +10371,33 @@ class ListStateConfigurationsResponseBodyStateConfigurations(TeaModel):
     def __init__(
         self,
         update_time: str = None,
-        targets: str = None,
         create_time: str = None,
+        targets: str = None,
         tags: Dict[str, Any] = None,
-        schedule_expression: str = None,
         state_configuration_id: str = None,
+        schedule_expression: str = None,
         template_name: str = None,
         template_version: str = None,
-        schedule_type: str = None,
         configure_mode: str = None,
+        schedule_type: str = None,
         parameters: str = None,
         description: str = None,
+        resource_group_id: str = None,
         template_id: str = None,
     ):
         self.update_time = update_time
-        self.targets = targets
         self.create_time = create_time
+        self.targets = targets
         self.tags = tags
-        self.schedule_expression = schedule_expression
         self.state_configuration_id = state_configuration_id
+        self.schedule_expression = schedule_expression
         self.template_name = template_name
         self.template_version = template_version
-        self.schedule_type = schedule_type
         self.configure_mode = configure_mode
+        self.schedule_type = schedule_type
         self.parameters = parameters
         self.description = description
+        self.resource_group_id = resource_group_id
         self.template_id = template_id
 
     def validate(self):
@@ -8531,28 +10411,30 @@ class ListStateConfigurationsResponseBodyStateConfigurations(TeaModel):
         result = dict()
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
-        if self.targets is not None:
-            result['Targets'] = self.targets
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.targets is not None:
+            result['Targets'] = self.targets
         if self.tags is not None:
             result['Tags'] = self.tags
-        if self.schedule_expression is not None:
-            result['ScheduleExpression'] = self.schedule_expression
         if self.state_configuration_id is not None:
             result['StateConfigurationId'] = self.state_configuration_id
+        if self.schedule_expression is not None:
+            result['ScheduleExpression'] = self.schedule_expression
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
         if self.template_version is not None:
             result['TemplateVersion'] = self.template_version
-        if self.schedule_type is not None:
-            result['ScheduleType'] = self.schedule_type
         if self.configure_mode is not None:
             result['ConfigureMode'] = self.configure_mode
+        if self.schedule_type is not None:
+            result['ScheduleType'] = self.schedule_type
         if self.parameters is not None:
             result['Parameters'] = self.parameters
         if self.description is not None:
             result['Description'] = self.description
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
@@ -8561,28 +10443,30 @@ class ListStateConfigurationsResponseBodyStateConfigurations(TeaModel):
         m = m or dict()
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
-        if m.get('Targets') is not None:
-            self.targets = m.get('Targets')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('Targets') is not None:
+            self.targets = m.get('Targets')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
-        if m.get('ScheduleExpression') is not None:
-            self.schedule_expression = m.get('ScheduleExpression')
         if m.get('StateConfigurationId') is not None:
             self.state_configuration_id = m.get('StateConfigurationId')
+        if m.get('ScheduleExpression') is not None:
+            self.schedule_expression = m.get('ScheduleExpression')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
         if m.get('TemplateVersion') is not None:
             self.template_version = m.get('TemplateVersion')
-        if m.get('ScheduleType') is not None:
-            self.schedule_type = m.get('ScheduleType')
         if m.get('ConfigureMode') is not None:
             self.configure_mode = m.get('ConfigureMode')
+        if m.get('ScheduleType') is not None:
+            self.schedule_type = m.get('ScheduleType')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
@@ -9306,9 +11190,9 @@ class ListTaskExecutionsRequest(TeaModel):
 class ListTaskExecutionsResponseBodyTaskExecutions(TeaModel):
     def __init__(
         self,
-        status: str = None,
-        outputs: str = None,
         child_execution_id: str = None,
+        outputs: str = None,
+        status: str = None,
         end_date: str = None,
         parent_task_execution_id: str = None,
         task_name: str = None,
@@ -9326,9 +11210,9 @@ class ListTaskExecutionsResponseBodyTaskExecutions(TeaModel):
         extra_data: Dict[str, Any] = None,
         properties: str = None,
     ):
-        self.status = status
-        self.outputs = outputs
         self.child_execution_id = child_execution_id
+        self.outputs = outputs
+        self.status = status
         self.end_date = end_date
         self.parent_task_execution_id = parent_task_execution_id
         self.task_name = task_name
@@ -9355,12 +11239,12 @@ class ListTaskExecutionsResponseBodyTaskExecutions(TeaModel):
             return _map
 
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.outputs is not None:
-            result['Outputs'] = self.outputs
         if self.child_execution_id is not None:
             result['ChildExecutionId'] = self.child_execution_id
+        if self.outputs is not None:
+            result['Outputs'] = self.outputs
+        if self.status is not None:
+            result['Status'] = self.status
         if self.end_date is not None:
             result['EndDate'] = self.end_date
         if self.parent_task_execution_id is not None:
@@ -9397,12 +11281,12 @@ class ListTaskExecutionsResponseBodyTaskExecutions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Outputs') is not None:
-            self.outputs = m.get('Outputs')
         if m.get('ChildExecutionId') is not None:
             self.child_execution_id = m.get('ChildExecutionId')
+        if m.get('Outputs') is not None:
+            self.outputs = m.get('Outputs')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
         if m.get('ParentTaskExecutionId') is not None:
@@ -9546,6 +11430,7 @@ class ListTemplatesRequest(TeaModel):
         sort_order: str = None,
         has_trigger: bool = None,
         template_type: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
@@ -9562,6 +11447,7 @@ class ListTemplatesRequest(TeaModel):
         self.sort_order = sort_order
         self.has_trigger = has_trigger
         self.template_type = template_type
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -9602,6 +11488,8 @@ class ListTemplatesRequest(TeaModel):
             result['HasTrigger'] = self.has_trigger
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9636,6 +11524,8 @@ class ListTemplatesRequest(TeaModel):
             self.has_trigger = m.get('HasTrigger')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -9657,6 +11547,7 @@ class ListTemplatesShrinkRequest(TeaModel):
         sort_order: str = None,
         has_trigger: bool = None,
         template_type: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
@@ -9673,6 +11564,7 @@ class ListTemplatesShrinkRequest(TeaModel):
         self.sort_order = sort_order
         self.has_trigger = has_trigger
         self.template_type = template_type
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -9713,6 +11605,8 @@ class ListTemplatesShrinkRequest(TeaModel):
             result['HasTrigger'] = self.has_trigger
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9747,6 +11641,8 @@ class ListTemplatesShrinkRequest(TeaModel):
             self.has_trigger = m.get('HasTrigger')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -9756,14 +11652,15 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         hash: str = None,
         updated_date: str = None,
         updated_by: str = None,
-        tags: Dict[str, Any] = None,
         template_type: str = None,
+        tags: Dict[str, Any] = None,
         template_name: str = None,
         template_version: str = None,
         template_format: str = None,
         popularity: int = None,
-        description: str = None,
         total_execution_count: int = None,
+        description: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
         created_date: str = None,
         category: str = None,
@@ -9774,14 +11671,15 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.hash = hash
         self.updated_date = updated_date
         self.updated_by = updated_by
-        self.tags = tags
         self.template_type = template_type
+        self.tags = tags
         self.template_name = template_name
         self.template_version = template_version
         self.template_format = template_format
         self.popularity = popularity
-        self.description = description
         self.total_execution_count = total_execution_count
+        self.description = description
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
         self.created_date = created_date
         self.category = category
@@ -9804,10 +11702,10 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             result['UpdatedDate'] = self.updated_date
         if self.updated_by is not None:
             result['UpdatedBy'] = self.updated_by
-        if self.tags is not None:
-            result['Tags'] = self.tags
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
         if self.template_version is not None:
@@ -9816,10 +11714,12 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             result['TemplateFormat'] = self.template_format
         if self.popularity is not None:
             result['Popularity'] = self.popularity
-        if self.description is not None:
-            result['Description'] = self.description
         if self.total_execution_count is not None:
             result['TotalExecutionCount'] = self.total_execution_count
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
         if self.created_date is not None:
@@ -9842,10 +11742,10 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             self.updated_date = m.get('UpdatedDate')
         if m.get('UpdatedBy') is not None:
             self.updated_by = m.get('UpdatedBy')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
         if m.get('TemplateVersion') is not None:
@@ -9854,10 +11754,12 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             self.template_format = m.get('TemplateFormat')
         if m.get('Popularity') is not None:
             self.popularity = m.get('Popularity')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
         if m.get('TotalExecutionCount') is not None:
             self.total_execution_count = m.get('TotalExecutionCount')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
         if m.get('CreatedDate') is not None:
@@ -10423,11 +12325,11 @@ class RegisterDefaultPatchBaselineResponseBodyPatchBaseline(TeaModel):
 class RegisterDefaultPatchBaselineResponseBody(TeaModel):
     def __init__(
         self,
-        patch_baseline: RegisterDefaultPatchBaselineResponseBodyPatchBaseline = None,
         request_id: str = None,
+        patch_baseline: RegisterDefaultPatchBaselineResponseBodyPatchBaseline = None,
     ):
-        self.patch_baseline = patch_baseline
         self.request_id = request_id
+        self.patch_baseline = patch_baseline
 
     def validate(self):
         if self.patch_baseline:
@@ -10439,19 +12341,19 @@ class RegisterDefaultPatchBaselineResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.patch_baseline is not None:
-            result['PatchBaseline'] = self.patch_baseline.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.patch_baseline is not None:
+            result['PatchBaseline'] = self.patch_baseline.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('PatchBaseline') is not None:
             temp_model = RegisterDefaultPatchBaselineResponseBodyPatchBaseline()
             self.patch_baseline = temp_model.from_map(m['PatchBaseline'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -10681,6 +12583,7 @@ class SetServiceSettingsRequest(TeaModel):
         delivery_sls_project_name: str = None,
         delivery_sls_enabled: bool = None,
         region_id: str = None,
+        rdc_enterprise_id: str = None,
     ):
         self.delivery_oss_enabled = delivery_oss_enabled
         self.delivery_oss_bucket_name = delivery_oss_bucket_name
@@ -10688,6 +12591,7 @@ class SetServiceSettingsRequest(TeaModel):
         self.delivery_sls_project_name = delivery_sls_project_name
         self.delivery_sls_enabled = delivery_sls_enabled
         self.region_id = region_id
+        self.rdc_enterprise_id = rdc_enterprise_id
 
     def validate(self):
         pass
@@ -10710,6 +12614,8 @@ class SetServiceSettingsRequest(TeaModel):
             result['DeliverySlsEnabled'] = self.delivery_sls_enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.rdc_enterprise_id is not None:
+            result['RdcEnterpriseId'] = self.rdc_enterprise_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10726,6 +12632,8 @@ class SetServiceSettingsRequest(TeaModel):
             self.delivery_sls_enabled = m.get('DeliverySlsEnabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RdcEnterpriseId') is not None:
+            self.rdc_enterprise_id = m.get('RdcEnterpriseId')
         return self
 
 
@@ -10734,15 +12642,17 @@ class SetServiceSettingsResponseBodyServiceSettings(TeaModel):
         self,
         delivery_oss_bucket_name: str = None,
         delivery_oss_key_prefix: str = None,
-        delivery_sls_enabled: bool = None,
         delivery_oss_enabled: bool = None,
+        delivery_sls_enabled: bool = None,
         delivery_sls_project_name: str = None,
+        rdc_enterprise_id: str = None,
     ):
         self.delivery_oss_bucket_name = delivery_oss_bucket_name
         self.delivery_oss_key_prefix = delivery_oss_key_prefix
-        self.delivery_sls_enabled = delivery_sls_enabled
         self.delivery_oss_enabled = delivery_oss_enabled
+        self.delivery_sls_enabled = delivery_sls_enabled
         self.delivery_sls_project_name = delivery_sls_project_name
+        self.rdc_enterprise_id = rdc_enterprise_id
 
     def validate(self):
         pass
@@ -10757,12 +12667,14 @@ class SetServiceSettingsResponseBodyServiceSettings(TeaModel):
             result['DeliveryOssBucketName'] = self.delivery_oss_bucket_name
         if self.delivery_oss_key_prefix is not None:
             result['DeliveryOssKeyPrefix'] = self.delivery_oss_key_prefix
-        if self.delivery_sls_enabled is not None:
-            result['DeliverySlsEnabled'] = self.delivery_sls_enabled
         if self.delivery_oss_enabled is not None:
             result['DeliveryOssEnabled'] = self.delivery_oss_enabled
+        if self.delivery_sls_enabled is not None:
+            result['DeliverySlsEnabled'] = self.delivery_sls_enabled
         if self.delivery_sls_project_name is not None:
             result['DeliverySlsProjectName'] = self.delivery_sls_project_name
+        if self.rdc_enterprise_id is not None:
+            result['RdcEnterpriseId'] = self.rdc_enterprise_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10771,12 +12683,14 @@ class SetServiceSettingsResponseBodyServiceSettings(TeaModel):
             self.delivery_oss_bucket_name = m.get('DeliveryOssBucketName')
         if m.get('DeliveryOssKeyPrefix') is not None:
             self.delivery_oss_key_prefix = m.get('DeliveryOssKeyPrefix')
-        if m.get('DeliverySlsEnabled') is not None:
-            self.delivery_sls_enabled = m.get('DeliverySlsEnabled')
         if m.get('DeliveryOssEnabled') is not None:
             self.delivery_oss_enabled = m.get('DeliveryOssEnabled')
+        if m.get('DeliverySlsEnabled') is not None:
+            self.delivery_sls_enabled = m.get('DeliverySlsEnabled')
         if m.get('DeliverySlsProjectName') is not None:
             self.delivery_sls_project_name = m.get('DeliverySlsProjectName')
+        if m.get('RdcEnterpriseId') is not None:
+            self.rdc_enterprise_id = m.get('RdcEnterpriseId')
         return self
 
 
@@ -10873,6 +12787,7 @@ class StartExecutionRequest(TeaModel):
         tags: Dict[str, Any] = None,
         description: str = None,
         template_content: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
@@ -10886,6 +12801,7 @@ class StartExecutionRequest(TeaModel):
         self.tags = tags
         self.description = description
         self.template_content = template_content
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -10920,6 +12836,8 @@ class StartExecutionRequest(TeaModel):
             result['Description'] = self.description
         if self.template_content is not None:
             result['TemplateContent'] = self.template_content
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10948,6 +12866,8 @@ class StartExecutionRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('TemplateContent') is not None:
             self.template_content = m.get('TemplateContent')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -10966,6 +12886,7 @@ class StartExecutionShrinkRequest(TeaModel):
         tags_shrink: str = None,
         description: str = None,
         template_content: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
@@ -10979,6 +12900,7 @@ class StartExecutionShrinkRequest(TeaModel):
         self.tags_shrink = tags_shrink
         self.description = description
         self.template_content = template_content
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -11013,6 +12935,8 @@ class StartExecutionShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.template_content is not None:
             result['TemplateContent'] = self.template_content
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11041,6 +12965,8 @@ class StartExecutionShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('TemplateContent') is not None:
             self.template_content = m.get('TemplateContent')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -11086,53 +13012,55 @@ class StartExecutionResponseBodyExecutionCurrentTasks(TeaModel):
 class StartExecutionResponseBodyExecution(TeaModel):
     def __init__(
         self,
-        status: str = None,
         outputs: str = None,
-        executed_by: str = None,
+        status: str = None,
         end_date: str = None,
+        executed_by: str = None,
         is_parent: bool = None,
-        start_date: str = None,
         tags: Dict[str, Any] = None,
-        mode: str = None,
+        start_date: str = None,
         safety_check: str = None,
+        mode: str = None,
         template_name: str = None,
-        template_version: str = None,
         create_date: str = None,
+        template_version: str = None,
         execution_id: str = None,
-        current_tasks: List[StartExecutionResponseBodyExecutionCurrentTasks] = None,
         parameters: str = None,
         description: str = None,
         counters: Dict[str, Any] = None,
         update_date: str = None,
+        resource_group_id: str = None,
         parent_execution_id: str = None,
         ram_role: str = None,
         template_id: str = None,
         status_message: str = None,
         loop_mode: str = None,
+        current_tasks: List[StartExecutionResponseBodyExecutionCurrentTasks] = None,
     ):
-        self.status = status
         self.outputs = outputs
-        self.executed_by = executed_by
+        self.status = status
         self.end_date = end_date
+        self.executed_by = executed_by
         self.is_parent = is_parent
-        self.start_date = start_date
         self.tags = tags
-        self.mode = mode
+        self.start_date = start_date
         self.safety_check = safety_check
+        self.mode = mode
         self.template_name = template_name
-        self.template_version = template_version
         self.create_date = create_date
+        self.template_version = template_version
         self.execution_id = execution_id
-        self.current_tasks = current_tasks
         self.parameters = parameters
         self.description = description
         self.counters = counters
         self.update_date = update_date
+        self.resource_group_id = resource_group_id
         self.parent_execution_id = parent_execution_id
         self.ram_role = ram_role
         self.template_id = template_id
         self.status_message = status_message
         self.loop_mode = loop_mode
+        self.current_tasks = current_tasks
 
     def validate(self):
         if self.current_tasks:
@@ -11146,36 +13074,32 @@ class StartExecutionResponseBodyExecution(TeaModel):
             return _map
 
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
         if self.outputs is not None:
             result['Outputs'] = self.outputs
-        if self.executed_by is not None:
-            result['ExecutedBy'] = self.executed_by
+        if self.status is not None:
+            result['Status'] = self.status
         if self.end_date is not None:
             result['EndDate'] = self.end_date
+        if self.executed_by is not None:
+            result['ExecutedBy'] = self.executed_by
         if self.is_parent is not None:
             result['IsParent'] = self.is_parent
-        if self.start_date is not None:
-            result['StartDate'] = self.start_date
         if self.tags is not None:
             result['Tags'] = self.tags
-        if self.mode is not None:
-            result['Mode'] = self.mode
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
         if self.safety_check is not None:
             result['SafetyCheck'] = self.safety_check
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
-        if self.template_version is not None:
-            result['TemplateVersion'] = self.template_version
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
         if self.execution_id is not None:
             result['ExecutionId'] = self.execution_id
-        result['CurrentTasks'] = []
-        if self.current_tasks is not None:
-            for k in self.current_tasks:
-                result['CurrentTasks'].append(k.to_map() if k else None)
         if self.parameters is not None:
             result['Parameters'] = self.parameters
         if self.description is not None:
@@ -11184,6 +13108,8 @@ class StartExecutionResponseBodyExecution(TeaModel):
             result['Counters'] = self.counters
         if self.update_date is not None:
             result['UpdateDate'] = self.update_date
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.parent_execution_id is not None:
             result['ParentExecutionId'] = self.parent_execution_id
         if self.ram_role is not None:
@@ -11194,41 +13120,40 @@ class StartExecutionResponseBodyExecution(TeaModel):
             result['StatusMessage'] = self.status_message
         if self.loop_mode is not None:
             result['LoopMode'] = self.loop_mode
+        result['CurrentTasks'] = []
+        if self.current_tasks is not None:
+            for k in self.current_tasks:
+                result['CurrentTasks'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
         if m.get('Outputs') is not None:
             self.outputs = m.get('Outputs')
-        if m.get('ExecutedBy') is not None:
-            self.executed_by = m.get('ExecutedBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
+        if m.get('ExecutedBy') is not None:
+            self.executed_by = m.get('ExecutedBy')
         if m.get('IsParent') is not None:
             self.is_parent = m.get('IsParent')
-        if m.get('StartDate') is not None:
-            self.start_date = m.get('StartDate')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
-        if m.get('Mode') is not None:
-            self.mode = m.get('Mode')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
         if m.get('SafetyCheck') is not None:
             self.safety_check = m.get('SafetyCheck')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
-        if m.get('TemplateVersion') is not None:
-            self.template_version = m.get('TemplateVersion')
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
         if m.get('ExecutionId') is not None:
             self.execution_id = m.get('ExecutionId')
-        self.current_tasks = []
-        if m.get('CurrentTasks') is not None:
-            for k in m.get('CurrentTasks'):
-                temp_model = StartExecutionResponseBodyExecutionCurrentTasks()
-                self.current_tasks.append(temp_model.from_map(k))
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
         if m.get('Description') is not None:
@@ -11237,6 +13162,8 @@ class StartExecutionResponseBodyExecution(TeaModel):
             self.counters = m.get('Counters')
         if m.get('UpdateDate') is not None:
             self.update_date = m.get('UpdateDate')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ParentExecutionId') is not None:
             self.parent_execution_id = m.get('ParentExecutionId')
         if m.get('RamRole') is not None:
@@ -11247,17 +13174,22 @@ class StartExecutionResponseBodyExecution(TeaModel):
             self.status_message = m.get('StatusMessage')
         if m.get('LoopMode') is not None:
             self.loop_mode = m.get('LoopMode')
+        self.current_tasks = []
+        if m.get('CurrentTasks') is not None:
+            for k in m.get('CurrentTasks'):
+                temp_model = StartExecutionResponseBodyExecutionCurrentTasks()
+                self.current_tasks.append(temp_model.from_map(k))
         return self
 
 
 class StartExecutionResponseBody(TeaModel):
     def __init__(
         self,
-        execution: StartExecutionResponseBodyExecution = None,
         request_id: str = None,
+        execution: StartExecutionResponseBodyExecution = None,
     ):
-        self.execution = execution
         self.request_id = request_id
+        self.execution = execution
 
     def validate(self):
         if self.execution:
@@ -11269,19 +13201,19 @@ class StartExecutionResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.execution is not None:
-            result['Execution'] = self.execution.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.execution is not None:
+            result['Execution'] = self.execution.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Execution') is not None:
             temp_model = StartExecutionResponseBodyExecution()
             self.execution = temp_model.from_map(m['Execution'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -11757,6 +13689,198 @@ class UntagResourcesResponse(TeaModel):
         return self
 
 
+class UpdateApplicationGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        name: str = None,
+        scaling_group_id: str = None,
+    ):
+        self.region_id = region_id
+        self.name = name
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class UpdateApplicationGroupResponseBodyApplicationGroup(TeaModel):
+    def __init__(
+        self,
+        deploy_region_id: str = None,
+        description: str = None,
+        updated_date: str = None,
+        created_date: str = None,
+        application_name: str = None,
+        name: str = None,
+        environment: str = None,
+        create_type: str = None,
+        scaling_group_id: str = None,
+        import_cluster_id: str = None,
+    ):
+        self.deploy_region_id = deploy_region_id
+        self.description = description
+        self.updated_date = updated_date
+        self.created_date = created_date
+        self.application_name = application_name
+        self.name = name
+        self.environment = environment
+        self.create_type = create_type
+        self.scaling_group_id = scaling_group_id
+        self.import_cluster_id = import_cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_region_id is not None:
+            result['DeployRegionId'] = self.deploy_region_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.updated_date is not None:
+            result['UpdatedDate'] = self.updated_date
+        if self.created_date is not None:
+            result['CreatedDate'] = self.created_date
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.import_cluster_id is not None:
+            result['ImportClusterId'] = self.import_cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeployRegionId') is not None:
+            self.deploy_region_id = m.get('DeployRegionId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('UpdatedDate') is not None:
+            self.updated_date = m.get('UpdatedDate')
+        if m.get('CreatedDate') is not None:
+            self.created_date = m.get('CreatedDate')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ImportClusterId') is not None:
+            self.import_cluster_id = m.get('ImportClusterId')
+        return self
+
+
+class UpdateApplicationGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        application_group: UpdateApplicationGroupResponseBodyApplicationGroup = None,
+    ):
+        self.request_id = request_id
+        self.application_group = application_group
+
+    def validate(self):
+        if self.application_group:
+            self.application_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.application_group is not None:
+            result['ApplicationGroup'] = self.application_group.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ApplicationGroup') is not None:
+            temp_model = UpdateApplicationGroupResponseBodyApplicationGroup()
+            self.application_group = temp_model.from_map(m['ApplicationGroup'])
+        return self
+
+
+class UpdateApplicationGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateApplicationGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateApplicationGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateExecutionRequest(TeaModel):
     def __init__(
         self,
@@ -12013,12 +14137,14 @@ class UpdateParameterRequest(TeaModel):
         value: str = None,
         description: str = None,
         tags: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
         self.value = value
         self.description = description
         self.tags = tags
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -12039,6 +14165,8 @@ class UpdateParameterRequest(TeaModel):
             result['Description'] = self.description
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12053,6 +14181,8 @@ class UpdateParameterRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -12063,11 +14193,12 @@ class UpdateParameterResponseBodyParameter(TeaModel):
         updated_date: str = None,
         updated_by: str = None,
         tags: str = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -12076,11 +14207,12 @@ class UpdateParameterResponseBodyParameter(TeaModel):
         self.updated_date = updated_date
         self.updated_by = updated_by
         self.tags = tags
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -12102,16 +14234,18 @@ class UpdateParameterResponseBodyParameter(TeaModel):
             result['UpdatedBy'] = self.updated_by
         if self.tags is not None:
             result['Tags'] = self.tags
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -12130,16 +14264,18 @@ class UpdateParameterResponseBodyParameter(TeaModel):
             self.updated_by = m.get('UpdatedBy')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -12356,11 +14492,11 @@ class UpdatePatchBaselineResponseBodyPatchBaseline(TeaModel):
 class UpdatePatchBaselineResponseBody(TeaModel):
     def __init__(
         self,
-        patch_baseline: UpdatePatchBaselineResponseBodyPatchBaseline = None,
         request_id: str = None,
+        patch_baseline: UpdatePatchBaselineResponseBodyPatchBaseline = None,
     ):
-        self.patch_baseline = patch_baseline
         self.request_id = request_id
+        self.patch_baseline = patch_baseline
 
     def validate(self):
         if self.patch_baseline:
@@ -12372,19 +14508,19 @@ class UpdatePatchBaselineResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.patch_baseline is not None:
-            result['PatchBaseline'] = self.patch_baseline.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.patch_baseline is not None:
+            result['PatchBaseline'] = self.patch_baseline.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('PatchBaseline') is not None:
             temp_model = UpdatePatchBaselineResponseBodyPatchBaseline()
             self.patch_baseline = temp_model.from_map(m['PatchBaseline'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -12433,12 +14569,14 @@ class UpdateSecretParameterRequest(TeaModel):
         value: str = None,
         description: str = None,
         tags: Dict[str, Any] = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
         self.value = value
         self.description = description
         self.tags = tags
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -12459,6 +14597,8 @@ class UpdateSecretParameterRequest(TeaModel):
             result['Description'] = self.description
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12473,6 +14613,8 @@ class UpdateSecretParameterRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -12484,12 +14626,14 @@ class UpdateSecretParameterShrinkRequest(TeaModel):
         value: str = None,
         description: str = None,
         tags_shrink: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.name = name
         self.value = value
         self.description = description
         self.tags_shrink = tags_shrink
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -12510,6 +14654,8 @@ class UpdateSecretParameterShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12524,6 +14670,8 @@ class UpdateSecretParameterShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -12535,11 +14683,12 @@ class UpdateSecretParameterResponseBodyParameter(TeaModel):
         updated_by: str = None,
         key_id: str = None,
         tags: str = None,
-        constraints: str = None,
         description: str = None,
+        constraints: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
-        parameter_version: int = None,
         created_date: str = None,
+        parameter_version: int = None,
         name: str = None,
         id: str = None,
         share_type: str = None,
@@ -12549,11 +14698,12 @@ class UpdateSecretParameterResponseBodyParameter(TeaModel):
         self.updated_by = updated_by
         self.key_id = key_id
         self.tags = tags
-        self.constraints = constraints
         self.description = description
+        self.constraints = constraints
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
-        self.parameter_version = parameter_version
         self.created_date = created_date
+        self.parameter_version = parameter_version
         self.name = name
         self.id = id
         self.share_type = share_type
@@ -12577,16 +14727,18 @@ class UpdateSecretParameterResponseBodyParameter(TeaModel):
             result['KeyId'] = self.key_id
         if self.tags is not None:
             result['Tags'] = self.tags
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints
         if self.description is not None:
             result['Description'] = self.description
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
-        if self.parameter_version is not None:
-            result['ParameterVersion'] = self.parameter_version
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
+        if self.parameter_version is not None:
+            result['ParameterVersion'] = self.parameter_version
         if self.name is not None:
             result['Name'] = self.name
         if self.id is not None:
@@ -12607,16 +14759,18 @@ class UpdateSecretParameterResponseBodyParameter(TeaModel):
             self.key_id = m.get('KeyId')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
-        if m.get('Constraints') is not None:
-            self.constraints = m.get('Constraints')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
-        if m.get('ParameterVersion') is not None:
-            self.parameter_version = m.get('ParameterVersion')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
+        if m.get('ParameterVersion') is not None:
+            self.parameter_version = m.get('ParameterVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Id') is not None:
@@ -12711,6 +14865,7 @@ class UpdateStateConfigurationRequest(TeaModel):
         client_token: str = None,
         state_configuration_id: str = None,
         tags: Dict[str, Any] = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.description = description
@@ -12722,6 +14877,7 @@ class UpdateStateConfigurationRequest(TeaModel):
         self.client_token = client_token
         self.state_configuration_id = state_configuration_id
         self.tags = tags
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -12752,6 +14908,8 @@ class UpdateStateConfigurationRequest(TeaModel):
             result['StateConfigurationId'] = self.state_configuration_id
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12776,6 +14934,8 @@ class UpdateStateConfigurationRequest(TeaModel):
             self.state_configuration_id = m.get('StateConfigurationId')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -12792,6 +14952,7 @@ class UpdateStateConfigurationShrinkRequest(TeaModel):
         client_token: str = None,
         state_configuration_id: str = None,
         tags_shrink: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.description = description
@@ -12803,6 +14964,7 @@ class UpdateStateConfigurationShrinkRequest(TeaModel):
         self.client_token = client_token
         self.state_configuration_id = state_configuration_id
         self.tags_shrink = tags_shrink
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -12833,6 +14995,8 @@ class UpdateStateConfigurationShrinkRequest(TeaModel):
             result['StateConfigurationId'] = self.state_configuration_id
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12857,6 +15021,8 @@ class UpdateStateConfigurationShrinkRequest(TeaModel):
             self.state_configuration_id = m.get('StateConfigurationId')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -12864,31 +15030,33 @@ class UpdateStateConfigurationResponseBodyStateConfiguration(TeaModel):
     def __init__(
         self,
         update_time: str = None,
-        targets: str = None,
         create_time: str = None,
+        targets: str = None,
         tags: Dict[str, Any] = None,
-        schedule_expression: str = None,
         state_configuration_id: str = None,
+        schedule_expression: str = None,
         template_name: str = None,
         template_version: str = None,
-        schedule_type: str = None,
         configure_mode: str = None,
+        schedule_type: str = None,
         parameters: str = None,
         description: str = None,
+        resource_group_id: str = None,
         template_id: str = None,
     ):
         self.update_time = update_time
-        self.targets = targets
         self.create_time = create_time
+        self.targets = targets
         self.tags = tags
-        self.schedule_expression = schedule_expression
         self.state_configuration_id = state_configuration_id
+        self.schedule_expression = schedule_expression
         self.template_name = template_name
         self.template_version = template_version
-        self.schedule_type = schedule_type
         self.configure_mode = configure_mode
+        self.schedule_type = schedule_type
         self.parameters = parameters
         self.description = description
+        self.resource_group_id = resource_group_id
         self.template_id = template_id
 
     def validate(self):
@@ -12902,28 +15070,30 @@ class UpdateStateConfigurationResponseBodyStateConfiguration(TeaModel):
         result = dict()
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
-        if self.targets is not None:
-            result['Targets'] = self.targets
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.targets is not None:
+            result['Targets'] = self.targets
         if self.tags is not None:
             result['Tags'] = self.tags
-        if self.schedule_expression is not None:
-            result['ScheduleExpression'] = self.schedule_expression
         if self.state_configuration_id is not None:
             result['StateConfigurationId'] = self.state_configuration_id
+        if self.schedule_expression is not None:
+            result['ScheduleExpression'] = self.schedule_expression
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
         if self.template_version is not None:
             result['TemplateVersion'] = self.template_version
-        if self.schedule_type is not None:
-            result['ScheduleType'] = self.schedule_type
         if self.configure_mode is not None:
             result['ConfigureMode'] = self.configure_mode
+        if self.schedule_type is not None:
+            result['ScheduleType'] = self.schedule_type
         if self.parameters is not None:
             result['Parameters'] = self.parameters
         if self.description is not None:
             result['Description'] = self.description
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
@@ -12932,28 +15102,30 @@ class UpdateStateConfigurationResponseBodyStateConfiguration(TeaModel):
         m = m or dict()
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
-        if m.get('Targets') is not None:
-            self.targets = m.get('Targets')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('Targets') is not None:
+            self.targets = m.get('Targets')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
-        if m.get('ScheduleExpression') is not None:
-            self.schedule_expression = m.get('ScheduleExpression')
         if m.get('StateConfigurationId') is not None:
             self.state_configuration_id = m.get('StateConfigurationId')
+        if m.get('ScheduleExpression') is not None:
+            self.schedule_expression = m.get('ScheduleExpression')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
         if m.get('TemplateVersion') is not None:
             self.template_version = m.get('TemplateVersion')
-        if m.get('ScheduleType') is not None:
-            self.schedule_type = m.get('ScheduleType')
         if m.get('ConfigureMode') is not None:
             self.configure_mode = m.get('ConfigureMode')
+        if m.get('ScheduleType') is not None:
+            self.schedule_type = m.get('ScheduleType')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
@@ -13045,12 +15217,14 @@ class UpdateTemplateRequest(TeaModel):
         content: str = None,
         tags: Dict[str, Any] = None,
         version_name: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
         self.content = content
         self.tags = tags
         self.version_name = version_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -13071,6 +15245,8 @@ class UpdateTemplateRequest(TeaModel):
             result['Tags'] = self.tags
         if self.version_name is not None:
             result['VersionName'] = self.version_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13085,6 +15261,8 @@ class UpdateTemplateRequest(TeaModel):
             self.tags = m.get('Tags')
         if m.get('VersionName') is not None:
             self.version_name = m.get('VersionName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -13096,12 +15274,14 @@ class UpdateTemplateShrinkRequest(TeaModel):
         content: str = None,
         tags_shrink: str = None,
         version_name: str = None,
+        resource_group_id: str = None,
     ):
         self.region_id = region_id
         self.template_name = template_name
         self.content = content
         self.tags_shrink = tags_shrink
         self.version_name = version_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -13122,6 +15302,8 @@ class UpdateTemplateShrinkRequest(TeaModel):
             result['Tags'] = self.tags_shrink
         if self.version_name is not None:
             result['VersionName'] = self.version_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13136,6 +15318,8 @@ class UpdateTemplateShrinkRequest(TeaModel):
             self.tags_shrink = m.get('Tags')
         if m.get('VersionName') is not None:
             self.version_name = m.get('VersionName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -13150,10 +15334,11 @@ class UpdateTemplateResponseBodyTemplate(TeaModel):
         template_version: str = None,
         template_format: str = None,
         description: str = None,
+        resource_group_id: str = None,
         created_by: str = None,
         created_date: str = None,
-        has_trigger: bool = None,
         template_id: str = None,
+        has_trigger: bool = None,
         share_type: str = None,
     ):
         self.hash = hash
@@ -13164,10 +15349,11 @@ class UpdateTemplateResponseBodyTemplate(TeaModel):
         self.template_version = template_version
         self.template_format = template_format
         self.description = description
+        self.resource_group_id = resource_group_id
         self.created_by = created_by
         self.created_date = created_date
-        self.has_trigger = has_trigger
         self.template_id = template_id
+        self.has_trigger = has_trigger
         self.share_type = share_type
 
     def validate(self):
@@ -13195,14 +15381,16 @@ class UpdateTemplateResponseBodyTemplate(TeaModel):
             result['TemplateFormat'] = self.template_format
         if self.description is not None:
             result['Description'] = self.description
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
         if self.created_date is not None:
             result['CreatedDate'] = self.created_date
-        if self.has_trigger is not None:
-            result['HasTrigger'] = self.has_trigger
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.has_trigger is not None:
+            result['HasTrigger'] = self.has_trigger
         if self.share_type is not None:
             result['ShareType'] = self.share_type
         return result
@@ -13225,14 +15413,16 @@ class UpdateTemplateResponseBodyTemplate(TeaModel):
             self.template_format = m.get('TemplateFormat')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
         if m.get('CreatedDate') is not None:
             self.created_date = m.get('CreatedDate')
-        if m.get('HasTrigger') is not None:
-            self.has_trigger = m.get('HasTrigger')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('HasTrigger') is not None:
+            self.has_trigger = m.get('HasTrigger')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
         return self
@@ -13397,17 +15587,17 @@ class ValidateTemplateContentResponseBodyTasks(TeaModel):
 class ValidateTemplateContentResponseBody(TeaModel):
     def __init__(
         self,
-        parameters: str = None,
-        tasks: List[ValidateTemplateContentResponseBodyTasks] = None,
-        request_id: str = None,
         outputs: str = None,
+        request_id: str = None,
+        parameters: str = None,
         ram_role: str = None,
+        tasks: List[ValidateTemplateContentResponseBodyTasks] = None,
     ):
-        self.parameters = parameters
-        self.tasks = tasks
-        self.request_id = request_id
         self.outputs = outputs
+        self.request_id = request_id
+        self.parameters = parameters
         self.ram_role = ram_role
+        self.tasks = tasks
 
     def validate(self):
         if self.tasks:
@@ -13421,35 +15611,35 @@ class ValidateTemplateContentResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.outputs is not None:
+            result['Outputs'] = self.outputs
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.parameters is not None:
             result['Parameters'] = self.parameters
+        if self.ram_role is not None:
+            result['RamRole'] = self.ram_role
         result['Tasks'] = []
         if self.tasks is not None:
             for k in self.tasks:
                 result['Tasks'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.outputs is not None:
-            result['Outputs'] = self.outputs
-        if self.ram_role is not None:
-            result['RamRole'] = self.ram_role
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Outputs') is not None:
+            self.outputs = m.get('Outputs')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
+        if m.get('RamRole') is not None:
+            self.ram_role = m.get('RamRole')
         self.tasks = []
         if m.get('Tasks') is not None:
             for k in m.get('Tasks'):
                 temp_model = ValidateTemplateContentResponseBodyTasks()
                 self.tasks.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Outputs') is not None:
-            self.outputs = m.get('Outputs')
-        if m.get('RamRole') is not None:
-            self.ram_role = m.get('RamRole')
         return self
 
 
