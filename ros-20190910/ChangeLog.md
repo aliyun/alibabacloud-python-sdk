@@ -1,3 +1,7 @@
+2021-07-20 Version: 2.0.5
+- GetStack supports resource progress.
+- ValidateTemplate supports Outputs.
+
 2021-03-31 Version: 2.0.4
 - Generated python 2019-09-10 for ROS.
 

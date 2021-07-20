@@ -3552,11 +3552,13 @@ class GetStackRequest(TeaModel):
         region_id: str = None,
         client_token: str = None,
         output_option: str = None,
+        show_resource_progress: str = None,
     ):
         self.stack_id = stack_id
         self.region_id = region_id
         self.client_token = client_token
         self.output_option = output_option
+        self.show_resource_progress = show_resource_progress
 
     def validate(self):
         pass
@@ -3575,6 +3577,8 @@ class GetStackRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.output_option is not None:
             result['OutputOption'] = self.output_option
+        if self.show_resource_progress is not None:
+            result['ShowResourceProgress'] = self.show_resource_progress
         return result
 
     def from_map(self, m: dict = None):
@@ -3587,6 +3591,8 @@ class GetStackRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('OutputOption') is not None:
             self.output_option = m.get('OutputOption')
+        if m.get('ShowResourceProgress') is not None:
+            self.show_resource_progress = m.get('ShowResourceProgress')
         return self
 
 
@@ -3656,6 +3662,116 @@ class GetStackResponseBodyTags(TeaModel):
         return self
 
 
+class GetStackResponseBodyResourceProgressInProgressResourceDetails(TeaModel):
+    def __init__(
+        self,
+        resource_name: str = None,
+        resource_type: str = None,
+        progress_value: float = None,
+        progress_target_value: float = None,
+    ):
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+        self.progress_value = progress_value
+        self.progress_target_value = progress_target_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.progress_value is not None:
+            result['ProgressValue'] = self.progress_value
+        if self.progress_target_value is not None:
+            result['ProgressTargetValue'] = self.progress_target_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ProgressValue') is not None:
+            self.progress_value = m.get('ProgressValue')
+        if m.get('ProgressTargetValue') is not None:
+            self.progress_target_value = m.get('ProgressTargetValue')
+        return self
+
+
+class GetStackResponseBodyResourceProgress(TeaModel):
+    def __init__(
+        self,
+        total_resource_count: int = None,
+        success_resource_count: int = None,
+        failed_resource_count: int = None,
+        in_progress_resource_count: int = None,
+        pending_resource_count: int = None,
+        in_progress_resource_details: List[GetStackResponseBodyResourceProgressInProgressResourceDetails] = None,
+    ):
+        self.total_resource_count = total_resource_count
+        self.success_resource_count = success_resource_count
+        self.failed_resource_count = failed_resource_count
+        self.in_progress_resource_count = in_progress_resource_count
+        self.pending_resource_count = pending_resource_count
+        self.in_progress_resource_details = in_progress_resource_details
+
+    def validate(self):
+        if self.in_progress_resource_details:
+            for k in self.in_progress_resource_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_resource_count is not None:
+            result['TotalResourceCount'] = self.total_resource_count
+        if self.success_resource_count is not None:
+            result['SuccessResourceCount'] = self.success_resource_count
+        if self.failed_resource_count is not None:
+            result['FailedResourceCount'] = self.failed_resource_count
+        if self.in_progress_resource_count is not None:
+            result['InProgressResourceCount'] = self.in_progress_resource_count
+        if self.pending_resource_count is not None:
+            result['PendingResourceCount'] = self.pending_resource_count
+        result['InProgressResourceDetails'] = []
+        if self.in_progress_resource_details is not None:
+            for k in self.in_progress_resource_details:
+                result['InProgressResourceDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalResourceCount') is not None:
+            self.total_resource_count = m.get('TotalResourceCount')
+        if m.get('SuccessResourceCount') is not None:
+            self.success_resource_count = m.get('SuccessResourceCount')
+        if m.get('FailedResourceCount') is not None:
+            self.failed_resource_count = m.get('FailedResourceCount')
+        if m.get('InProgressResourceCount') is not None:
+            self.in_progress_resource_count = m.get('InProgressResourceCount')
+        if m.get('PendingResourceCount') is not None:
+            self.pending_resource_count = m.get('PendingResourceCount')
+        self.in_progress_resource_details = []
+        if m.get('InProgressResourceDetails') is not None:
+            for k in m.get('InProgressResourceDetails'):
+                temp_model = GetStackResponseBodyResourceProgressInProgressResourceDetails()
+                self.in_progress_resource_details.append(temp_model.from_map(k))
+        return self
+
+
 class GetStackResponseBody(TeaModel):
     def __init__(
         self,
@@ -3683,6 +3799,7 @@ class GetStackResponseBody(TeaModel):
         timeout_in_minutes: int = None,
         stack_id: str = None,
         resource_group_id: str = None,
+        resource_progress: GetStackResponseBodyResourceProgress = None,
     ):
         self.status = status
         self.description = description
@@ -3708,6 +3825,7 @@ class GetStackResponseBody(TeaModel):
         self.timeout_in_minutes = timeout_in_minutes
         self.stack_id = stack_id
         self.resource_group_id = resource_group_id
+        self.resource_progress = resource_progress
 
     def validate(self):
         if self.parameters:
@@ -3718,6 +3836,8 @@ class GetStackResponseBody(TeaModel):
             for k in self.tags:
                 if k:
                     k.validate()
+        if self.resource_progress:
+            self.resource_progress.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3777,6 +3897,8 @@ class GetStackResponseBody(TeaModel):
             result['StackId'] = self.stack_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_progress is not None:
+            result['ResourceProgress'] = self.resource_progress.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -3835,6 +3957,9 @@ class GetStackResponseBody(TeaModel):
             self.stack_id = m.get('StackId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceProgress') is not None:
+            temp_model = GetStackResponseBodyResourceProgress()
+            self.resource_progress = temp_model.from_map(m['ResourceProgress'])
         return self
 
 
@@ -4019,9 +4144,11 @@ class GetStackGroupRequest(TeaModel):
         self,
         region_id: str = None,
         stack_group_name: str = None,
+        stack_group_id: str = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
+        self.stack_group_id = stack_group_id
 
     def validate(self):
         pass
@@ -4036,6 +4163,8 @@ class GetStackGroupRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.stack_group_name is not None:
             result['StackGroupName'] = self.stack_group_name
+        if self.stack_group_id is not None:
+            result['StackGroupId'] = self.stack_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4044,6 +4173,8 @@ class GetStackGroupRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('StackGroupName') is not None:
             self.stack_group_name = m.get('StackGroupName')
+        if m.get('StackGroupId') is not None:
+            self.stack_group_id = m.get('StackGroupId')
         return self
 
 
@@ -11769,19 +11900,57 @@ class ValidateTemplateRequest(TeaModel):
         return self
 
 
+class ValidateTemplateResponseBodyOutputs(TeaModel):
+    def __init__(
+        self,
+        output_key: str = None,
+        description: str = None,
+    ):
+        self.output_key = output_key
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output_key is not None:
+            result['OutputKey'] = self.output_key
+        if self.description is not None:
+            result['Description'] = self.description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutputKey') is not None:
+            self.output_key = m.get('OutputKey')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        return self
+
+
 class ValidateTemplateResponseBody(TeaModel):
     def __init__(
         self,
         description: str = None,
         parameters: List[Dict[str, Any]] = None,
         request_id: str = None,
+        outputs: List[ValidateTemplateResponseBodyOutputs] = None,
     ):
         self.description = description
         self.parameters = parameters
         self.request_id = request_id
+        self.outputs = outputs
 
     def validate(self):
-        pass
+        if self.outputs:
+            for k in self.outputs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11795,6 +11964,10 @@ class ValidateTemplateResponseBody(TeaModel):
             result['Parameters'] = self.parameters
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Outputs'] = []
+        if self.outputs is not None:
+            for k in self.outputs:
+                result['Outputs'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -11805,6 +11978,11 @@ class ValidateTemplateResponseBody(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.outputs = []
+        if m.get('Outputs') is not None:
+            for k in m.get('Outputs'):
+                temp_model = ValidateTemplateResponseBodyOutputs()
+                self.outputs.append(temp_model.from_map(k))
         return self
 
 
