@@ -1,3 +1,6 @@
+2021-07-20 Version: 2.2.4
+- Temppreview interface parameter name change.
+
 2021-07-16 Version: 2.2.3
 - New task query status interface.
 - Parameter change returned by publishing interface.
