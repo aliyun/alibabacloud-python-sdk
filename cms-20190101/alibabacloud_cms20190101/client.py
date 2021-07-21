@@ -3327,9 +3327,13 @@ class Client(OpenApiClient):
 
     def describe_monitoring_agent_access_key_with_options(
         self,
+        request: cms_20190101_models.DescribeMonitoringAgentAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse(),
             self.do_rpcrequest('DescribeMonitoringAgentAccessKey', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
@@ -3337,27 +3341,41 @@ class Client(OpenApiClient):
 
     async def describe_monitoring_agent_access_key_with_options_async(
         self,
+        request: cms_20190101_models.DescribeMonitoringAgentAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse(),
             await self.do_rpcrequest_async('DescribeMonitoringAgentAccessKey', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_monitoring_agent_access_key(self) -> cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse:
+    def describe_monitoring_agent_access_key(
+        self,
+        request: cms_20190101_models.DescribeMonitoringAgentAccessKeyRequest,
+    ) -> cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_monitoring_agent_access_key_with_options(runtime)
+        return self.describe_monitoring_agent_access_key_with_options(request, runtime)
 
-    async def describe_monitoring_agent_access_key_async(self) -> cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse:
+    async def describe_monitoring_agent_access_key_async(
+        self,
+        request: cms_20190101_models.DescribeMonitoringAgentAccessKeyRequest,
+    ) -> cms_20190101_models.DescribeMonitoringAgentAccessKeyResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_monitoring_agent_access_key_with_options_async(runtime)
+        return await self.describe_monitoring_agent_access_key_with_options_async(request, runtime)
 
     def describe_monitoring_agent_config_with_options(
         self,
+        request: cms_20190101_models.DescribeMonitoringAgentConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeMonitoringAgentConfigResponse(),
             self.do_rpcrequest('DescribeMonitoringAgentConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
@@ -3365,21 +3383,31 @@ class Client(OpenApiClient):
 
     async def describe_monitoring_agent_config_with_options_async(
         self,
+        request: cms_20190101_models.DescribeMonitoringAgentConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeMonitoringAgentConfigResponse(),
             await self.do_rpcrequest_async('DescribeMonitoringAgentConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_monitoring_agent_config(self) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
+    def describe_monitoring_agent_config(
+        self,
+        request: cms_20190101_models.DescribeMonitoringAgentConfigRequest,
+    ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_monitoring_agent_config_with_options(runtime)
+        return self.describe_monitoring_agent_config_with_options(request, runtime)
 
-    async def describe_monitoring_agent_config_async(self) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
+    async def describe_monitoring_agent_config_async(
+        self,
+        request: cms_20190101_models.DescribeMonitoringAgentConfigRequest,
+    ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_monitoring_agent_config_with_options_async(runtime)
+        return await self.describe_monitoring_agent_config_with_options_async(request, runtime)
 
     def describe_monitoring_agent_hosts_with_options(
         self,
@@ -3509,9 +3537,13 @@ class Client(OpenApiClient):
 
     def describe_monitoring_config_with_options(
         self,
+        request: cms_20190101_models.DescribeMonitoringConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeMonitoringConfigResponse(),
             self.do_rpcrequest('DescribeMonitoringConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
@@ -3519,21 +3551,31 @@ class Client(OpenApiClient):
 
     async def describe_monitoring_config_with_options_async(
         self,
+        request: cms_20190101_models.DescribeMonitoringConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeMonitoringConfigResponse(),
             await self.do_rpcrequest_async('DescribeMonitoringConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_monitoring_config(self) -> cms_20190101_models.DescribeMonitoringConfigResponse:
+    def describe_monitoring_config(
+        self,
+        request: cms_20190101_models.DescribeMonitoringConfigRequest,
+    ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_monitoring_config_with_options(runtime)
+        return self.describe_monitoring_config_with_options(request, runtime)
 
-    async def describe_monitoring_config_async(self) -> cms_20190101_models.DescribeMonitoringConfigResponse:
+    async def describe_monitoring_config_async(
+        self,
+        request: cms_20190101_models.DescribeMonitoringConfigRequest,
+    ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_monitoring_config_with_options_async(runtime)
+        return await self.describe_monitoring_config_with_options_async(request, runtime)
 
     def describe_monitor_resource_quota_attribute_with_options(
         self,
@@ -3621,9 +3663,13 @@ class Client(OpenApiClient):
 
     def describe_products_of_active_metric_rule_with_options(
         self,
+        request: cms_20190101_models.DescribeProductsOfActiveMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse(),
             self.do_rpcrequest('DescribeProductsOfActiveMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
@@ -3631,21 +3677,31 @@ class Client(OpenApiClient):
 
     async def describe_products_of_active_metric_rule_with_options_async(
         self,
+        request: cms_20190101_models.DescribeProductsOfActiveMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse(),
             await self.do_rpcrequest_async('DescribeProductsOfActiveMetricRule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_products_of_active_metric_rule(self) -> cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse:
+    def describe_products_of_active_metric_rule(
+        self,
+        request: cms_20190101_models.DescribeProductsOfActiveMetricRuleRequest,
+    ) -> cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_products_of_active_metric_rule_with_options(runtime)
+        return self.describe_products_of_active_metric_rule_with_options(request, runtime)
 
-    async def describe_products_of_active_metric_rule_async(self) -> cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse:
+    async def describe_products_of_active_metric_rule_async(
+        self,
+        request: cms_20190101_models.DescribeProductsOfActiveMetricRuleRequest,
+    ) -> cms_20190101_models.DescribeProductsOfActiveMetricRuleResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_products_of_active_metric_rule_with_options_async(runtime)
+        return await self.describe_products_of_active_metric_rule_with_options_async(request, runtime)
 
     def describe_project_meta_with_options(
         self,
@@ -3817,9 +3873,13 @@ class Client(OpenApiClient):
 
     def describe_site_monitor_quota_with_options(
         self,
+        request: cms_20190101_models.DescribeSiteMonitorQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeSiteMonitorQuotaResponse(),
             self.do_rpcrequest('DescribeSiteMonitorQuota', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
@@ -3827,21 +3887,31 @@ class Client(OpenApiClient):
 
     async def describe_site_monitor_quota_with_options_async(
         self,
+        request: cms_20190101_models.DescribeSiteMonitorQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
         return TeaCore.from_map(
             cms_20190101_models.DescribeSiteMonitorQuotaResponse(),
             await self.do_rpcrequest_async('DescribeSiteMonitorQuota', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_site_monitor_quota(self) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
+    def describe_site_monitor_quota(
+        self,
+        request: cms_20190101_models.DescribeSiteMonitorQuotaRequest,
+    ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_site_monitor_quota_with_options(runtime)
+        return self.describe_site_monitor_quota_with_options(request, runtime)
 
-    async def describe_site_monitor_quota_async(self) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
+    async def describe_site_monitor_quota_async(
+        self,
+        request: cms_20190101_models.DescribeSiteMonitorQuotaRequest,
+    ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_site_monitor_quota_with_options_async(runtime)
+        return await self.describe_site_monitor_quota_with_options_async(request, runtime)
 
     def describe_site_monitor_statistics_with_options(
         self,
