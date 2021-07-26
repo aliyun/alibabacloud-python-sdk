@@ -1,3 +1,6 @@
+2021-07-26 Version: 1.0.3
+- Add Resource Api.
+
 2021-03-31 Version: 1.0.2
 - Generated python 2020-08-25 for cmn.
 
