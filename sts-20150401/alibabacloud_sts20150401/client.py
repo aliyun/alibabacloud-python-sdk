@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -84,7 +85,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sts_20150401_models.AssumeRoleResponse().from_map(
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleResponse(),
             self.do_rpcrequest('AssumeRole', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -97,7 +99,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sts_20150401_models.AssumeRoleResponse().from_map(
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleResponse(),
             await self.do_rpcrequest_async('AssumeRole', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -124,7 +127,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sts_20150401_models.AssumeRoleWithSAMLResponse().from_map(
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleWithSAMLResponse(),
             self.do_rpcrequest('AssumeRoleWithSAML', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -137,7 +141,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return sts_20150401_models.AssumeRoleWithSAMLResponse().from_map(
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleWithSAMLResponse(),
             await self.do_rpcrequest_async('AssumeRoleWithSAML', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -160,7 +165,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.GetCallerIdentityResponse:
         req = open_api_models.OpenApiRequest()
-        return sts_20150401_models.GetCallerIdentityResponse().from_map(
+        return TeaCore.from_map(
+            sts_20150401_models.GetCallerIdentityResponse(),
             self.do_rpcrequest('GetCallerIdentity', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -169,7 +175,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.GetCallerIdentityResponse:
         req = open_api_models.OpenApiRequest()
-        return sts_20150401_models.GetCallerIdentityResponse().from_map(
+        return TeaCore.from_map(
+            sts_20150401_models.GetCallerIdentityResponse(),
             await self.do_rpcrequest_async('GetCallerIdentity', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 

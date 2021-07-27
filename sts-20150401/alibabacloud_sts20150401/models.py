@@ -21,6 +21,10 @@ class AssumeRoleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.duration_seconds is not None:
             result['DurationSeconds'] = self.duration_seconds
@@ -58,6 +62,10 @@ class AssumeRoleResponseBodyAssumedRoleUser(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.assumed_role_id is not None:
             result['AssumedRoleId'] = self.assumed_role_id
@@ -91,6 +99,10 @@ class AssumeRoleResponseBodyCredentials(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
@@ -133,6 +145,10 @@ class AssumeRoleResponseBody(TeaModel):
             self.credentials.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -171,6 +187,10 @@ class AssumeRoleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -207,6 +227,10 @@ class AssumeRoleWithSAMLRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.samlprovider_arn is not None:
             result['SAMLProviderArn'] = self.samlprovider_arn
@@ -252,6 +276,10 @@ class AssumeRoleWithSAMLResponseBodySAMLAssertionInfo(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subject_type is not None:
             result['SubjectType'] = self.subject_type
@@ -289,6 +317,10 @@ class AssumeRoleWithSAMLResponseBodyAssumedRoleUser(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.assumed_role_id is not None:
             result['AssumedRoleId'] = self.assumed_role_id
@@ -322,6 +354,10 @@ class AssumeRoleWithSAMLResponseBodyCredentials(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
@@ -368,6 +404,10 @@ class AssumeRoleWithSAMLResponseBody(TeaModel):
             self.credentials.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -411,6 +451,10 @@ class AssumeRoleWithSAMLResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -451,6 +495,10 @@ class GetCallerIdentityResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.identity_type is not None:
             result['IdentityType'] = self.identity_type
@@ -503,6 +551,10 @@ class GetCallerIdentityResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
