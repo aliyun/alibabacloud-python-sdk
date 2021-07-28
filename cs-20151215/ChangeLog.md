@@ -1,3 +1,9 @@
+2021-07-28 Version: 2.4.5
+- Publish API CreateTrigger DeleteTrigger, DescribeTrigger, These three apis will replace CreateKubernetesTrigger, DeleteKubernetesTrigger, and GetKubernetesTrigger for trigger operations, The new API has authentication capabilities and operations are more controlled.
+- CreateCluster Added the parameters for security hardening and enabling the log function of the control plane.
+- DeleteClusterNodes returns cluster_id, request_id, and task_id.
+- DeleteClusterNodepool returns request_id.
+
 2021-07-13 Version: 2.4.4
 - Publish CreateAutosaclingConfig API.
 

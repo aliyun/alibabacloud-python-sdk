@@ -1062,6 +1062,76 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('OpenAckService', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/service/open', 'json', req, runtime)
         )
 
+    def create_trigger(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateTriggerRequest,
+    ) -> cs20151215_models.CreateTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_trigger_with_options(cluster_id, request, headers, runtime)
+
+    async def create_trigger_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateTriggerRequest,
+    ) -> cs20151215_models.CreateTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_trigger_with_options_async(cluster_id, request, headers, runtime)
+
+    def create_trigger_with_options(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateTriggerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CreateTriggerResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.project_id):
+            body['project_id'] = request.project_id
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CreateTriggerResponse(),
+            self.do_roarequest('CreateTrigger', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/triggers', 'json', req, runtime)
+        )
+
+    async def create_trigger_with_options_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateTriggerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CreateTriggerResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.project_id):
+            body['project_id'] = request.project_id
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CreateTriggerResponse(),
+            await self.do_roarequest_async('CreateTrigger', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/triggers', 'json', req, runtime)
+        )
+
     def scale_cluster_node_pool(
         self,
         cluster_id: str,
@@ -1170,6 +1240,76 @@ class Client(OpenApiClient):
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterNodePoolDetailResponse(),
             await self.do_roarequest_async('DescribeClusterNodePoolDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
+        )
+
+    def describe_trigger(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.DescribeTriggerRequest,
+    ) -> cs20151215_models.DescribeTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_trigger_with_options(cluster_id, request, headers, runtime)
+
+    async def describe_trigger_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.DescribeTriggerRequest,
+    ) -> cs20151215_models.DescribeTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_trigger_with_options_async(cluster_id, request, headers, runtime)
+
+    def describe_trigger_with_options(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.DescribeTriggerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeTriggerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeTriggerResponse(),
+            self.do_roarequest('DescribeTrigger', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/[cluster_id]/triggers', 'array', req, runtime)
+        )
+
+    async def describe_trigger_with_options_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.DescribeTriggerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeTriggerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeTriggerResponse(),
+            await self.do_roarequest_async('DescribeTrigger', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/[cluster_id]/triggers', 'array', req, runtime)
         )
 
     def create_cluster_node_pool(
@@ -1716,6 +1856,10 @@ class Client(OpenApiClient):
             body['platform'] = request.platform
         if not UtilClient.is_unset(request.os_type):
             body['os_type'] = request.os_type
+        if not UtilClient.is_unset(request.soc_enabled):
+            body['soc_enabled'] = request.soc_enabled
+        if not UtilClient.is_unset(request.cis_enabled):
+            body['cis_enabled'] = request.cis_enabled
         if not UtilClient.is_unset(request.cpu_policy):
             body['cpu_policy'] = request.cpu_policy
         if not UtilClient.is_unset(request.proxy_mode):
@@ -1762,6 +1906,8 @@ class Client(OpenApiClient):
             body['worker_system_disk_size'] = request.worker_system_disk_size
         if not UtilClient.is_unset(request.worker_system_disk_snapshot_policy_id):
             body['worker_system_disk_snapshot_policy_id'] = request.worker_system_disk_snapshot_policy_id
+        if not UtilClient.is_unset(request.worker_system_disk_performance_level):
+            body['worker_system_disk_performance_level'] = request.worker_system_disk_performance_level
         if not UtilClient.is_unset(request.worker_data_disks):
             body['worker_data_disks'] = request.worker_data_disks
         if not UtilClient.is_unset(request.worker_instance_charge_type):
@@ -1788,6 +1934,14 @@ class Client(OpenApiClient):
             body['zone_id'] = request.zone_id
         if not UtilClient.is_unset(request.profile):
             body['profile'] = request.profile
+        if not UtilClient.is_unset(request.logging_type):
+            body['logging_type'] = request.logging_type
+        if not UtilClient.is_unset(request.controlplane_log_ttl):
+            body['controlplane_log_ttl'] = request.controlplane_log_ttl
+        if not UtilClient.is_unset(request.controlplane_log_project):
+            body['controlplane_log_project'] = request.controlplane_log_project
+        if not UtilClient.is_unset(request.controlplane_log_components):
+            body['controlplane_log_components'] = request.controlplane_log_components
         if not UtilClient.is_unset(request.deletion_protection):
             body['deletion_protection'] = request.deletion_protection
         if not UtilClient.is_unset(request.disable_rollback):
@@ -1877,6 +2031,10 @@ class Client(OpenApiClient):
             body['platform'] = request.platform
         if not UtilClient.is_unset(request.os_type):
             body['os_type'] = request.os_type
+        if not UtilClient.is_unset(request.soc_enabled):
+            body['soc_enabled'] = request.soc_enabled
+        if not UtilClient.is_unset(request.cis_enabled):
+            body['cis_enabled'] = request.cis_enabled
         if not UtilClient.is_unset(request.cpu_policy):
             body['cpu_policy'] = request.cpu_policy
         if not UtilClient.is_unset(request.proxy_mode):
@@ -1923,6 +2081,8 @@ class Client(OpenApiClient):
             body['worker_system_disk_size'] = request.worker_system_disk_size
         if not UtilClient.is_unset(request.worker_system_disk_snapshot_policy_id):
             body['worker_system_disk_snapshot_policy_id'] = request.worker_system_disk_snapshot_policy_id
+        if not UtilClient.is_unset(request.worker_system_disk_performance_level):
+            body['worker_system_disk_performance_level'] = request.worker_system_disk_performance_level
         if not UtilClient.is_unset(request.worker_data_disks):
             body['worker_data_disks'] = request.worker_data_disks
         if not UtilClient.is_unset(request.worker_instance_charge_type):
@@ -1949,6 +2109,14 @@ class Client(OpenApiClient):
             body['zone_id'] = request.zone_id
         if not UtilClient.is_unset(request.profile):
             body['profile'] = request.profile
+        if not UtilClient.is_unset(request.logging_type):
+            body['logging_type'] = request.logging_type
+        if not UtilClient.is_unset(request.controlplane_log_ttl):
+            body['controlplane_log_ttl'] = request.controlplane_log_ttl
+        if not UtilClient.is_unset(request.controlplane_log_project):
+            body['controlplane_log_project'] = request.controlplane_log_project
+        if not UtilClient.is_unset(request.controlplane_log_components):
+            body['controlplane_log_components'] = request.controlplane_log_components
         if not UtilClient.is_unset(request.deletion_protection):
             body['deletion_protection'] = request.deletion_protection
         if not UtilClient.is_unset(request.disable_rollback):
@@ -2814,6 +2982,54 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DescribeExternalAgent', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/external/agent/deployment', 'json', req, runtime)
         )
 
+    def delete_trigger(
+        self,
+        cluster_id: str,
+        id: str,
+    ) -> cs20151215_models.DeleteTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_trigger_with_options(cluster_id, id, headers, runtime)
+
+    async def delete_trigger_async(
+        self,
+        cluster_id: str,
+        id: str,
+    ) -> cs20151215_models.DeleteTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_trigger_with_options_async(cluster_id, id, headers, runtime)
+
+    def delete_trigger_with_options(
+        self,
+        cluster_id: str,
+        id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DeleteTriggerResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DeleteTriggerResponse(),
+            self.do_roarequest('DeleteTrigger', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/[cluster_id]/triggers/[Id]', 'none', req, runtime)
+        )
+
+    async def delete_trigger_with_options_async(
+        self,
+        cluster_id: str,
+        id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DeleteTriggerResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DeleteTriggerResponse(),
+            await self.do_roarequest_async('DeleteTrigger', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/[cluster_id]/triggers/[Id]', 'none', req, runtime)
+        )
+
     def un_install_cluster_addons(
         self,
         cluster_id: str,
@@ -3494,7 +3710,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterNodepoolResponse(),
-            self.do_roarequest('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'none', req, runtime)
+            self.do_roarequest('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
         )
 
     async def delete_cluster_nodepool_with_options_async(
@@ -3509,7 +3725,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterNodepoolResponse(),
-            await self.do_roarequest_async('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'none', req, runtime)
+            await self.do_roarequest_async('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
         )
 
     def describe_cluster_addons_upgrade_status(
@@ -4457,7 +4673,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterNodesResponse(),
-            self.do_roarequest('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'none', req, runtime)
+            self.do_roarequest('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'json', req, runtime)
         )
 
     async def delete_cluster_nodes_with_options_async(
@@ -4481,5 +4697,5 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterNodesResponse(),
-            await self.do_roarequest_async('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'none', req, runtime)
+            await self.do_roarequest_async('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'json', req, runtime)
         )

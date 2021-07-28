@@ -3176,6 +3176,148 @@ class OpenAckServiceResponse(TeaModel):
         return self
 
 
+class CreateTriggerRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        project_id: str = None,
+        action: str = None,
+        type: str = None,
+    ):
+        # 集群ID。
+        self.cluster_id = cluster_id
+        # 项目名称。
+        self.project_id = project_id
+        # 触发器行为
+        self.action = action
+        # 触发器类型。默认deployment。
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.project_id is not None:
+            result['project_id'] = self.project_id
+        if self.action is not None:
+            result['action'] = self.action
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('project_id') is not None:
+            self.project_id = m.get('project_id')
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateTriggerResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        cluster_id: str = None,
+        project_id: str = None,
+        type: str = None,
+        action: str = None,
+    ):
+        # 触发器ID。
+        self.id = id
+        # 集群ID。
+        self.cluster_id = cluster_id
+        # 触发器项目名称。
+        self.project_id = project_id
+        # 触发器类型。默认值为 deployment 。
+        self.type = type
+        # 触发器行为。
+        self.action = action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.project_id is not None:
+            result['project_id'] = self.project_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.action is not None:
+            result['action'] = self.action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('project_id') is not None:
+            self.project_id = m.get('project_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        return self
+
+
+class CreateTriggerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateTriggerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateTriggerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ScaleClusterNodePoolRequest(TeaModel):
     def __init__(
         self,
@@ -4117,6 +4259,168 @@ class DescribeClusterNodePoolDetailResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeClusterNodePoolDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTriggerRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        type: str = None,
+        name: str = None,
+        action: str = None,
+    ):
+        # 应用所属命名空间。
+        self.namespace = namespace
+        # 应用类型。
+        self.type = type
+        # 应用名称。
+        self.name = name
+        # 触发器行为。
+        self.action = action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.action is not None:
+            result['action'] = self.action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        return self
+
+
+class DescribeTriggerResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        cluster_id: str = None,
+        project_id: str = None,
+        type: str = None,
+        action: str = None,
+        token: str = None,
+    ):
+        # 触发器ID。
+        self.id = id
+        # 触发器名称。
+        self.name = name
+        # 集群ID
+        self.cluster_id = cluster_id
+        # 触发器项目名称
+        self.project_id = project_id
+        # 触发器类型。
+        self.type = type
+        # 触发器行为
+        self.action = action
+        # Token
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.project_id is not None:
+            result['project_id'] = self.project_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.action is not None:
+            result['action'] = self.action
+        if self.token is not None:
+            result['token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('project_id') is not None:
+            self.project_id = m.get('project_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        return self
+
+
+class DescribeTriggerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: List[DescribeTriggerResponseBody] = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = DescribeTriggerResponseBody()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
@@ -5780,6 +6084,8 @@ class CreateClusterRequest(TeaModel):
         cloud_monitor_flags: bool = None,
         platform: str = None,
         os_type: str = None,
+        soc_enabled: bool = None,
+        cis_enabled: bool = None,
         cpu_policy: str = None,
         proxy_mode: str = None,
         node_port_range: str = None,
@@ -5803,6 +6109,7 @@ class CreateClusterRequest(TeaModel):
         worker_system_disk_category: str = None,
         worker_system_disk_size: int = None,
         worker_system_disk_snapshot_policy_id: str = None,
+        worker_system_disk_performance_level: str = None,
         worker_data_disks: List[DataDisk] = None,
         worker_instance_charge_type: str = None,
         worker_period_unit: str = None,
@@ -5816,6 +6123,10 @@ class CreateClusterRequest(TeaModel):
         nat_gateway: bool = None,
         zone_id: str = None,
         profile: str = None,
+        logging_type: str = None,
+        controlplane_log_ttl: str = None,
+        controlplane_log_project: str = None,
+        controlplane_log_components: List[str] = None,
         deletion_protection: bool = None,
         disable_rollback: bool = None,
         timeout_mins: int = None,
@@ -5885,6 +6196,10 @@ class CreateClusterRequest(TeaModel):
         self.platform = platform
         # 操作系统平台类型
         self.os_type = os_type
+        # 等保安全加固
+        self.soc_enabled = soc_enabled
+        # CIS安全加固
+        self.cis_enabled = cis_enabled
         # CPU策略
         self.cpu_policy = cpu_policy
         # Proxy代理模式，ipvs|iptables
@@ -5931,6 +6246,8 @@ class CreateClusterRequest(TeaModel):
         self.worker_system_disk_size = worker_system_disk_size
         # 集群Worker节点系统盘快照备份策略
         self.worker_system_disk_snapshot_policy_id = worker_system_disk_snapshot_policy_id
+        # 集群Worker节点磁盘性能，只对ESSD类型磁盘生效
+        self.worker_system_disk_performance_level = worker_system_disk_performance_level
         # 集群Worker节点数据盘配置
         self.worker_data_disks = worker_data_disks
         # 集群Worker节点付费类型
@@ -5957,6 +6274,14 @@ class CreateClusterRequest(TeaModel):
         self.zone_id = zone_id
         # 面向场景时的集群类型。  Default：非边缘场景集群。 Edge：边缘场景集群。
         self.profile = profile
+        # ASK 集群开启日志服务
+        self.logging_type = logging_type
+        # 控制平面日志
+        self.controlplane_log_ttl = controlplane_log_ttl
+        # 使用已有log project时，需要指定log project
+        self.controlplane_log_project = controlplane_log_project
+        # 需要采集日志的组件
+        self.controlplane_log_components = controlplane_log_components
         # 集群删除保护
         self.deletion_protection = deletion_protection
         # 失败回滚
@@ -6062,6 +6387,10 @@ class CreateClusterRequest(TeaModel):
             result['platform'] = self.platform
         if self.os_type is not None:
             result['os_type'] = self.os_type
+        if self.soc_enabled is not None:
+            result['soc_enabled'] = self.soc_enabled
+        if self.cis_enabled is not None:
+            result['cis_enabled'] = self.cis_enabled
         if self.cpu_policy is not None:
             result['cpu_policy'] = self.cpu_policy
         if self.proxy_mode is not None:
@@ -6108,6 +6437,8 @@ class CreateClusterRequest(TeaModel):
             result['worker_system_disk_size'] = self.worker_system_disk_size
         if self.worker_system_disk_snapshot_policy_id is not None:
             result['worker_system_disk_snapshot_policy_id'] = self.worker_system_disk_snapshot_policy_id
+        if self.worker_system_disk_performance_level is not None:
+            result['worker_system_disk_performance_level'] = self.worker_system_disk_performance_level
         result['worker_data_disks'] = []
         if self.worker_data_disks is not None:
             for k in self.worker_data_disks:
@@ -6136,6 +6467,14 @@ class CreateClusterRequest(TeaModel):
             result['zone_id'] = self.zone_id
         if self.profile is not None:
             result['profile'] = self.profile
+        if self.logging_type is not None:
+            result['logging_type'] = self.logging_type
+        if self.controlplane_log_ttl is not None:
+            result['controlplane_log_ttl'] = self.controlplane_log_ttl
+        if self.controlplane_log_project is not None:
+            result['controlplane_log_project'] = self.controlplane_log_project
+        if self.controlplane_log_components is not None:
+            result['controlplane_log_components'] = self.controlplane_log_components
         if self.deletion_protection is not None:
             result['deletion_protection'] = self.deletion_protection
         if self.disable_rollback is not None:
@@ -6222,6 +6561,10 @@ class CreateClusterRequest(TeaModel):
             self.platform = m.get('platform')
         if m.get('os_type') is not None:
             self.os_type = m.get('os_type')
+        if m.get('soc_enabled') is not None:
+            self.soc_enabled = m.get('soc_enabled')
+        if m.get('cis_enabled') is not None:
+            self.cis_enabled = m.get('cis_enabled')
         if m.get('cpu_policy') is not None:
             self.cpu_policy = m.get('cpu_policy')
         if m.get('proxy_mode') is not None:
@@ -6268,6 +6611,8 @@ class CreateClusterRequest(TeaModel):
             self.worker_system_disk_size = m.get('worker_system_disk_size')
         if m.get('worker_system_disk_snapshot_policy_id') is not None:
             self.worker_system_disk_snapshot_policy_id = m.get('worker_system_disk_snapshot_policy_id')
+        if m.get('worker_system_disk_performance_level') is not None:
+            self.worker_system_disk_performance_level = m.get('worker_system_disk_performance_level')
         self.worker_data_disks = []
         if m.get('worker_data_disks') is not None:
             for k in m.get('worker_data_disks'):
@@ -6297,6 +6642,14 @@ class CreateClusterRequest(TeaModel):
             self.zone_id = m.get('zone_id')
         if m.get('profile') is not None:
             self.profile = m.get('profile')
+        if m.get('logging_type') is not None:
+            self.logging_type = m.get('logging_type')
+        if m.get('controlplane_log_ttl') is not None:
+            self.controlplane_log_ttl = m.get('controlplane_log_ttl')
+        if m.get('controlplane_log_project') is not None:
+            self.controlplane_log_project = m.get('controlplane_log_project')
+        if m.get('controlplane_log_components') is not None:
+            self.controlplane_log_components = m.get('controlplane_log_components')
         if m.get('deletion_protection') is not None:
             self.deletion_protection = m.get('deletion_protection')
         if m.get('disable_rollback') is not None:
@@ -7982,6 +8335,33 @@ class DescribeExternalAgentResponse(TeaModel):
         return self
 
 
+class DeleteTriggerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class UnInstallClusterAddonsRequestAddons(TeaModel):
     def __init__(
         self,
@@ -9330,15 +9710,48 @@ class DescribeUserQuotaResponse(TeaModel):
         return self
 
 
+class DeleteClusterNodepoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        return self
+
+
 class DeleteClusterNodepoolResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        body: DeleteClusterNodepoolResponseBody = None,
     ):
         self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9348,12 +9761,17 @@ class DeleteClusterNodepoolResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteClusterNodepoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -12090,15 +12508,62 @@ class DeleteClusterNodesRequest(TeaModel):
         return self
 
 
+class DeleteClusterNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # 集群ID
+        self.cluster_id = cluster_id
+        # 请求ID
+        self.request_id = request_id
+        # 任务ID
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
 class DeleteClusterNodesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        body: DeleteClusterNodesResponseBody = None,
     ):
         self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12108,12 +12573,17 @@ class DeleteClusterNodesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteClusterNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
