@@ -20,24 +20,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
-        self._endpoint_map = {
-            'cn-beijing': 'alb.cn-beijing.aliyuncs.com',
-            'cn-zhangjiakou': 'alb.cn-zhangjiakou.aliyuncs.com',
-            'cn-hangzhou': 'alb.cn-hangzhou.aliyuncs.com',
-            'cn-shanghai': 'alb.cn-shanghai.aliyuncs.com',
-            'cn-shenzhen': 'alb.cn-shenzhen.aliyuncs.com',
-            'cn-hongkong': 'alb.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'alb.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-2': 'alb.ap-southeast-2.aliyuncs.com',
-            'ap-southeast-5': 'alb.ap-southeast-5.aliyuncs.com',
-            'us-east-1': 'alb.us-east-1.aliyuncs.com',
-            'eu-central-1': 'alb.eu-central-1.aliyuncs.com',
-            'ap-south-1': 'alb.ap-south-1.aliyuncs.com',
-            'ap-northeast-1': 'alb.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'alb.cn-chengdu.aliyuncs.com',
-            'cn-wulanchabu': 'alb.cn-wulanchabu.aliyuncs.com'
-        }
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('alb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
