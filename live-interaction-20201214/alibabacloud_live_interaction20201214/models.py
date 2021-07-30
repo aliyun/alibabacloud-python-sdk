@@ -11046,11 +11046,11 @@ class DestroyRoomRequestRequest(TeaModel):
         room_id: str = None,
         open_id: str = None,
     ):
-        # 应用appKey
+        # 应用的appKey。
         self.domain = domain
-        # 房间id
+        # 房间ID，由调用CreateRoom时返回。
         self.room_id = room_id
-        # 操作人id
+        # 操作人ID。
         self.open_id = open_id
 
     def validate(self):
@@ -11116,16 +11116,15 @@ class DestroyRoomResponseBody(TeaModel):
         error_code: str = None,
         error_msg: str = None,
         request_id: str = None,
-        result: bool = None,
         response_success: bool = None,
     ):
-        # 错误码
+        # 错误码。
         self.error_code = error_code
-        # 错误信息
+        # 错误信息。
         self.error_msg = error_msg
+        # 请求ID。
         self.request_id = request_id
-        # 是否销毁成功
-        self.result = result
+        # 请求是否成功。
         self.response_success = response_success
 
     def validate(self):
@@ -11143,8 +11142,6 @@ class DestroyRoomResponseBody(TeaModel):
             result['errorMsg'] = self.error_msg
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
         if self.response_success is not None:
             result['ResponseSuccess'] = self.response_success
         return result
@@ -11157,8 +11154,6 @@ class DestroyRoomResponseBody(TeaModel):
             self.error_msg = m.get('errorMsg')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
         if m.get('ResponseSuccess') is not None:
             self.response_success = m.get('ResponseSuccess')
         return self
