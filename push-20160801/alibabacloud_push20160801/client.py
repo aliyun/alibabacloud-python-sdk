@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -104,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.BindAliasResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.BindAliasResponse(),
             self.do_rpcrequest('BindAlias', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -117,7 +119,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.BindAliasResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.BindAliasResponse(),
             await self.do_rpcrequest_async('BindAlias', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -144,7 +147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.BindPhoneResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.BindPhoneResponse(),
             self.do_rpcrequest('BindPhone', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -157,7 +161,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.BindPhoneResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.BindPhoneResponse(),
             await self.do_rpcrequest_async('BindPhone', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -184,7 +189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.BindTagResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.BindTagResponse(),
             self.do_rpcrequest('BindTag', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -197,7 +203,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.BindTagResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.BindTagResponse(),
             await self.do_rpcrequest_async('BindTag', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -224,7 +231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.CancelPushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.CancelPushResponse(),
             self.do_rpcrequest('CancelPush', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -237,7 +245,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.CancelPushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.CancelPushResponse(),
             await self.do_rpcrequest_async('CancelPush', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -255,6 +264,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_push_with_options_async(request, runtime)
 
+    def check_certificate_with_options(
+        self,
+        request: push_20160801_models.CheckCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> push_20160801_models.CheckCertificateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            push_20160801_models.CheckCertificateResponse(),
+            self.do_rpcrequest('CheckCertificate', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def check_certificate_with_options_async(
+        self,
+        request: push_20160801_models.CheckCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> push_20160801_models.CheckCertificateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            push_20160801_models.CheckCertificateResponse(),
+            await self.do_rpcrequest_async('CheckCertificate', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def check_certificate(
+        self,
+        request: push_20160801_models.CheckCertificateRequest,
+    ) -> push_20160801_models.CheckCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_certificate_with_options(request, runtime)
+
+    async def check_certificate_async(
+        self,
+        request: push_20160801_models.CheckCertificateRequest,
+    ) -> push_20160801_models.CheckCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_certificate_with_options_async(request, runtime)
+
     def check_device_with_options(
         self,
         request: push_20160801_models.CheckDeviceRequest,
@@ -264,7 +315,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.CheckDeviceResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.CheckDeviceResponse(),
             self.do_rpcrequest('CheckDevice', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -277,7 +329,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.CheckDeviceResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.CheckDeviceResponse(),
             await self.do_rpcrequest_async('CheckDevice', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -304,7 +357,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.CheckDevicesResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.CheckDevicesResponse(),
             self.do_rpcrequest('CheckDevices', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -317,7 +371,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.CheckDevicesResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.CheckDevicesResponse(),
             await self.do_rpcrequest_async('CheckDevices', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -344,7 +399,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.CompleteContinuouslyPushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.CompleteContinuouslyPushResponse(),
             self.do_rpcrequest('CompleteContinuouslyPush', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -357,7 +413,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.CompleteContinuouslyPushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.CompleteContinuouslyPushResponse(),
             await self.do_rpcrequest_async('CompleteContinuouslyPush', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -384,7 +441,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.ContinuouslyPushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.ContinuouslyPushResponse(),
             self.do_rpcrequest('ContinuouslyPush', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -397,7 +455,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.ContinuouslyPushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.ContinuouslyPushResponse(),
             await self.do_rpcrequest_async('ContinuouslyPush', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -420,7 +479,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListSummaryAppsResponse:
         req = open_api_models.OpenApiRequest()
-        return push_20160801_models.ListSummaryAppsResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.ListSummaryAppsResponse(),
             self.do_rpcrequest('ListSummaryApps', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -429,7 +489,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListSummaryAppsResponse:
         req = open_api_models.OpenApiRequest()
-        return push_20160801_models.ListSummaryAppsResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.ListSummaryAppsResponse(),
             await self.do_rpcrequest_async('ListSummaryApps', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -450,7 +511,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.ListTagsResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.ListTagsResponse(),
             self.do_rpcrequest('ListTags', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -463,7 +525,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.ListTagsResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.ListTagsResponse(),
             await self.do_rpcrequest_async('ListTags', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -490,7 +553,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.MassPushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.MassPushResponse(),
             self.do_rpcrequest('MassPush', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -503,7 +567,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.MassPushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.MassPushResponse(),
             await self.do_rpcrequest_async('MassPush', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -530,7 +595,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushResponse(),
             self.do_rpcrequest('Push', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -543,7 +609,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushResponse(),
             await self.do_rpcrequest_async('Push', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -570,7 +637,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushMessageToAndroidResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushMessageToAndroidResponse(),
             self.do_rpcrequest('PushMessageToAndroid', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -583,7 +651,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushMessageToAndroidResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushMessageToAndroidResponse(),
             await self.do_rpcrequest_async('PushMessageToAndroid', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -610,7 +679,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushMessageToiOSResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushMessageToiOSResponse(),
             self.do_rpcrequest('PushMessageToiOS', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -623,7 +693,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushMessageToiOSResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushMessageToiOSResponse(),
             await self.do_rpcrequest_async('PushMessageToiOS', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -650,7 +721,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushNoticeToAndroidResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushNoticeToAndroidResponse(),
             self.do_rpcrequest('PushNoticeToAndroid', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -663,7 +735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushNoticeToAndroidResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushNoticeToAndroidResponse(),
             await self.do_rpcrequest_async('PushNoticeToAndroid', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -690,7 +763,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushNoticeToiOSResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushNoticeToiOSResponse(),
             self.do_rpcrequest('PushNoticeToiOS', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -703,7 +777,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.PushNoticeToiOSResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.PushNoticeToiOSResponse(),
             await self.do_rpcrequest_async('PushNoticeToiOS', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -730,7 +805,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryAliasesResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryAliasesResponse(),
             self.do_rpcrequest('QueryAliases', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -743,7 +819,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryAliasesResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryAliasesResponse(),
             await self.do_rpcrequest_async('QueryAliases', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -770,7 +847,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDeviceCountResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDeviceCountResponse(),
             self.do_rpcrequest('QueryDeviceCount', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -783,7 +861,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDeviceCountResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDeviceCountResponse(),
             await self.do_rpcrequest_async('QueryDeviceCount', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -810,7 +889,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDeviceInfoResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDeviceInfoResponse(),
             self.do_rpcrequest('QueryDeviceInfo', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -823,7 +903,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDeviceInfoResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDeviceInfoResponse(),
             await self.do_rpcrequest_async('QueryDeviceInfo', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -850,7 +931,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDevicesByAccountResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDevicesByAccountResponse(),
             self.do_rpcrequest('QueryDevicesByAccount', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -863,7 +945,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDevicesByAccountResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDevicesByAccountResponse(),
             await self.do_rpcrequest_async('QueryDevicesByAccount', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -890,7 +973,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDevicesByAliasResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDevicesByAliasResponse(),
             self.do_rpcrequest('QueryDevicesByAlias', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -903,7 +987,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDevicesByAliasResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDevicesByAliasResponse(),
             await self.do_rpcrequest_async('QueryDevicesByAlias', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -930,7 +1015,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDeviceStatResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDeviceStatResponse(),
             self.do_rpcrequest('QueryDeviceStat', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -943,7 +1029,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryDeviceStatResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryDeviceStatResponse(),
             await self.do_rpcrequest_async('QueryDeviceStat', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -970,7 +1057,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryPushRecordsResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryPushRecordsResponse(),
             self.do_rpcrequest('QueryPushRecords', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -983,7 +1071,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryPushRecordsResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryPushRecordsResponse(),
             await self.do_rpcrequest_async('QueryPushRecords', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1010,7 +1099,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryPushStatByAppResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryPushStatByAppResponse(),
             self.do_rpcrequest('QueryPushStatByApp', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1023,7 +1113,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryPushStatByAppResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryPushStatByAppResponse(),
             await self.do_rpcrequest_async('QueryPushStatByApp', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1050,7 +1141,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryPushStatByMsgResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryPushStatByMsgResponse(),
             self.do_rpcrequest('QueryPushStatByMsg', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1063,7 +1155,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryPushStatByMsgResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryPushStatByMsgResponse(),
             await self.do_rpcrequest_async('QueryPushStatByMsg', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1090,7 +1183,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryTagsResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryTagsResponse(),
             self.do_rpcrequest('QueryTags', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1103,7 +1197,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryTagsResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryTagsResponse(),
             await self.do_rpcrequest_async('QueryTags', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1130,7 +1225,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryUniqueDeviceStatResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryUniqueDeviceStatResponse(),
             self.do_rpcrequest('QueryUniqueDeviceStat', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1143,7 +1239,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.QueryUniqueDeviceStatResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.QueryUniqueDeviceStatResponse(),
             await self.do_rpcrequest_async('QueryUniqueDeviceStat', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1170,7 +1267,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.RemoveTagResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.RemoveTagResponse(),
             self.do_rpcrequest('RemoveTag', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1183,7 +1281,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.RemoveTagResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.RemoveTagResponse(),
             await self.do_rpcrequest_async('RemoveTag', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1210,7 +1309,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.UnbindAliasResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.UnbindAliasResponse(),
             self.do_rpcrequest('UnbindAlias', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1223,7 +1323,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.UnbindAliasResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.UnbindAliasResponse(),
             await self.do_rpcrequest_async('UnbindAlias', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1250,7 +1351,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.UnbindPhoneResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.UnbindPhoneResponse(),
             self.do_rpcrequest('UnbindPhone', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1263,7 +1365,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.UnbindPhoneResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.UnbindPhoneResponse(),
             await self.do_rpcrequest_async('UnbindPhone', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1290,7 +1393,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.UnbindTagResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.UnbindTagResponse(),
             self.do_rpcrequest('UnbindTag', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1303,7 +1407,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return push_20160801_models.UnbindTagResponse().from_map(
+        return TeaCore.from_map(
+            push_20160801_models.UnbindTagResponse(),
             await self.do_rpcrequest_async('UnbindTag', '2016-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
