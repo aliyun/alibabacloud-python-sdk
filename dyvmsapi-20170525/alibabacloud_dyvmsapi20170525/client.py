@@ -754,6 +754,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.execute_call_task_with_options_async(request, runtime)
 
+    def get_hotline_qualification_by_order_with_options(
+        self,
+        request: dyvmsapi_20170525_models.GetHotlineQualificationByOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse(),
+            self.do_rpcrequest('GetHotlineQualificationByOrder', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_hotline_qualification_by_order_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.GetHotlineQualificationByOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse(),
+            await self.do_rpcrequest_async('GetHotlineQualificationByOrder', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_hotline_qualification_by_order(
+        self,
+        request: dyvmsapi_20170525_models.GetHotlineQualificationByOrderRequest,
+    ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_hotline_qualification_by_order_with_options(request, runtime)
+
+    async def get_hotline_qualification_by_order_async(
+        self,
+        request: dyvmsapi_20170525_models.GetHotlineQualificationByOrderRequest,
+    ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_hotline_qualification_by_order_with_options_async(request, runtime)
+
     def get_rtc_token_with_options(
         self,
         request: dyvmsapi_20170525_models.GetRtcTokenRequest,
@@ -964,6 +1006,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_call_task_detail_with_options_async(request, runtime)
 
+    def list_hotline_transfer_number_with_options(
+        self,
+        request: dyvmsapi_20170525_models.ListHotlineTransferNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.ListHotlineTransferNumberResponse(),
+            self.do_rpcrequest('ListHotlineTransferNumber', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_hotline_transfer_number_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.ListHotlineTransferNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.ListHotlineTransferNumberResponse(),
+            await self.do_rpcrequest_async('ListHotlineTransferNumber', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_hotline_transfer_number(
+        self,
+        request: dyvmsapi_20170525_models.ListHotlineTransferNumberRequest,
+    ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_hotline_transfer_number_with_options(request, runtime)
+
+    async def list_hotline_transfer_number_async(
+        self,
+        request: dyvmsapi_20170525_models.ListHotlineTransferNumberRequest,
+    ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_hotline_transfer_number_with_options_async(request, runtime)
+
+    def list_hotline_transfer_register_file_with_options(
+        self,
+        request: dyvmsapi_20170525_models.ListHotlineTransferRegisterFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse(),
+            self.do_rpcrequest('ListHotlineTransferRegisterFile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_hotline_transfer_register_file_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.ListHotlineTransferRegisterFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse(),
+            await self.do_rpcrequest_async('ListHotlineTransferRegisterFile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_hotline_transfer_register_file(
+        self,
+        request: dyvmsapi_20170525_models.ListHotlineTransferRegisterFileRequest,
+    ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_hotline_transfer_register_file_with_options(request, runtime)
+
+    async def list_hotline_transfer_register_file_async(
+        self,
+        request: dyvmsapi_20170525_models.ListHotlineTransferRegisterFileRequest,
+    ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_hotline_transfer_register_file_with_options_async(request, runtime)
+
     def list_ordered_numbers_with_options(
         self,
         request: dyvmsapi_20170525_models.ListOrderedNumbersRequest,
@@ -1173,6 +1299,90 @@ class Client(OpenApiClient):
     ) -> dyvmsapi_20170525_models.QueryCallDetailByTaskIdResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_call_detail_by_task_id_with_options_async(request, runtime)
+
+    def query_call_in_pool_transfer_config_with_options(
+        self,
+        request: dyvmsapi_20170525_models.QueryCallInPoolTransferConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse(),
+            self.do_rpcrequest('QueryCallInPoolTransferConfig', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_call_in_pool_transfer_config_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.QueryCallInPoolTransferConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse(),
+            await self.do_rpcrequest_async('QueryCallInPoolTransferConfig', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_call_in_pool_transfer_config(
+        self,
+        request: dyvmsapi_20170525_models.QueryCallInPoolTransferConfigRequest,
+    ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_call_in_pool_transfer_config_with_options(request, runtime)
+
+    async def query_call_in_pool_transfer_config_async(
+        self,
+        request: dyvmsapi_20170525_models.QueryCallInPoolTransferConfigRequest,
+    ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_call_in_pool_transfer_config_with_options_async(request, runtime)
+
+    def query_call_in_transfer_record_with_options(
+        self,
+        request: dyvmsapi_20170525_models.QueryCallInTransferRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.QueryCallInTransferRecordResponse(),
+            self.do_rpcrequest('QueryCallInTransferRecord', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_call_in_transfer_record_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.QueryCallInTransferRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.QueryCallInTransferRecordResponse(),
+            await self.do_rpcrequest_async('QueryCallInTransferRecord', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_call_in_transfer_record(
+        self,
+        request: dyvmsapi_20170525_models.QueryCallInTransferRecordRequest,
+    ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_call_in_transfer_record_with_options(request, runtime)
+
+    async def query_call_in_transfer_record_async(
+        self,
+        request: dyvmsapi_20170525_models.QueryCallInTransferRecordRequest,
+    ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_call_in_transfer_record_with_options_async(request, runtime)
 
     def query_robot_info_list_with_options(
         self,
@@ -1636,6 +1846,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.report_voip_problems_with_options_async(request, runtime)
 
+    def send_verification_with_options(
+        self,
+        request: dyvmsapi_20170525_models.SendVerificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.SendVerificationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.SendVerificationResponse(),
+            self.do_rpcrequest('SendVerification', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_verification_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.SendVerificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.SendVerificationResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.SendVerificationResponse(),
+            await self.do_rpcrequest_async('SendVerification', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_verification(
+        self,
+        request: dyvmsapi_20170525_models.SendVerificationRequest,
+    ) -> dyvmsapi_20170525_models.SendVerificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_verification_with_options(request, runtime)
+
+    async def send_verification_async(
+        self,
+        request: dyvmsapi_20170525_models.SendVerificationRequest,
+    ) -> dyvmsapi_20170525_models.SendVerificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_verification_with_options_async(request, runtime)
+
+    def set_transfer_callee_pool_config_with_options(
+        self,
+        request: dyvmsapi_20170525_models.SetTransferCalleePoolConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse(),
+            self.do_rpcrequest('SetTransferCalleePoolConfig', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def set_transfer_callee_pool_config_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.SetTransferCalleePoolConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse(),
+            await self.do_rpcrequest_async('SetTransferCalleePoolConfig', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def set_transfer_callee_pool_config(
+        self,
+        request: dyvmsapi_20170525_models.SetTransferCalleePoolConfigRequest,
+    ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_transfer_callee_pool_config_with_options(request, runtime)
+
+    async def set_transfer_callee_pool_config_async(
+        self,
+        request: dyvmsapi_20170525_models.SetTransferCalleePoolConfigRequest,
+    ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_transfer_callee_pool_config_with_options_async(request, runtime)
+
     def single_call_by_tts_with_options(
         self,
         request: dyvmsapi_20170525_models.SingleCallByTtsRequest,
@@ -1929,6 +2223,48 @@ class Client(OpenApiClient):
     ) -> dyvmsapi_20170525_models.StopRobotTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_robot_task_with_options_async(request, runtime)
+
+    def submit_hotline_transfer_register_with_options(
+        self,
+        request: dyvmsapi_20170525_models.SubmitHotlineTransferRegisterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse(),
+            self.do_rpcrequest('SubmitHotlineTransferRegister', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_hotline_transfer_register_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.SubmitHotlineTransferRegisterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse(),
+            await self.do_rpcrequest_async('SubmitHotlineTransferRegister', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_hotline_transfer_register(
+        self,
+        request: dyvmsapi_20170525_models.SubmitHotlineTransferRegisterRequest,
+    ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_hotline_transfer_register_with_options(request, runtime)
+
+    async def submit_hotline_transfer_register_async(
+        self,
+        request: dyvmsapi_20170525_models.SubmitHotlineTransferRegisterRequest,
+    ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_hotline_transfer_register_with_options_async(request, runtime)
 
     def unbind_number_and_voip_id_with_options(
         self,
