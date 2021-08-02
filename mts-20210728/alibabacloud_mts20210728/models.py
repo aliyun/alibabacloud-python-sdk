@@ -119,13 +119,13 @@ class QueryTraceMuResponseBodyData(TeaModel):
 
         result = dict()
         if self.gmt_create is not None:
-            result['Gmt_create'] = self.gmt_create
+            result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
-            result['Gmt_modified'] = self.gmt_modified
+            result['GmtModified'] = self.gmt_modified
         if self.job_id is not None:
-            result['Job_id'] = self.job_id
+            result['JobId'] = self.job_id
         if self.media_id is not None:
-            result['Media_id'] = self.media_id
+            result['MediaId'] = self.media_id
         if self.output is not None:
             result['Output'] = self.output
         if self.status is not None:
@@ -133,35 +133,35 @@ class QueryTraceMuResponseBodyData(TeaModel):
         if self.trace is not None:
             result['Trace'] = self.trace
         if self.trace_id is not None:
-            result['Trace_id'] = self.trace_id
+            result['TraceId'] = self.trace_id
         if self.user_data is not None:
-            result['User_data'] = self.user_data
+            result['UserData'] = self.user_data
         if self.user_id is not None:
-            result['User_id'] = self.user_id
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Gmt_create') is not None:
-            self.gmt_create = m.get('Gmt_create')
-        if m.get('Gmt_modified') is not None:
-            self.gmt_modified = m.get('Gmt_modified')
-        if m.get('Job_id') is not None:
-            self.job_id = m.get('Job_id')
-        if m.get('Media_id') is not None:
-            self.media_id = m.get('Media_id')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
         if m.get('Output') is not None:
             self.output = m.get('Output')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Trace') is not None:
             self.trace = m.get('Trace')
-        if m.get('Trace_id') is not None:
-            self.trace_id = m.get('Trace_id')
-        if m.get('User_data') is not None:
-            self.user_data = m.get('User_data')
-        if m.get('User_id') is not None:
-            self.user_id = m.get('User_id')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -201,7 +201,7 @@ class QueryTraceMuResponseBody(TeaModel):
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestID'] = self.request_id
         if self.status_code is not None:
             result['StatusCode'] = self.status_code
         return result
@@ -215,8 +215,8 @@ class QueryTraceMuResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
         if m.get('StatusCode') is not None:
             self.status_code = m.get('StatusCode')
         return self
@@ -368,7 +368,7 @@ class SubmitImageCopyrightResponseBody(TeaModel):
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestID'] = self.request_id
         if self.status_code is not None:
             result['StatusCode'] = self.status_code
         return result
@@ -380,8 +380,8 @@ class SubmitImageCopyrightResponseBody(TeaModel):
             self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
         if m.get('StatusCode') is not None:
             self.status_code = m.get('StatusCode')
         return self
@@ -528,53 +528,53 @@ class QueryImageCopyrightResponseBodyData(TeaModel):
 
         result = dict()
         if self.gmt_create is not None:
-            result['Gmt_create'] = self.gmt_create
+            result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
-            result['Gmt_modified'] = self.gmt_modified
+            result['GmtModified'] = self.gmt_modified
         if self.input is not None:
             result['Input'] = self.input
         if self.job_id is not None:
-            result['Job_id'] = self.job_id
+            result['JobId'] = self.job_id
         if self.level is not None:
             result['Level'] = self.level
         if self.message is not None:
             result['Message'] = self.message
         if self.message_id is not None:
-            result['Message_id'] = self.message_id
+            result['MessageId'] = self.message_id
         if self.output is not None:
             result['Output'] = self.output
         if self.status is not None:
             result['Status'] = self.status
         if self.user_data is not None:
-            result['User_data'] = self.user_data
+            result['UserData'] = self.user_data
         if self.user_id is not None:
-            result['User_id'] = self.user_id
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Gmt_create') is not None:
-            self.gmt_create = m.get('Gmt_create')
-        if m.get('Gmt_modified') is not None:
-            self.gmt_modified = m.get('Gmt_modified')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
         if m.get('Input') is not None:
             self.input = m.get('Input')
-        if m.get('Job_id') is not None:
-            self.job_id = m.get('Job_id')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('Level') is not None:
             self.level = m.get('Level')
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('Message_id') is not None:
-            self.message_id = m.get('Message_id')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
         if m.get('Output') is not None:
             self.output = m.get('Output')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('User_data') is not None:
-            self.user_data = m.get('User_data')
-        if m.get('User_id') is not None:
-            self.user_id = m.get('User_id')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -614,7 +614,7 @@ class QueryImageCopyrightResponseBody(TeaModel):
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestID'] = self.request_id
         if self.status_code is not None:
             result['StatusCode'] = self.status_code
         return result
@@ -628,8 +628,8 @@ class QueryImageCopyrightResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
         if m.get('StatusCode') is not None:
             self.status_code = m.get('StatusCode')
         return self
@@ -788,55 +788,55 @@ class QueryCopyrightResponseBodyData(TeaModel):
         if self.callback is not None:
             result['Callback'] = self.callback
         if self.gmt_create is not None:
-            result['Gmt_create'] = self.gmt_create
+            result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
-            result['Gmt_modified'] = self.gmt_modified
+            result['GmtModified'] = self.gmt_modified
         if self.input is not None:
             result['Input'] = self.input
         if self.job_id is not None:
-            result['Job_id'] = self.job_id
+            result['JobId'] = self.job_id
         if self.level is not None:
             result['Level'] = self.level
         if self.message is not None:
             result['Message'] = self.message
         if self.message_id is not None:
-            result['Message_id'] = self.message_id
+            result['MessageId'] = self.message_id
         if self.output is not None:
             result['Output'] = self.output
         if self.status is not None:
             result['Status'] = self.status
         if self.user_data is not None:
-            result['User_data'] = self.user_data
+            result['UserData'] = self.user_data
         if self.user_id is not None:
-            result['User_id'] = self.user_id
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Callback') is not None:
             self.callback = m.get('Callback')
-        if m.get('Gmt_create') is not None:
-            self.gmt_create = m.get('Gmt_create')
-        if m.get('Gmt_modified') is not None:
-            self.gmt_modified = m.get('Gmt_modified')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
         if m.get('Input') is not None:
             self.input = m.get('Input')
-        if m.get('Job_id') is not None:
-            self.job_id = m.get('Job_id')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('Level') is not None:
             self.level = m.get('Level')
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('Message_id') is not None:
-            self.message_id = m.get('Message_id')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
         if m.get('Output') is not None:
             self.output = m.get('Output')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('User_data') is not None:
-            self.user_data = m.get('User_data')
-        if m.get('User_id') is not None:
-            self.user_id = m.get('User_id')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -865,7 +865,7 @@ class QueryCopyrightResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestID'] = self.request_id
         result['Data'] = []
         if self.data is not None:
             for k in self.data:
@@ -876,8 +876,8 @@ class QueryCopyrightResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
         self.data = []
         if m.get('Data') is not None:
             for k in m.get('Data'):
@@ -1027,7 +1027,7 @@ class SubmitTracemuResponseBody(TeaModel):
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestID'] = self.request_id
         if self.status_code is not None:
             result['StatusCode'] = self.status_code
         return result
@@ -1039,8 +1039,8 @@ class SubmitTracemuResponseBody(TeaModel):
             self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
         if m.get('StatusCode') is not None:
             self.status_code = m.get('StatusCode')
         return self
@@ -1168,51 +1168,51 @@ class QueryTraceAbResponseBodyData(TeaModel):
         if self.callback is not None:
             result['Callback'] = self.callback
         if self.gmt_create is not None:
-            result['Gmt_create'] = self.gmt_create
+            result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
-            result['Gmt_modified'] = self.gmt_modified
+            result['GmtModified'] = self.gmt_modified
         if self.input is not None:
             result['Input'] = self.input
         if self.job_id is not None:
-            result['Job_id'] = self.job_id
+            result['JobId'] = self.job_id
         if self.level is not None:
             result['Level'] = self.level
         if self.media_id is not None:
-            result['Media_id'] = self.media_id
+            result['MediaId'] = self.media_id
         if self.output is not None:
             result['Output'] = self.output
         if self.status is not None:
             result['Status'] = self.status
         if self.user_data is not None:
-            result['User_data'] = self.user_data
+            result['UserData'] = self.user_data
         if self.user_id is not None:
-            result['User_id'] = self.user_id
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Callback') is not None:
             self.callback = m.get('Callback')
-        if m.get('Gmt_create') is not None:
-            self.gmt_create = m.get('Gmt_create')
-        if m.get('Gmt_modified') is not None:
-            self.gmt_modified = m.get('Gmt_modified')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
         if m.get('Input') is not None:
             self.input = m.get('Input')
-        if m.get('Job_id') is not None:
-            self.job_id = m.get('Job_id')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('Level') is not None:
             self.level = m.get('Level')
-        if m.get('Media_id') is not None:
-            self.media_id = m.get('Media_id')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
         if m.get('Output') is not None:
             self.output = m.get('Output')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('User_data') is not None:
-            self.user_data = m.get('User_data')
-        if m.get('User_id') is not None:
-            self.user_id = m.get('User_id')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -1252,7 +1252,7 @@ class QueryTraceAbResponseBody(TeaModel):
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestID'] = self.request_id
         if self.status_code is not None:
             result['StatusCode'] = self.status_code
         return result
@@ -1266,8 +1266,8 @@ class QueryTraceAbResponseBody(TeaModel):
                 self.data.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
         if m.get('StatusCode') is not None:
             self.status_code = m.get('StatusCode')
         return self
@@ -1433,7 +1433,7 @@ class SubmitTraceAbResponseBody(TeaModel):
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestID'] = self.request_id
         if self.status_code is not None:
             result['StatusCode'] = self.status_code
         return result
@@ -1445,8 +1445,8 @@ class SubmitTraceAbResponseBody(TeaModel):
             self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
         if m.get('StatusCode') is not None:
             self.status_code = m.get('StatusCode')
         return self
@@ -1615,7 +1615,7 @@ class SubmitCopyrightJobResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestID'] = self.request_id
         if self.message is not None:
             result['Message'] = self.message
         if self.data is not None:
@@ -1626,8 +1626,8 @@ class SubmitCopyrightJobResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('Data') is not None:
