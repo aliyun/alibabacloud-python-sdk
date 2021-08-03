@@ -1442,6 +1442,7 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         cookie_timeout: int = None,
         cookie: str = None,
         health_check: str = None,
+        health_check_method: str = None,
         health_check_domain: str = None,
         health_check_uri: str = None,
         healthy_threshold: int = None,
@@ -1480,6 +1481,7 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         self.cookie = cookie
         self.health_check = health_check
+        self.health_check_method = health_check_method
         self.health_check_domain = health_check_domain
         self.health_check_uri = health_check_uri
         self.healthy_threshold = healthy_threshold
@@ -1542,6 +1544,8 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             result['Cookie'] = self.cookie
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
         if self.health_check_domain is not None:
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_uri is not None:
@@ -1620,6 +1624,8 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('HealthCheckDomain') is not None:
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckURI') is not None:
@@ -1749,6 +1755,7 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         cookie_timeout: int = None,
         cookie: str = None,
         health_check: str = None,
+        health_check_method: str = None,
         health_check_domain: str = None,
         health_check_uri: str = None,
         healthy_threshold: int = None,
@@ -1789,6 +1796,7 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         self.cookie = cookie
         self.health_check = health_check
+        self.health_check_method = health_check_method
         self.health_check_domain = health_check_domain
         self.health_check_uri = health_check_uri
         self.healthy_threshold = healthy_threshold
@@ -1853,6 +1861,8 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             result['Cookie'] = self.cookie
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
         if self.health_check_domain is not None:
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_uri is not None:
@@ -1935,6 +1945,8 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('HealthCheckDomain') is not None:
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckURI') is not None:
@@ -4809,16 +4821,16 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
         acl_id: str = None,
         address_ipversion: str = None,
         request_id: str = None,
-        acl_name: str = None,
         resource_group_id: str = None,
+        acl_name: str = None,
         acl_entrys: DescribeAccessControlListAttributeResponseBodyAclEntrys = None,
         related_listeners: DescribeAccessControlListAttributeResponseBodyRelatedListeners = None,
     ):
         self.acl_id = acl_id
         self.address_ipversion = address_ipversion
         self.request_id = request_id
-        self.acl_name = acl_name
         self.resource_group_id = resource_group_id
+        self.acl_name = acl_name
         self.acl_entrys = acl_entrys
         self.related_listeners = related_listeners
 
@@ -4840,10 +4852,10 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
             result['AddressIPVersion'] = self.address_ipversion
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.acl_name is not None:
-            result['AclName'] = self.acl_name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.acl_name is not None:
+            result['AclName'] = self.acl_name
         if self.acl_entrys is not None:
             result['AclEntrys'] = self.acl_entrys.to_map()
         if self.related_listeners is not None:
@@ -4858,10 +4870,10 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
             self.address_ipversion = m.get('AddressIPVersion')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('AclName') is not None:
-            self.acl_name = m.get('AclName')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('AclName') is not None:
+            self.acl_name = m.get('AclName')
         if m.get('AclEntrys') is not None:
             temp_model = DescribeAccessControlListAttributeResponseBodyAclEntrys()
             self.acl_entrys = temp_model.from_map(m['AclEntrys'])
@@ -7215,6 +7227,7 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         xforwarded_for_proto: str = None,
         xforwarded_for__slbip: str = None,
         sticky_session: str = None,
+        health_check_method: str = None,
         health_check: str = None,
         rules: DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules = None,
     ):
@@ -7251,6 +7264,7 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         self.xforwarded_for_proto = xforwarded_for_proto
         self.xforwarded_for__slbip = xforwarded_for__slbip
         self.sticky_session = sticky_session
+        self.health_check_method = health_check_method
         self.health_check = health_check
         self.rules = rules
 
@@ -7330,6 +7344,8 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
             result['XForwardedFor_SLBIP'] = self.xforwarded_for__slbip
         if self.sticky_session is not None:
             result['StickySession'] = self.sticky_session
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
         if self.rules is not None:
@@ -7404,6 +7420,8 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
             self.xforwarded_for__slbip = m.get('XForwardedFor_SLBIP')
         if m.get('StickySession') is not None:
             self.sticky_session = m.get('StickySession')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
         if m.get('Rules') is not None:
@@ -7692,6 +7710,7 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         sticky_session_type: str = None,
         scheduler: str = None,
         xforwarded_for_proto: str = None,
+        health_check_method: str = None,
         tlscipher_policy: str = None,
         status: str = None,
         vserver_group_id: str = None,
@@ -7737,6 +7756,7 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         self.sticky_session_type = sticky_session_type
         self.scheduler = scheduler
         self.xforwarded_for_proto = xforwarded_for_proto
+        self.health_check_method = health_check_method
         self.tlscipher_policy = tlscipher_policy
         self.status = status
         self.vserver_group_id = vserver_group_id
@@ -7811,6 +7831,8 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
             result['Scheduler'] = self.scheduler
         if self.xforwarded_for_proto is not None:
             result['XForwardedFor_proto'] = self.xforwarded_for_proto
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
         if self.tlscipher_policy is not None:
             result['TLSCipherPolicy'] = self.tlscipher_policy
         if self.status is not None:
@@ -7903,6 +7925,8 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
             self.scheduler = m.get('Scheduler')
         if m.get('XForwardedFor_proto') is not None:
             self.xforwarded_for_proto = m.get('XForwardedFor_proto')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('TLSCipherPolicy') is not None:
             self.tlscipher_policy = m.get('TLSCipherPolicy')
         if m.get('Status') is not None:
@@ -10291,12 +10315,12 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
 class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup(TeaModel):
     def __init__(
         self,
-        master_slave_server_group_name: str = None,
         master_slave_server_group_id: str = None,
+        master_slave_server_group_name: str = None,
         associated_objects: DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects = None,
     ):
-        self.master_slave_server_group_name = master_slave_server_group_name
         self.master_slave_server_group_id = master_slave_server_group_id
+        self.master_slave_server_group_name = master_slave_server_group_name
         self.associated_objects = associated_objects
 
     def validate(self):
@@ -10309,20 +10333,20 @@ class DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSl
             return _map
 
         result = dict()
-        if self.master_slave_server_group_name is not None:
-            result['MasterSlaveServerGroupName'] = self.master_slave_server_group_name
         if self.master_slave_server_group_id is not None:
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
+        if self.master_slave_server_group_name is not None:
+            result['MasterSlaveServerGroupName'] = self.master_slave_server_group_name
         if self.associated_objects is not None:
             result['AssociatedObjects'] = self.associated_objects.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MasterSlaveServerGroupName') is not None:
-            self.master_slave_server_group_name = m.get('MasterSlaveServerGroupName')
         if m.get('MasterSlaveServerGroupId') is not None:
             self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
+        if m.get('MasterSlaveServerGroupName') is not None:
+            self.master_slave_server_group_name = m.get('MasterSlaveServerGroupName')
         if m.get('AssociatedObjects') is not None:
             temp_model = DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects()
             self.associated_objects = temp_model.from_map(m['AssociatedObjects'])
@@ -10699,51 +10723,51 @@ class DescribeRuleAttributeRequest(TeaModel):
 class DescribeRuleAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        health_check_http_code: str = None,
         vserver_group_id: str = None,
-        domain: str = None,
         cookie: str = None,
         load_balancer_id: str = None,
-        listener_port: str = None,
-        health_check_interval: int = None,
-        url: str = None,
-        health_check_uri: str = None,
-        sticky_session_type: str = None,
-        rule_name: str = None,
         rule_id: str = None,
-        health_check_connect_port: int = None,
-        scheduler: str = None,
         request_id: str = None,
+        health_check_connect_port: int = None,
         health_check_timeout: int = None,
-        listener_sync: str = None,
-        healthy_threshold: int = None,
         cookie_timeout: int = None,
         health_check_domain: str = None,
         unhealthy_threshold: int = None,
+        health_check_http_code: str = None,
+        domain: str = None,
+        listener_port: str = None,
+        url: str = None,
+        health_check_interval: int = None,
+        health_check_uri: str = None,
+        rule_name: str = None,
+        sticky_session_type: str = None,
+        scheduler: str = None,
+        listener_sync: str = None,
+        healthy_threshold: int = None,
         sticky_session: str = None,
         health_check: str = None,
     ):
-        self.health_check_http_code = health_check_http_code
         self.vserver_group_id = vserver_group_id
-        self.domain = domain
         self.cookie = cookie
         self.load_balancer_id = load_balancer_id
-        self.listener_port = listener_port
-        self.health_check_interval = health_check_interval
-        self.url = url
-        self.health_check_uri = health_check_uri
-        self.sticky_session_type = sticky_session_type
-        self.rule_name = rule_name
         self.rule_id = rule_id
-        self.health_check_connect_port = health_check_connect_port
-        self.scheduler = scheduler
         self.request_id = request_id
+        self.health_check_connect_port = health_check_connect_port
         self.health_check_timeout = health_check_timeout
-        self.listener_sync = listener_sync
-        self.healthy_threshold = healthy_threshold
         self.cookie_timeout = cookie_timeout
         self.health_check_domain = health_check_domain
         self.unhealthy_threshold = unhealthy_threshold
+        self.health_check_http_code = health_check_http_code
+        self.domain = domain
+        self.listener_port = listener_port
+        self.url = url
+        self.health_check_interval = health_check_interval
+        self.health_check_uri = health_check_uri
+        self.rule_name = rule_name
+        self.sticky_session_type = sticky_session_type
+        self.scheduler = scheduler
+        self.listener_sync = listener_sync
+        self.healthy_threshold = healthy_threshold
         self.sticky_session = sticky_session
         self.health_check = health_check
 
@@ -10756,48 +10780,48 @@ class DescribeRuleAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.health_check_http_code is not None:
-            result['HealthCheckHttpCode'] = self.health_check_http_code
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
-        if self.domain is not None:
-            result['Domain'] = self.domain
         if self.cookie is not None:
             result['Cookie'] = self.cookie
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
-        if self.listener_port is not None:
-            result['ListenerPort'] = self.listener_port
-        if self.health_check_interval is not None:
-            result['HealthCheckInterval'] = self.health_check_interval
-        if self.url is not None:
-            result['Url'] = self.url
-        if self.health_check_uri is not None:
-            result['HealthCheckURI'] = self.health_check_uri
-        if self.sticky_session_type is not None:
-            result['StickySessionType'] = self.sticky_session_type
-        if self.rule_name is not None:
-            result['RuleName'] = self.rule_name
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
-        if self.health_check_connect_port is not None:
-            result['HealthCheckConnectPort'] = self.health_check_connect_port
-        if self.scheduler is not None:
-            result['Scheduler'] = self.scheduler
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.health_check_connect_port is not None:
+            result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_timeout is not None:
             result['HealthCheckTimeout'] = self.health_check_timeout
-        if self.listener_sync is not None:
-            result['ListenerSync'] = self.listener_sync
-        if self.healthy_threshold is not None:
-            result['HealthyThreshold'] = self.healthy_threshold
         if self.cookie_timeout is not None:
             result['CookieTimeout'] = self.cookie_timeout
         if self.health_check_domain is not None:
             result['HealthCheckDomain'] = self.health_check_domain
         if self.unhealthy_threshold is not None:
             result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.health_check_http_code is not None:
+            result['HealthCheckHttpCode'] = self.health_check_http_code
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.health_check_interval is not None:
+            result['HealthCheckInterval'] = self.health_check_interval
+        if self.health_check_uri is not None:
+            result['HealthCheckURI'] = self.health_check_uri
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sticky_session_type is not None:
+            result['StickySessionType'] = self.sticky_session_type
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
+        if self.listener_sync is not None:
+            result['ListenerSync'] = self.listener_sync
+        if self.healthy_threshold is not None:
+            result['HealthyThreshold'] = self.healthy_threshold
         if self.sticky_session is not None:
             result['StickySession'] = self.sticky_session
         if self.health_check is not None:
@@ -10806,48 +10830,48 @@ class DescribeRuleAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('HealthCheckHttpCode') is not None:
-            self.health_check_http_code = m.get('HealthCheckHttpCode')
         if m.get('VServerGroupId') is not None:
             self.vserver_group_id = m.get('VServerGroupId')
-        if m.get('Domain') is not None:
-            self.domain = m.get('Domain')
         if m.get('Cookie') is not None:
             self.cookie = m.get('Cookie')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
-        if m.get('ListenerPort') is not None:
-            self.listener_port = m.get('ListenerPort')
-        if m.get('HealthCheckInterval') is not None:
-            self.health_check_interval = m.get('HealthCheckInterval')
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
-        if m.get('HealthCheckURI') is not None:
-            self.health_check_uri = m.get('HealthCheckURI')
-        if m.get('StickySessionType') is not None:
-            self.sticky_session_type = m.get('StickySessionType')
-        if m.get('RuleName') is not None:
-            self.rule_name = m.get('RuleName')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
-        if m.get('HealthCheckConnectPort') is not None:
-            self.health_check_connect_port = m.get('HealthCheckConnectPort')
-        if m.get('Scheduler') is not None:
-            self.scheduler = m.get('Scheduler')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('HealthCheckConnectPort') is not None:
+            self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckTimeout') is not None:
             self.health_check_timeout = m.get('HealthCheckTimeout')
-        if m.get('ListenerSync') is not None:
-            self.listener_sync = m.get('ListenerSync')
-        if m.get('HealthyThreshold') is not None:
-            self.healthy_threshold = m.get('HealthyThreshold')
         if m.get('CookieTimeout') is not None:
             self.cookie_timeout = m.get('CookieTimeout')
         if m.get('HealthCheckDomain') is not None:
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('UnhealthyThreshold') is not None:
             self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('HealthCheckHttpCode') is not None:
+            self.health_check_http_code = m.get('HealthCheckHttpCode')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('HealthCheckInterval') is not None:
+            self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('HealthCheckURI') is not None:
+            self.health_check_uri = m.get('HealthCheckURI')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('StickySessionType') is not None:
+            self.sticky_session_type = m.get('StickySessionType')
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
+        if m.get('ListenerSync') is not None:
+            self.listener_sync = m.get('ListenerSync')
+        if m.get('HealthyThreshold') is not None:
+            self.healthy_threshold = m.get('HealthyThreshold')
         if m.get('StickySession') is not None:
             self.sticky_session = m.get('StickySession')
         if m.get('HealthCheck') is not None:
@@ -15622,6 +15646,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         cookie_timeout: int = None,
         cookie: str = None,
         health_check: str = None,
+        health_check_method: str = None,
         health_check_domain: str = None,
         health_check_uri: str = None,
         healthy_threshold: int = None,
@@ -15658,6 +15683,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         self.cookie = cookie
         self.health_check = health_check
+        self.health_check_method = health_check_method
         self.health_check_domain = health_check_domain
         self.health_check_uri = health_check_uri
         self.healthy_threshold = healthy_threshold
@@ -15717,6 +15743,8 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             result['Cookie'] = self.cookie
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
         if self.health_check_domain is not None:
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_uri is not None:
@@ -15791,6 +15819,8 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('HealthCheckDomain') is not None:
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckURI') is not None:
@@ -15917,6 +15947,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         cookie_timeout: int = None,
         cookie: str = None,
         health_check: str = None,
+        health_check_method: str = None,
         health_check_domain: str = None,
         health_check_uri: str = None,
         healthy_threshold: int = None,
@@ -15957,6 +15988,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         self.cookie = cookie
         self.health_check = health_check
+        self.health_check_method = health_check_method
         self.health_check_domain = health_check_domain
         self.health_check_uri = health_check_uri
         self.healthy_threshold = healthy_threshold
@@ -16020,6 +16052,8 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             result['Cookie'] = self.cookie
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
         if self.health_check_domain is not None:
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_uri is not None:
@@ -16102,6 +16136,8 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             self.cookie = m.get('Cookie')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
         if m.get('HealthCheckDomain') is not None:
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckURI') is not None:
