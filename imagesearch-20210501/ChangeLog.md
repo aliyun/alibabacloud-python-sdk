@@ -1,3 +1,7 @@
+2021-08-03 Version: 1.1.0
+- Support multi pid.
+- Modify some filed name.
+
 2021-06-07 Version: 1.0.1
 - Delete Several Useless Output Parameters.
 
