@@ -242,12 +242,14 @@ class ImageDuplicationRequest(TeaModel):
         pic_num_list: str = None,
         image_height: int = None,
         image_width: int = None,
+        output_image_num: int = None,
     ):
         self.instance_name = instance_name
         self.pic_url_list = pic_url_list
         self.pic_num_list = pic_num_list
         self.image_height = image_height
         self.image_width = image_width
+        self.output_image_num = output_image_num
 
     def validate(self):
         pass
@@ -268,6 +270,8 @@ class ImageDuplicationRequest(TeaModel):
             result['ImageHeight'] = self.image_height
         if self.image_width is not None:
             result['ImageWidth'] = self.image_width
+        if self.output_image_num is not None:
+            result['OutputImageNum'] = self.output_image_num
         return result
 
     def from_map(self, m: dict = None):
@@ -282,6 +286,8 @@ class ImageDuplicationRequest(TeaModel):
             self.image_height = m.get('ImageHeight')
         if m.get('ImageWidth') is not None:
             self.image_width = m.get('ImageWidth')
+        if m.get('OutputImageNum') is not None:
+            self.output_image_num = m.get('OutputImageNum')
         return self
 
 
