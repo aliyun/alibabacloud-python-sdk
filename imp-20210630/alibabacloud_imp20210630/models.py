@@ -4,6 +4,106 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class VerifyDomainOwnerRequest(TeaModel):
+    def __init__(
+        self,
+        live_domain_name: str = None,
+    ):
+        # 直播域名
+        self.live_domain_name = live_domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_domain_name is not None:
+            result['LiveDomainName'] = self.live_domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LiveDomainName') is not None:
+            self.live_domain_name = m.get('LiveDomainName')
+        return self
+
+
+class VerifyDomainOwnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 返回结果
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class VerifyDomainOwnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: VerifyDomainOwnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = VerifyDomainOwnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLiveRequest(TeaModel):
     def __init__(
         self,
@@ -3184,6 +3284,431 @@ class GetLiveDomainStatusResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetLiveDomainStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendCustomMessageToAllRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        body: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 房间唯一标识，由调用CreateRoom返回。
+        self.room_id = room_id
+        # 消息体内容。
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.body is not None:
+            result['Body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        return self
+
+
+class SendCustomMessageToAllResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        message_id: str = None,
+    ):
+        # 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
+        self.message_id = message_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        return self
+
+
+class SendCustomMessageToAllResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: SendCustomMessageToAllResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # API请求的返回结果结构体。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = SendCustomMessageToAllResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class SendCustomMessageToAllResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SendCustomMessageToAllResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SendCustomMessageToAllResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDomainOwnerVerifyContentRequest(TeaModel):
+    def __init__(
+        self,
+        live_domain_name: str = None,
+    ):
+        # 直播域名
+        self.live_domain_name = live_domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_domain_name is not None:
+            result['LiveDomainName'] = self.live_domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LiveDomainName') is not None:
+            self.live_domain_name = m.get('LiveDomainName')
+        return self
+
+
+class GetDomainOwnerVerifyContentResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        # 域名归属校验内容
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class GetDomainOwnerVerifyContentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetDomainOwnerVerifyContentResponseBodyResult = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 返回结果
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetDomainOwnerVerifyContentResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetDomainOwnerVerifyContentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDomainOwnerVerifyContentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDomainOwnerVerifyContentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendCustomMessageToUsersRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        body: str = None,
+        receiver_list: List[str] = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 房间唯一标识，由调用CreateRoom返回。
+        self.room_id = room_id
+        # 消息体内容。
+        self.body = body
+        # 消息指定的接收人ID列表。
+        self.receiver_list = receiver_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.receiver_list is not None:
+            result['ReceiverList'] = self.receiver_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('ReceiverList') is not None:
+            self.receiver_list = m.get('ReceiverList')
+        return self
+
+
+class SendCustomMessageToUsersResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        message_id: str = None,
+    ):
+        # 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
+        self.message_id = message_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        return self
+
+
+class SendCustomMessageToUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: SendCustomMessageToUsersResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # API请求的返回结果结构体。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = SendCustomMessageToUsersResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class SendCustomMessageToUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SendCustomMessageToUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SendCustomMessageToUsersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

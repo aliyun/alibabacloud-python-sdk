@@ -41,6 +41,48 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def verify_domain_owner_with_options(
+        self,
+        request: imp_20210630_models.VerifyDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.VerifyDomainOwnerResponse(),
+            self.do_rpcrequest('VerifyDomainOwner', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def verify_domain_owner_with_options_async(
+        self,
+        request: imp_20210630_models.VerifyDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.VerifyDomainOwnerResponse(),
+            await self.do_rpcrequest_async('VerifyDomainOwner', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def verify_domain_owner(
+        self,
+        request: imp_20210630_models.VerifyDomainOwnerRequest,
+    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_domain_owner_with_options(request, runtime)
+
+    async def verify_domain_owner_async(
+        self,
+        request: imp_20210630_models.VerifyDomainOwnerRequest,
+    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_domain_owner_with_options_async(request, runtime)
+
     def create_live_with_options(
         self,
         request: imp_20210630_models.CreateLiveRequest,
@@ -778,6 +820,132 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.GetLiveDomainStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_live_domain_status_with_options_async(request, runtime)
+
+    def send_custom_message_to_all_with_options(
+        self,
+        request: imp_20210630_models.SendCustomMessageToAllRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCustomMessageToAllResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCustomMessageToAllResponse(),
+            self.do_rpcrequest('SendCustomMessageToAll', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_custom_message_to_all_with_options_async(
+        self,
+        request: imp_20210630_models.SendCustomMessageToAllRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCustomMessageToAllResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCustomMessageToAllResponse(),
+            await self.do_rpcrequest_async('SendCustomMessageToAll', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_custom_message_to_all(
+        self,
+        request: imp_20210630_models.SendCustomMessageToAllRequest,
+    ) -> imp_20210630_models.SendCustomMessageToAllResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_custom_message_to_all_with_options(request, runtime)
+
+    async def send_custom_message_to_all_async(
+        self,
+        request: imp_20210630_models.SendCustomMessageToAllRequest,
+    ) -> imp_20210630_models.SendCustomMessageToAllResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_custom_message_to_all_with_options_async(request, runtime)
+
+    def get_domain_owner_verify_content_with_options(
+        self,
+        request: imp_20210630_models.GetDomainOwnerVerifyContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetDomainOwnerVerifyContentResponse(),
+            self.do_rpcrequest('GetDomainOwnerVerifyContent', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_domain_owner_verify_content_with_options_async(
+        self,
+        request: imp_20210630_models.GetDomainOwnerVerifyContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetDomainOwnerVerifyContentResponse(),
+            await self.do_rpcrequest_async('GetDomainOwnerVerifyContent', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_domain_owner_verify_content(
+        self,
+        request: imp_20210630_models.GetDomainOwnerVerifyContentRequest,
+    ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_domain_owner_verify_content_with_options(request, runtime)
+
+    async def get_domain_owner_verify_content_async(
+        self,
+        request: imp_20210630_models.GetDomainOwnerVerifyContentRequest,
+    ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_domain_owner_verify_content_with_options_async(request, runtime)
+
+    def send_custom_message_to_users_with_options(
+        self,
+        request: imp_20210630_models.SendCustomMessageToUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCustomMessageToUsersResponse(),
+            self.do_rpcrequest('SendCustomMessageToUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_custom_message_to_users_with_options_async(
+        self,
+        request: imp_20210630_models.SendCustomMessageToUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCustomMessageToUsersResponse(),
+            await self.do_rpcrequest_async('SendCustomMessageToUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_custom_message_to_users(
+        self,
+        request: imp_20210630_models.SendCustomMessageToUsersRequest,
+    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_custom_message_to_users_with_options(request, runtime)
+
+    async def send_custom_message_to_users_async(
+        self,
+        request: imp_20210630_models.SendCustomMessageToUsersRequest,
+    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_custom_message_to_users_with_options_async(request, runtime)
 
     def get_auth_token_with_options(
         self,
