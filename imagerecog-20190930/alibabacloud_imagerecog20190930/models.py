@@ -1844,10 +1844,8 @@ class RecognizeImageStyleResponse(TeaModel):
 class TaggingAdImageRequest(TeaModel):
     def __init__(
         self,
-        image_type: int = None,
         image_url: str = None,
     ):
-        self.image_type = image_type
         self.image_url = image_url
 
     def validate(self):
@@ -1859,16 +1857,12 @@ class TaggingAdImageRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.image_type is not None:
-            result['ImageType'] = self.image_type
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageType') is not None:
-            self.image_type = m.get('ImageType')
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
         return self
@@ -1878,10 +1872,8 @@ class TaggingAdImageAdvanceRequest(TeaModel):
     def __init__(
         self,
         image_urlobject: BinaryIO = None,
-        image_type: int = None,
     ):
         self.image_urlobject = image_urlobject
-        self.image_type = image_type
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -1894,16 +1886,12 @@ class TaggingAdImageAdvanceRequest(TeaModel):
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
-        if self.image_type is not None:
-            result['ImageType'] = self.image_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURLObject') is not None:
             self.image_urlobject = m.get('ImageURLObject')
-        if m.get('ImageType') is not None:
-            self.image_type = m.get('ImageType')
         return self
 
 
