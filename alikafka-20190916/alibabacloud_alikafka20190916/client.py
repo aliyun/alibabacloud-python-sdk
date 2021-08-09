@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -85,7 +86,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ConvertPostPayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ConvertPostPayOrderResponse(),
             self.do_rpcrequest('ConvertPostPayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -98,7 +100,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ConvertPostPayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ConvertPostPayOrderResponse(),
             await self.do_rpcrequest_async('ConvertPostPayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -125,7 +128,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreateAclResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateAclResponse(),
             self.do_rpcrequest('CreateAcl', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -138,7 +142,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreateAclResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateAclResponse(),
             await self.do_rpcrequest_async('CreateAcl', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -165,7 +170,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreateConsumerGroupResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateConsumerGroupResponse(),
             self.do_rpcrequest('CreateConsumerGroup', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -178,7 +184,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreateConsumerGroupResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateConsumerGroupResponse(),
             await self.do_rpcrequest_async('CreateConsumerGroup', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -205,7 +212,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreatePostPayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePostPayOrderResponse(),
             self.do_rpcrequest('CreatePostPayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -218,7 +226,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreatePostPayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePostPayOrderResponse(),
             await self.do_rpcrequest_async('CreatePostPayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -245,7 +254,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreatePrePayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePrePayOrderResponse(),
             self.do_rpcrequest('CreatePrePayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -258,7 +268,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreatePrePayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePrePayOrderResponse(),
             await self.do_rpcrequest_async('CreatePrePayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -285,7 +296,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreateSaslUserResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateSaslUserResponse(),
             self.do_rpcrequest('CreateSaslUser', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -298,7 +310,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreateSaslUserResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateSaslUserResponse(),
             await self.do_rpcrequest_async('CreateSaslUser', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -325,7 +338,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreateTopicResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateTopicResponse(),
             self.do_rpcrequest('CreateTopic', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -338,7 +352,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.CreateTopicResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreateTopicResponse(),
             await self.do_rpcrequest_async('CreateTopic', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -365,7 +380,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteAclResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteAclResponse(),
             self.do_rpcrequest('DeleteAcl', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -378,7 +394,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteAclResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteAclResponse(),
             await self.do_rpcrequest_async('DeleteAcl', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -405,7 +422,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteConsumerGroupResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteConsumerGroupResponse(),
             self.do_rpcrequest('DeleteConsumerGroup', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -418,7 +436,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteConsumerGroupResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteConsumerGroupResponse(),
             await self.do_rpcrequest_async('DeleteConsumerGroup', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -445,7 +464,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteInstanceResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteInstanceResponse(),
             self.do_rpcrequest('DeleteInstance', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -458,7 +478,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteInstanceResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteInstanceResponse(),
             await self.do_rpcrequest_async('DeleteInstance', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -485,7 +506,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteSaslUserResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteSaslUserResponse(),
             self.do_rpcrequest('DeleteSaslUser', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -498,7 +520,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteSaslUserResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteSaslUserResponse(),
             await self.do_rpcrequest_async('DeleteSaslUser', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -525,7 +548,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteTopicResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteTopicResponse(),
             self.do_rpcrequest('DeleteTopic', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -538,7 +562,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DeleteTopicResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DeleteTopicResponse(),
             await self.do_rpcrequest_async('DeleteTopic', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -565,7 +590,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DescribeAclsResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeAclsResponse(),
             self.do_rpcrequest('DescribeAcls', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -578,7 +604,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DescribeAclsResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeAclsResponse(),
             await self.do_rpcrequest_async('DescribeAcls', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -605,7 +632,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DescribeNodeStatusResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeNodeStatusResponse(),
             self.do_rpcrequest('DescribeNodeStatus', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -618,7 +646,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DescribeNodeStatusResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeNodeStatusResponse(),
             await self.do_rpcrequest_async('DescribeNodeStatus', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -645,7 +674,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DescribeSaslUsersResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeSaslUsersResponse(),
             self.do_rpcrequest('DescribeSaslUsers', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -658,7 +688,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.DescribeSaslUsersResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.DescribeSaslUsersResponse(),
             await self.do_rpcrequest_async('DescribeSaslUsers', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -685,7 +716,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetAllowedIpListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetAllowedIpListResponse(),
             self.do_rpcrequest('GetAllowedIpList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -698,7 +730,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetAllowedIpListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetAllowedIpListResponse(),
             await self.do_rpcrequest_async('GetAllowedIpList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -725,7 +758,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetConsumerListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetConsumerListResponse(),
             self.do_rpcrequest('GetConsumerList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -738,7 +772,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetConsumerListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetConsumerListResponse(),
             await self.do_rpcrequest_async('GetConsumerList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -765,7 +800,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetConsumerProgressResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetConsumerProgressResponse(),
             self.do_rpcrequest('GetConsumerProgress', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -778,7 +814,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetConsumerProgressResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetConsumerProgressResponse(),
             await self.do_rpcrequest_async('GetConsumerProgress', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -805,7 +842,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetInstanceListResponse(),
             self.do_rpcrequest('GetInstanceList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -818,7 +856,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetInstanceListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetInstanceListResponse(),
             await self.do_rpcrequest_async('GetInstanceList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -845,7 +884,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetMetaProductListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetMetaProductListResponse(),
             self.do_rpcrequest('GetMetaProductList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -858,7 +898,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetMetaProductListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetMetaProductListResponse(),
             await self.do_rpcrequest_async('GetMetaProductList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -885,7 +926,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetTopicListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicListResponse(),
             self.do_rpcrequest('GetTopicList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -898,7 +940,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetTopicListResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicListResponse(),
             await self.do_rpcrequest_async('GetTopicList', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -925,7 +968,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetTopicStatusResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicStatusResponse(),
             self.do_rpcrequest('GetTopicStatus', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -938,7 +982,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.GetTopicStatusResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.GetTopicStatusResponse(),
             await self.do_rpcrequest_async('GetTopicStatus', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -965,7 +1010,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ListTagResourcesResponse(),
             self.do_rpcrequest('ListTagResources', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -978,7 +1024,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ListTagResourcesResponse(),
             await self.do_rpcrequest_async('ListTagResources', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1005,7 +1052,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ModifyInstanceNameResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyInstanceNameResponse(),
             self.do_rpcrequest('ModifyInstanceName', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1018,7 +1066,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ModifyInstanceNameResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyInstanceNameResponse(),
             await self.do_rpcrequest_async('ModifyInstanceName', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1045,7 +1094,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ModifyPartitionNumResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyPartitionNumResponse(),
             self.do_rpcrequest('ModifyPartitionNum', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1058,7 +1108,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ModifyPartitionNumResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyPartitionNumResponse(),
             await self.do_rpcrequest_async('ModifyPartitionNum', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1085,7 +1136,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ModifyTopicRemarkResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyTopicRemarkResponse(),
             self.do_rpcrequest('ModifyTopicRemark', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1098,7 +1150,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ModifyTopicRemarkResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ModifyTopicRemarkResponse(),
             await self.do_rpcrequest_async('ModifyTopicRemark', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1125,7 +1178,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ReleaseInstanceResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ReleaseInstanceResponse(),
             self.do_rpcrequest('ReleaseInstance', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1138,7 +1192,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.ReleaseInstanceResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.ReleaseInstanceResponse(),
             await self.do_rpcrequest_async('ReleaseInstance', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1165,7 +1220,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.StartInstanceResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.StartInstanceResponse(),
             self.do_rpcrequest('StartInstance', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1178,7 +1234,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.StartInstanceResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.StartInstanceResponse(),
             await self.do_rpcrequest_async('StartInstance', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1205,7 +1262,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1218,7 +1276,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1245,7 +1304,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1258,7 +1318,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1285,7 +1346,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpdateAllowedIpResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateAllowedIpResponse(),
             self.do_rpcrequest('UpdateAllowedIp', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1298,7 +1360,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpdateAllowedIpResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateAllowedIpResponse(),
             await self.do_rpcrequest_async('UpdateAllowedIp', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1325,7 +1388,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpdateInstanceConfigResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateInstanceConfigResponse(),
             self.do_rpcrequest('UpdateInstanceConfig', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1338,7 +1402,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpdateInstanceConfigResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpdateInstanceConfigResponse(),
             await self.do_rpcrequest_async('UpdateInstanceConfig', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1365,7 +1430,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpgradeInstanceVersionResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradeInstanceVersionResponse(),
             self.do_rpcrequest('UpgradeInstanceVersion', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1378,7 +1444,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpgradeInstanceVersionResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradeInstanceVersionResponse(),
             await self.do_rpcrequest_async('UpgradeInstanceVersion', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1405,7 +1472,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpgradePostPayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradePostPayOrderResponse(),
             self.do_rpcrequest('UpgradePostPayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1418,7 +1486,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpgradePostPayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradePostPayOrderResponse(),
             await self.do_rpcrequest_async('UpgradePostPayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1445,7 +1514,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpgradePrePayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradePrePayOrderResponse(),
             self.do_rpcrequest('UpgradePrePayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1458,7 +1528,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return alikafka_20190916_models.UpgradePrePayOrderResponse().from_map(
+        return TeaCore.from_map(
+            alikafka_20190916_models.UpgradePrePayOrderResponse(),
             await self.do_rpcrequest_async('UpgradePrePayOrder', '2019-09-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
