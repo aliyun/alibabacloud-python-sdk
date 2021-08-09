@@ -1,3 +1,6 @@
+2021-08-09 Version: 1.0.3
+- Generated python 2019-09-16 for alikafka.
+
 2021-08-09 Version: 0.0.1
 - Add PartitionNum and other absent fields of GetTopicList API.
 
