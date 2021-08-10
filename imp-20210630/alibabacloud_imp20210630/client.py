@@ -125,6 +125,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_live_with_options_async(request, runtime)
 
+    def remove_member_with_options(
+        self,
+        request: imp_20210630_models.RemoveMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.RemoveMemberResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.RemoveMemberResponse(),
+            self.do_rpcrequest('RemoveMember', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def remove_member_with_options_async(
+        self,
+        request: imp_20210630_models.RemoveMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.RemoveMemberResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.RemoveMemberResponse(),
+            await self.do_rpcrequest_async('RemoveMember', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def remove_member(
+        self,
+        request: imp_20210630_models.RemoveMemberRequest,
+    ) -> imp_20210630_models.RemoveMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_member_with_options(request, runtime)
+
+    async def remove_member_async(
+        self,
+        request: imp_20210630_models.RemoveMemberRequest,
+    ) -> imp_20210630_models.RemoveMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_member_with_options_async(request, runtime)
+
     def delete_app_with_options(
         self,
         request: imp_20210630_models.DeleteAppRequest,
@@ -166,6 +208,90 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.DeleteAppResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_with_options_async(request, runtime)
+
+    def list_apply_link_mic_users_with_options(
+        self,
+        request: imp_20210630_models.ListApplyLinkMicUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListApplyLinkMicUsersResponse(),
+            self.do_rpcrequest('ListApplyLinkMicUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_apply_link_mic_users_with_options_async(
+        self,
+        request: imp_20210630_models.ListApplyLinkMicUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListApplyLinkMicUsersResponse(),
+            await self.do_rpcrequest_async('ListApplyLinkMicUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_apply_link_mic_users(
+        self,
+        request: imp_20210630_models.ListApplyLinkMicUsersRequest,
+    ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_apply_link_mic_users_with_options(request, runtime)
+
+    async def list_apply_link_mic_users_async(
+        self,
+        request: imp_20210630_models.ListApplyLinkMicUsersRequest,
+    ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_apply_link_mic_users_with_options_async(request, runtime)
+
+    def list_room_lives_with_options(
+        self,
+        request: imp_20210630_models.ListRoomLivesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListRoomLivesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListRoomLivesResponse(),
+            self.do_rpcrequest('ListRoomLives', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_room_lives_with_options_async(
+        self,
+        request: imp_20210630_models.ListRoomLivesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListRoomLivesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListRoomLivesResponse(),
+            await self.do_rpcrequest_async('ListRoomLives', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_room_lives(
+        self,
+        request: imp_20210630_models.ListRoomLivesRequest,
+    ) -> imp_20210630_models.ListRoomLivesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_room_lives_with_options(request, runtime)
+
+    async def list_room_lives_async(
+        self,
+        request: imp_20210630_models.ListRoomLivesRequest,
+    ) -> imp_20210630_models.ListRoomLivesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_room_lives_with_options_async(request, runtime)
 
     def update_room_with_options(
         self,
@@ -343,6 +469,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_app_template_with_options_async(request, runtime)
 
+    def get_conference_with_options(
+        self,
+        request: imp_20210630_models.GetConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetConferenceResponse(),
+            self.do_rpcrequest('GetConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_conference_with_options_async(
+        self,
+        request: imp_20210630_models.GetConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetConferenceResponse(),
+            await self.do_rpcrequest_async('GetConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_conference(
+        self,
+        request: imp_20210630_models.GetConferenceRequest,
+    ) -> imp_20210630_models.GetConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_conference_with_options(request, runtime)
+
+    async def get_conference_async(
+        self,
+        request: imp_20210630_models.GetConferenceRequest,
+    ) -> imp_20210630_models.GetConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_conference_with_options_async(request, runtime)
+
+    def reject_link_mic_with_options(
+        self,
+        request: imp_20210630_models.RejectLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.RejectLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.RejectLinkMicResponse(),
+            self.do_rpcrequest('RejectLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def reject_link_mic_with_options_async(
+        self,
+        request: imp_20210630_models.RejectLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.RejectLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.RejectLinkMicResponse(),
+            await self.do_rpcrequest_async('RejectLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def reject_link_mic(
+        self,
+        request: imp_20210630_models.RejectLinkMicRequest,
+    ) -> imp_20210630_models.RejectLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reject_link_mic_with_options(request, runtime)
+
+    async def reject_link_mic_async(
+        self,
+        request: imp_20210630_models.RejectLinkMicRequest,
+    ) -> imp_20210630_models.RejectLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reject_link_mic_with_options_async(request, runtime)
+
     def list_apps_with_options(
         self,
         request: imp_20210630_models.ListAppsRequest,
@@ -384,6 +594,48 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.ListAppsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_apps_with_options_async(request, runtime)
+
+    def add_member_with_options(
+        self,
+        request: imp_20210630_models.AddMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.AddMemberResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.AddMemberResponse(),
+            self.do_rpcrequest('AddMember', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_member_with_options_async(
+        self,
+        request: imp_20210630_models.AddMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.AddMemberResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.AddMemberResponse(),
+            await self.do_rpcrequest_async('AddMember', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_member(
+        self,
+        request: imp_20210630_models.AddMemberRequest,
+    ) -> imp_20210630_models.AddMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_member_with_options(request, runtime)
+
+    async def add_member_async(
+        self,
+        request: imp_20210630_models.AddMemberRequest,
+    ) -> imp_20210630_models.AddMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_member_with_options_async(request, runtime)
 
     def list_rooms_with_options(
         self,
@@ -468,6 +720,48 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.DeleteAppTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_template_with_options_async(request, runtime)
+
+    def list_conference_users_with_options(
+        self,
+        request: imp_20210630_models.ListConferenceUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListConferenceUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListConferenceUsersResponse(),
+            self.do_rpcrequest('ListConferenceUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_conference_users_with_options_async(
+        self,
+        request: imp_20210630_models.ListConferenceUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListConferenceUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListConferenceUsersResponse(),
+            await self.do_rpcrequest_async('ListConferenceUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_conference_users(
+        self,
+        request: imp_20210630_models.ListConferenceUsersRequest,
+    ) -> imp_20210630_models.ListConferenceUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_conference_users_with_options(request, runtime)
+
+    async def list_conference_users_async(
+        self,
+        request: imp_20210630_models.ListConferenceUsersRequest,
+    ) -> imp_20210630_models.ListConferenceUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_conference_users_with_options_async(request, runtime)
 
     def list_app_templates_with_options(
         self,
@@ -645,6 +939,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_app_template_config_with_options_async(request, runtime)
 
+    def apply_link_mic_with_options(
+        self,
+        request: imp_20210630_models.ApplyLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ApplyLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ApplyLinkMicResponse(),
+            self.do_rpcrequest('ApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def apply_link_mic_with_options_async(
+        self,
+        request: imp_20210630_models.ApplyLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ApplyLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ApplyLinkMicResponse(),
+            await self.do_rpcrequest_async('ApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def apply_link_mic(
+        self,
+        request: imp_20210630_models.ApplyLinkMicRequest,
+    ) -> imp_20210630_models.ApplyLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.apply_link_mic_with_options(request, runtime)
+
+    async def apply_link_mic_async(
+        self,
+        request: imp_20210630_models.ApplyLinkMicRequest,
+    ) -> imp_20210630_models.ApplyLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_link_mic_with_options_async(request, runtime)
+
+    def cancel_apply_link_mic_with_options(
+        self,
+        request: imp_20210630_models.CancelApplyLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelApplyLinkMicResponse(),
+            self.do_rpcrequest('CancelApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def cancel_apply_link_mic_with_options_async(
+        self,
+        request: imp_20210630_models.CancelApplyLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelApplyLinkMicResponse(),
+            await self.do_rpcrequest_async('CancelApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def cancel_apply_link_mic(
+        self,
+        request: imp_20210630_models.CancelApplyLinkMicRequest,
+    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_apply_link_mic_with_options(request, runtime)
+
+    async def cancel_apply_link_mic_async(
+        self,
+        request: imp_20210630_models.CancelApplyLinkMicRequest,
+    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_apply_link_mic_with_options_async(request, runtime)
+
     def stop_live_with_options(
         self,
         request: imp_20210630_models.StopLiveRequest,
@@ -728,6 +1106,48 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.GetAppResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_app_with_options_async(request, runtime)
+
+    def create_conference_with_options(
+        self,
+        request: imp_20210630_models.CreateConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateConferenceResponse(),
+            self.do_rpcrequest('CreateConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_conference_with_options_async(
+        self,
+        request: imp_20210630_models.CreateConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateConferenceResponse(),
+            await self.do_rpcrequest_async('CreateConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_conference(
+        self,
+        request: imp_20210630_models.CreateConferenceRequest,
+    ) -> imp_20210630_models.CreateConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_conference_with_options(request, runtime)
+
+    async def create_conference_async(
+        self,
+        request: imp_20210630_models.CreateConferenceRequest,
+    ) -> imp_20210630_models.CreateConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_conference_with_options_async(request, runtime)
 
     def delete_live_with_options(
         self,
@@ -862,6 +1282,48 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.SendCustomMessageToAllResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_custom_message_to_all_with_options_async(request, runtime)
+
+    def agree_link_mic_with_options(
+        self,
+        request: imp_20210630_models.AgreeLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.AgreeLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.AgreeLinkMicResponse(),
+            self.do_rpcrequest('AgreeLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def agree_link_mic_with_options_async(
+        self,
+        request: imp_20210630_models.AgreeLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.AgreeLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.AgreeLinkMicResponse(),
+            await self.do_rpcrequest_async('AgreeLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def agree_link_mic(
+        self,
+        request: imp_20210630_models.AgreeLinkMicRequest,
+    ) -> imp_20210630_models.AgreeLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.agree_link_mic_with_options(request, runtime)
+
+    async def agree_link_mic_async(
+        self,
+        request: imp_20210630_models.AgreeLinkMicRequest,
+    ) -> imp_20210630_models.AgreeLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.agree_link_mic_with_options_async(request, runtime)
 
     def get_domain_owner_verify_content_with_options(
         self,
@@ -1229,10 +1691,14 @@ class Client(OpenApiClient):
 
     def create_room_with_options(
         self,
-        request: imp_20210630_models.CreateRoomRequest,
+        tmp_req: imp_20210630_models.CreateRoomRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateRoomResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.CreateRoomShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -1243,10 +1709,14 @@ class Client(OpenApiClient):
 
     async def create_room_with_options_async(
         self,
-        request: imp_20210630_models.CreateRoomRequest,
+        tmp_req: imp_20210630_models.CreateRoomRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateRoomResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.CreateRoomShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -1268,6 +1738,90 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.CreateRoomResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_room_with_options_async(request, runtime)
+
+    def update_conference_with_options(
+        self,
+        request: imp_20210630_models.UpdateConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateConferenceResponse(),
+            self.do_rpcrequest('UpdateConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_conference_with_options_async(
+        self,
+        request: imp_20210630_models.UpdateConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateConferenceResponse(),
+            await self.do_rpcrequest_async('UpdateConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_conference(
+        self,
+        request: imp_20210630_models.UpdateConferenceRequest,
+    ) -> imp_20210630_models.UpdateConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_conference_with_options(request, runtime)
+
+    async def update_conference_async(
+        self,
+        request: imp_20210630_models.UpdateConferenceRequest,
+    ) -> imp_20210630_models.UpdateConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_conference_with_options_async(request, runtime)
+
+    def delete_conference_with_options(
+        self,
+        request: imp_20210630_models.DeleteConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteConferenceResponse(),
+            self.do_rpcrequest('DeleteConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_conference_with_options_async(
+        self,
+        request: imp_20210630_models.DeleteConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteConferenceResponse(),
+            await self.do_rpcrequest_async('DeleteConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_conference(
+        self,
+        request: imp_20210630_models.DeleteConferenceRequest,
+    ) -> imp_20210630_models.DeleteConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_conference_with_options(request, runtime)
+
+    async def delete_conference_async(
+        self,
+        request: imp_20210630_models.DeleteConferenceRequest,
+    ) -> imp_20210630_models.DeleteConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_conference_with_options_async(request, runtime)
 
     def update_app_with_options(
         self,
