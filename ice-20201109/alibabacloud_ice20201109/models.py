@@ -1735,8 +1735,10 @@ class SetEventCallbackRequest(TeaModel):
     def __init__(
         self,
         callback_queue_name: str = None,
+        event_type_list: str = None,
     ):
         self.callback_queue_name = callback_queue_name
+        self.event_type_list = event_type_list
 
     def validate(self):
         pass
@@ -1749,12 +1751,16 @@ class SetEventCallbackRequest(TeaModel):
         result = dict()
         if self.callback_queue_name is not None:
             result['CallbackQueueName'] = self.callback_queue_name
+        if self.event_type_list is not None:
+            result['EventTypeList'] = self.event_type_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CallbackQueueName') is not None:
             self.callback_queue_name = m.get('CallbackQueueName')
+        if m.get('EventTypeList') is not None:
+            self.event_type_list = m.get('EventTypeList')
         return self
 
 
@@ -1873,6 +1879,7 @@ class GetTemplateResponseBodyTemplate(TeaModel):
         creation_time: str = None,
         modified_time: str = None,
         cover_url: str = None,
+        clips_param: str = None,
     ):
         # 模板ID
         self.template_id = template_id
@@ -1898,6 +1905,8 @@ class GetTemplateResponseBodyTemplate(TeaModel):
         self.modified_time = modified_time
         # 封面URL
         self.cover_url = cover_url
+        # 提交合成任务的ClipsParam参数
+        self.clips_param = clips_param
 
     def validate(self):
         pass
@@ -1932,6 +1941,8 @@ class GetTemplateResponseBodyTemplate(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
+        if self.clips_param is not None:
+            result['ClipsParam'] = self.clips_param
         return result
 
     def from_map(self, m: dict = None):
@@ -1960,6 +1971,8 @@ class GetTemplateResponseBodyTemplate(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
+        if m.get('ClipsParam') is not None:
+            self.clips_param = m.get('ClipsParam')
         return self
 
 
@@ -5946,6 +5959,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         creation_time: str = None,
         modified_time: str = None,
         cover_url: str = None,
+        clips_param: str = None,
     ):
         # 模板ID
         self.template_id = template_id
@@ -5971,6 +5985,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.modified_time = modified_time
         # 封面URL
         self.cover_url = cover_url
+        # ClipsParam
+        self.clips_param = clips_param
 
     def validate(self):
         pass
@@ -6005,6 +6021,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
+        if self.clips_param is not None:
+            result['ClipsParam'] = self.clips_param
         return result
 
     def from_map(self, m: dict = None):
@@ -6033,6 +6051,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
+        if m.get('ClipsParam') is not None:
+            self.clips_param = m.get('ClipsParam')
         return self
 
 
@@ -8407,10 +8427,12 @@ class GetEventCallbackResponseBody(TeaModel):
         self,
         request_id: str = None,
         callback_queue_name: str = None,
+        event_type_list: str = None,
     ):
         # Id of the request
         self.request_id = request_id
         self.callback_queue_name = callback_queue_name
+        self.event_type_list = event_type_list
 
     def validate(self):
         pass
@@ -8425,6 +8447,8 @@ class GetEventCallbackResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.callback_queue_name is not None:
             result['CallbackQueueName'] = self.callback_queue_name
+        if self.event_type_list is not None:
+            result['EventTypeList'] = self.event_type_list
         return result
 
     def from_map(self, m: dict = None):
@@ -8433,6 +8457,8 @@ class GetEventCallbackResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('CallbackQueueName') is not None:
             self.callback_queue_name = m.get('CallbackQueueName')
+        if m.get('EventTypeList') is not None:
+            self.event_type_list = m.get('EventTypeList')
         return self
 
 

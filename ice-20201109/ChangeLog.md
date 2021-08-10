@@ -1,3 +1,6 @@
+2021-08-10 Version: 1.1.0
+- Add template clipsParam param.
+
 2021-07-15 Version: 1.0.9
 - Fix bugs.
 
