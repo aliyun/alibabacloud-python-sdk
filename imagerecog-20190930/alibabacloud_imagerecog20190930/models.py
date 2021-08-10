@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import BinaryIO, List, Dict
+from typing import BinaryIO, List, Dict, Any
 
 
 class RecognizeVehicleTypeRequest(TeaModel):
@@ -1895,14 +1895,12 @@ class TaggingAdImageAdvanceRequest(TeaModel):
         return self
 
 
-class TaggingAdImageResponseBodyDataTags(TeaModel):
+class TaggingAdImageResponseBodyData(TeaModel):
     def __init__(
         self,
-        value: str = None,
-        confidence: float = None,
+        tag_info: Dict[str, Any] = None,
     ):
-        self.value = value
-        self.confidence = confidence
+        self.tag_info = tag_info
 
     def validate(self):
         pass
@@ -1913,53 +1911,14 @@ class TaggingAdImageResponseBodyDataTags(TeaModel):
             return _map
 
         result = dict()
-        if self.value is not None:
-            result['Value'] = self.value
-        if self.confidence is not None:
-            result['Confidence'] = self.confidence
+        if self.tag_info is not None:
+            result['TagInfo'] = self.tag_info
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        if m.get('Confidence') is not None:
-            self.confidence = m.get('Confidence')
-        return self
-
-
-class TaggingAdImageResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        tags: List[TaggingAdImageResponseBodyDataTags] = None,
-    ):
-        self.tags = tags
-
-    def validate(self):
-        if self.tags:
-            for k in self.tags:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Tags'] = []
-        if self.tags is not None:
-            for k in self.tags:
-                result['Tags'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.tags = []
-        if m.get('Tags') is not None:
-            for k in m.get('Tags'):
-                temp_model = TaggingAdImageResponseBodyDataTags()
-                self.tags.append(temp_model.from_map(k))
+        if m.get('TagInfo') is not None:
+            self.tag_info = m.get('TagInfo')
         return self
 
 
