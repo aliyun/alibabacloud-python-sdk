@@ -1,3 +1,7 @@
+2021-08-10 Version: 2.2.5
+- Add GetScenePreviewInfo Interface.
+- Add GetHotspotSceneData Interface.
+
 2021-07-20 Version: 2.2.4
 - Temppreview interface parameter name change.
 

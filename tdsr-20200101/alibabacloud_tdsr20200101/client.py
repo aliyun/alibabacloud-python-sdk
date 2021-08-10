@@ -1849,6 +1849,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_origin_layout_data_with_options_async(request, runtime)
 
+    def get_hotspot_scene_data_with_options(
+        self,
+        request: tdsr_20200101_models.GetHotspotSceneDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetHotspotSceneDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetHotspotSceneDataResponse(),
+            self.do_rpcrequest('GetHotspotSceneData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_hotspot_scene_data_with_options_async(
+        self,
+        request: tdsr_20200101_models.GetHotspotSceneDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetHotspotSceneDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetHotspotSceneDataResponse(),
+            await self.do_rpcrequest_async('GetHotspotSceneData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_hotspot_scene_data(
+        self,
+        request: tdsr_20200101_models.GetHotspotSceneDataRequest,
+    ) -> tdsr_20200101_models.GetHotspotSceneDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_hotspot_scene_data_with_options(request, runtime)
+
+    async def get_hotspot_scene_data_async(
+        self,
+        request: tdsr_20200101_models.GetHotspotSceneDataRequest,
+    ) -> tdsr_20200101_models.GetHotspotSceneDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_hotspot_scene_data_with_options_async(request, runtime)
+
     def scene_publish_with_options(
         self,
         request: tdsr_20200101_models.ScenePublishRequest,
@@ -2100,6 +2142,48 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_policy_with_options_async(request, runtime)
+
+    def get_scene_preview_info_with_options(
+        self,
+        request: tdsr_20200101_models.GetScenePreviewInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetScenePreviewInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetScenePreviewInfoResponse(),
+            self.do_rpcrequest('GetScenePreviewInfo', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_scene_preview_info_with_options_async(
+        self,
+        request: tdsr_20200101_models.GetScenePreviewInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetScenePreviewInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetScenePreviewInfoResponse(),
+            await self.do_rpcrequest_async('GetScenePreviewInfo', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_scene_preview_info(
+        self,
+        request: tdsr_20200101_models.GetScenePreviewInfoRequest,
+    ) -> tdsr_20200101_models.GetScenePreviewInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_scene_preview_info_with_options(request, runtime)
+
+    async def get_scene_preview_info_async(
+        self,
+        request: tdsr_20200101_models.GetScenePreviewInfoRequest,
+    ) -> tdsr_20200101_models.GetScenePreviewInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_scene_preview_info_with_options_async(request, runtime)
 
     def add_sub_scene_with_options(
         self,

@@ -6144,6 +6144,198 @@ class GetOriginLayoutDataResponse(TeaModel):
         return self
 
 
+class GetHotspotSceneDataRequest(TeaModel):
+    def __init__(
+        self,
+        preview_token: str = None,
+        type: int = None,
+        domain: str = None,
+        enabled: bool = None,
+    ):
+        # 预览token
+        self.preview_token = preview_token
+        # 0 未发布， 1 已发布
+        self.type = type
+        # 自定义oss域名（可为cdn域名）
+        self.domain = domain
+        # 是否开启自用资源访问
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.preview_token is not None:
+            result['PreviewToken'] = self.preview_token
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PreviewToken') is not None:
+            self.preview_token = m.get('PreviewToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
+class GetHotspotSceneDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        scene_type: str = None,
+        preview_token: str = None,
+        preview_data: str = None,
+        model_token: str = None,
+    ):
+        # 3D模型：MODEL_3D 全景图片：PIC 全景视频：VIDEO
+        self.scene_type = scene_type
+        # 预览token
+        self.preview_token = preview_token
+        # html转译后的预览数据，包含图片、子场景ID等信息
+        self.preview_data = preview_data
+        # 模型token（sgm token）
+        self.model_token = model_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_type is not None:
+            result['SceneType'] = self.scene_type
+        if self.preview_token is not None:
+            result['PreviewToken'] = self.preview_token
+        if self.preview_data is not None:
+            result['PreviewData'] = self.preview_data
+        if self.model_token is not None:
+            result['ModelToken'] = self.model_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneType') is not None:
+            self.scene_type = m.get('SceneType')
+        if m.get('PreviewToken') is not None:
+            self.preview_token = m.get('PreviewToken')
+        if m.get('PreviewData') is not None:
+            self.preview_data = m.get('PreviewData')
+        if m.get('ModelToken') is not None:
+            self.model_token = m.get('ModelToken')
+        return self
+
+
+class GetHotspotSceneDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        success: bool = None,
+        message: str = None,
+        data: GetHotspotSceneDataResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 返回码
+        self.code = code
+        # 是否请求成功
+        self.success = success
+        # 错误消息
+        self.message = message
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Data') is not None:
+            temp_model = GetHotspotSceneDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class GetHotspotSceneDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetHotspotSceneDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetHotspotSceneDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ScenePublishRequest(TeaModel):
     def __init__(
         self,
@@ -6965,6 +7157,191 @@ class GetPolicyResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetScenePreviewInfoRequest(TeaModel):
+    def __init__(
+        self,
+        model_token: str = None,
+        domain: str = None,
+        enabled: bool = None,
+    ):
+        # 模型token
+        self.model_token = model_token
+        # 自定义oss域名（可为cdn域名）
+        self.domain = domain
+        # 是否开启自用资源访问
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_token is not None:
+            result['ModelToken'] = self.model_token
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelToken') is not None:
+            self.model_token = m.get('ModelToken')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
+class GetScenePreviewInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        pano_list: str = None,
+        model_path: str = None,
+        texture_model_path: str = None,
+        texture_pano_path: str = None,
+    ):
+        # html转译后的预览数据
+        self.pano_list = pano_list
+        # 模型地址
+        self.model_path = model_path
+        # 模型的贴图路径
+        self.texture_model_path = texture_model_path
+        # 漫游后预览图片路径
+        self.texture_pano_path = texture_pano_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pano_list is not None:
+            result['PanoList'] = self.pano_list
+        if self.model_path is not None:
+            result['ModelPath'] = self.model_path
+        if self.texture_model_path is not None:
+            result['TextureModelPath'] = self.texture_model_path
+        if self.texture_pano_path is not None:
+            result['TexturePanoPath'] = self.texture_pano_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PanoList') is not None:
+            self.pano_list = m.get('PanoList')
+        if m.get('ModelPath') is not None:
+            self.model_path = m.get('ModelPath')
+        if m.get('TextureModelPath') is not None:
+            self.texture_model_path = m.get('TextureModelPath')
+        if m.get('TexturePanoPath') is not None:
+            self.texture_pano_path = m.get('TexturePanoPath')
+        return self
+
+
+class GetScenePreviewInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        success: bool = None,
+        message: str = None,
+        data: GetScenePreviewInfoResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 返回码
+        self.code = code
+        # 是否请求成功
+        self.success = success
+        # 错误消息
+        self.message = message
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Data') is not None:
+            temp_model = GetScenePreviewInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class GetScenePreviewInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetScenePreviewInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetScenePreviewInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
