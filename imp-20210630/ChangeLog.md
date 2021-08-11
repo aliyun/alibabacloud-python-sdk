@@ -1,3 +1,7 @@
+2021-08-11 Version: 2.3.0
+- Supported SendComment.
+- Supported BanComment etc.
+
 2021-08-10 Version: 2.2.0
 - Supported GetRoomLives.
 

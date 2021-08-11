@@ -1547,6 +1547,285 @@ class GetRoomResponse(TeaModel):
         return self
 
 
+class SendCommentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        sender_id: str = None,
+        content: str = None,
+        extension: Dict[str, str] = None,
+    ):
+        # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
+        self.app_id = app_id
+        # 直播间唯一标识，在调用CreateRoom返回。
+        self.room_id = room_id
+        # 弹幕发送者的用户ID，最大长度不超过32个字节。
+        self.sender_id = sender_id
+        # 发送的文本内容。最大的长度不超过256个字节。
+        self.content = content
+        # 扩展字段，服务端仅做透传。
+        self.extension = extension
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.sender_id is not None:
+            result['SenderId'] = self.sender_id
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('SenderId') is not None:
+            self.sender_id = m.get('SenderId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        return self
+
+
+class SendCommentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        sender_id: str = None,
+        content: str = None,
+        extension_shrink: str = None,
+    ):
+        # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
+        self.app_id = app_id
+        # 直播间唯一标识，在调用CreateRoom返回。
+        self.room_id = room_id
+        # 弹幕发送者的用户ID，最大长度不超过32个字节。
+        self.sender_id = sender_id
+        # 发送的文本内容。最大的长度不超过256个字节。
+        self.content = content
+        # 扩展字段，服务端仅做透传。
+        self.extension_shrink = extension_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.sender_id is not None:
+            result['SenderId'] = self.sender_id
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.extension_shrink is not None:
+            result['Extension'] = self.extension_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('SenderId') is not None:
+            self.sender_id = m.get('SenderId')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Extension') is not None:
+            self.extension_shrink = m.get('Extension')
+        return self
+
+
+class SendCommentResponseBodyResultCommentVO(TeaModel):
+    def __init__(
+        self,
+        comment_id: str = None,
+        sender_id: str = None,
+        sender_nick: str = None,
+        create_at: int = None,
+        content: str = None,
+        extension: Dict[str, str] = None,
+    ):
+        # 弹幕的唯一ID。
+        self.comment_id = comment_id
+        # 弹幕的发送者ID标识。
+        self.sender_id = sender_id
+        # 弹幕发送者的昵称。
+        self.sender_nick = sender_nick
+        # 弹幕的创建时间，Unix时间戳，单位：毫秒。
+        self.create_at = create_at
+        # 弹幕的内容。
+        self.content = content
+        # 扩展字段。
+        self.extension = extension
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment_id is not None:
+            result['CommentId'] = self.comment_id
+        if self.sender_id is not None:
+            result['SenderId'] = self.sender_id
+        if self.sender_nick is not None:
+            result['SenderNick'] = self.sender_nick
+        if self.create_at is not None:
+            result['CreateAt'] = self.create_at
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommentId') is not None:
+            self.comment_id = m.get('CommentId')
+        if m.get('SenderId') is not None:
+            self.sender_id = m.get('SenderId')
+        if m.get('SenderNick') is not None:
+            self.sender_nick = m.get('SenderNick')
+        if m.get('CreateAt') is not None:
+            self.create_at = m.get('CreateAt')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        return self
+
+
+class SendCommentResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        comment_vo: SendCommentResponseBodyResultCommentVO = None,
+    ):
+        # 返回的弹幕数据模型。
+        self.comment_vo = comment_vo
+
+    def validate(self):
+        if self.comment_vo:
+            self.comment_vo.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment_vo is not None:
+            result['CommentVO'] = self.comment_vo.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommentVO') is not None:
+            temp_model = SendCommentResponseBodyResultCommentVO()
+            self.comment_vo = temp_model.from_map(m['CommentVO'])
+        return self
+
+
+class SendCommentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: SendCommentResponseBodyResult = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+        # 调用发送直播间弹幕的返回结果。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = SendCommentResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class SendCommentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SendCommentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SendCommentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAppTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -1887,6 +2166,134 @@ class GetConferenceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetConferenceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BanCommentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        user_id: str = None,
+        ban_comment_user: str = None,
+        ban_comment_time: int = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 房间唯一标识，由调用CreateRoom返回。
+        self.room_id = room_id
+        # 用户在房间内的唯一标识
+        self.user_id = user_id
+        # 被禁言的用户在房间内的唯一标识
+        self.ban_comment_user = ban_comment_user
+        # 禁言时长（秒）
+        self.ban_comment_time = ban_comment_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.ban_comment_user is not None:
+            result['BanCommentUser'] = self.ban_comment_user
+        if self.ban_comment_time is not None:
+            result['BanCommentTime'] = self.ban_comment_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('BanCommentUser') is not None:
+            self.ban_comment_user = m.get('BanCommentUser')
+        if m.get('BanCommentTime') is not None:
+            self.ban_comment_time = m.get('BanCommentTime')
+        return self
+
+
+class BanCommentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 操作是否成功
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class BanCommentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: BanCommentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = BanCommentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2337,6 +2744,120 @@ class AddMemberResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = AddMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelBanAllCommentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        user_id: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 房间唯一标识，由调用CreateRoom返回。
+        self.room_id = room_id
+        # 用户在房间内的唯一标识
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class CancelBanAllCommentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 操作成功标识
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class CancelBanAllCommentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CancelBanAllCommentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CancelBanAllCommentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2966,6 +3487,127 @@ class ListConferenceUsersResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListConferenceUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelBanCommentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        user_id: str = None,
+        ban_comment_user: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 房间唯一标识，由调用CreateRoom返回。
+        self.room_id = room_id
+        # 用户在房间内的唯一标识
+        self.user_id = user_id
+        # 取消禁言的用户唯一标识
+        self.ban_comment_user = ban_comment_user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.ban_comment_user is not None:
+            result['BanCommentUser'] = self.ban_comment_user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('BanCommentUser') is not None:
+            self.ban_comment_user = m.get('BanCommentUser')
+        return self
+
+
+class CancelBanCommentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 操作成功标识
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class CancelBanCommentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CancelBanCommentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CancelBanCommentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5296,6 +5938,120 @@ class SendCustomMessageToUsersResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SendCustomMessageToUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BanAllCommentRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        user_id: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 房间唯一标识，由调用CreateRoom返回。
+        self.room_id = room_id
+        # 用户在房间内的唯一标识
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class BanAllCommentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 操作成功标识
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class BanAllCommentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: BanAllCommentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = BanAllCommentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -419,6 +419,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_room_with_options_async(request, runtime)
 
+    def send_comment_with_options(
+        self,
+        tmp_req: imp_20210630_models.SendCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCommentResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.SendCommentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCommentResponse(),
+            self.do_rpcrequest('SendComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_comment_with_options_async(
+        self,
+        tmp_req: imp_20210630_models.SendCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCommentResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.SendCommentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCommentResponse(),
+            await self.do_rpcrequest_async('SendComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_comment(
+        self,
+        request: imp_20210630_models.SendCommentRequest,
+    ) -> imp_20210630_models.SendCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_comment_with_options(request, runtime)
+
+    async def send_comment_async(
+        self,
+        request: imp_20210630_models.SendCommentRequest,
+    ) -> imp_20210630_models.SendCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_comment_with_options_async(request, runtime)
+
     def create_app_template_with_options(
         self,
         tmp_req: imp_20210630_models.CreateAppTemplateRequest,
@@ -510,6 +560,48 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.GetConferenceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_conference_with_options_async(request, runtime)
+
+    def ban_comment_with_options(
+        self,
+        request: imp_20210630_models.BanCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.BanCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.BanCommentResponse(),
+            self.do_rpcrequest('BanComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def ban_comment_with_options_async(
+        self,
+        request: imp_20210630_models.BanCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.BanCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.BanCommentResponse(),
+            await self.do_rpcrequest_async('BanComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def ban_comment(
+        self,
+        request: imp_20210630_models.BanCommentRequest,
+    ) -> imp_20210630_models.BanCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.ban_comment_with_options(request, runtime)
+
+    async def ban_comment_async(
+        self,
+        request: imp_20210630_models.BanCommentRequest,
+    ) -> imp_20210630_models.BanCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.ban_comment_with_options_async(request, runtime)
 
     def reject_link_mic_with_options(
         self,
@@ -637,6 +729,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_member_with_options_async(request, runtime)
 
+    def cancel_ban_all_comment_with_options(
+        self,
+        request: imp_20210630_models.CancelBanAllCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelBanAllCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelBanAllCommentResponse(),
+            self.do_rpcrequest('CancelBanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def cancel_ban_all_comment_with_options_async(
+        self,
+        request: imp_20210630_models.CancelBanAllCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelBanAllCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelBanAllCommentResponse(),
+            await self.do_rpcrequest_async('CancelBanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def cancel_ban_all_comment(
+        self,
+        request: imp_20210630_models.CancelBanAllCommentRequest,
+    ) -> imp_20210630_models.CancelBanAllCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_ban_all_comment_with_options(request, runtime)
+
+    async def cancel_ban_all_comment_async(
+        self,
+        request: imp_20210630_models.CancelBanAllCommentRequest,
+    ) -> imp_20210630_models.CancelBanAllCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_ban_all_comment_with_options_async(request, runtime)
+
     def list_rooms_with_options(
         self,
         request: imp_20210630_models.ListRoomsRequest,
@@ -762,6 +896,48 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.ListConferenceUsersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_conference_users_with_options_async(request, runtime)
+
+    def cancel_ban_comment_with_options(
+        self,
+        request: imp_20210630_models.CancelBanCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelBanCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelBanCommentResponse(),
+            self.do_rpcrequest('CancelBanComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def cancel_ban_comment_with_options_async(
+        self,
+        request: imp_20210630_models.CancelBanCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelBanCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelBanCommentResponse(),
+            await self.do_rpcrequest_async('CancelBanComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def cancel_ban_comment(
+        self,
+        request: imp_20210630_models.CancelBanCommentRequest,
+    ) -> imp_20210630_models.CancelBanCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_ban_comment_with_options(request, runtime)
+
+    async def cancel_ban_comment_async(
+        self,
+        request: imp_20210630_models.CancelBanCommentRequest,
+    ) -> imp_20210630_models.CancelBanCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_ban_comment_with_options_async(request, runtime)
 
     def list_app_templates_with_options(
         self,
@@ -1408,6 +1584,48 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_custom_message_to_users_with_options_async(request, runtime)
+
+    def ban_all_comment_with_options(
+        self,
+        request: imp_20210630_models.BanAllCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.BanAllCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.BanAllCommentResponse(),
+            self.do_rpcrequest('BanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def ban_all_comment_with_options_async(
+        self,
+        request: imp_20210630_models.BanAllCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.BanAllCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.BanAllCommentResponse(),
+            await self.do_rpcrequest_async('BanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def ban_all_comment(
+        self,
+        request: imp_20210630_models.BanAllCommentRequest,
+    ) -> imp_20210630_models.BanAllCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.ban_all_comment_with_options(request, runtime)
+
+    async def ban_all_comment_async(
+        self,
+        request: imp_20210630_models.BanAllCommentRequest,
+    ) -> imp_20210630_models.BanAllCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.ban_all_comment_with_options_async(request, runtime)
 
     def get_auth_token_with_options(
         self,
