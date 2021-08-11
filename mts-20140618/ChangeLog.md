@@ -1,3 +1,7 @@
+2021-08-11 Version: 3.3.23
+- SubmitURLUploadJob.
+- GetJobInfo.
+
 2021-03-31 Version: 1.0.2
 - Generated python 2014-06-18 for Mts.
 
