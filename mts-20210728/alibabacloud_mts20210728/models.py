@@ -1497,6 +1497,8 @@ class SubmitCopyrightJobRequest(TeaModel):
         input: str = None,
         level: int = None,
         message: str = None,
+        start_time: int = None,
+        total_time: int = None,
         output: str = None,
         user_data: str = None,
     ):
@@ -1510,6 +1512,10 @@ class SubmitCopyrightJobRequest(TeaModel):
         self.level = level
         # 水印信息
         self.message = message
+        # 水印起始时间(单位是秒)，不填写默认为0
+        self.start_time = start_time
+        # 水印结束时间(单位是秒)，不填默认为60000
+        self.total_time = total_time
         # 输出的视频，oss三元组
         self.output = output
         # 用户自定义数据
@@ -1534,6 +1540,10 @@ class SubmitCopyrightJobRequest(TeaModel):
             result['Level'] = self.level
         if self.message is not None:
             result['Message'] = self.message
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.total_time is not None:
+            result['TotalTime'] = self.total_time
         if self.output is not None:
             result['Output'] = self.output
         if self.user_data is not None:
@@ -1552,6 +1562,10 @@ class SubmitCopyrightJobRequest(TeaModel):
             self.level = m.get('Level')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TotalTime') is not None:
+            self.total_time = m.get('TotalTime')
         if m.get('Output') is not None:
             self.output = m.get('Output')
         if m.get('UserData') is not None:

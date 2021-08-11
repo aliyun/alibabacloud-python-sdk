@@ -597,6 +597,10 @@ class Client(OpenApiClient):
             body['Level'] = request.level
         if not UtilClient.is_unset(request.message):
             body['Message'] = request.message
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            body['TotalTime'] = request.total_time
         if not UtilClient.is_unset(request.output):
             body['Output'] = request.output
         if not UtilClient.is_unset(request.user_data):
@@ -628,6 +632,10 @@ class Client(OpenApiClient):
             body['Level'] = request.level
         if not UtilClient.is_unset(request.message):
             body['Message'] = request.message
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            body['TotalTime'] = request.total_time
         if not UtilClient.is_unset(request.output):
             body['Output'] = request.output
         if not UtilClient.is_unset(request.user_data):
