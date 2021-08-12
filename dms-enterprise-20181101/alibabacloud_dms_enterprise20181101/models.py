@@ -2707,6 +2707,146 @@ class ListDatabasesResponse(TeaModel):
         return self
 
 
+class CreateProxyAccessRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: int = None,
+        proxy_id: int = None,
+        indep_account: str = None,
+        indep_password: str = None,
+        tid: int = None,
+    ):
+        self.user_id = user_id
+        self.proxy_id = proxy_id
+        self.indep_account = indep_account
+        self.indep_password = indep_password
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.indep_account is not None:
+            result['IndepAccount'] = self.indep_account
+        if self.indep_password is not None:
+            result['IndepPassword'] = self.indep_password
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('IndepAccount') is not None:
+            self.indep_account = m.get('IndepAccount')
+        if m.get('IndepPassword') is not None:
+            self.indep_password = m.get('IndepPassword')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateProxyAccessResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        proxy_access_id: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.proxy_access_id = proxy_access_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.proxy_access_id is not None:
+            result['ProxyAccessId'] = self.proxy_access_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ProxyAccessId') is not None:
+            self.proxy_access_id = m.get('ProxyAccessId')
+        return self
+
+
+class CreateProxyAccessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateProxyAccessResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateProxyAccessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUserPermissionsRequest(TeaModel):
     def __init__(
         self,
@@ -3435,6 +3575,188 @@ class ListWorkFlowTemplatesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListWorkFlowTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetProxyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        proxy_id: int = None,
+        tid: int = None,
+    ):
+        self.instance_id = instance_id
+        self.proxy_id = proxy_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetProxyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        proxy_id: int = None,
+        creator_id: int = None,
+        creator_name: str = None,
+        instance_id: int = None,
+        private_enable: bool = None,
+        private_host: str = None,
+        public_enable: bool = None,
+        public_host: str = None,
+        mysql_port: int = None,
+        https_port: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.proxy_id = proxy_id
+        self.creator_id = creator_id
+        self.creator_name = creator_name
+        self.instance_id = instance_id
+        self.private_enable = private_enable
+        self.private_host = private_host
+        self.public_enable = public_enable
+        self.public_host = public_host
+        self.mysql_port = mysql_port
+        self.https_port = https_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.creator_name is not None:
+            result['CreatorName'] = self.creator_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.private_enable is not None:
+            result['PrivateEnable'] = self.private_enable
+        if self.private_host is not None:
+            result['PrivateHost'] = self.private_host
+        if self.public_enable is not None:
+            result['PublicEnable'] = self.public_enable
+        if self.public_host is not None:
+            result['PublicHost'] = self.public_host
+        if self.mysql_port is not None:
+            result['MysqlPort'] = self.mysql_port
+        if self.https_port is not None:
+            result['HttpsPort'] = self.https_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('CreatorName') is not None:
+            self.creator_name = m.get('CreatorName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PrivateEnable') is not None:
+            self.private_enable = m.get('PrivateEnable')
+        if m.get('PrivateHost') is not None:
+            self.private_host = m.get('PrivateHost')
+        if m.get('PublicEnable') is not None:
+            self.public_enable = m.get('PublicEnable')
+        if m.get('PublicHost') is not None:
+            self.public_host = m.get('PublicHost')
+        if m.get('MysqlPort') is not None:
+            self.mysql_port = m.get('MysqlPort')
+        if m.get('HttpsPort') is not None:
+            self.https_port = m.get('HttpsPort')
+        return self
+
+
+class GetProxyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetProxyResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetProxyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4926,6 +5248,140 @@ class GetStructSyncJobDetailResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetStructSyncJobDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateProxyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        username: str = None,
+        password: str = None,
+        tid: int = None,
+    ):
+        self.instance_id = instance_id
+        self.username = username
+        self.password = password
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.username is not None:
+            result['Username'] = self.username
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateProxyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        proxy_id: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.proxy_id = proxy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        return self
+
+
+class CreateProxyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateProxyResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateProxyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11722,6 +12178,217 @@ class CreateDataCronClearOrderResponse(TeaModel):
         return self
 
 
+class ListProxyAccessesRequest(TeaModel):
+    def __init__(
+        self,
+        proxy_id: int = None,
+        tid: int = None,
+    ):
+        self.proxy_id = proxy_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListProxyAccessesResponseBodyProxyAccessList(TeaModel):
+    def __init__(
+        self,
+        proxy_access_id: int = None,
+        gmt_create: str = None,
+        access_id: str = None,
+        origin_info: str = None,
+        indep_account: str = None,
+        user_id: int = None,
+        user_uid: str = None,
+        user_name: str = None,
+        proxy_id: int = None,
+        instance_id: int = None,
+    ):
+        self.proxy_access_id = proxy_access_id
+        self.gmt_create = gmt_create
+        self.access_id = access_id
+        self.origin_info = origin_info
+        self.indep_account = indep_account
+        self.user_id = user_id
+        self.user_uid = user_uid
+        self.user_name = user_name
+        self.proxy_id = proxy_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_access_id is not None:
+            result['ProxyAccessId'] = self.proxy_access_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.origin_info is not None:
+            result['OriginInfo'] = self.origin_info
+        if self.indep_account is not None:
+            result['IndepAccount'] = self.indep_account
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_uid is not None:
+            result['UserUid'] = self.user_uid
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyAccessId') is not None:
+            self.proxy_access_id = m.get('ProxyAccessId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('OriginInfo') is not None:
+            self.origin_info = m.get('OriginInfo')
+        if m.get('IndepAccount') is not None:
+            self.indep_account = m.get('IndepAccount')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserUid') is not None:
+            self.user_uid = m.get('UserUid')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListProxyAccessesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        proxy_access_list: List[ListProxyAccessesResponseBodyProxyAccessList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.proxy_access_list = proxy_access_list
+
+    def validate(self):
+        if self.proxy_access_list:
+            for k in self.proxy_access_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['ProxyAccessList'] = []
+        if self.proxy_access_list is not None:
+            for k in self.proxy_access_list:
+                result['ProxyAccessList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        self.proxy_access_list = []
+        if m.get('ProxyAccessList') is not None:
+            for k in m.get('ProxyAccessList'):
+                temp_model = ListProxyAccessesResponseBodyProxyAccessList()
+                self.proxy_access_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListProxyAccessesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListProxyAccessesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListProxyAccessesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePublishGroupTaskRequest(TeaModel):
     def __init__(
         self,
@@ -12180,6 +12847,128 @@ class GetDatabaseResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InspectProxyAccessSecretRequest(TeaModel):
+    def __init__(
+        self,
+        proxy_access_id: int = None,
+        tid: int = None,
+    ):
+        self.proxy_access_id = proxy_access_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_access_id is not None:
+            result['ProxyAccessId'] = self.proxy_access_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyAccessId') is not None:
+            self.proxy_access_id = m.get('ProxyAccessId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class InspectProxyAccessSecretResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        access_secret: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.access_secret = access_secret
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.access_secret is not None:
+            result['AccessSecret'] = self.access_secret
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('AccessSecret') is not None:
+            self.access_secret = m.get('AccessSecret')
+        return self
+
+
+class InspectProxyAccessSecretResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: InspectProxyAccessSecretResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = InspectProxyAccessSecretResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14008,6 +14797,122 @@ class ApproveOrderResponse(TeaModel):
         return self
 
 
+class DeleteProxyAccessRequest(TeaModel):
+    def __init__(
+        self,
+        proxy_access_id: int = None,
+        tid: int = None,
+    ):
+        self.proxy_access_id = proxy_access_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_access_id is not None:
+            result['ProxyAccessId'] = self.proxy_access_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyAccessId') is not None:
+            self.proxy_access_id = m.get('ProxyAccessId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteProxyAccessResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        return self
+
+
+class DeleteProxyAccessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteProxyAccessResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteProxyAccessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDataCorrectTaskDetailRequest(TeaModel):
     def __init__(
         self,
@@ -14307,6 +15212,122 @@ class CreateUploadFileJobResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateUploadFileJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteProxyRequest(TeaModel):
+    def __init__(
+        self,
+        proxy_id: int = None,
+        tid: int = None,
+    ):
+        self.proxy_id = proxy_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteProxyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        return self
+
+
+class DeleteProxyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteProxyResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteProxyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19298,6 +20319,211 @@ class ListWorkFlowNodesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListWorkFlowNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProxiesRequest(TeaModel):
+    def __init__(
+        self,
+        tid: int = None,
+    ):
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListProxiesResponseBodyProxyList(TeaModel):
+    def __init__(
+        self,
+        proxy_id: int = None,
+        creator_id: int = None,
+        creator_name: str = None,
+        instance_id: int = None,
+        private_enable: bool = None,
+        private_host: str = None,
+        public_enable: bool = None,
+        public_host: str = None,
+        mysql_port: int = None,
+        https_port: int = None,
+    ):
+        self.proxy_id = proxy_id
+        self.creator_id = creator_id
+        self.creator_name = creator_name
+        self.instance_id = instance_id
+        self.private_enable = private_enable
+        self.private_host = private_host
+        self.public_enable = public_enable
+        self.public_host = public_host
+        self.mysql_port = mysql_port
+        self.https_port = https_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.creator_name is not None:
+            result['CreatorName'] = self.creator_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.private_enable is not None:
+            result['PrivateEnable'] = self.private_enable
+        if self.private_host is not None:
+            result['PrivateHost'] = self.private_host
+        if self.public_enable is not None:
+            result['PublicEnable'] = self.public_enable
+        if self.public_host is not None:
+            result['PublicHost'] = self.public_host
+        if self.mysql_port is not None:
+            result['MysqlPort'] = self.mysql_port
+        if self.https_port is not None:
+            result['HttpsPort'] = self.https_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('CreatorName') is not None:
+            self.creator_name = m.get('CreatorName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PrivateEnable') is not None:
+            self.private_enable = m.get('PrivateEnable')
+        if m.get('PrivateHost') is not None:
+            self.private_host = m.get('PrivateHost')
+        if m.get('PublicEnable') is not None:
+            self.public_enable = m.get('PublicEnable')
+        if m.get('PublicHost') is not None:
+            self.public_host = m.get('PublicHost')
+        if m.get('MysqlPort') is not None:
+            self.mysql_port = m.get('MysqlPort')
+        if m.get('HttpsPort') is not None:
+            self.https_port = m.get('HttpsPort')
+        return self
+
+
+class ListProxiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        error_message: str = None,
+        error_code: str = None,
+        proxy_list: List[ListProxiesResponseBodyProxyList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.error_message = error_message
+        self.error_code = error_code
+        self.proxy_list = proxy_list
+
+    def validate(self):
+        if self.proxy_list:
+            for k in self.proxy_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['ProxyList'] = []
+        if self.proxy_list is not None:
+            for k in self.proxy_list:
+                result['ProxyList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        self.proxy_list = []
+        if m.get('ProxyList') is not None:
+            for k in m.get('ProxyList'):
+                temp_model = ListProxiesResponseBodyProxyList()
+                self.proxy_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListProxiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListProxiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListProxiesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -523,6 +523,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_databases_with_options_async(request, runtime)
 
+    def create_proxy_access_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateProxyAccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateProxyAccessResponse(),
+            self.do_rpcrequest('CreateProxyAccess', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_proxy_access_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateProxyAccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateProxyAccessResponse(),
+            await self.do_rpcrequest_async('CreateProxyAccess', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_proxy_access(
+        self,
+        request: dms_enterprise_20181101_models.CreateProxyAccessRequest,
+    ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_proxy_access_with_options(request, runtime)
+
+    async def create_proxy_access_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateProxyAccessRequest,
+    ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_proxy_access_with_options_async(request, runtime)
+
     def list_user_permissions_with_options(
         self,
         request: dms_enterprise_20181101_models.ListUserPermissionsRequest,
@@ -606,6 +648,48 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_work_flow_templates_with_options_async(request, runtime)
+
+    def get_proxy_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetProxyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetProxyResponse(),
+            self.do_rpcrequest('GetProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_proxy_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetProxyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetProxyResponse(),
+            await self.do_rpcrequest_async('GetProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_proxy(
+        self,
+        request: dms_enterprise_20181101_models.GetProxyRequest,
+    ) -> dms_enterprise_20181101_models.GetProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_proxy_with_options(request, runtime)
+
+    async def get_proxy_async(
+        self,
+        request: dms_enterprise_20181101_models.GetProxyRequest,
+    ) -> dms_enterprise_20181101_models.GetProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_proxy_with_options_async(request, runtime)
 
     def get_data_export_order_detail_with_options(
         self,
@@ -816,6 +900,48 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetStructSyncJobDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_struct_sync_job_detail_with_options_async(request, runtime)
+
+    def create_proxy_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateProxyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateProxyResponse(),
+            self.do_rpcrequest('CreateProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_proxy_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateProxyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateProxyResponse(),
+            await self.do_rpcrequest_async('CreateProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_proxy(
+        self,
+        request: dms_enterprise_20181101_models.CreateProxyRequest,
+    ) -> dms_enterprise_20181101_models.CreateProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_proxy_with_options(request, runtime)
+
+    async def create_proxy_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateProxyRequest,
+    ) -> dms_enterprise_20181101_models.CreateProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_proxy_with_options_async(request, runtime)
 
     def create_upload_ossfile_job_with_options(
         self,
@@ -1979,6 +2105,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_data_cron_clear_order_with_options_async(request, runtime)
 
+    def list_proxy_accesses_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListProxyAccessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListProxyAccessesResponse(),
+            self.do_rpcrequest('ListProxyAccesses', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_proxy_accesses_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListProxyAccessesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListProxyAccessesResponse(),
+            await self.do_rpcrequest_async('ListProxyAccesses', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_proxy_accesses(
+        self,
+        request: dms_enterprise_20181101_models.ListProxyAccessesRequest,
+    ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_proxy_accesses_with_options(request, runtime)
+
+    async def list_proxy_accesses_async(
+        self,
+        request: dms_enterprise_20181101_models.ListProxyAccessesRequest,
+    ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_proxy_accesses_with_options_async(request, runtime)
+
     def create_publish_group_task_with_options(
         self,
         request: dms_enterprise_20181101_models.CreatePublishGroupTaskRequest,
@@ -2062,6 +2230,48 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_database_with_options_async(request, runtime)
+
+    def inspect_proxy_access_secret_with_options(
+        self,
+        request: dms_enterprise_20181101_models.InspectProxyAccessSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.InspectProxyAccessSecretResponse(),
+            self.do_rpcrequest('InspectProxyAccessSecret', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def inspect_proxy_access_secret_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.InspectProxyAccessSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.InspectProxyAccessSecretResponse(),
+            await self.do_rpcrequest_async('InspectProxyAccessSecret', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def inspect_proxy_access_secret(
+        self,
+        request: dms_enterprise_20181101_models.InspectProxyAccessSecretRequest,
+    ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.inspect_proxy_access_secret_with_options(request, runtime)
+
+    async def inspect_proxy_access_secret_async(
+        self,
+        request: dms_enterprise_20181101_models.InspectProxyAccessSecretRequest,
+    ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.inspect_proxy_access_secret_with_options_async(request, runtime)
 
     def get_owner_apply_order_detail_with_options(
         self,
@@ -2399,6 +2609,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.approve_order_with_options_async(request, runtime)
 
+    def delete_proxy_access_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteProxyAccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteProxyAccessResponse(),
+            self.do_rpcrequest('DeleteProxyAccess', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_proxy_access_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteProxyAccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteProxyAccessResponse(),
+            await self.do_rpcrequest_async('DeleteProxyAccess', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_proxy_access(
+        self,
+        request: dms_enterprise_20181101_models.DeleteProxyAccessRequest,
+    ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_proxy_access_with_options(request, runtime)
+
+    async def delete_proxy_access_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteProxyAccessRequest,
+    ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_proxy_access_with_options_async(request, runtime)
+
     def get_data_correct_task_detail_with_options(
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectTaskDetailRequest,
@@ -2482,6 +2734,48 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateUploadFileJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_file_job_with_options_async(request, runtime)
+
+    def delete_proxy_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteProxyResponse(),
+            self.do_rpcrequest('DeleteProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_proxy_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteProxyResponse(),
+            await self.do_rpcrequest_async('DeleteProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_proxy(
+        self,
+        request: dms_enterprise_20181101_models.DeleteProxyRequest,
+    ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_proxy_with_options(request, runtime)
+
+    async def delete_proxy_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteProxyRequest,
+    ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_proxy_with_options_async(request, runtime)
 
     def list_logic_databases_with_options(
         self,
@@ -3436,6 +3730,48 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListWorkFlowNodesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_work_flow_nodes_with_options_async(request, runtime)
+
+    def list_proxies_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListProxiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListProxiesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListProxiesResponse(),
+            self.do_rpcrequest('ListProxies', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_proxies_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListProxiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListProxiesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListProxiesResponse(),
+            await self.do_rpcrequest_async('ListProxies', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_proxies(
+        self,
+        request: dms_enterprise_20181101_models.ListProxiesRequest,
+    ) -> dms_enterprise_20181101_models.ListProxiesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_proxies_with_options(request, runtime)
+
+    async def list_proxies_async(
+        self,
+        request: dms_enterprise_20181101_models.ListProxiesRequest,
+    ) -> dms_enterprise_20181101_models.ListProxiesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_proxies_with_options_async(request, runtime)
 
     def get_struct_sync_order_detail_with_options(
         self,
