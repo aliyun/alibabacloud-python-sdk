@@ -9176,6 +9176,39 @@ class GetSmartHandleJobResponseBodySmartJobInfoInputConfig(TeaModel):
         return self
 
 
+class GetSmartHandleJobResponseBodySmartJobInfoOutputConfig(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        object: str = None,
+    ):
+        self.bucket = bucket
+        self.object = object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.object is not None:
+            result['Object'] = self.object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        return self
+
+
 class GetSmartHandleJobResponseBodySmartJobInfo(TeaModel):
     def __init__(
         self,
@@ -9184,7 +9217,7 @@ class GetSmartHandleJobResponseBodySmartJobInfo(TeaModel):
         user_id: str = None,
         editing_config: str = None,
         input_config: GetSmartHandleJobResponseBodySmartJobInfoInputConfig = None,
-        output_config: str = None,
+        output_config: GetSmartHandleJobResponseBodySmartJobInfoOutputConfig = None,
         create_time: str = None,
         modified_time: str = None,
         job_type: str = None,
@@ -9202,6 +9235,8 @@ class GetSmartHandleJobResponseBodySmartJobInfo(TeaModel):
     def validate(self):
         if self.input_config:
             self.input_config.validate()
+        if self.output_config:
+            self.output_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9220,7 +9255,7 @@ class GetSmartHandleJobResponseBodySmartJobInfo(TeaModel):
         if self.input_config is not None:
             result['InputConfig'] = self.input_config.to_map()
         if self.output_config is not None:
-            result['outputConfig'] = self.output_config
+            result['OutputConfig'] = self.output_config.to_map()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.modified_time is not None:
@@ -9242,8 +9277,9 @@ class GetSmartHandleJobResponseBodySmartJobInfo(TeaModel):
         if m.get('InputConfig') is not None:
             temp_model = GetSmartHandleJobResponseBodySmartJobInfoInputConfig()
             self.input_config = temp_model.from_map(m['InputConfig'])
-        if m.get('outputConfig') is not None:
-            self.output_config = m.get('outputConfig')
+        if m.get('OutputConfig') is not None:
+            temp_model = GetSmartHandleJobResponseBodySmartJobInfoOutputConfig()
+            self.output_config = temp_model.from_map(m['OutputConfig'])
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('ModifiedTime') is not None:
