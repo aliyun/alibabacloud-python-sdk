@@ -685,6 +685,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_bill_with_options_async(request, runtime)
 
+    def describe_pricing_module_with_options(
+        self,
+        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribePricingModuleResponse(),
+            self.do_rpcrequest('DescribePricingModule', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_pricing_module_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribePricingModuleResponse(),
+            await self.do_rpcrequest_async('DescribePricingModule', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_pricing_module(
+        self,
+        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pricing_module_with_options(request, runtime)
+
+    async def describe_pricing_module_async(
+        self,
+        request: bss_open_api_20171214_models.DescribePricingModuleRequest,
+    ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pricing_module_with_options_async(request, runtime)
+
     def describe_resource_coverage_detail_with_options(
         self,
         request: bss_open_api_20171214_models.DescribeResourceCoverageDetailRequest,
@@ -894,6 +936,174 @@ class Client(OpenApiClient):
     ) -> bss_open_api_20171214_models.DescribeResourceUsageTotalResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_usage_total_with_options_async(request, runtime)
+
+    def describe_savings_plans_coverage_detail_with_options(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse(),
+            self.do_rpcrequest('DescribeSavingsPlansCoverageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_savings_plans_coverage_detail_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse(),
+            await self.do_rpcrequest_async('DescribeSavingsPlansCoverageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_savings_plans_coverage_detail(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailRequest,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_savings_plans_coverage_detail_with_options(request, runtime)
+
+    async def describe_savings_plans_coverage_detail_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailRequest,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_savings_plans_coverage_detail_with_options_async(request, runtime)
+
+    def describe_savings_plans_coverage_total_with_options(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse(),
+            self.do_rpcrequest('DescribeSavingsPlansCoverageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_savings_plans_coverage_total_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse(),
+            await self.do_rpcrequest_async('DescribeSavingsPlansCoverageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_savings_plans_coverage_total(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalRequest,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_savings_plans_coverage_total_with_options(request, runtime)
+
+    async def describe_savings_plans_coverage_total_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalRequest,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_savings_plans_coverage_total_with_options_async(request, runtime)
+
+    def describe_savings_plans_usage_detail_with_options(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse(),
+            self.do_rpcrequest('DescribeSavingsPlansUsageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_savings_plans_usage_detail_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse(),
+            await self.do_rpcrequest_async('DescribeSavingsPlansUsageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_savings_plans_usage_detail(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_savings_plans_usage_detail_with_options(request, runtime)
+
+    async def describe_savings_plans_usage_detail_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_savings_plans_usage_detail_with_options_async(request, runtime)
+
+    def describe_savings_plans_usage_total_with_options(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse(),
+            self.do_rpcrequest('DescribeSavingsPlansUsageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_savings_plans_usage_total_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse(),
+            await self.do_rpcrequest_async('DescribeSavingsPlansUsageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_savings_plans_usage_total(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalRequest,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_savings_plans_usage_total_with_options(request, runtime)
+
+    async def describe_savings_plans_usage_total_async(
+        self,
+        request: bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalRequest,
+    ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_savings_plans_usage_total_with_options_async(request, runtime)
 
     def describe_split_item_bill_with_options(
         self,
@@ -2492,6 +2702,48 @@ class Client(OpenApiClient):
     ) -> bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_reseller_available_quota_with_options_async(request, runtime)
+
+    def query_resource_package_instances_with_options(
+        self,
+        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryResourcePackageInstancesResponse(),
+            self.do_rpcrequest('QueryResourcePackageInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_resource_package_instances_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.QueryResourcePackageInstancesResponse(),
+            await self.do_rpcrequest_async('QueryResourcePackageInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_resource_package_instances(
+        self,
+        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
+    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_resource_package_instances_with_options(request, runtime)
+
+    async def query_resource_package_instances_async(
+        self,
+        request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
+    ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_resource_package_instances_with_options_async(request, runtime)
 
     def query_riutilization_detail_with_options(
         self,

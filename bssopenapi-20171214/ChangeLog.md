@@ -1,3 +1,6 @@
+2021-08-12 Version: 1.0.8
+- Generated python 2017-12-14 for BssOpenApi.
+
 2021-06-25 Version: 1.0.7
 - AMP Version Change.
 
