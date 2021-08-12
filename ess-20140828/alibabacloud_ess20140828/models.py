@@ -4,6 +4,186 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class AttachAlbServerGroupsRequestAlbServerGroup(TeaModel):
+    def __init__(
+        self,
+        alb_server_group_id: str = None,
+        weight: int = None,
+        port: int = None,
+    ):
+        self.alb_server_group_id = alb_server_group_id
+        self.weight = weight
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alb_server_group_id is not None:
+            result['AlbServerGroupId'] = self.alb_server_group_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlbServerGroupId') is not None:
+            self.alb_server_group_id = m.get('AlbServerGroupId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class AttachAlbServerGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        region_id: str = None,
+        scaling_group_id: str = None,
+        client_token: str = None,
+        force_attach: bool = None,
+        alb_server_group: List[AttachAlbServerGroupsRequestAlbServerGroup] = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.region_id = region_id
+        self.scaling_group_id = scaling_group_id
+        self.client_token = client_token
+        self.force_attach = force_attach
+        self.alb_server_group = alb_server_group
+
+    def validate(self):
+        if self.alb_server_group:
+            for k in self.alb_server_group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.force_attach is not None:
+            result['ForceAttach'] = self.force_attach
+        result['AlbServerGroup'] = []
+        if self.alb_server_group is not None:
+            for k in self.alb_server_group:
+                result['AlbServerGroup'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ForceAttach') is not None:
+            self.force_attach = m.get('ForceAttach')
+        self.alb_server_group = []
+        if m.get('AlbServerGroup') is not None:
+            for k in m.get('AlbServerGroup'):
+                temp_model = AttachAlbServerGroupsRequestAlbServerGroup()
+                self.alb_server_group.append(temp_model.from_map(k))
+        return self
+
+
+class AttachAlbServerGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        scaling_activity_id: str = None,
+        request_id: str = None,
+    ):
+        self.scaling_activity_id = scaling_activity_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scaling_activity_id is not None:
+            result['ScalingActivityId'] = self.scaling_activity_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ScalingActivityId') is not None:
+            self.scaling_activity_id = m.get('ScalingActivityId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachAlbServerGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AttachAlbServerGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AttachAlbServerGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AttachDBInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -25,6 +205,10 @@ class AttachDBInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -68,6 +252,10 @@ class AttachDBInstancesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -96,6 +284,10 @@ class AttachDBInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -138,6 +330,10 @@ class AttachInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -181,29 +377,33 @@ class AttachInstancesRequest(TeaModel):
 class AttachInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         scaling_activity_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.scaling_activity_id = scaling_activity_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.scaling_activity_id is not None:
             result['ScalingActivityId'] = self.scaling_activity_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ScalingActivityId') is not None:
             self.scaling_activity_id = m.get('ScalingActivityId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -223,6 +423,10 @@ class AttachInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -248,6 +452,7 @@ class AttachLoadBalancersRequest(TeaModel):
         scaling_group_id: str = None,
         force_attach: bool = None,
         client_token: str = None,
+        async_: bool = None,
         load_balancer: List[str] = None,
     ):
         self.owner_id = owner_id
@@ -255,12 +460,17 @@ class AttachLoadBalancersRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
         self.force_attach = force_attach
         self.client_token = client_token
+        self.async_ = async_
         self.load_balancer = load_balancer
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -272,6 +482,8 @@ class AttachLoadBalancersRequest(TeaModel):
             result['ForceAttach'] = self.force_attach
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.load_balancer is not None:
             result['LoadBalancer'] = self.load_balancer
         return result
@@ -288,6 +500,8 @@ class AttachLoadBalancersRequest(TeaModel):
             self.force_attach = m.get('ForceAttach')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('LoadBalancer') is not None:
             self.load_balancer = m.get('LoadBalancer')
         return self
@@ -296,21 +510,31 @@ class AttachLoadBalancersRequest(TeaModel):
 class AttachLoadBalancersResponseBody(TeaModel):
     def __init__(
         self,
+        scaling_activity_id: str = None,
         request_id: str = None,
     ):
+        self.scaling_activity_id = scaling_activity_id
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.scaling_activity_id is not None:
+            result['ScalingActivityId'] = self.scaling_activity_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ScalingActivityId') is not None:
+            self.scaling_activity_id = m.get('ScalingActivityId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -332,6 +556,10 @@ class AttachLoadBalancersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -364,6 +592,10 @@ class AttachVServerGroupsRequestVServerGroupVServerGroupAttribute(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -400,6 +632,10 @@ class AttachVServerGroupsRequestVServerGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VServerGroupAttribute'] = []
         if self.vserver_group_attribute is not None:
@@ -447,6 +683,10 @@ class AttachVServerGroupsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -499,6 +739,10 @@ class AttachVServerGroupsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -527,6 +771,10 @@ class AttachVServerGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -567,6 +815,10 @@ class CompleteLifecycleActionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -614,6 +866,10 @@ class CompleteLifecycleActionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -642,6 +898,10 @@ class CompleteLifecycleActionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -672,6 +932,10 @@ class CreateAlarmRequestDimension(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dimension_key is not None:
             result['DimensionKey'] = self.dimension_key
@@ -734,6 +998,10 @@ class CreateAlarmRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -818,29 +1086,33 @@ class CreateAlarmRequest(TeaModel):
 class CreateAlarmResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         alarm_task_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.alarm_task_id = alarm_task_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.alarm_task_id is not None:
             result['AlarmTaskId'] = self.alarm_task_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('AlarmTaskId') is not None:
             self.alarm_task_id = m.get('AlarmTaskId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -860,6 +1132,10 @@ class CreateAlarmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -906,6 +1182,10 @@ class CreateLifecycleHookRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -967,6 +1247,10 @@ class CreateLifecycleHookResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -999,6 +1283,10 @@ class CreateLifecycleHookResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1035,6 +1323,10 @@ class CreateNotificationConfigurationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -1074,6 +1366,10 @@ class CreateNotificationConfigurationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1102,6 +1398,10 @@ class CreateNotificationConfigurationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1140,6 +1440,10 @@ class CreateScalingConfigurationRequestSystemDisk(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
@@ -1185,6 +1489,10 @@ class CreateScalingConfigurationRequestPrivatePoolOptions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.match_criteria is not None:
             result['MatchCriteria'] = self.match_criteria
@@ -1214,6 +1522,10 @@ class CreateScalingConfigurationRequestInstanceTypeOverride(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -1233,37 +1545,49 @@ class CreateScalingConfigurationRequestInstanceTypeOverride(TeaModel):
 class CreateScalingConfigurationRequestDataDisk(TeaModel):
     def __init__(
         self,
+        categorys: List[str] = None,
         performance_level: str = None,
+        auto_snapshot_policy_id: str = None,
+        encrypted: str = None,
         description: str = None,
         snapshot_id: str = None,
         size: int = None,
         device: str = None,
         disk_name: str = None,
-        auto_snapshot_policy_id: str = None,
         category: str = None,
-        kmskey_id: str = None,
         delete_with_instance: bool = None,
-        encrypted: str = None,
+        kmskey_id: str = None,
     ):
+        self.categorys = categorys
         self.performance_level = performance_level
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id
+        self.encrypted = encrypted
         self.description = description
         self.snapshot_id = snapshot_id
         self.size = size
         self.device = device
         self.disk_name = disk_name
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
         self.category = category
-        self.kmskey_id = kmskey_id
         self.delete_with_instance = delete_with_instance
-        self.encrypted = encrypted
+        self.kmskey_id = kmskey_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.categorys is not None:
+            result['Categorys'] = self.categorys
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.auto_snapshot_policy_id is not None:
+            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
         if self.description is not None:
             result['Description'] = self.description
         if self.snapshot_id is not None:
@@ -1274,22 +1598,24 @@ class CreateScalingConfigurationRequestDataDisk(TeaModel):
             result['Device'] = self.device
         if self.disk_name is not None:
             result['DiskName'] = self.disk_name
-        if self.auto_snapshot_policy_id is not None:
-            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
         if self.category is not None:
             result['Category'] = self.category
-        if self.kmskey_id is not None:
-            result['KMSKeyId'] = self.kmskey_id
         if self.delete_with_instance is not None:
             result['DeleteWithInstance'] = self.delete_with_instance
-        if self.encrypted is not None:
-            result['Encrypted'] = self.encrypted
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Categorys') is not None:
+            self.categorys = m.get('Categorys')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('AutoSnapshotPolicyId') is not None:
+            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('SnapshotId') is not None:
@@ -1300,16 +1626,12 @@ class CreateScalingConfigurationRequestDataDisk(TeaModel):
             self.device = m.get('Device')
         if m.get('DiskName') is not None:
             self.disk_name = m.get('DiskName')
-        if m.get('AutoSnapshotPolicyId') is not None:
-            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
         if m.get('Category') is not None:
             self.category = m.get('Category')
-        if m.get('KMSKeyId') is not None:
-            self.kmskey_id = m.get('KMSKeyId')
         if m.get('DeleteWithInstance') is not None:
             self.delete_with_instance = m.get('DeleteWithInstance')
-        if m.get('Encrypted') is not None:
-            self.encrypted = m.get('Encrypted')
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
         return self
 
 
@@ -1326,6 +1648,10 @@ class CreateScalingConfigurationRequestSpotPriceLimit(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.price_limit is not None:
             result['PriceLimit'] = self.price_limit
@@ -1339,6 +1665,51 @@ class CreateScalingConfigurationRequestSpotPriceLimit(TeaModel):
             self.price_limit = m.get('PriceLimit')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        return self
+
+
+class CreateScalingConfigurationRequestInstancePatternInfo(TeaModel):
+    def __init__(
+        self,
+        cores: int = None,
+        instance_family_level: str = None,
+        max_price: float = None,
+        memory: float = None,
+    ):
+        self.cores = cores
+        self.instance_family_level = instance_family_level
+        self.max_price = max_price
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cores is not None:
+            result['Cores'] = self.cores
+        if self.instance_family_level is not None:
+            result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.max_price is not None:
+            result['MaxPrice'] = self.max_price
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cores') is not None:
+            self.cores = m.get('Cores')
+        if m.get('InstanceFamilyLevel') is not None:
+            self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('MaxPrice') is not None:
+            self.max_price = m.get('MaxPrice')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
         return self
 
 
@@ -1393,6 +1764,8 @@ class CreateScalingConfigurationRequest(TeaModel):
         data_disk: List[CreateScalingConfigurationRequestDataDisk] = None,
         spot_price_limit: List[CreateScalingConfigurationRequestSpotPriceLimit] = None,
         security_group_ids: List[str] = None,
+        instance_pattern_info: List[CreateScalingConfigurationRequestInstancePatternInfo] = None,
+        system_disk_category: List[str] = None,
     ):
         self.system_disk = system_disk
         self.private_pool_options = private_pool_options
@@ -1442,6 +1815,8 @@ class CreateScalingConfigurationRequest(TeaModel):
         self.data_disk = data_disk
         self.spot_price_limit = spot_price_limit
         self.security_group_ids = security_group_ids
+        self.instance_pattern_info = instance_pattern_info
+        self.system_disk_category = system_disk_category
 
     def validate(self):
         if self.system_disk:
@@ -1460,8 +1835,16 @@ class CreateScalingConfigurationRequest(TeaModel):
             for k in self.spot_price_limit:
                 if k:
                     k.validate()
+        if self.instance_pattern_info:
+            for k in self.instance_pattern_info:
+                if k:
+                    k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
@@ -1565,6 +1948,12 @@ class CreateScalingConfigurationRequest(TeaModel):
                 result['SpotPriceLimit'].append(k.to_map() if k else None)
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        result['InstancePatternInfo'] = []
+        if self.instance_pattern_info is not None:
+            for k in self.instance_pattern_info:
+                result['InstancePatternInfo'].append(k.to_map() if k else None)
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
         return result
 
     def from_map(self, m: dict = None):
@@ -1676,6 +2065,13 @@ class CreateScalingConfigurationRequest(TeaModel):
                 self.spot_price_limit.append(temp_model.from_map(k))
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        self.instance_pattern_info = []
+        if m.get('InstancePatternInfo') is not None:
+            for k in m.get('InstancePatternInfo'):
+                temp_model = CreateScalingConfigurationRequestInstancePatternInfo()
+                self.instance_pattern_info.append(temp_model.from_map(k))
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
         return self
 
 
@@ -1700,6 +2096,10 @@ class CreateScalingConfigurationShrinkRequestSystemDisk(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
@@ -1745,6 +2145,10 @@ class CreateScalingConfigurationShrinkRequestPrivatePoolOptions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.match_criteria is not None:
             result['MatchCriteria'] = self.match_criteria
@@ -1774,6 +2178,10 @@ class CreateScalingConfigurationShrinkRequestInstanceTypeOverride(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -1793,37 +2201,49 @@ class CreateScalingConfigurationShrinkRequestInstanceTypeOverride(TeaModel):
 class CreateScalingConfigurationShrinkRequestDataDisk(TeaModel):
     def __init__(
         self,
+        categorys: List[str] = None,
         performance_level: str = None,
+        auto_snapshot_policy_id: str = None,
+        encrypted: str = None,
         description: str = None,
         snapshot_id: str = None,
         size: int = None,
         device: str = None,
         disk_name: str = None,
-        auto_snapshot_policy_id: str = None,
         category: str = None,
-        kmskey_id: str = None,
         delete_with_instance: bool = None,
-        encrypted: str = None,
+        kmskey_id: str = None,
     ):
+        self.categorys = categorys
         self.performance_level = performance_level
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id
+        self.encrypted = encrypted
         self.description = description
         self.snapshot_id = snapshot_id
         self.size = size
         self.device = device
         self.disk_name = disk_name
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
         self.category = category
-        self.kmskey_id = kmskey_id
         self.delete_with_instance = delete_with_instance
-        self.encrypted = encrypted
+        self.kmskey_id = kmskey_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.categorys is not None:
+            result['Categorys'] = self.categorys
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.auto_snapshot_policy_id is not None:
+            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
         if self.description is not None:
             result['Description'] = self.description
         if self.snapshot_id is not None:
@@ -1834,22 +2254,24 @@ class CreateScalingConfigurationShrinkRequestDataDisk(TeaModel):
             result['Device'] = self.device
         if self.disk_name is not None:
             result['DiskName'] = self.disk_name
-        if self.auto_snapshot_policy_id is not None:
-            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
         if self.category is not None:
             result['Category'] = self.category
-        if self.kmskey_id is not None:
-            result['KMSKeyId'] = self.kmskey_id
         if self.delete_with_instance is not None:
             result['DeleteWithInstance'] = self.delete_with_instance
-        if self.encrypted is not None:
-            result['Encrypted'] = self.encrypted
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Categorys') is not None:
+            self.categorys = m.get('Categorys')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('AutoSnapshotPolicyId') is not None:
+            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('SnapshotId') is not None:
@@ -1860,16 +2282,12 @@ class CreateScalingConfigurationShrinkRequestDataDisk(TeaModel):
             self.device = m.get('Device')
         if m.get('DiskName') is not None:
             self.disk_name = m.get('DiskName')
-        if m.get('AutoSnapshotPolicyId') is not None:
-            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
         if m.get('Category') is not None:
             self.category = m.get('Category')
-        if m.get('KMSKeyId') is not None:
-            self.kmskey_id = m.get('KMSKeyId')
         if m.get('DeleteWithInstance') is not None:
             self.delete_with_instance = m.get('DeleteWithInstance')
-        if m.get('Encrypted') is not None:
-            self.encrypted = m.get('Encrypted')
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
         return self
 
 
@@ -1886,6 +2304,10 @@ class CreateScalingConfigurationShrinkRequestSpotPriceLimit(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.price_limit is not None:
             result['PriceLimit'] = self.price_limit
@@ -1899,6 +2321,51 @@ class CreateScalingConfigurationShrinkRequestSpotPriceLimit(TeaModel):
             self.price_limit = m.get('PriceLimit')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        return self
+
+
+class CreateScalingConfigurationShrinkRequestInstancePatternInfo(TeaModel):
+    def __init__(
+        self,
+        cores: int = None,
+        instance_family_level: str = None,
+        max_price: float = None,
+        memory: float = None,
+    ):
+        self.cores = cores
+        self.instance_family_level = instance_family_level
+        self.max_price = max_price
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cores is not None:
+            result['Cores'] = self.cores
+        if self.instance_family_level is not None:
+            result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.max_price is not None:
+            result['MaxPrice'] = self.max_price
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cores') is not None:
+            self.cores = m.get('Cores')
+        if m.get('InstanceFamilyLevel') is not None:
+            self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('MaxPrice') is not None:
+            self.max_price = m.get('MaxPrice')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
         return self
 
 
@@ -1953,6 +2420,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         data_disk: List[CreateScalingConfigurationShrinkRequestDataDisk] = None,
         spot_price_limit: List[CreateScalingConfigurationShrinkRequestSpotPriceLimit] = None,
         security_group_ids: List[str] = None,
+        instance_pattern_info: List[CreateScalingConfigurationShrinkRequestInstancePatternInfo] = None,
+        system_disk_category: List[str] = None,
     ):
         self.system_disk = system_disk
         self.private_pool_options = private_pool_options
@@ -2002,6 +2471,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         self.data_disk = data_disk
         self.spot_price_limit = spot_price_limit
         self.security_group_ids = security_group_ids
+        self.instance_pattern_info = instance_pattern_info
+        self.system_disk_category = system_disk_category
 
     def validate(self):
         if self.system_disk:
@@ -2020,8 +2491,16 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             for k in self.spot_price_limit:
                 if k:
                     k.validate()
+        if self.instance_pattern_info:
+            for k in self.instance_pattern_info:
+                if k:
+                    k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
@@ -2125,6 +2604,12 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
                 result['SpotPriceLimit'].append(k.to_map() if k else None)
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        result['InstancePatternInfo'] = []
+        if self.instance_pattern_info is not None:
+            for k in self.instance_pattern_info:
+                result['InstancePatternInfo'].append(k.to_map() if k else None)
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
         return result
 
     def from_map(self, m: dict = None):
@@ -2236,35 +2721,46 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
                 self.spot_price_limit.append(temp_model.from_map(k))
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        self.instance_pattern_info = []
+        if m.get('InstancePatternInfo') is not None:
+            for k in m.get('InstancePatternInfo'):
+                temp_model = CreateScalingConfigurationShrinkRequestInstancePatternInfo()
+                self.instance_pattern_info.append(temp_model.from_map(k))
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
         return self
 
 
 class CreateScalingConfigurationResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         scaling_configuration_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.scaling_configuration_id = scaling_configuration_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.scaling_configuration_id is not None:
             result['ScalingConfigurationId'] = self.scaling_configuration_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ScalingConfigurationId') is not None:
             self.scaling_configuration_id = m.get('ScalingConfigurationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2284,6 +2780,10 @@ class CreateScalingConfigurationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2322,6 +2822,10 @@ class CreateScalingGroupRequestLifecycleHook(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.default_result is not None:
             result['DefaultResult'] = self.default_result
@@ -2369,6 +2873,10 @@ class CreateScalingGroupRequestVServerGroupVServerGroupAttribute(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -2405,6 +2913,10 @@ class CreateScalingGroupRequestVServerGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VServerGroupAttribute'] = []
         if self.vserver_group_attribute is not None:
@@ -2439,6 +2951,10 @@ class CreateScalingGroupRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -2468,6 +2984,10 @@ class CreateScalingGroupRequestLaunchTemplateOverride(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -2481,6 +3001,45 @@ class CreateScalingGroupRequestLaunchTemplateOverride(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('WeightedCapacity') is not None:
             self.weighted_capacity = m.get('WeightedCapacity')
+        return self
+
+
+class CreateScalingGroupRequestAlbServerGroup(TeaModel):
+    def __init__(
+        self,
+        alb_server_group_id: str = None,
+        weight: int = None,
+        port: int = None,
+    ):
+        self.alb_server_group_id = alb_server_group_id
+        self.weight = weight
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alb_server_group_id is not None:
+            result['AlbServerGroupId'] = self.alb_server_group_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlbServerGroupId') is not None:
+            self.alb_server_group_id = m.get('AlbServerGroupId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
         return self
 
 
@@ -2513,12 +3072,12 @@ class CreateScalingGroupRequest(TeaModel):
         spot_instance_pools: int = None,
         desired_capacity: int = None,
         group_deletion_protection: bool = None,
-        scale_out_amount_check: bool = None,
         v_switch_ids: List[str] = None,
         lifecycle_hook: List[CreateScalingGroupRequestLifecycleHook] = None,
         vserver_group: List[CreateScalingGroupRequestVServerGroup] = None,
         tag: List[CreateScalingGroupRequestTag] = None,
         launch_template_override: List[CreateScalingGroupRequestLaunchTemplateOverride] = None,
+        alb_server_group: List[CreateScalingGroupRequestAlbServerGroup] = None,
     ):
         self.removal_policy = removal_policy
         self.owner_id = owner_id
@@ -2546,12 +3105,12 @@ class CreateScalingGroupRequest(TeaModel):
         self.spot_instance_pools = spot_instance_pools
         self.desired_capacity = desired_capacity
         self.group_deletion_protection = group_deletion_protection
-        self.scale_out_amount_check = scale_out_amount_check
         self.v_switch_ids = v_switch_ids
         self.lifecycle_hook = lifecycle_hook
         self.vserver_group = vserver_group
         self.tag = tag
         self.launch_template_override = launch_template_override
+        self.alb_server_group = alb_server_group
 
     def validate(self):
         if self.lifecycle_hook:
@@ -2570,8 +3129,16 @@ class CreateScalingGroupRequest(TeaModel):
             for k in self.launch_template_override:
                 if k:
                     k.validate()
+        if self.alb_server_group:
+            for k in self.alb_server_group:
+                if k:
+                    k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.removal_policy is not None:
             result['RemovalPolicy'] = self.removal_policy
@@ -2625,8 +3192,6 @@ class CreateScalingGroupRequest(TeaModel):
             result['DesiredCapacity'] = self.desired_capacity
         if self.group_deletion_protection is not None:
             result['GroupDeletionProtection'] = self.group_deletion_protection
-        if self.scale_out_amount_check is not None:
-            result['ScaleOutAmountCheck'] = self.scale_out_amount_check
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
         result['LifecycleHook'] = []
@@ -2645,6 +3210,10 @@ class CreateScalingGroupRequest(TeaModel):
         if self.launch_template_override is not None:
             for k in self.launch_template_override:
                 result['LaunchTemplateOverride'].append(k.to_map() if k else None)
+        result['AlbServerGroup'] = []
+        if self.alb_server_group is not None:
+            for k in self.alb_server_group:
+                result['AlbServerGroup'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2701,8 +3270,6 @@ class CreateScalingGroupRequest(TeaModel):
             self.desired_capacity = m.get('DesiredCapacity')
         if m.get('GroupDeletionProtection') is not None:
             self.group_deletion_protection = m.get('GroupDeletionProtection')
-        if m.get('ScaleOutAmountCheck') is not None:
-            self.scale_out_amount_check = m.get('ScaleOutAmountCheck')
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
         self.lifecycle_hook = []
@@ -2725,6 +3292,11 @@ class CreateScalingGroupRequest(TeaModel):
             for k in m.get('LaunchTemplateOverride'):
                 temp_model = CreateScalingGroupRequestLaunchTemplateOverride()
                 self.launch_template_override.append(temp_model.from_map(k))
+        self.alb_server_group = []
+        if m.get('AlbServerGroup') is not None:
+            for k in m.get('AlbServerGroup'):
+                temp_model = CreateScalingGroupRequestAlbServerGroup()
+                self.alb_server_group.append(temp_model.from_map(k))
         return self
 
 
@@ -2741,6 +3313,10 @@ class CreateScalingGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2773,6 +3349,10 @@ class CreateScalingGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2805,6 +3385,10 @@ class CreateScalingRuleRequestStepAdjustment(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_interval_upper_bound is not None:
             result['MetricIntervalUpperBound'] = self.metric_interval_upper_bound
@@ -2881,6 +3465,10 @@ class CreateScalingRuleRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -2997,6 +3585,10 @@ class CreateScalingRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scaling_rule_ari is not None:
             result['ScalingRuleAri'] = self.scaling_rule_ari
@@ -3033,6 +3625,10 @@ class CreateScalingRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3093,6 +3689,10 @@ class CreateScheduledTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3172,29 +3772,33 @@ class CreateScheduledTaskRequest(TeaModel):
 class CreateScheduledTaskResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         scheduled_task_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.scheduled_task_id = scheduled_task_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.scheduled_task_id is not None:
             result['ScheduledTaskId'] = self.scheduled_task_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ScheduledTaskId') is not None:
             self.scheduled_task_id = m.get('ScheduledTaskId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3214,6 +3818,10 @@ class CreateScheduledTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3248,6 +3856,10 @@ class DeactivateScalingConfigurationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3283,6 +3895,10 @@ class DeactivateScalingConfigurationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3311,6 +3927,10 @@ class DeactivateScalingConfigurationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3345,6 +3965,10 @@ class DeleteAlarmRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3372,29 +3996,33 @@ class DeleteAlarmRequest(TeaModel):
 class DeleteAlarmResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         alarm_task_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.alarm_task_id = alarm_task_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.alarm_task_id is not None:
             result['AlarmTaskId'] = self.alarm_task_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('AlarmTaskId') is not None:
             self.alarm_task_id = m.get('AlarmTaskId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3414,6 +4042,10 @@ class DeleteAlarmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3452,6 +4084,10 @@ class DeleteLifecycleHookRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3495,6 +4131,10 @@ class DeleteLifecycleHookResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3523,6 +4163,10 @@ class DeleteLifecycleHookResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3557,6 +4201,10 @@ class DeleteNotificationConfigurationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3592,6 +4240,10 @@ class DeleteNotificationConfigurationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3620,6 +4272,10 @@ class DeleteNotificationConfigurationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3654,6 +4310,10 @@ class DeleteScalingConfigurationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3689,6 +4349,10 @@ class DeleteScalingConfigurationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3717,6 +4381,10 @@ class DeleteScalingConfigurationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3753,6 +4421,10 @@ class DeleteScalingGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3792,6 +4464,10 @@ class DeleteScalingGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3820,6 +4496,10 @@ class DeleteScalingGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3854,6 +4534,10 @@ class DeleteScalingRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3889,6 +4573,10 @@ class DeleteScalingRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3917,6 +4605,10 @@ class DeleteScalingRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3951,6 +4643,10 @@ class DeleteScheduledTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -3986,6 +4682,10 @@ class DeleteScheduledTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4014,6 +4714,10 @@ class DeleteScheduledTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4062,6 +4766,10 @@ class DescribeAlarmsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4114,29 +4822,6 @@ class DescribeAlarmsRequest(TeaModel):
         return self
 
 
-class DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions(TeaModel):
-    def __init__(
-        self,
-        alarm_action: List[str] = None,
-    ):
-        self.alarm_action = alarm_action
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.alarm_action is not None:
-            result['AlarmAction'] = self.alarm_action
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AlarmAction') is not None:
-            self.alarm_action = m.get('AlarmAction')
-        return self
-
-
 class DescribeAlarmsResponseBodyAlarmListAlarmDimensionsDimension(TeaModel):
     def __init__(
         self,
@@ -4150,6 +4835,10 @@ class DescribeAlarmsResponseBodyAlarmListAlarmDimensionsDimension(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dimension_key is not None:
             result['DimensionKey'] = self.dimension_key
@@ -4180,6 +4869,10 @@ class DescribeAlarmsResponseBodyAlarmListAlarmDimensions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Dimension'] = []
         if self.dimension is not None:
@@ -4197,6 +4890,33 @@ class DescribeAlarmsResponseBodyAlarmListAlarmDimensions(TeaModel):
         return self
 
 
+class DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions(TeaModel):
+    def __init__(
+        self,
+        alarm_action: List[str] = None,
+    ):
+        self.alarm_action = alarm_action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_action is not None:
+            result['AlarmAction'] = self.alarm_action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmAction') is not None:
+            self.alarm_action = m.get('AlarmAction')
+        return self
+
+
 class DescribeAlarmsResponseBodyAlarmListAlarm(TeaModel):
     def __init__(
         self,
@@ -4204,43 +4924,47 @@ class DescribeAlarmsResponseBodyAlarmListAlarm(TeaModel):
         metric_name: str = None,
         evaluation_count: int = None,
         state: str = None,
-        alarm_actions: DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions = None,
-        scaling_group_id: str = None,
         period: int = None,
+        scaling_group_id: str = None,
         comparison_operator: str = None,
         effective: str = None,
         description: str = None,
-        dimensions: DescribeAlarmsResponseBodyAlarmListAlarmDimensions = None,
         metric_type: str = None,
         name: str = None,
         threshold: float = None,
         enable: bool = None,
         statistics: str = None,
+        dimensions: DescribeAlarmsResponseBodyAlarmListAlarmDimensions = None,
+        alarm_actions: DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions = None,
     ):
         self.alarm_task_id = alarm_task_id
         self.metric_name = metric_name
         self.evaluation_count = evaluation_count
         self.state = state
-        self.alarm_actions = alarm_actions
-        self.scaling_group_id = scaling_group_id
         self.period = period
+        self.scaling_group_id = scaling_group_id
         self.comparison_operator = comparison_operator
         self.effective = effective
         self.description = description
-        self.dimensions = dimensions
         self.metric_type = metric_type
         self.name = name
         self.threshold = threshold
         self.enable = enable
         self.statistics = statistics
+        self.dimensions = dimensions
+        self.alarm_actions = alarm_actions
 
     def validate(self):
-        if self.alarm_actions:
-            self.alarm_actions.validate()
         if self.dimensions:
             self.dimensions.validate()
+        if self.alarm_actions:
+            self.alarm_actions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.alarm_task_id is not None:
             result['AlarmTaskId'] = self.alarm_task_id
@@ -4250,20 +4974,16 @@ class DescribeAlarmsResponseBodyAlarmListAlarm(TeaModel):
             result['EvaluationCount'] = self.evaluation_count
         if self.state is not None:
             result['State'] = self.state
-        if self.alarm_actions is not None:
-            result['AlarmActions'] = self.alarm_actions.to_map()
-        if self.scaling_group_id is not None:
-            result['ScalingGroupId'] = self.scaling_group_id
         if self.period is not None:
             result['Period'] = self.period
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
         if self.effective is not None:
             result['Effective'] = self.effective
         if self.description is not None:
             result['Description'] = self.description
-        if self.dimensions is not None:
-            result['Dimensions'] = self.dimensions.to_map()
         if self.metric_type is not None:
             result['MetricType'] = self.metric_type
         if self.name is not None:
@@ -4274,6 +4994,10 @@ class DescribeAlarmsResponseBodyAlarmListAlarm(TeaModel):
             result['Enable'] = self.enable
         if self.statistics is not None:
             result['Statistics'] = self.statistics
+        if self.dimensions is not None:
+            result['Dimensions'] = self.dimensions.to_map()
+        if self.alarm_actions is not None:
+            result['AlarmActions'] = self.alarm_actions.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -4286,22 +5010,16 @@ class DescribeAlarmsResponseBodyAlarmListAlarm(TeaModel):
             self.evaluation_count = m.get('EvaluationCount')
         if m.get('State') is not None:
             self.state = m.get('State')
-        if m.get('AlarmActions') is not None:
-            temp_model = DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions()
-            self.alarm_actions = temp_model.from_map(m['AlarmActions'])
-        if m.get('ScalingGroupId') is not None:
-            self.scaling_group_id = m.get('ScalingGroupId')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
         if m.get('ComparisonOperator') is not None:
             self.comparison_operator = m.get('ComparisonOperator')
         if m.get('Effective') is not None:
             self.effective = m.get('Effective')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('Dimensions') is not None:
-            temp_model = DescribeAlarmsResponseBodyAlarmListAlarmDimensions()
-            self.dimensions = temp_model.from_map(m['Dimensions'])
         if m.get('MetricType') is not None:
             self.metric_type = m.get('MetricType')
         if m.get('Name') is not None:
@@ -4312,6 +5030,12 @@ class DescribeAlarmsResponseBodyAlarmListAlarm(TeaModel):
             self.enable = m.get('Enable')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
+        if m.get('Dimensions') is not None:
+            temp_model = DescribeAlarmsResponseBodyAlarmListAlarmDimensions()
+            self.dimensions = temp_model.from_map(m['Dimensions'])
+        if m.get('AlarmActions') is not None:
+            temp_model = DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions()
+            self.alarm_actions = temp_model.from_map(m['AlarmActions'])
         return self
 
 
@@ -4329,6 +5053,10 @@ class DescribeAlarmsResponseBodyAlarmList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Alarm'] = []
         if self.alarm is not None:
@@ -4349,16 +5077,16 @@ class DescribeAlarmsResponseBodyAlarmList(TeaModel):
 class DescribeAlarmsResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         page_size: int = None,
         request_id: str = None,
         page_number: int = None,
+        total_count: int = None,
         alarm_list: DescribeAlarmsResponseBodyAlarmList = None,
     ):
-        self.total_count = total_count
         self.page_size = page_size
         self.request_id = request_id
         self.page_number = page_number
+        self.total_count = total_count
         self.alarm_list = alarm_list
 
     def validate(self):
@@ -4366,29 +5094,33 @@ class DescribeAlarmsResponseBody(TeaModel):
             self.alarm_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.alarm_list is not None:
             result['AlarmList'] = self.alarm_list.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('AlarmList') is not None:
             temp_model = DescribeAlarmsResponseBodyAlarmList()
             self.alarm_list = temp_model.from_map(m['AlarmList'])
@@ -4411,6 +5143,10 @@ class DescribeAlarmsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4449,6 +5185,10 @@ class DescribeLifecycleActionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4492,6 +5232,10 @@ class DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleActionInstanc
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -4508,48 +5252,52 @@ class DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction(TeaMod
     def __init__(
         self,
         lifecycle_hook_id: str = None,
-        instance_ids: DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleActionInstanceIds = None,
         lifecycle_action_token: str = None,
         lifecycle_action_status: str = None,
         lifecycle_action_result: str = None,
+        instance_ids: DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleActionInstanceIds = None,
     ):
         self.lifecycle_hook_id = lifecycle_hook_id
-        self.instance_ids = instance_ids
         self.lifecycle_action_token = lifecycle_action_token
         self.lifecycle_action_status = lifecycle_action_status
         self.lifecycle_action_result = lifecycle_action_result
+        self.instance_ids = instance_ids
 
     def validate(self):
         if self.instance_ids:
             self.instance_ids.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.lifecycle_hook_id is not None:
             result['LifecycleHookId'] = self.lifecycle_hook_id
-        if self.instance_ids is not None:
-            result['InstanceIds'] = self.instance_ids.to_map()
         if self.lifecycle_action_token is not None:
             result['LifecycleActionToken'] = self.lifecycle_action_token
         if self.lifecycle_action_status is not None:
             result['LifecycleActionStatus'] = self.lifecycle_action_status
         if self.lifecycle_action_result is not None:
             result['LifecycleActionResult'] = self.lifecycle_action_result
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('LifecycleHookId') is not None:
             self.lifecycle_hook_id = m.get('LifecycleHookId')
-        if m.get('InstanceIds') is not None:
-            temp_model = DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleActionInstanceIds()
-            self.instance_ids = temp_model.from_map(m['InstanceIds'])
         if m.get('LifecycleActionToken') is not None:
             self.lifecycle_action_token = m.get('LifecycleActionToken')
         if m.get('LifecycleActionStatus') is not None:
             self.lifecycle_action_status = m.get('LifecycleActionStatus')
         if m.get('LifecycleActionResult') is not None:
             self.lifecycle_action_result = m.get('LifecycleActionResult')
+        if m.get('InstanceIds') is not None:
+            temp_model = DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleActionInstanceIds()
+            self.instance_ids = temp_model.from_map(m['InstanceIds'])
         return self
 
 
@@ -4567,6 +5315,10 @@ class DescribeLifecycleActionsResponseBodyLifecycleActions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LifecycleAction'] = []
         if self.lifecycle_action is not None:
@@ -4587,15 +5339,15 @@ class DescribeLifecycleActionsResponseBodyLifecycleActions(TeaModel):
 class DescribeLifecycleActionsResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         next_token: str = None,
         request_id: str = None,
+        total_count: int = None,
         max_results: int = None,
         lifecycle_actions: DescribeLifecycleActionsResponseBodyLifecycleActions = None,
     ):
-        self.total_count = total_count
         self.next_token = next_token
         self.request_id = request_id
+        self.total_count = total_count
         self.max_results = max_results
         self.lifecycle_actions = lifecycle_actions
 
@@ -4604,13 +5356,17 @@ class DescribeLifecycleActionsResponseBody(TeaModel):
             self.lifecycle_actions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.lifecycle_actions is not None:
@@ -4619,12 +5375,12 @@ class DescribeLifecycleActionsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('LifecycleActions') is not None:
@@ -4649,6 +5405,10 @@ class DescribeLifecycleActionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4691,6 +5451,10 @@ class DescribeLifecycleHooksRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4756,6 +5520,10 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooksLifecycleHook(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.default_result is not None:
             result['DefaultResult'] = self.default_result
@@ -4810,6 +5578,10 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['LifecycleHook'] = []
         if self.lifecycle_hook is not None:
@@ -4830,16 +5602,16 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(TeaModel):
 class DescribeLifecycleHooksResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
-        page_size: int = None,
         page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
         lifecycle_hooks: DescribeLifecycleHooksResponseBodyLifecycleHooks = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
-        self.page_size = page_size
         self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
         self.lifecycle_hooks = lifecycle_hooks
 
     def validate(self):
@@ -4847,29 +5619,33 @@ class DescribeLifecycleHooksResponseBody(TeaModel):
             self.lifecycle_hooks.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.lifecycle_hooks is not None:
             result['LifecycleHooks'] = self.lifecycle_hooks.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('LifecycleHooks') is not None:
             temp_model = DescribeLifecycleHooksResponseBodyLifecycleHooks()
             self.lifecycle_hooks = temp_model.from_map(m['LifecycleHooks'])
@@ -4892,6 +5668,10 @@ class DescribeLifecycleHooksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4922,6 +5702,10 @@ class DescribeLimitationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -4941,89 +5725,105 @@ class DescribeLimitationRequest(TeaModel):
 class DescribeLimitationResponseBody(TeaModel):
     def __init__(
         self,
-        max_number_of_lifecycle_hooks: int = None,
-        max_number_of_scaling_rules: int = None,
-        max_number_of_scaling_instances: int = None,
         max_number_of_scheduled_tasks: int = None,
-        max_number_of_vserver_groups: int = None,
         max_number_of_load_balancers: int = None,
-        max_number_of_min_size: int = None,
-        max_number_of_scaling_groups: int = None,
-        max_number_of_notification_configurations: int = None,
         max_number_of_max_size: int = None,
+        max_number_of_alb_server_group: int = None,
         max_number_of_dbinstances: int = None,
         max_number_of_scaling_configurations: int = None,
+        max_number_of_min_size: int = None,
+        max_number_of_lifecycle_hooks: int = None,
+        max_number_of_scaling_instances: int = None,
+        max_number_of_scaling_groups: int = None,
+        request_id: str = None,
+        max_number_of_notification_configurations: int = None,
+        max_number_of_vserver_groups: int = None,
+        max_number_of_scaling_rules: int = None,
     ):
-        self.max_number_of_lifecycle_hooks = max_number_of_lifecycle_hooks
-        self.max_number_of_scaling_rules = max_number_of_scaling_rules
-        self.max_number_of_scaling_instances = max_number_of_scaling_instances
         self.max_number_of_scheduled_tasks = max_number_of_scheduled_tasks
-        self.max_number_of_vserver_groups = max_number_of_vserver_groups
         self.max_number_of_load_balancers = max_number_of_load_balancers
-        self.max_number_of_min_size = max_number_of_min_size
-        self.max_number_of_scaling_groups = max_number_of_scaling_groups
-        self.max_number_of_notification_configurations = max_number_of_notification_configurations
         self.max_number_of_max_size = max_number_of_max_size
+        self.max_number_of_alb_server_group = max_number_of_alb_server_group
         self.max_number_of_dbinstances = max_number_of_dbinstances
         self.max_number_of_scaling_configurations = max_number_of_scaling_configurations
+        self.max_number_of_min_size = max_number_of_min_size
+        self.max_number_of_lifecycle_hooks = max_number_of_lifecycle_hooks
+        self.max_number_of_scaling_instances = max_number_of_scaling_instances
+        self.max_number_of_scaling_groups = max_number_of_scaling_groups
+        self.request_id = request_id
+        self.max_number_of_notification_configurations = max_number_of_notification_configurations
+        self.max_number_of_vserver_groups = max_number_of_vserver_groups
+        self.max_number_of_scaling_rules = max_number_of_scaling_rules
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.max_number_of_lifecycle_hooks is not None:
-            result['MaxNumberOfLifecycleHooks'] = self.max_number_of_lifecycle_hooks
-        if self.max_number_of_scaling_rules is not None:
-            result['MaxNumberOfScalingRules'] = self.max_number_of_scaling_rules
-        if self.max_number_of_scaling_instances is not None:
-            result['MaxNumberOfScalingInstances'] = self.max_number_of_scaling_instances
         if self.max_number_of_scheduled_tasks is not None:
             result['MaxNumberOfScheduledTasks'] = self.max_number_of_scheduled_tasks
-        if self.max_number_of_vserver_groups is not None:
-            result['MaxNumberOfVServerGroups'] = self.max_number_of_vserver_groups
         if self.max_number_of_load_balancers is not None:
             result['MaxNumberOfLoadBalancers'] = self.max_number_of_load_balancers
-        if self.max_number_of_min_size is not None:
-            result['MaxNumberOfMinSize'] = self.max_number_of_min_size
-        if self.max_number_of_scaling_groups is not None:
-            result['MaxNumberOfScalingGroups'] = self.max_number_of_scaling_groups
-        if self.max_number_of_notification_configurations is not None:
-            result['MaxNumberOfNotificationConfigurations'] = self.max_number_of_notification_configurations
         if self.max_number_of_max_size is not None:
             result['MaxNumberOfMaxSize'] = self.max_number_of_max_size
+        if self.max_number_of_alb_server_group is not None:
+            result['MaxNumberOfAlbServerGroup'] = self.max_number_of_alb_server_group
         if self.max_number_of_dbinstances is not None:
             result['MaxNumberOfDBInstances'] = self.max_number_of_dbinstances
         if self.max_number_of_scaling_configurations is not None:
             result['MaxNumberOfScalingConfigurations'] = self.max_number_of_scaling_configurations
+        if self.max_number_of_min_size is not None:
+            result['MaxNumberOfMinSize'] = self.max_number_of_min_size
+        if self.max_number_of_lifecycle_hooks is not None:
+            result['MaxNumberOfLifecycleHooks'] = self.max_number_of_lifecycle_hooks
+        if self.max_number_of_scaling_instances is not None:
+            result['MaxNumberOfScalingInstances'] = self.max_number_of_scaling_instances
+        if self.max_number_of_scaling_groups is not None:
+            result['MaxNumberOfScalingGroups'] = self.max_number_of_scaling_groups
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.max_number_of_notification_configurations is not None:
+            result['MaxNumberOfNotificationConfigurations'] = self.max_number_of_notification_configurations
+        if self.max_number_of_vserver_groups is not None:
+            result['MaxNumberOfVServerGroups'] = self.max_number_of_vserver_groups
+        if self.max_number_of_scaling_rules is not None:
+            result['MaxNumberOfScalingRules'] = self.max_number_of_scaling_rules
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MaxNumberOfLifecycleHooks') is not None:
-            self.max_number_of_lifecycle_hooks = m.get('MaxNumberOfLifecycleHooks')
-        if m.get('MaxNumberOfScalingRules') is not None:
-            self.max_number_of_scaling_rules = m.get('MaxNumberOfScalingRules')
-        if m.get('MaxNumberOfScalingInstances') is not None:
-            self.max_number_of_scaling_instances = m.get('MaxNumberOfScalingInstances')
         if m.get('MaxNumberOfScheduledTasks') is not None:
             self.max_number_of_scheduled_tasks = m.get('MaxNumberOfScheduledTasks')
-        if m.get('MaxNumberOfVServerGroups') is not None:
-            self.max_number_of_vserver_groups = m.get('MaxNumberOfVServerGroups')
         if m.get('MaxNumberOfLoadBalancers') is not None:
             self.max_number_of_load_balancers = m.get('MaxNumberOfLoadBalancers')
-        if m.get('MaxNumberOfMinSize') is not None:
-            self.max_number_of_min_size = m.get('MaxNumberOfMinSize')
-        if m.get('MaxNumberOfScalingGroups') is not None:
-            self.max_number_of_scaling_groups = m.get('MaxNumberOfScalingGroups')
-        if m.get('MaxNumberOfNotificationConfigurations') is not None:
-            self.max_number_of_notification_configurations = m.get('MaxNumberOfNotificationConfigurations')
         if m.get('MaxNumberOfMaxSize') is not None:
             self.max_number_of_max_size = m.get('MaxNumberOfMaxSize')
+        if m.get('MaxNumberOfAlbServerGroup') is not None:
+            self.max_number_of_alb_server_group = m.get('MaxNumberOfAlbServerGroup')
         if m.get('MaxNumberOfDBInstances') is not None:
             self.max_number_of_dbinstances = m.get('MaxNumberOfDBInstances')
         if m.get('MaxNumberOfScalingConfigurations') is not None:
             self.max_number_of_scaling_configurations = m.get('MaxNumberOfScalingConfigurations')
+        if m.get('MaxNumberOfMinSize') is not None:
+            self.max_number_of_min_size = m.get('MaxNumberOfMinSize')
+        if m.get('MaxNumberOfLifecycleHooks') is not None:
+            self.max_number_of_lifecycle_hooks = m.get('MaxNumberOfLifecycleHooks')
+        if m.get('MaxNumberOfScalingInstances') is not None:
+            self.max_number_of_scaling_instances = m.get('MaxNumberOfScalingInstances')
+        if m.get('MaxNumberOfScalingGroups') is not None:
+            self.max_number_of_scaling_groups = m.get('MaxNumberOfScalingGroups')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('MaxNumberOfNotificationConfigurations') is not None:
+            self.max_number_of_notification_configurations = m.get('MaxNumberOfNotificationConfigurations')
+        if m.get('MaxNumberOfVServerGroups') is not None:
+            self.max_number_of_vserver_groups = m.get('MaxNumberOfVServerGroups')
+        if m.get('MaxNumberOfScalingRules') is not None:
+            self.max_number_of_scaling_rules = m.get('MaxNumberOfScalingRules')
         return self
 
 
@@ -5043,6 +5843,10 @@ class DescribeLimitationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5075,6 +5879,10 @@ class DescribeNotificationConfigurationsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5106,6 +5914,10 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.notification_type is not None:
             result['NotificationType'] = self.notification_type
@@ -5122,36 +5934,40 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
     def __init__(
         self,
         notification_arn: str = None,
-        notification_types: DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModelNotificationTypes = None,
         scaling_group_id: str = None,
+        notification_types: DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModelNotificationTypes = None,
     ):
         self.notification_arn = notification_arn
-        self.notification_types = notification_types
         self.scaling_group_id = scaling_group_id
+        self.notification_types = notification_types
 
     def validate(self):
         if self.notification_types:
             self.notification_types.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.notification_arn is not None:
             result['NotificationArn'] = self.notification_arn
-        if self.notification_types is not None:
-            result['NotificationTypes'] = self.notification_types.to_map()
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.notification_types is not None:
+            result['NotificationTypes'] = self.notification_types.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('NotificationArn') is not None:
             self.notification_arn = m.get('NotificationArn')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
         if m.get('NotificationTypes') is not None:
             temp_model = DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModelNotificationTypes()
             self.notification_types = temp_model.from_map(m['NotificationTypes'])
-        if m.get('ScalingGroupId') is not None:
-            self.scaling_group_id = m.get('ScalingGroupId')
         return self
 
 
@@ -5169,6 +5985,10 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['NotificationConfigurationModel'] = []
         if self.notification_configuration_model is not None:
@@ -5200,6 +6020,10 @@ class DescribeNotificationConfigurationsResponseBody(TeaModel):
             self.notification_configuration_models.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5233,6 +6057,10 @@ class DescribeNotificationConfigurationsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5263,6 +6091,10 @@ class DescribeNotificationTypesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5290,6 +6122,10 @@ class DescribeNotificationTypesResponseBodyNotificationTypes(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.notification_type is not None:
             result['NotificationType'] = self.notification_type
@@ -5316,6 +6152,10 @@ class DescribeNotificationTypesResponseBody(TeaModel):
             self.notification_types.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5349,6 +6189,10 @@ class DescribeNotificationTypesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5383,6 +6227,10 @@ class DescribeRegionsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5410,45 +6258,49 @@ class DescribeRegionsRequest(TeaModel):
 class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
     def __init__(
         self,
-        local_name: str = None,
-        vpc_unavailable: bool = None,
         classic_unavailable: bool = None,
         region_endpoint: str = None,
+        local_name: str = None,
+        vpc_unavailable: bool = None,
         region_id: str = None,
     ):
-        self.local_name = local_name
-        self.vpc_unavailable = vpc_unavailable
         self.classic_unavailable = classic_unavailable
         self.region_endpoint = region_endpoint
+        self.local_name = local_name
+        self.vpc_unavailable = vpc_unavailable
         self.region_id = region_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.local_name is not None:
-            result['LocalName'] = self.local_name
-        if self.vpc_unavailable is not None:
-            result['VpcUnavailable'] = self.vpc_unavailable
         if self.classic_unavailable is not None:
             result['ClassicUnavailable'] = self.classic_unavailable
         if self.region_endpoint is not None:
             result['RegionEndpoint'] = self.region_endpoint
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.vpc_unavailable is not None:
+            result['VpcUnavailable'] = self.vpc_unavailable
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LocalName') is not None:
-            self.local_name = m.get('LocalName')
-        if m.get('VpcUnavailable') is not None:
-            self.vpc_unavailable = m.get('VpcUnavailable')
         if m.get('ClassicUnavailable') is not None:
             self.classic_unavailable = m.get('ClassicUnavailable')
         if m.get('RegionEndpoint') is not None:
             self.region_endpoint = m.get('RegionEndpoint')
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('VpcUnavailable') is not None:
+            self.vpc_unavailable = m.get('VpcUnavailable')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -5468,6 +6320,10 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Region'] = []
         if self.region is not None:
@@ -5499,6 +6355,10 @@ class DescribeRegionsResponseBody(TeaModel):
             self.regions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5532,6 +6392,10 @@ class DescribeRegionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5552,7 +6416,6 @@ class DescribeRegionsResponse(TeaModel):
 class DescribeScalingActivitiesRequest(TeaModel):
     def __init__(
         self,
-        scaling_activity_id: List[str] = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -5562,8 +6425,8 @@ class DescribeScalingActivitiesRequest(TeaModel):
         scaling_group_id: str = None,
         status_code: str = None,
         owner_account: str = None,
+        scaling_activity_id: List[str] = None,
     ):
-        self.scaling_activity_id = scaling_activity_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5573,14 +6436,17 @@ class DescribeScalingActivitiesRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
         self.status_code = status_code
         self.owner_account = owner_account
+        self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.scaling_activity_id is not None:
-            result['ScalingActivityId'] = self.scaling_activity_id
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.resource_owner_account is not None:
@@ -5599,12 +6465,12 @@ class DescribeScalingActivitiesRequest(TeaModel):
             result['StatusCode'] = self.status_code
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
+        if self.scaling_activity_id is not None:
+            result['ScalingActivityId'] = self.scaling_activity_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ScalingActivityId') is not None:
-            self.scaling_activity_id = m.get('ScalingActivityId')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -5623,6 +6489,8 @@ class DescribeScalingActivitiesRequest(TeaModel):
             self.status_code = m.get('StatusCode')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
+        if m.get('ScalingActivityId') is not None:
+            self.scaling_activity_id = m.get('ScalingActivityId')
         return self
 
 
@@ -5630,11 +6498,11 @@ class DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity(TeaM
     def __init__(
         self,
         progress: int = None,
-        attached_capacity: str = None,
         scaling_instance_number: int = None,
+        attached_capacity: str = None,
         total_capacity: str = None,
-        auto_created_capacity: str = None,
         scaling_group_id: str = None,
+        auto_created_capacity: str = None,
         end_time: str = None,
         start_time: str = None,
         description: str = None,
@@ -5644,11 +6512,11 @@ class DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity(TeaM
         status_message: str = None,
     ):
         self.progress = progress
-        self.attached_capacity = attached_capacity
         self.scaling_instance_number = scaling_instance_number
+        self.attached_capacity = attached_capacity
         self.total_capacity = total_capacity
-        self.auto_created_capacity = auto_created_capacity
         self.scaling_group_id = scaling_group_id
+        self.auto_created_capacity = auto_created_capacity
         self.end_time = end_time
         self.start_time = start_time
         self.description = description
@@ -5661,19 +6529,23 @@ class DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.progress is not None:
             result['Progress'] = self.progress
-        if self.attached_capacity is not None:
-            result['AttachedCapacity'] = self.attached_capacity
         if self.scaling_instance_number is not None:
             result['ScalingInstanceNumber'] = self.scaling_instance_number
+        if self.attached_capacity is not None:
+            result['AttachedCapacity'] = self.attached_capacity
         if self.total_capacity is not None:
             result['TotalCapacity'] = self.total_capacity
-        if self.auto_created_capacity is not None:
-            result['AutoCreatedCapacity'] = self.auto_created_capacity
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.auto_created_capacity is not None:
+            result['AutoCreatedCapacity'] = self.auto_created_capacity
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.start_time is not None:
@@ -5694,16 +6566,16 @@ class DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity(TeaM
         m = m or dict()
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
-        if m.get('AttachedCapacity') is not None:
-            self.attached_capacity = m.get('AttachedCapacity')
         if m.get('ScalingInstanceNumber') is not None:
             self.scaling_instance_number = m.get('ScalingInstanceNumber')
+        if m.get('AttachedCapacity') is not None:
+            self.attached_capacity = m.get('AttachedCapacity')
         if m.get('TotalCapacity') is not None:
             self.total_capacity = m.get('TotalCapacity')
-        if m.get('AutoCreatedCapacity') is not None:
-            self.auto_created_capacity = m.get('AutoCreatedCapacity')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('AutoCreatedCapacity') is not None:
+            self.auto_created_capacity = m.get('AutoCreatedCapacity')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
@@ -5735,6 +6607,10 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScalingActivity'] = []
         if self.scaling_activity is not None:
@@ -5755,16 +6631,16 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
 class DescribeScalingActivitiesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
-        page_size: int = None,
         page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
         scaling_activities: DescribeScalingActivitiesResponseBodyScalingActivities = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
-        self.page_size = page_size
         self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
         self.scaling_activities = scaling_activities
 
     def validate(self):
@@ -5772,29 +6648,33 @@ class DescribeScalingActivitiesResponseBody(TeaModel):
             self.scaling_activities.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.scaling_activities is not None:
             result['ScalingActivities'] = self.scaling_activities.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('ScalingActivities') is not None:
             temp_model = DescribeScalingActivitiesResponseBodyScalingActivities()
             self.scaling_activities = temp_model.from_map(m['ScalingActivities'])
@@ -5817,6 +6697,10 @@ class DescribeScalingActivitiesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5851,6 +6735,10 @@ class DescribeScalingActivityDetailRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -5888,6 +6776,10 @@ class DescribeScalingActivityDetailResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.scaling_activity_id is not None:
             result['ScalingActivityId'] = self.scaling_activity_id
@@ -5920,6 +6812,10 @@ class DescribeScalingActivityDetailResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5940,8 +6836,6 @@ class DescribeScalingActivityDetailResponse(TeaModel):
 class DescribeScalingConfigurationsRequest(TeaModel):
     def __init__(
         self,
-        scaling_configuration_id: List[str] = None,
-        scaling_configuration_name: List[str] = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -5950,9 +6844,9 @@ class DescribeScalingConfigurationsRequest(TeaModel):
         page_size: int = None,
         scaling_group_id: str = None,
         owner_account: str = None,
+        scaling_configuration_id: List[str] = None,
+        scaling_configuration_name: List[str] = None,
     ):
-        self.scaling_configuration_id = scaling_configuration_id
-        self.scaling_configuration_name = scaling_configuration_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5961,16 +6855,18 @@ class DescribeScalingConfigurationsRequest(TeaModel):
         self.page_size = page_size
         self.scaling_group_id = scaling_group_id
         self.owner_account = owner_account
+        self.scaling_configuration_id = scaling_configuration_id
+        self.scaling_configuration_name = scaling_configuration_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.scaling_configuration_id is not None:
-            result['ScalingConfigurationId'] = self.scaling_configuration_id
-        if self.scaling_configuration_name is not None:
-            result['ScalingConfigurationName'] = self.scaling_configuration_name
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.resource_owner_account is not None:
@@ -5987,14 +6883,14 @@ class DescribeScalingConfigurationsRequest(TeaModel):
             result['ScalingGroupId'] = self.scaling_group_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
+        if self.scaling_configuration_id is not None:
+            result['ScalingConfigurationId'] = self.scaling_configuration_id
+        if self.scaling_configuration_name is not None:
+            result['ScalingConfigurationName'] = self.scaling_configuration_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ScalingConfigurationId') is not None:
-            self.scaling_configuration_id = m.get('ScalingConfigurationId')
-        if m.get('ScalingConfigurationName') is not None:
-            self.scaling_configuration_name = m.get('ScalingConfigurationName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -6011,6 +6907,10 @@ class DescribeScalingConfigurationsRequest(TeaModel):
             self.scaling_group_id = m.get('ScalingGroupId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
+        if m.get('ScalingConfigurationId') is not None:
+            self.scaling_configuration_id = m.get('ScalingConfigurationId')
+        if m.get('ScalingConfigurationName') is not None:
+            self.scaling_configuration_name = m.get('ScalingConfigurationName')
         return self
 
 
@@ -6027,6 +6927,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
@@ -6043,6 +6947,163 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         return self
 
 
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories(TeaModel):
+    def __init__(
+        self,
+        category: List[str] = None,
+    ):
+        self.category = category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        return self
+
+
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk(TeaModel):
+    def __init__(
+        self,
+        performance_level: str = None,
+        description: str = None,
+        snapshot_id: str = None,
+        device: str = None,
+        size: int = None,
+        disk_name: str = None,
+        auto_snapshot_policy_id: str = None,
+        category: str = None,
+        kmskey_id: str = None,
+        delete_with_instance: bool = None,
+        encrypted: str = None,
+        categories: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories = None,
+    ):
+        self.performance_level = performance_level
+        self.description = description
+        self.snapshot_id = snapshot_id
+        self.device = device
+        self.size = size
+        self.disk_name = disk_name
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id
+        self.category = category
+        self.kmskey_id = kmskey_id
+        self.delete_with_instance = delete_with_instance
+        self.encrypted = encrypted
+        self.categories = categories
+
+    def validate(self):
+        if self.categories:
+            self.categories.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
+        if self.device is not None:
+            result['Device'] = self.device
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.disk_name is not None:
+            result['DiskName'] = self.disk_name
+        if self.auto_snapshot_policy_id is not None:
+            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
+        if self.delete_with_instance is not None:
+            result['DeleteWithInstance'] = self.delete_with_instance
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+        if self.categories is not None:
+            result['Categories'] = self.categories.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('DiskName') is not None:
+            self.disk_name = m.get('DiskName')
+        if m.get('AutoSnapshotPolicyId') is not None:
+            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
+        if m.get('DeleteWithInstance') is not None:
+            self.delete_with_instance = m.get('DeleteWithInstance')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+        if m.get('Categories') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories()
+            self.categories = temp_model.from_map(m['Categories'])
+        return self
+
+
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks(TeaModel):
+    def __init__(
+        self,
+        data_disk: List[DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk] = None,
+    ):
+        self.data_disk = data_disk
+
+    def validate(self):
+        if self.data_disk:
+            for k in self.data_disk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataDisk'] = []
+        if self.data_disk is not None:
+            for k in self.data_disk:
+                result['DataDisk'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_disk = []
+        if m.get('DataDisk') is not None:
+            for k in m.get('DataDisk'):
+                temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk()
+                self.data_disk.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag(TeaModel):
     def __init__(
         self,
@@ -6056,6 +7117,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6086,6 +7151,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -6103,146 +7172,36 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         return self
 
 
-class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk(TeaModel):
-    def __init__(
-        self,
-        performance_level: str = None,
-        description: str = None,
-        snapshot_id: str = None,
-        device: str = None,
-        size: int = None,
-        disk_name: str = None,
-        auto_snapshot_policy_id: str = None,
-        category: str = None,
-        kmskey_id: str = None,
-        delete_with_instance: bool = None,
-        encrypted: str = None,
-    ):
-        self.performance_level = performance_level
-        self.description = description
-        self.snapshot_id = snapshot_id
-        self.device = device
-        self.size = size
-        self.disk_name = disk_name
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        self.category = category
-        self.kmskey_id = kmskey_id
-        self.delete_with_instance = delete_with_instance
-        self.encrypted = encrypted
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.performance_level is not None:
-            result['PerformanceLevel'] = self.performance_level
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.snapshot_id is not None:
-            result['SnapshotId'] = self.snapshot_id
-        if self.device is not None:
-            result['Device'] = self.device
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.disk_name is not None:
-            result['DiskName'] = self.disk_name
-        if self.auto_snapshot_policy_id is not None:
-            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
-        if self.category is not None:
-            result['Category'] = self.category
-        if self.kmskey_id is not None:
-            result['KMSKeyId'] = self.kmskey_id
-        if self.delete_with_instance is not None:
-            result['DeleteWithInstance'] = self.delete_with_instance
-        if self.encrypted is not None:
-            result['Encrypted'] = self.encrypted
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PerformanceLevel') is not None:
-            self.performance_level = m.get('PerformanceLevel')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('SnapshotId') is not None:
-            self.snapshot_id = m.get('SnapshotId')
-        if m.get('Device') is not None:
-            self.device = m.get('Device')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('DiskName') is not None:
-            self.disk_name = m.get('DiskName')
-        if m.get('AutoSnapshotPolicyId') is not None:
-            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
-        if m.get('Category') is not None:
-            self.category = m.get('Category')
-        if m.get('KMSKeyId') is not None:
-            self.kmskey_id = m.get('KMSKeyId')
-        if m.get('DeleteWithInstance') is not None:
-            self.delete_with_instance = m.get('DeleteWithInstance')
-        if m.get('Encrypted') is not None:
-            self.encrypted = m.get('Encrypted')
-        return self
-
-
-class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks(TeaModel):
-    def __init__(
-        self,
-        data_disk: List[DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk] = None,
-    ):
-        self.data_disk = data_disk
-
-    def validate(self):
-        if self.data_disk:
-            for k in self.data_disk:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['DataDisk'] = []
-        if self.data_disk is not None:
-            for k in self.data_disk:
-                result['DataDisk'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.data_disk = []
-        if m.get('DataDisk') is not None:
-            for k in m.get('DataDisk'):
-                temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk()
-                self.data_disk.append(temp_model.from_map(k))
-        return self
-
-
 class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel(TeaModel):
     def __init__(
         self,
-        price_limit: float = None,
         instance_type: str = None,
+        price_limit: float = None,
     ):
-        self.price_limit = price_limit
         self.instance_type = instance_type
+        self.price_limit = price_limit
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.price_limit is not None:
-            result['PriceLimit'] = self.price_limit
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.price_limit is not None:
+            result['PriceLimit'] = self.price_limit
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PriceLimit') is not None:
-            self.price_limit = m.get('PriceLimit')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('PriceLimit') is not None:
+            self.price_limit = m.get('PriceLimit')
         return self
 
 
@@ -6260,6 +7219,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SpotPriceModel'] = []
         if self.spot_price_model is not None:
@@ -6277,6 +7240,113 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         return self
 
 
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo(TeaModel):
+    def __init__(
+        self,
+        max_price: float = None,
+        cores: int = None,
+        memory: float = None,
+        instance_family_level: str = None,
+    ):
+        self.max_price = max_price
+        self.cores = cores
+        self.memory = memory
+        self.instance_family_level = instance_family_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_price is not None:
+            result['MaxPrice'] = self.max_price
+        if self.cores is not None:
+            result['Cores'] = self.cores
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.instance_family_level is not None:
+            result['InstanceFamilyLevel'] = self.instance_family_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxPrice') is not None:
+            self.max_price = m.get('MaxPrice')
+        if m.get('Cores') is not None:
+            self.cores = m.get('Cores')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('InstanceFamilyLevel') is not None:
+            self.instance_family_level = m.get('InstanceFamilyLevel')
+        return self
+
+
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos(TeaModel):
+    def __init__(
+        self,
+        instance_pattern_info: List[DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo] = None,
+    ):
+        self.instance_pattern_info = instance_pattern_info
+
+    def validate(self):
+        if self.instance_pattern_info:
+            for k in self.instance_pattern_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstancePatternInfo'] = []
+        if self.instance_pattern_info is not None:
+            for k in self.instance_pattern_info:
+                result['InstancePatternInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_pattern_info = []
+        if m.get('InstancePatternInfo') is not None:
+            for k in m.get('InstancePatternInfo'):
+                temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo()
+                self.instance_pattern_info.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories(TeaModel):
+    def __init__(
+        self,
+        system_disk_category: List[str] = None,
+    ):
+        self.system_disk_category = system_disk_category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
+        return self
+
+
 class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities(TeaModel):
     def __init__(
         self,
@@ -6288,6 +7358,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.weighted_capacity is not None:
             result['WeightedCapacity'] = self.weighted_capacity
@@ -6297,6 +7371,33 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         m = m or dict()
         if m.get('WeightedCapacity') is not None:
             self.weighted_capacity = m.get('WeightedCapacity')
+        return self
+
+
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes(TeaModel):
+    def __init__(
+        self,
+        instance_type: List[str] = None,
+    ):
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         return self
 
 
@@ -6311,6 +7412,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
@@ -6334,6 +7439,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.managed_private_space_id is not None:
             result['ManagedPrivateSpaceId'] = self.managed_private_space_id
@@ -6346,227 +7455,186 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         return self
 
 
-class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes(TeaModel):
-    def __init__(
-        self,
-        instance_type: List[str] = None,
-    ):
-        self.instance_type = instance_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.instance_type is not None:
-            result['InstanceType'] = self.instance_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceType') is not None:
-            self.instance_type = m.get('InstanceType')
-        return self
-
-
 class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration(TeaModel):
     def __init__(
         self,
         private_pool_options: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationPrivatePoolOptions = None,
+        deployment_set_id: str = None,
         creation_time: str = None,
         scaling_configuration_name: str = None,
-        tags: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags = None,
-        data_disks: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks = None,
-        system_disk_auto_snapshot_policy_id: str = None,
-        spot_strategy: str = None,
-        affinity: str = None,
-        spot_duration: int = None,
-        instance_name: str = None,
-        user_data: str = None,
-        spot_price_limit: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimit = None,
-        image_id: str = None,
-        load_balancer_weight: int = None,
-        host_name: str = None,
-        system_disk_name: str = None,
-        instance_type: str = None,
-        system_disk_performance_level: str = None,
-        image_name: str = None,
-        internet_charge_type: str = None,
-        zone_id: str = None,
-        scaling_configuration_id: str = None,
-        credit_specification: str = None,
-        spot_interruption_behavior: str = None,
-        deployment_set_id: str = None,
         system_disk_description: str = None,
         key_pair_name: str = None,
         security_group_id: str = None,
+        system_disk_auto_snapshot_policy_id: str = None,
+        spot_strategy: str = None,
         scaling_group_id: str = None,
+        affinity: str = None,
         tenancy: str = None,
         system_disk_size: int = None,
         ipv_6address_count: int = None,
+        spot_duration: int = None,
         lifecycle_state: str = None,
+        instance_name: str = None,
         security_enhancement_strategy: str = None,
+        user_data: str = None,
         dedicated_host_id: str = None,
         instance_generation: str = None,
         hpc_cluster_id: str = None,
         password_inherit: bool = None,
         memory: int = None,
+        image_id: str = None,
         image_family: str = None,
+        load_balancer_weight: int = None,
         system_disk_category: str = None,
-        weighted_capacities: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities = None,
+        host_name: str = None,
+        system_disk_name: str = None,
         internet_max_bandwidth_out: int = None,
         internet_max_bandwidth_in: int = None,
+        instance_type: str = None,
         instance_description: str = None,
-        security_group_ids: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSecurityGroupIds = None,
         io_optimized: str = None,
         ram_role_name: str = None,
+        system_disk_performance_level: str = None,
         cpu: int = None,
         resource_group_id: str = None,
-        scheduler_options: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions = None,
+        zone_id: str = None,
+        internet_charge_type: str = None,
+        image_name: str = None,
+        scaling_configuration_id: str = None,
+        credit_specification: str = None,
+        spot_interruption_behavior: str = None,
+        data_disks: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks = None,
+        tags: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags = None,
+        spot_price_limit: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimit = None,
+        instance_pattern_infos: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos = None,
+        system_disk_categories: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories = None,
+        weighted_capacities: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities = None,
         instance_types: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes = None,
+        security_group_ids: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSecurityGroupIds = None,
+        scheduler_options: DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions = None,
     ):
         self.private_pool_options = private_pool_options
+        self.deployment_set_id = deployment_set_id
         self.creation_time = creation_time
         self.scaling_configuration_name = scaling_configuration_name
-        self.tags = tags
-        self.data_disks = data_disks
-        self.system_disk_auto_snapshot_policy_id = system_disk_auto_snapshot_policy_id
-        self.spot_strategy = spot_strategy
-        self.affinity = affinity
-        self.spot_duration = spot_duration
-        self.instance_name = instance_name
-        self.user_data = user_data
-        self.spot_price_limit = spot_price_limit
-        self.image_id = image_id
-        self.load_balancer_weight = load_balancer_weight
-        self.host_name = host_name
-        self.system_disk_name = system_disk_name
-        self.instance_type = instance_type
-        self.system_disk_performance_level = system_disk_performance_level
-        self.image_name = image_name
-        self.internet_charge_type = internet_charge_type
-        self.zone_id = zone_id
-        self.scaling_configuration_id = scaling_configuration_id
-        self.credit_specification = credit_specification
-        self.spot_interruption_behavior = spot_interruption_behavior
-        self.deployment_set_id = deployment_set_id
         self.system_disk_description = system_disk_description
         self.key_pair_name = key_pair_name
         self.security_group_id = security_group_id
+        self.system_disk_auto_snapshot_policy_id = system_disk_auto_snapshot_policy_id
+        self.spot_strategy = spot_strategy
         self.scaling_group_id = scaling_group_id
+        self.affinity = affinity
         self.tenancy = tenancy
         self.system_disk_size = system_disk_size
         self.ipv_6address_count = ipv_6address_count
+        self.spot_duration = spot_duration
         self.lifecycle_state = lifecycle_state
+        self.instance_name = instance_name
         self.security_enhancement_strategy = security_enhancement_strategy
+        self.user_data = user_data
         self.dedicated_host_id = dedicated_host_id
         self.instance_generation = instance_generation
         self.hpc_cluster_id = hpc_cluster_id
         self.password_inherit = password_inherit
         self.memory = memory
+        self.image_id = image_id
         self.image_family = image_family
+        self.load_balancer_weight = load_balancer_weight
         self.system_disk_category = system_disk_category
-        self.weighted_capacities = weighted_capacities
+        self.host_name = host_name
+        self.system_disk_name = system_disk_name
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
+        self.instance_type = instance_type
         self.instance_description = instance_description
-        self.security_group_ids = security_group_ids
         self.io_optimized = io_optimized
         self.ram_role_name = ram_role_name
+        self.system_disk_performance_level = system_disk_performance_level
         self.cpu = cpu
         self.resource_group_id = resource_group_id
-        self.scheduler_options = scheduler_options
+        self.zone_id = zone_id
+        self.internet_charge_type = internet_charge_type
+        self.image_name = image_name
+        self.scaling_configuration_id = scaling_configuration_id
+        self.credit_specification = credit_specification
+        self.spot_interruption_behavior = spot_interruption_behavior
+        self.data_disks = data_disks
+        self.tags = tags
+        self.spot_price_limit = spot_price_limit
+        self.instance_pattern_infos = instance_pattern_infos
+        self.system_disk_categories = system_disk_categories
+        self.weighted_capacities = weighted_capacities
         self.instance_types = instance_types
+        self.security_group_ids = security_group_ids
+        self.scheduler_options = scheduler_options
 
     def validate(self):
         self.validate_required(self.private_pool_options, 'private_pool_options')
         if self.private_pool_options:
             self.private_pool_options.validate()
-        if self.tags:
-            self.tags.validate()
         if self.data_disks:
             self.data_disks.validate()
+        if self.tags:
+            self.tags.validate()
         if self.spot_price_limit:
             self.spot_price_limit.validate()
+        if self.instance_pattern_infos:
+            self.instance_pattern_infos.validate()
+        if self.system_disk_categories:
+            self.system_disk_categories.validate()
         if self.weighted_capacities:
             self.weighted_capacities.validate()
+        if self.instance_types:
+            self.instance_types.validate()
         if self.security_group_ids:
             self.security_group_ids.validate()
         if self.scheduler_options:
             self.scheduler_options.validate()
-        if self.instance_types:
-            self.instance_types.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.private_pool_options is not None:
             result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        if self.deployment_set_id is not None:
+            result['DeploymentSetId'] = self.deployment_set_id
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
         if self.scaling_configuration_name is not None:
             result['ScalingConfigurationName'] = self.scaling_configuration_name
-        if self.tags is not None:
-            result['Tags'] = self.tags.to_map()
-        if self.data_disks is not None:
-            result['DataDisks'] = self.data_disks.to_map()
-        if self.system_disk_auto_snapshot_policy_id is not None:
-            result['SystemDiskAutoSnapshotPolicyId'] = self.system_disk_auto_snapshot_policy_id
-        if self.spot_strategy is not None:
-            result['SpotStrategy'] = self.spot_strategy
-        if self.affinity is not None:
-            result['Affinity'] = self.affinity
-        if self.spot_duration is not None:
-            result['SpotDuration'] = self.spot_duration
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
-        if self.user_data is not None:
-            result['UserData'] = self.user_data
-        if self.spot_price_limit is not None:
-            result['SpotPriceLimit'] = self.spot_price_limit.to_map()
-        if self.image_id is not None:
-            result['ImageId'] = self.image_id
-        if self.load_balancer_weight is not None:
-            result['LoadBalancerWeight'] = self.load_balancer_weight
-        if self.host_name is not None:
-            result['HostName'] = self.host_name
-        if self.system_disk_name is not None:
-            result['SystemDiskName'] = self.system_disk_name
-        if self.instance_type is not None:
-            result['InstanceType'] = self.instance_type
-        if self.system_disk_performance_level is not None:
-            result['SystemDiskPerformanceLevel'] = self.system_disk_performance_level
-        if self.image_name is not None:
-            result['ImageName'] = self.image_name
-        if self.internet_charge_type is not None:
-            result['InternetChargeType'] = self.internet_charge_type
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-        if self.scaling_configuration_id is not None:
-            result['ScalingConfigurationId'] = self.scaling_configuration_id
-        if self.credit_specification is not None:
-            result['CreditSpecification'] = self.credit_specification
-        if self.spot_interruption_behavior is not None:
-            result['SpotInterruptionBehavior'] = self.spot_interruption_behavior
-        if self.deployment_set_id is not None:
-            result['DeploymentSetId'] = self.deployment_set_id
         if self.system_disk_description is not None:
             result['SystemDiskDescription'] = self.system_disk_description
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.system_disk_auto_snapshot_policy_id is not None:
+            result['SystemDiskAutoSnapshotPolicyId'] = self.system_disk_auto_snapshot_policy_id
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.affinity is not None:
+            result['Affinity'] = self.affinity
         if self.tenancy is not None:
             result['Tenancy'] = self.tenancy
         if self.system_disk_size is not None:
             result['SystemDiskSize'] = self.system_disk_size
         if self.ipv_6address_count is not None:
             result['Ipv6AddressCount'] = self.ipv_6address_count
+        if self.spot_duration is not None:
+            result['SpotDuration'] = self.spot_duration
         if self.lifecycle_state is not None:
             result['LifecycleState'] = self.lifecycle_state
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.security_enhancement_strategy is not None:
             result['SecurityEnhancementStrategy'] = self.security_enhancement_strategy
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.dedicated_host_id is not None:
             result['DedicatedHostId'] = self.dedicated_host_id
         if self.instance_generation is not None:
@@ -6577,32 +7645,66 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
             result['PasswordInherit'] = self.password_inherit
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.image_family is not None:
             result['ImageFamily'] = self.image_family
+        if self.load_balancer_weight is not None:
+            result['LoadBalancerWeight'] = self.load_balancer_weight
         if self.system_disk_category is not None:
             result['SystemDiskCategory'] = self.system_disk_category
-        if self.weighted_capacities is not None:
-            result['WeightedCapacities'] = self.weighted_capacities.to_map()
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.system_disk_name is not None:
+            result['SystemDiskName'] = self.system_disk_name
         if self.internet_max_bandwidth_out is not None:
             result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
         if self.internet_max_bandwidth_in is not None:
             result['InternetMaxBandwidthIn'] = self.internet_max_bandwidth_in
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.instance_description is not None:
             result['InstanceDescription'] = self.instance_description
-        if self.security_group_ids is not None:
-            result['SecurityGroupIds'] = self.security_group_ids.to_map()
         if self.io_optimized is not None:
             result['IoOptimized'] = self.io_optimized
         if self.ram_role_name is not None:
             result['RamRoleName'] = self.ram_role_name
+        if self.system_disk_performance_level is not None:
+            result['SystemDiskPerformanceLevel'] = self.system_disk_performance_level
         if self.cpu is not None:
             result['Cpu'] = self.cpu
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.scheduler_options is not None:
-            result['SchedulerOptions'] = self.scheduler_options.to_map()
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.scaling_configuration_id is not None:
+            result['ScalingConfigurationId'] = self.scaling_configuration_id
+        if self.credit_specification is not None:
+            result['CreditSpecification'] = self.credit_specification
+        if self.spot_interruption_behavior is not None:
+            result['SpotInterruptionBehavior'] = self.spot_interruption_behavior
+        if self.data_disks is not None:
+            result['DataDisks'] = self.data_disks.to_map()
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
+        if self.spot_price_limit is not None:
+            result['SpotPriceLimit'] = self.spot_price_limit.to_map()
+        if self.instance_pattern_infos is not None:
+            result['InstancePatternInfos'] = self.instance_pattern_infos.to_map()
+        if self.system_disk_categories is not None:
+            result['SystemDiskCategories'] = self.system_disk_categories.to_map()
+        if self.weighted_capacities is not None:
+            result['WeightedCapacities'] = self.weighted_capacities.to_map()
         if self.instance_types is not None:
             result['InstanceTypes'] = self.instance_types.to_map()
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids.to_map()
+        if self.scheduler_options is not None:
+            result['SchedulerOptions'] = self.scheduler_options.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -6610,75 +7712,42 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
         if m.get('PrivatePoolOptions') is not None:
             temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationPrivatePoolOptions()
             self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
+        if m.get('DeploymentSetId') is not None:
+            self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
         if m.get('ScalingConfigurationName') is not None:
             self.scaling_configuration_name = m.get('ScalingConfigurationName')
-        if m.get('Tags') is not None:
-            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags()
-            self.tags = temp_model.from_map(m['Tags'])
-        if m.get('DataDisks') is not None:
-            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks()
-            self.data_disks = temp_model.from_map(m['DataDisks'])
-        if m.get('SystemDiskAutoSnapshotPolicyId') is not None:
-            self.system_disk_auto_snapshot_policy_id = m.get('SystemDiskAutoSnapshotPolicyId')
-        if m.get('SpotStrategy') is not None:
-            self.spot_strategy = m.get('SpotStrategy')
-        if m.get('Affinity') is not None:
-            self.affinity = m.get('Affinity')
-        if m.get('SpotDuration') is not None:
-            self.spot_duration = m.get('SpotDuration')
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
-        if m.get('UserData') is not None:
-            self.user_data = m.get('UserData')
-        if m.get('SpotPriceLimit') is not None:
-            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimit()
-            self.spot_price_limit = temp_model.from_map(m['SpotPriceLimit'])
-        if m.get('ImageId') is not None:
-            self.image_id = m.get('ImageId')
-        if m.get('LoadBalancerWeight') is not None:
-            self.load_balancer_weight = m.get('LoadBalancerWeight')
-        if m.get('HostName') is not None:
-            self.host_name = m.get('HostName')
-        if m.get('SystemDiskName') is not None:
-            self.system_disk_name = m.get('SystemDiskName')
-        if m.get('InstanceType') is not None:
-            self.instance_type = m.get('InstanceType')
-        if m.get('SystemDiskPerformanceLevel') is not None:
-            self.system_disk_performance_level = m.get('SystemDiskPerformanceLevel')
-        if m.get('ImageName') is not None:
-            self.image_name = m.get('ImageName')
-        if m.get('InternetChargeType') is not None:
-            self.internet_charge_type = m.get('InternetChargeType')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-        if m.get('ScalingConfigurationId') is not None:
-            self.scaling_configuration_id = m.get('ScalingConfigurationId')
-        if m.get('CreditSpecification') is not None:
-            self.credit_specification = m.get('CreditSpecification')
-        if m.get('SpotInterruptionBehavior') is not None:
-            self.spot_interruption_behavior = m.get('SpotInterruptionBehavior')
-        if m.get('DeploymentSetId') is not None:
-            self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('SystemDiskDescription') is not None:
             self.system_disk_description = m.get('SystemDiskDescription')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SystemDiskAutoSnapshotPolicyId') is not None:
+            self.system_disk_auto_snapshot_policy_id = m.get('SystemDiskAutoSnapshotPolicyId')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('Affinity') is not None:
+            self.affinity = m.get('Affinity')
         if m.get('Tenancy') is not None:
             self.tenancy = m.get('Tenancy')
         if m.get('SystemDiskSize') is not None:
             self.system_disk_size = m.get('SystemDiskSize')
         if m.get('Ipv6AddressCount') is not None:
             self.ipv_6address_count = m.get('Ipv6AddressCount')
+        if m.get('SpotDuration') is not None:
+            self.spot_duration = m.get('SpotDuration')
         if m.get('LifecycleState') is not None:
             self.lifecycle_state = m.get('LifecycleState')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('SecurityEnhancementStrategy') is not None:
             self.security_enhancement_strategy = m.get('SecurityEnhancementStrategy')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('DedicatedHostId') is not None:
             self.dedicated_host_id = m.get('DedicatedHostId')
         if m.get('InstanceGeneration') is not None:
@@ -6689,36 +7758,75 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfi
             self.password_inherit = m.get('PasswordInherit')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('ImageFamily') is not None:
             self.image_family = m.get('ImageFamily')
+        if m.get('LoadBalancerWeight') is not None:
+            self.load_balancer_weight = m.get('LoadBalancerWeight')
         if m.get('SystemDiskCategory') is not None:
             self.system_disk_category = m.get('SystemDiskCategory')
-        if m.get('WeightedCapacities') is not None:
-            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities()
-            self.weighted_capacities = temp_model.from_map(m['WeightedCapacities'])
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('SystemDiskName') is not None:
+            self.system_disk_name = m.get('SystemDiskName')
         if m.get('InternetMaxBandwidthOut') is not None:
             self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
         if m.get('InternetMaxBandwidthIn') is not None:
             self.internet_max_bandwidth_in = m.get('InternetMaxBandwidthIn')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('InstanceDescription') is not None:
             self.instance_description = m.get('InstanceDescription')
-        if m.get('SecurityGroupIds') is not None:
-            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSecurityGroupIds()
-            self.security_group_ids = temp_model.from_map(m['SecurityGroupIds'])
         if m.get('IoOptimized') is not None:
             self.io_optimized = m.get('IoOptimized')
         if m.get('RamRoleName') is not None:
             self.ram_role_name = m.get('RamRoleName')
+        if m.get('SystemDiskPerformanceLevel') is not None:
+            self.system_disk_performance_level = m.get('SystemDiskPerformanceLevel')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('SchedulerOptions') is not None:
-            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions()
-            self.scheduler_options = temp_model.from_map(m['SchedulerOptions'])
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('ScalingConfigurationId') is not None:
+            self.scaling_configuration_id = m.get('ScalingConfigurationId')
+        if m.get('CreditSpecification') is not None:
+            self.credit_specification = m.get('CreditSpecification')
+        if m.get('SpotInterruptionBehavior') is not None:
+            self.spot_interruption_behavior = m.get('SpotInterruptionBehavior')
+        if m.get('DataDisks') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks()
+            self.data_disks = temp_model.from_map(m['DataDisks'])
+        if m.get('Tags') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags()
+            self.tags = temp_model.from_map(m['Tags'])
+        if m.get('SpotPriceLimit') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimit()
+            self.spot_price_limit = temp_model.from_map(m['SpotPriceLimit'])
+        if m.get('InstancePatternInfos') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos()
+            self.instance_pattern_infos = temp_model.from_map(m['InstancePatternInfos'])
+        if m.get('SystemDiskCategories') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories()
+            self.system_disk_categories = temp_model.from_map(m['SystemDiskCategories'])
+        if m.get('WeightedCapacities') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities()
+            self.weighted_capacities = temp_model.from_map(m['WeightedCapacities'])
         if m.get('InstanceTypes') is not None:
             temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes()
             self.instance_types = temp_model.from_map(m['InstanceTypes'])
+        if m.get('SecurityGroupIds') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSecurityGroupIds()
+            self.security_group_ids = temp_model.from_map(m['SecurityGroupIds'])
+        if m.get('SchedulerOptions') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions()
+            self.scheduler_options = temp_model.from_map(m['SchedulerOptions'])
         return self
 
 
@@ -6736,6 +7844,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScalingConfiguration'] = []
         if self.scaling_configuration is not None:
@@ -6756,16 +7868,16 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
 class DescribeScalingConfigurationsResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
-        page_size: int = None,
         page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
         scaling_configurations: DescribeScalingConfigurationsResponseBodyScalingConfigurations = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
-        self.page_size = page_size
         self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
         self.scaling_configurations = scaling_configurations
 
     def validate(self):
@@ -6773,29 +7885,33 @@ class DescribeScalingConfigurationsResponseBody(TeaModel):
             self.scaling_configurations.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.scaling_configurations is not None:
             result['ScalingConfigurations'] = self.scaling_configurations.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('ScalingConfigurations') is not None:
             temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurations()
             self.scaling_configurations = temp_model.from_map(m['ScalingConfigurations'])
@@ -6818,6 +7934,10 @@ class DescribeScalingConfigurationsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6850,6 +7970,7 @@ class DescribeScalingInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         owner_account: str = None,
+        scaling_activity_id: str = None,
         instance_id: List[str] = None,
     ):
         self.owner_id = owner_id
@@ -6864,12 +7985,17 @@ class DescribeScalingInstancesRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.owner_account = owner_account
+        self.scaling_activity_id = scaling_activity_id
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -6895,6 +8021,8 @@ class DescribeScalingInstancesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
+        if self.scaling_activity_id is not None:
+            result['ScalingActivityId'] = self.scaling_activity_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
@@ -6925,6 +8053,8 @@ class DescribeScalingInstancesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
+        if m.get('ScalingActivityId') is not None:
+            self.scaling_activity_id = m.get('ScalingActivityId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -6937,38 +8067,46 @@ class DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance(TeaMod
         load_balancer_weight: int = None,
         launch_template_id: str = None,
         instance_id: str = None,
+        spot_strategy: str = None,
         launch_template_version: str = None,
         health_status: str = None,
-        spot_strategy: str = None,
         scaling_group_id: str = None,
         warmup_state: str = None,
         lifecycle_state: str = None,
         creation_type: str = None,
+        zone_id: str = None,
         scaling_configuration_id: str = None,
         entrusted: bool = None,
         weighted_capacity: int = None,
         created_time: str = None,
+        scaling_activity_id: str = None,
     ):
         self.creation_time = creation_time
         self.load_balancer_weight = load_balancer_weight
         self.launch_template_id = launch_template_id
         self.instance_id = instance_id
+        self.spot_strategy = spot_strategy
         self.launch_template_version = launch_template_version
         self.health_status = health_status
-        self.spot_strategy = spot_strategy
         self.scaling_group_id = scaling_group_id
         self.warmup_state = warmup_state
         self.lifecycle_state = lifecycle_state
         self.creation_type = creation_type
+        self.zone_id = zone_id
         self.scaling_configuration_id = scaling_configuration_id
         self.entrusted = entrusted
         self.weighted_capacity = weighted_capacity
         self.created_time = created_time
+        self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -6978,12 +8116,12 @@ class DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance(TeaMod
             result['LaunchTemplateId'] = self.launch_template_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
         if self.launch_template_version is not None:
             result['LaunchTemplateVersion'] = self.launch_template_version
         if self.health_status is not None:
             result['HealthStatus'] = self.health_status
-        if self.spot_strategy is not None:
-            result['SpotStrategy'] = self.spot_strategy
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
         if self.warmup_state is not None:
@@ -6992,6 +8130,8 @@ class DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance(TeaMod
             result['LifecycleState'] = self.lifecycle_state
         if self.creation_type is not None:
             result['CreationType'] = self.creation_type
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         if self.scaling_configuration_id is not None:
             result['ScalingConfigurationId'] = self.scaling_configuration_id
         if self.entrusted is not None:
@@ -7000,6 +8140,8 @@ class DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance(TeaMod
             result['WeightedCapacity'] = self.weighted_capacity
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
+        if self.scaling_activity_id is not None:
+            result['ScalingActivityId'] = self.scaling_activity_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7012,12 +8154,12 @@ class DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance(TeaMod
             self.launch_template_id = m.get('LaunchTemplateId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
         if m.get('LaunchTemplateVersion') is not None:
             self.launch_template_version = m.get('LaunchTemplateVersion')
         if m.get('HealthStatus') is not None:
             self.health_status = m.get('HealthStatus')
-        if m.get('SpotStrategy') is not None:
-            self.spot_strategy = m.get('SpotStrategy')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
         if m.get('WarmupState') is not None:
@@ -7026,6 +8168,8 @@ class DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance(TeaMod
             self.lifecycle_state = m.get('LifecycleState')
         if m.get('CreationType') is not None:
             self.creation_type = m.get('CreationType')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         if m.get('ScalingConfigurationId') is not None:
             self.scaling_configuration_id = m.get('ScalingConfigurationId')
         if m.get('Entrusted') is not None:
@@ -7034,6 +8178,8 @@ class DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance(TeaMod
             self.weighted_capacity = m.get('WeightedCapacity')
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
+        if m.get('ScalingActivityId') is not None:
+            self.scaling_activity_id = m.get('ScalingActivityId')
         return self
 
 
@@ -7051,6 +8197,10 @@ class DescribeScalingInstancesResponseBodyScalingInstances(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScalingInstance'] = []
         if self.scaling_instance is not None:
@@ -7071,55 +8221,59 @@ class DescribeScalingInstancesResponseBodyScalingInstances(TeaModel):
 class DescribeScalingInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
         page_size: int = None,
         page_number: int = None,
-        scaling_instances: DescribeScalingInstancesResponseBodyScalingInstances = None,
         total_spot_count: int = None,
+        total_count: int = None,
+        scaling_instances: DescribeScalingInstancesResponseBodyScalingInstances = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
         self.page_size = page_size
         self.page_number = page_number
-        self.scaling_instances = scaling_instances
         self.total_spot_count = total_spot_count
+        self.total_count = total_count
+        self.scaling_instances = scaling_instances
 
     def validate(self):
         if self.scaling_instances:
             self.scaling_instances.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
-        if self.scaling_instances is not None:
-            result['ScalingInstances'] = self.scaling_instances.to_map()
         if self.total_spot_count is not None:
             result['TotalSpotCount'] = self.total_spot_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.scaling_instances is not None:
+            result['ScalingInstances'] = self.scaling_instances.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('TotalSpotCount') is not None:
+            self.total_spot_count = m.get('TotalSpotCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('ScalingInstances') is not None:
             temp_model = DescribeScalingInstancesResponseBodyScalingInstances()
             self.scaling_instances = temp_model.from_map(m['ScalingInstances'])
-        if m.get('TotalSpotCount') is not None:
-            self.total_spot_count = m.get('TotalSpotCount')
         return self
 
 
@@ -7139,6 +8293,10 @@ class DescribeScalingInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7159,9 +8317,6 @@ class DescribeScalingInstancesResponse(TeaModel):
 class DescribeScalingRulesRequest(TeaModel):
     def __init__(
         self,
-        scaling_rule_id: List[str] = None,
-        scaling_rule_name: List[str] = None,
-        scaling_rule_ari: List[str] = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -7172,10 +8327,10 @@ class DescribeScalingRulesRequest(TeaModel):
         scaling_rule_type: str = None,
         show_alarm_rules: bool = None,
         owner_account: str = None,
+        scaling_rule_id: List[str] = None,
+        scaling_rule_name: List[str] = None,
+        scaling_rule_ari: List[str] = None,
     ):
-        self.scaling_rule_id = scaling_rule_id
-        self.scaling_rule_name = scaling_rule_name
-        self.scaling_rule_ari = scaling_rule_ari
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7186,18 +8341,19 @@ class DescribeScalingRulesRequest(TeaModel):
         self.scaling_rule_type = scaling_rule_type
         self.show_alarm_rules = show_alarm_rules
         self.owner_account = owner_account
+        self.scaling_rule_id = scaling_rule_id
+        self.scaling_rule_name = scaling_rule_name
+        self.scaling_rule_ari = scaling_rule_ari
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.scaling_rule_id is not None:
-            result['ScalingRuleId'] = self.scaling_rule_id
-        if self.scaling_rule_name is not None:
-            result['ScalingRuleName'] = self.scaling_rule_name
-        if self.scaling_rule_ari is not None:
-            result['ScalingRuleAri'] = self.scaling_rule_ari
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.resource_owner_account is not None:
@@ -7218,16 +8374,16 @@ class DescribeScalingRulesRequest(TeaModel):
             result['ShowAlarmRules'] = self.show_alarm_rules
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
+        if self.scaling_rule_id is not None:
+            result['ScalingRuleId'] = self.scaling_rule_id
+        if self.scaling_rule_name is not None:
+            result['ScalingRuleName'] = self.scaling_rule_name
+        if self.scaling_rule_ari is not None:
+            result['ScalingRuleAri'] = self.scaling_rule_ari
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ScalingRuleId') is not None:
-            self.scaling_rule_id = m.get('ScalingRuleId')
-        if m.get('ScalingRuleName') is not None:
-            self.scaling_rule_name = m.get('ScalingRuleName')
-        if m.get('ScalingRuleAri') is not None:
-            self.scaling_rule_ari = m.get('ScalingRuleAri')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -7248,6 +8404,12 @@ class DescribeScalingRulesRequest(TeaModel):
             self.show_alarm_rules = m.get('ShowAlarmRules')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
+        if m.get('ScalingRuleId') is not None:
+            self.scaling_rule_id = m.get('ScalingRuleId')
+        if m.get('ScalingRuleName') is not None:
+            self.scaling_rule_name = m.get('ScalingRuleName')
+        if m.get('ScalingRuleAri') is not None:
+            self.scaling_rule_ari = m.get('ScalingRuleAri')
         return self
 
 
@@ -7264,6 +8426,10 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensio
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dimension_key is not None:
             result['DimensionKey'] = self.dimension_key
@@ -7294,6 +8460,10 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensio
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Dimension'] = []
         if self.dimension is not None:
@@ -7319,26 +8489,30 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm(TeaMode
         metric_name: str = None,
         evaluation_count: int = None,
         alarm_task_name: str = None,
-        dimensions: DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensions = None,
         metric_type: str = None,
         threshold: float = None,
         statistics: str = None,
+        dimensions: DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensions = None,
     ):
         self.alarm_task_id = alarm_task_id
         self.comparison_operator = comparison_operator
         self.metric_name = metric_name
         self.evaluation_count = evaluation_count
         self.alarm_task_name = alarm_task_name
-        self.dimensions = dimensions
         self.metric_type = metric_type
         self.threshold = threshold
         self.statistics = statistics
+        self.dimensions = dimensions
 
     def validate(self):
         if self.dimensions:
             self.dimensions.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.alarm_task_id is not None:
             result['AlarmTaskId'] = self.alarm_task_id
@@ -7350,14 +8524,14 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm(TeaMode
             result['EvaluationCount'] = self.evaluation_count
         if self.alarm_task_name is not None:
             result['AlarmTaskName'] = self.alarm_task_name
-        if self.dimensions is not None:
-            result['Dimensions'] = self.dimensions.to_map()
         if self.metric_type is not None:
             result['MetricType'] = self.metric_type
         if self.threshold is not None:
             result['Threshold'] = self.threshold
         if self.statistics is not None:
             result['Statistics'] = self.statistics
+        if self.dimensions is not None:
+            result['Dimensions'] = self.dimensions.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -7372,15 +8546,15 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm(TeaMode
             self.evaluation_count = m.get('EvaluationCount')
         if m.get('AlarmTaskName') is not None:
             self.alarm_task_name = m.get('AlarmTaskName')
-        if m.get('Dimensions') is not None:
-            temp_model = DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensions()
-            self.dimensions = temp_model.from_map(m['Dimensions'])
         if m.get('MetricType') is not None:
             self.metric_type = m.get('MetricType')
         if m.get('Threshold') is not None:
             self.threshold = m.get('Threshold')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
+        if m.get('Dimensions') is not None:
+            temp_model = DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensions()
+            self.dimensions = temp_model.from_map(m['Dimensions'])
         return self
 
 
@@ -7398,6 +8572,10 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarms(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Alarm'] = []
         if self.alarm is not None:
@@ -7430,6 +8608,10 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRuleStepAdjustmentsStep
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_interval_upper_bound is not None:
             result['MetricIntervalUpperBound'] = self.metric_interval_upper_bound
@@ -7464,6 +8646,10 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRuleStepAdjustments(Tea
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['StepAdjustment'] = []
         if self.step_adjustment is not None:
@@ -7485,54 +8671,54 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRule(TeaModel):
     def __init__(
         self,
         metric_name: str = None,
+        adjustment_type: str = None,
         initial_max_size: int = None,
-        alarms: DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarms = None,
+        estimated_instance_warmup: int = None,
         scale_out_evaluation_count: int = None,
         predictive_scaling_mode: str = None,
-        min_size: int = None,
+        min_adjustment_magnitude: int = None,
+        scaling_rule_ari: str = None,
         predictive_task_buffer_time: int = None,
+        min_size: int = None,
         scaling_group_id: str = None,
         predictive_value_behavior: str = None,
+        target_value: float = None,
         cooldown: int = None,
-        scaling_rule_type: str = None,
+        max_size: int = None,
         predictive_value_buffer: int = None,
+        scaling_rule_type: str = None,
+        adjustment_value: int = None,
         scale_in_evaluation_count: int = None,
         disable_scale_in: bool = None,
         scaling_rule_name: str = None,
-        adjustment_type: str = None,
-        estimated_instance_warmup: int = None,
-        min_adjustment_magnitude: int = None,
-        scaling_rule_ari: str = None,
-        step_adjustments: DescribeScalingRulesResponseBodyScalingRulesScalingRuleStepAdjustments = None,
-        target_value: float = None,
-        max_size: int = None,
-        adjustment_value: int = None,
         scaling_rule_id: str = None,
+        alarms: DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarms = None,
+        step_adjustments: DescribeScalingRulesResponseBodyScalingRulesScalingRuleStepAdjustments = None,
     ):
         self.metric_name = metric_name
+        self.adjustment_type = adjustment_type
         self.initial_max_size = initial_max_size
-        self.alarms = alarms
+        self.estimated_instance_warmup = estimated_instance_warmup
         self.scale_out_evaluation_count = scale_out_evaluation_count
         self.predictive_scaling_mode = predictive_scaling_mode
-        self.min_size = min_size
+        self.min_adjustment_magnitude = min_adjustment_magnitude
+        self.scaling_rule_ari = scaling_rule_ari
         self.predictive_task_buffer_time = predictive_task_buffer_time
+        self.min_size = min_size
         self.scaling_group_id = scaling_group_id
         self.predictive_value_behavior = predictive_value_behavior
+        self.target_value = target_value
         self.cooldown = cooldown
-        self.scaling_rule_type = scaling_rule_type
+        self.max_size = max_size
         self.predictive_value_buffer = predictive_value_buffer
+        self.scaling_rule_type = scaling_rule_type
+        self.adjustment_value = adjustment_value
         self.scale_in_evaluation_count = scale_in_evaluation_count
         self.disable_scale_in = disable_scale_in
         self.scaling_rule_name = scaling_rule_name
-        self.adjustment_type = adjustment_type
-        self.estimated_instance_warmup = estimated_instance_warmup
-        self.min_adjustment_magnitude = min_adjustment_magnitude
-        self.scaling_rule_ari = scaling_rule_ari
-        self.step_adjustments = step_adjustments
-        self.target_value = target_value
-        self.max_size = max_size
-        self.adjustment_value = adjustment_value
         self.scaling_rule_id = scaling_rule_id
+        self.alarms = alarms
+        self.step_adjustments = step_adjustments
 
     def validate(self):
         if self.alarms:
@@ -7541,109 +8727,113 @@ class DescribeScalingRulesResponseBodyScalingRulesScalingRule(TeaModel):
             self.step_adjustments.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
+        if self.adjustment_type is not None:
+            result['AdjustmentType'] = self.adjustment_type
         if self.initial_max_size is not None:
             result['InitialMaxSize'] = self.initial_max_size
-        if self.alarms is not None:
-            result['Alarms'] = self.alarms.to_map()
+        if self.estimated_instance_warmup is not None:
+            result['EstimatedInstanceWarmup'] = self.estimated_instance_warmup
         if self.scale_out_evaluation_count is not None:
             result['ScaleOutEvaluationCount'] = self.scale_out_evaluation_count
         if self.predictive_scaling_mode is not None:
             result['PredictiveScalingMode'] = self.predictive_scaling_mode
-        if self.min_size is not None:
-            result['MinSize'] = self.min_size
+        if self.min_adjustment_magnitude is not None:
+            result['MinAdjustmentMagnitude'] = self.min_adjustment_magnitude
+        if self.scaling_rule_ari is not None:
+            result['ScalingRuleAri'] = self.scaling_rule_ari
         if self.predictive_task_buffer_time is not None:
             result['PredictiveTaskBufferTime'] = self.predictive_task_buffer_time
+        if self.min_size is not None:
+            result['MinSize'] = self.min_size
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
         if self.predictive_value_behavior is not None:
             result['PredictiveValueBehavior'] = self.predictive_value_behavior
+        if self.target_value is not None:
+            result['TargetValue'] = self.target_value
         if self.cooldown is not None:
             result['Cooldown'] = self.cooldown
-        if self.scaling_rule_type is not None:
-            result['ScalingRuleType'] = self.scaling_rule_type
+        if self.max_size is not None:
+            result['MaxSize'] = self.max_size
         if self.predictive_value_buffer is not None:
             result['PredictiveValueBuffer'] = self.predictive_value_buffer
+        if self.scaling_rule_type is not None:
+            result['ScalingRuleType'] = self.scaling_rule_type
+        if self.adjustment_value is not None:
+            result['AdjustmentValue'] = self.adjustment_value
         if self.scale_in_evaluation_count is not None:
             result['ScaleInEvaluationCount'] = self.scale_in_evaluation_count
         if self.disable_scale_in is not None:
             result['DisableScaleIn'] = self.disable_scale_in
         if self.scaling_rule_name is not None:
             result['ScalingRuleName'] = self.scaling_rule_name
-        if self.adjustment_type is not None:
-            result['AdjustmentType'] = self.adjustment_type
-        if self.estimated_instance_warmup is not None:
-            result['EstimatedInstanceWarmup'] = self.estimated_instance_warmup
-        if self.min_adjustment_magnitude is not None:
-            result['MinAdjustmentMagnitude'] = self.min_adjustment_magnitude
-        if self.scaling_rule_ari is not None:
-            result['ScalingRuleAri'] = self.scaling_rule_ari
-        if self.step_adjustments is not None:
-            result['StepAdjustments'] = self.step_adjustments.to_map()
-        if self.target_value is not None:
-            result['TargetValue'] = self.target_value
-        if self.max_size is not None:
-            result['MaxSize'] = self.max_size
-        if self.adjustment_value is not None:
-            result['AdjustmentValue'] = self.adjustment_value
         if self.scaling_rule_id is not None:
             result['ScalingRuleId'] = self.scaling_rule_id
+        if self.alarms is not None:
+            result['Alarms'] = self.alarms.to_map()
+        if self.step_adjustments is not None:
+            result['StepAdjustments'] = self.step_adjustments.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('MetricName') is not None:
             self.metric_name = m.get('MetricName')
+        if m.get('AdjustmentType') is not None:
+            self.adjustment_type = m.get('AdjustmentType')
         if m.get('InitialMaxSize') is not None:
             self.initial_max_size = m.get('InitialMaxSize')
-        if m.get('Alarms') is not None:
-            temp_model = DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarms()
-            self.alarms = temp_model.from_map(m['Alarms'])
+        if m.get('EstimatedInstanceWarmup') is not None:
+            self.estimated_instance_warmup = m.get('EstimatedInstanceWarmup')
         if m.get('ScaleOutEvaluationCount') is not None:
             self.scale_out_evaluation_count = m.get('ScaleOutEvaluationCount')
         if m.get('PredictiveScalingMode') is not None:
             self.predictive_scaling_mode = m.get('PredictiveScalingMode')
-        if m.get('MinSize') is not None:
-            self.min_size = m.get('MinSize')
+        if m.get('MinAdjustmentMagnitude') is not None:
+            self.min_adjustment_magnitude = m.get('MinAdjustmentMagnitude')
+        if m.get('ScalingRuleAri') is not None:
+            self.scaling_rule_ari = m.get('ScalingRuleAri')
         if m.get('PredictiveTaskBufferTime') is not None:
             self.predictive_task_buffer_time = m.get('PredictiveTaskBufferTime')
+        if m.get('MinSize') is not None:
+            self.min_size = m.get('MinSize')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
         if m.get('PredictiveValueBehavior') is not None:
             self.predictive_value_behavior = m.get('PredictiveValueBehavior')
+        if m.get('TargetValue') is not None:
+            self.target_value = m.get('TargetValue')
         if m.get('Cooldown') is not None:
             self.cooldown = m.get('Cooldown')
-        if m.get('ScalingRuleType') is not None:
-            self.scaling_rule_type = m.get('ScalingRuleType')
+        if m.get('MaxSize') is not None:
+            self.max_size = m.get('MaxSize')
         if m.get('PredictiveValueBuffer') is not None:
             self.predictive_value_buffer = m.get('PredictiveValueBuffer')
+        if m.get('ScalingRuleType') is not None:
+            self.scaling_rule_type = m.get('ScalingRuleType')
+        if m.get('AdjustmentValue') is not None:
+            self.adjustment_value = m.get('AdjustmentValue')
         if m.get('ScaleInEvaluationCount') is not None:
             self.scale_in_evaluation_count = m.get('ScaleInEvaluationCount')
         if m.get('DisableScaleIn') is not None:
             self.disable_scale_in = m.get('DisableScaleIn')
         if m.get('ScalingRuleName') is not None:
             self.scaling_rule_name = m.get('ScalingRuleName')
-        if m.get('AdjustmentType') is not None:
-            self.adjustment_type = m.get('AdjustmentType')
-        if m.get('EstimatedInstanceWarmup') is not None:
-            self.estimated_instance_warmup = m.get('EstimatedInstanceWarmup')
-        if m.get('MinAdjustmentMagnitude') is not None:
-            self.min_adjustment_magnitude = m.get('MinAdjustmentMagnitude')
-        if m.get('ScalingRuleAri') is not None:
-            self.scaling_rule_ari = m.get('ScalingRuleAri')
+        if m.get('ScalingRuleId') is not None:
+            self.scaling_rule_id = m.get('ScalingRuleId')
+        if m.get('Alarms') is not None:
+            temp_model = DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarms()
+            self.alarms = temp_model.from_map(m['Alarms'])
         if m.get('StepAdjustments') is not None:
             temp_model = DescribeScalingRulesResponseBodyScalingRulesScalingRuleStepAdjustments()
             self.step_adjustments = temp_model.from_map(m['StepAdjustments'])
-        if m.get('TargetValue') is not None:
-            self.target_value = m.get('TargetValue')
-        if m.get('MaxSize') is not None:
-            self.max_size = m.get('MaxSize')
-        if m.get('AdjustmentValue') is not None:
-            self.adjustment_value = m.get('AdjustmentValue')
-        if m.get('ScalingRuleId') is not None:
-            self.scaling_rule_id = m.get('ScalingRuleId')
         return self
 
 
@@ -7661,6 +8851,10 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScalingRule'] = []
         if self.scaling_rule is not None:
@@ -7681,49 +8875,53 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
 class DescribeScalingRulesResponseBody(TeaModel):
     def __init__(
         self,
+        request_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
         total_count: int = None,
         scaling_rules: DescribeScalingRulesResponseBodyScalingRules = None,
-        request_id: str = None,
-        page_size: int = None,
-        page_number: int = None,
     ):
+        self.request_id = request_id
+        self.page_number = page_number
+        self.page_size = page_size
         self.total_count = total_count
         self.scaling_rules = scaling_rules
-        self.request_id = request_id
-        self.page_size = page_size
-        self.page_number = page_number
 
     def validate(self):
         if self.scaling_rules:
             self.scaling_rules.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         if self.scaling_rules is not None:
             result['ScalingRules'] = self.scaling_rules.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         if m.get('ScalingRules') is not None:
             temp_model = DescribeScalingRulesResponseBodyScalingRules()
             self.scaling_rules = temp_model.from_map(m['ScalingRules'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
         return self
 
 
@@ -7743,6 +8941,10 @@ class DescribeScalingRulesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7763,9 +8965,6 @@ class DescribeScalingRulesResponse(TeaModel):
 class DescribeScheduledTasksRequest(TeaModel):
     def __init__(
         self,
-        scheduled_action: List[str] = None,
-        scheduled_task_id: List[str] = None,
-        scheduled_task_name: List[str] = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -7774,10 +8973,10 @@ class DescribeScheduledTasksRequest(TeaModel):
         page_size: int = None,
         owner_account: str = None,
         scaling_group_id: str = None,
+        scheduled_action: List[str] = None,
+        scheduled_task_id: List[str] = None,
+        scheduled_task_name: List[str] = None,
     ):
-        self.scheduled_action = scheduled_action
-        self.scheduled_task_id = scheduled_task_id
-        self.scheduled_task_name = scheduled_task_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7786,18 +8985,19 @@ class DescribeScheduledTasksRequest(TeaModel):
         self.page_size = page_size
         self.owner_account = owner_account
         self.scaling_group_id = scaling_group_id
+        self.scheduled_action = scheduled_action
+        self.scheduled_task_id = scheduled_task_id
+        self.scheduled_task_name = scheduled_task_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.scheduled_action is not None:
-            result['ScheduledAction'] = self.scheduled_action
-        if self.scheduled_task_id is not None:
-            result['ScheduledTaskId'] = self.scheduled_task_id
-        if self.scheduled_task_name is not None:
-            result['ScheduledTaskName'] = self.scheduled_task_name
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.resource_owner_account is not None:
@@ -7814,16 +9014,16 @@ class DescribeScheduledTasksRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.scheduled_action is not None:
+            result['ScheduledAction'] = self.scheduled_action
+        if self.scheduled_task_id is not None:
+            result['ScheduledTaskId'] = self.scheduled_task_id
+        if self.scheduled_task_name is not None:
+            result['ScheduledTaskName'] = self.scheduled_task_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ScheduledAction') is not None:
-            self.scheduled_action = m.get('ScheduledAction')
-        if m.get('ScheduledTaskId') is not None:
-            self.scheduled_task_id = m.get('ScheduledTaskId')
-        if m.get('ScheduledTaskName') is not None:
-            self.scheduled_task_name = m.get('ScheduledTaskName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -7840,6 +9040,12 @@ class DescribeScheduledTasksRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ScheduledAction') is not None:
+            self.scheduled_action = m.get('ScheduledAction')
+        if m.get('ScheduledTaskId') is not None:
+            self.scheduled_task_id = m.get('ScheduledTaskId')
+        if m.get('ScheduledTaskName') is not None:
+            self.scheduled_task_name = m.get('ScheduledTaskName')
         return self
 
 
@@ -7848,12 +9054,12 @@ class DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask(TeaModel):
         self,
         task_enabled: bool = None,
         recurrence_value: str = None,
-        max_value: int = None,
         recurrence_type: str = None,
+        max_value: int = None,
         scheduled_task_name: str = None,
         recurrence_end_time: str = None,
-        scheduled_task_id: str = None,
         desired_capacity: int = None,
+        scheduled_task_id: str = None,
         min_value: int = None,
         scaling_group_id: str = None,
         launch_expiration_time: int = None,
@@ -7863,12 +9069,12 @@ class DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask(TeaModel):
     ):
         self.task_enabled = task_enabled
         self.recurrence_value = recurrence_value
-        self.max_value = max_value
         self.recurrence_type = recurrence_type
+        self.max_value = max_value
         self.scheduled_task_name = scheduled_task_name
         self.recurrence_end_time = recurrence_end_time
-        self.scheduled_task_id = scheduled_task_id
         self.desired_capacity = desired_capacity
+        self.scheduled_task_id = scheduled_task_id
         self.min_value = min_value
         self.scaling_group_id = scaling_group_id
         self.launch_expiration_time = launch_expiration_time
@@ -7880,23 +9086,27 @@ class DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.task_enabled is not None:
             result['TaskEnabled'] = self.task_enabled
         if self.recurrence_value is not None:
             result['RecurrenceValue'] = self.recurrence_value
-        if self.max_value is not None:
-            result['MaxValue'] = self.max_value
         if self.recurrence_type is not None:
             result['RecurrenceType'] = self.recurrence_type
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
         if self.scheduled_task_name is not None:
             result['ScheduledTaskName'] = self.scheduled_task_name
         if self.recurrence_end_time is not None:
             result['RecurrenceEndTime'] = self.recurrence_end_time
-        if self.scheduled_task_id is not None:
-            result['ScheduledTaskId'] = self.scheduled_task_id
         if self.desired_capacity is not None:
             result['DesiredCapacity'] = self.desired_capacity
+        if self.scheduled_task_id is not None:
+            result['ScheduledTaskId'] = self.scheduled_task_id
         if self.min_value is not None:
             result['MinValue'] = self.min_value
         if self.scaling_group_id is not None:
@@ -7917,18 +9127,18 @@ class DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask(TeaModel):
             self.task_enabled = m.get('TaskEnabled')
         if m.get('RecurrenceValue') is not None:
             self.recurrence_value = m.get('RecurrenceValue')
-        if m.get('MaxValue') is not None:
-            self.max_value = m.get('MaxValue')
         if m.get('RecurrenceType') is not None:
             self.recurrence_type = m.get('RecurrenceType')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
         if m.get('ScheduledTaskName') is not None:
             self.scheduled_task_name = m.get('ScheduledTaskName')
         if m.get('RecurrenceEndTime') is not None:
             self.recurrence_end_time = m.get('RecurrenceEndTime')
-        if m.get('ScheduledTaskId') is not None:
-            self.scheduled_task_id = m.get('ScheduledTaskId')
         if m.get('DesiredCapacity') is not None:
             self.desired_capacity = m.get('DesiredCapacity')
+        if m.get('ScheduledTaskId') is not None:
+            self.scheduled_task_id = m.get('ScheduledTaskId')
         if m.get('MinValue') is not None:
             self.min_value = m.get('MinValue')
         if m.get('ScalingGroupId') is not None:
@@ -7958,6 +9168,10 @@ class DescribeScheduledTasksResponseBodyScheduledTasks(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ScheduledTask'] = []
         if self.scheduled_task is not None:
@@ -7978,16 +9192,16 @@ class DescribeScheduledTasksResponseBodyScheduledTasks(TeaModel):
 class DescribeScheduledTasksResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
-        page_size: int = None,
         page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
         scheduled_tasks: DescribeScheduledTasksResponseBodyScheduledTasks = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
-        self.page_size = page_size
         self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
         self.scheduled_tasks = scheduled_tasks
 
     def validate(self):
@@ -7995,29 +9209,33 @@ class DescribeScheduledTasksResponseBody(TeaModel):
             self.scheduled_tasks.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         if self.scheduled_tasks is not None:
             result['ScheduledTasks'] = self.scheduled_tasks.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         if m.get('ScheduledTasks') is not None:
             temp_model = DescribeScheduledTasksResponseBodyScheduledTasks()
             self.scheduled_tasks = temp_model.from_map(m['ScheduledTasks'])
@@ -8040,6 +9258,10 @@ class DescribeScheduledTasksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8053,6 +9275,180 @@ class DescribeScheduledTasksResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeScheduledTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetachAlbServerGroupsRequestAlbServerGroup(TeaModel):
+    def __init__(
+        self,
+        alb_server_group_id: str = None,
+        port: int = None,
+    ):
+        self.alb_server_group_id = alb_server_group_id
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alb_server_group_id is not None:
+            result['AlbServerGroupId'] = self.alb_server_group_id
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlbServerGroupId') is not None:
+            self.alb_server_group_id = m.get('AlbServerGroupId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class DetachAlbServerGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        region_id: str = None,
+        scaling_group_id: str = None,
+        client_token: str = None,
+        force_detach: bool = None,
+        alb_server_group: List[DetachAlbServerGroupsRequestAlbServerGroup] = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.region_id = region_id
+        self.scaling_group_id = scaling_group_id
+        self.client_token = client_token
+        self.force_detach = force_detach
+        self.alb_server_group = alb_server_group
+
+    def validate(self):
+        if self.alb_server_group:
+            for k in self.alb_server_group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.force_detach is not None:
+            result['ForceDetach'] = self.force_detach
+        result['AlbServerGroup'] = []
+        if self.alb_server_group is not None:
+            for k in self.alb_server_group:
+                result['AlbServerGroup'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ForceDetach') is not None:
+            self.force_detach = m.get('ForceDetach')
+        self.alb_server_group = []
+        if m.get('AlbServerGroup') is not None:
+            for k in m.get('AlbServerGroup'):
+                temp_model = DetachAlbServerGroupsRequestAlbServerGroup()
+                self.alb_server_group.append(temp_model.from_map(k))
+        return self
+
+
+class DetachAlbServerGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        scaling_activity_id: str = None,
+        request_id: str = None,
+    ):
+        self.scaling_activity_id = scaling_activity_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scaling_activity_id is not None:
+            result['ScalingActivityId'] = self.scaling_activity_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ScalingActivityId') is not None:
+            self.scaling_activity_id = m.get('ScalingActivityId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetachAlbServerGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DetachAlbServerGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DetachAlbServerGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8078,6 +9474,10 @@ class DetachDBInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8121,6 +9521,10 @@ class DetachDBInstancesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8149,6 +9553,10 @@ class DetachDBInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8191,6 +9599,10 @@ class DetachInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8234,29 +9646,33 @@ class DetachInstancesRequest(TeaModel):
 class DetachInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         scaling_activity_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.scaling_activity_id = scaling_activity_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.scaling_activity_id is not None:
             result['ScalingActivityId'] = self.scaling_activity_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ScalingActivityId') is not None:
             self.scaling_activity_id = m.get('ScalingActivityId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -8276,6 +9692,10 @@ class DetachInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8301,6 +9721,7 @@ class DetachLoadBalancersRequest(TeaModel):
         scaling_group_id: str = None,
         force_detach: bool = None,
         client_token: str = None,
+        async_: bool = None,
         load_balancer: List[str] = None,
     ):
         self.owner_id = owner_id
@@ -8308,12 +9729,17 @@ class DetachLoadBalancersRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
         self.force_detach = force_detach
         self.client_token = client_token
+        self.async_ = async_
         self.load_balancer = load_balancer
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8325,6 +9751,8 @@ class DetachLoadBalancersRequest(TeaModel):
             result['ForceDetach'] = self.force_detach
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.load_balancer is not None:
             result['LoadBalancer'] = self.load_balancer
         return result
@@ -8341,6 +9769,8 @@ class DetachLoadBalancersRequest(TeaModel):
             self.force_detach = m.get('ForceDetach')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('LoadBalancer') is not None:
             self.load_balancer = m.get('LoadBalancer')
         return self
@@ -8349,21 +9779,31 @@ class DetachLoadBalancersRequest(TeaModel):
 class DetachLoadBalancersResponseBody(TeaModel):
     def __init__(
         self,
+        scaling_activity_id: str = None,
         request_id: str = None,
     ):
+        self.scaling_activity_id = scaling_activity_id
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.scaling_activity_id is not None:
+            result['ScalingActivityId'] = self.scaling_activity_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ScalingActivityId') is not None:
+            self.scaling_activity_id = m.get('ScalingActivityId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -8385,6 +9825,10 @@ class DetachLoadBalancersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8415,6 +9859,10 @@ class DetachVServerGroupsRequestVServerGroupVServerGroupAttribute(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vserver_group_id is not None:
             result['VServerGroupId'] = self.vserver_group_id
@@ -8447,6 +9895,10 @@ class DetachVServerGroupsRequestVServerGroup(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['VServerGroupAttribute'] = []
         if self.vserver_group_attribute is not None:
@@ -8494,6 +9946,10 @@ class DetachVServerGroupsRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8546,6 +10002,10 @@ class DetachVServerGroupsResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8574,6 +10034,10 @@ class DetachVServerGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8608,6 +10072,10 @@ class DisableAlarmRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8643,6 +10111,10 @@ class DisableAlarmResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8671,6 +10143,10 @@ class DisableAlarmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8707,6 +10183,10 @@ class DisableScalingGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8746,6 +10226,10 @@ class DisableScalingGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8774,6 +10258,10 @@ class DisableScalingGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8808,6 +10296,10 @@ class EnableAlarmRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -8843,6 +10335,10 @@ class EnableAlarmResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8871,6 +10367,10 @@ class EnableAlarmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8901,6 +10401,10 @@ class EnableScalingGroupRequestLaunchTemplateOverride(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -8951,6 +10455,10 @@ class EnableScalingGroupRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9019,6 +10527,10 @@ class EnableScalingGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9047,6 +10559,10 @@ class EnableScalingGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9083,6 +10599,10 @@ class EnterStandbyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9122,6 +10642,10 @@ class EnterStandbyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9150,6 +10674,10 @@ class EnterStandbyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9192,6 +10720,10 @@ class ExecuteScalingRuleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9235,29 +10767,33 @@ class ExecuteScalingRuleRequest(TeaModel):
 class ExecuteScalingRuleResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         scaling_activity_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.scaling_activity_id = scaling_activity_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.scaling_activity_id is not None:
             result['ScalingActivityId'] = self.scaling_activity_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ScalingActivityId') is not None:
             self.scaling_activity_id = m.get('ScalingActivityId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -9277,6 +10813,10 @@ class ExecuteScalingRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9313,6 +10853,10 @@ class ExitStandbyRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9352,6 +10896,10 @@ class ExitStandbyResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9380,6 +10928,10 @@ class ExitStandbyResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9418,6 +10970,10 @@ class ListTagKeysRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9461,6 +11017,10 @@ class ListTagKeysResponseBodyKeys(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -9491,6 +11051,10 @@ class ListTagKeysResponseBody(TeaModel):
             self.keys.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -9532,6 +11096,10 @@ class ListTagKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9562,6 +11130,10 @@ class ListTagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -9604,6 +11176,10 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9648,13 +11224,13 @@ class ListTagResourcesRequest(TeaModel):
 class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
     def __init__(
         self,
-        resource_type: str = None,
         tag_value: str = None,
+        resource_type: str = None,
         resource_id: str = None,
         tag_key: str = None,
     ):
-        self.resource_type = resource_type
         self.tag_value = tag_value
+        self.resource_type = resource_type
         self.resource_id = resource_id
         self.tag_key = tag_key
 
@@ -9662,11 +11238,15 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.tag_key is not None:
@@ -9675,10 +11255,10 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('TagKey') is not None:
@@ -9700,6 +11280,10 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TagResource'] = []
         if self.tag_resource is not None:
@@ -9733,6 +11317,10 @@ class ListTagResourcesResponseBody(TeaModel):
             self.tag_resources.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -9770,6 +11358,10 @@ class ListTagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9810,6 +11402,10 @@ class ListTagValuesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -9857,6 +11453,10 @@ class ListTagValuesResponseBodyValues(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.value is not None:
             result['Value'] = self.value
@@ -9887,6 +11487,10 @@ class ListTagValuesResponseBody(TeaModel):
             self.values.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -9928,6 +11532,10 @@ class ListTagValuesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9958,6 +11566,10 @@ class ModifyAlarmRequestDimension(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.dimension_key is not None:
             result['DimensionKey'] = self.dimension_key
@@ -10020,6 +11632,10 @@ class ModifyAlarmRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -10104,29 +11720,33 @@ class ModifyAlarmRequest(TeaModel):
 class ModifyAlarmResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         alarm_task_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.alarm_task_id = alarm_task_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.alarm_task_id is not None:
             result['AlarmTaskId'] = self.alarm_task_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('AlarmTaskId') is not None:
             self.alarm_task_id = m.get('AlarmTaskId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -10146,6 +11766,10 @@ class ModifyAlarmResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10194,6 +11818,10 @@ class ModifyLifecycleHookRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -10257,6 +11885,10 @@ class ModifyLifecycleHookResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10285,6 +11917,10 @@ class ModifyLifecycleHookResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10321,6 +11957,10 @@ class ModifyNotificationConfigurationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -10360,6 +12000,10 @@ class ModifyNotificationConfigurationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10388,6 +12032,10 @@ class ModifyNotificationConfigurationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10426,6 +12074,10 @@ class ModifyScalingConfigurationRequestSystemDisk(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
@@ -10471,6 +12123,10 @@ class ModifyScalingConfigurationRequestPrivatePoolOptions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.match_criteria is not None:
             result['MatchCriteria'] = self.match_criteria
@@ -10490,37 +12146,49 @@ class ModifyScalingConfigurationRequestPrivatePoolOptions(TeaModel):
 class ModifyScalingConfigurationRequestDataDisk(TeaModel):
     def __init__(
         self,
+        categorys: List[str] = None,
         performance_level: str = None,
+        auto_snapshot_policy_id: str = None,
+        encrypted: str = None,
         description: str = None,
         snapshot_id: str = None,
         size: int = None,
         device: str = None,
         disk_name: str = None,
-        auto_snapshot_policy_id: str = None,
         category: str = None,
-        kmskey_id: str = None,
         delete_with_instance: bool = None,
-        encrypted: str = None,
+        kmskey_id: str = None,
     ):
+        self.categorys = categorys
         self.performance_level = performance_level
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id
+        self.encrypted = encrypted
         self.description = description
         self.snapshot_id = snapshot_id
         self.size = size
         self.device = device
         self.disk_name = disk_name
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
         self.category = category
-        self.kmskey_id = kmskey_id
         self.delete_with_instance = delete_with_instance
-        self.encrypted = encrypted
+        self.kmskey_id = kmskey_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.categorys is not None:
+            result['Categorys'] = self.categorys
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.auto_snapshot_policy_id is not None:
+            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
         if self.description is not None:
             result['Description'] = self.description
         if self.snapshot_id is not None:
@@ -10531,22 +12199,24 @@ class ModifyScalingConfigurationRequestDataDisk(TeaModel):
             result['Device'] = self.device
         if self.disk_name is not None:
             result['DiskName'] = self.disk_name
-        if self.auto_snapshot_policy_id is not None:
-            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
         if self.category is not None:
             result['Category'] = self.category
-        if self.kmskey_id is not None:
-            result['KMSKeyId'] = self.kmskey_id
         if self.delete_with_instance is not None:
             result['DeleteWithInstance'] = self.delete_with_instance
-        if self.encrypted is not None:
-            result['Encrypted'] = self.encrypted
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Categorys') is not None:
+            self.categorys = m.get('Categorys')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('AutoSnapshotPolicyId') is not None:
+            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('SnapshotId') is not None:
@@ -10557,16 +12227,12 @@ class ModifyScalingConfigurationRequestDataDisk(TeaModel):
             self.device = m.get('Device')
         if m.get('DiskName') is not None:
             self.disk_name = m.get('DiskName')
-        if m.get('AutoSnapshotPolicyId') is not None:
-            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
         if m.get('Category') is not None:
             self.category = m.get('Category')
-        if m.get('KMSKeyId') is not None:
-            self.kmskey_id = m.get('KMSKeyId')
         if m.get('DeleteWithInstance') is not None:
             self.delete_with_instance = m.get('DeleteWithInstance')
-        if m.get('Encrypted') is not None:
-            self.encrypted = m.get('Encrypted')
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
         return self
 
 
@@ -10583,6 +12249,10 @@ class ModifyScalingConfigurationRequestSpotPriceLimit(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.price_limit is not None:
             result['PriceLimit'] = self.price_limit
@@ -10612,6 +12282,10 @@ class ModifyScalingConfigurationRequestInstanceTypeOverride(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -10625,6 +12299,51 @@ class ModifyScalingConfigurationRequestInstanceTypeOverride(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('WeightedCapacity') is not None:
             self.weighted_capacity = m.get('WeightedCapacity')
+        return self
+
+
+class ModifyScalingConfigurationRequestInstancePatternInfo(TeaModel):
+    def __init__(
+        self,
+        cores: int = None,
+        instance_family_level: str = None,
+        max_price: float = None,
+        memory: float = None,
+    ):
+        self.cores = cores
+        self.instance_family_level = instance_family_level
+        self.max_price = max_price
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cores is not None:
+            result['Cores'] = self.cores
+        if self.instance_family_level is not None:
+            result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.max_price is not None:
+            result['MaxPrice'] = self.max_price
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cores') is not None:
+            self.cores = m.get('Cores')
+        if m.get('InstanceFamilyLevel') is not None:
+            self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('MaxPrice') is not None:
+            self.max_price = m.get('MaxPrice')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
         return self
 
 
@@ -10675,6 +12394,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
         instance_types: List[str] = None,
         instance_type_override: List[ModifyScalingConfigurationRequestInstanceTypeOverride] = None,
         security_group_ids: List[str] = None,
+        instance_pattern_info: List[ModifyScalingConfigurationRequestInstancePatternInfo] = None,
+        system_disk_category: List[str] = None,
     ):
         self.system_disk = system_disk
         self.private_pool_options = private_pool_options
@@ -10720,6 +12441,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.instance_types = instance_types
         self.instance_type_override = instance_type_override
         self.security_group_ids = security_group_ids
+        self.instance_pattern_info = instance_pattern_info
+        self.system_disk_category = system_disk_category
 
     def validate(self):
         if self.system_disk:
@@ -10738,8 +12461,16 @@ class ModifyScalingConfigurationRequest(TeaModel):
             for k in self.instance_type_override:
                 if k:
                     k.validate()
+        if self.instance_pattern_info:
+            for k in self.instance_pattern_info:
+                if k:
+                    k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
@@ -10835,6 +12566,12 @@ class ModifyScalingConfigurationRequest(TeaModel):
                 result['InstanceTypeOverride'].append(k.to_map() if k else None)
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        result['InstancePatternInfo'] = []
+        if self.instance_pattern_info is not None:
+            for k in self.instance_pattern_info:
+                result['InstancePatternInfo'].append(k.to_map() if k else None)
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
         return result
 
     def from_map(self, m: dict = None):
@@ -10938,6 +12675,13 @@ class ModifyScalingConfigurationRequest(TeaModel):
                 self.instance_type_override.append(temp_model.from_map(k))
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        self.instance_pattern_info = []
+        if m.get('InstancePatternInfo') is not None:
+            for k in m.get('InstancePatternInfo'):
+                temp_model = ModifyScalingConfigurationRequestInstancePatternInfo()
+                self.instance_pattern_info.append(temp_model.from_map(k))
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
         return self
 
 
@@ -10962,6 +12706,10 @@ class ModifyScalingConfigurationShrinkRequestSystemDisk(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
@@ -11007,6 +12755,10 @@ class ModifyScalingConfigurationShrinkRequestPrivatePoolOptions(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.match_criteria is not None:
             result['MatchCriteria'] = self.match_criteria
@@ -11026,37 +12778,49 @@ class ModifyScalingConfigurationShrinkRequestPrivatePoolOptions(TeaModel):
 class ModifyScalingConfigurationShrinkRequestDataDisk(TeaModel):
     def __init__(
         self,
+        categorys: List[str] = None,
         performance_level: str = None,
+        auto_snapshot_policy_id: str = None,
+        encrypted: str = None,
         description: str = None,
         snapshot_id: str = None,
         size: int = None,
         device: str = None,
         disk_name: str = None,
-        auto_snapshot_policy_id: str = None,
         category: str = None,
-        kmskey_id: str = None,
         delete_with_instance: bool = None,
-        encrypted: str = None,
+        kmskey_id: str = None,
     ):
+        self.categorys = categorys
         self.performance_level = performance_level
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id
+        self.encrypted = encrypted
         self.description = description
         self.snapshot_id = snapshot_id
         self.size = size
         self.device = device
         self.disk_name = disk_name
-        self.auto_snapshot_policy_id = auto_snapshot_policy_id
         self.category = category
-        self.kmskey_id = kmskey_id
         self.delete_with_instance = delete_with_instance
-        self.encrypted = encrypted
+        self.kmskey_id = kmskey_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.categorys is not None:
+            result['Categorys'] = self.categorys
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
+        if self.auto_snapshot_policy_id is not None:
+            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
         if self.description is not None:
             result['Description'] = self.description
         if self.snapshot_id is not None:
@@ -11067,22 +12831,24 @@ class ModifyScalingConfigurationShrinkRequestDataDisk(TeaModel):
             result['Device'] = self.device
         if self.disk_name is not None:
             result['DiskName'] = self.disk_name
-        if self.auto_snapshot_policy_id is not None:
-            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
         if self.category is not None:
             result['Category'] = self.category
-        if self.kmskey_id is not None:
-            result['KMSKeyId'] = self.kmskey_id
         if self.delete_with_instance is not None:
             result['DeleteWithInstance'] = self.delete_with_instance
-        if self.encrypted is not None:
-            result['Encrypted'] = self.encrypted
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Categorys') is not None:
+            self.categorys = m.get('Categorys')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+        if m.get('AutoSnapshotPolicyId') is not None:
+            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('SnapshotId') is not None:
@@ -11093,16 +12859,12 @@ class ModifyScalingConfigurationShrinkRequestDataDisk(TeaModel):
             self.device = m.get('Device')
         if m.get('DiskName') is not None:
             self.disk_name = m.get('DiskName')
-        if m.get('AutoSnapshotPolicyId') is not None:
-            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
         if m.get('Category') is not None:
             self.category = m.get('Category')
-        if m.get('KMSKeyId') is not None:
-            self.kmskey_id = m.get('KMSKeyId')
         if m.get('DeleteWithInstance') is not None:
             self.delete_with_instance = m.get('DeleteWithInstance')
-        if m.get('Encrypted') is not None:
-            self.encrypted = m.get('Encrypted')
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
         return self
 
 
@@ -11119,6 +12881,10 @@ class ModifyScalingConfigurationShrinkRequestSpotPriceLimit(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.price_limit is not None:
             result['PriceLimit'] = self.price_limit
@@ -11148,6 +12914,10 @@ class ModifyScalingConfigurationShrinkRequestInstanceTypeOverride(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -11161,6 +12931,51 @@ class ModifyScalingConfigurationShrinkRequestInstanceTypeOverride(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('WeightedCapacity') is not None:
             self.weighted_capacity = m.get('WeightedCapacity')
+        return self
+
+
+class ModifyScalingConfigurationShrinkRequestInstancePatternInfo(TeaModel):
+    def __init__(
+        self,
+        cores: int = None,
+        instance_family_level: str = None,
+        max_price: float = None,
+        memory: float = None,
+    ):
+        self.cores = cores
+        self.instance_family_level = instance_family_level
+        self.max_price = max_price
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cores is not None:
+            result['Cores'] = self.cores
+        if self.instance_family_level is not None:
+            result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.max_price is not None:
+            result['MaxPrice'] = self.max_price
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cores') is not None:
+            self.cores = m.get('Cores')
+        if m.get('InstanceFamilyLevel') is not None:
+            self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('MaxPrice') is not None:
+            self.max_price = m.get('MaxPrice')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
         return self
 
 
@@ -11211,6 +13026,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         instance_types: List[str] = None,
         instance_type_override: List[ModifyScalingConfigurationShrinkRequestInstanceTypeOverride] = None,
         security_group_ids: List[str] = None,
+        instance_pattern_info: List[ModifyScalingConfigurationShrinkRequestInstancePatternInfo] = None,
+        system_disk_category: List[str] = None,
     ):
         self.system_disk = system_disk
         self.private_pool_options = private_pool_options
@@ -11256,6 +13073,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.instance_types = instance_types
         self.instance_type_override = instance_type_override
         self.security_group_ids = security_group_ids
+        self.instance_pattern_info = instance_pattern_info
+        self.system_disk_category = system_disk_category
 
     def validate(self):
         if self.system_disk:
@@ -11274,8 +13093,16 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             for k in self.instance_type_override:
                 if k:
                     k.validate()
+        if self.instance_pattern_info:
+            for k in self.instance_pattern_info:
+                if k:
+                    k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
@@ -11371,6 +13198,12 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
                 result['InstanceTypeOverride'].append(k.to_map() if k else None)
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        result['InstancePatternInfo'] = []
+        if self.instance_pattern_info is not None:
+            for k in self.instance_pattern_info:
+                result['InstancePatternInfo'].append(k.to_map() if k else None)
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
         return result
 
     def from_map(self, m: dict = None):
@@ -11474,6 +13307,13 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
                 self.instance_type_override.append(temp_model.from_map(k))
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        self.instance_pattern_info = []
+        if m.get('InstancePatternInfo') is not None:
+            for k in m.get('InstancePatternInfo'):
+                temp_model = ModifyScalingConfigurationShrinkRequestInstancePatternInfo()
+                self.instance_pattern_info.append(temp_model.from_map(k))
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
         return self
 
 
@@ -11488,6 +13328,10 @@ class ModifyScalingConfigurationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11516,6 +13360,10 @@ class ModifyScalingConfigurationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11546,6 +13394,10 @@ class ModifyScalingGroupRequestLaunchTemplateOverride(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -11586,7 +13438,7 @@ class ModifyScalingGroupRequest(TeaModel):
         spot_instance_pools: int = None,
         desired_capacity: int = None,
         group_deletion_protection: bool = None,
-        scale_out_amount_check: bool = None,
+        multi_azpolicy: str = None,
         v_switch_ids: List[str] = None,
         launch_template_override: List[ModifyScalingGroupRequestLaunchTemplateOverride] = None,
     ):
@@ -11611,7 +13463,7 @@ class ModifyScalingGroupRequest(TeaModel):
         self.spot_instance_pools = spot_instance_pools
         self.desired_capacity = desired_capacity
         self.group_deletion_protection = group_deletion_protection
-        self.scale_out_amount_check = scale_out_amount_check
+        self.multi_azpolicy = multi_azpolicy
         self.v_switch_ids = v_switch_ids
         self.launch_template_override = launch_template_override
 
@@ -11622,6 +13474,10 @@ class ModifyScalingGroupRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.removal_policy is not None:
             result['RemovalPolicy'] = self.removal_policy
@@ -11665,8 +13521,8 @@ class ModifyScalingGroupRequest(TeaModel):
             result['DesiredCapacity'] = self.desired_capacity
         if self.group_deletion_protection is not None:
             result['GroupDeletionProtection'] = self.group_deletion_protection
-        if self.scale_out_amount_check is not None:
-            result['ScaleOutAmountCheck'] = self.scale_out_amount_check
+        if self.multi_azpolicy is not None:
+            result['MultiAZPolicy'] = self.multi_azpolicy
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
         result['LaunchTemplateOverride'] = []
@@ -11719,8 +13575,8 @@ class ModifyScalingGroupRequest(TeaModel):
             self.desired_capacity = m.get('DesiredCapacity')
         if m.get('GroupDeletionProtection') is not None:
             self.group_deletion_protection = m.get('GroupDeletionProtection')
-        if m.get('ScaleOutAmountCheck') is not None:
-            self.scale_out_amount_check = m.get('ScaleOutAmountCheck')
+        if m.get('MultiAZPolicy') is not None:
+            self.multi_azpolicy = m.get('MultiAZPolicy')
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
         self.launch_template_override = []
@@ -11742,6 +13598,10 @@ class ModifyScalingGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -11770,6 +13630,10 @@ class ModifyScalingGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -11802,6 +13666,10 @@ class ModifyScalingRuleRequestStepAdjustment(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.metric_interval_upper_bound is not None:
             result['MetricIntervalUpperBound'] = self.metric_interval_upper_bound
@@ -11878,6 +13746,10 @@ class ModifyScalingRuleRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -11990,6 +13862,10 @@ class ModifyScalingRuleResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12018,6 +13894,10 @@ class ModifyScalingRuleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12080,6 +13960,10 @@ class ModifyScheduledTaskRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12171,6 +14055,10 @@ class ModifyScheduledTaskResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12199,6 +14087,10 @@ class ModifyScheduledTaskResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12235,6 +14127,10 @@ class RebalanceInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12266,29 +14162,33 @@ class RebalanceInstancesRequest(TeaModel):
 class RebalanceInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         scaling_activity_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.scaling_activity_id = scaling_activity_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.scaling_activity_id is not None:
             result['ScalingActivityId'] = self.scaling_activity_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ScalingActivityId') is not None:
             self.scaling_activity_id = m.get('ScalingActivityId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -12308,6 +14208,10 @@ class RebalanceInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12346,6 +14250,10 @@ class RecordLifecycleActionHeartbeatRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12389,6 +14297,10 @@ class RecordLifecycleActionHeartbeatResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12417,6 +14329,10 @@ class RecordLifecycleActionHeartbeatResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12459,6 +14375,10 @@ class RemoveInstancesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12502,29 +14422,33 @@ class RemoveInstancesRequest(TeaModel):
 class RemoveInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         scaling_activity_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.scaling_activity_id = scaling_activity_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.scaling_activity_id is not None:
             result['ScalingActivityId'] = self.scaling_activity_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ScalingActivityId') is not None:
             self.scaling_activity_id = m.get('ScalingActivityId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -12544,6 +14468,10 @@ class RemoveInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12580,6 +14508,10 @@ class ResumeProcessesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12619,6 +14551,10 @@ class ResumeProcessesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12647,6 +14583,10 @@ class ResumeProcessesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12660,6 +14600,139 @@ class ResumeProcessesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ResumeProcessesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ScaleWithAdjustmentRequest(TeaModel):
+    def __init__(
+        self,
+        scaling_group_id: str = None,
+        adjustment_type: str = None,
+        adjustment_value: int = None,
+        min_adjustment_magnitude: int = None,
+        client_token: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+    ):
+        self.scaling_group_id = scaling_group_id
+        self.adjustment_type = adjustment_type
+        self.adjustment_value = adjustment_value
+        self.min_adjustment_magnitude = min_adjustment_magnitude
+        self.client_token = client_token
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.adjustment_type is not None:
+            result['AdjustmentType'] = self.adjustment_type
+        if self.adjustment_value is not None:
+            result['AdjustmentValue'] = self.adjustment_value
+        if self.min_adjustment_magnitude is not None:
+            result['MinAdjustmentMagnitude'] = self.min_adjustment_magnitude
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('AdjustmentType') is not None:
+            self.adjustment_type = m.get('AdjustmentType')
+        if m.get('AdjustmentValue') is not None:
+            self.adjustment_value = m.get('AdjustmentValue')
+        if m.get('MinAdjustmentMagnitude') is not None:
+            self.min_adjustment_magnitude = m.get('MinAdjustmentMagnitude')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class ScaleWithAdjustmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        scaling_activity_id: str = None,
+        request_id: str = None,
+    ):
+        self.scaling_activity_id = scaling_activity_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scaling_activity_id is not None:
+            result['ScalingActivityId'] = self.scaling_activity_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ScalingActivityId') is not None:
+            self.scaling_activity_id = m.get('ScalingActivityId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ScaleWithAdjustmentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ScaleWithAdjustmentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ScaleWithAdjustmentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12681,6 +14754,10 @@ class SetGroupDeletionProtectionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12716,6 +14793,10 @@ class SetGroupDeletionProtectionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12744,6 +14825,10 @@ class SetGroupDeletionProtectionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12778,6 +14863,10 @@ class SetInstanceHealthRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12813,6 +14902,10 @@ class SetInstanceHealthResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12841,6 +14934,10 @@ class SetInstanceHealthResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12877,6 +14974,10 @@ class SetInstancesProtectionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -12916,6 +15017,10 @@ class SetInstancesProtectionResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -12944,6 +15049,10 @@ class SetInstancesProtectionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -12980,6 +15089,10 @@ class SuspendProcessesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13019,6 +15132,10 @@ class SuspendProcessesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13047,6 +15164,10 @@ class SuspendProcessesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13077,6 +15198,10 @@ class TagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -13117,6 +15242,10 @@ class TagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13165,6 +15294,10 @@ class TagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13193,6 +15326,10 @@ class TagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13233,6 +15370,10 @@ class UntagResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13280,6 +15421,10 @@ class UntagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13308,6 +15453,10 @@ class UntagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13344,6 +15493,10 @@ class VerifyAuthenticationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13383,6 +15536,10 @@ class VerifyAuthenticationResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -13411,6 +15568,10 @@ class VerifyAuthenticationResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -13443,6 +15604,10 @@ class VerifyUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -13474,6 +15639,10 @@ class VerifyUserResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
