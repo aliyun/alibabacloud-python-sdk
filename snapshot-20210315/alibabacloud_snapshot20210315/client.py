@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -74,7 +75,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return snapshot_20210315_models.GetSnapshotInfoResponse().from_map(
+        return TeaCore.from_map(
+            snapshot_20210315_models.GetSnapshotInfoResponse(),
             self.do_roarequest('GetSnapshotInfo', '2021-03-15', 'HTTPS', 'GET', 'AK', f'/snapshots/info', 'json', req, runtime)
         )
 
@@ -96,7 +98,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return snapshot_20210315_models.GetSnapshotInfoResponse().from_map(
+        return TeaCore.from_map(
+            snapshot_20210315_models.GetSnapshotInfoResponse(),
             await self.do_roarequest_async('GetSnapshotInfo', '2021-03-15', 'HTTPS', 'GET', 'AK', f'/snapshots/info', 'json', req, runtime)
         )
 
@@ -214,7 +217,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return snapshot_20210315_models.ListSnapshotBlocksResponse().from_map(
+        return TeaCore.from_map(
+            snapshot_20210315_models.ListSnapshotBlocksResponse(),
             self.do_roarequest('ListSnapshotBlocks', '2021-03-15', 'HTTPS', 'GET', 'AK', f'/snapshots/listblocks', 'json', req, runtime)
         )
 
@@ -240,7 +244,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return snapshot_20210315_models.ListSnapshotBlocksResponse().from_map(
+        return TeaCore.from_map(
+            snapshot_20210315_models.ListSnapshotBlocksResponse(),
             await self.do_roarequest_async('ListSnapshotBlocks', '2021-03-15', 'HTTPS', 'GET', 'AK', f'/snapshots/listblocks', 'json', req, runtime)
         )
 
@@ -284,7 +289,8 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return snapshot_20210315_models.ListChangedBlocksResponse().from_map(
+        return TeaCore.from_map(
+            snapshot_20210315_models.ListChangedBlocksResponse(),
             self.do_roarequest('ListChangedBlocks', '2021-03-15', 'HTTPS', 'GET', 'AK', f'/snapshots/changedblocks', 'json', req, runtime)
         )
 
@@ -312,6 +318,7 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return snapshot_20210315_models.ListChangedBlocksResponse().from_map(
+        return TeaCore.from_map(
+            snapshot_20210315_models.ListChangedBlocksResponse(),
             await self.do_roarequest_async('ListChangedBlocks', '2021-03-15', 'HTTPS', 'GET', 'AK', f'/snapshots/changedblocks', 'json', req, runtime)
         )

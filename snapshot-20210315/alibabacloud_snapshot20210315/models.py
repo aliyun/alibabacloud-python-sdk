@@ -22,6 +22,10 @@ class GetSnapshotInfoRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
@@ -52,6 +56,7 @@ class GetSnapshotInfoResponseBody(TeaModel):
         status: str = None,
         create_time: int = None,
         encrypted: bool = None,
+        format: str = None,
     ):
         # 快照大小，单位 GB，最小 1GB
         self.volume_size = volume_size
@@ -67,11 +72,17 @@ class GetSnapshotInfoResponseBody(TeaModel):
         self.create_time = create_time
         # 快照是否为加密快照
         self.encrypted = encrypted
+        # 快照格式。"FORMAT_VHD", "FORMAT_RAW", "FORMAT_INVALID"
+        self.format = format
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.volume_size is not None:
             result['VolumeSize'] = self.volume_size
@@ -87,6 +98,8 @@ class GetSnapshotInfoResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.encrypted is not None:
             result['Encrypted'] = self.encrypted
+        if self.format is not None:
+            result['Format'] = self.format
         return result
 
     def from_map(self, m: dict = None):
@@ -105,6 +118,8 @@ class GetSnapshotInfoResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Encrypted') is not None:
             self.encrypted = m.get('Encrypted')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
         return self
 
 
@@ -124,6 +139,10 @@ class GetSnapshotInfoResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -162,6 +181,10 @@ class GetSnapshotBlockRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
@@ -200,6 +223,10 @@ class GetSnapshotBlockResponse(TeaModel):
         self.validate_required(self.body, 'body')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -240,6 +267,10 @@ class ListSnapshotBlocksRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -283,6 +314,10 @@ class ListSnapshotBlocksResponseBodyBlocks(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.block_index is not None:
             result['BlockIndex'] = self.block_index
@@ -314,7 +349,7 @@ class ListSnapshotBlocksResponseBody(TeaModel):
         self.next_token = next_token
         # 快照有效数据块信息列表，不包含空数据块
         self.blocks = blocks
-        # BlockToken 过期时间戳
+        # BlockToken 过期 UTC 时间戳, 单位微秒
         self.expiry_time = expiry_time
         # 快照大小，单位 GB，最小 1GB
         self.volume_size = volume_size
@@ -332,6 +367,10 @@ class ListSnapshotBlocksResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -389,6 +428,10 @@ class ListSnapshotBlocksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -433,6 +476,10 @@ class ListChangedBlocksRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -483,6 +530,10 @@ class ListChangedBlocksResponseBodyChangedBlocks(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.block_index is not None:
             result['BlockIndex'] = self.block_index
@@ -518,7 +569,7 @@ class ListChangedBlocksResponseBody(TeaModel):
         self.next_token = next_token
         # 两个快照差异的数据块列表
         self.changed_blocks = changed_blocks
-        # 差异数据块 token 过期时间戳
+        # 差异数据块 token 过期 UTC 时间戳， 单位微秒
         self.expiry_time = expiry_time
         # 第二个快照大小，单位 GB，最小 1GB
         self.volume_size = volume_size
@@ -536,6 +587,10 @@ class ListChangedBlocksResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -593,6 +648,10 @@ class ListChangedBlocksResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
