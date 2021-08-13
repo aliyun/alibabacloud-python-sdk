@@ -1,3 +1,6 @@
+2021-08-13 Version: 2.0.4
+- Support  sts.
+
 2021-07-13 Version: 2.0.3
 - Support resource group.
 

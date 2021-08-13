@@ -6449,139 +6449,6 @@ class DeleteQosResponse(TeaModel):
         return self
 
 
-class AddSagCidrRequest(TeaModel):
-    def __init__(
-        self,
-        owner_account: str = None,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-        region_id: str = None,
-        cidr: str = None,
-        smart_agid: str = None,
-        enable_backup: bool = None,
-    ):
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        self.region_id = region_id
-        self.cidr = cidr
-        self.smart_agid = smart_agid
-        self.enable_backup = enable_backup
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.cidr is not None:
-            result['Cidr'] = self.cidr
-        if self.smart_agid is not None:
-            result['SmartAGId'] = self.smart_agid
-        if self.enable_backup is not None:
-            result['EnableBackup'] = self.enable_backup
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Cidr') is not None:
-            self.cidr = m.get('Cidr')
-        if m.get('SmartAGId') is not None:
-            self.smart_agid = m.get('SmartAGId')
-        if m.get('EnableBackup') is not None:
-            self.enable_backup = m.get('EnableBackup')
-        return self
-
-
-class AddSagCidrResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class AddSagCidrResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: AddSagCidrResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = AddSagCidrResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteSagStaticRouteRequest(TeaModel):
     def __init__(
         self,
@@ -7744,6 +7611,7 @@ class DescribeSAGDeviceInfoResponseBody(TeaModel):
         vpn_state: str = None,
         startup_time: str = None,
         last_connected_controller_time: str = None,
+        resettable_status: str = None,
     ):
         self.service_ip = service_ip
         self.controller_state = controller_state
@@ -7754,6 +7622,7 @@ class DescribeSAGDeviceInfoResponseBody(TeaModel):
         self.vpn_state = vpn_state
         self.startup_time = startup_time
         self.last_connected_controller_time = last_connected_controller_time
+        self.resettable_status = resettable_status
 
     def validate(self):
         pass
@@ -7782,6 +7651,8 @@ class DescribeSAGDeviceInfoResponseBody(TeaModel):
             result['StartupTime'] = self.startup_time
         if self.last_connected_controller_time is not None:
             result['LastConnectedControllerTime'] = self.last_connected_controller_time
+        if self.resettable_status is not None:
+            result['ResettableStatus'] = self.resettable_status
         return result
 
     def from_map(self, m: dict = None):
@@ -7804,6 +7675,8 @@ class DescribeSAGDeviceInfoResponseBody(TeaModel):
             self.startup_time = m.get('StartupTime')
         if m.get('LastConnectedControllerTime') is not None:
             self.last_connected_controller_time = m.get('LastConnectedControllerTime')
+        if m.get('ResettableStatus') is not None:
+            self.resettable_status = m.get('ResettableStatus')
         return self
 
 
@@ -9975,133 +9848,6 @@ class AddDnatEntryResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = AddDnatEntryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteSagCidrRequest(TeaModel):
-    def __init__(
-        self,
-        owner_account: str = None,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-        region_id: str = None,
-        cidr: str = None,
-        smart_agid: str = None,
-    ):
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        self.region_id = region_id
-        self.cidr = cidr
-        self.smart_agid = smart_agid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.cidr is not None:
-            result['Cidr'] = self.cidr
-        if self.smart_agid is not None:
-            result['SmartAGId'] = self.smart_agid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Cidr') is not None:
-            self.cidr = m.get('Cidr')
-        if m.get('SmartAGId') is not None:
-            self.smart_agid = m.get('SmartAGId')
-        return self
-
-
-class DeleteSagCidrResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteSagCidrResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DeleteSagCidrResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DeleteSagCidrResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

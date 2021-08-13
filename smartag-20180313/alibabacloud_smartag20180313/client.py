@@ -1384,48 +1384,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_qos_with_options_async(request, runtime)
 
-    def add_sag_cidr_with_options(
-        self,
-        request: smartag_20180313_models.AddSagCidrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.AddSagCidrResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.AddSagCidrResponse(),
-            self.do_rpcrequest('AddSagCidr', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def add_sag_cidr_with_options_async(
-        self,
-        request: smartag_20180313_models.AddSagCidrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.AddSagCidrResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.AddSagCidrResponse(),
-            await self.do_rpcrequest_async('AddSagCidr', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def add_sag_cidr(
-        self,
-        request: smartag_20180313_models.AddSagCidrRequest,
-    ) -> smartag_20180313_models.AddSagCidrResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_sag_cidr_with_options(request, runtime)
-
-    async def add_sag_cidr_async(
-        self,
-        request: smartag_20180313_models.AddSagCidrRequest,
-    ) -> smartag_20180313_models.AddSagCidrResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_sag_cidr_with_options_async(request, runtime)
-
     def delete_sag_static_route_with_options(
         self,
         request: smartag_20180313_models.DeleteSagStaticRouteRequest,
@@ -2181,48 +2139,6 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.AddDnatEntryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.add_dnat_entry_with_options_async(request, runtime)
-
-    def delete_sag_cidr_with_options(
-        self,
-        request: smartag_20180313_models.DeleteSagCidrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DeleteSagCidrResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DeleteSagCidrResponse(),
-            self.do_rpcrequest('DeleteSagCidr', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_sag_cidr_with_options_async(
-        self,
-        request: smartag_20180313_models.DeleteSagCidrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> smartag_20180313_models.DeleteSagCidrResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            smartag_20180313_models.DeleteSagCidrResponse(),
-            await self.do_rpcrequest_async('DeleteSagCidr', '2018-03-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_sag_cidr(
-        self,
-        request: smartag_20180313_models.DeleteSagCidrRequest,
-    ) -> smartag_20180313_models.DeleteSagCidrResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_sag_cidr_with_options(request, runtime)
-
-    async def delete_sag_cidr_async(
-        self,
-        request: smartag_20180313_models.DeleteSagCidrRequest,
-    ) -> smartag_20180313_models.DeleteSagCidrResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_sag_cidr_with_options_async(request, runtime)
 
     def describe_sag_route_protocol_ospf_with_options(
         self,
