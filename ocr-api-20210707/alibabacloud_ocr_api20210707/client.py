@@ -1449,50 +1449,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_russian_with_options_async(request, runtime)
 
-    def recognize_house_certification_with_options(
-        self,
-        request: ocr_api_20210707_models.RecognizeHouseCertificationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeHouseCertificationResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeHouseCertificationResponse(),
-            self.do_rpcrequest('RecognizeHouseCertification', '2021-07-07', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def recognize_house_certification_with_options_async(
-        self,
-        request: ocr_api_20210707_models.RecognizeHouseCertificationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeHouseCertificationResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeHouseCertificationResponse(),
-            await self.do_rpcrequest_async('RecognizeHouseCertification', '2021-07-07', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def recognize_house_certification(
-        self,
-        request: ocr_api_20210707_models.RecognizeHouseCertificationRequest,
-    ) -> ocr_api_20210707_models.RecognizeHouseCertificationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_house_certification_with_options(request, runtime)
-
-    async def recognize_house_certification_async(
-        self,
-        request: ocr_api_20210707_models.RecognizeHouseCertificationRequest,
-    ) -> ocr_api_20210707_models.RecognizeHouseCertificationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_house_certification_with_options_async(request, runtime)
-
     def recognize_basic_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeBasicRequest,

@@ -3710,116 +3710,6 @@ class RecognizeRussianResponse(TeaModel):
         return self
 
 
-class RecognizeHouseCertificationRequest(TeaModel):
-    def __init__(
-        self,
-        url: str = None,
-    ):
-        # 图片链接（长度不超 1014，不支持 base64）
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.url is not None:
-            result['Url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
-        return self
-
-
-class RecognizeHouseCertificationResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-        code: str = None,
-        message: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-        self.code = code
-        self.message = message
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        return self
-
-
-class RecognizeHouseCertificationResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: RecognizeHouseCertificationResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = RecognizeHouseCertificationResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RecognizeBasicRequest(TeaModel):
     def __init__(
         self,
@@ -4157,7 +4047,6 @@ class RecognizeEduPaperCutRequest(TeaModel):
         cut_type: str = None,
         image_type: str = None,
         subject: str = None,
-        output_oricoord: bool = None,
     ):
         # 图片链接（长度不超 1014，不支持 base64）
         self.url = url
@@ -4167,8 +4056,6 @@ class RecognizeEduPaperCutRequest(TeaModel):
         self.image_type = image_type
         # 年级学科
         self.subject = subject
-        # 是否输出原图坐标信息(如果图片被做过旋转，图片校正等处理)
-        self.output_oricoord = output_oricoord
 
     def validate(self):
         pass
@@ -4187,8 +4074,6 @@ class RecognizeEduPaperCutRequest(TeaModel):
             result['ImageType'] = self.image_type
         if self.subject is not None:
             result['Subject'] = self.subject
-        if self.output_oricoord is not None:
-            result['OutputOricoord'] = self.output_oricoord
         return result
 
     def from_map(self, m: dict = None):
@@ -4201,8 +4086,6 @@ class RecognizeEduPaperCutRequest(TeaModel):
             self.image_type = m.get('ImageType')
         if m.get('Subject') is not None:
             self.subject = m.get('Subject')
-        if m.get('OutputOricoord') is not None:
-            self.output_oricoord = m.get('OutputOricoord')
         return self
 
 
