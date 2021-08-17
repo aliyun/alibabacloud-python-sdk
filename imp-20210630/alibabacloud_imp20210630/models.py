@@ -6894,6 +6894,8 @@ class GetLiveResponseBodyResult(TeaModel):
         user_id: str = None,
         code_level: int = None,
         play_url_info_list: List[GetLiveResponseBodyResultPlayUrlInfoList] = None,
+        cover_url: str = None,
+        user_define_field: str = None,
     ):
         # 主播ID
         self.anchor_id = anchor_id
@@ -6927,6 +6929,10 @@ class GetLiveResponseBodyResult(TeaModel):
         self.code_level = code_level
         # 多分辨率多协议播放信息
         self.play_url_info_list = play_url_info_list
+        # 封面图片
+        self.cover_url = cover_url
+        # 用户自定义数据存储
+        self.user_define_field = user_define_field
 
     def validate(self):
         if self.play_url_info_list:
@@ -6974,6 +6980,10 @@ class GetLiveResponseBodyResult(TeaModel):
         if self.play_url_info_list is not None:
             for k in self.play_url_info_list:
                 result['PlayUrlInfoList'].append(k.to_map() if k else None)
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.user_define_field is not None:
+            result['UserDefineField'] = self.user_define_field
         return result
 
     def from_map(self, m: dict = None):
@@ -7013,6 +7023,10 @@ class GetLiveResponseBodyResult(TeaModel):
             for k in m.get('PlayUrlInfoList'):
                 temp_model = GetLiveResponseBodyResultPlayUrlInfoList()
                 self.play_url_info_list.append(temp_model.from_map(k))
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('UserDefineField') is not None:
+            self.user_define_field = m.get('UserDefineField')
         return self
 
 

@@ -1,3 +1,6 @@
+2021-08-17 Version: 2.3.2
+- Support GetLive CoverUrl.
+
 2021-08-16 Version: 2.3.1
 - Supported ListRoomLives.
 
