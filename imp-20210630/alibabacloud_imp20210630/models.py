@@ -1044,6 +1044,69 @@ class UpdateRoomRequest(TeaModel):
         return self
 
 
+class UpdateRoomShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        title: str = None,
+        notice: str = None,
+        room_owner_id: str = None,
+        extension_shrink: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 房间唯一标识。
+        self.room_id = room_id
+        # 房间标题，支持中英文，最大长度32位。
+        self.title = title
+        # 房间公告，支持中英文，最大长度256位。
+        self.notice = notice
+        # 房主用户id，仅支持英文和数字，最大长度36位。
+        self.room_owner_id = room_owner_id
+        # 拓展字段，按需传递，需要额外记录的房间属性。
+        self.extension_shrink = extension_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.notice is not None:
+            result['Notice'] = self.notice
+        if self.room_owner_id is not None:
+            result['RoomOwnerId'] = self.room_owner_id
+        if self.extension_shrink is not None:
+            result['Extension'] = self.extension_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Notice') is not None:
+            self.notice = m.get('Notice')
+        if m.get('RoomOwnerId') is not None:
+            self.room_owner_id = m.get('RoomOwnerId')
+        if m.get('Extension') is not None:
+            self.extension_shrink = m.get('Extension')
+        return self
+
+
 class UpdateRoomResponseBody(TeaModel):
     def __init__(
         self,

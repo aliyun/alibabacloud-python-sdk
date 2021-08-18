@@ -303,10 +303,14 @@ class Client(OpenApiClient):
 
     def update_room_with_options(
         self,
-        request: imp_20210630_models.UpdateRoomRequest,
+        tmp_req: imp_20210630_models.UpdateRoomRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateRoomResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.UpdateRoomShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -317,10 +321,14 @@ class Client(OpenApiClient):
 
     async def update_room_with_options_async(
         self,
-        request: imp_20210630_models.UpdateRoomRequest,
+        tmp_req: imp_20210630_models.UpdateRoomRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateRoomResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.UpdateRoomShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )

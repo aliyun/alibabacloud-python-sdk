@@ -1,3 +1,6 @@
+2021-08-18 Version: 2.3.3
+- Support UpdateRoom extension.
+
 2021-08-17 Version: 2.3.2
 - Support GetLive CoverUrl.
 
