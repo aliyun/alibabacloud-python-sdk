@@ -1,3 +1,6 @@
+2021-08-19 Version: 1.0.4
+- Add Resource Api.
+
 2021-07-26 Version: 1.0.3
 - Add Resource Api.
 

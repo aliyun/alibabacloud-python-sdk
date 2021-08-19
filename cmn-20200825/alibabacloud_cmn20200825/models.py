@@ -12423,6 +12423,7 @@ class CreateDeviceRequest(TeaModel):
         login_type: str = None,
         login_username: str = None,
         login_password: str = None,
+        enable_password: str = None,
         snmp_account_version: str = None,
         snmp_community: str = None,
         snmp_account_type: str = None,
@@ -12462,6 +12463,8 @@ class CreateDeviceRequest(TeaModel):
         self.login_username = login_username
         # 登录密码
         self.login_password = login_password
+        # enable密码
+        self.enable_password = enable_password
         # SNMP 版本号
         self.snmp_account_version = snmp_account_version
         # SNMP Community
@@ -12522,6 +12525,8 @@ class CreateDeviceRequest(TeaModel):
             result['LoginUsername'] = self.login_username
         if self.login_password is not None:
             result['LoginPassword'] = self.login_password
+        if self.enable_password is not None:
+            result['EnablePassword'] = self.enable_password
         if self.snmp_account_version is not None:
             result['SnmpAccountVersion'] = self.snmp_account_version
         if self.snmp_community is not None:
@@ -12576,6 +12581,8 @@ class CreateDeviceRequest(TeaModel):
             self.login_username = m.get('LoginUsername')
         if m.get('LoginPassword') is not None:
             self.login_password = m.get('LoginPassword')
+        if m.get('EnablePassword') is not None:
+            self.enable_password = m.get('EnablePassword')
         if m.get('SnmpAccountVersion') is not None:
             self.snmp_account_version = m.get('SnmpAccountVersion')
         if m.get('SnmpCommunity') is not None:
@@ -14716,6 +14723,7 @@ class GetAlarmStatusRequest(TeaModel):
         dedicated_line_id: str = None,
         instance_id: str = None,
         port_collection_id: str = None,
+        app_id: str = None,
     ):
         # 设备ID
         self.device_id = device_id
@@ -14731,6 +14739,8 @@ class GetAlarmStatusRequest(TeaModel):
         self.instance_id = instance_id
         # 端口集ID
         self.port_collection_id = port_collection_id
+        # 应用ID
+        self.app_id = app_id
 
     def validate(self):
         pass
@@ -14755,6 +14765,8 @@ class GetAlarmStatusRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.port_collection_id is not None:
             result['PortCollectionId'] = self.port_collection_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14773,6 +14785,8 @@ class GetAlarmStatusRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PortCollectionId') is not None:
             self.port_collection_id = m.get('PortCollectionId')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         return self
 
 
@@ -15065,6 +15079,7 @@ class GetAlarmStatusResponseBodyAlarmStatusDedicatedLine(TeaModel):
         device_id: str = None,
         bandwidth: str = None,
         ip: str = None,
+        dedicated_line_gateway: str = None,
     ):
         # 专线名称
         self.dedicated_line_name = dedicated_line_name
@@ -15078,6 +15093,8 @@ class GetAlarmStatusResponseBodyAlarmStatusDedicatedLine(TeaModel):
         self.bandwidth = bandwidth
         # IP
         self.ip = ip
+        # 对端IP
+        self.dedicated_line_gateway = dedicated_line_gateway
 
     def validate(self):
         pass
@@ -15100,6 +15117,8 @@ class GetAlarmStatusResponseBodyAlarmStatusDedicatedLine(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.dedicated_line_gateway is not None:
+            result['DedicatedLineGateway'] = self.dedicated_line_gateway
         return result
 
     def from_map(self, m: dict = None):
@@ -15116,6 +15135,8 @@ class GetAlarmStatusResponseBodyAlarmStatusDedicatedLine(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('DedicatedLineGateway') is not None:
+            self.dedicated_line_gateway = m.get('DedicatedLineGateway')
         return self
 
 
@@ -15262,6 +15283,62 @@ class GetAlarmStatusResponseBodyAlarmStatusPortCollection(TeaModel):
         return self
 
 
+class GetAlarmStatusResponseBodyAlarmStatusResourceApp(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        app_id: str = None,
+        port: str = None,
+        type: str = None,
+        security_domain: str = None,
+    ):
+        # 监控域名
+        self.domain = domain
+        # 应用ID
+        self.app_id = app_id
+        # 端口
+        self.port = port
+        # 资源类型
+        self.type = type
+        # 所属探针
+        self.security_domain = security_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.security_domain is not None:
+            result['SecurityDomain'] = self.security_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('SecurityDomain') is not None:
+            self.security_domain = m.get('SecurityDomain')
+        return self
+
+
 class GetAlarmStatusResponseBodyAlarmStatus(TeaModel):
     def __init__(
         self,
@@ -15285,6 +15362,9 @@ class GetAlarmStatusResponseBodyAlarmStatus(TeaModel):
         dedicated_line: GetAlarmStatusResponseBodyAlarmStatusDedicatedLine = None,
         port_collection_id: str = None,
         port_collection: GetAlarmStatusResponseBodyAlarmStatusPortCollection = None,
+        agent_ip: str = None,
+        app_id: str = None,
+        resource_app: GetAlarmStatusResponseBodyAlarmStatusResourceApp = None,
     ):
         # 设备ID
         self.device_id = device_id
@@ -15325,6 +15405,12 @@ class GetAlarmStatusResponseBodyAlarmStatus(TeaModel):
         # 端口集ID
         self.port_collection_id = port_collection_id
         self.port_collection = port_collection
+        # 采集探针IP
+        self.agent_ip = agent_ip
+        # 应用ID
+        self.app_id = app_id
+        # 应用
+        self.resource_app = resource_app
 
     def validate(self):
         if self.resource_device:
@@ -15339,6 +15425,8 @@ class GetAlarmStatusResponseBodyAlarmStatus(TeaModel):
             self.dedicated_line.validate()
         if self.port_collection:
             self.port_collection.validate()
+        if self.resource_app:
+            self.resource_app.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15386,6 +15474,12 @@ class GetAlarmStatusResponseBodyAlarmStatus(TeaModel):
             result['PortCollectionId'] = self.port_collection_id
         if self.port_collection is not None:
             result['PortCollection'] = self.port_collection.to_map()
+        if self.agent_ip is not None:
+            result['AgentIp'] = self.agent_ip
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.resource_app is not None:
+            result['ResourceApp'] = self.resource_app.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -15436,6 +15530,13 @@ class GetAlarmStatusResponseBodyAlarmStatus(TeaModel):
         if m.get('PortCollection') is not None:
             temp_model = GetAlarmStatusResponseBodyAlarmStatusPortCollection()
             self.port_collection = temp_model.from_map(m['PortCollection'])
+        if m.get('AgentIp') is not None:
+            self.agent_ip = m.get('AgentIp')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ResourceApp') is not None:
+            temp_model = GetAlarmStatusResponseBodyAlarmStatusResourceApp()
+            self.resource_app = temp_model.from_map(m['ResourceApp'])
         return self
 
 
@@ -16755,6 +16856,7 @@ class ListDevicesResponseBodyDevices(TeaModel):
         login_type: str = None,
         login_username: str = None,
         login_password: str = None,
+        enable_password: str = None,
         snmp_account_version: str = None,
         snmp_community: str = None,
         snmp_account_type: str = None,
@@ -16798,6 +16900,8 @@ class ListDevicesResponseBodyDevices(TeaModel):
         self.login_username = login_username
         # 登录密码
         self.login_password = login_password
+        # enable密码
+        self.enable_password = enable_password
         # SNMP版本号
         self.snmp_account_version = snmp_account_version
         # SNMP Community
@@ -16860,6 +16964,8 @@ class ListDevicesResponseBodyDevices(TeaModel):
             result['LoginUsername'] = self.login_username
         if self.login_password is not None:
             result['LoginPassword'] = self.login_password
+        if self.enable_password is not None:
+            result['EnablePassword'] = self.enable_password
         if self.snmp_account_version is not None:
             result['SnmpAccountVersion'] = self.snmp_account_version
         if self.snmp_community is not None:
@@ -16916,6 +17022,8 @@ class ListDevicesResponseBodyDevices(TeaModel):
             self.login_username = m.get('LoginUsername')
         if m.get('LoginPassword') is not None:
             self.login_password = m.get('LoginPassword')
+        if m.get('EnablePassword') is not None:
+            self.enable_password = m.get('EnablePassword')
         if m.get('SnmpAccountVersion') is not None:
             self.snmp_account_version = m.get('SnmpAccountVersion')
         if m.get('SnmpCommunity') is not None:
@@ -17797,6 +17905,7 @@ class UpdateDevicesRequest(TeaModel):
         login_type: str = None,
         login_username: str = None,
         login_password: str = None,
+        enable_password: str = None,
         snmp_account_version: str = None,
         snmp_community: str = None,
         snmp_account_type: str = None,
@@ -17807,6 +17916,11 @@ class UpdateDevicesRequest(TeaModel):
         snmp_privacy_passphase: str = None,
         snmp_privacy_protocol: str = None,
         instance_id: str = None,
+        physical_space_id: str = None,
+        physical_space_name: str = None,
+        service_status: str = None,
+        vendor: str = None,
+        model: str = None,
     ):
         # 设备ID
         self.device_ids = device_ids
@@ -17816,6 +17930,8 @@ class UpdateDevicesRequest(TeaModel):
         self.login_username = login_username
         # 登录密码
         self.login_password = login_password
+        # enable密码
+        self.enable_password = enable_password
         # SNMP 版本号
         self.snmp_account_version = snmp_account_version
         # SNMP Community
@@ -17836,6 +17952,16 @@ class UpdateDevicesRequest(TeaModel):
         self.snmp_privacy_protocol = snmp_privacy_protocol
         # 实例ID
         self.instance_id = instance_id
+        # 物理空间id
+        self.physical_space_id = physical_space_id
+        # 物理空间名称
+        self.physical_space_name = physical_space_name
+        # 服务状态
+        self.service_status = service_status
+        # 厂商
+        self.vendor = vendor
+        # 型号
+        self.model = model
 
     def validate(self):
         pass
@@ -17854,6 +17980,8 @@ class UpdateDevicesRequest(TeaModel):
             result['LoginUsername'] = self.login_username
         if self.login_password is not None:
             result['LoginPassword'] = self.login_password
+        if self.enable_password is not None:
+            result['EnablePassword'] = self.enable_password
         if self.snmp_account_version is not None:
             result['SnmpAccountVersion'] = self.snmp_account_version
         if self.snmp_community is not None:
@@ -17874,6 +18002,16 @@ class UpdateDevicesRequest(TeaModel):
             result['SnmpPrivacyProtocol'] = self.snmp_privacy_protocol
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.physical_space_id is not None:
+            result['PhysicalSpaceId'] = self.physical_space_id
+        if self.physical_space_name is not None:
+            result['PhysicalSpaceName'] = self.physical_space_name
+        if self.service_status is not None:
+            result['ServiceStatus'] = self.service_status
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        if self.model is not None:
+            result['Model'] = self.model
         return result
 
     def from_map(self, m: dict = None):
@@ -17886,6 +18024,8 @@ class UpdateDevicesRequest(TeaModel):
             self.login_username = m.get('LoginUsername')
         if m.get('LoginPassword') is not None:
             self.login_password = m.get('LoginPassword')
+        if m.get('EnablePassword') is not None:
+            self.enable_password = m.get('EnablePassword')
         if m.get('SnmpAccountVersion') is not None:
             self.snmp_account_version = m.get('SnmpAccountVersion')
         if m.get('SnmpCommunity') is not None:
@@ -17906,6 +18046,16 @@ class UpdateDevicesRequest(TeaModel):
             self.snmp_privacy_protocol = m.get('SnmpPrivacyProtocol')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PhysicalSpaceId') is not None:
+            self.physical_space_id = m.get('PhysicalSpaceId')
+        if m.get('PhysicalSpaceName') is not None:
+            self.physical_space_name = m.get('PhysicalSpaceName')
+        if m.get('ServiceStatus') is not None:
+            self.service_status = m.get('ServiceStatus')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
         return self
 
 
@@ -21719,6 +21869,7 @@ class EnableNotificationRequestList(TeaModel):
         aggregate_data_id: str = None,
         dedicated_line_id: str = None,
         port_collection_id: str = None,
+        app_id: str = None,
     ):
         # 类型
         self.type = type
@@ -21732,6 +21883,8 @@ class EnableNotificationRequestList(TeaModel):
         self.dedicated_line_id = dedicated_line_id
         # 端口集ID
         self.port_collection_id = port_collection_id
+        # 应用ID
+        self.app_id = app_id
 
     def validate(self):
         pass
@@ -21754,6 +21907,8 @@ class EnableNotificationRequestList(TeaModel):
             result['DedicatedLineId'] = self.dedicated_line_id
         if self.port_collection_id is not None:
             result['PortCollectionId'] = self.port_collection_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         return result
 
     def from_map(self, m: dict = None):
@@ -21770,6 +21925,8 @@ class EnableNotificationRequestList(TeaModel):
             self.dedicated_line_id = m.get('DedicatedLineId')
         if m.get('PortCollectionId') is not None:
             self.port_collection_id = m.get('PortCollectionId')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         return self
 
 
@@ -22014,6 +22171,7 @@ class ListNotificationHistoriesRequest(TeaModel):
         aggregate_data_id: str = None,
         instance_id: str = None,
         port_collection_id: str = None,
+        app_id: str = None,
     ):
         # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
@@ -22033,6 +22191,8 @@ class ListNotificationHistoriesRequest(TeaModel):
         self.instance_id = instance_id
         # 端口集ID
         self.port_collection_id = port_collection_id
+        # 应用ID
+        self.app_id = app_id
 
     def validate(self):
         pass
@@ -22061,6 +22221,8 @@ class ListNotificationHistoriesRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.port_collection_id is not None:
             result['PortCollectionId'] = self.port_collection_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         return result
 
     def from_map(self, m: dict = None):
@@ -22083,6 +22245,8 @@ class ListNotificationHistoriesRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PortCollectionId') is not None:
             self.port_collection_id = m.get('PortCollectionId')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         return self
 
 
@@ -24305,7 +24469,7 @@ class UploadScheduleDutyRequestScheduleDutyWorker(TeaModel):
     def __init__(
         self,
         work_type: str = None,
-        worker_name: str = None,
+        worker_name: List[str] = None,
     ):
         # 值班表类型
         self.work_type = work_type
@@ -24534,6 +24698,7 @@ class ListAlarmStatusHistoriesRequest(TeaModel):
         dedicated_line_id: str = None,
         instance_id: str = None,
         port_collection_id: str = None,
+        app_id: str = None,
     ):
         # 开始时间秒级时间戳
         self.start = start
@@ -24553,6 +24718,8 @@ class ListAlarmStatusHistoriesRequest(TeaModel):
         self.instance_id = instance_id
         # 端口集ID
         self.port_collection_id = port_collection_id
+        # 应用ID
+        self.app_id = app_id
 
     def validate(self):
         pass
@@ -24581,6 +24748,8 @@ class ListAlarmStatusHistoriesRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.port_collection_id is not None:
             result['PortCollectionId'] = self.port_collection_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         return result
 
     def from_map(self, m: dict = None):
@@ -24603,6 +24772,8 @@ class ListAlarmStatusHistoriesRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PortCollectionId') is not None:
             self.port_collection_id = m.get('PortCollectionId')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         return self
 
 
@@ -25340,6 +25511,7 @@ class ListMonitorDataRequest(TeaModel):
         port_collection_id: str = None,
         dedicated_line_id: str = None,
         instance_id: str = None,
+        app_id: str = None,
     ):
         # 开始时间
         self.start = start
@@ -25363,6 +25535,8 @@ class ListMonitorDataRequest(TeaModel):
         self.dedicated_line_id = dedicated_line_id
         # 实例ID
         self.instance_id = instance_id
+        # 应用ID
+        self.app_id = app_id
 
     def validate(self):
         pass
@@ -25395,6 +25569,8 @@ class ListMonitorDataRequest(TeaModel):
             result['DedicatedLineId'] = self.dedicated_line_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25421,6 +25597,8 @@ class ListMonitorDataRequest(TeaModel):
             self.dedicated_line_id = m.get('DedicatedLineId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         return self
 
 
@@ -29946,6 +30124,7 @@ class UpdateDeviceRequest(TeaModel):
         login_type: str = None,
         login_username: str = None,
         login_password: str = None,
+        enable_password: str = None,
         snmp_account_version: str = None,
         snmp_community: str = None,
         snmp_account_type: str = None,
@@ -29984,6 +30163,8 @@ class UpdateDeviceRequest(TeaModel):
         self.login_username = login_username
         # 登录密码
         self.login_password = login_password
+        # enable密码
+        self.enable_password = enable_password
         # SNMP 版本号
         self.snmp_account_version = snmp_account_version
         # SNMP Community
@@ -30042,6 +30223,8 @@ class UpdateDeviceRequest(TeaModel):
             result['LoginUsername'] = self.login_username
         if self.login_password is not None:
             result['LoginPassword'] = self.login_password
+        if self.enable_password is not None:
+            result['EnablePassword'] = self.enable_password
         if self.snmp_account_version is not None:
             result['SnmpAccountVersion'] = self.snmp_account_version
         if self.snmp_community is not None:
@@ -30094,6 +30277,8 @@ class UpdateDeviceRequest(TeaModel):
             self.login_username = m.get('LoginUsername')
         if m.get('LoginPassword') is not None:
             self.login_password = m.get('LoginPassword')
+        if m.get('EnablePassword') is not None:
+            self.enable_password = m.get('EnablePassword')
         if m.get('SnmpAccountVersion') is not None:
             self.snmp_account_version = m.get('SnmpAccountVersion')
         if m.get('SnmpCommunity') is not None:
@@ -30238,6 +30423,7 @@ class GetDeviceResponseBodyDevice(TeaModel):
         login_type: str = None,
         login_username: str = None,
         login_password: str = None,
+        enable_password: str = None,
         snmp_account_version: str = None,
         snmp_community: str = None,
         snmp_account_type: str = None,
@@ -30281,6 +30467,8 @@ class GetDeviceResponseBodyDevice(TeaModel):
         self.login_username = login_username
         # 登录密码
         self.login_password = login_password
+        # enable密码
+        self.enable_password = enable_password
         # SNMP版本号
         self.snmp_account_version = snmp_account_version
         # SNMP Community
@@ -30343,6 +30531,8 @@ class GetDeviceResponseBodyDevice(TeaModel):
             result['LoginUsername'] = self.login_username
         if self.login_password is not None:
             result['LoginPassword'] = self.login_password
+        if self.enable_password is not None:
+            result['EnablePassword'] = self.enable_password
         if self.snmp_account_version is not None:
             result['SnmpAccountVersion'] = self.snmp_account_version
         if self.snmp_community is not None:
@@ -30399,6 +30589,8 @@ class GetDeviceResponseBodyDevice(TeaModel):
             self.login_username = m.get('LoginUsername')
         if m.get('LoginPassword') is not None:
             self.login_password = m.get('LoginPassword')
+        if m.get('EnablePassword') is not None:
+            self.enable_password = m.get('EnablePassword')
         if m.get('SnmpAccountVersion') is not None:
             self.snmp_account_version = m.get('SnmpAccountVersion')
         if m.get('SnmpCommunity') is not None:
@@ -31197,6 +31389,7 @@ class DisableNotificationRequestList(TeaModel):
         type: str = None,
         dedicated_line_id: str = None,
         port_collection_id: str = None,
+        app_id: str = None,
     ):
         # 设备ID
         self.device_id = device_id
@@ -31210,6 +31403,8 @@ class DisableNotificationRequestList(TeaModel):
         self.dedicated_line_id = dedicated_line_id
         # 端口集ID
         self.port_collection_id = port_collection_id
+        # 应用ID
+        self.app_id = app_id
 
     def validate(self):
         pass
@@ -31232,6 +31427,8 @@ class DisableNotificationRequestList(TeaModel):
             result['DedicatedLineId'] = self.dedicated_line_id
         if self.port_collection_id is not None:
             result['PortCollectionId'] = self.port_collection_id
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         return result
 
     def from_map(self, m: dict = None):
@@ -31248,6 +31445,8 @@ class DisableNotificationRequestList(TeaModel):
             self.dedicated_line_id = m.get('DedicatedLineId')
         if m.get('PortCollectionId') is not None:
             self.port_collection_id = m.get('PortCollectionId')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         return self
 
 
@@ -31819,6 +32018,7 @@ class ListAlarmStatusRequest(TeaModel):
         type: str = None,
         instance_id: str = None,
         dedicated_line_name: str = None,
+        region: str = None,
     ):
         # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
@@ -31840,6 +32040,8 @@ class ListAlarmStatusRequest(TeaModel):
         self.instance_id = instance_id
         # 专线名称
         self.dedicated_line_name = dedicated_line_name
+        # 设备所属地域
+        self.region = region
 
     def validate(self):
         pass
@@ -31870,6 +32072,8 @@ class ListAlarmStatusRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.dedicated_line_name is not None:
             result['DedicatedLineName'] = self.dedicated_line_name
+        if self.region is not None:
+            result['Region'] = self.region
         return result
 
     def from_map(self, m: dict = None):
@@ -31894,6 +32098,8 @@ class ListAlarmStatusRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('DedicatedLineName') is not None:
             self.dedicated_line_name = m.get('DedicatedLineName')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         return self
 
 
@@ -32079,6 +32285,62 @@ class ListAlarmStatusResponseBodyAlarmStatusPortCollection(TeaModel):
         return self
 
 
+class ListAlarmStatusResponseBodyAlarmStatusResourceApp(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        app_id: str = None,
+        port: str = None,
+        type: str = None,
+        security_domain: str = None,
+    ):
+        # 监控域名
+        self.domain = domain
+        # 应用ID
+        self.app_id = app_id
+        # 端口
+        self.port = port
+        # 资源类型
+        self.type = type
+        # 所属探针
+        self.security_domain = security_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.security_domain is not None:
+            result['SecurityDomain'] = self.security_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('SecurityDomain') is not None:
+            self.security_domain = m.get('SecurityDomain')
+        return self
+
+
 class ListAlarmStatusResponseBodyAlarmStatus(TeaModel):
     def __init__(
         self,
@@ -32102,6 +32364,9 @@ class ListAlarmStatusResponseBodyAlarmStatus(TeaModel):
         dedicated_line: ListAlarmStatusResponseBodyAlarmStatusDedicatedLine = None,
         port_collection_id: str = None,
         port_collection: ListAlarmStatusResponseBodyAlarmStatusPortCollection = None,
+        agent_ip: str = None,
+        app_id: str = None,
+        resource_app: ListAlarmStatusResponseBodyAlarmStatusResourceApp = None,
     ):
         # 设备ID
         self.device_id = device_id
@@ -32143,6 +32408,12 @@ class ListAlarmStatusResponseBodyAlarmStatus(TeaModel):
         self.port_collection_id = port_collection_id
         # 端口集
         self.port_collection = port_collection
+        # 采集探针IP
+        self.agent_ip = agent_ip
+        # 应用ID
+        self.app_id = app_id
+        # 应用资源
+        self.resource_app = resource_app
 
     def validate(self):
         if self.resource_device:
@@ -32157,6 +32428,8 @@ class ListAlarmStatusResponseBodyAlarmStatus(TeaModel):
             self.dedicated_line.validate()
         if self.port_collection:
             self.port_collection.validate()
+        if self.resource_app:
+            self.resource_app.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -32204,6 +32477,12 @@ class ListAlarmStatusResponseBodyAlarmStatus(TeaModel):
             result['PortCollectionId'] = self.port_collection_id
         if self.port_collection is not None:
             result['PortCollection'] = self.port_collection.to_map()
+        if self.agent_ip is not None:
+            result['AgentIp'] = self.agent_ip
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.resource_app is not None:
+            result['ResourceApp'] = self.resource_app.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -32254,6 +32533,13 @@ class ListAlarmStatusResponseBodyAlarmStatus(TeaModel):
         if m.get('PortCollection') is not None:
             temp_model = ListAlarmStatusResponseBodyAlarmStatusPortCollection()
             self.port_collection = temp_model.from_map(m['PortCollection'])
+        if m.get('AgentIp') is not None:
+            self.agent_ip = m.get('AgentIp')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ResourceApp') is not None:
+            temp_model = ListAlarmStatusResponseBodyAlarmStatusResourceApp()
+            self.resource_app = temp_model.from_map(m['ResourceApp'])
         return self
 
 
