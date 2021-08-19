@@ -1,3 +1,6 @@
+2021-08-19 Version: 2.0.12
+- Release BeautifyBody.
+
 2021-05-14 Version: 2.0.11
 - Release ExtractFingerPrint.
 

@@ -3771,15 +3771,9 @@ class GenRealPersonVerificationTokenResponseBody(TeaModel):
         self,
         request_id: str = None,
         data: GenRealPersonVerificationTokenResponseBodyData = None,
-        error_message: str = None,
-        code: str = None,
-        success: bool = None,
     ):
         self.request_id = request_id
         self.data = data
-        self.error_message = error_message
-        self.code = code
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -3795,12 +3789,6 @@ class GenRealPersonVerificationTokenResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -3810,12 +3798,6 @@ class GenRealPersonVerificationTokenResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GenRealPersonVerificationTokenResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -5054,15 +5036,9 @@ class GetRealPersonVerificationResultResponseBody(TeaModel):
         self,
         request_id: str = None,
         data: GetRealPersonVerificationResultResponseBodyData = None,
-        error_message: str = None,
-        code: str = None,
-        success: bool = None,
     ):
         self.request_id = request_id
         self.data = data
-        self.error_message = error_message
-        self.code = code
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -5078,12 +5054,6 @@ class GetRealPersonVerificationResultResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -5093,12 +5063,6 @@ class GetRealPersonVerificationResultResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GetRealPersonVerificationResultResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -8680,6 +8644,914 @@ class DetectPedestrianIntrusionResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DetectPedestrianIntrusionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BeautifyBodyRequestAgeRange(TeaModel):
+    def __init__(
+        self,
+        age_minimum: int = None,
+        age_max: int = None,
+    ):
+        self.age_minimum = age_minimum
+        self.age_max = age_max
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.age_minimum is not None:
+            result['AgeMinimum'] = self.age_minimum
+        if self.age_max is not None:
+            result['AgeMax'] = self.age_max
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgeMinimum') is not None:
+            self.age_minimum = m.get('AgeMinimum')
+        if m.get('AgeMax') is not None:
+            self.age_max = m.get('AgeMax')
+        return self
+
+
+class BeautifyBodyRequestBodyBoxes(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+        width: float = None,
+        height: float = None,
+    ):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        return self
+
+
+class BeautifyBodyRequestFaceListFaceBox(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+        width: float = None,
+        height: float = None,
+    ):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        return self
+
+
+class BeautifyBodyRequestFaceList(TeaModel):
+    def __init__(
+        self,
+        face_box: BeautifyBodyRequestFaceListFaceBox = None,
+        age: int = None,
+        gender: int = None,
+    ):
+        self.face_box = face_box
+        self.age = age
+        self.gender = gender
+
+    def validate(self):
+        if self.face_box:
+            self.face_box.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_box is not None:
+            result['FaceBox'] = self.face_box.to_map()
+        if self.age is not None:
+            result['Age'] = self.age
+        if self.gender is not None:
+            result['Gender'] = self.gender
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceBox') is not None:
+            temp_model = BeautifyBodyRequestFaceListFaceBox()
+            self.face_box = temp_model.from_map(m['FaceBox'])
+        if m.get('Age') is not None:
+            self.age = m.get('Age')
+        if m.get('Gender') is not None:
+            self.gender = m.get('Gender')
+        return self
+
+
+class BeautifyBodyRequestPoseListPose(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+        score: float = None,
+    ):
+        self.x = x
+        self.y = y
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class BeautifyBodyRequestPoseList(TeaModel):
+    def __init__(
+        self,
+        pose: List[BeautifyBodyRequestPoseListPose] = None,
+    ):
+        self.pose = pose
+
+    def validate(self):
+        if self.pose:
+            for k in self.pose:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Pose'] = []
+        if self.pose is not None:
+            for k in self.pose:
+                result['Pose'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.pose = []
+        if m.get('Pose') is not None:
+            for k in m.get('Pose'):
+                temp_model = BeautifyBodyRequestPoseListPose()
+                self.pose.append(temp_model.from_map(k))
+        return self
+
+
+class BeautifyBodyRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        original_width: int = None,
+        original_height: int = None,
+        custom: int = None,
+        male_liquify_degree: float = None,
+        female_liquify_degree: float = None,
+        lengthen_degree: float = None,
+        age_range: BeautifyBodyRequestAgeRange = None,
+        body_boxes: List[BeautifyBodyRequestBodyBoxes] = None,
+        face_list: List[BeautifyBodyRequestFaceList] = None,
+        pose_list: List[BeautifyBodyRequestPoseList] = None,
+    ):
+        self.image_url = image_url
+        self.original_width = original_width
+        self.original_height = original_height
+        self.custom = custom
+        self.male_liquify_degree = male_liquify_degree
+        self.female_liquify_degree = female_liquify_degree
+        self.lengthen_degree = lengthen_degree
+        self.age_range = age_range
+        self.body_boxes = body_boxes
+        self.face_list = face_list
+        self.pose_list = pose_list
+
+    def validate(self):
+        if self.age_range:
+            self.age_range.validate()
+        if self.body_boxes:
+            for k in self.body_boxes:
+                if k:
+                    k.validate()
+        if self.face_list:
+            for k in self.face_list:
+                if k:
+                    k.validate()
+        if self.pose_list:
+            for k in self.pose_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.original_width is not None:
+            result['OriginalWidth'] = self.original_width
+        if self.original_height is not None:
+            result['OriginalHeight'] = self.original_height
+        if self.custom is not None:
+            result['Custom'] = self.custom
+        if self.male_liquify_degree is not None:
+            result['MaleLiquifyDegree'] = self.male_liquify_degree
+        if self.female_liquify_degree is not None:
+            result['FemaleLiquifyDegree'] = self.female_liquify_degree
+        if self.lengthen_degree is not None:
+            result['LengthenDegree'] = self.lengthen_degree
+        if self.age_range is not None:
+            result['AgeRange'] = self.age_range.to_map()
+        result['BodyBoxes'] = []
+        if self.body_boxes is not None:
+            for k in self.body_boxes:
+                result['BodyBoxes'].append(k.to_map() if k else None)
+        result['FaceList'] = []
+        if self.face_list is not None:
+            for k in self.face_list:
+                result['FaceList'].append(k.to_map() if k else None)
+        result['PoseList'] = []
+        if self.pose_list is not None:
+            for k in self.pose_list:
+                result['PoseList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('OriginalWidth') is not None:
+            self.original_width = m.get('OriginalWidth')
+        if m.get('OriginalHeight') is not None:
+            self.original_height = m.get('OriginalHeight')
+        if m.get('Custom') is not None:
+            self.custom = m.get('Custom')
+        if m.get('MaleLiquifyDegree') is not None:
+            self.male_liquify_degree = m.get('MaleLiquifyDegree')
+        if m.get('FemaleLiquifyDegree') is not None:
+            self.female_liquify_degree = m.get('FemaleLiquifyDegree')
+        if m.get('LengthenDegree') is not None:
+            self.lengthen_degree = m.get('LengthenDegree')
+        if m.get('AgeRange') is not None:
+            temp_model = BeautifyBodyRequestAgeRange()
+            self.age_range = temp_model.from_map(m['AgeRange'])
+        self.body_boxes = []
+        if m.get('BodyBoxes') is not None:
+            for k in m.get('BodyBoxes'):
+                temp_model = BeautifyBodyRequestBodyBoxes()
+                self.body_boxes.append(temp_model.from_map(k))
+        self.face_list = []
+        if m.get('FaceList') is not None:
+            for k in m.get('FaceList'):
+                temp_model = BeautifyBodyRequestFaceList()
+                self.face_list.append(temp_model.from_map(k))
+        self.pose_list = []
+        if m.get('PoseList') is not None:
+            for k in m.get('PoseList'):
+                temp_model = BeautifyBodyRequestPoseList()
+                self.pose_list.append(temp_model.from_map(k))
+        return self
+
+
+class BeautifyBodyAdvanceRequestAgeRange(TeaModel):
+    def __init__(
+        self,
+        age_minimum: int = None,
+        age_max: int = None,
+    ):
+        self.age_minimum = age_minimum
+        self.age_max = age_max
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.age_minimum is not None:
+            result['AgeMinimum'] = self.age_minimum
+        if self.age_max is not None:
+            result['AgeMax'] = self.age_max
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgeMinimum') is not None:
+            self.age_minimum = m.get('AgeMinimum')
+        if m.get('AgeMax') is not None:
+            self.age_max = m.get('AgeMax')
+        return self
+
+
+class BeautifyBodyAdvanceRequestBodyBoxes(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+        width: float = None,
+        height: float = None,
+    ):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        return self
+
+
+class BeautifyBodyAdvanceRequestFaceListFaceBox(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+        width: float = None,
+        height: float = None,
+    ):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.height is not None:
+            result['Height'] = self.height
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        return self
+
+
+class BeautifyBodyAdvanceRequestFaceList(TeaModel):
+    def __init__(
+        self,
+        face_box: BeautifyBodyAdvanceRequestFaceListFaceBox = None,
+        age: int = None,
+        gender: int = None,
+    ):
+        self.face_box = face_box
+        self.age = age
+        self.gender = gender
+
+    def validate(self):
+        if self.face_box:
+            self.face_box.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_box is not None:
+            result['FaceBox'] = self.face_box.to_map()
+        if self.age is not None:
+            result['Age'] = self.age
+        if self.gender is not None:
+            result['Gender'] = self.gender
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceBox') is not None:
+            temp_model = BeautifyBodyAdvanceRequestFaceListFaceBox()
+            self.face_box = temp_model.from_map(m['FaceBox'])
+        if m.get('Age') is not None:
+            self.age = m.get('Age')
+        if m.get('Gender') is not None:
+            self.gender = m.get('Gender')
+        return self
+
+
+class BeautifyBodyAdvanceRequestPoseListPose(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+        score: float = None,
+    ):
+        self.x = x
+        self.y = y
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class BeautifyBodyAdvanceRequestPoseList(TeaModel):
+    def __init__(
+        self,
+        pose: List[BeautifyBodyAdvanceRequestPoseListPose] = None,
+    ):
+        self.pose = pose
+
+    def validate(self):
+        if self.pose:
+            for k in self.pose:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Pose'] = []
+        if self.pose is not None:
+            for k in self.pose:
+                result['Pose'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.pose = []
+        if m.get('Pose') is not None:
+            for k in m.get('Pose'):
+                temp_model = BeautifyBodyAdvanceRequestPoseListPose()
+                self.pose.append(temp_model.from_map(k))
+        return self
+
+
+class BeautifyBodyAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+        original_width: int = None,
+        original_height: int = None,
+        custom: int = None,
+        male_liquify_degree: float = None,
+        female_liquify_degree: float = None,
+        lengthen_degree: float = None,
+        age_range: BeautifyBodyAdvanceRequestAgeRange = None,
+        body_boxes: List[BeautifyBodyAdvanceRequestBodyBoxes] = None,
+        face_list: List[BeautifyBodyAdvanceRequestFaceList] = None,
+        pose_list: List[BeautifyBodyAdvanceRequestPoseList] = None,
+    ):
+        self.image_urlobject = image_urlobject
+        self.original_width = original_width
+        self.original_height = original_height
+        self.custom = custom
+        self.male_liquify_degree = male_liquify_degree
+        self.female_liquify_degree = female_liquify_degree
+        self.lengthen_degree = lengthen_degree
+        self.age_range = age_range
+        self.body_boxes = body_boxes
+        self.face_list = face_list
+        self.pose_list = pose_list
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+        if self.age_range:
+            self.age_range.validate()
+        if self.body_boxes:
+            for k in self.body_boxes:
+                if k:
+                    k.validate()
+        if self.face_list:
+            for k in self.face_list:
+                if k:
+                    k.validate()
+        if self.pose_list:
+            for k in self.pose_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.original_width is not None:
+            result['OriginalWidth'] = self.original_width
+        if self.original_height is not None:
+            result['OriginalHeight'] = self.original_height
+        if self.custom is not None:
+            result['Custom'] = self.custom
+        if self.male_liquify_degree is not None:
+            result['MaleLiquifyDegree'] = self.male_liquify_degree
+        if self.female_liquify_degree is not None:
+            result['FemaleLiquifyDegree'] = self.female_liquify_degree
+        if self.lengthen_degree is not None:
+            result['LengthenDegree'] = self.lengthen_degree
+        if self.age_range is not None:
+            result['AgeRange'] = self.age_range.to_map()
+        result['BodyBoxes'] = []
+        if self.body_boxes is not None:
+            for k in self.body_boxes:
+                result['BodyBoxes'].append(k.to_map() if k else None)
+        result['FaceList'] = []
+        if self.face_list is not None:
+            for k in self.face_list:
+                result['FaceList'].append(k.to_map() if k else None)
+        result['PoseList'] = []
+        if self.pose_list is not None:
+            for k in self.pose_list:
+                result['PoseList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('OriginalWidth') is not None:
+            self.original_width = m.get('OriginalWidth')
+        if m.get('OriginalHeight') is not None:
+            self.original_height = m.get('OriginalHeight')
+        if m.get('Custom') is not None:
+            self.custom = m.get('Custom')
+        if m.get('MaleLiquifyDegree') is not None:
+            self.male_liquify_degree = m.get('MaleLiquifyDegree')
+        if m.get('FemaleLiquifyDegree') is not None:
+            self.female_liquify_degree = m.get('FemaleLiquifyDegree')
+        if m.get('LengthenDegree') is not None:
+            self.lengthen_degree = m.get('LengthenDegree')
+        if m.get('AgeRange') is not None:
+            temp_model = BeautifyBodyAdvanceRequestAgeRange()
+            self.age_range = temp_model.from_map(m['AgeRange'])
+        self.body_boxes = []
+        if m.get('BodyBoxes') is not None:
+            for k in m.get('BodyBoxes'):
+                temp_model = BeautifyBodyAdvanceRequestBodyBoxes()
+                self.body_boxes.append(temp_model.from_map(k))
+        self.face_list = []
+        if m.get('FaceList') is not None:
+            for k in m.get('FaceList'):
+                temp_model = BeautifyBodyAdvanceRequestFaceList()
+                self.face_list.append(temp_model.from_map(k))
+        self.pose_list = []
+        if m.get('PoseList') is not None:
+            for k in m.get('PoseList'):
+                temp_model = BeautifyBodyAdvanceRequestPoseList()
+                self.pose_list.append(temp_model.from_map(k))
+        return self
+
+
+class BeautifyBodyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        original_width: int = None,
+        original_height: int = None,
+        custom: int = None,
+        male_liquify_degree: float = None,
+        female_liquify_degree: float = None,
+        lengthen_degree: float = None,
+        age_range_shrink: str = None,
+        body_boxes_shrink: str = None,
+        face_list_shrink: str = None,
+        pose_list_shrink: str = None,
+    ):
+        self.image_url = image_url
+        self.original_width = original_width
+        self.original_height = original_height
+        self.custom = custom
+        self.male_liquify_degree = male_liquify_degree
+        self.female_liquify_degree = female_liquify_degree
+        self.lengthen_degree = lengthen_degree
+        self.age_range_shrink = age_range_shrink
+        self.body_boxes_shrink = body_boxes_shrink
+        self.face_list_shrink = face_list_shrink
+        self.pose_list_shrink = pose_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.original_width is not None:
+            result['OriginalWidth'] = self.original_width
+        if self.original_height is not None:
+            result['OriginalHeight'] = self.original_height
+        if self.custom is not None:
+            result['Custom'] = self.custom
+        if self.male_liquify_degree is not None:
+            result['MaleLiquifyDegree'] = self.male_liquify_degree
+        if self.female_liquify_degree is not None:
+            result['FemaleLiquifyDegree'] = self.female_liquify_degree
+        if self.lengthen_degree is not None:
+            result['LengthenDegree'] = self.lengthen_degree
+        if self.age_range_shrink is not None:
+            result['AgeRange'] = self.age_range_shrink
+        if self.body_boxes_shrink is not None:
+            result['BodyBoxes'] = self.body_boxes_shrink
+        if self.face_list_shrink is not None:
+            result['FaceList'] = self.face_list_shrink
+        if self.pose_list_shrink is not None:
+            result['PoseList'] = self.pose_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('OriginalWidth') is not None:
+            self.original_width = m.get('OriginalWidth')
+        if m.get('OriginalHeight') is not None:
+            self.original_height = m.get('OriginalHeight')
+        if m.get('Custom') is not None:
+            self.custom = m.get('Custom')
+        if m.get('MaleLiquifyDegree') is not None:
+            self.male_liquify_degree = m.get('MaleLiquifyDegree')
+        if m.get('FemaleLiquifyDegree') is not None:
+            self.female_liquify_degree = m.get('FemaleLiquifyDegree')
+        if m.get('LengthenDegree') is not None:
+            self.lengthen_degree = m.get('LengthenDegree')
+        if m.get('AgeRange') is not None:
+            self.age_range_shrink = m.get('AgeRange')
+        if m.get('BodyBoxes') is not None:
+            self.body_boxes_shrink = m.get('BodyBoxes')
+        if m.get('FaceList') is not None:
+            self.face_list_shrink = m.get('FaceList')
+        if m.get('PoseList') is not None:
+            self.pose_list_shrink = m.get('PoseList')
+        return self
+
+
+class BeautifyBodyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        xflow_url: str = None,
+        yflow_url: str = None,
+        action: str = None,
+    ):
+        self.xflow_url = xflow_url
+        self.yflow_url = yflow_url
+        self.action = action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.xflow_url is not None:
+            result['XFlowURL'] = self.xflow_url
+        if self.yflow_url is not None:
+            result['YFlowURL'] = self.yflow_url
+        if self.action is not None:
+            result['Action'] = self.action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('XFlowURL') is not None:
+            self.xflow_url = m.get('XFlowURL')
+        if m.get('YFlowURL') is not None:
+            self.yflow_url = m.get('YFlowURL')
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        return self
+
+
+class BeautifyBodyResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: BeautifyBodyResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = BeautifyBodyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BeautifyBodyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: BeautifyBodyResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = BeautifyBodyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
