@@ -1,3 +1,9 @@
+2021-08-23 Version: 2.2.6
+- GetHotspotTag .
+- GetHotspotConfig.
+- DetailSubScene.
+- ListSubScene.
+
 2021-08-10 Version: 2.2.5
 - Add GetScenePreviewInfo Interface.
 - Add GetHotspotSceneData Interface.

@@ -3735,6 +3735,7 @@ class DetailSubSceneResponseBody(TeaModel):
         status: int = None,
         gmt_create: int = None,
         gmt_modified: int = None,
+        cubemap_path: str = None,
     ):
         # 请求ID，与入参requestId对应
         self.request_id = request_id
@@ -3760,6 +3761,8 @@ class DetailSubSceneResponseBody(TeaModel):
         self.gmt_create = gmt_create
         # 最后修改时间
         self.gmt_modified = gmt_modified
+        # 切图路径
+        self.cubemap_path = cubemap_path
 
     def validate(self):
         pass
@@ -3794,6 +3797,8 @@ class DetailSubSceneResponseBody(TeaModel):
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        if self.cubemap_path is not None:
+            result['CubemapPath'] = self.cubemap_path
         return result
 
     def from_map(self, m: dict = None):
@@ -3822,6 +3827,8 @@ class DetailSubSceneResponseBody(TeaModel):
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        if m.get('CubemapPath') is not None:
+            self.cubemap_path = m.get('CubemapPath')
         return self
 
 
@@ -3915,6 +3922,8 @@ class ListSubSceneResponseBodyList(TeaModel):
         status: int = None,
         gmt_create: int = None,
         gmt_modified: int = None,
+        resource_name: str = None,
+        cubemap_path: str = None,
     ):
         # 子场景ID
         self.id = id
@@ -3932,6 +3941,10 @@ class ListSubSceneResponseBodyList(TeaModel):
         self.gmt_create = gmt_create
         # 最后修改时间
         self.gmt_modified = gmt_modified
+        # 资源名称
+        self.resource_name = resource_name
+        # 切图的路径
+        self.cubemap_path = cubemap_path
 
     def validate(self):
         pass
@@ -3958,6 +3971,10 @@ class ListSubSceneResponseBodyList(TeaModel):
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.cubemap_path is not None:
+            result['CubemapPath'] = self.cubemap_path
         return result
 
     def from_map(self, m: dict = None):
@@ -3978,6 +3995,10 @@ class ListSubSceneResponseBodyList(TeaModel):
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('CubemapPath') is not None:
+            self.cubemap_path = m.get('CubemapPath')
         return self
 
 
@@ -4719,8 +4740,14 @@ class GetHotspotConfigRequest(TeaModel):
     def __init__(
         self,
         preview_token: str = None,
+        type: int = None,
+        enabled: bool = None,
+        domain: str = None,
     ):
         self.preview_token = preview_token
+        self.type = type
+        self.enabled = enabled
+        self.domain = domain
 
     def validate(self):
         pass
@@ -4733,12 +4760,24 @@ class GetHotspotConfigRequest(TeaModel):
         result = dict()
         if self.preview_token is not None:
             result['PreviewToken'] = self.preview_token
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.domain is not None:
+            result['Domain'] = self.domain
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('PreviewToken') is not None:
             self.preview_token = m.get('PreviewToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         return self
 
 
@@ -4746,16 +4785,20 @@ class GetHotspotConfigResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object_string: str = None,
-        data: str = None,
-        err_message: str = None,
+        code: int = None,
         success: bool = None,
+        message: str = None,
+        data: str = None,
     ):
+        # 请求ID，与入参requestId对应
         self.request_id = request_id
-        self.object_string = object_string
-        self.data = data
-        self.err_message = err_message
+        # 返回码
+        self.code = code
+        # 是否请求成功
         self.success = success
+        # 错误消息
+        self.message = message
+        self.data = data
 
     def validate(self):
         pass
@@ -4768,28 +4811,28 @@ class GetHotspotConfigResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object_string is not None:
-            result['ObjectString'] = self.object_string
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.err_message is not None:
-            result['ErrMessage'] = self.err_message
+        if self.code is not None:
+            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.data is not None:
+            result['Data'] = self.data
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ObjectString') is not None:
-            self.object_string = m.get('ObjectString')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('ErrMessage') is not None:
-            self.err_message = m.get('ErrMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
         return self
 
 
@@ -5547,10 +5590,14 @@ class GetHotspotTagRequest(TeaModel):
         preview_token: str = None,
         sub_scene_uuid: str = None,
         type: str = None,
+        enabled: bool = None,
+        domain: str = None,
     ):
         self.preview_token = preview_token
         self.sub_scene_uuid = sub_scene_uuid
         self.type = type
+        self.enabled = enabled
+        self.domain = domain
 
     def validate(self):
         pass
@@ -5567,6 +5614,10 @@ class GetHotspotTagRequest(TeaModel):
             result['SubSceneUuid'] = self.sub_scene_uuid
         if self.type is not None:
             result['Type'] = self.type
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.domain is not None:
+            result['Domain'] = self.domain
         return result
 
     def from_map(self, m: dict = None):
@@ -5577,6 +5628,10 @@ class GetHotspotTagRequest(TeaModel):
             self.sub_scene_uuid = m.get('SubSceneUuid')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         return self
 
 
@@ -5584,16 +5639,20 @@ class GetHotspotTagResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        object_string: str = None,
-        data: str = None,
-        err_message: str = None,
+        code: int = None,
         success: bool = None,
+        message: str = None,
+        data: str = None,
     ):
+        # 请求ID，与入参requestId对应
         self.request_id = request_id
-        self.object_string = object_string
-        self.data = data
-        self.err_message = err_message
+        # 返回码
+        self.code = code
+        # 是否请求成功
         self.success = success
+        # 错误消息
+        self.message = message
+        self.data = data
 
     def validate(self):
         pass
@@ -5606,28 +5665,28 @@ class GetHotspotTagResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.object_string is not None:
-            result['ObjectString'] = self.object_string
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.err_message is not None:
-            result['ErrMessage'] = self.err_message
+        if self.code is not None:
+            result['Code'] = self.code
         if self.success is not None:
             result['Success'] = self.success
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.data is not None:
+            result['Data'] = self.data
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ObjectString') is not None:
-            self.object_string = m.get('ObjectString')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('ErrMessage') is not None:
-            self.err_message = m.get('ErrMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
         return self
 
 
