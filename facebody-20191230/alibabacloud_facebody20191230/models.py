@@ -12858,6 +12858,183 @@ class AddFaceEntityResponse(TeaModel):
         return self
 
 
+class RetouchBodyRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        slim_degree: float = None,
+        lengthen_degree: float = None,
+    ):
+        self.image_url = image_url
+        self.slim_degree = slim_degree
+        self.lengthen_degree = lengthen_degree
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.slim_degree is not None:
+            result['SlimDegree'] = self.slim_degree
+        if self.lengthen_degree is not None:
+            result['LengthenDegree'] = self.lengthen_degree
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('SlimDegree') is not None:
+            self.slim_degree = m.get('SlimDegree')
+        if m.get('LengthenDegree') is not None:
+            self.lengthen_degree = m.get('LengthenDegree')
+        return self
+
+
+class RetouchBodyAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+        slim_degree: float = None,
+        lengthen_degree: float = None,
+    ):
+        self.image_urlobject = image_urlobject
+        self.slim_degree = slim_degree
+        self.lengthen_degree = lengthen_degree
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.slim_degree is not None:
+            result['SlimDegree'] = self.slim_degree
+        if self.lengthen_degree is not None:
+            result['LengthenDegree'] = self.lengthen_degree
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('SlimDegree') is not None:
+            self.slim_degree = m.get('SlimDegree')
+        if m.get('LengthenDegree') is not None:
+            self.lengthen_degree = m.get('LengthenDegree')
+        return self
+
+
+class RetouchBodyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RetouchBodyResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: RetouchBodyResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = RetouchBodyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RetouchBodyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RetouchBodyResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RetouchBodyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteFaceEntityRequest(TeaModel):
     def __init__(
         self,

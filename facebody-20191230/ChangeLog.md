@@ -1,3 +1,6 @@
+2021-08-24 Version: 2.0.13
+- Release RetouchBody.
+
 2021-08-19 Version: 2.0.12
 - Release BeautifyBody.
 
