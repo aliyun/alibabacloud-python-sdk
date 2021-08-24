@@ -1,3 +1,6 @@
+2021-08-24 Version: 2.2.7
+- GetHotspotTag Add Params .
+
 2021-08-23 Version: 2.2.6
 - GetHotspotTag .
 - GetHotspotConfig.
