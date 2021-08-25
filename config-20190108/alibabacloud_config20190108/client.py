@@ -51,26 +51,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ActiveConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ActiveConfigRules',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.ActiveConfigRulesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ActiveConfigRules', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def active_config_rules_with_options_async(
@@ -79,26 +65,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ActiveConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ActiveConfigRules',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.ActiveConfigRulesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ActiveConfigRules', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def active_config_rules(
@@ -121,26 +93,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DeleteConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteConfigRules',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.DeleteConfigRulesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteConfigRules', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_config_rules_with_options_async(
@@ -149,26 +107,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DeleteConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteConfigRules',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.DeleteConfigRulesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteConfigRules', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_config_rules(
@@ -193,22 +137,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeCompliance',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeComplianceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeCompliance', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def describe_compliance_with_options_async(
@@ -219,22 +152,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeCompliance',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeComplianceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeCompliance', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def describe_compliance(
@@ -259,22 +181,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeComplianceSummary',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeComplianceSummaryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeComplianceSummary', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def describe_compliance_summary_with_options_async(
@@ -285,22 +196,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeComplianceSummary',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeComplianceSummaryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeComplianceSummary', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def describe_compliance_summary(
@@ -325,22 +225,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeConfigRule',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeConfigRuleResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeConfigRule', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def describe_config_rule_with_options_async(
@@ -351,22 +240,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeConfigRule',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeConfigRuleResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeConfigRule', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def describe_config_rule(
@@ -388,20 +266,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeConfigurationRecorderResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeConfigurationRecorder',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.DescribeConfigurationRecorderResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeConfigurationRecorder', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def describe_configuration_recorder_with_options_async(
@@ -409,20 +276,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeConfigurationRecorderResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeConfigurationRecorder',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.DescribeConfigurationRecorderResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeConfigurationRecorder', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def describe_configuration_recorder(self) -> config_20190108_models.DescribeConfigurationRecorderResponse:
@@ -441,22 +297,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDeliveryChannels',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeDeliveryChannelsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeDeliveryChannels', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def describe_delivery_channels_with_options_async(
@@ -467,22 +312,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDeliveryChannels',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeDeliveryChannelsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeDeliveryChannels', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def describe_delivery_channels(
@@ -507,22 +341,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDiscoveredResource',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeDiscoveredResourceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeDiscoveredResource', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def describe_discovered_resource_with_options_async(
@@ -533,22 +356,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDiscoveredResource',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeDiscoveredResourceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeDiscoveredResource', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def describe_discovered_resource(
@@ -573,22 +385,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeEvaluationResults',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeEvaluationResultsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeEvaluationResults', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def describe_evaluation_results_with_options_async(
@@ -599,22 +400,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeEvaluationResults',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.DescribeEvaluationResultsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeEvaluationResults', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def describe_evaluation_results(
@@ -631,6 +421,50 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_evaluation_results_with_options_async(request, runtime)
 
+    def get_aggregate_discovered_resource_with_options(
+        self,
+        request: config_20190108_models.GetAggregateDiscoveredResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20190108_models.GetAggregateDiscoveredResourceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            config_20190108_models.GetAggregateDiscoveredResourceResponse(),
+            self.do_rpcrequest('GetAggregateDiscoveredResource', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def get_aggregate_discovered_resource_with_options_async(
+        self,
+        request: config_20190108_models.GetAggregateDiscoveredResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20190108_models.GetAggregateDiscoveredResourceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            config_20190108_models.GetAggregateDiscoveredResourceResponse(),
+            await self.do_rpcrequest_async('GetAggregateDiscoveredResource', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def get_aggregate_discovered_resource(
+        self,
+        request: config_20190108_models.GetAggregateDiscoveredResourceRequest,
+    ) -> config_20190108_models.GetAggregateDiscoveredResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_aggregate_discovered_resource_with_options(request, runtime)
+
+    async def get_aggregate_discovered_resource_async(
+        self,
+        request: config_20190108_models.GetAggregateDiscoveredResourceRequest,
+    ) -> config_20190108_models.GetAggregateDiscoveredResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aggregate_discovered_resource_with_options_async(request, runtime)
+
     def get_discovered_resource_counts_with_options(
         self,
         request: config_20190108_models.GetDiscoveredResourceCountsRequest,
@@ -639,22 +473,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDiscoveredResourceCounts',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.GetDiscoveredResourceCountsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetDiscoveredResourceCounts', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def get_discovered_resource_counts_with_options_async(
@@ -665,22 +488,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDiscoveredResourceCounts',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.GetDiscoveredResourceCountsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetDiscoveredResourceCounts', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def get_discovered_resource_counts(
@@ -705,22 +517,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDiscoveredResourceSummary',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.GetDiscoveredResourceSummaryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetDiscoveredResourceSummary', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def get_discovered_resource_summary_with_options_async(
@@ -731,22 +532,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDiscoveredResourceSummary',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.GetDiscoveredResourceSummaryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetDiscoveredResourceSummary', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def get_discovered_resource_summary(
@@ -771,22 +561,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetResourceComplianceTimeline',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.GetResourceComplianceTimelineResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetResourceComplianceTimeline', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def get_resource_compliance_timeline_with_options_async(
@@ -797,22 +576,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetResourceComplianceTimeline',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.GetResourceComplianceTimelineResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetResourceComplianceTimeline', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def get_resource_compliance_timeline(
@@ -837,22 +605,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetResourceConfigurationTimeline',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.GetResourceConfigurationTimelineResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetResourceConfigurationTimeline', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def get_resource_configuration_timeline_with_options_async(
@@ -863,22 +620,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetResourceConfigurationTimeline',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.GetResourceConfigurationTimelineResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetResourceConfigurationTimeline', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def get_resource_configuration_timeline(
@@ -900,20 +646,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetSupportedResourceTypesResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetSupportedResourceTypes',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.GetSupportedResourceTypesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetSupportedResourceTypes', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def get_supported_resource_types_with_options_async(
@@ -921,20 +656,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetSupportedResourceTypesResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetSupportedResourceTypes',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.GetSupportedResourceTypesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetSupportedResourceTypes', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def get_supported_resource_types(self) -> config_20190108_models.GetSupportedResourceTypesResponse:
@@ -945,6 +669,50 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_supported_resource_types_with_options_async(runtime)
 
+    def list_aggregate_discovered_resources_with_options(
+        self,
+        request: config_20190108_models.ListAggregateDiscoveredResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            config_20190108_models.ListAggregateDiscoveredResourcesResponse(),
+            self.do_rpcrequest('ListAggregateDiscoveredResources', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def list_aggregate_discovered_resources_with_options_async(
+        self,
+        request: config_20190108_models.ListAggregateDiscoveredResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            config_20190108_models.ListAggregateDiscoveredResourcesResponse(),
+            await self.do_rpcrequest_async('ListAggregateDiscoveredResources', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def list_aggregate_discovered_resources(
+        self,
+        request: config_20190108_models.ListAggregateDiscoveredResourcesRequest,
+    ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_aggregate_discovered_resources_with_options(request, runtime)
+
+    async def list_aggregate_discovered_resources_async(
+        self,
+        request: config_20190108_models.ListAggregateDiscoveredResourcesRequest,
+    ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aggregate_discovered_resources_with_options_async(request, runtime)
+
     def list_config_rules_with_options(
         self,
         request: config_20190108_models.ListConfigRulesRequest,
@@ -953,22 +721,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListConfigRules',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.ListConfigRulesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListConfigRules', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def list_config_rules_with_options_async(
@@ -979,22 +736,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListConfigRules',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.ListConfigRulesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListConfigRules', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def list_config_rules(
@@ -1019,22 +765,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDiscoveredResources',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.ListDiscoveredResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListDiscoveredResources', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def list_discovered_resources_with_options_async(
@@ -1045,22 +780,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDiscoveredResources',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             config_20190108_models.ListDiscoveredResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListDiscoveredResources', '2019-01-08', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def list_discovered_resources(
@@ -1077,33 +801,60 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_discovered_resources_with_options_async(request, runtime)
 
+    def list_remediation_templates_with_options(
+        self,
+        request: config_20190108_models.ListRemediationTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20190108_models.ListRemediationTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            config_20190108_models.ListRemediationTemplatesResponse(),
+            self.do_rpcrequest('ListRemediationTemplates', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_remediation_templates_with_options_async(
+        self,
+        request: config_20190108_models.ListRemediationTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20190108_models.ListRemediationTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            config_20190108_models.ListRemediationTemplatesResponse(),
+            await self.do_rpcrequest_async('ListRemediationTemplates', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_remediation_templates(
+        self,
+        request: config_20190108_models.ListRemediationTemplatesRequest,
+    ) -> config_20190108_models.ListRemediationTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_remediation_templates_with_options(request, runtime)
+
+    async def list_remediation_templates_async(
+        self,
+        request: config_20190108_models.ListRemediationTemplatesRequest,
+    ) -> config_20190108_models.ListRemediationTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_remediation_templates_with_options_async(request, runtime)
+
     def put_config_rule_with_options(
         self,
         request: config_20190108_models.PutConfigRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutConfigRuleResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MultiAccount'] = request.multi_account
-        query['MemberId'] = request.member_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='PutConfigRule',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.PutConfigRuleResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('PutConfigRule', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def put_config_rule_with_options_async(
@@ -1112,27 +863,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutConfigRuleResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MultiAccount'] = request.multi_account
-        query['MemberId'] = request.member_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='PutConfigRule',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.PutConfigRuleResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('PutConfigRule', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def put_config_rule(
@@ -1158,20 +894,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='PutConfigurationRecorder',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.PutConfigurationRecorderResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('PutConfigurationRecorder', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def put_configuration_recorder_with_options_async(
@@ -1183,20 +908,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='PutConfigurationRecorder',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.PutConfigurationRecorderResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('PutConfigurationRecorder', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def put_configuration_recorder(
@@ -1222,20 +936,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='PutDeliveryChannel',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.PutDeliveryChannelResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('PutDeliveryChannel', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def put_delivery_channel_with_options_async(
@@ -1247,20 +950,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='PutDeliveryChannel',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.PutDeliveryChannelResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('PutDeliveryChannel', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def put_delivery_channel(
@@ -1286,20 +978,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='PutEvaluations',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.PutEvaluationsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('PutEvaluations', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def put_evaluations_with_options_async(
@@ -1311,20 +992,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='PutEvaluations',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.PutEvaluationsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('PutEvaluations', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def put_evaluations(
@@ -1347,28 +1017,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StartConfigRuleEvaluationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ConfigRuleId'] = request.config_rule_id
-        query['MultiAccount'] = request.multi_account
-        query['MemberId'] = request.member_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='StartConfigRuleEvaluation',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.StartConfigRuleEvaluationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('StartConfigRuleEvaluation', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def start_config_rule_evaluation_with_options_async(
@@ -1377,28 +1031,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StartConfigRuleEvaluationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ConfigRuleId'] = request.config_rule_id
-        query['MultiAccount'] = request.multi_account
-        query['MemberId'] = request.member_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='StartConfigRuleEvaluation',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.StartConfigRuleEvaluationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('StartConfigRuleEvaluation', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def start_config_rule_evaluation(
@@ -1424,20 +1062,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='StartConfigurationRecorder',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.StartConfigurationRecorderResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('StartConfigurationRecorder', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def start_configuration_recorder_with_options_async(
@@ -1449,20 +1076,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='StartConfigurationRecorder',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             config_20190108_models.StartConfigurationRecorderResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('StartConfigurationRecorder', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def start_configuration_recorder(
@@ -1485,26 +1101,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StopConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='StopConfigRules',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.StopConfigRulesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('StopConfigRules', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def stop_config_rules_with_options_async(
@@ -1513,26 +1115,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StopConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='StopConfigRules',
-            version='2019-01-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             config_20190108_models.StopConfigRulesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('StopConfigRules', '2019-01-08', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def stop_config_rules(

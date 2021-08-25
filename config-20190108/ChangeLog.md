@@ -1,3 +1,6 @@
+2021-08-25 Version: 1.0.2
+- AMP version.
+
 2021-03-30 Version: 1.0.1
 - Generated python 2019-01-08 for Config.
 
