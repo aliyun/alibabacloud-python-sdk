@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class EcsSpec(TeaModel):
@@ -366,6 +366,8 @@ class Instance(TeaModel):
         nas_file_system_id: str = None,
         user_vpc: UserVpc = None,
         instance_shutdown_timer: InstanceShutdownTimer = None,
+        workspace_id: str = None,
+        workspace_name: str = None,
     ):
         # 实例ID
         self.instance_id = instance_id
@@ -399,6 +401,10 @@ class Instance(TeaModel):
         self.user_vpc = user_vpc
         # 定时关机任务
         self.instance_shutdown_timer = instance_shutdown_timer
+        # 工作空间id
+        self.workspace_id = workspace_id
+        # 工作空间名称
+        self.workspace_name = workspace_name
 
     def validate(self):
         if self.user_vpc:
@@ -444,6 +450,10 @@ class Instance(TeaModel):
             result['UserVpc'] = self.user_vpc.to_map()
         if self.instance_shutdown_timer is not None:
             result['InstanceShutdownTimer'] = self.instance_shutdown_timer.to_map()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.workspace_name is not None:
+            result['WorkspaceName'] = self.workspace_name
         return result
 
     def from_map(self, m: dict = None):
@@ -482,6 +492,10 @@ class Instance(TeaModel):
         if m.get('InstanceShutdownTimer') is not None:
             temp_model = InstanceShutdownTimer()
             self.instance_shutdown_timer = temp_model.from_map(m['InstanceShutdownTimer'])
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WorkspaceName') is not None:
+            self.workspace_name = m.get('WorkspaceName')
         return self
 
 
@@ -1054,6 +1068,106 @@ class ListEcsSpecsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListEcsSpecsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetInstancesStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        workspace_ids: str = None,
+    ):
+        # 工作空间id列表
+        self.workspace_ids = workspace_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_ids is not None:
+            result['WorkspaceIds'] = self.workspace_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WorkspaceIds') is not None:
+            self.workspace_ids = m.get('WorkspaceIds')
+        return self
+
+
+class GetInstancesStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        statistics: Dict[str, Any] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 统计数据
+        self.statistics = statistics
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestID'] = self.request_id
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
+        if m.get('Statistics') is not None:
+            self.statistics = m.get('Statistics')
+        return self
+
+
+class GetInstancesStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetInstancesStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetInstancesStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

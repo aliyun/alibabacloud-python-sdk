@@ -351,6 +351,60 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('ListEcsSpecs', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/ecsSpecs', 'json', req, runtime)
         )
 
+    def get_instances_statistics(
+        self,
+        request: pai_dsw_20210226_models.GetInstancesStatisticsRequest,
+    ) -> pai_dsw_20210226_models.GetInstancesStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_instances_statistics_with_options(request, headers, runtime)
+
+    async def get_instances_statistics_async(
+        self,
+        request: pai_dsw_20210226_models.GetInstancesStatisticsRequest,
+    ) -> pai_dsw_20210226_models.GetInstancesStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_instances_statistics_with_options_async(request, headers, runtime)
+
+    def get_instances_statistics_with_options(
+        self,
+        request: pai_dsw_20210226_models.GetInstancesStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.GetInstancesStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.GetInstancesStatisticsResponse(),
+            self.do_roarequest('GetInstancesStatistics', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/statistics/instances', 'json', req, runtime)
+        )
+
+    async def get_instances_statistics_with_options_async(
+        self,
+        request: pai_dsw_20210226_models.GetInstancesStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.GetInstancesStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.GetInstancesStatisticsResponse(),
+            await self.do_roarequest_async('GetInstancesStatistics', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/statistics/instances', 'json', req, runtime)
+        )
+
     def delete_instance_snapshot(
         self,
         instance_id: str,
