@@ -239,6 +239,72 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('CreateMergeRequest', '2020-04-14', 'HTTPS', 'POST', 'AK', f'/api/v4/projects/{project_id}/merge_requests', 'json', req, runtime)
         )
 
+    def delete_repository_member_with_extern_uid(
+        self,
+        project_id: str,
+        request: codeup_20200414_models.DeleteRepositoryMemberWithExternUidRequest,
+    ) -> codeup_20200414_models.DeleteRepositoryMemberWithExternUidResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_repository_member_with_extern_uid_with_options(project_id, request, headers, runtime)
+
+    async def delete_repository_member_with_extern_uid_async(
+        self,
+        project_id: str,
+        request: codeup_20200414_models.DeleteRepositoryMemberWithExternUidRequest,
+    ) -> codeup_20200414_models.DeleteRepositoryMemberWithExternUidResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_repository_member_with_extern_uid_with_options_async(project_id, request, headers, runtime)
+
+    def delete_repository_member_with_extern_uid_with_options(
+        self,
+        project_id: str,
+        request: codeup_20200414_models.DeleteRepositoryMemberWithExternUidRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> codeup_20200414_models.DeleteRepositoryMemberWithExternUidResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.extern_user_id):
+            query['ExternUserId'] = request.extern_user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            codeup_20200414_models.DeleteRepositoryMemberWithExternUidResponse(),
+            self.do_roarequest('DeleteRepositoryMemberWithExternUid', '2020-04-14', 'HTTPS', 'POST', 'AK', f'/api/v4/projects/{project_id}/members/remove', 'json', req, runtime)
+        )
+
+    async def delete_repository_member_with_extern_uid_with_options_async(
+        self,
+        project_id: str,
+        request: codeup_20200414_models.DeleteRepositoryMemberWithExternUidRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> codeup_20200414_models.DeleteRepositoryMemberWithExternUidResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.extern_user_id):
+            query['ExternUserId'] = request.extern_user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            codeup_20200414_models.DeleteRepositoryMemberWithExternUidResponse(),
+            await self.do_roarequest_async('DeleteRepositoryMemberWithExternUid', '2020-04-14', 'HTTPS', 'POST', 'AK', f'/api/v4/projects/{project_id}/members/remove', 'json', req, runtime)
+        )
+
     def delete_repository(
         self,
         project_id: str,

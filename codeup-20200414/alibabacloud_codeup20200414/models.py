@@ -1305,6 +1305,213 @@ class CreateMergeRequestResponse(TeaModel):
         return self
 
 
+class DeleteRepositoryMemberWithExternUidRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        organization_id: str = None,
+        extern_user_id: str = None,
+    ):
+        # 个人访问令牌。 使用阿里云AK+SK或使用STS临时授权方式不需要传该字段
+        self.access_token = access_token
+        # 企业标识，也称企业id，字符串形式，可在云效访问链接中获取，如 https://devops.aliyun.com/organization/\
+        self.organization_id = organization_id
+        # 云效用户ID
+        self.extern_user_id = extern_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        if self.extern_user_id is not None:
+            result['ExternUserId'] = self.extern_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        if m.get('ExternUserId') is not None:
+            self.extern_user_id = m.get('ExternUserId')
+        return self
+
+
+class DeleteRepositoryMemberWithExternUidResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        user_id: int = None,
+        source_type: str = None,
+        created_at: str = None,
+        access_level: int = None,
+        updated_at: str = None,
+        source_id: int = None,
+        id: int = None,
+    ):
+        # Codeup用户ID
+        self.user_id = user_id
+        # 资源类型
+        self.source_type = source_type
+        # 创建时间
+        self.created_at = created_at
+        # 权限类型。20-浏览者，30-开发者,40-管理员。
+        self.access_level = access_level
+        # 更新时间
+        self.updated_at = updated_at
+        # 代码库ID
+        self.source_id = source_id
+        # ID
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
+        if self.access_level is not None:
+            result['AccessLevel'] = self.access_level
+        if self.updated_at is not None:
+            result['UpdatedAt'] = self.updated_at
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('CreatedAt') is not None:
+            self.created_at = m.get('CreatedAt')
+        if m.get('AccessLevel') is not None:
+            self.access_level = m.get('AccessLevel')
+        if m.get('UpdatedAt') is not None:
+            self.updated_at = m.get('UpdatedAt')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteRepositoryMemberWithExternUidResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        request_id: str = None,
+        error_code: str = None,
+        success: bool = None,
+        result: DeleteRepositoryMemberWithExternUidResponseBodyResult = None,
+    ):
+        # 错误信息
+        self.error_message = error_message
+        # 请求ID
+        self.request_id = request_id
+        # 错误码
+        self.error_code = error_code
+        # 请求结果
+        self.success = success
+        # 响应结果
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Result') is not None:
+            temp_model = DeleteRepositoryMemberWithExternUidResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class DeleteRepositoryMemberWithExternUidResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteRepositoryMemberWithExternUidResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteRepositoryMemberWithExternUidResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteRepositoryRequest(TeaModel):
     def __init__(
         self,
