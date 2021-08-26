@@ -1963,13 +1963,13 @@ class CreateAppTemplateRequest(TeaModel):
     def __init__(
         self,
         app_template_name: str = None,
-        sence: str = None,
+        scene: str = None,
         component_list: List[str] = None,
     ):
         # 应用模板名称
         self.app_template_name = app_template_name
         # 应用模板场景，电商business，课堂classroom
-        self.sence = sence
+        self.scene = scene
         # 组件列表
         self.component_list = component_list
 
@@ -1984,8 +1984,8 @@ class CreateAppTemplateRequest(TeaModel):
         result = dict()
         if self.app_template_name is not None:
             result['AppTemplateName'] = self.app_template_name
-        if self.sence is not None:
-            result['Sence'] = self.sence
+        if self.scene is not None:
+            result['Scene'] = self.scene
         if self.component_list is not None:
             result['ComponentList'] = self.component_list
         return result
@@ -1994,8 +1994,8 @@ class CreateAppTemplateRequest(TeaModel):
         m = m or dict()
         if m.get('AppTemplateName') is not None:
             self.app_template_name = m.get('AppTemplateName')
-        if m.get('Sence') is not None:
-            self.sence = m.get('Sence')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
         if m.get('ComponentList') is not None:
             self.component_list = m.get('ComponentList')
         return self
@@ -2005,13 +2005,13 @@ class CreateAppTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
         app_template_name: str = None,
-        sence: str = None,
+        scene: str = None,
         component_list_shrink: str = None,
     ):
         # 应用模板名称
         self.app_template_name = app_template_name
         # 应用模板场景，电商business，课堂classroom
-        self.sence = sence
+        self.scene = scene
         # 组件列表
         self.component_list_shrink = component_list_shrink
 
@@ -2026,8 +2026,8 @@ class CreateAppTemplateShrinkRequest(TeaModel):
         result = dict()
         if self.app_template_name is not None:
             result['AppTemplateName'] = self.app_template_name
-        if self.sence is not None:
-            result['Sence'] = self.sence
+        if self.scene is not None:
+            result['Scene'] = self.scene
         if self.component_list_shrink is not None:
             result['ComponentList'] = self.component_list_shrink
         return result
@@ -2036,8 +2036,8 @@ class CreateAppTemplateShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AppTemplateName') is not None:
             self.app_template_name = m.get('AppTemplateName')
-        if m.get('Sence') is not None:
-            self.sence = m.get('Sence')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
         if m.get('ComponentList') is not None:
             self.component_list_shrink = m.get('ComponentList')
         return self

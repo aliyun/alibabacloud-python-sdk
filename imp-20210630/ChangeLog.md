@@ -1,3 +1,6 @@
+2021-08-26 Version: 2.3.4
+- Fix CreateAppTemplate Parameters.
+
 2021-08-18 Version: 2.3.3
 - Support UpdateRoom extension.
 
