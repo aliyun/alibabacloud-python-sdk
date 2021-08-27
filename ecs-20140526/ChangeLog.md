@@ -1,3 +1,6 @@
+2021-08-27 Version: 2.1.0
+- DescribeSecurityGroups support query by next token.
+
 2021-03-22 Version: 2.0.2
 - Generated python 2014-05-26 for Ecs.
 
