@@ -1,3 +1,6 @@
+2021-08-27 Version: 2.4.4
+- Add CreateIceProject,RegisterIceOssMedia Api.
+
 2021-08-26 Version: 2.3.4
 - Fix CreateAppTemplate Parameters.
 

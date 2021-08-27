@@ -41,89 +41,47 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def verify_domain_owner_with_options(
+    def create_ice_project_with_options(
         self,
-        request: imp_20210630_models.VerifyDomainOwnerRequest,
+        request: imp_20210630_models.CreateIceProjectRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+    ) -> imp_20210630_models.CreateIceProjectResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            imp_20210630_models.VerifyDomainOwnerResponse(),
-            self.do_rpcrequest('VerifyDomainOwner', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imp_20210630_models.CreateIceProjectResponse(),
+            self.do_rpcrequest('CreateIceProject', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def verify_domain_owner_with_options_async(
+    async def create_ice_project_with_options_async(
         self,
-        request: imp_20210630_models.VerifyDomainOwnerRequest,
+        request: imp_20210630_models.CreateIceProjectRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+    ) -> imp_20210630_models.CreateIceProjectResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            imp_20210630_models.VerifyDomainOwnerResponse(),
-            await self.do_rpcrequest_async('VerifyDomainOwner', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imp_20210630_models.CreateIceProjectResponse(),
+            await self.do_rpcrequest_async('CreateIceProject', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def verify_domain_owner(
+    def create_ice_project(
         self,
-        request: imp_20210630_models.VerifyDomainOwnerRequest,
-    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        request: imp_20210630_models.CreateIceProjectRequest,
+    ) -> imp_20210630_models.CreateIceProjectResponse:
         runtime = util_models.RuntimeOptions()
-        return self.verify_domain_owner_with_options(request, runtime)
+        return self.create_ice_project_with_options(request, runtime)
 
-    async def verify_domain_owner_async(
+    async def create_ice_project_async(
         self,
-        request: imp_20210630_models.VerifyDomainOwnerRequest,
-    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        request: imp_20210630_models.CreateIceProjectRequest,
+    ) -> imp_20210630_models.CreateIceProjectResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.verify_domain_owner_with_options_async(request, runtime)
-
-    def create_live_with_options(
-        self,
-        request: imp_20210630_models.CreateLiveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateLiveResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateLiveResponse(),
-            self.do_rpcrequest('CreateLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_live_with_options_async(
-        self,
-        request: imp_20210630_models.CreateLiveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateLiveResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateLiveResponse(),
-            await self.do_rpcrequest_async('CreateLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_live(
-        self,
-        request: imp_20210630_models.CreateLiveRequest,
-    ) -> imp_20210630_models.CreateLiveResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_live_with_options(request, runtime)
-
-    async def create_live_async(
-        self,
-        request: imp_20210630_models.CreateLiveRequest,
-    ) -> imp_20210630_models.CreateLiveResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_live_with_options_async(request, runtime)
+        return await self.create_ice_project_with_options_async(request, runtime)
 
     def remove_member_with_options(
         self,
@@ -167,48 +125,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_member_with_options_async(request, runtime)
 
-    def delete_app_with_options(
-        self,
-        request: imp_20210630_models.DeleteAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DeleteAppResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.DeleteAppResponse(),
-            self.do_rpcrequest('DeleteApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_app_with_options_async(
-        self,
-        request: imp_20210630_models.DeleteAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DeleteAppResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.DeleteAppResponse(),
-            await self.do_rpcrequest_async('DeleteApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_app(
-        self,
-        request: imp_20210630_models.DeleteAppRequest,
-    ) -> imp_20210630_models.DeleteAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_app_with_options(request, runtime)
-
-    async def delete_app_async(
-        self,
-        request: imp_20210630_models.DeleteAppRequest,
-    ) -> imp_20210630_models.DeleteAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_app_with_options_async(request, runtime)
-
     def list_apply_link_mic_users_with_options(
         self,
         request: imp_20210630_models.ListApplyLinkMicUsersRequest,
@@ -250,148 +166,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_apply_link_mic_users_with_options_async(request, runtime)
-
-    def list_room_lives_with_options(
-        self,
-        tmp_req: imp_20210630_models.ListRoomLivesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListRoomLivesResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.ListRoomLivesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.room_id_list):
-            request.room_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_id_list, 'RoomIdList', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListRoomLivesResponse(),
-            self.do_rpcrequest('ListRoomLives', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_room_lives_with_options_async(
-        self,
-        tmp_req: imp_20210630_models.ListRoomLivesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListRoomLivesResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.ListRoomLivesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.room_id_list):
-            request.room_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_id_list, 'RoomIdList', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListRoomLivesResponse(),
-            await self.do_rpcrequest_async('ListRoomLives', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_room_lives(
-        self,
-        request: imp_20210630_models.ListRoomLivesRequest,
-    ) -> imp_20210630_models.ListRoomLivesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_room_lives_with_options(request, runtime)
-
-    async def list_room_lives_async(
-        self,
-        request: imp_20210630_models.ListRoomLivesRequest,
-    ) -> imp_20210630_models.ListRoomLivesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_room_lives_with_options_async(request, runtime)
-
-    def update_room_with_options(
-        self,
-        tmp_req: imp_20210630_models.UpdateRoomRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateRoomResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.UpdateRoomShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.extension):
-            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateRoomResponse(),
-            self.do_rpcrequest('UpdateRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_room_with_options_async(
-        self,
-        tmp_req: imp_20210630_models.UpdateRoomRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateRoomResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.UpdateRoomShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.extension):
-            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateRoomResponse(),
-            await self.do_rpcrequest_async('UpdateRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_room(
-        self,
-        request: imp_20210630_models.UpdateRoomRequest,
-    ) -> imp_20210630_models.UpdateRoomResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_room_with_options(request, runtime)
-
-    async def update_room_async(
-        self,
-        request: imp_20210630_models.UpdateRoomRequest,
-    ) -> imp_20210630_models.UpdateRoomResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_room_with_options_async(request, runtime)
-
-    def get_app_template_with_options(
-        self,
-        request: imp_20210630_models.GetAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetAppTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetAppTemplateResponse(),
-            self.do_rpcrequest('GetAppTemplate', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_app_template_with_options_async(
-        self,
-        request: imp_20210630_models.GetAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetAppTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetAppTemplateResponse(),
-            await self.do_rpcrequest_async('GetAppTemplate', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_app_template(
-        self,
-        request: imp_20210630_models.GetAppTemplateRequest,
-    ) -> imp_20210630_models.GetAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_app_template_with_options(request, runtime)
-
-    async def get_app_template_async(
-        self,
-        request: imp_20210630_models.GetAppTemplateRequest,
-    ) -> imp_20210630_models.GetAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_app_template_with_options_async(request, runtime)
 
     def get_room_with_options(
         self,
@@ -435,148 +209,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_room_with_options_async(request, runtime)
 
-    def send_comment_with_options(
-        self,
-        tmp_req: imp_20210630_models.SendCommentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.SendCommentResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.SendCommentShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.extension):
-            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.SendCommentResponse(),
-            self.do_rpcrequest('SendComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def send_comment_with_options_async(
-        self,
-        tmp_req: imp_20210630_models.SendCommentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.SendCommentResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.SendCommentShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.extension):
-            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.SendCommentResponse(),
-            await self.do_rpcrequest_async('SendComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def send_comment(
-        self,
-        request: imp_20210630_models.SendCommentRequest,
-    ) -> imp_20210630_models.SendCommentResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.send_comment_with_options(request, runtime)
-
-    async def send_comment_async(
-        self,
-        request: imp_20210630_models.SendCommentRequest,
-    ) -> imp_20210630_models.SendCommentResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.send_comment_with_options_async(request, runtime)
-
-    def create_app_template_with_options(
-        self,
-        tmp_req: imp_20210630_models.CreateAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateAppTemplateResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.CreateAppTemplateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.component_list):
-            request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateAppTemplateResponse(),
-            self.do_rpcrequest('CreateAppTemplate', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_app_template_with_options_async(
-        self,
-        tmp_req: imp_20210630_models.CreateAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateAppTemplateResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.CreateAppTemplateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.component_list):
-            request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateAppTemplateResponse(),
-            await self.do_rpcrequest_async('CreateAppTemplate', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_app_template(
-        self,
-        request: imp_20210630_models.CreateAppTemplateRequest,
-    ) -> imp_20210630_models.CreateAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_app_template_with_options(request, runtime)
-
-    async def create_app_template_async(
-        self,
-        request: imp_20210630_models.CreateAppTemplateRequest,
-    ) -> imp_20210630_models.CreateAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_app_template_with_options_async(request, runtime)
-
-    def get_conference_with_options(
-        self,
-        request: imp_20210630_models.GetConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetConferenceResponse(),
-            self.do_rpcrequest('GetConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_conference_with_options_async(
-        self,
-        request: imp_20210630_models.GetConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetConferenceResponse(),
-            await self.do_rpcrequest_async('GetConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_conference(
-        self,
-        request: imp_20210630_models.GetConferenceRequest,
-    ) -> imp_20210630_models.GetConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_conference_with_options(request, runtime)
-
-    async def get_conference_async(
-        self,
-        request: imp_20210630_models.GetConferenceRequest,
-    ) -> imp_20210630_models.GetConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_conference_with_options_async(request, runtime)
-
     def ban_comment_with_options(
         self,
         request: imp_20210630_models.BanCommentRequest,
@@ -619,90 +251,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.ban_comment_with_options_async(request, runtime)
 
-    def reject_link_mic_with_options(
-        self,
-        request: imp_20210630_models.RejectLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.RejectLinkMicResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.RejectLinkMicResponse(),
-            self.do_rpcrequest('RejectLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def reject_link_mic_with_options_async(
-        self,
-        request: imp_20210630_models.RejectLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.RejectLinkMicResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.RejectLinkMicResponse(),
-            await self.do_rpcrequest_async('RejectLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def reject_link_mic(
-        self,
-        request: imp_20210630_models.RejectLinkMicRequest,
-    ) -> imp_20210630_models.RejectLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.reject_link_mic_with_options(request, runtime)
-
-    async def reject_link_mic_async(
-        self,
-        request: imp_20210630_models.RejectLinkMicRequest,
-    ) -> imp_20210630_models.RejectLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.reject_link_mic_with_options_async(request, runtime)
-
-    def list_apps_with_options(
-        self,
-        request: imp_20210630_models.ListAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListAppsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListAppsResponse(),
-            self.do_rpcrequest('ListApps', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_apps_with_options_async(
-        self,
-        request: imp_20210630_models.ListAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListAppsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListAppsResponse(),
-            await self.do_rpcrequest_async('ListApps', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_apps(
-        self,
-        request: imp_20210630_models.ListAppsRequest,
-    ) -> imp_20210630_models.ListAppsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_apps_with_options(request, runtime)
-
-    async def list_apps_async(
-        self,
-        request: imp_20210630_models.ListAppsRequest,
-    ) -> imp_20210630_models.ListAppsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_apps_with_options_async(request, runtime)
-
     def add_member_with_options(
         self,
         request: imp_20210630_models.AddMemberRequest,
@@ -744,48 +292,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.AddMemberResponse:
         runtime = util_models.RuntimeOptions()
         return await self.add_member_with_options_async(request, runtime)
-
-    def cancel_ban_all_comment_with_options(
-        self,
-        request: imp_20210630_models.CancelBanAllCommentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CancelBanAllCommentResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CancelBanAllCommentResponse(),
-            self.do_rpcrequest('CancelBanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def cancel_ban_all_comment_with_options_async(
-        self,
-        request: imp_20210630_models.CancelBanAllCommentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CancelBanAllCommentResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CancelBanAllCommentResponse(),
-            await self.do_rpcrequest_async('CancelBanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def cancel_ban_all_comment(
-        self,
-        request: imp_20210630_models.CancelBanAllCommentRequest,
-    ) -> imp_20210630_models.CancelBanAllCommentResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cancel_ban_all_comment_with_options(request, runtime)
-
-    async def cancel_ban_all_comment_async(
-        self,
-        request: imp_20210630_models.CancelBanAllCommentRequest,
-    ) -> imp_20210630_models.CancelBanAllCommentResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cancel_ban_all_comment_with_options_async(request, runtime)
 
     def list_rooms_with_options(
         self,
@@ -871,216 +377,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_template_with_options_async(request, runtime)
 
-    def list_conference_users_with_options(
-        self,
-        request: imp_20210630_models.ListConferenceUsersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListConferenceUsersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListConferenceUsersResponse(),
-            self.do_rpcrequest('ListConferenceUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_conference_users_with_options_async(
-        self,
-        request: imp_20210630_models.ListConferenceUsersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListConferenceUsersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListConferenceUsersResponse(),
-            await self.do_rpcrequest_async('ListConferenceUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_conference_users(
-        self,
-        request: imp_20210630_models.ListConferenceUsersRequest,
-    ) -> imp_20210630_models.ListConferenceUsersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_conference_users_with_options(request, runtime)
-
-    async def list_conference_users_async(
-        self,
-        request: imp_20210630_models.ListConferenceUsersRequest,
-    ) -> imp_20210630_models.ListConferenceUsersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_conference_users_with_options_async(request, runtime)
-
-    def cancel_ban_comment_with_options(
-        self,
-        request: imp_20210630_models.CancelBanCommentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CancelBanCommentResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CancelBanCommentResponse(),
-            self.do_rpcrequest('CancelBanComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def cancel_ban_comment_with_options_async(
-        self,
-        request: imp_20210630_models.CancelBanCommentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CancelBanCommentResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CancelBanCommentResponse(),
-            await self.do_rpcrequest_async('CancelBanComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def cancel_ban_comment(
-        self,
-        request: imp_20210630_models.CancelBanCommentRequest,
-    ) -> imp_20210630_models.CancelBanCommentResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cancel_ban_comment_with_options(request, runtime)
-
-    async def cancel_ban_comment_async(
-        self,
-        request: imp_20210630_models.CancelBanCommentRequest,
-    ) -> imp_20210630_models.CancelBanCommentResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cancel_ban_comment_with_options_async(request, runtime)
-
-    def list_app_templates_with_options(
-        self,
-        request: imp_20210630_models.ListAppTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListAppTemplatesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListAppTemplatesResponse(),
-            self.do_rpcrequest('ListAppTemplates', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_app_templates_with_options_async(
-        self,
-        request: imp_20210630_models.ListAppTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListAppTemplatesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListAppTemplatesResponse(),
-            await self.do_rpcrequest_async('ListAppTemplates', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_app_templates(
-        self,
-        request: imp_20210630_models.ListAppTemplatesRequest,
-    ) -> imp_20210630_models.ListAppTemplatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_app_templates_with_options(request, runtime)
-
-    async def list_app_templates_async(
-        self,
-        request: imp_20210630_models.ListAppTemplatesRequest,
-    ) -> imp_20210630_models.ListAppTemplatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_app_templates_with_options_async(request, runtime)
-
-    def list_components_with_options(
-        self,
-        request: imp_20210630_models.ListComponentsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListComponentsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListComponentsResponse(),
-            self.do_rpcrequest('ListComponents', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_components_with_options_async(
-        self,
-        request: imp_20210630_models.ListComponentsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListComponentsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListComponentsResponse(),
-            await self.do_rpcrequest_async('ListComponents', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_components(
-        self,
-        request: imp_20210630_models.ListComponentsRequest,
-    ) -> imp_20210630_models.ListComponentsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_components_with_options(request, runtime)
-
-    async def list_components_async(
-        self,
-        request: imp_20210630_models.ListComponentsRequest,
-    ) -> imp_20210630_models.ListComponentsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_components_with_options_async(request, runtime)
-
-    def update_live_with_options(
-        self,
-        request: imp_20210630_models.UpdateLiveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateLiveResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateLiveResponse(),
-            self.do_rpcrequest('UpdateLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_live_with_options_async(
-        self,
-        request: imp_20210630_models.UpdateLiveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateLiveResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateLiveResponse(),
-            await self.do_rpcrequest_async('UpdateLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_live(
-        self,
-        request: imp_20210630_models.UpdateLiveRequest,
-    ) -> imp_20210630_models.UpdateLiveResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_live_with_options(request, runtime)
-
-    async def update_live_async(
-        self,
-        request: imp_20210630_models.UpdateLiveRequest,
-    ) -> imp_20210630_models.UpdateLiveResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_live_with_options_async(request, runtime)
-
     def update_app_template_config_with_options(
         self,
         tmp_req: imp_20210630_models.UpdateAppTemplateConfigRequest,
@@ -1131,90 +427,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_app_template_config_with_options_async(request, runtime)
 
-    def apply_link_mic_with_options(
-        self,
-        request: imp_20210630_models.ApplyLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ApplyLinkMicResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ApplyLinkMicResponse(),
-            self.do_rpcrequest('ApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def apply_link_mic_with_options_async(
-        self,
-        request: imp_20210630_models.ApplyLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ApplyLinkMicResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ApplyLinkMicResponse(),
-            await self.do_rpcrequest_async('ApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def apply_link_mic(
-        self,
-        request: imp_20210630_models.ApplyLinkMicRequest,
-    ) -> imp_20210630_models.ApplyLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.apply_link_mic_with_options(request, runtime)
-
-    async def apply_link_mic_async(
-        self,
-        request: imp_20210630_models.ApplyLinkMicRequest,
-    ) -> imp_20210630_models.ApplyLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.apply_link_mic_with_options_async(request, runtime)
-
-    def cancel_apply_link_mic_with_options(
-        self,
-        request: imp_20210630_models.CancelApplyLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CancelApplyLinkMicResponse(),
-            self.do_rpcrequest('CancelApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def cancel_apply_link_mic_with_options_async(
-        self,
-        request: imp_20210630_models.CancelApplyLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CancelApplyLinkMicResponse(),
-            await self.do_rpcrequest_async('CancelApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def cancel_apply_link_mic(
-        self,
-        request: imp_20210630_models.CancelApplyLinkMicRequest,
-    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cancel_apply_link_mic_with_options(request, runtime)
-
-    async def cancel_apply_link_mic_async(
-        self,
-        request: imp_20210630_models.CancelApplyLinkMicRequest,
-    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cancel_apply_link_mic_with_options_async(request, runtime)
-
     def stop_live_with_options(
         self,
         request: imp_20210630_models.StopLiveRequest,
@@ -1257,47 +469,47 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_live_with_options_async(request, runtime)
 
-    def get_app_with_options(
+    def register_ice_oss_media_with_options(
         self,
-        request: imp_20210630_models.GetAppRequest,
+        request: imp_20210630_models.RegisterIceOssMediaRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetAppResponse:
+    ) -> imp_20210630_models.RegisterIceOssMediaResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            imp_20210630_models.GetAppResponse(),
-            self.do_rpcrequest('GetApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imp_20210630_models.RegisterIceOssMediaResponse(),
+            self.do_rpcrequest('RegisterIceOssMedia', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def get_app_with_options_async(
+    async def register_ice_oss_media_with_options_async(
         self,
-        request: imp_20210630_models.GetAppRequest,
+        request: imp_20210630_models.RegisterIceOssMediaRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetAppResponse:
+    ) -> imp_20210630_models.RegisterIceOssMediaResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            imp_20210630_models.GetAppResponse(),
-            await self.do_rpcrequest_async('GetApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imp_20210630_models.RegisterIceOssMediaResponse(),
+            await self.do_rpcrequest_async('RegisterIceOssMedia', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def get_app(
+    def register_ice_oss_media(
         self,
-        request: imp_20210630_models.GetAppRequest,
-    ) -> imp_20210630_models.GetAppResponse:
+        request: imp_20210630_models.RegisterIceOssMediaRequest,
+    ) -> imp_20210630_models.RegisterIceOssMediaResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_app_with_options(request, runtime)
+        return self.register_ice_oss_media_with_options(request, runtime)
 
-    async def get_app_async(
+    async def register_ice_oss_media_async(
         self,
-        request: imp_20210630_models.GetAppRequest,
-    ) -> imp_20210630_models.GetAppResponse:
+        request: imp_20210630_models.RegisterIceOssMediaRequest,
+    ) -> imp_20210630_models.RegisterIceOssMediaResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_app_with_options_async(request, runtime)
+        return await self.register_ice_oss_media_with_options_async(request, runtime)
 
     def create_conference_with_options(
         self,
@@ -1559,90 +771,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_domain_owner_verify_content_with_options_async(request, runtime)
 
-    def send_custom_message_to_users_with_options(
-        self,
-        request: imp_20210630_models.SendCustomMessageToUsersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.SendCustomMessageToUsersResponse(),
-            self.do_rpcrequest('SendCustomMessageToUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def send_custom_message_to_users_with_options_async(
-        self,
-        request: imp_20210630_models.SendCustomMessageToUsersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.SendCustomMessageToUsersResponse(),
-            await self.do_rpcrequest_async('SendCustomMessageToUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def send_custom_message_to_users(
-        self,
-        request: imp_20210630_models.SendCustomMessageToUsersRequest,
-    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.send_custom_message_to_users_with_options(request, runtime)
-
-    async def send_custom_message_to_users_async(
-        self,
-        request: imp_20210630_models.SendCustomMessageToUsersRequest,
-    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.send_custom_message_to_users_with_options_async(request, runtime)
-
-    def ban_all_comment_with_options(
-        self,
-        request: imp_20210630_models.BanAllCommentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.BanAllCommentResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.BanAllCommentResponse(),
-            self.do_rpcrequest('BanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def ban_all_comment_with_options_async(
-        self,
-        request: imp_20210630_models.BanAllCommentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.BanAllCommentResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.BanAllCommentResponse(),
-            await self.do_rpcrequest_async('BanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def ban_all_comment(
-        self,
-        request: imp_20210630_models.BanAllCommentRequest,
-    ) -> imp_20210630_models.BanAllCommentResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.ban_all_comment_with_options(request, runtime)
-
-    async def ban_all_comment_async(
-        self,
-        request: imp_20210630_models.BanAllCommentRequest,
-    ) -> imp_20210630_models.BanAllCommentResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.ban_all_comment_with_options_async(request, runtime)
-
     def get_auth_token_with_options(
         self,
         request: imp_20210630_models.GetAuthTokenRequest,
@@ -1797,48 +925,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.publish_live_with_options_async(request, runtime)
 
-    def get_live_with_options(
-        self,
-        request: imp_20210630_models.GetLiveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetLiveResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetLiveResponse(),
-            self.do_rpcrequest('GetLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_live_with_options_async(
-        self,
-        request: imp_20210630_models.GetLiveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetLiveResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetLiveResponse(),
-            await self.do_rpcrequest_async('GetLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_live(
-        self,
-        request: imp_20210630_models.GetLiveRequest,
-    ) -> imp_20210630_models.GetLiveResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_live_with_options(request, runtime)
-
-    async def get_live_async(
-        self,
-        request: imp_20210630_models.GetLiveRequest,
-    ) -> imp_20210630_models.GetLiveResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_live_with_options_async(request, runtime)
-
     def delete_room_with_options(
         self,
         request: imp_20210630_models.DeleteRoomRequest,
@@ -1880,6 +966,1088 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.DeleteRoomResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_room_with_options_async(request, runtime)
+
+    def delete_conference_with_options(
+        self,
+        request: imp_20210630_models.DeleteConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteConferenceResponse(),
+            self.do_rpcrequest('DeleteConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_conference_with_options_async(
+        self,
+        request: imp_20210630_models.DeleteConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteConferenceResponse(),
+            await self.do_rpcrequest_async('DeleteConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_conference(
+        self,
+        request: imp_20210630_models.DeleteConferenceRequest,
+    ) -> imp_20210630_models.DeleteConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_conference_with_options(request, runtime)
+
+    async def delete_conference_async(
+        self,
+        request: imp_20210630_models.DeleteConferenceRequest,
+    ) -> imp_20210630_models.DeleteConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_conference_with_options_async(request, runtime)
+
+    def update_app_with_options(
+        self,
+        request: imp_20210630_models.UpdateAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateAppResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateAppResponse(),
+            self.do_rpcrequest('UpdateApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_app_with_options_async(
+        self,
+        request: imp_20210630_models.UpdateAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateAppResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateAppResponse(),
+            await self.do_rpcrequest_async('UpdateApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_app(
+        self,
+        request: imp_20210630_models.UpdateAppRequest,
+    ) -> imp_20210630_models.UpdateAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_app_with_options(request, runtime)
+
+    async def update_app_async(
+        self,
+        request: imp_20210630_models.UpdateAppRequest,
+    ) -> imp_20210630_models.UpdateAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_app_with_options_async(request, runtime)
+
+    def verify_domain_owner_with_options(
+        self,
+        request: imp_20210630_models.VerifyDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.VerifyDomainOwnerResponse(),
+            self.do_rpcrequest('VerifyDomainOwner', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def verify_domain_owner_with_options_async(
+        self,
+        request: imp_20210630_models.VerifyDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.VerifyDomainOwnerResponse(),
+            await self.do_rpcrequest_async('VerifyDomainOwner', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def verify_domain_owner(
+        self,
+        request: imp_20210630_models.VerifyDomainOwnerRequest,
+    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_domain_owner_with_options(request, runtime)
+
+    async def verify_domain_owner_async(
+        self,
+        request: imp_20210630_models.VerifyDomainOwnerRequest,
+    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_domain_owner_with_options_async(request, runtime)
+
+    def create_live_with_options(
+        self,
+        request: imp_20210630_models.CreateLiveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateLiveResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateLiveResponse(),
+            self.do_rpcrequest('CreateLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_live_with_options_async(
+        self,
+        request: imp_20210630_models.CreateLiveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateLiveResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateLiveResponse(),
+            await self.do_rpcrequest_async('CreateLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_live(
+        self,
+        request: imp_20210630_models.CreateLiveRequest,
+    ) -> imp_20210630_models.CreateLiveResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_live_with_options(request, runtime)
+
+    async def create_live_async(
+        self,
+        request: imp_20210630_models.CreateLiveRequest,
+    ) -> imp_20210630_models.CreateLiveResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_live_with_options_async(request, runtime)
+
+    def delete_app_with_options(
+        self,
+        request: imp_20210630_models.DeleteAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteAppResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteAppResponse(),
+            self.do_rpcrequest('DeleteApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_app_with_options_async(
+        self,
+        request: imp_20210630_models.DeleteAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteAppResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteAppResponse(),
+            await self.do_rpcrequest_async('DeleteApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_app(
+        self,
+        request: imp_20210630_models.DeleteAppRequest,
+    ) -> imp_20210630_models.DeleteAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_with_options(request, runtime)
+
+    async def delete_app_async(
+        self,
+        request: imp_20210630_models.DeleteAppRequest,
+    ) -> imp_20210630_models.DeleteAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_with_options_async(request, runtime)
+
+    def list_room_lives_with_options(
+        self,
+        tmp_req: imp_20210630_models.ListRoomLivesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListRoomLivesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.ListRoomLivesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.room_id_list):
+            request.room_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_id_list, 'RoomIdList', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListRoomLivesResponse(),
+            self.do_rpcrequest('ListRoomLives', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_room_lives_with_options_async(
+        self,
+        tmp_req: imp_20210630_models.ListRoomLivesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListRoomLivesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.ListRoomLivesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.room_id_list):
+            request.room_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_id_list, 'RoomIdList', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListRoomLivesResponse(),
+            await self.do_rpcrequest_async('ListRoomLives', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_room_lives(
+        self,
+        request: imp_20210630_models.ListRoomLivesRequest,
+    ) -> imp_20210630_models.ListRoomLivesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_room_lives_with_options(request, runtime)
+
+    async def list_room_lives_async(
+        self,
+        request: imp_20210630_models.ListRoomLivesRequest,
+    ) -> imp_20210630_models.ListRoomLivesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_room_lives_with_options_async(request, runtime)
+
+    def update_room_with_options(
+        self,
+        tmp_req: imp_20210630_models.UpdateRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateRoomResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.UpdateRoomShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateRoomResponse(),
+            self.do_rpcrequest('UpdateRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_room_with_options_async(
+        self,
+        tmp_req: imp_20210630_models.UpdateRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateRoomResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.UpdateRoomShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateRoomResponse(),
+            await self.do_rpcrequest_async('UpdateRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_room(
+        self,
+        request: imp_20210630_models.UpdateRoomRequest,
+    ) -> imp_20210630_models.UpdateRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_room_with_options(request, runtime)
+
+    async def update_room_async(
+        self,
+        request: imp_20210630_models.UpdateRoomRequest,
+    ) -> imp_20210630_models.UpdateRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_room_with_options_async(request, runtime)
+
+    def get_app_template_with_options(
+        self,
+        request: imp_20210630_models.GetAppTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetAppTemplateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetAppTemplateResponse(),
+            self.do_rpcrequest('GetAppTemplate', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_app_template_with_options_async(
+        self,
+        request: imp_20210630_models.GetAppTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetAppTemplateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetAppTemplateResponse(),
+            await self.do_rpcrequest_async('GetAppTemplate', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_app_template(
+        self,
+        request: imp_20210630_models.GetAppTemplateRequest,
+    ) -> imp_20210630_models.GetAppTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_app_template_with_options(request, runtime)
+
+    async def get_app_template_async(
+        self,
+        request: imp_20210630_models.GetAppTemplateRequest,
+    ) -> imp_20210630_models.GetAppTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_app_template_with_options_async(request, runtime)
+
+    def send_comment_with_options(
+        self,
+        tmp_req: imp_20210630_models.SendCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCommentResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.SendCommentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCommentResponse(),
+            self.do_rpcrequest('SendComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_comment_with_options_async(
+        self,
+        tmp_req: imp_20210630_models.SendCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCommentResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.SendCommentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCommentResponse(),
+            await self.do_rpcrequest_async('SendComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_comment(
+        self,
+        request: imp_20210630_models.SendCommentRequest,
+    ) -> imp_20210630_models.SendCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_comment_with_options(request, runtime)
+
+    async def send_comment_async(
+        self,
+        request: imp_20210630_models.SendCommentRequest,
+    ) -> imp_20210630_models.SendCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_comment_with_options_async(request, runtime)
+
+    def create_app_template_with_options(
+        self,
+        tmp_req: imp_20210630_models.CreateAppTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateAppTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.CreateAppTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.component_list):
+            request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateAppTemplateResponse(),
+            self.do_rpcrequest('CreateAppTemplate', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_app_template_with_options_async(
+        self,
+        tmp_req: imp_20210630_models.CreateAppTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateAppTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.CreateAppTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.component_list):
+            request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateAppTemplateResponse(),
+            await self.do_rpcrequest_async('CreateAppTemplate', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_app_template(
+        self,
+        request: imp_20210630_models.CreateAppTemplateRequest,
+    ) -> imp_20210630_models.CreateAppTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_template_with_options(request, runtime)
+
+    async def create_app_template_async(
+        self,
+        request: imp_20210630_models.CreateAppTemplateRequest,
+    ) -> imp_20210630_models.CreateAppTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_template_with_options_async(request, runtime)
+
+    def get_conference_with_options(
+        self,
+        request: imp_20210630_models.GetConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetConferenceResponse(),
+            self.do_rpcrequest('GetConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_conference_with_options_async(
+        self,
+        request: imp_20210630_models.GetConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetConferenceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetConferenceResponse(),
+            await self.do_rpcrequest_async('GetConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_conference(
+        self,
+        request: imp_20210630_models.GetConferenceRequest,
+    ) -> imp_20210630_models.GetConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_conference_with_options(request, runtime)
+
+    async def get_conference_async(
+        self,
+        request: imp_20210630_models.GetConferenceRequest,
+    ) -> imp_20210630_models.GetConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_conference_with_options_async(request, runtime)
+
+    def reject_link_mic_with_options(
+        self,
+        request: imp_20210630_models.RejectLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.RejectLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.RejectLinkMicResponse(),
+            self.do_rpcrequest('RejectLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def reject_link_mic_with_options_async(
+        self,
+        request: imp_20210630_models.RejectLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.RejectLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.RejectLinkMicResponse(),
+            await self.do_rpcrequest_async('RejectLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def reject_link_mic(
+        self,
+        request: imp_20210630_models.RejectLinkMicRequest,
+    ) -> imp_20210630_models.RejectLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reject_link_mic_with_options(request, runtime)
+
+    async def reject_link_mic_async(
+        self,
+        request: imp_20210630_models.RejectLinkMicRequest,
+    ) -> imp_20210630_models.RejectLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reject_link_mic_with_options_async(request, runtime)
+
+    def list_apps_with_options(
+        self,
+        request: imp_20210630_models.ListAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListAppsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListAppsResponse(),
+            self.do_rpcrequest('ListApps', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_apps_with_options_async(
+        self,
+        request: imp_20210630_models.ListAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListAppsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListAppsResponse(),
+            await self.do_rpcrequest_async('ListApps', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_apps(
+        self,
+        request: imp_20210630_models.ListAppsRequest,
+    ) -> imp_20210630_models.ListAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_apps_with_options(request, runtime)
+
+    async def list_apps_async(
+        self,
+        request: imp_20210630_models.ListAppsRequest,
+    ) -> imp_20210630_models.ListAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_apps_with_options_async(request, runtime)
+
+    def cancel_ban_all_comment_with_options(
+        self,
+        request: imp_20210630_models.CancelBanAllCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelBanAllCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelBanAllCommentResponse(),
+            self.do_rpcrequest('CancelBanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def cancel_ban_all_comment_with_options_async(
+        self,
+        request: imp_20210630_models.CancelBanAllCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelBanAllCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelBanAllCommentResponse(),
+            await self.do_rpcrequest_async('CancelBanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def cancel_ban_all_comment(
+        self,
+        request: imp_20210630_models.CancelBanAllCommentRequest,
+    ) -> imp_20210630_models.CancelBanAllCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_ban_all_comment_with_options(request, runtime)
+
+    async def cancel_ban_all_comment_async(
+        self,
+        request: imp_20210630_models.CancelBanAllCommentRequest,
+    ) -> imp_20210630_models.CancelBanAllCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_ban_all_comment_with_options_async(request, runtime)
+
+    def list_conference_users_with_options(
+        self,
+        request: imp_20210630_models.ListConferenceUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListConferenceUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListConferenceUsersResponse(),
+            self.do_rpcrequest('ListConferenceUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_conference_users_with_options_async(
+        self,
+        request: imp_20210630_models.ListConferenceUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListConferenceUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListConferenceUsersResponse(),
+            await self.do_rpcrequest_async('ListConferenceUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_conference_users(
+        self,
+        request: imp_20210630_models.ListConferenceUsersRequest,
+    ) -> imp_20210630_models.ListConferenceUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_conference_users_with_options(request, runtime)
+
+    async def list_conference_users_async(
+        self,
+        request: imp_20210630_models.ListConferenceUsersRequest,
+    ) -> imp_20210630_models.ListConferenceUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_conference_users_with_options_async(request, runtime)
+
+    def cancel_ban_comment_with_options(
+        self,
+        request: imp_20210630_models.CancelBanCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelBanCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelBanCommentResponse(),
+            self.do_rpcrequest('CancelBanComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def cancel_ban_comment_with_options_async(
+        self,
+        request: imp_20210630_models.CancelBanCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelBanCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelBanCommentResponse(),
+            await self.do_rpcrequest_async('CancelBanComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def cancel_ban_comment(
+        self,
+        request: imp_20210630_models.CancelBanCommentRequest,
+    ) -> imp_20210630_models.CancelBanCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_ban_comment_with_options(request, runtime)
+
+    async def cancel_ban_comment_async(
+        self,
+        request: imp_20210630_models.CancelBanCommentRequest,
+    ) -> imp_20210630_models.CancelBanCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_ban_comment_with_options_async(request, runtime)
+
+    def list_app_templates_with_options(
+        self,
+        request: imp_20210630_models.ListAppTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListAppTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListAppTemplatesResponse(),
+            self.do_rpcrequest('ListAppTemplates', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_app_templates_with_options_async(
+        self,
+        request: imp_20210630_models.ListAppTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListAppTemplatesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListAppTemplatesResponse(),
+            await self.do_rpcrequest_async('ListAppTemplates', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_app_templates(
+        self,
+        request: imp_20210630_models.ListAppTemplatesRequest,
+    ) -> imp_20210630_models.ListAppTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_app_templates_with_options(request, runtime)
+
+    async def list_app_templates_async(
+        self,
+        request: imp_20210630_models.ListAppTemplatesRequest,
+    ) -> imp_20210630_models.ListAppTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_app_templates_with_options_async(request, runtime)
+
+    def list_components_with_options(
+        self,
+        request: imp_20210630_models.ListComponentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListComponentsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListComponentsResponse(),
+            self.do_rpcrequest('ListComponents', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_components_with_options_async(
+        self,
+        request: imp_20210630_models.ListComponentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListComponentsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListComponentsResponse(),
+            await self.do_rpcrequest_async('ListComponents', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_components(
+        self,
+        request: imp_20210630_models.ListComponentsRequest,
+    ) -> imp_20210630_models.ListComponentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_components_with_options(request, runtime)
+
+    async def list_components_async(
+        self,
+        request: imp_20210630_models.ListComponentsRequest,
+    ) -> imp_20210630_models.ListComponentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_components_with_options_async(request, runtime)
+
+    def update_live_with_options(
+        self,
+        request: imp_20210630_models.UpdateLiveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateLiveResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateLiveResponse(),
+            self.do_rpcrequest('UpdateLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_live_with_options_async(
+        self,
+        request: imp_20210630_models.UpdateLiveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateLiveResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateLiveResponse(),
+            await self.do_rpcrequest_async('UpdateLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_live(
+        self,
+        request: imp_20210630_models.UpdateLiveRequest,
+    ) -> imp_20210630_models.UpdateLiveResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_live_with_options(request, runtime)
+
+    async def update_live_async(
+        self,
+        request: imp_20210630_models.UpdateLiveRequest,
+    ) -> imp_20210630_models.UpdateLiveResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_live_with_options_async(request, runtime)
+
+    def apply_link_mic_with_options(
+        self,
+        request: imp_20210630_models.ApplyLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ApplyLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ApplyLinkMicResponse(),
+            self.do_rpcrequest('ApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def apply_link_mic_with_options_async(
+        self,
+        request: imp_20210630_models.ApplyLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ApplyLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ApplyLinkMicResponse(),
+            await self.do_rpcrequest_async('ApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def apply_link_mic(
+        self,
+        request: imp_20210630_models.ApplyLinkMicRequest,
+    ) -> imp_20210630_models.ApplyLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.apply_link_mic_with_options(request, runtime)
+
+    async def apply_link_mic_async(
+        self,
+        request: imp_20210630_models.ApplyLinkMicRequest,
+    ) -> imp_20210630_models.ApplyLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_link_mic_with_options_async(request, runtime)
+
+    def cancel_apply_link_mic_with_options(
+        self,
+        request: imp_20210630_models.CancelApplyLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelApplyLinkMicResponse(),
+            self.do_rpcrequest('CancelApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def cancel_apply_link_mic_with_options_async(
+        self,
+        request: imp_20210630_models.CancelApplyLinkMicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelApplyLinkMicResponse(),
+            await self.do_rpcrequest_async('CancelApplyLinkMic', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def cancel_apply_link_mic(
+        self,
+        request: imp_20210630_models.CancelApplyLinkMicRequest,
+    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_apply_link_mic_with_options(request, runtime)
+
+    async def cancel_apply_link_mic_async(
+        self,
+        request: imp_20210630_models.CancelApplyLinkMicRequest,
+    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_apply_link_mic_with_options_async(request, runtime)
+
+    def get_app_with_options(
+        self,
+        request: imp_20210630_models.GetAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetAppResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetAppResponse(),
+            self.do_rpcrequest('GetApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_app_with_options_async(
+        self,
+        request: imp_20210630_models.GetAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetAppResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetAppResponse(),
+            await self.do_rpcrequest_async('GetApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_app(
+        self,
+        request: imp_20210630_models.GetAppRequest,
+    ) -> imp_20210630_models.GetAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_app_with_options(request, runtime)
+
+    async def get_app_async(
+        self,
+        request: imp_20210630_models.GetAppRequest,
+    ) -> imp_20210630_models.GetAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_app_with_options_async(request, runtime)
+
+    def send_custom_message_to_users_with_options(
+        self,
+        request: imp_20210630_models.SendCustomMessageToUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCustomMessageToUsersResponse(),
+            self.do_rpcrequest('SendCustomMessageToUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_custom_message_to_users_with_options_async(
+        self,
+        request: imp_20210630_models.SendCustomMessageToUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SendCustomMessageToUsersResponse(),
+            await self.do_rpcrequest_async('SendCustomMessageToUsers', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_custom_message_to_users(
+        self,
+        request: imp_20210630_models.SendCustomMessageToUsersRequest,
+    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_custom_message_to_users_with_options(request, runtime)
+
+    async def send_custom_message_to_users_async(
+        self,
+        request: imp_20210630_models.SendCustomMessageToUsersRequest,
+    ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_custom_message_to_users_with_options_async(request, runtime)
+
+    def ban_all_comment_with_options(
+        self,
+        request: imp_20210630_models.BanAllCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.BanAllCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.BanAllCommentResponse(),
+            self.do_rpcrequest('BanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def ban_all_comment_with_options_async(
+        self,
+        request: imp_20210630_models.BanAllCommentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.BanAllCommentResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.BanAllCommentResponse(),
+            await self.do_rpcrequest_async('BanAllComment', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def ban_all_comment(
+        self,
+        request: imp_20210630_models.BanAllCommentRequest,
+    ) -> imp_20210630_models.BanAllCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.ban_all_comment_with_options(request, runtime)
+
+    async def ban_all_comment_async(
+        self,
+        request: imp_20210630_models.BanAllCommentRequest,
+    ) -> imp_20210630_models.BanAllCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.ban_all_comment_with_options_async(request, runtime)
+
+    def get_live_with_options(
+        self,
+        request: imp_20210630_models.GetLiveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetLiveResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetLiveResponse(),
+            self.do_rpcrequest('GetLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_live_with_options_async(
+        self,
+        request: imp_20210630_models.GetLiveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetLiveResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetLiveResponse(),
+            await self.do_rpcrequest_async('GetLive', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_live(
+        self,
+        request: imp_20210630_models.GetLiveRequest,
+    ) -> imp_20210630_models.GetLiveResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_with_options(request, runtime)
+
+    async def get_live_async(
+        self,
+        request: imp_20210630_models.GetLiveRequest,
+    ) -> imp_20210630_models.GetLiveResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_with_options_async(request, runtime)
 
     def create_app_with_options(
         self,
@@ -2014,87 +2182,3 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.UpdateConferenceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_conference_with_options_async(request, runtime)
-
-    def delete_conference_with_options(
-        self,
-        request: imp_20210630_models.DeleteConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DeleteConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.DeleteConferenceResponse(),
-            self.do_rpcrequest('DeleteConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_conference_with_options_async(
-        self,
-        request: imp_20210630_models.DeleteConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DeleteConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.DeleteConferenceResponse(),
-            await self.do_rpcrequest_async('DeleteConference', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_conference(
-        self,
-        request: imp_20210630_models.DeleteConferenceRequest,
-    ) -> imp_20210630_models.DeleteConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_conference_with_options(request, runtime)
-
-    async def delete_conference_async(
-        self,
-        request: imp_20210630_models.DeleteConferenceRequest,
-    ) -> imp_20210630_models.DeleteConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_conference_with_options_async(request, runtime)
-
-    def update_app_with_options(
-        self,
-        request: imp_20210630_models.UpdateAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateAppResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateAppResponse(),
-            self.do_rpcrequest('UpdateApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_app_with_options_async(
-        self,
-        request: imp_20210630_models.UpdateAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateAppResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateAppResponse(),
-            await self.do_rpcrequest_async('UpdateApp', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_app(
-        self,
-        request: imp_20210630_models.UpdateAppRequest,
-    ) -> imp_20210630_models.UpdateAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_app_with_options(request, runtime)
-
-    async def update_app_async(
-        self,
-        request: imp_20210630_models.UpdateAppRequest,
-    ) -> imp_20210630_models.UpdateAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_app_with_options_async(request, runtime)
