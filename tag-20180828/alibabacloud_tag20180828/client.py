@@ -84,6 +84,90 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_tags_with_options(
+        self,
+        request: tag_20180828_models.CreateTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.CreateTagsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.CreateTagsResponse(),
+            self.do_rpcrequest('CreateTags', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_tags_with_options_async(
+        self,
+        request: tag_20180828_models.CreateTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.CreateTagsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.CreateTagsResponse(),
+            await self.do_rpcrequest_async('CreateTags', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_tags(
+        self,
+        request: tag_20180828_models.CreateTagsRequest,
+    ) -> tag_20180828_models.CreateTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_tags_with_options(request, runtime)
+
+    async def create_tags_async(
+        self,
+        request: tag_20180828_models.CreateTagsRequest,
+    ) -> tag_20180828_models.CreateTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tags_with_options_async(request, runtime)
+
+    def delete_tag_with_options(
+        self,
+        request: tag_20180828_models.DeleteTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.DeleteTagResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.DeleteTagResponse(),
+            self.do_rpcrequest('DeleteTag', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_tag_with_options_async(
+        self,
+        request: tag_20180828_models.DeleteTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.DeleteTagResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.DeleteTagResponse(),
+            await self.do_rpcrequest_async('DeleteTag', '2018-08-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_tag(
+        self,
+        request: tag_20180828_models.DeleteTagRequest,
+    ) -> tag_20180828_models.DeleteTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_tag_with_options(request, runtime)
+
+    async def delete_tag_async(
+        self,
+        request: tag_20180828_models.DeleteTagRequest,
+    ) -> tag_20180828_models.DeleteTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_tag_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: tag_20180828_models.DescribeRegionsRequest,
