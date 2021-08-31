@@ -1,3 +1,6 @@
+2021-08-31 Version: 1.1.1
+- Support ComputeNest Operation.
+
 2021-08-31 Version: 1.1.0
 - Support ComputeNest Operation.
 
