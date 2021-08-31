@@ -8900,6 +8900,7 @@ class BeautifyBodyRequest(TeaModel):
         body_boxes: List[BeautifyBodyRequestBodyBoxes] = None,
         face_list: List[BeautifyBodyRequestFaceList] = None,
         pose_list: List[BeautifyBodyRequestPoseList] = None,
+        is_pregnant: bool = None,
     ):
         self.image_url = image_url
         self.original_width = original_width
@@ -8912,6 +8913,7 @@ class BeautifyBodyRequest(TeaModel):
         self.body_boxes = body_boxes
         self.face_list = face_list
         self.pose_list = pose_list
+        self.is_pregnant = is_pregnant
 
     def validate(self):
         if self.age_range:
@@ -8963,6 +8965,8 @@ class BeautifyBodyRequest(TeaModel):
         if self.pose_list is not None:
             for k in self.pose_list:
                 result['PoseList'].append(k.to_map() if k else None)
+        if self.is_pregnant is not None:
+            result['IsPregnant'] = self.is_pregnant
         return result
 
     def from_map(self, m: dict = None):
@@ -8999,6 +9003,8 @@ class BeautifyBodyRequest(TeaModel):
             for k in m.get('PoseList'):
                 temp_model = BeautifyBodyRequestPoseList()
                 self.pose_list.append(temp_model.from_map(k))
+        if m.get('IsPregnant') is not None:
+            self.is_pregnant = m.get('IsPregnant')
         return self
 
 
@@ -9254,6 +9260,7 @@ class BeautifyBodyAdvanceRequest(TeaModel):
         body_boxes: List[BeautifyBodyAdvanceRequestBodyBoxes] = None,
         face_list: List[BeautifyBodyAdvanceRequestFaceList] = None,
         pose_list: List[BeautifyBodyAdvanceRequestPoseList] = None,
+        is_pregnant: bool = None,
     ):
         self.image_urlobject = image_urlobject
         self.original_width = original_width
@@ -9266,6 +9273,7 @@ class BeautifyBodyAdvanceRequest(TeaModel):
         self.body_boxes = body_boxes
         self.face_list = face_list
         self.pose_list = pose_list
+        self.is_pregnant = is_pregnant
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -9318,6 +9326,8 @@ class BeautifyBodyAdvanceRequest(TeaModel):
         if self.pose_list is not None:
             for k in self.pose_list:
                 result['PoseList'].append(k.to_map() if k else None)
+        if self.is_pregnant is not None:
+            result['IsPregnant'] = self.is_pregnant
         return result
 
     def from_map(self, m: dict = None):
@@ -9354,6 +9364,8 @@ class BeautifyBodyAdvanceRequest(TeaModel):
             for k in m.get('PoseList'):
                 temp_model = BeautifyBodyAdvanceRequestPoseList()
                 self.pose_list.append(temp_model.from_map(k))
+        if m.get('IsPregnant') is not None:
+            self.is_pregnant = m.get('IsPregnant')
         return self
 
 
@@ -9371,6 +9383,7 @@ class BeautifyBodyShrinkRequest(TeaModel):
         body_boxes_shrink: str = None,
         face_list_shrink: str = None,
         pose_list_shrink: str = None,
+        is_pregnant: bool = None,
     ):
         self.image_url = image_url
         self.original_width = original_width
@@ -9383,6 +9396,7 @@ class BeautifyBodyShrinkRequest(TeaModel):
         self.body_boxes_shrink = body_boxes_shrink
         self.face_list_shrink = face_list_shrink
         self.pose_list_shrink = pose_list_shrink
+        self.is_pregnant = is_pregnant
 
     def validate(self):
         pass
@@ -9415,6 +9429,8 @@ class BeautifyBodyShrinkRequest(TeaModel):
             result['FaceList'] = self.face_list_shrink
         if self.pose_list_shrink is not None:
             result['PoseList'] = self.pose_list_shrink
+        if self.is_pregnant is not None:
+            result['IsPregnant'] = self.is_pregnant
         return result
 
     def from_map(self, m: dict = None):
@@ -9441,6 +9457,8 @@ class BeautifyBodyShrinkRequest(TeaModel):
             self.face_list_shrink = m.get('FaceList')
         if m.get('PoseList') is not None:
             self.pose_list_shrink = m.get('PoseList')
+        if m.get('IsPregnant') is not None:
+            self.is_pregnant = m.get('IsPregnant')
         return self
 
 
