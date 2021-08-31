@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_cr20181201 import models as cr_20181201_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -39,6 +41,48 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_artifact_build_task_with_options(
+        self,
+        request: cr_20181201_models.CancelArtifactBuildTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CancelArtifactBuildTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CancelArtifactBuildTaskResponse(),
+            self.do_rpcrequest('CancelArtifactBuildTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def cancel_artifact_build_task_with_options_async(
+        self,
+        request: cr_20181201_models.CancelArtifactBuildTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CancelArtifactBuildTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CancelArtifactBuildTaskResponse(),
+            await self.do_rpcrequest_async('CancelArtifactBuildTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def cancel_artifact_build_task(
+        self,
+        request: cr_20181201_models.CancelArtifactBuildTaskRequest,
+    ) -> cr_20181201_models.CancelArtifactBuildTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_artifact_build_task_with_options(request, runtime)
+
+    async def cancel_artifact_build_task_async(
+        self,
+        request: cr_20181201_models.CancelArtifactBuildTaskRequest,
+    ) -> cr_20181201_models.CancelArtifactBuildTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_artifact_build_task_with_options_async(request, runtime)
+
     def cancel_repo_build_record_with_options(
         self,
         request: cr_20181201_models.CancelRepoBuildRecordRequest,
@@ -48,7 +92,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CancelRepoBuildRecordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CancelRepoBuildRecordResponse(),
             self.do_rpcrequest('CancelRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -61,7 +106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CancelRepoBuildRecordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CancelRepoBuildRecordResponse(),
             await self.do_rpcrequest_async('CancelRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -88,7 +134,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateBuildRecordByRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateBuildRecordByRuleResponse(),
             self.do_rpcrequest('CreateBuildRecordByRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateBuildRecordByRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateBuildRecordByRuleResponse(),
             await self.do_rpcrequest_async('CreateBuildRecordByRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -128,7 +176,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateChartNamespaceResponse(),
             self.do_rpcrequest('CreateChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -141,7 +190,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateChartNamespaceResponse(),
             await self.do_rpcrequest_async('CreateChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -168,7 +218,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateChartRepositoryResponse(),
             self.do_rpcrequest('CreateChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -181,7 +232,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateChartRepositoryResponse(),
             await self.do_rpcrequest_async('CreateChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -208,7 +260,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateInstanceEndpointAclPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateInstanceEndpointAclPolicyResponse(),
             self.do_rpcrequest('CreateInstanceEndpointAclPolicy', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -221,7 +274,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateInstanceEndpointAclPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateInstanceEndpointAclPolicyResponse(),
             await self.do_rpcrequest_async('CreateInstanceEndpointAclPolicy', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -248,7 +302,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse(),
             self.do_rpcrequest('CreateInstanceVpcEndpointLinkedVpc', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -261,7 +316,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse(),
             await self.do_rpcrequest_async('CreateInstanceVpcEndpointLinkedVpc', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -288,7 +344,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateNamespaceResponse(),
             self.do_rpcrequest('CreateNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -301,7 +358,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateNamespaceResponse(),
             await self.do_rpcrequest_async('CreateNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -328,7 +386,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoBuildRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoBuildRuleResponse(),
             self.do_rpcrequest('CreateRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -341,7 +400,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoBuildRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoBuildRuleResponse(),
             await self.do_rpcrequest_async('CreateRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -368,7 +428,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepositoryResponse(),
             self.do_rpcrequest('CreateRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -381,7 +442,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepositoryResponse(),
             await self.do_rpcrequest_async('CreateRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -399,6 +461,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_repository_with_options_async(request, runtime)
 
+    def create_repo_source_code_repo_with_options(
+        self,
+        request: cr_20181201_models.CreateRepoSourceCodeRepoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateRepoSourceCodeRepoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoSourceCodeRepoResponse(),
+            self.do_rpcrequest('CreateRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_repo_source_code_repo_with_options_async(
+        self,
+        request: cr_20181201_models.CreateRepoSourceCodeRepoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateRepoSourceCodeRepoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoSourceCodeRepoResponse(),
+            await self.do_rpcrequest_async('CreateRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_repo_source_code_repo(
+        self,
+        request: cr_20181201_models.CreateRepoSourceCodeRepoRequest,
+    ) -> cr_20181201_models.CreateRepoSourceCodeRepoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_repo_source_code_repo_with_options(request, runtime)
+
+    async def create_repo_source_code_repo_async(
+        self,
+        request: cr_20181201_models.CreateRepoSourceCodeRepoRequest,
+    ) -> cr_20181201_models.CreateRepoSourceCodeRepoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_repo_source_code_repo_with_options_async(request, runtime)
+
     def create_repo_sync_rule_with_options(
         self,
         request: cr_20181201_models.CreateRepoSyncRuleRequest,
@@ -408,7 +512,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoSyncRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoSyncRuleResponse(),
             self.do_rpcrequest('CreateRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -421,7 +526,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoSyncRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoSyncRuleResponse(),
             await self.do_rpcrequest_async('CreateRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -448,7 +554,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoSyncTaskByRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoSyncTaskByRuleResponse(),
             self.do_rpcrequest('CreateRepoSyncTaskByRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -461,7 +568,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoSyncTaskByRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoSyncTaskByRuleResponse(),
             await self.do_rpcrequest_async('CreateRepoSyncTaskByRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -479,6 +587,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_repo_sync_task_by_rule_with_options_async(request, runtime)
 
+    def create_repo_tag_with_options(
+        self,
+        request: cr_20181201_models.CreateRepoTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateRepoTagResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoTagResponse(),
+            self.do_rpcrequest('CreateRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_repo_tag_with_options_async(
+        self,
+        request: cr_20181201_models.CreateRepoTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateRepoTagResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoTagResponse(),
+            await self.do_rpcrequest_async('CreateRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_repo_tag(
+        self,
+        request: cr_20181201_models.CreateRepoTagRequest,
+    ) -> cr_20181201_models.CreateRepoTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_repo_tag_with_options(request, runtime)
+
+    async def create_repo_tag_async(
+        self,
+        request: cr_20181201_models.CreateRepoTagRequest,
+    ) -> cr_20181201_models.CreateRepoTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_repo_tag_with_options_async(request, runtime)
+
     def create_repo_tag_scan_task_with_options(
         self,
         request: cr_20181201_models.CreateRepoTagScanTaskRequest,
@@ -488,7 +638,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoTagScanTaskResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoTagScanTaskResponse(),
             self.do_rpcrequest('CreateRepoTagScanTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -501,7 +652,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoTagScanTaskResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoTagScanTaskResponse(),
             await self.do_rpcrequest_async('CreateRepoTagScanTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -528,7 +680,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoTriggerResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoTriggerResponse(),
             self.do_rpcrequest('CreateRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -541,7 +694,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.CreateRepoTriggerResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoTriggerResponse(),
             await self.do_rpcrequest_async('CreateRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -568,7 +722,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteChartNamespaceResponse(),
             self.do_rpcrequest('DeleteChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -581,7 +736,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteChartNamespaceResponse(),
             await self.do_rpcrequest_async('DeleteChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -608,7 +764,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteChartReleaseResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteChartReleaseResponse(),
             self.do_rpcrequest('DeleteChartRelease', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -621,7 +778,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteChartReleaseResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteChartReleaseResponse(),
             await self.do_rpcrequest_async('DeleteChartRelease', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -648,7 +806,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteChartRepositoryResponse(),
             self.do_rpcrequest('DeleteChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -661,7 +820,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteChartRepositoryResponse(),
             await self.do_rpcrequest_async('DeleteChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -688,7 +848,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse(),
             self.do_rpcrequest('DeleteInstanceEndpointAclPolicy', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -701,7 +862,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse(),
             await self.do_rpcrequest_async('DeleteInstanceEndpointAclPolicy', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -728,7 +890,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse(),
             self.do_rpcrequest('DeleteInstanceVpcEndpointLinkedVpc', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -741,7 +904,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse(),
             await self.do_rpcrequest_async('DeleteInstanceVpcEndpointLinkedVpc', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -768,7 +932,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteNamespaceResponse(),
             self.do_rpcrequest('DeleteNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -781,7 +946,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteNamespaceResponse(),
             await self.do_rpcrequest_async('DeleteNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -808,7 +974,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepoBuildRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepoBuildRuleResponse(),
             self.do_rpcrequest('DeleteRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -821,7 +988,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepoBuildRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepoBuildRuleResponse(),
             await self.do_rpcrequest_async('DeleteRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -848,7 +1016,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepositoryResponse(),
             self.do_rpcrequest('DeleteRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -861,7 +1030,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepositoryResponse(),
             await self.do_rpcrequest_async('DeleteRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -888,7 +1058,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepoSyncRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepoSyncRuleResponse(),
             self.do_rpcrequest('DeleteRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -901,7 +1072,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepoSyncRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepoSyncRuleResponse(),
             await self.do_rpcrequest_async('DeleteRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -928,7 +1100,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepoTagResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepoTagResponse(),
             self.do_rpcrequest('DeleteRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -941,7 +1114,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepoTagResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepoTagResponse(),
             await self.do_rpcrequest_async('DeleteRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -968,7 +1142,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepoTriggerResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepoTriggerResponse(),
             self.do_rpcrequest('DeleteRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -981,7 +1156,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.DeleteRepoTriggerResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepoTriggerResponse(),
             await self.do_rpcrequest_async('DeleteRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -999,6 +1175,50 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_repo_trigger_with_options_async(request, runtime)
 
+    def get_artifact_build_task_with_options(
+        self,
+        request: cr_20181201_models.GetArtifactBuildTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetArtifactBuildTaskResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetArtifactBuildTaskResponse(),
+            self.do_rpcrequest('GetArtifactBuildTask', '2018-12-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def get_artifact_build_task_with_options_async(
+        self,
+        request: cr_20181201_models.GetArtifactBuildTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetArtifactBuildTaskResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetArtifactBuildTaskResponse(),
+            await self.do_rpcrequest_async('GetArtifactBuildTask', '2018-12-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def get_artifact_build_task(
+        self,
+        request: cr_20181201_models.GetArtifactBuildTaskRequest,
+    ) -> cr_20181201_models.GetArtifactBuildTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_artifact_build_task_with_options(request, runtime)
+
+    async def get_artifact_build_task_async(
+        self,
+        request: cr_20181201_models.GetArtifactBuildTaskRequest,
+    ) -> cr_20181201_models.GetArtifactBuildTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_artifact_build_task_with_options_async(request, runtime)
+
     def get_authorization_token_with_options(
         self,
         request: cr_20181201_models.GetAuthorizationTokenRequest,
@@ -1008,7 +1228,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetAuthorizationTokenResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetAuthorizationTokenResponse(),
             self.do_rpcrequest('GetAuthorizationToken', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1021,7 +1242,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetAuthorizationTokenResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetAuthorizationTokenResponse(),
             await self.do_rpcrequest_async('GetAuthorizationToken', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1048,7 +1270,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetChartNamespaceResponse(),
             self.do_rpcrequest('GetChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1061,7 +1284,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetChartNamespaceResponse(),
             await self.do_rpcrequest_async('GetChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1088,7 +1312,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetChartRepositoryResponse(),
             self.do_rpcrequest('GetChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1101,7 +1326,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetChartRepositoryResponse(),
             await self.do_rpcrequest_async('GetChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1128,7 +1354,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetInstanceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceResponse(),
             self.do_rpcrequest('GetInstance', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1141,7 +1368,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetInstanceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceResponse(),
             await self.do_rpcrequest_async('GetInstance', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1164,7 +1392,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceCountResponse:
         req = open_api_models.OpenApiRequest()
-        return cr_20181201_models.GetInstanceCountResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceCountResponse(),
             self.do_rpcrequest('GetInstanceCount', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1173,7 +1402,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceCountResponse:
         req = open_api_models.OpenApiRequest()
-        return cr_20181201_models.GetInstanceCountResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceCountResponse(),
             await self.do_rpcrequest_async('GetInstanceCount', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1194,7 +1424,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetInstanceEndpointResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceEndpointResponse(),
             self.do_rpcrequest('GetInstanceEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1207,7 +1438,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetInstanceEndpointResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceEndpointResponse(),
             await self.do_rpcrequest_async('GetInstanceEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1234,7 +1466,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetInstanceUsageResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceUsageResponse(),
             self.do_rpcrequest('GetInstanceUsage', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1247,7 +1480,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetInstanceUsageResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceUsageResponse(),
             await self.do_rpcrequest_async('GetInstanceUsage', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1274,7 +1508,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetInstanceVpcEndpointResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceVpcEndpointResponse(),
             self.do_rpcrequest('GetInstanceVpcEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1287,7 +1522,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetInstanceVpcEndpointResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetInstanceVpcEndpointResponse(),
             await self.do_rpcrequest_async('GetInstanceVpcEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1314,7 +1550,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetNamespaceResponse(),
             self.do_rpcrequest('GetNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1327,7 +1564,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetNamespaceResponse(),
             await self.do_rpcrequest_async('GetNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1354,7 +1592,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoBuildRecordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoBuildRecordResponse(),
             self.do_rpcrequest('GetRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1367,7 +1606,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoBuildRecordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoBuildRecordResponse(),
             await self.do_rpcrequest_async('GetRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1394,7 +1634,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoBuildRecordStatusResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoBuildRecordStatusResponse(),
             self.do_rpcrequest('GetRepoBuildRecordStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1407,7 +1648,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoBuildRecordStatusResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoBuildRecordStatusResponse(),
             await self.do_rpcrequest_async('GetRepoBuildRecordStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1434,7 +1676,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepositoryResponse(),
             self.do_rpcrequest('GetRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1447,7 +1690,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepositoryResponse(),
             await self.do_rpcrequest_async('GetRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1465,6 +1709,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_repository_with_options_async(request, runtime)
 
+    def get_repo_source_code_repo_with_options(
+        self,
+        request: cr_20181201_models.GetRepoSourceCodeRepoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetRepoSourceCodeRepoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoSourceCodeRepoResponse(),
+            self.do_rpcrequest('GetRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_repo_source_code_repo_with_options_async(
+        self,
+        request: cr_20181201_models.GetRepoSourceCodeRepoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetRepoSourceCodeRepoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoSourceCodeRepoResponse(),
+            await self.do_rpcrequest_async('GetRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_repo_source_code_repo(
+        self,
+        request: cr_20181201_models.GetRepoSourceCodeRepoRequest,
+    ) -> cr_20181201_models.GetRepoSourceCodeRepoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_repo_source_code_repo_with_options(request, runtime)
+
+    async def get_repo_source_code_repo_async(
+        self,
+        request: cr_20181201_models.GetRepoSourceCodeRepoRequest,
+    ) -> cr_20181201_models.GetRepoSourceCodeRepoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_repo_source_code_repo_with_options_async(request, runtime)
+
     def get_repo_sync_task_with_options(
         self,
         request: cr_20181201_models.GetRepoSyncTaskRequest,
@@ -1474,7 +1760,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoSyncTaskResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoSyncTaskResponse(),
             self.do_rpcrequest('GetRepoSyncTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1487,7 +1774,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoSyncTaskResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoSyncTaskResponse(),
             await self.do_rpcrequest_async('GetRepoSyncTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1514,7 +1802,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoTagLayersResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoTagLayersResponse(),
             self.do_rpcrequest('GetRepoTagLayers', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1527,7 +1816,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoTagLayersResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoTagLayersResponse(),
             await self.do_rpcrequest_async('GetRepoTagLayers', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1554,7 +1844,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoTagManifestResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoTagManifestResponse(),
             self.do_rpcrequest('GetRepoTagManifest', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1567,7 +1858,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoTagManifestResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoTagManifestResponse(),
             await self.do_rpcrequest_async('GetRepoTagManifest', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1594,7 +1886,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoTagScanStatusResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoTagScanStatusResponse(),
             self.do_rpcrequest('GetRepoTagScanStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1607,7 +1900,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoTagScanStatusResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoTagScanStatusResponse(),
             await self.do_rpcrequest_async('GetRepoTagScanStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1634,7 +1928,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoTagScanSummaryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoTagScanSummaryResponse(),
             self.do_rpcrequest('GetRepoTagScanSummary', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1647,7 +1942,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.GetRepoTagScanSummaryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepoTagScanSummaryResponse(),
             await self.do_rpcrequest_async('GetRepoTagScanSummary', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1665,6 +1961,50 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_repo_tag_scan_summary_with_options_async(request, runtime)
 
+    def list_artifact_build_task_log_with_options(
+        self,
+        request: cr_20181201_models.ListArtifactBuildTaskLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListArtifactBuildTaskLogResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListArtifactBuildTaskLogResponse(),
+            self.do_rpcrequest('ListArtifactBuildTaskLog', '2018-12-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def list_artifact_build_task_log_with_options_async(
+        self,
+        request: cr_20181201_models.ListArtifactBuildTaskLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListArtifactBuildTaskLogResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListArtifactBuildTaskLogResponse(),
+            await self.do_rpcrequest_async('ListArtifactBuildTaskLog', '2018-12-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def list_artifact_build_task_log(
+        self,
+        request: cr_20181201_models.ListArtifactBuildTaskLogRequest,
+    ) -> cr_20181201_models.ListArtifactBuildTaskLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_artifact_build_task_log_with_options(request, runtime)
+
+    async def list_artifact_build_task_log_async(
+        self,
+        request: cr_20181201_models.ListArtifactBuildTaskLogRequest,
+    ) -> cr_20181201_models.ListArtifactBuildTaskLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_artifact_build_task_log_with_options_async(request, runtime)
+
     def list_chart_namespace_with_options(
         self,
         request: cr_20181201_models.ListChartNamespaceRequest,
@@ -1674,7 +2014,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListChartNamespaceResponse(),
             self.do_rpcrequest('ListChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1687,7 +2028,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListChartNamespaceResponse(),
             await self.do_rpcrequest_async('ListChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1714,7 +2056,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListChartReleaseResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListChartReleaseResponse(),
             self.do_rpcrequest('ListChartRelease', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1727,7 +2070,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListChartReleaseResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListChartReleaseResponse(),
             await self.do_rpcrequest_async('ListChartRelease', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1754,7 +2098,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListChartRepositoryResponse(),
             self.do_rpcrequest('ListChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1767,7 +2112,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListChartRepositoryResponse(),
             await self.do_rpcrequest_async('ListChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1794,7 +2140,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListInstanceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListInstanceResponse(),
             self.do_rpcrequest('ListInstance', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1807,7 +2154,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListInstanceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListInstanceResponse(),
             await self.do_rpcrequest_async('ListInstance', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1834,7 +2182,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListInstanceEndpointResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListInstanceEndpointResponse(),
             self.do_rpcrequest('ListInstanceEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1847,7 +2196,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListInstanceEndpointResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListInstanceEndpointResponse(),
             await self.do_rpcrequest_async('ListInstanceEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1874,7 +2224,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListInstanceRegionResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListInstanceRegionResponse(),
             self.do_rpcrequest('ListInstanceRegion', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1887,7 +2238,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListInstanceRegionResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListInstanceRegionResponse(),
             await self.do_rpcrequest_async('ListInstanceRegion', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1914,7 +2266,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListNamespaceResponse(),
             self.do_rpcrequest('ListNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1927,7 +2280,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListNamespaceResponse(),
             await self.do_rpcrequest_async('ListNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1954,7 +2308,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoBuildRecordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoBuildRecordResponse(),
             self.do_rpcrequest('ListRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1967,7 +2322,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoBuildRecordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoBuildRecordResponse(),
             await self.do_rpcrequest_async('ListRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1994,7 +2350,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoBuildRecordLogResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoBuildRecordLogResponse(),
             self.do_rpcrequest('ListRepoBuildRecordLog', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2007,7 +2364,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoBuildRecordLogResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoBuildRecordLogResponse(),
             await self.do_rpcrequest_async('ListRepoBuildRecordLog', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2034,7 +2392,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoBuildRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoBuildRuleResponse(),
             self.do_rpcrequest('ListRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2047,7 +2406,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoBuildRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoBuildRuleResponse(),
             await self.do_rpcrequest_async('ListRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2074,7 +2434,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepositoryResponse(),
             self.do_rpcrequest('ListRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2087,7 +2448,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepositoryResponse(),
             await self.do_rpcrequest_async('ListRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2114,7 +2476,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoSyncRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoSyncRuleResponse(),
             self.do_rpcrequest('ListRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2127,7 +2490,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoSyncRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoSyncRuleResponse(),
             await self.do_rpcrequest_async('ListRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2154,7 +2518,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoSyncTaskResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoSyncTaskResponse(),
             self.do_rpcrequest('ListRepoSyncTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2167,7 +2532,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoSyncTaskResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoSyncTaskResponse(),
             await self.do_rpcrequest_async('ListRepoSyncTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2194,7 +2560,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoTagResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoTagResponse(),
             self.do_rpcrequest('ListRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2207,7 +2574,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoTagResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoTagResponse(),
             await self.do_rpcrequest_async('ListRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2234,7 +2602,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoTagScanResultResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoTagScanResultResponse(),
             self.do_rpcrequest('ListRepoTagScanResult', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2247,7 +2616,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoTagScanResultResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoTagScanResultResponse(),
             await self.do_rpcrequest_async('ListRepoTagScanResult', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2274,7 +2644,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoTriggerResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoTriggerResponse(),
             self.do_rpcrequest('ListRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2287,7 +2658,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoTriggerResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoTriggerResponse(),
             await self.do_rpcrequest_async('ListRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2314,7 +2686,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoTriggerRecordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoTriggerRecordResponse(),
             self.do_rpcrequest('ListRepoTriggerRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2327,7 +2700,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ListRepoTriggerRecordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ListRepoTriggerRecordResponse(),
             await self.do_rpcrequest_async('ListRepoTriggerRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2354,7 +2728,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ResetLoginPasswordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ResetLoginPasswordResponse(),
             self.do_rpcrequest('ResetLoginPassword', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2367,7 +2742,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.ResetLoginPasswordResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.ResetLoginPasswordResponse(),
             await self.do_rpcrequest_async('ResetLoginPassword', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2394,7 +2770,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateChartNamespaceResponse(),
             self.do_rpcrequest('UpdateChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2407,7 +2784,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateChartNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateChartNamespaceResponse(),
             await self.do_rpcrequest_async('UpdateChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2434,7 +2812,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateChartRepositoryResponse(),
             self.do_rpcrequest('UpdateChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2447,7 +2826,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateChartRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateChartRepositoryResponse(),
             await self.do_rpcrequest_async('UpdateChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2474,7 +2854,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateInstanceEndpointStatusResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateInstanceEndpointStatusResponse(),
             self.do_rpcrequest('UpdateInstanceEndpointStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2487,7 +2868,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateInstanceEndpointStatusResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateInstanceEndpointStatusResponse(),
             await self.do_rpcrequest_async('UpdateInstanceEndpointStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2514,7 +2896,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateNamespaceResponse(),
             self.do_rpcrequest('UpdateNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2527,7 +2910,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateNamespaceResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateNamespaceResponse(),
             await self.do_rpcrequest_async('UpdateNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2554,7 +2938,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateRepoBuildRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepoBuildRuleResponse(),
             self.do_rpcrequest('UpdateRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2567,7 +2952,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateRepoBuildRuleResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepoBuildRuleResponse(),
             await self.do_rpcrequest_async('UpdateRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2594,7 +2980,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepositoryResponse(),
             self.do_rpcrequest('UpdateRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2607,7 +2994,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateRepositoryResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepositoryResponse(),
             await self.do_rpcrequest_async('UpdateRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2625,6 +3013,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_repository_with_options_async(request, runtime)
 
+    def update_repo_source_code_repo_with_options(
+        self,
+        request: cr_20181201_models.UpdateRepoSourceCodeRepoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateRepoSourceCodeRepoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepoSourceCodeRepoResponse(),
+            self.do_rpcrequest('UpdateRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_repo_source_code_repo_with_options_async(
+        self,
+        request: cr_20181201_models.UpdateRepoSourceCodeRepoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateRepoSourceCodeRepoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepoSourceCodeRepoResponse(),
+            await self.do_rpcrequest_async('UpdateRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_repo_source_code_repo(
+        self,
+        request: cr_20181201_models.UpdateRepoSourceCodeRepoRequest,
+    ) -> cr_20181201_models.UpdateRepoSourceCodeRepoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_repo_source_code_repo_with_options(request, runtime)
+
+    async def update_repo_source_code_repo_async(
+        self,
+        request: cr_20181201_models.UpdateRepoSourceCodeRepoRequest,
+    ) -> cr_20181201_models.UpdateRepoSourceCodeRepoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_repo_source_code_repo_with_options_async(request, runtime)
+
     def update_repo_trigger_with_options(
         self,
         request: cr_20181201_models.UpdateRepoTriggerRequest,
@@ -2634,7 +3064,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateRepoTriggerResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepoTriggerResponse(),
             self.do_rpcrequest('UpdateRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2647,7 +3078,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return cr_20181201_models.UpdateRepoTriggerResponse().from_map(
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepoTriggerResponse(),
             await self.do_rpcrequest_async('UpdateRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
