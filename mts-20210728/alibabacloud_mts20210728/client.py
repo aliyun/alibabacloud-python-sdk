@@ -195,6 +195,8 @@ class Client(OpenApiClient):
             body['Message'] = request.message
         if not UtilClient.is_unset(request.output):
             body['Output'] = request.output
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -220,6 +222,8 @@ class Client(OpenApiClient):
             body['Message'] = request.message
         if not UtilClient.is_unset(request.output):
             body['Output'] = request.output
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -527,6 +531,8 @@ class Client(OpenApiClient):
             body['Output'] = request.output
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -554,6 +560,8 @@ class Client(OpenApiClient):
             body['Output'] = request.output
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -605,6 +613,8 @@ class Client(OpenApiClient):
             body['Output'] = request.output
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -640,6 +650,8 @@ class Client(OpenApiClient):
             body['Output'] = request.output
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

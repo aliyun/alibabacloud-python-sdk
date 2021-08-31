@@ -266,8 +266,9 @@ class SubmitImageCopyrightRequest(TeaModel):
         level: int = None,
         message: str = None,
         output: str = None,
+        url: str = None,
     ):
-        # 需要加水印的图片oss地址
+        # 需要加水印的图片oss地址(Input和url二选一)
         self.input = input
         # 水印强度
         self.level = level
@@ -275,6 +276,8 @@ class SubmitImageCopyrightRequest(TeaModel):
         self.message = message
         # 水印图片输出oss地址
         self.output = output
+        # 外部url链接(Input和url二选一)
+        self.url = url
 
     def validate(self):
         pass
@@ -293,6 +296,8 @@ class SubmitImageCopyrightRequest(TeaModel):
             result['Message'] = self.message
         if self.output is not None:
             result['Output'] = self.output
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
@@ -305,6 +310,8 @@ class SubmitImageCopyrightRequest(TeaModel):
             self.message = m.get('Message')
         if m.get('Output') is not None:
             self.output = m.get('Output')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         return self
 
 
@@ -1318,6 +1325,7 @@ class SubmitTraceAbRequest(TeaModel):
         level: int = None,
         output: str = None,
         user_data: str = None,
+        url: str = None,
     ):
         # 任务结果回调
         self.call_back = call_back
@@ -1329,6 +1337,8 @@ class SubmitTraceAbRequest(TeaModel):
         self.output = output
         # 用户自定义数据，最大长度1024个字节
         self.user_data = user_data
+        # 外部url链接(Input和url二选一)
+        self.url = url
 
     def validate(self):
         pass
@@ -1349,6 +1359,8 @@ class SubmitTraceAbRequest(TeaModel):
             result['Output'] = self.output
         if self.user_data is not None:
             result['UserData'] = self.user_data
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
@@ -1363,6 +1375,8 @@ class SubmitTraceAbRequest(TeaModel):
             self.output = m.get('Output')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         return self
 
 
@@ -1501,6 +1515,7 @@ class SubmitCopyrightJobRequest(TeaModel):
         total_time: int = None,
         output: str = None,
         user_data: str = None,
+        url: str = None,
     ):
         # 任务结果回调url
         self.call_back = call_back
@@ -1520,6 +1535,8 @@ class SubmitCopyrightJobRequest(TeaModel):
         self.output = output
         # 用户自定义数据
         self.user_data = user_data
+        # 外部url链接(Input和url二选一)
+        self.url = url
 
     def validate(self):
         pass
@@ -1548,6 +1565,8 @@ class SubmitCopyrightJobRequest(TeaModel):
             result['Output'] = self.output
         if self.user_data is not None:
             result['UserData'] = self.user_data
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
@@ -1570,6 +1589,8 @@ class SubmitCopyrightJobRequest(TeaModel):
             self.output = m.get('Output')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         return self
 
 
