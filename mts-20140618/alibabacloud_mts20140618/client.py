@@ -4705,6 +4705,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_snapshot_job_list_with_options_async(request, runtime)
 
+    def detect_image_sync_with_options(
+        self,
+        request: mts_20140618_models.DetectImageSyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.DetectImageSyncResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.DetectImageSyncResponse(),
+            self.do_rpcrequest('DetectImageSync', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def detect_image_sync_with_options_async(
+        self,
+        request: mts_20140618_models.DetectImageSyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.DetectImageSyncResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.DetectImageSyncResponse(),
+            await self.do_rpcrequest_async('DetectImageSync', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def detect_image_sync(
+        self,
+        request: mts_20140618_models.DetectImageSyncRequest,
+    ) -> mts_20140618_models.DetectImageSyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_image_sync_with_options(request, runtime)
+
+    async def detect_image_sync_async(
+        self,
+        request: mts_20140618_models.DetectImageSyncRequest,
+    ) -> mts_20140618_models.DetectImageSyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_image_sync_with_options_async(request, runtime)
+
     def query_tag_job_list_with_options(
         self,
         request: mts_20140618_models.QueryTagJobListRequest,

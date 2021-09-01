@@ -44135,6 +44135,120 @@ class QuerySnapshotJobListResponse(TeaModel):
         return self
 
 
+class DetectImageSyncRequest(TeaModel):
+    def __init__(
+        self,
+        image: str = None,
+    ):
+        # 图片url链接
+        self.image = image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image is not None:
+            result['Image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        return self
+
+
+class DetectImageSyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+        status: str = None,
+        message: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 返回结果
+        self.result = result
+        # 请求状态
+        self.status = status
+        # 返回信息
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class DetectImageSyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DetectImageSyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DetectImageSyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryTagJobListRequest(TeaModel):
     def __init__(
         self,
@@ -52701,11 +52815,21 @@ class SubmitURLUploadJobRequestTargetStorage(TeaModel):
         object_key: str = None,
         bucket_owner_id: str = None,
         object_role_name: str = None,
+        s_3provider: str = None,
+        s_3endpoint: str = None,
+        s_3access_key: str = None,
+        s_3secret_key: str = None,
+        s_3session_token: str = None,
     ):
         self.bucket = bucket
         self.object_key = object_key
         self.bucket_owner_id = bucket_owner_id
         self.object_role_name = object_role_name
+        self.s_3provider = s_3provider
+        self.s_3endpoint = s_3endpoint
+        self.s_3access_key = s_3access_key
+        self.s_3secret_key = s_3secret_key
+        self.s_3session_token = s_3session_token
 
     def validate(self):
         pass
@@ -52724,6 +52848,16 @@ class SubmitURLUploadJobRequestTargetStorage(TeaModel):
             result['BucketOwnerId'] = self.bucket_owner_id
         if self.object_role_name is not None:
             result['ObjectRoleName'] = self.object_role_name
+        if self.s_3provider is not None:
+            result['S3Provider'] = self.s_3provider
+        if self.s_3endpoint is not None:
+            result['S3Endpoint'] = self.s_3endpoint
+        if self.s_3access_key is not None:
+            result['S3AccessKey'] = self.s_3access_key
+        if self.s_3secret_key is not None:
+            result['S3SecretKey'] = self.s_3secret_key
+        if self.s_3session_token is not None:
+            result['S3SessionToken'] = self.s_3session_token
         return result
 
     def from_map(self, m: dict = None):
@@ -52736,6 +52870,16 @@ class SubmitURLUploadJobRequestTargetStorage(TeaModel):
             self.bucket_owner_id = m.get('BucketOwnerId')
         if m.get('ObjectRoleName') is not None:
             self.object_role_name = m.get('ObjectRoleName')
+        if m.get('S3Provider') is not None:
+            self.s_3provider = m.get('S3Provider')
+        if m.get('S3Endpoint') is not None:
+            self.s_3endpoint = m.get('S3Endpoint')
+        if m.get('S3AccessKey') is not None:
+            self.s_3access_key = m.get('S3AccessKey')
+        if m.get('S3SecretKey') is not None:
+            self.s_3secret_key = m.get('S3SecretKey')
+        if m.get('S3SessionToken') is not None:
+            self.s_3session_token = m.get('S3SessionToken')
         return self
 
 
