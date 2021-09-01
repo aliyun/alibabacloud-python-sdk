@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -105,7 +106,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.AddAddressResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.AddAddressResponse(),
             self.do_rpcrequest('AddAddress', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -118,7 +120,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.AddAddressResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.AddAddressResponse(),
             await self.do_rpcrequest_async('AddAddress', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -145,7 +148,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.AddItemLimitRuleResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.AddItemLimitRuleResponse(),
             self.do_rpcrequest('AddItemLimitRule', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -158,7 +162,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.AddItemLimitRuleResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.AddItemLimitRuleResponse(),
             await self.do_rpcrequest_async('AddItemLimitRule', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -176,6 +181,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_item_limit_rule_with_options_async(request, runtime)
 
+    def add_item_to_sub_bizs_with_options(
+        self,
+        tmp_req: linkedmall_20180116_models.AddItemToSubBizsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.AddItemToSubBizsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkedmall_20180116_models.AddItemToSubBizsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_biz_ids):
+            request.sub_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_biz_ids, 'SubBizIds', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.AddItemToSubBizsResponse(),
+            self.do_rpcrequest('AddItemToSubBizs', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_item_to_sub_bizs_with_options_async(
+        self,
+        tmp_req: linkedmall_20180116_models.AddItemToSubBizsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.AddItemToSubBizsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkedmall_20180116_models.AddItemToSubBizsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_biz_ids):
+            request.sub_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_biz_ids, 'SubBizIds', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.AddItemToSubBizsResponse(),
+            await self.do_rpcrequest_async('AddItemToSubBizs', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_item_to_sub_bizs(
+        self,
+        request: linkedmall_20180116_models.AddItemToSubBizsRequest,
+    ) -> linkedmall_20180116_models.AddItemToSubBizsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_item_to_sub_bizs_with_options(request, runtime)
+
+    async def add_item_to_sub_bizs_async(
+        self,
+        request: linkedmall_20180116_models.AddItemToSubBizsRequest,
+    ) -> linkedmall_20180116_models.AddItemToSubBizsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_item_to_sub_bizs_with_options_async(request, runtime)
+
     def add_supplier_new_items_with_options(
         self,
         request: linkedmall_20180116_models.AddSupplierNewItemsRequest,
@@ -185,7 +240,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.AddSupplierNewItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.AddSupplierNewItemsResponse(),
             self.do_rpcrequest('AddSupplierNewItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -198,7 +254,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.AddSupplierNewItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.AddSupplierNewItemsResponse(),
             await self.do_rpcrequest_async('AddSupplierNewItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -225,7 +282,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ApplyRefundResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ApplyRefundResponse(),
             self.do_rpcrequest('ApplyRefund', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -238,7 +296,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ApplyRefundResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ApplyRefundResponse(),
             await self.do_rpcrequest_async('ApplyRefund', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -265,7 +324,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.BatchRegistAnonymousTbAccountResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.BatchRegistAnonymousTbAccountResponse(),
             self.do_rpcrequest('BatchRegistAnonymousTbAccount', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -278,7 +338,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.BatchRegistAnonymousTbAccountResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.BatchRegistAnonymousTbAccountResponse(),
             await self.do_rpcrequest_async('BatchRegistAnonymousTbAccount', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -305,7 +366,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CancelOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CancelOrderResponse(),
             self.do_rpcrequest('CancelOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -318,7 +380,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CancelOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CancelOrderResponse(),
             await self.do_rpcrequest_async('CancelOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -345,7 +408,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CancelRefundResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CancelRefundResponse(),
             self.do_rpcrequest('CancelRefund', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -358,7 +422,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CancelRefundResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CancelRefundResponse(),
             await self.do_rpcrequest_async('CancelRefund', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -385,7 +450,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ConfirmDisburseResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ConfirmDisburseResponse(),
             self.do_rpcrequest('ConfirmDisburse', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -398,7 +464,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ConfirmDisburseResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ConfirmDisburseResponse(),
             await self.do_rpcrequest_async('ConfirmDisburse', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -426,7 +493,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.CreateMovieTicketOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateMovieTicketOrderResponse(),
             self.do_rpcrequest('CreateMovieTicketOrder', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -440,7 +508,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.CreateMovieTicketOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateMovieTicketOrderResponse(),
             await self.do_rpcrequest_async('CreateMovieTicketOrder', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -467,7 +536,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreateOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateOrderResponse(),
             self.do_rpcrequest('CreateOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -480,7 +550,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreateOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateOrderResponse(),
             await self.do_rpcrequest_async('CreateOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -507,7 +578,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreateOrderV2Response().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateOrderV2Response(),
             self.do_rpcrequest('CreateOrderV2', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -520,7 +592,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreateOrderV2Response().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateOrderV2Response(),
             await self.do_rpcrequest_async('CreateOrderV2', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -547,7 +620,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreatePayUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreatePayUrlResponse(),
             self.do_rpcrequest('CreatePayUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -560,7 +634,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreatePayUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreatePayUrlResponse(),
             await self.do_rpcrequest_async('CreatePayUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -587,7 +662,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreateVirtualProductOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateVirtualProductOrderResponse(),
             self.do_rpcrequest('CreateVirtualProductOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -600,7 +676,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreateVirtualProductOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateVirtualProductOrderResponse(),
             await self.do_rpcrequest_async('CreateVirtualProductOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -627,7 +704,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreateWithholdTradeResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateWithholdTradeResponse(),
             self.do_rpcrequest('CreateWithholdTrade', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -640,7 +718,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.CreateWithholdTradeResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.CreateWithholdTradeResponse(),
             await self.do_rpcrequest_async('CreateWithholdTrade', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -667,7 +746,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.DeleteBizItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.DeleteBizItemsResponse(),
             self.do_rpcrequest('DeleteBizItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -680,7 +760,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.DeleteBizItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.DeleteBizItemsResponse(),
             await self.do_rpcrequest_async('DeleteBizItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -707,7 +788,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.DeleteItemLimitRuleResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.DeleteItemLimitRuleResponse(),
             self.do_rpcrequest('DeleteItemLimitRule', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -720,7 +802,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.DeleteItemLimitRuleResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.DeleteItemLimitRuleResponse(),
             await self.do_rpcrequest_async('DeleteItemLimitRule', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -747,7 +830,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.EnableOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.EnableOrderResponse(),
             self.do_rpcrequest('EnableOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -760,7 +844,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.EnableOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.EnableOrderResponse(),
             await self.do_rpcrequest_async('EnableOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -778,6 +863,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_order_with_options_async(request, runtime)
 
+    def execute_node_with_options(
+        self,
+        request: linkedmall_20180116_models.ExecuteNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.ExecuteNodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ExecuteNodeResponse(),
+            self.do_rpcrequest('ExecuteNode', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def execute_node_with_options_async(
+        self,
+        request: linkedmall_20180116_models.ExecuteNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.ExecuteNodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ExecuteNodeResponse(),
+            await self.do_rpcrequest_async('ExecuteNode', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def execute_node(
+        self,
+        request: linkedmall_20180116_models.ExecuteNodeRequest,
+    ) -> linkedmall_20180116_models.ExecuteNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.execute_node_with_options(request, runtime)
+
+    async def execute_node_async(
+        self,
+        request: linkedmall_20180116_models.ExecuteNodeRequest,
+    ) -> linkedmall_20180116_models.ExecuteNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.execute_node_with_options_async(request, runtime)
+
     def get_category_chain_with_options(
         self,
         request: linkedmall_20180116_models.GetCategoryChainRequest,
@@ -787,7 +914,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetCategoryChainResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetCategoryChainResponse(),
             self.do_rpcrequest('GetCategoryChain', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -800,7 +928,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetCategoryChainResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetCategoryChainResponse(),
             await self.do_rpcrequest_async('GetCategoryChain', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -827,7 +956,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetCategoryListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetCategoryListResponse(),
             self.do_rpcrequest('GetCategoryList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -840,7 +970,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetCategoryListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetCategoryListResponse(),
             await self.do_rpcrequest_async('GetCategoryList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -867,7 +998,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetCustomServiceUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetCustomServiceUrlResponse(),
             self.do_rpcrequest('GetCustomServiceUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -880,7 +1012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetCustomServiceUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetCustomServiceUrlResponse(),
             await self.do_rpcrequest_async('GetCustomServiceUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -908,7 +1041,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.GetGuidePageResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetGuidePageResponse(),
             self.do_rpcrequest('GetGuidePage', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -922,7 +1056,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.GetGuidePageResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetGuidePageResponse(),
             await self.do_rpcrequest_async('GetGuidePage', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -949,7 +1084,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetItemPromotionResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetItemPromotionResponse(),
             self.do_rpcrequest('GetItemPromotion', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -962,7 +1098,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetItemPromotionResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetItemPromotionResponse(),
             await self.do_rpcrequest_async('GetItemPromotion', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -989,7 +1126,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetLoginPageResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetLoginPageResponse(),
             self.do_rpcrequest('GetLoginPage', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1002,7 +1140,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetLoginPageResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetLoginPageResponse(),
             await self.do_rpcrequest_async('GetLoginPage', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1029,7 +1168,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetSwitchUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetSwitchUrlResponse(),
             self.do_rpcrequest('GetSwitchUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1042,7 +1182,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetSwitchUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetSwitchUrlResponse(),
             await self.do_rpcrequest_async('GetSwitchUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1069,7 +1210,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetUserInfoResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetUserInfoResponse(),
             self.do_rpcrequest('GetUserInfo', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1082,7 +1224,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetUserInfoResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetUserInfoResponse(),
             await self.do_rpcrequest_async('GetUserInfo', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1109,7 +1252,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetWithholdSignPageUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetWithholdSignPageUrlResponse(),
             self.do_rpcrequest('GetWithholdSignPageUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1122,7 +1266,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.GetWithholdSignPageUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.GetWithholdSignPageUrlResponse(),
             await self.do_rpcrequest_async('GetWithholdSignPageUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1149,7 +1294,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.InitApplyRefundResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.InitApplyRefundResponse(),
             self.do_rpcrequest('InitApplyRefund', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1162,7 +1308,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.InitApplyRefundResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.InitApplyRefundResponse(),
             await self.do_rpcrequest_async('InitApplyRefund', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1195,7 +1342,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ListItemActivitiesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ListItemActivitiesResponse(),
             self.do_rpcrequest('ListItemActivities', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1214,7 +1362,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ListItemActivitiesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ListItemActivitiesResponse(),
             await self.do_rpcrequest_async('ListItemActivities', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1241,7 +1390,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ModifyBasicAndBizItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ModifyBasicAndBizItemsResponse(),
             self.do_rpcrequest('ModifyBasicAndBizItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1254,7 +1404,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ModifyBasicAndBizItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ModifyBasicAndBizItemsResponse(),
             await self.do_rpcrequest_async('ModifyBasicAndBizItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1281,7 +1432,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ModifyBizItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ModifyBizItemsResponse(),
             self.do_rpcrequest('ModifyBizItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1294,7 +1446,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ModifyBizItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ModifyBizItemsResponse(),
             await self.do_rpcrequest_async('ModifyBizItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1321,7 +1474,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ModifyItemLimitRuleResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ModifyItemLimitRuleResponse(),
             self.do_rpcrequest('ModifyItemLimitRule', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1334,7 +1488,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ModifyItemLimitRuleResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ModifyItemLimitRuleResponse(),
             await self.do_rpcrequest_async('ModifyItemLimitRule', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1361,7 +1516,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.NotifyPayOrderStatusResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.NotifyPayOrderStatusResponse(),
             self.do_rpcrequest('NotifyPayOrderStatus', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1374,7 +1530,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.NotifyPayOrderStatusResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.NotifyPayOrderStatusResponse(),
             await self.do_rpcrequest_async('NotifyPayOrderStatus', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1401,7 +1558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.NotifyWithholdFundResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.NotifyWithholdFundResponse(),
             self.do_rpcrequest('NotifyWithholdFund', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1414,7 +1572,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.NotifyWithholdFundResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.NotifyWithholdFundResponse(),
             await self.do_rpcrequest_async('NotifyWithholdFund', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1441,7 +1600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryActivityItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryActivityItemsResponse(),
             self.do_rpcrequest('QueryActivityItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1454,7 +1614,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryActivityItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryActivityItemsResponse(),
             await self.do_rpcrequest_async('QueryActivityItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1481,7 +1642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAddressResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAddressResponse(),
             self.do_rpcrequest('QueryAddress', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1494,7 +1656,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAddressResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAddressResponse(),
             await self.do_rpcrequest_async('QueryAddress', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1521,7 +1684,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAddressDetailResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAddressDetailResponse(),
             self.do_rpcrequest('QueryAddressDetail', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1534,7 +1698,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAddressDetailResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAddressDetailResponse(),
             await self.do_rpcrequest_async('QueryAddressDetail', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1561,7 +1726,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAddressListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAddressListResponse(),
             self.do_rpcrequest('QueryAddressList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1574,7 +1740,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAddressListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAddressListResponse(),
             await self.do_rpcrequest_async('QueryAddressList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1592,6 +1759,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_address_list_with_options_async(request, runtime)
 
+    def query_advertisement_settle_info_with_options(
+        self,
+        request: linkedmall_20180116_models.QueryAdvertisementSettleInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryAdvertisementSettleInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAdvertisementSettleInfoResponse(),
+            self.do_rpcrequest('QueryAdvertisementSettleInfo', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_advertisement_settle_info_with_options_async(
+        self,
+        request: linkedmall_20180116_models.QueryAdvertisementSettleInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryAdvertisementSettleInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAdvertisementSettleInfoResponse(),
+            await self.do_rpcrequest_async('QueryAdvertisementSettleInfo', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_advertisement_settle_info(
+        self,
+        request: linkedmall_20180116_models.QueryAdvertisementSettleInfoRequest,
+    ) -> linkedmall_20180116_models.QueryAdvertisementSettleInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_advertisement_settle_info_with_options(request, runtime)
+
+    async def query_advertisement_settle_info_async(
+        self,
+        request: linkedmall_20180116_models.QueryAdvertisementSettleInfoRequest,
+    ) -> linkedmall_20180116_models.QueryAdvertisementSettleInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_advertisement_settle_info_with_options_async(request, runtime)
+
     def query_agreement_with_options(
         self,
         request: linkedmall_20180116_models.QueryAgreementRequest,
@@ -1601,7 +1810,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAgreementResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAgreementResponse(),
             self.do_rpcrequest('QueryAgreement', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1614,7 +1824,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAgreementResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAgreementResponse(),
             await self.do_rpcrequest_async('QueryAgreement', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1641,7 +1852,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAllCinemasResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAllCinemasResponse(),
             self.do_rpcrequest('QueryAllCinemas', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1654,7 +1866,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAllCinemasResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAllCinemasResponse(),
             await self.do_rpcrequest_async('QueryAllCinemas', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1685,7 +1898,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAllCitiesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAllCitiesResponse(),
             self.do_rpcrequest('QueryAllCities', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1702,7 +1916,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryAllCitiesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryAllCitiesResponse(),
             await self.do_rpcrequest_async('QueryAllCities', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1729,7 +1944,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryBatchRegistAnonymousTbAccountResultResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBatchRegistAnonymousTbAccountResultResponse(),
             self.do_rpcrequest('QueryBatchRegistAnonymousTbAccountResult', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1742,7 +1958,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryBatchRegistAnonymousTbAccountResultResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBatchRegistAnonymousTbAccountResultResponse(),
             await self.do_rpcrequest_async('QueryBatchRegistAnonymousTbAccountResult', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1775,7 +1992,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryBestSession4ItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBestSession4ItemsResponse(),
             self.do_rpcrequest('QueryBestSession4Items', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1794,7 +2012,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryBestSession4ItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBestSession4ItemsResponse(),
             await self.do_rpcrequest_async('QueryBestSession4Items', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1827,7 +2046,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryBizItemListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBizItemListResponse(),
             self.do_rpcrequest('QueryBizItemList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1846,7 +2066,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryBizItemListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBizItemListResponse(),
             await self.do_rpcrequest_async('QueryBizItemList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1873,7 +2094,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryBizItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBizItemsResponse(),
             self.do_rpcrequest('QueryBizItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1886,7 +2108,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryBizItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBizItemsResponse(),
             await self.do_rpcrequest_async('QueryBizItems', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1920,7 +2143,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.QueryBizItemsWithActivityResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBizItemsWithActivityResponse(),
             self.do_rpcrequest('QueryBizItemsWithActivity', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1940,7 +2164,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.QueryBizItemsWithActivityResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryBizItemsWithActivityResponse(),
             await self.do_rpcrequest_async('QueryBizItemsWithActivity', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -1967,7 +2192,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryGuideItemGroupResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryGuideItemGroupResponse(),
             self.do_rpcrequest('QueryGuideItemGroup', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1980,7 +2206,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryGuideItemGroupResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryGuideItemGroupResponse(),
             await self.do_rpcrequest_async('QueryGuideItemGroup', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1998,6 +2225,50 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_guide_item_group_with_options_async(request, runtime)
 
+    def query_guide_item_group_with_out_inventory_with_options(
+        self,
+        request: linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryResponse(),
+            self.do_rpcrequest('QueryGuideItemGroupWithOutInventory', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def query_guide_item_group_with_out_inventory_with_options_async(
+        self,
+        request: linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryResponse(),
+            await self.do_rpcrequest_async('QueryGuideItemGroupWithOutInventory', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def query_guide_item_group_with_out_inventory(
+        self,
+        request: linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryRequest,
+    ) -> linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_guide_item_group_with_out_inventory_with_options(request, runtime)
+
+    async def query_guide_item_group_with_out_inventory_async(
+        self,
+        request: linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryRequest,
+    ) -> linkedmall_20180116_models.QueryGuideItemGroupWithOutInventoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_guide_item_group_with_out_inventory_with_options_async(request, runtime)
+
     def query_hot_movies_with_options(
         self,
         request: linkedmall_20180116_models.QueryHotMoviesRequest,
@@ -2007,7 +2278,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryHotMoviesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryHotMoviesResponse(),
             self.do_rpcrequest('QueryHotMovies', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2020,7 +2292,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryHotMoviesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryHotMoviesResponse(),
             await self.do_rpcrequest_async('QueryHotMovies', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2038,6 +2311,62 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_hot_movies_with_options_async(request, runtime)
 
+    def query_inventory_of_items_in_biz_item_group_with_options(
+        self,
+        tmp_req: linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.item_ids):
+            request.item_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.item_ids, 'ItemIds', 'json')
+        if not UtilClient.is_unset(tmp_req.lm_item_ids):
+            request.lm_item_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lm_item_ids, 'LmItemIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupResponse(),
+            self.do_rpcrequest('QueryInventoryOfItemsInBizItemGroup', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def query_inventory_of_items_in_biz_item_group_with_options_async(
+        self,
+        tmp_req: linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.item_ids):
+            request.item_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.item_ids, 'ItemIds', 'json')
+        if not UtilClient.is_unset(tmp_req.lm_item_ids):
+            request.lm_item_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lm_item_ids, 'LmItemIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupResponse(),
+            await self.do_rpcrequest_async('QueryInventoryOfItemsInBizItemGroup', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def query_inventory_of_items_in_biz_item_group(
+        self,
+        request: linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupRequest,
+    ) -> linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_inventory_of_items_in_biz_item_group_with_options(request, runtime)
+
+    async def query_inventory_of_items_in_biz_item_group_async(
+        self,
+        request: linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupRequest,
+    ) -> linkedmall_20180116_models.QueryInventoryOfItemsInBizItemGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_inventory_of_items_in_biz_item_group_with_options_async(request, runtime)
+
     def query_item_detail_with_options(
         self,
         request: linkedmall_20180116_models.QueryItemDetailRequest,
@@ -2047,7 +2376,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryItemDetailResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryItemDetailResponse(),
             self.do_rpcrequest('QueryItemDetail', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2060,7 +2390,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryItemDetailResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryItemDetailResponse(),
             await self.do_rpcrequest_async('QueryItemDetail', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2087,7 +2418,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryItemDetailInnerResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryItemDetailInnerResponse(),
             self.do_rpcrequest('QueryItemDetailInner', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2100,7 +2432,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryItemDetailInnerResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryItemDetailInnerResponse(),
             await self.do_rpcrequest_async('QueryItemDetailInner', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2118,6 +2451,58 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_item_detail_inner_with_options_async(request, runtime)
 
+    def query_item_in_sub_bizs_with_options(
+        self,
+        tmp_req: linkedmall_20180116_models.QueryItemInSubBizsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryItemInSubBizsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkedmall_20180116_models.QueryItemInSubBizsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_biz_ids):
+            request.sub_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_biz_ids, 'SubBizIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryItemInSubBizsResponse(),
+            self.do_rpcrequest('QueryItemInSubBizs', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def query_item_in_sub_bizs_with_options_async(
+        self,
+        tmp_req: linkedmall_20180116_models.QueryItemInSubBizsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryItemInSubBizsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkedmall_20180116_models.QueryItemInSubBizsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_biz_ids):
+            request.sub_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_biz_ids, 'SubBizIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryItemInSubBizsResponse(),
+            await self.do_rpcrequest_async('QueryItemInSubBizs', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def query_item_in_sub_bizs(
+        self,
+        request: linkedmall_20180116_models.QueryItemInSubBizsRequest,
+    ) -> linkedmall_20180116_models.QueryItemInSubBizsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_item_in_sub_bizs_with_options(request, runtime)
+
+    async def query_item_in_sub_bizs_async(
+        self,
+        request: linkedmall_20180116_models.QueryItemInSubBizsRequest,
+    ) -> linkedmall_20180116_models.QueryItemInSubBizsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_item_in_sub_bizs_with_options_async(request, runtime)
+
     def query_item_inventory_with_options(
         self,
         request: linkedmall_20180116_models.QueryItemInventoryRequest,
@@ -2127,7 +2512,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryItemInventoryResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryItemInventoryResponse(),
             self.do_rpcrequest('QueryItemInventory', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2140,7 +2526,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryItemInventoryResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryItemInventoryResponse(),
             await self.do_rpcrequest_async('QueryItemInventory', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2167,7 +2554,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryLogisticsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryLogisticsResponse(),
             self.do_rpcrequest('QueryLogistics', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2180,7 +2568,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryLogisticsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryLogisticsResponse(),
             await self.do_rpcrequest_async('QueryLogistics', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2198,6 +2587,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_logistics_with_options_async(request, runtime)
 
+    def query_media_settle_info_with_options(
+        self,
+        request: linkedmall_20180116_models.QueryMediaSettleInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryMediaSettleInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMediaSettleInfoResponse(),
+            self.do_rpcrequest('QueryMediaSettleInfo', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_media_settle_info_with_options_async(
+        self,
+        request: linkedmall_20180116_models.QueryMediaSettleInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryMediaSettleInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMediaSettleInfoResponse(),
+            await self.do_rpcrequest_async('QueryMediaSettleInfo', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_media_settle_info(
+        self,
+        request: linkedmall_20180116_models.QueryMediaSettleInfoRequest,
+    ) -> linkedmall_20180116_models.QueryMediaSettleInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_media_settle_info_with_options(request, runtime)
+
+    async def query_media_settle_info_async(
+        self,
+        request: linkedmall_20180116_models.QueryMediaSettleInfoRequest,
+    ) -> linkedmall_20180116_models.QueryMediaSettleInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_media_settle_info_with_options_async(request, runtime)
+
     def query_messages_with_options(
         self,
         request: linkedmall_20180116_models.QueryMessagesRequest,
@@ -2207,7 +2638,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryMessagesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMessagesResponse(),
             self.do_rpcrequest('QueryMessages', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2220,7 +2652,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryMessagesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMessagesResponse(),
             await self.do_rpcrequest_async('QueryMessages', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2247,7 +2680,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryMovieCommentsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMovieCommentsResponse(),
             self.do_rpcrequest('QueryMovieComments', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2260,7 +2694,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryMovieCommentsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMovieCommentsResponse(),
             await self.do_rpcrequest_async('QueryMovieComments', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2287,7 +2722,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryMovieSchedulesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMovieSchedulesResponse(),
             self.do_rpcrequest('QueryMovieSchedules', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2300,7 +2736,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryMovieSchedulesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMovieSchedulesResponse(),
             await self.do_rpcrequest_async('QueryMovieSchedules', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2327,7 +2764,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryMovieSeatsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMovieSeatsResponse(),
             self.do_rpcrequest('QueryMovieSeats', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2340,7 +2778,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryMovieSeatsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMovieSeatsResponse(),
             await self.do_rpcrequest_async('QueryMovieSeats', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2368,7 +2807,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.QueryMovieTicketsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMovieTicketsResponse(),
             self.do_rpcrequest('QueryMovieTickets', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2382,7 +2822,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.QueryMovieTicketsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryMovieTicketsResponse(),
             await self.do_rpcrequest_async('QueryMovieTickets', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2409,7 +2850,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderAndPaymentListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderAndPaymentListResponse(),
             self.do_rpcrequest('QueryOrderAndPaymentList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2422,7 +2864,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderAndPaymentListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderAndPaymentListResponse(),
             await self.do_rpcrequest_async('QueryOrderAndPaymentList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2449,7 +2892,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderCommissionRateResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderCommissionRateResponse(),
             self.do_rpcrequest('QueryOrderCommissionRate', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2462,7 +2906,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderCommissionRateResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderCommissionRateResponse(),
             await self.do_rpcrequest_async('QueryOrderCommissionRate', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2489,7 +2934,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderDetailInnerResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderDetailInnerResponse(),
             self.do_rpcrequest('QueryOrderDetailInner', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2502,7 +2948,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderDetailInnerResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderDetailInnerResponse(),
             await self.do_rpcrequest_async('QueryOrderDetailInner', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2529,7 +2976,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderIdByPayIdResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderIdByPayIdResponse(),
             self.do_rpcrequest('QueryOrderIdByPayId', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2542,7 +2990,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderIdByPayIdResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderIdByPayIdResponse(),
             await self.do_rpcrequest_async('QueryOrderIdByPayId', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2570,7 +3019,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.QueryOrderInfoAfterSaleResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderInfoAfterSaleResponse(),
             self.do_rpcrequest('QueryOrderInfoAfterSale', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2584,7 +3034,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             query=query
         )
-        return linkedmall_20180116_models.QueryOrderInfoAfterSaleResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderInfoAfterSaleResponse(),
             await self.do_rpcrequest_async('QueryOrderInfoAfterSale', '2018-01-16', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
@@ -2611,7 +3062,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderItemInfoByPaymentIdForAiZhanYouResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderItemInfoByPaymentIdForAiZhanYouResponse(),
             self.do_rpcrequest('QueryOrderItemInfoByPaymentIdForAiZhanYou', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2624,7 +3076,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderItemInfoByPaymentIdForAiZhanYouResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderItemInfoByPaymentIdForAiZhanYouResponse(),
             await self.do_rpcrequest_async('QueryOrderItemInfoByPaymentIdForAiZhanYou', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2651,7 +3104,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderListResponse(),
             self.do_rpcrequest('QueryOrderList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2664,7 +3118,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderListResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderListResponse(),
             await self.do_rpcrequest_async('QueryOrderList', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2691,7 +3146,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderLogisticsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderLogisticsResponse(),
             self.do_rpcrequest('QueryOrderLogistics', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2704,7 +3160,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryOrderLogisticsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryOrderLogisticsResponse(),
             await self.do_rpcrequest_async('QueryOrderLogistics', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2731,7 +3188,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryRefundApplicationDetailResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryRefundApplicationDetailResponse(),
             self.do_rpcrequest('QueryRefundApplicationDetail', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2744,7 +3202,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryRefundApplicationDetailResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryRefundApplicationDetailResponse(),
             await self.do_rpcrequest_async('QueryRefundApplicationDetail', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2762,6 +3221,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_refund_application_detail_with_options_async(request, runtime)
 
+    def query_statements_with_options(
+        self,
+        request: linkedmall_20180116_models.QueryStatementsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryStatementsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryStatementsResponse(),
+            self.do_rpcrequest('QueryStatements', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_statements_with_options_async(
+        self,
+        request: linkedmall_20180116_models.QueryStatementsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20180116_models.QueryStatementsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryStatementsResponse(),
+            await self.do_rpcrequest_async('QueryStatements', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_statements(
+        self,
+        request: linkedmall_20180116_models.QueryStatementsRequest,
+    ) -> linkedmall_20180116_models.QueryStatementsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_statements_with_options(request, runtime)
+
+    async def query_statements_async(
+        self,
+        request: linkedmall_20180116_models.QueryStatementsRequest,
+    ) -> linkedmall_20180116_models.QueryStatementsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_statements_with_options_async(request, runtime)
+
     def query_unfinished_activities_with_options(
         self,
         request: linkedmall_20180116_models.QueryUnfinishedActivitiesRequest,
@@ -2771,7 +3272,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryUnfinishedActivitiesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryUnfinishedActivitiesResponse(),
             self.do_rpcrequest('QueryUnfinishedActivities', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2784,7 +3286,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryUnfinishedActivitiesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryUnfinishedActivitiesResponse(),
             await self.do_rpcrequest_async('QueryUnfinishedActivities', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2811,7 +3314,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryUnfinishedSessionsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryUnfinishedSessionsResponse(),
             self.do_rpcrequest('QueryUnfinishedSessions', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2824,7 +3328,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryUnfinishedSessionsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryUnfinishedSessionsResponse(),
             await self.do_rpcrequest_async('QueryUnfinishedSessions', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2857,7 +3362,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryUnfinishedSessions4ItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryUnfinishedSessions4ItemsResponse(),
             self.do_rpcrequest('QueryUnfinishedSessions4Items', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2876,7 +3382,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryUnfinishedSessions4ItemsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryUnfinishedSessions4ItemsResponse(),
             await self.do_rpcrequest_async('QueryUnfinishedSessions4Items', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2907,7 +3414,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryUpcomingMoviesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryUpcomingMoviesResponse(),
             self.do_rpcrequest('QueryUpcomingMovies', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2924,7 +3432,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryUpcomingMoviesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryUpcomingMoviesResponse(),
             await self.do_rpcrequest_async('QueryUpcomingMovies', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2951,7 +3460,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryWithholdTradeResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryWithholdTradeResponse(),
             self.do_rpcrequest('QueryWithholdTrade', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2964,7 +3474,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.QueryWithholdTradeResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.QueryWithholdTradeResponse(),
             await self.do_rpcrequest_async('QueryWithholdTrade', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2991,7 +3502,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RefundOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RefundOrderResponse(),
             self.do_rpcrequest('RefundOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3004,7 +3516,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RefundOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RefundOrderResponse(),
             await self.do_rpcrequest_async('RefundOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3031,7 +3544,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RefundPointResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RefundPointResponse(),
             self.do_rpcrequest('RefundPoint', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3044,7 +3558,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RefundPointResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RefundPointResponse(),
             await self.do_rpcrequest_async('RefundPoint', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3071,7 +3586,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RefuseMerchantSyncTaskResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RefuseMerchantSyncTaskResponse(),
             self.do_rpcrequest('RefuseMerchantSyncTask', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3084,7 +3600,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RefuseMerchantSyncTaskResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RefuseMerchantSyncTaskResponse(),
             await self.do_rpcrequest_async('RefuseMerchantSyncTask', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3111,7 +3628,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RegistAnonymousTbAccountResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RegistAnonymousTbAccountResponse(),
             self.do_rpcrequest('RegistAnonymousTbAccount', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3124,7 +3642,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RegistAnonymousTbAccountResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RegistAnonymousTbAccountResponse(),
             await self.do_rpcrequest_async('RegistAnonymousTbAccount', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3151,7 +3670,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ReleaseMovieSeatResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ReleaseMovieSeatResponse(),
             self.do_rpcrequest('ReleaseMovieSeat', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3164,7 +3684,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ReleaseMovieSeatResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ReleaseMovieSeatResponse(),
             await self.do_rpcrequest_async('ReleaseMovieSeat', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3191,7 +3712,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RemoveAddressResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RemoveAddressResponse(),
             self.do_rpcrequest('RemoveAddress', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3204,7 +3726,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RemoveAddressResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RemoveAddressResponse(),
             await self.do_rpcrequest_async('RemoveAddress', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3231,7 +3754,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RemoveMessagesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RemoveMessagesResponse(),
             self.do_rpcrequest('RemoveMessages', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3244,7 +3768,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RemoveMessagesResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RemoveMessagesResponse(),
             await self.do_rpcrequest_async('RemoveMessages', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3271,7 +3796,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RenderH5OrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RenderH5OrderResponse(),
             self.do_rpcrequest('RenderH5Order', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3284,7 +3810,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RenderH5OrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RenderH5OrderResponse(),
             await self.do_rpcrequest_async('RenderH5Order', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3311,7 +3838,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RenderOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RenderOrderResponse(),
             self.do_rpcrequest('RenderOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3324,7 +3852,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RenderOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RenderOrderResponse(),
             await self.do_rpcrequest_async('RenderOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3351,7 +3880,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RepayForPayUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RepayForPayUrlResponse(),
             self.do_rpcrequest('RepayForPayUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3364,7 +3894,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RepayForPayUrlResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RepayForPayUrlResponse(),
             await self.do_rpcrequest_async('RepayForPayUrl', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3391,7 +3922,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RepayOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RepayOrderResponse(),
             self.do_rpcrequest('RepayOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3404,7 +3936,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.RepayOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.RepayOrderResponse(),
             await self.do_rpcrequest_async('RepayOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3431,7 +3964,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ReserveMovieSeatResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ReserveMovieSeatResponse(),
             self.do_rpcrequest('ReserveMovieSeat', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3444,7 +3978,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ReserveMovieSeatResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ReserveMovieSeatResponse(),
             await self.do_rpcrequest_async('ReserveMovieSeat', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3471,7 +4006,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.SettleOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.SettleOrderResponse(),
             self.do_rpcrequest('SettleOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3484,7 +4020,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.SettleOrderResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.SettleOrderResponse(),
             await self.do_rpcrequest_async('SettleOrder', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3511,7 +4048,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.SubmitReturnGoodLogisticsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.SubmitReturnGoodLogisticsResponse(),
             self.do_rpcrequest('SubmitReturnGoodLogistics', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3524,7 +4062,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.SubmitReturnGoodLogisticsResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.SubmitReturnGoodLogisticsResponse(),
             await self.do_rpcrequest_async('SubmitReturnGoodLogistics', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3551,7 +4090,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.SyncMerchantInfoResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.SyncMerchantInfoResponse(),
             self.do_rpcrequest('SyncMerchantInfo', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3564,7 +4104,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.SyncMerchantInfoResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.SyncMerchantInfoResponse(),
             await self.do_rpcrequest_async('SyncMerchantInfo', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3591,7 +4132,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.UnsignWithholdAgreementResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.UnsignWithholdAgreementResponse(),
             self.do_rpcrequest('UnsignWithholdAgreement', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3604,7 +4146,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.UnsignWithholdAgreementResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.UnsignWithholdAgreementResponse(),
             await self.do_rpcrequest_async('UnsignWithholdAgreement', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3631,7 +4174,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.UpdateAddressResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.UpdateAddressResponse(),
             self.do_rpcrequest('UpdateAddress', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3644,7 +4188,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.UpdateAddressResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.UpdateAddressResponse(),
             await self.do_rpcrequest_async('UpdateAddress', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3671,7 +4216,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ValidateTaobaoAccountResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ValidateTaobaoAccountResponse(),
             self.do_rpcrequest('ValidateTaobaoAccount', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -3684,7 +4230,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return linkedmall_20180116_models.ValidateTaobaoAccountResponse().from_map(
+        return TeaCore.from_map(
+            linkedmall_20180116_models.ValidateTaobaoAccountResponse(),
             await self.do_rpcrequest_async('ValidateTaobaoAccount', '2018-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
