@@ -22,21 +22,10 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'central'
         self._endpoint_map = {
-            'ap-northeast-1': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2-pop': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'ap-south-1': 'dysmsapi.ap-southeast-1.aliyuncs.com',
             'ap-southeast-1': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-2': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-5': 'dysmsapi.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-5': 'dysmsapi-xman.ap-southeast-5.aliyuncs.com',
             'cn-beijing': 'dysmsapi-proxy.cn-beijing.aliyuncs.com',
-            'eu-central-1': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'eu-west-1': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'eu-west-1-oxs': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'me-east-1': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'rus-west-1-pop': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'us-east-1': 'dysmsapi.ap-southeast-1.aliyuncs.com',
-            'us-west-1': 'dysmsapi.ap-southeast-1.aliyuncs.com'
+            'cn-hongkong': 'dysmsapi-xman.cn-hongkong.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dysmsapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
