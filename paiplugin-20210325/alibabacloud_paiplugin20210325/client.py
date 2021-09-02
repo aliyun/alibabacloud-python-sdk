@@ -187,6 +187,10 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.process_instance_id):
             body['ProcessInstanceID'] = request.process_instance_id
+        if not UtilClient.is_unset(request.signature_id):
+            body['SignatureID'] = request.signature_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -212,6 +216,10 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.process_instance_id):
             body['ProcessInstanceID'] = request.process_instance_id
+        if not UtilClient.is_unset(request.signature_id):
+            body['SignatureID'] = request.signature_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
