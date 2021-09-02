@@ -669,6 +669,88 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('ResetSshKey', '2021-06-25', 'HTTPS', 'PUT', 'AK', f'/organization/{organization_id}/sshKey', 'json', req, runtime)
         )
 
+    def create_workspace(
+        self,
+        request: devops_20210625_models.CreateWorkspaceRequest,
+    ) -> devops_20210625_models.CreateWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_workspace_with_options(request, headers, runtime)
+
+    async def create_workspace_async(
+        self,
+        request: devops_20210625_models.CreateWorkspaceRequest,
+    ) -> devops_20210625_models.CreateWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_workspace_with_options_async(request, headers, runtime)
+
+    def create_workspace_with_options(
+        self,
+        request: devops_20210625_models.CreateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.workspace_template):
+            body['workspaceTemplate'] = request.workspace_template
+        if not UtilClient.is_unset(request.code_url):
+            body['codeUrl'] = request.code_url
+        if not UtilClient.is_unset(request.code_version):
+            body['codeVersion'] = request.code_version
+        if not UtilClient.is_unset(request.file_path):
+            body['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.reuse):
+            body['reuse'] = request.reuse
+        if not UtilClient.is_unset(request.resource_identifier):
+            body['resourceIdentifier'] = request.resource_identifier
+        if not UtilClient.is_unset(request.request_from):
+            body['requestFrom'] = request.request_from
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateWorkspaceResponse(),
+            self.do_roarequest_with_form('CreateWorkspace', '2021-06-25', 'HTTPS', 'POST', 'AK', f'/api/workspaces', 'json', req, runtime)
+        )
+
+    async def create_workspace_with_options_async(
+        self,
+        request: devops_20210625_models.CreateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.workspace_template):
+            body['workspaceTemplate'] = request.workspace_template
+        if not UtilClient.is_unset(request.code_url):
+            body['codeUrl'] = request.code_url
+        if not UtilClient.is_unset(request.code_version):
+            body['codeVersion'] = request.code_version
+        if not UtilClient.is_unset(request.file_path):
+            body['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.reuse):
+            body['reuse'] = request.reuse
+        if not UtilClient.is_unset(request.resource_identifier):
+            body['resourceIdentifier'] = request.resource_identifier
+        if not UtilClient.is_unset(request.request_from):
+            body['requestFrom'] = request.request_from
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateWorkspaceResponse(),
+            await self.do_roarequest_with_form_async('CreateWorkspace', '2021-06-25', 'HTTPS', 'POST', 'AK', f'/api/workspaces', 'json', req, runtime)
+        )
+
     def list_service_connections(
         self,
         organization_id: str,
@@ -1215,6 +1297,84 @@ class Client(OpenApiClient):
             await self.do_roarequest_with_form_async('StartPipelineRun', '2021-06-25', 'HTTPS', 'POST', 'AK', f'/organizations/{organization_id}/pipelines/{pipeline_id}/run', 'json', req, runtime)
         )
 
+    def list_workspaces(
+        self,
+        request: devops_20210625_models.ListWorkspacesRequest,
+    ) -> devops_20210625_models.ListWorkspacesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_workspaces_with_options(request, headers, runtime)
+
+    async def list_workspaces_async(
+        self,
+        request: devops_20210625_models.ListWorkspacesRequest,
+    ) -> devops_20210625_models.ListWorkspacesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_workspaces_with_options_async(request, headers, runtime)
+
+    def list_workspaces_with_options(
+        self,
+        tmp_req: devops_20210625_models.ListWorkspacesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListWorkspacesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = devops_20210625_models.ListWorkspacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.status_list):
+            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'statusList', 'simple')
+        if not UtilClient.is_unset(tmp_req.workspace_template_list):
+            request.workspace_template_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workspace_template_list, 'workspaceTemplateList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.status_list_shrink):
+            query['statusList'] = request.status_list_shrink
+        if not UtilClient.is_unset(request.workspace_template_list_shrink):
+            query['workspaceTemplateList'] = request.workspace_template_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListWorkspacesResponse(),
+            self.do_roarequest('ListWorkspaces', '2021-06-25', 'HTTPS', 'GET', 'AK', f'/api/workspaces', 'json', req, runtime)
+        )
+
+    async def list_workspaces_with_options_async(
+        self,
+        tmp_req: devops_20210625_models.ListWorkspacesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListWorkspacesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = devops_20210625_models.ListWorkspacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.status_list):
+            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'statusList', 'simple')
+        if not UtilClient.is_unset(tmp_req.workspace_template_list):
+            request.workspace_template_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workspace_template_list, 'workspaceTemplateList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.status_list_shrink):
+            query['statusList'] = request.status_list_shrink
+        if not UtilClient.is_unset(request.workspace_template_list_shrink):
+            query['workspaceTemplateList'] = request.workspace_template_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListWorkspacesResponse(),
+            await self.do_roarequest_async('ListWorkspaces', '2021-06-25', 'HTTPS', 'GET', 'AK', f'/api/workspaces', 'json', req, runtime)
+        )
+
     def get_pipeline_run(
         self,
         organization_id: str,
@@ -1429,6 +1589,50 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('DeleteVariableGroup', '2021-06-25', 'HTTPS', 'DELETE', 'AK', f'/organization/{organization_id}/variableGroups/{id}', 'json', req, runtime)
         )
 
+    def get_workspace(
+        self,
+        workspace_id: str,
+    ) -> devops_20210625_models.GetWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_workspace_with_options(workspace_id, headers, runtime)
+
+    async def get_workspace_async(
+        self,
+        workspace_id: str,
+    ) -> devops_20210625_models.GetWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_workspace_with_options_async(workspace_id, headers, runtime)
+
+    def get_workspace_with_options(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetWorkspaceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetWorkspaceResponse(),
+            self.do_roarequest('GetWorkspace', '2021-06-25', 'HTTPS', 'GET', 'AK', f'/api/workspaces/{workspace_id}', 'json', req, runtime)
+        )
+
+    async def get_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetWorkspaceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetWorkspaceResponse(),
+            await self.do_roarequest_async('GetWorkspace', '2021-06-25', 'HTTPS', 'GET', 'AK', f'/api/workspaces/{workspace_id}', 'json', req, runtime)
+        )
+
     def create_ssh_key(
         self,
         organization_id: str,
@@ -1519,6 +1723,50 @@ class Client(OpenApiClient):
         return TeaCore.from_map(
             devops_20210625_models.DeleteHostGroupResponse(),
             await self.do_roarequest_async('DeleteHostGroup', '2021-06-25', 'HTTPS', 'DELETE', 'AK', f'/organization/{organization_id}/hostGroups/{id}', 'json', req, runtime)
+        )
+
+    def release_workspace(
+        self,
+        workspace_id: str,
+    ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.release_workspace_with_options(workspace_id, headers, runtime)
+
+    async def release_workspace_async(
+        self,
+        workspace_id: str,
+    ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.release_workspace_with_options_async(workspace_id, headers, runtime)
+
+    def release_workspace_with_options(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ReleaseWorkspaceResponse(),
+            self.do_roarequest('ReleaseWorkspace', '2021-06-25', 'HTTPS', 'DELETE', 'AK', f'/api/workspaces/{workspace_id}/release', 'json', req, runtime)
+        )
+
+    async def release_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ReleaseWorkspaceResponse(),
+            await self.do_roarequest_async('ReleaseWorkspace', '2021-06-25', 'HTTPS', 'DELETE', 'AK', f'/api/workspaces/{workspace_id}/release', 'json', req, runtime)
         )
 
     def list_variable_groups(
@@ -1637,6 +1885,50 @@ class Client(OpenApiClient):
         return TeaCore.from_map(
             devops_20210625_models.DeletePipelineResponse(),
             await self.do_roarequest_async('DeletePipeline', '2021-06-25', 'HTTPS', 'DELETE', 'AK', f'/organization/{organization_id}/pipelines/{pipeline_id}', 'json', req, runtime)
+        )
+
+    def frozen_workspace(
+        self,
+        workspace_id: str,
+    ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.frozen_workspace_with_options(workspace_id, headers, runtime)
+
+    async def frozen_workspace_async(
+        self,
+        workspace_id: str,
+    ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.frozen_workspace_with_options_async(workspace_id, headers, runtime)
+
+    def frozen_workspace_with_options(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.FrozenWorkspaceResponse(),
+            self.do_roarequest('FrozenWorkspace', '2021-06-25', 'HTTPS', 'PUT', 'AK', f'/api/workspaces/{workspace_id}/frozen', 'json', req, runtime)
+        )
+
+    async def frozen_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.FrozenWorkspaceResponse(),
+            await self.do_roarequest_async('FrozenWorkspace', '2021-06-25', 'HTTPS', 'PUT', 'AK', f'/api/workspaces/{workspace_id}/frozen', 'json', req, runtime)
         )
 
     def list_pipeline_runs(
