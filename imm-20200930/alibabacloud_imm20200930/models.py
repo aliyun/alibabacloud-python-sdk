@@ -1694,6 +1694,266 @@ class File(TeaModel):
         return self
 
 
+class WebofficeUser(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        avatar: str = None,
+    ):
+        # Id
+        self.id = id
+        # 名字
+        self.name = name
+        # 头像
+        self.avatar = avatar
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.avatar is not None:
+            result['Avatar'] = self.avatar
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Avatar') is not None:
+            self.avatar = m.get('Avatar')
+        return self
+
+
+class AssumeRoleChainNode(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        owner_id: str = None,
+        role: str = None,
+    ):
+        # 账号类型，普通账号填 user，服务账号填 service
+        self.type = type
+        # 账号id
+        self.owner_id = owner_id
+        # 授权角色名
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class AssumeRoleChain(TeaModel):
+    def __init__(
+        self,
+        policy: str = None,
+        chain: List[AssumeRoleChainNode] = None,
+    ):
+        # 当前用户 policy
+        self.policy = policy
+        # 链式授权节点
+        self.chain = chain
+
+    def validate(self):
+        if self.chain:
+            for k in self.chain:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        result['Chain'] = []
+        if self.chain is not None:
+            for k in self.chain:
+                result['Chain'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        self.chain = []
+        if m.get('Chain') is not None:
+            for k in m.get('Chain'):
+                temp_model = AssumeRoleChainNode()
+                self.chain.append(temp_model.from_map(k))
+        return self
+
+
+class WebofficeWatermark(TeaModel):
+    def __init__(
+        self,
+        type: int = None,
+        value: str = None,
+        rotate: float = None,
+        vertical: int = None,
+        horizontal: int = None,
+        font: str = None,
+        fill_style: str = None,
+    ):
+        # 水印类型，目前仅支持文字水印，0: 无水印；1: 文字水印
+        self.type = type
+        # 水印文字
+        self.value = value
+        # 旋转角度
+        self.rotate = rotate
+        # 垂直间距
+        self.vertical = vertical
+        # 水平间距
+        self.horizontal = horizontal
+        # 字体样式
+        self.font = font
+        # 字体颜色
+        self.fill_style = fill_style
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.rotate is not None:
+            result['Rotate'] = self.rotate
+        if self.vertical is not None:
+            result['Vertical'] = self.vertical
+        if self.horizontal is not None:
+            result['Horizontal'] = self.horizontal
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.fill_style is not None:
+            result['FillStyle'] = self.fill_style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Rotate') is not None:
+            self.rotate = m.get('Rotate')
+        if m.get('Vertical') is not None:
+            self.vertical = m.get('Vertical')
+        if m.get('Horizontal') is not None:
+            self.horizontal = m.get('Horizontal')
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FillStyle') is not None:
+            self.fill_style = m.get('FillStyle')
+        return self
+
+
+class WebofficePermission(TeaModel):
+    def __init__(
+        self,
+        rename: bool = None,
+        readonly: bool = None,
+        history: bool = None,
+        print: bool = None,
+        export: bool = None,
+        copy: bool = None,
+    ):
+        # 重命名
+        self.rename = rename
+        # 只读模式
+        self.readonly = readonly
+        # 查看历史版本
+        self.history = history
+        # 打印
+        self.print = print
+        # 导出
+        self.export = export
+        # 拷贝
+        self.copy = copy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rename is not None:
+            result['Rename'] = self.rename
+        if self.readonly is not None:
+            result['Readonly'] = self.readonly
+        if self.history is not None:
+            result['History'] = self.history
+        if self.print is not None:
+            result['Print'] = self.print
+        if self.export is not None:
+            result['Export'] = self.export
+        if self.copy is not None:
+            result['Copy'] = self.copy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rename') is not None:
+            self.rename = m.get('Rename')
+        if m.get('Readonly') is not None:
+            self.readonly = m.get('Readonly')
+        if m.get('History') is not None:
+            self.history = m.get('History')
+        if m.get('Print') is not None:
+            self.print = m.get('Print')
+        if m.get('Export') is not None:
+            self.export = m.get('Export')
+        if m.get('Copy') is not None:
+            self.copy = m.get('Copy')
+        return self
+
+
 class SimpleQuery(TeaModel):
     def __init__(
         self,
@@ -4217,6 +4477,355 @@ class GetProjectResponse(TeaModel):
         return self
 
 
+class GetWebofficeUrlRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        source_uri: str = None,
+        filename: str = None,
+        user_data: str = None,
+        preview_pages: int = None,
+        password: str = None,
+        external_uploaded: bool = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        hidecmb: bool = None,
+        permission: WebofficePermission = None,
+        user: WebofficeUser = None,
+        watermark: WebofficeWatermark = None,
+        assume_role_chain: AssumeRoleChain = None,
+    ):
+        # 项目名称
+        self.project_name = project_name
+        # 预览编辑地址
+        self.source_uri = source_uri
+        # 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
+        self.filename = filename
+        # 用户自定义数据，在消息通知中返回
+        self.user_data = user_data
+        # 预览前几页
+        self.preview_pages = preview_pages
+        # 文件密码
+        self.password = password
+        # 是否支持外部上传
+        self.external_uploaded = external_uploaded
+        # mns 消息通知地址
+        self.notify_endpoint = notify_endpoint
+        # mns 消息通知 topic
+        self.notify_topic_name = notify_topic_name
+        # 隐藏工具栏，预览模式下使用
+        self.hidecmb = hidecmb
+        # 权限
+        self.permission = permission
+        # 用户
+        self.user = user
+        # 水印
+        self.watermark = watermark
+        # 链式授权
+        self.assume_role_chain = assume_role_chain
+
+    def validate(self):
+        if self.permission:
+            self.permission.validate()
+        if self.user:
+            self.user.validate()
+        if self.watermark:
+            self.watermark.validate()
+        if self.assume_role_chain:
+            self.assume_role_chain.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceUri'] = self.source_uri
+        if self.filename is not None:
+            result['Filename'] = self.filename
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.preview_pages is not None:
+            result['PreviewPages'] = self.preview_pages
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.external_uploaded is not None:
+            result['ExternalUploaded'] = self.external_uploaded
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.hidecmb is not None:
+            result['Hidecmb'] = self.hidecmb
+        if self.permission is not None:
+            result['Permission'] = self.permission.to_map()
+        if self.user is not None:
+            result['User'] = self.user.to_map()
+        if self.watermark is not None:
+            result['Watermark'] = self.watermark.to_map()
+        if self.assume_role_chain is not None:
+            result['AssumeRoleChain'] = self.assume_role_chain.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceUri') is not None:
+            self.source_uri = m.get('SourceUri')
+        if m.get('Filename') is not None:
+            self.filename = m.get('Filename')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('PreviewPages') is not None:
+            self.preview_pages = m.get('PreviewPages')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ExternalUploaded') is not None:
+            self.external_uploaded = m.get('ExternalUploaded')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Hidecmb') is not None:
+            self.hidecmb = m.get('Hidecmb')
+        if m.get('Permission') is not None:
+            temp_model = WebofficePermission()
+            self.permission = temp_model.from_map(m['Permission'])
+        if m.get('User') is not None:
+            temp_model = WebofficeUser()
+            self.user = temp_model.from_map(m['User'])
+        if m.get('Watermark') is not None:
+            temp_model = WebofficeWatermark()
+            self.watermark = temp_model.from_map(m['Watermark'])
+        if m.get('AssumeRoleChain') is not None:
+            temp_model = AssumeRoleChain()
+            self.assume_role_chain = temp_model.from_map(m['AssumeRoleChain'])
+        return self
+
+
+class GetWebofficeUrlShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        source_uri: str = None,
+        filename: str = None,
+        user_data: str = None,
+        preview_pages: int = None,
+        password: str = None,
+        external_uploaded: bool = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        hidecmb: bool = None,
+        permission_shrink: str = None,
+        user_shrink: str = None,
+        watermark_shrink: str = None,
+        assume_role_chain_shrink: str = None,
+    ):
+        # 项目名称
+        self.project_name = project_name
+        # 预览编辑地址
+        self.source_uri = source_uri
+        # 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
+        self.filename = filename
+        # 用户自定义数据，在消息通知中返回
+        self.user_data = user_data
+        # 预览前几页
+        self.preview_pages = preview_pages
+        # 文件密码
+        self.password = password
+        # 是否支持外部上传
+        self.external_uploaded = external_uploaded
+        # mns 消息通知地址
+        self.notify_endpoint = notify_endpoint
+        # mns 消息通知 topic
+        self.notify_topic_name = notify_topic_name
+        # 隐藏工具栏，预览模式下使用
+        self.hidecmb = hidecmb
+        # 权限
+        self.permission_shrink = permission_shrink
+        # 用户
+        self.user_shrink = user_shrink
+        # 水印
+        self.watermark_shrink = watermark_shrink
+        # 链式授权
+        self.assume_role_chain_shrink = assume_role_chain_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceUri'] = self.source_uri
+        if self.filename is not None:
+            result['Filename'] = self.filename
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.preview_pages is not None:
+            result['PreviewPages'] = self.preview_pages
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.external_uploaded is not None:
+            result['ExternalUploaded'] = self.external_uploaded
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.hidecmb is not None:
+            result['Hidecmb'] = self.hidecmb
+        if self.permission_shrink is not None:
+            result['Permission'] = self.permission_shrink
+        if self.user_shrink is not None:
+            result['User'] = self.user_shrink
+        if self.watermark_shrink is not None:
+            result['Watermark'] = self.watermark_shrink
+        if self.assume_role_chain_shrink is not None:
+            result['AssumeRoleChain'] = self.assume_role_chain_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceUri') is not None:
+            self.source_uri = m.get('SourceUri')
+        if m.get('Filename') is not None:
+            self.filename = m.get('Filename')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('PreviewPages') is not None:
+            self.preview_pages = m.get('PreviewPages')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ExternalUploaded') is not None:
+            self.external_uploaded = m.get('ExternalUploaded')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Hidecmb') is not None:
+            self.hidecmb = m.get('Hidecmb')
+        if m.get('Permission') is not None:
+            self.permission_shrink = m.get('Permission')
+        if m.get('User') is not None:
+            self.user_shrink = m.get('User')
+        if m.get('Watermark') is not None:
+            self.watermark_shrink = m.get('Watermark')
+        if m.get('AssumeRoleChain') is not None:
+            self.assume_role_chain_shrink = m.get('AssumeRoleChain')
+        return self
+
+
+class GetWebofficeUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        weboffice_url: str = None,
+        access_token: str = None,
+        refresh_token: str = None,
+        access_token_expired_time: str = None,
+        refresh_token_expired_time: str = None,
+    ):
+        # 请求 id
+        self.request_id = request_id
+        # 预览编辑地址
+        self.weboffice_url = weboffice_url
+        # access token
+        self.access_token = access_token
+        # refresh token
+        self.refresh_token = refresh_token
+        # access token 过期时间
+        self.access_token_expired_time = access_token_expired_time
+        # refresh token 过期时间
+        self.refresh_token_expired_time = refresh_token_expired_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.weboffice_url is not None:
+            result['WebofficeUrl'] = self.weboffice_url
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.refresh_token is not None:
+            result['RefreshToken'] = self.refresh_token
+        if self.access_token_expired_time is not None:
+            result['AccessTokenExpiredTime'] = self.access_token_expired_time
+        if self.refresh_token_expired_time is not None:
+            result['RefreshTokenExpiredTime'] = self.refresh_token_expired_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('WebofficeUrl') is not None:
+            self.weboffice_url = m.get('WebofficeUrl')
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('RefreshToken') is not None:
+            self.refresh_token = m.get('RefreshToken')
+        if m.get('AccessTokenExpiredTime') is not None:
+            self.access_token_expired_time = m.get('AccessTokenExpiredTime')
+        if m.get('RefreshTokenExpiredTime') is not None:
+            self.refresh_token_expired_time = m.get('RefreshTokenExpiredTime')
+        return self
+
+
+class GetWebofficeUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetWebofficeUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetWebofficeUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class IndexFileMetaRequest(TeaModel):
     def __init__(
         self,
@@ -5068,6 +5677,199 @@ class ListProjectsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListProjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RefreshWebofficeTokenRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        access_token: str = None,
+        refresh_token: str = None,
+        assume_role_chain: AssumeRoleChain = None,
+    ):
+        # 项目名称
+        self.project_name = project_name
+        # access token
+        self.access_token = access_token
+        # refresh token
+        self.refresh_token = refresh_token
+        # 链式授权
+        self.assume_role_chain = assume_role_chain
+
+    def validate(self):
+        if self.assume_role_chain:
+            self.assume_role_chain.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.refresh_token is not None:
+            result['RefreshToken'] = self.refresh_token
+        if self.assume_role_chain is not None:
+            result['AssumeRoleChain'] = self.assume_role_chain.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('RefreshToken') is not None:
+            self.refresh_token = m.get('RefreshToken')
+        if m.get('AssumeRoleChain') is not None:
+            temp_model = AssumeRoleChain()
+            self.assume_role_chain = temp_model.from_map(m['AssumeRoleChain'])
+        return self
+
+
+class RefreshWebofficeTokenShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        access_token: str = None,
+        refresh_token: str = None,
+        assume_role_chain_shrink: str = None,
+    ):
+        # 项目名称
+        self.project_name = project_name
+        # access token
+        self.access_token = access_token
+        # refresh token
+        self.refresh_token = refresh_token
+        # 链式授权
+        self.assume_role_chain_shrink = assume_role_chain_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.refresh_token is not None:
+            result['RefreshToken'] = self.refresh_token
+        if self.assume_role_chain_shrink is not None:
+            result['AssumeRoleChain'] = self.assume_role_chain_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('RefreshToken') is not None:
+            self.refresh_token = m.get('RefreshToken')
+        if m.get('AssumeRoleChain') is not None:
+            self.assume_role_chain_shrink = m.get('AssumeRoleChain')
+        return self
+
+
+class RefreshWebofficeTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        refresh_token: str = None,
+        access_token: str = None,
+        refresh_token_expired_time: str = None,
+        access_token_expired_time: str = None,
+    ):
+        # 请求 Id
+        self.request_id = request_id
+        # refresh token
+        self.refresh_token = refresh_token
+        # access token
+        self.access_token = access_token
+        # refresh token 过期时间
+        self.refresh_token_expired_time = refresh_token_expired_time
+        # access token 过期时间
+        self.access_token_expired_time = access_token_expired_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.refresh_token is not None:
+            result['RefreshToken'] = self.refresh_token
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.refresh_token_expired_time is not None:
+            result['RefreshTokenExpiredTime'] = self.refresh_token_expired_time
+        if self.access_token_expired_time is not None:
+            result['AccessTokenExpiredTime'] = self.access_token_expired_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RefreshToken') is not None:
+            self.refresh_token = m.get('RefreshToken')
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('RefreshTokenExpiredTime') is not None:
+            self.refresh_token_expired_time = m.get('RefreshTokenExpiredTime')
+        if m.get('AccessTokenExpiredTime') is not None:
+            self.access_token_expired_time = m.get('AccessTokenExpiredTime')
+        return self
+
+
+class RefreshWebofficeTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RefreshWebofficeTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RefreshWebofficeTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

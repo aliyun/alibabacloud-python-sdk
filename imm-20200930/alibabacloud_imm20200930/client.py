@@ -790,6 +790,68 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_project_with_options_async(request, runtime)
 
+    def get_weboffice_url_with_options(
+        self,
+        tmp_req: imm_20200930_models.GetWebofficeUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetWebofficeUrlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GetWebofficeUrlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permission):
+            request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.permission), 'Permission', 'json')
+        if not UtilClient.is_unset(tmp_req.user):
+            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user), 'User', 'json')
+        if not UtilClient.is_unset(tmp_req.watermark):
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.watermark), 'Watermark', 'json')
+        if not UtilClient.is_unset(tmp_req.assume_role_chain):
+            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetWebofficeUrlResponse(),
+            self.do_rpcrequest('GetWebofficeUrl', '2020-09-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_weboffice_url_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.GetWebofficeUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetWebofficeUrlResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GetWebofficeUrlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permission):
+            request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.permission), 'Permission', 'json')
+        if not UtilClient.is_unset(tmp_req.user):
+            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user), 'User', 'json')
+        if not UtilClient.is_unset(tmp_req.watermark):
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.watermark), 'Watermark', 'json')
+        if not UtilClient.is_unset(tmp_req.assume_role_chain):
+            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetWebofficeUrlResponse(),
+            await self.do_rpcrequest_async('GetWebofficeUrl', '2020-09-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_weboffice_url(
+        self,
+        request: imm_20200930_models.GetWebofficeUrlRequest,
+    ) -> imm_20200930_models.GetWebofficeUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_weboffice_url_with_options(request, runtime)
+
+    async def get_weboffice_url_async(
+        self,
+        request: imm_20200930_models.GetWebofficeUrlRequest,
+    ) -> imm_20200930_models.GetWebofficeUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_weboffice_url_with_options_async(request, runtime)
+
     def index_file_meta_with_options(
         self,
         tmp_req: imm_20200930_models.IndexFileMetaRequest,
@@ -965,6 +1027,56 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListProjectsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_projects_with_options_async(request, runtime)
+
+    def refresh_weboffice_token_with_options(
+        self,
+        tmp_req: imm_20200930_models.RefreshWebofficeTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.RefreshWebofficeTokenResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.RefreshWebofficeTokenShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_role_chain):
+            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.RefreshWebofficeTokenResponse(),
+            self.do_rpcrequest('RefreshWebofficeToken', '2020-09-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def refresh_weboffice_token_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.RefreshWebofficeTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.RefreshWebofficeTokenResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.RefreshWebofficeTokenShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_role_chain):
+            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.RefreshWebofficeTokenResponse(),
+            await self.do_rpcrequest_async('RefreshWebofficeToken', '2020-09-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def refresh_weboffice_token(
+        self,
+        request: imm_20200930_models.RefreshWebofficeTokenRequest,
+    ) -> imm_20200930_models.RefreshWebofficeTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.refresh_weboffice_token_with_options(request, runtime)
+
+    async def refresh_weboffice_token_async(
+        self,
+        request: imm_20200930_models.RefreshWebofficeTokenRequest,
+    ) -> imm_20200930_models.RefreshWebofficeTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.refresh_weboffice_token_with_options_async(request, runtime)
 
     def resume_binding_with_options(
         self,
