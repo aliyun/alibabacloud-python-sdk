@@ -1,3 +1,6 @@
+2021-09-03 Version: 2.1.1
+- Fix type error of StackGroup and StackInstance parameters.
+
 2021-09-03 Version: 2.1.0
 - StackGroup supports specify resource folder to deploy StackInstances.
 - StackGroup supports SERVICE_MANAGED and SELF_MANAGED permission models.

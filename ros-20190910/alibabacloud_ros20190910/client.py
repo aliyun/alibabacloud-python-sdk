@@ -218,7 +218,7 @@ class Client(OpenApiClient):
         request = ros20190910_models.CreateStackGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.auto_deployment):
-            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_deployment, 'AutoDeployment', 'json')
+            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.auto_deployment), 'AutoDeployment', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -236,7 +236,7 @@ class Client(OpenApiClient):
         request = ros20190910_models.CreateStackGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.auto_deployment):
-            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_deployment, 'AutoDeployment', 'json')
+            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.auto_deployment), 'AutoDeployment', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -274,7 +274,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_targets):
-            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.deployment_targets), 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -298,7 +298,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_targets):
-            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.deployment_targets), 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -504,7 +504,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_targets):
-            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.deployment_targets), 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -528,7 +528,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_targets):
-            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.deployment_targets), 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -2492,9 +2492,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.auto_deployment):
-            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_deployment, 'AutoDeployment', 'json')
+            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.auto_deployment), 'AutoDeployment', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_targets):
-            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.deployment_targets), 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -2518,9 +2518,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.auto_deployment):
-            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_deployment, 'AutoDeployment', 'json')
+            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.auto_deployment), 'AutoDeployment', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_targets):
-            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.deployment_targets), 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -2558,7 +2558,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_targets):
-            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.deployment_targets), 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -2582,7 +2582,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.deployment_targets):
-            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.deployment_targets), 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )

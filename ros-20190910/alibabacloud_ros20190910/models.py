@@ -944,6 +944,39 @@ class CreateStackGroupRequestParameters(TeaModel):
         return self
 
 
+class CreateStackGroupRequestAutoDeployment(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        retain_stacks_on_account_removal: bool = None,
+    ):
+        self.enabled = enabled
+        self.retain_stacks_on_account_removal = retain_stacks_on_account_removal
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.retain_stacks_on_account_removal is not None:
+            result['RetainStacksOnAccountRemoval'] = self.retain_stacks_on_account_removal
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('RetainStacksOnAccountRemoval') is not None:
+            self.retain_stacks_on_account_removal = m.get('RetainStacksOnAccountRemoval')
+        return self
+
+
 class CreateStackGroupRequest(TeaModel):
     def __init__(
         self,
@@ -960,7 +993,7 @@ class CreateStackGroupRequest(TeaModel):
         parameters: List[CreateStackGroupRequestParameters] = None,
         resource_group_id: str = None,
         permission_model: str = None,
-        auto_deployment: Dict[str, Any] = None,
+        auto_deployment: CreateStackGroupRequestAutoDeployment = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -982,6 +1015,8 @@ class CreateStackGroupRequest(TeaModel):
             for k in self.parameters:
                 if k:
                     k.validate()
+        if self.auto_deployment:
+            self.auto_deployment.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1018,7 +1053,7 @@ class CreateStackGroupRequest(TeaModel):
         if self.permission_model is not None:
             result['PermissionModel'] = self.permission_model
         if self.auto_deployment is not None:
-            result['AutoDeployment'] = self.auto_deployment
+            result['AutoDeployment'] = self.auto_deployment.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1053,7 +1088,8 @@ class CreateStackGroupRequest(TeaModel):
         if m.get('PermissionModel') is not None:
             self.permission_model = m.get('PermissionModel')
         if m.get('AutoDeployment') is not None:
-            self.auto_deployment = m.get('AutoDeployment')
+            temp_model = CreateStackGroupRequestAutoDeployment()
+            self.auto_deployment = temp_model.from_map(m['AutoDeployment'])
         return self
 
 
@@ -1306,20 +1342,47 @@ class CreateStackInstancesRequestParameterOverrides(TeaModel):
         return self
 
 
+class CreateStackInstancesRequestDeploymentTargets(TeaModel):
+    def __init__(
+        self,
+        rd_folder_ids: List[str] = None,
+    ):
+        self.rd_folder_ids = rd_folder_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rd_folder_ids is not None:
+            result['RdFolderIds'] = self.rd_folder_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RdFolderIds') is not None:
+            self.rd_folder_ids = m.get('RdFolderIds')
+        return self
+
+
 class CreateStackInstancesRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
         stack_group_name: str = None,
-        account_ids: Dict[str, Any] = None,
-        region_ids: Dict[str, Any] = None,
+        account_ids: List[str] = None,
+        region_ids: List[str] = None,
         client_token: str = None,
         operation_description: str = None,
         operation_preferences: Dict[str, Any] = None,
         timeout_in_minutes: int = None,
         disable_rollback: bool = None,
         parameter_overrides: List[CreateStackInstancesRequestParameterOverrides] = None,
-        deployment_targets: Dict[str, Any] = None,
+        deployment_targets: CreateStackInstancesRequestDeploymentTargets = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -1338,6 +1401,8 @@ class CreateStackInstancesRequest(TeaModel):
             for k in self.parameter_overrides:
                 if k:
                     k.validate()
+        if self.deployment_targets:
+            self.deployment_targets.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1368,7 +1433,7 @@ class CreateStackInstancesRequest(TeaModel):
             for k in self.parameter_overrides:
                 result['ParameterOverrides'].append(k.to_map() if k else None)
         if self.deployment_targets is not None:
-            result['DeploymentTargets'] = self.deployment_targets
+            result['DeploymentTargets'] = self.deployment_targets.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1397,7 +1462,8 @@ class CreateStackInstancesRequest(TeaModel):
                 temp_model = CreateStackInstancesRequestParameterOverrides()
                 self.parameter_overrides.append(temp_model.from_map(k))
         if m.get('DeploymentTargets') is not None:
-            self.deployment_targets = m.get('DeploymentTargets')
+            temp_model = CreateStackInstancesRequestDeploymentTargets()
+            self.deployment_targets = temp_model.from_map(m['DeploymentTargets'])
         return self
 
 
@@ -2029,18 +2095,45 @@ class DeleteStackGroupResponse(TeaModel):
         return self
 
 
+class DeleteStackInstancesRequestDeploymentTargets(TeaModel):
+    def __init__(
+        self,
+        rd_folder_ids: List[str] = None,
+    ):
+        self.rd_folder_ids = rd_folder_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rd_folder_ids is not None:
+            result['RdFolderIds'] = self.rd_folder_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RdFolderIds') is not None:
+            self.rd_folder_ids = m.get('RdFolderIds')
+        return self
+
+
 class DeleteStackInstancesRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
         stack_group_name: str = None,
-        account_ids: Dict[str, Any] = None,
-        region_ids: Dict[str, Any] = None,
+        account_ids: List[str] = None,
+        region_ids: List[str] = None,
         retain_stacks: bool = None,
         client_token: str = None,
         operation_description: str = None,
         operation_preferences: Dict[str, Any] = None,
-        deployment_targets: Dict[str, Any] = None,
+        deployment_targets: DeleteStackInstancesRequestDeploymentTargets = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -2053,7 +2146,8 @@ class DeleteStackInstancesRequest(TeaModel):
         self.deployment_targets = deployment_targets
 
     def validate(self):
-        pass
+        if self.deployment_targets:
+            self.deployment_targets.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2078,7 +2172,7 @@ class DeleteStackInstancesRequest(TeaModel):
         if self.operation_preferences is not None:
             result['OperationPreferences'] = self.operation_preferences
         if self.deployment_targets is not None:
-            result['DeploymentTargets'] = self.deployment_targets
+            result['DeploymentTargets'] = self.deployment_targets.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2100,7 +2194,8 @@ class DeleteStackInstancesRequest(TeaModel):
         if m.get('OperationPreferences') is not None:
             self.operation_preferences = m.get('OperationPreferences')
         if m.get('DeploymentTargets') is not None:
-            self.deployment_targets = m.get('DeploymentTargets')
+            temp_model = DeleteStackInstancesRequestDeploymentTargets()
+            self.deployment_targets = temp_model.from_map(m['DeploymentTargets'])
         return self
 
 
@@ -11307,14 +11402,80 @@ class UpdateStackGroupRequestParameters(TeaModel):
         return self
 
 
+class UpdateStackGroupRequestAutoDeployment(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        retain_stacks_on_account_removal: bool = None,
+    ):
+        self.enabled = enabled
+        self.retain_stacks_on_account_removal = retain_stacks_on_account_removal
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.retain_stacks_on_account_removal is not None:
+            result['RetainStacksOnAccountRemoval'] = self.retain_stacks_on_account_removal
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('RetainStacksOnAccountRemoval') is not None:
+            self.retain_stacks_on_account_removal = m.get('RetainStacksOnAccountRemoval')
+        return self
+
+
+class UpdateStackGroupRequestDeploymentTargets(TeaModel):
+    def __init__(
+        self,
+        rd_folder_ids: List[str] = None,
+        account_ids: List[str] = None,
+    ):
+        self.rd_folder_ids = rd_folder_ids
+        self.account_ids = account_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rd_folder_ids is not None:
+            result['RdFolderIds'] = self.rd_folder_ids
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RdFolderIds') is not None:
+            self.rd_folder_ids = m.get('RdFolderIds')
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        return self
+
+
 class UpdateStackGroupRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
         stack_group_name: str = None,
         description: str = None,
-        account_ids: Dict[str, Any] = None,
-        region_ids: Dict[str, Any] = None,
+        account_ids: List[str] = None,
+        region_ids: List[str] = None,
         template_body: str = None,
         template_url: str = None,
         client_token: str = None,
@@ -11326,8 +11487,8 @@ class UpdateStackGroupRequest(TeaModel):
         template_version: str = None,
         parameters: List[UpdateStackGroupRequestParameters] = None,
         permission_model: str = None,
-        auto_deployment: Dict[str, Any] = None,
-        deployment_targets: Dict[str, Any] = None,
+        auto_deployment: UpdateStackGroupRequestAutoDeployment = None,
+        deployment_targets: UpdateStackGroupRequestDeploymentTargets = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -11353,6 +11514,10 @@ class UpdateStackGroupRequest(TeaModel):
             for k in self.parameters:
                 if k:
                     k.validate()
+        if self.auto_deployment:
+            self.auto_deployment.validate()
+        if self.deployment_targets:
+            self.deployment_targets.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11395,9 +11560,9 @@ class UpdateStackGroupRequest(TeaModel):
         if self.permission_model is not None:
             result['PermissionModel'] = self.permission_model
         if self.auto_deployment is not None:
-            result['AutoDeployment'] = self.auto_deployment
+            result['AutoDeployment'] = self.auto_deployment.to_map()
         if self.deployment_targets is not None:
-            result['DeploymentTargets'] = self.deployment_targets
+            result['DeploymentTargets'] = self.deployment_targets.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -11438,9 +11603,11 @@ class UpdateStackGroupRequest(TeaModel):
         if m.get('PermissionModel') is not None:
             self.permission_model = m.get('PermissionModel')
         if m.get('AutoDeployment') is not None:
-            self.auto_deployment = m.get('AutoDeployment')
+            temp_model = UpdateStackGroupRequestAutoDeployment()
+            self.auto_deployment = temp_model.from_map(m['AutoDeployment'])
         if m.get('DeploymentTargets') is not None:
-            self.deployment_targets = m.get('DeploymentTargets')
+            temp_model = UpdateStackGroupRequestDeploymentTargets()
+            self.deployment_targets = temp_model.from_map(m['DeploymentTargets'])
         return self
 
 
@@ -11717,19 +11884,52 @@ class UpdateStackInstancesRequestParameterOverrides(TeaModel):
         return self
 
 
+class UpdateStackInstancesRequestDeploymentTargets(TeaModel):
+    def __init__(
+        self,
+        rd_folder_ids: List[str] = None,
+        account_ids: List[str] = None,
+    ):
+        self.rd_folder_ids = rd_folder_ids
+        self.account_ids = account_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rd_folder_ids is not None:
+            result['RdFolderIds'] = self.rd_folder_ids
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RdFolderIds') is not None:
+            self.rd_folder_ids = m.get('RdFolderIds')
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        return self
+
+
 class UpdateStackInstancesRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
         stack_group_name: str = None,
-        account_ids: Dict[str, Any] = None,
-        region_ids: Dict[str, Any] = None,
+        account_ids: List[str] = None,
+        region_ids: List[str] = None,
         client_token: str = None,
         operation_description: str = None,
         operation_preferences: Dict[str, Any] = None,
         timeout_in_minutes: int = None,
         parameter_overrides: List[UpdateStackInstancesRequestParameterOverrides] = None,
-        deployment_targets: Dict[str, Any] = None,
+        deployment_targets: UpdateStackInstancesRequestDeploymentTargets = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -11747,6 +11947,8 @@ class UpdateStackInstancesRequest(TeaModel):
             for k in self.parameter_overrides:
                 if k:
                     k.validate()
+        if self.deployment_targets:
+            self.deployment_targets.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11775,7 +11977,7 @@ class UpdateStackInstancesRequest(TeaModel):
             for k in self.parameter_overrides:
                 result['ParameterOverrides'].append(k.to_map() if k else None)
         if self.deployment_targets is not None:
-            result['DeploymentTargets'] = self.deployment_targets
+            result['DeploymentTargets'] = self.deployment_targets.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -11802,7 +12004,8 @@ class UpdateStackInstancesRequest(TeaModel):
                 temp_model = UpdateStackInstancesRequestParameterOverrides()
                 self.parameter_overrides.append(temp_model.from_map(k))
         if m.get('DeploymentTargets') is not None:
-            self.deployment_targets = m.get('DeploymentTargets')
+            temp_model = UpdateStackInstancesRequestDeploymentTargets()
+            self.deployment_targets = temp_model.from_map(m['DeploymentTargets'])
         return self
 
 
