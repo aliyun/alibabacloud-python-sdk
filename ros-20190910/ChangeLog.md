@@ -1,3 +1,7 @@
+2021-09-03 Version: 2.1.0
+- StackGroup supports specify resource folder to deploy StackInstances.
+- StackGroup supports SERVICE_MANAGED and SELF_MANAGED permission models.
+
 2021-08-27 Version: 2.0.6
 - Support ClientToken for ValidateTemplate.
 

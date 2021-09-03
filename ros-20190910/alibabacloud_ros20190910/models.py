@@ -238,11 +238,11 @@ class ContinueCreateStackRequest(TeaModel):
 class ContinueCreateStackResponseBody(TeaModel):
     def __init__(
         self,
-        stack_id: str = None,
         request_id: str = None,
+        stack_id: str = None,
     ):
-        self.stack_id = stack_id
         self.request_id = request_id
+        self.stack_id = stack_id
 
     def validate(self):
         pass
@@ -253,18 +253,18 @@ class ContinueCreateStackResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.stack_id is not None:
-            result['StackId'] = self.stack_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('StackId') is not None:
-            self.stack_id = m.get('StackId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
         return self
 
 
@@ -341,12 +341,12 @@ class CreateChangeSetRequestParameters(TeaModel):
 class CreateChangeSetRequestResourcesToImport(TeaModel):
     def __init__(
         self,
-        logical_resource_id: str = None,
         resource_identifier: str = None,
+        logical_resource_id: str = None,
         resource_type: str = None,
     ):
-        self.logical_resource_id = logical_resource_id
         self.resource_identifier = resource_identifier
+        self.logical_resource_id = logical_resource_id
         self.resource_type = resource_type
 
     def validate(self):
@@ -358,20 +358,20 @@ class CreateChangeSetRequestResourcesToImport(TeaModel):
             return _map
 
         result = dict()
-        if self.logical_resource_id is not None:
-            result['LogicalResourceId'] = self.logical_resource_id
         if self.resource_identifier is not None:
             result['ResourceIdentifier'] = self.resource_identifier
+        if self.logical_resource_id is not None:
+            result['LogicalResourceId'] = self.logical_resource_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LogicalResourceId') is not None:
-            self.logical_resource_id = m.get('LogicalResourceId')
         if m.get('ResourceIdentifier') is not None:
             self.resource_identifier = m.get('ResourceIdentifier')
+        if m.get('LogicalResourceId') is not None:
+            self.logical_resource_id = m.get('LogicalResourceId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         return self
@@ -556,13 +556,13 @@ class CreateChangeSetRequest(TeaModel):
 class CreateChangeSetResponseBody(TeaModel):
     def __init__(
         self,
-        stack_id: str = None,
-        request_id: str = None,
         change_set_id: str = None,
+        request_id: str = None,
+        stack_id: str = None,
     ):
-        self.stack_id = stack_id
-        self.request_id = request_id
         self.change_set_id = change_set_id
+        self.request_id = request_id
+        self.stack_id = stack_id
 
     def validate(self):
         pass
@@ -573,22 +573,22 @@ class CreateChangeSetResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.stack_id is not None:
-            result['StackId'] = self.stack_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.change_set_id is not None:
             result['ChangeSetId'] = self.change_set_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('StackId') is not None:
-            self.stack_id = m.get('StackId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ChangeSetId') is not None:
             self.change_set_id = m.get('ChangeSetId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
         return self
 
 
@@ -959,6 +959,8 @@ class CreateStackGroupRequest(TeaModel):
         template_version: str = None,
         parameters: List[CreateStackGroupRequestParameters] = None,
         resource_group_id: str = None,
+        permission_model: str = None,
+        auto_deployment: Dict[str, Any] = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -972,6 +974,8 @@ class CreateStackGroupRequest(TeaModel):
         self.template_version = template_version
         self.parameters = parameters
         self.resource_group_id = resource_group_id
+        self.permission_model = permission_model
+        self.auto_deployment = auto_deployment
 
     def validate(self):
         if self.parameters:
@@ -1011,6 +1015,10 @@ class CreateStackGroupRequest(TeaModel):
                 result['Parameters'].append(k.to_map() if k else None)
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.permission_model is not None:
+            result['PermissionModel'] = self.permission_model
+        if self.auto_deployment is not None:
+            result['AutoDeployment'] = self.auto_deployment
         return result
 
     def from_map(self, m: dict = None):
@@ -1042,6 +1050,156 @@ class CreateStackGroupRequest(TeaModel):
                 self.parameters.append(temp_model.from_map(k))
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('PermissionModel') is not None:
+            self.permission_model = m.get('PermissionModel')
+        if m.get('AutoDeployment') is not None:
+            self.auto_deployment = m.get('AutoDeployment')
+        return self
+
+
+class CreateStackGroupShrinkRequestParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class CreateStackGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        stack_group_name: str = None,
+        description: str = None,
+        template_body: str = None,
+        template_url: str = None,
+        client_token: str = None,
+        administration_role_name: str = None,
+        execution_role_name: str = None,
+        template_id: str = None,
+        template_version: str = None,
+        parameters: List[CreateStackGroupShrinkRequestParameters] = None,
+        resource_group_id: str = None,
+        permission_model: str = None,
+        auto_deployment_shrink: str = None,
+    ):
+        self.region_id = region_id
+        self.stack_group_name = stack_group_name
+        self.description = description
+        self.template_body = template_body
+        self.template_url = template_url
+        self.client_token = client_token
+        self.administration_role_name = administration_role_name
+        self.execution_role_name = execution_role_name
+        self.template_id = template_id
+        self.template_version = template_version
+        self.parameters = parameters
+        self.resource_group_id = resource_group_id
+        self.permission_model = permission_model
+        self.auto_deployment_shrink = auto_deployment_shrink
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.stack_group_name is not None:
+            result['StackGroupName'] = self.stack_group_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.template_body is not None:
+            result['TemplateBody'] = self.template_body
+        if self.template_url is not None:
+            result['TemplateURL'] = self.template_url
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.administration_role_name is not None:
+            result['AdministrationRoleName'] = self.administration_role_name
+        if self.execution_role_name is not None:
+            result['ExecutionRoleName'] = self.execution_role_name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.permission_model is not None:
+            result['PermissionModel'] = self.permission_model
+        if self.auto_deployment_shrink is not None:
+            result['AutoDeployment'] = self.auto_deployment_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StackGroupName') is not None:
+            self.stack_group_name = m.get('StackGroupName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('TemplateBody') is not None:
+            self.template_body = m.get('TemplateBody')
+        if m.get('TemplateURL') is not None:
+            self.template_url = m.get('TemplateURL')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('AdministrationRoleName') is not None:
+            self.administration_role_name = m.get('AdministrationRoleName')
+        if m.get('ExecutionRoleName') is not None:
+            self.execution_role_name = m.get('ExecutionRoleName')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = CreateStackGroupShrinkRequestParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('PermissionModel') is not None:
+            self.permission_model = m.get('PermissionModel')
+        if m.get('AutoDeployment') is not None:
+            self.auto_deployment_shrink = m.get('AutoDeployment')
         return self
 
 
@@ -1161,6 +1319,7 @@ class CreateStackInstancesRequest(TeaModel):
         timeout_in_minutes: int = None,
         disable_rollback: bool = None,
         parameter_overrides: List[CreateStackInstancesRequestParameterOverrides] = None,
+        deployment_targets: Dict[str, Any] = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -1172,6 +1331,7 @@ class CreateStackInstancesRequest(TeaModel):
         self.timeout_in_minutes = timeout_in_minutes
         self.disable_rollback = disable_rollback
         self.parameter_overrides = parameter_overrides
+        self.deployment_targets = deployment_targets
 
     def validate(self):
         if self.parameter_overrides:
@@ -1207,6 +1367,8 @@ class CreateStackInstancesRequest(TeaModel):
         if self.parameter_overrides is not None:
             for k in self.parameter_overrides:
                 result['ParameterOverrides'].append(k.to_map() if k else None)
+        if self.deployment_targets is not None:
+            result['DeploymentTargets'] = self.deployment_targets
         return result
 
     def from_map(self, m: dict = None):
@@ -1234,6 +1396,8 @@ class CreateStackInstancesRequest(TeaModel):
             for k in m.get('ParameterOverrides'):
                 temp_model = CreateStackInstancesRequestParameterOverrides()
                 self.parameter_overrides.append(temp_model.from_map(k))
+        if m.get('DeploymentTargets') is not None:
+            self.deployment_targets = m.get('DeploymentTargets')
         return self
 
 
@@ -1283,6 +1447,7 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         timeout_in_minutes: int = None,
         disable_rollback: bool = None,
         parameter_overrides: List[CreateStackInstancesShrinkRequestParameterOverrides] = None,
+        deployment_targets_shrink: str = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -1294,6 +1459,7 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         self.timeout_in_minutes = timeout_in_minutes
         self.disable_rollback = disable_rollback
         self.parameter_overrides = parameter_overrides
+        self.deployment_targets_shrink = deployment_targets_shrink
 
     def validate(self):
         if self.parameter_overrides:
@@ -1329,6 +1495,8 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         if self.parameter_overrides is not None:
             for k in self.parameter_overrides:
                 result['ParameterOverrides'].append(k.to_map() if k else None)
+        if self.deployment_targets_shrink is not None:
+            result['DeploymentTargets'] = self.deployment_targets_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -1356,17 +1524,19 @@ class CreateStackInstancesShrinkRequest(TeaModel):
             for k in m.get('ParameterOverrides'):
                 temp_model = CreateStackInstancesShrinkRequestParameterOverrides()
                 self.parameter_overrides.append(temp_model.from_map(k))
+        if m.get('DeploymentTargets') is not None:
+            self.deployment_targets_shrink = m.get('DeploymentTargets')
         return self
 
 
 class CreateStackInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        operation_id: str = None,
         request_id: str = None,
+        operation_id: str = None,
     ):
-        self.operation_id = operation_id
         self.request_id = request_id
+        self.operation_id = operation_id
 
     def validate(self):
         pass
@@ -1377,18 +1547,18 @@ class CreateStackInstancesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.operation_id is not None:
-            result['OperationId'] = self.operation_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OperationId') is not None:
-            self.operation_id = m.get('OperationId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
         return self
 
 
@@ -1870,6 +2040,7 @@ class DeleteStackInstancesRequest(TeaModel):
         client_token: str = None,
         operation_description: str = None,
         operation_preferences: Dict[str, Any] = None,
+        deployment_targets: Dict[str, Any] = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -1879,6 +2050,7 @@ class DeleteStackInstancesRequest(TeaModel):
         self.client_token = client_token
         self.operation_description = operation_description
         self.operation_preferences = operation_preferences
+        self.deployment_targets = deployment_targets
 
     def validate(self):
         pass
@@ -1905,6 +2077,8 @@ class DeleteStackInstancesRequest(TeaModel):
             result['OperationDescription'] = self.operation_description
         if self.operation_preferences is not None:
             result['OperationPreferences'] = self.operation_preferences
+        if self.deployment_targets is not None:
+            result['DeploymentTargets'] = self.deployment_targets
         return result
 
     def from_map(self, m: dict = None):
@@ -1925,6 +2099,8 @@ class DeleteStackInstancesRequest(TeaModel):
             self.operation_description = m.get('OperationDescription')
         if m.get('OperationPreferences') is not None:
             self.operation_preferences = m.get('OperationPreferences')
+        if m.get('DeploymentTargets') is not None:
+            self.deployment_targets = m.get('DeploymentTargets')
         return self
 
 
@@ -1939,6 +2115,7 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
         client_token: str = None,
         operation_description: str = None,
         operation_preferences_shrink: str = None,
+        deployment_targets_shrink: str = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -1948,6 +2125,7 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
         self.client_token = client_token
         self.operation_description = operation_description
         self.operation_preferences_shrink = operation_preferences_shrink
+        self.deployment_targets_shrink = deployment_targets_shrink
 
     def validate(self):
         pass
@@ -1974,6 +2152,8 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
             result['OperationDescription'] = self.operation_description
         if self.operation_preferences_shrink is not None:
             result['OperationPreferences'] = self.operation_preferences_shrink
+        if self.deployment_targets_shrink is not None:
+            result['DeploymentTargets'] = self.deployment_targets_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -1994,17 +2174,19 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
             self.operation_description = m.get('OperationDescription')
         if m.get('OperationPreferences') is not None:
             self.operation_preferences_shrink = m.get('OperationPreferences')
+        if m.get('DeploymentTargets') is not None:
+            self.deployment_targets_shrink = m.get('DeploymentTargets')
         return self
 
 
 class DeleteStackInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        operation_id: str = None,
         request_id: str = None,
+        operation_id: str = None,
     ):
-        self.operation_id = operation_id
         self.request_id = request_id
+        self.operation_id = operation_id
 
     def validate(self):
         pass
@@ -2015,18 +2197,18 @@ class DeleteStackInstancesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.operation_id is not None:
-            result['OperationId'] = self.operation_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OperationId') is not None:
-            self.operation_id = m.get('OperationId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
         return self
 
 
@@ -2671,26 +2853,26 @@ class DetectStackResourceDriftResponseBody(TeaModel):
     def __init__(
         self,
         logical_resource_id: str = None,
-        physical_resource_id: str = None,
-        stack_id: str = None,
-        resource_type: str = None,
-        drift_detection_time: str = None,
-        request_id: str = None,
-        expected_properties: str = None,
         resource_drift_status: str = None,
-        actual_properties: str = None,
         property_differences: List[DetectStackResourceDriftResponseBodyPropertyDifferences] = None,
+        request_id: str = None,
+        physical_resource_id: str = None,
+        expected_properties: str = None,
+        drift_detection_time: str = None,
+        resource_type: str = None,
+        actual_properties: str = None,
+        stack_id: str = None,
     ):
         self.logical_resource_id = logical_resource_id
-        self.physical_resource_id = physical_resource_id
-        self.stack_id = stack_id
-        self.resource_type = resource_type
-        self.drift_detection_time = drift_detection_time
-        self.request_id = request_id
-        self.expected_properties = expected_properties
         self.resource_drift_status = resource_drift_status
-        self.actual_properties = actual_properties
         self.property_differences = property_differences
+        self.request_id = request_id
+        self.physical_resource_id = physical_resource_id
+        self.expected_properties = expected_properties
+        self.drift_detection_time = drift_detection_time
+        self.resource_type = resource_type
+        self.actual_properties = actual_properties
+        self.stack_id = stack_id
 
     def validate(self):
         if self.property_differences:
@@ -2706,53 +2888,53 @@ class DetectStackResourceDriftResponseBody(TeaModel):
         result = dict()
         if self.logical_resource_id is not None:
             result['LogicalResourceId'] = self.logical_resource_id
-        if self.physical_resource_id is not None:
-            result['PhysicalResourceId'] = self.physical_resource_id
-        if self.stack_id is not None:
-            result['StackId'] = self.stack_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        if self.drift_detection_time is not None:
-            result['DriftDetectionTime'] = self.drift_detection_time
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.expected_properties is not None:
-            result['ExpectedProperties'] = self.expected_properties
         if self.resource_drift_status is not None:
             result['ResourceDriftStatus'] = self.resource_drift_status
-        if self.actual_properties is not None:
-            result['ActualProperties'] = self.actual_properties
         result['PropertyDifferences'] = []
         if self.property_differences is not None:
             for k in self.property_differences:
                 result['PropertyDifferences'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.physical_resource_id is not None:
+            result['PhysicalResourceId'] = self.physical_resource_id
+        if self.expected_properties is not None:
+            result['ExpectedProperties'] = self.expected_properties
+        if self.drift_detection_time is not None:
+            result['DriftDetectionTime'] = self.drift_detection_time
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.actual_properties is not None:
+            result['ActualProperties'] = self.actual_properties
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('LogicalResourceId') is not None:
             self.logical_resource_id = m.get('LogicalResourceId')
-        if m.get('PhysicalResourceId') is not None:
-            self.physical_resource_id = m.get('PhysicalResourceId')
-        if m.get('StackId') is not None:
-            self.stack_id = m.get('StackId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        if m.get('DriftDetectionTime') is not None:
-            self.drift_detection_time = m.get('DriftDetectionTime')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ExpectedProperties') is not None:
-            self.expected_properties = m.get('ExpectedProperties')
         if m.get('ResourceDriftStatus') is not None:
             self.resource_drift_status = m.get('ResourceDriftStatus')
-        if m.get('ActualProperties') is not None:
-            self.actual_properties = m.get('ActualProperties')
         self.property_differences = []
         if m.get('PropertyDifferences') is not None:
             for k in m.get('PropertyDifferences'):
                 temp_model = DetectStackResourceDriftResponseBodyPropertyDifferences()
                 self.property_differences.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PhysicalResourceId') is not None:
+            self.physical_resource_id = m.get('PhysicalResourceId')
+        if m.get('ExpectedProperties') is not None:
+            self.expected_properties = m.get('ExpectedProperties')
+        if m.get('DriftDetectionTime') is not None:
+            self.drift_detection_time = m.get('DriftDetectionTime')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ActualProperties') is not None:
+            self.actual_properties = m.get('ActualProperties')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
         return self
 
 
@@ -4286,6 +4468,39 @@ class GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail(TeaModel
         return self
 
 
+class GetStackGroupResponseBodyStackGroupAutoDeployment(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        retain_stacks_on_account_removal: bool = None,
+    ):
+        self.enabled = enabled
+        self.retain_stacks_on_account_removal = retain_stacks_on_account_removal
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.retain_stacks_on_account_removal is not None:
+            result['RetainStacksOnAccountRemoval'] = self.retain_stacks_on_account_removal
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('RetainStacksOnAccountRemoval') is not None:
+            self.retain_stacks_on_account_removal = m.get('RetainStacksOnAccountRemoval')
+        return self
+
+
 class GetStackGroupResponseBodyStackGroup(TeaModel):
     def __init__(
         self,
@@ -4299,6 +4514,9 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         template_body: str = None,
         stack_group_drift_detection_detail: GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail = None,
         resource_group_id: str = None,
+        permission_model: str = None,
+        auto_deployment: GetStackGroupResponseBodyStackGroupAutoDeployment = None,
+        rd_folder_ids: List[str] = None,
     ):
         self.stack_group_id = stack_group_id
         self.status = status
@@ -4310,6 +4528,9 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         self.template_body = template_body
         self.stack_group_drift_detection_detail = stack_group_drift_detection_detail
         self.resource_group_id = resource_group_id
+        self.permission_model = permission_model
+        self.auto_deployment = auto_deployment
+        self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
         if self.parameters:
@@ -4318,6 +4539,8 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
                     k.validate()
         if self.stack_group_drift_detection_detail:
             self.stack_group_drift_detection_detail.validate()
+        if self.auto_deployment:
+            self.auto_deployment.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4347,6 +4570,12 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
             result['StackGroupDriftDetectionDetail'] = self.stack_group_drift_detection_detail.to_map()
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.permission_model is not None:
+            result['PermissionModel'] = self.permission_model
+        if self.auto_deployment is not None:
+            result['AutoDeployment'] = self.auto_deployment.to_map()
+        if self.rd_folder_ids is not None:
+            result['RdFolderIds'] = self.rd_folder_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -4375,6 +4604,13 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
             self.stack_group_drift_detection_detail = temp_model.from_map(m['StackGroupDriftDetectionDetail'])
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('PermissionModel') is not None:
+            self.permission_model = m.get('PermissionModel')
+        if m.get('AutoDeployment') is not None:
+            temp_model = GetStackGroupResponseBodyStackGroupAutoDeployment()
+            self.auto_deployment = temp_model.from_map(m['AutoDeployment'])
+        if m.get('RdFolderIds') is not None:
+            self.rd_folder_ids = m.get('RdFolderIds')
         return self
 
 
@@ -4483,57 +4719,6 @@ class GetStackGroupOperationRequest(TeaModel):
         return self
 
 
-class GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences(TeaModel):
-    def __init__(
-        self,
-        failure_tolerance_count: int = None,
-        max_concurrent_count: int = None,
-        max_concurrent_percentage: int = None,
-        failure_tolerance_percentage: int = None,
-        region_ids_order: List[str] = None,
-    ):
-        self.failure_tolerance_count = failure_tolerance_count
-        self.max_concurrent_count = max_concurrent_count
-        self.max_concurrent_percentage = max_concurrent_percentage
-        self.failure_tolerance_percentage = failure_tolerance_percentage
-        self.region_ids_order = region_ids_order
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.failure_tolerance_count is not None:
-            result['FailureToleranceCount'] = self.failure_tolerance_count
-        if self.max_concurrent_count is not None:
-            result['MaxConcurrentCount'] = self.max_concurrent_count
-        if self.max_concurrent_percentage is not None:
-            result['MaxConcurrentPercentage'] = self.max_concurrent_percentage
-        if self.failure_tolerance_percentage is not None:
-            result['FailureTolerancePercentage'] = self.failure_tolerance_percentage
-        if self.region_ids_order is not None:
-            result['RegionIdsOrder'] = self.region_ids_order
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FailureToleranceCount') is not None:
-            self.failure_tolerance_count = m.get('FailureToleranceCount')
-        if m.get('MaxConcurrentCount') is not None:
-            self.max_concurrent_count = m.get('MaxConcurrentCount')
-        if m.get('MaxConcurrentPercentage') is not None:
-            self.max_concurrent_percentage = m.get('MaxConcurrentPercentage')
-        if m.get('FailureTolerancePercentage') is not None:
-            self.failure_tolerance_percentage = m.get('FailureTolerancePercentage')
-        if m.get('RegionIdsOrder') is not None:
-            self.region_ids_order = m.get('RegionIdsOrder')
-        return self
-
-
 class GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail(TeaModel):
     def __init__(
         self,
@@ -4609,42 +4794,130 @@ class GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetect
         return self
 
 
+class GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences(TeaModel):
+    def __init__(
+        self,
+        max_concurrent_count: int = None,
+        failure_tolerance_count: int = None,
+        max_concurrent_percentage: int = None,
+        region_ids_order: List[str] = None,
+        failure_tolerance_percentage: int = None,
+    ):
+        self.max_concurrent_count = max_concurrent_count
+        self.failure_tolerance_count = failure_tolerance_count
+        self.max_concurrent_percentage = max_concurrent_percentage
+        self.region_ids_order = region_ids_order
+        self.failure_tolerance_percentage = failure_tolerance_percentage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_concurrent_count is not None:
+            result['MaxConcurrentCount'] = self.max_concurrent_count
+        if self.failure_tolerance_count is not None:
+            result['FailureToleranceCount'] = self.failure_tolerance_count
+        if self.max_concurrent_percentage is not None:
+            result['MaxConcurrentPercentage'] = self.max_concurrent_percentage
+        if self.region_ids_order is not None:
+            result['RegionIdsOrder'] = self.region_ids_order
+        if self.failure_tolerance_percentage is not None:
+            result['FailureTolerancePercentage'] = self.failure_tolerance_percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxConcurrentCount') is not None:
+            self.max_concurrent_count = m.get('MaxConcurrentCount')
+        if m.get('FailureToleranceCount') is not None:
+            self.failure_tolerance_count = m.get('FailureToleranceCount')
+        if m.get('MaxConcurrentPercentage') is not None:
+            self.max_concurrent_percentage = m.get('MaxConcurrentPercentage')
+        if m.get('RegionIdsOrder') is not None:
+            self.region_ids_order = m.get('RegionIdsOrder')
+        if m.get('FailureTolerancePercentage') is not None:
+            self.failure_tolerance_percentage = m.get('FailureTolerancePercentage')
+        return self
+
+
+class GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets(TeaModel):
+    def __init__(
+        self,
+        rd_folder_ids: List[str] = None,
+        account_ids: List[str] = None,
+    ):
+        self.rd_folder_ids = rd_folder_ids
+        self.account_ids = account_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rd_folder_ids is not None:
+            result['RdFolderIds'] = self.rd_folder_ids
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RdFolderIds') is not None:
+            self.rd_folder_ids = m.get('RdFolderIds')
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        return self
+
+
 class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
     def __init__(
         self,
         status: str = None,
-        end_time: str = None,
         stack_group_id: str = None,
         action: str = None,
         create_time: str = None,
-        execution_role_name: str = None,
         retain_stacks: bool = None,
         stack_group_name: str = None,
         operation_id: str = None,
         operation_description: str = None,
-        administrator_role_name: str = None,
-        operation_preferences: GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences = None,
         stack_group_drift_detection_detail: GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail = None,
+        operation_preferences: GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences = None,
+        end_time: str = None,
+        execution_role_name: str = None,
+        administrator_role_name: str = None,
+        deployment_targets: GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets = None,
     ):
         self.status = status
-        self.end_time = end_time
         self.stack_group_id = stack_group_id
         self.action = action
         self.create_time = create_time
-        self.execution_role_name = execution_role_name
         self.retain_stacks = retain_stacks
         self.stack_group_name = stack_group_name
         self.operation_id = operation_id
         self.operation_description = operation_description
-        self.administrator_role_name = administrator_role_name
-        self.operation_preferences = operation_preferences
         self.stack_group_drift_detection_detail = stack_group_drift_detection_detail
+        self.operation_preferences = operation_preferences
+        self.end_time = end_time
+        self.execution_role_name = execution_role_name
+        self.administrator_role_name = administrator_role_name
+        self.deployment_targets = deployment_targets
 
     def validate(self):
-        if self.operation_preferences:
-            self.operation_preferences.validate()
         if self.stack_group_drift_detection_detail:
             self.stack_group_drift_detection_detail.validate()
+        if self.operation_preferences:
+            self.operation_preferences.validate()
+        if self.deployment_targets:
+            self.deployment_targets.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4654,16 +4927,12 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
         if self.stack_group_id is not None:
             result['StackGroupId'] = self.stack_group_id
         if self.action is not None:
             result['Action'] = self.action
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        if self.execution_role_name is not None:
-            result['ExecutionRoleName'] = self.execution_role_name
         if self.retain_stacks is not None:
             result['RetainStacks'] = self.retain_stacks
         if self.stack_group_name is not None:
@@ -4672,28 +4941,30 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
             result['OperationId'] = self.operation_id
         if self.operation_description is not None:
             result['OperationDescription'] = self.operation_description
-        if self.administrator_role_name is not None:
-            result['AdministratorRoleName'] = self.administrator_role_name
-        if self.operation_preferences is not None:
-            result['OperationPreferences'] = self.operation_preferences.to_map()
         if self.stack_group_drift_detection_detail is not None:
             result['StackGroupDriftDetectionDetail'] = self.stack_group_drift_detection_detail.to_map()
+        if self.operation_preferences is not None:
+            result['OperationPreferences'] = self.operation_preferences.to_map()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.execution_role_name is not None:
+            result['ExecutionRoleName'] = self.execution_role_name
+        if self.administrator_role_name is not None:
+            result['AdministratorRoleName'] = self.administrator_role_name
+        if self.deployment_targets is not None:
+            result['DeploymentTargets'] = self.deployment_targets.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
         if m.get('StackGroupId') is not None:
             self.stack_group_id = m.get('StackGroupId')
         if m.get('Action') is not None:
             self.action = m.get('Action')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-        if m.get('ExecutionRoleName') is not None:
-            self.execution_role_name = m.get('ExecutionRoleName')
         if m.get('RetainStacks') is not None:
             self.retain_stacks = m.get('RetainStacks')
         if m.get('StackGroupName') is not None:
@@ -4702,14 +4973,21 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
             self.operation_id = m.get('OperationId')
         if m.get('OperationDescription') is not None:
             self.operation_description = m.get('OperationDescription')
-        if m.get('AdministratorRoleName') is not None:
-            self.administrator_role_name = m.get('AdministratorRoleName')
-        if m.get('OperationPreferences') is not None:
-            temp_model = GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences()
-            self.operation_preferences = temp_model.from_map(m['OperationPreferences'])
         if m.get('StackGroupDriftDetectionDetail') is not None:
             temp_model = GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail()
             self.stack_group_drift_detection_detail = temp_model.from_map(m['StackGroupDriftDetectionDetail'])
+        if m.get('OperationPreferences') is not None:
+            temp_model = GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences()
+            self.operation_preferences = temp_model.from_map(m['OperationPreferences'])
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecutionRoleName') is not None:
+            self.execution_role_name = m.get('ExecutionRoleName')
+        if m.get('AdministratorRoleName') is not None:
+            self.administrator_role_name = m.get('AdministratorRoleName')
+        if m.get('DeploymentTargets') is not None:
+            temp_model = GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets()
+            self.deployment_targets = temp_model.from_map(m['DeploymentTargets'])
         return self
 
 
@@ -4872,10 +5150,11 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
         drift_detection_time: str = None,
         stack_drift_status: str = None,
         status_reason: str = None,
+        parameter_overrides: List[GetStackInstanceResponseBodyStackInstanceParameterOverrides] = None,
         stack_group_name: str = None,
         account_id: str = None,
         region_id: str = None,
-        parameter_overrides: List[GetStackInstanceResponseBodyStackInstanceParameterOverrides] = None,
+        rd_folder_id: str = None,
     ):
         self.status = status
         self.stack_group_id = stack_group_id
@@ -4883,10 +5162,11 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
         self.drift_detection_time = drift_detection_time
         self.stack_drift_status = stack_drift_status
         self.status_reason = status_reason
+        self.parameter_overrides = parameter_overrides
         self.stack_group_name = stack_group_name
         self.account_id = account_id
         self.region_id = region_id
-        self.parameter_overrides = parameter_overrides
+        self.rd_folder_id = rd_folder_id
 
     def validate(self):
         if self.parameter_overrides:
@@ -4912,16 +5192,18 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
             result['StackDriftStatus'] = self.stack_drift_status
         if self.status_reason is not None:
             result['StatusReason'] = self.status_reason
+        result['ParameterOverrides'] = []
+        if self.parameter_overrides is not None:
+            for k in self.parameter_overrides:
+                result['ParameterOverrides'].append(k.to_map() if k else None)
         if self.stack_group_name is not None:
             result['StackGroupName'] = self.stack_group_name
         if self.account_id is not None:
             result['AccountId'] = self.account_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        result['ParameterOverrides'] = []
-        if self.parameter_overrides is not None:
-            for k in self.parameter_overrides:
-                result['ParameterOverrides'].append(k.to_map() if k else None)
+        if self.rd_folder_id is not None:
+            result['RdFolderId'] = self.rd_folder_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4938,17 +5220,19 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
             self.stack_drift_status = m.get('StackDriftStatus')
         if m.get('StatusReason') is not None:
             self.status_reason = m.get('StatusReason')
+        self.parameter_overrides = []
+        if m.get('ParameterOverrides') is not None:
+            for k in m.get('ParameterOverrides'):
+                temp_model = GetStackInstanceResponseBodyStackInstanceParameterOverrides()
+                self.parameter_overrides.append(temp_model.from_map(k))
         if m.get('StackGroupName') is not None:
             self.stack_group_name = m.get('StackGroupName')
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        self.parameter_overrides = []
-        if m.get('ParameterOverrides') is not None:
-            for k in m.get('ParameterOverrides'):
-                temp_model = GetStackInstanceResponseBodyStackInstanceParameterOverrides()
-                self.parameter_overrides.append(temp_model.from_map(k))
+        if m.get('RdFolderId') is not None:
+            self.rd_folder_id = m.get('RdFolderId')
         return self
 
 
@@ -5182,36 +5466,36 @@ class GetStackResourceResponseBody(TeaModel):
     def __init__(
         self,
         status: str = None,
+        description: str = None,
+        request_id: str = None,
+        status_reason: str = None,
+        physical_resource_id: str = None,
+        create_time: str = None,
+        metadata: Dict[str, Any] = None,
+        resource_type: str = None,
+        resource_attributes: List[Dict[str, Any]] = None,
         logical_resource_id: str = None,
+        resource_drift_status: str = None,
         update_time: str = None,
         drift_detection_time: str = None,
-        create_time: str = None,
-        status_reason: str = None,
         stack_name: str = None,
-        physical_resource_id: str = None,
         stack_id: str = None,
-        request_id: str = None,
-        resource_type: str = None,
-        resource_drift_status: str = None,
-        description: str = None,
-        metadata: Dict[str, Any] = None,
-        resource_attributes: List[Dict[str, Any]] = None,
     ):
         self.status = status
+        self.description = description
+        self.request_id = request_id
+        self.status_reason = status_reason
+        self.physical_resource_id = physical_resource_id
+        self.create_time = create_time
+        self.metadata = metadata
+        self.resource_type = resource_type
+        self.resource_attributes = resource_attributes
         self.logical_resource_id = logical_resource_id
+        self.resource_drift_status = resource_drift_status
         self.update_time = update_time
         self.drift_detection_time = drift_detection_time
-        self.create_time = create_time
-        self.status_reason = status_reason
         self.stack_name = stack_name
-        self.physical_resource_id = physical_resource_id
         self.stack_id = stack_id
-        self.request_id = request_id
-        self.resource_type = resource_type
-        self.resource_drift_status = resource_drift_status
-        self.description = description
-        self.metadata = metadata
-        self.resource_attributes = resource_attributes
 
     def validate(self):
         pass
@@ -5224,68 +5508,68 @@ class GetStackResourceResponseBody(TeaModel):
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status_reason is not None:
+            result['StatusReason'] = self.status_reason
+        if self.physical_resource_id is not None:
+            result['PhysicalResourceId'] = self.physical_resource_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.resource_attributes is not None:
+            result['ResourceAttributes'] = self.resource_attributes
         if self.logical_resource_id is not None:
             result['LogicalResourceId'] = self.logical_resource_id
+        if self.resource_drift_status is not None:
+            result['ResourceDriftStatus'] = self.resource_drift_status
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         if self.drift_detection_time is not None:
             result['DriftDetectionTime'] = self.drift_detection_time
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.status_reason is not None:
-            result['StatusReason'] = self.status_reason
         if self.stack_name is not None:
             result['StackName'] = self.stack_name
-        if self.physical_resource_id is not None:
-            result['PhysicalResourceId'] = self.physical_resource_id
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        if self.resource_drift_status is not None:
-            result['ResourceDriftStatus'] = self.resource_drift_status
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.metadata is not None:
-            result['Metadata'] = self.metadata
-        if self.resource_attributes is not None:
-            result['ResourceAttributes'] = self.resource_attributes
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StatusReason') is not None:
+            self.status_reason = m.get('StatusReason')
+        if m.get('PhysicalResourceId') is not None:
+            self.physical_resource_id = m.get('PhysicalResourceId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ResourceAttributes') is not None:
+            self.resource_attributes = m.get('ResourceAttributes')
         if m.get('LogicalResourceId') is not None:
             self.logical_resource_id = m.get('LogicalResourceId')
+        if m.get('ResourceDriftStatus') is not None:
+            self.resource_drift_status = m.get('ResourceDriftStatus')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         if m.get('DriftDetectionTime') is not None:
             self.drift_detection_time = m.get('DriftDetectionTime')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('StatusReason') is not None:
-            self.status_reason = m.get('StatusReason')
         if m.get('StackName') is not None:
             self.stack_name = m.get('StackName')
-        if m.get('PhysicalResourceId') is not None:
-            self.physical_resource_id = m.get('PhysicalResourceId')
         if m.get('StackId') is not None:
             self.stack_id = m.get('StackId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        if m.get('ResourceDriftStatus') is not None:
-            self.resource_drift_status = m.get('ResourceDriftStatus')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Metadata') is not None:
-            self.metadata = m.get('Metadata')
-        if m.get('ResourceAttributes') is not None:
-            self.resource_attributes = m.get('ResourceAttributes')
         return self
 
 
@@ -5715,11 +5999,11 @@ class GetTemplateEstimateCostRequest(TeaModel):
 class GetTemplateEstimateCostResponseBody(TeaModel):
     def __init__(
         self,
-        resources: Dict[str, Any] = None,
         request_id: str = None,
+        resources: Dict[str, Any] = None,
     ):
-        self.resources = resources
         self.request_id = request_id
+        self.resources = resources
 
     def validate(self):
         pass
@@ -5730,18 +6014,18 @@ class GetTemplateEstimateCostResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.resources is not None:
-            result['Resources'] = self.resources
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resources is not None:
+            result['Resources'] = self.resources
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Resources') is not None:
-            self.resources = m.get('Resources')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
         return self
 
 
@@ -6603,14 +6887,16 @@ class ListStackGroupOperationResultsResponseBodyStackGroupOperationResults(TeaMo
     def __init__(
         self,
         status: str = None,
-        account_id: str = None,
         status_reason: str = None,
+        account_id: str = None,
         region_id: str = None,
+        rd_folder_id: str = None,
     ):
         self.status = status
-        self.account_id = account_id
         self.status_reason = status_reason
+        self.account_id = account_id
         self.region_id = region_id
+        self.rd_folder_id = rd_folder_id
 
     def validate(self):
         pass
@@ -6623,40 +6909,44 @@ class ListStackGroupOperationResultsResponseBodyStackGroupOperationResults(TeaMo
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
-        if self.account_id is not None:
-            result['AccountId'] = self.account_id
         if self.status_reason is not None:
             result['StatusReason'] = self.status_reason
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.rd_folder_id is not None:
+            result['RdFolderId'] = self.rd_folder_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('AccountId') is not None:
-            self.account_id = m.get('AccountId')
         if m.get('StatusReason') is not None:
             self.status_reason = m.get('StatusReason')
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RdFolderId') is not None:
+            self.rd_folder_id = m.get('RdFolderId')
         return self
 
 
 class ListStackGroupOperationResultsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        page_number: int = None,
-        page_size: int = None,
         total_count: int = None,
+        request_id: str = None,
+        page_size: int = None,
+        page_number: int = None,
         stack_group_operation_results: List[ListStackGroupOperationResultsResponseBodyStackGroupOperationResults] = None,
     ):
-        self.request_id = request_id
-        self.page_number = page_number
-        self.page_size = page_size
         self.total_count = total_count
+        self.request_id = request_id
+        self.page_size = page_size
+        self.page_number = page_number
         self.stack_group_operation_results = stack_group_operation_results
 
     def validate(self):
@@ -6671,14 +6961,14 @@ class ListStackGroupOperationResultsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
         result['StackGroupOperationResults'] = []
         if self.stack_group_operation_results is not None:
             for k in self.stack_group_operation_results:
@@ -6687,14 +6977,14 @@ class ListStackGroupOperationResultsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
         self.stack_group_operation_results = []
         if m.get('StackGroupOperationResults') is not None:
             for k in m.get('StackGroupOperationResults'):
@@ -7001,6 +7291,39 @@ class ListStackGroupsRequest(TeaModel):
         return self
 
 
+class ListStackGroupsResponseBodyStackGroupsAutoDeployment(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        retain_stacks_on_account_removal: bool = None,
+    ):
+        self.enabled = enabled
+        self.retain_stacks_on_account_removal = retain_stacks_on_account_removal
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.retain_stacks_on_account_removal is not None:
+            result['RetainStacksOnAccountRemoval'] = self.retain_stacks_on_account_removal
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('RetainStacksOnAccountRemoval') is not None:
+            self.retain_stacks_on_account_removal = m.get('RetainStacksOnAccountRemoval')
+        return self
+
+
 class ListStackGroupsResponseBodyStackGroups(TeaModel):
     def __init__(
         self,
@@ -7011,6 +7334,8 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         stack_group_drift_status: str = None,
         stack_group_name: str = None,
         resource_group_id: str = None,
+        permission_model: str = None,
+        auto_deployment: ListStackGroupsResponseBodyStackGroupsAutoDeployment = None,
     ):
         self.stack_group_id = stack_group_id
         self.status = status
@@ -7019,9 +7344,12 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         self.stack_group_drift_status = stack_group_drift_status
         self.stack_group_name = stack_group_name
         self.resource_group_id = resource_group_id
+        self.permission_model = permission_model
+        self.auto_deployment = auto_deployment
 
     def validate(self):
-        pass
+        if self.auto_deployment:
+            self.auto_deployment.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7043,6 +7371,10 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
             result['StackGroupName'] = self.stack_group_name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.permission_model is not None:
+            result['PermissionModel'] = self.permission_model
+        if self.auto_deployment is not None:
+            result['AutoDeployment'] = self.auto_deployment.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -7061,6 +7393,11 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
             self.stack_group_name = m.get('StackGroupName')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('PermissionModel') is not None:
+            self.permission_model = m.get('PermissionModel')
+        if m.get('AutoDeployment') is not None:
+            temp_model = ListStackGroupsResponseBodyStackGroupsAutoDeployment()
+            self.auto_deployment = temp_model.from_map(m['AutoDeployment'])
         return self
 
 
@@ -7229,6 +7566,7 @@ class ListStackInstancesResponseBodyStackInstances(TeaModel):
         stack_group_name: str = None,
         account_id: str = None,
         region_id: str = None,
+        rd_folder_id: str = None,
     ):
         self.status = status
         self.stack_group_id = stack_group_id
@@ -7239,6 +7577,7 @@ class ListStackInstancesResponseBodyStackInstances(TeaModel):
         self.stack_group_name = stack_group_name
         self.account_id = account_id
         self.region_id = region_id
+        self.rd_folder_id = rd_folder_id
 
     def validate(self):
         pass
@@ -7267,6 +7606,8 @@ class ListStackInstancesResponseBodyStackInstances(TeaModel):
             result['AccountId'] = self.account_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.rd_folder_id is not None:
+            result['RdFolderId'] = self.rd_folder_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7289,22 +7630,24 @@ class ListStackInstancesResponseBodyStackInstances(TeaModel):
             self.account_id = m.get('AccountId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RdFolderId') is not None:
+            self.rd_folder_id = m.get('RdFolderId')
         return self
 
 
 class ListStackInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        page_number: int = None,
-        page_size: int = None,
         total_count: int = None,
+        request_id: str = None,
+        page_size: int = None,
+        page_number: int = None,
         stack_instances: List[ListStackInstancesResponseBodyStackInstances] = None,
     ):
-        self.request_id = request_id
-        self.page_number = page_number
-        self.page_size = page_size
         self.total_count = total_count
+        self.request_id = request_id
+        self.page_size = page_size
+        self.page_number = page_number
         self.stack_instances = stack_instances
 
     def validate(self):
@@ -7319,14 +7662,14 @@ class ListStackInstancesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
         result['StackInstances'] = []
         if self.stack_instances is not None:
             for k in self.stack_instances:
@@ -7335,14 +7678,14 @@ class ListStackInstancesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
         self.stack_instances = []
         if m.get('StackInstances') is not None:
             for k in m.get('StackInstances'):
@@ -9625,15 +9968,15 @@ class PreviewStackResponseBodyStackResources(TeaModel):
         resource_type: str = None,
         description: str = None,
         stack: Dict[str, Any] = None,
-        properties: Dict[str, Any] = None,
         required_by: List[str] = None,
+        properties: Dict[str, Any] = None,
     ):
         self.logical_resource_id = logical_resource_id
         self.resource_type = resource_type
         self.description = description
         self.stack = stack
-        self.properties = properties
         self.required_by = required_by
+        self.properties = properties
 
     def validate(self):
         pass
@@ -9652,10 +9995,10 @@ class PreviewStackResponseBodyStackResources(TeaModel):
             result['Description'] = self.description
         if self.stack is not None:
             result['Stack'] = self.stack
-        if self.properties is not None:
-            result['Properties'] = self.properties
         if self.required_by is not None:
             result['RequiredBy'] = self.required_by
+        if self.properties is not None:
+            result['Properties'] = self.properties
         return result
 
     def from_map(self, m: dict = None):
@@ -9668,10 +10011,10 @@ class PreviewStackResponseBodyStackResources(TeaModel):
             self.description = m.get('Description')
         if m.get('Stack') is not None:
             self.stack = m.get('Stack')
-        if m.get('Properties') is not None:
-            self.properties = m.get('Properties')
         if m.get('RequiredBy') is not None:
             self.required_by = m.get('RequiredBy')
+        if m.get('Properties') is not None:
+            self.properties = m.get('Properties')
         return self
 
 
@@ -9679,24 +10022,24 @@ class PreviewStackResponseBodyStack(TeaModel):
     def __init__(
         self,
         template_description: str = None,
+        parameters: List[PreviewStackResponseBodyStackParameters] = None,
         description: str = None,
         disable_rollback: bool = None,
         stack_name: str = None,
         timeout_in_minutes: int = None,
         stack_policy_body: Dict[str, Any] = None,
-        region_id: str = None,
-        parameters: List[PreviewStackResponseBodyStackParameters] = None,
         resources: List[PreviewStackResponseBodyStackResources] = None,
+        region_id: str = None,
     ):
         self.template_description = template_description
+        self.parameters = parameters
         self.description = description
         self.disable_rollback = disable_rollback
         self.stack_name = stack_name
         self.timeout_in_minutes = timeout_in_minutes
         self.stack_policy_body = stack_policy_body
-        self.region_id = region_id
-        self.parameters = parameters
         self.resources = resources
+        self.region_id = region_id
 
     def validate(self):
         if self.parameters:
@@ -9716,6 +10059,10 @@ class PreviewStackResponseBodyStack(TeaModel):
         result = dict()
         if self.template_description is not None:
             result['TemplateDescription'] = self.template_description
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
         if self.disable_rollback is not None:
@@ -9726,22 +10073,23 @@ class PreviewStackResponseBodyStack(TeaModel):
             result['TimeoutInMinutes'] = self.timeout_in_minutes
         if self.stack_policy_body is not None:
             result['StackPolicyBody'] = self.stack_policy_body
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        result['Parameters'] = []
-        if self.parameters is not None:
-            for k in self.parameters:
-                result['Parameters'].append(k.to_map() if k else None)
         result['Resources'] = []
         if self.resources is not None:
             for k in self.resources:
                 result['Resources'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('TemplateDescription') is not None:
             self.template_description = m.get('TemplateDescription')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = PreviewStackResponseBodyStackParameters()
+                self.parameters.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DisableRollback') is not None:
@@ -9752,18 +10100,13 @@ class PreviewStackResponseBodyStack(TeaModel):
             self.timeout_in_minutes = m.get('TimeoutInMinutes')
         if m.get('StackPolicyBody') is not None:
             self.stack_policy_body = m.get('StackPolicyBody')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        self.parameters = []
-        if m.get('Parameters') is not None:
-            for k in m.get('Parameters'):
-                temp_model = PreviewStackResponseBodyStackParameters()
-                self.parameters.append(temp_model.from_map(k))
         self.resources = []
         if m.get('Resources') is not None:
             for k in m.get('Resources'):
                 temp_model = PreviewStackResponseBodyStackResources()
                 self.resources.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -10864,11 +11207,11 @@ class UpdateStackRequest(TeaModel):
 class UpdateStackResponseBody(TeaModel):
     def __init__(
         self,
-        stack_id: str = None,
         request_id: str = None,
+        stack_id: str = None,
     ):
-        self.stack_id = stack_id
         self.request_id = request_id
+        self.stack_id = stack_id
 
     def validate(self):
         pass
@@ -10879,18 +11222,18 @@ class UpdateStackResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.stack_id is not None:
-            result['StackId'] = self.stack_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('StackId') is not None:
-            self.stack_id = m.get('StackId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
         return self
 
 
@@ -10982,6 +11325,9 @@ class UpdateStackGroupRequest(TeaModel):
         template_id: str = None,
         template_version: str = None,
         parameters: List[UpdateStackGroupRequestParameters] = None,
+        permission_model: str = None,
+        auto_deployment: Dict[str, Any] = None,
+        deployment_targets: Dict[str, Any] = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -10998,6 +11344,9 @@ class UpdateStackGroupRequest(TeaModel):
         self.template_id = template_id
         self.template_version = template_version
         self.parameters = parameters
+        self.permission_model = permission_model
+        self.auto_deployment = auto_deployment
+        self.deployment_targets = deployment_targets
 
     def validate(self):
         if self.parameters:
@@ -11043,6 +11392,12 @@ class UpdateStackGroupRequest(TeaModel):
         if self.parameters is not None:
             for k in self.parameters:
                 result['Parameters'].append(k.to_map() if k else None)
+        if self.permission_model is not None:
+            result['PermissionModel'] = self.permission_model
+        if self.auto_deployment is not None:
+            result['AutoDeployment'] = self.auto_deployment
+        if self.deployment_targets is not None:
+            result['DeploymentTargets'] = self.deployment_targets
         return result
 
     def from_map(self, m: dict = None):
@@ -11080,6 +11435,12 @@ class UpdateStackGroupRequest(TeaModel):
             for k in m.get('Parameters'):
                 temp_model = UpdateStackGroupRequestParameters()
                 self.parameters.append(temp_model.from_map(k))
+        if m.get('PermissionModel') is not None:
+            self.permission_model = m.get('PermissionModel')
+        if m.get('AutoDeployment') is not None:
+            self.auto_deployment = m.get('AutoDeployment')
+        if m.get('DeploymentTargets') is not None:
+            self.deployment_targets = m.get('DeploymentTargets')
         return self
 
 
@@ -11134,6 +11495,9 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         template_id: str = None,
         template_version: str = None,
         parameters: List[UpdateStackGroupShrinkRequestParameters] = None,
+        permission_model: str = None,
+        auto_deployment_shrink: str = None,
+        deployment_targets_shrink: str = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -11150,6 +11514,9 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         self.template_id = template_id
         self.template_version = template_version
         self.parameters = parameters
+        self.permission_model = permission_model
+        self.auto_deployment_shrink = auto_deployment_shrink
+        self.deployment_targets_shrink = deployment_targets_shrink
 
     def validate(self):
         if self.parameters:
@@ -11195,6 +11562,12 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         if self.parameters is not None:
             for k in self.parameters:
                 result['Parameters'].append(k.to_map() if k else None)
+        if self.permission_model is not None:
+            result['PermissionModel'] = self.permission_model
+        if self.auto_deployment_shrink is not None:
+            result['AutoDeployment'] = self.auto_deployment_shrink
+        if self.deployment_targets_shrink is not None:
+            result['DeploymentTargets'] = self.deployment_targets_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -11232,17 +11605,23 @@ class UpdateStackGroupShrinkRequest(TeaModel):
             for k in m.get('Parameters'):
                 temp_model = UpdateStackGroupShrinkRequestParameters()
                 self.parameters.append(temp_model.from_map(k))
+        if m.get('PermissionModel') is not None:
+            self.permission_model = m.get('PermissionModel')
+        if m.get('AutoDeployment') is not None:
+            self.auto_deployment_shrink = m.get('AutoDeployment')
+        if m.get('DeploymentTargets') is not None:
+            self.deployment_targets_shrink = m.get('DeploymentTargets')
         return self
 
 
 class UpdateStackGroupResponseBody(TeaModel):
     def __init__(
         self,
-        operation_id: str = None,
         request_id: str = None,
+        operation_id: str = None,
     ):
-        self.operation_id = operation_id
         self.request_id = request_id
+        self.operation_id = operation_id
 
     def validate(self):
         pass
@@ -11253,18 +11632,18 @@ class UpdateStackGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.operation_id is not None:
-            result['OperationId'] = self.operation_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OperationId') is not None:
-            self.operation_id = m.get('OperationId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
         return self
 
 
@@ -11350,6 +11729,7 @@ class UpdateStackInstancesRequest(TeaModel):
         operation_preferences: Dict[str, Any] = None,
         timeout_in_minutes: int = None,
         parameter_overrides: List[UpdateStackInstancesRequestParameterOverrides] = None,
+        deployment_targets: Dict[str, Any] = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -11360,6 +11740,7 @@ class UpdateStackInstancesRequest(TeaModel):
         self.operation_preferences = operation_preferences
         self.timeout_in_minutes = timeout_in_minutes
         self.parameter_overrides = parameter_overrides
+        self.deployment_targets = deployment_targets
 
     def validate(self):
         if self.parameter_overrides:
@@ -11393,6 +11774,8 @@ class UpdateStackInstancesRequest(TeaModel):
         if self.parameter_overrides is not None:
             for k in self.parameter_overrides:
                 result['ParameterOverrides'].append(k.to_map() if k else None)
+        if self.deployment_targets is not None:
+            result['DeploymentTargets'] = self.deployment_targets
         return result
 
     def from_map(self, m: dict = None):
@@ -11418,6 +11801,8 @@ class UpdateStackInstancesRequest(TeaModel):
             for k in m.get('ParameterOverrides'):
                 temp_model = UpdateStackInstancesRequestParameterOverrides()
                 self.parameter_overrides.append(temp_model.from_map(k))
+        if m.get('DeploymentTargets') is not None:
+            self.deployment_targets = m.get('DeploymentTargets')
         return self
 
 
@@ -11466,6 +11851,7 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
         operation_preferences_shrink: str = None,
         timeout_in_minutes: int = None,
         parameter_overrides: List[UpdateStackInstancesShrinkRequestParameterOverrides] = None,
+        deployment_targets_shrink: str = None,
     ):
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -11476,6 +11862,7 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
         self.operation_preferences_shrink = operation_preferences_shrink
         self.timeout_in_minutes = timeout_in_minutes
         self.parameter_overrides = parameter_overrides
+        self.deployment_targets_shrink = deployment_targets_shrink
 
     def validate(self):
         if self.parameter_overrides:
@@ -11509,6 +11896,8 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
         if self.parameter_overrides is not None:
             for k in self.parameter_overrides:
                 result['ParameterOverrides'].append(k.to_map() if k else None)
+        if self.deployment_targets_shrink is not None:
+            result['DeploymentTargets'] = self.deployment_targets_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -11534,17 +11923,19 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
             for k in m.get('ParameterOverrides'):
                 temp_model = UpdateStackInstancesShrinkRequestParameterOverrides()
                 self.parameter_overrides.append(temp_model.from_map(k))
+        if m.get('DeploymentTargets') is not None:
+            self.deployment_targets_shrink = m.get('DeploymentTargets')
         return self
 
 
 class UpdateStackInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        operation_id: str = None,
         request_id: str = None,
+        operation_id: str = None,
     ):
-        self.operation_id = operation_id
         self.request_id = request_id
+        self.operation_id = operation_id
 
     def validate(self):
         pass
@@ -11555,18 +11946,18 @@ class UpdateStackInstancesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.operation_id is not None:
-            result['OperationId'] = self.operation_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OperationId') is not None:
-            self.operation_id = m.get('OperationId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
         return self
 
 
@@ -11868,11 +12259,13 @@ class ValidateTemplateRequest(TeaModel):
         region_id: str = None,
         template_body: str = None,
         client_token: str = None,
+        validation_option: str = None,
     ):
         self.template_url = template_url
         self.region_id = region_id
         self.template_body = template_body
         self.client_token = client_token
+        self.validation_option = validation_option
 
     def validate(self):
         pass
@@ -11891,6 +12284,8 @@ class ValidateTemplateRequest(TeaModel):
             result['TemplateBody'] = self.template_body
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.validation_option is not None:
+            result['ValidationOption'] = self.validation_option
         return result
 
     def from_map(self, m: dict = None):
@@ -11903,6 +12298,8 @@ class ValidateTemplateRequest(TeaModel):
             self.template_body = m.get('TemplateBody')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ValidationOption') is not None:
+            self.validation_option = m.get('ValidationOption')
         return self
 
 

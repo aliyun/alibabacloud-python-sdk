@@ -211,10 +211,14 @@ class Client(OpenApiClient):
 
     def create_stack_group_with_options(
         self,
-        request: ros20190910_models.CreateStackGroupRequest,
+        tmp_req: ros20190910_models.CreateStackGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateStackGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.CreateStackGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.auto_deployment):
+            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_deployment, 'AutoDeployment', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -225,10 +229,14 @@ class Client(OpenApiClient):
 
     async def create_stack_group_with_options_async(
         self,
-        request: ros20190910_models.CreateStackGroupRequest,
+        tmp_req: ros20190910_models.CreateStackGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateStackGroupResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.CreateStackGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.auto_deployment):
+            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_deployment, 'AutoDeployment', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -265,6 +273,8 @@ class Client(OpenApiClient):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.deployment_targets):
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -287,6 +297,8 @@ class Client(OpenApiClient):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.deployment_targets):
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -491,6 +503,8 @@ class Client(OpenApiClient):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.deployment_targets):
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -513,6 +527,8 @@ class Client(OpenApiClient):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.deployment_targets):
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -2475,6 +2491,10 @@ class Client(OpenApiClient):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.auto_deployment):
+            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_deployment, 'AutoDeployment', 'json')
+        if not UtilClient.is_unset(tmp_req.deployment_targets):
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -2497,6 +2517,10 @@ class Client(OpenApiClient):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.auto_deployment):
+            request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.auto_deployment, 'AutoDeployment', 'json')
+        if not UtilClient.is_unset(tmp_req.deployment_targets):
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -2533,6 +2557,8 @@ class Client(OpenApiClient):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.deployment_targets):
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
@@ -2555,6 +2581,8 @@ class Client(OpenApiClient):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        if not UtilClient.is_unset(tmp_req.deployment_targets):
+            request.deployment_targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deployment_targets, 'DeploymentTargets', 'json')
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
