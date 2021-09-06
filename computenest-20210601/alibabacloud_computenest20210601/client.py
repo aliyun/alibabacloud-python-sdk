@@ -41,47 +41,215 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def continue_deploy_service_instance_with_options(
+    def delete_service_instances_with_options(
         self,
-        request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
+        request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
+    ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            compute_nest_20210601_models.ContinueDeployServiceInstanceResponse(),
-            self.do_rpcrequest('ContinueDeployServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            compute_nest_20210601_models.DeleteServiceInstancesResponse(),
+            self.do_rpcrequest('DeleteServiceInstances', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def continue_deploy_service_instance_with_options_async(
+    async def delete_service_instances_with_options_async(
         self,
-        request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
+        request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
+    ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            compute_nest_20210601_models.ContinueDeployServiceInstanceResponse(),
-            await self.do_rpcrequest_async('ContinueDeployServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            compute_nest_20210601_models.DeleteServiceInstancesResponse(),
+            await self.do_rpcrequest_async('DeleteServiceInstances', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def continue_deploy_service_instance(
+    def delete_service_instances(
         self,
-        request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
-    ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
+        request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
+    ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
         runtime = util_models.RuntimeOptions()
-        return self.continue_deploy_service_instance_with_options(request, runtime)
+        return self.delete_service_instances_with_options(request, runtime)
 
-    async def continue_deploy_service_instance_async(
+    async def delete_service_instances_async(
         self,
-        request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
-    ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
+        request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
+    ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.continue_deploy_service_instance_with_options_async(request, runtime)
+        return await self.delete_service_instances_with_options_async(request, runtime)
+
+    def get_service_instance_with_options(
+        self,
+        request: compute_nest_20210601_models.GetServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.GetServiceInstanceResponse(),
+            self.do_rpcrequest('GetServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_service_instance_with_options_async(
+        self,
+        request: compute_nest_20210601_models.GetServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.GetServiceInstanceResponse(),
+            await self.do_rpcrequest_async('GetServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_service_instance(
+        self,
+        request: compute_nest_20210601_models.GetServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_instance_with_options(request, runtime)
+
+    async def get_service_instance_async(
+        self,
+        request: compute_nest_20210601_models.GetServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_instance_with_options_async(request, runtime)
+
+    def list_policies_with_options(
+        self,
+        request: compute_nest_20210601_models.ListPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListPoliciesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListPoliciesResponse(),
+            self.do_rpcrequest('ListPolicies', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_policies_with_options_async(
+        self,
+        request: compute_nest_20210601_models.ListPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListPoliciesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListPoliciesResponse(),
+            await self.do_rpcrequest_async('ListPolicies', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_policies(
+        self,
+        request: compute_nest_20210601_models.ListPoliciesRequest,
+    ) -> compute_nest_20210601_models.ListPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_policies_with_options(request, runtime)
+
+    async def list_policies_async(
+        self,
+        request: compute_nest_20210601_models.ListPoliciesRequest,
+    ) -> compute_nest_20210601_models.ListPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_policies_with_options_async(request, runtime)
+
+    def list_inuse_services_with_options(
+        self,
+        request: compute_nest_20210601_models.ListInuseServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListInuseServicesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListInuseServicesResponse(),
+            self.do_rpcrequest('ListInuseServices', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_inuse_services_with_options_async(
+        self,
+        request: compute_nest_20210601_models.ListInuseServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListInuseServicesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListInuseServicesResponse(),
+            await self.do_rpcrequest_async('ListInuseServices', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_inuse_services(
+        self,
+        request: compute_nest_20210601_models.ListInuseServicesRequest,
+    ) -> compute_nest_20210601_models.ListInuseServicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_inuse_services_with_options(request, runtime)
+
+    async def list_inuse_services_async(
+        self,
+        request: compute_nest_20210601_models.ListInuseServicesRequest,
+    ) -> compute_nest_20210601_models.ListInuseServicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_inuse_services_with_options_async(request, runtime)
+
+    def describe_regions_with_options(
+        self,
+        request: compute_nest_20210601_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.DescribeRegionsResponse(),
+            self.do_rpcrequest('DescribeRegions', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: compute_nest_20210601_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.DescribeRegionsResponse(),
+            await self.do_rpcrequest_async('DescribeRegions', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_regions(
+        self,
+        request: compute_nest_20210601_models.DescribeRegionsRequest,
+    ) -> compute_nest_20210601_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_regions_with_options(request, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: compute_nest_20210601_models.DescribeRegionsRequest,
+    ) -> compute_nest_20210601_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_regions_with_options_async(request, runtime)
 
     def create_service_instance_with_options(
         self,
@@ -133,131 +301,47 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_service_instance_with_options_async(request, runtime)
 
-    def delete_service_instances_with_options(
+    def continue_deploy_service_instance_with_options(
         self,
-        request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
+        request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
+    ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            compute_nest_20210601_models.DeleteServiceInstancesResponse(),
-            self.do_rpcrequest('DeleteServiceInstances', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            compute_nest_20210601_models.ContinueDeployServiceInstanceResponse(),
+            self.do_rpcrequest('ContinueDeployServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def delete_service_instances_with_options_async(
+    async def continue_deploy_service_instance_with_options_async(
         self,
-        request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
+        request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
+    ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            compute_nest_20210601_models.DeleteServiceInstancesResponse(),
-            await self.do_rpcrequest_async('DeleteServiceInstances', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            compute_nest_20210601_models.ContinueDeployServiceInstanceResponse(),
+            await self.do_rpcrequest_async('ContinueDeployServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def delete_service_instances(
+    def continue_deploy_service_instance(
         self,
-        request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
-    ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
+        request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        return self.delete_service_instances_with_options(request, runtime)
+        return self.continue_deploy_service_instance_with_options(request, runtime)
 
-    async def delete_service_instances_async(
+    async def continue_deploy_service_instance_async(
         self,
-        request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
-    ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
+        request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.delete_service_instances_with_options_async(request, runtime)
-
-    def deploy_service_instance_with_options(
-        self,
-        request: compute_nest_20210601_models.DeployServiceInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.DeployServiceInstanceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            compute_nest_20210601_models.DeployServiceInstanceResponse(),
-            self.do_rpcrequest('DeployServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def deploy_service_instance_with_options_async(
-        self,
-        request: compute_nest_20210601_models.DeployServiceInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.DeployServiceInstanceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            compute_nest_20210601_models.DeployServiceInstanceResponse(),
-            await self.do_rpcrequest_async('DeployServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def deploy_service_instance(
-        self,
-        request: compute_nest_20210601_models.DeployServiceInstanceRequest,
-    ) -> compute_nest_20210601_models.DeployServiceInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.deploy_service_instance_with_options(request, runtime)
-
-    async def deploy_service_instance_async(
-        self,
-        request: compute_nest_20210601_models.DeployServiceInstanceRequest,
-    ) -> compute_nest_20210601_models.DeployServiceInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.deploy_service_instance_with_options_async(request, runtime)
-
-    def describe_regions_with_options(
-        self,
-        request: compute_nest_20210601_models.DescribeRegionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.DescribeRegionsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            compute_nest_20210601_models.DescribeRegionsResponse(),
-            self.do_rpcrequest('DescribeRegions', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_regions_with_options_async(
-        self,
-        request: compute_nest_20210601_models.DescribeRegionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.DescribeRegionsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            compute_nest_20210601_models.DescribeRegionsResponse(),
-            await self.do_rpcrequest_async('DescribeRegions', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_regions(
-        self,
-        request: compute_nest_20210601_models.DescribeRegionsRequest,
-    ) -> compute_nest_20210601_models.DescribeRegionsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_regions_with_options(request, runtime)
-
-    async def describe_regions_async(
-        self,
-        request: compute_nest_20210601_models.DescribeRegionsRequest,
-    ) -> compute_nest_20210601_models.DescribeRegionsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_regions_with_options_async(request, runtime)
+        return await self.continue_deploy_service_instance_with_options_async(request, runtime)
 
     def get_service_with_options(
         self,
@@ -301,89 +385,47 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_service_with_options_async(request, runtime)
 
-    def get_service_instance_with_options(
+    def deploy_service_instance_with_options(
         self,
-        request: compute_nest_20210601_models.GetServiceInstanceRequest,
+        request: compute_nest_20210601_models.DeployServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+    ) -> compute_nest_20210601_models.DeployServiceInstanceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            compute_nest_20210601_models.GetServiceInstanceResponse(),
-            self.do_rpcrequest('GetServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            compute_nest_20210601_models.DeployServiceInstanceResponse(),
+            self.do_rpcrequest('DeployServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def get_service_instance_with_options_async(
+    async def deploy_service_instance_with_options_async(
         self,
-        request: compute_nest_20210601_models.GetServiceInstanceRequest,
+        request: compute_nest_20210601_models.DeployServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+    ) -> compute_nest_20210601_models.DeployServiceInstanceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            compute_nest_20210601_models.GetServiceInstanceResponse(),
-            await self.do_rpcrequest_async('GetServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            compute_nest_20210601_models.DeployServiceInstanceResponse(),
+            await self.do_rpcrequest_async('DeployServiceInstance', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def get_service_instance(
+    def deploy_service_instance(
         self,
-        request: compute_nest_20210601_models.GetServiceInstanceRequest,
-    ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        request: compute_nest_20210601_models.DeployServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.DeployServiceInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_service_instance_with_options(request, runtime)
+        return self.deploy_service_instance_with_options(request, runtime)
 
-    async def get_service_instance_async(
+    async def deploy_service_instance_async(
         self,
-        request: compute_nest_20210601_models.GetServiceInstanceRequest,
-    ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        request: compute_nest_20210601_models.DeployServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.DeployServiceInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_service_instance_with_options_async(request, runtime)
-
-    def list_inuse_services_with_options(
-        self,
-        request: compute_nest_20210601_models.ListInuseServicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.ListInuseServicesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            compute_nest_20210601_models.ListInuseServicesResponse(),
-            self.do_rpcrequest('ListInuseServices', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_inuse_services_with_options_async(
-        self,
-        request: compute_nest_20210601_models.ListInuseServicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_20210601_models.ListInuseServicesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            compute_nest_20210601_models.ListInuseServicesResponse(),
-            await self.do_rpcrequest_async('ListInuseServices', '2021-06-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_inuse_services(
-        self,
-        request: compute_nest_20210601_models.ListInuseServicesRequest,
-    ) -> compute_nest_20210601_models.ListInuseServicesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_inuse_services_with_options(request, runtime)
-
-    async def list_inuse_services_async(
-        self,
-        request: compute_nest_20210601_models.ListInuseServicesRequest,
-    ) -> compute_nest_20210601_models.ListInuseServicesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_inuse_services_with_options_async(request, runtime)
+        return await self.deploy_service_instance_with_options_async(request, runtime)
 
     def list_service_instances_with_options(
         self,
