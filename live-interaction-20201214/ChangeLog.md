@@ -1,3 +1,6 @@
+2021-09-06 Version: 2.1.2
+- Feature Add Read Message API.
+
 2021-07-30 Version: 2.1.1
 - Fixed destroyRoom.
 

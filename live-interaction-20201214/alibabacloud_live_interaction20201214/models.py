@@ -504,41 +504,6 @@ class RemoveSingleChatExtensionByKeysResponse(TeaModel):
         return self
 
 
-class ImportMessageRequestRequestParamsMessagesReceiverUsers(TeaModel):
-    def __init__(
-        self,
-        receiver_id: str = None,
-        read_flag: bool = None,
-    ):
-        # 接受者ID
-        self.receiver_id = receiver_id
-        # 消息已阅读标志
-        self.read_flag = read_flag
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.receiver_id is not None:
-            result['ReceiverId'] = self.receiver_id
-        if self.read_flag is not None:
-            result['ReadFlag'] = self.read_flag
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ReceiverId') is not None:
-            self.receiver_id = m.get('ReceiverId')
-        if m.get('ReadFlag') is not None:
-            self.read_flag = m.get('ReadFlag')
-        return self
-
-
 class ImportMessageRequestRequestParamsMessages(TeaModel):
     def __init__(
         self,
@@ -546,7 +511,7 @@ class ImportMessageRequestRequestParamsMessages(TeaModel):
         app_cid: str = None,
         conversation_type: int = None,
         sender_id: str = None,
-        receiver_users: List[ImportMessageRequestRequestParamsMessagesReceiverUsers] = None,
+        receiver_ids: List[str] = None,
         content_type: int = None,
         content: str = None,
         create_time: int = None,
@@ -561,7 +526,7 @@ class ImportMessageRequestRequestParamsMessages(TeaModel):
         # 发送者ID
         self.sender_id = sender_id
         # 接受者列表, 群聊如果列表为空者全员接收
-        self.receiver_users = receiver_users
+        self.receiver_ids = receiver_ids
         # 消息类型
         self.content_type = content_type
         # 消息内容
@@ -572,10 +537,7 @@ class ImportMessageRequestRequestParamsMessages(TeaModel):
         self.extensions = extensions
 
     def validate(self):
-        if self.receiver_users:
-            for k in self.receiver_users:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -591,10 +553,8 @@ class ImportMessageRequestRequestParamsMessages(TeaModel):
             result['ConversationType'] = self.conversation_type
         if self.sender_id is not None:
             result['SenderId'] = self.sender_id
-        result['ReceiverUsers'] = []
-        if self.receiver_users is not None:
-            for k in self.receiver_users:
-                result['ReceiverUsers'].append(k.to_map() if k else None)
+        if self.receiver_ids is not None:
+            result['ReceiverIds'] = self.receiver_ids
         if self.content_type is not None:
             result['ContentType'] = self.content_type
         if self.content is not None:
@@ -615,11 +575,8 @@ class ImportMessageRequestRequestParamsMessages(TeaModel):
             self.conversation_type = m.get('ConversationType')
         if m.get('SenderId') is not None:
             self.sender_id = m.get('SenderId')
-        self.receiver_users = []
-        if m.get('ReceiverUsers') is not None:
-            for k in m.get('ReceiverUsers'):
-                temp_model = ImportMessageRequestRequestParamsMessagesReceiverUsers()
-                self.receiver_users.append(temp_model.from_map(k))
+        if m.get('ReceiverIds') is not None:
+            self.receiver_ids = m.get('ReceiverIds')
         if m.get('ContentType') is not None:
             self.content_type = m.get('ContentType')
         if m.get('Content') is not None:
@@ -5172,6 +5129,187 @@ class GetRoomStatisticsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetRoomStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReadMessageRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_uid: str = None,
+        msg_id: str = None,
+    ):
+        # 操作者ID
+        self.app_uid = app_uid
+        # 消息ID
+        self.msg_id = msg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uid is not None:
+            result['AppUid'] = self.app_uid
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUid') is not None:
+            self.app_uid = m.get('AppUid')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        return self
+
+
+class ReadMessageRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: ReadMessageRequestRequestParams = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = ReadMessageRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class ReadMessageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class ReadMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class ReadMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ReadMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ReadMessageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9980,7 +10118,7 @@ class ListGroupSilenceMembersResponseBodyResult(TeaModel):
         self.app_cid = app_cid
         # 禁言白名单
         self.whitelist = whitelist
-        # 禁言黑名单用户及对应禁言截止时间
+        # 禁言黑名单用户及对应禁言时长
         self.blacklist = blacklist
 
     def validate(self):
@@ -11046,11 +11184,11 @@ class DestroyRoomRequestRequest(TeaModel):
         room_id: str = None,
         open_id: str = None,
     ):
-        # 应用的appKey。
+        # 应用appKey
         self.domain = domain
-        # 房间ID，由调用CreateRoom时返回。
+        # 房间id
         self.room_id = room_id
-        # 操作人ID。
+        # 操作人id
         self.open_id = open_id
 
     def validate(self):
@@ -11116,15 +11254,16 @@ class DestroyRoomResponseBody(TeaModel):
         error_code: str = None,
         error_msg: str = None,
         request_id: str = None,
+        result: bool = None,
         response_success: bool = None,
     ):
-        # 错误码。
+        # 错误码
         self.error_code = error_code
-        # 错误信息。
+        # 错误信息
         self.error_msg = error_msg
-        # 请求ID。
         self.request_id = request_id
-        # 请求是否成功。
+        # 是否销毁成功
+        self.result = result
         self.response_success = response_success
 
     def validate(self):
@@ -11142,6 +11281,8 @@ class DestroyRoomResponseBody(TeaModel):
             result['errorMsg'] = self.error_msg
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
         if self.response_success is not None:
             result['ResponseSuccess'] = self.response_success
         return result
@@ -11154,6 +11295,8 @@ class DestroyRoomResponseBody(TeaModel):
             self.error_msg = m.get('errorMsg')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
         if m.get('ResponseSuccess') is not None:
             self.response_success = m.get('ResponseSuccess')
         return self
