@@ -1135,6 +1135,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_live_with_options_async(request, runtime)
 
+    def get_standard_room_jump_url_with_options(
+        self,
+        request: imp_20210630_models.GetStandardRoomJumpUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetStandardRoomJumpUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetStandardRoomJumpUrlResponse(),
+            self.do_rpcrequest('GetStandardRoomJumpUrl', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_standard_room_jump_url_with_options_async(
+        self,
+        request: imp_20210630_models.GetStandardRoomJumpUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetStandardRoomJumpUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetStandardRoomJumpUrlResponse(),
+            await self.do_rpcrequest_async('GetStandardRoomJumpUrl', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_standard_room_jump_url(
+        self,
+        request: imp_20210630_models.GetStandardRoomJumpUrlRequest,
+    ) -> imp_20210630_models.GetStandardRoomJumpUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_standard_room_jump_url_with_options(request, runtime)
+
+    async def get_standard_room_jump_url_async(
+        self,
+        request: imp_20210630_models.GetStandardRoomJumpUrlRequest,
+    ) -> imp_20210630_models.GetStandardRoomJumpUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_standard_room_jump_url_with_options_async(request, runtime)
+
     def delete_app_with_options(
         self,
         request: imp_20210630_models.DeleteAppRequest,

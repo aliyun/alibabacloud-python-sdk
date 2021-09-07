@@ -3824,6 +3824,177 @@ class CreateLiveResponse(TeaModel):
         return self
 
 
+class GetStandardRoomJumpUrlRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        user_id: str = None,
+        app_key: str = None,
+        platform: str = None,
+        biz_type: str = None,
+        biz_id: str = None,
+        user_nick: str = None,
+    ):
+        # 用户的应用ID，在控制台创建应用时生成
+        self.app_id = app_id
+        # 用户UserId,在AppId下单独唯一
+        self.user_id = user_id
+        # 终端设备类型,通过控制台创建和查询
+        self.app_key = app_key
+        # 平台：win, mac, android, ios, web
+        self.platform = platform
+        # 业务类型：互动直播live，互动课堂class
+        self.biz_type = biz_type
+        # 资源ID：根据业务类型来定，比如直播ID，课堂ID等
+        self.biz_id = biz_id
+        # 用户昵称
+        self.user_nick = user_nick
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.user_nick is not None:
+            result['UserNick'] = self.user_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('UserNick') is not None:
+            self.user_nick = m.get('UserNick')
+        return self
+
+
+class GetStandardRoomJumpUrlResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        standard_room_jump_url: str = None,
+    ):
+        # 样板间跳转协议地址
+        self.standard_room_jump_url = standard_room_jump_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.standard_room_jump_url is not None:
+            result['StandardRoomJumpUrl'] = self.standard_room_jump_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StandardRoomJumpUrl') is not None:
+            self.standard_room_jump_url = m.get('StandardRoomJumpUrl')
+        return self
+
+
+class GetStandardRoomJumpUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetStandardRoomJumpUrlResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetStandardRoomJumpUrlResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetStandardRoomJumpUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetStandardRoomJumpUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetStandardRoomJumpUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAppRequest(TeaModel):
     def __init__(
         self,

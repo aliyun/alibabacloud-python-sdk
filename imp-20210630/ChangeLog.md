@@ -1,3 +1,6 @@
+2021-09-07 Version: 2.5.0
+- Add GetStandardRoomJumpUrl Api.
+
 2021-08-27 Version: 2.4.4
 - Add CreateIceProject,RegisterIceOssMedia Api.
 
