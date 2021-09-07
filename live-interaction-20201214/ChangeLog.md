@@ -1,3 +1,6 @@
+2021-09-07 Version: 2.1.3
+- Feature Add SetMessageRead API.
+
 2021-09-06 Version: 2.1.2
 - Feature Add Read Message API.
 

@@ -5133,187 +5133,6 @@ class GetRoomStatisticsResponse(TeaModel):
         return self
 
 
-class ReadMessageRequestRequestParams(TeaModel):
-    def __init__(
-        self,
-        app_uid: str = None,
-        msg_id: str = None,
-    ):
-        # 操作者ID
-        self.app_uid = app_uid
-        # 消息ID
-        self.msg_id = msg_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_uid is not None:
-            result['AppUid'] = self.app_uid
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppUid') is not None:
-            self.app_uid = m.get('AppUid')
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
-        return self
-
-
-class ReadMessageRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        request_params: ReadMessageRequestRequestParams = None,
-    ):
-        # AppId
-        self.app_id = app_id
-        self.request_params = request_params
-
-    def validate(self):
-        if self.request_params:
-            self.request_params.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.request_params is not None:
-            result['RequestParams'] = self.request_params.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('RequestParams') is not None:
-            temp_model = ReadMessageRequestRequestParams()
-            self.request_params = temp_model.from_map(m['RequestParams'])
-        return self
-
-
-class ReadMessageShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        request_params_shrink: str = None,
-    ):
-        # AppId
-        self.app_id = app_id
-        self.request_params_shrink = request_params_shrink
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.request_params_shrink is not None:
-            result['RequestParams'] = self.request_params_shrink
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('RequestParams') is not None:
-            self.request_params_shrink = m.get('RequestParams')
-        return self
-
-
-class ReadMessageResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        code: str = None,
-        message: str = None,
-    ):
-        self.request_id = request_id
-        self.code = code
-        self.message = message
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        return self
-
-
-class ReadMessageResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ReadMessageResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ReadMessageResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class AddGroupMembersRequestRequestParamsInitMembers(TeaModel):
     def __init__(
         self,
@@ -11660,6 +11479,187 @@ class ListCallbackApiIdsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListCallbackApiIdsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetMessageReadRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_uid: str = None,
+        msg_id: str = None,
+    ):
+        # 操作者ID
+        self.app_uid = app_uid
+        # 消息ID
+        self.msg_id = msg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uid is not None:
+            result['AppUid'] = self.app_uid
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUid') is not None:
+            self.app_uid = m.get('AppUid')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        return self
+
+
+class SetMessageReadRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: SetMessageReadRequestRequestParams = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = SetMessageReadRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class SetMessageReadShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class SetMessageReadResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class SetMessageReadResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SetMessageReadResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SetMessageReadResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
