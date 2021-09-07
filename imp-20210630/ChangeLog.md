@@ -1,3 +1,6 @@
+2021-09-07 Version: 2.5.1
+- Console Support StandardRoom.
+
 2021-09-07 Version: 2.5.0
 - Add GetStandardRoomJumpUrl Api.
 
