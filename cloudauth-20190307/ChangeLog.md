@@ -1,3 +1,6 @@
+2021-09-08 Version: 1.0.4
+- Support crop face image.
+
 2021-04-20 Version: 1.0.2
 - LivenessFaceVerify ContrastFaceVerify CompareFaceVerify API Return CertifyId.
 
