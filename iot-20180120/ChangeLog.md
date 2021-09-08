@@ -1,3 +1,6 @@
+2021-09-08 Version: 2.3.0
+- Add DOP apiSource add data api.
+
 2021-09-08 Version: 0.2.0
 - Generated python 2018-01-20 for Iot.
 
