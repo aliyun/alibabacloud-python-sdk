@@ -1,3 +1,6 @@
+2021-09-08 Version: 0.2.0
+- Generated python 2018-01-20 for Iot.
+
 2021-05-02 Version: 2.2.2
 - Generated python 2018-01-20 for Iot.
 
