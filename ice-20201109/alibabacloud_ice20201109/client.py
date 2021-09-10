@@ -143,6 +143,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_smart_jobs_with_options_async(request, runtime)
 
+    def get_live_editing_job_with_options(
+        self,
+        request: ice20201109_models.GetLiveEditingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveEditingJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveEditingJobResponse(),
+            self.do_rpcrequest('GetLiveEditingJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_live_editing_job_with_options_async(
+        self,
+        request: ice20201109_models.GetLiveEditingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveEditingJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveEditingJobResponse(),
+            await self.do_rpcrequest_async('GetLiveEditingJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_live_editing_job(
+        self,
+        request: ice20201109_models.GetLiveEditingJobRequest,
+    ) -> ice20201109_models.GetLiveEditingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_editing_job_with_options(request, runtime)
+
+    async def get_live_editing_job_async(
+        self,
+        request: ice20201109_models.GetLiveEditingJobRequest,
+    ) -> ice20201109_models.GetLiveEditingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_editing_job_with_options_async(request, runtime)
+
     def describe_related_authorization_status_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -219,13 +261,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddTemplateResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
             ice20201109_models.AddTemplateResponse(),
-            self.do_rpcrequest('AddTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.do_rpcrequest('AddTemplate', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def add_template_with_options_async(
@@ -234,13 +275,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddTemplateResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
             ice20201109_models.AddTemplateResponse(),
-            await self.do_rpcrequest_async('AddTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.do_rpcrequest_async('AddTemplate', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def add_template(
@@ -822,6 +862,50 @@ class Client(OpenApiClient):
     async def describe_ice_product_status_async(self) -> ice20201109_models.DescribeIceProductStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_ice_product_status_with_options_async(runtime)
+
+    def get_live_editing_index_file_with_options(
+        self,
+        request: ice20201109_models.GetLiveEditingIndexFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveEditingIndexFileResponse(),
+            self.do_rpcrequest('GetLiveEditingIndexFile', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def get_live_editing_index_file_with_options_async(
+        self,
+        request: ice20201109_models.GetLiveEditingIndexFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveEditingIndexFileResponse(),
+            await self.do_rpcrequest_async('GetLiveEditingIndexFile', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def get_live_editing_index_file(
+        self,
+        request: ice20201109_models.GetLiveEditingIndexFileRequest,
+    ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_editing_index_file_with_options(request, runtime)
+
+    async def get_live_editing_index_file_async(
+        self,
+        request: ice20201109_models.GetLiveEditingIndexFileRequest,
+    ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_editing_index_file_with_options_async(request, runtime)
 
     def list_media_basic_infos_with_options(
         self,
@@ -1511,13 +1595,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
             ice20201109_models.UpdateTemplateResponse(),
-            self.do_rpcrequest('UpdateTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.do_rpcrequest('UpdateTemplate', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_template_with_options_async(
@@ -1526,13 +1609,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
             ice20201109_models.UpdateTemplateResponse(),
-            await self.do_rpcrequest_async('UpdateTemplate', '2020-11-09', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.do_rpcrequest_async('UpdateTemplate', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_template(
@@ -1956,6 +2038,48 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitH2VJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_h2vjob_with_options_async(request, runtime)
+
+    def submit_live_editing_job_with_options(
+        self,
+        request: ice20201109_models.SubmitLiveEditingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitLiveEditingJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitLiveEditingJobResponse(),
+            self.do_rpcrequest('SubmitLiveEditingJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_live_editing_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitLiveEditingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitLiveEditingJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitLiveEditingJobResponse(),
+            await self.do_rpcrequest_async('SubmitLiveEditingJob', '2020-11-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_live_editing_job(
+        self,
+        request: ice20201109_models.SubmitLiveEditingJobRequest,
+    ) -> ice20201109_models.SubmitLiveEditingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_live_editing_job_with_options(request, runtime)
+
+    async def submit_live_editing_job_async(
+        self,
+        request: ice20201109_models.SubmitLiveEditingJobRequest,
+    ) -> ice20201109_models.SubmitLiveEditingJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_live_editing_job_with_options_async(request, runtime)
 
     def submit_pptcut_job_with_options(
         self,
