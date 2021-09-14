@@ -1,3 +1,6 @@
+2021-09-14 Version: 2.5.2
+- GetRoom add pv field.
+
 2021-09-07 Version: 2.5.1
 - Console Support StandardRoom.
 

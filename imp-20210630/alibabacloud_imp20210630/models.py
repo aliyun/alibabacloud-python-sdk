@@ -531,6 +531,7 @@ class GetRoomResponseBodyResultRoomInfo(TeaModel):
         app_id: str = None,
         template_id: str = None,
         extension: Dict[str, str] = None,
+        pv: int = None,
     ):
         # 房间唯一标识。
         self.room_id = room_id
@@ -554,6 +555,8 @@ class GetRoomResponseBodyResultRoomInfo(TeaModel):
         self.template_id = template_id
         # 房间拓展字段。
         self.extension = extension
+        # 访问用户人次。
+        self.pv = pv
 
     def validate(self):
         if self.plugin_instance_info_list:
@@ -591,6 +594,8 @@ class GetRoomResponseBodyResultRoomInfo(TeaModel):
             result['TemplateId'] = self.template_id
         if self.extension is not None:
             result['Extension'] = self.extension
+        if self.pv is not None:
+            result['Pv'] = self.pv
         return result
 
     def from_map(self, m: dict = None):
@@ -620,6 +625,8 @@ class GetRoomResponseBodyResultRoomInfo(TeaModel):
             self.template_id = m.get('TemplateId')
         if m.get('Extension') is not None:
             self.extension = m.get('Extension')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
         return self
 
 
@@ -4226,6 +4233,8 @@ class ListRoomLivesResponseBodyResultLiveList(TeaModel):
         extension: Dict[str, str] = None,
         live_id: str = None,
         status: int = None,
+        pv: int = None,
+        online_count: int = None,
     ):
         # 房间唯一标识。
         self.room_id = room_id
@@ -4245,6 +4254,10 @@ class ListRoomLivesResponseBodyResultLiveList(TeaModel):
         self.live_id = live_id
         # 直播状态，0-在播 1-不在播。
         self.status = status
+        # 用户访问人次。
+        self.pv = pv
+        # 在线用户数。
+        self.online_count = online_count
 
     def validate(self):
         pass
@@ -4273,6 +4286,10 @@ class ListRoomLivesResponseBodyResultLiveList(TeaModel):
             result['LiveId'] = self.live_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.pv is not None:
+            result['Pv'] = self.pv
+        if self.online_count is not None:
+            result['OnlineCount'] = self.online_count
         return result
 
     def from_map(self, m: dict = None):
@@ -4295,6 +4312,10 @@ class ListRoomLivesResponseBodyResultLiveList(TeaModel):
             self.live_id = m.get('LiveId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
+        if m.get('OnlineCount') is not None:
+            self.online_count = m.get('OnlineCount')
         return self
 
 
