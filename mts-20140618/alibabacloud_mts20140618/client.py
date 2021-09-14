@@ -3781,6 +3781,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_media_censor_job_list_with_options_async(request, runtime)
 
+    def import_fp_shot_job_with_options(
+        self,
+        request: mts_20140618_models.ImportFpShotJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.ImportFpShotJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.ImportFpShotJobResponse(),
+            self.do_rpcrequest('ImportFpShotJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def import_fp_shot_job_with_options_async(
+        self,
+        request: mts_20140618_models.ImportFpShotJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.ImportFpShotJobResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.ImportFpShotJobResponse(),
+            await self.do_rpcrequest_async('ImportFpShotJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def import_fp_shot_job(
+        self,
+        request: mts_20140618_models.ImportFpShotJobRequest,
+    ) -> mts_20140618_models.ImportFpShotJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_fp_shot_job_with_options(request, runtime)
+
+    async def import_fp_shot_job_async(
+        self,
+        request: mts_20140618_models.ImportFpShotJobRequest,
+    ) -> mts_20140618_models.ImportFpShotJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_fp_shot_job_with_options_async(request, runtime)
+
     def list_porn_pipeline_with_options(
         self,
         request: mts_20140618_models.ListPornPipelineRequest,
@@ -6605,6 +6647,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_video_summary_job_with_options_async(request, runtime)
 
+    def im_audit_with_options(
+        self,
+        request: mts_20140618_models.ImAuditRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.ImAuditResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.ImAuditResponse(),
+            self.do_rpcrequest('ImAudit', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def im_audit_with_options_async(
+        self,
+        request: mts_20140618_models.ImAuditRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.ImAuditResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.ImAuditResponse(),
+            await self.do_rpcrequest_async('ImAudit', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def im_audit(
+        self,
+        request: mts_20140618_models.ImAuditRequest,
+    ) -> mts_20140618_models.ImAuditResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.im_audit_with_options(request, runtime)
+
+    async def im_audit_async(
+        self,
+        request: mts_20140618_models.ImAuditRequest,
+    ) -> mts_20140618_models.ImAuditResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.im_audit_with_options_async(request, runtime)
+
     def submit_media_detail_job_with_options(
         self,
         request: mts_20140618_models.SubmitMediaDetailJobRequest,
@@ -7108,6 +7192,48 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpFileDeleteJobListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_fp_file_delete_job_list_with_options_async(request, runtime)
+
+    def query_smarttag_job_list_with_options(
+        self,
+        request: mts_20140618_models.QuerySmarttagJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QuerySmarttagJobListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QuerySmarttagJobListResponse(),
+            self.do_rpcrequest('QuerySmarttagJobList', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_smarttag_job_list_with_options_async(
+        self,
+        request: mts_20140618_models.QuerySmarttagJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QuerySmarttagJobListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QuerySmarttagJobListResponse(),
+            await self.do_rpcrequest_async('QuerySmarttagJobList', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_smarttag_job_list(
+        self,
+        request: mts_20140618_models.QuerySmarttagJobListRequest,
+    ) -> mts_20140618_models.QuerySmarttagJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_smarttag_job_list_with_options(request, runtime)
+
+    async def query_smarttag_job_list_async(
+        self,
+        request: mts_20140618_models.QuerySmarttagJobListRequest,
+    ) -> mts_20140618_models.QuerySmarttagJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_smarttag_job_list_with_options_async(request, runtime)
 
     def submit_image_search_job_with_options(
         self,
@@ -8242,3 +8368,57 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.PlayerAuthResponse:
         runtime = util_models.RuntimeOptions()
         return await self.player_auth_with_options_async(request, runtime)
+
+    def submit_oss_file_copy_job_with_options(
+        self,
+        tmp_req: mts_20140618_models.SubmitOssFileCopyJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitOssFileCopyJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mts_20140618_models.SubmitOssFileCopyJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_storage):
+            request.source_storage_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_storage), 'SourceStorage', 'json')
+        if not UtilClient.is_unset(tmp_req.target_storage):
+            request.target_storage_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.target_storage), 'TargetStorage', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitOssFileCopyJobResponse(),
+            self.do_rpcrequest('SubmitOssFileCopyJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def submit_oss_file_copy_job_with_options_async(
+        self,
+        tmp_req: mts_20140618_models.SubmitOssFileCopyJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitOssFileCopyJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mts_20140618_models.SubmitOssFileCopyJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_storage):
+            request.source_storage_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_storage), 'SourceStorage', 'json')
+        if not UtilClient.is_unset(tmp_req.target_storage):
+            request.target_storage_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.target_storage), 'TargetStorage', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitOssFileCopyJobResponse(),
+            await self.do_rpcrequest_async('SubmitOssFileCopyJob', '2014-06-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def submit_oss_file_copy_job(
+        self,
+        request: mts_20140618_models.SubmitOssFileCopyJobRequest,
+    ) -> mts_20140618_models.SubmitOssFileCopyJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_oss_file_copy_job_with_options(request, runtime)
+
+    async def submit_oss_file_copy_job_async(
+        self,
+        request: mts_20140618_models.SubmitOssFileCopyJobRequest,
+    ) -> mts_20140618_models.SubmitOssFileCopyJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_oss_file_copy_job_with_options_async(request, runtime)

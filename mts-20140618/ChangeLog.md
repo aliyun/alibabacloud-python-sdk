@@ -1,3 +1,6 @@
+2021-09-14 Version: 3.3.28
+- Add URL for SubmitCensorJob.
+
 2021-09-01 Version: 3.3.25
 - SubmitURLUploadJob, support S3 Storage.
 
