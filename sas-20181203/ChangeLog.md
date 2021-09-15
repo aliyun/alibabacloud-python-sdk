@@ -1,3 +1,6 @@
+2021-09-15 Version: 1.0.7
+- Support DescribeWarningMachines API.
+
 2021-08-18 Version: 1.0.6
 - Support RefreshAssets API.
 

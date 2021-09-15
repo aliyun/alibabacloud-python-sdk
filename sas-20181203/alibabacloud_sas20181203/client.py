@@ -1788,13 +1788,9 @@ class Client(OpenApiClient):
 
     def describe_backup_restore_count_with_options(
         self,
-        request: sas_20181203_models.DescribeBackupRestoreCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
             sas_20181203_models.DescribeBackupRestoreCountResponse(),
             self.do_rpcrequest('DescribeBackupRestoreCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
@@ -1802,31 +1798,21 @@ class Client(OpenApiClient):
 
     async def describe_backup_restore_count_with_options_async(
         self,
-        request: sas_20181203_models.DescribeBackupRestoreCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
             sas_20181203_models.DescribeBackupRestoreCountResponse(),
             await self.do_rpcrequest_async('DescribeBackupRestoreCount', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_backup_restore_count(
-        self,
-        request: sas_20181203_models.DescribeBackupRestoreCountRequest,
-    ) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
+    def describe_backup_restore_count(self) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_backup_restore_count_with_options(request, runtime)
+        return self.describe_backup_restore_count_with_options(runtime)
 
-    async def describe_backup_restore_count_async(
-        self,
-        request: sas_20181203_models.DescribeBackupRestoreCountRequest,
-    ) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
+    async def describe_backup_restore_count_async(self) -> sas_20181203_models.DescribeBackupRestoreCountResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_backup_restore_count_with_options_async(request, runtime)
+        return await self.describe_backup_restore_count_with_options_async(runtime)
 
     def describe_brute_force_summary_with_options(
         self,
@@ -5120,13 +5106,9 @@ class Client(OpenApiClient):
 
     def describe_support_region_with_options(
         self,
-        request: sas_20181203_models.DescribeSupportRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeSupportRegionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
             sas_20181203_models.DescribeSupportRegionResponse(),
             self.do_rpcrequest('DescribeSupportRegion', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
@@ -5134,31 +5116,21 @@ class Client(OpenApiClient):
 
     async def describe_support_region_with_options_async(
         self,
-        request: sas_20181203_models.DescribeSupportRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeSupportRegionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
             sas_20181203_models.DescribeSupportRegionResponse(),
             await self.do_rpcrequest_async('DescribeSupportRegion', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_support_region(
-        self,
-        request: sas_20181203_models.DescribeSupportRegionRequest,
-    ) -> sas_20181203_models.DescribeSupportRegionResponse:
+    def describe_support_region(self) -> sas_20181203_models.DescribeSupportRegionResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_support_region_with_options(request, runtime)
+        return self.describe_support_region_with_options(runtime)
 
-    async def describe_support_region_async(
-        self,
-        request: sas_20181203_models.DescribeSupportRegionRequest,
-    ) -> sas_20181203_models.DescribeSupportRegionResponse:
+    async def describe_support_region_async(self) -> sas_20181203_models.DescribeSupportRegionResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_support_region_with_options_async(request, runtime)
+        return await self.describe_support_region_with_options_async(runtime)
 
     def describe_susp_event_detail_with_options(
         self,
@@ -5512,13 +5484,9 @@ class Client(OpenApiClient):
 
     def describe_user_backup_machines_with_options(
         self,
-        request: sas_20181203_models.DescribeUserBackupMachinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
             sas_20181203_models.DescribeUserBackupMachinesResponse(),
             self.do_rpcrequest('DescribeUserBackupMachines', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
@@ -5526,31 +5494,21 @@ class Client(OpenApiClient):
 
     async def describe_user_backup_machines_with_options_async(
         self,
-        request: sas_20181203_models.DescribeUserBackupMachinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
             sas_20181203_models.DescribeUserBackupMachinesResponse(),
             await self.do_rpcrequest_async('DescribeUserBackupMachines', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_user_backup_machines(
-        self,
-        request: sas_20181203_models.DescribeUserBackupMachinesRequest,
-    ) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
+    def describe_user_backup_machines(self) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_user_backup_machines_with_options(request, runtime)
+        return self.describe_user_backup_machines_with_options(runtime)
 
-    async def describe_user_backup_machines_async(
-        self,
-        request: sas_20181203_models.DescribeUserBackupMachinesRequest,
-    ) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
+    async def describe_user_backup_machines_async(self) -> sas_20181203_models.DescribeUserBackupMachinesResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_user_backup_machines_with_options_async(request, runtime)
+        return await self.describe_user_backup_machines_with_options_async(runtime)
 
     def describe_user_baseline_authorization_with_options(
         self,
@@ -8007,6 +7965,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ModifyWebLockUpdateConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_lock_update_config_with_options_async(request, runtime)
+
+    def operate_agent_client_install_with_options(
+        self,
+        request: sas_20181203_models.OperateAgentClientInstallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateAgentClientInstallResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateAgentClientInstallResponse(),
+            self.do_rpcrequest('OperateAgentClientInstall', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def operate_agent_client_install_with_options_async(
+        self,
+        request: sas_20181203_models.OperateAgentClientInstallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateAgentClientInstallResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateAgentClientInstallResponse(),
+            await self.do_rpcrequest_async('OperateAgentClientInstall', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def operate_agent_client_install(
+        self,
+        request: sas_20181203_models.OperateAgentClientInstallRequest,
+    ) -> sas_20181203_models.OperateAgentClientInstallResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.operate_agent_client_install_with_options(request, runtime)
+
+    async def operate_agent_client_install_async(
+        self,
+        request: sas_20181203_models.OperateAgentClientInstallRequest,
+    ) -> sas_20181203_models.OperateAgentClientInstallResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.operate_agent_client_install_with_options_async(request, runtime)
 
     def operate_suspicious_target_config_with_options(
         self,
