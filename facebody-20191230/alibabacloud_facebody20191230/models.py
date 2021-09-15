@@ -6680,11 +6680,13 @@ class SearchFaceRequest(TeaModel):
         image_url: str = None,
         limit: int = None,
         db_names: str = None,
+        quality_score_threshold: float = None,
     ):
         self.db_name = db_name
         self.image_url = image_url
         self.limit = limit
         self.db_names = db_names
+        self.quality_score_threshold = quality_score_threshold
 
     def validate(self):
         pass
@@ -6703,6 +6705,8 @@ class SearchFaceRequest(TeaModel):
             result['Limit'] = self.limit
         if self.db_names is not None:
             result['DbNames'] = self.db_names
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
         return result
 
     def from_map(self, m: dict = None):
@@ -6715,6 +6719,8 @@ class SearchFaceRequest(TeaModel):
             self.limit = m.get('Limit')
         if m.get('DbNames') is not None:
             self.db_names = m.get('DbNames')
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
         return self
 
 
@@ -6725,11 +6731,13 @@ class SearchFaceAdvanceRequest(TeaModel):
         db_name: str = None,
         limit: int = None,
         db_names: str = None,
+        quality_score_threshold: float = None,
     ):
         self.image_url_object = image_url_object
         self.db_name = db_name
         self.limit = limit
         self.db_names = db_names
+        self.quality_score_threshold = quality_score_threshold
 
     def validate(self):
         self.validate_required(self.image_url_object, 'image_url_object')
@@ -6748,6 +6756,8 @@ class SearchFaceAdvanceRequest(TeaModel):
             result['Limit'] = self.limit
         if self.db_names is not None:
             result['DbNames'] = self.db_names
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
         return result
 
     def from_map(self, m: dict = None):
@@ -6760,6 +6770,8 @@ class SearchFaceAdvanceRequest(TeaModel):
             self.limit = m.get('Limit')
         if m.get('DbNames') is not None:
             self.db_names = m.get('DbNames')
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
         return self
 
 
@@ -6771,12 +6783,14 @@ class SearchFaceResponseBodyDataMatchListFaceItems(TeaModel):
         score: float = None,
         extra_data: str = None,
         db_name: str = None,
+        confidence: float = None,
     ):
         self.entity_id = entity_id
         self.face_id = face_id
         self.score = score
         self.extra_data = extra_data
         self.db_name = db_name
+        self.confidence = confidence
 
     def validate(self):
         pass
@@ -6797,6 +6811,8 @@ class SearchFaceResponseBodyDataMatchListFaceItems(TeaModel):
             result['ExtraData'] = self.extra_data
         if self.db_name is not None:
             result['DbName'] = self.db_name
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
         return result
 
     def from_map(self, m: dict = None):
@@ -6811,6 +6827,8 @@ class SearchFaceResponseBodyDataMatchListFaceItems(TeaModel):
             self.extra_data = m.get('ExtraData')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
         return self
 
 
@@ -7598,11 +7616,17 @@ class AddFaceRequest(TeaModel):
         image_url: str = None,
         entity_id: str = None,
         extra_data: str = None,
+        quality_score_threshold: float = None,
+        similarity_score_threshold_in_entity: float = None,
+        similarity_score_threshold_between_entity: float = None,
     ):
         self.db_name = db_name
         self.image_url = image_url
         self.entity_id = entity_id
         self.extra_data = extra_data
+        self.quality_score_threshold = quality_score_threshold
+        self.similarity_score_threshold_in_entity = similarity_score_threshold_in_entity
+        self.similarity_score_threshold_between_entity = similarity_score_threshold_between_entity
 
     def validate(self):
         pass
@@ -7621,6 +7645,12 @@ class AddFaceRequest(TeaModel):
             result['EntityId'] = self.entity_id
         if self.extra_data is not None:
             result['ExtraData'] = self.extra_data
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
+        if self.similarity_score_threshold_in_entity is not None:
+            result['SimilarityScoreThresholdInEntity'] = self.similarity_score_threshold_in_entity
+        if self.similarity_score_threshold_between_entity is not None:
+            result['SimilarityScoreThresholdBetweenEntity'] = self.similarity_score_threshold_between_entity
         return result
 
     def from_map(self, m: dict = None):
@@ -7633,6 +7663,12 @@ class AddFaceRequest(TeaModel):
             self.entity_id = m.get('EntityId')
         if m.get('ExtraData') is not None:
             self.extra_data = m.get('ExtraData')
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
+        if m.get('SimilarityScoreThresholdInEntity') is not None:
+            self.similarity_score_threshold_in_entity = m.get('SimilarityScoreThresholdInEntity')
+        if m.get('SimilarityScoreThresholdBetweenEntity') is not None:
+            self.similarity_score_threshold_between_entity = m.get('SimilarityScoreThresholdBetweenEntity')
         return self
 
 
@@ -7643,11 +7679,17 @@ class AddFaceAdvanceRequest(TeaModel):
         db_name: str = None,
         entity_id: str = None,
         extra_data: str = None,
+        quality_score_threshold: float = None,
+        similarity_score_threshold_in_entity: float = None,
+        similarity_score_threshold_between_entity: float = None,
     ):
         self.image_url_object = image_url_object
         self.db_name = db_name
         self.entity_id = entity_id
         self.extra_data = extra_data
+        self.quality_score_threshold = quality_score_threshold
+        self.similarity_score_threshold_in_entity = similarity_score_threshold_in_entity
+        self.similarity_score_threshold_between_entity = similarity_score_threshold_between_entity
 
     def validate(self):
         self.validate_required(self.image_url_object, 'image_url_object')
@@ -7666,6 +7708,12 @@ class AddFaceAdvanceRequest(TeaModel):
             result['EntityId'] = self.entity_id
         if self.extra_data is not None:
             result['ExtraData'] = self.extra_data
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
+        if self.similarity_score_threshold_in_entity is not None:
+            result['SimilarityScoreThresholdInEntity'] = self.similarity_score_threshold_in_entity
+        if self.similarity_score_threshold_between_entity is not None:
+            result['SimilarityScoreThresholdBetweenEntity'] = self.similarity_score_threshold_between_entity
         return result
 
     def from_map(self, m: dict = None):
@@ -7678,6 +7726,12 @@ class AddFaceAdvanceRequest(TeaModel):
             self.entity_id = m.get('EntityId')
         if m.get('ExtraData') is not None:
             self.extra_data = m.get('ExtraData')
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
+        if m.get('SimilarityScoreThresholdInEntity') is not None:
+            self.similarity_score_threshold_in_entity = m.get('SimilarityScoreThresholdInEntity')
+        if m.get('SimilarityScoreThresholdBetweenEntity') is not None:
+            self.similarity_score_threshold_between_entity = m.get('SimilarityScoreThresholdBetweenEntity')
         return self
 
 

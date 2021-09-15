@@ -1,3 +1,6 @@
+2021-09-15 Version: 2.0.15
+- Update AddFace SearchFace.
+
 2021-08-31 Version: 2.0.14
 - Release BeautifyBody.
 
