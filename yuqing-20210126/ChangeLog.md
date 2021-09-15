@@ -1,3 +1,6 @@
+2021-09-15 Version: 1.2.0
+- Fix http method.
+
 2021-03-26 Version: 1.1.3
 - Fix http method.
 

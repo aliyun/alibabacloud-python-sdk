@@ -4,272 +4,6 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
-class Project(TeaModel):
-    def __init__(
-        self,
-        ass_keywords: str = None,
-        default_filter_id: int = None,
-        ext_criteria: str = None,
-        id: int = None,
-        name: str = None,
-        neg_keywords: str = None,
-        pid: int = None,
-        pos_keywords: str = None,
-        project_group_id: int = None,
-        project_type: int = None,
-        project_type_name: str = None,
-        sub_project_ids: List[int] = None,
-        team_id: int = None,
-        valid: int = None,
-        gmt_create_timestamp: int = None,
-        gmt_modified_timestamp: int = None,
-        uname_create: str = None,
-        uid_create: str = None,
-        uname_modified: str = None,
-        uid_modified: str = None,
-    ):
-        # 搭配词
-        self.ass_keywords = ass_keywords
-        # 项目的默认过滤模板ID
-        self.default_filter_id = default_filter_id
-        # 高级用法，非关键词配置，如at用户，标题排除词。
-        self.ext_criteria = ext_criteria
-        # 舆情项目ID
-        self.id = id
-        # 项目名称
-        self.name = name
-        # 排除词
-        self.neg_keywords = neg_keywords
-        # 项目父ID，如果没有父项目则为0
-        self.pid = pid
-        # 项目关键词
-        self.pos_keywords = pos_keywords
-        # 项目归属分组ID，0代表没有分组
-        self.project_group_id = project_group_id
-        # 0:通用舆情项目，1：金融舆情项目
-        self.project_type = project_type
-        # 舆情项目类型名称
-        self.project_type_name = project_type_name
-        # 项目的子项目ID列表
-        self.sub_project_ids = sub_project_ids
-        # 团队id
-        self.team_id = team_id
-        # 状态，1为生效，0为失效。
-        self.valid = valid
-        # 项目创建时间，毫秒
-        self.gmt_create_timestamp = gmt_create_timestamp
-        # 项目修改时间，毫秒
-        self.gmt_modified_timestamp = gmt_modified_timestamp
-        # 项目创建人名称
-        self.uname_create = uname_create
-        # 项目创建人uid
-        self.uid_create = uid_create
-        # 项目修改人名称
-        self.uname_modified = uname_modified
-        # 项目修改人uid
-        self.uid_modified = uid_modified
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ass_keywords is not None:
-            result['assKeywords'] = self.ass_keywords
-        if self.default_filter_id is not None:
-            result['defaultFilterId'] = self.default_filter_id
-        if self.ext_criteria is not None:
-            result['extCriteria'] = self.ext_criteria
-        if self.id is not None:
-            result['id'] = self.id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.neg_keywords is not None:
-            result['negKeywords'] = self.neg_keywords
-        if self.pid is not None:
-            result['pid'] = self.pid
-        if self.pos_keywords is not None:
-            result['posKeywords'] = self.pos_keywords
-        if self.project_group_id is not None:
-            result['projectGroupId'] = self.project_group_id
-        if self.project_type is not None:
-            result['projectType'] = self.project_type
-        if self.project_type_name is not None:
-            result['projectTypeName'] = self.project_type_name
-        if self.sub_project_ids is not None:
-            result['subProjectIds'] = self.sub_project_ids
-        if self.team_id is not None:
-            result['teamId'] = self.team_id
-        if self.valid is not None:
-            result['valid'] = self.valid
-        if self.gmt_create_timestamp is not None:
-            result['gmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.gmt_modified_timestamp is not None:
-            result['gmtModifiedTimestamp'] = self.gmt_modified_timestamp
-        if self.uname_create is not None:
-            result['unameCreate'] = self.uname_create
-        if self.uid_create is not None:
-            result['uidCreate'] = self.uid_create
-        if self.uname_modified is not None:
-            result['unameModified'] = self.uname_modified
-        if self.uid_modified is not None:
-            result['uidModified'] = self.uid_modified
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('assKeywords') is not None:
-            self.ass_keywords = m.get('assKeywords')
-        if m.get('defaultFilterId') is not None:
-            self.default_filter_id = m.get('defaultFilterId')
-        if m.get('extCriteria') is not None:
-            self.ext_criteria = m.get('extCriteria')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('negKeywords') is not None:
-            self.neg_keywords = m.get('negKeywords')
-        if m.get('pid') is not None:
-            self.pid = m.get('pid')
-        if m.get('posKeywords') is not None:
-            self.pos_keywords = m.get('posKeywords')
-        if m.get('projectGroupId') is not None:
-            self.project_group_id = m.get('projectGroupId')
-        if m.get('projectType') is not None:
-            self.project_type = m.get('projectType')
-        if m.get('projectTypeName') is not None:
-            self.project_type_name = m.get('projectTypeName')
-        if m.get('subProjectIds') is not None:
-            self.sub_project_ids = m.get('subProjectIds')
-        if m.get('teamId') is not None:
-            self.team_id = m.get('teamId')
-        if m.get('valid') is not None:
-            self.valid = m.get('valid')
-        if m.get('gmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('gmtCreateTimestamp')
-        if m.get('gmtModifiedTimestamp') is not None:
-            self.gmt_modified_timestamp = m.get('gmtModifiedTimestamp')
-        if m.get('unameCreate') is not None:
-            self.uname_create = m.get('unameCreate')
-        if m.get('uidCreate') is not None:
-            self.uid_create = m.get('uidCreate')
-        if m.get('unameModified') is not None:
-            self.uname_modified = m.get('unameModified')
-        if m.get('uidModified') is not None:
-            self.uid_modified = m.get('uidModified')
-        return self
-
-
-class BizTagTree(TeaModel):
-    def __init__(
-        self,
-        gmt_create_timestamp: int = None,
-        gmt_modified_timestamp: int = None,
-        id: int = None,
-        name: str = None,
-        parent_id: int = None,
-        status: int = None,
-        tag_id_path: str = None,
-        tag_name_path: str = None,
-        uid_create: str = None,
-        uid_modified: str = None,
-        uname_create: str = None,
-        uname_modified: str = None,
-    ):
-        # 创建时间，毫秒
-        self.gmt_create_timestamp = gmt_create_timestamp
-        # 修改时间，毫秒
-        self.gmt_modified_timestamp = gmt_modified_timestamp
-        # 标签id
-        self.id = id
-        # 标签名字
-        self.name = name
-        # 父亲id
-        self.parent_id = parent_id
-        # 标签状态，1表示激活，0表示不激活
-        self.status = status
-        # 标签节点树
-        self.tag_id_path = tag_id_path
-        # 标签节点名字树
-        self.tag_name_path = tag_name_path
-        # 创建人id
-        self.uid_create = uid_create
-        # 修改人id
-        self.uid_modified = uid_modified
-        # 创建人名字
-        self.uname_create = uname_create
-        # 修改人名字
-        self.uname_modified = uname_modified
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.gmt_create_timestamp is not None:
-            result['gmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.gmt_modified_timestamp is not None:
-            result['gmtModifiedTimestamp'] = self.gmt_modified_timestamp
-        if self.id is not None:
-            result['id'] = self.id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.parent_id is not None:
-            result['parentId'] = self.parent_id
-        if self.status is not None:
-            result['status'] = self.status
-        if self.tag_id_path is not None:
-            result['tagIdPath'] = self.tag_id_path
-        if self.tag_name_path is not None:
-            result['tagNamePath'] = self.tag_name_path
-        if self.uid_create is not None:
-            result['uidCreate'] = self.uid_create
-        if self.uid_modified is not None:
-            result['uidModified'] = self.uid_modified
-        if self.uname_create is not None:
-            result['unameCreate'] = self.uname_create
-        if self.uname_modified is not None:
-            result['unameModified'] = self.uname_modified
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('gmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('gmtCreateTimestamp')
-        if m.get('gmtModifiedTimestamp') is not None:
-            self.gmt_modified_timestamp = m.get('gmtModifiedTimestamp')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('parentId') is not None:
-            self.parent_id = m.get('parentId')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('tagIdPath') is not None:
-            self.tag_id_path = m.get('tagIdPath')
-        if m.get('tagNamePath') is not None:
-            self.tag_name_path = m.get('tagNamePath')
-        if m.get('uidCreate') is not None:
-            self.uid_create = m.get('uidCreate')
-        if m.get('uidModified') is not None:
-            self.uid_modified = m.get('uidModified')
-        if m.get('unameCreate') is not None:
-            self.uname_create = m.get('unameCreate')
-        if m.get('unameModified') is not None:
-            self.uname_modified = m.get('unameModified')
-        return self
-
-
 class ReportNotifyRecord(TeaModel):
     def __init__(
         self,
@@ -382,517 +116,6 @@ class ReportNotifyRecord(TeaModel):
         return self
 
 
-class SearchCondition(TeaModel):
-    def __init__(
-        self,
-        project_id: int = None,
-        filter_id: int = None,
-        ass_keywords_idx: str = None,
-        author_followers_count_max_filter: int = None,
-        author_followers_count_min_filter: int = None,
-        author_name_idx: str = None,
-        author_verify_type_filter: str = None,
-        comments_count_max_filter: int = None,
-        comments_count_min_filter: int = None,
-        content_length_max_filter: int = None,
-        content_length_min_filter: int = None,
-        doc_answers_count_max_filter: int = None,
-        doc_answers_count_min_filter: int = None,
-        doc_area_idx: str = None,
-        doc_content_sign_idx: str = None,
-        doc_create_time_end_filter: int = None,
-        doc_create_time_start_filter: int = None,
-        doc_publish_time_end_filter: int = None,
-        doc_publish_time_start_filter: int = None,
-        duplicate_removal: bool = None,
-        emotion_score_max_filter: float = None,
-        emotion_score_min_filter: float = None,
-        exclude_author_name_idx: str = None,
-        excluding_media_hosts_filter: str = None,
-        excluding_media_pool_ids_filter: str = None,
-        likes_count_max_filter: int = None,
-        likes_count_min_filter: int = None,
-        media_hosts_filter: str = None,
-        media_influence_score_max_filter: float = None,
-        media_influence_score_min_filter: float = None,
-        media_pool_ids_filter: str = None,
-        media_propagation_score_max_filter: float = None,
-        media_propagation_score_min_filter: float = None,
-        media_type_filter: str = None,
-        message_type_filter: str = None,
-        neg_keywords_idx: str = None,
-        page_now: int = None,
-        page_size: int = None,
-        pos_keywords_idx: str = None,
-        primary_key_idx: str = None,
-        reads_count_max_filter: int = None,
-        reads_count_min_filter: int = None,
-        relevance_score_max_filter: float = None,
-        relevance_score_min_filter: float = None,
-        reposts_count_max_filter: int = None,
-        reposts_count_min_filter: int = None,
-        reprint_from_filter: str = None,
-        title_excluding_words_idx: str = None,
-        title_including_words_idx: str = None,
-        used_index_mode_switch: str = None,
-        eroticism_filter: bool = None,
-        gambling_filter: bool = None,
-        bkz_filter: bool = None,
-        advertisement_filter: bool = None,
-        illegal_advertisement_filter: bool = None,
-        spam_filter: bool = None,
-        suspicion_spam_filter: bool = None,
-        biz_tags_idx: str = None,
-        alipay_account_filter: str = None,
-        doc_update_time_end_filter: int = None,
-        doc_update_time_start_filter: int = None,
-        enable_keyword_highlight: bool = None,
-        finance_entity_area_filter: str = None,
-        entity_name: str = None,
-        finance_entity_relevance_score_max_filter: float = None,
-        finance_entity_relevance_score_min_filter: float = None,
-        finance_event_code_filter: str = None,
-        parent_ids_idx: str = None,
-        sort_by_direction: str = None,
-        sort_by: str = None,
-    ):
-        # 舆情项目Id
-        self.project_id = project_id
-        # 舆情筛选模板Id
-        self.filter_id = filter_id
-        # 搭配词，json字符串数组
-        self.ass_keywords_idx = ass_keywords_idx
-        # 粉丝数上限
-        self.author_followers_count_max_filter = author_followers_count_max_filter
-        # 粉丝数下限
-        self.author_followers_count_min_filter = author_followers_count_min_filter
-        # 指定用户名，多个用户用英文逗号隔开
-        self.author_name_idx = author_name_idx
-        # 作者认证类型，多个用,隔开
-        self.author_verify_type_filter = author_verify_type_filter
-        # 评论数上限
-        self.comments_count_max_filter = comments_count_max_filter
-        # 评论数下限
-        self.comments_count_min_filter = comments_count_min_filter
-        # 内容长度上限
-        self.content_length_max_filter = content_length_max_filter
-        # 内容长度下限
-        self.content_length_min_filter = content_length_min_filter
-        # 答案数上限
-        self.doc_answers_count_max_filter = doc_answers_count_max_filter
-        # 答案数下限
-        self.doc_answers_count_min_filter = doc_answers_count_min_filter
-        # 提级地域
-        self.doc_area_idx = doc_area_idx
-        # 相似文章索引Id,，多个用英文逗号隔开
-        self.doc_content_sign_idx = doc_content_sign_idx
-        # 创建时间戳上限
-        self.doc_create_time_end_filter = doc_create_time_end_filter
-        # 创建时间戳下限
-        self.doc_create_time_start_filter = doc_create_time_start_filter
-        # 发布时间戳上限
-        self.doc_publish_time_end_filter = doc_publish_time_end_filter
-        # 发布时间戳下限
-        self.doc_publish_time_start_filter = doc_publish_time_start_filter
-        # 返回的数据是否去重，默认true
-        self.duplicate_removal = duplicate_removal
-        # 情感分值上限，范围-10~10
-        self.emotion_score_max_filter = emotion_score_max_filter
-        # 情感分值下限，范围-10~10
-        self.emotion_score_min_filter = emotion_score_min_filter
-        # 排除指定用户名，多个用户用英文逗号隔开
-        self.exclude_author_name_idx = exclude_author_name_idx
-        # 排除指定Host
-        self.excluding_media_hosts_filter = excluding_media_hosts_filter
-        # 排除指定媒体库ids，媒体库在舆情平台上定义
-        self.excluding_media_pool_ids_filter = excluding_media_pool_ids_filter
-        # 点赞数上限
-        self.likes_count_max_filter = likes_count_max_filter
-        # 点赞数下限
-        self.likes_count_min_filter = likes_count_min_filter
-        # 指定Host
-        self.media_hosts_filter = media_hosts_filter
-        # 媒体影响分上限
-        self.media_influence_score_max_filter = media_influence_score_max_filter
-        # 媒体影响分下限
-        self.media_influence_score_min_filter = media_influence_score_min_filter
-        # 指定媒体库ids，媒体库在舆情平台上定义
-        self.media_pool_ids_filter = media_pool_ids_filter
-        # 媒体传播分上限取值范围：0-10分
-        self.media_propagation_score_max_filter = media_propagation_score_max_filter
-        # 媒体传播分下限取值范围：0-10分
-        self.media_propagation_score_min_filter = media_propagation_score_min_filter
-        # 枚举字符串如：WEIBO-WEIBO
-        self.media_type_filter = media_type_filter
-        # 枚举字符串如：COMMENT
-        self.message_type_filter = message_type_filter
-        # 排除关键词
-        self.neg_keywords_idx = neg_keywords_idx
-        # 指定页码
-        self.page_now = page_now
-        # 指定每页大小，最大50
-        self.page_size = page_size
-        # 格式同AssKeywordsIdx，如果指定了AssKeywordsIdx，两者要同时满足。
-        self.pos_keywords_idx = pos_keywords_idx
-        # 舆情文章id，支持多值
-        self.primary_key_idx = primary_key_idx
-        # 阅读数上限
-        self.reads_count_max_filter = reads_count_max_filter
-        # 阅读数下限
-        self.reads_count_min_filter = reads_count_min_filter
-        # 相关性分上限
-        self.relevance_score_max_filter = relevance_score_max_filter
-        # 相关性分下限
-        self.relevance_score_min_filter = relevance_score_min_filter
-        # 转发数上限
-        self.reposts_count_max_filter = reposts_count_max_filter
-        # 转发数下限
-        self.reposts_count_min_filter = reposts_count_min_filter
-        # 文章转载来源名称
-        self.reprint_from_filter = reprint_from_filter
-        # 标题不包含的关键词
-        self.title_excluding_words_idx = title_excluding_words_idx
-        # 标题包含的关键词
-        self.title_including_words_idx = title_including_words_idx
-        # 指定索引模式,KEYWORD|CREATE_TIME
-        self.used_index_mode_switch = used_index_mode_switch
-        # 色情取值true or false
-        self.eroticism_filter = eroticism_filter
-        # 赌博取值true or false
-        self.gambling_filter = gambling_filter
-        # 暴恐政取值true or false
-        self.bkz_filter = bkz_filter
-        # 广告取值true or false
-        self.advertisement_filter = advertisement_filter
-        # 违规广告取值true or false
-        self.illegal_advertisement_filter = illegal_advertisement_filter
-        # 垃圾取值true or false
-        self.spam_filter = spam_filter
-        # 疑似垃圾取值true or false
-        self.suspicion_spam_filter = suspicion_spam_filter
-        # 业务自定义标签字段过滤
-        self.biz_tags_idx = biz_tags_idx
-        # 支付宝内部的2088账号
-        self.alipay_account_filter = alipay_account_filter
-        # 文章更新时间上限
-        self.doc_update_time_end_filter = doc_update_time_end_filter
-        # 更新时间戳下限
-        self.doc_update_time_start_filter = doc_update_time_start_filter
-        # 是否要进行关键词高亮显示
-        self.enable_keyword_highlight = enable_keyword_highlight
-        # 实体所在地，主要指的是公司
-        self.finance_entity_area_filter = finance_entity_area_filter
-        # 公司全名称
-        self.entity_name = entity_name
-        # 实体关联度得分上限
-        self.finance_entity_relevance_score_max_filter = finance_entity_relevance_score_max_filter
-        # 实体关联度得分下限
-        self.finance_entity_relevance_score_min_filter = finance_entity_relevance_score_min_filter
-        # 金融事件id，支持多个
-        self.finance_event_code_filter = finance_event_code_filter
-        # 父文章docId
-        self.parent_ids_idx = parent_ids_idx
-        # 如'+'是升序，'-'是降序
-        self.sort_by_direction = sort_by_direction
-        # 排序字段枚举
-        self.sort_by = sort_by
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.project_id is not None:
-            result['projectId'] = self.project_id
-        if self.filter_id is not None:
-            result['filterId'] = self.filter_id
-        if self.ass_keywords_idx is not None:
-            result['assKeywordsIdx'] = self.ass_keywords_idx
-        if self.author_followers_count_max_filter is not None:
-            result['authorFollowersCountMaxFilter'] = self.author_followers_count_max_filter
-        if self.author_followers_count_min_filter is not None:
-            result['authorFollowersCountMinFilter'] = self.author_followers_count_min_filter
-        if self.author_name_idx is not None:
-            result['authorNameIdx'] = self.author_name_idx
-        if self.author_verify_type_filter is not None:
-            result['authorVerifyTypeFilter'] = self.author_verify_type_filter
-        if self.comments_count_max_filter is not None:
-            result['commentsCountMaxFilter'] = self.comments_count_max_filter
-        if self.comments_count_min_filter is not None:
-            result['commentsCountMinFilter'] = self.comments_count_min_filter
-        if self.content_length_max_filter is not None:
-            result['contentLengthMaxFilter'] = self.content_length_max_filter
-        if self.content_length_min_filter is not None:
-            result['contentLengthMinFilter'] = self.content_length_min_filter
-        if self.doc_answers_count_max_filter is not None:
-            result['docAnswersCountMaxFilter'] = self.doc_answers_count_max_filter
-        if self.doc_answers_count_min_filter is not None:
-            result['docAnswersCountMinFilter'] = self.doc_answers_count_min_filter
-        if self.doc_area_idx is not None:
-            result['docAreaIdx'] = self.doc_area_idx
-        if self.doc_content_sign_idx is not None:
-            result['docContentSignIdx'] = self.doc_content_sign_idx
-        if self.doc_create_time_end_filter is not None:
-            result['docCreateTimeEndFilter'] = self.doc_create_time_end_filter
-        if self.doc_create_time_start_filter is not None:
-            result['docCreateTimeStartFilter'] = self.doc_create_time_start_filter
-        if self.doc_publish_time_end_filter is not None:
-            result['docPublishTimeEndFilter'] = self.doc_publish_time_end_filter
-        if self.doc_publish_time_start_filter is not None:
-            result['docPublishTimeStartFilter'] = self.doc_publish_time_start_filter
-        if self.duplicate_removal is not None:
-            result['duplicateRemoval'] = self.duplicate_removal
-        if self.emotion_score_max_filter is not None:
-            result['emotionScoreMaxFilter'] = self.emotion_score_max_filter
-        if self.emotion_score_min_filter is not None:
-            result['emotionScoreMinFilter'] = self.emotion_score_min_filter
-        if self.exclude_author_name_idx is not None:
-            result['excludeAuthorNameIdx'] = self.exclude_author_name_idx
-        if self.excluding_media_hosts_filter is not None:
-            result['excludingMediaHostsFilter'] = self.excluding_media_hosts_filter
-        if self.excluding_media_pool_ids_filter is not None:
-            result['excludingMediaPoolIdsFilter'] = self.excluding_media_pool_ids_filter
-        if self.likes_count_max_filter is not None:
-            result['likesCountMaxFilter'] = self.likes_count_max_filter
-        if self.likes_count_min_filter is not None:
-            result['likesCountMinFilter'] = self.likes_count_min_filter
-        if self.media_hosts_filter is not None:
-            result['mediaHostsFilter'] = self.media_hosts_filter
-        if self.media_influence_score_max_filter is not None:
-            result['mediaInfluenceScoreMaxFilter'] = self.media_influence_score_max_filter
-        if self.media_influence_score_min_filter is not None:
-            result['mediaInfluenceScoreMinFilter'] = self.media_influence_score_min_filter
-        if self.media_pool_ids_filter is not None:
-            result['mediaPoolIdsFilter'] = self.media_pool_ids_filter
-        if self.media_propagation_score_max_filter is not None:
-            result['mediaPropagationScoreMaxFilter'] = self.media_propagation_score_max_filter
-        if self.media_propagation_score_min_filter is not None:
-            result['mediaPropagationScoreMinFilter'] = self.media_propagation_score_min_filter
-        if self.media_type_filter is not None:
-            result['mediaTypeFilter'] = self.media_type_filter
-        if self.message_type_filter is not None:
-            result['messageTypeFilter'] = self.message_type_filter
-        if self.neg_keywords_idx is not None:
-            result['negKeywordsIdx'] = self.neg_keywords_idx
-        if self.page_now is not None:
-            result['pageNow'] = self.page_now
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
-        if self.pos_keywords_idx is not None:
-            result['posKeywordsIdx'] = self.pos_keywords_idx
-        if self.primary_key_idx is not None:
-            result['primaryKeyIdx'] = self.primary_key_idx
-        if self.reads_count_max_filter is not None:
-            result['readsCountMaxFilter'] = self.reads_count_max_filter
-        if self.reads_count_min_filter is not None:
-            result['readsCountMinFilter'] = self.reads_count_min_filter
-        if self.relevance_score_max_filter is not None:
-            result['relevanceScoreMaxFilter'] = self.relevance_score_max_filter
-        if self.relevance_score_min_filter is not None:
-            result['relevanceScoreMinFilter'] = self.relevance_score_min_filter
-        if self.reposts_count_max_filter is not None:
-            result['repostsCountMaxFilter'] = self.reposts_count_max_filter
-        if self.reposts_count_min_filter is not None:
-            result['repostsCountMinFilter'] = self.reposts_count_min_filter
-        if self.reprint_from_filter is not None:
-            result['reprintFromFilter'] = self.reprint_from_filter
-        if self.title_excluding_words_idx is not None:
-            result['titleExcludingWordsIdx'] = self.title_excluding_words_idx
-        if self.title_including_words_idx is not None:
-            result['titleIncludingWordsIdx'] = self.title_including_words_idx
-        if self.used_index_mode_switch is not None:
-            result['usedIndexModeSwitch'] = self.used_index_mode_switch
-        if self.eroticism_filter is not None:
-            result['eroticismFilter'] = self.eroticism_filter
-        if self.gambling_filter is not None:
-            result['gamblingFilter'] = self.gambling_filter
-        if self.bkz_filter is not None:
-            result['bkzFilter'] = self.bkz_filter
-        if self.advertisement_filter is not None:
-            result['advertisementFilter'] = self.advertisement_filter
-        if self.illegal_advertisement_filter is not None:
-            result['illegalAdvertisementFilter'] = self.illegal_advertisement_filter
-        if self.spam_filter is not None:
-            result['spamFilter'] = self.spam_filter
-        if self.suspicion_spam_filter is not None:
-            result['suspicionSpamFilter'] = self.suspicion_spam_filter
-        if self.biz_tags_idx is not None:
-            result['bizTagsIdx'] = self.biz_tags_idx
-        if self.alipay_account_filter is not None:
-            result['alipayAccountFilter'] = self.alipay_account_filter
-        if self.doc_update_time_end_filter is not None:
-            result['docUpdateTimeEndFilter'] = self.doc_update_time_end_filter
-        if self.doc_update_time_start_filter is not None:
-            result['docUpdateTimeStartFilter'] = self.doc_update_time_start_filter
-        if self.enable_keyword_highlight is not None:
-            result['enableKeywordHighlight'] = self.enable_keyword_highlight
-        if self.finance_entity_area_filter is not None:
-            result['financeEntityAreaFilter'] = self.finance_entity_area_filter
-        if self.entity_name is not None:
-            result['entityName'] = self.entity_name
-        if self.finance_entity_relevance_score_max_filter is not None:
-            result['financeEntityRelevanceScoreMaxFilter'] = self.finance_entity_relevance_score_max_filter
-        if self.finance_entity_relevance_score_min_filter is not None:
-            result['financeEntityRelevanceScoreMinFilter'] = self.finance_entity_relevance_score_min_filter
-        if self.finance_event_code_filter is not None:
-            result['financeEventCodeFilter'] = self.finance_event_code_filter
-        if self.parent_ids_idx is not None:
-            result['parentIdsIdx'] = self.parent_ids_idx
-        if self.sort_by_direction is not None:
-            result['sortByDirection'] = self.sort_by_direction
-        if self.sort_by is not None:
-            result['sortBy'] = self.sort_by
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('projectId') is not None:
-            self.project_id = m.get('projectId')
-        if m.get('filterId') is not None:
-            self.filter_id = m.get('filterId')
-        if m.get('assKeywordsIdx') is not None:
-            self.ass_keywords_idx = m.get('assKeywordsIdx')
-        if m.get('authorFollowersCountMaxFilter') is not None:
-            self.author_followers_count_max_filter = m.get('authorFollowersCountMaxFilter')
-        if m.get('authorFollowersCountMinFilter') is not None:
-            self.author_followers_count_min_filter = m.get('authorFollowersCountMinFilter')
-        if m.get('authorNameIdx') is not None:
-            self.author_name_idx = m.get('authorNameIdx')
-        if m.get('authorVerifyTypeFilter') is not None:
-            self.author_verify_type_filter = m.get('authorVerifyTypeFilter')
-        if m.get('commentsCountMaxFilter') is not None:
-            self.comments_count_max_filter = m.get('commentsCountMaxFilter')
-        if m.get('commentsCountMinFilter') is not None:
-            self.comments_count_min_filter = m.get('commentsCountMinFilter')
-        if m.get('contentLengthMaxFilter') is not None:
-            self.content_length_max_filter = m.get('contentLengthMaxFilter')
-        if m.get('contentLengthMinFilter') is not None:
-            self.content_length_min_filter = m.get('contentLengthMinFilter')
-        if m.get('docAnswersCountMaxFilter') is not None:
-            self.doc_answers_count_max_filter = m.get('docAnswersCountMaxFilter')
-        if m.get('docAnswersCountMinFilter') is not None:
-            self.doc_answers_count_min_filter = m.get('docAnswersCountMinFilter')
-        if m.get('docAreaIdx') is not None:
-            self.doc_area_idx = m.get('docAreaIdx')
-        if m.get('docContentSignIdx') is not None:
-            self.doc_content_sign_idx = m.get('docContentSignIdx')
-        if m.get('docCreateTimeEndFilter') is not None:
-            self.doc_create_time_end_filter = m.get('docCreateTimeEndFilter')
-        if m.get('docCreateTimeStartFilter') is not None:
-            self.doc_create_time_start_filter = m.get('docCreateTimeStartFilter')
-        if m.get('docPublishTimeEndFilter') is not None:
-            self.doc_publish_time_end_filter = m.get('docPublishTimeEndFilter')
-        if m.get('docPublishTimeStartFilter') is not None:
-            self.doc_publish_time_start_filter = m.get('docPublishTimeStartFilter')
-        if m.get('duplicateRemoval') is not None:
-            self.duplicate_removal = m.get('duplicateRemoval')
-        if m.get('emotionScoreMaxFilter') is not None:
-            self.emotion_score_max_filter = m.get('emotionScoreMaxFilter')
-        if m.get('emotionScoreMinFilter') is not None:
-            self.emotion_score_min_filter = m.get('emotionScoreMinFilter')
-        if m.get('excludeAuthorNameIdx') is not None:
-            self.exclude_author_name_idx = m.get('excludeAuthorNameIdx')
-        if m.get('excludingMediaHostsFilter') is not None:
-            self.excluding_media_hosts_filter = m.get('excludingMediaHostsFilter')
-        if m.get('excludingMediaPoolIdsFilter') is not None:
-            self.excluding_media_pool_ids_filter = m.get('excludingMediaPoolIdsFilter')
-        if m.get('likesCountMaxFilter') is not None:
-            self.likes_count_max_filter = m.get('likesCountMaxFilter')
-        if m.get('likesCountMinFilter') is not None:
-            self.likes_count_min_filter = m.get('likesCountMinFilter')
-        if m.get('mediaHostsFilter') is not None:
-            self.media_hosts_filter = m.get('mediaHostsFilter')
-        if m.get('mediaInfluenceScoreMaxFilter') is not None:
-            self.media_influence_score_max_filter = m.get('mediaInfluenceScoreMaxFilter')
-        if m.get('mediaInfluenceScoreMinFilter') is not None:
-            self.media_influence_score_min_filter = m.get('mediaInfluenceScoreMinFilter')
-        if m.get('mediaPoolIdsFilter') is not None:
-            self.media_pool_ids_filter = m.get('mediaPoolIdsFilter')
-        if m.get('mediaPropagationScoreMaxFilter') is not None:
-            self.media_propagation_score_max_filter = m.get('mediaPropagationScoreMaxFilter')
-        if m.get('mediaPropagationScoreMinFilter') is not None:
-            self.media_propagation_score_min_filter = m.get('mediaPropagationScoreMinFilter')
-        if m.get('mediaTypeFilter') is not None:
-            self.media_type_filter = m.get('mediaTypeFilter')
-        if m.get('messageTypeFilter') is not None:
-            self.message_type_filter = m.get('messageTypeFilter')
-        if m.get('negKeywordsIdx') is not None:
-            self.neg_keywords_idx = m.get('negKeywordsIdx')
-        if m.get('pageNow') is not None:
-            self.page_now = m.get('pageNow')
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
-        if m.get('posKeywordsIdx') is not None:
-            self.pos_keywords_idx = m.get('posKeywordsIdx')
-        if m.get('primaryKeyIdx') is not None:
-            self.primary_key_idx = m.get('primaryKeyIdx')
-        if m.get('readsCountMaxFilter') is not None:
-            self.reads_count_max_filter = m.get('readsCountMaxFilter')
-        if m.get('readsCountMinFilter') is not None:
-            self.reads_count_min_filter = m.get('readsCountMinFilter')
-        if m.get('relevanceScoreMaxFilter') is not None:
-            self.relevance_score_max_filter = m.get('relevanceScoreMaxFilter')
-        if m.get('relevanceScoreMinFilter') is not None:
-            self.relevance_score_min_filter = m.get('relevanceScoreMinFilter')
-        if m.get('repostsCountMaxFilter') is not None:
-            self.reposts_count_max_filter = m.get('repostsCountMaxFilter')
-        if m.get('repostsCountMinFilter') is not None:
-            self.reposts_count_min_filter = m.get('repostsCountMinFilter')
-        if m.get('reprintFromFilter') is not None:
-            self.reprint_from_filter = m.get('reprintFromFilter')
-        if m.get('titleExcludingWordsIdx') is not None:
-            self.title_excluding_words_idx = m.get('titleExcludingWordsIdx')
-        if m.get('titleIncludingWordsIdx') is not None:
-            self.title_including_words_idx = m.get('titleIncludingWordsIdx')
-        if m.get('usedIndexModeSwitch') is not None:
-            self.used_index_mode_switch = m.get('usedIndexModeSwitch')
-        if m.get('eroticismFilter') is not None:
-            self.eroticism_filter = m.get('eroticismFilter')
-        if m.get('gamblingFilter') is not None:
-            self.gambling_filter = m.get('gamblingFilter')
-        if m.get('bkzFilter') is not None:
-            self.bkz_filter = m.get('bkzFilter')
-        if m.get('advertisementFilter') is not None:
-            self.advertisement_filter = m.get('advertisementFilter')
-        if m.get('illegalAdvertisementFilter') is not None:
-            self.illegal_advertisement_filter = m.get('illegalAdvertisementFilter')
-        if m.get('spamFilter') is not None:
-            self.spam_filter = m.get('spamFilter')
-        if m.get('suspicionSpamFilter') is not None:
-            self.suspicion_spam_filter = m.get('suspicionSpamFilter')
-        if m.get('bizTagsIdx') is not None:
-            self.biz_tags_idx = m.get('bizTagsIdx')
-        if m.get('alipayAccountFilter') is not None:
-            self.alipay_account_filter = m.get('alipayAccountFilter')
-        if m.get('docUpdateTimeEndFilter') is not None:
-            self.doc_update_time_end_filter = m.get('docUpdateTimeEndFilter')
-        if m.get('docUpdateTimeStartFilter') is not None:
-            self.doc_update_time_start_filter = m.get('docUpdateTimeStartFilter')
-        if m.get('enableKeywordHighlight') is not None:
-            self.enable_keyword_highlight = m.get('enableKeywordHighlight')
-        if m.get('financeEntityAreaFilter') is not None:
-            self.finance_entity_area_filter = m.get('financeEntityAreaFilter')
-        if m.get('entityName') is not None:
-            self.entity_name = m.get('entityName')
-        if m.get('financeEntityRelevanceScoreMaxFilter') is not None:
-            self.finance_entity_relevance_score_max_filter = m.get('financeEntityRelevanceScoreMaxFilter')
-        if m.get('financeEntityRelevanceScoreMinFilter') is not None:
-            self.finance_entity_relevance_score_min_filter = m.get('financeEntityRelevanceScoreMinFilter')
-        if m.get('financeEventCodeFilter') is not None:
-            self.finance_event_code_filter = m.get('financeEventCodeFilter')
-        if m.get('parentIdsIdx') is not None:
-            self.parent_ids_idx = m.get('parentIdsIdx')
-        if m.get('sortByDirection') is not None:
-            self.sort_by_direction = m.get('sortByDirection')
-        if m.get('sortBy') is not None:
-            self.sort_by = m.get('sortBy')
-        return self
-
-
 class FinanceEvent(TeaModel):
     def __init__(
         self,
@@ -984,31 +207,91 @@ class FinanceEvent(TeaModel):
         return self
 
 
-class Filter(TeaModel):
+class YuqingHotspotMessage(TeaModel):
     def __init__(
         self,
-        id: int = None,
-        gmt_create_timestamp: int = None,
-        gmt_modified_timestamp: int = None,
-        valid: int = None,
-        name: str = None,
-        criteria: str = None,
-        filter_group_id: int = None,
+        crawler_time_fmt: str = None,
+        doc_content: str = None,
+        doc_id: str = None,
+        doc_title: str = None,
+        doc_url: str = None,
+        first_exist_timestamp: int = None,
+        first_hot_value: int = None,
+        first_rank: int = None,
+        hot_value: int = None,
+        hotspot_type: str = None,
+        last_exist_timestamp: int = None,
+        last_rank: int = None,
+        max_hot_value: int = None,
+        max_rank: int = None,
+        media_sub_type: str = None,
+        media_type: str = None,
+        rank: int = None,
+        reads_count: int = None,
+        total_exist_timestamp: int = None,
+        comments_count: int = None,
+        discusses_count: int = None,
+        original_count: int = None,
+        video_count: int = None,
+        followers_count: int = None,
+        screen_name: str = None,
+        user_id: str = None,
+        category: str = None,
     ):
-        # 筛选模板id
-        self.id = id
-        # 创建日期，毫秒
-        self.gmt_create_timestamp = gmt_create_timestamp
-        # 修改时间，毫秒
-        self.gmt_modified_timestamp = gmt_modified_timestamp
-        # 状态。1：有效，0：无效
-        self.valid = valid
-        # 筛选模板名称
-        self.name = name
-        # 筛选模板配置内容
-        self.criteria = criteria
-        # 筛选模板所属id
-        self.filter_group_id = filter_group_id
+        # 爬虫爬取的时间
+        self.crawler_time_fmt = crawler_time_fmt
+        # 内容，热榜数据中存在着文章，热文就是有内容的
+        self.doc_content = doc_content
+        # 文档id
+        self.doc_id = doc_id
+        # 标题，例如话题的标题就是话题本身
+        self.doc_title = doc_title
+        # 链接地址
+        self.doc_url = doc_url
+        # 第一次上榜的时间
+        self.first_exist_timestamp = first_exist_timestamp
+        # 首次上榜热度
+        self.first_hot_value = first_hot_value
+        # 首次上榜排名
+        self.first_rank = first_rank
+        # 热度值
+        self.hot_value = hot_value
+        # 热搜内容类型
+        self.hotspot_type = hotspot_type
+        # 最后一次上榜的时间
+        self.last_exist_timestamp = last_exist_timestamp
+        # 下榜排名
+        self.last_rank = last_rank
+        # 最大的热度值
+        self.max_hot_value = max_hot_value
+        # 在榜单中的最高排名
+        self.max_rank = max_rank
+        # 渠道子类型
+        self.media_sub_type = media_sub_type
+        # 渠道类型
+        self.media_type = media_type
+        # 热搜在热搜榜的位置
+        self.rank = rank
+        # 阅读数
+        self.reads_count = reads_count
+        # 在榜总时间
+        self.total_exist_timestamp = total_exist_timestamp
+        # 评论数
+        self.comments_count = comments_count
+        # 讨论数
+        self.discusses_count = discusses_count
+        # 原创人数
+        self.original_count = original_count
+        # 视频量
+        self.video_count = video_count
+        # 跟随量
+        self.followers_count = followers_count
+        # 用户名
+        self.screen_name = screen_name
+        # 用户id
+        self.user_id = user_id
+        # 分类
+        self.category = category
 
     def validate(self):
         pass
@@ -1019,51 +302,164 @@ class Filter(TeaModel):
             return _map
 
         result = dict()
-        if self.id is not None:
-            result['id'] = self.id
-        if self.gmt_create_timestamp is not None:
-            result['gmtCreateTimestamp'] = self.gmt_create_timestamp
-        if self.gmt_modified_timestamp is not None:
-            result['gmtModifiedTimestamp'] = self.gmt_modified_timestamp
-        if self.valid is not None:
-            result['valid'] = self.valid
-        if self.name is not None:
-            result['name'] = self.name
-        if self.criteria is not None:
-            result['criteria'] = self.criteria
-        if self.filter_group_id is not None:
-            result['filterGroupId'] = self.filter_group_id
+        if self.crawler_time_fmt is not None:
+            result['crawlerTimeFmt'] = self.crawler_time_fmt
+        if self.doc_content is not None:
+            result['docContent'] = self.doc_content
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.doc_title is not None:
+            result['docTitle'] = self.doc_title
+        if self.doc_url is not None:
+            result['docUrl'] = self.doc_url
+        if self.first_exist_timestamp is not None:
+            result['firstExistTimestamp'] = self.first_exist_timestamp
+        if self.first_hot_value is not None:
+            result['firstHotValue'] = self.first_hot_value
+        if self.first_rank is not None:
+            result['firstRank'] = self.first_rank
+        if self.hot_value is not None:
+            result['hotValue'] = self.hot_value
+        if self.hotspot_type is not None:
+            result['hotspotType'] = self.hotspot_type
+        if self.last_exist_timestamp is not None:
+            result['lastExistTimestamp'] = self.last_exist_timestamp
+        if self.last_rank is not None:
+            result['lastRank'] = self.last_rank
+        if self.max_hot_value is not None:
+            result['maxHotValue'] = self.max_hot_value
+        if self.max_rank is not None:
+            result['maxRank'] = self.max_rank
+        if self.media_sub_type is not None:
+            result['mediaSubType'] = self.media_sub_type
+        if self.media_type is not None:
+            result['mediaType'] = self.media_type
+        if self.rank is not None:
+            result['rank'] = self.rank
+        if self.reads_count is not None:
+            result['readsCount'] = self.reads_count
+        if self.total_exist_timestamp is not None:
+            result['totalExistTimestamp'] = self.total_exist_timestamp
+        if self.comments_count is not None:
+            result['commentsCount'] = self.comments_count
+        if self.discusses_count is not None:
+            result['discussesCount'] = self.discusses_count
+        if self.original_count is not None:
+            result['originalCount'] = self.original_count
+        if self.video_count is not None:
+            result['videoCount'] = self.video_count
+        if self.followers_count is not None:
+            result['followersCount'] = self.followers_count
+        if self.screen_name is not None:
+            result['screenName'] = self.screen_name
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.category is not None:
+            result['category'] = self.category
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('gmtCreateTimestamp') is not None:
-            self.gmt_create_timestamp = m.get('gmtCreateTimestamp')
-        if m.get('gmtModifiedTimestamp') is not None:
-            self.gmt_modified_timestamp = m.get('gmtModifiedTimestamp')
-        if m.get('valid') is not None:
-            self.valid = m.get('valid')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('criteria') is not None:
-            self.criteria = m.get('criteria')
-        if m.get('filterGroupId') is not None:
-            self.filter_group_id = m.get('filterGroupId')
+        if m.get('crawlerTimeFmt') is not None:
+            self.crawler_time_fmt = m.get('crawlerTimeFmt')
+        if m.get('docContent') is not None:
+            self.doc_content = m.get('docContent')
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('docTitle') is not None:
+            self.doc_title = m.get('docTitle')
+        if m.get('docUrl') is not None:
+            self.doc_url = m.get('docUrl')
+        if m.get('firstExistTimestamp') is not None:
+            self.first_exist_timestamp = m.get('firstExistTimestamp')
+        if m.get('firstHotValue') is not None:
+            self.first_hot_value = m.get('firstHotValue')
+        if m.get('firstRank') is not None:
+            self.first_rank = m.get('firstRank')
+        if m.get('hotValue') is not None:
+            self.hot_value = m.get('hotValue')
+        if m.get('hotspotType') is not None:
+            self.hotspot_type = m.get('hotspotType')
+        if m.get('lastExistTimestamp') is not None:
+            self.last_exist_timestamp = m.get('lastExistTimestamp')
+        if m.get('lastRank') is not None:
+            self.last_rank = m.get('lastRank')
+        if m.get('maxHotValue') is not None:
+            self.max_hot_value = m.get('maxHotValue')
+        if m.get('maxRank') is not None:
+            self.max_rank = m.get('maxRank')
+        if m.get('mediaSubType') is not None:
+            self.media_sub_type = m.get('mediaSubType')
+        if m.get('mediaType') is not None:
+            self.media_type = m.get('mediaType')
+        if m.get('rank') is not None:
+            self.rank = m.get('rank')
+        if m.get('readsCount') is not None:
+            self.reads_count = m.get('readsCount')
+        if m.get('totalExistTimestamp') is not None:
+            self.total_exist_timestamp = m.get('totalExistTimestamp')
+        if m.get('commentsCount') is not None:
+            self.comments_count = m.get('commentsCount')
+        if m.get('discussesCount') is not None:
+            self.discusses_count = m.get('discussesCount')
+        if m.get('originalCount') is not None:
+            self.original_count = m.get('originalCount')
+        if m.get('videoCount') is not None:
+            self.video_count = m.get('videoCount')
+        if m.get('followersCount') is not None:
+            self.followers_count = m.get('followersCount')
+        if m.get('screenName') is not None:
+            self.screen_name = m.get('screenName')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('category') is not None:
+            self.category = m.get('category')
         return self
 
 
-class StatisticPoint(TeaModel):
+class HotspotSearchCondition(TeaModel):
     def __init__(
         self,
-        key: str = None,
-        value: float = None,
+        query_without_keyword: bool = None,
+        sort_by_direction: str = None,
+        page_now: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+        enable_keyword_highlight: bool = None,
+        media_type: str = None,
+        media_sub_type: str = None,
+        crawler_time_start_filter: int = None,
+        crawler_time_end_filter: int = None,
+        pos_keywords: str = None,
+        title_including_words_idx: str = None,
+        active: bool = None,
     ):
-        # 聚合字段结果值
-        self.key = key
-        # 聚合结果值
-        self.value = value
+        # 默认false，表示需要指定关键词来查询
+        self.query_without_keyword = query_without_keyword
+        # 排序方式： 正序(+)、倒序(-)
+        self.sort_by_direction = sort_by_direction
+        # 当前页
+        self.page_now = page_now
+        # 页大小
+        self.page_size = page_size
+        # 排序字段
+        self.sort_by = sort_by
+        # 是否要进行关键词高亮显示
+        self.enable_keyword_highlight = enable_keyword_highlight
+        # 媒体类型：热搜、热榜还是话题
+        self.media_type = media_type
+        # 媒体子类型：头条热搜，微博热搜
+        self.media_sub_type = media_sub_type
+        # 爬取时间的最小值（含）
+        self.crawler_time_start_filter = crawler_time_start_filter
+        # 爬取时间的最大值（不含）
+        self.crawler_time_end_filter = crawler_time_end_filter
+        # 关键词
+        self.pos_keywords = pos_keywords
+        # 标题包含词
+        self.title_including_words_idx = title_including_words_idx
+        # 是否在榜
+        self.active = active
 
     def validate(self):
         pass
@@ -1074,18 +470,62 @@ class StatisticPoint(TeaModel):
             return _map
 
         result = dict()
-        if self.key is not None:
-            result['key'] = self.key
-        if self.value is not None:
-            result['value'] = self.value
+        if self.query_without_keyword is not None:
+            result['queryWithoutKeyword'] = self.query_without_keyword
+        if self.sort_by_direction is not None:
+            result['sortByDirection'] = self.sort_by_direction
+        if self.page_now is not None:
+            result['pageNow'] = self.page_now
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['sortBy'] = self.sort_by
+        if self.enable_keyword_highlight is not None:
+            result['enableKeywordHighlight'] = self.enable_keyword_highlight
+        if self.media_type is not None:
+            result['mediaType'] = self.media_type
+        if self.media_sub_type is not None:
+            result['mediaSubType'] = self.media_sub_type
+        if self.crawler_time_start_filter is not None:
+            result['crawlerTimeStartFilter'] = self.crawler_time_start_filter
+        if self.crawler_time_end_filter is not None:
+            result['crawlerTimeEndFilter'] = self.crawler_time_end_filter
+        if self.pos_keywords is not None:
+            result['posKeywords'] = self.pos_keywords
+        if self.title_including_words_idx is not None:
+            result['titleIncludingWordsIdx'] = self.title_including_words_idx
+        if self.active is not None:
+            result['active'] = self.active
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-        if m.get('value') is not None:
-            self.value = m.get('value')
+        if m.get('queryWithoutKeyword') is not None:
+            self.query_without_keyword = m.get('queryWithoutKeyword')
+        if m.get('sortByDirection') is not None:
+            self.sort_by_direction = m.get('sortByDirection')
+        if m.get('pageNow') is not None:
+            self.page_now = m.get('pageNow')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('sortBy') is not None:
+            self.sort_by = m.get('sortBy')
+        if m.get('enableKeywordHighlight') is not None:
+            self.enable_keyword_highlight = m.get('enableKeywordHighlight')
+        if m.get('mediaType') is not None:
+            self.media_type = m.get('mediaType')
+        if m.get('mediaSubType') is not None:
+            self.media_sub_type = m.get('mediaSubType')
+        if m.get('crawlerTimeStartFilter') is not None:
+            self.crawler_time_start_filter = m.get('crawlerTimeStartFilter')
+        if m.get('crawlerTimeEndFilter') is not None:
+            self.crawler_time_end_filter = m.get('crawlerTimeEndFilter')
+        if m.get('posKeywords') is not None:
+            self.pos_keywords = m.get('posKeywords')
+        if m.get('titleIncludingWordsIdx') is not None:
+            self.title_including_words_idx = m.get('titleIncludingWordsIdx')
+        if m.get('active') is not None:
+            self.active = m.get('active')
         return self
 
 
@@ -1605,6 +1045,895 @@ class YuqingMessage(TeaModel):
             self.app_store_app_name = m.get('appStoreAppName')
         if m.get('appStoreName') is not None:
             self.app_store_name = m.get('appStoreName')
+        return self
+
+
+class Project(TeaModel):
+    def __init__(
+        self,
+        ass_keywords: str = None,
+        default_filter_id: int = None,
+        ext_criteria: str = None,
+        id: int = None,
+        name: str = None,
+        neg_keywords: str = None,
+        pid: int = None,
+        pos_keywords: str = None,
+        project_group_id: int = None,
+        project_type: int = None,
+        project_type_name: str = None,
+        sub_project_ids: List[int] = None,
+        team_id: int = None,
+        valid: int = None,
+        gmt_create_timestamp: int = None,
+        gmt_modified_timestamp: int = None,
+        uname_create: str = None,
+        uid_create: str = None,
+        uname_modified: str = None,
+        uid_modified: str = None,
+    ):
+        # 搭配词
+        self.ass_keywords = ass_keywords
+        # 项目的默认过滤模板ID
+        self.default_filter_id = default_filter_id
+        # 高级用法，非关键词配置，如at用户，标题排除词。
+        self.ext_criteria = ext_criteria
+        # 舆情项目ID
+        self.id = id
+        # 项目名称
+        self.name = name
+        # 排除词
+        self.neg_keywords = neg_keywords
+        # 项目父ID，如果没有父项目则为0
+        self.pid = pid
+        # 项目关键词
+        self.pos_keywords = pos_keywords
+        # 项目归属分组ID，0代表没有分组
+        self.project_group_id = project_group_id
+        # 0:通用舆情项目，1：金融舆情项目
+        self.project_type = project_type
+        # 舆情项目类型名称
+        self.project_type_name = project_type_name
+        # 项目的子项目ID列表
+        self.sub_project_ids = sub_project_ids
+        # 团队id
+        self.team_id = team_id
+        # 状态，1为生效，0为失效。
+        self.valid = valid
+        # 项目创建时间，毫秒
+        self.gmt_create_timestamp = gmt_create_timestamp
+        # 项目修改时间，毫秒
+        self.gmt_modified_timestamp = gmt_modified_timestamp
+        # 项目创建人名称
+        self.uname_create = uname_create
+        # 项目创建人uid
+        self.uid_create = uid_create
+        # 项目修改人名称
+        self.uname_modified = uname_modified
+        # 项目修改人uid
+        self.uid_modified = uid_modified
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ass_keywords is not None:
+            result['assKeywords'] = self.ass_keywords
+        if self.default_filter_id is not None:
+            result['defaultFilterId'] = self.default_filter_id
+        if self.ext_criteria is not None:
+            result['extCriteria'] = self.ext_criteria
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.neg_keywords is not None:
+            result['negKeywords'] = self.neg_keywords
+        if self.pid is not None:
+            result['pid'] = self.pid
+        if self.pos_keywords is not None:
+            result['posKeywords'] = self.pos_keywords
+        if self.project_group_id is not None:
+            result['projectGroupId'] = self.project_group_id
+        if self.project_type is not None:
+            result['projectType'] = self.project_type
+        if self.project_type_name is not None:
+            result['projectTypeName'] = self.project_type_name
+        if self.sub_project_ids is not None:
+            result['subProjectIds'] = self.sub_project_ids
+        if self.team_id is not None:
+            result['teamId'] = self.team_id
+        if self.valid is not None:
+            result['valid'] = self.valid
+        if self.gmt_create_timestamp is not None:
+            result['gmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modified_timestamp is not None:
+            result['gmtModifiedTimestamp'] = self.gmt_modified_timestamp
+        if self.uname_create is not None:
+            result['unameCreate'] = self.uname_create
+        if self.uid_create is not None:
+            result['uidCreate'] = self.uid_create
+        if self.uname_modified is not None:
+            result['unameModified'] = self.uname_modified
+        if self.uid_modified is not None:
+            result['uidModified'] = self.uid_modified
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assKeywords') is not None:
+            self.ass_keywords = m.get('assKeywords')
+        if m.get('defaultFilterId') is not None:
+            self.default_filter_id = m.get('defaultFilterId')
+        if m.get('extCriteria') is not None:
+            self.ext_criteria = m.get('extCriteria')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('negKeywords') is not None:
+            self.neg_keywords = m.get('negKeywords')
+        if m.get('pid') is not None:
+            self.pid = m.get('pid')
+        if m.get('posKeywords') is not None:
+            self.pos_keywords = m.get('posKeywords')
+        if m.get('projectGroupId') is not None:
+            self.project_group_id = m.get('projectGroupId')
+        if m.get('projectType') is not None:
+            self.project_type = m.get('projectType')
+        if m.get('projectTypeName') is not None:
+            self.project_type_name = m.get('projectTypeName')
+        if m.get('subProjectIds') is not None:
+            self.sub_project_ids = m.get('subProjectIds')
+        if m.get('teamId') is not None:
+            self.team_id = m.get('teamId')
+        if m.get('valid') is not None:
+            self.valid = m.get('valid')
+        if m.get('gmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('gmtCreateTimestamp')
+        if m.get('gmtModifiedTimestamp') is not None:
+            self.gmt_modified_timestamp = m.get('gmtModifiedTimestamp')
+        if m.get('unameCreate') is not None:
+            self.uname_create = m.get('unameCreate')
+        if m.get('uidCreate') is not None:
+            self.uid_create = m.get('uidCreate')
+        if m.get('unameModified') is not None:
+            self.uname_modified = m.get('unameModified')
+        if m.get('uidModified') is not None:
+            self.uid_modified = m.get('uidModified')
+        return self
+
+
+class BizTagTree(TeaModel):
+    def __init__(
+        self,
+        gmt_create_timestamp: int = None,
+        gmt_modified_timestamp: int = None,
+        id: int = None,
+        name: str = None,
+        parent_id: int = None,
+        status: int = None,
+        tag_id_path: str = None,
+        tag_name_path: str = None,
+        uid_create: str = None,
+        uid_modified: str = None,
+        uname_create: str = None,
+        uname_modified: str = None,
+    ):
+        # 创建时间，毫秒
+        self.gmt_create_timestamp = gmt_create_timestamp
+        # 修改时间，毫秒
+        self.gmt_modified_timestamp = gmt_modified_timestamp
+        # 标签id
+        self.id = id
+        # 标签名字
+        self.name = name
+        # 父亲id
+        self.parent_id = parent_id
+        # 标签状态，1表示激活，0表示不激活
+        self.status = status
+        # 标签节点树
+        self.tag_id_path = tag_id_path
+        # 标签节点名字树
+        self.tag_name_path = tag_name_path
+        # 创建人id
+        self.uid_create = uid_create
+        # 修改人id
+        self.uid_modified = uid_modified
+        # 创建人名字
+        self.uname_create = uname_create
+        # 修改人名字
+        self.uname_modified = uname_modified
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create_timestamp is not None:
+            result['gmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modified_timestamp is not None:
+            result['gmtModifiedTimestamp'] = self.gmt_modified_timestamp
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.tag_id_path is not None:
+            result['tagIdPath'] = self.tag_id_path
+        if self.tag_name_path is not None:
+            result['tagNamePath'] = self.tag_name_path
+        if self.uid_create is not None:
+            result['uidCreate'] = self.uid_create
+        if self.uid_modified is not None:
+            result['uidModified'] = self.uid_modified
+        if self.uname_create is not None:
+            result['unameCreate'] = self.uname_create
+        if self.uname_modified is not None:
+            result['unameModified'] = self.uname_modified
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('gmtCreateTimestamp')
+        if m.get('gmtModifiedTimestamp') is not None:
+            self.gmt_modified_timestamp = m.get('gmtModifiedTimestamp')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('tagIdPath') is not None:
+            self.tag_id_path = m.get('tagIdPath')
+        if m.get('tagNamePath') is not None:
+            self.tag_name_path = m.get('tagNamePath')
+        if m.get('uidCreate') is not None:
+            self.uid_create = m.get('uidCreate')
+        if m.get('uidModified') is not None:
+            self.uid_modified = m.get('uidModified')
+        if m.get('unameCreate') is not None:
+            self.uname_create = m.get('unameCreate')
+        if m.get('unameModified') is not None:
+            self.uname_modified = m.get('unameModified')
+        return self
+
+
+class SearchCondition(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        filter_id: int = None,
+        ass_keywords_idx: str = None,
+        author_followers_count_max_filter: int = None,
+        author_followers_count_min_filter: int = None,
+        author_name_idx: str = None,
+        author_verify_type_filter: str = None,
+        comments_count_max_filter: int = None,
+        comments_count_min_filter: int = None,
+        content_length_max_filter: int = None,
+        content_length_min_filter: int = None,
+        doc_answers_count_max_filter: int = None,
+        doc_answers_count_min_filter: int = None,
+        doc_area_idx: str = None,
+        doc_content_sign_idx: str = None,
+        doc_create_time_end_filter: int = None,
+        doc_create_time_start_filter: int = None,
+        doc_publish_time_end_filter: int = None,
+        doc_publish_time_start_filter: int = None,
+        duplicate_removal: bool = None,
+        emotion_score_max_filter: float = None,
+        emotion_score_min_filter: float = None,
+        exclude_author_name_idx: str = None,
+        excluding_media_hosts_filter: str = None,
+        excluding_media_pool_ids_filter: str = None,
+        likes_count_max_filter: int = None,
+        likes_count_min_filter: int = None,
+        media_hosts_filter: str = None,
+        media_influence_score_max_filter: float = None,
+        media_influence_score_min_filter: float = None,
+        media_pool_ids_filter: str = None,
+        media_propagation_score_max_filter: float = None,
+        media_propagation_score_min_filter: float = None,
+        media_type_filter: str = None,
+        message_type_filter: str = None,
+        neg_keywords_idx: str = None,
+        page_now: int = None,
+        page_size: int = None,
+        pos_keywords_idx: str = None,
+        primary_key_idx: str = None,
+        reads_count_max_filter: int = None,
+        reads_count_min_filter: int = None,
+        relevance_score_max_filter: float = None,
+        relevance_score_min_filter: float = None,
+        reposts_count_max_filter: int = None,
+        reposts_count_min_filter: int = None,
+        reprint_from_filter: str = None,
+        title_excluding_words_idx: str = None,
+        title_including_words_idx: str = None,
+        used_index_mode_switch: str = None,
+        eroticism_filter: bool = None,
+        gambling_filter: bool = None,
+        bkz_filter: bool = None,
+        advertisement_filter: bool = None,
+        illegal_advertisement_filter: bool = None,
+        spam_filter: bool = None,
+        suspicion_spam_filter: bool = None,
+        biz_tags_idx: str = None,
+        alipay_account_filter: str = None,
+        doc_update_time_end_filter: int = None,
+        doc_update_time_start_filter: int = None,
+        enable_keyword_highlight: bool = None,
+        finance_entity_area_filter: str = None,
+        entity_name: str = None,
+        finance_entity_relevance_score_max_filter: float = None,
+        finance_entity_relevance_score_min_filter: float = None,
+        finance_event_code_filter: str = None,
+        parent_ids_idx: str = None,
+        sort_by_direction: str = None,
+        sort_by: str = None,
+        hotspot_title_idx: str = None,
+    ):
+        # 舆情项目Id
+        self.project_id = project_id
+        # 舆情筛选模板Id
+        self.filter_id = filter_id
+        # 搭配词，json字符串数组
+        self.ass_keywords_idx = ass_keywords_idx
+        # 粉丝数上限
+        self.author_followers_count_max_filter = author_followers_count_max_filter
+        # 粉丝数下限
+        self.author_followers_count_min_filter = author_followers_count_min_filter
+        # 指定用户名，多个用户用英文逗号隔开
+        self.author_name_idx = author_name_idx
+        # 作者认证类型，多个用,隔开
+        self.author_verify_type_filter = author_verify_type_filter
+        # 评论数上限
+        self.comments_count_max_filter = comments_count_max_filter
+        # 评论数下限
+        self.comments_count_min_filter = comments_count_min_filter
+        # 内容长度上限
+        self.content_length_max_filter = content_length_max_filter
+        # 内容长度下限
+        self.content_length_min_filter = content_length_min_filter
+        # 答案数上限
+        self.doc_answers_count_max_filter = doc_answers_count_max_filter
+        # 答案数下限
+        self.doc_answers_count_min_filter = doc_answers_count_min_filter
+        # 提级地域
+        self.doc_area_idx = doc_area_idx
+        # 相似文章索引Id,，多个用英文逗号隔开
+        self.doc_content_sign_idx = doc_content_sign_idx
+        # 创建时间戳上限
+        self.doc_create_time_end_filter = doc_create_time_end_filter
+        # 创建时间戳下限
+        self.doc_create_time_start_filter = doc_create_time_start_filter
+        # 发布时间戳上限
+        self.doc_publish_time_end_filter = doc_publish_time_end_filter
+        # 发布时间戳下限
+        self.doc_publish_time_start_filter = doc_publish_time_start_filter
+        # 返回的数据是否去重，默认true
+        self.duplicate_removal = duplicate_removal
+        # 情感分值上限，范围-10~10
+        self.emotion_score_max_filter = emotion_score_max_filter
+        # 情感分值下限，范围-10~10
+        self.emotion_score_min_filter = emotion_score_min_filter
+        # 排除指定用户名，多个用户用英文逗号隔开
+        self.exclude_author_name_idx = exclude_author_name_idx
+        # 排除指定Host
+        self.excluding_media_hosts_filter = excluding_media_hosts_filter
+        # 排除指定媒体库ids，媒体库在舆情平台上定义
+        self.excluding_media_pool_ids_filter = excluding_media_pool_ids_filter
+        # 点赞数上限
+        self.likes_count_max_filter = likes_count_max_filter
+        # 点赞数下限
+        self.likes_count_min_filter = likes_count_min_filter
+        # 指定Host
+        self.media_hosts_filter = media_hosts_filter
+        # 媒体影响分上限
+        self.media_influence_score_max_filter = media_influence_score_max_filter
+        # 媒体影响分下限
+        self.media_influence_score_min_filter = media_influence_score_min_filter
+        # 指定媒体库ids，媒体库在舆情平台上定义
+        self.media_pool_ids_filter = media_pool_ids_filter
+        # 媒体传播分上限取值范围：0-10分
+        self.media_propagation_score_max_filter = media_propagation_score_max_filter
+        # 媒体传播分下限取值范围：0-10分
+        self.media_propagation_score_min_filter = media_propagation_score_min_filter
+        # 枚举字符串如：WEIBO-WEIBO
+        self.media_type_filter = media_type_filter
+        # 枚举字符串如：COMMENT
+        self.message_type_filter = message_type_filter
+        # 排除关键词
+        self.neg_keywords_idx = neg_keywords_idx
+        # 指定页码
+        self.page_now = page_now
+        # 指定每页大小，最大50
+        self.page_size = page_size
+        # 格式同AssKeywordsIdx，如果指定了AssKeywordsIdx，两者要同时满足。
+        self.pos_keywords_idx = pos_keywords_idx
+        # 舆情文章id，支持多值
+        self.primary_key_idx = primary_key_idx
+        # 阅读数上限
+        self.reads_count_max_filter = reads_count_max_filter
+        # 阅读数下限
+        self.reads_count_min_filter = reads_count_min_filter
+        # 相关性分上限
+        self.relevance_score_max_filter = relevance_score_max_filter
+        # 相关性分下限
+        self.relevance_score_min_filter = relevance_score_min_filter
+        # 转发数上限
+        self.reposts_count_max_filter = reposts_count_max_filter
+        # 转发数下限
+        self.reposts_count_min_filter = reposts_count_min_filter
+        # 文章转载来源名称
+        self.reprint_from_filter = reprint_from_filter
+        # 标题不包含的关键词
+        self.title_excluding_words_idx = title_excluding_words_idx
+        # 标题包含的关键词
+        self.title_including_words_idx = title_including_words_idx
+        # 指定索引模式,KEYWORD|CREATE_TIME
+        self.used_index_mode_switch = used_index_mode_switch
+        # 色情取值true or false
+        self.eroticism_filter = eroticism_filter
+        # 赌博取值true or false
+        self.gambling_filter = gambling_filter
+        # 暴恐政取值true or false
+        self.bkz_filter = bkz_filter
+        # 广告取值true or false
+        self.advertisement_filter = advertisement_filter
+        # 违规广告取值true or false
+        self.illegal_advertisement_filter = illegal_advertisement_filter
+        # 垃圾取值true or false
+        self.spam_filter = spam_filter
+        # 疑似垃圾取值true or false
+        self.suspicion_spam_filter = suspicion_spam_filter
+        # 业务自定义标签字段过滤
+        self.biz_tags_idx = biz_tags_idx
+        # 支付宝内部的2088账号
+        self.alipay_account_filter = alipay_account_filter
+        # 文章更新时间上限
+        self.doc_update_time_end_filter = doc_update_time_end_filter
+        # 更新时间戳下限
+        self.doc_update_time_start_filter = doc_update_time_start_filter
+        # 是否要进行关键词高亮显示
+        self.enable_keyword_highlight = enable_keyword_highlight
+        # 实体所在地，主要指的是公司
+        self.finance_entity_area_filter = finance_entity_area_filter
+        # 公司全名称
+        self.entity_name = entity_name
+        # 实体关联度得分上限
+        self.finance_entity_relevance_score_max_filter = finance_entity_relevance_score_max_filter
+        # 实体关联度得分下限
+        self.finance_entity_relevance_score_min_filter = finance_entity_relevance_score_min_filter
+        # 金融事件id，支持多个
+        self.finance_event_code_filter = finance_event_code_filter
+        # 父文章docId
+        self.parent_ids_idx = parent_ids_idx
+        # 如'+'是升序，'-'是降序
+        self.sort_by_direction = sort_by_direction
+        # 排序字段枚举
+        self.sort_by = sort_by
+        # 热搜标题倒排
+        self.hotspot_title_idx = hotspot_title_idx
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.filter_id is not None:
+            result['filterId'] = self.filter_id
+        if self.ass_keywords_idx is not None:
+            result['assKeywordsIdx'] = self.ass_keywords_idx
+        if self.author_followers_count_max_filter is not None:
+            result['authorFollowersCountMaxFilter'] = self.author_followers_count_max_filter
+        if self.author_followers_count_min_filter is not None:
+            result['authorFollowersCountMinFilter'] = self.author_followers_count_min_filter
+        if self.author_name_idx is not None:
+            result['authorNameIdx'] = self.author_name_idx
+        if self.author_verify_type_filter is not None:
+            result['authorVerifyTypeFilter'] = self.author_verify_type_filter
+        if self.comments_count_max_filter is not None:
+            result['commentsCountMaxFilter'] = self.comments_count_max_filter
+        if self.comments_count_min_filter is not None:
+            result['commentsCountMinFilter'] = self.comments_count_min_filter
+        if self.content_length_max_filter is not None:
+            result['contentLengthMaxFilter'] = self.content_length_max_filter
+        if self.content_length_min_filter is not None:
+            result['contentLengthMinFilter'] = self.content_length_min_filter
+        if self.doc_answers_count_max_filter is not None:
+            result['docAnswersCountMaxFilter'] = self.doc_answers_count_max_filter
+        if self.doc_answers_count_min_filter is not None:
+            result['docAnswersCountMinFilter'] = self.doc_answers_count_min_filter
+        if self.doc_area_idx is not None:
+            result['docAreaIdx'] = self.doc_area_idx
+        if self.doc_content_sign_idx is not None:
+            result['docContentSignIdx'] = self.doc_content_sign_idx
+        if self.doc_create_time_end_filter is not None:
+            result['docCreateTimeEndFilter'] = self.doc_create_time_end_filter
+        if self.doc_create_time_start_filter is not None:
+            result['docCreateTimeStartFilter'] = self.doc_create_time_start_filter
+        if self.doc_publish_time_end_filter is not None:
+            result['docPublishTimeEndFilter'] = self.doc_publish_time_end_filter
+        if self.doc_publish_time_start_filter is not None:
+            result['docPublishTimeStartFilter'] = self.doc_publish_time_start_filter
+        if self.duplicate_removal is not None:
+            result['duplicateRemoval'] = self.duplicate_removal
+        if self.emotion_score_max_filter is not None:
+            result['emotionScoreMaxFilter'] = self.emotion_score_max_filter
+        if self.emotion_score_min_filter is not None:
+            result['emotionScoreMinFilter'] = self.emotion_score_min_filter
+        if self.exclude_author_name_idx is not None:
+            result['excludeAuthorNameIdx'] = self.exclude_author_name_idx
+        if self.excluding_media_hosts_filter is not None:
+            result['excludingMediaHostsFilter'] = self.excluding_media_hosts_filter
+        if self.excluding_media_pool_ids_filter is not None:
+            result['excludingMediaPoolIdsFilter'] = self.excluding_media_pool_ids_filter
+        if self.likes_count_max_filter is not None:
+            result['likesCountMaxFilter'] = self.likes_count_max_filter
+        if self.likes_count_min_filter is not None:
+            result['likesCountMinFilter'] = self.likes_count_min_filter
+        if self.media_hosts_filter is not None:
+            result['mediaHostsFilter'] = self.media_hosts_filter
+        if self.media_influence_score_max_filter is not None:
+            result['mediaInfluenceScoreMaxFilter'] = self.media_influence_score_max_filter
+        if self.media_influence_score_min_filter is not None:
+            result['mediaInfluenceScoreMinFilter'] = self.media_influence_score_min_filter
+        if self.media_pool_ids_filter is not None:
+            result['mediaPoolIdsFilter'] = self.media_pool_ids_filter
+        if self.media_propagation_score_max_filter is not None:
+            result['mediaPropagationScoreMaxFilter'] = self.media_propagation_score_max_filter
+        if self.media_propagation_score_min_filter is not None:
+            result['mediaPropagationScoreMinFilter'] = self.media_propagation_score_min_filter
+        if self.media_type_filter is not None:
+            result['mediaTypeFilter'] = self.media_type_filter
+        if self.message_type_filter is not None:
+            result['messageTypeFilter'] = self.message_type_filter
+        if self.neg_keywords_idx is not None:
+            result['negKeywordsIdx'] = self.neg_keywords_idx
+        if self.page_now is not None:
+            result['pageNow'] = self.page_now
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.pos_keywords_idx is not None:
+            result['posKeywordsIdx'] = self.pos_keywords_idx
+        if self.primary_key_idx is not None:
+            result['primaryKeyIdx'] = self.primary_key_idx
+        if self.reads_count_max_filter is not None:
+            result['readsCountMaxFilter'] = self.reads_count_max_filter
+        if self.reads_count_min_filter is not None:
+            result['readsCountMinFilter'] = self.reads_count_min_filter
+        if self.relevance_score_max_filter is not None:
+            result['relevanceScoreMaxFilter'] = self.relevance_score_max_filter
+        if self.relevance_score_min_filter is not None:
+            result['relevanceScoreMinFilter'] = self.relevance_score_min_filter
+        if self.reposts_count_max_filter is not None:
+            result['repostsCountMaxFilter'] = self.reposts_count_max_filter
+        if self.reposts_count_min_filter is not None:
+            result['repostsCountMinFilter'] = self.reposts_count_min_filter
+        if self.reprint_from_filter is not None:
+            result['reprintFromFilter'] = self.reprint_from_filter
+        if self.title_excluding_words_idx is not None:
+            result['titleExcludingWordsIdx'] = self.title_excluding_words_idx
+        if self.title_including_words_idx is not None:
+            result['titleIncludingWordsIdx'] = self.title_including_words_idx
+        if self.used_index_mode_switch is not None:
+            result['usedIndexModeSwitch'] = self.used_index_mode_switch
+        if self.eroticism_filter is not None:
+            result['eroticismFilter'] = self.eroticism_filter
+        if self.gambling_filter is not None:
+            result['gamblingFilter'] = self.gambling_filter
+        if self.bkz_filter is not None:
+            result['bkzFilter'] = self.bkz_filter
+        if self.advertisement_filter is not None:
+            result['advertisementFilter'] = self.advertisement_filter
+        if self.illegal_advertisement_filter is not None:
+            result['illegalAdvertisementFilter'] = self.illegal_advertisement_filter
+        if self.spam_filter is not None:
+            result['spamFilter'] = self.spam_filter
+        if self.suspicion_spam_filter is not None:
+            result['suspicionSpamFilter'] = self.suspicion_spam_filter
+        if self.biz_tags_idx is not None:
+            result['bizTagsIdx'] = self.biz_tags_idx
+        if self.alipay_account_filter is not None:
+            result['alipayAccountFilter'] = self.alipay_account_filter
+        if self.doc_update_time_end_filter is not None:
+            result['docUpdateTimeEndFilter'] = self.doc_update_time_end_filter
+        if self.doc_update_time_start_filter is not None:
+            result['docUpdateTimeStartFilter'] = self.doc_update_time_start_filter
+        if self.enable_keyword_highlight is not None:
+            result['enableKeywordHighlight'] = self.enable_keyword_highlight
+        if self.finance_entity_area_filter is not None:
+            result['financeEntityAreaFilter'] = self.finance_entity_area_filter
+        if self.entity_name is not None:
+            result['entityName'] = self.entity_name
+        if self.finance_entity_relevance_score_max_filter is not None:
+            result['financeEntityRelevanceScoreMaxFilter'] = self.finance_entity_relevance_score_max_filter
+        if self.finance_entity_relevance_score_min_filter is not None:
+            result['financeEntityRelevanceScoreMinFilter'] = self.finance_entity_relevance_score_min_filter
+        if self.finance_event_code_filter is not None:
+            result['financeEventCodeFilter'] = self.finance_event_code_filter
+        if self.parent_ids_idx is not None:
+            result['parentIdsIdx'] = self.parent_ids_idx
+        if self.sort_by_direction is not None:
+            result['sortByDirection'] = self.sort_by_direction
+        if self.sort_by is not None:
+            result['sortBy'] = self.sort_by
+        if self.hotspot_title_idx is not None:
+            result['hotspotTitleIdx'] = self.hotspot_title_idx
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('filterId') is not None:
+            self.filter_id = m.get('filterId')
+        if m.get('assKeywordsIdx') is not None:
+            self.ass_keywords_idx = m.get('assKeywordsIdx')
+        if m.get('authorFollowersCountMaxFilter') is not None:
+            self.author_followers_count_max_filter = m.get('authorFollowersCountMaxFilter')
+        if m.get('authorFollowersCountMinFilter') is not None:
+            self.author_followers_count_min_filter = m.get('authorFollowersCountMinFilter')
+        if m.get('authorNameIdx') is not None:
+            self.author_name_idx = m.get('authorNameIdx')
+        if m.get('authorVerifyTypeFilter') is not None:
+            self.author_verify_type_filter = m.get('authorVerifyTypeFilter')
+        if m.get('commentsCountMaxFilter') is not None:
+            self.comments_count_max_filter = m.get('commentsCountMaxFilter')
+        if m.get('commentsCountMinFilter') is not None:
+            self.comments_count_min_filter = m.get('commentsCountMinFilter')
+        if m.get('contentLengthMaxFilter') is not None:
+            self.content_length_max_filter = m.get('contentLengthMaxFilter')
+        if m.get('contentLengthMinFilter') is not None:
+            self.content_length_min_filter = m.get('contentLengthMinFilter')
+        if m.get('docAnswersCountMaxFilter') is not None:
+            self.doc_answers_count_max_filter = m.get('docAnswersCountMaxFilter')
+        if m.get('docAnswersCountMinFilter') is not None:
+            self.doc_answers_count_min_filter = m.get('docAnswersCountMinFilter')
+        if m.get('docAreaIdx') is not None:
+            self.doc_area_idx = m.get('docAreaIdx')
+        if m.get('docContentSignIdx') is not None:
+            self.doc_content_sign_idx = m.get('docContentSignIdx')
+        if m.get('docCreateTimeEndFilter') is not None:
+            self.doc_create_time_end_filter = m.get('docCreateTimeEndFilter')
+        if m.get('docCreateTimeStartFilter') is not None:
+            self.doc_create_time_start_filter = m.get('docCreateTimeStartFilter')
+        if m.get('docPublishTimeEndFilter') is not None:
+            self.doc_publish_time_end_filter = m.get('docPublishTimeEndFilter')
+        if m.get('docPublishTimeStartFilter') is not None:
+            self.doc_publish_time_start_filter = m.get('docPublishTimeStartFilter')
+        if m.get('duplicateRemoval') is not None:
+            self.duplicate_removal = m.get('duplicateRemoval')
+        if m.get('emotionScoreMaxFilter') is not None:
+            self.emotion_score_max_filter = m.get('emotionScoreMaxFilter')
+        if m.get('emotionScoreMinFilter') is not None:
+            self.emotion_score_min_filter = m.get('emotionScoreMinFilter')
+        if m.get('excludeAuthorNameIdx') is not None:
+            self.exclude_author_name_idx = m.get('excludeAuthorNameIdx')
+        if m.get('excludingMediaHostsFilter') is not None:
+            self.excluding_media_hosts_filter = m.get('excludingMediaHostsFilter')
+        if m.get('excludingMediaPoolIdsFilter') is not None:
+            self.excluding_media_pool_ids_filter = m.get('excludingMediaPoolIdsFilter')
+        if m.get('likesCountMaxFilter') is not None:
+            self.likes_count_max_filter = m.get('likesCountMaxFilter')
+        if m.get('likesCountMinFilter') is not None:
+            self.likes_count_min_filter = m.get('likesCountMinFilter')
+        if m.get('mediaHostsFilter') is not None:
+            self.media_hosts_filter = m.get('mediaHostsFilter')
+        if m.get('mediaInfluenceScoreMaxFilter') is not None:
+            self.media_influence_score_max_filter = m.get('mediaInfluenceScoreMaxFilter')
+        if m.get('mediaInfluenceScoreMinFilter') is not None:
+            self.media_influence_score_min_filter = m.get('mediaInfluenceScoreMinFilter')
+        if m.get('mediaPoolIdsFilter') is not None:
+            self.media_pool_ids_filter = m.get('mediaPoolIdsFilter')
+        if m.get('mediaPropagationScoreMaxFilter') is not None:
+            self.media_propagation_score_max_filter = m.get('mediaPropagationScoreMaxFilter')
+        if m.get('mediaPropagationScoreMinFilter') is not None:
+            self.media_propagation_score_min_filter = m.get('mediaPropagationScoreMinFilter')
+        if m.get('mediaTypeFilter') is not None:
+            self.media_type_filter = m.get('mediaTypeFilter')
+        if m.get('messageTypeFilter') is not None:
+            self.message_type_filter = m.get('messageTypeFilter')
+        if m.get('negKeywordsIdx') is not None:
+            self.neg_keywords_idx = m.get('negKeywordsIdx')
+        if m.get('pageNow') is not None:
+            self.page_now = m.get('pageNow')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('posKeywordsIdx') is not None:
+            self.pos_keywords_idx = m.get('posKeywordsIdx')
+        if m.get('primaryKeyIdx') is not None:
+            self.primary_key_idx = m.get('primaryKeyIdx')
+        if m.get('readsCountMaxFilter') is not None:
+            self.reads_count_max_filter = m.get('readsCountMaxFilter')
+        if m.get('readsCountMinFilter') is not None:
+            self.reads_count_min_filter = m.get('readsCountMinFilter')
+        if m.get('relevanceScoreMaxFilter') is not None:
+            self.relevance_score_max_filter = m.get('relevanceScoreMaxFilter')
+        if m.get('relevanceScoreMinFilter') is not None:
+            self.relevance_score_min_filter = m.get('relevanceScoreMinFilter')
+        if m.get('repostsCountMaxFilter') is not None:
+            self.reposts_count_max_filter = m.get('repostsCountMaxFilter')
+        if m.get('repostsCountMinFilter') is not None:
+            self.reposts_count_min_filter = m.get('repostsCountMinFilter')
+        if m.get('reprintFromFilter') is not None:
+            self.reprint_from_filter = m.get('reprintFromFilter')
+        if m.get('titleExcludingWordsIdx') is not None:
+            self.title_excluding_words_idx = m.get('titleExcludingWordsIdx')
+        if m.get('titleIncludingWordsIdx') is not None:
+            self.title_including_words_idx = m.get('titleIncludingWordsIdx')
+        if m.get('usedIndexModeSwitch') is not None:
+            self.used_index_mode_switch = m.get('usedIndexModeSwitch')
+        if m.get('eroticismFilter') is not None:
+            self.eroticism_filter = m.get('eroticismFilter')
+        if m.get('gamblingFilter') is not None:
+            self.gambling_filter = m.get('gamblingFilter')
+        if m.get('bkzFilter') is not None:
+            self.bkz_filter = m.get('bkzFilter')
+        if m.get('advertisementFilter') is not None:
+            self.advertisement_filter = m.get('advertisementFilter')
+        if m.get('illegalAdvertisementFilter') is not None:
+            self.illegal_advertisement_filter = m.get('illegalAdvertisementFilter')
+        if m.get('spamFilter') is not None:
+            self.spam_filter = m.get('spamFilter')
+        if m.get('suspicionSpamFilter') is not None:
+            self.suspicion_spam_filter = m.get('suspicionSpamFilter')
+        if m.get('bizTagsIdx') is not None:
+            self.biz_tags_idx = m.get('bizTagsIdx')
+        if m.get('alipayAccountFilter') is not None:
+            self.alipay_account_filter = m.get('alipayAccountFilter')
+        if m.get('docUpdateTimeEndFilter') is not None:
+            self.doc_update_time_end_filter = m.get('docUpdateTimeEndFilter')
+        if m.get('docUpdateTimeStartFilter') is not None:
+            self.doc_update_time_start_filter = m.get('docUpdateTimeStartFilter')
+        if m.get('enableKeywordHighlight') is not None:
+            self.enable_keyword_highlight = m.get('enableKeywordHighlight')
+        if m.get('financeEntityAreaFilter') is not None:
+            self.finance_entity_area_filter = m.get('financeEntityAreaFilter')
+        if m.get('entityName') is not None:
+            self.entity_name = m.get('entityName')
+        if m.get('financeEntityRelevanceScoreMaxFilter') is not None:
+            self.finance_entity_relevance_score_max_filter = m.get('financeEntityRelevanceScoreMaxFilter')
+        if m.get('financeEntityRelevanceScoreMinFilter') is not None:
+            self.finance_entity_relevance_score_min_filter = m.get('financeEntityRelevanceScoreMinFilter')
+        if m.get('financeEventCodeFilter') is not None:
+            self.finance_event_code_filter = m.get('financeEventCodeFilter')
+        if m.get('parentIdsIdx') is not None:
+            self.parent_ids_idx = m.get('parentIdsIdx')
+        if m.get('sortByDirection') is not None:
+            self.sort_by_direction = m.get('sortByDirection')
+        if m.get('sortBy') is not None:
+            self.sort_by = m.get('sortBy')
+        if m.get('hotspotTitleIdx') is not None:
+            self.hotspot_title_idx = m.get('hotspotTitleIdx')
+        return self
+
+
+class Filter(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        gmt_create_timestamp: int = None,
+        gmt_modified_timestamp: int = None,
+        valid: int = None,
+        name: str = None,
+        criteria: str = None,
+        filter_group_id: int = None,
+    ):
+        # 筛选模板id
+        self.id = id
+        # 创建日期，毫秒
+        self.gmt_create_timestamp = gmt_create_timestamp
+        # 修改时间，毫秒
+        self.gmt_modified_timestamp = gmt_modified_timestamp
+        # 状态。1：有效，0：无效
+        self.valid = valid
+        # 筛选模板名称
+        self.name = name
+        # 筛选模板配置内容
+        self.criteria = criteria
+        # 筛选模板所属id
+        self.filter_group_id = filter_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.gmt_create_timestamp is not None:
+            result['gmtCreateTimestamp'] = self.gmt_create_timestamp
+        if self.gmt_modified_timestamp is not None:
+            result['gmtModifiedTimestamp'] = self.gmt_modified_timestamp
+        if self.valid is not None:
+            result['valid'] = self.valid
+        if self.name is not None:
+            result['name'] = self.name
+        if self.criteria is not None:
+            result['criteria'] = self.criteria
+        if self.filter_group_id is not None:
+            result['filterGroupId'] = self.filter_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('gmtCreateTimestamp') is not None:
+            self.gmt_create_timestamp = m.get('gmtCreateTimestamp')
+        if m.get('gmtModifiedTimestamp') is not None:
+            self.gmt_modified_timestamp = m.get('gmtModifiedTimestamp')
+        if m.get('valid') is not None:
+            self.valid = m.get('valid')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('criteria') is not None:
+            self.criteria = m.get('criteria')
+        if m.get('filterGroupId') is not None:
+            self.filter_group_id = m.get('filterGroupId')
+        return self
+
+
+class StatisticPoint(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: float = None,
+    ):
+        # 聚合字段结果值
+        self.key = key
+        # 聚合结果值
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
@@ -2128,6 +2457,137 @@ class QueryAlarmDataListResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = QueryAlarmDataListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHotspotMessageRequest(TeaModel):
+    def __init__(
+        self,
+        hotspot_search_condition: HotspotSearchCondition = None,
+        team_hash_id: str = None,
+        request_id: str = None,
+    ):
+        # 热搜查询参数
+        self.hotspot_search_condition = hotspot_search_condition
+        # 舆情团队HashId
+        self.team_hash_id = team_hash_id
+        # 请求id
+        self.request_id = request_id
+
+    def validate(self):
+        if self.hotspot_search_condition:
+            self.hotspot_search_condition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotspot_search_condition is not None:
+            result['hotspotSearchCondition'] = self.hotspot_search_condition.to_map()
+        if self.team_hash_id is not None:
+            result['teamHashId'] = self.team_hash_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hotspotSearchCondition') is not None:
+            temp_model = HotspotSearchCondition()
+            self.hotspot_search_condition = temp_model.from_map(m['hotspotSearchCondition'])
+        if m.get('teamHashId') is not None:
+            self.team_hash_id = m.get('teamHashId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListHotspotMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        total_count: int = None,
+        hotspot_messages: List[YuqingHotspotMessage] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 总条数
+        self.total_count = total_count
+        # 热搜结果信息列表数组
+        self.hotspot_messages = hotspot_messages
+
+    def validate(self):
+        if self.hotspot_messages:
+            for k in self.hotspot_messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        result['hotspotMessages'] = []
+        if self.hotspot_messages is not None:
+            for k in self.hotspot_messages:
+                result['hotspotMessages'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        self.hotspot_messages = []
+        if m.get('hotspotMessages') is not None:
+            for k in m.get('hotspotMessages'):
+                temp_model = YuqingHotspotMessage()
+                self.hotspot_messages.append(temp_model.from_map(k))
+        return self
+
+
+class ListHotspotMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListHotspotMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListHotspotMessageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
