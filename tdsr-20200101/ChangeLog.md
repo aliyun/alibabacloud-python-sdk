@@ -1,3 +1,6 @@
+2021-09-15 Version: 2.2.8
+- LabelBuild Interface  Add Rebuild Mode.
+
 2021-08-24 Version: 2.2.7
 - GetHotspotTag Add Params .
 
