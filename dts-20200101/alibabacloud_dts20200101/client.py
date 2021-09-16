@@ -224,6 +224,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.configure_migration_job_alert_with_options_async(request, runtime)
 
+    def configure_subscription_with_options(
+        self,
+        request: dts_20200101_models.ConfigureSubscriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ConfigureSubscriptionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ConfigureSubscriptionResponse(),
+            self.do_rpcrequest('ConfigureSubscription', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def configure_subscription_with_options_async(
+        self,
+        request: dts_20200101_models.ConfigureSubscriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ConfigureSubscriptionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ConfigureSubscriptionResponse(),
+            await self.do_rpcrequest_async('ConfigureSubscription', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def configure_subscription(
+        self,
+        request: dts_20200101_models.ConfigureSubscriptionRequest,
+    ) -> dts_20200101_models.ConfigureSubscriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.configure_subscription_with_options(request, runtime)
+
+    async def configure_subscription_async(
+        self,
+        request: dts_20200101_models.ConfigureSubscriptionRequest,
+    ) -> dts_20200101_models.ConfigureSubscriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.configure_subscription_with_options_async(request, runtime)
+
     def configure_subscription_instance_with_options(
         self,
         request: dts_20200101_models.ConfigureSubscriptionInstanceRequest,
@@ -434,6 +476,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.configure_synchronization_job_replicator_compare_with_options_async(request, runtime)
 
+    def create_consumer_channel_with_options(
+        self,
+        request: dts_20200101_models.CreateConsumerChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CreateConsumerChannelResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CreateConsumerChannelResponse(),
+            self.do_rpcrequest('CreateConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_consumer_channel_with_options_async(
+        self,
+        request: dts_20200101_models.CreateConsumerChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CreateConsumerChannelResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CreateConsumerChannelResponse(),
+            await self.do_rpcrequest_async('CreateConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_consumer_channel(
+        self,
+        request: dts_20200101_models.CreateConsumerChannelRequest,
+    ) -> dts_20200101_models.CreateConsumerChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_consumer_channel_with_options(request, runtime)
+
+    async def create_consumer_channel_async(
+        self,
+        request: dts_20200101_models.CreateConsumerChannelRequest,
+    ) -> dts_20200101_models.CreateConsumerChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_consumer_channel_with_options_async(request, runtime)
+
     def create_consumer_group_with_options(
         self,
         request: dts_20200101_models.CreateConsumerGroupRequest,
@@ -517,6 +601,48 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.CreateDtsInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_dts_instance_with_options_async(request, runtime)
+
+    def create_job_monitor_rule_with_options(
+        self,
+        request: dts_20200101_models.CreateJobMonitorRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CreateJobMonitorRuleResponse(),
+            self.do_rpcrequest('CreateJobMonitorRule', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_job_monitor_rule_with_options_async(
+        self,
+        request: dts_20200101_models.CreateJobMonitorRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CreateJobMonitorRuleResponse(),
+            await self.do_rpcrequest_async('CreateJobMonitorRule', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_job_monitor_rule(
+        self,
+        request: dts_20200101_models.CreateJobMonitorRuleRequest,
+    ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_job_monitor_rule_with_options(request, runtime)
+
+    async def create_job_monitor_rule_async(
+        self,
+        request: dts_20200101_models.CreateJobMonitorRuleRequest,
+    ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_job_monitor_rule_with_options_async(request, runtime)
 
     def create_migration_job_with_options(
         self,
@@ -643,6 +769,48 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.CreateSynchronizationJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_synchronization_job_with_options_async(request, runtime)
+
+    def delete_consumer_channel_with_options(
+        self,
+        request: dts_20200101_models.DeleteConsumerChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DeleteConsumerChannelResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DeleteConsumerChannelResponse(),
+            self.do_rpcrequest('DeleteConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_consumer_channel_with_options_async(
+        self,
+        request: dts_20200101_models.DeleteConsumerChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DeleteConsumerChannelResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DeleteConsumerChannelResponse(),
+            await self.do_rpcrequest_async('DeleteConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_consumer_channel(
+        self,
+        request: dts_20200101_models.DeleteConsumerChannelRequest,
+    ) -> dts_20200101_models.DeleteConsumerChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_consumer_channel_with_options(request, runtime)
+
+    async def delete_consumer_channel_async(
+        self,
+        request: dts_20200101_models.DeleteConsumerChannelRequest,
+    ) -> dts_20200101_models.DeleteConsumerChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_consumer_channel_with_options_async(request, runtime)
 
     def delete_consumer_group_with_options(
         self,
@@ -896,6 +1064,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_connection_status_with_options_async(request, runtime)
 
+    def describe_consumer_channel_with_options(
+        self,
+        request: dts_20200101_models.DescribeConsumerChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeConsumerChannelResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeConsumerChannelResponse(),
+            self.do_rpcrequest('DescribeConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_consumer_channel_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeConsumerChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeConsumerChannelResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeConsumerChannelResponse(),
+            await self.do_rpcrequest_async('DescribeConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_consumer_channel(
+        self,
+        request: dts_20200101_models.DescribeConsumerChannelRequest,
+    ) -> dts_20200101_models.DescribeConsumerChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_consumer_channel_with_options(request, runtime)
+
+    async def describe_consumer_channel_async(
+        self,
+        request: dts_20200101_models.DescribeConsumerChannelRequest,
+    ) -> dts_20200101_models.DescribeConsumerChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_consumer_channel_with_options_async(request, runtime)
+
     def describe_consumer_group_with_options(
         self,
         request: dts_20200101_models.DescribeConsumerGroupRequest,
@@ -1147,6 +1357,48 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeInitializationStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_initialization_status_with_options_async(request, runtime)
+
+    def describe_job_monitor_rule_with_options(
+        self,
+        request: dts_20200101_models.DescribeJobMonitorRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeJobMonitorRuleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeJobMonitorRuleResponse(),
+            self.do_rpcrequest('DescribeJobMonitorRule', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_job_monitor_rule_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeJobMonitorRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeJobMonitorRuleResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeJobMonitorRuleResponse(),
+            await self.do_rpcrequest_async('DescribeJobMonitorRule', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_job_monitor_rule(
+        self,
+        request: dts_20200101_models.DescribeJobMonitorRuleRequest,
+    ) -> dts_20200101_models.DescribeJobMonitorRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_job_monitor_rule_with_options(request, runtime)
+
+    async def describe_job_monitor_rule_async(
+        self,
+        request: dts_20200101_models.DescribeJobMonitorRuleRequest,
+    ) -> dts_20200101_models.DescribeJobMonitorRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_job_monitor_rule_with_options_async(request, runtime)
 
     def describe_migration_job_alert_with_options(
         self,
@@ -1484,6 +1736,60 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_subscription_instance_status_with_options_async(request, runtime)
 
+    def describe_subscription_meta_with_options(
+        self,
+        tmp_req: dts_20200101_models.DescribeSubscriptionMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dts_20200101_models.DescribeSubscriptionMetaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_migration_job_ids):
+            request.sub_migration_job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_migration_job_ids, 'SubMigrationJobIds', 'json')
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeSubscriptionMetaResponse(),
+            self.do_rpcrequest('DescribeSubscriptionMeta', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_subscription_meta_with_options_async(
+        self,
+        tmp_req: dts_20200101_models.DescribeSubscriptionMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dts_20200101_models.DescribeSubscriptionMetaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sub_migration_job_ids):
+            request.sub_migration_job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_migration_job_ids, 'SubMigrationJobIds', 'json')
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeSubscriptionMetaResponse(),
+            await self.do_rpcrequest_async('DescribeSubscriptionMeta', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_subscription_meta(
+        self,
+        request: dts_20200101_models.DescribeSubscriptionMetaRequest,
+    ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_subscription_meta_with_options(request, runtime)
+
+    async def describe_subscription_meta_async(
+        self,
+        request: dts_20200101_models.DescribeSubscriptionMetaRequest,
+    ) -> dts_20200101_models.DescribeSubscriptionMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_subscription_meta_with_options_async(request, runtime)
+
     def describe_synchronization_job_alert_with_options(
         self,
         request: dts_20200101_models.DescribeSynchronizationJobAlertRequest,
@@ -1736,6 +2042,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_synchronization_object_modify_status_with_options_async(request, runtime)
 
+    def ignore_job_detail_with_options(
+        self,
+        request: dts_20200101_models.IgnoreJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.IgnoreJobDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.IgnoreJobDetailResponse(),
+            self.do_rpcrequest('IgnoreJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def ignore_job_detail_with_options_async(
+        self,
+        request: dts_20200101_models.IgnoreJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.IgnoreJobDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.IgnoreJobDetailResponse(),
+            await self.do_rpcrequest_async('IgnoreJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def ignore_job_detail(
+        self,
+        request: dts_20200101_models.IgnoreJobDetailRequest,
+    ) -> dts_20200101_models.IgnoreJobDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.ignore_job_detail_with_options(request, runtime)
+
+    async def ignore_job_detail_async(
+        self,
+        request: dts_20200101_models.IgnoreJobDetailRequest,
+    ) -> dts_20200101_models.IgnoreJobDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.ignore_job_detail_with_options_async(request, runtime)
+
+    def init_dts_rds_instance_with_options(
+        self,
+        request: dts_20200101_models.InitDtsRdsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.InitDtsRdsInstanceResponse(),
+            self.do_rpcrequest('InitDtsRdsInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def init_dts_rds_instance_with_options_async(
+        self,
+        request: dts_20200101_models.InitDtsRdsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.InitDtsRdsInstanceResponse(),
+            await self.do_rpcrequest_async('InitDtsRdsInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def init_dts_rds_instance(
+        self,
+        request: dts_20200101_models.InitDtsRdsInstanceRequest,
+    ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.init_dts_rds_instance_with_options(request, runtime)
+
+    async def init_dts_rds_instance_async(
+        self,
+        request: dts_20200101_models.InitDtsRdsInstanceRequest,
+    ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.init_dts_rds_instance_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: dts_20200101_models.ListTagResourcesRequest,
@@ -1777,6 +2167,48 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def modify_consumer_channel_with_options(
+        self,
+        request: dts_20200101_models.ModifyConsumerChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyConsumerChannelResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyConsumerChannelResponse(),
+            self.do_rpcrequest('ModifyConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_consumer_channel_with_options_async(
+        self,
+        request: dts_20200101_models.ModifyConsumerChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyConsumerChannelResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyConsumerChannelResponse(),
+            await self.do_rpcrequest_async('ModifyConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_consumer_channel(
+        self,
+        request: dts_20200101_models.ModifyConsumerChannelRequest,
+    ) -> dts_20200101_models.ModifyConsumerChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_consumer_channel_with_options(request, runtime)
+
+    async def modify_consumer_channel_async(
+        self,
+        request: dts_20200101_models.ModifyConsumerChannelRequest,
+    ) -> dts_20200101_models.ModifyConsumerChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_consumer_channel_with_options_async(request, runtime)
 
     def modify_consumer_group_password_with_options(
         self,
@@ -1996,6 +2428,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dts_job_password_with_options_async(request, runtime)
 
+    def modify_subscription_with_options(
+        self,
+        request: dts_20200101_models.ModifySubscriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifySubscriptionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifySubscriptionResponse(),
+            self.do_rpcrequest('ModifySubscription', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_subscription_with_options_async(
+        self,
+        request: dts_20200101_models.ModifySubscriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifySubscriptionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifySubscriptionResponse(),
+            await self.do_rpcrequest_async('ModifySubscription', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_subscription(
+        self,
+        request: dts_20200101_models.ModifySubscriptionRequest,
+    ) -> dts_20200101_models.ModifySubscriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_subscription_with_options(request, runtime)
+
+    async def modify_subscription_async(
+        self,
+        request: dts_20200101_models.ModifySubscriptionRequest,
+    ) -> dts_20200101_models.ModifySubscriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_subscription_with_options_async(request, runtime)
+
     def modify_subscription_object_with_options(
         self,
         request: dts_20200101_models.ModifySubscriptionObjectRequest,
@@ -2079,6 +2553,48 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.ModifySynchronizationObjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_synchronization_object_with_options_async(request, runtime)
+
+    def renew_instance_with_options(
+        self,
+        request: dts_20200101_models.RenewInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.RenewInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.RenewInstanceResponse(),
+            self.do_rpcrequest('RenewInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def renew_instance_with_options_async(
+        self,
+        request: dts_20200101_models.RenewInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.RenewInstanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.RenewInstanceResponse(),
+            await self.do_rpcrequest_async('RenewInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def renew_instance(
+        self,
+        request: dts_20200101_models.RenewInstanceRequest,
+    ) -> dts_20200101_models.RenewInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.renew_instance_with_options(request, runtime)
+
+    async def renew_instance_async(
+        self,
+        request: dts_20200101_models.RenewInstanceRequest,
+    ) -> dts_20200101_models.RenewInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_instance_with_options_async(request, runtime)
 
     def reset_dts_job_with_options(
         self,
@@ -2500,6 +3016,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_migration_job_with_options_async(request, runtime)
 
+    def summary_job_detail_with_options(
+        self,
+        request: dts_20200101_models.SummaryJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SummaryJobDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.SummaryJobDetailResponse(),
+            self.do_rpcrequest('SummaryJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def summary_job_detail_with_options_async(
+        self,
+        request: dts_20200101_models.SummaryJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SummaryJobDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.SummaryJobDetailResponse(),
+            await self.do_rpcrequest_async('SummaryJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def summary_job_detail(
+        self,
+        request: dts_20200101_models.SummaryJobDetailRequest,
+    ) -> dts_20200101_models.SummaryJobDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.summary_job_detail_with_options(request, runtime)
+
+    async def summary_job_detail_async(
+        self,
+        request: dts_20200101_models.SummaryJobDetailRequest,
+    ) -> dts_20200101_models.SummaryJobDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.summary_job_detail_with_options_async(request, runtime)
+
     def suspend_dts_job_with_options(
         self,
         request: dts_20200101_models.SuspendDtsJobRequest,
@@ -2710,6 +3268,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
+    def transfer_instance_class_with_options(
+        self,
+        request: dts_20200101_models.TransferInstanceClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.TransferInstanceClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.TransferInstanceClassResponse(),
+            self.do_rpcrequest('TransferInstanceClass', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def transfer_instance_class_with_options_async(
+        self,
+        request: dts_20200101_models.TransferInstanceClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.TransferInstanceClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.TransferInstanceClassResponse(),
+            await self.do_rpcrequest_async('TransferInstanceClass', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def transfer_instance_class(
+        self,
+        request: dts_20200101_models.TransferInstanceClassRequest,
+    ) -> dts_20200101_models.TransferInstanceClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.transfer_instance_class_with_options(request, runtime)
+
+    async def transfer_instance_class_async(
+        self,
+        request: dts_20200101_models.TransferInstanceClassRequest,
+    ) -> dts_20200101_models.TransferInstanceClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.transfer_instance_class_with_options_async(request, runtime)
+
+    def transfer_pay_type_with_options(
+        self,
+        request: dts_20200101_models.TransferPayTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.TransferPayTypeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.TransferPayTypeResponse(),
+            self.do_rpcrequest('TransferPayType', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def transfer_pay_type_with_options_async(
+        self,
+        request: dts_20200101_models.TransferPayTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.TransferPayTypeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.TransferPayTypeResponse(),
+            await self.do_rpcrequest_async('TransferPayType', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def transfer_pay_type(
+        self,
+        request: dts_20200101_models.TransferPayTypeRequest,
+    ) -> dts_20200101_models.TransferPayTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.transfer_pay_type_with_options(request, runtime)
+
+    async def transfer_pay_type_async(
+        self,
+        request: dts_20200101_models.TransferPayTypeRequest,
+    ) -> dts_20200101_models.TransferPayTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.transfer_pay_type_with_options_async(request, runtime)
+
     def untag_resources_with_options(
         self,
         request: dts_20200101_models.UntagResourcesRequest,
@@ -2751,3 +3393,87 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def upgrade_two_way_with_options(
+        self,
+        request: dts_20200101_models.UpgradeTwoWayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.UpgradeTwoWayResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.UpgradeTwoWayResponse(),
+            self.do_rpcrequest('UpgradeTwoWay', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def upgrade_two_way_with_options_async(
+        self,
+        request: dts_20200101_models.UpgradeTwoWayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.UpgradeTwoWayResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.UpgradeTwoWayResponse(),
+            await self.do_rpcrequest_async('UpgradeTwoWay', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def upgrade_two_way(
+        self,
+        request: dts_20200101_models.UpgradeTwoWayRequest,
+    ) -> dts_20200101_models.UpgradeTwoWayResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_two_way_with_options(request, runtime)
+
+    async def upgrade_two_way_async(
+        self,
+        request: dts_20200101_models.UpgradeTwoWayRequest,
+    ) -> dts_20200101_models.UpgradeTwoWayResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_two_way_with_options_async(request, runtime)
+
+    def white_ip_list_with_options(
+        self,
+        request: dts_20200101_models.WhiteIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.WhiteIpListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.WhiteIpListResponse(),
+            self.do_rpcrequest('WhiteIpList', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def white_ip_list_with_options_async(
+        self,
+        request: dts_20200101_models.WhiteIpListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.WhiteIpListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.WhiteIpListResponse(),
+            await self.do_rpcrequest_async('WhiteIpList', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def white_ip_list(
+        self,
+        request: dts_20200101_models.WhiteIpListRequest,
+    ) -> dts_20200101_models.WhiteIpListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.white_ip_list_with_options(request, runtime)
+
+    async def white_ip_list_async(
+        self,
+        request: dts_20200101_models.WhiteIpListRequest,
+    ) -> dts_20200101_models.WhiteIpListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.white_ip_list_with_options_async(request, runtime)
