@@ -1,3 +1,6 @@
+2021-09-16 Version: 2.15.13
+- Add copyright invasion detection APIs.
+
 2021-03-31 Version: 2.0.2
 - Generated python 2017-03-21 for vod.
 
