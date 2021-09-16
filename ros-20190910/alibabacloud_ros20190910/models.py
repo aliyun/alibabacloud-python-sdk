@@ -4988,7 +4988,7 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
         operation_preferences: GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences = None,
         end_time: str = None,
         execution_role_name: str = None,
-        administrator_role_name: str = None,
+        administration_role_name: str = None,
         deployment_targets: GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets = None,
     ):
         self.status = status
@@ -5003,7 +5003,7 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
         self.operation_preferences = operation_preferences
         self.end_time = end_time
         self.execution_role_name = execution_role_name
-        self.administrator_role_name = administrator_role_name
+        self.administration_role_name = administration_role_name
         self.deployment_targets = deployment_targets
 
     def validate(self):
@@ -5044,8 +5044,8 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
             result['EndTime'] = self.end_time
         if self.execution_role_name is not None:
             result['ExecutionRoleName'] = self.execution_role_name
-        if self.administrator_role_name is not None:
-            result['AdministratorRoleName'] = self.administrator_role_name
+        if self.administration_role_name is not None:
+            result['AdministrationRoleName'] = self.administration_role_name
         if self.deployment_targets is not None:
             result['DeploymentTargets'] = self.deployment_targets.to_map()
         return result
@@ -5078,8 +5078,8 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExecutionRoleName') is not None:
             self.execution_role_name = m.get('ExecutionRoleName')
-        if m.get('AdministratorRoleName') is not None:
-            self.administrator_role_name = m.get('AdministratorRoleName')
+        if m.get('AdministrationRoleName') is not None:
+            self.administration_role_name = m.get('AdministrationRoleName')
         if m.get('DeploymentTargets') is not None:
             temp_model = GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets()
             self.deployment_targets = temp_model.from_map(m['DeploymentTargets'])

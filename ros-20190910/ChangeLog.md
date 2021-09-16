@@ -1,3 +1,6 @@
+2021-09-16 Version: 2.1.2
+- Fixed the property AdministratorRoleName in GetStackGroupOperation  to AdministrationRoleName.
+
 2021-09-03 Version: 2.1.1
 - Fix type error of StackGroup and StackInstance parameters.
 
