@@ -1,3 +1,7 @@
+2021-09-17 Version: 1.0.4
+- Remove some nouse parameter from api for multi certifications on listener.
+- Add query param for multi certs list interface.
+
 2021-08-09 Version: 1.0.3
 - Supported api for multi certifications on listener.
 

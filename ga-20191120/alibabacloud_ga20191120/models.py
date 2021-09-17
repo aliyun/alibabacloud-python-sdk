@@ -4277,12 +4277,10 @@ class CreateIpSetsResponseBodyIpSets(TeaModel):
         accelerate_region_id: str = None,
         bandwidth: int = None,
         ip_set_id: str = None,
-        ip_list: List[str] = None,
     ):
         self.accelerate_region_id = accelerate_region_id
         self.bandwidth = bandwidth
         self.ip_set_id = ip_set_id
-        self.ip_list = ip_list
 
     def validate(self):
         pass
@@ -4299,8 +4297,6 @@ class CreateIpSetsResponseBodyIpSets(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.ip_set_id is not None:
             result['IpSetId'] = self.ip_set_id
-        if self.ip_list is not None:
-            result['IpList'] = self.ip_list
         return result
 
     def from_map(self, m: dict = None):
@@ -4311,8 +4307,6 @@ class CreateIpSetsResponseBodyIpSets(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('IpSetId') is not None:
             self.ip_set_id = m.get('IpSetId')
-        if m.get('IpList') is not None:
-            self.ip_list = m.get('IpList')
         return self
 
 
@@ -7867,127 +7861,6 @@ class AttachLogStoreToEndpointGroupResponse(TeaModel):
         return self
 
 
-class UpdateCrossBorderPackageComplianceStatusRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        client_token: str = None,
-        dry_run: bool = None,
-        compliance_status: str = None,
-        instance_id: str = None,
-        description: str = None,
-    ):
-        self.region_id = region_id
-        self.client_token = client_token
-        self.dry_run = dry_run
-        self.compliance_status = compliance_status
-        self.instance_id = instance_id
-        self.description = description
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
-        if self.compliance_status is not None:
-            result['ComplianceStatus'] = self.compliance_status
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.description is not None:
-            result['Description'] = self.description
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
-        if m.get('ComplianceStatus') is not None:
-            self.compliance_status = m.get('ComplianceStatus')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        return self
-
-
-class UpdateCrossBorderPackageComplianceStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateCrossBorderPackageComplianceStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: UpdateCrossBorderPackageComplianceStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = UpdateCrossBorderPackageComplianceStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class UpdateBandwidthPackageRequest(TeaModel):
     def __init__(
         self,
@@ -9333,240 +9206,6 @@ class DissociateAclsFromListenerResponse(TeaModel):
         return self
 
 
-class ListCrossBorderPackageForComplianceRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        client_token: str = None,
-        dry_run: bool = None,
-        resource_uid: int = None,
-        is_binded: bool = None,
-        next_token: str = None,
-        max_result: int = None,
-    ):
-        self.region_id = region_id
-        self.client_token = client_token
-        self.dry_run = dry_run
-        self.resource_uid = resource_uid
-        self.is_binded = is_binded
-        self.next_token = next_token
-        self.max_result = max_result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
-        if self.resource_uid is not None:
-            result['ResourceUid'] = self.resource_uid
-        if self.is_binded is not None:
-            result['IsBinded'] = self.is_binded
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_result is not None:
-            result['MaxResult'] = self.max_result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
-        if m.get('ResourceUid') is not None:
-            self.resource_uid = m.get('ResourceUid')
-        if m.get('IsBinded') is not None:
-            self.is_binded = m.get('IsBinded')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResult') is not None:
-            self.max_result = m.get('MaxResult')
-        return self
-
-
-class ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages(TeaModel):
-    def __init__(
-        self,
-        is_binded: bool = None,
-        create_time: int = None,
-        cbn_geographic_region_id_a: str = None,
-        bandwidth_package_id: str = None,
-        bandwidth: int = None,
-        expired_time: int = None,
-        cbn_geographic_region_id_b: str = None,
-        ali_uid: int = None,
-        bind_time: int = None,
-    ):
-        self.is_binded = is_binded
-        self.create_time = create_time
-        self.cbn_geographic_region_id_a = cbn_geographic_region_id_a
-        self.bandwidth_package_id = bandwidth_package_id
-        self.bandwidth = bandwidth
-        self.expired_time = expired_time
-        self.cbn_geographic_region_id_b = cbn_geographic_region_id_b
-        self.ali_uid = ali_uid
-        self.bind_time = bind_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.is_binded is not None:
-            result['IsBinded'] = self.is_binded
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.cbn_geographic_region_id_a is not None:
-            result['CbnGeographicRegionIdA'] = self.cbn_geographic_region_id_a
-        if self.bandwidth_package_id is not None:
-            result['BandwidthPackageId'] = self.bandwidth_package_id
-        if self.bandwidth is not None:
-            result['Bandwidth'] = self.bandwidth
-        if self.expired_time is not None:
-            result['ExpiredTime'] = self.expired_time
-        if self.cbn_geographic_region_id_b is not None:
-            result['CbnGeographicRegionIdB'] = self.cbn_geographic_region_id_b
-        if self.ali_uid is not None:
-            result['AliUid'] = self.ali_uid
-        if self.bind_time is not None:
-            result['BindTime'] = self.bind_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('IsBinded') is not None:
-            self.is_binded = m.get('IsBinded')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('CbnGeographicRegionIdA') is not None:
-            self.cbn_geographic_region_id_a = m.get('CbnGeographicRegionIdA')
-        if m.get('BandwidthPackageId') is not None:
-            self.bandwidth_package_id = m.get('BandwidthPackageId')
-        if m.get('Bandwidth') is not None:
-            self.bandwidth = m.get('Bandwidth')
-        if m.get('ExpiredTime') is not None:
-            self.expired_time = m.get('ExpiredTime')
-        if m.get('CbnGeographicRegionIdB') is not None:
-            self.cbn_geographic_region_id_b = m.get('CbnGeographicRegionIdB')
-        if m.get('AliUid') is not None:
-            self.ali_uid = m.get('AliUid')
-        if m.get('BindTime') is not None:
-            self.bind_time = m.get('BindTime')
-        return self
-
-
-class ListCrossBorderPackageForComplianceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        total_count: int = None,
-        next_token: str = None,
-        max_results: int = None,
-        bandwidth_packages: List[ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages] = None,
-    ):
-        self.request_id = request_id
-        self.total_count = total_count
-        self.next_token = next_token
-        self.max_results = max_results
-        self.bandwidth_packages = bandwidth_packages
-
-    def validate(self):
-        if self.bandwidth_packages:
-            for k in self.bandwidth_packages:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        result['BandwidthPackages'] = []
-        if self.bandwidth_packages is not None:
-            for k in self.bandwidth_packages:
-                result['BandwidthPackages'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        self.bandwidth_packages = []
-        if m.get('BandwidthPackages') is not None:
-            for k in m.get('BandwidthPackages'):
-                temp_model = ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages()
-                self.bandwidth_packages.append(temp_model.from_map(k))
-        return self
-
-
-class ListCrossBorderPackageForComplianceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListCrossBorderPackageForComplianceResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListCrossBorderPackageForComplianceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListAccelerateAreasRequest(TeaModel):
     def __init__(
         self,
@@ -9756,15 +9395,15 @@ class ListListenerCertificatesRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
-        client_token: str = None,
         accelerator_id: str = None,
+        role: str = None,
         listener_id: str = None,
         next_token: str = None,
         max_results: int = None,
     ):
         self.region_id = region_id
-        self.client_token = client_token
         self.accelerator_id = accelerator_id
+        self.role = role
         self.listener_id = listener_id
         self.next_token = next_token
         self.max_results = max_results
@@ -9780,10 +9419,10 @@ class ListListenerCertificatesRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
         if self.accelerator_id is not None:
             result['AcceleratorId'] = self.accelerator_id
+        if self.role is not None:
+            result['Role'] = self.role
         if self.listener_id is not None:
             result['ListenerId'] = self.listener_id
         if self.next_token is not None:
@@ -9796,10 +9435,10 @@ class ListListenerCertificatesRequest(TeaModel):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
         if m.get('AcceleratorId') is not None:
             self.accelerator_id = m.get('AcceleratorId')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
         if m.get('ListenerId') is not None:
             self.listener_id = m.get('ListenerId')
         if m.get('NextToken') is not None:
@@ -9813,12 +9452,10 @@ class ListListenerCertificatesResponseBodyCertificates(TeaModel):
     def __init__(
         self,
         certificate_id: str = None,
-        type: str = None,
         is_default: bool = None,
         domain: str = None,
     ):
         self.certificate_id = certificate_id
-        self.type = type
         self.is_default = is_default
         self.domain = domain
 
@@ -9833,8 +9470,6 @@ class ListListenerCertificatesResponseBodyCertificates(TeaModel):
         result = dict()
         if self.certificate_id is not None:
             result['CertificateId'] = self.certificate_id
-        if self.type is not None:
-            result['Type'] = self.type
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
         if self.domain is not None:
@@ -9845,8 +9480,6 @@ class ListListenerCertificatesResponseBodyCertificates(TeaModel):
         m = m or dict()
         if m.get('CertificateId') is not None:
             self.certificate_id = m.get('CertificateId')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
         if m.get('Domain') is not None:
