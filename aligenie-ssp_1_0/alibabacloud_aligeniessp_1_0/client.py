@@ -86,9 +86,20 @@ class Client(OpenApiClient):
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetDeviceIdByIdentity',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/getDeviceIdByIdentity',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             ali_geniessp__1__0_models.GetDeviceIdByIdentityResponse(),
-            self.do_roarequest('GetDeviceIdByIdentity', 'ssp_1.0', 'HTTPS', 'GET', 'AK', f'/v1.0/ssp/getDeviceIdByIdentity', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_device_id_by_identity_with_options_async(
@@ -120,7 +131,18 @@ class Client(OpenApiClient):
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetDeviceIdByIdentity',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/getDeviceIdByIdentity',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             ali_geniessp__1__0_models.GetDeviceIdByIdentityResponse(),
-            await self.do_roarequest_async('GetDeviceIdByIdentity', 'ssp_1.0', 'HTTPS', 'GET', 'AK', f'/v1.0/ssp/getDeviceIdByIdentity', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
