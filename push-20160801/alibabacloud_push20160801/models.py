@@ -1402,13 +1402,10 @@ class MassPushRequestPushTask(TeaModel):
         self,
         job_key: str = None,
         i_ossilent_notification: bool = None,
-        i_osnotification_collapse_id: str = None,
-        android_render_style: str = None,
         store_offline: bool = None,
         i_ossubtitle: str = None,
-        i_osnotification_category: str = None,
-        android_notification_channel: str = None,
         android_notification_huawei_channel: str = None,
+        android_notification_channel: str = None,
         i_osapns_env: str = None,
         i_osbadge_auto_increment: bool = None,
         android_xiao_mi_notify_title: str = None,
@@ -1416,47 +1413,55 @@ class MassPushRequestPushTask(TeaModel):
         android_xiao_mi_activity: str = None,
         android_popup_title: str = None,
         i_osremind_body: str = None,
-        android_activity: str = None,
         android_notify_type: str = None,
-        android_big_body: str = None,
-        i_osmutable_content: bool = None,
-        target: str = None,
         android_open_url: str = None,
         android_big_title: str = None,
-        android_notification_notify_id: int = None,
         expire_time: str = None,
-        android_notification_vivo_channel: str = None,
-        device_type: str = None,
         android_open_type: str = None,
-        android_popup_activity: str = None,
-        android_remind: bool = None,
-        android_popup_body: str = None,
         android_ext_parameters: str = None,
-        i_osext_parameters: str = None,
         android_xiao_mi_notify_body: str = None,
-        body: str = None,
-        android_notification_bar_type: int = None,
-        android_notification_bar_priority: int = None,
         android_xiaomi_big_picture_url: str = None,
         target_value: str = None,
         i_osmusic: str = None,
         i_osremind: bool = None,
-        push_type: str = None,
-        send_speed: int = None,
         i_osbadge: int = None,
         title: str = None,
-        push_time: str = None,
         android_music: str = None,
+        i_osnotification_collapse_id: str = None,
+        android_render_style: str = None,
+        i_osnotification_category: str = None,
+        i_osnotification_thread_id: str = None,
+        android_activity: str = None,
+        android_big_body: str = None,
+        i_osmutable_content: bool = None,
+        target: str = None,
+        android_notification_notify_id: int = None,
+        android_notification_vivo_channel: str = None,
+        android_popup_activity: str = None,
+        device_type: str = None,
+        android_remind: bool = None,
+        android_popup_body: str = None,
+        i_osext_parameters: str = None,
+        body: str = None,
+        android_notification_bar_priority: int = None,
+        android_notification_bar_type: int = None,
+        push_type: str = None,
+        send_speed: int = None,
+        push_time: str = None,
+        android_big_picture_url: str = None,
+        android_inbox_body: str = None,
+        android_image_url: str = None,
+        android_xiaomi_image_url: str = None,
+        android_message_huawei_urgency: str = None,
+        android_message_huawei_category: str = None,
+        send_channels: str = None,
     ):
         self.job_key = job_key
         self.i_ossilent_notification = i_ossilent_notification
-        self.i_osnotification_collapse_id = i_osnotification_collapse_id
-        self.android_render_style = android_render_style
         self.store_offline = store_offline
         self.i_ossubtitle = i_ossubtitle
-        self.i_osnotification_category = i_osnotification_category
-        self.android_notification_channel = android_notification_channel
         self.android_notification_huawei_channel = android_notification_huawei_channel
+        self.android_notification_channel = android_notification_channel
         self.i_osapns_env = i_osapns_env
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
         self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
@@ -1464,37 +1469,48 @@ class MassPushRequestPushTask(TeaModel):
         self.android_xiao_mi_activity = android_xiao_mi_activity
         self.android_popup_title = android_popup_title
         self.i_osremind_body = i_osremind_body
-        self.android_activity = android_activity
         self.android_notify_type = android_notify_type
-        self.android_big_body = android_big_body
-        self.i_osmutable_content = i_osmutable_content
-        self.target = target
         self.android_open_url = android_open_url
         self.android_big_title = android_big_title
-        self.android_notification_notify_id = android_notification_notify_id
         self.expire_time = expire_time
-        self.android_notification_vivo_channel = android_notification_vivo_channel
-        self.device_type = device_type
         self.android_open_type = android_open_type
-        self.android_popup_activity = android_popup_activity
-        self.android_remind = android_remind
-        self.android_popup_body = android_popup_body
         self.android_ext_parameters = android_ext_parameters
-        self.i_osext_parameters = i_osext_parameters
         self.android_xiao_mi_notify_body = android_xiao_mi_notify_body
-        self.body = body
-        self.android_notification_bar_type = android_notification_bar_type
-        self.android_notification_bar_priority = android_notification_bar_priority
         self.android_xiaomi_big_picture_url = android_xiaomi_big_picture_url
         self.target_value = target_value
         self.i_osmusic = i_osmusic
         self.i_osremind = i_osremind
-        self.push_type = push_type
-        self.send_speed = send_speed
         self.i_osbadge = i_osbadge
         self.title = title
-        self.push_time = push_time
         self.android_music = android_music
+        self.i_osnotification_collapse_id = i_osnotification_collapse_id
+        self.android_render_style = android_render_style
+        self.i_osnotification_category = i_osnotification_category
+        self.i_osnotification_thread_id = i_osnotification_thread_id
+        self.android_activity = android_activity
+        self.android_big_body = android_big_body
+        self.i_osmutable_content = i_osmutable_content
+        self.target = target
+        self.android_notification_notify_id = android_notification_notify_id
+        self.android_notification_vivo_channel = android_notification_vivo_channel
+        self.android_popup_activity = android_popup_activity
+        self.device_type = device_type
+        self.android_remind = android_remind
+        self.android_popup_body = android_popup_body
+        self.i_osext_parameters = i_osext_parameters
+        self.body = body
+        self.android_notification_bar_priority = android_notification_bar_priority
+        self.android_notification_bar_type = android_notification_bar_type
+        self.push_type = push_type
+        self.send_speed = send_speed
+        self.push_time = push_time
+        self.android_big_picture_url = android_big_picture_url
+        self.android_inbox_body = android_inbox_body
+        self.android_image_url = android_image_url
+        self.android_xiaomi_image_url = android_xiaomi_image_url
+        self.android_message_huawei_urgency = android_message_huawei_urgency
+        self.android_message_huawei_category = android_message_huawei_category
+        self.send_channels = send_channels
 
     def validate(self):
         pass
@@ -1509,20 +1525,14 @@ class MassPushRequestPushTask(TeaModel):
             result['JobKey'] = self.job_key
         if self.i_ossilent_notification is not None:
             result['iOSSilentNotification'] = self.i_ossilent_notification
-        if self.i_osnotification_collapse_id is not None:
-            result['iOSNotificationCollapseId'] = self.i_osnotification_collapse_id
-        if self.android_render_style is not None:
-            result['AndroidRenderStyle'] = self.android_render_style
         if self.store_offline is not None:
             result['StoreOffline'] = self.store_offline
         if self.i_ossubtitle is not None:
             result['iOSSubtitle'] = self.i_ossubtitle
-        if self.i_osnotification_category is not None:
-            result['iOSNotificationCategory'] = self.i_osnotification_category
-        if self.android_notification_channel is not None:
-            result['AndroidNotificationChannel'] = self.android_notification_channel
         if self.android_notification_huawei_channel is not None:
             result['AndroidNotificationHuaweiChannel'] = self.android_notification_huawei_channel
+        if self.android_notification_channel is not None:
+            result['AndroidNotificationChannel'] = self.android_notification_channel
         if self.i_osapns_env is not None:
             result['iOSApnsEnv'] = self.i_osapns_env
         if self.i_osbadge_auto_increment is not None:
@@ -1537,48 +1547,20 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidPopupTitle'] = self.android_popup_title
         if self.i_osremind_body is not None:
             result['iOSRemindBody'] = self.i_osremind_body
-        if self.android_activity is not None:
-            result['AndroidActivity'] = self.android_activity
         if self.android_notify_type is not None:
             result['AndroidNotifyType'] = self.android_notify_type
-        if self.android_big_body is not None:
-            result['AndroidBigBody'] = self.android_big_body
-        if self.i_osmutable_content is not None:
-            result['iOSMutableContent'] = self.i_osmutable_content
-        if self.target is not None:
-            result['Target'] = self.target
         if self.android_open_url is not None:
             result['AndroidOpenUrl'] = self.android_open_url
         if self.android_big_title is not None:
             result['AndroidBigTitle'] = self.android_big_title
-        if self.android_notification_notify_id is not None:
-            result['AndroidNotificationNotifyId'] = self.android_notification_notify_id
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
-        if self.android_notification_vivo_channel is not None:
-            result['AndroidNotificationVivoChannel'] = self.android_notification_vivo_channel
-        if self.device_type is not None:
-            result['DeviceType'] = self.device_type
         if self.android_open_type is not None:
             result['AndroidOpenType'] = self.android_open_type
-        if self.android_popup_activity is not None:
-            result['AndroidPopupActivity'] = self.android_popup_activity
-        if self.android_remind is not None:
-            result['AndroidRemind'] = self.android_remind
-        if self.android_popup_body is not None:
-            result['AndroidPopupBody'] = self.android_popup_body
         if self.android_ext_parameters is not None:
             result['AndroidExtParameters'] = self.android_ext_parameters
-        if self.i_osext_parameters is not None:
-            result['iOSExtParameters'] = self.i_osext_parameters
         if self.android_xiao_mi_notify_body is not None:
             result['AndroidXiaoMiNotifyBody'] = self.android_xiao_mi_notify_body
-        if self.body is not None:
-            result['Body'] = self.body
-        if self.android_notification_bar_type is not None:
-            result['AndroidNotificationBarType'] = self.android_notification_bar_type
-        if self.android_notification_bar_priority is not None:
-            result['AndroidNotificationBarPriority'] = self.android_notification_bar_priority
         if self.android_xiaomi_big_picture_url is not None:
             result['AndroidXiaomiBigPictureUrl'] = self.android_xiaomi_big_picture_url
         if self.target_value is not None:
@@ -1587,18 +1569,68 @@ class MassPushRequestPushTask(TeaModel):
             result['iOSMusic'] = self.i_osmusic
         if self.i_osremind is not None:
             result['iOSRemind'] = self.i_osremind
-        if self.push_type is not None:
-            result['PushType'] = self.push_type
-        if self.send_speed is not None:
-            result['SendSpeed'] = self.send_speed
         if self.i_osbadge is not None:
             result['iOSBadge'] = self.i_osbadge
         if self.title is not None:
             result['Title'] = self.title
-        if self.push_time is not None:
-            result['PushTime'] = self.push_time
         if self.android_music is not None:
             result['AndroidMusic'] = self.android_music
+        if self.i_osnotification_collapse_id is not None:
+            result['iOSNotificationCollapseId'] = self.i_osnotification_collapse_id
+        if self.android_render_style is not None:
+            result['AndroidRenderStyle'] = self.android_render_style
+        if self.i_osnotification_category is not None:
+            result['iOSNotificationCategory'] = self.i_osnotification_category
+        if self.i_osnotification_thread_id is not None:
+            result['iOSNotificationThreadId'] = self.i_osnotification_thread_id
+        if self.android_activity is not None:
+            result['AndroidActivity'] = self.android_activity
+        if self.android_big_body is not None:
+            result['AndroidBigBody'] = self.android_big_body
+        if self.i_osmutable_content is not None:
+            result['iOSMutableContent'] = self.i_osmutable_content
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.android_notification_notify_id is not None:
+            result['AndroidNotificationNotifyId'] = self.android_notification_notify_id
+        if self.android_notification_vivo_channel is not None:
+            result['AndroidNotificationVivoChannel'] = self.android_notification_vivo_channel
+        if self.android_popup_activity is not None:
+            result['AndroidPopupActivity'] = self.android_popup_activity
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.android_remind is not None:
+            result['AndroidRemind'] = self.android_remind
+        if self.android_popup_body is not None:
+            result['AndroidPopupBody'] = self.android_popup_body
+        if self.i_osext_parameters is not None:
+            result['iOSExtParameters'] = self.i_osext_parameters
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.android_notification_bar_priority is not None:
+            result['AndroidNotificationBarPriority'] = self.android_notification_bar_priority
+        if self.android_notification_bar_type is not None:
+            result['AndroidNotificationBarType'] = self.android_notification_bar_type
+        if self.push_type is not None:
+            result['PushType'] = self.push_type
+        if self.send_speed is not None:
+            result['SendSpeed'] = self.send_speed
+        if self.push_time is not None:
+            result['PushTime'] = self.push_time
+        if self.android_big_picture_url is not None:
+            result['AndroidBigPictureUrl'] = self.android_big_picture_url
+        if self.android_inbox_body is not None:
+            result['AndroidInboxBody'] = self.android_inbox_body
+        if self.android_image_url is not None:
+            result['AndroidImageUrl'] = self.android_image_url
+        if self.android_xiaomi_image_url is not None:
+            result['AndroidXiaomiImageUrl'] = self.android_xiaomi_image_url
+        if self.android_message_huawei_urgency is not None:
+            result['AndroidMessageHuaweiUrgency'] = self.android_message_huawei_urgency
+        if self.android_message_huawei_category is not None:
+            result['AndroidMessageHuaweiCategory'] = self.android_message_huawei_category
+        if self.send_channels is not None:
+            result['SendChannels'] = self.send_channels
         return result
 
     def from_map(self, m: dict = None):
@@ -1607,20 +1639,14 @@ class MassPushRequestPushTask(TeaModel):
             self.job_key = m.get('JobKey')
         if m.get('iOSSilentNotification') is not None:
             self.i_ossilent_notification = m.get('iOSSilentNotification')
-        if m.get('iOSNotificationCollapseId') is not None:
-            self.i_osnotification_collapse_id = m.get('iOSNotificationCollapseId')
-        if m.get('AndroidRenderStyle') is not None:
-            self.android_render_style = m.get('AndroidRenderStyle')
         if m.get('StoreOffline') is not None:
             self.store_offline = m.get('StoreOffline')
         if m.get('iOSSubtitle') is not None:
             self.i_ossubtitle = m.get('iOSSubtitle')
-        if m.get('iOSNotificationCategory') is not None:
-            self.i_osnotification_category = m.get('iOSNotificationCategory')
-        if m.get('AndroidNotificationChannel') is not None:
-            self.android_notification_channel = m.get('AndroidNotificationChannel')
         if m.get('AndroidNotificationHuaweiChannel') is not None:
             self.android_notification_huawei_channel = m.get('AndroidNotificationHuaweiChannel')
+        if m.get('AndroidNotificationChannel') is not None:
+            self.android_notification_channel = m.get('AndroidNotificationChannel')
         if m.get('iOSApnsEnv') is not None:
             self.i_osapns_env = m.get('iOSApnsEnv')
         if m.get('iOSBadgeAutoIncrement') is not None:
@@ -1635,48 +1661,20 @@ class MassPushRequestPushTask(TeaModel):
             self.android_popup_title = m.get('AndroidPopupTitle')
         if m.get('iOSRemindBody') is not None:
             self.i_osremind_body = m.get('iOSRemindBody')
-        if m.get('AndroidActivity') is not None:
-            self.android_activity = m.get('AndroidActivity')
         if m.get('AndroidNotifyType') is not None:
             self.android_notify_type = m.get('AndroidNotifyType')
-        if m.get('AndroidBigBody') is not None:
-            self.android_big_body = m.get('AndroidBigBody')
-        if m.get('iOSMutableContent') is not None:
-            self.i_osmutable_content = m.get('iOSMutableContent')
-        if m.get('Target') is not None:
-            self.target = m.get('Target')
         if m.get('AndroidOpenUrl') is not None:
             self.android_open_url = m.get('AndroidOpenUrl')
         if m.get('AndroidBigTitle') is not None:
             self.android_big_title = m.get('AndroidBigTitle')
-        if m.get('AndroidNotificationNotifyId') is not None:
-            self.android_notification_notify_id = m.get('AndroidNotificationNotifyId')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
-        if m.get('AndroidNotificationVivoChannel') is not None:
-            self.android_notification_vivo_channel = m.get('AndroidNotificationVivoChannel')
-        if m.get('DeviceType') is not None:
-            self.device_type = m.get('DeviceType')
         if m.get('AndroidOpenType') is not None:
             self.android_open_type = m.get('AndroidOpenType')
-        if m.get('AndroidPopupActivity') is not None:
-            self.android_popup_activity = m.get('AndroidPopupActivity')
-        if m.get('AndroidRemind') is not None:
-            self.android_remind = m.get('AndroidRemind')
-        if m.get('AndroidPopupBody') is not None:
-            self.android_popup_body = m.get('AndroidPopupBody')
         if m.get('AndroidExtParameters') is not None:
             self.android_ext_parameters = m.get('AndroidExtParameters')
-        if m.get('iOSExtParameters') is not None:
-            self.i_osext_parameters = m.get('iOSExtParameters')
         if m.get('AndroidXiaoMiNotifyBody') is not None:
             self.android_xiao_mi_notify_body = m.get('AndroidXiaoMiNotifyBody')
-        if m.get('Body') is not None:
-            self.body = m.get('Body')
-        if m.get('AndroidNotificationBarType') is not None:
-            self.android_notification_bar_type = m.get('AndroidNotificationBarType')
-        if m.get('AndroidNotificationBarPriority') is not None:
-            self.android_notification_bar_priority = m.get('AndroidNotificationBarPriority')
         if m.get('AndroidXiaomiBigPictureUrl') is not None:
             self.android_xiaomi_big_picture_url = m.get('AndroidXiaomiBigPictureUrl')
         if m.get('TargetValue') is not None:
@@ -1685,18 +1683,68 @@ class MassPushRequestPushTask(TeaModel):
             self.i_osmusic = m.get('iOSMusic')
         if m.get('iOSRemind') is not None:
             self.i_osremind = m.get('iOSRemind')
-        if m.get('PushType') is not None:
-            self.push_type = m.get('PushType')
-        if m.get('SendSpeed') is not None:
-            self.send_speed = m.get('SendSpeed')
         if m.get('iOSBadge') is not None:
             self.i_osbadge = m.get('iOSBadge')
         if m.get('Title') is not None:
             self.title = m.get('Title')
-        if m.get('PushTime') is not None:
-            self.push_time = m.get('PushTime')
         if m.get('AndroidMusic') is not None:
             self.android_music = m.get('AndroidMusic')
+        if m.get('iOSNotificationCollapseId') is not None:
+            self.i_osnotification_collapse_id = m.get('iOSNotificationCollapseId')
+        if m.get('AndroidRenderStyle') is not None:
+            self.android_render_style = m.get('AndroidRenderStyle')
+        if m.get('iOSNotificationCategory') is not None:
+            self.i_osnotification_category = m.get('iOSNotificationCategory')
+        if m.get('iOSNotificationThreadId') is not None:
+            self.i_osnotification_thread_id = m.get('iOSNotificationThreadId')
+        if m.get('AndroidActivity') is not None:
+            self.android_activity = m.get('AndroidActivity')
+        if m.get('AndroidBigBody') is not None:
+            self.android_big_body = m.get('AndroidBigBody')
+        if m.get('iOSMutableContent') is not None:
+            self.i_osmutable_content = m.get('iOSMutableContent')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('AndroidNotificationNotifyId') is not None:
+            self.android_notification_notify_id = m.get('AndroidNotificationNotifyId')
+        if m.get('AndroidNotificationVivoChannel') is not None:
+            self.android_notification_vivo_channel = m.get('AndroidNotificationVivoChannel')
+        if m.get('AndroidPopupActivity') is not None:
+            self.android_popup_activity = m.get('AndroidPopupActivity')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('AndroidRemind') is not None:
+            self.android_remind = m.get('AndroidRemind')
+        if m.get('AndroidPopupBody') is not None:
+            self.android_popup_body = m.get('AndroidPopupBody')
+        if m.get('iOSExtParameters') is not None:
+            self.i_osext_parameters = m.get('iOSExtParameters')
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('AndroidNotificationBarPriority') is not None:
+            self.android_notification_bar_priority = m.get('AndroidNotificationBarPriority')
+        if m.get('AndroidNotificationBarType') is not None:
+            self.android_notification_bar_type = m.get('AndroidNotificationBarType')
+        if m.get('PushType') is not None:
+            self.push_type = m.get('PushType')
+        if m.get('SendSpeed') is not None:
+            self.send_speed = m.get('SendSpeed')
+        if m.get('PushTime') is not None:
+            self.push_time = m.get('PushTime')
+        if m.get('AndroidBigPictureUrl') is not None:
+            self.android_big_picture_url = m.get('AndroidBigPictureUrl')
+        if m.get('AndroidInboxBody') is not None:
+            self.android_inbox_body = m.get('AndroidInboxBody')
+        if m.get('AndroidImageUrl') is not None:
+            self.android_image_url = m.get('AndroidImageUrl')
+        if m.get('AndroidXiaomiImageUrl') is not None:
+            self.android_xiaomi_image_url = m.get('AndroidXiaomiImageUrl')
+        if m.get('AndroidMessageHuaweiUrgency') is not None:
+            self.android_message_huawei_urgency = m.get('AndroidMessageHuaweiUrgency')
+        if m.get('AndroidMessageHuaweiCategory') is not None:
+            self.android_message_huawei_category = m.get('AndroidMessageHuaweiCategory')
+        if m.get('SendChannels') is not None:
+            self.send_channels = m.get('SendChannels')
         return self
 
 
@@ -1896,6 +1944,14 @@ class PushRequest(TeaModel):
         android_big_title: str = None,
         android_big_body: str = None,
         android_xiaomi_big_picture_url: str = None,
+        i_osnotification_thread_id: str = None,
+        android_big_picture_url: str = None,
+        android_inbox_body: str = None,
+        android_image_url: str = None,
+        android_xiaomi_image_url: str = None,
+        android_message_huawei_urgency: str = None,
+        android_message_huawei_category: str = None,
+        send_channels: str = None,
     ):
         self.app_key = app_key
         self.push_type = push_type
@@ -1950,6 +2006,14 @@ class PushRequest(TeaModel):
         self.android_big_title = android_big_title
         self.android_big_body = android_big_body
         self.android_xiaomi_big_picture_url = android_xiaomi_big_picture_url
+        self.i_osnotification_thread_id = i_osnotification_thread_id
+        self.android_big_picture_url = android_big_picture_url
+        self.android_inbox_body = android_inbox_body
+        self.android_image_url = android_image_url
+        self.android_xiaomi_image_url = android_xiaomi_image_url
+        self.android_message_huawei_urgency = android_message_huawei_urgency
+        self.android_message_huawei_category = android_message_huawei_category
+        self.send_channels = send_channels
 
     def validate(self):
         pass
@@ -2066,6 +2130,22 @@ class PushRequest(TeaModel):
             result['AndroidBigBody'] = self.android_big_body
         if self.android_xiaomi_big_picture_url is not None:
             result['AndroidXiaomiBigPictureUrl'] = self.android_xiaomi_big_picture_url
+        if self.i_osnotification_thread_id is not None:
+            result['iOSNotificationThreadId'] = self.i_osnotification_thread_id
+        if self.android_big_picture_url is not None:
+            result['AndroidBigPictureUrl'] = self.android_big_picture_url
+        if self.android_inbox_body is not None:
+            result['AndroidInboxBody'] = self.android_inbox_body
+        if self.android_image_url is not None:
+            result['AndroidImageUrl'] = self.android_image_url
+        if self.android_xiaomi_image_url is not None:
+            result['AndroidXiaomiImageUrl'] = self.android_xiaomi_image_url
+        if self.android_message_huawei_urgency is not None:
+            result['AndroidMessageHuaweiUrgency'] = self.android_message_huawei_urgency
+        if self.android_message_huawei_category is not None:
+            result['AndroidMessageHuaweiCategory'] = self.android_message_huawei_category
+        if self.send_channels is not None:
+            result['SendChannels'] = self.send_channels
         return result
 
     def from_map(self, m: dict = None):
@@ -2176,6 +2256,22 @@ class PushRequest(TeaModel):
             self.android_big_body = m.get('AndroidBigBody')
         if m.get('AndroidXiaomiBigPictureUrl') is not None:
             self.android_xiaomi_big_picture_url = m.get('AndroidXiaomiBigPictureUrl')
+        if m.get('iOSNotificationThreadId') is not None:
+            self.i_osnotification_thread_id = m.get('iOSNotificationThreadId')
+        if m.get('AndroidBigPictureUrl') is not None:
+            self.android_big_picture_url = m.get('AndroidBigPictureUrl')
+        if m.get('AndroidInboxBody') is not None:
+            self.android_inbox_body = m.get('AndroidInboxBody')
+        if m.get('AndroidImageUrl') is not None:
+            self.android_image_url = m.get('AndroidImageUrl')
+        if m.get('AndroidXiaomiImageUrl') is not None:
+            self.android_xiaomi_image_url = m.get('AndroidXiaomiImageUrl')
+        if m.get('AndroidMessageHuaweiUrgency') is not None:
+            self.android_message_huawei_urgency = m.get('AndroidMessageHuaweiUrgency')
+        if m.get('AndroidMessageHuaweiCategory') is not None:
+            self.android_message_huawei_category = m.get('AndroidMessageHuaweiCategory')
+        if m.get('SendChannels') is not None:
+            self.send_channels = m.get('SendChannels')
         return self
 
 
