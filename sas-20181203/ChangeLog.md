@@ -1,3 +1,6 @@
+2021-09-17 Version: 1.0.8
+- Support DescribeVulExportInfo API.
+
 2021-09-15 Version: 1.0.7
 - Support DescribeWarningMachines API.
 

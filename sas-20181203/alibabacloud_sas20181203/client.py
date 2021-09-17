@@ -8764,6 +8764,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.uninstall_uni_backup_agent_with_options_async(request, runtime)
 
+    def upgrade_backup_policy_version_with_options(
+        self,
+        request: sas_20181203_models.UpgradeBackupPolicyVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpgradeBackupPolicyVersionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpgradeBackupPolicyVersionResponse(),
+            self.do_rpcrequest('UpgradeBackupPolicyVersion', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def upgrade_backup_policy_version_with_options_async(
+        self,
+        request: sas_20181203_models.UpgradeBackupPolicyVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpgradeBackupPolicyVersionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpgradeBackupPolicyVersionResponse(),
+            await self.do_rpcrequest_async('UpgradeBackupPolicyVersion', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def upgrade_backup_policy_version(
+        self,
+        request: sas_20181203_models.UpgradeBackupPolicyVersionRequest,
+    ) -> sas_20181203_models.UpgradeBackupPolicyVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_backup_policy_version_with_options(request, runtime)
+
+    async def upgrade_backup_policy_version_async(
+        self,
+        request: sas_20181203_models.UpgradeBackupPolicyVersionRequest,
+    ) -> sas_20181203_models.UpgradeBackupPolicyVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_backup_policy_version_with_options_async(request, runtime)
+
     def validate_hc_warnings_with_options(
         self,
         request: sas_20181203_models.ValidateHcWarningsRequest,

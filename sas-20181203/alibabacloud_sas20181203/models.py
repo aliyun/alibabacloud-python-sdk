@@ -6792,6 +6792,7 @@ class DescribeBackupPoliciesResponseBodyPolicies(TeaModel):
         status: str = None,
         policy_version: str = None,
         policy: str = None,
+        upgrade_status: str = None,
         service_error_count: int = None,
         policy_region_id: str = None,
         client_status: str = None,
@@ -6808,6 +6809,7 @@ class DescribeBackupPoliciesResponseBodyPolicies(TeaModel):
         self.status = status
         self.policy_version = policy_version
         self.policy = policy
+        self.upgrade_status = upgrade_status
         self.service_error_count = service_error_count
         self.policy_region_id = policy_region_id
         self.client_status = client_status
@@ -6837,6 +6839,8 @@ class DescribeBackupPoliciesResponseBodyPolicies(TeaModel):
             result['PolicyVersion'] = self.policy_version
         if self.policy is not None:
             result['Policy'] = self.policy
+        if self.upgrade_status is not None:
+            result['UpgradeStatus'] = self.upgrade_status
         if self.service_error_count is not None:
             result['ServiceErrorCount'] = self.service_error_count
         if self.policy_region_id is not None:
@@ -6871,6 +6875,8 @@ class DescribeBackupPoliciesResponseBodyPolicies(TeaModel):
             self.policy_version = m.get('PolicyVersion')
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
+        if m.get('UpgradeStatus') is not None:
+            self.upgrade_status = m.get('UpgradeStatus')
         if m.get('ServiceErrorCount') is not None:
             self.service_error_count = m.get('ServiceErrorCount')
         if m.get('PolicyRegionId') is not None:
@@ -17464,6 +17470,7 @@ class DescribePropertyPortDetailResponseBodyPropertys(TeaModel):
         self,
         create: str = None,
         internet_ip: str = None,
+        pid: str = None,
         bind_ip: str = None,
         ip: str = None,
         proc_name: str = None,
@@ -17477,6 +17484,7 @@ class DescribePropertyPortDetailResponseBodyPropertys(TeaModel):
     ):
         self.create = create
         self.internet_ip = internet_ip
+        self.pid = pid
         self.bind_ip = bind_ip
         self.ip = ip
         self.proc_name = proc_name
@@ -17501,6 +17509,8 @@ class DescribePropertyPortDetailResponseBodyPropertys(TeaModel):
             result['Create'] = self.create
         if self.internet_ip is not None:
             result['InternetIp'] = self.internet_ip
+        if self.pid is not None:
+            result['Pid'] = self.pid
         if self.bind_ip is not None:
             result['BindIp'] = self.bind_ip
         if self.ip is not None:
@@ -17529,6 +17539,8 @@ class DescribePropertyPortDetailResponseBodyPropertys(TeaModel):
             self.create = m.get('Create')
         if m.get('InternetIp') is not None:
             self.internet_ip = m.get('InternetIp')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
         if m.get('BindIp') is not None:
             self.bind_ip = m.get('BindIp')
         if m.get('Ip') is not None:
@@ -24496,10 +24508,12 @@ class DescribeStrategyRequest(TeaModel):
         source_ip: str = None,
         lang: str = None,
         strategy_ids: str = None,
+        custom_type: str = None,
     ):
         self.source_ip = source_ip
         self.lang = lang
         self.strategy_ids = strategy_ids
+        self.custom_type = custom_type
 
     def validate(self):
         pass
@@ -24516,6 +24530,8 @@ class DescribeStrategyRequest(TeaModel):
             result['Lang'] = self.lang
         if self.strategy_ids is not None:
             result['StrategyIds'] = self.strategy_ids
+        if self.custom_type is not None:
+            result['CustomType'] = self.custom_type
         return result
 
     def from_map(self, m: dict = None):
@@ -24526,6 +24542,8 @@ class DescribeStrategyRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('StrategyIds') is not None:
             self.strategy_ids = m.get('StrategyIds')
+        if m.get('CustomType') is not None:
+            self.custom_type = m.get('CustomType')
         return self
 
 
@@ -24571,27 +24589,29 @@ class DescribeStrategyResponseBodyStrategiesConfigTargets(TeaModel):
 class DescribeStrategyResponseBodyStrategies(TeaModel):
     def __init__(
         self,
-        exec_status: int = None,
         type: int = None,
+        exec_status: int = None,
+        pass_rate: int = None,
         cycle_start_time: int = None,
+        custom_type: str = None,
         ecs_count: int = None,
         process_rate: int = None,
         cycle_days: int = None,
         risk_count: int = None,
         name: str = None,
-        pass_rate: int = None,
         id: int = None,
         config_targets: List[DescribeStrategyResponseBodyStrategiesConfigTargets] = None,
     ):
-        self.exec_status = exec_status
         self.type = type
+        self.exec_status = exec_status
+        self.pass_rate = pass_rate
         self.cycle_start_time = cycle_start_time
+        self.custom_type = custom_type
         self.ecs_count = ecs_count
         self.process_rate = process_rate
         self.cycle_days = cycle_days
         self.risk_count = risk_count
         self.name = name
-        self.pass_rate = pass_rate
         self.id = id
         self.config_targets = config_targets
 
@@ -24607,12 +24627,16 @@ class DescribeStrategyResponseBodyStrategies(TeaModel):
             return _map
 
         result = dict()
-        if self.exec_status is not None:
-            result['ExecStatus'] = self.exec_status
         if self.type is not None:
             result['Type'] = self.type
+        if self.exec_status is not None:
+            result['ExecStatus'] = self.exec_status
+        if self.pass_rate is not None:
+            result['PassRate'] = self.pass_rate
         if self.cycle_start_time is not None:
             result['CycleStartTime'] = self.cycle_start_time
+        if self.custom_type is not None:
+            result['CustomType'] = self.custom_type
         if self.ecs_count is not None:
             result['EcsCount'] = self.ecs_count
         if self.process_rate is not None:
@@ -24623,8 +24647,6 @@ class DescribeStrategyResponseBodyStrategies(TeaModel):
             result['RiskCount'] = self.risk_count
         if self.name is not None:
             result['Name'] = self.name
-        if self.pass_rate is not None:
-            result['PassRate'] = self.pass_rate
         if self.id is not None:
             result['Id'] = self.id
         result['ConfigTargets'] = []
@@ -24635,12 +24657,16 @@ class DescribeStrategyResponseBodyStrategies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExecStatus') is not None:
-            self.exec_status = m.get('ExecStatus')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('ExecStatus') is not None:
+            self.exec_status = m.get('ExecStatus')
+        if m.get('PassRate') is not None:
+            self.pass_rate = m.get('PassRate')
         if m.get('CycleStartTime') is not None:
             self.cycle_start_time = m.get('CycleStartTime')
+        if m.get('CustomType') is not None:
+            self.custom_type = m.get('CustomType')
         if m.get('EcsCount') is not None:
             self.ecs_count = m.get('EcsCount')
         if m.get('ProcessRate') is not None:
@@ -24651,8 +24677,6 @@ class DescribeStrategyResponseBodyStrategies(TeaModel):
             self.risk_count = m.get('RiskCount')
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('PassRate') is not None:
-            self.pass_rate = m.get('PassRate')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         self.config_targets = []
@@ -35113,6 +35137,8 @@ class ModifyStrategyRequest(TeaModel):
         cycle_start_time: str = None,
         risk_sub_type_name: str = None,
         id: str = None,
+        risk_custom_params: str = None,
+        custom_type: str = None,
     ):
         self.source_ip = source_ip
         self.cycle_days = cycle_days
@@ -35120,6 +35146,8 @@ class ModifyStrategyRequest(TeaModel):
         self.cycle_start_time = cycle_start_time
         self.risk_sub_type_name = risk_sub_type_name
         self.id = id
+        self.risk_custom_params = risk_custom_params
+        self.custom_type = custom_type
 
     def validate(self):
         pass
@@ -35142,6 +35170,10 @@ class ModifyStrategyRequest(TeaModel):
             result['RiskSubTypeName'] = self.risk_sub_type_name
         if self.id is not None:
             result['Id'] = self.id
+        if self.risk_custom_params is not None:
+            result['RiskCustomParams'] = self.risk_custom_params
+        if self.custom_type is not None:
+            result['CustomType'] = self.custom_type
         return result
 
     def from_map(self, m: dict = None):
@@ -35158,6 +35190,10 @@ class ModifyStrategyRequest(TeaModel):
             self.risk_sub_type_name = m.get('RiskSubTypeName')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('RiskCustomParams') is not None:
+            self.risk_custom_params = m.get('RiskCustomParams')
+        if m.get('CustomType') is not None:
+            self.custom_type = m.get('CustomType')
         return self
 
 
@@ -38828,6 +38864,97 @@ class UninstallUniBackupAgentResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UninstallUniBackupAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpgradeBackupPolicyVersionRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class UpgradeBackupPolicyVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpgradeBackupPolicyVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpgradeBackupPolicyVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpgradeBackupPolicyVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
