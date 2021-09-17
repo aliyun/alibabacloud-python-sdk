@@ -84,9 +84,20 @@ class Client(OpenApiClient):
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='WakeUpApp',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/wakeup',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             ali_genieiap__1__0_models.WakeUpAppResponse(),
-            self.do_roarequest('WakeUpApp', 'iap_1.0', 'HTTPS', 'PUT', 'AK', f'/v1.0/iap/wakeup', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def wake_up_app_with_options_async(
@@ -116,9 +127,20 @@ class Client(OpenApiClient):
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='WakeUpApp',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/wakeup',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             ali_genieiap__1__0_models.WakeUpAppResponse(),
-            await self.do_roarequest_async('WakeUpApp', 'iap_1.0', 'HTTPS', 'PUT', 'AK', f'/v1.0/iap/wakeup', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def push_notifications(
@@ -166,9 +188,20 @@ class Client(OpenApiClient):
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PushNotifications',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/notifications',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='none'
+        )
         return TeaCore.from_map(
             ali_genieiap__1__0_models.PushNotificationsResponse(),
-            self.do_roarequest_with_form('PushNotifications', 'iap_1.0', 'HTTPS', 'PUT', 'AK', f'/v1.0/iap/notifications', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def push_notifications_with_options_async(
@@ -200,7 +233,18 @@ class Client(OpenApiClient):
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PushNotifications',
+            version='iap_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/iap/notifications',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='none'
+        )
         return TeaCore.from_map(
             ali_genieiap__1__0_models.PushNotificationsResponse(),
-            await self.do_roarequest_with_form_async('PushNotifications', 'iap_1.0', 'HTTPS', 'PUT', 'AK', f'/v1.0/iap/notifications', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
