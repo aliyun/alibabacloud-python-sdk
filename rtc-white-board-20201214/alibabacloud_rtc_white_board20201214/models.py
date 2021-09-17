@@ -2537,6 +2537,254 @@ class SetAppStatusResponse(TeaModel):
         return self
 
 
+class DescribeWhiteBoardRecordingsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        doc_key: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # 白板应用唯一标识符
+        self.app_id = app_id
+        # 文档唯一标识符
+        self.doc_key = doc_key
+        # 第几页，默认查询第1页
+        self.page_num = page_num
+        # 每页显示个数，默认为10
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
+        if self.doc_key is not None:
+            result['DocKey'] = self.doc_key
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
+        if m.get('DocKey') is not None:
+            self.doc_key = m.get('DocKey')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeWhiteBoardRecordingsResponseBodyResultRecordingList(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        doc_key: str = None,
+        record_id: str = None,
+        user_id: str = None,
+        operate_list: List[str] = None,
+    ):
+        # 白板应用唯一标识符
+        self.app_id = app_id
+        # 文档唯一标识符
+        self.doc_key = doc_key
+        # 白板录制Session的唯一标识
+        self.record_id = record_id
+        # 创建录制的用户ID
+        self.user_id = user_id
+        # 白板录制操作列表
+        self.operate_list = operate_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppID'] = self.app_id
+        if self.doc_key is not None:
+            result['DocKey'] = self.doc_key
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.operate_list is not None:
+            result['OperateList'] = self.operate_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppID') is not None:
+            self.app_id = m.get('AppID')
+        if m.get('DocKey') is not None:
+            self.doc_key = m.get('DocKey')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('OperateList') is not None:
+            self.operate_list = m.get('OperateList')
+        return self
+
+
+class DescribeWhiteBoardRecordingsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        total_num: int = None,
+        total_page: int = None,
+        recording_list: List[DescribeWhiteBoardRecordingsResponseBodyResultRecordingList] = None,
+    ):
+        self.total_num = total_num
+        self.total_page = total_page
+        # 录制信息列表
+        self.recording_list = recording_list
+
+    def validate(self):
+        if self.recording_list:
+            for k in self.recording_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        result['RecordingList'] = []
+        if self.recording_list is not None:
+            for k in self.recording_list:
+                result['RecordingList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        self.recording_list = []
+        if m.get('RecordingList') is not None:
+            for k in m.get('RecordingList'):
+                temp_model = DescribeWhiteBoardRecordingsResponseBodyResultRecordingList()
+                self.recording_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWhiteBoardRecordingsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        response_success: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        result: DescribeWhiteBoardRecordingsResponseBodyResult = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 请求结果
+        self.response_success = response_success
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_msg = error_msg
+        # 返回结果体
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response_success is not None:
+            result['ResponseSuccess'] = self.response_success
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResponseSuccess') is not None:
+            self.response_success = m.get('ResponseSuccess')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Result') is not None:
+            temp_model = DescribeWhiteBoardRecordingsResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class DescribeWhiteBoardRecordingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeWhiteBoardRecordingsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeWhiteBoardRecordingsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopWhiteBoardRecordingRequest(TeaModel):
     def __init__(
         self,

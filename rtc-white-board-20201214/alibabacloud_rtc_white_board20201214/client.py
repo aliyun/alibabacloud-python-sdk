@@ -670,6 +670,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_app_status_with_options_async(request, runtime)
 
+    def describe_white_board_recordings_with_options(
+        self,
+        request: rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsResponse(),
+            self.do_rpcrequest('DescribeWhiteBoardRecordings', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_white_board_recordings_with_options_async(
+        self,
+        request: rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsResponse(),
+            await self.do_rpcrequest_async('DescribeWhiteBoardRecordings', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_white_board_recordings(
+        self,
+        request: rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsRequest,
+    ) -> rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_board_recordings_with_options(request, runtime)
+
+    async def describe_white_board_recordings_async(
+        self,
+        request: rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsRequest,
+    ) -> rtc_white_board_20201214_models.DescribeWhiteBoardRecordingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_board_recordings_with_options_async(request, runtime)
+
     def stop_white_board_recording_with_options(
         self,
         request: rtc_white_board_20201214_models.StopWhiteBoardRecordingRequest,
