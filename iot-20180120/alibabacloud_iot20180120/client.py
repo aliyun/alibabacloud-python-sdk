@@ -90,6 +90,48 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_data_for_api_source_with_options(
+        self,
+        request: iot_20180120_models.AddDataForApiSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.AddDataForApiSourceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.AddDataForApiSourceResponse(),
+            self.do_rpcrequest('AddDataForApiSource', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_data_for_api_source_with_options_async(
+        self,
+        request: iot_20180120_models.AddDataForApiSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.AddDataForApiSourceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.AddDataForApiSourceResponse(),
+            await self.do_rpcrequest_async('AddDataForApiSource', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_data_for_api_source(
+        self,
+        request: iot_20180120_models.AddDataForApiSourceRequest,
+    ) -> iot_20180120_models.AddDataForApiSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_data_for_api_source_with_options(request, runtime)
+
+    async def add_data_for_api_source_async(
+        self,
+        request: iot_20180120_models.AddDataForApiSourceRequest,
+    ) -> iot_20180120_models.AddDataForApiSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_data_for_api_source_with_options_async(request, runtime)
+
     def batch_add_device_group_relations_with_options(
         self,
         request: iot_20180120_models.BatchAddDeviceGroupRelationsRequest,

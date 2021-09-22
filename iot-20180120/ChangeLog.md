@@ -1,3 +1,6 @@
+2021-09-22 Version: 2.4.0
+- Add DOP apiSource add data api.
+
 2021-09-08 Version: 2.3.0
 - Add DOP apiSource add data api.
 
