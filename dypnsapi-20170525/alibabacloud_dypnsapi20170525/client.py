@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -39,126 +40,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def create_verify_scheme_with_options(
-        self,
-        request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dypnsapi_20170525_models.CreateVerifySchemeResponse().from_map(
-            self.do_rpcrequest('CreateVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_verify_scheme_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dypnsapi_20170525_models.CreateVerifySchemeResponse().from_map(
-            await self.do_rpcrequest_async('CreateVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_verify_scheme(
-        self,
-        request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
-    ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_verify_scheme_with_options(request, runtime)
-
-    async def create_verify_scheme_async(
-        self,
-        request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
-    ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_verify_scheme_with_options_async(request, runtime)
-
-    def delete_verify_scheme_with_options(
-        self,
-        request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dypnsapi_20170525_models.DeleteVerifySchemeResponse().from_map(
-            self.do_rpcrequest('DeleteVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_verify_scheme_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dypnsapi_20170525_models.DeleteVerifySchemeResponse().from_map(
-            await self.do_rpcrequest_async('DeleteVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_verify_scheme(
-        self,
-        request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
-    ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_verify_scheme_with_options(request, runtime)
-
-    async def delete_verify_scheme_async(
-        self,
-        request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
-    ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_verify_scheme_with_options_async(request, runtime)
-
-    def describe_verify_scheme_with_options(
-        self,
-        request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dypnsapi_20170525_models.DescribeVerifySchemeResponse().from_map(
-            self.do_rpcrequest('DescribeVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_verify_scheme_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dypnsapi_20170525_models.DescribeVerifySchemeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_verify_scheme(
-        self,
-        request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
-    ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_verify_scheme_with_options(request, runtime)
-
-    async def describe_verify_scheme_async(
-        self,
-        request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
-    ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_verify_scheme_with_options_async(request, runtime)
-
     def get_authorization_url_with_options(
         self,
         request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
@@ -168,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.GetAuthorizationUrlResponse().from_map(
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetAuthorizationUrlResponse(),
             self.do_rpcrequest('GetAuthorizationUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -181,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.GetAuthorizationUrlResponse().from_map(
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetAuthorizationUrlResponse(),
             await self.do_rpcrequest_async('GetAuthorizationUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -199,85 +82,257 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_authorization_url_with_options_async(request, runtime)
 
-    def get_auth_token_with_options(
+    def get_sms_auth_tokens_with_options(
         self,
-        request: dypnsapi_20170525_models.GetAuthTokenRequest,
+        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.GetAuthTokenResponse().from_map(
-            self.do_rpcrequest('GetAuthToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetSmsAuthTokensResponse(),
+            self.do_rpcrequest('GetSmsAuthTokens', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def get_auth_token_with_options_async(
+    async def get_sms_auth_tokens_with_options_async(
         self,
-        request: dypnsapi_20170525_models.GetAuthTokenRequest,
+        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.GetAuthTokenResponse().from_map(
-            await self.do_rpcrequest_async('GetAuthToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetSmsAuthTokensResponse(),
+            await self.do_rpcrequest_async('GetSmsAuthTokens', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def get_auth_token(
+    def get_sms_auth_tokens(
         self,
-        request: dypnsapi_20170525_models.GetAuthTokenRequest,
-    ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
+    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_auth_token_with_options(request, runtime)
+        return self.get_sms_auth_tokens_with_options(request, runtime)
 
-    async def get_auth_token_async(
+    async def get_sms_auth_tokens_async(
         self,
-        request: dypnsapi_20170525_models.GetAuthTokenRequest,
-    ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
+    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_auth_token_with_options_async(request, runtime)
+        return await self.get_sms_auth_tokens_with_options_async(request, runtime)
 
-    def get_certify_result_with_options(
+    def create_verify_scheme_with_options(
         self,
-        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+        request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+    ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.GetCertifyResultResponse().from_map(
-            self.do_rpcrequest('GetCertifyResult', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.CreateVerifySchemeResponse(),
+            self.do_rpcrequest('CreateVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def get_certify_result_with_options_async(
+    async def create_verify_scheme_with_options_async(
         self,
-        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+        request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+    ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.GetCertifyResultResponse().from_map(
-            await self.do_rpcrequest_async('GetCertifyResult', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.CreateVerifySchemeResponse(),
+            await self.do_rpcrequest_async('CreateVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def get_certify_result(
+    def create_verify_scheme(
         self,
-        request: dypnsapi_20170525_models.GetCertifyResultRequest,
-    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
+    ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_certify_result_with_options(request, runtime)
+        return self.create_verify_scheme_with_options(request, runtime)
 
-    async def get_certify_result_async(
+    async def create_verify_scheme_async(
         self,
-        request: dypnsapi_20170525_models.GetCertifyResultRequest,
-    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
+    ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_certify_result_with_options_async(request, runtime)
+        return await self.create_verify_scheme_with_options_async(request, runtime)
+
+    def get_sms_code_with_options(
+        self,
+        request: dypnsapi_20170525_models.GetSmsCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetSmsCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetSmsCodeResponse(),
+            self.do_rpcrequest('GetSmsCode', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_sms_code_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.GetSmsCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetSmsCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetSmsCodeResponse(),
+            await self.do_rpcrequest_async('GetSmsCode', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_sms_code(
+        self,
+        request: dypnsapi_20170525_models.GetSmsCodeRequest,
+    ) -> dypnsapi_20170525_models.GetSmsCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sms_code_with_options(request, runtime)
+
+    async def get_sms_code_async(
+        self,
+        request: dypnsapi_20170525_models.GetSmsCodeRequest,
+    ) -> dypnsapi_20170525_models.GetSmsCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sms_code_with_options_async(request, runtime)
+
+    def verify_sms_code_with_options(
+        self,
+        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifySmsCodeResponse(),
+            self.do_rpcrequest('VerifySmsCode', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def verify_sms_code_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifySmsCodeResponse(),
+            await self.do_rpcrequest_async('VerifySmsCode', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def verify_sms_code(
+        self,
+        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
+    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_sms_code_with_options(request, runtime)
+
+    async def verify_sms_code_async(
+        self,
+        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
+    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_sms_code_with_options_async(request, runtime)
+
+    def delete_verify_scheme_with_options(
+        self,
+        request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.DeleteVerifySchemeResponse(),
+            self.do_rpcrequest('DeleteVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_verify_scheme_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.DeleteVerifySchemeResponse(),
+            await self.do_rpcrequest_async('DeleteVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_verify_scheme(
+        self,
+        request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
+    ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_verify_scheme_with_options(request, runtime)
+
+    async def delete_verify_scheme_async(
+        self,
+        request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
+    ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_verify_scheme_with_options_async(request, runtime)
+
+    def verify_phone_with_token_with_options(
+        self,
+        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifyPhoneWithTokenResponse(),
+            self.do_rpcrequest('VerifyPhoneWithToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def verify_phone_with_token_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifyPhoneWithTokenResponse(),
+            await self.do_rpcrequest_async('VerifyPhoneWithToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def verify_phone_with_token(
+        self,
+        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_phone_with_token_with_options(request, runtime)
+
+    async def verify_phone_with_token_async(
+        self,
+        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_phone_with_token_with_options_async(request, runtime)
 
     def get_mobile_with_options(
         self,
@@ -288,7 +343,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.GetMobileResponse().from_map(
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetMobileResponse(),
             self.do_rpcrequest('GetMobile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -301,7 +357,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.GetMobileResponse().from_map(
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetMobileResponse(),
             await self.do_rpcrequest_async('GetMobile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -328,7 +385,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.TwiceTelVerifyResponse().from_map(
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.TwiceTelVerifyResponse(),
             self.do_rpcrequest('TwiceTelVerify', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -341,7 +399,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.TwiceTelVerifyResponse().from_map(
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.TwiceTelVerifyResponse(),
             await self.do_rpcrequest_async('TwiceTelVerify', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -359,6 +418,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.twice_tel_verify_with_options_async(request, runtime)
 
+    def get_certify_result_with_options(
+        self,
+        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetCertifyResultResponse(),
+            self.do_rpcrequest('GetCertifyResult', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_certify_result_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetCertifyResultResponse(),
+            await self.do_rpcrequest_async('GetCertifyResult', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_certify_result(
+        self,
+        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_certify_result_with_options(request, runtime)
+
+    async def get_certify_result_async(
+        self,
+        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_certify_result_with_options_async(request, runtime)
+
+    def describe_verify_scheme_with_options(
+        self,
+        request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.DescribeVerifySchemeResponse(),
+            self.do_rpcrequest('DescribeVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_verify_scheme_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.DescribeVerifySchemeResponse(),
+            await self.do_rpcrequest_async('DescribeVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_verify_scheme(
+        self,
+        request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
+    ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_verify_scheme_with_options(request, runtime)
+
+    async def describe_verify_scheme_async(
+        self,
+        request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
+    ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_verify_scheme_with_options_async(request, runtime)
+
+    def get_auth_token_with_options(
+        self,
+        request: dypnsapi_20170525_models.GetAuthTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetAuthTokenResponse(),
+            self.do_rpcrequest('GetAuthToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_auth_token_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.GetAuthTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetAuthTokenResponse(),
+            await self.do_rpcrequest_async('GetAuthToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_auth_token(
+        self,
+        request: dypnsapi_20170525_models.GetAuthTokenRequest,
+    ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_auth_token_with_options(request, runtime)
+
+    async def get_auth_token_async(
+        self,
+        request: dypnsapi_20170525_models.GetAuthTokenRequest,
+    ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_auth_token_with_options_async(request, runtime)
+
     def verify_mobile_with_options(
         self,
         request: dypnsapi_20170525_models.VerifyMobileRequest,
@@ -368,7 +553,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.VerifyMobileResponse().from_map(
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifyMobileResponse(),
             self.do_rpcrequest('VerifyMobile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -381,7 +567,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.VerifyMobileResponse().from_map(
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifyMobileResponse(),
             await self.do_rpcrequest_async('VerifyMobile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -399,42 +586,44 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.verify_mobile_with_options_async(request, runtime)
 
-    def verify_phone_with_token_with_options(
+    def check_service_linked_role_for_deleting_with_options(
         self,
-        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+        request: dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+    ) -> dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.VerifyPhoneWithTokenResponse().from_map(
-            self.do_rpcrequest('VerifyPhoneWithToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse(),
+            self.do_rpcrequest('CheckServiceLinkedRoleForDeleting', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def verify_phone_with_token_with_options_async(
+    async def check_service_linked_role_for_deleting_with_options_async(
         self,
-        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+        request: dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+    ) -> dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return dypnsapi_20170525_models.VerifyPhoneWithTokenResponse().from_map(
-            await self.do_rpcrequest_async('VerifyPhoneWithToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse(),
+            await self.do_rpcrequest_async('CheckServiceLinkedRoleForDeleting', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def verify_phone_with_token(
+    def check_service_linked_role_for_deleting(
         self,
-        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
-    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        request: dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingRequest,
+    ) -> dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse:
         runtime = util_models.RuntimeOptions()
-        return self.verify_phone_with_token_with_options(request, runtime)
+        return self.check_service_linked_role_for_deleting_with_options(request, runtime)
 
-    async def verify_phone_with_token_async(
+    async def check_service_linked_role_for_deleting_async(
         self,
-        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
-    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        request: dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingRequest,
+    ) -> dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.verify_phone_with_token_with_options_async(request, runtime)
+        return await self.check_service_linked_role_for_deleting_with_options_async(request, runtime)
