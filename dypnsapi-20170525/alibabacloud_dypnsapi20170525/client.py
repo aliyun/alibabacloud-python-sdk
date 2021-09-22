@@ -166,48 +166,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_verify_scheme_with_options_async(request, runtime)
 
-    def get_sms_code_with_options(
-        self,
-        request: dypnsapi_20170525_models.GetSmsCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetSmsCodeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetSmsCodeResponse(),
-            self.do_rpcrequest('GetSmsCode', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_sms_code_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.GetSmsCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetSmsCodeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetSmsCodeResponse(),
-            await self.do_rpcrequest_async('GetSmsCode', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_sms_code(
-        self,
-        request: dypnsapi_20170525_models.GetSmsCodeRequest,
-    ) -> dypnsapi_20170525_models.GetSmsCodeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_sms_code_with_options(request, runtime)
-
-    async def get_sms_code_async(
-        self,
-        request: dypnsapi_20170525_models.GetSmsCodeRequest,
-    ) -> dypnsapi_20170525_models.GetSmsCodeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_sms_code_with_options_async(request, runtime)
-
     def verify_sms_code_with_options(
         self,
         request: dypnsapi_20170525_models.VerifySmsCodeRequest,
@@ -585,45 +543,3 @@ class Client(OpenApiClient):
     ) -> dypnsapi_20170525_models.VerifyMobileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.verify_mobile_with_options_async(request, runtime)
-
-    def check_service_linked_role_for_deleting_with_options(
-        self,
-        request: dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse(),
-            self.do_rpcrequest('CheckServiceLinkedRoleForDeleting', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def check_service_linked_role_for_deleting_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse(),
-            await self.do_rpcrequest_async('CheckServiceLinkedRoleForDeleting', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def check_service_linked_role_for_deleting(
-        self,
-        request: dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingRequest,
-    ) -> dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.check_service_linked_role_for_deleting_with_options(request, runtime)
-
-    async def check_service_linked_role_for_deleting_async(
-        self,
-        request: dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingRequest,
-    ) -> dypnsapi_20170525_models.CheckServiceLinkedRoleForDeletingResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.check_service_linked_role_for_deleting_with_options_async(request, runtime)
