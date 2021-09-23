@@ -72,6 +72,10 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryPipelineJobRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
+        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -89,6 +93,10 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryPipelineJobRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
+        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -125,6 +133,9 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListResourceMembersResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
+        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -141,6 +152,9 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListResourceMembersResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
+        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -174,6 +188,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetHostGroupResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -189,6 +205,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetHostGroupResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -222,6 +240,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVariableGroupResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -237,6 +257,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVariableGroupResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -271,6 +293,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelinesResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.pipeline_name):
             query['pipelineName'] = request.pipeline_name
@@ -309,6 +332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelinesResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.pipeline_name):
             query['pipelineName'] = request.pipeline_name
@@ -374,6 +398,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateResourceMemberResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
+        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
+        account_id = OpenApiUtilClient.get_encode_param(account_id)
         body = {}
         if not UtilClient.is_unset(request.role_name):
             body['roleName'] = request.role_name
@@ -397,6 +425,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateResourceMemberResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
+        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
+        account_id = OpenApiUtilClient.get_encode_param(account_id)
         body = {}
         if not UtilClient.is_unset(request.role_name):
             body['roleName'] = request.role_name
@@ -438,6 +470,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateVariableGroupResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
@@ -463,6 +497,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateVariableGroupResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
@@ -510,6 +546,10 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteResourceMemberResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
+        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
+        account_id = OpenApiUtilClient.get_encode_param(account_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -527,6 +567,10 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteResourceMemberResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
+        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
+        account_id = OpenApiUtilClient.get_encode_param(account_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -561,6 +605,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListHostGroupsResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.ids):
             query['ids'] = request.ids
@@ -597,6 +642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListHostGroupsResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.ids):
             query['ids'] = request.ids
@@ -647,6 +693,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResetSshKeyResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -661,6 +708,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResetSshKeyResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -777,6 +825,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceConnectionsResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.serice_connection_type):
             query['sericeConnectionType'] = request.serice_connection_type
@@ -797,6 +846,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceConnectionsResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.serice_connection_type):
             query['sericeConnectionType'] = request.serice_connection_type
@@ -835,6 +885,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateHostGroupResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
@@ -873,6 +924,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateHostGroupResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
@@ -931,6 +983,9 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -947,6 +1002,9 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -984,6 +1042,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateHostGroupResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
@@ -1023,6 +1083,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateHostGroupResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
@@ -1085,6 +1147,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateResourceMemberResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
+        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.account_id):
             body['accountId'] = request.account_id
@@ -1109,6 +1174,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateResourceMemberResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
+        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.account_id):
             body['accountId'] = request.account_id
@@ -1154,6 +1222,10 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipPipelineJobRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
+        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1171,12 +1243,68 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipPipelineJobRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
+        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         return TeaCore.from_map(
             devops_20210625_models.SkipPipelineJobRunResponse(),
             await self.do_roarequest_async('SkipPipelineJobRun', '2021-06-25', 'HTTPS', 'PUT', 'AK', f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}/skip', 'json', req, runtime)
+        )
+
+    def get_organization_member(
+        self,
+        organization_id: str,
+        account_id: str,
+    ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_organization_member_with_options(organization_id, account_id, headers, runtime)
+
+    async def get_organization_member_async(
+        self,
+        organization_id: str,
+        account_id: str,
+    ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_organization_member_with_options_async(organization_id, account_id, headers, runtime)
+
+    def get_organization_member_with_options(
+        self,
+        organization_id: str,
+        account_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        account_id = OpenApiUtilClient.get_encode_param(account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetOrganizationMemberResponse(),
+            self.do_roarequest('GetOrganizationMember', '2021-06-25', 'HTTPS', 'GET', 'AK', f'/organization/{organization_id}/members/{account_id}', 'json', req, runtime)
+        )
+
+    async def get_organization_member_with_options_async(
+        self,
+        organization_id: str,
+        account_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        account_id = OpenApiUtilClient.get_encode_param(account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetOrganizationMemberResponse(),
+            await self.do_roarequest_async('GetOrganizationMember', '2021-06-25', 'HTTPS', 'GET', 'AK', f'/organization/{organization_id}/members/{account_id}', 'json', req, runtime)
         )
 
     def stop_pipeline_job_run(
@@ -1210,6 +1338,10 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineJobRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
+        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1227,6 +1359,10 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineJobRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
+        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1264,6 +1400,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StartPipelineRunResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         body = {}
         if not UtilClient.is_unset(request.params):
             body['params'] = request.params
@@ -1285,6 +1423,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StartPipelineRunResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         body = {}
         if not UtilClient.is_unset(request.params):
             body['params'] = request.params
@@ -1403,6 +1543,9 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1419,6 +1562,9 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineRunResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1452,6 +1598,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1467,6 +1615,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1501,6 +1651,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateVariableGroupResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
@@ -1525,6 +1676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateVariableGroupResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
@@ -1566,6 +1718,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteVariableGroupResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1581,6 +1735,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteVariableGroupResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1611,6 +1767,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkspaceResponse:
+        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1625,6 +1782,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkspaceResponse:
+        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1655,6 +1813,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSshKeyResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1669,6 +1828,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSshKeyResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1702,6 +1862,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteHostGroupResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1717,6 +1879,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteHostGroupResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1747,6 +1911,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1761,12 +1926,101 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         return TeaCore.from_map(
             devops_20210625_models.ReleaseWorkspaceResponse(),
             await self.do_roarequest_async('ReleaseWorkspace', '2021-06-25', 'HTTPS', 'DELETE', 'AK', f'/api/workspaces/{workspace_id}/release', 'json', req, runtime)
+        )
+
+    def list_organization_members(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListOrganizationMembersRequest,
+    ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_organization_members_with_options(organization_id, request, headers, runtime)
+
+    async def list_organization_members_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListOrganizationMembersRequest,
+    ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_organization_members_with_options_async(organization_id, request, headers, runtime)
+
+    def list_organization_members_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListOrganizationMembersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.organization_member_name):
+            query['organizationMemberName'] = request.organization_member_name
+        if not UtilClient.is_unset(request.provider):
+            query['provider'] = request.provider
+        if not UtilClient.is_unset(request.extern_uid):
+            query['externUid'] = request.extern_uid
+        if not UtilClient.is_unset(request.state):
+            query['state'] = request.state
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.join_time_from):
+            query['joinTimeFrom'] = request.join_time_from
+        if not UtilClient.is_unset(request.join_time_to):
+            query['joinTimeTo'] = request.join_time_to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListOrganizationMembersResponse(),
+            self.do_roarequest('ListOrganizationMembers', '2021-06-25', 'HTTPS', 'GET', 'AK', f'/organization/{organization_id}/members', 'json', req, runtime)
+        )
+
+    async def list_organization_members_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListOrganizationMembersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.organization_member_name):
+            query['organizationMemberName'] = request.organization_member_name
+        if not UtilClient.is_unset(request.provider):
+            query['provider'] = request.provider
+        if not UtilClient.is_unset(request.extern_uid):
+            query['externUid'] = request.extern_uid
+        if not UtilClient.is_unset(request.state):
+            query['state'] = request.state
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.join_time_from):
+            query['joinTimeFrom'] = request.join_time_from
+        if not UtilClient.is_unset(request.join_time_to):
+            query['joinTimeTo'] = request.join_time_to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListOrganizationMembersResponse(),
+            await self.do_roarequest_async('ListOrganizationMembers', '2021-06-25', 'HTTPS', 'GET', 'AK', f'/organization/{organization_id}/members', 'json', req, runtime)
         )
 
     def list_variable_groups(
@@ -1795,6 +2049,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListVariableGroupsResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.page_sort):
             query['pageSort'] = request.page_sort
@@ -1821,6 +2076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListVariableGroupsResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.page_sort):
             query['pageSort'] = request.page_sort
@@ -1864,6 +2120,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1879,6 +2137,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1909,6 +2169,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1923,6 +2184,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1960,6 +2222,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineRunsResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.start_time):
             query['startTime'] = request.start_time
@@ -1991,6 +2255,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineRunsResponse:
         UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.start_time):
             query['startTime'] = request.start_time

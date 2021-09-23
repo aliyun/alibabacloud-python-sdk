@@ -1,3 +1,6 @@
+2021-09-23 Version: 1.0.2
+- Update query param time to Time.
+
 2021-09-02 Version: 1.0.1
 - Init.
 

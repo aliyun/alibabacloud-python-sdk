@@ -2864,6 +2864,243 @@ class SkipPipelineJobRunResponse(TeaModel):
         return self
 
 
+class GetOrganizationMemberResponseBodyMemberIdentities(TeaModel):
+    def __init__(
+        self,
+        extern_uid: str = None,
+        provider: str = None,
+    ):
+        # 第三方系统的用户 id
+        self.extern_uid = extern_uid
+        # 第三方系统
+        self.provider = provider
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extern_uid is not None:
+            result['externUid'] = self.extern_uid
+        if self.provider is not None:
+            result['provider'] = self.provider
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('externUid') is not None:
+            self.extern_uid = m.get('externUid')
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        return self
+
+
+class GetOrganizationMemberResponseBodyMember(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        birthday: int = None,
+        dept_lists: List[str] = None,
+        email: str = None,
+        hired_date: int = None,
+        identities: GetOrganizationMemberResponseBodyMemberIdentities = None,
+        join_time: int = None,
+        last_visit_time: int = None,
+        mobile: str = None,
+        organization_member_name: str = None,
+        organization_role: str = None,
+        state: str = None,
+    ):
+        # 阿里云用户PK
+        self.account_id = account_id
+        # 生日
+        self.birthday = birthday
+        # 部门名称列表
+        self.dept_lists = dept_lists
+        # 邮箱
+        self.email = email
+        # 入职时间
+        self.hired_date = hired_date
+        # 第三方信息
+        self.identities = identities
+        # 加入云效企业时间
+        self.join_time = join_time
+        # 最近一次访问时间
+        self.last_visit_time = last_visit_time
+        # 手机号
+        self.mobile = mobile
+        # 企业成员名
+        self.organization_member_name = organization_member_name
+        # 企业角色
+        self.organization_role = organization_role
+        # 用户状态
+        self.state = state
+
+    def validate(self):
+        if self.identities:
+            self.identities.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.birthday is not None:
+            result['birthday'] = self.birthday
+        if self.dept_lists is not None:
+            result['deptLists'] = self.dept_lists
+        if self.email is not None:
+            result['email'] = self.email
+        if self.hired_date is not None:
+            result['hiredDate'] = self.hired_date
+        if self.identities is not None:
+            result['identities'] = self.identities.to_map()
+        if self.join_time is not None:
+            result['joinTime'] = self.join_time
+        if self.last_visit_time is not None:
+            result['lastVisitTime'] = self.last_visit_time
+        if self.mobile is not None:
+            result['mobile'] = self.mobile
+        if self.organization_member_name is not None:
+            result['organizationMemberName'] = self.organization_member_name
+        if self.organization_role is not None:
+            result['organizationRole'] = self.organization_role
+        if self.state is not None:
+            result['state'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('birthday') is not None:
+            self.birthday = m.get('birthday')
+        if m.get('deptLists') is not None:
+            self.dept_lists = m.get('deptLists')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('hiredDate') is not None:
+            self.hired_date = m.get('hiredDate')
+        if m.get('identities') is not None:
+            temp_model = GetOrganizationMemberResponseBodyMemberIdentities()
+            self.identities = temp_model.from_map(m['identities'])
+        if m.get('joinTime') is not None:
+            self.join_time = m.get('joinTime')
+        if m.get('lastVisitTime') is not None:
+            self.last_visit_time = m.get('lastVisitTime')
+        if m.get('mobile') is not None:
+            self.mobile = m.get('mobile')
+        if m.get('organizationMemberName') is not None:
+            self.organization_member_name = m.get('organizationMemberName')
+        if m.get('organizationRole') is not None:
+            self.organization_role = m.get('organizationRole')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class GetOrganizationMemberResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        error_message: str = None,
+        member: GetOrganizationMemberResponseBodyMember = None,
+        error_code: str = None,
+        success: bool = None,
+    ):
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # 错误信息
+        self.error_message = error_message
+        # 成员
+        self.member = member
+        # 错误码
+        self.error_code = error_code
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        if self.member:
+            self.member.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.member is not None:
+            result['member'] = self.member.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('member') is not None:
+            temp_model = GetOrganizationMemberResponseBodyMember()
+            self.member = temp_model.from_map(m['member'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetOrganizationMemberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetOrganizationMemberResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetOrganizationMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopPipelineJobRunResponseBody(TeaModel):
     def __init__(
         self,
@@ -4992,6 +5229,332 @@ class ReleaseWorkspaceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ReleaseWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListOrganizationMembersRequest(TeaModel):
+    def __init__(
+        self,
+        organization_member_name: str = None,
+        provider: str = None,
+        extern_uid: str = None,
+        state: str = None,
+        next_token: str = None,
+        max_results: int = None,
+        join_time_from: int = None,
+        join_time_to: int = None,
+    ):
+        self.organization_member_name = organization_member_name
+        self.provider = provider
+        self.extern_uid = extern_uid
+        self.state = state
+        self.next_token = next_token
+        self.max_results = max_results
+        self.join_time_from = join_time_from
+        self.join_time_to = join_time_to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organization_member_name is not None:
+            result['organizationMemberName'] = self.organization_member_name
+        if self.provider is not None:
+            result['provider'] = self.provider
+        if self.extern_uid is not None:
+            result['externUid'] = self.extern_uid
+        if self.state is not None:
+            result['state'] = self.state
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.join_time_from is not None:
+            result['joinTimeFrom'] = self.join_time_from
+        if self.join_time_to is not None:
+            result['joinTimeTo'] = self.join_time_to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationMemberName') is not None:
+            self.organization_member_name = m.get('organizationMemberName')
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        if m.get('externUid') is not None:
+            self.extern_uid = m.get('externUid')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('joinTimeFrom') is not None:
+            self.join_time_from = m.get('joinTimeFrom')
+        if m.get('joinTimeTo') is not None:
+            self.join_time_to = m.get('joinTimeTo')
+        return self
+
+
+class ListOrganizationMembersResponseBodyMembersIdentities(TeaModel):
+    def __init__(
+        self,
+        extern_uid: str = None,
+        provider: str = None,
+    ):
+        # 第三方系统的用户Id
+        self.extern_uid = extern_uid
+        # 第三方系统
+        self.provider = provider
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extern_uid is not None:
+            result['externUid'] = self.extern_uid
+        if self.provider is not None:
+            result['provider'] = self.provider
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('externUid') is not None:
+            self.extern_uid = m.get('externUid')
+        if m.get('provider') is not None:
+            self.provider = m.get('provider')
+        return self
+
+
+class ListOrganizationMembersResponseBodyMembers(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        birthday: int = None,
+        dept_lists: List[str] = None,
+        email: str = None,
+        hired_date: int = None,
+        identities: ListOrganizationMembersResponseBodyMembersIdentities = None,
+        join_time: int = None,
+        last_visit_time: int = None,
+        mobile: str = None,
+        organization_member_name: str = None,
+        organization_role: str = None,
+        state: str = None,
+    ):
+        # 阿里云用户ID
+        self.account_id = account_id
+        # 生日
+        self.birthday = birthday
+        # 部门名称列表
+        self.dept_lists = dept_lists
+        # 邮箱
+        self.email = email
+        # 入职时间
+        self.hired_date = hired_date
+        # 第三方信息
+        self.identities = identities
+        # 加入云效企业时间
+        self.join_time = join_time
+        # 最近一次访问时间
+        self.last_visit_time = last_visit_time
+        # 手机号
+        self.mobile = mobile
+        # 企业成员名
+        self.organization_member_name = organization_member_name
+        # 企业角色
+        self.organization_role = organization_role
+        # 用户状态
+        self.state = state
+
+    def validate(self):
+        if self.identities:
+            self.identities.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.birthday is not None:
+            result['birthday'] = self.birthday
+        if self.dept_lists is not None:
+            result['deptLists'] = self.dept_lists
+        if self.email is not None:
+            result['email'] = self.email
+        if self.hired_date is not None:
+            result['hiredDate'] = self.hired_date
+        if self.identities is not None:
+            result['identities'] = self.identities.to_map()
+        if self.join_time is not None:
+            result['joinTime'] = self.join_time
+        if self.last_visit_time is not None:
+            result['lastVisitTime'] = self.last_visit_time
+        if self.mobile is not None:
+            result['mobile'] = self.mobile
+        if self.organization_member_name is not None:
+            result['organizationMemberName'] = self.organization_member_name
+        if self.organization_role is not None:
+            result['organizationRole'] = self.organization_role
+        if self.state is not None:
+            result['state'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('birthday') is not None:
+            self.birthday = m.get('birthday')
+        if m.get('deptLists') is not None:
+            self.dept_lists = m.get('deptLists')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('hiredDate') is not None:
+            self.hired_date = m.get('hiredDate')
+        if m.get('identities') is not None:
+            temp_model = ListOrganizationMembersResponseBodyMembersIdentities()
+            self.identities = temp_model.from_map(m['identities'])
+        if m.get('joinTime') is not None:
+            self.join_time = m.get('joinTime')
+        if m.get('lastVisitTime') is not None:
+            self.last_visit_time = m.get('lastVisitTime')
+        if m.get('mobile') is not None:
+            self.mobile = m.get('mobile')
+        if m.get('organizationMemberName') is not None:
+            self.organization_member_name = m.get('organizationMemberName')
+        if m.get('organizationRole') is not None:
+            self.organization_role = m.get('organizationRole')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class ListOrganizationMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        error_message: str = None,
+        success: bool = None,
+        error_code: str = None,
+        next_token: str = None,
+        total_count: int = None,
+        members: List[ListOrganizationMembersResponseBodyMembers] = None,
+    ):
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # 错误信息
+        self.error_message = error_message
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+        # 错误码
+        self.error_code = error_code
+        # 分页Token
+        self.next_token = next_token
+        # 总数
+        self.total_count = total_count
+        # 成员列表
+        self.members = members
+
+    def validate(self):
+        if self.members:
+            for k in self.members:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.success is not None:
+            result['success'] = self.success
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        result['members'] = []
+        if self.members is not None:
+            for k in self.members:
+                result['members'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        self.members = []
+        if m.get('members') is not None:
+            for k in m.get('members'):
+                temp_model = ListOrganizationMembersResponseBodyMembers()
+                self.members.append(temp_model.from_map(k))
+        return self
+
+
+class ListOrganizationMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListOrganizationMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListOrganizationMembersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
