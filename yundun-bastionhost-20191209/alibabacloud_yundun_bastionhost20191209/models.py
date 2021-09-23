@@ -7,13 +7,11 @@ from typing import List, Dict
 class AddHostsToGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_group_id: str = None,
         host_ids: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_group_id = host_group_id
@@ -23,9 +21,11 @@ class AddHostsToGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -38,8 +38,6 @@ class AddHostsToGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -68,6 +66,10 @@ class AddHostsToGroupResponseBodyResults(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -108,6 +110,10 @@ class AddHostsToGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -145,6 +151,10 @@ class AddHostsToGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -165,13 +175,11 @@ class AddHostsToGroupResponse(TeaModel):
 class AddUsersToGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
         user_ids: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -181,9 +189,11 @@ class AddUsersToGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -196,8 +206,6 @@ class AddUsersToGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -212,41 +220,45 @@ class AddUsersToGroupRequest(TeaModel):
 class AddUsersToGroupResponseBodyResults(TeaModel):
     def __init__(
         self,
-        user_group_id: str = None,
-        user_id: str = None,
         code: str = None,
         message: str = None,
+        user_group_id: str = None,
+        user_id: str = None,
     ):
-        self.user_group_id = user_group_id
-        self.user_id = user_id
         self.code = code
         self.message = message
+        self.user_group_id = user_group_id
+        self.user_id = user_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_group_id is not None:
-            result['UserGroupId'] = self.user_group_id
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
+        if self.user_group_id is not None:
+            result['UserGroupId'] = self.user_group_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserGroupId') is not None:
-            self.user_group_id = m.get('UserGroupId')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('UserGroupId') is not None:
+            self.user_group_id = m.get('UserGroupId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -266,6 +278,10 @@ class AddUsersToGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -303,6 +319,10 @@ class AddUsersToGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -323,13 +343,11 @@ class AddUsersToGroupResponse(TeaModel):
 class AttachHostAccountsToUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_id: str = None,
         hosts: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_id = user_id
@@ -339,9 +357,11 @@ class AttachHostAccountsToUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -354,8 +374,6 @@ class AttachHostAccountsToUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -382,6 +400,10 @@ class AttachHostAccountsToUserResponseBodyResultsHostAccounts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -405,17 +427,17 @@ class AttachHostAccountsToUserResponseBodyResultsHostAccounts(TeaModel):
 class AttachHostAccountsToUserResponseBodyResults(TeaModel):
     def __init__(
         self,
-        host_accounts: List[AttachHostAccountsToUserResponseBodyResultsHostAccounts] = None,
-        user_id: str = None,
         code: str = None,
         message: str = None,
         host_id: str = None,
+        user_id: str = None,
+        host_accounts: List[AttachHostAccountsToUserResponseBodyResultsHostAccounts] = None,
     ):
-        self.host_accounts = host_accounts
-        self.user_id = user_id
         self.code = code
         self.message = message
         self.host_id = host_id
+        self.user_id = user_id
+        self.host_accounts = host_accounts
 
     def validate(self):
         if self.host_accounts:
@@ -424,36 +446,40 @@ class AttachHostAccountsToUserResponseBodyResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['HostAccounts'] = []
-        if self.host_accounts is not None:
-            for k in self.host_accounts:
-                result['HostAccounts'].append(k.to_map() if k else None)
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.host_id is not None:
             result['HostId'] = self.host_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        result['HostAccounts'] = []
+        if self.host_accounts is not None:
+            for k in self.host_accounts:
+                result['HostAccounts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.host_accounts = []
-        if m.get('HostAccounts') is not None:
-            for k in m.get('HostAccounts'):
-                temp_model = AttachHostAccountsToUserResponseBodyResultsHostAccounts()
-                self.host_accounts.append(temp_model.from_map(k))
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('HostId') is not None:
             self.host_id = m.get('HostId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        self.host_accounts = []
+        if m.get('HostAccounts') is not None:
+            for k in m.get('HostAccounts'):
+                temp_model = AttachHostAccountsToUserResponseBodyResultsHostAccounts()
+                self.host_accounts.append(temp_model.from_map(k))
         return self
 
 
@@ -473,6 +499,10 @@ class AttachHostAccountsToUserResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -510,6 +540,10 @@ class AttachHostAccountsToUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -530,13 +564,11 @@ class AttachHostAccountsToUserResponse(TeaModel):
 class AttachHostAccountsToUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
         hosts: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -546,9 +578,11 @@ class AttachHostAccountsToUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -561,8 +595,6 @@ class AttachHostAccountsToUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -589,6 +621,10 @@ class AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -612,17 +648,17 @@ class AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts(TeaModel):
 class AttachHostAccountsToUserGroupResponseBodyResults(TeaModel):
     def __init__(
         self,
-        user_group_id: str = None,
-        host_accounts: List[AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts] = None,
         code: str = None,
         message: str = None,
         host_id: str = None,
+        user_group_id: str = None,
+        host_accounts: List[AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts] = None,
     ):
-        self.user_group_id = user_group_id
-        self.host_accounts = host_accounts
         self.code = code
         self.message = message
         self.host_id = host_id
+        self.user_group_id = user_group_id
+        self.host_accounts = host_accounts
 
     def validate(self):
         if self.host_accounts:
@@ -631,23 +667,33 @@ class AttachHostAccountsToUserGroupResponseBodyResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_group_id is not None:
-            result['UserGroupId'] = self.user_group_id
-        result['HostAccounts'] = []
-        if self.host_accounts is not None:
-            for k in self.host_accounts:
-                result['HostAccounts'].append(k.to_map() if k else None)
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.host_id is not None:
             result['HostId'] = self.host_id
+        if self.user_group_id is not None:
+            result['UserGroupId'] = self.user_group_id
+        result['HostAccounts'] = []
+        if self.host_accounts is not None:
+            for k in self.host_accounts:
+                result['HostAccounts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
         if m.get('UserGroupId') is not None:
             self.user_group_id = m.get('UserGroupId')
         self.host_accounts = []
@@ -655,12 +701,6 @@ class AttachHostAccountsToUserGroupResponseBodyResults(TeaModel):
             for k in m.get('HostAccounts'):
                 temp_model = AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts()
                 self.host_accounts.append(temp_model.from_map(k))
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('HostId') is not None:
-            self.host_id = m.get('HostId')
         return self
 
 
@@ -680,6 +720,10 @@ class AttachHostAccountsToUserGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -717,6 +761,10 @@ class AttachHostAccountsToUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -737,13 +785,11 @@ class AttachHostAccountsToUserGroupResponse(TeaModel):
 class AttachHostGroupAccountsToUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_id: str = None,
         host_groups: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_id = user_id
@@ -753,9 +799,11 @@ class AttachHostGroupAccountsToUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -768,8 +816,6 @@ class AttachHostGroupAccountsToUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -796,6 +842,10 @@ class AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames(TeaModel)
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -819,17 +869,17 @@ class AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames(TeaModel)
 class AttachHostGroupAccountsToUserResponseBodyResults(TeaModel):
     def __init__(
         self,
-        host_account_names: List[AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames] = None,
-        user_id: str = None,
         code: str = None,
         message: str = None,
         host_group_id: str = None,
+        user_id: str = None,
+        host_account_names: List[AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames] = None,
     ):
-        self.host_account_names = host_account_names
-        self.user_id = user_id
         self.code = code
         self.message = message
         self.host_group_id = host_group_id
+        self.user_id = user_id
+        self.host_account_names = host_account_names
 
     def validate(self):
         if self.host_account_names:
@@ -838,36 +888,40 @@ class AttachHostGroupAccountsToUserResponseBodyResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['HostAccountNames'] = []
-        if self.host_account_names is not None:
-            for k in self.host_account_names:
-                result['HostAccountNames'].append(k.to_map() if k else None)
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.host_group_id is not None:
             result['HostGroupId'] = self.host_group_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        result['HostAccountNames'] = []
+        if self.host_account_names is not None:
+            for k in self.host_account_names:
+                result['HostAccountNames'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.host_account_names = []
-        if m.get('HostAccountNames') is not None:
-            for k in m.get('HostAccountNames'):
-                temp_model = AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames()
-                self.host_account_names.append(temp_model.from_map(k))
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('HostGroupId') is not None:
             self.host_group_id = m.get('HostGroupId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        self.host_account_names = []
+        if m.get('HostAccountNames') is not None:
+            for k in m.get('HostAccountNames'):
+                temp_model = AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames()
+                self.host_account_names.append(temp_model.from_map(k))
         return self
 
 
@@ -887,6 +941,10 @@ class AttachHostGroupAccountsToUserResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -924,6 +982,10 @@ class AttachHostGroupAccountsToUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -944,13 +1006,11 @@ class AttachHostGroupAccountsToUserResponse(TeaModel):
 class AttachHostGroupAccountsToUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
         host_groups: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -960,9 +1020,11 @@ class AttachHostGroupAccountsToUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -975,8 +1037,6 @@ class AttachHostGroupAccountsToUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -1003,6 +1063,10 @@ class AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames(TeaM
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -1026,17 +1090,17 @@ class AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames(TeaM
 class AttachHostGroupAccountsToUserGroupResponseBodyResults(TeaModel):
     def __init__(
         self,
-        host_account_names: List[AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames] = None,
-        user_group_id: str = None,
         code: str = None,
         message: str = None,
         host_group_id: str = None,
+        user_group_id: str = None,
+        host_account_names: List[AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames] = None,
     ):
-        self.host_account_names = host_account_names
-        self.user_group_id = user_group_id
         self.code = code
         self.message = message
         self.host_group_id = host_group_id
+        self.user_group_id = user_group_id
+        self.host_account_names = host_account_names
 
     def validate(self):
         if self.host_account_names:
@@ -1045,36 +1109,40 @@ class AttachHostGroupAccountsToUserGroupResponseBodyResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['HostAccountNames'] = []
-        if self.host_account_names is not None:
-            for k in self.host_account_names:
-                result['HostAccountNames'].append(k.to_map() if k else None)
-        if self.user_group_id is not None:
-            result['UserGroupId'] = self.user_group_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.host_group_id is not None:
             result['HostGroupId'] = self.host_group_id
+        if self.user_group_id is not None:
+            result['UserGroupId'] = self.user_group_id
+        result['HostAccountNames'] = []
+        if self.host_account_names is not None:
+            for k in self.host_account_names:
+                result['HostAccountNames'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.host_account_names = []
-        if m.get('HostAccountNames') is not None:
-            for k in m.get('HostAccountNames'):
-                temp_model = AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames()
-                self.host_account_names.append(temp_model.from_map(k))
-        if m.get('UserGroupId') is not None:
-            self.user_group_id = m.get('UserGroupId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('HostGroupId') is not None:
             self.host_group_id = m.get('HostGroupId')
+        if m.get('UserGroupId') is not None:
+            self.user_group_id = m.get('UserGroupId')
+        self.host_account_names = []
+        if m.get('HostAccountNames') is not None:
+            for k in m.get('HostAccountNames'):
+                temp_model = AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames()
+                self.host_account_names.append(temp_model.from_map(k))
         return self
 
 
@@ -1094,6 +1162,10 @@ class AttachHostGroupAccountsToUserGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1131,6 +1203,10 @@ class AttachHostGroupAccountsToUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1151,76 +1227,78 @@ class AttachHostGroupAccountsToUserGroupResponse(TeaModel):
 class ConfigInstanceSecurityGroupsRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         lang: str = None,
-        authorized_security_groups: List[str] = None,
         instance_id: str = None,
         region_id: str = None,
+        authorized_security_groups: List[str] = None,
     ):
-        self.source_ip = source_ip
         self.lang = lang
-        self.authorized_security_groups = authorized_security_groups
         self.instance_id = instance_id
         self.region_id = region_id
+        self.authorized_security_groups = authorized_security_groups
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.authorized_security_groups is not None:
-            result['AuthorizedSecurityGroups'] = self.authorized_security_groups
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.authorized_security_groups is not None:
+            result['AuthorizedSecurityGroups'] = self.authorized_security_groups
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('AuthorizedSecurityGroups') is not None:
-            self.authorized_security_groups = m.get('AuthorizedSecurityGroups')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('AuthorizedSecurityGroups') is not None:
+            self.authorized_security_groups = m.get('AuthorizedSecurityGroups')
         return self
 
 
 class ConfigInstanceSecurityGroupsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         instance_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.instance_id = instance_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1240,6 +1318,10 @@ class ConfigInstanceSecurityGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1260,14 +1342,10 @@ class ConfigInstanceSecurityGroupsResponse(TeaModel):
 class ConfigInstanceWhiteListRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         instance_id: str = None,
         region_id: str = None,
         white_list: List[str] = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.instance_id = instance_id
         self.region_id = region_id
         self.white_list = white_list
@@ -1276,11 +1354,11 @@ class ConfigInstanceWhiteListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -1291,10 +1369,6 @@ class ConfigInstanceWhiteListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -1307,29 +1381,33 @@ class ConfigInstanceWhiteListRequest(TeaModel):
 class ConfigInstanceWhiteListResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         instance_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.instance_id = instance_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1349,6 +1427,10 @@ class ConfigInstanceWhiteListResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1369,7 +1451,6 @@ class ConfigInstanceWhiteListResponse(TeaModel):
 class CreateHostRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_private_address: str = None,
@@ -1382,7 +1463,6 @@ class CreateHostRequest(TeaModel):
         source_instance_id: str = None,
         instance_region_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_private_address = host_private_address
@@ -1399,9 +1479,11 @@ class CreateHostRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -1428,8 +1510,6 @@ class CreateHostRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -1458,29 +1538,33 @@ class CreateHostRequest(TeaModel):
 class CreateHostResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         host_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.host_id = host_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.host_id is not None:
             result['HostId'] = self.host_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('HostId') is not None:
             self.host_id = m.get('HostId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1500,6 +1584,10 @@ class CreateHostResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1520,7 +1608,6 @@ class CreateHostResponse(TeaModel):
 class CreateHostAccountRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_id: str = None,
@@ -1530,7 +1617,6 @@ class CreateHostAccountRequest(TeaModel):
         private_key: str = None,
         pass_phrase: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_id = host_id
@@ -1544,9 +1630,11 @@ class CreateHostAccountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -1567,8 +1655,6 @@ class CreateHostAccountRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -1591,29 +1677,33 @@ class CreateHostAccountRequest(TeaModel):
 class CreateHostAccountResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         host_account_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.host_account_id = host_account_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.host_account_id is not None:
             result['HostAccountId'] = self.host_account_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('HostAccountId') is not None:
             self.host_account_id = m.get('HostAccountId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1633,6 +1723,10 @@ class CreateHostAccountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1653,13 +1747,11 @@ class CreateHostAccountResponse(TeaModel):
 class CreateHostGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_group_name: str = None,
         comment: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_group_name = host_group_name
@@ -1669,9 +1761,11 @@ class CreateHostGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -1684,8 +1778,6 @@ class CreateHostGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -1710,6 +1802,10 @@ class CreateHostGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.host_group_id is not None:
             result['HostGroupId'] = self.host_group_id
@@ -1742,6 +1838,10 @@ class CreateHostGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1762,7 +1862,6 @@ class CreateHostGroupResponse(TeaModel):
 class CreateUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         source: str = None,
@@ -1775,7 +1874,6 @@ class CreateUserRequest(TeaModel):
         source_user_id: str = None,
         mobile_country_code: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.source = source
@@ -1792,9 +1890,11 @@ class CreateUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -1821,8 +1921,6 @@ class CreateUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -1851,29 +1949,33 @@ class CreateUserRequest(TeaModel):
 class CreateUserResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         user_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.user_id = user_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1893,6 +1995,10 @@ class CreateUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1913,13 +2019,11 @@ class CreateUserResponse(TeaModel):
 class CreateUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_name: str = None,
         comment: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_name = user_group_name
@@ -1929,9 +2033,11 @@ class CreateUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -1944,8 +2050,6 @@ class CreateUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -1960,29 +2064,33 @@ class CreateUserGroupRequest(TeaModel):
 class CreateUserGroupResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         user_group_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.user_group_id = user_group_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.user_group_id is not None:
             result['UserGroupId'] = self.user_group_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('UserGroupId') is not None:
             self.user_group_id = m.get('UserGroupId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2002,6 +2110,10 @@ class CreateUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2022,12 +2134,10 @@ class CreateUserGroupResponse(TeaModel):
 class DeleteHostRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_id = host_id
@@ -2036,9 +2146,11 @@ class DeleteHostRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -2049,8 +2161,6 @@ class DeleteHostRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -2071,6 +2181,10 @@ class DeleteHostResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2099,6 +2213,10 @@ class DeleteHostResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2119,12 +2237,10 @@ class DeleteHostResponse(TeaModel):
 class DeleteHostAccountRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_account_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_account_id = host_account_id
@@ -2133,9 +2249,11 @@ class DeleteHostAccountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -2146,8 +2264,6 @@ class DeleteHostAccountRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -2168,6 +2284,10 @@ class DeleteHostAccountResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2196,6 +2316,10 @@ class DeleteHostAccountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2216,12 +2340,10 @@ class DeleteHostAccountResponse(TeaModel):
 class DeleteHostGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_group_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_group_id = host_group_id
@@ -2230,9 +2352,11 @@ class DeleteHostGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -2243,8 +2367,6 @@ class DeleteHostGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -2265,6 +2387,10 @@ class DeleteHostGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2293,6 +2419,10 @@ class DeleteHostGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2313,12 +2443,10 @@ class DeleteHostGroupResponse(TeaModel):
 class DeleteUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_id = user_id
@@ -2327,9 +2455,11 @@ class DeleteUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -2340,8 +2470,6 @@ class DeleteUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -2362,6 +2490,10 @@ class DeleteUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2390,6 +2522,10 @@ class DeleteUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2410,12 +2546,10 @@ class DeleteUserResponse(TeaModel):
 class DeleteUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -2424,9 +2558,11 @@ class DeleteUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -2437,8 +2573,6 @@ class DeleteUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -2459,6 +2593,10 @@ class DeleteUserGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2487,6 +2625,10 @@ class DeleteUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2507,13 +2649,9 @@ class DeleteUserGroupResponse(TeaModel):
 class DescribeInstanceAttributeRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         region_id: str = None,
         instance_id: str = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.region_id = region_id
         self.instance_id = instance_id
 
@@ -2521,11 +2659,11 @@ class DescribeInstanceAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.instance_id is not None:
@@ -2534,10 +2672,6 @@ class DescribeInstanceAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('InstanceId') is not None:
@@ -2558,6 +2692,10 @@ class DescribeInstanceAttributeResponseBodyInstanceAttributePorts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.standard_port is not None:
             result['StandardPort'] = self.standard_port
@@ -2579,53 +2717,57 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
         self,
         vpc_id: str = None,
         vswitch_id: str = None,
-        ports: List[DescribeInstanceAttributeResponseBodyInstanceAttributePorts] = None,
-        authorized_security_groups: List[str] = None,
         description: str = None,
-        private_export_ips: List[str] = None,
-        private_white_list: List[str] = None,
         expire_time: int = None,
-        eni_instance_id: str = None,
         modify_password_module: str = None,
-        internet_endpoint: str = None,
+        eni_instance_id: str = None,
         instance_id: str = None,
-        security_group_ids: List[str] = None,
+        internet_endpoint: str = None,
         region_id: str = None,
         intranet_endpoint: str = None,
-        public_export_ips: List[str] = None,
         start_time: int = None,
-        public_white_list: List[str] = None,
+        resource_group_id: str = None,
+        network_proxy_module: str = None,
         web_terminal_module: str = None,
         instance_status: str = None,
         license_code: str = None,
-        public_ips: List[str] = None,
         public_network_access: bool = None,
         storage: int = None,
+        ports: List[DescribeInstanceAttributeResponseBodyInstanceAttributePorts] = None,
+        public_export_ips: List[str] = None,
+        public_white_list: List[str] = None,
+        authorized_security_groups: List[str] = None,
+        private_export_ips: List[str] = None,
+        public_ips: List[str] = None,
+        security_group_ids: List[str] = None,
+        private_white_list: List[str] = None,
     ):
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
-        self.ports = ports
-        self.authorized_security_groups = authorized_security_groups
         self.description = description
-        self.private_export_ips = private_export_ips
-        self.private_white_list = private_white_list
         self.expire_time = expire_time
-        self.eni_instance_id = eni_instance_id
         self.modify_password_module = modify_password_module
-        self.internet_endpoint = internet_endpoint
+        self.eni_instance_id = eni_instance_id
         self.instance_id = instance_id
-        self.security_group_ids = security_group_ids
+        self.internet_endpoint = internet_endpoint
         self.region_id = region_id
         self.intranet_endpoint = intranet_endpoint
-        self.public_export_ips = public_export_ips
         self.start_time = start_time
-        self.public_white_list = public_white_list
+        self.resource_group_id = resource_group_id
+        self.network_proxy_module = network_proxy_module
         self.web_terminal_module = web_terminal_module
         self.instance_status = instance_status
         self.license_code = license_code
-        self.public_ips = public_ips
         self.public_network_access = public_network_access
         self.storage = storage
+        self.ports = ports
+        self.public_export_ips = public_export_ips
+        self.public_white_list = public_white_list
+        self.authorized_security_groups = authorized_security_groups
+        self.private_export_ips = private_export_ips
+        self.public_ips = public_ips
+        self.security_group_ids = security_group_ids
+        self.private_white_list = private_white_list
 
     def validate(self):
         if self.ports:
@@ -2634,57 +2776,65 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
             result['VswitchId'] = self.vswitch_id
-        result['Ports'] = []
-        if self.ports is not None:
-            for k in self.ports:
-                result['Ports'].append(k.to_map() if k else None)
-        if self.authorized_security_groups is not None:
-            result['AuthorizedSecurityGroups'] = self.authorized_security_groups
         if self.description is not None:
             result['Description'] = self.description
-        if self.private_export_ips is not None:
-            result['PrivateExportIps'] = self.private_export_ips
-        if self.private_white_list is not None:
-            result['PrivateWhiteList'] = self.private_white_list
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
-        if self.eni_instance_id is not None:
-            result['EniInstanceId'] = self.eni_instance_id
         if self.modify_password_module is not None:
             result['ModifyPasswordModule'] = self.modify_password_module
-        if self.internet_endpoint is not None:
-            result['InternetEndpoint'] = self.internet_endpoint
+        if self.eni_instance_id is not None:
+            result['EniInstanceId'] = self.eni_instance_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.security_group_ids is not None:
-            result['SecurityGroupIds'] = self.security_group_ids
+        if self.internet_endpoint is not None:
+            result['InternetEndpoint'] = self.internet_endpoint
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.intranet_endpoint is not None:
             result['IntranetEndpoint'] = self.intranet_endpoint
-        if self.public_export_ips is not None:
-            result['PublicExportIps'] = self.public_export_ips
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-        if self.public_white_list is not None:
-            result['PublicWhiteList'] = self.public_white_list
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.network_proxy_module is not None:
+            result['NetworkProxyModule'] = self.network_proxy_module
         if self.web_terminal_module is not None:
             result['WebTerminalModule'] = self.web_terminal_module
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
         if self.license_code is not None:
             result['LicenseCode'] = self.license_code
-        if self.public_ips is not None:
-            result['PublicIps'] = self.public_ips
         if self.public_network_access is not None:
             result['PublicNetworkAccess'] = self.public_network_access
         if self.storage is not None:
             result['Storage'] = self.storage
+        result['Ports'] = []
+        if self.ports is not None:
+            for k in self.ports:
+                result['Ports'].append(k.to_map() if k else None)
+        if self.public_export_ips is not None:
+            result['PublicExportIps'] = self.public_export_ips
+        if self.public_white_list is not None:
+            result['PublicWhiteList'] = self.public_white_list
+        if self.authorized_security_groups is not None:
+            result['AuthorizedSecurityGroups'] = self.authorized_security_groups
+        if self.private_export_ips is not None:
+            result['PrivateExportIps'] = self.private_export_ips
+        if self.public_ips is not None:
+            result['PublicIps'] = self.public_ips
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        if self.private_white_list is not None:
+            result['PrivateWhiteList'] = self.private_white_list
         return result
 
     def from_map(self, m: dict = None):
@@ -2693,53 +2843,57 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
             self.vswitch_id = m.get('VswitchId')
-        self.ports = []
-        if m.get('Ports') is not None:
-            for k in m.get('Ports'):
-                temp_model = DescribeInstanceAttributeResponseBodyInstanceAttributePorts()
-                self.ports.append(temp_model.from_map(k))
-        if m.get('AuthorizedSecurityGroups') is not None:
-            self.authorized_security_groups = m.get('AuthorizedSecurityGroups')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('PrivateExportIps') is not None:
-            self.private_export_ips = m.get('PrivateExportIps')
-        if m.get('PrivateWhiteList') is not None:
-            self.private_white_list = m.get('PrivateWhiteList')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
-        if m.get('EniInstanceId') is not None:
-            self.eni_instance_id = m.get('EniInstanceId')
         if m.get('ModifyPasswordModule') is not None:
             self.modify_password_module = m.get('ModifyPasswordModule')
-        if m.get('InternetEndpoint') is not None:
-            self.internet_endpoint = m.get('InternetEndpoint')
+        if m.get('EniInstanceId') is not None:
+            self.eni_instance_id = m.get('EniInstanceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('SecurityGroupIds') is not None:
-            self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('InternetEndpoint') is not None:
+            self.internet_endpoint = m.get('InternetEndpoint')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('IntranetEndpoint') is not None:
             self.intranet_endpoint = m.get('IntranetEndpoint')
-        if m.get('PublicExportIps') is not None:
-            self.public_export_ips = m.get('PublicExportIps')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-        if m.get('PublicWhiteList') is not None:
-            self.public_white_list = m.get('PublicWhiteList')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('NetworkProxyModule') is not None:
+            self.network_proxy_module = m.get('NetworkProxyModule')
         if m.get('WebTerminalModule') is not None:
             self.web_terminal_module = m.get('WebTerminalModule')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
         if m.get('LicenseCode') is not None:
             self.license_code = m.get('LicenseCode')
-        if m.get('PublicIps') is not None:
-            self.public_ips = m.get('PublicIps')
         if m.get('PublicNetworkAccess') is not None:
             self.public_network_access = m.get('PublicNetworkAccess')
         if m.get('Storage') is not None:
             self.storage = m.get('Storage')
+        self.ports = []
+        if m.get('Ports') is not None:
+            for k in m.get('Ports'):
+                temp_model = DescribeInstanceAttributeResponseBodyInstanceAttributePorts()
+                self.ports.append(temp_model.from_map(k))
+        if m.get('PublicExportIps') is not None:
+            self.public_export_ips = m.get('PublicExportIps')
+        if m.get('PublicWhiteList') is not None:
+            self.public_white_list = m.get('PublicWhiteList')
+        if m.get('AuthorizedSecurityGroups') is not None:
+            self.authorized_security_groups = m.get('AuthorizedSecurityGroups')
+        if m.get('PrivateExportIps') is not None:
+            self.private_export_ips = m.get('PrivateExportIps')
+        if m.get('PublicIps') is not None:
+            self.public_ips = m.get('PublicIps')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('PrivateWhiteList') is not None:
+            self.private_white_list = m.get('PrivateWhiteList')
         return self
 
 
@@ -2757,6 +2911,10 @@ class DescribeInstanceAttributeResponseBody(TeaModel):
             self.instance_attribute.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2790,6 +2948,10 @@ class DescribeInstanceAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2820,6 +2982,10 @@ class DescribeInstancesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -2839,8 +3005,6 @@ class DescribeInstancesRequestTag(TeaModel):
 class DescribeInstancesRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
@@ -2849,8 +3013,6 @@ class DescribeInstancesRequest(TeaModel):
         instance_id: List[str] = None,
         tag: List[DescribeInstancesRequestTag] = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.page_number = page_number
         self.page_size = page_size
         self.region_id = region_id
@@ -2866,11 +3028,11 @@ class DescribeInstancesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -2891,10 +3053,6 @@ class DescribeInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -2925,11 +3083,12 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         description: str = None,
         expire_time: int = None,
         legacy: bool = None,
-        internet_endpoint: str = None,
         instance_id: str = None,
+        internet_endpoint: str = None,
         region_id: str = None,
         intranet_endpoint: str = None,
         start_time: int = None,
+        resource_group_id: str = None,
         instance_status: str = None,
         license_code: str = None,
         public_network_access: bool = None,
@@ -2941,11 +3100,12 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.description = description
         self.expire_time = expire_time
         self.legacy = legacy
-        self.internet_endpoint = internet_endpoint
         self.instance_id = instance_id
+        self.internet_endpoint = internet_endpoint
         self.region_id = region_id
         self.intranet_endpoint = intranet_endpoint
         self.start_time = start_time
+        self.resource_group_id = resource_group_id
         self.instance_status = instance_status
         self.license_code = license_code
         self.public_network_access = public_network_access
@@ -2954,6 +3114,10 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
@@ -2969,16 +3133,18 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['ExpireTime'] = self.expire_time
         if self.legacy is not None:
             result['Legacy'] = self.legacy
-        if self.internet_endpoint is not None:
-            result['InternetEndpoint'] = self.internet_endpoint
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.internet_endpoint is not None:
+            result['InternetEndpoint'] = self.internet_endpoint
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.intranet_endpoint is not None:
             result['IntranetEndpoint'] = self.intranet_endpoint
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
         if self.license_code is not None:
@@ -3003,16 +3169,18 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.expire_time = m.get('ExpireTime')
         if m.get('Legacy') is not None:
             self.legacy = m.get('Legacy')
-        if m.get('InternetEndpoint') is not None:
-            self.internet_endpoint = m.get('InternetEndpoint')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InternetEndpoint') is not None:
+            self.internet_endpoint = m.get('InternetEndpoint')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('IntranetEndpoint') is not None:
             self.intranet_endpoint = m.get('IntranetEndpoint')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
         if m.get('LicenseCode') is not None:
@@ -3025,13 +3193,13 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
 class DescribeInstancesResponseBody(TeaModel):
     def __init__(
         self,
-        instances: List[DescribeInstancesResponseBodyInstances] = None,
         total_count: int = None,
         request_id: str = None,
+        instances: List[DescribeInstancesResponseBodyInstances] = None,
     ):
-        self.instances = instances
         self.total_count = total_count
         self.request_id = request_id
+        self.instances = instances
 
     def validate(self):
         if self.instances:
@@ -3040,28 +3208,32 @@ class DescribeInstancesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['Instances'] = []
-        if self.instances is not None:
-            for k in self.instances:
-                result['Instances'].append(k.to_map() if k else None)
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['Instances'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.instances = []
         if m.get('Instances') is not None:
             for k in m.get('Instances'):
                 temp_model = DescribeInstancesResponseBodyInstances()
                 self.instances.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3081,6 +3253,10 @@ class DescribeInstancesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3101,33 +3277,25 @@ class DescribeInstancesResponse(TeaModel):
 class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         accept_language: str = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.accept_language = accept_language
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
         return self
@@ -3136,33 +3304,37 @@ class DescribeRegionsRequest(TeaModel):
 class DescribeRegionsResponseBodyRegions(TeaModel):
     def __init__(
         self,
-        local_name: str = None,
         region_endpoint: str = None,
+        local_name: str = None,
         region_id: str = None,
     ):
-        self.local_name = local_name
         self.region_endpoint = region_endpoint
+        self.local_name = local_name
         self.region_id = region_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.local_name is not None:
-            result['LocalName'] = self.local_name
         if self.region_endpoint is not None:
             result['RegionEndpoint'] = self.region_endpoint
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LocalName') is not None:
-            self.local_name = m.get('LocalName')
         if m.get('RegionEndpoint') is not None:
             self.region_endpoint = m.get('RegionEndpoint')
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -3184,6 +3356,10 @@ class DescribeRegionsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3221,6 +3397,10 @@ class DescribeRegionsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3241,13 +3421,11 @@ class DescribeRegionsResponse(TeaModel):
 class DetachHostAccountsFromUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_id: str = None,
         hosts: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_id = user_id
@@ -3257,9 +3435,11 @@ class DetachHostAccountsFromUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -3272,8 +3452,6 @@ class DetachHostAccountsFromUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -3300,6 +3478,10 @@ class DetachHostAccountsFromUserResponseBodyResultsHostAccounts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -3323,17 +3505,17 @@ class DetachHostAccountsFromUserResponseBodyResultsHostAccounts(TeaModel):
 class DetachHostAccountsFromUserResponseBodyResults(TeaModel):
     def __init__(
         self,
-        host_accounts: List[DetachHostAccountsFromUserResponseBodyResultsHostAccounts] = None,
-        user_id: str = None,
         code: str = None,
         message: str = None,
         host_id: str = None,
+        user_id: str = None,
+        host_accounts: List[DetachHostAccountsFromUserResponseBodyResultsHostAccounts] = None,
     ):
-        self.host_accounts = host_accounts
-        self.user_id = user_id
         self.code = code
         self.message = message
         self.host_id = host_id
+        self.user_id = user_id
+        self.host_accounts = host_accounts
 
     def validate(self):
         if self.host_accounts:
@@ -3342,36 +3524,40 @@ class DetachHostAccountsFromUserResponseBodyResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['HostAccounts'] = []
-        if self.host_accounts is not None:
-            for k in self.host_accounts:
-                result['HostAccounts'].append(k.to_map() if k else None)
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.host_id is not None:
             result['HostId'] = self.host_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        result['HostAccounts'] = []
+        if self.host_accounts is not None:
+            for k in self.host_accounts:
+                result['HostAccounts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.host_accounts = []
-        if m.get('HostAccounts') is not None:
-            for k in m.get('HostAccounts'):
-                temp_model = DetachHostAccountsFromUserResponseBodyResultsHostAccounts()
-                self.host_accounts.append(temp_model.from_map(k))
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('HostId') is not None:
             self.host_id = m.get('HostId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        self.host_accounts = []
+        if m.get('HostAccounts') is not None:
+            for k in m.get('HostAccounts'):
+                temp_model = DetachHostAccountsFromUserResponseBodyResultsHostAccounts()
+                self.host_accounts.append(temp_model.from_map(k))
         return self
 
 
@@ -3391,6 +3577,10 @@ class DetachHostAccountsFromUserResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3428,6 +3618,10 @@ class DetachHostAccountsFromUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3448,13 +3642,11 @@ class DetachHostAccountsFromUserResponse(TeaModel):
 class DetachHostAccountsFromUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
         hosts: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -3464,9 +3656,11 @@ class DetachHostAccountsFromUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -3479,8 +3673,6 @@ class DetachHostAccountsFromUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -3507,6 +3699,10 @@ class DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -3530,17 +3726,17 @@ class DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts(TeaModel):
 class DetachHostAccountsFromUserGroupResponseBodyResults(TeaModel):
     def __init__(
         self,
-        user_group_id: str = None,
-        host_accounts: List[DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts] = None,
         code: str = None,
         message: str = None,
         host_id: str = None,
+        user_group_id: str = None,
+        host_accounts: List[DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts] = None,
     ):
-        self.user_group_id = user_group_id
-        self.host_accounts = host_accounts
         self.code = code
         self.message = message
         self.host_id = host_id
+        self.user_group_id = user_group_id
+        self.host_accounts = host_accounts
 
     def validate(self):
         if self.host_accounts:
@@ -3549,23 +3745,33 @@ class DetachHostAccountsFromUserGroupResponseBodyResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_group_id is not None:
-            result['UserGroupId'] = self.user_group_id
-        result['HostAccounts'] = []
-        if self.host_accounts is not None:
-            for k in self.host_accounts:
-                result['HostAccounts'].append(k.to_map() if k else None)
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.host_id is not None:
             result['HostId'] = self.host_id
+        if self.user_group_id is not None:
+            result['UserGroupId'] = self.user_group_id
+        result['HostAccounts'] = []
+        if self.host_accounts is not None:
+            for k in self.host_accounts:
+                result['HostAccounts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
         if m.get('UserGroupId') is not None:
             self.user_group_id = m.get('UserGroupId')
         self.host_accounts = []
@@ -3573,12 +3779,6 @@ class DetachHostAccountsFromUserGroupResponseBodyResults(TeaModel):
             for k in m.get('HostAccounts'):
                 temp_model = DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts()
                 self.host_accounts.append(temp_model.from_map(k))
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('HostId') is not None:
-            self.host_id = m.get('HostId')
         return self
 
 
@@ -3598,6 +3798,10 @@ class DetachHostAccountsFromUserGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3635,6 +3839,10 @@ class DetachHostAccountsFromUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3655,13 +3863,11 @@ class DetachHostAccountsFromUserGroupResponse(TeaModel):
 class DetachHostGroupAccountsFromUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_id: str = None,
         host_groups: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_id = user_id
@@ -3671,9 +3877,11 @@ class DetachHostGroupAccountsFromUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -3686,8 +3894,6 @@ class DetachHostGroupAccountsFromUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -3714,6 +3920,10 @@ class DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames(TeaMode
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -3737,17 +3947,17 @@ class DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames(TeaMode
 class DetachHostGroupAccountsFromUserResponseBodyResults(TeaModel):
     def __init__(
         self,
-        host_account_names: List[DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames] = None,
-        user_id: str = None,
         code: str = None,
         message: str = None,
         host_group_id: str = None,
+        user_id: str = None,
+        host_account_names: List[DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames] = None,
     ):
-        self.host_account_names = host_account_names
-        self.user_id = user_id
         self.code = code
         self.message = message
         self.host_group_id = host_group_id
+        self.user_id = user_id
+        self.host_account_names = host_account_names
 
     def validate(self):
         if self.host_account_names:
@@ -3756,36 +3966,40 @@ class DetachHostGroupAccountsFromUserResponseBodyResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['HostAccountNames'] = []
-        if self.host_account_names is not None:
-            for k in self.host_account_names:
-                result['HostAccountNames'].append(k.to_map() if k else None)
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.host_group_id is not None:
             result['HostGroupId'] = self.host_group_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        result['HostAccountNames'] = []
+        if self.host_account_names is not None:
+            for k in self.host_account_names:
+                result['HostAccountNames'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.host_account_names = []
-        if m.get('HostAccountNames') is not None:
-            for k in m.get('HostAccountNames'):
-                temp_model = DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames()
-                self.host_account_names.append(temp_model.from_map(k))
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('HostGroupId') is not None:
             self.host_group_id = m.get('HostGroupId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        self.host_account_names = []
+        if m.get('HostAccountNames') is not None:
+            for k in m.get('HostAccountNames'):
+                temp_model = DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames()
+                self.host_account_names.append(temp_model.from_map(k))
         return self
 
 
@@ -3805,6 +4019,10 @@ class DetachHostGroupAccountsFromUserResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3842,6 +4060,10 @@ class DetachHostGroupAccountsFromUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -3862,13 +4084,11 @@ class DetachHostGroupAccountsFromUserResponse(TeaModel):
 class DetachHostGroupAccountsFromUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
         host_groups: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -3878,9 +4098,11 @@ class DetachHostGroupAccountsFromUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -3893,8 +4115,6 @@ class DetachHostGroupAccountsFromUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -3921,6 +4141,10 @@ class DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames(Te
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -3944,17 +4168,17 @@ class DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames(Te
 class DetachHostGroupAccountsFromUserGroupResponseBodyResults(TeaModel):
     def __init__(
         self,
-        host_account_names: List[DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames] = None,
-        user_group_id: str = None,
         code: str = None,
         message: str = None,
         host_group_id: str = None,
+        user_group_id: str = None,
+        host_account_names: List[DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames] = None,
     ):
-        self.host_account_names = host_account_names
-        self.user_group_id = user_group_id
         self.code = code
         self.message = message
         self.host_group_id = host_group_id
+        self.user_group_id = user_group_id
+        self.host_account_names = host_account_names
 
     def validate(self):
         if self.host_account_names:
@@ -3963,36 +4187,40 @@ class DetachHostGroupAccountsFromUserGroupResponseBodyResults(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['HostAccountNames'] = []
-        if self.host_account_names is not None:
-            for k in self.host_account_names:
-                result['HostAccountNames'].append(k.to_map() if k else None)
-        if self.user_group_id is not None:
-            result['UserGroupId'] = self.user_group_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.host_group_id is not None:
             result['HostGroupId'] = self.host_group_id
+        if self.user_group_id is not None:
+            result['UserGroupId'] = self.user_group_id
+        result['HostAccountNames'] = []
+        if self.host_account_names is not None:
+            for k in self.host_account_names:
+                result['HostAccountNames'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.host_account_names = []
-        if m.get('HostAccountNames') is not None:
-            for k in m.get('HostAccountNames'):
-                temp_model = DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames()
-                self.host_account_names.append(temp_model.from_map(k))
-        if m.get('UserGroupId') is not None:
-            self.user_group_id = m.get('UserGroupId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('HostGroupId') is not None:
             self.host_group_id = m.get('HostGroupId')
+        if m.get('UserGroupId') is not None:
+            self.user_group_id = m.get('UserGroupId')
+        self.host_account_names = []
+        if m.get('HostAccountNames') is not None:
+            for k in m.get('HostAccountNames'):
+                temp_model = DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames()
+                self.host_account_names.append(temp_model.from_map(k))
         return self
 
 
@@ -4012,6 +4240,10 @@ class DetachHostGroupAccountsFromUserGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4049,6 +4281,10 @@ class DetachHostGroupAccountsFromUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4069,13 +4305,9 @@ class DetachHostGroupAccountsFromUserGroupResponse(TeaModel):
 class DisableInstancePublicAccessRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         instance_id: str = None,
         region_id: str = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.instance_id = instance_id
         self.region_id = region_id
 
@@ -4083,11 +4315,11 @@ class DisableInstancePublicAccessRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -4096,10 +4328,6 @@ class DisableInstancePublicAccessRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -4110,29 +4338,33 @@ class DisableInstancePublicAccessRequest(TeaModel):
 class DisableInstancePublicAccessResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         instance_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.instance_id = instance_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4152,6 +4384,10 @@ class DisableInstancePublicAccessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4172,13 +4408,9 @@ class DisableInstancePublicAccessResponse(TeaModel):
 class EnableInstancePublicAccessRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         instance_id: str = None,
         region_id: str = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.instance_id = instance_id
         self.region_id = region_id
 
@@ -4186,11 +4418,11 @@ class EnableInstancePublicAccessRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -4199,10 +4431,6 @@ class EnableInstancePublicAccessRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -4213,29 +4441,33 @@ class EnableInstancePublicAccessRequest(TeaModel):
 class EnableInstancePublicAccessResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         instance_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.instance_id = instance_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4255,6 +4487,10 @@ class EnableInstancePublicAccessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4275,12 +4511,10 @@ class EnableInstancePublicAccessResponse(TeaModel):
 class GetHostRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_id = host_id
@@ -4289,9 +4523,11 @@ class GetHostRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -4302,8 +4538,6 @@ class GetHostRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -4316,35 +4550,39 @@ class GetHostRequest(TeaModel):
 class GetHostResponseBodyHostProtocols(TeaModel):
     def __init__(
         self,
-        protocol_name: str = None,
         host_finger_print: str = None,
         port: int = None,
+        protocol_name: str = None,
     ):
-        self.protocol_name = protocol_name
         self.host_finger_print = host_finger_print
         self.port = port
+        self.protocol_name = protocol_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.protocol_name is not None:
-            result['ProtocolName'] = self.protocol_name
         if self.host_finger_print is not None:
             result['HostFingerPrint'] = self.host_finger_print
         if self.port is not None:
             result['Port'] = self.port
+        if self.protocol_name is not None:
+            result['ProtocolName'] = self.protocol_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ProtocolName') is not None:
-            self.protocol_name = m.get('ProtocolName')
         if m.get('HostFingerPrint') is not None:
             self.host_finger_print = m.get('HostFingerPrint')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('ProtocolName') is not None:
+            self.protocol_name = m.get('ProtocolName')
         return self
 
 
@@ -4354,7 +4592,6 @@ class GetHostResponseBodyHost(TeaModel):
         comment: str = None,
         active_address_type: str = None,
         host_public_address: str = None,
-        protocols: List[GetHostResponseBodyHostProtocols] = None,
         host_name: str = None,
         source: str = None,
         host_private_address: str = None,
@@ -4362,11 +4599,11 @@ class GetHostResponseBodyHost(TeaModel):
         host_id: str = None,
         source_instance_state: str = None,
         source_instance_id: str = None,
+        protocols: List[GetHostResponseBodyHostProtocols] = None,
     ):
         self.comment = comment
         self.active_address_type = active_address_type
         self.host_public_address = host_public_address
-        self.protocols = protocols
         self.host_name = host_name
         self.source = source
         self.host_private_address = host_private_address
@@ -4374,6 +4611,7 @@ class GetHostResponseBodyHost(TeaModel):
         self.host_id = host_id
         self.source_instance_state = source_instance_state
         self.source_instance_id = source_instance_id
+        self.protocols = protocols
 
     def validate(self):
         if self.protocols:
@@ -4382,6 +4620,10 @@ class GetHostResponseBodyHost(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -4389,10 +4631,6 @@ class GetHostResponseBodyHost(TeaModel):
             result['ActiveAddressType'] = self.active_address_type
         if self.host_public_address is not None:
             result['HostPublicAddress'] = self.host_public_address
-        result['Protocols'] = []
-        if self.protocols is not None:
-            for k in self.protocols:
-                result['Protocols'].append(k.to_map() if k else None)
         if self.host_name is not None:
             result['HostName'] = self.host_name
         if self.source is not None:
@@ -4407,6 +4645,10 @@ class GetHostResponseBodyHost(TeaModel):
             result['SourceInstanceState'] = self.source_instance_state
         if self.source_instance_id is not None:
             result['SourceInstanceId'] = self.source_instance_id
+        result['Protocols'] = []
+        if self.protocols is not None:
+            for k in self.protocols:
+                result['Protocols'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -4417,11 +4659,6 @@ class GetHostResponseBodyHost(TeaModel):
             self.active_address_type = m.get('ActiveAddressType')
         if m.get('HostPublicAddress') is not None:
             self.host_public_address = m.get('HostPublicAddress')
-        self.protocols = []
-        if m.get('Protocols') is not None:
-            for k in m.get('Protocols'):
-                temp_model = GetHostResponseBodyHostProtocols()
-                self.protocols.append(temp_model.from_map(k))
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')
         if m.get('Source') is not None:
@@ -4436,6 +4673,11 @@ class GetHostResponseBodyHost(TeaModel):
             self.source_instance_state = m.get('SourceInstanceState')
         if m.get('SourceInstanceId') is not None:
             self.source_instance_id = m.get('SourceInstanceId')
+        self.protocols = []
+        if m.get('Protocols') is not None:
+            for k in m.get('Protocols'):
+                temp_model = GetHostResponseBodyHostProtocols()
+                self.protocols.append(temp_model.from_map(k))
         return self
 
 
@@ -4453,6 +4695,10 @@ class GetHostResponseBody(TeaModel):
             self.host.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4486,6 +4732,10 @@ class GetHostResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4506,12 +4756,10 @@ class GetHostResponse(TeaModel):
 class GetHostAccountRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_account_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_account_id = host_account_id
@@ -4520,9 +4768,11 @@ class GetHostAccountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -4533,8 +4783,6 @@ class GetHostAccountRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -4565,6 +4813,10 @@ class GetHostAccountResponseBodyHostAccount(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.has_password is not None:
             result['HasPassword'] = self.has_password
@@ -4611,6 +4863,10 @@ class GetHostAccountResponseBody(TeaModel):
             self.host_account.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4644,6 +4900,10 @@ class GetHostAccountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4664,12 +4924,10 @@ class GetHostAccountResponse(TeaModel):
 class GetHostGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_group_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_group_id = host_group_id
@@ -4678,9 +4936,11 @@ class GetHostGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -4691,8 +4951,6 @@ class GetHostGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -4705,33 +4963,37 @@ class GetHostGroupRequest(TeaModel):
 class GetHostGroupResponseBodyHostGroup(TeaModel):
     def __init__(
         self,
-        comment: str = None,
         host_group_id: str = None,
+        comment: str = None,
         host_group_name: str = None,
     ):
-        self.comment = comment
         self.host_group_id = host_group_id
+        self.comment = comment
         self.host_group_name = host_group_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.comment is not None:
-            result['Comment'] = self.comment
         if self.host_group_id is not None:
             result['HostGroupId'] = self.host_group_id
+        if self.comment is not None:
+            result['Comment'] = self.comment
         if self.host_group_name is not None:
             result['HostGroupName'] = self.host_group_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Comment') is not None:
-            self.comment = m.get('Comment')
         if m.get('HostGroupId') is not None:
             self.host_group_id = m.get('HostGroupId')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
         if m.get('HostGroupName') is not None:
             self.host_group_name = m.get('HostGroupName')
         return self
@@ -4751,6 +5013,10 @@ class GetHostGroupResponseBody(TeaModel):
             self.host_group.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4784,6 +5050,10 @@ class GetHostGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4801,15 +5071,294 @@ class GetHostGroupResponse(TeaModel):
         return self
 
 
+class GetInstanceUpgradeInfoRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.lang = lang
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList(TeaModel):
+    def __init__(
+        self,
+        candidate_start_time: int = None,
+        candidate_end_time: int = None,
+    ):
+        self.candidate_start_time = candidate_start_time
+        self.candidate_end_time = candidate_end_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.candidate_start_time is not None:
+            result['CandidateStartTime'] = self.candidate_start_time
+        if self.candidate_end_time is not None:
+            result['CandidateEndTime'] = self.candidate_end_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CandidateStartTime') is not None:
+            self.candidate_start_time = m.get('CandidateStartTime')
+        if m.get('CandidateEndTime') is not None:
+            self.candidate_end_time = m.get('CandidateEndTime')
+        return self
+
+
+class GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList(TeaModel):
+    def __init__(
+        self,
+        invalid_end_time: int = None,
+        invalid_start_time: int = None,
+    ):
+        self.invalid_end_time = invalid_end_time
+        self.invalid_start_time = invalid_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.invalid_end_time is not None:
+            result['InvalidEndTime'] = self.invalid_end_time
+        if self.invalid_start_time is not None:
+            result['InvalidStartTime'] = self.invalid_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InvalidEndTime') is not None:
+            self.invalid_end_time = m.get('InvalidEndTime')
+        if m.get('InvalidStartTime') is not None:
+            self.invalid_start_time = m.get('InvalidStartTime')
+        return self
+
+
+class GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo(TeaModel):
+    def __init__(
+        self,
+        upgrade_mode: str = None,
+        operable: bool = None,
+        ali_uid: int = None,
+        latest_start_time: int = None,
+        image_version: str = None,
+        instance_id: str = None,
+        period_interval: int = None,
+        upgrade_start_time: int = None,
+        upgrade_end_time: int = None,
+        candidate_period_list: List[GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList] = None,
+        invalid_period_list: List[GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList] = None,
+    ):
+        self.upgrade_mode = upgrade_mode
+        self.operable = operable
+        self.ali_uid = ali_uid
+        self.latest_start_time = latest_start_time
+        self.image_version = image_version
+        self.instance_id = instance_id
+        self.period_interval = period_interval
+        self.upgrade_start_time = upgrade_start_time
+        self.upgrade_end_time = upgrade_end_time
+        self.candidate_period_list = candidate_period_list
+        self.invalid_period_list = invalid_period_list
+
+    def validate(self):
+        if self.candidate_period_list:
+            for k in self.candidate_period_list:
+                if k:
+                    k.validate()
+        if self.invalid_period_list:
+            for k in self.invalid_period_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.upgrade_mode is not None:
+            result['UpgradeMode'] = self.upgrade_mode
+        if self.operable is not None:
+            result['Operable'] = self.operable
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.latest_start_time is not None:
+            result['LatestStartTime'] = self.latest_start_time
+        if self.image_version is not None:
+            result['ImageVersion'] = self.image_version
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.period_interval is not None:
+            result['PeriodInterval'] = self.period_interval
+        if self.upgrade_start_time is not None:
+            result['UpgradeStartTime'] = self.upgrade_start_time
+        if self.upgrade_end_time is not None:
+            result['UpgradeEndTime'] = self.upgrade_end_time
+        result['CandidatePeriodList'] = []
+        if self.candidate_period_list is not None:
+            for k in self.candidate_period_list:
+                result['CandidatePeriodList'].append(k.to_map() if k else None)
+        result['InvalidPeriodList'] = []
+        if self.invalid_period_list is not None:
+            for k in self.invalid_period_list:
+                result['InvalidPeriodList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UpgradeMode') is not None:
+            self.upgrade_mode = m.get('UpgradeMode')
+        if m.get('Operable') is not None:
+            self.operable = m.get('Operable')
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('LatestStartTime') is not None:
+            self.latest_start_time = m.get('LatestStartTime')
+        if m.get('ImageVersion') is not None:
+            self.image_version = m.get('ImageVersion')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PeriodInterval') is not None:
+            self.period_interval = m.get('PeriodInterval')
+        if m.get('UpgradeStartTime') is not None:
+            self.upgrade_start_time = m.get('UpgradeStartTime')
+        if m.get('UpgradeEndTime') is not None:
+            self.upgrade_end_time = m.get('UpgradeEndTime')
+        self.candidate_period_list = []
+        if m.get('CandidatePeriodList') is not None:
+            for k in m.get('CandidatePeriodList'):
+                temp_model = GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList()
+                self.candidate_period_list.append(temp_model.from_map(k))
+        self.invalid_period_list = []
+        if m.get('InvalidPeriodList') is not None:
+            for k in m.get('InvalidPeriodList'):
+                temp_model = GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList()
+                self.invalid_period_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetInstanceUpgradeInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        instance_upgrade_info: GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo = None,
+    ):
+        self.request_id = request_id
+        self.instance_upgrade_info = instance_upgrade_info
+
+    def validate(self):
+        if self.instance_upgrade_info:
+            self.instance_upgrade_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.instance_upgrade_info is not None:
+            result['InstanceUpgradeInfo'] = self.instance_upgrade_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('InstanceUpgradeInfo') is not None:
+            temp_model = GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo()
+            self.instance_upgrade_info = temp_model.from_map(m['InstanceUpgradeInfo'])
+        return self
+
+
+class GetInstanceUpgradeInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetInstanceUpgradeInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetInstanceUpgradeInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_id = user_id
@@ -4818,9 +5367,11 @@ class GetUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -4831,8 +5382,6 @@ class GetUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -4853,8 +5402,8 @@ class GetUserResponseBodyUser(TeaModel):
         user_id: str = None,
         source: str = None,
         user_name: str = None,
-        user_state: List[str] = None,
         source_user_id: str = None,
+        user_state: List[str] = None,
     ):
         self.display_name = display_name
         self.comment = comment
@@ -4864,13 +5413,17 @@ class GetUserResponseBodyUser(TeaModel):
         self.user_id = user_id
         self.source = source
         self.user_name = user_name
-        self.user_state = user_state
         self.source_user_id = source_user_id
+        self.user_state = user_state
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
@@ -4888,10 +5441,10 @@ class GetUserResponseBodyUser(TeaModel):
             result['Source'] = self.source
         if self.user_name is not None:
             result['UserName'] = self.user_name
-        if self.user_state is not None:
-            result['UserState'] = self.user_state
         if self.source_user_id is not None:
             result['SourceUserId'] = self.source_user_id
+        if self.user_state is not None:
+            result['UserState'] = self.user_state
         return result
 
     def from_map(self, m: dict = None):
@@ -4912,41 +5465,45 @@ class GetUserResponseBodyUser(TeaModel):
             self.source = m.get('Source')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
-        if m.get('UserState') is not None:
-            self.user_state = m.get('UserState')
         if m.get('SourceUserId') is not None:
             self.source_user_id = m.get('SourceUserId')
+        if m.get('UserState') is not None:
+            self.user_state = m.get('UserState')
         return self
 
 
 class GetUserResponseBody(TeaModel):
     def __init__(
         self,
-        user: GetUserResponseBodyUser = None,
         request_id: str = None,
+        user: GetUserResponseBodyUser = None,
     ):
-        self.user = user
         self.request_id = request_id
+        self.user = user
 
     def validate(self):
         if self.user:
             self.user.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user is not None:
-            result['User'] = self.user.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.user is not None:
+            result['User'] = self.user.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('User') is not None:
             temp_model = GetUserResponseBodyUser()
             self.user = temp_model.from_map(m['User'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4966,6 +5523,10 @@ class GetUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -4986,12 +5547,10 @@ class GetUserResponse(TeaModel):
 class GetUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -5000,9 +5559,11 @@ class GetUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -5013,8 +5574,6 @@ class GetUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -5027,35 +5586,39 @@ class GetUserGroupRequest(TeaModel):
 class GetUserGroupResponseBodyUserGroup(TeaModel):
     def __init__(
         self,
+        user_group_name: str = None,
         comment: str = None,
         user_group_id: str = None,
-        user_group_name: str = None,
     ):
+        self.user_group_name = user_group_name
         self.comment = comment
         self.user_group_id = user_group_id
-        self.user_group_name = user_group_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.user_group_name is not None:
+            result['UserGroupName'] = self.user_group_name
         if self.comment is not None:
             result['Comment'] = self.comment
         if self.user_group_id is not None:
             result['UserGroupId'] = self.user_group_id
-        if self.user_group_name is not None:
-            result['UserGroupName'] = self.user_group_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('UserGroupName') is not None:
+            self.user_group_name = m.get('UserGroupName')
         if m.get('Comment') is not None:
             self.comment = m.get('Comment')
         if m.get('UserGroupId') is not None:
             self.user_group_id = m.get('UserGroupId')
-        if m.get('UserGroupName') is not None:
-            self.user_group_name = m.get('UserGroupName')
         return self
 
 
@@ -5073,6 +5636,10 @@ class GetUserGroupResponseBody(TeaModel):
             self.user_group.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5106,6 +5673,10 @@ class GetUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5126,7 +5697,6 @@ class GetUserGroupResponse(TeaModel):
 class ListHostAccountsRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_id: str = None,
@@ -5135,7 +5705,6 @@ class ListHostAccountsRequest(TeaModel):
         host_account_name: str = None,
         protocol_name: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_id = host_id
@@ -5148,9 +5717,11 @@ class ListHostAccountsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -5169,8 +5740,6 @@ class ListHostAccountsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -5209,6 +5778,10 @@ class ListHostAccountsResponseBodyHostAccounts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.has_password is not None:
             result['HasPassword'] = self.has_password
@@ -5259,6 +5832,10 @@ class ListHostAccountsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5300,6 +5877,10 @@ class ListHostAccountsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5320,7 +5901,6 @@ class ListHostAccountsResponse(TeaModel):
 class ListHostAccountsForUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_id: str = None,
@@ -5329,7 +5909,6 @@ class ListHostAccountsForUserRequest(TeaModel):
         page_size: str = None,
         host_account_name: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_id = user_id
@@ -5342,9 +5921,11 @@ class ListHostAccountsForUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -5363,8 +5944,6 @@ class ListHostAccountsForUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -5385,45 +5964,49 @@ class ListHostAccountsForUserRequest(TeaModel):
 class ListHostAccountsForUserResponseBodyHostAccounts(TeaModel):
     def __init__(
         self,
-        is_authorized: bool = None,
-        protocol_name: str = None,
         host_account_name: str = None,
         host_account_id: str = None,
+        is_authorized: bool = None,
+        protocol_name: str = None,
         host_id: str = None,
     ):
-        self.is_authorized = is_authorized
-        self.protocol_name = protocol_name
         self.host_account_name = host_account_name
         self.host_account_id = host_account_id
+        self.is_authorized = is_authorized
+        self.protocol_name = protocol_name
         self.host_id = host_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.is_authorized is not None:
-            result['IsAuthorized'] = self.is_authorized
-        if self.protocol_name is not None:
-            result['ProtocolName'] = self.protocol_name
         if self.host_account_name is not None:
             result['HostAccountName'] = self.host_account_name
         if self.host_account_id is not None:
             result['HostAccountId'] = self.host_account_id
+        if self.is_authorized is not None:
+            result['IsAuthorized'] = self.is_authorized
+        if self.protocol_name is not None:
+            result['ProtocolName'] = self.protocol_name
         if self.host_id is not None:
             result['HostId'] = self.host_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('IsAuthorized') is not None:
-            self.is_authorized = m.get('IsAuthorized')
-        if m.get('ProtocolName') is not None:
-            self.protocol_name = m.get('ProtocolName')
         if m.get('HostAccountName') is not None:
             self.host_account_name = m.get('HostAccountName')
         if m.get('HostAccountId') is not None:
             self.host_account_id = m.get('HostAccountId')
+        if m.get('IsAuthorized') is not None:
+            self.is_authorized = m.get('IsAuthorized')
+        if m.get('ProtocolName') is not None:
+            self.protocol_name = m.get('ProtocolName')
         if m.get('HostId') is not None:
             self.host_id = m.get('HostId')
         return self
@@ -5447,6 +6030,10 @@ class ListHostAccountsForUserResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5488,6 +6075,10 @@ class ListHostAccountsForUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5508,7 +6099,6 @@ class ListHostAccountsForUserResponse(TeaModel):
 class ListHostAccountsForUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
@@ -5517,7 +6107,6 @@ class ListHostAccountsForUserGroupRequest(TeaModel):
         page_size: str = None,
         host_account_name: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -5530,9 +6119,11 @@ class ListHostAccountsForUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -5551,8 +6142,6 @@ class ListHostAccountsForUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -5573,45 +6162,49 @@ class ListHostAccountsForUserGroupRequest(TeaModel):
 class ListHostAccountsForUserGroupResponseBodyHostAccounts(TeaModel):
     def __init__(
         self,
-        is_authorized: bool = None,
-        protocol_name: str = None,
         host_account_name: str = None,
         host_account_id: str = None,
+        is_authorized: bool = None,
+        protocol_name: str = None,
         host_id: str = None,
     ):
-        self.is_authorized = is_authorized
-        self.protocol_name = protocol_name
         self.host_account_name = host_account_name
         self.host_account_id = host_account_id
+        self.is_authorized = is_authorized
+        self.protocol_name = protocol_name
         self.host_id = host_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.is_authorized is not None:
-            result['IsAuthorized'] = self.is_authorized
-        if self.protocol_name is not None:
-            result['ProtocolName'] = self.protocol_name
         if self.host_account_name is not None:
             result['HostAccountName'] = self.host_account_name
         if self.host_account_id is not None:
             result['HostAccountId'] = self.host_account_id
+        if self.is_authorized is not None:
+            result['IsAuthorized'] = self.is_authorized
+        if self.protocol_name is not None:
+            result['ProtocolName'] = self.protocol_name
         if self.host_id is not None:
             result['HostId'] = self.host_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('IsAuthorized') is not None:
-            self.is_authorized = m.get('IsAuthorized')
-        if m.get('ProtocolName') is not None:
-            self.protocol_name = m.get('ProtocolName')
         if m.get('HostAccountName') is not None:
             self.host_account_name = m.get('HostAccountName')
         if m.get('HostAccountId') is not None:
             self.host_account_id = m.get('HostAccountId')
+        if m.get('IsAuthorized') is not None:
+            self.is_authorized = m.get('IsAuthorized')
+        if m.get('ProtocolName') is not None:
+            self.protocol_name = m.get('ProtocolName')
         if m.get('HostId') is not None:
             self.host_id = m.get('HostId')
         return self
@@ -5635,6 +6228,10 @@ class ListHostAccountsForUserGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -5676,6 +6273,10 @@ class ListHostAccountsForUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5696,13 +6297,11 @@ class ListHostAccountsForUserGroupResponse(TeaModel):
 class ListHostGroupAccountNamesForUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_id: str = None,
         host_group_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_id = user_id
@@ -5712,9 +6311,11 @@ class ListHostGroupAccountNamesForUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -5727,8 +6328,6 @@ class ListHostGroupAccountNamesForUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -5753,6 +6352,10 @@ class ListHostGroupAccountNamesForUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5785,6 +6388,10 @@ class ListHostGroupAccountNamesForUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5805,13 +6412,11 @@ class ListHostGroupAccountNamesForUserResponse(TeaModel):
 class ListHostGroupAccountNamesForUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
         host_group_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -5821,9 +6426,11 @@ class ListHostGroupAccountNamesForUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -5836,8 +6443,6 @@ class ListHostGroupAccountNamesForUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -5862,6 +6467,10 @@ class ListHostGroupAccountNamesForUserGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -5894,6 +6503,10 @@ class ListHostGroupAccountNamesForUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -5914,14 +6527,12 @@ class ListHostGroupAccountNamesForUserGroupResponse(TeaModel):
 class ListHostGroupsRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         page_number: str = None,
         page_size: str = None,
         host_group_name: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.page_number = page_number
@@ -5932,9 +6543,11 @@ class ListHostGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -5949,8 +6562,6 @@ class ListHostGroupsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -5968,26 +6579,30 @@ class ListHostGroupsResponseBodyHostGroups(TeaModel):
     def __init__(
         self,
         member_count: int = None,
-        comment: str = None,
         host_group_id: str = None,
+        comment: str = None,
         host_group_name: str = None,
     ):
         self.member_count = member_count
-        self.comment = comment
         self.host_group_id = host_group_id
+        self.comment = comment
         self.host_group_name = host_group_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.member_count is not None:
             result['MemberCount'] = self.member_count
-        if self.comment is not None:
-            result['Comment'] = self.comment
         if self.host_group_id is not None:
             result['HostGroupId'] = self.host_group_id
+        if self.comment is not None:
+            result['Comment'] = self.comment
         if self.host_group_name is not None:
             result['HostGroupName'] = self.host_group_name
         return result
@@ -5996,10 +6611,10 @@ class ListHostGroupsResponseBodyHostGroups(TeaModel):
         m = m or dict()
         if m.get('MemberCount') is not None:
             self.member_count = m.get('MemberCount')
-        if m.get('Comment') is not None:
-            self.comment = m.get('Comment')
         if m.get('HostGroupId') is not None:
             self.host_group_id = m.get('HostGroupId')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
         if m.get('HostGroupName') is not None:
             self.host_group_name = m.get('HostGroupName')
         return self
@@ -6023,6 +6638,10 @@ class ListHostGroupsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6064,6 +6683,10 @@ class ListHostGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6084,7 +6707,6 @@ class ListHostGroupsResponse(TeaModel):
 class ListHostGroupsForUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         mode: str = None,
@@ -6093,7 +6715,6 @@ class ListHostGroupsForUserRequest(TeaModel):
         page_size: str = None,
         host_group_name: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.mode = mode
@@ -6106,9 +6727,11 @@ class ListHostGroupsForUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -6127,8 +6750,6 @@ class ListHostGroupsForUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -6149,33 +6770,37 @@ class ListHostGroupsForUserRequest(TeaModel):
 class ListHostGroupsForUserResponseBodyHostGroups(TeaModel):
     def __init__(
         self,
-        comment: str = None,
         host_group_id: str = None,
+        comment: str = None,
         host_group_name: str = None,
     ):
-        self.comment = comment
         self.host_group_id = host_group_id
+        self.comment = comment
         self.host_group_name = host_group_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.comment is not None:
-            result['Comment'] = self.comment
         if self.host_group_id is not None:
             result['HostGroupId'] = self.host_group_id
+        if self.comment is not None:
+            result['Comment'] = self.comment
         if self.host_group_name is not None:
             result['HostGroupName'] = self.host_group_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Comment') is not None:
-            self.comment = m.get('Comment')
         if m.get('HostGroupId') is not None:
             self.host_group_id = m.get('HostGroupId')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
         if m.get('HostGroupName') is not None:
             self.host_group_name = m.get('HostGroupName')
         return self
@@ -6199,6 +6824,10 @@ class ListHostGroupsForUserResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6240,6 +6869,10 @@ class ListHostGroupsForUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6260,7 +6893,6 @@ class ListHostGroupsForUserResponse(TeaModel):
 class ListHostGroupsForUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         mode: str = None,
@@ -6269,7 +6901,6 @@ class ListHostGroupsForUserGroupRequest(TeaModel):
         page_size: str = None,
         host_group_name: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.mode = mode
@@ -6282,9 +6913,11 @@ class ListHostGroupsForUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -6303,8 +6936,6 @@ class ListHostGroupsForUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -6325,33 +6956,37 @@ class ListHostGroupsForUserGroupRequest(TeaModel):
 class ListHostGroupsForUserGroupResponseBodyHostGroups(TeaModel):
     def __init__(
         self,
-        comment: str = None,
         host_group_id: str = None,
+        comment: str = None,
         host_group_name: str = None,
     ):
-        self.comment = comment
         self.host_group_id = host_group_id
+        self.comment = comment
         self.host_group_name = host_group_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.comment is not None:
-            result['Comment'] = self.comment
         if self.host_group_id is not None:
             result['HostGroupId'] = self.host_group_id
+        if self.comment is not None:
+            result['Comment'] = self.comment
         if self.host_group_name is not None:
             result['HostGroupName'] = self.host_group_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Comment') is not None:
-            self.comment = m.get('Comment')
         if m.get('HostGroupId') is not None:
             self.host_group_id = m.get('HostGroupId')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
         if m.get('HostGroupName') is not None:
             self.host_group_name = m.get('HostGroupName')
         return self
@@ -6375,6 +7010,10 @@ class ListHostGroupsForUserGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -6416,6 +7055,10 @@ class ListHostGroupsForUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6436,7 +7079,6 @@ class ListHostGroupsForUserGroupResponse(TeaModel):
 class ListHostsRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         page_number: str = None,
@@ -6449,7 +7091,6 @@ class ListHostsRequest(TeaModel):
         source_instance_state: str = None,
         host_group_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.page_number = page_number
@@ -6466,9 +7107,11 @@ class ListHostsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -6495,8 +7138,6 @@ class ListHostsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -6553,6 +7194,10 @@ class ListHostsResponseBodyHosts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -6608,13 +7253,13 @@ class ListHostsResponseBodyHosts(TeaModel):
 class ListHostsResponseBody(TeaModel):
     def __init__(
         self,
-        hosts: List[ListHostsResponseBodyHosts] = None,
         total_count: int = None,
         request_id: str = None,
+        hosts: List[ListHostsResponseBodyHosts] = None,
     ):
-        self.hosts = hosts
         self.total_count = total_count
         self.request_id = request_id
+        self.hosts = hosts
 
     def validate(self):
         if self.hosts:
@@ -6623,28 +7268,32 @@ class ListHostsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['Hosts'] = []
-        if self.hosts is not None:
-            for k in self.hosts:
-                result['Hosts'].append(k.to_map() if k else None)
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.hosts = []
         if m.get('Hosts') is not None:
             for k in m.get('Hosts'):
                 temp_model = ListHostsResponseBodyHosts()
                 self.hosts.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -6664,6 +7313,10 @@ class ListHostsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6684,7 +7337,6 @@ class ListHostsResponse(TeaModel):
 class ListHostsForUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         mode: str = None,
@@ -6695,7 +7347,6 @@ class ListHostsForUserRequest(TeaModel):
         host_name: str = None,
         ostype: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.mode = mode
@@ -6710,9 +7361,11 @@ class ListHostsForUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -6735,8 +7388,6 @@ class ListHostsForUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -6781,6 +7432,10 @@ class ListHostsForUserResponseBodyHosts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -6820,13 +7475,13 @@ class ListHostsForUserResponseBodyHosts(TeaModel):
 class ListHostsForUserResponseBody(TeaModel):
     def __init__(
         self,
-        hosts: List[ListHostsForUserResponseBodyHosts] = None,
         total_count: int = None,
         request_id: str = None,
+        hosts: List[ListHostsForUserResponseBodyHosts] = None,
     ):
-        self.hosts = hosts
         self.total_count = total_count
         self.request_id = request_id
+        self.hosts = hosts
 
     def validate(self):
         if self.hosts:
@@ -6835,28 +7490,32 @@ class ListHostsForUserResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['Hosts'] = []
-        if self.hosts is not None:
-            for k in self.hosts:
-                result['Hosts'].append(k.to_map() if k else None)
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.hosts = []
         if m.get('Hosts') is not None:
             for k in m.get('Hosts'):
                 temp_model = ListHostsForUserResponseBodyHosts()
                 self.hosts.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -6876,6 +7535,10 @@ class ListHostsForUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -6896,7 +7559,6 @@ class ListHostsForUserResponse(TeaModel):
 class ListHostsForUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         mode: str = None,
@@ -6907,7 +7569,6 @@ class ListHostsForUserGroupRequest(TeaModel):
         host_name: str = None,
         ostype: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.mode = mode
@@ -6922,9 +7583,11 @@ class ListHostsForUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -6947,8 +7610,6 @@ class ListHostsForUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -6993,6 +7654,10 @@ class ListHostsForUserGroupResponseBodyHosts(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -7032,13 +7697,13 @@ class ListHostsForUserGroupResponseBodyHosts(TeaModel):
 class ListHostsForUserGroupResponseBody(TeaModel):
     def __init__(
         self,
-        hosts: List[ListHostsForUserGroupResponseBodyHosts] = None,
         total_count: int = None,
         request_id: str = None,
+        hosts: List[ListHostsForUserGroupResponseBodyHosts] = None,
     ):
-        self.hosts = hosts
         self.total_count = total_count
         self.request_id = request_id
+        self.hosts = hosts
 
     def validate(self):
         if self.hosts:
@@ -7047,28 +7712,32 @@ class ListHostsForUserGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        result['Hosts'] = []
-        if self.hosts is not None:
-            for k in self.hosts:
-                result['Hosts'].append(k.to_map() if k else None)
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Hosts'] = []
+        if self.hosts is not None:
+            for k in self.hosts:
+                result['Hosts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         self.hosts = []
         if m.get('Hosts') is not None:
             for k in m.get('Hosts'):
                 temp_model = ListHostsForUserGroupResponseBodyHosts()
                 self.hosts.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         return self
 
 
@@ -7088,6 +7757,10 @@ class ListHostsForUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7108,15 +7781,11 @@ class ListHostsForUserGroupResponse(TeaModel):
 class ListTagKeysRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         region_id: str = None,
         resource_type: str = None,
         page_size: int = None,
         page_number: int = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.region_id = region_id
         self.resource_type = resource_type
         self.page_size = page_size
@@ -7126,11 +7795,11 @@ class ListTagKeysRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
@@ -7143,10 +7812,6 @@ class ListTagKeysRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
@@ -7171,6 +7836,10 @@ class ListTagKeysResponseBodyTagKeys(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag_count is not None:
             result['TagCount'] = self.tag_count
@@ -7190,16 +7859,16 @@ class ListTagKeysResponseBodyTagKeys(TeaModel):
 class ListTagKeysResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
         request_id: str = None,
-        page_size: int = None,
         page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
         tag_keys: List[ListTagKeysResponseBodyTagKeys] = None,
     ):
-        self.total_count = total_count
         self.request_id = request_id
-        self.page_size = page_size
         self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -7209,15 +7878,19 @@ class ListTagKeysResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['TagKeys'] = []
         if self.tag_keys is not None:
             for k in self.tag_keys:
@@ -7226,14 +7899,14 @@ class ListTagKeysResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.tag_keys = []
         if m.get('TagKeys') is not None:
             for k in m.get('TagKeys'):
@@ -7258,6 +7931,10 @@ class ListTagKeysResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7288,6 +7965,10 @@ class ListTagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -7307,16 +7988,12 @@ class ListTagResourcesRequestTag(TeaModel):
 class ListTagResourcesRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         region_id: str = None,
         resource_type: str = None,
         next_token: str = None,
         resource_id: List[str] = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.region_id = region_id
         self.resource_type = resource_type
         self.next_token = next_token
@@ -7330,11 +8007,11 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
@@ -7351,10 +8028,6 @@ class ListTagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
@@ -7374,13 +8047,13 @@ class ListTagResourcesRequest(TeaModel):
 class ListTagResourcesResponseBodyTagResources(TeaModel):
     def __init__(
         self,
-        resource_type: str = None,
         tag_value: str = None,
+        resource_type: str = None,
         resource_id: str = None,
         tag_key: str = None,
     ):
-        self.resource_type = resource_type
         self.tag_value = tag_value
+        self.resource_type = resource_type
         self.resource_id = resource_id
         self.tag_key = tag_key
 
@@ -7388,11 +8061,15 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
         if self.tag_value is not None:
             result['TagValue'] = self.tag_value
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.tag_key is not None:
@@ -7401,10 +8078,10 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
         if m.get('TagValue') is not None:
             self.tag_value = m.get('TagValue')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('TagKey') is not None:
@@ -7430,6 +8107,10 @@ class ListTagResourcesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -7471,6 +8152,10 @@ class ListTagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7491,14 +8176,12 @@ class ListTagResourcesResponse(TeaModel):
 class ListUserGroupsRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         page_number: str = None,
         page_size: str = None,
         user_group_name: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.page_number = page_number
@@ -7509,9 +8192,11 @@ class ListUserGroupsRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -7526,8 +8211,6 @@ class ListUserGroupsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -7544,41 +8227,45 @@ class ListUserGroupsRequest(TeaModel):
 class ListUserGroupsResponseBodyUserGroups(TeaModel):
     def __init__(
         self,
+        user_group_name: str = None,
         member_count: int = None,
         comment: str = None,
         user_group_id: str = None,
-        user_group_name: str = None,
     ):
+        self.user_group_name = user_group_name
         self.member_count = member_count
         self.comment = comment
         self.user_group_id = user_group_id
-        self.user_group_name = user_group_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.user_group_name is not None:
+            result['UserGroupName'] = self.user_group_name
         if self.member_count is not None:
             result['MemberCount'] = self.member_count
         if self.comment is not None:
             result['Comment'] = self.comment
         if self.user_group_id is not None:
             result['UserGroupId'] = self.user_group_id
-        if self.user_group_name is not None:
-            result['UserGroupName'] = self.user_group_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('UserGroupName') is not None:
+            self.user_group_name = m.get('UserGroupName')
         if m.get('MemberCount') is not None:
             self.member_count = m.get('MemberCount')
         if m.get('Comment') is not None:
             self.comment = m.get('Comment')
         if m.get('UserGroupId') is not None:
             self.user_group_id = m.get('UserGroupId')
-        if m.get('UserGroupName') is not None:
-            self.user_group_name = m.get('UserGroupName')
         return self
 
 
@@ -7600,6 +8287,10 @@ class ListUserGroupsResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -7641,6 +8332,10 @@ class ListUserGroupsResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7661,7 +8356,6 @@ class ListUserGroupsResponse(TeaModel):
 class ListUsersRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         page_number: str = None,
@@ -7674,7 +8368,6 @@ class ListUsersRequest(TeaModel):
         source_user_id: str = None,
         user_group_id: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.page_number = page_number
@@ -7691,9 +8384,11 @@ class ListUsersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -7720,8 +8415,6 @@ class ListUsersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -7758,8 +8451,8 @@ class ListUsersResponseBodyUsers(TeaModel):
         user_id: str = None,
         source: str = None,
         user_name: str = None,
-        user_state: List[str] = None,
         source_user_id: str = None,
+        user_state: List[str] = None,
     ):
         self.display_name = display_name
         self.email = email
@@ -7769,13 +8462,17 @@ class ListUsersResponseBodyUsers(TeaModel):
         self.user_id = user_id
         self.source = source
         self.user_name = user_name
-        self.user_state = user_state
         self.source_user_id = source_user_id
+        self.user_state = user_state
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
@@ -7793,10 +8490,10 @@ class ListUsersResponseBodyUsers(TeaModel):
             result['Source'] = self.source
         if self.user_name is not None:
             result['UserName'] = self.user_name
-        if self.user_state is not None:
-            result['UserState'] = self.user_state
         if self.source_user_id is not None:
             result['SourceUserId'] = self.source_user_id
+        if self.user_state is not None:
+            result['UserState'] = self.user_state
         return result
 
     def from_map(self, m: dict = None):
@@ -7817,10 +8514,10 @@ class ListUsersResponseBodyUsers(TeaModel):
             self.source = m.get('Source')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
-        if m.get('UserState') is not None:
-            self.user_state = m.get('UserState')
         if m.get('SourceUserId') is not None:
             self.source_user_id = m.get('SourceUserId')
+        if m.get('UserState') is not None:
+            self.user_state = m.get('UserState')
         return self
 
 
@@ -7842,6 +8539,10 @@ class ListUsersResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -7883,6 +8584,10 @@ class ListUsersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -7903,12 +8608,10 @@ class ListUsersResponse(TeaModel):
 class LockUsersRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_ids: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_ids = user_ids
@@ -7917,9 +8620,11 @@ class LockUsersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -7930,8 +8635,6 @@ class LockUsersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -7944,35 +8647,39 @@ class LockUsersRequest(TeaModel):
 class LockUsersResponseBodyResults(TeaModel):
     def __init__(
         self,
-        user_id: str = None,
         code: str = None,
         message: str = None,
+        user_id: str = None,
     ):
-        self.user_id = user_id
         self.code = code
         self.message = message
+        self.user_id = user_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -7992,6 +8699,10 @@ class LockUsersResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8029,6 +8740,10 @@ class LockUsersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8049,7 +8764,6 @@ class LockUsersResponse(TeaModel):
 class ModifyHostRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_id: str = None,
@@ -8059,7 +8773,6 @@ class ModifyHostRequest(TeaModel):
         host_name: str = None,
         comment: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_id = host_id
@@ -8073,9 +8786,11 @@ class ModifyHostRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -8096,8 +8811,6 @@ class ModifyHostRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -8128,6 +8841,10 @@ class ModifyHostResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8156,6 +8873,10 @@ class ModifyHostResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8176,7 +8897,6 @@ class ModifyHostResponse(TeaModel):
 class ModifyHostAccountRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_account_id: str = None,
@@ -8185,7 +8905,6 @@ class ModifyHostAccountRequest(TeaModel):
         private_key: str = None,
         pass_phrase: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_account_id = host_account_id
@@ -8198,9 +8917,11 @@ class ModifyHostAccountRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -8219,8 +8940,6 @@ class ModifyHostAccountRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -8249,6 +8968,10 @@ class ModifyHostAccountResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8277,6 +9000,10 @@ class ModifyHostAccountResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8297,14 +9024,12 @@ class ModifyHostAccountResponse(TeaModel):
 class ModifyHostGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_group_id: str = None,
         host_group_name: str = None,
         comment: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_group_id = host_group_id
@@ -8315,9 +9040,11 @@ class ModifyHostGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -8332,8 +9059,6 @@ class ModifyHostGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -8358,6 +9083,10 @@ class ModifyHostGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8386,6 +9115,10 @@ class ModifyHostGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8406,13 +9139,11 @@ class ModifyHostGroupResponse(TeaModel):
 class ModifyHostsActiveAddressTypeRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_ids: str = None,
         active_address_type: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_ids = host_ids
@@ -8422,9 +9153,11 @@ class ModifyHostsActiveAddressTypeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -8437,8 +9170,6 @@ class ModifyHostsActiveAddressTypeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -8465,6 +9196,10 @@ class ModifyHostsActiveAddressTypeResponseBodyResults(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -8501,6 +9236,10 @@ class ModifyHostsActiveAddressTypeResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8538,6 +9277,10 @@ class ModifyHostsActiveAddressTypeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8558,14 +9301,12 @@ class ModifyHostsActiveAddressTypeResponse(TeaModel):
 class ModifyHostsPortRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_ids: str = None,
         protocol_name: str = None,
         port: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_ids = host_ids
@@ -8576,9 +9317,11 @@ class ModifyHostsPortRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -8593,8 +9336,6 @@ class ModifyHostsPortRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -8623,6 +9364,10 @@ class ModifyHostsPortResponseBodyResults(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -8659,6 +9404,10 @@ class ModifyHostsPortResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8696,6 +9445,10 @@ class ModifyHostsPortResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8716,14 +9469,10 @@ class ModifyHostsPortResponse(TeaModel):
 class ModifyInstanceAttributeRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         instance_id: str = None,
         description: str = None,
         region_id: str = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.instance_id = instance_id
         self.description = description
         self.region_id = region_id
@@ -8732,11 +9481,11 @@ class ModifyInstanceAttributeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.description is not None:
@@ -8747,10 +9496,6 @@ class ModifyInstanceAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Description') is not None:
@@ -8771,6 +9516,10 @@ class ModifyInstanceAttributeResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8799,6 +9548,10 @@ class ModifyInstanceAttributeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8816,10 +9569,124 @@ class ModifyInstanceAttributeResponse(TeaModel):
         return self
 
 
+class ModifyInstanceUpgradePeriodRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        upgrade_start_time: str = None,
+        upgrade_mode: str = None,
+    ):
+        self.lang = lang
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.upgrade_start_time = upgrade_start_time
+        self.upgrade_mode = upgrade_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.upgrade_start_time is not None:
+            result['UpgradeStartTime'] = self.upgrade_start_time
+        if self.upgrade_mode is not None:
+            result['UpgradeMode'] = self.upgrade_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UpgradeStartTime') is not None:
+            self.upgrade_start_time = m.get('UpgradeStartTime')
+        if m.get('UpgradeMode') is not None:
+            self.upgrade_mode = m.get('UpgradeMode')
+        return self
+
+
+class ModifyInstanceUpgradePeriodResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceUpgradePeriodResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyInstanceUpgradePeriodResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceUpgradePeriodResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyUserRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_id: str = None,
@@ -8830,7 +9697,6 @@ class ModifyUserRequest(TeaModel):
         mobile: str = None,
         mobile_country_code: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_id = user_id
@@ -8845,9 +9711,11 @@ class ModifyUserRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -8870,8 +9738,6 @@ class ModifyUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -8904,6 +9770,10 @@ class ModifyUserResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8932,6 +9802,10 @@ class ModifyUserResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -8952,14 +9826,12 @@ class ModifyUserResponse(TeaModel):
 class ModifyUserGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
         user_group_name: str = None,
         comment: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -8970,9 +9842,11 @@ class ModifyUserGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -8987,8 +9861,6 @@ class ModifyUserGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -9013,6 +9885,10 @@ class ModifyUserGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9041,6 +9917,10 @@ class ModifyUserGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9061,15 +9941,11 @@ class ModifyUserGroupResponse(TeaModel):
 class MoveResourceGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         resource_id: str = None,
         resource_group_id: str = None,
         resource_type: str = None,
         region_id: str = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.resource_id = resource_id
         self.resource_group_id = resource_group_id
         self.resource_type = resource_type
@@ -9079,11 +9955,11 @@ class MoveResourceGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_group_id is not None:
@@ -9096,10 +9972,6 @@ class MoveResourceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceGroupId') is not None:
@@ -9122,6 +9994,10 @@ class MoveResourceGroupResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9150,6 +10026,10 @@ class MoveResourceGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9170,13 +10050,11 @@ class MoveResourceGroupResponse(TeaModel):
 class RemoveHostsFromGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_group_id: str = None,
         host_ids: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_group_id = host_group_id
@@ -9186,9 +10064,11 @@ class RemoveHostsFromGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -9201,8 +10081,6 @@ class RemoveHostsFromGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -9231,6 +10109,10 @@ class RemoveHostsFromGroupResponseBodyResults(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
@@ -9271,6 +10153,10 @@ class RemoveHostsFromGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9308,6 +10194,10 @@ class RemoveHostsFromGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9328,13 +10218,11 @@ class RemoveHostsFromGroupResponse(TeaModel):
 class RemoveUsersFromGroupRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_group_id: str = None,
         user_ids: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_group_id = user_group_id
@@ -9344,9 +10232,11 @@ class RemoveUsersFromGroupRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -9359,8 +10249,6 @@ class RemoveUsersFromGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -9375,41 +10263,45 @@ class RemoveUsersFromGroupRequest(TeaModel):
 class RemoveUsersFromGroupResponseBodyResults(TeaModel):
     def __init__(
         self,
-        user_group_id: str = None,
-        user_id: str = None,
         code: str = None,
         message: str = None,
+        user_group_id: str = None,
+        user_id: str = None,
     ):
-        self.user_group_id = user_group_id
-        self.user_id = user_id
         self.code = code
         self.message = message
+        self.user_group_id = user_group_id
+        self.user_id = user_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_group_id is not None:
-            result['UserGroupId'] = self.user_group_id
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
+        if self.user_group_id is not None:
+            result['UserGroupId'] = self.user_group_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserGroupId') is not None:
-            self.user_group_id = m.get('UserGroupId')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('UserGroupId') is not None:
+            self.user_group_id = m.get('UserGroupId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -9429,6 +10321,10 @@ class RemoveUsersFromGroupResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9466,6 +10362,10 @@ class RemoveUsersFromGroupResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9486,13 +10386,11 @@ class RemoveUsersFromGroupResponse(TeaModel):
 class ResetHostAccountCredentialRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         host_account_id: str = None,
         credential_type: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.host_account_id = host_account_id
@@ -9502,9 +10400,11 @@ class ResetHostAccountCredentialRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -9517,8 +10417,6 @@ class ResetHostAccountCredentialRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -9541,6 +10439,10 @@ class ResetHostAccountCredentialResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9569,6 +10471,10 @@ class ResetHostAccountCredentialResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9589,57 +10495,43 @@ class ResetHostAccountCredentialResponse(TeaModel):
 class StartInstanceRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         instance_id: str = None,
         vswitch_id: str = None,
         region_id: str = None,
-        instance_security_groups: List[str] = None,
         security_group_ids: List[str] = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.instance_id = instance_id
         self.vswitch_id = vswitch_id
         self.region_id = region_id
-        self.instance_security_groups = instance_security_groups
         self.security_group_ids = security_group_ids
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.vswitch_id is not None:
             result['VswitchId'] = self.vswitch_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.instance_security_groups is not None:
-            result['InstanceSecurityGroups'] = self.instance_security_groups
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('VswitchId') is not None:
             self.vswitch_id = m.get('VswitchId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('InstanceSecurityGroups') is not None:
-            self.instance_security_groups = m.get('InstanceSecurityGroups')
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
         return self
@@ -9648,29 +10540,33 @@ class StartInstanceRequest(TeaModel):
 class StartInstanceResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         instance_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.instance_id = instance_id
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -9690,6 +10586,10 @@ class StartInstanceResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9720,6 +10620,10 @@ class TagResourcesRequestTag(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -9739,15 +10643,11 @@ class TagResourcesRequestTag(TeaModel):
 class TagResourcesRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         region_id: str = None,
         resource_type: str = None,
         resource_id: List[str] = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.region_id = region_id
         self.resource_type = resource_type
         self.resource_id = resource_id
@@ -9760,11 +10660,11 @@ class TagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
@@ -9779,10 +10679,6 @@ class TagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
@@ -9808,6 +10704,10 @@ class TagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9836,6 +10736,10 @@ class TagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -9856,12 +10760,10 @@ class TagResourcesResponse(TeaModel):
 class UnlockUsersRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
         instance_id: str = None,
         region_id: str = None,
         user_ids: str = None,
     ):
-        self.source_ip = source_ip
         self.instance_id = instance_id
         self.region_id = region_id
         self.user_ids = user_ids
@@ -9870,9 +10772,11 @@ class UnlockUsersRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -9883,8 +10787,6 @@ class UnlockUsersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -9897,35 +10799,39 @@ class UnlockUsersRequest(TeaModel):
 class UnlockUsersResponseBodyResults(TeaModel):
     def __init__(
         self,
-        user_id: str = None,
         code: str = None,
         message: str = None,
+        user_id: str = None,
     ):
-        self.user_id = user_id
         self.code = code
         self.message = message
+        self.user_id = user_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -9945,6 +10851,10 @@ class UnlockUsersResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -9982,6 +10892,10 @@ class UnlockUsersResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10002,16 +10916,12 @@ class UnlockUsersResponse(TeaModel):
 class UntagResourcesRequest(TeaModel):
     def __init__(
         self,
-        source_ip: str = None,
-        lang: str = None,
         region_id: str = None,
         resource_type: str = None,
         all: bool = None,
         resource_id: List[str] = None,
         tag_key: List[str] = None,
     ):
-        self.source_ip = source_ip
-        self.lang = lang
         self.region_id = region_id
         self.resource_type = resource_type
         self.all = all
@@ -10022,11 +10932,11 @@ class UntagResourcesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        if self.lang is not None:
-            result['Lang'] = self.lang
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_type is not None:
@@ -10041,10 +10951,6 @@ class UntagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
@@ -10069,6 +10975,10 @@ class UntagResourcesResponseBody(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -10097,6 +11007,10 @@ class UntagResourcesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -10110,6 +11024,109 @@ class UntagResourcesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpgradeInstanceImageVersionRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.lang = lang
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpgradeInstanceImageVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpgradeInstanceImageVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpgradeInstanceImageVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpgradeInstanceImageVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

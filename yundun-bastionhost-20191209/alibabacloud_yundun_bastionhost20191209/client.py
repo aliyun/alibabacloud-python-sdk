@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -48,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AddHostsToGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddHostsToGroupResponse(),
             self.do_rpcrequest('AddHostsToGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -61,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AddHostsToGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddHostsToGroupResponse(),
             await self.do_rpcrequest_async('AddHostsToGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -88,7 +91,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AddUsersToGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddUsersToGroupResponse(),
             self.do_rpcrequest('AddUsersToGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AddUsersToGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddUsersToGroupResponse(),
             await self.do_rpcrequest_async('AddUsersToGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -128,7 +133,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse(),
             self.do_rpcrequest('AttachHostAccountsToUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -141,7 +147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToUserResponse(),
             await self.do_rpcrequest_async('AttachHostAccountsToUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -168,7 +175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse(),
             self.do_rpcrequest('AttachHostAccountsToUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -181,7 +189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostAccountsToUserGroupResponse(),
             await self.do_rpcrequest_async('AttachHostAccountsToUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -208,7 +217,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse(),
             self.do_rpcrequest('AttachHostGroupAccountsToUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -221,7 +231,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserResponse(),
             await self.do_rpcrequest_async('AttachHostGroupAccountsToUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -248,7 +259,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse(),
             self.do_rpcrequest('AttachHostGroupAccountsToUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -261,7 +273,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AttachHostGroupAccountsToUserGroupResponse(),
             await self.do_rpcrequest_async('AttachHostGroupAccountsToUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -288,7 +301,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse(),
             self.do_rpcrequest('ConfigInstanceSecurityGroups', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -301,7 +315,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ConfigInstanceSecurityGroupsResponse(),
             await self.do_rpcrequest_async('ConfigInstanceSecurityGroups', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -328,7 +343,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse(),
             self.do_rpcrequest('ConfigInstanceWhiteList', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -341,7 +357,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse(),
             await self.do_rpcrequest_async('ConfigInstanceWhiteList', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -368,7 +385,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateHostResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostResponse(),
             self.do_rpcrequest('CreateHost', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -381,7 +399,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateHostResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostResponse(),
             await self.do_rpcrequest_async('CreateHost', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -408,7 +427,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateHostAccountResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostAccountResponse(),
             self.do_rpcrequest('CreateHostAccount', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -421,7 +441,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateHostAccountResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostAccountResponse(),
             await self.do_rpcrequest_async('CreateHostAccount', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -448,7 +469,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateHostGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostGroupResponse(),
             self.do_rpcrequest('CreateHostGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -461,7 +483,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateHostGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateHostGroupResponse(),
             await self.do_rpcrequest_async('CreateHostGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -488,7 +511,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserResponse(),
             self.do_rpcrequest('CreateUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -501,7 +525,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserResponse(),
             await self.do_rpcrequest_async('CreateUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -528,7 +553,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserGroupResponse(),
             self.do_rpcrequest('CreateUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -541,7 +567,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.CreateUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.CreateUserGroupResponse(),
             await self.do_rpcrequest_async('CreateUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -568,7 +595,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteHostResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostResponse(),
             self.do_rpcrequest('DeleteHost', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -581,7 +609,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteHostResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostResponse(),
             await self.do_rpcrequest_async('DeleteHost', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -608,7 +637,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteHostAccountResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostAccountResponse(),
             self.do_rpcrequest('DeleteHostAccount', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -621,7 +651,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteHostAccountResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostAccountResponse(),
             await self.do_rpcrequest_async('DeleteHostAccount', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -648,7 +679,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteHostGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostGroupResponse(),
             self.do_rpcrequest('DeleteHostGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -661,7 +693,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteHostGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteHostGroupResponse(),
             await self.do_rpcrequest_async('DeleteHostGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -688,7 +721,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserResponse(),
             self.do_rpcrequest('DeleteUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -701,7 +735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserResponse(),
             await self.do_rpcrequest_async('DeleteUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -728,7 +763,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserGroupResponse(),
             self.do_rpcrequest('DeleteUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -741,7 +777,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DeleteUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DeleteUserGroupResponse(),
             await self.do_rpcrequest_async('DeleteUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -768,7 +805,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse(),
             self.do_rpcrequest('DescribeInstanceAttribute', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -781,7 +819,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeInstanceAttributeResponse(),
             await self.do_rpcrequest_async('DescribeInstanceAttribute', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -808,7 +847,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DescribeInstancesResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeInstancesResponse(),
             self.do_rpcrequest('DescribeInstances', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -821,7 +861,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DescribeInstancesResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeInstancesResponse(),
             await self.do_rpcrequest_async('DescribeInstances', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -848,7 +889,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeRegionsResponse(),
             self.do_rpcrequest('DescribeRegions', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -861,7 +903,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DescribeRegionsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DescribeRegionsResponse(),
             await self.do_rpcrequest_async('DescribeRegions', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -888,7 +931,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse(),
             self.do_rpcrequest('DetachHostAccountsFromUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -901,7 +945,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromUserResponse(),
             await self.do_rpcrequest_async('DetachHostAccountsFromUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -928,7 +973,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse(),
             self.do_rpcrequest('DetachHostAccountsFromUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -941,7 +987,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostAccountsFromUserGroupResponse(),
             await self.do_rpcrequest_async('DetachHostAccountsFromUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -968,7 +1015,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse(),
             self.do_rpcrequest('DetachHostGroupAccountsFromUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -981,7 +1029,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserResponse(),
             await self.do_rpcrequest_async('DetachHostGroupAccountsFromUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1008,7 +1057,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse(),
             self.do_rpcrequest('DetachHostGroupAccountsFromUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1021,7 +1071,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DetachHostGroupAccountsFromUserGroupResponse(),
             await self.do_rpcrequest_async('DetachHostGroupAccountsFromUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1048,7 +1099,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse(),
             self.do_rpcrequest('DisableInstancePublicAccess', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1061,7 +1113,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.DisableInstancePublicAccessResponse(),
             await self.do_rpcrequest_async('DisableInstancePublicAccess', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1088,7 +1141,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse(),
             self.do_rpcrequest('EnableInstancePublicAccess', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1101,7 +1155,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.EnableInstancePublicAccessResponse(),
             await self.do_rpcrequest_async('EnableInstancePublicAccess', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1128,7 +1183,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetHostResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostResponse(),
             self.do_rpcrequest('GetHost', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1141,7 +1197,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetHostResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostResponse(),
             await self.do_rpcrequest_async('GetHost', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1168,7 +1225,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetHostAccountResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostAccountResponse(),
             self.do_rpcrequest('GetHostAccount', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1181,7 +1239,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetHostAccountResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostAccountResponse(),
             await self.do_rpcrequest_async('GetHostAccount', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1208,7 +1267,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetHostGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostGroupResponse(),
             self.do_rpcrequest('GetHostGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1221,7 +1281,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetHostGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetHostGroupResponse(),
             await self.do_rpcrequest_async('GetHostGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1239,6 +1300,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_host_group_with_options_async(request, runtime)
 
+    def get_instance_upgrade_info_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoResponse(),
+            self.do_rpcrequest('GetInstanceUpgradeInfo', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_instance_upgrade_info_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoResponse(),
+            await self.do_rpcrequest_async('GetInstanceUpgradeInfo', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_instance_upgrade_info(
+        self,
+        request: yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoRequest,
+    ) -> yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_instance_upgrade_info_with_options(request, runtime)
+
+    async def get_instance_upgrade_info_async(
+        self,
+        request: yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoRequest,
+    ) -> yundun_bastionhost_20191209_models.GetInstanceUpgradeInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_instance_upgrade_info_with_options_async(request, runtime)
+
     def get_user_with_options(
         self,
         request: yundun_bastionhost_20191209_models.GetUserRequest,
@@ -1248,7 +1351,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetUserResponse(),
             self.do_rpcrequest('GetUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1261,7 +1365,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetUserResponse(),
             await self.do_rpcrequest_async('GetUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1288,7 +1393,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetUserGroupResponse(),
             self.do_rpcrequest('GetUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1301,7 +1407,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.GetUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.GetUserGroupResponse(),
             await self.do_rpcrequest_async('GetUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1328,7 +1435,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostAccountsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsResponse(),
             self.do_rpcrequest('ListHostAccounts', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1341,7 +1449,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostAccountsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsResponse(),
             await self.do_rpcrequest_async('ListHostAccounts', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1368,7 +1477,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse(),
             self.do_rpcrequest('ListHostAccountsForUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1381,7 +1491,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForUserResponse(),
             await self.do_rpcrequest_async('ListHostAccountsForUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1408,7 +1519,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse(),
             self.do_rpcrequest('ListHostAccountsForUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1421,7 +1533,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostAccountsForUserGroupResponse(),
             await self.do_rpcrequest_async('ListHostAccountsForUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1448,7 +1561,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse(),
             self.do_rpcrequest('ListHostGroupAccountNamesForUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1461,7 +1575,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserResponse(),
             await self.do_rpcrequest_async('ListHostGroupAccountNamesForUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1488,7 +1603,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse(),
             self.do_rpcrequest('ListHostGroupAccountNamesForUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1501,7 +1617,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupAccountNamesForUserGroupResponse(),
             await self.do_rpcrequest_async('ListHostGroupAccountNamesForUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1528,7 +1645,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsResponse(),
             self.do_rpcrequest('ListHostGroups', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1541,7 +1659,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsResponse(),
             await self.do_rpcrequest_async('ListHostGroups', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1568,7 +1687,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse(),
             self.do_rpcrequest('ListHostGroupsForUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1581,7 +1701,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsForUserResponse(),
             await self.do_rpcrequest_async('ListHostGroupsForUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1608,7 +1729,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse(),
             self.do_rpcrequest('ListHostGroupsForUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1621,7 +1743,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostGroupsForUserGroupResponse(),
             await self.do_rpcrequest_async('ListHostGroupsForUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1648,7 +1771,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsResponse(),
             self.do_rpcrequest('ListHosts', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1661,7 +1785,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsResponse(),
             await self.do_rpcrequest_async('ListHosts', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1688,7 +1813,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostsForUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsForUserResponse(),
             self.do_rpcrequest('ListHostsForUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1701,7 +1827,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostsForUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsForUserResponse(),
             await self.do_rpcrequest_async('ListHostsForUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1728,7 +1855,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse(),
             self.do_rpcrequest('ListHostsForUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1741,7 +1869,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListHostsForUserGroupResponse(),
             await self.do_rpcrequest_async('ListHostsForUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1768,7 +1897,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListTagKeysResponse(),
             self.do_rpcrequest('ListTagKeys', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1781,7 +1911,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListTagKeysResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListTagKeysResponse(),
             await self.do_rpcrequest_async('ListTagKeys', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1808,7 +1939,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListTagResourcesResponse(),
             self.do_rpcrequest('ListTagResources', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1821,7 +1953,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListTagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListTagResourcesResponse(),
             await self.do_rpcrequest_async('ListTagResources', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1848,7 +1981,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListUserGroupsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUserGroupsResponse(),
             self.do_rpcrequest('ListUserGroups', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1861,7 +1995,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListUserGroupsResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUserGroupsResponse(),
             await self.do_rpcrequest_async('ListUserGroups', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1888,7 +2023,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListUsersResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUsersResponse(),
             self.do_rpcrequest('ListUsers', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1901,7 +2037,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ListUsersResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListUsersResponse(),
             await self.do_rpcrequest_async('ListUsers', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1928,7 +2065,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.LockUsersResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.LockUsersResponse(),
             self.do_rpcrequest('LockUsers', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1941,7 +2079,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.LockUsersResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.LockUsersResponse(),
             await self.do_rpcrequest_async('LockUsers', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1968,7 +2107,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostResponse(),
             self.do_rpcrequest('ModifyHost', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1981,7 +2121,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostResponse(),
             await self.do_rpcrequest_async('ModifyHost', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2008,7 +2149,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostAccountResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostAccountResponse(),
             self.do_rpcrequest('ModifyHostAccount', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2021,7 +2163,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostAccountResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostAccountResponse(),
             await self.do_rpcrequest_async('ModifyHostAccount', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2048,7 +2191,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostGroupResponse(),
             self.do_rpcrequest('ModifyHostGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2061,7 +2205,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostGroupResponse(),
             await self.do_rpcrequest_async('ModifyHostGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2088,7 +2233,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse(),
             self.do_rpcrequest('ModifyHostsActiveAddressType', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2101,7 +2247,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostsActiveAddressTypeResponse(),
             await self.do_rpcrequest_async('ModifyHostsActiveAddressType', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2128,7 +2275,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostsPortResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostsPortResponse(),
             self.do_rpcrequest('ModifyHostsPort', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2141,7 +2289,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyHostsPortResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyHostsPortResponse(),
             await self.do_rpcrequest_async('ModifyHostsPort', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2168,7 +2317,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse(),
             self.do_rpcrequest('ModifyInstanceAttribute', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2181,7 +2331,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceAttributeResponse(),
             await self.do_rpcrequest_async('ModifyInstanceAttribute', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2199,6 +2350,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_attribute_with_options_async(request, runtime)
 
+    def modify_instance_upgrade_period_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodResponse(),
+            self.do_rpcrequest('ModifyInstanceUpgradePeriod', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_instance_upgrade_period_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodResponse(),
+            await self.do_rpcrequest_async('ModifyInstanceUpgradePeriod', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_instance_upgrade_period(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_upgrade_period_with_options(request, runtime)
+
+    async def modify_instance_upgrade_period_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodRequest,
+    ) -> yundun_bastionhost_20191209_models.ModifyInstanceUpgradePeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_upgrade_period_with_options_async(request, runtime)
+
     def modify_user_with_options(
         self,
         request: yundun_bastionhost_20191209_models.ModifyUserRequest,
@@ -2208,7 +2401,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserResponse(),
             self.do_rpcrequest('ModifyUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2221,7 +2415,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyUserResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserResponse(),
             await self.do_rpcrequest_async('ModifyUser', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2248,7 +2443,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserGroupResponse(),
             self.do_rpcrequest('ModifyUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2261,7 +2457,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ModifyUserGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ModifyUserGroupResponse(),
             await self.do_rpcrequest_async('ModifyUserGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2288,7 +2485,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.MoveResourceGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveResourceGroupResponse(),
             self.do_rpcrequest('MoveResourceGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2301,7 +2499,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.MoveResourceGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.MoveResourceGroupResponse(),
             await self.do_rpcrequest_async('MoveResourceGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2328,7 +2527,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse(),
             self.do_rpcrequest('RemoveHostsFromGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2341,7 +2541,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveHostsFromGroupResponse(),
             await self.do_rpcrequest_async('RemoveHostsFromGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2368,7 +2569,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse(),
             self.do_rpcrequest('RemoveUsersFromGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2381,7 +2583,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse(),
             await self.do_rpcrequest_async('RemoveUsersFromGroup', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2408,7 +2611,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse(),
             self.do_rpcrequest('ResetHostAccountCredential', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2421,7 +2625,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ResetHostAccountCredentialResponse(),
             await self.do_rpcrequest_async('ResetHostAccountCredential', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2448,7 +2653,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.StartInstanceResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.StartInstanceResponse(),
             self.do_rpcrequest('StartInstance', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2461,7 +2667,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.StartInstanceResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.StartInstanceResponse(),
             await self.do_rpcrequest_async('StartInstance', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2488,7 +2695,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.TagResourcesResponse(),
             self.do_rpcrequest('TagResources', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2501,7 +2709,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.TagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.TagResourcesResponse(),
             await self.do_rpcrequest_async('TagResources', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2528,7 +2737,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.UnlockUsersResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UnlockUsersResponse(),
             self.do_rpcrequest('UnlockUsers', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2541,7 +2751,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.UnlockUsersResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UnlockUsersResponse(),
             await self.do_rpcrequest_async('UnlockUsers', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2568,7 +2779,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UntagResourcesResponse(),
             self.do_rpcrequest('UntagResources', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2581,7 +2793,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return yundun_bastionhost_20191209_models.UntagResourcesResponse().from_map(
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UntagResourcesResponse(),
             await self.do_rpcrequest_async('UntagResources', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2598,3 +2811,45 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def upgrade_instance_image_version_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionResponse(),
+            self.do_rpcrequest('UpgradeInstanceImageVersion', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def upgrade_instance_image_version_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionResponse(),
+            await self.do_rpcrequest_async('UpgradeInstanceImageVersion', '2019-12-09', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def upgrade_instance_image_version(
+        self,
+        request: yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionRequest,
+    ) -> yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_instance_image_version_with_options(request, runtime)
+
+    async def upgrade_instance_image_version_async(
+        self,
+        request: yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionRequest,
+    ) -> yundun_bastionhost_20191209_models.UpgradeInstanceImageVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_instance_image_version_with_options_async(request, runtime)
