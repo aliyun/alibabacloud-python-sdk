@@ -1,3 +1,6 @@
+2021-09-23 Version: 2.1.3
+- Terraform stack supports custom of parallelism.
+
 2021-09-16 Version: 2.1.2
 - Fixed the property AdministratorRoleName in GetStackGroupOperation  to AdministrationRoleName.
 

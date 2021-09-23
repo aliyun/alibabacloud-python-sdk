@@ -154,6 +154,7 @@ class ContinueCreateStackRequest(TeaModel):
         template_version: str = None,
         recreating_resources: List[str] = None,
         parameters: List[ContinueCreateStackRequestParameters] = None,
+        parallelism: int = None,
     ):
         self.stack_id = stack_id
         self.region_id = region_id
@@ -166,6 +167,7 @@ class ContinueCreateStackRequest(TeaModel):
         self.template_version = template_version
         self.recreating_resources = recreating_resources
         self.parameters = parameters
+        self.parallelism = parallelism
 
     def validate(self):
         if self.parameters:
@@ -203,6 +205,8 @@ class ContinueCreateStackRequest(TeaModel):
         if self.parameters is not None:
             for k in self.parameters:
                 result['Parameters'].append(k.to_map() if k else None)
+        if self.parallelism is not None:
+            result['Parallelism'] = self.parallelism
         return result
 
     def from_map(self, m: dict = None):
@@ -232,6 +236,8 @@ class ContinueCreateStackRequest(TeaModel):
             for k in m.get('Parameters'):
                 temp_model = ContinueCreateStackRequestParameters()
                 self.parameters.append(temp_model.from_map(k))
+        if m.get('Parallelism') is not None:
+            self.parallelism = m.get('Parallelism')
         return self
 
 
@@ -716,6 +722,7 @@ class CreateStackRequest(TeaModel):
         notification_urls: List[str] = None,
         tags: List[CreateStackRequestTags] = None,
         resource_group_id: str = None,
+        parallelism: int = None,
     ):
         self.disable_rollback = disable_rollback
         self.template_body = template_body
@@ -735,6 +742,7 @@ class CreateStackRequest(TeaModel):
         self.notification_urls = notification_urls
         self.tags = tags
         self.resource_group_id = resource_group_id
+        self.parallelism = parallelism
 
     def validate(self):
         if self.parameters:
@@ -792,6 +800,8 @@ class CreateStackRequest(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.parallelism is not None:
+            result['Parallelism'] = self.parallelism
         return result
 
     def from_map(self, m: dict = None):
@@ -838,6 +848,8 @@ class CreateStackRequest(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Parallelism') is not None:
+            self.parallelism = m.get('Parallelism')
         return self
 
 
@@ -9937,6 +9949,7 @@ class PreviewStackRequest(TeaModel):
         template_id: str = None,
         template_version: str = None,
         parameters: List[PreviewStackRequestParameters] = None,
+        parallelism: int = None,
     ):
         self.disable_rollback = disable_rollback
         self.timeout_in_minutes = timeout_in_minutes
@@ -9950,6 +9963,7 @@ class PreviewStackRequest(TeaModel):
         self.template_id = template_id
         self.template_version = template_version
         self.parameters = parameters
+        self.parallelism = parallelism
 
     def validate(self):
         if self.parameters:
@@ -9989,6 +10003,8 @@ class PreviewStackRequest(TeaModel):
         if self.parameters is not None:
             for k in self.parameters:
                 result['Parameters'].append(k.to_map() if k else None)
+        if self.parallelism is not None:
+            result['Parallelism'] = self.parallelism
         return result
 
     def from_map(self, m: dict = None):
@@ -10020,6 +10036,8 @@ class PreviewStackRequest(TeaModel):
             for k in m.get('Parameters'):
                 temp_model = PreviewStackRequestParameters()
                 self.parameters.append(temp_model.from_map(k))
+        if m.get('Parallelism') is not None:
+            self.parallelism = m.get('Parallelism')
         return self
 
 
@@ -11174,6 +11192,7 @@ class UpdateStackRequest(TeaModel):
         template_version: str = None,
         parameters: List[UpdateStackRequestParameters] = None,
         tags: List[UpdateStackRequestTags] = None,
+        parallelism: int = None,
     ):
         self.stack_id = stack_id
         self.client_token = client_token
@@ -11193,6 +11212,7 @@ class UpdateStackRequest(TeaModel):
         self.template_version = template_version
         self.parameters = parameters
         self.tags = tags
+        self.parallelism = parallelism
 
     def validate(self):
         if self.parameters:
@@ -11250,6 +11270,8 @@ class UpdateStackRequest(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.parallelism is not None:
+            result['Parallelism'] = self.parallelism
         return result
 
     def from_map(self, m: dict = None):
@@ -11296,6 +11318,8 @@ class UpdateStackRequest(TeaModel):
             for k in m.get('Tags'):
                 temp_model = UpdateStackRequestTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('Parallelism') is not None:
+            self.parallelism = m.get('Parallelism')
         return self
 
 
