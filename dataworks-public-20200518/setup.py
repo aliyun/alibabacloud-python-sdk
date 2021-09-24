@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dataworks-public20200518.
 
-Created on 10/09/2021
+Created on 24/09/2021
 
 @author: Alibaba Cloud SDK
 """
@@ -43,7 +43,7 @@ REQUIRES = [
     "alibabacloud_openplatform20191219>=1.1.1, <2.0.0",
     "alibabacloud_oss_util>=0.0.5, <1.0.0",
     "alibabacloud_tea_fileform>=0.0.3, <1.0.0",
-    "alibabacloud_tea_openapi>=0.2.6, <1.0.0",
+    "alibabacloud_tea_openapi>=0.2.7, <1.0.0",
     "alibabacloud_openapi_util>=0.1.5, <1.0.0",
     "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
 ]

@@ -9765,6 +9765,336 @@ class ExportDISyncTasksResponse(TeaModel):
         return self
 
 
+class GenerateDISyncTaskConfigForCreatingRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        task_type: str = None,
+        task_param: str = None,
+        client_token: str = None,
+    ):
+        self.project_id = project_id
+        self.task_type = task_type
+        self.task_param = task_param
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.task_param is not None:
+            result['TaskParam'] = self.task_param
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TaskParam') is not None:
+            self.task_param = m.get('TaskParam')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class GenerateDISyncTaskConfigForCreatingResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        process_id: int = None,
+        message: str = None,
+    ):
+        self.status = status
+        self.process_id = process_id
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class GenerateDISyncTaskConfigForCreatingResponseBody(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+        request_id: str = None,
+        data: GenerateDISyncTaskConfigForCreatingResponseBodyData = None,
+    ):
+        self.success = success
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = GenerateDISyncTaskConfigForCreatingResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class GenerateDISyncTaskConfigForCreatingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GenerateDISyncTaskConfigForCreatingResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GenerateDISyncTaskConfigForCreatingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateDISyncTaskConfigForUpdatingRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        task_type: str = None,
+        task_param: str = None,
+        client_token: str = None,
+        task_id: int = None,
+    ):
+        self.project_id = project_id
+        self.task_type = task_type
+        self.task_param = task_param
+        self.client_token = client_token
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.task_param is not None:
+            result['TaskParam'] = self.task_param
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TaskParam') is not None:
+            self.task_param = m.get('TaskParam')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GenerateDISyncTaskConfigForUpdatingResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        process_id: int = None,
+        message: str = None,
+    ):
+        self.status = status
+        self.process_id = process_id
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class GenerateDISyncTaskConfigForUpdatingResponseBody(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+        request_id: str = None,
+        data: GenerateDISyncTaskConfigForUpdatingResponseBodyData = None,
+    ):
+        self.success = success
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = GenerateDISyncTaskConfigForUpdatingResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class GenerateDISyncTaskConfigForUpdatingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GenerateDISyncTaskConfigForUpdatingResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GenerateDISyncTaskConfigForUpdatingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetBaselineConfigRequest(TeaModel):
     def __init__(
         self,
@@ -14509,19 +14839,114 @@ class GetDISyncInstanceInfoRequest(TeaModel):
         return self
 
 
+class GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        step_id: int = None,
+        step_name: str = None,
+    ):
+        self.status = status
+        self.step_id = step_id
+        self.step_name = step_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step_id is not None:
+            result['StepId'] = self.step_id
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StepId') is not None:
+            self.step_id = m.get('StepId')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        return self
+
+
+class GetDISyncInstanceInfoResponseBodyDataSolutionInfo(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        id: int = None,
+        creator_name: str = None,
+        step_detail: List[GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail] = None,
+    ):
+        self.status = status
+        self.id = id
+        self.creator_name = creator_name
+        self.step_detail = step_detail
+
+    def validate(self):
+        if self.step_detail:
+            for k in self.step_detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.creator_name is not None:
+            result['CreatorName'] = self.creator_name
+        result['StepDetail'] = []
+        if self.step_detail is not None:
+            for k in self.step_detail:
+                result['StepDetail'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('CreatorName') is not None:
+            self.creator_name = m.get('CreatorName')
+        self.step_detail = []
+        if m.get('StepDetail') is not None:
+            for k in m.get('StepDetail'):
+                temp_model = GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail()
+                self.step_detail.append(temp_model.from_map(k))
+        return self
+
+
 class GetDISyncInstanceInfoResponseBodyData(TeaModel):
     def __init__(
         self,
         status: str = None,
         message: str = None,
         name: str = None,
+        solution_info: GetDISyncInstanceInfoResponseBodyDataSolutionInfo = None,
     ):
         self.status = status
         self.message = message
         self.name = name
+        self.solution_info = solution_info
 
     def validate(self):
-        pass
+        if self.solution_info:
+            self.solution_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14535,6 +14960,8 @@ class GetDISyncInstanceInfoResponseBodyData(TeaModel):
             result['Message'] = self.message
         if self.name is not None:
             result['Name'] = self.name
+        if self.solution_info is not None:
+            result['SolutionInfo'] = self.solution_info.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -14545,6 +14972,9 @@ class GetDISyncInstanceInfoResponseBodyData(TeaModel):
             self.message = m.get('Message')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('SolutionInfo') is not None:
+            temp_model = GetDISyncInstanceInfoResponseBodyDataSolutionInfo()
+            self.solution_info = temp_model.from_map(m['SolutionInfo'])
         return self
 
 
@@ -14665,19 +15095,109 @@ class GetDISyncTaskRequest(TeaModel):
         return self
 
 
+class GetDISyncTaskResponseBodyDataSolutionDetail(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        type: str = None,
+        start_time: str = None,
+        creator_name: str = None,
+        project_id: int = None,
+        source_type: str = None,
+        process_content: str = None,
+        name: str = None,
+        process_extra: str = None,
+        submit_time: str = None,
+        id: int = None,
+    ):
+        self.status = status
+        self.type = type
+        self.start_time = start_time
+        self.creator_name = creator_name
+        self.project_id = project_id
+        self.source_type = source_type
+        self.process_content = process_content
+        self.name = name
+        self.process_extra = process_extra
+        self.submit_time = submit_time
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.creator_name is not None:
+            result['CreatorName'] = self.creator_name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.process_content is not None:
+            result['ProcessContent'] = self.process_content
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.process_extra is not None:
+            result['ProcessExtra'] = self.process_extra
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('CreatorName') is not None:
+            self.creator_name = m.get('CreatorName')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('ProcessContent') is not None:
+            self.process_content = m.get('ProcessContent')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProcessExtra') is not None:
+            self.process_extra = m.get('ProcessExtra')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
 class GetDISyncTaskResponseBodyData(TeaModel):
     def __init__(
         self,
         code: str = None,
         status: str = None,
         message: str = None,
+        solution_detail: GetDISyncTaskResponseBodyDataSolutionDetail = None,
     ):
         self.code = code
         self.status = status
         self.message = message
+        self.solution_detail = solution_detail
 
     def validate(self):
-        pass
+        if self.solution_detail:
+            self.solution_detail.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14691,6 +15211,8 @@ class GetDISyncTaskResponseBodyData(TeaModel):
             result['Status'] = self.status
         if self.message is not None:
             result['Message'] = self.message
+        if self.solution_detail is not None:
+            result['SolutionDetail'] = self.solution_detail.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -14701,6 +15223,9 @@ class GetDISyncTaskResponseBodyData(TeaModel):
             self.status = m.get('Status')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('SolutionDetail') is not None:
+            temp_model = GetDISyncTaskResponseBodyDataSolutionDetail()
+            self.solution_detail = temp_model.from_map(m['SolutionDetail'])
         return self
 
 
@@ -40792,6 +41317,162 @@ class PublishDataServiceApiResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = PublishDataServiceApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryDISyncTaskConfigProcessResultRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        task_type: str = None,
+        async_process_id: int = None,
+    ):
+        self.project_id = project_id
+        self.task_type = task_type
+        self.async_process_id = async_process_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.async_process_id is not None:
+            result['AsyncProcessId'] = self.async_process_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('AsyncProcessId') is not None:
+            self.async_process_id = m.get('AsyncProcessId')
+        return self
+
+
+class QueryDISyncTaskConfigProcessResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        message: str = None,
+        task_content: str = None,
+    ):
+        self.status = status
+        self.message = message
+        self.task_content = task_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.task_content is not None:
+            result['TaskContent'] = self.task_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('TaskContent') is not None:
+            self.task_content = m.get('TaskContent')
+        return self
+
+
+class QueryDISyncTaskConfigProcessResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+        request_id: str = None,
+        data: QueryDISyncTaskConfigProcessResultResponseBodyData = None,
+    ):
+        self.success = success
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = QueryDISyncTaskConfigProcessResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class QueryDISyncTaskConfigProcessResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryDISyncTaskConfigProcessResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryDISyncTaskConfigProcessResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
