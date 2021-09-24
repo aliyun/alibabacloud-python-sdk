@@ -5386,6 +5386,7 @@ class GetConferenceResponseBodyResult(TeaModel):
         user_id: str = None,
         app_id: str = None,
         create_time: int = None,
+        playback_url: str = None,
     ):
         # 会议资源唯一标识。
         self.conference_id = conference_id
@@ -5401,6 +5402,8 @@ class GetConferenceResponseBodyResult(TeaModel):
         self.app_id = app_id
         # 会议创建时间戳，单位：毫秒。
         self.create_time = create_time
+        # 录制回放地址，m3u8格式，会议结束后10秒才会生成。
+        self.playback_url = playback_url
 
     def validate(self):
         pass
@@ -5425,6 +5428,8 @@ class GetConferenceResponseBodyResult(TeaModel):
             result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.playback_url is not None:
+            result['PlaybackUrl'] = self.playback_url
         return result
 
     def from_map(self, m: dict = None):
@@ -5443,6 +5448,8 @@ class GetConferenceResponseBodyResult(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('PlaybackUrl') is not None:
+            self.playback_url = m.get('PlaybackUrl')
         return self
 
 

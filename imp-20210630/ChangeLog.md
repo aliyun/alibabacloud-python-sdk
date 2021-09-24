@@ -1,3 +1,6 @@
+2021-09-24 Version: 2.5.3
+- GetConference add playbackUrl.
+
 2021-09-14 Version: 2.5.2
 - GetRoom add pv field.
 
