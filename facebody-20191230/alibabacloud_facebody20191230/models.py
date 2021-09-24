@@ -295,6 +295,184 @@ class ExtractPedestrianFeatureAttrResponse(TeaModel):
         return self
 
 
+class RetouchSkinRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        retouch_degree: float = None,
+        whitening_degree: float = None,
+    ):
+        self.image_url = image_url
+        self.retouch_degree = retouch_degree
+        self.whitening_degree = whitening_degree
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.retouch_degree is not None:
+            result['RetouchDegree'] = self.retouch_degree
+        if self.whitening_degree is not None:
+            result['WhiteningDegree'] = self.whitening_degree
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('RetouchDegree') is not None:
+            self.retouch_degree = m.get('RetouchDegree')
+        if m.get('WhiteningDegree') is not None:
+            self.whitening_degree = m.get('WhiteningDegree')
+        return self
+
+
+class RetouchSkinAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+        retouch_degree: float = None,
+        whitening_degree: float = None,
+    ):
+        self.image_urlobject = image_urlobject
+        self.retouch_degree = retouch_degree
+        self.whitening_degree = whitening_degree
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.retouch_degree is not None:
+            result['RetouchDegree'] = self.retouch_degree
+        if self.whitening_degree is not None:
+            result['WhiteningDegree'] = self.whitening_degree
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('RetouchDegree') is not None:
+            self.retouch_degree = m.get('RetouchDegree')
+        if m.get('WhiteningDegree') is not None:
+            self.whitening_degree = m.get('WhiteningDegree')
+        return self
+
+
+class RetouchSkinResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RetouchSkinResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: RetouchSkinResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = RetouchSkinResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class RetouchSkinResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RetouchSkinResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RetouchSkinResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DetectBodyCountRequest(TeaModel):
     def __init__(
         self,
@@ -5196,6 +5374,172 @@ class DeleteFaceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteFaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class LiquifyFaceRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        slim_degree: float = None,
+    ):
+        self.image_url = image_url
+        self.slim_degree = slim_degree
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.slim_degree is not None:
+            result['SlimDegree'] = self.slim_degree
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('SlimDegree') is not None:
+            self.slim_degree = m.get('SlimDegree')
+        return self
+
+
+class LiquifyFaceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+        slim_degree: float = None,
+    ):
+        self.image_urlobject = image_urlobject
+        self.slim_degree = slim_degree
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        if self.slim_degree is not None:
+            result['SlimDegree'] = self.slim_degree
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('SlimDegree') is not None:
+            self.slim_degree = m.get('SlimDegree')
+        return self
+
+
+class LiquifyFaceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class LiquifyFaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: LiquifyFaceResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = LiquifyFaceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class LiquifyFaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: LiquifyFaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = LiquifyFaceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
