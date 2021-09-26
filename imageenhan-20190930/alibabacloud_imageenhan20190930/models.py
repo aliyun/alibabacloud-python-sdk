@@ -17,6 +17,10 @@ class ExtendImageStyleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.style_url is not None:
             result['StyleUrl'] = self.style_url
@@ -46,6 +50,10 @@ class ExtendImageStyleResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -76,6 +84,10 @@ class ExtendImageStyleResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -109,6 +121,10 @@ class ExtendImageStyleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -147,6 +163,10 @@ class ImageBlindCharacterWatermarkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.function_type is not None:
             result['FunctionType'] = self.function_type
@@ -200,6 +220,10 @@ class ImageBlindCharacterWatermarkAdvanceRequest(TeaModel):
         self.validate_required(self.origin_image_urlobject, 'origin_image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.origin_image_urlobject is not None:
             result['OriginImageURLObject'] = self.origin_image_urlobject
@@ -245,6 +269,10 @@ class ImageBlindCharacterWatermarkResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.watermark_image_url is not None:
             result['WatermarkImageURL'] = self.watermark_image_url
@@ -275,6 +303,10 @@ class ImageBlindCharacterWatermarkResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -308,6 +340,10 @@ class ImageBlindCharacterWatermarkResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -336,6 +372,10 @@ class RemoveImageWatermarkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -359,6 +399,10 @@ class RemoveImageWatermarkAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -382,6 +426,10 @@ class RemoveImageWatermarkResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -408,6 +456,10 @@ class RemoveImageWatermarkResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -441,6 +493,10 @@ class RemoveImageWatermarkResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -471,6 +527,10 @@ class GenerateDynamicImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -500,6 +560,10 @@ class GenerateDynamicImageAdvanceRequest(TeaModel):
         self.validate_required(self.url_object, 'url_object')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url_object is not None:
             result['UrlObject'] = self.url_object
@@ -527,6 +591,10 @@ class GenerateDynamicImageResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -553,6 +621,10 @@ class GenerateDynamicImageResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -586,6 +658,10 @@ class GenerateDynamicImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -624,6 +700,10 @@ class ImageBlindPicWatermarkRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.function_type is not None:
             result['FunctionType'] = self.function_type
@@ -677,6 +757,10 @@ class ImageBlindPicWatermarkAdvanceRequest(TeaModel):
         self.validate_required(self.origin_image_urlobject, 'origin_image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.origin_image_urlobject is not None:
             result['OriginImageURLObject'] = self.origin_image_urlobject
@@ -722,6 +806,10 @@ class ImageBlindPicWatermarkResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.watermark_image_url is not None:
             result['WatermarkImageURL'] = self.watermark_image_url
@@ -752,6 +840,10 @@ class ImageBlindPicWatermarkResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -785,6 +877,10 @@ class ImageBlindPicWatermarkResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -821,6 +917,10 @@ class RemoveImageSubtitlesRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -868,6 +968,10 @@ class RemoveImageSubtitlesAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -907,6 +1011,10 @@ class RemoveImageSubtitlesResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -933,6 +1041,10 @@ class RemoveImageSubtitlesResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -966,6 +1078,10 @@ class RemoveImageSubtitlesResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -994,6 +1110,10 @@ class RecolorHDImageRequestColorTemplate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.color is not None:
             result['Color'] = self.color
@@ -1014,7 +1134,6 @@ class RecolorHDImageRequest(TeaModel):
         ref_url: str = None,
         color_count: int = None,
         degree: str = None,
-        async_: bool = None,
         color_template: List[RecolorHDImageRequestColorTemplate] = None,
     ):
         self.url = url
@@ -1022,7 +1141,6 @@ class RecolorHDImageRequest(TeaModel):
         self.ref_url = ref_url
         self.color_count = color_count
         self.degree = degree
-        self.async_ = async_
         self.color_template = color_template
 
     def validate(self):
@@ -1032,6 +1150,10 @@ class RecolorHDImageRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -1043,8 +1165,6 @@ class RecolorHDImageRequest(TeaModel):
             result['ColorCount'] = self.color_count
         if self.degree is not None:
             result['Degree'] = self.degree
-        if self.async_ is not None:
-            result['Async'] = self.async_
         result['ColorTemplate'] = []
         if self.color_template is not None:
             for k in self.color_template:
@@ -1063,8 +1183,6 @@ class RecolorHDImageRequest(TeaModel):
             self.color_count = m.get('ColorCount')
         if m.get('Degree') is not None:
             self.degree = m.get('Degree')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
         self.color_template = []
         if m.get('ColorTemplate') is not None:
             for k in m.get('ColorTemplate'):
@@ -1084,6 +1202,10 @@ class RecolorHDImageAdvanceRequestColorTemplate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.color is not None:
             result['Color'] = self.color
@@ -1104,7 +1226,6 @@ class RecolorHDImageAdvanceRequest(TeaModel):
         ref_url: str = None,
         color_count: int = None,
         degree: str = None,
-        async_: bool = None,
         color_template: List[RecolorHDImageAdvanceRequestColorTemplate] = None,
     ):
         self.url_object = url_object
@@ -1112,7 +1233,6 @@ class RecolorHDImageAdvanceRequest(TeaModel):
         self.ref_url = ref_url
         self.color_count = color_count
         self.degree = degree
-        self.async_ = async_
         self.color_template = color_template
 
     def validate(self):
@@ -1123,6 +1243,10 @@ class RecolorHDImageAdvanceRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url_object is not None:
             result['UrlObject'] = self.url_object
@@ -1134,8 +1258,6 @@ class RecolorHDImageAdvanceRequest(TeaModel):
             result['ColorCount'] = self.color_count
         if self.degree is not None:
             result['Degree'] = self.degree
-        if self.async_ is not None:
-            result['Async'] = self.async_
         result['ColorTemplate'] = []
         if self.color_template is not None:
             for k in self.color_template:
@@ -1154,8 +1276,6 @@ class RecolorHDImageAdvanceRequest(TeaModel):
             self.color_count = m.get('ColorCount')
         if m.get('Degree') is not None:
             self.degree = m.get('Degree')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
         self.color_template = []
         if m.get('ColorTemplate') is not None:
             for k in m.get('ColorTemplate'):
@@ -1175,6 +1295,10 @@ class RecolorHDImageResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_list is not None:
             result['ImageList'] = self.image_list
@@ -1201,6 +1325,10 @@ class RecolorHDImageResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1234,6 +1362,10 @@ class RecolorHDImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1262,6 +1394,10 @@ class ColorizeImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -1285,6 +1421,10 @@ class ColorizeImageAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -1308,6 +1448,10 @@ class ColorizeImageResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -1334,6 +1478,10 @@ class ColorizeImageResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1367,6 +1515,10 @@ class ColorizeImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1395,6 +1547,10 @@ class RecolorImageRequestColorTemplate(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.color is not None:
             result['Color'] = self.color
@@ -1429,6 +1585,10 @@ class RecolorImageRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -1473,6 +1633,10 @@ class RecolorImageResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_list is not None:
             result['ImageList'] = self.image_list
@@ -1499,6 +1663,10 @@ class RecolorImageResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1532,6 +1700,10 @@ class RecolorImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1560,6 +1732,10 @@ class AssessCompositionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -1583,6 +1759,10 @@ class AssessCompositionAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -1606,6 +1786,10 @@ class AssessCompositionResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.score is not None:
             result['Score'] = self.score
@@ -1632,6 +1816,10 @@ class AssessCompositionResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1665,6 +1853,10 @@ class AssessCompositionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1693,6 +1885,10 @@ class AssessSharpnessRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -1716,6 +1912,10 @@ class AssessSharpnessAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -1739,6 +1939,10 @@ class AssessSharpnessResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sharpness is not None:
             result['Sharpness'] = self.sharpness
@@ -1765,6 +1969,10 @@ class AssessSharpnessResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1798,6 +2006,10 @@ class AssessSharpnessResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1828,6 +2040,10 @@ class ErasePersonRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -1857,6 +2073,10 @@ class ErasePersonAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -1884,6 +2104,10 @@ class ErasePersonResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
@@ -1910,6 +2134,10 @@ class ErasePersonResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -1943,6 +2171,10 @@ class ErasePersonResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1963,27 +2195,25 @@ class ErasePersonResponse(TeaModel):
 class GetAsyncJobResultRequest(TeaModel):
     def __init__(
         self,
-        async_: bool = None,
         job_id: str = None,
     ):
-        self.async_ = async_
         self.job_id = job_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.async_ is not None:
-            result['Async'] = self.async_
         if self.job_id is not None:
             result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         return self
@@ -2008,6 +2238,10 @@ class GetAsyncJobResultResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.status is not None:
             result['Status'] = self.status
@@ -2050,6 +2284,10 @@ class GetAsyncJobResultResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2083,6 +2321,10 @@ class GetAsyncJobResultResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2113,6 +2355,10 @@ class ImitatePhotoStyleRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.style_url is not None:
             result['StyleUrl'] = self.style_url
@@ -2142,6 +2388,10 @@ class ImitatePhotoStyleAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -2169,6 +2419,10 @@ class ImitatePhotoStyleResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -2195,6 +2449,10 @@ class ImitatePhotoStyleResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2228,6 +2486,10 @@ class ImitatePhotoStyleResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2260,6 +2522,10 @@ class ChangeImageSizeRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -2295,6 +2561,10 @@ class ChangeImageSizeAdvanceRequest(TeaModel):
         self.validate_required(self.url_object, 'url_object')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url_object is not None:
             result['UrlObject'] = self.url_object
@@ -2332,6 +2602,10 @@ class ChangeImageSizeResponseBodyDataRetainLocation(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.width is not None:
             result['Width'] = self.width
@@ -2370,6 +2644,10 @@ class ChangeImageSizeResponseBodyData(TeaModel):
             self.retain_location.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -2401,6 +2679,10 @@ class ChangeImageSizeResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2434,6 +2716,10 @@ class ChangeImageSizeResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2466,6 +2752,10 @@ class EnhanceImageColorRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -2501,6 +2791,10 @@ class EnhanceImageColorAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -2532,6 +2826,10 @@ class EnhanceImageColorResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -2558,6 +2856,10 @@ class EnhanceImageColorResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2591,6 +2893,10 @@ class EnhanceImageColorResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2619,6 +2925,10 @@ class AssessExposureRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
@@ -2642,6 +2952,10 @@ class AssessExposureAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -2665,6 +2979,10 @@ class AssessExposureResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.exposure is not None:
             result['Exposure'] = self.exposure
@@ -2691,6 +3009,10 @@ class AssessExposureResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2724,6 +3046,10 @@ class AssessExposureResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2756,6 +3082,10 @@ class MakeSuperResolutionImageRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -2791,6 +3121,10 @@ class MakeSuperResolutionImageAdvanceRequest(TeaModel):
         self.validate_required(self.url_object, 'url_object')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url_object is not None:
             result['UrlObject'] = self.url_object
@@ -2822,6 +3156,10 @@ class MakeSuperResolutionImageResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
@@ -2848,6 +3186,10 @@ class MakeSuperResolutionImageResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2881,6 +3223,10 @@ class MakeSuperResolutionImageResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -2911,6 +3257,10 @@ class IntelligentCompositionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.num_boxes is not None:
             result['NumBoxes'] = self.num_boxes
@@ -2940,6 +3290,10 @@ class IntelligentCompositionAdvanceRequest(TeaModel):
         self.validate_required(self.image_urlobject, 'image_urlobject')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
@@ -2975,6 +3329,10 @@ class IntelligentCompositionResponseBodyDataElements(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.min_x is not None:
             result['MinX'] = self.min_x
@@ -3017,6 +3375,10 @@ class IntelligentCompositionResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Elements'] = []
         if self.elements is not None:
@@ -3048,6 +3410,10 @@ class IntelligentCompositionResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3081,6 +3447,10 @@ class IntelligentCompositionResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
