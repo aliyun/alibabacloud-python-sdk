@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_sddp20190103 import models as sddp_20190103_models
+from alibabacloud_tea_util import models as util_models
 
 
 class Client(OpenApiClient):
@@ -42,34 +42,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
-
-    def batch_delete_data_limit_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.BatchDeleteDataLimitResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            sddp_20190103_models.BatchDeleteDataLimitResponse(),
-            self.do_rpcrequest('BatchDeleteDataLimit', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def batch_delete_data_limit_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.BatchDeleteDataLimitResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            sddp_20190103_models.BatchDeleteDataLimitResponse(),
-            await self.do_rpcrequest_async('BatchDeleteDataLimit', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def batch_delete_data_limit(self) -> sddp_20190103_models.BatchDeleteDataLimitResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.batch_delete_data_limit_with_options(runtime)
-
-    async def batch_delete_data_limit_async(self) -> sddp_20190103_models.BatchDeleteDataLimitResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.batch_delete_data_limit_with_options_async(runtime)
 
     def create_config_with_options(
         self,
@@ -323,90 +295,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_rule_with_options_async(request, runtime)
 
-    def describe_account_detail_with_options(
-        self,
-        request: sddp_20190103_models.DescribeAccountDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeAccountDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeAccountDetailResponse(),
-            self.do_rpcrequest('DescribeAccountDetail', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_account_detail_with_options_async(
-        self,
-        request: sddp_20190103_models.DescribeAccountDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeAccountDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeAccountDetailResponse(),
-            await self.do_rpcrequest_async('DescribeAccountDetail', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_account_detail(
-        self,
-        request: sddp_20190103_models.DescribeAccountDetailRequest,
-    ) -> sddp_20190103_models.DescribeAccountDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_account_detail_with_options(request, runtime)
-
-    async def describe_account_detail_async(
-        self,
-        request: sddp_20190103_models.DescribeAccountDetailRequest,
-    ) -> sddp_20190103_models.DescribeAccountDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_account_detail_with_options_async(request, runtime)
-
-    def describe_accounts_with_options(
-        self,
-        request: sddp_20190103_models.DescribeAccountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeAccountsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeAccountsResponse(),
-            self.do_rpcrequest('DescribeAccounts', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_accounts_with_options_async(
-        self,
-        request: sddp_20190103_models.DescribeAccountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeAccountsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeAccountsResponse(),
-            await self.do_rpcrequest_async('DescribeAccounts', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_accounts(
-        self,
-        request: sddp_20190103_models.DescribeAccountsRequest,
-    ) -> sddp_20190103_models.DescribeAccountsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_accounts_with_options(request, runtime)
-
-    async def describe_accounts_async(
-        self,
-        request: sddp_20190103_models.DescribeAccountsRequest,
-    ) -> sddp_20190103_models.DescribeAccountsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_accounts_with_options_async(request, runtime)
-
     def describe_columns_with_options(
         self,
         request: sddp_20190103_models.DescribeColumnsRequest,
@@ -659,48 +547,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_limit_set_with_options_async(request, runtime)
 
-    def describe_data_limits_instance_dim_with_options(
-        self,
-        request: sddp_20190103_models.DescribeDataLimitsInstanceDimRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeDataLimitsInstanceDimResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeDataLimitsInstanceDimResponse(),
-            self.do_rpcrequest('DescribeDataLimitsInstanceDim', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_data_limits_instance_dim_with_options_async(
-        self,
-        request: sddp_20190103_models.DescribeDataLimitsInstanceDimRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeDataLimitsInstanceDimResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeDataLimitsInstanceDimResponse(),
-            await self.do_rpcrequest_async('DescribeDataLimitsInstanceDim', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_data_limits_instance_dim(
-        self,
-        request: sddp_20190103_models.DescribeDataLimitsInstanceDimRequest,
-    ) -> sddp_20190103_models.DescribeDataLimitsInstanceDimResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_data_limits_instance_dim_with_options(request, runtime)
-
-    async def describe_data_limits_instance_dim_async(
-        self,
-        request: sddp_20190103_models.DescribeDataLimitsInstanceDimRequest,
-    ) -> sddp_20190103_models.DescribeDataLimitsInstanceDimResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_data_limits_instance_dim_with_options_async(request, runtime)
-
     def describe_data_masking_run_history_with_options(
         self,
         request: sddp_20190103_models.DescribeDataMaskingRunHistoryRequest,
@@ -784,48 +630,6 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeDataMaskingTasksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_masking_tasks_with_options_async(request, runtime)
-
-    def describe_data_total_count_with_options(
-        self,
-        request: sddp_20190103_models.DescribeDataTotalCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeDataTotalCountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeDataTotalCountResponse(),
-            self.do_rpcrequest('DescribeDataTotalCount', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_data_total_count_with_options_async(
-        self,
-        request: sddp_20190103_models.DescribeDataTotalCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeDataTotalCountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeDataTotalCountResponse(),
-            await self.do_rpcrequest_async('DescribeDataTotalCount', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_data_total_count(
-        self,
-        request: sddp_20190103_models.DescribeDataTotalCountRequest,
-    ) -> sddp_20190103_models.DescribeDataTotalCountResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_data_total_count_with_options(request, runtime)
-
-    async def describe_data_total_count_async(
-        self,
-        request: sddp_20190103_models.DescribeDataTotalCountRequest,
-    ) -> sddp_20190103_models.DescribeDataTotalCountResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_data_total_count_with_options_async(request, runtime)
 
     def describe_event_detail_with_options(
         self,
@@ -911,48 +715,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_events_with_options_async(request, runtime)
 
-    def describe_event_top_with_options(
-        self,
-        request: sddp_20190103_models.DescribeEventTopRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeEventTopResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeEventTopResponse(),
-            self.do_rpcrequest('DescribeEventTop', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_event_top_with_options_async(
-        self,
-        request: sddp_20190103_models.DescribeEventTopRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeEventTopResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeEventTopResponse(),
-            await self.do_rpcrequest_async('DescribeEventTop', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_event_top(
-        self,
-        request: sddp_20190103_models.DescribeEventTopRequest,
-    ) -> sddp_20190103_models.DescribeEventTopResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_event_top_with_options(request, runtime)
-
-    async def describe_event_top_async(
-        self,
-        request: sddp_20190103_models.DescribeEventTopRequest,
-    ) -> sddp_20190103_models.DescribeEventTopResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_event_top_with_options_async(request, runtime)
-
     def describe_event_types_with_options(
         self,
         request: sddp_20190103_models.DescribeEventTypesRequest,
@@ -994,90 +756,6 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeEventTypesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_event_types_with_options_async(request, runtime)
-
-    def describe_event_types_detail_with_options(
-        self,
-        request: sddp_20190103_models.DescribeEventTypesDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeEventTypesDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeEventTypesDetailResponse(),
-            self.do_rpcrequest('DescribeEventTypesDetail', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_event_types_detail_with_options_async(
-        self,
-        request: sddp_20190103_models.DescribeEventTypesDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeEventTypesDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeEventTypesDetailResponse(),
-            await self.do_rpcrequest_async('DescribeEventTypesDetail', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_event_types_detail(
-        self,
-        request: sddp_20190103_models.DescribeEventTypesDetailRequest,
-    ) -> sddp_20190103_models.DescribeEventTypesDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_event_types_detail_with_options(request, runtime)
-
-    async def describe_event_types_detail_async(
-        self,
-        request: sddp_20190103_models.DescribeEventTypesDetailRequest,
-    ) -> sddp_20190103_models.DescribeEventTypesDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_event_types_detail_with_options_async(request, runtime)
-
-    def describe_instance_portrait_with_options(
-        self,
-        request: sddp_20190103_models.DescribeInstancePortraitRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeInstancePortraitResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeInstancePortraitResponse(),
-            self.do_rpcrequest('DescribeInstancePortrait', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_instance_portrait_with_options_async(
-        self,
-        request: sddp_20190103_models.DescribeInstancePortraitRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeInstancePortraitResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeInstancePortraitResponse(),
-            await self.do_rpcrequest_async('DescribeInstancePortrait', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_instance_portrait(
-        self,
-        request: sddp_20190103_models.DescribeInstancePortraitRequest,
-    ) -> sddp_20190103_models.DescribeInstancePortraitResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_instance_portrait_with_options(request, runtime)
-
-    async def describe_instance_portrait_async(
-        self,
-        request: sddp_20190103_models.DescribeInstancePortraitRequest,
-    ) -> sddp_20190103_models.DescribeInstancePortraitResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_instance_portrait_with_options_async(request, runtime)
 
     def describe_instances_with_options(
         self,
@@ -1331,48 +1009,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_risk_levels_with_options_async(request, runtime)
 
-    def describe_rule_category_with_options(
-        self,
-        request: sddp_20190103_models.DescribeRuleCategoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeRuleCategoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeRuleCategoryResponse(),
-            self.do_rpcrequest('DescribeRuleCategory', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rule_category_with_options_async(
-        self,
-        request: sddp_20190103_models.DescribeRuleCategoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeRuleCategoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeRuleCategoryResponse(),
-            await self.do_rpcrequest_async('DescribeRuleCategory', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rule_category(
-        self,
-        request: sddp_20190103_models.DescribeRuleCategoryRequest,
-    ) -> sddp_20190103_models.DescribeRuleCategoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rule_category_with_options(request, runtime)
-
-    async def describe_rule_category_async(
-        self,
-        request: sddp_20190103_models.DescribeRuleCategoryRequest,
-    ) -> sddp_20190103_models.DescribeRuleCategoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rule_category_with_options_async(request, runtime)
-
     def describe_rules_with_options(
         self,
         request: sddp_20190103_models.DescribeRulesRequest,
@@ -1456,48 +1092,6 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeTablesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_tables_with_options_async(request, runtime)
-
-    def describe_user_count_with_options(
-        self,
-        request: sddp_20190103_models.DescribeUserCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeUserCountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeUserCountResponse(),
-            self.do_rpcrequest('DescribeUserCount', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_user_count_with_options_async(
-        self,
-        request: sddp_20190103_models.DescribeUserCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sddp_20190103_models.DescribeUserCountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sddp_20190103_models.DescribeUserCountResponse(),
-            await self.do_rpcrequest_async('DescribeUserCount', '2019-01-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_user_count(
-        self,
-        request: sddp_20190103_models.DescribeUserCountRequest,
-    ) -> sddp_20190103_models.DescribeUserCountResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_user_count_with_options(request, runtime)
-
-    async def describe_user_count_async(
-        self,
-        request: sddp_20190103_models.DescribeUserCountRequest,
-    ) -> sddp_20190103_models.DescribeUserCountResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_user_count_with_options_async(request, runtime)
 
     def describe_user_status_with_options(
         self,
