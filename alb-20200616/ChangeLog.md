@@ -1,3 +1,6 @@
+2021-09-26 Version: 1.0.4
+- Support lastest openApis.
+
 2021-07-29 Version: 1.0.3
 - Support Alb Open API.
 
