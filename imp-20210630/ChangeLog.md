@@ -1,3 +1,6 @@
+2021-09-26 Version: 2.6.0
+- LiveRoom features.
+
 2021-09-24 Version: 2.5.3
 - GetConference add playbackUrl.
 

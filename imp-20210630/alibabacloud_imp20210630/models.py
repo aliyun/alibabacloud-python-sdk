@@ -734,6 +734,228 @@ class GetRoomResponse(TeaModel):
         return self
 
 
+class GetLiveRoomUserStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+        page_number: str = None,
+        page_size: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 直播ID。
+        self.live_id = live_id
+        # 查询页码，从1开始，传空默认查询第1页。
+        self.page_number = page_number
+        # 每页显示个数，最大支持50，参数为空默认显示个数为10。
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+        watch_live_time: int = None,
+    ):
+        # 用户ID。
+        self.user_id = user_id
+        # 观看时长，单位：毫秒。
+        self.watch_live_time = watch_live_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.watch_live_time is not None:
+            result['WatchLiveTime'] = self.watch_live_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('WatchLiveTime') is not None:
+            self.watch_live_time = m.get('WatchLiveTime')
+        return self
+
+
+class GetLiveRoomUserStatisticsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        live_id: str = None,
+        total_count: int = None,
+        page_total: int = None,
+        has_more: bool = None,
+        user_statistics_list: List[GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList] = None,
+    ):
+        # 直播ID。
+        self.live_id = live_id
+        # 用户总数
+        self.total_count = total_count
+        # 用户总页数。
+        self.page_total = page_total
+        # 是否还有下一页。
+        self.has_more = has_more
+        # 用户观看数据列表。
+        self.user_statistics_list = user_statistics_list
+
+    def validate(self):
+        if self.user_statistics_list:
+            for k in self.user_statistics_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.page_total is not None:
+            result['PageTotal'] = self.page_total
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
+        result['UserStatisticsList'] = []
+        if self.user_statistics_list is not None:
+            for k in self.user_statistics_list:
+                result['UserStatisticsList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('PageTotal') is not None:
+            self.page_total = m.get('PageTotal')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
+        self.user_statistics_list = []
+        if m.get('UserStatisticsList') is not None:
+            for k in m.get('UserStatisticsList'):
+                temp_model = GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList()
+                self.user_statistics_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetLiveRoomUserStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetLiveRoomUserStatisticsResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 创建场景化直播返回的结果。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetLiveRoomUserStatisticsResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetLiveRoomUserStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetLiveRoomUserStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetLiveRoomUserStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BanCommentRequest(TeaModel):
     def __init__(
         self,
@@ -7184,6 +7406,396 @@ class UpdateLiveResponse(TeaModel):
         return self
 
 
+class CreateLiveRoomRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        title: str = None,
+        notice: str = None,
+        cover_url: str = None,
+        extension: Dict[str, str] = None,
+        anchor_id: str = None,
+        anchor_nick: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 标题，支持中英文，最大长度32位。
+        self.title = title
+        # 公告，支持中英文，最大长度256位。
+        self.notice = notice
+        # 封面，支持图片地址链接格式
+        self.cover_url = cover_url
+        # 拓展字段，按需传递，需要额外记录的房间属性。
+        self.extension = extension
+        # 主播id，仅支持英文和数字，最大长度36位。
+        self.anchor_id = anchor_id
+        # 主播昵称。
+        self.anchor_nick = anchor_nick
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.notice is not None:
+            result['Notice'] = self.notice
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.anchor_id is not None:
+            result['AnchorId'] = self.anchor_id
+        if self.anchor_nick is not None:
+            result['AnchorNick'] = self.anchor_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Notice') is not None:
+            self.notice = m.get('Notice')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('AnchorId') is not None:
+            self.anchor_id = m.get('AnchorId')
+        if m.get('AnchorNick') is not None:
+            self.anchor_nick = m.get('AnchorNick')
+        return self
+
+
+class CreateLiveRoomShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        title: str = None,
+        notice: str = None,
+        cover_url: str = None,
+        extension_shrink: str = None,
+        anchor_id: str = None,
+        anchor_nick: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 标题，支持中英文，最大长度32位。
+        self.title = title
+        # 公告，支持中英文，最大长度256位。
+        self.notice = notice
+        # 封面，支持图片地址链接格式
+        self.cover_url = cover_url
+        # 拓展字段，按需传递，需要额外记录的房间属性。
+        self.extension_shrink = extension_shrink
+        # 主播id，仅支持英文和数字，最大长度36位。
+        self.anchor_id = anchor_id
+        # 主播昵称。
+        self.anchor_nick = anchor_nick
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.notice is not None:
+            result['Notice'] = self.notice
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.extension_shrink is not None:
+            result['Extension'] = self.extension_shrink
+        if self.anchor_id is not None:
+            result['AnchorId'] = self.anchor_id
+        if self.anchor_nick is not None:
+            result['AnchorNick'] = self.anchor_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Notice') is not None:
+            self.notice = m.get('Notice')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('Extension') is not None:
+            self.extension_shrink = m.get('Extension')
+        if m.get('AnchorId') is not None:
+            self.anchor_id = m.get('AnchorId')
+        if m.get('AnchorNick') is not None:
+            self.anchor_nick = m.get('AnchorNick')
+        return self
+
+
+class CreateLiveRoomResponseBodyResultPluginInstanceInfoList(TeaModel):
+    def __init__(
+        self,
+        plugin_type: str = None,
+        plugin_id: str = None,
+        create_time: int = None,
+        extension: Dict[str, str] = None,
+    ):
+        # 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
+        self.plugin_type = plugin_type
+        # 插件实例唯一标识。
+        self.plugin_id = plugin_id
+        # 插件实例创建时间戳，单位：毫秒。
+        self.create_time = create_time
+        # 插件拓展字段。
+        self.extension = extension
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plugin_type is not None:
+            result['PluginType'] = self.plugin_type
+        if self.plugin_id is not None:
+            result['PluginId'] = self.plugin_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PluginType') is not None:
+            self.plugin_type = m.get('PluginType')
+        if m.get('PluginId') is not None:
+            self.plugin_id = m.get('PluginId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        return self
+
+
+class CreateLiveRoomResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        room_id: str = None,
+        live_id: str = None,
+        chat_id: str = None,
+        title: str = None,
+        notice: str = None,
+        cover_url: str = None,
+        anchor_id: str = None,
+        playback_url: str = None,
+        push_url: str = None,
+        live_url: str = None,
+        plugin_instance_info_list: List[CreateLiveRoomResponseBodyResultPluginInstanceInfoList] = None,
+        extension: Dict[str, str] = None,
+        anchor_nick: str = None,
+    ):
+        # 应用ID。
+        self.app_id = app_id
+        # 房间ID。
+        self.room_id = room_id
+        # 直播ID。
+        self.live_id = live_id
+        # 聊天ID。
+        self.chat_id = chat_id
+        # 标题。
+        self.title = title
+        # 公告。
+        self.notice = notice
+        # 封面。
+        self.cover_url = cover_url
+        # 主播ID。
+        self.anchor_id = anchor_id
+        # 直播回放地址。
+        self.playback_url = playback_url
+        # 直播推流地址。
+        self.push_url = push_url
+        # 直播拉流地址。
+        self.live_url = live_url
+        # 活跃插件列表。
+        self.plugin_instance_info_list = plugin_instance_info_list
+        # 直播拓展字段。
+        self.extension = extension
+        # 主播昵称。
+        self.anchor_nick = anchor_nick
+
+    def validate(self):
+        if self.plugin_instance_info_list:
+            for k in self.plugin_instance_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        if self.chat_id is not None:
+            result['ChatId'] = self.chat_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.notice is not None:
+            result['Notice'] = self.notice
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.anchor_id is not None:
+            result['AnchorId'] = self.anchor_id
+        if self.playback_url is not None:
+            result['PlaybackUrl'] = self.playback_url
+        if self.push_url is not None:
+            result['PushUrl'] = self.push_url
+        if self.live_url is not None:
+            result['LiveUrl'] = self.live_url
+        result['PluginInstanceInfoList'] = []
+        if self.plugin_instance_info_list is not None:
+            for k in self.plugin_instance_info_list:
+                result['PluginInstanceInfoList'].append(k.to_map() if k else None)
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.anchor_nick is not None:
+            result['AnchorNick'] = self.anchor_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        if m.get('ChatId') is not None:
+            self.chat_id = m.get('ChatId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Notice') is not None:
+            self.notice = m.get('Notice')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('AnchorId') is not None:
+            self.anchor_id = m.get('AnchorId')
+        if m.get('PlaybackUrl') is not None:
+            self.playback_url = m.get('PlaybackUrl')
+        if m.get('PushUrl') is not None:
+            self.push_url = m.get('PushUrl')
+        if m.get('LiveUrl') is not None:
+            self.live_url = m.get('LiveUrl')
+        self.plugin_instance_info_list = []
+        if m.get('PluginInstanceInfoList') is not None:
+            for k in m.get('PluginInstanceInfoList'):
+                temp_model = CreateLiveRoomResponseBodyResultPluginInstanceInfoList()
+                self.plugin_instance_info_list.append(temp_model.from_map(k))
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('AnchorNick') is not None:
+            self.anchor_nick = m.get('AnchorNick')
+        return self
+
+
+class CreateLiveRoomResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: CreateLiveRoomResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 创建场景化直播返回的结果。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = CreateLiveRoomResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class CreateLiveRoomResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateLiveRoomResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateLiveRoomResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ApplyLinkMicRequest(TeaModel):
     def __init__(
         self,
@@ -7573,6 +8185,584 @@ class GetAppResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLiveRoomsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        status: int = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 直播状态，0-在播 1-下播，不传则返回所有直播。
+        self.status = status
+        # 查询页码，从1开始，传空默认查询第1页。
+        self.page_number = page_number
+        # 每页显示个数，最大支持50，参数为空默认显示个数为10。
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListLiveRoomsResponseBodyResultLiveList(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+        status: int = None,
+        room_id: str = None,
+        chat_id: str = None,
+        title: str = None,
+        notice: str = None,
+        cover_url: str = None,
+        anchor_id: str = None,
+        uv: int = None,
+        extension: Dict[str, str] = None,
+        anchor_nick: str = None,
+    ):
+        # 应用ID。
+        self.app_id = app_id
+        # 直播ID。
+        self.live_id = live_id
+        # 直播状态，0-在播 1-下播。
+        self.status = status
+        # 房间ID。
+        self.room_id = room_id
+        # 聊天ID。
+        self.chat_id = chat_id
+        # 标题。
+        self.title = title
+        # 公告。
+        self.notice = notice
+        # 封面。
+        self.cover_url = cover_url
+        # 主播ID。
+        self.anchor_id = anchor_id
+        # 访问用户数。
+        self.uv = uv
+        # 直播拓展字段。
+        self.extension = extension
+        # 主播昵称。
+        self.anchor_nick = anchor_nick
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.chat_id is not None:
+            result['ChatId'] = self.chat_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.notice is not None:
+            result['Notice'] = self.notice
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.anchor_id is not None:
+            result['AnchorId'] = self.anchor_id
+        if self.uv is not None:
+            result['Uv'] = self.uv
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.anchor_nick is not None:
+            result['AnchorNick'] = self.anchor_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('ChatId') is not None:
+            self.chat_id = m.get('ChatId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Notice') is not None:
+            self.notice = m.get('Notice')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('AnchorId') is not None:
+            self.anchor_id = m.get('AnchorId')
+        if m.get('Uv') is not None:
+            self.uv = m.get('Uv')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('AnchorNick') is not None:
+            self.anchor_nick = m.get('AnchorNick')
+        return self
+
+
+class ListLiveRoomsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        page_total: int = None,
+        has_more: bool = None,
+        live_list: List[ListLiveRoomsResponseBodyResultLiveList] = None,
+    ):
+        # 直播总数。
+        self.total_count = total_count
+        # 直播总页数。
+        self.page_total = page_total
+        # 是否还有下一页。
+        self.has_more = has_more
+        # 直播列表信息。
+        self.live_list = live_list
+
+    def validate(self):
+        if self.live_list:
+            for k in self.live_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.page_total is not None:
+            result['PageTotal'] = self.page_total
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
+        result['LiveList'] = []
+        if self.live_list is not None:
+            for k in self.live_list:
+                result['LiveList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('PageTotal') is not None:
+            self.page_total = m.get('PageTotal')
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
+        self.live_list = []
+        if m.get('LiveList') is not None:
+            for k in m.get('LiveList'):
+                temp_model = ListLiveRoomsResponseBodyResultLiveList()
+                self.live_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListLiveRoomsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: ListLiveRoomsResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 创建场景化直播返回的结果。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = ListLiveRoomsResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class ListLiveRoomsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListLiveRoomsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListLiveRoomsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopLiveRoomRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+        user_id: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 直播ID。
+        self.live_id = live_id
+        # 操作人ID。
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class StopLiveRoomResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopLiveRoomResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: StopLiveRoomResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = StopLiveRoomResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLiveRoomStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 直播ID。
+        self.live_id = live_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        return self
+
+
+class GetLiveRoomStatisticsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        live_id: str = None,
+        status: int = None,
+        uv: int = None,
+        pv: int = None,
+        message_count: int = None,
+        start_time: int = None,
+        end_time: int = None,
+        watch_live_time: int = None,
+    ):
+        # 直播ID。
+        self.live_id = live_id
+        # 直播状态，0-已创建 1-直播中 2-已关闭。
+        self.status = status
+        # 访问用户数。
+        self.uv = uv
+        # 访问用户人次。
+        self.pv = pv
+        # 互动消息数。
+        self.message_count = message_count
+        # 直播开始时间，单位：毫秒。
+        self.start_time = start_time
+        # 直播结束时间，单位：毫秒。
+        self.end_time = end_time
+        # 总观看时长，单位：毫秒。
+        self.watch_live_time = watch_live_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.uv is not None:
+            result['Uv'] = self.uv
+        if self.pv is not None:
+            result['Pv'] = self.pv
+        if self.message_count is not None:
+            result['MessageCount'] = self.message_count
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.watch_live_time is not None:
+            result['WatchLiveTime'] = self.watch_live_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Uv') is not None:
+            self.uv = m.get('Uv')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
+        if m.get('MessageCount') is not None:
+            self.message_count = m.get('MessageCount')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('WatchLiveTime') is not None:
+            self.watch_live_time = m.get('WatchLiveTime')
+        return self
+
+
+class GetLiveRoomStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetLiveRoomStatisticsResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 创建场景化直播返回的结果。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetLiveRoomStatisticsResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetLiveRoomStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetLiveRoomStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetLiveRoomStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8622,6 +9812,333 @@ class UpdateConferenceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateConferenceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLiveRoomRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 直播ID。
+        self.live_id = live_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        return self
+
+
+class GetLiveRoomResponseBodyResultPluginInstanceInfoList(TeaModel):
+    def __init__(
+        self,
+        plugin_type: str = None,
+        plugin_id: str = None,
+        create_time: int = None,
+        extension: Dict[str, str] = None,
+    ):
+        # 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
+        self.plugin_type = plugin_type
+        # 插件实例唯一标识。
+        self.plugin_id = plugin_id
+        # 插件实例创建时间戳，单位：毫秒。
+        self.create_time = create_time
+        # 插件拓展字段。
+        self.extension = extension
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plugin_type is not None:
+            result['PluginType'] = self.plugin_type
+        if self.plugin_id is not None:
+            result['PluginId'] = self.plugin_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PluginType') is not None:
+            self.plugin_type = m.get('PluginType')
+        if m.get('PluginId') is not None:
+            self.plugin_id = m.get('PluginId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        return self
+
+
+class GetLiveRoomResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+        status: int = None,
+        room_id: str = None,
+        chat_id: str = None,
+        title: str = None,
+        notice: str = None,
+        cover_url: str = None,
+        anchor_id: str = None,
+        uv: int = None,
+        online_count: int = None,
+        playback_url: str = None,
+        create_time: int = None,
+        end_time: int = None,
+        push_url: str = None,
+        live_url: str = None,
+        plugin_instance_info_list: List[GetLiveRoomResponseBodyResultPluginInstanceInfoList] = None,
+        extension: Dict[str, str] = None,
+        pv: int = None,
+        anchor_nick: str = None,
+    ):
+        # 应用ID。
+        self.app_id = app_id
+        # 直播ID。
+        self.live_id = live_id
+        # 直播状态，0-在播 1-下播。
+        self.status = status
+        # 房间ID。
+        self.room_id = room_id
+        # 聊天ID。
+        self.chat_id = chat_id
+        # 标题。
+        self.title = title
+        # 公告。
+        self.notice = notice
+        # 封面。
+        self.cover_url = cover_url
+        # 主播ID。
+        self.anchor_id = anchor_id
+        # 访问用户数。
+        self.uv = uv
+        # 在线用户数。
+        self.online_count = online_count
+        # 直播回放地址。
+        self.playback_url = playback_url
+        # 直播创建时间，单位：毫秒。
+        self.create_time = create_time
+        # 直播结束时间，单位：毫秒。
+        self.end_time = end_time
+        # 直播推流地址。
+        self.push_url = push_url
+        # 直播拉流地址。
+        self.live_url = live_url
+        # 活跃插件列表。
+        self.plugin_instance_info_list = plugin_instance_info_list
+        # 直播拓展字段。
+        self.extension = extension
+        # 访问用户人次。
+        self.pv = pv
+        # 主播昵称
+        self.anchor_nick = anchor_nick
+
+    def validate(self):
+        if self.plugin_instance_info_list:
+            for k in self.plugin_instance_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.chat_id is not None:
+            result['ChatId'] = self.chat_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.notice is not None:
+            result['Notice'] = self.notice
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.anchor_id is not None:
+            result['AnchorId'] = self.anchor_id
+        if self.uv is not None:
+            result['Uv'] = self.uv
+        if self.online_count is not None:
+            result['OnlineCount'] = self.online_count
+        if self.playback_url is not None:
+            result['PlaybackUrl'] = self.playback_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.push_url is not None:
+            result['PushUrl'] = self.push_url
+        if self.live_url is not None:
+            result['LiveUrl'] = self.live_url
+        result['PluginInstanceInfoList'] = []
+        if self.plugin_instance_info_list is not None:
+            for k in self.plugin_instance_info_list:
+                result['PluginInstanceInfoList'].append(k.to_map() if k else None)
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.pv is not None:
+            result['Pv'] = self.pv
+        if self.anchor_nick is not None:
+            result['AnchorNick'] = self.anchor_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('ChatId') is not None:
+            self.chat_id = m.get('ChatId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Notice') is not None:
+            self.notice = m.get('Notice')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('AnchorId') is not None:
+            self.anchor_id = m.get('AnchorId')
+        if m.get('Uv') is not None:
+            self.uv = m.get('Uv')
+        if m.get('OnlineCount') is not None:
+            self.online_count = m.get('OnlineCount')
+        if m.get('PlaybackUrl') is not None:
+            self.playback_url = m.get('PlaybackUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PushUrl') is not None:
+            self.push_url = m.get('PushUrl')
+        if m.get('LiveUrl') is not None:
+            self.live_url = m.get('LiveUrl')
+        self.plugin_instance_info_list = []
+        if m.get('PluginInstanceInfoList') is not None:
+            for k in m.get('PluginInstanceInfoList'):
+                temp_model = GetLiveRoomResponseBodyResultPluginInstanceInfoList()
+                self.plugin_instance_info_list.append(temp_model.from_map(k))
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
+        if m.get('AnchorNick') is not None:
+            self.anchor_nick = m.get('AnchorNick')
+        return self
+
+
+class GetLiveRoomResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetLiveRoomResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 创建场景化直播返回的结果。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetLiveRoomResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetLiveRoomResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetLiveRoomResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetLiveRoomResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

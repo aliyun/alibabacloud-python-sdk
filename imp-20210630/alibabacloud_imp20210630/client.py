@@ -209,6 +209,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_room_with_options_async(request, runtime)
 
+    def get_live_room_user_statistics_with_options(
+        self,
+        request: imp_20210630_models.GetLiveRoomUserStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetLiveRoomUserStatisticsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetLiveRoomUserStatisticsResponse(),
+            self.do_rpcrequest('GetLiveRoomUserStatistics', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_live_room_user_statistics_with_options_async(
+        self,
+        request: imp_20210630_models.GetLiveRoomUserStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetLiveRoomUserStatisticsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetLiveRoomUserStatisticsResponse(),
+            await self.do_rpcrequest_async('GetLiveRoomUserStatistics', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_live_room_user_statistics(
+        self,
+        request: imp_20210630_models.GetLiveRoomUserStatisticsRequest,
+    ) -> imp_20210630_models.GetLiveRoomUserStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_room_user_statistics_with_options(request, runtime)
+
+    async def get_live_room_user_statistics_async(
+        self,
+        request: imp_20210630_models.GetLiveRoomUserStatisticsRequest,
+    ) -> imp_20210630_models.GetLiveRoomUserStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_room_user_statistics_with_options_async(request, runtime)
+
     def ban_comment_with_options(
         self,
         request: imp_20210630_models.BanCommentRequest,
@@ -1839,6 +1881,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_live_with_options_async(request, runtime)
 
+    def create_live_room_with_options(
+        self,
+        tmp_req: imp_20210630_models.CreateLiveRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateLiveRoomResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.CreateLiveRoomShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateLiveRoomResponse(),
+            self.do_rpcrequest('CreateLiveRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_live_room_with_options_async(
+        self,
+        tmp_req: imp_20210630_models.CreateLiveRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateLiveRoomResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.CreateLiveRoomShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateLiveRoomResponse(),
+            await self.do_rpcrequest_async('CreateLiveRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_live_room(
+        self,
+        request: imp_20210630_models.CreateLiveRoomRequest,
+    ) -> imp_20210630_models.CreateLiveRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_live_room_with_options(request, runtime)
+
+    async def create_live_room_async(
+        self,
+        request: imp_20210630_models.CreateLiveRoomRequest,
+    ) -> imp_20210630_models.CreateLiveRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_live_room_with_options_async(request, runtime)
+
     def apply_link_mic_with_options(
         self,
         request: imp_20210630_models.ApplyLinkMicRequest,
@@ -1964,6 +2056,132 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.GetAppResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_app_with_options_async(request, runtime)
+
+    def list_live_rooms_with_options(
+        self,
+        request: imp_20210630_models.ListLiveRoomsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListLiveRoomsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListLiveRoomsResponse(),
+            self.do_rpcrequest('ListLiveRooms', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_live_rooms_with_options_async(
+        self,
+        request: imp_20210630_models.ListLiveRoomsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListLiveRoomsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListLiveRoomsResponse(),
+            await self.do_rpcrequest_async('ListLiveRooms', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_live_rooms(
+        self,
+        request: imp_20210630_models.ListLiveRoomsRequest,
+    ) -> imp_20210630_models.ListLiveRoomsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_rooms_with_options(request, runtime)
+
+    async def list_live_rooms_async(
+        self,
+        request: imp_20210630_models.ListLiveRoomsRequest,
+    ) -> imp_20210630_models.ListLiveRoomsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_rooms_with_options_async(request, runtime)
+
+    def stop_live_room_with_options(
+        self,
+        request: imp_20210630_models.StopLiveRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.StopLiveRoomResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.StopLiveRoomResponse(),
+            self.do_rpcrequest('StopLiveRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def stop_live_room_with_options_async(
+        self,
+        request: imp_20210630_models.StopLiveRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.StopLiveRoomResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.StopLiveRoomResponse(),
+            await self.do_rpcrequest_async('StopLiveRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def stop_live_room(
+        self,
+        request: imp_20210630_models.StopLiveRoomRequest,
+    ) -> imp_20210630_models.StopLiveRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_live_room_with_options(request, runtime)
+
+    async def stop_live_room_async(
+        self,
+        request: imp_20210630_models.StopLiveRoomRequest,
+    ) -> imp_20210630_models.StopLiveRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_live_room_with_options_async(request, runtime)
+
+    def get_live_room_statistics_with_options(
+        self,
+        request: imp_20210630_models.GetLiveRoomStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetLiveRoomStatisticsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetLiveRoomStatisticsResponse(),
+            self.do_rpcrequest('GetLiveRoomStatistics', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_live_room_statistics_with_options_async(
+        self,
+        request: imp_20210630_models.GetLiveRoomStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetLiveRoomStatisticsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetLiveRoomStatisticsResponse(),
+            await self.do_rpcrequest_async('GetLiveRoomStatistics', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_live_room_statistics(
+        self,
+        request: imp_20210630_models.GetLiveRoomStatisticsRequest,
+    ) -> imp_20210630_models.GetLiveRoomStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_room_statistics_with_options(request, runtime)
+
+    async def get_live_room_statistics_async(
+        self,
+        request: imp_20210630_models.GetLiveRoomStatisticsRequest,
+    ) -> imp_20210630_models.GetLiveRoomStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_room_statistics_with_options_async(request, runtime)
 
     def send_custom_message_to_users_with_options(
         self,
@@ -2224,3 +2442,45 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.UpdateConferenceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_conference_with_options_async(request, runtime)
+
+    def get_live_room_with_options(
+        self,
+        request: imp_20210630_models.GetLiveRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetLiveRoomResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetLiveRoomResponse(),
+            self.do_rpcrequest('GetLiveRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_live_room_with_options_async(
+        self,
+        request: imp_20210630_models.GetLiveRoomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetLiveRoomResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetLiveRoomResponse(),
+            await self.do_rpcrequest_async('GetLiveRoom', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_live_room(
+        self,
+        request: imp_20210630_models.GetLiveRoomRequest,
+    ) -> imp_20210630_models.GetLiveRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_room_with_options(request, runtime)
+
+    async def get_live_room_async(
+        self,
+        request: imp_20210630_models.GetLiveRoomRequest,
+    ) -> imp_20210630_models.GetLiveRoomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_room_with_options_async(request, runtime)
