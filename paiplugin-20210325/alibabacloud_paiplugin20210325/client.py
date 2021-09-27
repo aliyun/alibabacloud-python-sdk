@@ -697,7 +697,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pai_plugin_20210325_models.UploadMediaByURLResponse(),
-            self.do_roarequest('UploadMediaByURL', '2021-03-25', 'HTTPS', 'POST', 'AK', f'/api/v1/media/api/v1/video/upload', 'json', req, runtime)
+            self.do_roarequest('UploadMediaByURL', '2021-03-25', 'HTTPS', 'POST', 'AK', f'/media/api/v1/video/upload', 'json', req, runtime)
         )
 
     async def upload_media_by_urlwith_options_async(
@@ -720,7 +720,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pai_plugin_20210325_models.UploadMediaByURLResponse(),
-            await self.do_roarequest_async('UploadMediaByURL', '2021-03-25', 'HTTPS', 'POST', 'AK', f'/api/v1/media/api/v1/video/upload', 'json', req, runtime)
+            await self.do_roarequest_async('UploadMediaByURL', '2021-03-25', 'HTTPS', 'POST', 'AK', f'/media/api/v1/video/upload', 'json', req, runtime)
         )
 
     def delete_signature(

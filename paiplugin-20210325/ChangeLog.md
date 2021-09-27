@@ -1,3 +1,6 @@
+2021-09-27 Version: 1.0.3
+- Support UploadMediaByURL.
+
 2021-09-27 Version: 1.0.2
 - Add UploadMediaByURL.
 
