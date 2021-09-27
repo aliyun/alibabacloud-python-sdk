@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class CreateSignatureRequest(TeaModel):
@@ -1959,6 +1959,330 @@ class ListSchedulesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListSchedulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadMediaByURLRequestUploadMetadatasS3UploadInfo(TeaModel):
+    def __init__(
+        self,
+        s_3access_key: str = None,
+        s_3bucket: str = None,
+        s_3endpoint: str = None,
+        s_3file_key: str = None,
+        s_3provider: str = None,
+        s_3secret_key: str = None,
+        s_3token: str = None,
+        id: int = None,
+        job_id: str = None,
+    ):
+        # 上传的临时AK
+        self.s_3access_key = s_3access_key
+        # Bucket
+        self.s_3bucket = s_3bucket
+        # Endpoint
+        self.s_3endpoint = s_3endpoint
+        # 上传的FileKey
+        self.s_3file_key = s_3file_key
+        # 供应商名称
+        self.s_3provider = s_3provider
+        # 上传的临时SK
+        self.s_3secret_key = s_3secret_key
+        # 上传的临时Token
+        self.s_3token = s_3token
+        self.id = id
+        # Job Id
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.s_3access_key is not None:
+            result['S3AccessKey'] = self.s_3access_key
+        if self.s_3bucket is not None:
+            result['S3Bucket'] = self.s_3bucket
+        if self.s_3endpoint is not None:
+            result['S3Endpoint'] = self.s_3endpoint
+        if self.s_3file_key is not None:
+            result['S3FileKey'] = self.s_3file_key
+        if self.s_3provider is not None:
+            result['S3Provider'] = self.s_3provider
+        if self.s_3secret_key is not None:
+            result['S3SecretKey'] = self.s_3secret_key
+        if self.s_3token is not None:
+            result['S3Token'] = self.s_3token
+        if self.id is not None:
+            result['id'] = self.id
+        if self.job_id is not None:
+            result['jobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('S3AccessKey') is not None:
+            self.s_3access_key = m.get('S3AccessKey')
+        if m.get('S3Bucket') is not None:
+            self.s_3bucket = m.get('S3Bucket')
+        if m.get('S3Endpoint') is not None:
+            self.s_3endpoint = m.get('S3Endpoint')
+        if m.get('S3FileKey') is not None:
+            self.s_3file_key = m.get('S3FileKey')
+        if m.get('S3Provider') is not None:
+            self.s_3provider = m.get('S3Provider')
+        if m.get('S3SecretKey') is not None:
+            self.s_3secret_key = m.get('S3SecretKey')
+        if m.get('S3Token') is not None:
+            self.s_3token = m.get('S3Token')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('jobId') is not None:
+            self.job_id = m.get('jobId')
+        return self
+
+
+class UploadMediaByURLRequestUploadMetadatas(TeaModel):
+    def __init__(
+        self,
+        file_extension: str = None,
+        s_3upload_info: UploadMediaByURLRequestUploadMetadatasS3UploadInfo = None,
+        source_url: str = None,
+        title: str = None,
+    ):
+        self.file_extension = file_extension
+        self.s_3upload_info = s_3upload_info
+        self.source_url = source_url
+        self.title = title
+
+    def validate(self):
+        if self.s_3upload_info:
+            self.s_3upload_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_extension is not None:
+            result['FileExtension'] = self.file_extension
+        if self.s_3upload_info is not None:
+            result['S3UploadInfo'] = self.s_3upload_info.to_map()
+        if self.source_url is not None:
+            result['SourceURL'] = self.source_url
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileExtension') is not None:
+            self.file_extension = m.get('FileExtension')
+        if m.get('S3UploadInfo') is not None:
+            temp_model = UploadMediaByURLRequestUploadMetadatasS3UploadInfo()
+            self.s_3upload_info = temp_model.from_map(m['S3UploadInfo'])
+        if m.get('SourceURL') is not None:
+            self.source_url = m.get('SourceURL')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UploadMediaByURLRequestUserData(TeaModel):
+    def __init__(
+        self,
+        extend: Dict[str, Any] = None,
+        message_callback: str = None,
+    ):
+        self.extend = extend
+        self.message_callback = message_callback
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.message_callback is not None:
+            result['MessageCallback'] = self.message_callback
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('MessageCallback') is not None:
+            self.message_callback = m.get('MessageCallback')
+        return self
+
+
+class UploadMediaByURLRequest(TeaModel):
+    def __init__(
+        self,
+        upload_metadatas: List[UploadMediaByURLRequestUploadMetadatas] = None,
+        upload_urls: str = None,
+        user_data: UploadMediaByURLRequestUserData = None,
+    ):
+        self.upload_metadatas = upload_metadatas
+        self.upload_urls = upload_urls
+        self.user_data = user_data
+
+    def validate(self):
+        if self.upload_metadatas:
+            for k in self.upload_metadatas:
+                if k:
+                    k.validate()
+        if self.user_data:
+            self.user_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['UploadMetadatas'] = []
+        if self.upload_metadatas is not None:
+            for k in self.upload_metadatas:
+                result['UploadMetadatas'].append(k.to_map() if k else None)
+        if self.upload_urls is not None:
+            result['UploadURLs'] = self.upload_urls
+        if self.user_data is not None:
+            result['UserData'] = self.user_data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.upload_metadatas = []
+        if m.get('UploadMetadatas') is not None:
+            for k in m.get('UploadMetadatas'):
+                temp_model = UploadMediaByURLRequestUploadMetadatas()
+                self.upload_metadatas.append(temp_model.from_map(k))
+        if m.get('UploadURLs') is not None:
+            self.upload_urls = m.get('UploadURLs')
+        if m.get('UserData') is not None:
+            temp_model = UploadMediaByURLRequestUserData()
+            self.user_data = temp_model.from_map(m['UserData'])
+        return self
+
+
+class UploadMediaByURLResponseBodyUploadJobs(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        source_url: str = None,
+    ):
+        self.job_id = job_id
+        self.source_url = source_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.source_url is not None:
+            result['SourceURL'] = self.source_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('SourceURL') is not None:
+            self.source_url = m.get('SourceURL')
+        return self
+
+
+class UploadMediaByURLResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        upload_jobs: List[UploadMediaByURLResponseBodyUploadJobs] = None,
+    ):
+        self.request_id = request_id
+        self.upload_jobs = upload_jobs
+
+    def validate(self):
+        if self.upload_jobs:
+            for k in self.upload_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['UploadJobs'] = []
+        if self.upload_jobs is not None:
+            for k in self.upload_jobs:
+                result['UploadJobs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.upload_jobs = []
+        if m.get('UploadJobs') is not None:
+            for k in m.get('UploadJobs'):
+                temp_model = UploadMediaByURLResponseBodyUploadJobs()
+                self.upload_jobs.append(temp_model.from_map(k))
+        return self
+
+
+class UploadMediaByURLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UploadMediaByURLResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UploadMediaByURLResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

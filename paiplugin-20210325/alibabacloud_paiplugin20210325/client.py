@@ -133,6 +133,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.DeleteTemplateResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -147,6 +148,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.DeleteTemplateResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -317,6 +319,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.DeleteScheduleResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -331,6 +334,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.DeleteScheduleResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -361,6 +365,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.GetTemplateResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -375,6 +380,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.GetTemplateResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -471,6 +477,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.GetSignatureResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -485,6 +492,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.GetSignatureResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -653,6 +661,68 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('ListSchedules', '2021-03-25', 'HTTPS', 'GET', 'AK', f'/api/v1/schedules', 'json', req, runtime)
         )
 
+    def upload_media_by_url(
+        self,
+        request: pai_plugin_20210325_models.UploadMediaByURLRequest,
+    ) -> pai_plugin_20210325_models.UploadMediaByURLResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.upload_media_by_urlwith_options(request, headers, runtime)
+
+    async def upload_media_by_url_async(
+        self,
+        request: pai_plugin_20210325_models.UploadMediaByURLRequest,
+    ) -> pai_plugin_20210325_models.UploadMediaByURLResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.upload_media_by_urlwith_options_async(request, headers, runtime)
+
+    def upload_media_by_urlwith_options(
+        self,
+        request: pai_plugin_20210325_models.UploadMediaByURLRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20210325_models.UploadMediaByURLResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.upload_metadatas):
+            body['UploadMetadatas'] = request.upload_metadatas
+        if not UtilClient.is_unset(request.upload_urls):
+            body['UploadURLs'] = request.upload_urls
+        if not UtilClient.is_unset(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            pai_plugin_20210325_models.UploadMediaByURLResponse(),
+            self.do_roarequest('UploadMediaByURL', '2021-03-25', 'HTTPS', 'POST', 'AK', f'/api/v1/media/api/v1/video/upload', 'json', req, runtime)
+        )
+
+    async def upload_media_by_urlwith_options_async(
+        self,
+        request: pai_plugin_20210325_models.UploadMediaByURLRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20210325_models.UploadMediaByURLResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.upload_metadatas):
+            body['UploadMetadatas'] = request.upload_metadatas
+        if not UtilClient.is_unset(request.upload_urls):
+            body['UploadURLs'] = request.upload_urls
+        if not UtilClient.is_unset(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            pai_plugin_20210325_models.UploadMediaByURLResponse(),
+            await self.do_roarequest_async('UploadMediaByURL', '2021-03-25', 'HTTPS', 'POST', 'AK', f'/api/v1/media/api/v1/video/upload', 'json', req, runtime)
+        )
+
     def delete_signature(
         self,
         id: str,
@@ -675,6 +745,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.DeleteSignatureResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -689,6 +760,7 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20210325_models.DeleteSignatureResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
