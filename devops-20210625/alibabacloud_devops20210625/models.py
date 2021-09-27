@@ -2912,7 +2912,8 @@ class GetOrganizationMemberResponseBodyMember(TeaModel):
         last_visit_time: int = None,
         mobile: str = None,
         organization_member_name: str = None,
-        organization_role: str = None,
+        organization_role_name: str = None,
+        organization_role_id: str = None,
         state: str = None,
     ):
         # 阿里云用户PK
@@ -2935,8 +2936,10 @@ class GetOrganizationMemberResponseBodyMember(TeaModel):
         self.mobile = mobile
         # 企业成员名
         self.organization_member_name = organization_member_name
-        # 企业角色
-        self.organization_role = organization_role
+        # 企业角色名字
+        self.organization_role_name = organization_role_name
+        # 企业角色Id
+        self.organization_role_id = organization_role_id
         # 用户状态
         self.state = state
 
@@ -2970,8 +2973,10 @@ class GetOrganizationMemberResponseBodyMember(TeaModel):
             result['mobile'] = self.mobile
         if self.organization_member_name is not None:
             result['organizationMemberName'] = self.organization_member_name
-        if self.organization_role is not None:
-            result['organizationRole'] = self.organization_role
+        if self.organization_role_name is not None:
+            result['organizationRoleName'] = self.organization_role_name
+        if self.organization_role_id is not None:
+            result['organizationRoleId'] = self.organization_role_id
         if self.state is not None:
             result['state'] = self.state
         return result
@@ -2999,8 +3004,10 @@ class GetOrganizationMemberResponseBodyMember(TeaModel):
             self.mobile = m.get('mobile')
         if m.get('organizationMemberName') is not None:
             self.organization_member_name = m.get('organizationMemberName')
-        if m.get('organizationRole') is not None:
-            self.organization_role = m.get('organizationRole')
+        if m.get('organizationRoleName') is not None:
+            self.organization_role_name = m.get('organizationRoleName')
+        if m.get('organizationRoleId') is not None:
+            self.organization_role_id = m.get('organizationRoleId')
         if m.get('state') is not None:
             self.state = m.get('state')
         return self
@@ -5350,7 +5357,8 @@ class ListOrganizationMembersResponseBodyMembers(TeaModel):
         last_visit_time: int = None,
         mobile: str = None,
         organization_member_name: str = None,
-        organization_role: str = None,
+        organization_role_name: str = None,
+        organization_role_id: str = None,
         state: str = None,
     ):
         # 阿里云用户ID
@@ -5373,8 +5381,10 @@ class ListOrganizationMembersResponseBodyMembers(TeaModel):
         self.mobile = mobile
         # 企业成员名
         self.organization_member_name = organization_member_name
-        # 企业角色
-        self.organization_role = organization_role
+        # 企业角色名字
+        self.organization_role_name = organization_role_name
+        # 企业角色Id
+        self.organization_role_id = organization_role_id
         # 用户状态
         self.state = state
 
@@ -5408,8 +5418,10 @@ class ListOrganizationMembersResponseBodyMembers(TeaModel):
             result['mobile'] = self.mobile
         if self.organization_member_name is not None:
             result['organizationMemberName'] = self.organization_member_name
-        if self.organization_role is not None:
-            result['organizationRole'] = self.organization_role
+        if self.organization_role_name is not None:
+            result['organizationRoleName'] = self.organization_role_name
+        if self.organization_role_id is not None:
+            result['organizationRoleId'] = self.organization_role_id
         if self.state is not None:
             result['state'] = self.state
         return result
@@ -5437,8 +5449,10 @@ class ListOrganizationMembersResponseBodyMembers(TeaModel):
             self.mobile = m.get('mobile')
         if m.get('organizationMemberName') is not None:
             self.organization_member_name = m.get('organizationMemberName')
-        if m.get('organizationRole') is not None:
-            self.organization_role = m.get('organizationRole')
+        if m.get('organizationRoleName') is not None:
+            self.organization_role_name = m.get('organizationRoleName')
+        if m.get('organizationRoleId') is not None:
+            self.organization_role_id = m.get('organizationRoleId')
         if m.get('state') is not None:
             self.state = m.get('state')
         return self
