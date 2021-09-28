@@ -712,6 +712,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.decline_handshake_with_options_async(request, runtime)
 
+    def delete_account_with_options(
+        self,
+        request: resource_manager_20200331_models.DeleteAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteAccountResponse(),
+            self.do_rpcrequest('DeleteAccount', '2020-03-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_account_with_options_async(
+        self,
+        request: resource_manager_20200331_models.DeleteAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteAccountResponse(),
+            await self.do_rpcrequest_async('DeleteAccount', '2020-03-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_account(
+        self,
+        request: resource_manager_20200331_models.DeleteAccountRequest,
+    ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_account_with_options(request, runtime)
+
+    async def delete_account_async(
+        self,
+        request: resource_manager_20200331_models.DeleteAccountRequest,
+    ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_account_with_options_async(request, runtime)
+
     def delete_control_policy_with_options(
         self,
         request: resource_manager_20200331_models.DeleteControlPolicyRequest,
@@ -2559,6 +2601,48 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.MoveAccountResponse:
         runtime = util_models.RuntimeOptions()
         return await self.move_account_with_options_async(request, runtime)
+
+    def move_resources_with_options(
+        self,
+        request: resource_manager_20200331_models.MoveResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.MoveResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.MoveResourcesResponse(),
+            self.do_rpcrequest('MoveResources', '2020-03-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def move_resources_with_options_async(
+        self,
+        request: resource_manager_20200331_models.MoveResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.MoveResourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.MoveResourcesResponse(),
+            await self.do_rpcrequest_async('MoveResources', '2020-03-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def move_resources(
+        self,
+        request: resource_manager_20200331_models.MoveResourcesRequest,
+    ) -> resource_manager_20200331_models.MoveResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.move_resources_with_options(request, runtime)
+
+    async def move_resources_async(
+        self,
+        request: resource_manager_20200331_models.MoveResourcesRequest,
+    ) -> resource_manager_20200331_models.MoveResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.move_resources_with_options_async(request, runtime)
 
     def promote_resource_account_with_options(
         self,
