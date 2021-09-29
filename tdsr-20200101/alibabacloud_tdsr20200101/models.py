@@ -330,6 +330,7 @@ class LinkImageRequest(TeaModel):
         sub_scene_id: str = None,
         file_name: str = None,
         camera_height: int = None,
+        platform: str = None,
     ):
         # 子场景ID
         self.sub_scene_id = sub_scene_id
@@ -337,6 +338,8 @@ class LinkImageRequest(TeaModel):
         self.file_name = file_name
         # 相机高度 单位 cm
         self.camera_height = camera_height
+        # 平台标识，默认PC
+        self.platform = platform
 
     def validate(self):
         pass
@@ -353,6 +356,8 @@ class LinkImageRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.camera_height is not None:
             result['CameraHeight'] = self.camera_height
+        if self.platform is not None:
+            result['Platform'] = self.platform
         return result
 
     def from_map(self, m: dict = None):
@@ -363,6 +368,8 @@ class LinkImageRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('CameraHeight') is not None:
             self.camera_height = m.get('CameraHeight')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
         return self
 
 
@@ -3930,6 +3937,8 @@ class ListSubSceneResponseBodyList(TeaModel):
         gmt_modified: int = None,
         resource_name: str = None,
         cubemap_path: str = None,
+        deleted: bool = None,
+        origin_url: str = None,
     ):
         # 子场景ID
         self.id = id
@@ -3951,6 +3960,10 @@ class ListSubSceneResponseBodyList(TeaModel):
         self.resource_name = resource_name
         # 切图的路径
         self.cubemap_path = cubemap_path
+        # 是否删除
+        self.deleted = deleted
+        # 原图地址
+        self.origin_url = origin_url
 
     def validate(self):
         pass
@@ -3981,6 +3994,10 @@ class ListSubSceneResponseBodyList(TeaModel):
             result['ResourceName'] = self.resource_name
         if self.cubemap_path is not None:
             result['CubemapPath'] = self.cubemap_path
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.origin_url is not None:
+            result['OriginUrl'] = self.origin_url
         return result
 
     def from_map(self, m: dict = None):
@@ -4005,6 +4022,10 @@ class ListSubSceneResponseBodyList(TeaModel):
             self.resource_name = m.get('ResourceName')
         if m.get('CubemapPath') is not None:
             self.cubemap_path = m.get('CubemapPath')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('OriginUrl') is not None:
+            self.origin_url = m.get('OriginUrl')
         return self
 
 
@@ -5159,6 +5180,134 @@ class TempPreviewResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = TempPreviewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PublishSceneRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+    ):
+        # 场景ID
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class PublishSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        success: bool = None,
+        message: str = None,
+        preview_url: str = None,
+        instance_id: str = None,
+    ):
+        # 请求ID，与入参requestId对应
+        self.request_id = request_id
+        # 返回码
+        self.code = code
+        # 是否请求成功
+        self.success = success
+        # 错误消息
+        self.message = message
+        # 预览链接
+        self.preview_url = preview_url
+        # 任务实例id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class PublishSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: PublishSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = PublishSceneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
