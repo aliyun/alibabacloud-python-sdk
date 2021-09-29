@@ -3147,9 +3147,17 @@ class UpdateAggregateCompliancePackRequestConfigRules(TeaModel):
         self,
         managed_rule_identifier: str = None,
         config_rule_parameters: List[UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters] = None,
+        config_rule_id: str = None,
+        config_rule_name: str = None,
+        description: str = None,
+        risk_level: int = None,
     ):
         self.managed_rule_identifier = managed_rule_identifier
         self.config_rule_parameters = config_rule_parameters
+        self.config_rule_id = config_rule_id
+        self.config_rule_name = config_rule_name
+        self.description = description
+        self.risk_level = risk_level
 
     def validate(self):
         if self.config_rule_parameters:
@@ -3169,6 +3177,14 @@ class UpdateAggregateCompliancePackRequestConfigRules(TeaModel):
         if self.config_rule_parameters is not None:
             for k in self.config_rule_parameters:
                 result['ConfigRuleParameters'].append(k.to_map() if k else None)
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        if self.config_rule_name is not None:
+            result['ConfigRuleName'] = self.config_rule_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -3180,6 +3196,14 @@ class UpdateAggregateCompliancePackRequestConfigRules(TeaModel):
             for k in m.get('ConfigRuleParameters'):
                 temp_model = UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters()
                 self.config_rule_parameters.append(temp_model.from_map(k))
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('ConfigRuleName') is not None:
+            self.config_rule_name = m.get('ConfigRuleName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -3454,11 +3478,15 @@ class GetAggregateCompliancePackResponseBodyCompliancePackConfigRules(TeaModel):
         config_rule_name: str = None,
         config_rule_id: str = None,
         config_rule_parameters: List[GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters] = None,
+        description: str = None,
+        risk_level: int = None,
     ):
         self.managed_rule_identifier = managed_rule_identifier
         self.config_rule_name = config_rule_name
         self.config_rule_id = config_rule_id
         self.config_rule_parameters = config_rule_parameters
+        self.description = description
+        self.risk_level = risk_level
 
     def validate(self):
         if self.config_rule_parameters:
@@ -3482,6 +3510,10 @@ class GetAggregateCompliancePackResponseBodyCompliancePackConfigRules(TeaModel):
         if self.config_rule_parameters is not None:
             for k in self.config_rule_parameters:
                 result['ConfigRuleParameters'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -3497,6 +3529,10 @@ class GetAggregateCompliancePackResponseBodyCompliancePackConfigRules(TeaModel):
             for k in m.get('ConfigRuleParameters'):
                 temp_model = GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters()
                 self.config_rule_parameters.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -6551,11 +6587,15 @@ class GetCompliancePackResponseBodyCompliancePackConfigRules(TeaModel):
         config_rule_name: str = None,
         config_rule_id: str = None,
         config_rule_parameters: List[GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters] = None,
+        description: str = None,
+        risk_level: int = None,
     ):
         self.managed_rule_identifier = managed_rule_identifier
         self.config_rule_name = config_rule_name
         self.config_rule_id = config_rule_id
         self.config_rule_parameters = config_rule_parameters
+        self.description = description
+        self.risk_level = risk_level
 
     def validate(self):
         if self.config_rule_parameters:
@@ -6579,6 +6619,10 @@ class GetCompliancePackResponseBodyCompliancePackConfigRules(TeaModel):
         if self.config_rule_parameters is not None:
             for k in self.config_rule_parameters:
                 result['ConfigRuleParameters'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -6594,6 +6638,10 @@ class GetCompliancePackResponseBodyCompliancePackConfigRules(TeaModel):
             for k in m.get('ConfigRuleParameters'):
                 temp_model = GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters()
                 self.config_rule_parameters.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -9365,9 +9413,17 @@ class UpdateCompliancePackRequestConfigRules(TeaModel):
         self,
         managed_rule_identifier: str = None,
         config_rule_parameters: List[UpdateCompliancePackRequestConfigRulesConfigRuleParameters] = None,
+        config_rule_id: str = None,
+        config_rule_name: str = None,
+        description: str = None,
+        risk_level: int = None,
     ):
         self.managed_rule_identifier = managed_rule_identifier
         self.config_rule_parameters = config_rule_parameters
+        self.config_rule_id = config_rule_id
+        self.config_rule_name = config_rule_name
+        self.description = description
+        self.risk_level = risk_level
 
     def validate(self):
         if self.config_rule_parameters:
@@ -9387,6 +9443,14 @@ class UpdateCompliancePackRequestConfigRules(TeaModel):
         if self.config_rule_parameters is not None:
             for k in self.config_rule_parameters:
                 result['ConfigRuleParameters'].append(k.to_map() if k else None)
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        if self.config_rule_name is not None:
+            result['ConfigRuleName'] = self.config_rule_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -9398,6 +9462,14 @@ class UpdateCompliancePackRequestConfigRules(TeaModel):
             for k in m.get('ConfigRuleParameters'):
                 temp_model = UpdateCompliancePackRequestConfigRulesConfigRuleParameters()
                 self.config_rule_parameters.append(temp_model.from_map(k))
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('ConfigRuleName') is not None:
+            self.config_rule_name = m.get('ConfigRuleName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -9998,71 +10070,20 @@ class GetConfigRuleResponseBodyConfigRuleSourceSourceDetails(TeaModel):
         return self
 
 
-class GetConfigRuleResponseBodyConfigRuleSourceSourceConditions(TeaModel):
-    def __init__(
-        self,
-        desired_value: str = None,
-        tips: str = None,
-        operator: str = None,
-        name: str = None,
-    ):
-        self.desired_value = desired_value
-        self.tips = tips
-        self.operator = operator
-        self.name = name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.desired_value is not None:
-            result['DesiredValue'] = self.desired_value
-        if self.tips is not None:
-            result['Tips'] = self.tips
-        if self.operator is not None:
-            result['Operator'] = self.operator
-        if self.name is not None:
-            result['Name'] = self.name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DesiredValue') is not None:
-            self.desired_value = m.get('DesiredValue')
-        if m.get('Tips') is not None:
-            self.tips = m.get('Tips')
-        if m.get('Operator') is not None:
-            self.operator = m.get('Operator')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        return self
-
-
 class GetConfigRuleResponseBodyConfigRuleSource(TeaModel):
     def __init__(
         self,
         source_details: List[GetConfigRuleResponseBodyConfigRuleSourceSourceDetails] = None,
         owner: str = None,
-        source_conditions: List[GetConfigRuleResponseBodyConfigRuleSourceSourceConditions] = None,
         identifier: str = None,
     ):
         self.source_details = source_details
         self.owner = owner
-        self.source_conditions = source_conditions
         self.identifier = identifier
 
     def validate(self):
         if self.source_details:
             for k in self.source_details:
-                if k:
-                    k.validate()
-        if self.source_conditions:
-            for k in self.source_conditions:
                 if k:
                     k.validate()
 
@@ -10078,10 +10099,6 @@ class GetConfigRuleResponseBodyConfigRuleSource(TeaModel):
                 result['SourceDetails'].append(k.to_map() if k else None)
         if self.owner is not None:
             result['Owner'] = self.owner
-        result['SourceConditions'] = []
-        if self.source_conditions is not None:
-            for k in self.source_conditions:
-                result['SourceConditions'].append(k.to_map() if k else None)
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         return result
@@ -10095,11 +10112,6 @@ class GetConfigRuleResponseBodyConfigRuleSource(TeaModel):
                 self.source_details.append(temp_model.from_map(k))
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
-        self.source_conditions = []
-        if m.get('SourceConditions') is not None:
-            for k in m.get('SourceConditions'):
-                temp_model = GetConfigRuleResponseBodyConfigRuleSourceSourceConditions()
-                self.source_conditions.append(temp_model.from_map(k))
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         return self
@@ -10771,10 +10783,16 @@ class CreateCompliancePackRequestConfigRules(TeaModel):
         managed_rule_identifier: str = None,
         config_rule_name: str = None,
         config_rule_parameters: List[CreateCompliancePackRequestConfigRulesConfigRuleParameters] = None,
+        config_rule_id: str = None,
+        description: str = None,
+        risk_level: int = None,
     ):
         self.managed_rule_identifier = managed_rule_identifier
         self.config_rule_name = config_rule_name
         self.config_rule_parameters = config_rule_parameters
+        self.config_rule_id = config_rule_id
+        self.description = description
+        self.risk_level = risk_level
 
     def validate(self):
         if self.config_rule_parameters:
@@ -10796,6 +10814,12 @@ class CreateCompliancePackRequestConfigRules(TeaModel):
         if self.config_rule_parameters is not None:
             for k in self.config_rule_parameters:
                 result['ConfigRuleParameters'].append(k.to_map() if k else None)
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -10809,6 +10833,12 @@ class CreateCompliancePackRequestConfigRules(TeaModel):
             for k in m.get('ConfigRuleParameters'):
                 temp_model = CreateCompliancePackRequestConfigRulesConfigRuleParameters()
                 self.config_rule_parameters.append(temp_model.from_map(k))
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -12842,10 +12872,16 @@ class CreateAggregateCompliancePackRequestConfigRules(TeaModel):
         managed_rule_identifier: str = None,
         config_rule_name: str = None,
         config_rule_parameters: List[CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters] = None,
+        config_rule_id: str = None,
+        description: str = None,
+        risk_level: int = None,
     ):
         self.managed_rule_identifier = managed_rule_identifier
         self.config_rule_name = config_rule_name
         self.config_rule_parameters = config_rule_parameters
+        self.config_rule_id = config_rule_id
+        self.description = description
+        self.risk_level = risk_level
 
     def validate(self):
         if self.config_rule_parameters:
@@ -12867,6 +12903,12 @@ class CreateAggregateCompliancePackRequestConfigRules(TeaModel):
         if self.config_rule_parameters is not None:
             for k in self.config_rule_parameters:
                 result['ConfigRuleParameters'].append(k.to_map() if k else None)
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -12880,6 +12922,12 @@ class CreateAggregateCompliancePackRequestConfigRules(TeaModel):
             for k in m.get('ConfigRuleParameters'):
                 temp_model = CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters()
                 self.config_rule_parameters.append(temp_model.from_map(k))
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -13303,71 +13351,20 @@ class GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails(TeaModel):
         return self
 
 
-class GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions(TeaModel):
-    def __init__(
-        self,
-        desired_value: str = None,
-        tips: str = None,
-        operator: str = None,
-        name: str = None,
-    ):
-        self.desired_value = desired_value
-        self.tips = tips
-        self.operator = operator
-        self.name = name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.desired_value is not None:
-            result['DesiredValue'] = self.desired_value
-        if self.tips is not None:
-            result['Tips'] = self.tips
-        if self.operator is not None:
-            result['Operator'] = self.operator
-        if self.name is not None:
-            result['Name'] = self.name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DesiredValue') is not None:
-            self.desired_value = m.get('DesiredValue')
-        if m.get('Tips') is not None:
-            self.tips = m.get('Tips')
-        if m.get('Operator') is not None:
-            self.operator = m.get('Operator')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        return self
-
-
 class GetAggregateConfigRuleResponseBodyConfigRuleSource(TeaModel):
     def __init__(
         self,
         source_details: List[GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails] = None,
         owner: str = None,
-        source_conditions: List[GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions] = None,
         identifier: str = None,
     ):
         self.source_details = source_details
         self.owner = owner
-        self.source_conditions = source_conditions
         self.identifier = identifier
 
     def validate(self):
         if self.source_details:
             for k in self.source_details:
-                if k:
-                    k.validate()
-        if self.source_conditions:
-            for k in self.source_conditions:
                 if k:
                     k.validate()
 
@@ -13383,10 +13380,6 @@ class GetAggregateConfigRuleResponseBodyConfigRuleSource(TeaModel):
                 result['SourceDetails'].append(k.to_map() if k else None)
         if self.owner is not None:
             result['Owner'] = self.owner
-        result['SourceConditions'] = []
-        if self.source_conditions is not None:
-            for k in self.source_conditions:
-                result['SourceConditions'].append(k.to_map() if k else None)
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         return result
@@ -13400,11 +13393,6 @@ class GetAggregateConfigRuleResponseBodyConfigRuleSource(TeaModel):
                 self.source_details.append(temp_model.from_map(k))
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
-        self.source_conditions = []
-        if m.get('SourceConditions') is not None:
-            for k in m.get('SourceConditions'):
-                temp_model = GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions()
-                self.source_conditions.append(temp_model.from_map(k))
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         return self

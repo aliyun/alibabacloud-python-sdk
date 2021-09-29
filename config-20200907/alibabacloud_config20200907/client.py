@@ -2159,13 +2159,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
             config_20200907_models.GetConfigRuleResponse(),
-            self.do_rpcrequest('GetConfigRule', '2020-09-07', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.do_rpcrequest('GetConfigRule', '2020-09-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_config_rule_with_options_async(
@@ -2174,13 +2173,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
             config_20200907_models.GetConfigRuleResponse(),
-            await self.do_rpcrequest_async('GetConfigRule', '2020-09-07', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.do_rpcrequest_async('GetConfigRule', '2020-09-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_config_rule(
@@ -2803,13 +2801,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
             config_20200907_models.GetAggregateConfigRuleResponse(),
-            self.do_rpcrequest('GetAggregateConfigRule', '2020-09-07', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.do_rpcrequest('GetAggregateConfigRule', '2020-09-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_aggregate_config_rule_with_options_async(
@@ -2818,13 +2815,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
             config_20200907_models.GetAggregateConfigRuleResponse(),
-            await self.do_rpcrequest_async('GetAggregateConfigRule', '2020-09-07', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.do_rpcrequest_async('GetAggregateConfigRule', '2020-09-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_aggregate_config_rule(
