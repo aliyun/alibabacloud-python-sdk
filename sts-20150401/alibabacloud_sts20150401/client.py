@@ -45,12 +45,13 @@ class Client(OpenApiClient):
             'cn-shanghai-et2-b01': 'sts.aliyuncs.com',
             'cn-shanghai-inner': 'sts.aliyuncs.com',
             'cn-shanghai-internal-test-1': 'sts.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'sts.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'sts-vpc.cn-shenzhen-finance-1.aliyuncs.com',
             'cn-shenzhen-inner': 'sts.aliyuncs.com',
             'cn-shenzhen-st4-d01': 'sts.aliyuncs.com',
             'cn-shenzhen-su18-b01': 'sts.aliyuncs.com',
             'cn-wuhan': 'sts.aliyuncs.com',
             'cn-yushanfang': 'sts.aliyuncs.com',
+            'cn-zhangbei': 'sts.aliyuncs.com',
             'cn-zhangbei-na61-b01': 'sts.aliyuncs.com',
             'cn-zhangjiakou-na62-a01': 'sts.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'sts.aliyuncs.com',
@@ -117,6 +118,48 @@ class Client(OpenApiClient):
     ) -> sts_20150401_models.AssumeRoleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.assume_role_with_options_async(request, runtime)
+
+    def assume_role_with_oidcwith_options(
+        self,
+        request: sts_20150401_models.AssumeRoleWithOIDCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleWithOIDCResponse(),
+            self.do_rpcrequest('AssumeRoleWithOIDC', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def assume_role_with_oidcwith_options_async(
+        self,
+        request: sts_20150401_models.AssumeRoleWithOIDCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sts_20150401_models.AssumeRoleWithOIDCResponse(),
+            await self.do_rpcrequest_async('AssumeRoleWithOIDC', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def assume_role_with_oidc(
+        self,
+        request: sts_20150401_models.AssumeRoleWithOIDCRequest,
+    ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.assume_role_with_oidcwith_options(request, runtime)
+
+    async def assume_role_with_oidc_async(
+        self,
+        request: sts_20150401_models.AssumeRoleWithOIDCRequest,
+    ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.assume_role_with_oidcwith_options_async(request, runtime)
 
     def assume_role_with_samlwith_options(
         self,

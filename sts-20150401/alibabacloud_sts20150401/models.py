@@ -208,6 +208,276 @@ class AssumeRoleResponse(TeaModel):
         return self
 
 
+class AssumeRoleWithOIDCRequest(TeaModel):
+    def __init__(
+        self,
+        oidcprovider_arn: str = None,
+        role_arn: str = None,
+        oidctoken: str = None,
+        policy: str = None,
+        duration_seconds: int = None,
+        role_session_name: str = None,
+    ):
+        # OIDC Provider的ARN
+        self.oidcprovider_arn = oidcprovider_arn
+        # 需要扮演的角色的ARN
+        self.role_arn = role_arn
+        # OIDC的ID Token，需输入原始Token，无需Base64解码
+        self.oidctoken = oidctoken
+        # 权限策略。 生成STS Token时可以指定一个额外的权限策略，以进一步限制STS Token的权限。若不指定则返回的Token拥有指定角色的所有权限。
+        self.policy = policy
+        # Session过期时间，单位为秒。
+        self.duration_seconds = duration_seconds
+        # 用户自定义参数。此参数用来区分不同的令牌，可用于用户级别的访问审计。
+        self.role_session_name = role_session_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oidcprovider_arn is not None:
+            result['OIDCProviderArn'] = self.oidcprovider_arn
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        if self.oidctoken is not None:
+            result['OIDCToken'] = self.oidctoken
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.duration_seconds is not None:
+            result['DurationSeconds'] = self.duration_seconds
+        if self.role_session_name is not None:
+            result['RoleSessionName'] = self.role_session_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OIDCProviderArn') is not None:
+            self.oidcprovider_arn = m.get('OIDCProviderArn')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        if m.get('OIDCToken') is not None:
+            self.oidctoken = m.get('OIDCToken')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('DurationSeconds') is not None:
+            self.duration_seconds = m.get('DurationSeconds')
+        if m.get('RoleSessionName') is not None:
+            self.role_session_name = m.get('RoleSessionName')
+        return self
+
+
+class AssumeRoleWithOIDCResponseBodyOIDCTokenInfo(TeaModel):
+    def __init__(
+        self,
+        subject: str = None,
+        issuer: str = None,
+        client_ids: str = None,
+    ):
+        self.subject = subject
+        self.issuer = issuer
+        self.client_ids = client_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.client_ids is not None:
+            result['ClientIds'] = self.client_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('ClientIds') is not None:
+            self.client_ids = m.get('ClientIds')
+        return self
+
+
+class AssumeRoleWithOIDCResponseBodyAssumedRoleUser(TeaModel):
+    def __init__(
+        self,
+        assumed_role_id: str = None,
+        arn: str = None,
+    ):
+        self.assumed_role_id = assumed_role_id
+        self.arn = arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assumed_role_id is not None:
+            result['AssumedRoleId'] = self.assumed_role_id
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumedRoleId') is not None:
+            self.assumed_role_id = m.get('AssumedRoleId')
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        return self
+
+
+class AssumeRoleWithOIDCResponseBodyCredentials(TeaModel):
+    def __init__(
+        self,
+        security_token: str = None,
+        expiration: str = None,
+        access_key_secret: str = None,
+        access_key_id: str = None,
+    ):
+        self.security_token = security_token
+        self.expiration = expiration
+        self.access_key_secret = access_key_secret
+        self.access_key_id = access_key_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        return self
+
+
+class AssumeRoleWithOIDCResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        oidctoken_info: AssumeRoleWithOIDCResponseBodyOIDCTokenInfo = None,
+        assumed_role_user: AssumeRoleWithOIDCResponseBodyAssumedRoleUser = None,
+        credentials: AssumeRoleWithOIDCResponseBodyCredentials = None,
+    ):
+        self.request_id = request_id
+        self.oidctoken_info = oidctoken_info
+        self.assumed_role_user = assumed_role_user
+        self.credentials = credentials
+
+    def validate(self):
+        if self.oidctoken_info:
+            self.oidctoken_info.validate()
+        if self.assumed_role_user:
+            self.assumed_role_user.validate()
+        if self.credentials:
+            self.credentials.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.oidctoken_info is not None:
+            result['OIDCTokenInfo'] = self.oidctoken_info.to_map()
+        if self.assumed_role_user is not None:
+            result['AssumedRoleUser'] = self.assumed_role_user.to_map()
+        if self.credentials is not None:
+            result['Credentials'] = self.credentials.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('OIDCTokenInfo') is not None:
+            temp_model = AssumeRoleWithOIDCResponseBodyOIDCTokenInfo()
+            self.oidctoken_info = temp_model.from_map(m['OIDCTokenInfo'])
+        if m.get('AssumedRoleUser') is not None:
+            temp_model = AssumeRoleWithOIDCResponseBodyAssumedRoleUser()
+            self.assumed_role_user = temp_model.from_map(m['AssumedRoleUser'])
+        if m.get('Credentials') is not None:
+            temp_model = AssumeRoleWithOIDCResponseBodyCredentials()
+            self.credentials = temp_model.from_map(m['Credentials'])
+        return self
+
+
+class AssumeRoleWithOIDCResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AssumeRoleWithOIDCResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AssumeRoleWithOIDCResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AssumeRoleWithSAMLRequest(TeaModel):
     def __init__(
         self,
