@@ -1,3 +1,6 @@
+2021-09-30 Version: 2.7.0
+- Add ListLiveRoomsById api.
+
 2021-09-26 Version: 2.6.0
 - LiveRoom features.
 

@@ -433,6 +433,192 @@ class ListApplyLinkMicUsersResponse(TeaModel):
         return self
 
 
+class GetClassDetailRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        class_id: str = None,
+        user_id: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 课堂唯一标识，由调用CreateClass返回。
+        self.class_id = class_id
+        # 操作人用户ID。
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.class_id is not None:
+            result['ClassId'] = self.class_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClassId') is not None:
+            self.class_id = m.get('ClassId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetClassDetailResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        class_id: str = None,
+        title: str = None,
+        create_user_id: str = None,
+        create_nickname: str = None,
+        status: int = None,
+        start_time: int = None,
+        end_time: int = None,
+    ):
+        # 课堂唯一标识，由调用CreateClass返回。
+        self.class_id = class_id
+        # 课堂标题。
+        self.title = title
+        # 创建人ID。
+        self.create_user_id = create_user_id
+        # 创建人昵称。
+        self.create_nickname = create_nickname
+        # 课堂状态，0:未开始 1:上课中 2:已下课。
+        self.status = status
+        # 开始上课时间戳，毫秒。
+        self.start_time = start_time
+        # 下课时间戳，毫秒。
+        self.end_time = end_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_id is not None:
+            result['ClassId'] = self.class_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_nickname is not None:
+            result['CreateNickname'] = self.create_nickname
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassId') is not None:
+            self.class_id = m.get('ClassId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateNickname') is not None:
+            self.create_nickname = m.get('CreateNickname')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        return self
+
+
+class GetClassDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetClassDetailResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # API请求的返回结果结构体。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetClassDetailResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetClassDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetClassDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetClassDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRoomRequest(TeaModel):
     def __init__(
         self,
@@ -1080,6 +1266,412 @@ class BanCommentResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = BanCommentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLiveRoomsByIdRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id_list: List[str] = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 直播ID列表。
+        self.live_id_list = live_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id_list is not None:
+            result['LiveIdList'] = self.live_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveIdList') is not None:
+            self.live_id_list = m.get('LiveIdList')
+        return self
+
+
+class ListLiveRoomsByIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id_list_shrink: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 直播ID列表。
+        self.live_id_list_shrink = live_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id_list_shrink is not None:
+            result['LiveIdList'] = self.live_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveIdList') is not None:
+            self.live_id_list_shrink = m.get('LiveIdList')
+        return self
+
+
+class ListLiveRoomsByIdResponseBodyResultLiveList(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+        status: int = None,
+        room_id: str = None,
+        chat_id: str = None,
+        title: str = None,
+        notice: str = None,
+        cover_url: str = None,
+        anchor_id: str = None,
+        uv: int = None,
+        extension: Dict[str, str] = None,
+        anchor_nick: str = None,
+        pv: int = None,
+        online_count: int = None,
+    ):
+        # 应用ID。
+        self.app_id = app_id
+        # 直播ID。
+        self.live_id = live_id
+        # 直播状态，0-在播 1-下播。
+        self.status = status
+        # 房间ID。
+        self.room_id = room_id
+        # 聊天ID。
+        self.chat_id = chat_id
+        # 标题。
+        self.title = title
+        # 公告。
+        self.notice = notice
+        # 封面。
+        self.cover_url = cover_url
+        # 主播ID。
+        self.anchor_id = anchor_id
+        # 访问用户数。
+        self.uv = uv
+        # 直播拓展字段。
+        self.extension = extension
+        # 主播昵称。
+        self.anchor_nick = anchor_nick
+        # 访问用户人次。
+        self.pv = pv
+        # 在线用户数。
+        self.online_count = online_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
+        if self.chat_id is not None:
+            result['ChatId'] = self.chat_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.notice is not None:
+            result['Notice'] = self.notice
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.anchor_id is not None:
+            result['AnchorId'] = self.anchor_id
+        if self.uv is not None:
+            result['Uv'] = self.uv
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.anchor_nick is not None:
+            result['AnchorNick'] = self.anchor_nick
+        if self.pv is not None:
+            result['Pv'] = self.pv
+        if self.online_count is not None:
+            result['OnlineCount'] = self.online_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        if m.get('ChatId') is not None:
+            self.chat_id = m.get('ChatId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Notice') is not None:
+            self.notice = m.get('Notice')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('AnchorId') is not None:
+            self.anchor_id = m.get('AnchorId')
+        if m.get('Uv') is not None:
+            self.uv = m.get('Uv')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('AnchorNick') is not None:
+            self.anchor_nick = m.get('AnchorNick')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
+        if m.get('OnlineCount') is not None:
+            self.online_count = m.get('OnlineCount')
+        return self
+
+
+class ListLiveRoomsByIdResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        live_list: List[ListLiveRoomsByIdResponseBodyResultLiveList] = None,
+    ):
+        # 直播列表信息。
+        self.live_list = live_list
+
+    def validate(self):
+        if self.live_list:
+            for k in self.live_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LiveList'] = []
+        if self.live_list is not None:
+            for k in self.live_list:
+                result['LiveList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.live_list = []
+        if m.get('LiveList') is not None:
+            for k in m.get('LiveList'):
+                temp_model = ListLiveRoomsByIdResponseBodyResultLiveList()
+                self.live_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListLiveRoomsByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: ListLiveRoomsByIdResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 创建场景化直播返回的结果。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = ListLiveRoomsByIdResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class ListLiveRoomsByIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListLiveRoomsByIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListLiveRoomsByIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteClassRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        class_id: str = None,
+        user_id: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 课堂唯一标识。
+        self.class_id = class_id
+        # 操作人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.class_id is not None:
+            result['ClassId'] = self.class_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClassId') is not None:
+            self.class_id = m.get('ClassId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DeleteClassResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteClassResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteClassResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteClassResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1898,6 +2490,127 @@ class StopLiveResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = StopLiveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateClassRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        class_id: str = None,
+        title: str = None,
+        create_user_id: str = None,
+        create_nickname: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 课堂唯一标识。
+        self.class_id = class_id
+        # 课堂标题，1~32个字符。
+        self.title = title
+        # 创建人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
+        self.create_user_id = create_user_id
+        # 创建人用户昵称，1~32个字符。
+        self.create_nickname = create_nickname
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.class_id is not None:
+            result['ClassId'] = self.class_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_nickname is not None:
+            result['CreateNickname'] = self.create_nickname
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClassId') is not None:
+            self.class_id = m.get('ClassId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateNickname') is not None:
+            self.create_nickname = m.get('CreateNickname')
+        return self
+
+
+class UpdateClassResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateClassResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateClassResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateClassResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5852,6 +6565,157 @@ class RejectLinkMicResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RejectLinkMicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateClassRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        title: str = None,
+        create_user_id: str = None,
+        create_nickname: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 课堂标题
+        self.title = title
+        # 创建人用户ID。
+        self.create_user_id = create_user_id
+        # 创建人用户昵称。
+        self.create_nickname = create_nickname
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_nickname is not None:
+            result['CreateNickname'] = self.create_nickname
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateNickname') is not None:
+            self.create_nickname = m.get('CreateNickname')
+        return self
+
+
+class CreateClassResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        class_id: str = None,
+    ):
+        # 课堂唯一标识。
+        self.class_id = class_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_id is not None:
+            result['ClassId'] = self.class_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassId') is not None:
+            self.class_id = m.get('ClassId')
+        return self
+
+
+class CreateClassResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: CreateClassResponseBodyResult = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # API请求的返回结果结构体。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = CreateClassResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class CreateClassResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateClassResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateClassResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9812,6 +10676,113 @@ class UpdateConferenceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateConferenceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopClassRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        class_id: str = None,
+        user_id: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 课堂唯一标识。
+        self.class_id = class_id
+        # 操作者用户ID。
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.class_id is not None:
+            result['ClassId'] = self.class_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClassId') is not None:
+            self.class_id = m.get('ClassId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class StopClassResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopClassResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: StopClassResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = StopClassResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

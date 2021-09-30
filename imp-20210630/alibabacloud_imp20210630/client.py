@@ -167,6 +167,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_apply_link_mic_users_with_options_async(request, runtime)
 
+    def get_class_detail_with_options(
+        self,
+        request: imp_20210630_models.GetClassDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetClassDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetClassDetailResponse(),
+            self.do_rpcrequest('GetClassDetail', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_class_detail_with_options_async(
+        self,
+        request: imp_20210630_models.GetClassDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetClassDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetClassDetailResponse(),
+            await self.do_rpcrequest_async('GetClassDetail', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_class_detail(
+        self,
+        request: imp_20210630_models.GetClassDetailRequest,
+    ) -> imp_20210630_models.GetClassDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_class_detail_with_options(request, runtime)
+
+    async def get_class_detail_async(
+        self,
+        request: imp_20210630_models.GetClassDetailRequest,
+    ) -> imp_20210630_models.GetClassDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_class_detail_with_options_async(request, runtime)
+
     def get_room_with_options(
         self,
         request: imp_20210630_models.GetRoomRequest,
@@ -292,6 +334,98 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.BanCommentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.ban_comment_with_options_async(request, runtime)
+
+    def list_live_rooms_by_id_with_options(
+        self,
+        tmp_req: imp_20210630_models.ListLiveRoomsByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListLiveRoomsByIdResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.ListLiveRoomsByIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.live_id_list):
+            request.live_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_id_list, 'LiveIdList', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListLiveRoomsByIdResponse(),
+            self.do_rpcrequest('ListLiveRoomsById', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_live_rooms_by_id_with_options_async(
+        self,
+        tmp_req: imp_20210630_models.ListLiveRoomsByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListLiveRoomsByIdResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.ListLiveRoomsByIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.live_id_list):
+            request.live_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_id_list, 'LiveIdList', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListLiveRoomsByIdResponse(),
+            await self.do_rpcrequest_async('ListLiveRoomsById', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_live_rooms_by_id(
+        self,
+        request: imp_20210630_models.ListLiveRoomsByIdRequest,
+    ) -> imp_20210630_models.ListLiveRoomsByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_rooms_by_id_with_options(request, runtime)
+
+    async def list_live_rooms_by_id_async(
+        self,
+        request: imp_20210630_models.ListLiveRoomsByIdRequest,
+    ) -> imp_20210630_models.ListLiveRoomsByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_rooms_by_id_with_options_async(request, runtime)
+
+    def delete_class_with_options(
+        self,
+        request: imp_20210630_models.DeleteClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteClassResponse(),
+            self.do_rpcrequest('DeleteClass', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_class_with_options_async(
+        self,
+        request: imp_20210630_models.DeleteClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteClassResponse(),
+            await self.do_rpcrequest_async('DeleteClass', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_class(
+        self,
+        request: imp_20210630_models.DeleteClassRequest,
+    ) -> imp_20210630_models.DeleteClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_class_with_options(request, runtime)
+
+    async def delete_class_async(
+        self,
+        request: imp_20210630_models.DeleteClassRequest,
+    ) -> imp_20210630_models.DeleteClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_class_with_options_async(request, runtime)
 
     def add_member_with_options(
         self,
@@ -510,6 +644,48 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.StopLiveResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_live_with_options_async(request, runtime)
+
+    def update_class_with_options(
+        self,
+        request: imp_20210630_models.UpdateClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateClassResponse(),
+            self.do_rpcrequest('UpdateClass', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_class_with_options_async(
+        self,
+        request: imp_20210630_models.UpdateClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.UpdateClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.UpdateClassResponse(),
+            await self.do_rpcrequest_async('UpdateClass', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_class(
+        self,
+        request: imp_20210630_models.UpdateClassRequest,
+    ) -> imp_20210630_models.UpdateClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_class_with_options(request, runtime)
+
+    async def update_class_async(
+        self,
+        request: imp_20210630_models.UpdateClassRequest,
+    ) -> imp_20210630_models.UpdateClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_class_with_options_async(request, runtime)
 
     def register_ice_oss_media_with_options(
         self,
@@ -1587,6 +1763,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reject_link_mic_with_options_async(request, runtime)
 
+    def create_class_with_options(
+        self,
+        request: imp_20210630_models.CreateClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateClassResponse(),
+            self.do_rpcrequest('CreateClass', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_class_with_options_async(
+        self,
+        request: imp_20210630_models.CreateClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateClassResponse(),
+            await self.do_rpcrequest_async('CreateClass', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_class(
+        self,
+        request: imp_20210630_models.CreateClassRequest,
+    ) -> imp_20210630_models.CreateClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_class_with_options(request, runtime)
+
+    async def create_class_async(
+        self,
+        request: imp_20210630_models.CreateClassRequest,
+    ) -> imp_20210630_models.CreateClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_class_with_options_async(request, runtime)
+
     def list_apps_with_options(
         self,
         request: imp_20210630_models.ListAppsRequest,
@@ -2442,6 +2660,48 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.UpdateConferenceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_conference_with_options_async(request, runtime)
+
+    def stop_class_with_options(
+        self,
+        request: imp_20210630_models.StopClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.StopClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.StopClassResponse(),
+            self.do_rpcrequest('StopClass', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def stop_class_with_options_async(
+        self,
+        request: imp_20210630_models.StopClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.StopClassResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.StopClassResponse(),
+            await self.do_rpcrequest_async('StopClass', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def stop_class(
+        self,
+        request: imp_20210630_models.StopClassRequest,
+    ) -> imp_20210630_models.StopClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_class_with_options(request, runtime)
+
+    async def stop_class_async(
+        self,
+        request: imp_20210630_models.StopClassRequest,
+    ) -> imp_20210630_models.StopClassResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_class_with_options_async(request, runtime)
 
     def get_live_room_with_options(
         self,
