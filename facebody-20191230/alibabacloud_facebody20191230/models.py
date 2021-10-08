@@ -3457,8 +3457,16 @@ class DetectFaceRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
+        landmark: bool = None,
+        quality: bool = None,
+        pose: bool = None,
+        max_face_number: int = None,
     ):
         self.image_url = image_url
+        self.landmark = landmark
+        self.quality = quality
+        self.pose = pose
+        self.max_face_number = max_face_number
 
     def validate(self):
         pass
@@ -3471,12 +3479,28 @@ class DetectFaceRequest(TeaModel):
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
+        if self.landmark is not None:
+            result['Landmark'] = self.landmark
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.pose is not None:
+            result['Pose'] = self.pose
+        if self.max_face_number is not None:
+            result['MaxFaceNumber'] = self.max_face_number
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
+        if m.get('Landmark') is not None:
+            self.landmark = m.get('Landmark')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('Pose') is not None:
+            self.pose = m.get('Pose')
+        if m.get('MaxFaceNumber') is not None:
+            self.max_face_number = m.get('MaxFaceNumber')
         return self
 
 
@@ -3484,8 +3508,16 @@ class DetectFaceAdvanceRequest(TeaModel):
     def __init__(
         self,
         image_urlobject: BinaryIO = None,
+        landmark: bool = None,
+        quality: bool = None,
+        pose: bool = None,
+        max_face_number: int = None,
     ):
         self.image_urlobject = image_urlobject
+        self.landmark = landmark
+        self.quality = quality
+        self.pose = pose
+        self.max_face_number = max_face_number
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -3498,12 +3530,28 @@ class DetectFaceAdvanceRequest(TeaModel):
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
+        if self.landmark is not None:
+            result['Landmark'] = self.landmark
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.pose is not None:
+            result['Pose'] = self.pose
+        if self.max_face_number is not None:
+            result['MaxFaceNumber'] = self.max_face_number
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURLObject') is not None:
             self.image_urlobject = m.get('ImageURLObject')
+        if m.get('Landmark') is not None:
+            self.landmark = m.get('Landmark')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('Pose') is not None:
+            self.pose = m.get('Pose')
+        if m.get('MaxFaceNumber') is not None:
+            self.max_face_number = m.get('MaxFaceNumber')
         return self
 
 
@@ -7025,12 +7073,14 @@ class SearchFaceRequest(TeaModel):
         limit: int = None,
         db_names: str = None,
         quality_score_threshold: float = None,
+        max_face_num: int = None,
     ):
         self.db_name = db_name
         self.image_url = image_url
         self.limit = limit
         self.db_names = db_names
         self.quality_score_threshold = quality_score_threshold
+        self.max_face_num = max_face_num
 
     def validate(self):
         pass
@@ -7051,6 +7101,8 @@ class SearchFaceRequest(TeaModel):
             result['DbNames'] = self.db_names
         if self.quality_score_threshold is not None:
             result['QualityScoreThreshold'] = self.quality_score_threshold
+        if self.max_face_num is not None:
+            result['MaxFaceNum'] = self.max_face_num
         return result
 
     def from_map(self, m: dict = None):
@@ -7065,6 +7117,8 @@ class SearchFaceRequest(TeaModel):
             self.db_names = m.get('DbNames')
         if m.get('QualityScoreThreshold') is not None:
             self.quality_score_threshold = m.get('QualityScoreThreshold')
+        if m.get('MaxFaceNum') is not None:
+            self.max_face_num = m.get('MaxFaceNum')
         return self
 
 
@@ -7076,12 +7130,14 @@ class SearchFaceAdvanceRequest(TeaModel):
         limit: int = None,
         db_names: str = None,
         quality_score_threshold: float = None,
+        max_face_num: int = None,
     ):
         self.image_url_object = image_url_object
         self.db_name = db_name
         self.limit = limit
         self.db_names = db_names
         self.quality_score_threshold = quality_score_threshold
+        self.max_face_num = max_face_num
 
     def validate(self):
         self.validate_required(self.image_url_object, 'image_url_object')
@@ -7102,6 +7158,8 @@ class SearchFaceAdvanceRequest(TeaModel):
             result['DbNames'] = self.db_names
         if self.quality_score_threshold is not None:
             result['QualityScoreThreshold'] = self.quality_score_threshold
+        if self.max_face_num is not None:
+            result['MaxFaceNum'] = self.max_face_num
         return result
 
     def from_map(self, m: dict = None):
@@ -7116,6 +7174,8 @@ class SearchFaceAdvanceRequest(TeaModel):
             self.db_names = m.get('DbNames')
         if m.get('QualityScoreThreshold') is not None:
             self.quality_score_threshold = m.get('QualityScoreThreshold')
+        if m.get('MaxFaceNum') is not None:
+            self.max_face_num = m.get('MaxFaceNum')
         return self
 
 
@@ -14584,6 +14644,356 @@ class CreateBodyDbResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateBodyDbResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchAddFacesRequestFaces(TeaModel):
+    def __init__(
+        self,
+        extra_data: str = None,
+        image_url: str = None,
+    ):
+        self.extra_data = extra_data
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extra_data is not None:
+            result['ExtraData'] = self.extra_data
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtraData') is not None:
+            self.extra_data = m.get('ExtraData')
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class BatchAddFacesRequest(TeaModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        entity_id: str = None,
+        similarity_score_threshold_in_entity: float = None,
+        similarity_score_threshold_between_entity: float = None,
+        faces: List[BatchAddFacesRequestFaces] = None,
+        quality_score_threshold: float = None,
+    ):
+        self.db_name = db_name
+        self.entity_id = entity_id
+        self.similarity_score_threshold_in_entity = similarity_score_threshold_in_entity
+        self.similarity_score_threshold_between_entity = similarity_score_threshold_between_entity
+        self.faces = faces
+        self.quality_score_threshold = quality_score_threshold
+
+    def validate(self):
+        if self.faces:
+            for k in self.faces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.similarity_score_threshold_in_entity is not None:
+            result['SimilarityScoreThresholdInEntity'] = self.similarity_score_threshold_in_entity
+        if self.similarity_score_threshold_between_entity is not None:
+            result['SimilarityScoreThresholdBetweenEntity'] = self.similarity_score_threshold_between_entity
+        result['Faces'] = []
+        if self.faces is not None:
+            for k in self.faces:
+                result['Faces'].append(k.to_map() if k else None)
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('SimilarityScoreThresholdInEntity') is not None:
+            self.similarity_score_threshold_in_entity = m.get('SimilarityScoreThresholdInEntity')
+        if m.get('SimilarityScoreThresholdBetweenEntity') is not None:
+            self.similarity_score_threshold_between_entity = m.get('SimilarityScoreThresholdBetweenEntity')
+        self.faces = []
+        if m.get('Faces') is not None:
+            for k in m.get('Faces'):
+                temp_model = BatchAddFacesRequestFaces()
+                self.faces.append(temp_model.from_map(k))
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
+        return self
+
+
+class BatchAddFacesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        entity_id: str = None,
+        similarity_score_threshold_in_entity: float = None,
+        similarity_score_threshold_between_entity: float = None,
+        faces_shrink: str = None,
+        quality_score_threshold: float = None,
+    ):
+        self.db_name = db_name
+        self.entity_id = entity_id
+        self.similarity_score_threshold_in_entity = similarity_score_threshold_in_entity
+        self.similarity_score_threshold_between_entity = similarity_score_threshold_between_entity
+        self.faces_shrink = faces_shrink
+        self.quality_score_threshold = quality_score_threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.similarity_score_threshold_in_entity is not None:
+            result['SimilarityScoreThresholdInEntity'] = self.similarity_score_threshold_in_entity
+        if self.similarity_score_threshold_between_entity is not None:
+            result['SimilarityScoreThresholdBetweenEntity'] = self.similarity_score_threshold_between_entity
+        if self.faces_shrink is not None:
+            result['Faces'] = self.faces_shrink
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('SimilarityScoreThresholdInEntity') is not None:
+            self.similarity_score_threshold_in_entity = m.get('SimilarityScoreThresholdInEntity')
+        if m.get('SimilarityScoreThresholdBetweenEntity') is not None:
+            self.similarity_score_threshold_between_entity = m.get('SimilarityScoreThresholdBetweenEntity')
+        if m.get('Faces') is not None:
+            self.faces_shrink = m.get('Faces')
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
+        return self
+
+
+class BatchAddFacesResponseBodyDataInsertedFaces(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        face_id: str = None,
+    ):
+        self.image_url = image_url
+        self.face_id = face_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.face_id is not None:
+            result['FaceId'] = self.face_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('FaceId') is not None:
+            self.face_id = m.get('FaceId')
+        return self
+
+
+class BatchAddFacesResponseBodyDataFailedFaces(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        self.image_url = image_url
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class BatchAddFacesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        inserted_faces: List[BatchAddFacesResponseBodyDataInsertedFaces] = None,
+        failed_faces: List[BatchAddFacesResponseBodyDataFailedFaces] = None,
+    ):
+        self.inserted_faces = inserted_faces
+        self.failed_faces = failed_faces
+
+    def validate(self):
+        if self.inserted_faces:
+            for k in self.inserted_faces:
+                if k:
+                    k.validate()
+        if self.failed_faces:
+            for k in self.failed_faces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InsertedFaces'] = []
+        if self.inserted_faces is not None:
+            for k in self.inserted_faces:
+                result['InsertedFaces'].append(k.to_map() if k else None)
+        result['FailedFaces'] = []
+        if self.failed_faces is not None:
+            for k in self.failed_faces:
+                result['FailedFaces'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inserted_faces = []
+        if m.get('InsertedFaces') is not None:
+            for k in m.get('InsertedFaces'):
+                temp_model = BatchAddFacesResponseBodyDataInsertedFaces()
+                self.inserted_faces.append(temp_model.from_map(k))
+        self.failed_faces = []
+        if m.get('FailedFaces') is not None:
+            for k in m.get('FailedFaces'):
+                temp_model = BatchAddFacesResponseBodyDataFailedFaces()
+                self.failed_faces.append(temp_model.from_map(k))
+        return self
+
+
+class BatchAddFacesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: BatchAddFacesResponseBodyData = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Data') is not None:
+            temp_model = BatchAddFacesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class BatchAddFacesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: BatchAddFacesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = BatchAddFacesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

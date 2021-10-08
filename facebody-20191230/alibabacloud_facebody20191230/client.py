@@ -7743,3 +7743,53 @@ class Client(OpenApiClient):
     ) -> facebody_20191230_models.CreateBodyDbResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_body_db_with_options_async(request, runtime)
+
+    def batch_add_faces_with_options(
+        self,
+        tmp_req: facebody_20191230_models.BatchAddFacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.BatchAddFacesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = facebody_20191230_models.BatchAddFacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.faces):
+            request.faces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.faces, 'Faces', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            facebody_20191230_models.BatchAddFacesResponse(),
+            self.do_rpcrequest('BatchAddFaces', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def batch_add_faces_with_options_async(
+        self,
+        tmp_req: facebody_20191230_models.BatchAddFacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.BatchAddFacesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = facebody_20191230_models.BatchAddFacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.faces):
+            request.faces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.faces, 'Faces', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            facebody_20191230_models.BatchAddFacesResponse(),
+            await self.do_rpcrequest_async('BatchAddFaces', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def batch_add_faces(
+        self,
+        request: facebody_20191230_models.BatchAddFacesRequest,
+    ) -> facebody_20191230_models.BatchAddFacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_add_faces_with_options(request, runtime)
+
+    async def batch_add_faces_async(
+        self,
+        request: facebody_20191230_models.BatchAddFacesRequest,
+    ) -> facebody_20191230_models.BatchAddFacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_add_faces_with_options_async(request, runtime)
