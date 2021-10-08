@@ -1,3 +1,6 @@
+2021-10-08 Version: 1.0.3
+- Fix CapacityPlan.
+
 2021-10-08 Version: 1.0.2
 - Add API CapacityPlan.
 
