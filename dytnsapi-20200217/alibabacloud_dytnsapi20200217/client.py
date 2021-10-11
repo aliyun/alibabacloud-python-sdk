@@ -165,3 +165,45 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberResaleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_phone_number_resale_with_options_async(request, runtime)
+
+    def describe_empty_number_detect_with_options(
+        self,
+        request: dytnsapi_20200217_models.DescribeEmptyNumberDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribeEmptyNumberDetectResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribeEmptyNumberDetectResponse(),
+            self.do_rpcrequest('DescribeEmptyNumberDetect', '2020-02-17', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_empty_number_detect_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.DescribeEmptyNumberDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribeEmptyNumberDetectResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribeEmptyNumberDetectResponse(),
+            await self.do_rpcrequest_async('DescribeEmptyNumberDetect', '2020-02-17', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_empty_number_detect(
+        self,
+        request: dytnsapi_20200217_models.DescribeEmptyNumberDetectRequest,
+    ) -> dytnsapi_20200217_models.DescribeEmptyNumberDetectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_empty_number_detect_with_options(request, runtime)
+
+    async def describe_empty_number_detect_async(
+        self,
+        request: dytnsapi_20200217_models.DescribeEmptyNumberDetectRequest,
+    ) -> dytnsapi_20200217_models.DescribeEmptyNumberDetectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_empty_number_detect_with_options_async(request, runtime)
