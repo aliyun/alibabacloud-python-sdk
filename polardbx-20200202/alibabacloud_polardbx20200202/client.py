@@ -172,6 +172,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_polarx_order_with_options_async(request, runtime)
 
+    def check_cloud_resource_authorized_with_options(
+        self,
+        request: polardbx_20200202_models.CheckCloudResourceAuthorizedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.CheckCloudResourceAuthorizedResponse(),
+            self.do_rpcrequest('CheckCloudResourceAuthorized', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def check_cloud_resource_authorized_with_options_async(
+        self,
+        request: polardbx_20200202_models.CheckCloudResourceAuthorizedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.CheckCloudResourceAuthorizedResponse(),
+            await self.do_rpcrequest_async('CheckCloudResourceAuthorized', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def check_cloud_resource_authorized(
+        self,
+        request: polardbx_20200202_models.CheckCloudResourceAuthorizedRequest,
+    ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_cloud_resource_authorized_with_options(request, runtime)
+
+    async def check_cloud_resource_authorized_async(
+        self,
+        request: polardbx_20200202_models.CheckCloudResourceAuthorizedRequest,
+    ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_cloud_resource_authorized_with_options_async(request, runtime)
+
     def create_account_with_options(
         self,
         request: polardbx_20200202_models.CreateAccountRequest,
@@ -720,6 +762,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_set_list_with_options_async(request, runtime)
 
+    def describe_binary_log_list_with_options(
+        self,
+        request: polardbx_20200202_models.DescribeBinaryLogListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeBinaryLogListResponse(),
+            self.do_rpcrequest('DescribeBinaryLogList', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_binary_log_list_with_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeBinaryLogListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeBinaryLogListResponse(),
+            await self.do_rpcrequest_async('DescribeBinaryLogList', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_binary_log_list(
+        self,
+        request: polardbx_20200202_models.DescribeBinaryLogListRequest,
+    ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_binary_log_list_with_options(request, runtime)
+
+    async def describe_binary_log_list_async(
+        self,
+        request: polardbx_20200202_models.DescribeBinaryLogListRequest,
+    ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_binary_log_list_with_options_async(request, runtime)
+
     def describe_dbinstance_attribute_with_options(
         self,
         request: polardbx_20200202_models.DescribeDBInstanceAttributeRequest,
@@ -803,6 +887,90 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstancesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_with_options_async(request, runtime)
+
+    def describe_dbinstance_sslwith_options(
+        self,
+        request: polardbx_20200202_models.DescribeDBInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeDBInstanceSSLResponse(),
+            self.do_rpcrequest('DescribeDBInstanceSSL', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dbinstance_sslwith_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeDBInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeDBInstanceSSLResponse(),
+            await self.do_rpcrequest_async('DescribeDBInstanceSSL', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dbinstance_ssl(
+        self,
+        request: polardbx_20200202_models.DescribeDBInstanceSSLRequest,
+    ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_sslwith_options(request, runtime)
+
+    async def describe_dbinstance_ssl_async(
+        self,
+        request: polardbx_20200202_models.DescribeDBInstanceSSLRequest,
+    ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_sslwith_options_async(request, runtime)
+
+    def describe_dbinstance_tdewith_options(
+        self,
+        request: polardbx_20200202_models.DescribeDBInstanceTDERequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeDBInstanceTDEResponse(),
+            self.do_rpcrequest('DescribeDBInstanceTDE', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dbinstance_tdewith_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeDBInstanceTDERequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeDBInstanceTDEResponse(),
+            await self.do_rpcrequest_async('DescribeDBInstanceTDE', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dbinstance_tde(
+        self,
+        request: polardbx_20200202_models.DescribeDBInstanceTDERequest,
+    ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_tdewith_options(request, runtime)
+
+    async def describe_dbinstance_tde_async(
+        self,
+        request: polardbx_20200202_models.DescribeDBInstanceTDERequest,
+    ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_tdewith_options_async(request, runtime)
 
     def describe_db_list_with_options(
         self,
@@ -1293,6 +1461,48 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeTasksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_tasks_with_options_async(request, runtime)
+
+    def describe_user_encryption_key_list_with_options(
+        self,
+        request: polardbx_20200202_models.DescribeUserEncryptionKeyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeUserEncryptionKeyListResponse(),
+            self.do_rpcrequest('DescribeUserEncryptionKeyList', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_user_encryption_key_list_with_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeUserEncryptionKeyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeUserEncryptionKeyListResponse(),
+            await self.do_rpcrequest_async('DescribeUserEncryptionKeyList', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_user_encryption_key_list(
+        self,
+        request: polardbx_20200202_models.DescribeUserEncryptionKeyListRequest,
+    ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_encryption_key_list_with_options(request, runtime)
+
+    async def describe_user_encryption_key_list_async(
+        self,
+        request: polardbx_20200202_models.DescribeUserEncryptionKeyListRequest,
+    ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
 
     def get_polarx_commodity_with_options(
         self,
@@ -1839,6 +2049,90 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdateBackupPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_backup_policy_with_options_async(request, runtime)
+
+    def update_dbinstance_sslwith_options(
+        self,
+        request: polardbx_20200202_models.UpdateDBInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.UpdateDBInstanceSSLResponse(),
+            self.do_rpcrequest('UpdateDBInstanceSSL', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_dbinstance_sslwith_options_async(
+        self,
+        request: polardbx_20200202_models.UpdateDBInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.UpdateDBInstanceSSLResponse(),
+            await self.do_rpcrequest_async('UpdateDBInstanceSSL', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_dbinstance_ssl(
+        self,
+        request: polardbx_20200202_models.UpdateDBInstanceSSLRequest,
+    ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dbinstance_sslwith_options(request, runtime)
+
+    async def update_dbinstance_ssl_async(
+        self,
+        request: polardbx_20200202_models.UpdateDBInstanceSSLRequest,
+    ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dbinstance_sslwith_options_async(request, runtime)
+
+    def update_dbinstance_tdewith_options(
+        self,
+        request: polardbx_20200202_models.UpdateDBInstanceTDERequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.UpdateDBInstanceTDEResponse(),
+            self.do_rpcrequest('UpdateDBInstanceTDE', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_dbinstance_tdewith_options_async(
+        self,
+        request: polardbx_20200202_models.UpdateDBInstanceTDERequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.UpdateDBInstanceTDEResponse(),
+            await self.do_rpcrequest_async('UpdateDBInstanceTDE', '2020-02-02', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_dbinstance_tde(
+        self,
+        request: polardbx_20200202_models.UpdateDBInstanceTDERequest,
+    ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dbinstance_tdewith_options(request, runtime)
+
+    async def update_dbinstance_tde_async(
+        self,
+        request: polardbx_20200202_models.UpdateDBInstanceTDERequest,
+    ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dbinstance_tdewith_options_async(request, runtime)
 
     def update_polar_dbxinstance_node_with_options(
         self,
