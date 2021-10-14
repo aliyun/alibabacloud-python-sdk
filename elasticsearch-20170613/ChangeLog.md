@@ -1,3 +1,6 @@
+2021-10-14 Version: 1.0.4
+- UpdateDescription fix body format.
+
 2021-10-08 Version: 1.0.3
 - Fix CapacityPlan.
 
