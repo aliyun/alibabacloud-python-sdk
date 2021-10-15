@@ -134,3 +134,97 @@ class Client(OpenApiClient):
     ) -> aliyunape_20210908_models.ExecuteResponse:
         runtime = util_models.RuntimeOptions()
         return await self.execute_with_options_async(request, runtime)
+
+    def weathermonitor_province_hour_with_options(
+        self,
+        tmp_req: aliyunape_20210908_models.WeathermonitorProvinceHourRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliyunape_20210908_models.WeathermonitorProvinceHourResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliyunape_20210908_models.WeathermonitorProvinceHourShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extend_param):
+            request.extend_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_param, 'ExtendParam', 'json')
+        if not UtilClient.is_unset(tmp_req.service_param):
+            request.service_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_param, 'ServiceParam', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['Channel'] = request.channel
+        query['ExtendParam'] = request.extend_param_shrink
+        query['OrderId'] = request.order_id
+        query['RequestId'] = request.request_id
+        query['ServiceParam'] = request.service_param_shrink
+        query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='WeathermonitorProvinceHour',
+            version='2021-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliyunape_20210908_models.WeathermonitorProvinceHourResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def weathermonitor_province_hour_with_options_async(
+        self,
+        tmp_req: aliyunape_20210908_models.WeathermonitorProvinceHourRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliyunape_20210908_models.WeathermonitorProvinceHourResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliyunape_20210908_models.WeathermonitorProvinceHourShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extend_param):
+            request.extend_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extend_param, 'ExtendParam', 'json')
+        if not UtilClient.is_unset(tmp_req.service_param):
+            request.service_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.service_param, 'ServiceParam', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['Channel'] = request.channel
+        query['ExtendParam'] = request.extend_param_shrink
+        query['OrderId'] = request.order_id
+        query['RequestId'] = request.request_id
+        query['ServiceParam'] = request.service_param_shrink
+        query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='WeathermonitorProvinceHour',
+            version='2021-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliyunape_20210908_models.WeathermonitorProvinceHourResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def weathermonitor_province_hour(
+        self,
+        request: aliyunape_20210908_models.WeathermonitorProvinceHourRequest,
+    ) -> aliyunape_20210908_models.WeathermonitorProvinceHourResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.weathermonitor_province_hour_with_options(request, runtime)
+
+    async def weathermonitor_province_hour_async(
+        self,
+        request: aliyunape_20210908_models.WeathermonitorProvinceHourRequest,
+    ) -> aliyunape_20210908_models.WeathermonitorProvinceHourResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.weathermonitor_province_hour_with_options_async(request, runtime)
