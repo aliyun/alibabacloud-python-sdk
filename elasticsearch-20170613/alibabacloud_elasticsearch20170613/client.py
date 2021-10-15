@@ -114,20 +114,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ActivateZones',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/recover-zones',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ActivateZonesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ActivateZones', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/recover-zones', 'json', req, runtime)
         )
 
     async def activate_zones_with_options_async(
@@ -146,20 +135,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ActivateZones',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/recover-zones',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ActivateZonesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ActivateZones', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/recover-zones', 'json', req, runtime)
         )
 
     def add_connectable_cluster(
@@ -196,20 +174,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='AddConnectableCluster',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.AddConnectableClusterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('AddConnectableCluster', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/connected-clusters', 'json', req, runtime)
         )
 
     async def add_connectable_cluster_with_options_async(
@@ -228,20 +195,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='AddConnectableCluster',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.AddConnectableClusterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('AddConnectableCluster', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/connected-clusters', 'json', req, runtime)
         )
 
     def add_snapshot_repo(
@@ -270,20 +226,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='AddSnapshotRepo',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.AddSnapshotRepoResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('AddSnapshotRepo', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/snapshot-repos', 'json', req, runtime)
         )
 
     async def add_snapshot_repo_with_options_async(
@@ -296,20 +241,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='AddSnapshotRepo',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.AddSnapshotRepoResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('AddSnapshotRepo', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/snapshot-repos', 'json', req, runtime)
         )
 
     def cancel_deletion(
@@ -346,20 +280,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelDeletion',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/cancel-deletion',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CancelDeletionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CancelDeletion', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/cancel-deletion', 'json', req, runtime)
         )
 
     async def cancel_deletion_with_options_async(
@@ -378,20 +301,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelDeletion',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/cancel-deletion',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CancelDeletionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CancelDeletion', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/cancel-deletion', 'json', req, runtime)
         )
 
     def cancel_logstash_deletion(
@@ -428,20 +340,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelLogstashDeletion',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/cancel-deletion',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CancelLogstashDeletionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CancelLogstashDeletion', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/cancel-deletion', 'json', req, runtime)
         )
 
     async def cancel_logstash_deletion_with_options_async(
@@ -460,20 +361,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelLogstashDeletion',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/cancel-deletion',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CancelLogstashDeletionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CancelLogstashDeletion', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/cancel-deletion', 'json', req, runtime)
         )
 
     def cancel_task(
@@ -504,28 +394,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.task_type):
             query['taskType'] = request.task_type
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/cancel-task',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CancelTaskResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CancelTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/cancel-task', 'json', req, runtime)
         )
 
     async def cancel_task_with_options_async(
@@ -538,28 +417,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.task_type):
             query['taskType'] = request.task_type
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/cancel-task',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CancelTaskResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CancelTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/cancel-task', 'json', req, runtime)
         )
 
     def capacity_plan(
@@ -598,20 +466,9 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CapacityPlan',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/assist/actions/capacity-plan',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CapacityPlanResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CapacityPlan', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/assist/actions/capacity-plan', 'json', req, runtime)
         )
 
     async def capacity_plan_with_options_async(
@@ -634,20 +491,9 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CapacityPlan',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/assist/actions/capacity-plan',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CapacityPlanResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CapacityPlan', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/assist/actions/capacity-plan', 'json', req, runtime)
         )
 
     def close_diagnosis(
@@ -686,20 +532,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseDiagnosis',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/close-diagnosis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CloseDiagnosisResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CloseDiagnosis', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/diagnosis/instances/{instance_id}/actions/close-diagnosis', 'json', req, runtime)
         )
 
     async def close_diagnosis_with_options_async(
@@ -720,20 +555,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseDiagnosis',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/close-diagnosis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CloseDiagnosisResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CloseDiagnosis', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/diagnosis/instances/{instance_id}/actions/close-diagnosis', 'json', req, runtime)
         )
 
     def close_https(
@@ -770,20 +594,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseHttps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/close-https',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CloseHttpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CloseHttps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/close-https', 'json', req, runtime)
         )
 
     async def close_https_with_options_async(
@@ -802,53 +615,42 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseHttps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/close-https',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CloseHttpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CloseHttps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/close-https', 'json', req, runtime)
         )
 
     def close_managed_index(
         self,
-        index: str,
         instance_id: str,
+        index: str,
         request: elasticsearch_20170613_models.CloseManagedIndexRequest,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.close_managed_index_with_options(index, instance_id, request, headers, runtime)
+        return self.close_managed_index_with_options(instance_id, index, request, headers, runtime)
 
     async def close_managed_index_async(
         self,
-        index: str,
         instance_id: str,
+        index: str,
         request: elasticsearch_20170613_models.CloseManagedIndexRequest,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.close_managed_index_with_options_async(index, instance_id, request, headers, runtime)
+        return await self.close_managed_index_with_options_async(instance_id, index, request, headers, runtime)
 
     def close_managed_index_with_options(
         self,
-        index: str,
         instance_id: str,
+        index: str,
         request: elasticsearch_20170613_models.CloseManagedIndexRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         UtilClient.validate_model(request)
-        index = OpenApiUtilClient.get_encode_param(index)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        index = OpenApiUtilClient.get_encode_param(index)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -856,33 +658,22 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseManagedIndex',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/indices/{{Index}}/close-managed',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CloseManagedIndexResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CloseManagedIndex', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/indices/{index}/close-managed', 'json', req, runtime)
         )
 
     async def close_managed_index_with_options_async(
         self,
-        index: str,
         instance_id: str,
+        index: str,
         request: elasticsearch_20170613_models.CloseManagedIndexRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         UtilClient.validate_model(request)
-        index = OpenApiUtilClient.get_encode_param(index)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        index = OpenApiUtilClient.get_encode_param(index)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -890,20 +681,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseManagedIndex',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/indices/{{Index}}/close-managed',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CloseManagedIndexResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CloseManagedIndex', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/indices/{index}/close-managed', 'json', req, runtime)
         )
 
     def create_collector(
@@ -936,20 +716,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateCollectorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CreateCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors', 'json', req, runtime)
         )
 
     async def create_collector_with_options_async(
@@ -966,20 +735,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CreateCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors', 'json', req, runtime)
         )
 
     def create_data_stream(
@@ -1016,20 +774,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateDataStream',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateDataStreamResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CreateDataStream', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/data-streams', 'json', req, runtime)
         )
 
     async def create_data_stream_with_options_async(
@@ -1048,20 +795,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateDataStream',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateDataStreamResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CreateDataStream', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/data-streams', 'json', req, runtime)
         )
 
     def create_data_tasks(
@@ -1098,20 +834,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateDataTasks',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateDataTasksResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CreateDataTasks', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/data-task', 'json', req, runtime)
         )
 
     async def create_data_tasks_with_options_async(
@@ -1130,20 +855,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateDataTasks',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateDataTasksResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CreateDataTasks', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/data-task', 'json', req, runtime)
         )
 
     def create_ilmpolicy(
@@ -1180,20 +894,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateILMPolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateILMPolicyResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CreateILMPolicy', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/ilm-policies', 'json', req, runtime)
         )
 
     async def create_ilmpolicy_with_options_async(
@@ -1212,20 +915,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateILMPolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateILMPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CreateILMPolicy', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/ilm-policies', 'json', req, runtime)
         )
 
     def create_index_template(
@@ -1262,20 +954,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateIndexTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateIndexTemplateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CreateIndexTemplate', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/index-templates', 'json', req, runtime)
         )
 
     async def create_index_template_with_options_async(
@@ -1294,20 +975,63 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateIndexTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateIndexTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CreateIndexTemplate', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/index-templates', 'json', req, runtime)
+        )
+
+    def create_instance(
+        self,
+        request: elasticsearch_20170613_models.CreateInstanceRequest,
+    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_instance_with_options(request, headers, runtime)
+
+    async def create_instance_async(
+        self,
+        request: elasticsearch_20170613_models.CreateInstanceRequest,
+    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_instance_with_options_async(request, headers, runtime)
+
+    def create_instance_with_options(
+        self,
+        request: elasticsearch_20170613_models.CreateInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.CreateInstanceResponse(),
+            self.do_roarequest('createInstance', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances', 'json', req, runtime)
+        )
+
+    async def create_instance_with_options_async(
+        self,
+        request: elasticsearch_20170613_models.CreateInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.CreateInstanceResponse(),
+            await self.do_roarequest_async('createInstance', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances', 'json', req, runtime)
         )
 
     def create_logstash(
@@ -1340,20 +1064,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateLogstashResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CreateLogstash', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes', 'json', req, runtime)
         )
 
     async def create_logstash_with_options_async(
@@ -1370,20 +1083,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateLogstashResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CreateLogstash', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes', 'json', req, runtime)
         )
 
     def create_pipelines(
@@ -1414,28 +1116,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.trigger):
             query['trigger'] = request.trigger
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreatePipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreatePipelinesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CreatePipelines', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/pipelines', 'json', req, runtime)
         )
 
     async def create_pipelines_with_options_async(
@@ -1448,28 +1139,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.trigger):
             query['trigger'] = request.trigger
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreatePipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreatePipelinesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CreatePipelines', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/pipelines', 'json', req, runtime)
         )
 
     def create_snapshot(
@@ -1506,20 +1186,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateSnapshot',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshots',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateSnapshotResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CreateSnapshot', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/snapshots', 'json', req, runtime)
         )
 
     async def create_snapshot_with_options_async(
@@ -1538,20 +1207,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateSnapshot',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshots',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateSnapshotResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CreateSnapshot', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/snapshots', 'json', req, runtime)
         )
 
     def create_vpc_endpoint(
@@ -1590,20 +1248,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateVpcEndpoint',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateVpcEndpointResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('CreateVpcEndpoint', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/vpc-endpoints', 'json', req, runtime)
         )
 
     async def create_vpc_endpoint_with_options_async(
@@ -1624,20 +1271,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateVpcEndpoint',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CreateVpcEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('CreateVpcEndpoint', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/vpc-endpoints', 'json', req, runtime)
         )
 
     def deactivate_zones(
@@ -1674,20 +1310,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeactivateZones',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/down-zones',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeactivateZonesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeactivateZones', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/down-zones', 'json', req, runtime)
         )
 
     async def deactivate_zones_with_options_async(
@@ -1706,20 +1331,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeactivateZones',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/down-zones',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeactivateZonesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeactivateZones', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/down-zones', 'json', req, runtime)
         )
 
     def delete_collector(
@@ -1756,20 +1370,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteCollectorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteCollector', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/collectors/{res_id}', 'json', req, runtime)
         )
 
     async def delete_collector_with_options_async(
@@ -1788,20 +1391,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteCollector', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/collectors/{res_id}', 'json', req, runtime)
         )
 
     def delete_connected_cluster(
@@ -1840,20 +1432,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteConnectedCluster',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteConnectedClusterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteConnectedCluster', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/connected-clusters', 'json', req, runtime)
         )
 
     async def delete_connected_cluster_with_options_async(
@@ -1874,53 +1455,42 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteConnectedCluster',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteConnectedClusterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteConnectedCluster', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/connected-clusters', 'json', req, runtime)
         )
 
     def delete_data_stream(
         self,
-        data_stream: str,
         instance_id: str,
+        data_stream: str,
         request: elasticsearch_20170613_models.DeleteDataStreamRequest,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_data_stream_with_options(data_stream, instance_id, request, headers, runtime)
+        return self.delete_data_stream_with_options(instance_id, data_stream, request, headers, runtime)
 
     async def delete_data_stream_async(
         self,
-        data_stream: str,
         instance_id: str,
+        data_stream: str,
         request: elasticsearch_20170613_models.DeleteDataStreamRequest,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_data_stream_with_options_async(data_stream, instance_id, request, headers, runtime)
+        return await self.delete_data_stream_with_options_async(instance_id, data_stream, request, headers, runtime)
 
     def delete_data_stream_with_options(
         self,
-        data_stream: str,
         instance_id: str,
+        data_stream: str,
         request: elasticsearch_20170613_models.DeleteDataStreamRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
         UtilClient.validate_model(request)
-        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1928,33 +1498,22 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteDataStream',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams/{{DataStream}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteDataStreamResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteDataStream', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/data-streams/{data_stream}', 'json', req, runtime)
         )
 
     async def delete_data_stream_with_options_async(
         self,
-        data_stream: str,
         instance_id: str,
+        data_stream: str,
         request: elasticsearch_20170613_models.DeleteDataStreamRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
         UtilClient.validate_model(request)
-        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1962,20 +1521,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteDataStream',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams/{{DataStream}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteDataStreamResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteDataStream', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/data-streams/{data_stream}', 'json', req, runtime)
         )
 
     def delete_data_task(
@@ -2014,20 +1562,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteDataTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteDataTaskResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteDataTask', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/data-task', 'json', req, runtime)
         )
 
     async def delete_data_task_with_options_async(
@@ -2048,20 +1585,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteDataTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteDataTaskResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteDataTask', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/data-task', 'json', req, runtime)
         )
 
     def delete_ilmpolicy(
@@ -2094,20 +1620,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DeleteILMPolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{{PolicyName}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteILMPolicyResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteILMPolicy', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}', 'json', req, runtime)
         )
 
     async def delete_ilmpolicy_with_options_async(
@@ -2122,94 +1637,61 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DeleteILMPolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{{PolicyName}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteILMPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteILMPolicy', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}', 'json', req, runtime)
         )
 
     def delete_index_template(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_index_template_with_options(index_template, instance_id, headers, runtime)
+        return self.delete_index_template_with_options(instance_id, index_template, headers, runtime)
 
     async def delete_index_template_async(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_index_template_with_options_async(index_template, instance_id, headers, runtime)
+        return await self.delete_index_template_with_options_async(instance_id, index_template, headers, runtime)
 
     def delete_index_template_with_options(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        index_template = OpenApiUtilClient.get_encode_param(index_template)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DeleteIndexTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{{IndexTemplate}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteIndexTemplateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteIndexTemplate', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/index-templates/{index_template}', 'json', req, runtime)
         )
 
     async def delete_index_template_with_options_async(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        index_template = OpenApiUtilClient.get_encode_param(index_template)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DeleteIndexTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{{IndexTemplate}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteIndexTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteIndexTemplate', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/index-templates/{index_template}', 'json', req, runtime)
         )
 
     def delete_instance(
@@ -2248,20 +1730,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteInstance', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
         )
 
     async def delete_instance_with_options_async(
@@ -2282,20 +1753,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteInstance', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
         )
 
     def delete_logstash(
@@ -2334,20 +1794,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteLogstashResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteLogstash', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/logstashes/{instance_id}', 'json', req, runtime)
         )
 
     async def delete_logstash_with_options_async(
@@ -2368,20 +1817,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteLogstashResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteLogstash', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/logstashes/{instance_id}', 'json', req, runtime)
         )
 
     def delete_pipelines(
@@ -2420,20 +1858,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeletePipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeletePipelinesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeletePipelines', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/logstashes/{instance_id}/pipelines', 'json', req, runtime)
         )
 
     async def delete_pipelines_with_options_async(
@@ -2454,20 +1881,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeletePipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeletePipelinesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeletePipelines', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/logstashes/{instance_id}/pipelines', 'json', req, runtime)
         )
 
     def delete_snapshot_repo(
@@ -2498,28 +1914,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.repo_path):
             query['repoPath'] = request.repo_path
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteSnapshotRepo',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteSnapshotRepoResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteSnapshotRepo', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/snapshot-repos', 'json', req, runtime)
         )
 
     async def delete_snapshot_repo_with_options_async(
@@ -2532,61 +1937,50 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.repo_path):
             query['repoPath'] = request.repo_path
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteSnapshotRepo',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteSnapshotRepoResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteSnapshotRepo', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/snapshot-repos', 'json', req, runtime)
         )
 
     def delete_vpc_endpoint(
         self,
-        endpoint_id: str,
         instance_id: str,
+        endpoint_id: str,
         request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_vpc_endpoint_with_options(endpoint_id, instance_id, request, headers, runtime)
+        return self.delete_vpc_endpoint_with_options(instance_id, endpoint_id, request, headers, runtime)
 
     async def delete_vpc_endpoint_async(
         self,
-        endpoint_id: str,
         instance_id: str,
+        endpoint_id: str,
         request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_vpc_endpoint_with_options_async(endpoint_id, instance_id, request, headers, runtime)
+        return await self.delete_vpc_endpoint_with_options_async(instance_id, endpoint_id, request, headers, runtime)
 
     def delete_vpc_endpoint_with_options(
         self,
-        endpoint_id: str,
         instance_id: str,
+        endpoint_id: str,
         request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
         UtilClient.validate_model(request)
-        endpoint_id = OpenApiUtilClient.get_encode_param(endpoint_id)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        endpoint_id = OpenApiUtilClient.get_encode_param(endpoint_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -2594,33 +1988,22 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteVpcEndpoint',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints/{{EndpointId}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteVpcEndpointResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DeleteVpcEndpoint', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/vpc-endpoints/{endpoint_id}', 'json', req, runtime)
         )
 
     async def delete_vpc_endpoint_with_options_async(
         self,
-        endpoint_id: str,
         instance_id: str,
+        endpoint_id: str,
         request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
         UtilClient.validate_model(request)
-        endpoint_id = OpenApiUtilClient.get_encode_param(endpoint_id)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        endpoint_id = OpenApiUtilClient.get_encode_param(endpoint_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -2628,20 +2011,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteVpcEndpoint',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints/{{EndpointId}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DeleteVpcEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DeleteVpcEndpoint', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/instances/{instance_id}/vpc-endpoints/{endpoint_id}', 'json', req, runtime)
         )
 
     def describe_ack_operator(
@@ -2670,20 +2042,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeAckOperator',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/operator',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeAckOperatorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeAckOperator', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/ack-clusters/{cluster_id}/operator', 'json', req, runtime)
         )
 
     async def describe_ack_operator_with_options_async(
@@ -2696,88 +2057,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeAckOperator',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/operator',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeAckOperatorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_apm(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.describe_apm_with_options(instance_id, headers, runtime)
-
-    async def describe_apm_async(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.describe_apm_with_options_async(instance_id, headers, runtime)
-
-    def describe_apm_with_options(
-        self,
-        instance_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.DescribeApmResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.DescribeApmResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_apm_with_options_async(
-        self,
-        instance_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.DescribeApmResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.DescribeApmResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeAckOperator', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/ack-clusters/{cluster_id}/operator', 'json', req, runtime)
         )
 
     def describe_collector(
@@ -2806,20 +2088,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeCollectorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeCollector', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/collectors/{res_id}', 'json', req, runtime)
         )
 
     async def describe_collector_with_options_async(
@@ -2832,20 +2103,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeCollector', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/collectors/{res_id}', 'json', req, runtime)
         )
 
     def describe_connectable_clusters(
@@ -2882,20 +2142,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeConnectableClusters',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connectable-clusters',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeConnectableClustersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeConnectableClusters', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/connectable-clusters', 'json', req, runtime)
         )
 
     async def describe_connectable_clusters_with_options_async(
@@ -2914,20 +2163,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeConnectableClusters',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connectable-clusters',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeConnectableClustersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeConnectableClusters', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/connectable-clusters', 'json', req, runtime)
         )
 
     def describe_diagnose_report(
@@ -2968,20 +2206,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDiagnoseReport',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/reports/{{ReportId}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeDiagnoseReportResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeDiagnoseReport', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/reports/{report_id}', 'json', req, runtime)
         )
 
     async def describe_diagnose_report_with_options_async(
@@ -3002,20 +2229,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDiagnoseReport',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/reports/{{ReportId}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeDiagnoseReportResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeDiagnoseReport', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/reports/{report_id}', 'json', req, runtime)
         )
 
     def describe_diagnosis_settings(
@@ -3052,20 +2268,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDiagnosisSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/settings',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeDiagnosisSettings', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/settings', 'json', req, runtime)
         )
 
     async def describe_diagnosis_settings_with_options_async(
@@ -3084,20 +2289,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDiagnosisSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/settings',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeDiagnosisSettings', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/settings', 'json', req, runtime)
         )
 
     def describe_elasticsearch_health(
@@ -3126,20 +2320,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeElasticsearchHealth',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elasticsearch-health',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeElasticsearchHealthResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeElasticsearchHealth', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/elasticsearch-health', 'json', req, runtime)
         )
 
     async def describe_elasticsearch_health_with_options_async(
@@ -3152,20 +2335,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeElasticsearchHealth',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elasticsearch-health',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeElasticsearchHealthResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeElasticsearchHealth', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/elasticsearch-health', 'json', req, runtime)
         )
 
     def describe_ilmpolicy(
@@ -3198,20 +2370,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeILMPolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{{PolicyName}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeILMPolicyResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeILMPolicy', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}', 'json', req, runtime)
         )
 
     async def describe_ilmpolicy_with_options_async(
@@ -3226,94 +2387,61 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeILMPolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{{PolicyName}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeILMPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeILMPolicy', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}', 'json', req, runtime)
         )
 
     def describe_index_template(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_index_template_with_options(index_template, instance_id, headers, runtime)
+        return self.describe_index_template_with_options(instance_id, index_template, headers, runtime)
 
     async def describe_index_template_async(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_index_template_with_options_async(index_template, instance_id, headers, runtime)
+        return await self.describe_index_template_with_options_async(instance_id, index_template, headers, runtime)
 
     def describe_index_template_with_options(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        index_template = OpenApiUtilClient.get_encode_param(index_template)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeIndexTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{{IndexTemplate}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeIndexTemplateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeIndexTemplate', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/index-templates/{index_template}', 'json', req, runtime)
         )
 
     async def describe_index_template_with_options_async(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        index_template = OpenApiUtilClient.get_encode_param(index_template)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeIndexTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{{IndexTemplate}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeIndexTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeIndexTemplate', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/index-templates/{index_template}', 'json', req, runtime)
         )
 
     def describe_instance(
@@ -3342,20 +2470,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeInstance', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
         )
 
     async def describe_instance_with_options_async(
@@ -3368,20 +2485,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeInstance', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
         )
 
     def describe_kibana_settings(
@@ -3410,20 +2516,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeKibanaSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-settings',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeKibanaSettingsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeKibanaSettings', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/kibana-settings', 'json', req, runtime)
         )
 
     async def describe_kibana_settings_with_options_async(
@@ -3436,20 +2531,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeKibanaSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-settings',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeKibanaSettingsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeKibanaSettings', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/kibana-settings', 'json', req, runtime)
         )
 
     def describe_logstash(
@@ -3478,20 +2562,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeLogstashResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeLogstash', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}', 'json', req, runtime)
         )
 
     async def describe_logstash_with_options_async(
@@ -3504,20 +2577,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeLogstashResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeLogstash', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}', 'json', req, runtime)
         )
 
     def describe_pipeline(
@@ -3550,20 +2612,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribePipeline',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/{{PipelineId}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribePipelineResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribePipeline', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/pipelines/{pipeline_id}', 'json', req, runtime)
         )
 
     async def describe_pipeline_with_options_async(
@@ -3578,20 +2629,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribePipeline',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/{{PipelineId}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribePipelineResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribePipeline', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/pipelines/{pipeline_id}', 'json', req, runtime)
         )
 
     def describe_pipeline_management_config(
@@ -3628,20 +2668,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribePipelineManagementConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipeline-management-config',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribePipelineManagementConfigResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribePipelineManagementConfig', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/pipeline-management-config', 'json', req, runtime)
         )
 
     async def describe_pipeline_management_config_with_options_async(
@@ -3660,20 +2689,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribePipelineManagementConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipeline-management-config',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribePipelineManagementConfigResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribePipelineManagementConfig', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/pipeline-management-config', 'json', req, runtime)
         )
 
     def describe_regions(self) -> elasticsearch_20170613_models.DescribeRegionsResponse:
@@ -3694,20 +2712,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/regions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeRegions', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/regions', 'json', req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -3718,20 +2725,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/regions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeRegions', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/regions', 'json', req, runtime)
         )
 
     def describe_snapshot_setting(
@@ -3760,20 +2756,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeSnapshotSetting',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-setting',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeSnapshotSettingResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeSnapshotSetting', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/snapshot-setting', 'json', req, runtime)
         )
 
     async def describe_snapshot_setting_with_options_async(
@@ -3786,20 +2771,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeSnapshotSetting',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-setting',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeSnapshotSettingResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeSnapshotSetting', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/snapshot-setting', 'json', req, runtime)
         )
 
     def describe_templates(
@@ -3828,20 +2802,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeTemplates',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/templates',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeTemplatesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeTemplates', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/templates', 'json', req, runtime)
         )
 
     async def describe_templates_with_options_async(
@@ -3854,20 +2817,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeTemplates',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/templates',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeTemplates', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/templates', 'json', req, runtime)
         )
 
     def describe_xpack_monitor_config(
@@ -3896,20 +2848,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeXpackMonitorConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/xpack-monitor-config',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DescribeXpackMonitorConfig', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/xpack-monitor-config', 'json', req, runtime)
         )
 
     async def describe_xpack_monitor_config_with_options_async(
@@ -3922,20 +2863,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='DescribeXpackMonitorConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/xpack-monitor-config',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DescribeXpackMonitorConfig', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/xpack-monitor-config', 'json', req, runtime)
         )
 
     def diagnose_instance(
@@ -3966,28 +2896,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DiagnoseInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/diagnose',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DiagnoseInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('DiagnoseInstance', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/diagnosis/instances/{instance_id}/actions/diagnose', 'json', req, runtime)
         )
 
     async def diagnose_instance_with_options_async(
@@ -4000,28 +2919,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='DiagnoseInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/diagnose',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.DiagnoseInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('DiagnoseInstance', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/diagnosis/instances/{instance_id}/actions/diagnose', 'json', req, runtime)
         )
 
     def estimated_logstash_restart_time(
@@ -4058,20 +2966,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='EstimatedLogstashRestartTime',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/estimated-time/restart-time',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('EstimatedLogstashRestartTime', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/estimated-time/restart-time', 'json', req, runtime)
         )
 
     async def estimated_logstash_restart_time_with_options_async(
@@ -4090,20 +2987,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='EstimatedLogstashRestartTime',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/estimated-time/restart-time',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('EstimatedLogstashRestartTime', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/estimated-time/restart-time', 'json', req, runtime)
         )
 
     def estimated_restart_time(
@@ -4140,20 +3026,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='EstimatedRestartTime',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/estimated-time/restart-time',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.EstimatedRestartTimeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('EstimatedRestartTime', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/estimated-time/restart-time', 'json', req, runtime)
         )
 
     async def estimated_restart_time_with_options_async(
@@ -4172,20 +3047,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='EstimatedRestartTime',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/estimated-time/restart-time',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.EstimatedRestartTimeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('EstimatedRestartTime', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/estimated-time/restart-time', 'json', req, runtime)
         )
 
     def get_cluster_data_information(self) -> elasticsearch_20170613_models.GetClusterDataInformationResponse:
@@ -4206,20 +3070,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetClusterDataInformation',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/cluster/data-information',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetClusterDataInformationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('GetClusterDataInformation', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/cluster/data-information', 'json', req, runtime)
         )
 
     async def get_cluster_data_information_with_options_async(
@@ -4230,20 +3083,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetClusterDataInformation',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/cluster/data-information',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetClusterDataInformationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('GetClusterDataInformation', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/cluster/data-information', 'json', req, runtime)
         )
 
     def get_elastictask(
@@ -4272,20 +3114,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetElastictask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elastic-task',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetElastictaskResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('GetElastictask', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/elastic-task', 'json', req, runtime)
         )
 
     async def get_elastictask_with_options_async(
@@ -4298,20 +3129,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetElastictask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elastic-task',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetElastictaskResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('GetElastictask', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/elastic-task', 'json', req, runtime)
         )
 
     def get_emon_grafana_alerts(
@@ -4340,20 +3160,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetEmonGrafanaAlerts',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/grafana/proxy/api/alerts',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('GetEmonGrafanaAlerts', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/emon/projects/{project_id}/grafana/proxy/api/alerts', 'json', req, runtime)
         )
 
     async def get_emon_grafana_alerts_with_options_async(
@@ -4366,20 +3175,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetEmonGrafanaAlerts',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/grafana/proxy/api/alerts',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('GetEmonGrafanaAlerts', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/emon/projects/{project_id}/grafana/proxy/api/alerts', 'json', req, runtime)
         )
 
     def get_emon_grafana_dashboards(
@@ -4408,20 +3206,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetEmonGrafanaDashboards',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/grafana/proxy/api/search',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('GetEmonGrafanaDashboards', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/emon/projects/{project_id}/grafana/proxy/api/search', 'json', req, runtime)
         )
 
     async def get_emon_grafana_dashboards_with_options_async(
@@ -4434,20 +3221,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetEmonGrafanaDashboards',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/grafana/proxy/api/search',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('GetEmonGrafanaDashboards', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/emon/projects/{project_id}/grafana/proxy/api/search', 'json', req, runtime)
         )
 
     def get_emon_monitor_data(
@@ -4476,20 +3252,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetEmonMonitorData',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/metrics/query',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetEmonMonitorDataResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('GetEmonMonitorData', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/emon/projects/{project_id}/metrics/query', 'json', req, runtime)
         )
 
     async def get_emon_monitor_data_with_options_async(
@@ -4502,20 +3267,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetEmonMonitorData',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/metrics/query',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetEmonMonitorDataResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('GetEmonMonitorData', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/emon/projects/{project_id}/metrics/query', 'json', req, runtime)
         )
 
     def get_open_store_usage(
@@ -4544,20 +3298,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetOpenStoreUsage',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/openstore/usage',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetOpenStoreUsageResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('GetOpenStoreUsage', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/openstore/usage', 'json', req, runtime)
         )
 
     async def get_open_store_usage_with_options_async(
@@ -4570,20 +3313,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='GetOpenStoreUsage',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/openstore/usage',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetOpenStoreUsageResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('GetOpenStoreUsage', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/openstore/usage', 'json', req, runtime)
         )
 
     def get_region_configuration(
@@ -4616,20 +3348,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='GetRegionConfiguration',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/region',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetRegionConfigurationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('GetRegionConfiguration', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/region', 'json', req, runtime)
         )
 
     async def get_region_configuration_with_options_async(
@@ -4646,20 +3367,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='GetRegionConfiguration',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/region',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetRegionConfigurationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('GetRegionConfiguration', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/region', 'json', req, runtime)
         )
 
     def get_suggest_shrinkable_nodes(
@@ -4690,30 +3400,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.node_type):
+            query['nodeType'] = request.node_type
         if not UtilClient.is_unset(request.count):
             query['count'] = request.count
         if not UtilClient.is_unset(request.ignore_status):
             query['ignoreStatus'] = request.ignore_status
-        if not UtilClient.is_unset(request.node_type):
-            query['nodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='GetSuggestShrinkableNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/suggest-shrinkable-nodes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('GetSuggestShrinkableNodes', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/suggest-shrinkable-nodes', 'json', req, runtime)
         )
 
     async def get_suggest_shrinkable_nodes_with_options_async(
@@ -4726,30 +3425,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.node_type):
+            query['nodeType'] = request.node_type
         if not UtilClient.is_unset(request.count):
             query['count'] = request.count
         if not UtilClient.is_unset(request.ignore_status):
             query['ignoreStatus'] = request.ignore_status
-        if not UtilClient.is_unset(request.node_type):
-            query['nodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='GetSuggestShrinkableNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/suggest-shrinkable-nodes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('GetSuggestShrinkableNodes', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/suggest-shrinkable-nodes', 'json', req, runtime)
         )
 
     def get_transferable_nodes(
@@ -4780,28 +3468,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.count):
-            query['count'] = request.count
         if not UtilClient.is_unset(request.node_type):
             query['nodeType'] = request.node_type
+        if not UtilClient.is_unset(request.count):
+            query['count'] = request.count
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='GetTransferableNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/transferable-nodes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetTransferableNodesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('GetTransferableNodes', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/transferable-nodes', 'json', req, runtime)
         )
 
     async def get_transferable_nodes_with_options_async(
@@ -4814,28 +3491,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.count):
-            query['count'] = request.count
         if not UtilClient.is_unset(request.node_type):
             query['nodeType'] = request.node_type
+        if not UtilClient.is_unset(request.count):
+            query['count'] = request.count
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='GetTransferableNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/transferable-nodes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.GetTransferableNodesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('GetTransferableNodes', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/transferable-nodes', 'json', req, runtime)
         )
 
     def initialize_operation_role(
@@ -4868,20 +3534,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InitializeOperationRole',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/user/slr',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InitializeOperationRoleResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('InitializeOperationRole', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/user/slr', 'json', req, runtime)
         )
 
     async def initialize_operation_role_with_options_async(
@@ -4898,20 +3553,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InitializeOperationRole',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/user/slr',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InitializeOperationRoleResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('InitializeOperationRole', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/user/slr', 'json', req, runtime)
         )
 
     def install_ack_operator(
@@ -4948,20 +3592,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InstallAckOperator',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/operator',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallAckOperatorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('InstallAckOperator', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/ack-clusters/{cluster_id}/operator', 'json', req, runtime)
         )
 
     async def install_ack_operator_with_options_async(
@@ -4980,20 +3613,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InstallAckOperator',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/operator',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallAckOperatorResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('InstallAckOperator', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/ack-clusters/{cluster_id}/operator', 'json', req, runtime)
         )
 
     def install_kibana_system_plugin(
@@ -5030,20 +3652,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InstallKibanaSystemPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins/system/actions/install',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallKibanaSystemPluginResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('InstallKibanaSystemPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/kibana-plugins/system/actions/install', 'json', req, runtime)
         )
 
     async def install_kibana_system_plugin_with_options_async(
@@ -5062,20 +3673,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InstallKibanaSystemPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins/system/actions/install',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallKibanaSystemPluginResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('InstallKibanaSystemPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/kibana-plugins/system/actions/install', 'json', req, runtime)
         )
 
     def install_logstash_system_plugin(
@@ -5112,20 +3712,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InstallLogstashSystemPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins/system/actions/install',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallLogstashSystemPluginResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('InstallLogstashSystemPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/plugins/system/actions/install', 'json', req, runtime)
         )
 
     async def install_logstash_system_plugin_with_options_async(
@@ -5144,20 +3733,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InstallLogstashSystemPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins/system/actions/install',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallLogstashSystemPluginResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('InstallLogstashSystemPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/plugins/system/actions/install', 'json', req, runtime)
         )
 
     def install_system_plugin(
@@ -5194,20 +3772,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InstallSystemPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/system/actions/install',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallSystemPluginResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('InstallSystemPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/plugins/system/actions/install', 'json', req, runtime)
         )
 
     async def install_system_plugin_with_options_async(
@@ -5226,20 +3793,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InstallSystemPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/system/actions/install',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallSystemPluginResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('InstallSystemPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/plugins/system/actions/install', 'json', req, runtime)
         )
 
     def install_user_plugins(
@@ -5268,20 +3824,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='InstallUserPlugins',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/user/actions/install',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallUserPluginsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('InstallUserPlugins', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/plugins/user/actions/install', 'json', req, runtime)
         )
 
     async def install_user_plugins_with_options_async(
@@ -5294,20 +3839,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='InstallUserPlugins',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/user/actions/install',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InstallUserPluginsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('InstallUserPlugins', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/plugins/user/actions/install', 'json', req, runtime)
         )
 
     def interrupt_elasticsearch_task(
@@ -5344,20 +3878,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InterruptElasticsearchTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/interrupt',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InterruptElasticsearchTaskResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('InterruptElasticsearchTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/interrupt', 'json', req, runtime)
         )
 
     async def interrupt_elasticsearch_task_with_options_async(
@@ -5376,20 +3899,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InterruptElasticsearchTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/interrupt',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InterruptElasticsearchTaskResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('InterruptElasticsearchTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/interrupt', 'json', req, runtime)
         )
 
     def interrupt_logstash_task(
@@ -5426,20 +3938,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InterruptLogstashTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/interrupt',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InterruptLogstashTaskResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('InterruptLogstashTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/interrupt', 'json', req, runtime)
         )
 
     async def interrupt_logstash_task_with_options_async(
@@ -5458,20 +3959,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='InterruptLogstashTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/interrupt',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.InterruptLogstashTaskResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('InterruptLogstashTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/interrupt', 'json', req, runtime)
         )
 
     def list_ack_clusters(
@@ -5508,20 +3998,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAckClusters',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAckClustersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListAckClusters', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/ack-clusters', 'json', req, runtime)
         )
 
     async def list_ack_clusters_with_options_async(
@@ -5542,20 +4021,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAckClusters',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAckClustersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListAckClusters', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/ack-clusters', 'json', req, runtime)
         )
 
     def list_ack_namespaces(
@@ -5594,20 +4062,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAckNamespaces',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/namespaces',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAckNamespacesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListAckNamespaces', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/ack-clusters/{cluster_id}/namespaces', 'json', req, runtime)
         )
 
     async def list_ack_namespaces_with_options_async(
@@ -5628,20 +4085,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAckNamespaces',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/namespaces',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAckNamespacesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListAckNamespaces', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/ack-clusters/{cluster_id}/namespaces', 'json', req, runtime)
         )
 
     def list_all_node(
@@ -5678,20 +4124,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAllNode',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/nodes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAllNodeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListAllNode', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/nodes', 'json', req, runtime)
         )
 
     async def list_all_node_with_options_async(
@@ -5710,20 +4145,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAllNode',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/nodes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAllNodeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListAllNode', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/nodes', 'json', req, runtime)
         )
 
     def list_alternative_snapshot_repos(
@@ -5760,20 +4184,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAlternativeSnapshotRepos',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/alternative-snapshot-repos',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListAlternativeSnapshotRepos', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/alternative-snapshot-repos', 'json', req, runtime)
         )
 
     async def list_alternative_snapshot_repos_with_options_async(
@@ -5792,20 +4205,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAlternativeSnapshotRepos',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/alternative-snapshot-repos',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListAlternativeSnapshotRepos', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/alternative-snapshot-repos', 'json', req, runtime)
         )
 
     def list_available_es_instance_ids(
@@ -5834,20 +4236,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListAvailableEsInstanceIds',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/available-elasticsearch-for-centralized-management',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListAvailableEsInstanceIds', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/available-elasticsearch-for-centralized-management', 'json', req, runtime)
         )
 
     async def list_available_es_instance_ids_with_options_async(
@@ -5860,20 +4251,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListAvailableEsInstanceIds',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/available-elasticsearch-for-centralized-management',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListAvailableEsInstanceIds', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/available-elasticsearch-for-centralized-management', 'json', req, runtime)
         )
 
     def list_collectors(
@@ -5900,14 +4280,14 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListCollectorsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['instanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.page):
-            query['page'] = request.page
         if not UtilClient.is_unset(request.res_id):
             query['resId'] = request.res_id
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
         if not UtilClient.is_unset(request.source_type):
@@ -5916,20 +4296,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListCollectors',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListCollectorsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListCollectors', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/collectors', 'json', req, runtime)
         )
 
     async def list_collectors_with_options_async(
@@ -5940,14 +4309,14 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListCollectorsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['instanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.page):
-            query['page'] = request.page
         if not UtilClient.is_unset(request.res_id):
             query['resId'] = request.res_id
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
         if not UtilClient.is_unset(request.source_type):
@@ -5956,20 +4325,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListCollectors',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListCollectorsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListCollectors', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/collectors', 'json', req, runtime)
         )
 
     def list_connected_clusters(
@@ -5998,20 +4356,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListConnectedClusters',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListConnectedClustersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListConnectedClusters', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/connected-clusters', 'json', req, runtime)
         )
 
     async def list_connected_clusters_with_options_async(
@@ -6024,20 +4371,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListConnectedClusters',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListConnectedClustersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListConnectedClusters', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/connected-clusters', 'json', req, runtime)
         )
 
     def list_data_streams(
@@ -6076,20 +4412,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDataStreams',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDataStreamsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListDataStreams', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/data-streams', 'json', req, runtime)
         )
 
     async def list_data_streams_with_options_async(
@@ -6110,20 +4435,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDataStreams',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDataStreamsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListDataStreams', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/data-streams', 'json', req, runtime)
         )
 
     def list_data_tasks(
@@ -6152,20 +4466,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListDataTasks',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDataTasksResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListDataTasks', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/data-task', 'json', req, runtime)
         )
 
     async def list_data_tasks_with_options_async(
@@ -6178,20 +4481,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListDataTasks',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDataTasksResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListDataTasks', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/data-task', 'json', req, runtime)
         )
 
     def list_default_collector_configurations(
@@ -6228,20 +4520,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDefaultCollectorConfigurations',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/beats/default-configurations',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListDefaultCollectorConfigurations', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/beats/default-configurations', 'json', req, runtime)
         )
 
     async def list_default_collector_configurations_with_options_async(
@@ -6262,20 +4543,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDefaultCollectorConfigurations',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/beats/default-configurations',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListDefaultCollectorConfigurations', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/beats/default-configurations', 'json', req, runtime)
         )
 
     def list_diagnose_indices(
@@ -6312,20 +4582,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDiagnoseIndices',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/indices',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDiagnoseIndicesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListDiagnoseIndices', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/indices', 'json', req, runtime)
         )
 
     async def list_diagnose_indices_with_options_async(
@@ -6344,20 +4603,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDiagnoseIndices',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/indices',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDiagnoseIndicesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListDiagnoseIndices', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/indices', 'json', req, runtime)
         )
 
     def list_diagnose_report(
@@ -6388,38 +4636,27 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.detail):
-            query['detail'] = request.detail
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.detail):
+            query['detail'] = request.detail
         if not UtilClient.is_unset(request.trigger):
             query['trigger'] = request.trigger
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDiagnoseReport',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/reports',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDiagnoseReportResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListDiagnoseReport', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/reports', 'json', req, runtime)
         )
 
     async def list_diagnose_report_with_options_async(
@@ -6432,38 +4669,27 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.detail):
-            query['detail'] = request.detail
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.detail):
+            query['detail'] = request.detail
         if not UtilClient.is_unset(request.trigger):
             query['trigger'] = request.trigger
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDiagnoseReport',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/reports',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDiagnoseReportResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListDiagnoseReport', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/reports', 'json', req, runtime)
         )
 
     def list_diagnose_report_ids(
@@ -6494,36 +4720,25 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
         if not UtilClient.is_unset(request.trigger):
             query['trigger'] = request.trigger
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDiagnoseReportIds',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/report-ids',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDiagnoseReportIdsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListDiagnoseReportIds', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/report-ids', 'json', req, runtime)
         )
 
     async def list_diagnose_report_ids_with_options_async(
@@ -6536,36 +4751,25 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
         if not UtilClient.is_unset(request.trigger):
             query['trigger'] = request.trigger
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDiagnoseReportIds',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/report-ids',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDiagnoseReportIdsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListDiagnoseReportIds', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/diagnosis/instances/{instance_id}/report-ids', 'json', req, runtime)
         )
 
     def list_dict_information(
@@ -6596,30 +4800,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.analyzer_type):
-            query['analyzerType'] = request.analyzer_type
         if not UtilClient.is_unset(request.bucket_name):
             query['bucketName'] = request.bucket_name
         if not UtilClient.is_unset(request.key):
             query['key'] = request.key
+        if not UtilClient.is_unset(request.analyzer_type):
+            query['analyzerType'] = request.analyzer_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDictInformation',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dict/_info',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDictInformationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListDictInformation', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dict/_info', 'json', req, runtime)
         )
 
     async def list_dict_information_with_options_async(
@@ -6632,30 +4825,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.analyzer_type):
-            query['analyzerType'] = request.analyzer_type
         if not UtilClient.is_unset(request.bucket_name):
             query['bucketName'] = request.bucket_name
         if not UtilClient.is_unset(request.key):
             query['key'] = request.key
+        if not UtilClient.is_unset(request.analyzer_type):
+            query['analyzerType'] = request.analyzer_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDictInformation',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dict/_info',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDictInformationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListDictInformation', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dict/_info', 'json', req, runtime)
         )
 
     def list_dicts(
@@ -6694,20 +4876,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDicts',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dicts',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDictsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListDicts', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dicts', 'json', req, runtime)
         )
 
     async def list_dicts_with_options_async(
@@ -6728,20 +4899,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDicts',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dicts',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListDictsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListDicts', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/dicts', 'json', req, runtime)
         )
 
     def list_ecs_instances(
@@ -6768,14 +4928,14 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.ecs_instance_ids):
-            query['ecsInstanceIds'] = request.ecs_instance_ids
-        if not UtilClient.is_unset(request.ecs_instance_name):
-            query['ecsInstanceName'] = request.ecs_instance_name
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.ecs_instance_ids):
+            query['ecsInstanceIds'] = request.ecs_instance_ids
+        if not UtilClient.is_unset(request.ecs_instance_name):
+            query['ecsInstanceName'] = request.ecs_instance_name
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
@@ -6784,20 +4944,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListEcsInstances',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ecs',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListEcsInstancesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListEcsInstances', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/ecs', 'json', req, runtime)
         )
 
     async def list_ecs_instances_with_options_async(
@@ -6808,14 +4957,14 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.ecs_instance_ids):
-            query['ecsInstanceIds'] = request.ecs_instance_ids
-        if not UtilClient.is_unset(request.ecs_instance_name):
-            query['ecsInstanceName'] = request.ecs_instance_name
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.ecs_instance_ids):
+            query['ecsInstanceIds'] = request.ecs_instance_ids
+        if not UtilClient.is_unset(request.ecs_instance_name):
+            query['ecsInstanceName'] = request.ecs_instance_name
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
@@ -6824,20 +4973,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListEcsInstances',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/ecs',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListEcsInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListEcsInstances', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/ecs', 'json', req, runtime)
         )
 
     def list_extendfiles(
@@ -6866,20 +5004,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListExtendfiles',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/extendfiles',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListExtendfilesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListExtendfiles', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/extendfiles', 'json', req, runtime)
         )
 
     async def list_extendfiles_with_options_async(
@@ -6892,20 +5019,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListExtendfiles',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/extendfiles',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListExtendfilesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListExtendfiles', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/extendfiles', 'json', req, runtime)
         )
 
     def list_ilmpolicies(
@@ -6942,20 +5058,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListILMPolicies',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListILMPoliciesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListILMPolicies', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/ilm-policies', 'json', req, runtime)
         )
 
     async def list_ilmpolicies_with_options_async(
@@ -6974,20 +5079,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListILMPolicies',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListILMPoliciesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListILMPolicies', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/ilm-policies', 'json', req, runtime)
         )
 
     def list_index_templates(
@@ -7024,20 +5118,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListIndexTemplates',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListIndexTemplatesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListIndexTemplates', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/index-templates', 'json', req, runtime)
         )
 
     async def list_index_templates_with_options_async(
@@ -7056,20 +5139,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListIndexTemplates',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListIndexTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListIndexTemplates', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/index-templates', 'json', req, runtime)
         )
 
     def list_instance(
@@ -7096,46 +5168,35 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.description):
-            query['description'] = request.description
-        if not UtilClient.is_unset(request.es_version):
-            query['esVersion'] = request.es_version
-        if not UtilClient.is_unset(request.instance_category):
-            query['instanceCategory'] = request.instance_category
-        if not UtilClient.is_unset(request.instance_id):
-            query['instanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.payment_type):
-            query['paymentType'] = request.payment_type
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.es_version):
+            query['esVersion'] = request.es_version
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
             query['vpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
             query['zoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.payment_type):
+            query['paymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.instance_category):
+            query['instanceCategory'] = request.instance_category
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListInstance', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances', 'json', req, runtime)
         )
 
     async def list_instance_with_options_async(
@@ -7146,46 +5207,35 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.description):
-            query['description'] = request.description
-        if not UtilClient.is_unset(request.es_version):
-            query['esVersion'] = request.es_version
-        if not UtilClient.is_unset(request.instance_category):
-            query['instanceCategory'] = request.instance_category
-        if not UtilClient.is_unset(request.instance_id):
-            query['instanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.payment_type):
-            query['paymentType'] = request.payment_type
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.es_version):
+            query['esVersion'] = request.es_version
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
             query['vpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
             query['zoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.payment_type):
+            query['paymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.instance_category):
+            query['instanceCategory'] = request.instance_category
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListInstance', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances', 'json', req, runtime)
         )
 
     def list_instance_indices(
@@ -7218,12 +5268,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.all):
             query['all'] = request.all
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.is_managed):
             query['isManaged'] = request.is_managed
         if not UtilClient.is_unset(request.is_openstore):
             query['isOpenstore'] = request.is_openstore
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
@@ -7232,20 +5282,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstanceIndices',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/indices',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListInstanceIndicesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListInstanceIndices', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/indices', 'json', req, runtime)
         )
 
     async def list_instance_indices_with_options_async(
@@ -7260,12 +5299,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.all):
             query['all'] = request.all
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.is_managed):
             query['isManaged'] = request.is_managed
         if not UtilClient.is_unset(request.is_openstore):
             query['isOpenstore'] = request.is_openstore
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
@@ -7274,20 +5313,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstanceIndices',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/indices',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListInstanceIndicesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListInstanceIndices', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/indices', 'json', req, runtime)
         )
 
     def list_kibana_plugins(
@@ -7326,20 +5354,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListKibanaPlugins',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListKibanaPluginsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListKibanaPlugins', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/kibana-plugins', 'json', req, runtime)
         )
 
     async def list_kibana_plugins_with_options_async(
@@ -7360,20 +5377,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListKibanaPlugins',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListKibanaPluginsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListKibanaPlugins', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/kibana-plugins', 'json', req, runtime)
         )
 
     def list_logstash(
@@ -7400,38 +5406,27 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListLogstashResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
         if not UtilClient.is_unset(request.description):
             query['description'] = request.description
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['ownerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page):
-            query['page'] = request.page
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.size):
-            query['size'] = request.size
         if not UtilClient.is_unset(request.version):
             query['version'] = request.version
+        if not UtilClient.is_unset(request.owner_id):
+            query['ownerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListLogstashResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListLogstash', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes', 'json', req, runtime)
         )
 
     async def list_logstash_with_options_async(
@@ -7442,38 +5437,27 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListLogstashResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
         if not UtilClient.is_unset(request.description):
             query['description'] = request.description
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['ownerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page):
-            query['page'] = request.page
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.size):
-            query['size'] = request.size
         if not UtilClient.is_unset(request.version):
             query['version'] = request.version
+        if not UtilClient.is_unset(request.owner_id):
+            query['ownerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListLogstashResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListLogstash', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes', 'json', req, runtime)
         )
 
     def list_logstash_log(
@@ -7504,36 +5488,25 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
         if not UtilClient.is_unset(request.begin_time):
             query['beginTime'] = request.begin_time
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.query):
-            query['query'] = request.query
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListLogstashLog',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/search-log',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListLogstashLogResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListLogstashLog', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/search-log', 'json', req, runtime)
         )
 
     async def list_logstash_log_with_options_async(
@@ -7546,36 +5519,25 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
         if not UtilClient.is_unset(request.begin_time):
             query['beginTime'] = request.begin_time
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.query):
-            query['query'] = request.query
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListLogstashLog',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/search-log',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListLogstashLogResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListLogstashLog', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/search-log', 'json', req, runtime)
         )
 
     def list_logstash_plugins(
@@ -7618,20 +5580,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListLogstashPlugins',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListLogstashPluginsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListLogstashPlugins', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/plugins', 'json', req, runtime)
         )
 
     async def list_logstash_plugins_with_options_async(
@@ -7656,20 +5607,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListLogstashPlugins',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListLogstashPluginsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListLogstashPlugins', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/plugins', 'json', req, runtime)
         )
 
     def list_nodes(
@@ -7700,34 +5640,23 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
-        if not UtilClient.is_unset(request.ecs_instance_ids):
-            query['ecsInstanceIds'] = request.ecs_instance_ids
-        if not UtilClient.is_unset(request.ecs_instance_name):
-            query['ecsInstanceName'] = request.ecs_instance_name
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.ecs_instance_ids):
+            query['ecsInstanceIds'] = request.ecs_instance_ids
+        if not UtilClient.is_unset(request.ecs_instance_name):
+            query['ecsInstanceName'] = request.ecs_instance_name
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/nodes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListNodesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListNodes', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/collectors/{res_id}/nodes', 'json', req, runtime)
         )
 
     async def list_nodes_with_options_async(
@@ -7740,34 +5669,23 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
-        if not UtilClient.is_unset(request.ecs_instance_ids):
-            query['ecsInstanceIds'] = request.ecs_instance_ids
-        if not UtilClient.is_unset(request.ecs_instance_name):
-            query['ecsInstanceName'] = request.ecs_instance_name
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.ecs_instance_ids):
+            query['ecsInstanceIds'] = request.ecs_instance_ids
+        if not UtilClient.is_unset(request.ecs_instance_name):
+            query['ecsInstanceName'] = request.ecs_instance_name
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/nodes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListNodesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListNodes', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/collectors/{res_id}/nodes', 'json', req, runtime)
         )
 
     def list_pipeline(
@@ -7798,30 +5716,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.page):
-            query['page'] = request.page
         if not UtilClient.is_unset(request.pipeline_id):
             query['pipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPipeline',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListPipelineResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListPipeline', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/pipelines', 'json', req, runtime)
         )
 
     async def list_pipeline_with_options_async(
@@ -7834,30 +5741,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.page):
-            query['page'] = request.page
         if not UtilClient.is_unset(request.pipeline_id):
             query['pipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPipeline',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListPipelineResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListPipeline', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/logstashes/{instance_id}/pipelines', 'json', req, runtime)
         )
 
     def list_pipeline_ids(
@@ -7886,20 +5782,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListPipelineIds',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/pipeline-ids',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListPipelineIdsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListPipelineIds', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/pipeline-ids', 'json', req, runtime)
         )
 
     async def list_pipeline_ids_with_options_async(
@@ -7912,20 +5797,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListPipelineIds',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/pipeline-ids',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListPipelineIdsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListPipelineIds', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/pipeline-ids', 'json', req, runtime)
         )
 
     def list_plugins(
@@ -7968,20 +5842,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPlugins',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListPluginsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListPlugins', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/plugins', 'json', req, runtime)
         )
 
     async def list_plugins_with_options_async(
@@ -8006,20 +5869,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPlugins',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListPluginsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListPlugins', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/plugins', 'json', req, runtime)
         )
 
     def list_search_log(
@@ -8050,36 +5902,25 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
         if not UtilClient.is_unset(request.begin_time):
             query['beginTime'] = request.begin_time
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.query):
-            query['query'] = request.query
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListSearchLog',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/search-log',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListSearchLogResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListSearchLog', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/search-log', 'json', req, runtime)
         )
 
     async def list_search_log_with_options_async(
@@ -8092,36 +5933,25 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
         if not UtilClient.is_unset(request.begin_time):
             query['beginTime'] = request.begin_time
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.query):
-            query['query'] = request.query
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListSearchLog',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/search-log',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListSearchLogResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListSearchLog', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/search-log', 'json', req, runtime)
         )
 
     def list_shard_recoveries(
@@ -8158,20 +5988,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListShardRecoveries',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/cat-recovery',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListShardRecoveriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListShardRecoveries', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/cat-recovery', 'json', req, runtime)
         )
 
     async def list_shard_recoveries_with_options_async(
@@ -8190,20 +6009,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListShardRecoveries',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/cat-recovery',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListShardRecoveriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListShardRecoveries', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/cat-recovery', 'json', req, runtime)
         )
 
     def list_snapshot_repos_by_instance_id(
@@ -8232,20 +6040,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListSnapshotReposByInstanceId',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListSnapshotReposByInstanceId', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/snapshot-repos', 'json', req, runtime)
         )
 
     async def list_snapshot_repos_by_instance_id_with_options_async(
@@ -8258,20 +6055,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ListSnapshotReposByInstanceId',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListSnapshotReposByInstanceId', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/snapshot-repos', 'json', req, runtime)
         )
 
     def list_tag_resources(
@@ -8298,36 +6084,25 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/tags',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListTagResources', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/tags', 'json', req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -8338,36 +6113,25 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/tags',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListTagResources', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/tags', 'json', req, runtime)
         )
 
     def list_tags(
@@ -8402,20 +6166,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTags',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/tags/all-tags',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListTagsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListTags', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/tags/all-tags', 'json', req, runtime)
         )
 
     async def list_tags_with_options_async(
@@ -8434,20 +6187,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTags',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/tags/all-tags',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListTagsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListTags', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/tags/all-tags', 'json', req, runtime)
         )
 
     def list_vpc_endpoints(
@@ -8478,28 +6220,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.page):
-            query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListVpcEndpoints',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListVpcEndpointsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListVpcEndpoints', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/vpc-endpoints', 'json', req, runtime)
         )
 
     async def list_vpc_endpoints_with_options_async(
@@ -8512,28 +6243,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.page):
-            query['page'] = request.page
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListVpcEndpoints',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListVpcEndpointsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListVpcEndpoints', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/vpc-endpoints', 'json', req, runtime)
         )
 
     def migrate_to_other_zone(
@@ -8570,20 +6290,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='MigrateToOtherZone',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/migrate-zones',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.MigrateToOtherZoneResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('MigrateToOtherZone', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/migrate-zones', 'json', req, runtime)
         )
 
     async def migrate_to_other_zone_with_options_async(
@@ -8602,20 +6311,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='MigrateToOtherZone',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/migrate-zones',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.MigrateToOtherZoneResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('MigrateToOtherZone', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/migrate-zones', 'json', req, runtime)
         )
 
     def modify_deploy_machine(
@@ -8652,20 +6350,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDeployMachine',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/modify-deploy-machines',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ModifyDeployMachineResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ModifyDeployMachine', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/modify-deploy-machines', 'json', req, runtime)
         )
 
     async def modify_deploy_machine_with_options_async(
@@ -8684,20 +6371,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDeployMachine',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/modify-deploy-machines',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ModifyDeployMachineResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ModifyDeployMachine', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/modify-deploy-machines', 'json', req, runtime)
         )
 
     def modify_elastictask(
@@ -8726,20 +6402,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ModifyElastictask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elastic-task',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ModifyElastictaskResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ModifyElastictask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/elastic-task', 'json', req, runtime)
         )
 
     async def modify_elastictask_with_options_async(
@@ -8752,20 +6417,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='ModifyElastictask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elastic-task',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ModifyElastictaskResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ModifyElastictask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/elastic-task', 'json', req, runtime)
         )
 
     def modify_instance_maintain_time(
@@ -8802,20 +6456,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyInstanceMaintainTime',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/modify-maintaintime',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ModifyInstanceMaintainTime', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/modify-maintaintime', 'json', req, runtime)
         )
 
     async def modify_instance_maintain_time_with_options_async(
@@ -8834,20 +6477,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyInstanceMaintainTime',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/modify-maintaintime',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ModifyInstanceMaintainTime', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/modify-maintaintime', 'json', req, runtime)
         )
 
     def modify_white_ips(
@@ -8881,35 +6513,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
-        if not UtilClient.is_unset(request.modify_mode):
-            body['modifyMode'] = request.modify_mode
-        if not UtilClient.is_unset(request.network_type):
-            body['networkType'] = request.network_type
         if not UtilClient.is_unset(request.node_type):
             body['nodeType'] = request.node_type
-        if not UtilClient.is_unset(request.white_ip_group):
-            body['whiteIpGroup'] = request.white_ip_group
+        if not UtilClient.is_unset(request.network_type):
+            body['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.modify_mode):
+            body['modifyMode'] = request.modify_mode
         if not UtilClient.is_unset(request.white_ip_list):
             body['whiteIpList'] = request.white_ip_list
+        if not UtilClient.is_unset(request.white_ip_group):
+            body['whiteIpGroup'] = request.white_ip_group
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ModifyWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/modify-white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ModifyWhiteIpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest_with_form('ModifyWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/modify-white-ips', 'json', req, runtime)
         )
 
     async def modify_white_ips_with_options_async(
@@ -8925,35 +6546,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
-        if not UtilClient.is_unset(request.modify_mode):
-            body['modifyMode'] = request.modify_mode
-        if not UtilClient.is_unset(request.network_type):
-            body['networkType'] = request.network_type
         if not UtilClient.is_unset(request.node_type):
             body['nodeType'] = request.node_type
-        if not UtilClient.is_unset(request.white_ip_group):
-            body['whiteIpGroup'] = request.white_ip_group
+        if not UtilClient.is_unset(request.network_type):
+            body['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.modify_mode):
+            body['modifyMode'] = request.modify_mode
         if not UtilClient.is_unset(request.white_ip_list):
             body['whiteIpList'] = request.white_ip_list
+        if not UtilClient.is_unset(request.white_ip_group):
+            body['whiteIpGroup'] = request.white_ip_group
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ModifyWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/modify-white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ModifyWhiteIpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_with_form_async('ModifyWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/modify-white-ips', 'json', req, runtime)
         )
 
     def move_resource_group(
@@ -8990,20 +6600,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/resourcegroup',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.MoveResourceGroupResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('MoveResourceGroup', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/resourcegroup', 'json', req, runtime)
         )
 
     async def move_resource_group_with_options_async(
@@ -9022,20 +6621,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/resourcegroup',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.MoveResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('MoveResourceGroup', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/resourcegroup', 'json', req, runtime)
         )
 
     def open_diagnosis(
@@ -9074,20 +6662,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='OpenDiagnosis',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/open-diagnosis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.OpenDiagnosisResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('OpenDiagnosis', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/diagnosis/instances/{instance_id}/actions/open-diagnosis', 'json', req, runtime)
         )
 
     async def open_diagnosis_with_options_async(
@@ -9108,20 +6685,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='OpenDiagnosis',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/open-diagnosis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.OpenDiagnosisResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('OpenDiagnosis', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/diagnosis/instances/{instance_id}/actions/open-diagnosis', 'json', req, runtime)
         )
 
     def open_https(
@@ -9158,20 +6724,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='OpenHttps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/open-https',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.OpenHttpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('OpenHttps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/open-https', 'json', req, runtime)
         )
 
     async def open_https_with_options_async(
@@ -9190,94 +6745,61 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='OpenHttps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/open-https',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.OpenHttpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('OpenHttps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/open-https', 'json', req, runtime)
         )
 
     def post_emon_try_alarm_rule(
         self,
-        alarm_group_id: str,
         project_id: str,
+        alarm_group_id: str,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.post_emon_try_alarm_rule_with_options(alarm_group_id, project_id, headers, runtime)
+        return self.post_emon_try_alarm_rule_with_options(project_id, alarm_group_id, headers, runtime)
 
     async def post_emon_try_alarm_rule_async(
         self,
-        alarm_group_id: str,
         project_id: str,
+        alarm_group_id: str,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.post_emon_try_alarm_rule_with_options_async(alarm_group_id, project_id, headers, runtime)
+        return await self.post_emon_try_alarm_rule_with_options_async(project_id, alarm_group_id, headers, runtime)
 
     def post_emon_try_alarm_rule_with_options(
         self,
-        alarm_group_id: str,
         project_id: str,
+        alarm_group_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
-        alarm_group_id = OpenApiUtilClient.get_encode_param(alarm_group_id)
         project_id = OpenApiUtilClient.get_encode_param(project_id)
+        alarm_group_id = OpenApiUtilClient.get_encode_param(alarm_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='PostEmonTryAlarmRule',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/alarm-groups/{{AlarmGroupId}}/alarm-rules/_test',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('PostEmonTryAlarmRule', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/emon/projects/{project_id}/alarm-groups/{alarm_group_id}/alarm-rules/_test', 'json', req, runtime)
         )
 
     async def post_emon_try_alarm_rule_with_options_async(
         self,
-        alarm_group_id: str,
         project_id: str,
+        alarm_group_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
-        alarm_group_id = OpenApiUtilClient.get_encode_param(alarm_group_id)
         project_id = OpenApiUtilClient.get_encode_param(project_id)
+        alarm_group_id = OpenApiUtilClient.get_encode_param(alarm_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='PostEmonTryAlarmRule',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/alarm-groups/{{AlarmGroupId}}/alarm-rules/_test',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('PostEmonTryAlarmRule', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/emon/projects/{project_id}/alarm-groups/{alarm_group_id}/alarm-rules/_test', 'json', req, runtime)
         )
 
     def recommend_templates(
@@ -9314,20 +6836,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RecommendTemplates',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/recommended-templates',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RecommendTemplatesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('RecommendTemplates', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/recommended-templates', 'json', req, runtime)
         )
 
     async def recommend_templates_with_options_async(
@@ -9346,20 +6857,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RecommendTemplates',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/recommended-templates',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RecommendTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('RecommendTemplates', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/instances/{instance_id}/recommended-templates', 'json', req, runtime)
         )
 
     def reinstall_collector(
@@ -9396,20 +6896,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ReinstallCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/reinstall',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ReinstallCollectorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ReinstallCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/reinstall', 'json', req, runtime)
         )
 
     async def reinstall_collector_with_options_async(
@@ -9428,88 +6917,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ReinstallCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/reinstall',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ReinstallCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def remove_apm(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.RemoveApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.remove_apm_with_options(instance_id, headers, runtime)
-
-    async def remove_apm_async(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.RemoveApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.remove_apm_with_options_async(instance_id, headers, runtime)
-
-    def remove_apm_with_options(
-        self,
-        instance_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.RemoveApmResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='RemoveApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.RemoveApmResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def remove_apm_with_options_async(
-        self,
-        instance_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.RemoveApmResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='RemoveApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.RemoveApmResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ReinstallCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/reinstall', 'json', req, runtime)
         )
 
     def renew_instance(
@@ -9546,20 +6956,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RenewInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/renew',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RenewInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('RenewInstance', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/renew', 'json', req, runtime)
         )
 
     async def renew_instance_with_options_async(
@@ -9578,20 +6977,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RenewInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/renew',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RenewInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('RenewInstance', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/renew', 'json', req, runtime)
         )
 
     def renew_logstash(
@@ -9628,20 +7016,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RenewLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/renew',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RenewLogstashResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('RenewLogstash', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/renew', 'json', req, runtime)
         )
 
     async def renew_logstash_with_options_async(
@@ -9660,20 +7037,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RenewLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/renew',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RenewLogstashResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('RenewLogstash', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/renew', 'json', req, runtime)
         )
 
     def restart_collector(
@@ -9710,20 +7076,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RestartCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/restart',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RestartCollectorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('RestartCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/restart', 'json', req, runtime)
         )
 
     async def restart_collector_with_options_async(
@@ -9742,20 +7097,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RestartCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/restart',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RestartCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('RestartCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/restart', 'json', req, runtime)
         )
 
     def restart_instance(
@@ -9786,28 +7130,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RestartInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/restart',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RestartInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('RestartInstance', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/restart', 'json', req, runtime)
         )
 
     async def restart_instance_with_options_async(
@@ -9820,28 +7153,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RestartInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/restart',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RestartInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('RestartInstance', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/restart', 'json', req, runtime)
         )
 
     def restart_logstash(
@@ -9872,28 +7194,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RestartLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/restart',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RestartLogstashResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('RestartLogstash', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/restart', 'json', req, runtime)
         )
 
     async def restart_logstash_with_options_async(
@@ -9906,28 +7217,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RestartLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/restart',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RestartLogstashResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('RestartLogstash', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/restart', 'json', req, runtime)
         )
 
     def resume_elasticsearch_task(
@@ -9964,20 +7264,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ResumeElasticsearchTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/resume',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ResumeElasticsearchTaskResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ResumeElasticsearchTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/resume', 'json', req, runtime)
         )
 
     async def resume_elasticsearch_task_with_options_async(
@@ -9996,20 +7285,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ResumeElasticsearchTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/resume',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ResumeElasticsearchTaskResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ResumeElasticsearchTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/resume', 'json', req, runtime)
         )
 
     def resume_logstash_task(
@@ -10046,20 +7324,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ResumeLogstashTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/resume',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ResumeLogstashTaskResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ResumeLogstashTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/resume', 'json', req, runtime)
         )
 
     async def resume_logstash_task_with_options_async(
@@ -10078,53 +7345,42 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ResumeLogstashTask',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/resume',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ResumeLogstashTaskResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ResumeLogstashTask', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/resume', 'json', req, runtime)
         )
 
     def rollover_data_stream(
         self,
-        data_stream: str,
         instance_id: str,
+        data_stream: str,
         request: elasticsearch_20170613_models.RolloverDataStreamRequest,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.rollover_data_stream_with_options(data_stream, instance_id, request, headers, runtime)
+        return self.rollover_data_stream_with_options(instance_id, data_stream, request, headers, runtime)
 
     async def rollover_data_stream_async(
         self,
-        data_stream: str,
         instance_id: str,
+        data_stream: str,
         request: elasticsearch_20170613_models.RolloverDataStreamRequest,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.rollover_data_stream_with_options_async(data_stream, instance_id, request, headers, runtime)
+        return await self.rollover_data_stream_with_options_async(instance_id, data_stream, request, headers, runtime)
 
     def rollover_data_stream_with_options(
         self,
-        data_stream: str,
         instance_id: str,
+        data_stream: str,
         request: elasticsearch_20170613_models.RolloverDataStreamRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
         UtilClient.validate_model(request)
-        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -10132,33 +7388,22 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RolloverDataStream',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams/{{DataStream}}/rollover',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RolloverDataStreamResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('RolloverDataStream', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/data-streams/{data_stream}/rollover', 'json', req, runtime)
         )
 
     async def rollover_data_stream_with_options_async(
         self,
-        data_stream: str,
         instance_id: str,
+        data_stream: str,
         request: elasticsearch_20170613_models.RolloverDataStreamRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
         UtilClient.validate_model(request)
-        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -10166,20 +7411,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RolloverDataStream',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams/{{DataStream}}/rollover',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RolloverDataStreamResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('RolloverDataStream', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/data-streams/{data_stream}/rollover', 'json', req, runtime)
         )
 
     def run_pipelines(
@@ -10216,20 +7450,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RunPipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/action/run',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RunPipelinesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('RunPipelines', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/pipelines/action/run', 'json', req, runtime)
         )
 
     async def run_pipelines_with_options_async(
@@ -10248,20 +7471,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='RunPipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/action/run',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.RunPipelinesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('RunPipelines', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/pipelines/action/run', 'json', req, runtime)
         )
 
     def shrink_node(
@@ -10292,30 +7504,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.node_type):
+            query['nodeType'] = request.node_type
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.ignore_status):
             query['ignoreStatus'] = request.ignore_status
-        if not UtilClient.is_unset(request.node_type):
-            query['nodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ShrinkNode',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/shrink',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ShrinkNodeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ShrinkNode', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/shrink', 'json', req, runtime)
         )
 
     async def shrink_node_with_options_async(
@@ -10328,98 +7529,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.node_type):
+            query['nodeType'] = request.node_type
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.ignore_status):
             query['ignoreStatus'] = request.ignore_status
-        if not UtilClient.is_unset(request.node_type):
-            query['nodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ShrinkNode',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/shrink',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ShrinkNodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def start_apm(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.StartApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.start_apm_with_options(instance_id, headers, runtime)
-
-    async def start_apm_async(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.StartApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.start_apm_with_options_async(instance_id, headers, runtime)
-
-    def start_apm_with_options(
-        self,
-        instance_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.StartApmResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StartApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}/actions/start',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.StartApmResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def start_apm_with_options_async(
-        self,
-        instance_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.StartApmResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StartApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}/actions/start',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.StartApmResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ShrinkNode', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/shrink', 'json', req, runtime)
         )
 
     def start_collector(
@@ -10456,20 +7578,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='StartCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/start',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.StartCollectorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('StartCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/start', 'json', req, runtime)
         )
 
     async def start_collector_with_options_async(
@@ -10488,88 +7599,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='StartCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/start',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.StartCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def stop_apm(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.StopApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.stop_apm_with_options(instance_id, headers, runtime)
-
-    async def stop_apm_async(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.StopApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.stop_apm_with_options_async(instance_id, headers, runtime)
-
-    def stop_apm_with_options(
-        self,
-        instance_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.StopApmResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StopApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}/actions/stop',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.StopApmResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def stop_apm_with_options_async(
-        self,
-        instance_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.StopApmResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StopApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}/actions/stop',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.StopApmResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('StartCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/start', 'json', req, runtime)
         )
 
     def stop_collector(
@@ -10606,20 +7638,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='StopCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/stop',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.StopCollectorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('StopCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/stop', 'json', req, runtime)
         )
 
     async def stop_collector_with_options_async(
@@ -10638,20 +7659,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='StopCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/stop',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.StopCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('StopCollector', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/stop', 'json', req, runtime)
         )
 
     def stop_pipelines(
@@ -10688,20 +7698,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='StopPipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/action/stop',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.StopPipelinesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('StopPipelines', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/pipelines/action/stop', 'json', req, runtime)
         )
 
     async def stop_pipelines_with_options_async(
@@ -10720,20 +7719,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='StopPipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/action/stop',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.StopPipelinesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('StopPipelines', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/pipelines/action/stop', 'json', req, runtime)
         )
 
     def tag_resources(self) -> elasticsearch_20170613_models.TagResourcesResponse:
@@ -10754,20 +7742,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/tags',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('TagResources', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/tags', 'json', req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -10778,20 +7755,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/tags',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('TagResources', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/tags', 'json', req, runtime)
         )
 
     def transfer_node(
@@ -10822,28 +7788,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.node_type):
             query['nodeType'] = request.node_type
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='TransferNode',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/transfer',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.TransferNodeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('TransferNode', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/transfer', 'json', req, runtime)
         )
 
     async def transfer_node_with_options_async(
@@ -10856,28 +7811,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.node_type):
             query['nodeType'] = request.node_type
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='TransferNode',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/transfer',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.TransferNodeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('TransferNode', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/transfer', 'json', req, runtime)
         )
 
     def trigger_network(
@@ -10911,31 +7855,20 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
-        if not UtilClient.is_unset(request.action_type):
-            body['actionType'] = request.action_type
-        if not UtilClient.is_unset(request.network_type):
-            body['networkType'] = request.network_type
         if not UtilClient.is_unset(request.node_type):
             body['nodeType'] = request.node_type
+        if not UtilClient.is_unset(request.network_type):
+            body['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.action_type):
+            body['actionType'] = request.action_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='TriggerNetwork',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/network-trigger',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.TriggerNetworkResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest_with_form('TriggerNetwork', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/network-trigger', 'json', req, runtime)
         )
 
     async def trigger_network_with_options_async(
@@ -10951,31 +7884,20 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
-        if not UtilClient.is_unset(request.action_type):
-            body['actionType'] = request.action_type
-        if not UtilClient.is_unset(request.network_type):
-            body['networkType'] = request.network_type
         if not UtilClient.is_unset(request.node_type):
             body['nodeType'] = request.node_type
+        if not UtilClient.is_unset(request.network_type):
+            body['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.action_type):
+            body['actionType'] = request.action_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='TriggerNetwork',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/network-trigger',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.TriggerNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_with_form_async('TriggerNetwork', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/network-trigger', 'json', req, runtime)
         )
 
     def uninstall_kibana_plugin(
@@ -11012,20 +7934,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UninstallKibanaPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins/actions/uninstall',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UninstallKibanaPluginResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UninstallKibanaPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/kibana-plugins/actions/uninstall', 'json', req, runtime)
         )
 
     async def uninstall_kibana_plugin_with_options_async(
@@ -11044,20 +7955,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UninstallKibanaPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins/actions/uninstall',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UninstallKibanaPluginResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UninstallKibanaPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/kibana-plugins/actions/uninstall', 'json', req, runtime)
         )
 
     def uninstall_logstash_plugin(
@@ -11094,20 +7994,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UninstallLogstashPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins/actions/uninstall',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UninstallLogstashPluginResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UninstallLogstashPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/plugins/actions/uninstall', 'json', req, runtime)
         )
 
     async def uninstall_logstash_plugin_with_options_async(
@@ -11126,20 +8015,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UninstallLogstashPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins/actions/uninstall',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UninstallLogstashPluginResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UninstallLogstashPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/plugins/actions/uninstall', 'json', req, runtime)
         )
 
     def uninstall_plugin(
@@ -11176,20 +8054,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UninstallPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/actions/uninstall',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UninstallPluginResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UninstallPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/plugins/actions/uninstall', 'json', req, runtime)
         )
 
     async def uninstall_plugin_with_options_async(
@@ -11208,20 +8075,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UninstallPlugin',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/actions/uninstall',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UninstallPluginResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UninstallPlugin', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/plugins/actions/uninstall', 'json', req, runtime)
         )
 
     def untag_resources(
@@ -11248,32 +8104,21 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.all):
-            query['All'] = request.all
         if not UtilClient.is_unset(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.tag_keys):
             query['TagKeys'] = request.tag_keys
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/tags',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UntagResources', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/tags', 'json', req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -11284,32 +8129,21 @@ class Client(OpenApiClient):
     ) -> elasticsearch_20170613_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.all):
-            query['All'] = request.all
         if not UtilClient.is_unset(request.resource_ids):
             query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.tag_keys):
             query['TagKeys'] = request.tag_keys
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/tags',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UntagResources', '2017-06-13', 'HTTPS', 'DELETE', 'AK', f'/openapi/tags', 'json', req, runtime)
         )
 
     def update_admin_password(
@@ -11346,20 +8180,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAdminPassword',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/admin-pwd',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateAdminPasswordResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateAdminPassword', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/admin-pwd', 'json', req, runtime)
         )
 
     async def update_admin_password_with_options_async(
@@ -11378,20 +8201,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAdminPassword',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/admin-pwd',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateAdminPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateAdminPassword', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/admin-pwd', 'json', req, runtime)
         )
 
     def update_advanced_setting(
@@ -11428,20 +8240,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAdvancedSetting',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-advanced-setting',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateAdvancedSettingResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateAdvancedSetting', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/update-advanced-setting', 'json', req, runtime)
         )
 
     async def update_advanced_setting_with_options_async(
@@ -11460,20 +8261,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAdvancedSetting',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-advanced-setting',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateAdvancedSettingResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateAdvancedSetting', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/update-advanced-setting', 'json', req, runtime)
         )
 
     def update_aliws_dict(
@@ -11510,20 +8300,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAliwsDict',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/aliws-dict',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateAliwsDictResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateAliwsDict', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/aliws-dict', 'json', req, runtime)
         )
 
     async def update_aliws_dict_with_options_async(
@@ -11542,118 +8321,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAliwsDict',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/aliws-dict',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateAliwsDictResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_apm(
-        self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.UpdateApmRequest,
-    ) -> elasticsearch_20170613_models.UpdateApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_apm_with_options(instance_id, request, headers, runtime)
-
-    async def update_apm_async(
-        self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.UpdateApmRequest,
-    ) -> elasticsearch_20170613_models.UpdateApmResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_apm_with_options_async(instance_id, request, headers, runtime)
-
-    def update_apm_with_options(
-        self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.UpdateApmRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.UpdateApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        query = {}
-        if not UtilClient.is_unset(request.output_es):
-            query['outputES'] = request.output_es
-        if not UtilClient.is_unset(request.output_espassword):
-            query['outputESPassword'] = request.output_espassword
-        if not UtilClient.is_unset(request.output_esuser_name):
-            query['outputESUserName'] = request.output_esuser_name
-        if not UtilClient.is_unset(request.token):
-            query['token'] = request.token
-        if not UtilClient.is_unset(request.yml):
-            query['yml'] = request.yml
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.UpdateApmResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_apm_with_options_async(
-        self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.UpdateApmRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.UpdateApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        query = {}
-        if not UtilClient.is_unset(request.output_es):
-            query['outputES'] = request.output_es
-        if not UtilClient.is_unset(request.output_espassword):
-            query['outputESPassword'] = request.output_espassword
-        if not UtilClient.is_unset(request.output_esuser_name):
-            query['outputESUserName'] = request.output_esuser_name
-        if not UtilClient.is_unset(request.token):
-            query['token'] = request.token
-        if not UtilClient.is_unset(request.yml):
-            query['yml'] = request.yml
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateApm',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.UpdateApmResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateAliwsDict', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/aliws-dict', 'json', req, runtime)
         )
 
     def update_black_ips(
@@ -11694,20 +8364,9 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateBlackIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/black-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateBlackIpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest_with_form('UpdateBlackIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/black-ips', 'json', req, runtime)
         )
 
     async def update_black_ips_with_options_async(
@@ -11730,20 +8389,9 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateBlackIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/black-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateBlackIpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_with_form_async('UpdateBlackIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/black-ips', 'json', req, runtime)
         )
 
     def update_collector(
@@ -11780,20 +8428,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateCollectorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateCollector', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/collectors/{res_id}', 'json', req, runtime)
         )
 
     async def update_collector_with_options_async(
@@ -11812,20 +8449,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateCollector',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateCollector', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/collectors/{res_id}', 'json', req, runtime)
         )
 
     def update_collector_name(
@@ -11862,20 +8488,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateCollectorName',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/rename',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateCollectorNameResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateCollectorName', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/rename', 'json', req, runtime)
         )
 
     async def update_collector_name_with_options_async(
@@ -11894,20 +8509,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateCollectorName',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/rename',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateCollectorNameResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateCollectorName', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/collectors/{res_id}/actions/rename', 'json', req, runtime)
         )
 
     def update_description(
@@ -11948,20 +8552,9 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateDescription',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/description',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateDescriptionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateDescription', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/description', 'json', req, runtime)
         )
 
     async def update_description_with_options_async(
@@ -11984,20 +8577,9 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateDescription',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/description',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateDescription', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/description', 'json', req, runtime)
         )
 
     def update_diagnosis_settings(
@@ -12036,20 +8618,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateDiagnosisSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/settings',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateDiagnosisSettings', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/diagnosis/instances/{instance_id}/settings', 'json', req, runtime)
         )
 
     async def update_diagnosis_settings_with_options_async(
@@ -12070,20 +8641,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateDiagnosisSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/settings',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateDiagnosisSettings', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/diagnosis/instances/{instance_id}/settings', 'json', req, runtime)
         )
 
     def update_dict(
@@ -12120,20 +8680,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateDict',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dict',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateDictResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateDict', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/dict', 'json', req, runtime)
         )
 
     async def update_dict_with_options_async(
@@ -12152,20 +8701,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateDict',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dict',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateDictResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateDict', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/dict', 'json', req, runtime)
         )
 
     def update_extend_config(
@@ -12202,20 +8740,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateExtendConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/extend-configs/actions/update',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateExtendConfigResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateExtendConfig', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/extend-configs/actions/update', 'json', req, runtime)
         )
 
     async def update_extend_config_with_options_async(
@@ -12234,20 +8761,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateExtendConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/extend-configs/actions/update',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateExtendConfigResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateExtendConfig', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/extend-configs/actions/update', 'json', req, runtime)
         )
 
     def update_extendfiles(
@@ -12284,20 +8800,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateExtendfiles',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/extendfiles',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateExtendfilesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateExtendfiles', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/logstashes/{instance_id}/extendfiles', 'json', req, runtime)
         )
 
     async def update_extendfiles_with_options_async(
@@ -12316,20 +8821,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateExtendfiles',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/extendfiles',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateExtendfilesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateExtendfiles', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/logstashes/{instance_id}/extendfiles', 'json', req, runtime)
         )
 
     def update_hot_ik_dicts(
@@ -12366,20 +8860,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateHotIkDicts',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ik-hot-dict',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateHotIkDictsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateHotIkDicts', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/ik-hot-dict', 'json', req, runtime)
         )
 
     async def update_hot_ik_dicts_with_options_async(
@@ -12398,20 +8881,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateHotIkDicts',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ik-hot-dict',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateHotIkDictsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateHotIkDicts', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/ik-hot-dict', 'json', req, runtime)
         )
 
     def update_ilmpolicy(
@@ -12452,20 +8924,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateILMPolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{{PolicyName}}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateILMPolicyResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateILMPolicy', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}', 'json', req, runtime)
         )
 
     async def update_ilmpolicy_with_options_async(
@@ -12486,53 +8947,42 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateILMPolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{{PolicyName}}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateILMPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateILMPolicy', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}', 'json', req, runtime)
         )
 
     def update_index_template(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
         request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_index_template_with_options(index_template, instance_id, request, headers, runtime)
+        return self.update_index_template_with_options(instance_id, index_template, request, headers, runtime)
 
     async def update_index_template_async(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
         request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_index_template_with_options_async(index_template, instance_id, request, headers, runtime)
+        return await self.update_index_template_with_options_async(instance_id, index_template, request, headers, runtime)
 
     def update_index_template_with_options(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
         request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
         UtilClient.validate_model(request)
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        index_template = OpenApiUtilClient.get_encode_param(index_template)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -12540,33 +8990,22 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateIndexTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{{IndexTemplate}}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateIndexTemplateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateIndexTemplate', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/index-templates/{index_template}', 'json', req, runtime)
         )
 
     async def update_index_template_with_options_async(
         self,
-        index_template: str,
         instance_id: str,
+        index_template: str,
         request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
         UtilClient.validate_model(request)
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        index_template = OpenApiUtilClient.get_encode_param(index_template)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -12574,20 +9013,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateIndexTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{{IndexTemplate}}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateIndexTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateIndexTemplate', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/index-templates/{index_template}', 'json', req, runtime)
         )
 
     def update_instance(
@@ -12628,20 +9056,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateInstance', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
         )
 
     async def update_instance_with_options_async(
@@ -12664,20 +9081,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateInstance', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}', 'json', req, runtime)
         )
 
     def update_instance_charge_type(
@@ -12714,20 +9120,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateInstanceChargeType',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/convert-pay-type',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateInstanceChargeType', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/convert-pay-type', 'json', req, runtime)
         )
 
     async def update_instance_charge_type_with_options_async(
@@ -12746,20 +9141,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateInstanceChargeType',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/convert-pay-type',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateInstanceChargeType', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/convert-pay-type', 'json', req, runtime)
         )
 
     def update_instance_settings(
@@ -12796,20 +9180,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateInstanceSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/instance-settings',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateInstanceSettingsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateInstanceSettings', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/instance-settings', 'json', req, runtime)
         )
 
     async def update_instance_settings_with_options_async(
@@ -12828,20 +9201,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateInstanceSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/instance-settings',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateInstanceSettingsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateInstanceSettings', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/instance-settings', 'json', req, runtime)
         )
 
     def update_kibana_settings(
@@ -12878,20 +9240,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateKibanaSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-kibana-settings',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateKibanaSettingsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateKibanaSettings', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/update-kibana-settings', 'json', req, runtime)
         )
 
     async def update_kibana_settings_with_options_async(
@@ -12910,20 +9261,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateKibanaSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-kibana-settings',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateKibanaSettingsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateKibanaSettings', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/update-kibana-settings', 'json', req, runtime)
         )
 
     def update_kibana_white_ips(
@@ -12962,20 +9302,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateKibanaWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateKibanaWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/kibana-white-ips', 'json', req, runtime)
         )
 
     async def update_kibana_white_ips_with_options_async(
@@ -12996,20 +9325,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateKibanaWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateKibanaWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/kibana-white-ips', 'json', req, runtime)
         )
 
     def update_logstash(
@@ -13046,20 +9364,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateLogstashResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateLogstash', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/logstashes/{instance_id}', 'json', req, runtime)
         )
 
     async def update_logstash_with_options_async(
@@ -13078,20 +9385,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateLogstash',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateLogstashResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateLogstash', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/logstashes/{instance_id}', 'json', req, runtime)
         )
 
     def update_logstash_charge_type(
@@ -13128,20 +9424,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateLogstashChargeType',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/convert-pay-type',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateLogstashChargeType', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/convert-pay-type', 'json', req, runtime)
         )
 
     async def update_logstash_charge_type_with_options_async(
@@ -13160,20 +9445,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateLogstashChargeType',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/convert-pay-type',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateLogstashChargeType', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/actions/convert-pay-type', 'json', req, runtime)
         )
 
     def update_logstash_description(
@@ -13210,20 +9484,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateLogstashDescription',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/description',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateLogstashDescriptionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateLogstashDescription', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/description', 'json', req, runtime)
         )
 
     async def update_logstash_description_with_options_async(
@@ -13242,20 +9505,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateLogstashDescription',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/description',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateLogstashDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateLogstashDescription', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/description', 'json', req, runtime)
         )
 
     def update_logstash_settings(
@@ -13292,20 +9544,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateLogstashSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/instance-settings',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateLogstashSettingsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateLogstashSettings', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/instance-settings', 'json', req, runtime)
         )
 
     async def update_logstash_settings_with_options_async(
@@ -13324,20 +9565,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateLogstashSettings',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/instance-settings',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateLogstashSettingsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateLogstashSettings', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/instance-settings', 'json', req, runtime)
         )
 
     def update_pipeline_management_config(
@@ -13374,20 +9604,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePipelineManagementConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipeline-management-config',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdatePipelineManagementConfig', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/pipeline-management-config', 'json', req, runtime)
         )
 
     async def update_pipeline_management_config_with_options_async(
@@ -13406,20 +9625,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePipelineManagementConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipeline-management-config',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdatePipelineManagementConfig', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/pipeline-management-config', 'json', req, runtime)
         )
 
     def update_pipelines(
@@ -13450,28 +9658,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.trigger):
             query['trigger'] = request.trigger
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePipelinesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdatePipelines', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/logstashes/{instance_id}/pipelines', 'json', req, runtime)
         )
 
     async def update_pipelines_with_options_async(
@@ -13484,28 +9681,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.trigger):
             query['trigger'] = request.trigger
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePipelines',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePipelinesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdatePipelines', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/logstashes/{instance_id}/pipelines', 'json', req, runtime)
         )
 
     def update_private_network_white_ips(
@@ -13544,20 +9730,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePrivateNetworkWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/private-network-white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdatePrivateNetworkWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/private-network-white-ips', 'json', req, runtime)
         )
 
     async def update_private_network_white_ips_with_options_async(
@@ -13578,20 +9753,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePrivateNetworkWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/private-network-white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdatePrivateNetworkWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/private-network-white-ips', 'json', req, runtime)
         )
 
     def update_public_network(
@@ -13628,20 +9792,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePublicNetwork',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/public-network',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePublicNetworkResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdatePublicNetwork', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/public-network', 'json', req, runtime)
         )
 
     async def update_public_network_with_options_async(
@@ -13660,20 +9813,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePublicNetwork',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/public-network',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePublicNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdatePublicNetwork', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/public-network', 'json', req, runtime)
         )
 
     def update_public_white_ips(
@@ -13712,20 +9854,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePublicWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/public-white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdatePublicWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/public-white-ips', 'json', req, runtime)
         )
 
     async def update_public_white_ips_with_options_async(
@@ -13746,20 +9877,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdatePublicWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/public-white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdatePublicWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/public-white-ips', 'json', req, runtime)
         )
 
     def update_read_write_policy(
@@ -13796,20 +9916,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateReadWritePolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-read-write-policy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateReadWritePolicyResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateReadWritePolicy', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/update-read-write-policy', 'json', req, runtime)
         )
 
     async def update_read_write_policy_with_options_async(
@@ -13828,20 +9937,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateReadWritePolicy',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-read-write-policy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateReadWritePolicyResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateReadWritePolicy', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/update-read-write-policy', 'json', req, runtime)
         )
 
     def update_snapshot_setting(
@@ -13870,20 +9968,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='UpdateSnapshotSetting',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-setting',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateSnapshotSettingResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateSnapshotSetting', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/snapshot-setting', 'json', req, runtime)
         )
 
     async def update_snapshot_setting_with_options_async(
@@ -13896,20 +9983,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        params = open_api_models.Params(
-            action='UpdateSnapshotSetting',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-setting',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateSnapshotSettingResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateSnapshotSetting', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/snapshot-setting', 'json', req, runtime)
         )
 
     def update_synonyms_dicts(
@@ -13946,20 +10022,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateSynonymsDicts',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/synonymsDict',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateSynonymsDictsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateSynonymsDicts', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/synonymsDict', 'json', req, runtime)
         )
 
     async def update_synonyms_dicts_with_options_async(
@@ -13978,20 +10043,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateSynonymsDicts',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/synonymsDict',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateSynonymsDictsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateSynonymsDicts', '2017-06-13', 'HTTPS', 'PUT', 'AK', f'/openapi/instances/{instance_id}/synonymsDict', 'json', req, runtime)
         )
 
     def update_template(
@@ -14032,20 +10086,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/templates/{{TemplateName}}',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateTemplateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateTemplate', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/templates/{template_name}', 'json', req, runtime)
         )
 
     async def update_template_with_options_async(
@@ -14066,20 +10109,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateTemplate',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/templates/{{TemplateName}}',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateTemplate', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/templates/{template_name}', 'json', req, runtime)
         )
 
     def update_white_ips(
@@ -14124,20 +10156,9 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateWhiteIpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest_with_form('UpdateWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/white-ips', 'json', req, runtime)
         )
 
     async def update_white_ips_with_options_async(
@@ -14164,20 +10185,9 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateWhiteIps',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/white-ips',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateWhiteIpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_with_form_async('UpdateWhiteIps', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/white-ips', 'json', req, runtime)
         )
 
     def update_xpack_monitor_config(
@@ -14214,20 +10224,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateXpackMonitorConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/xpack-monitor-config',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateXpackMonitorConfig', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/xpack-monitor-config', 'json', req, runtime)
         )
 
     async def update_xpack_monitor_config_with_options_async(
@@ -14246,20 +10245,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateXpackMonitorConfig',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/xpack-monitor-config',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateXpackMonitorConfig', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/xpack-monitor-config', 'json', req, runtime)
         )
 
     def upgrade_engine_version(
@@ -14295,29 +10283,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
-        if not UtilClient.is_unset(request.type):
-            body['type'] = request.type
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpgradeEngineVersion',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/upgrade-version',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpgradeEngineVersionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest_with_form('UpgradeEngineVersion', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/upgrade-version', 'json', req, runtime)
         )
 
     async def upgrade_engine_version_with_options_async(
@@ -14335,29 +10312,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
-        if not UtilClient.is_unset(request.type):
-            body['type'] = request.type
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpgradeEngineVersion',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/upgrade-version',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.UpgradeEngineVersionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_with_form_async('UpgradeEngineVersion', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/actions/upgrade-version', 'json', req, runtime)
         )
 
     def validate_connection(
@@ -14394,20 +10360,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ValidateConnection',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/validate-connection',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ValidateConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ValidateConnection', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/validate-connection', 'json', req, runtime)
         )
 
     async def validate_connection_with_options_async(
@@ -14426,20 +10381,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ValidateConnection',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/validate-connection',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ValidateConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ValidateConnection', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/logstashes/{instance_id}/validate-connection', 'json', req, runtime)
         )
 
     def validate_shrink_nodes(
@@ -14470,28 +10414,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.ignore_status):
-            query['ignoreStatus'] = request.ignore_status
         if not UtilClient.is_unset(request.node_type):
             query['nodeType'] = request.node_type
+        if not UtilClient.is_unset(request.ignore_status):
+            query['ignoreStatus'] = request.ignore_status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ValidateShrinkNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/validate-shrink-nodes',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ValidateShrinkNodesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ValidateShrinkNodes', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/validate-shrink-nodes', 'json', req, runtime)
         )
 
     async def validate_shrink_nodes_with_options_async(
@@ -14504,28 +10437,17 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
-        if not UtilClient.is_unset(request.ignore_status):
-            query['ignoreStatus'] = request.ignore_status
         if not UtilClient.is_unset(request.node_type):
             query['nodeType'] = request.node_type
+        if not UtilClient.is_unset(request.ignore_status):
+            query['ignoreStatus'] = request.ignore_status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ValidateShrinkNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/validate-shrink-nodes',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ValidateShrinkNodesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ValidateShrinkNodes', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/validate-shrink-nodes', 'json', req, runtime)
         )
 
     def validate_slr_permission(
@@ -14560,20 +10482,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ValidateSlrPermission',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/user/servicerolepermission',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ValidateSlrPermissionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ValidateSlrPermission', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/user/servicerolepermission', 'json', req, runtime)
         )
 
     async def validate_slr_permission_with_options_async(
@@ -14592,20 +10503,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ValidateSlrPermission',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/user/servicerolepermission',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ValidateSlrPermissionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ValidateSlrPermission', '2017-06-13', 'HTTPS', 'GET', 'AK', f'/openapi/user/servicerolepermission', 'json', req, runtime)
         )
 
     def validate_transferable_nodes(
@@ -14642,20 +10542,9 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ValidateTransferableNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/validate-transfer-nodes',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ValidateTransferableNodesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ValidateTransferableNodes', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/validate-transfer-nodes', 'json', req, runtime)
         )
 
     async def validate_transferable_nodes_with_options_async(
@@ -14674,94 +10563,7 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ValidateTransferableNodes',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/validate-transfer-nodes',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ValidateTransferableNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_instance(
-        self,
-        request: elasticsearch_20170613_models.CreateInstanceRequest,
-    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_instance_with_options(request, headers, runtime)
-
-    async def create_instance_async(
-        self,
-        request: elasticsearch_20170613_models.CreateInstanceRequest,
-    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_instance_with_options_async(request, headers, runtime)
-
-    def create_instance_with_options(
-        self,
-        request: elasticsearch_20170613_models.CreateInstanceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='createInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.CreateInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_instance_with_options_async(
-        self,
-        request: elasticsearch_20170613_models.CreateInstanceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['clientToken'] = request.client_token
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='createInstance',
-            version='2017-06-13',
-            protocol='HTTPS',
-            pathname=f'/openapi/instances',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            elasticsearch_20170613_models.CreateInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ValidateTransferableNodes', '2017-06-13', 'HTTPS', 'POST', 'AK', f'/openapi/instances/{instance_id}/validate-transfer-nodes', 'json', req, runtime)
         )

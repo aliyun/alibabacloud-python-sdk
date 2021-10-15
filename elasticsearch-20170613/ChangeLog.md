@@ -1,3 +1,6 @@
+2021-10-15 Version: 1.0.5
+- AMP version.
+
 2021-10-14 Version: 1.0.4
 - UpdateDescription fix body format.
 
