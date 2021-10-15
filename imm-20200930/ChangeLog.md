@@ -1,3 +1,6 @@
+2021-10-15 Version: 1.0.3
+- Support oss Referer.
+
 2021-09-23 Version: 1.0.2
 - Fix API standard.
 
