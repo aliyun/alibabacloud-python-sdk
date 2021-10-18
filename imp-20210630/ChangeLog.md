@@ -1,3 +1,6 @@
+2021-10-18 Version: 2.8.1
+- GetLive Add Output Parameters.
+
 2021-10-18 Version: 2.8.0
 - Add AttachStandardRoomHttpsCertificate api.
 - Add GetStandardRoomHttpsCertificate api.
