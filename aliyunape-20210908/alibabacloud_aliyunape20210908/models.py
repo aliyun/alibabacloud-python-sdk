@@ -665,9 +665,9 @@ class WeatherforecastTimeRequest(TeaModel):
         self.request_id = request_id
         # 经度，范围为（70°E~139.96°E）
         self.lon = lon
-        # yyyymmddhh0000
+        # 20210809090000
         self.cur_hour = cur_hour
-        # 纬度，范围为（15°N~59.95°N）
+        # 纬度，范围为（15°N~59.95°N
         self.lat = lat
 
     def validate(self):
@@ -1137,8 +1137,8 @@ class HistoricalRequest(TeaModel):
         request_id: str = None,
         station: str = None,
         page_size: int = None,
-        start_time: int = None,
-        end_time: int = None,
+        start_time: str = None,
+        end_time: str = None,
         page_num: int = None,
     ):
         # UserId
@@ -1147,15 +1147,15 @@ class HistoricalRequest(TeaModel):
         self.order_id = order_id
         # requestId
         self.request_id = request_id
-        # station全国（入参单一站点）
+        # 全国（入参单一站点）
         self.station = station
-        # pageSize是	页面条数
+        # pageSize
         self.page_size = page_size
-        # startTimeyyyymmddhh0000（当startTime为空时无数据产出，确认是否入参）
+        # startTime
         self.start_time = start_time
-        # endTimeyyyymmddhh0000 （当endTime为空时无数据产出，确认是否入参）
+        # endTime
         self.end_time = end_time
-        # pageNum页码数
+        # pageNum
         self.page_num = page_num
 
     def validate(self):
