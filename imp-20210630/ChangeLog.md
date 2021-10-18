@@ -1,3 +1,7 @@
+2021-10-18 Version: 2.8.0
+- Add AttachStandardRoomHttpsCertificate api.
+- Add GetStandardRoomHttpsCertificate api.
+
 2021-09-30 Version: 2.7.0
 - Add ListLiveRoomsById api.
 
