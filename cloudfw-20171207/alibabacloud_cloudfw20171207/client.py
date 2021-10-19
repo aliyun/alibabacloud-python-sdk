@@ -590,48 +590,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_members_with_options_async(request, runtime)
 
-    def describe_instance_rd_accounts_with_options(
-        self,
-        request: cloudfw_20171207_models.DescribeInstanceRdAccountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudfw_20171207_models.DescribeInstanceRdAccountsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cloudfw_20171207_models.DescribeInstanceRdAccountsResponse(),
-            self.do_rpcrequest('DescribeInstanceRdAccounts', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_instance_rd_accounts_with_options_async(
-        self,
-        request: cloudfw_20171207_models.DescribeInstanceRdAccountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudfw_20171207_models.DescribeInstanceRdAccountsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cloudfw_20171207_models.DescribeInstanceRdAccountsResponse(),
-            await self.do_rpcrequest_async('DescribeInstanceRdAccounts', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_instance_rd_accounts(
-        self,
-        request: cloudfw_20171207_models.DescribeInstanceRdAccountsRequest,
-    ) -> cloudfw_20171207_models.DescribeInstanceRdAccountsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_instance_rd_accounts_with_options(request, runtime)
-
-    async def describe_instance_rd_accounts_async(
-        self,
-        request: cloudfw_20171207_models.DescribeInstanceRdAccountsRequest,
-    ) -> cloudfw_20171207_models.DescribeInstanceRdAccountsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_instance_rd_accounts_with_options_async(request, runtime)
-
     def describe_policy_advanced_config_with_options(
         self,
         request: cloudfw_20171207_models.DescribePolicyAdvancedConfigRequest,
@@ -715,6 +673,48 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_policy_prior_used_with_options_async(request, runtime)
+
+    def describe_risk_event_group_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRiskEventGroupResponse(),
+            self.do_rpcrequest('DescribeRiskEventGroup', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_risk_event_group_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeRiskEventGroupResponse(),
+            await self.do_rpcrequest_async('DescribeRiskEventGroup', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_risk_event_group(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventGroupRequest,
+    ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_risk_event_group_with_options(request, runtime)
+
+    async def describe_risk_event_group_async(
+        self,
+        request: cloudfw_20171207_models.DescribeRiskEventGroupRequest,
+    ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_risk_event_group_with_options_async(request, runtime)
 
     def describe_vpc_firewall_acl_group_list_with_options(
         self,
@@ -967,48 +967,6 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.ModifyControlPolicyPositionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_control_policy_position_with_options_async(request, runtime)
-
-    def modify_control_policy_priority_with_options(
-        self,
-        request: cloudfw_20171207_models.ModifyControlPolicyPriorityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudfw_20171207_models.ModifyControlPolicyPriorityResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cloudfw_20171207_models.ModifyControlPolicyPriorityResponse(),
-            self.do_rpcrequest('ModifyControlPolicyPriority', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_control_policy_priority_with_options_async(
-        self,
-        request: cloudfw_20171207_models.ModifyControlPolicyPriorityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudfw_20171207_models.ModifyControlPolicyPriorityResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cloudfw_20171207_models.ModifyControlPolicyPriorityResponse(),
-            await self.do_rpcrequest_async('ModifyControlPolicyPriority', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_control_policy_priority(
-        self,
-        request: cloudfw_20171207_models.ModifyControlPolicyPriorityRequest,
-    ) -> cloudfw_20171207_models.ModifyControlPolicyPriorityResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_control_policy_priority_with_options(request, runtime)
-
-    async def modify_control_policy_priority_async(
-        self,
-        request: cloudfw_20171207_models.ModifyControlPolicyPriorityRequest,
-    ) -> cloudfw_20171207_models.ModifyControlPolicyPriorityResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_control_policy_priority_with_options_async(request, runtime)
 
     def modify_instance_member_attributes_with_options(
         self,
