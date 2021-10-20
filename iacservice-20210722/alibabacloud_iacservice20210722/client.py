@@ -41,480 +41,156 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def create_resource(
+    def reload_resources(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
-        request: ia_cservice_20210722_models.CreateResourceRequest,
-    ) -> ia_cservice_20210722_models.CreateResourceResponse:
+        request: ia_cservice_20210722_models.ReloadResourcesRequest,
+    ) -> ia_cservice_20210722_models.ReloadResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_resource_with_options(product_code, provider, resource_type_code, request, headers, runtime)
+        return self.reload_resources_with_options(provider, product_code, resource_type_code, request, headers, runtime)
 
-    async def create_resource_async(
+    async def reload_resources_async(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
-        request: ia_cservice_20210722_models.CreateResourceRequest,
-    ) -> ia_cservice_20210722_models.CreateResourceResponse:
+        request: ia_cservice_20210722_models.ReloadResourcesRequest,
+    ) -> ia_cservice_20210722_models.ReloadResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_resource_with_options_async(product_code, provider, resource_type_code, request, headers, runtime)
+        return await self.reload_resources_with_options_async(provider, product_code, resource_type_code, request, headers, runtime)
 
-    def create_resource_with_options(
+    def reload_resources_with_options(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
-        request: ia_cservice_20210722_models.CreateResourceRequest,
+        tmp_req: ia_cservice_20210722_models.ReloadResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.CreateResourceResponse:
-        UtilClient.validate_model(request)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        query = {}
-        if not UtilClient.is_unset(request.is_async):
-            query['isAsync'] = request.is_async
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
-        )
-        params = open_api_models.Params(
-            action='CreateResource',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.CreateResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_resource_with_options_async(
-        self,
-        product_code: str,
-        provider: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.CreateResourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.CreateResourceResponse:
-        UtilClient.validate_model(request)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        query = {}
-        if not UtilClient.is_unset(request.is_async):
-            query['isAsync'] = request.is_async
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
-        )
-        params = open_api_models.Params(
-            action='CreateResource',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.CreateResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_resource(
-        self,
-        product_code: str,
-        provider: str,
-        resource_id: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.DeleteResourceRequest,
-    ) -> ia_cservice_20210722_models.DeleteResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_resource_with_options(product_code, provider, resource_id, resource_type_code, request, headers, runtime)
-
-    async def delete_resource_async(
-        self,
-        product_code: str,
-        provider: str,
-        resource_id: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.DeleteResourceRequest,
-    ) -> ia_cservice_20210722_models.DeleteResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_resource_with_options_async(product_code, provider, resource_id, resource_type_code, request, headers, runtime)
-
-    def delete_resource_with_options(
-        self,
-        product_code: str,
-        provider: str,
-        resource_id: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.DeleteResourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.DeleteResourceResponse:
-        UtilClient.validate_model(request)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        query = {}
-        if not UtilClient.is_unset(request.is_async):
-            query['isAsync'] = request.is_async
-        if not UtilClient.is_unset(request.region_id):
-            query['regionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteResource',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources/{{resourceId}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.DeleteResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_resource_with_options_async(
-        self,
-        product_code: str,
-        provider: str,
-        resource_id: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.DeleteResourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.DeleteResourceResponse:
-        UtilClient.validate_model(request)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        query = {}
-        if not UtilClient.is_unset(request.is_async):
-            query['isAsync'] = request.is_async
-        if not UtilClient.is_unset(request.region_id):
-            query['regionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteResource',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources/{{resourceId}}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.DeleteResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_resource(
-        self,
-        product_code: str,
-        provider: str,
-        resource_id: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.GetResourceRequest,
-    ) -> ia_cservice_20210722_models.GetResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_resource_with_options(product_code, provider, resource_id, resource_type_code, request, headers, runtime)
-
-    async def get_resource_async(
-        self,
-        product_code: str,
-        provider: str,
-        resource_id: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.GetResourceRequest,
-    ) -> ia_cservice_20210722_models.GetResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_resource_with_options_async(product_code, provider, resource_id, resource_type_code, request, headers, runtime)
-
-    def get_resource_with_options(
-        self,
-        product_code: str,
-        provider: str,
-        resource_id: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.GetResourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.GetResourceResponse:
-        UtilClient.validate_model(request)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['regionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetResource',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources/{{resourceId}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.GetResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_resource_with_options_async(
-        self,
-        product_code: str,
-        provider: str,
-        resource_id: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.GetResourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.GetResourceResponse:
-        UtilClient.validate_model(request)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['regionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetResource',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources/{{resourceId}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.GetResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_task(
-        self,
-        task_id: str,
-    ) -> ia_cservice_20210722_models.GetTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_task_with_options(task_id, headers, runtime)
-
-    async def get_task_async(
-        self,
-        task_id: str,
-    ) -> ia_cservice_20210722_models.GetTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_task_with_options_async(task_id, headers, runtime)
-
-    def get_task_with_options(
-        self,
-        task_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.GetTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetTask',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/tasks/{task_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.GetTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_task_with_options_async(
-        self,
-        task_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.GetTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetTask',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/tasks/{task_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.GetTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_data_sources(
-        self,
-        attribute_name: str,
-        product_code: str,
-        provider: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.ListDataSourcesRequest,
-    ) -> ia_cservice_20210722_models.ListDataSourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_data_sources_with_options(attribute_name, product_code, provider, resource_type_code, request, headers, runtime)
-
-    async def list_data_sources_async(
-        self,
-        attribute_name: str,
-        product_code: str,
-        provider: str,
-        resource_type_code: str,
-        request: ia_cservice_20210722_models.ListDataSourcesRequest,
-    ) -> ia_cservice_20210722_models.ListDataSourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_data_sources_with_options_async(attribute_name, product_code, provider, resource_type_code, request, headers, runtime)
-
-    def list_data_sources_with_options(
-        self,
-        attribute_name: str,
-        product_code: str,
-        provider: str,
-        resource_type_code: str,
-        tmp_req: ia_cservice_20210722_models.ListDataSourcesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.ListDataSourcesResponse:
+    ) -> ia_cservice_20210722_models.ReloadResourcesResponse:
         UtilClient.validate_model(tmp_req)
-        attribute_name = OpenApiUtilClient.get_encode_param(attribute_name)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        request = ia_cservice_20210722_models.ListDataSourcesShrinkRequest()
+        request = ia_cservice_20210722_models.ReloadResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.filter):
-            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
+        if not UtilClient.is_unset(tmp_req.region_ids):
+            request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'regionIds', 'simple')
         query = {}
-        if not UtilClient.is_unset(request.filter_shrink):
-            query['filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['regionIds'] = request.region_ids_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDataSources',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/dataSources/{{attributeName}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
-            ia_cservice_20210722_models.ListDataSourcesResponse(),
-            self.call_api(params, req, runtime)
+            ia_cservice_20210722_models.ReloadResourcesResponse(),
+            self.do_roarequest('ReloadResources', '2021-07-22', 'HTTPS', 'PUT', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/operation/reload', 'json', req, runtime)
         )
 
-    async def list_data_sources_with_options_async(
+    async def reload_resources_with_options_async(
         self,
-        attribute_name: str,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
-        tmp_req: ia_cservice_20210722_models.ListDataSourcesRequest,
+        tmp_req: ia_cservice_20210722_models.ReloadResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.ListDataSourcesResponse:
+    ) -> ia_cservice_20210722_models.ReloadResourcesResponse:
         UtilClient.validate_model(tmp_req)
-        attribute_name = OpenApiUtilClient.get_encode_param(attribute_name)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        request = ia_cservice_20210722_models.ListDataSourcesShrinkRequest()
+        request = ia_cservice_20210722_models.ReloadResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.filter):
-            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
+        if not UtilClient.is_unset(tmp_req.region_ids):
+            request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'regionIds', 'simple')
         query = {}
-        if not UtilClient.is_unset(request.filter_shrink):
-            query['filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['regionIds'] = request.region_ids_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDataSources',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/dataSources/{{attributeName}}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.ReloadResourcesResponse(),
+            await self.do_roarequest_async('ReloadResources', '2021-07-22', 'HTTPS', 'PUT', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/operation/reload', 'json', req, runtime)
+        )
+
+    def list_resource_types(
+        self,
+        provider: str,
+        product_code: str,
+        request: ia_cservice_20210722_models.ListResourceTypesRequest,
+    ) -> ia_cservice_20210722_models.ListResourceTypesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_resource_types_with_options(provider, product_code, request, headers, runtime)
+
+    async def list_resource_types_async(
+        self,
+        provider: str,
+        product_code: str,
+        request: ia_cservice_20210722_models.ListResourceTypesRequest,
+    ) -> ia_cservice_20210722_models.ListResourceTypesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_resource_types_with_options_async(provider, product_code, request, headers, runtime)
+
+    def list_resource_types_with_options(
+        self,
+        provider: str,
+        product_code: str,
+        tmp_req: ia_cservice_20210722_models.ListResourceTypesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.ListResourceTypesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ia_cservice_20210722_models.ListResourceTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_type_codes):
+            request.resource_type_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_type_codes, 'resourceTypeCodes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.resource_type_codes_shrink):
+            query['resourceTypeCodes'] = request.resource_type_codes_shrink
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         return TeaCore.from_map(
-            ia_cservice_20210722_models.ListDataSourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            ia_cservice_20210722_models.ListResourceTypesResponse(),
+            self.do_roarequest('ListResourceTypes', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes', 'json', req, runtime)
+        )
+
+    async def list_resource_types_with_options_async(
+        self,
+        provider: str,
+        product_code: str,
+        tmp_req: ia_cservice_20210722_models.ListResourceTypesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.ListResourceTypesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ia_cservice_20210722_models.ListResourceTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_type_codes):
+            request.resource_type_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_type_codes, 'resourceTypeCodes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.resource_type_codes_shrink):
+            query['resourceTypeCodes'] = request.resource_type_codes_shrink
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.ListResourceTypesResponse(),
+            await self.do_roarequest_async('ListResourceTypes', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes', 'json', req, runtime)
         )
 
     def list_products(
@@ -543,30 +219,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210722_models.ListProductsResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
         query = {}
-        if not UtilClient.is_unset(request.max_results):
-            query['maxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListProducts',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             ia_cservice_20210722_models.ListProductsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListProducts', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products', 'json', req, runtime)
         )
 
     async def list_products_with_options_async(
@@ -577,399 +241,339 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210722_models.ListProductsResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
         query = {}
-        if not UtilClient.is_unset(request.max_results):
-            query['maxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListProducts',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             ia_cservice_20210722_models.ListProductsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_resource_types(
-        self,
-        product_code: str,
-        provider: str,
-        request: ia_cservice_20210722_models.ListResourceTypesRequest,
-    ) -> ia_cservice_20210722_models.ListResourceTypesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_resource_types_with_options(product_code, provider, request, headers, runtime)
-
-    async def list_resource_types_async(
-        self,
-        product_code: str,
-        provider: str,
-        request: ia_cservice_20210722_models.ListResourceTypesRequest,
-    ) -> ia_cservice_20210722_models.ListResourceTypesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_resource_types_with_options_async(product_code, provider, request, headers, runtime)
-
-    def list_resource_types_with_options(
-        self,
-        product_code: str,
-        provider: str,
-        tmp_req: ia_cservice_20210722_models.ListResourceTypesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.ListResourceTypesResponse:
-        UtilClient.validate_model(tmp_req)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        request = ia_cservice_20210722_models.ListResourceTypesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.resource_type_codes):
-            request.resource_type_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_type_codes, 'resourceTypeCodes', 'simple')
-        query = {}
-        if not UtilClient.is_unset(request.max_results):
-            query['maxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['nextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_type_codes_shrink):
-            query['resourceTypeCodes'] = request.resource_type_codes_shrink
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListResourceTypes',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.ListResourceTypesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_resource_types_with_options_async(
-        self,
-        product_code: str,
-        provider: str,
-        tmp_req: ia_cservice_20210722_models.ListResourceTypesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.ListResourceTypesResponse:
-        UtilClient.validate_model(tmp_req)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        request = ia_cservice_20210722_models.ListResourceTypesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.resource_type_codes):
-            request.resource_type_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_type_codes, 'resourceTypeCodes', 'simple')
-        query = {}
-        if not UtilClient.is_unset(request.max_results):
-            query['maxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['nextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_type_codes_shrink):
-            query['resourceTypeCodes'] = request.resource_type_codes_shrink
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListResourceTypes',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210722_models.ListResourceTypesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListProducts', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products', 'json', req, runtime)
         )
 
     def list_resources(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
         request: ia_cservice_20210722_models.ListResourcesRequest,
     ) -> ia_cservice_20210722_models.ListResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resources_with_options(product_code, provider, resource_type_code, request, headers, runtime)
+        return self.list_resources_with_options(provider, product_code, resource_type_code, request, headers, runtime)
 
     async def list_resources_async(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
         request: ia_cservice_20210722_models.ListResourcesRequest,
     ) -> ia_cservice_20210722_models.ListResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resources_with_options_async(product_code, provider, resource_type_code, request, headers, runtime)
+        return await self.list_resources_with_options_async(provider, product_code, resource_type_code, request, headers, runtime)
 
     def list_resources_with_options(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
         tmp_req: ia_cservice_20210722_models.ListResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210722_models.ListResourcesResponse:
         UtilClient.validate_model(tmp_req)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         request = ia_cservice_20210722_models.ListResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.filter):
-            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'regionIds', 'simple')
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         query = {}
-        if not UtilClient.is_unset(request.filter_shrink):
-            query['filter'] = request.filter_shrink
-        if not UtilClient.is_unset(request.is_reload):
-            query['isReload'] = request.is_reload
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['regionIds'] = request.region_ids_shrink
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_ids_shrink):
-            query['regionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.is_reload):
+            query['isReload'] = request.is_reload
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ListResources',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             ia_cservice_20210722_models.ListResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('ListResources', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources', 'json', req, runtime)
         )
 
     async def list_resources_with_options_async(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
         tmp_req: ia_cservice_20210722_models.ListResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210722_models.ListResourcesResponse:
         UtilClient.validate_model(tmp_req)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         request = ia_cservice_20210722_models.ListResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.filter):
-            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'regionIds', 'simple')
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         query = {}
-        if not UtilClient.is_unset(request.filter_shrink):
-            query['filter'] = request.filter_shrink
-        if not UtilClient.is_unset(request.is_reload):
-            query['isReload'] = request.is_reload
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['regionIds'] = request.region_ids_shrink
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_ids_shrink):
-            query['regionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.is_reload):
+            query['isReload'] = request.is_reload
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListResources',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             ia_cservice_20210722_models.ListResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('ListResources', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources', 'json', req, runtime)
         )
 
-    def reload_resources(
+    def list_data_sources(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
-        request: ia_cservice_20210722_models.ReloadResourcesRequest,
-    ) -> ia_cservice_20210722_models.ReloadResourcesResponse:
+        attribute_name: str,
+        request: ia_cservice_20210722_models.ListDataSourcesRequest,
+    ) -> ia_cservice_20210722_models.ListDataSourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.reload_resources_with_options(product_code, provider, resource_type_code, request, headers, runtime)
+        return self.list_data_sources_with_options(provider, product_code, resource_type_code, attribute_name, request, headers, runtime)
 
-    async def reload_resources_async(
+    async def list_data_sources_async(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
-        request: ia_cservice_20210722_models.ReloadResourcesRequest,
-    ) -> ia_cservice_20210722_models.ReloadResourcesResponse:
+        attribute_name: str,
+        request: ia_cservice_20210722_models.ListDataSourcesRequest,
+    ) -> ia_cservice_20210722_models.ListDataSourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.reload_resources_with_options_async(product_code, provider, resource_type_code, request, headers, runtime)
+        return await self.list_data_sources_with_options_async(provider, product_code, resource_type_code, attribute_name, request, headers, runtime)
 
-    def reload_resources_with_options(
+    def list_data_sources_with_options(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
-        tmp_req: ia_cservice_20210722_models.ReloadResourcesRequest,
+        attribute_name: str,
+        tmp_req: ia_cservice_20210722_models.ListDataSourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.ReloadResourcesResponse:
+    ) -> ia_cservice_20210722_models.ListDataSourcesResponse:
         UtilClient.validate_model(tmp_req)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        request = ia_cservice_20210722_models.ReloadResourcesShrinkRequest()
+        request = ia_cservice_20210722_models.ListDataSourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.region_ids):
-            request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'regionIds', 'simple')
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         query = {}
-        if not UtilClient.is_unset(request.region_ids_shrink):
-            query['regionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['filter'] = request.filter_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ReloadResources',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources/operation/reload',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
-            ia_cservice_20210722_models.ReloadResourcesResponse(),
-            self.call_api(params, req, runtime)
+            ia_cservice_20210722_models.ListDataSourcesResponse(),
+            self.do_roarequest('ListDataSources', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/dataSources/{attribute_name}', 'json', req, runtime)
         )
 
-    async def reload_resources_with_options_async(
+    async def list_data_sources_with_options_async(
         self,
-        product_code: str,
         provider: str,
+        product_code: str,
         resource_type_code: str,
-        tmp_req: ia_cservice_20210722_models.ReloadResourcesRequest,
+        attribute_name: str,
+        tmp_req: ia_cservice_20210722_models.ListDataSourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210722_models.ReloadResourcesResponse:
+    ) -> ia_cservice_20210722_models.ListDataSourcesResponse:
         UtilClient.validate_model(tmp_req)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        request = ia_cservice_20210722_models.ReloadResourcesShrinkRequest()
+        request = ia_cservice_20210722_models.ListDataSourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.region_ids):
-            request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'regionIds', 'simple')
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         query = {}
-        if not UtilClient.is_unset(request.region_ids_shrink):
-            query['regionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['filter'] = request.filter_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        params = open_api_models.Params(
-            action='ReloadResources',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources/operation/reload',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.ListDataSourcesResponse(),
+            await self.do_roarequest_async('ListDataSources', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/dataSources/{attribute_name}', 'json', req, runtime)
+        )
+
+    def create_resource(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        request: ia_cservice_20210722_models.CreateResourceRequest,
+    ) -> ia_cservice_20210722_models.CreateResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_resource_with_options(provider, product_code, resource_type_code, request, headers, runtime)
+
+    async def create_resource_async(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        request: ia_cservice_20210722_models.CreateResourceRequest,
+    ) -> ia_cservice_20210722_models.CreateResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_resource_with_options_async(provider, product_code, resource_type_code, request, headers, runtime)
+
+    def create_resource_with_options(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        request: ia_cservice_20210722_models.CreateResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.CreateResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_async):
+            query['isAsync'] = request.is_async
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         return TeaCore.from_map(
-            ia_cservice_20210722_models.ReloadResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            ia_cservice_20210722_models.CreateResourceResponse(),
+            self.do_roarequest('CreateResource', '2021-07-22', 'HTTPS', 'POST', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources', 'json', req, runtime)
+        )
+
+    async def create_resource_with_options_async(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        request: ia_cservice_20210722_models.CreateResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.CreateResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_async):
+            query['isAsync'] = request.is_async
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.CreateResourceResponse(),
+            await self.do_roarequest_async('CreateResource', '2021-07-22', 'HTTPS', 'POST', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources', 'json', req, runtime)
+        )
+
+    def get_task(
+        self,
+        task_id: str,
+    ) -> ia_cservice_20210722_models.GetTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_task_with_options(task_id, headers, runtime)
+
+    async def get_task_async(
+        self,
+        task_id: str,
+    ) -> ia_cservice_20210722_models.GetTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_task_with_options_async(task_id, headers, runtime)
+
+    def get_task_with_options(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.GetTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.GetTaskResponse(),
+            self.do_roarequest('GetTask', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/tasks/{task_id}', 'json', req, runtime)
+        )
+
+    async def get_task_with_options_async(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.GetTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.GetTaskResponse(),
+            await self.do_roarequest_async('GetTask', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/tasks/{task_id}', 'json', req, runtime)
         )
 
     def update_resource(
         self,
-        product_code: str,
         provider: str,
-        resource_id: str,
+        product_code: str,
         resource_type_code: str,
+        resource_id: str,
         request: ia_cservice_20210722_models.UpdateResourceRequest,
     ) -> ia_cservice_20210722_models.UpdateResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_resource_with_options(product_code, provider, resource_id, resource_type_code, request, headers, runtime)
+        return self.update_resource_with_options(provider, product_code, resource_type_code, resource_id, request, headers, runtime)
 
     async def update_resource_async(
         self,
-        product_code: str,
         provider: str,
-        resource_id: str,
+        product_code: str,
         resource_type_code: str,
+        resource_id: str,
         request: ia_cservice_20210722_models.UpdateResourceRequest,
     ) -> ia_cservice_20210722_models.UpdateResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_resource_with_options_async(product_code, provider, resource_id, resource_type_code, request, headers, runtime)
+        return await self.update_resource_with_options_async(provider, product_code, resource_type_code, resource_id, request, headers, runtime)
 
     def update_resource_with_options(
         self,
-        product_code: str,
         provider: str,
-        resource_id: str,
+        product_code: str,
         resource_type_code: str,
+        resource_id: str,
         request: ia_cservice_20210722_models.UpdateResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210722_models.UpdateResourceResponse:
         UtilClient.validate_model(request)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         query = {}
         if not UtilClient.is_unset(request.is_async):
             query['isAsync'] = request.is_async
@@ -978,37 +582,22 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=request.body
         )
-        params = open_api_models.Params(
-            action='UpdateResource',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources/{{resourceId}}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             ia_cservice_20210722_models.UpdateResourceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest('UpdateResource', '2021-07-22', 'HTTPS', 'PUT', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}', 'json', req, runtime)
         )
 
     async def update_resource_with_options_async(
         self,
-        product_code: str,
         provider: str,
-        resource_id: str,
+        product_code: str,
         resource_type_code: str,
+        resource_id: str,
         request: ia_cservice_20210722_models.UpdateResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210722_models.UpdateResourceResponse:
         UtilClient.validate_model(request)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         query = {}
         if not UtilClient.is_unset(request.is_async):
             query['isAsync'] = request.is_async
@@ -1017,18 +606,151 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=request.body
         )
-        params = open_api_models.Params(
-            action='UpdateResource',
-            version='2021-07-22',
-            protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{{productCode}}/resourceTypes/{{resourceTypeCode}}/resources/{{resourceId}}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             ia_cservice_20210722_models.UpdateResourceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async('UpdateResource', '2021-07-22', 'HTTPS', 'PUT', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}', 'json', req, runtime)
+        )
+
+    def get_resource(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        resource_id: str,
+        request: ia_cservice_20210722_models.GetResourceRequest,
+    ) -> ia_cservice_20210722_models.GetResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_resource_with_options(provider, product_code, resource_type_code, resource_id, request, headers, runtime)
+
+    async def get_resource_async(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        resource_id: str,
+        request: ia_cservice_20210722_models.GetResourceRequest,
+    ) -> ia_cservice_20210722_models.GetResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_resource_with_options_async(provider, product_code, resource_type_code, resource_id, request, headers, runtime)
+
+    def get_resource_with_options(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        resource_id: str,
+        request: ia_cservice_20210722_models.GetResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.GetResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.GetResourceResponse(),
+            self.do_roarequest('GetResource', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}', 'json', req, runtime)
+        )
+
+    async def get_resource_with_options_async(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        resource_id: str,
+        request: ia_cservice_20210722_models.GetResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.GetResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.GetResourceResponse(),
+            await self.do_roarequest_async('GetResource', '2021-07-22', 'HTTPS', 'GET', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}', 'json', req, runtime)
+        )
+
+    def delete_resource(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        resource_id: str,
+        request: ia_cservice_20210722_models.DeleteResourceRequest,
+    ) -> ia_cservice_20210722_models.DeleteResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_resource_with_options(provider, product_code, resource_type_code, resource_id, request, headers, runtime)
+
+    async def delete_resource_async(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        resource_id: str,
+        request: ia_cservice_20210722_models.DeleteResourceRequest,
+    ) -> ia_cservice_20210722_models.DeleteResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_resource_with_options_async(provider, product_code, resource_type_code, resource_id, request, headers, runtime)
+
+    def delete_resource_with_options(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        resource_id: str,
+        request: ia_cservice_20210722_models.DeleteResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.DeleteResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.is_async):
+            query['isAsync'] = request.is_async
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.DeleteResourceResponse(),
+            self.do_roarequest('DeleteResource', '2021-07-22', 'HTTPS', 'DELETE', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}', 'json', req, runtime)
+        )
+
+    async def delete_resource_with_options_async(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        resource_id: str,
+        request: ia_cservice_20210722_models.DeleteResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.DeleteResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.is_async):
+            query['isAsync'] = request.is_async
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.DeleteResourceResponse(),
+            await self.do_roarequest_async('DeleteResource', '2021-07-22', 'HTTPS', 'DELETE', 'AK', f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}', 'json', req, runtime)
         )
