@@ -830,8 +830,26 @@ class RecognizeFaceRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
+        age: bool = None,
+        gender: bool = None,
+        hat: bool = None,
+        glass: bool = None,
+        beauty: bool = None,
+        expression: bool = None,
+        mask: bool = None,
+        quality: bool = None,
+        max_face_number: int = None,
     ):
         self.image_url = image_url
+        self.age = age
+        self.gender = gender
+        self.hat = hat
+        self.glass = glass
+        self.beauty = beauty
+        self.expression = expression
+        self.mask = mask
+        self.quality = quality
+        self.max_face_number = max_face_number
 
     def validate(self):
         pass
@@ -844,12 +862,48 @@ class RecognizeFaceRequest(TeaModel):
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
+        if self.age is not None:
+            result['Age'] = self.age
+        if self.gender is not None:
+            result['Gender'] = self.gender
+        if self.hat is not None:
+            result['Hat'] = self.hat
+        if self.glass is not None:
+            result['Glass'] = self.glass
+        if self.beauty is not None:
+            result['Beauty'] = self.beauty
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.max_face_number is not None:
+            result['MaxFaceNumber'] = self.max_face_number
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
+        if m.get('Age') is not None:
+            self.age = m.get('Age')
+        if m.get('Gender') is not None:
+            self.gender = m.get('Gender')
+        if m.get('Hat') is not None:
+            self.hat = m.get('Hat')
+        if m.get('Glass') is not None:
+            self.glass = m.get('Glass')
+        if m.get('Beauty') is not None:
+            self.beauty = m.get('Beauty')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('MaxFaceNumber') is not None:
+            self.max_face_number = m.get('MaxFaceNumber')
         return self
 
 
@@ -857,8 +911,26 @@ class RecognizeFaceAdvanceRequest(TeaModel):
     def __init__(
         self,
         image_urlobject: BinaryIO = None,
+        age: bool = None,
+        gender: bool = None,
+        hat: bool = None,
+        glass: bool = None,
+        beauty: bool = None,
+        expression: bool = None,
+        mask: bool = None,
+        quality: bool = None,
+        max_face_number: int = None,
     ):
         self.image_urlobject = image_urlobject
+        self.age = age
+        self.gender = gender
+        self.hat = hat
+        self.glass = glass
+        self.beauty = beauty
+        self.expression = expression
+        self.mask = mask
+        self.quality = quality
+        self.max_face_number = max_face_number
 
     def validate(self):
         self.validate_required(self.image_urlobject, 'image_urlobject')
@@ -871,12 +943,48 @@ class RecognizeFaceAdvanceRequest(TeaModel):
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURLObject'] = self.image_urlobject
+        if self.age is not None:
+            result['Age'] = self.age
+        if self.gender is not None:
+            result['Gender'] = self.gender
+        if self.hat is not None:
+            result['Hat'] = self.hat
+        if self.glass is not None:
+            result['Glass'] = self.glass
+        if self.beauty is not None:
+            result['Beauty'] = self.beauty
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.max_face_number is not None:
+            result['MaxFaceNumber'] = self.max_face_number
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURLObject') is not None:
             self.image_urlobject = m.get('ImageURLObject')
+        if m.get('Age') is not None:
+            self.age = m.get('Age')
+        if m.get('Gender') is not None:
+            self.gender = m.get('Gender')
+        if m.get('Hat') is not None:
+            self.hat = m.get('Hat')
+        if m.get('Glass') is not None:
+            self.glass = m.get('Glass')
+        if m.get('Beauty') is not None:
+            self.beauty = m.get('Beauty')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('MaxFaceNumber') is not None:
+            self.max_face_number = m.get('MaxFaceNumber')
         return self
 
 
@@ -7286,9 +7394,11 @@ class SearchFaceResponseBodyDataMatchList(TeaModel):
         self,
         face_items: List[SearchFaceResponseBodyDataMatchListFaceItems] = None,
         location: SearchFaceResponseBodyDataMatchListLocation = None,
+        qualitie_score: float = None,
     ):
         self.face_items = face_items
         self.location = location
+        self.qualitie_score = qualitie_score
 
     def validate(self):
         if self.face_items:
@@ -7310,6 +7420,8 @@ class SearchFaceResponseBodyDataMatchList(TeaModel):
                 result['FaceItems'].append(k.to_map() if k else None)
         if self.location is not None:
             result['Location'] = self.location.to_map()
+        if self.qualitie_score is not None:
+            result['QualitieScore'] = self.qualitie_score
         return result
 
     def from_map(self, m: dict = None):
@@ -7322,6 +7434,8 @@ class SearchFaceResponseBodyDataMatchList(TeaModel):
         if m.get('Location') is not None:
             temp_model = SearchFaceResponseBodyDataMatchListLocation()
             self.location = temp_model.from_map(m['Location'])
+        if m.get('QualitieScore') is not None:
+            self.qualitie_score = m.get('QualitieScore')
         return self
 
 
@@ -8143,8 +8257,10 @@ class AddFaceResponseBodyData(TeaModel):
     def __init__(
         self,
         face_id: str = None,
+        qualitie_score: float = None,
     ):
         self.face_id = face_id
+        self.qualitie_score = qualitie_score
 
     def validate(self):
         pass
@@ -8157,12 +8273,16 @@ class AddFaceResponseBodyData(TeaModel):
         result = dict()
         if self.face_id is not None:
             result['FaceId'] = self.face_id
+        if self.qualitie_score is not None:
+            result['QualitieScore'] = self.qualitie_score
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('FaceId') is not None:
             self.face_id = m.get('FaceId')
+        if m.get('QualitieScore') is not None:
+            self.qualitie_score = m.get('QualitieScore')
         return self
 
 
@@ -14808,9 +14928,11 @@ class BatchAddFacesResponseBodyDataInsertedFaces(TeaModel):
         self,
         image_url: str = None,
         face_id: str = None,
+        qualitie_score: float = None,
     ):
         self.image_url = image_url
         self.face_id = face_id
+        self.qualitie_score = qualitie_score
 
     def validate(self):
         pass
@@ -14825,6 +14947,8 @@ class BatchAddFacesResponseBodyDataInsertedFaces(TeaModel):
             result['ImageURL'] = self.image_url
         if self.face_id is not None:
             result['FaceId'] = self.face_id
+        if self.qualitie_score is not None:
+            result['QualitieScore'] = self.qualitie_score
         return result
 
     def from_map(self, m: dict = None):
@@ -14833,6 +14957,8 @@ class BatchAddFacesResponseBodyDataInsertedFaces(TeaModel):
             self.image_url = m.get('ImageURL')
         if m.get('FaceId') is not None:
             self.face_id = m.get('FaceId')
+        if m.get('QualitieScore') is not None:
+            self.qualitie_score = m.get('QualitieScore')
         return self
 
 
