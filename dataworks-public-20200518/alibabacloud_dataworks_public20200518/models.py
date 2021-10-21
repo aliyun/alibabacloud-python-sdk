@@ -9660,7 +9660,7 @@ class ExportDISyncTasksRequest(TeaModel):
         return self
 
 
-class ExportDISyncTasksResponseBodyTaskDetail(TeaModel):
+class ExportDISyncTasksResponseBodyData(TeaModel):
     def __init__(
         self,
         real_time_solution: str = None,
@@ -9677,13 +9677,13 @@ class ExportDISyncTasksResponseBodyTaskDetail(TeaModel):
 
         result = dict()
         if self.real_time_solution is not None:
-            result['RealTimeSolution'] = self.real_time_solution
+            result['realTimeSolution'] = self.real_time_solution
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RealTimeSolution') is not None:
-            self.real_time_solution = m.get('RealTimeSolution')
+        if m.get('realTimeSolution') is not None:
+            self.real_time_solution = m.get('realTimeSolution')
         return self
 
 
@@ -9692,15 +9692,15 @@ class ExportDISyncTasksResponseBody(TeaModel):
         self,
         success: bool = None,
         request_id: str = None,
-        task_detail: ExportDISyncTasksResponseBodyTaskDetail = None,
+        data: ExportDISyncTasksResponseBodyData = None,
     ):
         self.success = success
         self.request_id = request_id
-        self.task_detail = task_detail
+        self.data = data
 
     def validate(self):
-        if self.task_detail:
-            self.task_detail.validate()
+        if self.data:
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9709,22 +9709,22 @@ class ExportDISyncTasksResponseBody(TeaModel):
 
         result = dict()
         if self.success is not None:
-            result['Success'] = self.success
+            result['success'] = self.success
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.task_detail is not None:
-            result['TaskDetail'] = self.task_detail.to_map()
+            result['requestId'] = self.request_id
+        if self.data is not None:
+            result['data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TaskDetail') is not None:
-            temp_model = ExportDISyncTasksResponseBodyTaskDetail()
-            self.task_detail = temp_model.from_map(m['TaskDetail'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('data') is not None:
+            temp_model = ExportDISyncTasksResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
         return self
 
 
@@ -15303,6 +15303,212 @@ class GetDISyncTaskResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetDISyncTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDISyncTaskMetricInfoRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        file_id: int = None,
+        start_date: int = None,
+        end_date: int = None,
+    ):
+        self.project_id = project_id
+        self.file_id = file_id
+        self.start_date = start_date
+        self.end_date = end_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        return self
+
+
+class GetDISyncTaskMetricInfoResponseBodyMetricInfo(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        sum_reader_records: int = None,
+        sum_writer_records: int = None,
+        last_task_delay: int = None,
+        insert_reader_records: int = None,
+        update_reader_records: int = None,
+        delete_reader_records: int = None,
+        insert_writer_records: int = None,
+        update_writer_records: int = None,
+        delete_writer_records: int = None,
+    ):
+        self.message = message
+        self.sum_reader_records = sum_reader_records
+        self.sum_writer_records = sum_writer_records
+        self.last_task_delay = last_task_delay
+        self.insert_reader_records = insert_reader_records
+        self.update_reader_records = update_reader_records
+        self.delete_reader_records = delete_reader_records
+        self.insert_writer_records = insert_writer_records
+        self.update_writer_records = update_writer_records
+        self.delete_writer_records = delete_writer_records
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.sum_reader_records is not None:
+            result['SumReaderRecords'] = self.sum_reader_records
+        if self.sum_writer_records is not None:
+            result['SumWriterRecords'] = self.sum_writer_records
+        if self.last_task_delay is not None:
+            result['LastTaskDelay'] = self.last_task_delay
+        if self.insert_reader_records is not None:
+            result['InsertReaderRecords'] = self.insert_reader_records
+        if self.update_reader_records is not None:
+            result['UpdateReaderRecords'] = self.update_reader_records
+        if self.delete_reader_records is not None:
+            result['DeleteReaderRecords'] = self.delete_reader_records
+        if self.insert_writer_records is not None:
+            result['InsertWriterRecords'] = self.insert_writer_records
+        if self.update_writer_records is not None:
+            result['UpdateWriterRecords'] = self.update_writer_records
+        if self.delete_writer_records is not None:
+            result['DeleteWriterRecords'] = self.delete_writer_records
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('SumReaderRecords') is not None:
+            self.sum_reader_records = m.get('SumReaderRecords')
+        if m.get('SumWriterRecords') is not None:
+            self.sum_writer_records = m.get('SumWriterRecords')
+        if m.get('LastTaskDelay') is not None:
+            self.last_task_delay = m.get('LastTaskDelay')
+        if m.get('InsertReaderRecords') is not None:
+            self.insert_reader_records = m.get('InsertReaderRecords')
+        if m.get('UpdateReaderRecords') is not None:
+            self.update_reader_records = m.get('UpdateReaderRecords')
+        if m.get('DeleteReaderRecords') is not None:
+            self.delete_reader_records = m.get('DeleteReaderRecords')
+        if m.get('InsertWriterRecords') is not None:
+            self.insert_writer_records = m.get('InsertWriterRecords')
+        if m.get('UpdateWriterRecords') is not None:
+            self.update_writer_records = m.get('UpdateWriterRecords')
+        if m.get('DeleteWriterRecords') is not None:
+            self.delete_writer_records = m.get('DeleteWriterRecords')
+        return self
+
+
+class GetDISyncTaskMetricInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        metric_info: GetDISyncTaskMetricInfoResponseBodyMetricInfo = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # isSuccess
+        self.success = success
+        self.metric_info = metric_info
+
+    def validate(self):
+        if self.metric_info:
+            self.metric_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.metric_info is not None:
+            result['MetricInfo'] = self.metric_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('MetricInfo') is not None:
+            temp_model = GetDISyncTaskMetricInfoResponseBodyMetricInfo()
+            self.metric_info = temp_model.from_map(m['MetricInfo'])
+        return self
+
+
+class GetDISyncTaskMetricInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDISyncTaskMetricInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDISyncTaskMetricInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26717,12 +26923,12 @@ class ImportDISyncTasksRequest(TeaModel):
         self,
         project_id: int = None,
         task_type: str = None,
-        task_content: str = None,
+        body: str = None,
         task_param: str = None,
     ):
         self.project_id = project_id
         self.task_type = task_type
-        self.task_content = task_content
+        self.body = body
         self.task_param = task_param
 
     def validate(self):
@@ -26738,8 +26944,8 @@ class ImportDISyncTasksRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.task_type is not None:
             result['TaskType'] = self.task_type
-        if self.task_content is not None:
-            result['TaskContent'] = self.task_content
+        if self.body is not None:
+            result['body'] = self.body
         if self.task_param is not None:
             result['TaskParam'] = self.task_param
         return result
@@ -26750,8 +26956,8 @@ class ImportDISyncTasksRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
-        if m.get('TaskContent') is not None:
-            self.task_content = m.get('TaskContent')
+        if m.get('body') is not None:
+            self.body = m.get('body')
         if m.get('TaskParam') is not None:
             self.task_param = m.get('TaskParam')
         return self
