@@ -1,3 +1,6 @@
+2021-10-22 Version: 2.1.5
+- Feature Add Interconnection Uid And Cid Bind API.
+
 2021-09-07 Version: 2.1.3
 - Feature Add SetMessageRead API.
 

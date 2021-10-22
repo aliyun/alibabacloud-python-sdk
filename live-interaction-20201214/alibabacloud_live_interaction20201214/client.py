@@ -191,6 +191,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.import_message_with_options_async(request, runtime)
 
+    def unbind_interconnection_uid_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.UnbindInterconnectionUidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UnbindInterconnectionUidResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UnbindInterconnectionUidShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UnbindInterconnectionUidResponse(),
+            self.do_rpcrequest('UnbindInterconnectionUid', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def unbind_interconnection_uid_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.UnbindInterconnectionUidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.UnbindInterconnectionUidResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.UnbindInterconnectionUidShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.UnbindInterconnectionUidResponse(),
+            await self.do_rpcrequest_async('UnbindInterconnectionUid', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def unbind_interconnection_uid(
+        self,
+        request: live_interaction_20201214_models.UnbindInterconnectionUidRequest,
+    ) -> live_interaction_20201214_models.UnbindInterconnectionUidResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_interconnection_uid_with_options(request, runtime)
+
+    async def unbind_interconnection_uid_async(
+        self,
+        request: live_interaction_20201214_models.UnbindInterconnectionUidRequest,
+    ) -> live_interaction_20201214_models.UnbindInterconnectionUidResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_interconnection_uid_with_options_async(request, runtime)
+
     def silence_all_group_members_with_options(
         self,
         tmp_req: live_interaction_20201214_models.SilenceAllGroupMembersRequest,
@@ -1877,6 +1927,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_media_upload_url_with_options_async(request, runtime)
 
+    def bind_interconnection_uid_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.BindInterconnectionUidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.BindInterconnectionUidResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.BindInterconnectionUidShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.BindInterconnectionUidResponse(),
+            self.do_rpcrequest('BindInterconnectionUid', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def bind_interconnection_uid_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.BindInterconnectionUidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.BindInterconnectionUidResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.BindInterconnectionUidShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.BindInterconnectionUidResponse(),
+            await self.do_rpcrequest_async('BindInterconnectionUid', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def bind_interconnection_uid(
+        self,
+        request: live_interaction_20201214_models.BindInterconnectionUidRequest,
+    ) -> live_interaction_20201214_models.BindInterconnectionUidResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bind_interconnection_uid_with_options(request, runtime)
+
+    async def bind_interconnection_uid_async(
+        self,
+        request: live_interaction_20201214_models.BindInterconnectionUidRequest,
+    ) -> live_interaction_20201214_models.BindInterconnectionUidResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_interconnection_uid_with_options_async(request, runtime)
+
     def get_media_url_with_options(
         self,
         tmp_req: live_interaction_20201214_models.GetMediaUrlRequest,
@@ -2026,6 +2126,56 @@ class Client(OpenApiClient):
     ) -> live_interaction_20201214_models.UpdateCallbackConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_callback_config_with_options_async(request, runtime)
+
+    def bind_interconnection_cid_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.BindInterconnectionCidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.BindInterconnectionCidResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.BindInterconnectionCidShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.BindInterconnectionCidResponse(),
+            self.do_rpcrequest('BindInterconnectionCid', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def bind_interconnection_cid_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.BindInterconnectionCidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.BindInterconnectionCidResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.BindInterconnectionCidShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.BindInterconnectionCidResponse(),
+            await self.do_rpcrequest_async('BindInterconnectionCid', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def bind_interconnection_cid(
+        self,
+        request: live_interaction_20201214_models.BindInterconnectionCidRequest,
+    ) -> live_interaction_20201214_models.BindInterconnectionCidResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bind_interconnection_cid_with_options(request, runtime)
+
+    async def bind_interconnection_cid_async(
+        self,
+        request: live_interaction_20201214_models.BindInterconnectionCidRequest,
+    ) -> live_interaction_20201214_models.BindInterconnectionCidResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_interconnection_cid_with_options_async(request, runtime)
 
     def init_tenant_with_options(
         self,
@@ -2730,6 +2880,56 @@ class Client(OpenApiClient):
     ) -> live_interaction_20201214_models.GetLoginTokenResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_login_token_with_options_async(request, runtime)
+
+    def query_interconnection_cid_mapping_with_options(
+        self,
+        tmp_req: live_interaction_20201214_models.QueryInterconnectionCidMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.QueryInterconnectionCidMappingResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.QueryInterconnectionCidMappingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.QueryInterconnectionCidMappingResponse(),
+            self.do_rpcrequest('QueryInterconnectionCidMapping', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_interconnection_cid_mapping_with_options_async(
+        self,
+        tmp_req: live_interaction_20201214_models.QueryInterconnectionCidMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_interaction_20201214_models.QueryInterconnectionCidMappingResponse:
+        UtilClient.validate_model(tmp_req)
+        request = live_interaction_20201214_models.QueryInterconnectionCidMappingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_params):
+            request.request_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.request_params), 'RequestParams', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            live_interaction_20201214_models.QueryInterconnectionCidMappingResponse(),
+            await self.do_rpcrequest_async('QueryInterconnectionCidMapping', '2020-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_interconnection_cid_mapping(
+        self,
+        request: live_interaction_20201214_models.QueryInterconnectionCidMappingRequest,
+    ) -> live_interaction_20201214_models.QueryInterconnectionCidMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_interconnection_cid_mapping_with_options(request, runtime)
+
+    async def query_interconnection_cid_mapping_async(
+        self,
+        request: live_interaction_20201214_models.QueryInterconnectionCidMappingRequest,
+    ) -> live_interaction_20201214_models.QueryInterconnectionCidMappingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_interconnection_cid_mapping_with_options_async(request, runtime)
 
     def dismiss_group_with_options(
         self,

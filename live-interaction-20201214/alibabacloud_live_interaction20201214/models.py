@@ -847,6 +847,189 @@ class ImportMessageResponse(TeaModel):
         return self
 
 
+class UnbindInterconnectionUidRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_uid: str = None,
+        ding_talk_uid: str = None,
+    ):
+        # AIM 用户ID
+        self.app_uid = app_uid
+        # 钉钉 用户ID
+        self.ding_talk_uid = ding_talk_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uid is not None:
+            result['AppUid'] = self.app_uid
+        if self.ding_talk_uid is not None:
+            result['DingTalkUid'] = self.ding_talk_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUid') is not None:
+            self.app_uid = m.get('AppUid')
+        if m.get('DingTalkUid') is not None:
+            self.ding_talk_uid = m.get('DingTalkUid')
+        return self
+
+
+class UnbindInterconnectionUidRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: UnbindInterconnectionUidRequestRequestParams = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        # 解绑用户请求体
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = UnbindInterconnectionUidRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class UnbindInterconnectionUidShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        # 解绑用户请求体
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class UnbindInterconnectionUidResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class UnbindInterconnectionUidResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UnbindInterconnectionUidResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UnbindInterconnectionUidResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SilenceAllGroupMembersRequestRequestParams(TeaModel):
     def __init__(
         self,
@@ -8483,6 +8666,189 @@ class GetMediaUploadUrlResponse(TeaModel):
         return self
 
 
+class BindInterconnectionUidRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        app_uid: str = None,
+        ding_talk_uid: str = None,
+    ):
+        # AIM用户ID
+        self.app_uid = app_uid
+        # 钉钉用户ID
+        self.ding_talk_uid = ding_talk_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uid is not None:
+            result['AppUid'] = self.app_uid
+        if self.ding_talk_uid is not None:
+            result['DingTalkUid'] = self.ding_talk_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUid') is not None:
+            self.app_uid = m.get('AppUid')
+        if m.get('DingTalkUid') is not None:
+            self.ding_talk_uid = m.get('DingTalkUid')
+        return self
+
+
+class BindInterconnectionUidRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: BindInterconnectionUidRequestRequestParams = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        # 绑定用户请求体
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = BindInterconnectionUidRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class BindInterconnectionUidShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        # 绑定用户请求体
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class BindInterconnectionUidResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class BindInterconnectionUidResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: BindInterconnectionUidResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = BindInterconnectionUidResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMediaUrlRequestRequestParams(TeaModel):
     def __init__(
         self,
@@ -9388,6 +9754,189 @@ class UpdateCallbackConfigResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateCallbackConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BindInterconnectionCidRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        aim_app_cid: str = None,
+        ding_talk_cid: str = None,
+    ):
+        # AIM 群会话ID
+        self.aim_app_cid = aim_app_cid
+        # 钉钉 群会话ID
+        self.ding_talk_cid = ding_talk_cid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aim_app_cid is not None:
+            result['AimAppCid'] = self.aim_app_cid
+        if self.ding_talk_cid is not None:
+            result['DingTalkCid'] = self.ding_talk_cid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AimAppCid') is not None:
+            self.aim_app_cid = m.get('AimAppCid')
+        if m.get('DingTalkCid') is not None:
+            self.ding_talk_cid = m.get('DingTalkCid')
+        return self
+
+
+class BindInterconnectionCidRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: BindInterconnectionCidRequestRequestParams = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        # 绑定会话ID请求体
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = BindInterconnectionCidRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class BindInterconnectionCidShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        # 绑定会话ID请求体
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class BindInterconnectionCidResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class BindInterconnectionCidResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: BindInterconnectionCidResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = BindInterconnectionCidResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12502,6 +13051,224 @@ class GetLoginTokenResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetLoginTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryInterconnectionCidMappingRequestRequestParams(TeaModel):
+    def __init__(
+        self,
+        src_cid: str = None,
+        type: int = None,
+    ):
+        # 会话ID
+        self.src_cid = src_cid
+        # 会话ID类型; 1: AIM会话ID 2: 钉钉会话ID
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.src_cid is not None:
+            result['SrcCid'] = self.src_cid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SrcCid') is not None:
+            self.src_cid = m.get('SrcCid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class QueryInterconnectionCidMappingRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params: QueryInterconnectionCidMappingRequestRequestParams = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        # 查询请求体
+        self.request_params = request_params
+
+    def validate(self):
+        if self.request_params:
+            self.request_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params is not None:
+            result['RequestParams'] = self.request_params.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            temp_model = QueryInterconnectionCidMappingRequestRequestParams()
+            self.request_params = temp_model.from_map(m['RequestParams'])
+        return self
+
+
+class QueryInterconnectionCidMappingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_params_shrink: str = None,
+    ):
+        # AppId
+        self.app_id = app_id
+        # 查询请求体
+        self.request_params_shrink = request_params_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_params_shrink is not None:
+            result['RequestParams'] = self.request_params_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestParams') is not None:
+            self.request_params_shrink = m.get('RequestParams')
+        return self
+
+
+class QueryInterconnectionCidMappingResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        dst_cid: str = None,
+    ):
+        self.dst_cid = dst_cid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_cid is not None:
+            result['DstCid'] = self.dst_cid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstCid') is not None:
+            self.dst_cid = m.get('DstCid')
+        return self
+
+
+class QueryInterconnectionCidMappingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: str = None,
+        message: str = None,
+        result: QueryInterconnectionCidMappingResponseBodyResult = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.message = message
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = QueryInterconnectionCidMappingResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class QueryInterconnectionCidMappingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryInterconnectionCidMappingResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryInterconnectionCidMappingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
