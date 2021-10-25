@@ -48,6 +48,48 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def image_category_with_options(
+        self,
+        request: image_search_20210120_models.ImageCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_search_20210120_models.ImageCategoryResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            image_search_20210120_models.ImageCategoryResponse(),
+            self.do_rpcrequest('ImageCategory', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def image_category_with_options_async(
+        self,
+        request: image_search_20210120_models.ImageCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_search_20210120_models.ImageCategoryResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            image_search_20210120_models.ImageCategoryResponse(),
+            await self.do_rpcrequest_async('ImageCategory', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def image_category(
+        self,
+        request: image_search_20210120_models.ImageCategoryRequest,
+    ) -> image_search_20210120_models.ImageCategoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.image_category_with_options(request, runtime)
+
+    async def image_category_async(
+        self,
+        request: image_search_20210120_models.ImageCategoryRequest,
+    ) -> image_search_20210120_models.ImageCategoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.image_category_with_options_async(request, runtime)
+
     def general_recognition_with_options(
         self,
         request: image_search_20210120_models.GeneralRecognitionRequest,
@@ -231,6 +273,48 @@ class Client(OpenApiClient):
             general_recognition_req.pic_content = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         general_recognition_resp = await self.general_recognition_with_options_async(general_recognition_req, runtime)
         return general_recognition_resp
+
+    def image_property_with_options(
+        self,
+        request: image_search_20210120_models.ImagePropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_search_20210120_models.ImagePropertyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            image_search_20210120_models.ImagePropertyResponse(),
+            self.do_rpcrequest('ImageProperty', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def image_property_with_options_async(
+        self,
+        request: image_search_20210120_models.ImagePropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_search_20210120_models.ImagePropertyResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            image_search_20210120_models.ImagePropertyResponse(),
+            await self.do_rpcrequest_async('ImageProperty', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def image_property(
+        self,
+        request: image_search_20210120_models.ImagePropertyRequest,
+    ) -> image_search_20210120_models.ImagePropertyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.image_property_with_options(request, runtime)
+
+    async def image_property_async(
+        self,
+        request: image_search_20210120_models.ImagePropertyRequest,
+    ) -> image_search_20210120_models.ImagePropertyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.image_property_with_options_async(request, runtime)
 
     def image_duplication_with_options(
         self,
