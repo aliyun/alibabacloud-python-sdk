@@ -1,3 +1,6 @@
+2021-10-25 Version: 2.8.2
+- Support ListComments.
+
 2021-10-18 Version: 2.8.1
 - GetLive Add Output Parameters.
 

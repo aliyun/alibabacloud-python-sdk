@@ -855,6 +855,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_live_with_options_async(request, runtime)
 
+    def list_comments_with_options(
+        self,
+        request: imp_20210630_models.ListCommentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListCommentsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListCommentsResponse(),
+            self.do_rpcrequest('ListComments', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_comments_with_options_async(
+        self,
+        request: imp_20210630_models.ListCommentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListCommentsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListCommentsResponse(),
+            await self.do_rpcrequest_async('ListComments', '2021-06-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_comments(
+        self,
+        request: imp_20210630_models.ListCommentsRequest,
+    ) -> imp_20210630_models.ListCommentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_comments_with_options(request, runtime)
+
+    async def list_comments_async(
+        self,
+        request: imp_20210630_models.ListCommentsRequest,
+    ) -> imp_20210630_models.ListCommentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_comments_with_options_async(request, runtime)
+
     def get_live_domain_status_with_options(
         self,
         tmp_req: imp_20210630_models.GetLiveDomainStatusRequest,
