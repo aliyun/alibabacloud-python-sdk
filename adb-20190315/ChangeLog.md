@@ -1,3 +1,6 @@
+2021-10-25 Version: 1.0.9
+- CreateDBCluster Support ElasticResourceIO.
+
 2021-05-14 Version: 1.0.8
 - Update CreateDBCluster.
 - Update ModifyDBCluster.

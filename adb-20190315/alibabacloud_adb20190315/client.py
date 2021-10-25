@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_adb20190315 import models as adb_20190315_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -1052,6 +1053,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_attribute_with_options_async(request, runtime)
 
+    def describe_dbcluster_forecast_with_options(
+        self,
+        request: adb_20190315_models.DescribeDBClusterForecastRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDBClusterForecastResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDBClusterForecastResponse(),
+            self.do_rpcrequest('DescribeDBClusterForecast', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dbcluster_forecast_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeDBClusterForecastRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDBClusterForecastResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDBClusterForecastResponse(),
+            await self.do_rpcrequest_async('DescribeDBClusterForecast', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dbcluster_forecast(
+        self,
+        request: adb_20190315_models.DescribeDBClusterForecastRequest,
+    ) -> adb_20190315_models.DescribeDBClusterForecastResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_forecast_with_options(request, runtime)
+
+    async def describe_dbcluster_forecast_async(
+        self,
+        request: adb_20190315_models.DescribeDBClusterForecastRequest,
+    ) -> adb_20190315_models.DescribeDBClusterForecastResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_forecast_with_options_async(request, runtime)
+
+    def describe_dbcluster_health_report_with_options(
+        self,
+        request: adb_20190315_models.DescribeDBClusterHealthReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDBClusterHealthReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDBClusterHealthReportResponse(),
+            self.do_rpcrequest('DescribeDBClusterHealthReport', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dbcluster_health_report_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeDBClusterHealthReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDBClusterHealthReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDBClusterHealthReportResponse(),
+            await self.do_rpcrequest_async('DescribeDBClusterHealthReport', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dbcluster_health_report(
+        self,
+        request: adb_20190315_models.DescribeDBClusterHealthReportRequest,
+    ) -> adb_20190315_models.DescribeDBClusterHealthReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_health_report_with_options(request, runtime)
+
+    async def describe_dbcluster_health_report_async(
+        self,
+        request: adb_20190315_models.DescribeDBClusterHealthReportRequest,
+    ) -> adb_20190315_models.DescribeDBClusterHealthReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_health_report_with_options_async(request, runtime)
+
     def describe_dbcluster_net_info_with_options(
         self,
         request: adb_20190315_models.DescribeDBClusterNetInfoRequest,
@@ -1262,6 +1347,176 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbresource_pool_with_options_async(request, runtime)
 
+    def describe_diagnosis_dimensions_with_options(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisDimensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDiagnosisDimensionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDiagnosisDimensionsResponse(),
+            self.do_rpcrequest('DescribeDiagnosisDimensions', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_diagnosis_dimensions_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisDimensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDiagnosisDimensionsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDiagnosisDimensionsResponse(),
+            await self.do_rpcrequest_async('DescribeDiagnosisDimensions', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_diagnosis_dimensions(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisDimensionsRequest,
+    ) -> adb_20190315_models.DescribeDiagnosisDimensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnosis_dimensions_with_options(request, runtime)
+
+    async def describe_diagnosis_dimensions_async(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisDimensionsRequest,
+    ) -> adb_20190315_models.DescribeDiagnosisDimensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnosis_dimensions_with_options_async(request, runtime)
+
+    def describe_diagnosis_records_with_options(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDiagnosisRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDiagnosisRecordsResponse(),
+            self.do_rpcrequest('DescribeDiagnosisRecords', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_diagnosis_records_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDiagnosisRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDiagnosisRecordsResponse(),
+            await self.do_rpcrequest_async('DescribeDiagnosisRecords', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_diagnosis_records(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisRecordsRequest,
+    ) -> adb_20190315_models.DescribeDiagnosisRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnosis_records_with_options(request, runtime)
+
+    async def describe_diagnosis_records_async(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisRecordsRequest,
+    ) -> adb_20190315_models.DescribeDiagnosisRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnosis_records_with_options_async(request, runtime)
+
+    def describe_diagnosis_sqlinfo_with_options(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisSQLInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDiagnosisSQLInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDiagnosisSQLInfoResponse(),
+            self.do_rpcrequest('DescribeDiagnosisSQLInfo', '2019-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_diagnosis_sqlinfo_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisSQLInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDiagnosisSQLInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDiagnosisSQLInfoResponse(),
+            await self.do_rpcrequest_async('DescribeDiagnosisSQLInfo', '2019-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def describe_diagnosis_sqlinfo(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisSQLInfoRequest,
+    ) -> adb_20190315_models.DescribeDiagnosisSQLInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnosis_sqlinfo_with_options(request, runtime)
+
+    async def describe_diagnosis_sqlinfo_async(
+        self,
+        request: adb_20190315_models.DescribeDiagnosisSQLInfoRequest,
+    ) -> adb_20190315_models.DescribeDiagnosisSQLInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnosis_sqlinfo_with_options_async(request, runtime)
+
+    def describe_download_records_with_options(
+        self,
+        request: adb_20190315_models.DescribeDownloadRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDownloadRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDownloadRecordsResponse(),
+            self.do_rpcrequest('DescribeDownloadRecords', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_download_records_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeDownloadRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDownloadRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDownloadRecordsResponse(),
+            await self.do_rpcrequest_async('DescribeDownloadRecords', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_download_records(
+        self,
+        request: adb_20190315_models.DescribeDownloadRecordsRequest,
+    ) -> adb_20190315_models.DescribeDownloadRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_download_records_with_options(request, runtime)
+
+    async def describe_download_records_async(
+        self,
+        request: adb_20190315_models.DescribeDownloadRecordsRequest,
+    ) -> adb_20190315_models.DescribeDownloadRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_download_records_with_options_async(request, runtime)
+
     def describe_elastic_daily_plan_with_options(
         self,
         request: adb_20190315_models.DescribeElasticDailyPlanRequest,
@@ -1430,6 +1685,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_tasks_records_with_options_async(request, runtime)
 
+    def describe_maintenance_action_with_options(
+        self,
+        request: adb_20190315_models.DescribeMaintenanceActionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeMaintenanceActionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeMaintenanceActionResponse(),
+            self.do_rpcrequest('DescribeMaintenanceAction', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_maintenance_action_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeMaintenanceActionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeMaintenanceActionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeMaintenanceActionResponse(),
+            await self.do_rpcrequest_async('DescribeMaintenanceAction', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_maintenance_action(
+        self,
+        request: adb_20190315_models.DescribeMaintenanceActionRequest,
+    ) -> adb_20190315_models.DescribeMaintenanceActionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_maintenance_action_with_options(request, runtime)
+
+    async def describe_maintenance_action_async(
+        self,
+        request: adb_20190315_models.DescribeMaintenanceActionRequest,
+    ) -> adb_20190315_models.DescribeMaintenanceActionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_maintenance_action_with_options_async(request, runtime)
+
     def describe_operator_permission_with_options(
         self,
         request: adb_20190315_models.DescribeOperatorPermissionRequest,
@@ -1471,6 +1768,48 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.DescribeOperatorPermissionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_operator_permission_with_options_async(request, runtime)
+
+    def describe_pattern_performance_with_options(
+        self,
+        request: adb_20190315_models.DescribePatternPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribePatternPerformanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribePatternPerformanceResponse(),
+            self.do_rpcrequest('DescribePatternPerformance', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_pattern_performance_with_options_async(
+        self,
+        request: adb_20190315_models.DescribePatternPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribePatternPerformanceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribePatternPerformanceResponse(),
+            await self.do_rpcrequest_async('DescribePatternPerformance', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_pattern_performance(
+        self,
+        request: adb_20190315_models.DescribePatternPerformanceRequest,
+    ) -> adb_20190315_models.DescribePatternPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pattern_performance_with_options(request, runtime)
+
+    async def describe_pattern_performance_async(
+        self,
+        request: adb_20190315_models.DescribePatternPerformanceRequest,
+    ) -> adb_20190315_models.DescribePatternPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pattern_performance_with_options_async(request, runtime)
 
     def describe_process_list_with_options(
         self,
@@ -1682,6 +2021,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_log_trend_with_options_async(request, runtime)
 
+    def describe_sql_pattern_with_options(
+        self,
+        request: adb_20190315_models.DescribeSqlPatternRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSqlPatternResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSqlPatternResponse(),
+            self.do_rpcrequest('DescribeSqlPattern', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_sql_pattern_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeSqlPatternRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSqlPatternResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSqlPatternResponse(),
+            await self.do_rpcrequest_async('DescribeSqlPattern', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_sql_pattern(
+        self,
+        request: adb_20190315_models.DescribeSqlPatternRequest,
+    ) -> adb_20190315_models.DescribeSqlPatternResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sql_pattern_with_options(request, runtime)
+
+    async def describe_sql_pattern_async(
+        self,
+        request: adb_20190315_models.DescribeSqlPatternRequest,
+    ) -> adb_20190315_models.DescribeSqlPatternResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sql_pattern_with_options_async(request, runtime)
+
+    def describe_sqlpattern_attribute_with_options(
+        self,
+        request: adb_20190315_models.DescribeSQLPatternAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSQLPatternAttributeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSQLPatternAttributeResponse(),
+            self.do_rpcrequest('DescribeSQLPatternAttribute', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_sqlpattern_attribute_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeSQLPatternAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSQLPatternAttributeResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSQLPatternAttributeResponse(),
+            await self.do_rpcrequest_async('DescribeSQLPatternAttribute', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_sqlpattern_attribute(
+        self,
+        request: adb_20190315_models.DescribeSQLPatternAttributeRequest,
+    ) -> adb_20190315_models.DescribeSQLPatternAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sqlpattern_attribute_with_options(request, runtime)
+
+    async def describe_sqlpattern_attribute_async(
+        self,
+        request: adb_20190315_models.DescribeSQLPatternAttributeRequest,
+    ) -> adb_20190315_models.DescribeSQLPatternAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sqlpattern_attribute_with_options_async(request, runtime)
+
+    def describe_sqlpatterns_with_options(
+        self,
+        request: adb_20190315_models.DescribeSQLPatternsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSQLPatternsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSQLPatternsResponse(),
+            self.do_rpcrequest('DescribeSQLPatterns', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_sqlpatterns_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeSQLPatternsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSQLPatternsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSQLPatternsResponse(),
+            await self.do_rpcrequest_async('DescribeSQLPatterns', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_sqlpatterns(
+        self,
+        request: adb_20190315_models.DescribeSQLPatternsRequest,
+    ) -> adb_20190315_models.DescribeSQLPatternsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sqlpatterns_with_options(request, runtime)
+
+    async def describe_sqlpatterns_async(
+        self,
+        request: adb_20190315_models.DescribeSQLPatternsRequest,
+    ) -> adb_20190315_models.DescribeSQLPatternsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sqlpatterns_with_options_async(request, runtime)
+
     def describe_sqlplan_with_options(
         self,
         request: adb_20190315_models.DescribeSQLPlanRequest,
@@ -1765,6 +2230,48 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.DescribeSQLPlanTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqlplan_task_with_options_async(request, runtime)
+
+    def describe_table_access_count_with_options(
+        self,
+        request: adb_20190315_models.DescribeTableAccessCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeTableAccessCountResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeTableAccessCountResponse(),
+            self.do_rpcrequest('DescribeTableAccessCount', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_table_access_count_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeTableAccessCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeTableAccessCountResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeTableAccessCountResponse(),
+            await self.do_rpcrequest_async('DescribeTableAccessCount', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_table_access_count(
+        self,
+        request: adb_20190315_models.DescribeTableAccessCountRequest,
+    ) -> adb_20190315_models.DescribeTableAccessCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_table_access_count_with_options(request, runtime)
+
+    async def describe_table_access_count_async(
+        self,
+        request: adb_20190315_models.DescribeTableAccessCountRequest,
+    ) -> adb_20190315_models.DescribeTableAccessCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_table_access_count_with_options_async(request, runtime)
 
     def describe_table_detail_with_options(
         self,
@@ -1975,6 +2482,48 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.DescribeTaskInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_task_info_with_options_async(request, runtime)
+
+    def download_diagnosis_records_with_options(
+        self,
+        request: adb_20190315_models.DownloadDiagnosisRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DownloadDiagnosisRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DownloadDiagnosisRecordsResponse(),
+            self.do_rpcrequest('DownloadDiagnosisRecords', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def download_diagnosis_records_with_options_async(
+        self,
+        request: adb_20190315_models.DownloadDiagnosisRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DownloadDiagnosisRecordsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DownloadDiagnosisRecordsResponse(),
+            await self.do_rpcrequest_async('DownloadDiagnosisRecords', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def download_diagnosis_records(
+        self,
+        request: adb_20190315_models.DownloadDiagnosisRecordsRequest,
+    ) -> adb_20190315_models.DownloadDiagnosisRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.download_diagnosis_records_with_options(request, runtime)
+
+    async def download_diagnosis_records_async(
+        self,
+        request: adb_20190315_models.DownloadDiagnosisRecordsRequest,
+    ) -> adb_20190315_models.DownloadDiagnosisRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.download_diagnosis_records_with_options_async(request, runtime)
 
     def grant_operator_permission_with_options(
         self,
@@ -2647,6 +3196,48 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.ModifyLogBackupPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_log_backup_policy_with_options_async(request, runtime)
+
+    def modify_maintenance_action_with_options(
+        self,
+        request: adb_20190315_models.ModifyMaintenanceActionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyMaintenanceActionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyMaintenanceActionResponse(),
+            self.do_rpcrequest('ModifyMaintenanceAction', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_maintenance_action_with_options_async(
+        self,
+        request: adb_20190315_models.ModifyMaintenanceActionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyMaintenanceActionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyMaintenanceActionResponse(),
+            await self.do_rpcrequest_async('ModifyMaintenanceAction', '2019-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_maintenance_action(
+        self,
+        request: adb_20190315_models.ModifyMaintenanceActionRequest,
+    ) -> adb_20190315_models.ModifyMaintenanceActionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_maintenance_action_with_options(request, runtime)
+
+    async def modify_maintenance_action_async(
+        self,
+        request: adb_20190315_models.ModifyMaintenanceActionRequest,
+    ) -> adb_20190315_models.ModifyMaintenanceActionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_maintenance_action_with_options_async(request, runtime)
 
     def release_cluster_public_connection_with_options(
         self,
