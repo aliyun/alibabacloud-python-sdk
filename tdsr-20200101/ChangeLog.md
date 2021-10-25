@@ -1,3 +1,6 @@
+2021-10-25 Version: 2.2.10
+- Add addMosaics Interface.
+
 2021-09-29 Version: 2.2.9
 - LinkImage Add params.
 - ListSubScene Add Result Filed.

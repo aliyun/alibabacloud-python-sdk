@@ -841,6 +841,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.save_hotspot_tag_with_options_async(request, runtime)
 
+    def recovery_origin_image_with_options(
+        self,
+        request: tdsr_20200101_models.RecoveryOriginImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.RecoveryOriginImageResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.RecoveryOriginImageResponse(),
+            self.do_rpcrequest('RecoveryOriginImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def recovery_origin_image_with_options_async(
+        self,
+        request: tdsr_20200101_models.RecoveryOriginImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.RecoveryOriginImageResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.RecoveryOriginImageResponse(),
+            await self.do_rpcrequest_async('RecoveryOriginImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def recovery_origin_image(
+        self,
+        request: tdsr_20200101_models.RecoveryOriginImageRequest,
+    ) -> tdsr_20200101_models.RecoveryOriginImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recovery_origin_image_with_options(request, runtime)
+
+    async def recovery_origin_image_async(
+        self,
+        request: tdsr_20200101_models.RecoveryOriginImageRequest,
+    ) -> tdsr_20200101_models.RecoveryOriginImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recovery_origin_image_with_options_async(request, runtime)
+
     def delete_project_with_options(
         self,
         request: tdsr_20200101_models.DeleteProjectRequest,
@@ -1050,6 +1092,48 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetConnDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_conn_data_with_options_async(request, runtime)
+
+    def rollback_sub_scene_with_options(
+        self,
+        request: tdsr_20200101_models.RollbackSubSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.RollbackSubSceneResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.RollbackSubSceneResponse(),
+            self.do_rpcrequest('RollbackSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def rollback_sub_scene_with_options_async(
+        self,
+        request: tdsr_20200101_models.RollbackSubSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.RollbackSubSceneResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.RollbackSubSceneResponse(),
+            await self.do_rpcrequest_async('RollbackSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def rollback_sub_scene(
+        self,
+        request: tdsr_20200101_models.RollbackSubSceneRequest,
+    ) -> tdsr_20200101_models.RollbackSubSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.rollback_sub_scene_with_options(request, runtime)
+
+    async def rollback_sub_scene_async(
+        self,
+        request: tdsr_20200101_models.RollbackSubSceneRequest,
+    ) -> tdsr_20200101_models.RollbackSubSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.rollback_sub_scene_with_options_async(request, runtime)
 
     def temp_preview_status_with_options(
         self,
@@ -1932,6 +2016,48 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetHotspotSceneDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_hotspot_scene_data_with_options_async(request, runtime)
+
+    def add_mosaics_with_options(
+        self,
+        request: tdsr_20200101_models.AddMosaicsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.AddMosaicsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.AddMosaicsResponse(),
+            self.do_rpcrequest('AddMosaics', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_mosaics_with_options_async(
+        self,
+        request: tdsr_20200101_models.AddMosaicsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.AddMosaicsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.AddMosaicsResponse(),
+            await self.do_rpcrequest_async('AddMosaics', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_mosaics(
+        self,
+        request: tdsr_20200101_models.AddMosaicsRequest,
+    ) -> tdsr_20200101_models.AddMosaicsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_mosaics_with_options(request, runtime)
+
+    async def add_mosaics_async(
+        self,
+        request: tdsr_20200101_models.AddMosaicsRequest,
+    ) -> tdsr_20200101_models.AddMosaicsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_mosaics_with_options_async(request, runtime)
 
     def scene_publish_with_options(
         self,
