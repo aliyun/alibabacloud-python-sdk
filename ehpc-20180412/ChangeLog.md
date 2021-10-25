@@ -1,3 +1,6 @@
+2021-10-25 Version: 1.14.8
+- Support Tag in ApplyNodes API.
+
 2021-03-30 Version: 1.0.2
 - Generated python 2018-04-12 for EHPC.
 
