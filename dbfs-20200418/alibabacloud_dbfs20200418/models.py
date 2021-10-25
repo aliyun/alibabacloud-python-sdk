@@ -2122,6 +2122,7 @@ class CreateDbfsRequest(TeaModel):
         kmskey_id: str = None,
         encryption: bool = None,
         used_scene: str = None,
+        instance_type: str = None,
     ):
         self.region_id = region_id
         self.fs_name = fs_name
@@ -2137,6 +2138,7 @@ class CreateDbfsRequest(TeaModel):
         self.kmskey_id = kmskey_id
         self.encryption = encryption
         self.used_scene = used_scene
+        self.instance_type = instance_type
 
     def validate(self):
         pass
@@ -2175,6 +2177,8 @@ class CreateDbfsRequest(TeaModel):
             result['Encryption'] = self.encryption
         if self.used_scene is not None:
             result['UsedScene'] = self.used_scene
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         return result
 
     def from_map(self, m: dict = None):
@@ -2207,6 +2211,8 @@ class CreateDbfsRequest(TeaModel):
             self.encryption = m.get('Encryption')
         if m.get('UsedScene') is not None:
             self.used_scene = m.get('UsedScene')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         return self
 
 
