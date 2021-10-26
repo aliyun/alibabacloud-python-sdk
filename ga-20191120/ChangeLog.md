@@ -1,3 +1,6 @@
+2021-10-26 Version: 1.0.5
+- Import config from trial global accelerator.
+
 2021-09-17 Version: 1.0.4
 - Remove some nouse parameter from api for multi certifications on listener.
 - Add query param for multi certs list interface.
