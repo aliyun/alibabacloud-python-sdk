@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dysmsapi20170525 import models as dysmsapi_20170525_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -45,6 +46,48 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def add_short_url_with_options(
+        self,
+        request: dysmsapi_20170525_models.AddShortUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.AddShortUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.AddShortUrlResponse(),
+            self.do_rpcrequest('AddShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def add_short_url_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.AddShortUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.AddShortUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.AddShortUrlResponse(),
+            await self.do_rpcrequest_async('AddShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def add_short_url(
+        self,
+        request: dysmsapi_20170525_models.AddShortUrlRequest,
+    ) -> dysmsapi_20170525_models.AddShortUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_short_url_with_options(request, runtime)
+
+    async def add_short_url_async(
+        self,
+        request: dysmsapi_20170525_models.AddShortUrlRequest,
+    ) -> dysmsapi_20170525_models.AddShortUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_short_url_with_options_async(request, runtime)
 
     def add_sms_sign_with_options(
         self,
@@ -130,6 +173,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_sms_template_with_options_async(request, runtime)
 
+    def create_card_sms_template_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateCardSmsTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template):
+            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateCardSmsTemplateResponse(),
+            self.do_rpcrequest('CreateCardSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_card_sms_template_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateCardSmsTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template):
+            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateCardSmsTemplateResponse(),
+            await self.do_rpcrequest_async('CreateCardSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_card_sms_template(
+        self,
+        request: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_card_sms_template_with_options(request, runtime)
+
+    async def create_card_sms_template_async(
+        self,
+        request: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_card_sms_template_with_options_async(request, runtime)
+
+    def delete_short_url_with_options(
+        self,
+        request: dysmsapi_20170525_models.DeleteShortUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteShortUrlResponse(),
+            self.do_rpcrequest('DeleteShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_short_url_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.DeleteShortUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteShortUrlResponse(),
+            await self.do_rpcrequest_async('DeleteShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_short_url(
+        self,
+        request: dysmsapi_20170525_models.DeleteShortUrlRequest,
+    ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_short_url_with_options(request, runtime)
+
+    async def delete_short_url_async(
+        self,
+        request: dysmsapi_20170525_models.DeleteShortUrlRequest,
+    ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_short_url_with_options_async(request, runtime)
+
     def delete_sms_sign_with_options(
         self,
         request: dysmsapi_20170525_models.DeleteSmsSignRequest,
@@ -213,6 +348,76 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.DeleteSmsTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_sms_template_with_options_async(request, runtime)
+
+    def get_media_resource_id_with_options(
+        self,
+        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetMediaResourceIdResponse(),
+            self.do_rpcrequest('GetMediaResourceId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_media_resource_id_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetMediaResourceIdResponse(),
+            await self.do_rpcrequest_async('GetMediaResourceId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_media_resource_id(
+        self,
+        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
+    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_resource_id_with_options(request, runtime)
+
+    async def get_media_resource_id_async(
+        self,
+        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
+    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_resource_id_with_options_async(request, runtime)
+
+    def get_ossinfo_for_card_template_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse(),
+            self.do_rpcrequest('GetOSSInfoForCardTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_ossinfo_for_card_template_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        req = open_api_models.OpenApiRequest()
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse(),
+            await self.do_rpcrequest_async('GetOSSInfoForCardTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_ossinfo_for_card_template(self) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_ossinfo_for_card_template_with_options(runtime)
+
+    async def get_ossinfo_for_card_template_async(self) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ossinfo_for_card_template_with_options_async(runtime)
 
     def modify_sms_sign_with_options(
         self,
@@ -298,6 +503,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_sms_template_with_options_async(request, runtime)
 
+    def query_card_sms_template_with_options(
+        self,
+        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryCardSmsTemplateResponse(),
+            self.do_rpcrequest('QueryCardSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_card_sms_template_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryCardSmsTemplateResponse(),
+            await self.do_rpcrequest_async('QueryCardSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_card_sms_template(
+        self,
+        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_card_sms_template_with_options(request, runtime)
+
+    async def query_card_sms_template_async(
+        self,
+        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_card_sms_template_with_options_async(request, runtime)
+
     def query_send_details_with_options(
         self,
         request: dysmsapi_20170525_models.QuerySendDetailsRequest,
@@ -339,6 +586,48 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.QuerySendDetailsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_send_details_with_options_async(request, runtime)
+
+    def query_short_url_with_options(
+        self,
+        request: dysmsapi_20170525_models.QueryShortUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryShortUrlResponse(),
+            self.do_rpcrequest('QueryShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_short_url_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.QueryShortUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryShortUrlResponse(),
+            await self.do_rpcrequest_async('QueryShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_short_url(
+        self,
+        request: dysmsapi_20170525_models.QueryShortUrlRequest,
+    ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_short_url_with_options(request, runtime)
+
+    async def query_short_url_async(
+        self,
+        request: dysmsapi_20170525_models.QueryShortUrlRequest,
+    ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_short_url_with_options_async(request, runtime)
 
     def query_sms_sign_with_options(
         self,
@@ -466,6 +755,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.send_batch_sms_with_options_async(request, runtime)
 
+    def send_card_sms_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.SendCardSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.SendCardSmsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.card_objects):
+            request.card_objects_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.card_objects, 'CardObjects', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendCardSmsResponse(),
+            self.do_rpcrequest('SendCardSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_card_sms_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.SendCardSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.SendCardSmsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.card_objects):
+            request.card_objects_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.card_objects, 'CardObjects', 'json')
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendCardSmsResponse(),
+            await self.do_rpcrequest_async('SendCardSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_card_sms(
+        self,
+        request: dysmsapi_20170525_models.SendCardSmsRequest,
+    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_card_sms_with_options(request, runtime)
+
+    async def send_card_sms_async(
+        self,
+        request: dysmsapi_20170525_models.SendCardSmsRequest,
+    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_card_sms_with_options_async(request, runtime)
+
     def send_message_to_globe_with_options(
         self,
         request: dysmsapi_20170525_models.SendMessageToGlobeRequest,
@@ -549,3 +888,45 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.SendSmsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_sms_with_options_async(request, runtime)
+
+    def send_sms_smart_with_options(
+        self,
+        request: dysmsapi_20170525_models.SendSmsSmartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendSmsSmartResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendSmsSmartResponse(),
+            self.do_rpcrequest('SendSmsSmart', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def send_sms_smart_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.SendSmsSmartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendSmsSmartResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendSmsSmartResponse(),
+            await self.do_rpcrequest_async('SendSmsSmart', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def send_sms_smart(
+        self,
+        request: dysmsapi_20170525_models.SendSmsSmartRequest,
+    ) -> dysmsapi_20170525_models.SendSmsSmartResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_sms_smart_with_options(request, runtime)
+
+    async def send_sms_smart_async(
+        self,
+        request: dysmsapi_20170525_models.SendSmsSmartRequest,
+    ) -> dysmsapi_20170525_models.SendSmsSmartResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_sms_smart_with_options_async(request, runtime)
