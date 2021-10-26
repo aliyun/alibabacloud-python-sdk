@@ -754,6 +754,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.execute_call_task_with_options_async(request, runtime)
 
+    def get_call_info_with_options(
+        self,
+        request: dyvmsapi_20170525_models.GetCallInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetCallInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetCallInfoResponse(),
+            self.do_rpcrequest('GetCallInfo', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_call_info_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.GetCallInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetCallInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetCallInfoResponse(),
+            await self.do_rpcrequest_async('GetCallInfo', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_call_info(
+        self,
+        request: dyvmsapi_20170525_models.GetCallInfoRequest,
+    ) -> dyvmsapi_20170525_models.GetCallInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_call_info_with_options(request, runtime)
+
+    async def get_call_info_async(
+        self,
+        request: dyvmsapi_20170525_models.GetCallInfoRequest,
+    ) -> dyvmsapi_20170525_models.GetCallInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_call_info_with_options_async(request, runtime)
+
     def get_hotline_qualification_by_order_with_options(
         self,
         request: dyvmsapi_20170525_models.GetHotlineQualificationByOrderRequest,
