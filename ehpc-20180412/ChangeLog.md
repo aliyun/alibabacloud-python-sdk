@@ -1,3 +1,6 @@
+2021-10-26 Version: 1.14.10
+- Set VSwitchId and ZoneId docrequired in ApplyNodes API.
+
 2021-10-25 Version: 1.14.9
 - Set ZoneInfos docrequired in ApplyNodes API.
 
