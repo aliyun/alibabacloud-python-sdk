@@ -1,3 +1,6 @@
+2021-10-27 Version: 1.0.6
+- Generated python 2019-03-07 for Cloudauth.
+
 2021-09-09 Version: 1.0.5
 - AMP Version Change.
 
