@@ -1,3 +1,6 @@
+2021-10-27 Version: 2.0.1
+- Supported Python2, C plus plus and java-async.
+
 2021-02-23 Version: 2.0.0
 - Using new API Spec.
 
