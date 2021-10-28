@@ -47,12 +47,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.AbortRunResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RunId'] = request.run_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AbortRun',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.AbortRunResponse(),
-            self.do_rpcrequest('AbortRun', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def abort_run_with_options_async(
@@ -61,12 +76,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.AbortRunResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RunId'] = request.run_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AbortRun',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.AbortRunResponse(),
-            await self.do_rpcrequest_async('AbortRun', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def abort_run(
@@ -89,12 +119,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.AbortSubmissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubmissionId'] = request.submission_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AbortSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.AbortSubmissionResponse(),
-            self.do_rpcrequest('AbortSubmission', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def abort_submission_with_options_async(
@@ -103,12 +148,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.AbortSubmissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubmissionId'] = request.submission_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AbortSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.AbortSubmissionResponse(),
-            await self.do_rpcrequest_async('AbortSubmission', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def abort_submission(
@@ -125,6 +185,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.abort_submission_with_options_async(request, runtime)
 
+    def copy_public_entity_with_options(
+        self,
+        request: easy_gene_20210315_models.CopyPublicEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Dataset'] = request.dataset
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CopyPublicEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            easy_gene_20210315_models.CopyPublicEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_public_entity_with_options_async(
+        self,
+        request: easy_gene_20210315_models.CopyPublicEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Dataset'] = request.dataset
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CopyPublicEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            easy_gene_20210315_models.CopyPublicEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_public_entity(
+        self,
+        request: easy_gene_20210315_models.CopyPublicEntityRequest,
+    ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.copy_public_entity_with_options(request, runtime)
+
+    async def copy_public_entity_async(
+        self,
+        request: easy_gene_20210315_models.CopyPublicEntityRequest,
+    ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.copy_public_entity_with_options_async(request, runtime)
+
     def create_app_with_options(
         self,
         tmp_req: easy_gene_20210315_models.CreateAppRequest,
@@ -133,16 +267,39 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.dependencies):
-            request.dependencies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
         if not UtilClient.is_unset(tmp_req.configs):
             request.configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not UtilClient.is_unset(tmp_req.dependencies):
+            request.dependencies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['AppType'] = request.app_type
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['Labels'] = request.labels
+        query['Language'] = request.language
+        query['LanguageVersion'] = request.language_version
+        query['Path'] = request.path
+        query['RevisionComment'] = request.revision_comment
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateAppResponse(),
-            self.do_rpcrequest('CreateApp', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_app_with_options_async(
@@ -153,16 +310,39 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.dependencies):
-            request.dependencies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
         if not UtilClient.is_unset(tmp_req.configs):
             request.configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not UtilClient.is_unset(tmp_req.dependencies):
+            request.dependencies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['AppType'] = request.app_type
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['Labels'] = request.labels
+        query['Language'] = request.language
+        query['LanguageVersion'] = request.language_version
+        query['Path'] = request.path
+        query['RevisionComment'] = request.revision_comment
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateAppResponse(),
-            await self.do_rpcrequest_async('CreateApp', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_app(
@@ -189,12 +369,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateEntityResponse(),
-            self.do_rpcrequest('CreateEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_entity_with_options_async(
@@ -207,12 +403,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateEntityResponse(),
-            await self.do_rpcrequest_async('CreateEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_entity(
@@ -231,30 +443,88 @@ class Client(OpenApiClient):
 
     def create_run_with_options(
         self,
-        request: easy_gene_20210315_models.CreateRunRequest,
+        tmp_req: easy_gene_20210315_models.CreateRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateRunResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = easy_gene_20210315_models.CreateRunShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.execute_options):
+            request.execute_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.execute_options), 'ExecuteOptions', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['AppRevision'] = request.app_revision
+        query['ClientToken'] = request.client_token
+        query['DefaultRuntime'] = request.default_runtime
+        query['Description'] = request.description
+        query['ExecuteDirectory'] = request.execute_directory
+        query['ExecuteOptions'] = request.execute_options_shrink
+        query['Inputs'] = request.inputs
+        query['Labels'] = request.labels
+        query['OutputFolder'] = request.output_folder
+        query['RunName'] = request.run_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRun',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateRunResponse(),
-            self.do_rpcrequest('CreateRun', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_run_with_options_async(
         self,
-        request: easy_gene_20210315_models.CreateRunRequest,
+        tmp_req: easy_gene_20210315_models.CreateRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateRunResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = easy_gene_20210315_models.CreateRunShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.execute_options):
+            request.execute_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.execute_options), 'ExecuteOptions', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['AppRevision'] = request.app_revision
+        query['ClientToken'] = request.client_token
+        query['DefaultRuntime'] = request.default_runtime
+        query['Description'] = request.description
+        query['ExecuteDirectory'] = request.execute_directory
+        query['ExecuteOptions'] = request.execute_options_shrink
+        query['Inputs'] = request.inputs
+        query['Labels'] = request.labels
+        query['OutputFolder'] = request.output_folder
+        query['RunName'] = request.run_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRun',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateRunResponse(),
-            await self.do_rpcrequest_async('CreateRun', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_run(
@@ -281,12 +551,37 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['ClientToken'] = request.client_token
+        query['DefaultRuntime'] = request.default_runtime
+        query['EntityNames'] = request.entity_names_shrink
+        query['EntityType'] = request.entity_type
+        query['ExecuteDirectory'] = request.execute_directory
+        query['ExecuteOptions'] = request.execute_options
+        query['Inputs'] = request.inputs
+        query['OutputFolder'] = request.output_folder
+        query['Outputs'] = request.outputs
+        query['Revision'] = request.revision
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateSubmissionResponse(),
-            self.do_rpcrequest('CreateSubmission', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_submission_with_options_async(
@@ -299,12 +594,37 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['ClientToken'] = request.client_token
+        query['DefaultRuntime'] = request.default_runtime
+        query['EntityNames'] = request.entity_names_shrink
+        query['EntityType'] = request.entity_type
+        query['ExecuteDirectory'] = request.execute_directory
+        query['ExecuteOptions'] = request.execute_options
+        query['Inputs'] = request.inputs
+        query['OutputFolder'] = request.output_folder
+        query['Outputs'] = request.outputs
+        query['Revision'] = request.revision
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateSubmissionResponse(),
-            await self.do_rpcrequest_async('CreateSubmission', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_submission(
@@ -329,16 +649,37 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.inputs):
-            request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
-        if not UtilClient.is_unset(tmp_req.outputs):
-            request.outputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs, 'Outputs', 'json')
+        if not UtilClient.is_unset(tmp_req.inputs_expression):
+            request.inputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs_expression, 'InputsExpression', 'json')
+        if not UtilClient.is_unset(tmp_req.outputs_expression):
+            request.outputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs_expression, 'OutputsExpression', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['AppRevision'] = request.app_revision
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['Labels'] = request.labels
+        query['RootEntity'] = request.root_entity
+        query['TemplateName'] = request.template_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateTemplateResponse(),
-            self.do_rpcrequest('CreateTemplate', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_template_with_options_async(
@@ -349,16 +690,37 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.inputs):
-            request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
-        if not UtilClient.is_unset(tmp_req.outputs):
-            request.outputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs, 'Outputs', 'json')
+        if not UtilClient.is_unset(tmp_req.inputs_expression):
+            request.inputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs_expression, 'InputsExpression', 'json')
+        if not UtilClient.is_unset(tmp_req.outputs_expression):
+            request.outputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs_expression, 'OutputsExpression', 'json')
+        query = {}
+        query['AppName'] = request.app_name
+        query['AppRevision'] = request.app_revision
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['Labels'] = request.labels
+        query['RootEntity'] = request.root_entity
+        query['TemplateName'] = request.template_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateTemplateResponse(),
-            await self.do_rpcrequest_async('CreateTemplate', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_template(
@@ -381,12 +743,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateWorkspaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['JobLifecycle'] = request.job_lifecycle
+        query['Labels'] = request.labels
+        query['Role'] = request.role
+        query['Storage'] = request.storage
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateWorkspaceResponse(),
-            self.do_rpcrequest('CreateWorkspace', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_workspace_with_options_async(
@@ -395,12 +777,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateWorkspaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['JobLifecycle'] = request.job_lifecycle
+        query['Labels'] = request.labels
+        query['Role'] = request.role
+        query['Storage'] = request.storage
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.CreateWorkspaceResponse(),
-            await self.do_rpcrequest_async('CreateWorkspace', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_workspace(
@@ -423,12 +825,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Revision'] = request.revision
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteAppResponse(),
-            self.do_rpcrequest('DeleteApp', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_app_with_options_async(
@@ -437,12 +855,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Revision'] = request.revision
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteAppResponse(),
-            await self.do_rpcrequest_async('DeleteApp', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_app(
@@ -469,12 +903,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
+        query = {}
+        query['EntityNames'] = request.entity_names_shrink
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteEntityItems',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteEntityItemsResponse(),
-            self.do_rpcrequest('DeleteEntityItems', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_entity_items_with_options_async(
@@ -487,12 +937,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
+        query = {}
+        query['EntityNames'] = request.entity_names_shrink
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteEntityItems',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteEntityItemsResponse(),
-            await self.do_rpcrequest_async('DeleteEntityItems', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_entity_items(
@@ -515,12 +981,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteRunResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RunId'] = request.run_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRun',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteRunResponse(),
-            self.do_rpcrequest('DeleteRun', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_run_with_options_async(
@@ -529,12 +1010,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteRunResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RunId'] = request.run_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRun',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteRunResponse(),
-            await self.do_rpcrequest_async('DeleteRun', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_run(
@@ -557,12 +1053,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteSubmissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubmissionId'] = request.submission_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteSubmissionResponse(),
-            self.do_rpcrequest('DeleteSubmission', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_submission_with_options_async(
@@ -571,12 +1082,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteSubmissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubmissionId'] = request.submission_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteSubmissionResponse(),
-            await self.do_rpcrequest_async('DeleteSubmission', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_submission(
@@ -599,12 +1125,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateName'] = request.template_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplate',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteTemplateResponse(),
-            self.do_rpcrequest('DeleteTemplate', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_template_with_options_async(
@@ -613,12 +1154,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateName'] = request.template_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplate',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteTemplateResponse(),
-            await self.do_rpcrequest_async('DeleteTemplate', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_template(
@@ -641,12 +1197,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteWorkspaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkspace',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteWorkspaceResponse(),
-            self.do_rpcrequest('DeleteWorkspace', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_workspace_with_options_async(
@@ -655,12 +1225,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteWorkspaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkspace',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DeleteWorkspaceResponse(),
-            await self.do_rpcrequest_async('DeleteWorkspace', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_workspace(
@@ -687,12 +1271,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
+        query = {}
+        query['EntityNames'] = request.entity_names_shrink
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DownloadEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DownloadEntityResponse(),
-            self.do_rpcrequest('DownloadEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def download_entity_with_options_async(
@@ -705,12 +1305,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
+        query = {}
+        query['EntityNames'] = request.entity_names_shrink
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DownloadEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.DownloadEntityResponse(),
-            await self.do_rpcrequest_async('DownloadEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def download_entity(
@@ -733,12 +1349,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Revision'] = request.revision
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetAppResponse(),
-            self.do_rpcrequest('GetApp', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_app_with_options_async(
@@ -747,12 +1379,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Revision'] = request.revision
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetAppResponse(),
-            await self.do_rpcrequest_async('GetApp', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_app(
@@ -775,12 +1423,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetEntityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetEntityResponse(),
-            self.do_rpcrequest('GetEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_entity_with_options_async(
@@ -789,12 +1452,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetEntityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetEntityResponse(),
-            await self.do_rpcrequest_async('GetEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_entity(
@@ -813,32 +1491,62 @@ class Client(OpenApiClient):
 
     def get_global_app_with_options(
         self,
-        request: easy_gene_20210315_models.GetGlobalAppRequest,
+        tmp_req: easy_gene_20210315_models.GetGlobalAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetGlobalAppResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = easy_gene_20210315_models.GetGlobalAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGlobalApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetGlobalAppResponse(),
-            self.do_rpcrequest('GetGlobalApp', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_global_app_with_options_async(
         self,
-        request: easy_gene_20210315_models.GetGlobalAppRequest,
+        tmp_req: easy_gene_20210315_models.GetGlobalAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetGlobalAppResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = easy_gene_20210315_models.GetGlobalAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGlobalApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetGlobalAppResponse(),
-            await self.do_rpcrequest_async('GetGlobalApp', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_global_app(
@@ -867,11 +1575,22 @@ class Client(OpenApiClient):
             request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPublicDataset',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetPublicDatasetResponse(),
-            self.do_rpcrequest('GetPublicDataset', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_public_dataset_with_options_async(
@@ -886,11 +1605,22 @@ class Client(OpenApiClient):
             request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPublicDataset',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetPublicDatasetResponse(),
-            await self.do_rpcrequest_async('GetPublicDataset', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_public_dataset(
@@ -913,12 +1643,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetPublicDatasetEntityResponse:
         UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPublicDatasetEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetPublicDatasetEntityResponse(),
-            self.do_rpcrequest('GetPublicDatasetEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_public_dataset_entity_with_options_async(
@@ -927,12 +1669,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetPublicDatasetEntityResponse:
         UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPublicDatasetEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetPublicDatasetEntityResponse(),
-            await self.do_rpcrequest_async('GetPublicDatasetEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_public_dataset_entity(
@@ -957,11 +1711,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRun',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetRunResponse(),
-            self.do_rpcrequest('GetRun', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_run_with_options_async(
@@ -972,11 +1737,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRun',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetRunResponse(),
-            await self.do_rpcrequest_async('GetRun', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_run(
@@ -1001,11 +1777,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetSubmissionResponse(),
-            self.do_rpcrequest('GetSubmission', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_submission_with_options_async(
@@ -1016,11 +1803,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetSubmissionResponse(),
-            await self.do_rpcrequest_async('GetSubmission', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_submission(
@@ -1043,12 +1841,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateName'] = request.template_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetTemplateResponse(),
-            self.do_rpcrequest('GetTemplate', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_template_with_options_async(
@@ -1057,12 +1870,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateName'] = request.template_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetTemplateResponse(),
-            await self.do_rpcrequest_async('GetTemplate', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_template(
@@ -1085,12 +1913,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetWorkspaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetWorkspace',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetWorkspaceResponse(),
-            self.do_rpcrequest('GetWorkspace', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_workspace_with_options_async(
@@ -1099,12 +1941,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetWorkspaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetWorkspace',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.GetWorkspaceResponse(),
-            await self.do_rpcrequest_async('GetWorkspace', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_workspace(
@@ -1121,18 +1977,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_workspace_with_options_async(request, runtime)
 
+    def import_app_with_options(
+        self,
+        request: easy_gene_20210315_models.ImportAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> easy_gene_20210315_models.ImportAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Source'] = request.source
+        query['Workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ImportApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            easy_gene_20210315_models.ImportAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_app_with_options_async(
+        self,
+        request: easy_gene_20210315_models.ImportAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> easy_gene_20210315_models.ImportAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Source'] = request.source
+        query['Workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ImportApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            easy_gene_20210315_models.ImportAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_app(
+        self,
+        request: easy_gene_20210315_models.ImportAppRequest,
+    ) -> easy_gene_20210315_models.ImportAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_app_with_options(request, runtime)
+
+    async def import_app_async(
+        self,
+        request: easy_gene_20210315_models.ImportAppRequest,
+    ) -> easy_gene_20210315_models.ImportAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_app_with_options_async(request, runtime)
+
     def install_global_app_with_options(
         self,
         request: easy_gene_20210315_models.InstallGlobalAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.InstallGlobalAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['InstalledAppName'] = request.installed_app_name
+        query['NamespaceName'] = request.namespace_name
+        query['Source'] = request.source
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='InstallGlobalApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.InstallGlobalAppResponse(),
-            self.do_rpcrequest('InstallGlobalApp', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def install_global_app_with_options_async(
@@ -1141,12 +2089,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.InstallGlobalAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['InstalledAppName'] = request.installed_app_name
+        query['NamespaceName'] = request.namespace_name
+        query['Source'] = request.source
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='InstallGlobalApp',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.InstallGlobalAppResponse(),
-            await self.do_rpcrequest_async('InstallGlobalApp', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def install_global_app(
@@ -1169,12 +2135,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListAppsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppType'] = request.app_type
+        query['IsReversed'] = request.is_reversed
+        query['LabelSelector'] = request.label_selector
+        query['Language'] = request.language
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['OrderBy'] = request.order_by
+        query['Scope'] = request.scope
+        query['Search'] = request.search
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListApps',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListAppsResponse(),
-            self.do_rpcrequest('ListApps', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_apps_with_options_async(
@@ -1183,12 +2172,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListAppsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppType'] = request.app_type
+        query['IsReversed'] = request.is_reversed
+        query['LabelSelector'] = request.label_selector
+        query['Language'] = request.language
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['OrderBy'] = request.order_by
+        query['Scope'] = request.scope
+        query['Search'] = request.search
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListApps',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListAppsResponse(),
-            await self.do_rpcrequest_async('ListApps', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_apps(
@@ -1213,11 +2225,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedSoftware',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListAuthorizedSoftwareResponse(),
-            self.do_rpcrequest('ListAuthorizedSoftware', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_authorized_software_with_options_async(
@@ -1228,11 +2251,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizedSoftware',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListAuthorizedSoftwareResponse(),
-            await self.do_rpcrequest_async('ListAuthorizedSoftware', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_authorized_software(
@@ -1257,11 +2291,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListContainerImages',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListContainerImagesResponse(),
-            self.do_rpcrequest('ListContainerImages', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_container_images_with_options_async(
@@ -1272,11 +2317,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListContainerImages',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListContainerImagesResponse(),
-            await self.do_rpcrequest_async('ListContainerImages', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_container_images(
@@ -1301,11 +2357,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEntities',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListEntitiesResponse(),
-            self.do_rpcrequest('ListEntities', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_entities_with_options_async(
@@ -1316,11 +2383,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEntities',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListEntitiesResponse(),
-            await self.do_rpcrequest_async('ListEntities', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_entities(
@@ -1343,12 +2421,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListEntityItemsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EntityType'] = request.entity_type
+        query['IsReversed'] = request.is_reversed
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['OrderBy'] = request.order_by
+        query['Search'] = request.search
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListEntityItems',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListEntityItemsResponse(),
-            self.do_rpcrequest('ListEntityItems', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_entity_items_with_options_async(
@@ -1357,12 +2455,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListEntityItemsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EntityType'] = request.entity_type
+        query['IsReversed'] = request.is_reversed
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['OrderBy'] = request.order_by
+        query['Search'] = request.search
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListEntityItems',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListEntityItemsResponse(),
-            await self.do_rpcrequest_async('ListEntityItems', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_entity_items(
@@ -1387,11 +2505,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGlobalApps',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListGlobalAppsResponse(),
-            self.do_rpcrequest('ListGlobalApps', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_global_apps_with_options_async(
@@ -1402,11 +2531,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGlobalApps',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListGlobalAppsResponse(),
-            await self.do_rpcrequest_async('ListGlobalApps', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_global_apps(
@@ -1431,11 +2571,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicDataset',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListPublicDatasetResponse(),
-            self.do_rpcrequest('ListPublicDataset', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_public_dataset_with_options_async(
@@ -1446,11 +2597,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicDataset',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListPublicDatasetResponse(),
-            await self.do_rpcrequest_async('ListPublicDataset', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_public_dataset(
@@ -1475,11 +2637,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicDatasetEntities',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListPublicDatasetEntitiesResponse(),
-            self.do_rpcrequest('ListPublicDatasetEntities', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_public_dataset_entities_with_options_async(
@@ -1490,11 +2663,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicDatasetEntities',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListPublicDatasetEntitiesResponse(),
-            await self.do_rpcrequest_async('ListPublicDatasetEntities', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_public_dataset_entities(
@@ -1519,11 +2703,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicDatasetEntityItems',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListPublicDatasetEntityItemsResponse(),
-            self.do_rpcrequest('ListPublicDatasetEntityItems', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_public_dataset_entity_items_with_options_async(
@@ -1534,11 +2729,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicDatasetEntityItems',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListPublicDatasetEntityItemsResponse(),
-            await self.do_rpcrequest_async('ListPublicDatasetEntityItems', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_public_dataset_entity_items(
@@ -1563,11 +2769,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicDatasetTags',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListPublicDatasetTagsResponse(),
-            self.do_rpcrequest('ListPublicDatasetTags', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_public_dataset_tags_with_options_async(
@@ -1578,11 +2795,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicDatasetTags',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListPublicDatasetTagsResponse(),
-            await self.do_rpcrequest_async('ListPublicDatasetTags', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_public_dataset_tags(
@@ -1604,9 +2832,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListRegionsResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListRegionsResponse(),
-            self.do_rpcrequest('ListRegions', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_regions_with_options_async(
@@ -1614,9 +2853,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListRegionsResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListRegionsResponse(),
-            await self.do_rpcrequest_async('ListRegions', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_regions(self) -> easy_gene_20210315_models.ListRegionsResponse:
@@ -1635,11 +2885,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRuns',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListRunsResponse(),
-            self.do_rpcrequest('ListRuns', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_runs_with_options_async(
@@ -1650,11 +2911,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRuns',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListRunsResponse(),
-            await self.do_rpcrequest_async('ListRuns', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_runs(
@@ -1679,11 +2951,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSubmissions',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListSubmissionsResponse(),
-            self.do_rpcrequest('ListSubmissions', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_submissions_with_options_async(
@@ -1694,11 +2977,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSubmissions',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListSubmissionsResponse(),
-            await self.do_rpcrequest_async('ListSubmissions', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_submissions(
@@ -1721,12 +3015,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsReversed'] = request.is_reversed
+        query['LabelSelector'] = request.label_selector
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['OrderBy'] = request.order_by
+        query['Search'] = request.search
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTemplates',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListTemplatesResponse(),
-            self.do_rpcrequest('ListTemplates', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_templates_with_options_async(
@@ -1735,12 +3049,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsReversed'] = request.is_reversed
+        query['LabelSelector'] = request.label_selector
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['OrderBy'] = request.order_by
+        query['Search'] = request.search
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTemplates',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListTemplatesResponse(),
-            await self.do_rpcrequest_async('ListTemplates', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_templates(
@@ -1765,11 +3099,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserActiveRuns',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListUserActiveRunsResponse(),
-            self.do_rpcrequest('ListUserActiveRuns', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_user_active_runs_with_options_async(
@@ -1780,11 +3125,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserActiveRuns',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListUserActiveRunsResponse(),
-            await self.do_rpcrequest_async('ListUserActiveRuns', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_user_active_runs(
@@ -1809,11 +3165,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaces',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListWorkspacesResponse(),
-            self.do_rpcrequest('ListWorkspaces', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_workspaces_with_options_async(
@@ -1824,11 +3191,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaces',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ListWorkspacesResponse(),
-            await self.do_rpcrequest_async('ListWorkspaces', '2021-03-15', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_workspaces(
@@ -1845,68 +3223,33 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_workspaces_with_options_async(request, runtime)
 
-    def parse_app_inputs_with_options(
-        self,
-        tmp_req: easy_gene_20210315_models.ParseAppInputsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> easy_gene_20210315_models.ParseAppInputsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = easy_gene_20210315_models.ParseAppInputsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.dependencies):
-            request.dependencies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            easy_gene_20210315_models.ParseAppInputsResponse(),
-            self.do_rpcrequest('ParseAppInputs', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def parse_app_inputs_with_options_async(
-        self,
-        tmp_req: easy_gene_20210315_models.ParseAppInputsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> easy_gene_20210315_models.ParseAppInputsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = easy_gene_20210315_models.ParseAppInputsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.dependencies):
-            request.dependencies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            easy_gene_20210315_models.ParseAppInputsResponse(),
-            await self.do_rpcrequest_async('ParseAppInputs', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def parse_app_inputs(
-        self,
-        request: easy_gene_20210315_models.ParseAppInputsRequest,
-    ) -> easy_gene_20210315_models.ParseAppInputsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.parse_app_inputs_with_options(request, runtime)
-
-    async def parse_app_inputs_async(
-        self,
-        request: easy_gene_20210315_models.ParseAppInputsRequest,
-    ) -> easy_gene_20210315_models.ParseAppInputsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.parse_app_inputs_with_options_async(request, runtime)
-
     def resume_submission_with_options(
         self,
         request: easy_gene_20210315_models.ResumeSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ResumeSubmissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubmissionId'] = request.submission_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ResumeSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ResumeSubmissionResponse(),
-            self.do_rpcrequest('ResumeSubmission', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def resume_submission_with_options_async(
@@ -1915,12 +3258,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ResumeSubmissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubmissionId'] = request.submission_id
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ResumeSubmission',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.ResumeSubmissionResponse(),
-            await self.do_rpcrequest_async('ResumeSubmission', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def resume_submission(
@@ -1947,12 +3305,27 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
+        query = {}
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.UpdateEntityResponse(),
-            self.do_rpcrequest('UpdateEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_entity_with_options_async(
@@ -1965,12 +3338,27 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
+        query = {}
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.UpdateEntityResponse(),
-            await self.do_rpcrequest_async('UpdateEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_entity(
@@ -1987,6 +3375,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_entity_with_options_async(request, runtime)
 
+    def update_entity_items_with_options(
+        self,
+        tmp_req: easy_gene_20210315_models.UpdateEntityItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> easy_gene_20210315_models.UpdateEntityItemsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = easy_gene_20210315_models.UpdateEntityItemsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entity_items):
+            request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
+        query = {}
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateEntityItems',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            easy_gene_20210315_models.UpdateEntityItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_entity_items_with_options_async(
+        self,
+        tmp_req: easy_gene_20210315_models.UpdateEntityItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> easy_gene_20210315_models.UpdateEntityItemsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = easy_gene_20210315_models.UpdateEntityItemsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entity_items):
+            request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
+        query = {}
+        query['EntityType'] = request.entity_type
+        query['Workspace'] = request.workspace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateEntityItems',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            easy_gene_20210315_models.UpdateEntityItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_entity_items(
+        self,
+        request: easy_gene_20210315_models.UpdateEntityItemsRequest,
+    ) -> easy_gene_20210315_models.UpdateEntityItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_entity_items_with_options(request, runtime)
+
+    async def update_entity_items_async(
+        self,
+        request: easy_gene_20210315_models.UpdateEntityItemsRequest,
+    ) -> easy_gene_20210315_models.UpdateEntityItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_entity_items_with_options_async(request, runtime)
+
     def update_template_with_options(
         self,
         tmp_req: easy_gene_20210315_models.UpdateTemplateRequest,
@@ -1995,16 +3463,34 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.UpdateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.inputs):
-            request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
-        if not UtilClient.is_unset(tmp_req.outputs):
-            request.outputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs, 'Outputs', 'json')
+        if not UtilClient.is_unset(tmp_req.inputs_expression):
+            request.inputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs_expression, 'InputsExpression', 'json')
+        if not UtilClient.is_unset(tmp_req.outputs_expression):
+            request.outputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs_expression, 'OutputsExpression', 'json')
+        query = {}
+        query['Description'] = request.description
+        query['Labels'] = request.labels
+        query['RootEntity'] = request.root_entity
+        query['TemplateName'] = request.template_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTemplate',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.UpdateTemplateResponse(),
-            self.do_rpcrequest('UpdateTemplate', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_template_with_options_async(
@@ -2015,16 +3501,34 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.UpdateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.inputs):
-            request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
-        if not UtilClient.is_unset(tmp_req.outputs):
-            request.outputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs, 'Outputs', 'json')
+        if not UtilClient.is_unset(tmp_req.inputs_expression):
+            request.inputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs_expression, 'InputsExpression', 'json')
+        if not UtilClient.is_unset(tmp_req.outputs_expression):
+            request.outputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs_expression, 'OutputsExpression', 'json')
+        query = {}
+        query['Description'] = request.description
+        query['Labels'] = request.labels
+        query['RootEntity'] = request.root_entity
+        query['TemplateName'] = request.template_name
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTemplate',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.UpdateTemplateResponse(),
-            await self.do_rpcrequest_async('UpdateTemplate', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_template(
@@ -2047,12 +3551,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateWorkspaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['JobLifecycle'] = request.job_lifecycle
+        query['Labels'] = request.labels
+        query['Role'] = request.role
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkspace',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.UpdateWorkspaceResponse(),
-            self.do_rpcrequest('UpdateWorkspace', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_workspace_with_options_async(
@@ -2061,12 +3583,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateWorkspaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['JobLifecycle'] = request.job_lifecycle
+        query['Labels'] = request.labels
+        query['Role'] = request.role
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkspace',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.UpdateWorkspaceResponse(),
-            await self.do_rpcrequest_async('UpdateWorkspace', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_workspace(
@@ -2089,12 +3629,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UploadEntityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EntityCSVFile'] = request.entity_csvfile
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UploadEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.UploadEntityResponse(),
-            self.do_rpcrequest('UploadEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upload_entity_with_options_async(
@@ -2103,12 +3658,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UploadEntityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EntityCSVFile'] = request.entity_csvfile
+        query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UploadEntity',
+            version='2021-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             easy_gene_20210315_models.UploadEntityResponse(),
-            await self.do_rpcrequest_async('UploadEntity', '2021-03-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upload_entity(
