@@ -46,13 +46,13 @@ class GetProductInfoByIdsRequest(TeaModel):
 class GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission(TeaModel):
     def __init__(
         self,
-        max_commission_rate: str = None,
         max_commission_click_url: str = None,
         max_commission_coupon_share_url: str = None,
+        max_commission_rate: str = None,
     ):
-        self.max_commission_rate = max_commission_rate
         self.max_commission_click_url = max_commission_click_url
         self.max_commission_coupon_share_url = max_commission_coupon_share_url
+        self.max_commission_rate = max_commission_rate
 
     def validate(self):
         pass
@@ -63,87 +63,87 @@ class GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission(TeaModel):
             return _map
 
         result = dict()
-        if self.max_commission_rate is not None:
-            result['MaxCommissionRate'] = self.max_commission_rate
         if self.max_commission_click_url is not None:
             result['MaxCommissionClickUrl'] = self.max_commission_click_url
         if self.max_commission_coupon_share_url is not None:
             result['MaxCommissionCouponShareUrl'] = self.max_commission_coupon_share_url
+        if self.max_commission_rate is not None:
+            result['MaxCommissionRate'] = self.max_commission_rate
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MaxCommissionRate') is not None:
-            self.max_commission_rate = m.get('MaxCommissionRate')
         if m.get('MaxCommissionClickUrl') is not None:
             self.max_commission_click_url = m.get('MaxCommissionClickUrl')
         if m.get('MaxCommissionCouponShareUrl') is not None:
             self.max_commission_coupon_share_url = m.get('MaxCommissionCouponShareUrl')
+        if m.get('MaxCommissionRate') is not None:
+            self.max_commission_rate = m.get('MaxCommissionRate')
         return self
 
 
 class GetProductInfoByIdsResponseBodyDataAuctionsResult(TeaModel):
     def __init__(
         self,
+        category_name: str = None,
+        commission_rate: str = None,
+        coupon_amount: int = None,
+        coupon_end_time: str = None,
+        coupon_info: str = None,
+        coupon_remain_count: int = None,
+        coupon_share_url: str = None,
+        coupon_start_fee: str = None,
+        coupon_start_time: str = None,
+        coupon_total_count: str = None,
+        deeplink_coupon_share_url: str = None,
+        deeplink_url: str = None,
         item_id: str = None,
-        title: str = None,
+        level_one_category_name: str = None,
+        max_commission: GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission = None,
+        nick: str = None,
+        pic_url: str = None,
+        price_after_coupon: str = None,
+        provcity: str = None,
+        reserve_price: str = None,
+        seller_id: str = None,
+        shop_title: str = None,
         short_title: str = None,
         sub_title: str = None,
-        pic_url: str = None,
-        reserve_price: str = None,
-        zk_final_price: str = None,
-        price_after_coupon: str = None,
-        user_type: int = None,
-        provcity: str = None,
-        nick: str = None,
-        seller_id: str = None,
-        volume: int = None,
-        level_one_category_name: str = None,
-        category_name: str = None,
-        coupon_total_count: str = None,
-        coupon_remain_count: int = None,
-        coupon_start_time: str = None,
-        coupon_end_time: str = None,
-        coupon_start_fee: str = None,
-        coupon_amount: int = None,
-        coupon_info: str = None,
-        commission_rate: str = None,
-        coupon_share_url: str = None,
-        deeplink_coupon_share_url: str = None,
+        title: str = None,
         url: str = None,
-        deeplink_url: str = None,
-        shop_title: str = None,
-        max_commission: GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission = None,
+        user_type: int = None,
+        volume: int = None,
+        zk_final_price: str = None,
     ):
+        self.category_name = category_name
+        self.commission_rate = commission_rate
+        self.coupon_amount = coupon_amount
+        self.coupon_end_time = coupon_end_time
+        self.coupon_info = coupon_info
+        self.coupon_remain_count = coupon_remain_count
+        self.coupon_share_url = coupon_share_url
+        self.coupon_start_fee = coupon_start_fee
+        self.coupon_start_time = coupon_start_time
+        self.coupon_total_count = coupon_total_count
+        self.deeplink_coupon_share_url = deeplink_coupon_share_url
+        self.deeplink_url = deeplink_url
         self.item_id = item_id
-        self.title = title
+        self.level_one_category_name = level_one_category_name
+        self.max_commission = max_commission
+        self.nick = nick
+        self.pic_url = pic_url
+        self.price_after_coupon = price_after_coupon
+        self.provcity = provcity
+        self.reserve_price = reserve_price
+        self.seller_id = seller_id
+        self.shop_title = shop_title
         self.short_title = short_title
         self.sub_title = sub_title
-        self.pic_url = pic_url
-        self.reserve_price = reserve_price
-        self.zk_final_price = zk_final_price
-        self.price_after_coupon = price_after_coupon
-        self.user_type = user_type
-        self.provcity = provcity
-        self.nick = nick
-        self.seller_id = seller_id
-        self.volume = volume
-        self.level_one_category_name = level_one_category_name
-        self.category_name = category_name
-        self.coupon_total_count = coupon_total_count
-        self.coupon_remain_count = coupon_remain_count
-        self.coupon_start_time = coupon_start_time
-        self.coupon_end_time = coupon_end_time
-        self.coupon_start_fee = coupon_start_fee
-        self.coupon_amount = coupon_amount
-        self.coupon_info = coupon_info
-        self.commission_rate = commission_rate
-        self.coupon_share_url = coupon_share_url
-        self.deeplink_coupon_share_url = deeplink_coupon_share_url
+        self.title = title
         self.url = url
-        self.deeplink_url = deeplink_url
-        self.shop_title = shop_title
-        self.max_commission = max_commission
+        self.user_type = user_type
+        self.volume = volume
+        self.zk_final_price = zk_final_price
 
     def validate(self):
         if self.max_commission:
@@ -155,138 +155,138 @@ class GetProductInfoByIdsResponseBodyDataAuctionsResult(TeaModel):
             return _map
 
         result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.commission_rate is not None:
+            result['CommissionRate'] = self.commission_rate
+        if self.coupon_amount is not None:
+            result['CouponAmount'] = self.coupon_amount
+        if self.coupon_end_time is not None:
+            result['CouponEndTime'] = self.coupon_end_time
+        if self.coupon_info is not None:
+            result['CouponInfo'] = self.coupon_info
+        if self.coupon_remain_count is not None:
+            result['CouponRemainCount'] = self.coupon_remain_count
+        if self.coupon_share_url is not None:
+            result['CouponShareUrl'] = self.coupon_share_url
+        if self.coupon_start_fee is not None:
+            result['CouponStartFee'] = self.coupon_start_fee
+        if self.coupon_start_time is not None:
+            result['CouponStartTime'] = self.coupon_start_time
+        if self.coupon_total_count is not None:
+            result['CouponTotalCount'] = self.coupon_total_count
+        if self.deeplink_coupon_share_url is not None:
+            result['DeeplinkCouponShareUrl'] = self.deeplink_coupon_share_url
+        if self.deeplink_url is not None:
+            result['DeeplinkUrl'] = self.deeplink_url
         if self.item_id is not None:
             result['ItemId'] = self.item_id
-        if self.title is not None:
-            result['Title'] = self.title
+        if self.level_one_category_name is not None:
+            result['LevelOneCategoryName'] = self.level_one_category_name
+        if self.max_commission is not None:
+            result['MaxCommission'] = self.max_commission.to_map()
+        if self.nick is not None:
+            result['Nick'] = self.nick
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        if self.price_after_coupon is not None:
+            result['PriceAfterCoupon'] = self.price_after_coupon
+        if self.provcity is not None:
+            result['Provcity'] = self.provcity
+        if self.reserve_price is not None:
+            result['ReservePrice'] = self.reserve_price
+        if self.seller_id is not None:
+            result['SellerId'] = self.seller_id
+        if self.shop_title is not None:
+            result['ShopTitle'] = self.shop_title
         if self.short_title is not None:
             result['ShortTitle'] = self.short_title
         if self.sub_title is not None:
             result['SubTitle'] = self.sub_title
-        if self.pic_url is not None:
-            result['PicUrl'] = self.pic_url
-        if self.reserve_price is not None:
-            result['ReservePrice'] = self.reserve_price
-        if self.zk_final_price is not None:
-            result['ZkFinalPrice'] = self.zk_final_price
-        if self.price_after_coupon is not None:
-            result['PriceAfterCoupon'] = self.price_after_coupon
-        if self.user_type is not None:
-            result['UserType'] = self.user_type
-        if self.provcity is not None:
-            result['Provcity'] = self.provcity
-        if self.nick is not None:
-            result['Nick'] = self.nick
-        if self.seller_id is not None:
-            result['SellerId'] = self.seller_id
-        if self.volume is not None:
-            result['Volume'] = self.volume
-        if self.level_one_category_name is not None:
-            result['LevelOneCategoryName'] = self.level_one_category_name
-        if self.category_name is not None:
-            result['CategoryName'] = self.category_name
-        if self.coupon_total_count is not None:
-            result['CouponTotalCount'] = self.coupon_total_count
-        if self.coupon_remain_count is not None:
-            result['CouponRemainCount'] = self.coupon_remain_count
-        if self.coupon_start_time is not None:
-            result['CouponStartTime'] = self.coupon_start_time
-        if self.coupon_end_time is not None:
-            result['CouponEndTime'] = self.coupon_end_time
-        if self.coupon_start_fee is not None:
-            result['CouponStartFee'] = self.coupon_start_fee
-        if self.coupon_amount is not None:
-            result['CouponAmount'] = self.coupon_amount
-        if self.coupon_info is not None:
-            result['CouponInfo'] = self.coupon_info
-        if self.commission_rate is not None:
-            result['CommissionRate'] = self.commission_rate
-        if self.coupon_share_url is not None:
-            result['CouponShareUrl'] = self.coupon_share_url
-        if self.deeplink_coupon_share_url is not None:
-            result['DeeplinkCouponShareUrl'] = self.deeplink_coupon_share_url
+        if self.title is not None:
+            result['Title'] = self.title
         if self.url is not None:
             result['Url'] = self.url
-        if self.deeplink_url is not None:
-            result['DeeplinkUrl'] = self.deeplink_url
-        if self.shop_title is not None:
-            result['ShopTitle'] = self.shop_title
-        if self.max_commission is not None:
-            result['MaxCommission'] = self.max_commission.to_map()
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        if self.zk_final_price is not None:
+            result['ZkFinalPrice'] = self.zk_final_price
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('CommissionRate') is not None:
+            self.commission_rate = m.get('CommissionRate')
+        if m.get('CouponAmount') is not None:
+            self.coupon_amount = m.get('CouponAmount')
+        if m.get('CouponEndTime') is not None:
+            self.coupon_end_time = m.get('CouponEndTime')
+        if m.get('CouponInfo') is not None:
+            self.coupon_info = m.get('CouponInfo')
+        if m.get('CouponRemainCount') is not None:
+            self.coupon_remain_count = m.get('CouponRemainCount')
+        if m.get('CouponShareUrl') is not None:
+            self.coupon_share_url = m.get('CouponShareUrl')
+        if m.get('CouponStartFee') is not None:
+            self.coupon_start_fee = m.get('CouponStartFee')
+        if m.get('CouponStartTime') is not None:
+            self.coupon_start_time = m.get('CouponStartTime')
+        if m.get('CouponTotalCount') is not None:
+            self.coupon_total_count = m.get('CouponTotalCount')
+        if m.get('DeeplinkCouponShareUrl') is not None:
+            self.deeplink_coupon_share_url = m.get('DeeplinkCouponShareUrl')
+        if m.get('DeeplinkUrl') is not None:
+            self.deeplink_url = m.get('DeeplinkUrl')
         if m.get('ItemId') is not None:
             self.item_id = m.get('ItemId')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
+        if m.get('LevelOneCategoryName') is not None:
+            self.level_one_category_name = m.get('LevelOneCategoryName')
+        if m.get('MaxCommission') is not None:
+            temp_model = GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission()
+            self.max_commission = temp_model.from_map(m['MaxCommission'])
+        if m.get('Nick') is not None:
+            self.nick = m.get('Nick')
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        if m.get('PriceAfterCoupon') is not None:
+            self.price_after_coupon = m.get('PriceAfterCoupon')
+        if m.get('Provcity') is not None:
+            self.provcity = m.get('Provcity')
+        if m.get('ReservePrice') is not None:
+            self.reserve_price = m.get('ReservePrice')
+        if m.get('SellerId') is not None:
+            self.seller_id = m.get('SellerId')
+        if m.get('ShopTitle') is not None:
+            self.shop_title = m.get('ShopTitle')
         if m.get('ShortTitle') is not None:
             self.short_title = m.get('ShortTitle')
         if m.get('SubTitle') is not None:
             self.sub_title = m.get('SubTitle')
-        if m.get('PicUrl') is not None:
-            self.pic_url = m.get('PicUrl')
-        if m.get('ReservePrice') is not None:
-            self.reserve_price = m.get('ReservePrice')
-        if m.get('ZkFinalPrice') is not None:
-            self.zk_final_price = m.get('ZkFinalPrice')
-        if m.get('PriceAfterCoupon') is not None:
-            self.price_after_coupon = m.get('PriceAfterCoupon')
-        if m.get('UserType') is not None:
-            self.user_type = m.get('UserType')
-        if m.get('Provcity') is not None:
-            self.provcity = m.get('Provcity')
-        if m.get('Nick') is not None:
-            self.nick = m.get('Nick')
-        if m.get('SellerId') is not None:
-            self.seller_id = m.get('SellerId')
-        if m.get('Volume') is not None:
-            self.volume = m.get('Volume')
-        if m.get('LevelOneCategoryName') is not None:
-            self.level_one_category_name = m.get('LevelOneCategoryName')
-        if m.get('CategoryName') is not None:
-            self.category_name = m.get('CategoryName')
-        if m.get('CouponTotalCount') is not None:
-            self.coupon_total_count = m.get('CouponTotalCount')
-        if m.get('CouponRemainCount') is not None:
-            self.coupon_remain_count = m.get('CouponRemainCount')
-        if m.get('CouponStartTime') is not None:
-            self.coupon_start_time = m.get('CouponStartTime')
-        if m.get('CouponEndTime') is not None:
-            self.coupon_end_time = m.get('CouponEndTime')
-        if m.get('CouponStartFee') is not None:
-            self.coupon_start_fee = m.get('CouponStartFee')
-        if m.get('CouponAmount') is not None:
-            self.coupon_amount = m.get('CouponAmount')
-        if m.get('CouponInfo') is not None:
-            self.coupon_info = m.get('CouponInfo')
-        if m.get('CommissionRate') is not None:
-            self.commission_rate = m.get('CommissionRate')
-        if m.get('CouponShareUrl') is not None:
-            self.coupon_share_url = m.get('CouponShareUrl')
-        if m.get('DeeplinkCouponShareUrl') is not None:
-            self.deeplink_coupon_share_url = m.get('DeeplinkCouponShareUrl')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('Url') is not None:
             self.url = m.get('Url')
-        if m.get('DeeplinkUrl') is not None:
-            self.deeplink_url = m.get('DeeplinkUrl')
-        if m.get('ShopTitle') is not None:
-            self.shop_title = m.get('ShopTitle')
-        if m.get('MaxCommission') is not None:
-            temp_model = GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission()
-            self.max_commission = temp_model.from_map(m['MaxCommission'])
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        if m.get('ZkFinalPrice') is not None:
+            self.zk_final_price = m.get('ZkFinalPrice')
         return self
 
 
 class GetProductInfoByIdsResponseBodyDataAuctions(TeaModel):
     def __init__(
         self,
-        result: GetProductInfoByIdsResponseBodyDataAuctionsResult = None,
         rank_score: float = None,
+        result: GetProductInfoByIdsResponseBodyDataAuctionsResult = None,
     ):
-        self.result = result
         self.rank_score = rank_score
+        self.result = result
 
     def validate(self):
         if self.result:
@@ -298,19 +298,19 @@ class GetProductInfoByIdsResponseBodyDataAuctions(TeaModel):
             return _map
 
         result = dict()
-        if self.result is not None:
-            result['Result'] = self.result.to_map()
         if self.rank_score is not None:
             result['RankScore'] = self.rank_score
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RankScore') is not None:
+            self.rank_score = m.get('RankScore')
         if m.get('Result') is not None:
             temp_model = GetProductInfoByIdsResponseBodyDataAuctionsResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('RankScore') is not None:
-            self.rank_score = m.get('RankScore')
         return self
 
 
@@ -604,13 +604,13 @@ class SearchByPicAdvanceRequest(TeaModel):
 class SearchByPicResponseBodyDataAuctionsResultMaxCommission(TeaModel):
     def __init__(
         self,
-        max_commission_rate: str = None,
         max_commission_click_url: str = None,
         max_commission_coupon_share_url: str = None,
+        max_commission_rate: str = None,
     ):
-        self.max_commission_rate = max_commission_rate
         self.max_commission_click_url = max_commission_click_url
         self.max_commission_coupon_share_url = max_commission_coupon_share_url
+        self.max_commission_rate = max_commission_rate
 
     def validate(self):
         pass
@@ -621,87 +621,87 @@ class SearchByPicResponseBodyDataAuctionsResultMaxCommission(TeaModel):
             return _map
 
         result = dict()
-        if self.max_commission_rate is not None:
-            result['MaxCommissionRate'] = self.max_commission_rate
         if self.max_commission_click_url is not None:
             result['MaxCommissionClickUrl'] = self.max_commission_click_url
         if self.max_commission_coupon_share_url is not None:
             result['MaxCommissionCouponShareUrl'] = self.max_commission_coupon_share_url
+        if self.max_commission_rate is not None:
+            result['MaxCommissionRate'] = self.max_commission_rate
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MaxCommissionRate') is not None:
-            self.max_commission_rate = m.get('MaxCommissionRate')
         if m.get('MaxCommissionClickUrl') is not None:
             self.max_commission_click_url = m.get('MaxCommissionClickUrl')
         if m.get('MaxCommissionCouponShareUrl') is not None:
             self.max_commission_coupon_share_url = m.get('MaxCommissionCouponShareUrl')
+        if m.get('MaxCommissionRate') is not None:
+            self.max_commission_rate = m.get('MaxCommissionRate')
         return self
 
 
 class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
     def __init__(
         self,
+        category_name: str = None,
+        commission_rate: str = None,
+        coupon_amount: int = None,
+        coupon_end_time: str = None,
+        coupon_info: str = None,
+        coupon_remain_count: int = None,
+        coupon_share_url: str = None,
+        coupon_start_fee: str = None,
+        coupon_start_time: str = None,
+        coupon_total_count: str = None,
+        deeplink_coupon_share_url: str = None,
+        deeplink_url: str = None,
         item_id: str = None,
-        title: str = None,
+        level_one_category_name: str = None,
+        max_commission: SearchByPicResponseBodyDataAuctionsResultMaxCommission = None,
+        nick: str = None,
+        pic_url: str = None,
+        price_after_coupon: str = None,
+        provcity: str = None,
+        reserve_price: str = None,
+        seller_id: str = None,
+        shop_title: str = None,
         short_title: str = None,
         sub_title: str = None,
-        pic_url: str = None,
-        reserve_price: str = None,
-        zk_final_price: str = None,
-        price_after_coupon: str = None,
-        user_type: int = None,
-        provcity: str = None,
-        nick: str = None,
-        seller_id: str = None,
-        volume: int = None,
-        level_one_category_name: str = None,
-        category_name: str = None,
-        coupon_total_count: str = None,
-        coupon_remain_count: int = None,
-        coupon_start_time: str = None,
-        coupon_end_time: str = None,
-        coupon_start_fee: str = None,
-        coupon_amount: int = None,
-        coupon_info: str = None,
-        commission_rate: str = None,
-        coupon_share_url: str = None,
-        deeplink_coupon_share_url: str = None,
+        title: str = None,
         url: str = None,
-        deeplink_url: str = None,
-        shop_title: str = None,
-        max_commission: SearchByPicResponseBodyDataAuctionsResultMaxCommission = None,
+        user_type: int = None,
+        volume: int = None,
+        zk_final_price: str = None,
     ):
+        self.category_name = category_name
+        self.commission_rate = commission_rate
+        self.coupon_amount = coupon_amount
+        self.coupon_end_time = coupon_end_time
+        self.coupon_info = coupon_info
+        self.coupon_remain_count = coupon_remain_count
+        self.coupon_share_url = coupon_share_url
+        self.coupon_start_fee = coupon_start_fee
+        self.coupon_start_time = coupon_start_time
+        self.coupon_total_count = coupon_total_count
+        self.deeplink_coupon_share_url = deeplink_coupon_share_url
+        self.deeplink_url = deeplink_url
         self.item_id = item_id
-        self.title = title
+        self.level_one_category_name = level_one_category_name
+        self.max_commission = max_commission
+        self.nick = nick
+        self.pic_url = pic_url
+        self.price_after_coupon = price_after_coupon
+        self.provcity = provcity
+        self.reserve_price = reserve_price
+        self.seller_id = seller_id
+        self.shop_title = shop_title
         self.short_title = short_title
         self.sub_title = sub_title
-        self.pic_url = pic_url
-        self.reserve_price = reserve_price
-        self.zk_final_price = zk_final_price
-        self.price_after_coupon = price_after_coupon
-        self.user_type = user_type
-        self.provcity = provcity
-        self.nick = nick
-        self.seller_id = seller_id
-        self.volume = volume
-        self.level_one_category_name = level_one_category_name
-        self.category_name = category_name
-        self.coupon_total_count = coupon_total_count
-        self.coupon_remain_count = coupon_remain_count
-        self.coupon_start_time = coupon_start_time
-        self.coupon_end_time = coupon_end_time
-        self.coupon_start_fee = coupon_start_fee
-        self.coupon_amount = coupon_amount
-        self.coupon_info = coupon_info
-        self.commission_rate = commission_rate
-        self.coupon_share_url = coupon_share_url
-        self.deeplink_coupon_share_url = deeplink_coupon_share_url
+        self.title = title
         self.url = url
-        self.deeplink_url = deeplink_url
-        self.shop_title = shop_title
-        self.max_commission = max_commission
+        self.user_type = user_type
+        self.volume = volume
+        self.zk_final_price = zk_final_price
 
     def validate(self):
         if self.max_commission:
@@ -713,138 +713,138 @@ class SearchByPicResponseBodyDataAuctionsResult(TeaModel):
             return _map
 
         result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.commission_rate is not None:
+            result['CommissionRate'] = self.commission_rate
+        if self.coupon_amount is not None:
+            result['CouponAmount'] = self.coupon_amount
+        if self.coupon_end_time is not None:
+            result['CouponEndTime'] = self.coupon_end_time
+        if self.coupon_info is not None:
+            result['CouponInfo'] = self.coupon_info
+        if self.coupon_remain_count is not None:
+            result['CouponRemainCount'] = self.coupon_remain_count
+        if self.coupon_share_url is not None:
+            result['CouponShareUrl'] = self.coupon_share_url
+        if self.coupon_start_fee is not None:
+            result['CouponStartFee'] = self.coupon_start_fee
+        if self.coupon_start_time is not None:
+            result['CouponStartTime'] = self.coupon_start_time
+        if self.coupon_total_count is not None:
+            result['CouponTotalCount'] = self.coupon_total_count
+        if self.deeplink_coupon_share_url is not None:
+            result['DeeplinkCouponShareUrl'] = self.deeplink_coupon_share_url
+        if self.deeplink_url is not None:
+            result['DeeplinkUrl'] = self.deeplink_url
         if self.item_id is not None:
             result['ItemId'] = self.item_id
-        if self.title is not None:
-            result['Title'] = self.title
+        if self.level_one_category_name is not None:
+            result['LevelOneCategoryName'] = self.level_one_category_name
+        if self.max_commission is not None:
+            result['MaxCommission'] = self.max_commission.to_map()
+        if self.nick is not None:
+            result['Nick'] = self.nick
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        if self.price_after_coupon is not None:
+            result['PriceAfterCoupon'] = self.price_after_coupon
+        if self.provcity is not None:
+            result['Provcity'] = self.provcity
+        if self.reserve_price is not None:
+            result['ReservePrice'] = self.reserve_price
+        if self.seller_id is not None:
+            result['SellerId'] = self.seller_id
+        if self.shop_title is not None:
+            result['ShopTitle'] = self.shop_title
         if self.short_title is not None:
             result['ShortTitle'] = self.short_title
         if self.sub_title is not None:
             result['SubTitle'] = self.sub_title
-        if self.pic_url is not None:
-            result['PicUrl'] = self.pic_url
-        if self.reserve_price is not None:
-            result['ReservePrice'] = self.reserve_price
-        if self.zk_final_price is not None:
-            result['ZkFinalPrice'] = self.zk_final_price
-        if self.price_after_coupon is not None:
-            result['PriceAfterCoupon'] = self.price_after_coupon
-        if self.user_type is not None:
-            result['UserType'] = self.user_type
-        if self.provcity is not None:
-            result['Provcity'] = self.provcity
-        if self.nick is not None:
-            result['Nick'] = self.nick
-        if self.seller_id is not None:
-            result['SellerId'] = self.seller_id
-        if self.volume is not None:
-            result['Volume'] = self.volume
-        if self.level_one_category_name is not None:
-            result['LevelOneCategoryName'] = self.level_one_category_name
-        if self.category_name is not None:
-            result['CategoryName'] = self.category_name
-        if self.coupon_total_count is not None:
-            result['CouponTotalCount'] = self.coupon_total_count
-        if self.coupon_remain_count is not None:
-            result['CouponRemainCount'] = self.coupon_remain_count
-        if self.coupon_start_time is not None:
-            result['CouponStartTime'] = self.coupon_start_time
-        if self.coupon_end_time is not None:
-            result['CouponEndTime'] = self.coupon_end_time
-        if self.coupon_start_fee is not None:
-            result['CouponStartFee'] = self.coupon_start_fee
-        if self.coupon_amount is not None:
-            result['CouponAmount'] = self.coupon_amount
-        if self.coupon_info is not None:
-            result['CouponInfo'] = self.coupon_info
-        if self.commission_rate is not None:
-            result['CommissionRate'] = self.commission_rate
-        if self.coupon_share_url is not None:
-            result['CouponShareUrl'] = self.coupon_share_url
-        if self.deeplink_coupon_share_url is not None:
-            result['DeeplinkCouponShareUrl'] = self.deeplink_coupon_share_url
+        if self.title is not None:
+            result['Title'] = self.title
         if self.url is not None:
             result['Url'] = self.url
-        if self.deeplink_url is not None:
-            result['DeeplinkUrl'] = self.deeplink_url
-        if self.shop_title is not None:
-            result['ShopTitle'] = self.shop_title
-        if self.max_commission is not None:
-            result['MaxCommission'] = self.max_commission.to_map()
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        if self.zk_final_price is not None:
+            result['ZkFinalPrice'] = self.zk_final_price
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('CommissionRate') is not None:
+            self.commission_rate = m.get('CommissionRate')
+        if m.get('CouponAmount') is not None:
+            self.coupon_amount = m.get('CouponAmount')
+        if m.get('CouponEndTime') is not None:
+            self.coupon_end_time = m.get('CouponEndTime')
+        if m.get('CouponInfo') is not None:
+            self.coupon_info = m.get('CouponInfo')
+        if m.get('CouponRemainCount') is not None:
+            self.coupon_remain_count = m.get('CouponRemainCount')
+        if m.get('CouponShareUrl') is not None:
+            self.coupon_share_url = m.get('CouponShareUrl')
+        if m.get('CouponStartFee') is not None:
+            self.coupon_start_fee = m.get('CouponStartFee')
+        if m.get('CouponStartTime') is not None:
+            self.coupon_start_time = m.get('CouponStartTime')
+        if m.get('CouponTotalCount') is not None:
+            self.coupon_total_count = m.get('CouponTotalCount')
+        if m.get('DeeplinkCouponShareUrl') is not None:
+            self.deeplink_coupon_share_url = m.get('DeeplinkCouponShareUrl')
+        if m.get('DeeplinkUrl') is not None:
+            self.deeplink_url = m.get('DeeplinkUrl')
         if m.get('ItemId') is not None:
             self.item_id = m.get('ItemId')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
+        if m.get('LevelOneCategoryName') is not None:
+            self.level_one_category_name = m.get('LevelOneCategoryName')
+        if m.get('MaxCommission') is not None:
+            temp_model = SearchByPicResponseBodyDataAuctionsResultMaxCommission()
+            self.max_commission = temp_model.from_map(m['MaxCommission'])
+        if m.get('Nick') is not None:
+            self.nick = m.get('Nick')
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        if m.get('PriceAfterCoupon') is not None:
+            self.price_after_coupon = m.get('PriceAfterCoupon')
+        if m.get('Provcity') is not None:
+            self.provcity = m.get('Provcity')
+        if m.get('ReservePrice') is not None:
+            self.reserve_price = m.get('ReservePrice')
+        if m.get('SellerId') is not None:
+            self.seller_id = m.get('SellerId')
+        if m.get('ShopTitle') is not None:
+            self.shop_title = m.get('ShopTitle')
         if m.get('ShortTitle') is not None:
             self.short_title = m.get('ShortTitle')
         if m.get('SubTitle') is not None:
             self.sub_title = m.get('SubTitle')
-        if m.get('PicUrl') is not None:
-            self.pic_url = m.get('PicUrl')
-        if m.get('ReservePrice') is not None:
-            self.reserve_price = m.get('ReservePrice')
-        if m.get('ZkFinalPrice') is not None:
-            self.zk_final_price = m.get('ZkFinalPrice')
-        if m.get('PriceAfterCoupon') is not None:
-            self.price_after_coupon = m.get('PriceAfterCoupon')
-        if m.get('UserType') is not None:
-            self.user_type = m.get('UserType')
-        if m.get('Provcity') is not None:
-            self.provcity = m.get('Provcity')
-        if m.get('Nick') is not None:
-            self.nick = m.get('Nick')
-        if m.get('SellerId') is not None:
-            self.seller_id = m.get('SellerId')
-        if m.get('Volume') is not None:
-            self.volume = m.get('Volume')
-        if m.get('LevelOneCategoryName') is not None:
-            self.level_one_category_name = m.get('LevelOneCategoryName')
-        if m.get('CategoryName') is not None:
-            self.category_name = m.get('CategoryName')
-        if m.get('CouponTotalCount') is not None:
-            self.coupon_total_count = m.get('CouponTotalCount')
-        if m.get('CouponRemainCount') is not None:
-            self.coupon_remain_count = m.get('CouponRemainCount')
-        if m.get('CouponStartTime') is not None:
-            self.coupon_start_time = m.get('CouponStartTime')
-        if m.get('CouponEndTime') is not None:
-            self.coupon_end_time = m.get('CouponEndTime')
-        if m.get('CouponStartFee') is not None:
-            self.coupon_start_fee = m.get('CouponStartFee')
-        if m.get('CouponAmount') is not None:
-            self.coupon_amount = m.get('CouponAmount')
-        if m.get('CouponInfo') is not None:
-            self.coupon_info = m.get('CouponInfo')
-        if m.get('CommissionRate') is not None:
-            self.commission_rate = m.get('CommissionRate')
-        if m.get('CouponShareUrl') is not None:
-            self.coupon_share_url = m.get('CouponShareUrl')
-        if m.get('DeeplinkCouponShareUrl') is not None:
-            self.deeplink_coupon_share_url = m.get('DeeplinkCouponShareUrl')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('Url') is not None:
             self.url = m.get('Url')
-        if m.get('DeeplinkUrl') is not None:
-            self.deeplink_url = m.get('DeeplinkUrl')
-        if m.get('ShopTitle') is not None:
-            self.shop_title = m.get('ShopTitle')
-        if m.get('MaxCommission') is not None:
-            temp_model = SearchByPicResponseBodyDataAuctionsResultMaxCommission()
-            self.max_commission = temp_model.from_map(m['MaxCommission'])
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        if m.get('ZkFinalPrice') is not None:
+            self.zk_final_price = m.get('ZkFinalPrice')
         return self
 
 
 class SearchByPicResponseBodyDataAuctions(TeaModel):
     def __init__(
         self,
-        result: SearchByPicResponseBodyDataAuctionsResult = None,
         rank_score: float = None,
+        result: SearchByPicResponseBodyDataAuctionsResult = None,
     ):
-        self.result = result
         self.rank_score = rank_score
+        self.result = result
 
     def validate(self):
         if self.result:
@@ -856,19 +856,19 @@ class SearchByPicResponseBodyDataAuctions(TeaModel):
             return _map
 
         result = dict()
-        if self.result is not None:
-            result['Result'] = self.result.to_map()
         if self.rank_score is not None:
             result['RankScore'] = self.rank_score
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RankScore') is not None:
+            self.rank_score = m.get('RankScore')
         if m.get('Result') is not None:
             temp_model = SearchByPicResponseBodyDataAuctionsResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('RankScore') is not None:
-            self.rank_score = m.get('RankScore')
         return self
 
 
@@ -1235,13 +1235,13 @@ class SearchByUrlRequest(TeaModel):
 class SearchByUrlResponseBodyDataAuctionsResultMaxCommission(TeaModel):
     def __init__(
         self,
-        max_commission_rate: str = None,
         max_commission_click_url: str = None,
         max_commission_coupon_share_url: str = None,
+        max_commission_rate: str = None,
     ):
-        self.max_commission_rate = max_commission_rate
         self.max_commission_click_url = max_commission_click_url
         self.max_commission_coupon_share_url = max_commission_coupon_share_url
+        self.max_commission_rate = max_commission_rate
 
     def validate(self):
         pass
@@ -1252,87 +1252,87 @@ class SearchByUrlResponseBodyDataAuctionsResultMaxCommission(TeaModel):
             return _map
 
         result = dict()
-        if self.max_commission_rate is not None:
-            result['MaxCommissionRate'] = self.max_commission_rate
         if self.max_commission_click_url is not None:
             result['MaxCommissionClickUrl'] = self.max_commission_click_url
         if self.max_commission_coupon_share_url is not None:
             result['MaxCommissionCouponShareUrl'] = self.max_commission_coupon_share_url
+        if self.max_commission_rate is not None:
+            result['MaxCommissionRate'] = self.max_commission_rate
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MaxCommissionRate') is not None:
-            self.max_commission_rate = m.get('MaxCommissionRate')
         if m.get('MaxCommissionClickUrl') is not None:
             self.max_commission_click_url = m.get('MaxCommissionClickUrl')
         if m.get('MaxCommissionCouponShareUrl') is not None:
             self.max_commission_coupon_share_url = m.get('MaxCommissionCouponShareUrl')
+        if m.get('MaxCommissionRate') is not None:
+            self.max_commission_rate = m.get('MaxCommissionRate')
         return self
 
 
 class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
     def __init__(
         self,
+        category_name: str = None,
+        commission_rate: str = None,
+        coupon_amount: int = None,
+        coupon_end_time: str = None,
+        coupon_info: str = None,
+        coupon_remain_count: int = None,
+        coupon_share_url: str = None,
+        coupon_start_fee: str = None,
+        coupon_start_time: str = None,
+        coupon_total_count: str = None,
+        deeplink_coupon_share_url: str = None,
+        deeplink_url: str = None,
         item_id: str = None,
-        title: str = None,
+        level_one_category_name: str = None,
+        max_commission: SearchByUrlResponseBodyDataAuctionsResultMaxCommission = None,
+        nick: str = None,
+        pic_url: str = None,
+        price_after_coupon: str = None,
+        provcity: str = None,
+        reserve_price: str = None,
+        seller_id: str = None,
+        shop_title: str = None,
         short_title: str = None,
         sub_title: str = None,
-        pic_url: str = None,
-        reserve_price: str = None,
-        zk_final_price: str = None,
-        price_after_coupon: str = None,
-        user_type: int = None,
-        provcity: str = None,
-        nick: str = None,
-        seller_id: str = None,
-        volume: int = None,
-        level_one_category_name: str = None,
-        category_name: str = None,
-        coupon_total_count: str = None,
-        coupon_remain_count: int = None,
-        coupon_start_time: str = None,
-        coupon_end_time: str = None,
-        coupon_start_fee: str = None,
-        coupon_amount: int = None,
-        coupon_info: str = None,
-        commission_rate: str = None,
-        coupon_share_url: str = None,
-        deeplink_coupon_share_url: str = None,
+        title: str = None,
         url: str = None,
-        deeplink_url: str = None,
-        shop_title: str = None,
-        max_commission: SearchByUrlResponseBodyDataAuctionsResultMaxCommission = None,
+        user_type: int = None,
+        volume: int = None,
+        zk_final_price: str = None,
     ):
+        self.category_name = category_name
+        self.commission_rate = commission_rate
+        self.coupon_amount = coupon_amount
+        self.coupon_end_time = coupon_end_time
+        self.coupon_info = coupon_info
+        self.coupon_remain_count = coupon_remain_count
+        self.coupon_share_url = coupon_share_url
+        self.coupon_start_fee = coupon_start_fee
+        self.coupon_start_time = coupon_start_time
+        self.coupon_total_count = coupon_total_count
+        self.deeplink_coupon_share_url = deeplink_coupon_share_url
+        self.deeplink_url = deeplink_url
         self.item_id = item_id
-        self.title = title
+        self.level_one_category_name = level_one_category_name
+        self.max_commission = max_commission
+        self.nick = nick
+        self.pic_url = pic_url
+        self.price_after_coupon = price_after_coupon
+        self.provcity = provcity
+        self.reserve_price = reserve_price
+        self.seller_id = seller_id
+        self.shop_title = shop_title
         self.short_title = short_title
         self.sub_title = sub_title
-        self.pic_url = pic_url
-        self.reserve_price = reserve_price
-        self.zk_final_price = zk_final_price
-        self.price_after_coupon = price_after_coupon
-        self.user_type = user_type
-        self.provcity = provcity
-        self.nick = nick
-        self.seller_id = seller_id
-        self.volume = volume
-        self.level_one_category_name = level_one_category_name
-        self.category_name = category_name
-        self.coupon_total_count = coupon_total_count
-        self.coupon_remain_count = coupon_remain_count
-        self.coupon_start_time = coupon_start_time
-        self.coupon_end_time = coupon_end_time
-        self.coupon_start_fee = coupon_start_fee
-        self.coupon_amount = coupon_amount
-        self.coupon_info = coupon_info
-        self.commission_rate = commission_rate
-        self.coupon_share_url = coupon_share_url
-        self.deeplink_coupon_share_url = deeplink_coupon_share_url
+        self.title = title
         self.url = url
-        self.deeplink_url = deeplink_url
-        self.shop_title = shop_title
-        self.max_commission = max_commission
+        self.user_type = user_type
+        self.volume = volume
+        self.zk_final_price = zk_final_price
 
     def validate(self):
         if self.max_commission:
@@ -1344,138 +1344,138 @@ class SearchByUrlResponseBodyDataAuctionsResult(TeaModel):
             return _map
 
         result = dict()
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.commission_rate is not None:
+            result['CommissionRate'] = self.commission_rate
+        if self.coupon_amount is not None:
+            result['CouponAmount'] = self.coupon_amount
+        if self.coupon_end_time is not None:
+            result['CouponEndTime'] = self.coupon_end_time
+        if self.coupon_info is not None:
+            result['CouponInfo'] = self.coupon_info
+        if self.coupon_remain_count is not None:
+            result['CouponRemainCount'] = self.coupon_remain_count
+        if self.coupon_share_url is not None:
+            result['CouponShareUrl'] = self.coupon_share_url
+        if self.coupon_start_fee is not None:
+            result['CouponStartFee'] = self.coupon_start_fee
+        if self.coupon_start_time is not None:
+            result['CouponStartTime'] = self.coupon_start_time
+        if self.coupon_total_count is not None:
+            result['CouponTotalCount'] = self.coupon_total_count
+        if self.deeplink_coupon_share_url is not None:
+            result['DeeplinkCouponShareUrl'] = self.deeplink_coupon_share_url
+        if self.deeplink_url is not None:
+            result['DeeplinkUrl'] = self.deeplink_url
         if self.item_id is not None:
             result['ItemId'] = self.item_id
-        if self.title is not None:
-            result['Title'] = self.title
+        if self.level_one_category_name is not None:
+            result['LevelOneCategoryName'] = self.level_one_category_name
+        if self.max_commission is not None:
+            result['MaxCommission'] = self.max_commission.to_map()
+        if self.nick is not None:
+            result['Nick'] = self.nick
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        if self.price_after_coupon is not None:
+            result['PriceAfterCoupon'] = self.price_after_coupon
+        if self.provcity is not None:
+            result['Provcity'] = self.provcity
+        if self.reserve_price is not None:
+            result['ReservePrice'] = self.reserve_price
+        if self.seller_id is not None:
+            result['SellerId'] = self.seller_id
+        if self.shop_title is not None:
+            result['ShopTitle'] = self.shop_title
         if self.short_title is not None:
             result['ShortTitle'] = self.short_title
         if self.sub_title is not None:
             result['SubTitle'] = self.sub_title
-        if self.pic_url is not None:
-            result['PicUrl'] = self.pic_url
-        if self.reserve_price is not None:
-            result['ReservePrice'] = self.reserve_price
-        if self.zk_final_price is not None:
-            result['ZkFinalPrice'] = self.zk_final_price
-        if self.price_after_coupon is not None:
-            result['PriceAfterCoupon'] = self.price_after_coupon
-        if self.user_type is not None:
-            result['UserType'] = self.user_type
-        if self.provcity is not None:
-            result['Provcity'] = self.provcity
-        if self.nick is not None:
-            result['Nick'] = self.nick
-        if self.seller_id is not None:
-            result['SellerId'] = self.seller_id
-        if self.volume is not None:
-            result['Volume'] = self.volume
-        if self.level_one_category_name is not None:
-            result['LevelOneCategoryName'] = self.level_one_category_name
-        if self.category_name is not None:
-            result['CategoryName'] = self.category_name
-        if self.coupon_total_count is not None:
-            result['CouponTotalCount'] = self.coupon_total_count
-        if self.coupon_remain_count is not None:
-            result['CouponRemainCount'] = self.coupon_remain_count
-        if self.coupon_start_time is not None:
-            result['CouponStartTime'] = self.coupon_start_time
-        if self.coupon_end_time is not None:
-            result['CouponEndTime'] = self.coupon_end_time
-        if self.coupon_start_fee is not None:
-            result['CouponStartFee'] = self.coupon_start_fee
-        if self.coupon_amount is not None:
-            result['CouponAmount'] = self.coupon_amount
-        if self.coupon_info is not None:
-            result['CouponInfo'] = self.coupon_info
-        if self.commission_rate is not None:
-            result['CommissionRate'] = self.commission_rate
-        if self.coupon_share_url is not None:
-            result['CouponShareUrl'] = self.coupon_share_url
-        if self.deeplink_coupon_share_url is not None:
-            result['DeeplinkCouponShareUrl'] = self.deeplink_coupon_share_url
+        if self.title is not None:
+            result['Title'] = self.title
         if self.url is not None:
             result['Url'] = self.url
-        if self.deeplink_url is not None:
-            result['DeeplinkUrl'] = self.deeplink_url
-        if self.shop_title is not None:
-            result['ShopTitle'] = self.shop_title
-        if self.max_commission is not None:
-            result['MaxCommission'] = self.max_commission.to_map()
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        if self.zk_final_price is not None:
+            result['ZkFinalPrice'] = self.zk_final_price
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('CommissionRate') is not None:
+            self.commission_rate = m.get('CommissionRate')
+        if m.get('CouponAmount') is not None:
+            self.coupon_amount = m.get('CouponAmount')
+        if m.get('CouponEndTime') is not None:
+            self.coupon_end_time = m.get('CouponEndTime')
+        if m.get('CouponInfo') is not None:
+            self.coupon_info = m.get('CouponInfo')
+        if m.get('CouponRemainCount') is not None:
+            self.coupon_remain_count = m.get('CouponRemainCount')
+        if m.get('CouponShareUrl') is not None:
+            self.coupon_share_url = m.get('CouponShareUrl')
+        if m.get('CouponStartFee') is not None:
+            self.coupon_start_fee = m.get('CouponStartFee')
+        if m.get('CouponStartTime') is not None:
+            self.coupon_start_time = m.get('CouponStartTime')
+        if m.get('CouponTotalCount') is not None:
+            self.coupon_total_count = m.get('CouponTotalCount')
+        if m.get('DeeplinkCouponShareUrl') is not None:
+            self.deeplink_coupon_share_url = m.get('DeeplinkCouponShareUrl')
+        if m.get('DeeplinkUrl') is not None:
+            self.deeplink_url = m.get('DeeplinkUrl')
         if m.get('ItemId') is not None:
             self.item_id = m.get('ItemId')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
+        if m.get('LevelOneCategoryName') is not None:
+            self.level_one_category_name = m.get('LevelOneCategoryName')
+        if m.get('MaxCommission') is not None:
+            temp_model = SearchByUrlResponseBodyDataAuctionsResultMaxCommission()
+            self.max_commission = temp_model.from_map(m['MaxCommission'])
+        if m.get('Nick') is not None:
+            self.nick = m.get('Nick')
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        if m.get('PriceAfterCoupon') is not None:
+            self.price_after_coupon = m.get('PriceAfterCoupon')
+        if m.get('Provcity') is not None:
+            self.provcity = m.get('Provcity')
+        if m.get('ReservePrice') is not None:
+            self.reserve_price = m.get('ReservePrice')
+        if m.get('SellerId') is not None:
+            self.seller_id = m.get('SellerId')
+        if m.get('ShopTitle') is not None:
+            self.shop_title = m.get('ShopTitle')
         if m.get('ShortTitle') is not None:
             self.short_title = m.get('ShortTitle')
         if m.get('SubTitle') is not None:
             self.sub_title = m.get('SubTitle')
-        if m.get('PicUrl') is not None:
-            self.pic_url = m.get('PicUrl')
-        if m.get('ReservePrice') is not None:
-            self.reserve_price = m.get('ReservePrice')
-        if m.get('ZkFinalPrice') is not None:
-            self.zk_final_price = m.get('ZkFinalPrice')
-        if m.get('PriceAfterCoupon') is not None:
-            self.price_after_coupon = m.get('PriceAfterCoupon')
-        if m.get('UserType') is not None:
-            self.user_type = m.get('UserType')
-        if m.get('Provcity') is not None:
-            self.provcity = m.get('Provcity')
-        if m.get('Nick') is not None:
-            self.nick = m.get('Nick')
-        if m.get('SellerId') is not None:
-            self.seller_id = m.get('SellerId')
-        if m.get('Volume') is not None:
-            self.volume = m.get('Volume')
-        if m.get('LevelOneCategoryName') is not None:
-            self.level_one_category_name = m.get('LevelOneCategoryName')
-        if m.get('CategoryName') is not None:
-            self.category_name = m.get('CategoryName')
-        if m.get('CouponTotalCount') is not None:
-            self.coupon_total_count = m.get('CouponTotalCount')
-        if m.get('CouponRemainCount') is not None:
-            self.coupon_remain_count = m.get('CouponRemainCount')
-        if m.get('CouponStartTime') is not None:
-            self.coupon_start_time = m.get('CouponStartTime')
-        if m.get('CouponEndTime') is not None:
-            self.coupon_end_time = m.get('CouponEndTime')
-        if m.get('CouponStartFee') is not None:
-            self.coupon_start_fee = m.get('CouponStartFee')
-        if m.get('CouponAmount') is not None:
-            self.coupon_amount = m.get('CouponAmount')
-        if m.get('CouponInfo') is not None:
-            self.coupon_info = m.get('CouponInfo')
-        if m.get('CommissionRate') is not None:
-            self.commission_rate = m.get('CommissionRate')
-        if m.get('CouponShareUrl') is not None:
-            self.coupon_share_url = m.get('CouponShareUrl')
-        if m.get('DeeplinkCouponShareUrl') is not None:
-            self.deeplink_coupon_share_url = m.get('DeeplinkCouponShareUrl')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('Url') is not None:
             self.url = m.get('Url')
-        if m.get('DeeplinkUrl') is not None:
-            self.deeplink_url = m.get('DeeplinkUrl')
-        if m.get('ShopTitle') is not None:
-            self.shop_title = m.get('ShopTitle')
-        if m.get('MaxCommission') is not None:
-            temp_model = SearchByUrlResponseBodyDataAuctionsResultMaxCommission()
-            self.max_commission = temp_model.from_map(m['MaxCommission'])
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        if m.get('ZkFinalPrice') is not None:
+            self.zk_final_price = m.get('ZkFinalPrice')
         return self
 
 
 class SearchByUrlResponseBodyDataAuctions(TeaModel):
     def __init__(
         self,
-        result: SearchByUrlResponseBodyDataAuctionsResult = None,
         rank_score: float = None,
+        result: SearchByUrlResponseBodyDataAuctionsResult = None,
     ):
-        self.result = result
         self.rank_score = rank_score
+        self.result = result
 
     def validate(self):
         if self.result:
@@ -1487,19 +1487,19 @@ class SearchByUrlResponseBodyDataAuctions(TeaModel):
             return _map
 
         result = dict()
-        if self.result is not None:
-            result['Result'] = self.result.to_map()
         if self.rank_score is not None:
             result['RankScore'] = self.rank_score
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RankScore') is not None:
+            self.rank_score = m.get('RankScore')
         if m.get('Result') is not None:
             temp_model = SearchByUrlResponseBodyDataAuctionsResult()
             self.result = temp_model.from_map(m['Result'])
-        if m.get('RankScore') is not None:
-            self.rank_score = m.get('RankScore')
         return self
 
 
