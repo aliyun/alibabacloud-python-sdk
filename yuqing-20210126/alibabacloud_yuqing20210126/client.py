@@ -41,136 +41,230 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def query_alarm_data_list(
+    def aggregate_search_yuqing(
         self,
-        request: yuqing_20210126_models.QueryAlarmDataListRequest,
-    ) -> yuqing_20210126_models.QueryAlarmDataListResponse:
+        request: yuqing_20210126_models.AggregateSearchYuqingRequest,
+    ) -> yuqing_20210126_models.AggregateSearchYuqingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_alarm_data_list_with_options(request, headers, runtime)
+        return self.aggregate_search_yuqing_with_options(request, headers, runtime)
 
-    async def query_alarm_data_list_async(
+    async def aggregate_search_yuqing_async(
         self,
-        request: yuqing_20210126_models.QueryAlarmDataListRequest,
-    ) -> yuqing_20210126_models.QueryAlarmDataListResponse:
+        request: yuqing_20210126_models.AggregateSearchYuqingRequest,
+    ) -> yuqing_20210126_models.AggregateSearchYuqingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_alarm_data_list_with_options_async(request, headers, runtime)
+        return await self.aggregate_search_yuqing_with_options_async(request, headers, runtime)
 
-    def query_alarm_data_list_with_options(
+    def aggregate_search_yuqing_with_options(
         self,
-        request: yuqing_20210126_models.QueryAlarmDataListRequest,
+        request: yuqing_20210126_models.AggregateSearchYuqingRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryAlarmDataListResponse:
+    ) -> yuqing_20210126_models.AggregateSearchYuqingResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.alarm_query):
-            query['alarmQuery'] = request.alarm_query
-        if not UtilClient.is_unset(request.order_by_key):
-            query['orderByKey'] = request.order_by_key
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.QueryAlarmDataListResponse(),
-            self.do_roarequest('QueryAlarmDataList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryAlarmDataList.json', 'json', req, runtime)
-        )
-
-    async def query_alarm_data_list_with_options_async(
-        self,
-        request: yuqing_20210126_models.QueryAlarmDataListRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryAlarmDataListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.alarm_query):
-            query['alarmQuery'] = request.alarm_query
-        if not UtilClient.is_unset(request.order_by_key):
-            query['orderByKey'] = request.order_by_key
         if not UtilClient.is_unset(request.team_hash_id):
             query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.QueryAlarmDataListResponse(),
-            await self.do_roarequest_async('QueryAlarmDataList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryAlarmDataList.json', 'json', req, runtime)
-        )
-
-    def list_hotspot_message(
-        self,
-        request: yuqing_20210126_models.ListHotspotMessageRequest,
-    ) -> yuqing_20210126_models.ListHotspotMessageResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_hotspot_message_with_options(request, headers, runtime)
-
-    async def list_hotspot_message_async(
-        self,
-        request: yuqing_20210126_models.ListHotspotMessageRequest,
-    ) -> yuqing_20210126_models.ListHotspotMessageResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_hotspot_message_with_options_async(request, headers, runtime)
-
-    def list_hotspot_message_with_options(
-        self,
-        request: yuqing_20210126_models.ListHotspotMessageRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.ListHotspotMessageResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
         body = {}
-        if not UtilClient.is_unset(request.hotspot_search_condition):
-            body['hotspotSearchCondition'] = request.hotspot_search_condition
+        if not UtilClient.is_unset(request.aggregate_function):
+            body['aggregateFunction'] = request.aggregate_function
+        if not UtilClient.is_unset(request.group_by_key):
+            body['groupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.group_limits):
+            body['groupLimits'] = request.group_limits
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return TeaCore.from_map(
-            yuqing_20210126_models.ListHotspotMessageResponse(),
-            self.do_roarequest_with_form('ListHotspotMessage', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchHotspotDetail.json', 'json', req, runtime)
+            yuqing_20210126_models.AggregateSearchYuqingResponse(),
+            self.do_roarequest_with_form('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
         )
 
-    async def list_hotspot_message_with_options_async(
+    async def aggregate_search_yuqing_with_options_async(
         self,
-        request: yuqing_20210126_models.ListHotspotMessageRequest,
+        request: yuqing_20210126_models.AggregateSearchYuqingRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.ListHotspotMessageResponse:
+    ) -> yuqing_20210126_models.AggregateSearchYuqingResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         body = {}
-        if not UtilClient.is_unset(request.hotspot_search_condition):
-            body['hotspotSearchCondition'] = request.hotspot_search_condition
+        if not UtilClient.is_unset(request.aggregate_function):
+            body['aggregateFunction'] = request.aggregate_function
+        if not UtilClient.is_unset(request.group_by_key):
+            body['groupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.group_limits):
+            body['groupLimits'] = request.group_limits
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return TeaCore.from_map(
-            yuqing_20210126_models.ListHotspotMessageResponse(),
-            await self.do_roarequest_with_form_async('ListHotspotMessage', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchHotspotDetail.json', 'json', req, runtime)
+            yuqing_20210126_models.AggregateSearchYuqingResponse(),
+            await self.do_roarequest_with_form_async('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
+        )
+
+    def create_project(
+        self,
+        request: yuqing_20210126_models.CreateProjectRequest,
+    ) -> yuqing_20210126_models.CreateProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_project_with_options(request, headers, runtime)
+
+    async def create_project_async(
+        self,
+        request: yuqing_20210126_models.CreateProjectRequest,
+    ) -> yuqing_20210126_models.CreateProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_project_with_options_async(request, headers, runtime)
+
+    def create_project_with_options(
+        self,
+        request: yuqing_20210126_models.CreateProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.CreateProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.create_user_id):
+            body['createUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.create_user_name):
+            body['createUserName'] = request.create_user_name
+        if not UtilClient.is_unset(request.project):
+            body['project'] = request.project
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.CreateProjectResponse(),
+            self.do_roarequest_with_form('CreateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/createProject.json', 'json', req, runtime)
+        )
+
+    async def create_project_with_options_async(
+        self,
+        request: yuqing_20210126_models.CreateProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.CreateProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.create_user_id):
+            body['createUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.create_user_name):
+            body['createUserName'] = request.create_user_name
+        if not UtilClient.is_unset(request.project):
+            body['project'] = request.project
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.CreateProjectResponse(),
+            await self.do_roarequest_with_form_async('CreateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/createProject.json', 'json', req, runtime)
+        )
+
+    def delete_project(
+        self,
+        request: yuqing_20210126_models.DeleteProjectRequest,
+    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_project_with_options(request, headers, runtime)
+
+    async def delete_project_async(
+        self,
+        request: yuqing_20210126_models.DeleteProjectRequest,
+    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_project_with_options_async(request, headers, runtime)
+
+    def delete_project_with_options(
+        self,
+        request: yuqing_20210126_models.DeleteProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.modified_user_id):
+            body['modifiedUserId'] = request.modified_user_id
+        if not UtilClient.is_unset(request.modified_user_name):
+            body['modifiedUserName'] = request.modified_user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.DeleteProjectResponse(),
+            self.do_roarequest_with_form('DeleteProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/deleteProject.json', 'json', req, runtime)
+        )
+
+    async def delete_project_with_options_async(
+        self,
+        request: yuqing_20210126_models.DeleteProjectRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.modified_user_id):
+            body['modifiedUserId'] = request.modified_user_id
+        if not UtilClient.is_unset(request.modified_user_name):
+            body['modifiedUserName'] = request.modified_user_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.DeleteProjectResponse(),
+            await self.do_roarequest_with_form_async('DeleteProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/deleteProject.json', 'json', req, runtime)
         )
 
     def get_analysis_component_result(
@@ -199,10 +293,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.analysis_id):
             query['analysisId'] = request.analysis_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -222,10 +316,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.analysis_id):
             query['analysisId'] = request.analysis_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -261,10 +355,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.doc_id):
             query['docId'] = request.doc_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -284,10 +378,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.doc_id):
             query['docId'] = request.doc_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -297,78 +391,342 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('GetMessageDetail', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getMessageFromHbase.json', 'json', req, runtime)
         )
 
-    def create_project(
+    def list_hotspot_message(
         self,
-        request: yuqing_20210126_models.CreateProjectRequest,
-    ) -> yuqing_20210126_models.CreateProjectResponse:
+        request: yuqing_20210126_models.ListHotspotMessageRequest,
+    ) -> yuqing_20210126_models.ListHotspotMessageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_project_with_options(request, headers, runtime)
+        return self.list_hotspot_message_with_options(request, headers, runtime)
 
-    async def create_project_async(
+    async def list_hotspot_message_async(
         self,
-        request: yuqing_20210126_models.CreateProjectRequest,
-    ) -> yuqing_20210126_models.CreateProjectResponse:
+        request: yuqing_20210126_models.ListHotspotMessageRequest,
+    ) -> yuqing_20210126_models.ListHotspotMessageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_project_with_options_async(request, headers, runtime)
+        return await self.list_hotspot_message_with_options_async(request, headers, runtime)
 
-    def create_project_with_options(
+    def list_hotspot_message_with_options(
         self,
-        request: yuqing_20210126_models.CreateProjectRequest,
+        request: yuqing_20210126_models.ListHotspotMessageRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.CreateProjectResponse:
+    ) -> yuqing_20210126_models.ListHotspotMessageResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         body = {}
-        if not UtilClient.is_unset(request.create_user_id):
-            body['createUserId'] = request.create_user_id
-        if not UtilClient.is_unset(request.create_user_name):
-            body['createUserName'] = request.create_user_name
-        if not UtilClient.is_unset(request.project):
-            body['project'] = request.project
+        if not UtilClient.is_unset(request.hotspot_search_condition):
+            body['hotspotSearchCondition'] = request.hotspot_search_condition
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return TeaCore.from_map(
-            yuqing_20210126_models.CreateProjectResponse(),
-            self.do_roarequest_with_form('CreateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/createProject.json', 'json', req, runtime)
+            yuqing_20210126_models.ListHotspotMessageResponse(),
+            self.do_roarequest_with_form('ListHotspotMessage', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchHotspotDetail.json', 'json', req, runtime)
         )
 
-    async def create_project_with_options_async(
+    async def list_hotspot_message_with_options_async(
         self,
-        request: yuqing_20210126_models.CreateProjectRequest,
+        request: yuqing_20210126_models.ListHotspotMessageRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.CreateProjectResponse:
+    ) -> yuqing_20210126_models.ListHotspotMessageResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         body = {}
-        if not UtilClient.is_unset(request.create_user_id):
-            body['createUserId'] = request.create_user_id
-        if not UtilClient.is_unset(request.create_user_name):
-            body['createUserName'] = request.create_user_name
-        if not UtilClient.is_unset(request.project):
-            body['project'] = request.project
+        if not UtilClient.is_unset(request.hotspot_search_condition):
+            body['hotspotSearchCondition'] = request.hotspot_search_condition
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         return TeaCore.from_map(
-            yuqing_20210126_models.CreateProjectResponse(),
-            await self.do_roarequest_with_form_async('CreateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/createProject.json', 'json', req, runtime)
+            yuqing_20210126_models.ListHotspotMessageResponse(),
+            await self.do_roarequest_with_form_async('ListHotspotMessage', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchHotspotDetail.json', 'json', req, runtime)
+        )
+
+    def list_yuqing_messages(
+        self,
+        request: yuqing_20210126_models.ListYuqingMessagesRequest,
+    ) -> yuqing_20210126_models.ListYuqingMessagesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_yuqing_messages_with_options(request, headers, runtime)
+
+    async def list_yuqing_messages_async(
+        self,
+        request: yuqing_20210126_models.ListYuqingMessagesRequest,
+    ) -> yuqing_20210126_models.ListYuqingMessagesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_yuqing_messages_with_options_async(request, headers, runtime)
+
+    def list_yuqing_messages_with_options(
+        self,
+        request: yuqing_20210126_models.ListYuqingMessagesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.ListYuqingMessagesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.ListYuqingMessagesResponse(),
+            self.do_roarequest_with_form('ListYuqingMessages', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
+        )
+
+    async def list_yuqing_messages_with_options_async(
+        self,
+        request: yuqing_20210126_models.ListYuqingMessagesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.ListYuqingMessagesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.ListYuqingMessagesResponse(),
+            await self.do_roarequest_with_form_async('ListYuqingMessages', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
+        )
+
+    def query_alarm_data_list(
+        self,
+        request: yuqing_20210126_models.QueryAlarmDataListRequest,
+    ) -> yuqing_20210126_models.QueryAlarmDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_alarm_data_list_with_options(request, headers, runtime)
+
+    async def query_alarm_data_list_async(
+        self,
+        request: yuqing_20210126_models.QueryAlarmDataListRequest,
+    ) -> yuqing_20210126_models.QueryAlarmDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_alarm_data_list_with_options_async(request, headers, runtime)
+
+    def query_alarm_data_list_with_options(
+        self,
+        request: yuqing_20210126_models.QueryAlarmDataListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.QueryAlarmDataListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_query):
+            query['alarmQuery'] = request.alarm_query
+        if not UtilClient.is_unset(request.order_by_key):
+            query['orderByKey'] = request.order_by_key
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.QueryAlarmDataListResponse(),
+            self.do_roarequest('QueryAlarmDataList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryAlarmDataList.json', 'json', req, runtime)
+        )
+
+    async def query_alarm_data_list_with_options_async(
+        self,
+        request: yuqing_20210126_models.QueryAlarmDataListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.QueryAlarmDataListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_query):
+            query['alarmQuery'] = request.alarm_query
+        if not UtilClient.is_unset(request.order_by_key):
+            query['orderByKey'] = request.order_by_key
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.QueryAlarmDataListResponse(),
+            await self.do_roarequest_async('QueryAlarmDataList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryAlarmDataList.json', 'json', req, runtime)
+        )
+
+    def query_analysis_component(
+        self,
+        request: yuqing_20210126_models.QueryAnalysisComponentRequest,
+    ) -> yuqing_20210126_models.QueryAnalysisComponentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_analysis_component_with_options(request, headers, runtime)
+
+    async def query_analysis_component_async(
+        self,
+        request: yuqing_20210126_models.QueryAnalysisComponentRequest,
+    ) -> yuqing_20210126_models.QueryAnalysisComponentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_analysis_component_with_options_async(request, headers, runtime)
+
+    def query_analysis_component_with_options(
+        self,
+        request: yuqing_20210126_models.QueryAnalysisComponentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.QueryAnalysisComponentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.analyse_type):
+            body['analyseType'] = request.analyse_type
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.QueryAnalysisComponentResponse(),
+            self.do_roarequest_with_form('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
+        )
+
+    async def query_analysis_component_with_options_async(
+        self,
+        request: yuqing_20210126_models.QueryAnalysisComponentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.QueryAnalysisComponentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.analyse_type):
+            body['analyseType'] = request.analyse_type
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.QueryAnalysisComponentResponse(),
+            await self.do_roarequest_with_form_async('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
+        )
+
+    def query_filter_list(
+        self,
+        request: yuqing_20210126_models.QueryFilterListRequest,
+    ) -> yuqing_20210126_models.QueryFilterListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_filter_list_with_options(request, headers, runtime)
+
+    async def query_filter_list_async(
+        self,
+        request: yuqing_20210126_models.QueryFilterListRequest,
+    ) -> yuqing_20210126_models.QueryFilterListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_filter_list_with_options_async(request, headers, runtime)
+
+    def query_filter_list_with_options(
+        self,
+        request: yuqing_20210126_models.QueryFilterListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.QueryFilterListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_id):
+            query['filterId'] = request.filter_id
+        if not UtilClient.is_unset(request.page_now):
+            query['pageNow'] = request.page_now
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.QueryFilterListResponse(),
+            self.do_roarequest('QueryFilterList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryFilterList.json', 'json', req, runtime)
+        )
+
+    async def query_filter_list_with_options_async(
+        self,
+        request: yuqing_20210126_models.QueryFilterListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.QueryFilterListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_id):
+            query['filterId'] = request.filter_id
+        if not UtilClient.is_unset(request.page_now):
+            query['pageNow'] = request.page_now
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.QueryFilterListResponse(),
+            await self.do_roarequest_async('QueryFilterList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryFilterList.json', 'json', req, runtime)
         )
 
     def query_project_list(
@@ -403,10 +761,10 @@ class Client(OpenApiClient):
             query['projectGroupId'] = request.project_group_id
         if not UtilClient.is_unset(request.project_id):
             query['projectId'] = request.project_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -432,10 +790,10 @@ class Client(OpenApiClient):
             query['projectGroupId'] = request.project_group_id
         if not UtilClient.is_unset(request.project_id):
             query['projectId'] = request.project_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -443,64 +801,6 @@ class Client(OpenApiClient):
         return TeaCore.from_map(
             yuqing_20210126_models.QueryProjectListResponse(),
             await self.do_roarequest_async('QueryProjectList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryProjectList.json', 'json', req, runtime)
-        )
-
-    def query_tag_nodes(
-        self,
-        request: yuqing_20210126_models.QueryTagNodesRequest,
-    ) -> yuqing_20210126_models.QueryTagNodesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.query_tag_nodes_with_options(request, headers, runtime)
-
-    async def query_tag_nodes_async(
-        self,
-        request: yuqing_20210126_models.QueryTagNodesRequest,
-    ) -> yuqing_20210126_models.QueryTagNodesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.query_tag_nodes_with_options_async(request, headers, runtime)
-
-    def query_tag_nodes_with_options(
-        self,
-        request: yuqing_20210126_models.QueryTagNodesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryTagNodesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.QueryTagNodesResponse(),
-            self.do_roarequest('QueryTagNodes', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryTagNodes.json', 'json', req, runtime)
-        )
-
-    async def query_tag_nodes_with_options_async(
-        self,
-        request: yuqing_20210126_models.QueryTagNodesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryTagNodesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.QueryTagNodesResponse(),
-            await self.do_roarequest_async('QueryTagNodes', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryTagNodes.json', 'json', req, runtime)
         )
 
     def query_report_notifies(
@@ -537,14 +837,14 @@ class Client(OpenApiClient):
             query['pageNow'] = request.page_now
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.subject):
-            query['subject'] = request.subject
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.subject):
+            query['subject'] = request.subject
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -572,14 +872,14 @@ class Client(OpenApiClient):
             query['pageNow'] = request.page_now
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.subject):
-            query['subject'] = request.subject
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.subject):
+            query['subject'] = request.subject
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -589,296 +889,62 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('QueryReportNotifies', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryReportNotifies.json', 'json', req, runtime)
         )
 
-    def delete_project(
+    def query_tag_nodes(
         self,
-        request: yuqing_20210126_models.DeleteProjectRequest,
-    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        request: yuqing_20210126_models.QueryTagNodesRequest,
+    ) -> yuqing_20210126_models.QueryTagNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_project_with_options(request, headers, runtime)
+        return self.query_tag_nodes_with_options(request, headers, runtime)
 
-    async def delete_project_async(
+    async def query_tag_nodes_async(
         self,
-        request: yuqing_20210126_models.DeleteProjectRequest,
-    ) -> yuqing_20210126_models.DeleteProjectResponse:
+        request: yuqing_20210126_models.QueryTagNodesRequest,
+    ) -> yuqing_20210126_models.QueryTagNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_project_with_options_async(request, headers, runtime)
+        return await self.query_tag_nodes_with_options_async(request, headers, runtime)
 
-    def delete_project_with_options(
+    def query_tag_nodes_with_options(
         self,
-        request: yuqing_20210126_models.DeleteProjectRequest,
+        request: yuqing_20210126_models.QueryTagNodesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.DeleteProjectResponse:
+    ) -> yuqing_20210126_models.QueryTagNodesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
-        body = {}
-        if not UtilClient.is_unset(request.id):
-            body['id'] = request.id
-        if not UtilClient.is_unset(request.modified_user_id):
-            body['modifiedUserId'] = request.modified_user_id
-        if not UtilClient.is_unset(request.modified_user_name):
-            body['modifiedUserName'] = request.modified_user_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.DeleteProjectResponse(),
-            self.do_roarequest_with_form('DeleteProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/deleteProject.json', 'json', req, runtime)
-        )
-
-    async def delete_project_with_options_async(
-        self,
-        request: yuqing_20210126_models.DeleteProjectRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.DeleteProjectResponse:
-        UtilClient.validate_model(request)
-        query = {}
         if not UtilClient.is_unset(request.team_hash_id):
             query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        body = {}
-        if not UtilClient.is_unset(request.id):
-            body['id'] = request.id
-        if not UtilClient.is_unset(request.modified_user_id):
-            body['modifiedUserId'] = request.modified_user_id
-        if not UtilClient.is_unset(request.modified_user_name):
-            body['modifiedUserName'] = request.modified_user_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.DeleteProjectResponse(),
-            await self.do_roarequest_with_form_async('DeleteProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/deleteProject.json', 'json', req, runtime)
-        )
-
-    def query_filter_list(
-        self,
-        request: yuqing_20210126_models.QueryFilterListRequest,
-    ) -> yuqing_20210126_models.QueryFilterListResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.query_filter_list_with_options(request, headers, runtime)
-
-    async def query_filter_list_async(
-        self,
-        request: yuqing_20210126_models.QueryFilterListRequest,
-    ) -> yuqing_20210126_models.QueryFilterListResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.query_filter_list_with_options_async(request, headers, runtime)
-
-    def query_filter_list_with_options(
-        self,
-        request: yuqing_20210126_models.QueryFilterListRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryFilterListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.page_now):
-            query['pageNow'] = request.page_now
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.filter_id):
-            query['filterId'] = request.filter_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return TeaCore.from_map(
-            yuqing_20210126_models.QueryFilterListResponse(),
-            self.do_roarequest('QueryFilterList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryFilterList.json', 'json', req, runtime)
+            yuqing_20210126_models.QueryTagNodesResponse(),
+            self.do_roarequest('QueryTagNodes', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryTagNodes.json', 'json', req, runtime)
         )
 
-    async def query_filter_list_with_options_async(
+    async def query_tag_nodes_with_options_async(
         self,
-        request: yuqing_20210126_models.QueryFilterListRequest,
+        request: yuqing_20210126_models.QueryTagNodesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryFilterListResponse:
+    ) -> yuqing_20210126_models.QueryTagNodesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.page_now):
-            query['pageNow'] = request.page_now
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.filter_id):
-            query['filterId'] = request.filter_id
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         return TeaCore.from_map(
-            yuqing_20210126_models.QueryFilterListResponse(),
-            await self.do_roarequest_async('QueryFilterList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryFilterList.json', 'json', req, runtime)
-        )
-
-    def aggregate_search_yuqing(
-        self,
-        request: yuqing_20210126_models.AggregateSearchYuqingRequest,
-    ) -> yuqing_20210126_models.AggregateSearchYuqingResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.aggregate_search_yuqing_with_options(request, headers, runtime)
-
-    async def aggregate_search_yuqing_async(
-        self,
-        request: yuqing_20210126_models.AggregateSearchYuqingRequest,
-    ) -> yuqing_20210126_models.AggregateSearchYuqingResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.aggregate_search_yuqing_with_options_async(request, headers, runtime)
-
-    def aggregate_search_yuqing_with_options(
-        self,
-        request: yuqing_20210126_models.AggregateSearchYuqingRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.AggregateSearchYuqingResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        body = {}
-        if not UtilClient.is_unset(request.search_condition):
-            body['searchCondition'] = request.search_condition
-        if not UtilClient.is_unset(request.aggregate_function):
-            body['aggregateFunction'] = request.aggregate_function
-        if not UtilClient.is_unset(request.group_by_key):
-            body['groupByKey'] = request.group_by_key
-        if not UtilClient.is_unset(request.group_limits):
-            body['groupLimits'] = request.group_limits
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.AggregateSearchYuqingResponse(),
-            self.do_roarequest_with_form('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
-        )
-
-    async def aggregate_search_yuqing_with_options_async(
-        self,
-        request: yuqing_20210126_models.AggregateSearchYuqingRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.AggregateSearchYuqingResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        body = {}
-        if not UtilClient.is_unset(request.search_condition):
-            body['searchCondition'] = request.search_condition
-        if not UtilClient.is_unset(request.aggregate_function):
-            body['aggregateFunction'] = request.aggregate_function
-        if not UtilClient.is_unset(request.group_by_key):
-            body['groupByKey'] = request.group_by_key
-        if not UtilClient.is_unset(request.group_limits):
-            body['groupLimits'] = request.group_limits
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.AggregateSearchYuqingResponse(),
-            await self.do_roarequest_with_form_async('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
-        )
-
-    def query_analysis_component(
-        self,
-        request: yuqing_20210126_models.QueryAnalysisComponentRequest,
-    ) -> yuqing_20210126_models.QueryAnalysisComponentResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.query_analysis_component_with_options(request, headers, runtime)
-
-    async def query_analysis_component_async(
-        self,
-        request: yuqing_20210126_models.QueryAnalysisComponentRequest,
-    ) -> yuqing_20210126_models.QueryAnalysisComponentResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.query_analysis_component_with_options_async(request, headers, runtime)
-
-    def query_analysis_component_with_options(
-        self,
-        request: yuqing_20210126_models.QueryAnalysisComponentRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryAnalysisComponentResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        body = {}
-        if not UtilClient.is_unset(request.analyse_type):
-            body['analyseType'] = request.analyse_type
-        if not UtilClient.is_unset(request.search_condition):
-            body['searchCondition'] = request.search_condition
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.QueryAnalysisComponentResponse(),
-            self.do_roarequest_with_form('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
-        )
-
-    async def query_analysis_component_with_options_async(
-        self,
-        request: yuqing_20210126_models.QueryAnalysisComponentRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.QueryAnalysisComponentResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        body = {}
-        if not UtilClient.is_unset(request.analyse_type):
-            body['analyseType'] = request.analyse_type
-        if not UtilClient.is_unset(request.search_condition):
-            body['searchCondition'] = request.search_condition
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.QueryAnalysisComponentResponse(),
-            await self.do_roarequest_with_form_async('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
+            yuqing_20210126_models.QueryTagNodesResponse(),
+            await self.do_roarequest_async('QueryTagNodes', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryTagNodes.json', 'json', req, runtime)
         )
 
     def update_propagation(
@@ -905,10 +971,10 @@ class Client(OpenApiClient):
     ) -> yuqing_20210126_models.UpdatePropagationResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         body = {}
         if not UtilClient.is_unset(request.weibo_urls):
             body['weiboUrls'] = request.weibo_urls
@@ -930,10 +996,10 @@ class Client(OpenApiClient):
     ) -> yuqing_20210126_models.UpdatePropagationResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
         if not UtilClient.is_unset(request.request_id):
             query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
         body = {}
         if not UtilClient.is_unset(request.weibo_urls):
             body['weiboUrls'] = request.weibo_urls
@@ -945,70 +1011,4 @@ class Client(OpenApiClient):
         return TeaCore.from_map(
             yuqing_20210126_models.UpdatePropagationResponse(),
             await self.do_roarequest_with_form_async('UpdatePropagation', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/updatePropagation.json', 'json', req, runtime)
-        )
-
-    def list_yuqing_messages(
-        self,
-        request: yuqing_20210126_models.ListYuqingMessagesRequest,
-    ) -> yuqing_20210126_models.ListYuqingMessagesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_yuqing_messages_with_options(request, headers, runtime)
-
-    async def list_yuqing_messages_async(
-        self,
-        request: yuqing_20210126_models.ListYuqingMessagesRequest,
-    ) -> yuqing_20210126_models.ListYuqingMessagesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_yuqing_messages_with_options_async(request, headers, runtime)
-
-    def list_yuqing_messages_with_options(
-        self,
-        request: yuqing_20210126_models.ListYuqingMessagesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.ListYuqingMessagesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        body = {}
-        if not UtilClient.is_unset(request.search_condition):
-            body['searchCondition'] = request.search_condition
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.ListYuqingMessagesResponse(),
-            self.do_roarequest_with_form('ListYuqingMessages', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
-        )
-
-    async def list_yuqing_messages_with_options_async(
-        self,
-        request: yuqing_20210126_models.ListYuqingMessagesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> yuqing_20210126_models.ListYuqingMessagesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.team_hash_id):
-            query['teamHashId'] = request.team_hash_id
-        if not UtilClient.is_unset(request.request_id):
-            query['requestId'] = request.request_id
-        body = {}
-        if not UtilClient.is_unset(request.search_condition):
-            body['searchCondition'] = request.search_condition
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return TeaCore.from_map(
-            yuqing_20210126_models.ListYuqingMessagesResponse(),
-            await self.do_roarequest_with_form_async('ListYuqingMessages', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
         )
