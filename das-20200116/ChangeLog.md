@@ -1,3 +1,6 @@
+2021-11-02 Version: 2.0.1
+- Fixed useless variables.
+
 2021-03-31 Version: 2.0.0
 - Generated python 2020-01-16 for DAS.
 
