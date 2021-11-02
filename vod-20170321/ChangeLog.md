@@ -1,3 +1,6 @@
+2021-11-02 Version: 2.16.0
+- Add API UploadStreamByURL.
+
 2021-09-16 Version: 2.15.13
 - Add copyright invasion detection APIs.
 
