@@ -1506,6 +1506,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_asset_summary_with_options_async(runtime)
 
+    def describe_attack_analysis_data_with_options(
+        self,
+        request: sas_20181203_models.DescribeAttackAnalysisDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAttackAnalysisDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAttackAnalysisDataResponse(),
+            self.do_rpcrequest('DescribeAttackAnalysisData', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_attack_analysis_data_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeAttackAnalysisDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAttackAnalysisDataResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAttackAnalysisDataResponse(),
+            await self.do_rpcrequest_async('DescribeAttackAnalysisData', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_attack_analysis_data(
+        self,
+        request: sas_20181203_models.DescribeAttackAnalysisDataRequest,
+    ) -> sas_20181203_models.DescribeAttackAnalysisDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_attack_analysis_data_with_options(request, runtime)
+
+    async def describe_attack_analysis_data_async(
+        self,
+        request: sas_20181203_models.DescribeAttackAnalysisDataRequest,
+    ) -> sas_20181203_models.DescribeAttackAnalysisDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_attack_analysis_data_with_options_async(request, runtime)
+
     def describe_auto_del_config_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -1940,48 +1982,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_check_warning_detail_with_options_async(request, runtime)
 
-    def describe_check_warnings_with_options(
-        self,
-        request: sas_20181203_models.DescribeCheckWarningsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeCheckWarningsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeCheckWarningsResponse(),
-            self.do_rpcrequest('DescribeCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_check_warnings_with_options_async(
-        self,
-        request: sas_20181203_models.DescribeCheckWarningsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeCheckWarningsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeCheckWarningsResponse(),
-            await self.do_rpcrequest_async('DescribeCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_check_warnings(
-        self,
-        request: sas_20181203_models.DescribeCheckWarningsRequest,
-    ) -> sas_20181203_models.DescribeCheckWarningsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_check_warnings_with_options(request, runtime)
-
-    async def describe_check_warnings_async(
-        self,
-        request: sas_20181203_models.DescribeCheckWarningsRequest,
-    ) -> sas_20181203_models.DescribeCheckWarningsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_check_warnings_with_options_async(request, runtime)
-
     def describe_check_warning_summary_with_options(
         self,
         request: sas_20181203_models.DescribeCheckWarningSummaryRequest,
@@ -2023,6 +2023,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeCheckWarningSummaryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_check_warning_summary_with_options_async(request, runtime)
+
+    def describe_check_warnings_with_options(
+        self,
+        request: sas_20181203_models.DescribeCheckWarningsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCheckWarningsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningsResponse(),
+            self.do_rpcrequest('DescribeCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_check_warnings_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeCheckWarningsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCheckWarningsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningsResponse(),
+            await self.do_rpcrequest_async('DescribeCheckWarnings', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_check_warnings(
+        self,
+        request: sas_20181203_models.DescribeCheckWarningsRequest,
+    ) -> sas_20181203_models.DescribeCheckWarningsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_check_warnings_with_options(request, runtime)
+
+    async def describe_check_warnings_async(
+        self,
+        request: sas_20181203_models.DescribeCheckWarningsRequest,
+    ) -> sas_20181203_models.DescribeCheckWarningsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_check_warnings_with_options_async(request, runtime)
 
     def describe_cloud_center_instances_with_options(
         self,
@@ -3186,6 +3228,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_honey_pot_susp_statistics_with_options_async(request, runtime)
 
+    def describe_image_fix_task_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageFixTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageFixTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageFixTaskResponse(),
+            self.do_rpcrequest('DescribeImageFixTask', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_image_fix_task_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageFixTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageFixTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageFixTaskResponse(),
+            await self.do_rpcrequest_async('DescribeImageFixTask', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_image_fix_task(
+        self,
+        request: sas_20181203_models.DescribeImageFixTaskRequest,
+    ) -> sas_20181203_models.DescribeImageFixTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_fix_task_with_options(request, runtime)
+
+    async def describe_image_fix_task_async(
+        self,
+        request: sas_20181203_models.DescribeImageFixTaskRequest,
+    ) -> sas_20181203_models.DescribeImageFixTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_fix_task_with_options_async(request, runtime)
+
     def describe_image_grouped_vul_list_with_options(
         self,
         request: sas_20181203_models.DescribeImageGroupedVulListRequest,
@@ -3227,6 +3311,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeImageGroupedVulListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_grouped_vul_list_with_options_async(request, runtime)
+
+    def describe_image_instances_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageInstancesResponse(),
+            self.do_rpcrequest('DescribeImageInstances', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_image_instances_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageInstancesResponse(),
+            await self.do_rpcrequest_async('DescribeImageInstances', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_image_instances(
+        self,
+        request: sas_20181203_models.DescribeImageInstancesRequest,
+    ) -> sas_20181203_models.DescribeImageInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_instances_with_options(request, runtime)
+
+    async def describe_image_instances_async(
+        self,
+        request: sas_20181203_models.DescribeImageInstancesRequest,
+    ) -> sas_20181203_models.DescribeImageInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_instances_with_options_async(request, runtime)
 
     def describe_image_scan_auth_count_with_options(
         self,
@@ -3367,6 +3493,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeInstallCaptchaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_install_captcha_with_options_async(request, runtime)
+
+    def describe_install_codes_with_options(
+        self,
+        request: sas_20181203_models.DescribeInstallCodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeInstallCodesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstallCodesResponse(),
+            self.do_rpcrequest('DescribeInstallCodes', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_install_codes_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeInstallCodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeInstallCodesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstallCodesResponse(),
+            await self.do_rpcrequest_async('DescribeInstallCodes', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_install_codes(
+        self,
+        request: sas_20181203_models.DescribeInstallCodesRequest,
+    ) -> sas_20181203_models.DescribeInstallCodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_install_codes_with_options(request, runtime)
+
+    async def describe_install_codes_async(
+        self,
+        request: sas_20181203_models.DescribeInstallCodesRequest,
+    ) -> sas_20181203_models.DescribeInstallCodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_install_codes_with_options_async(request, runtime)
 
     def describe_instance_anti_brute_force_rules_with_options(
         self,
@@ -4614,48 +4782,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_check_schedule_config_with_options_async(request, runtime)
 
-    def describe_security_event_operations_with_options(
-        self,
-        request: sas_20181203_models.DescribeSecurityEventOperationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeSecurityEventOperationsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeSecurityEventOperationsResponse(),
-            self.do_rpcrequest('DescribeSecurityEventOperations', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_security_event_operations_with_options_async(
-        self,
-        request: sas_20181203_models.DescribeSecurityEventOperationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeSecurityEventOperationsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeSecurityEventOperationsResponse(),
-            await self.do_rpcrequest_async('DescribeSecurityEventOperations', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_security_event_operations(
-        self,
-        request: sas_20181203_models.DescribeSecurityEventOperationsRequest,
-    ) -> sas_20181203_models.DescribeSecurityEventOperationsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_security_event_operations_with_options(request, runtime)
-
-    async def describe_security_event_operations_async(
-        self,
-        request: sas_20181203_models.DescribeSecurityEventOperationsRequest,
-    ) -> sas_20181203_models.DescribeSecurityEventOperationsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_security_event_operations_with_options_async(request, runtime)
-
     def describe_security_event_operation_status_with_options(
         self,
         request: sas_20181203_models.DescribeSecurityEventOperationStatusRequest,
@@ -4697,6 +4823,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeSecurityEventOperationStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_event_operation_status_with_options_async(request, runtime)
+
+    def describe_security_event_operations_with_options(
+        self,
+        request: sas_20181203_models.DescribeSecurityEventOperationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSecurityEventOperationsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityEventOperationsResponse(),
+            self.do_rpcrequest('DescribeSecurityEventOperations', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_security_event_operations_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSecurityEventOperationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSecurityEventOperationsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSecurityEventOperationsResponse(),
+            await self.do_rpcrequest_async('DescribeSecurityEventOperations', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_security_event_operations(
+        self,
+        request: sas_20181203_models.DescribeSecurityEventOperationsRequest,
+    ) -> sas_20181203_models.DescribeSecurityEventOperationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_security_event_operations_with_options(request, runtime)
+
+    async def describe_security_event_operations_async(
+        self,
+        request: sas_20181203_models.DescribeSecurityEventOperationsRequest,
+    ) -> sas_20181203_models.DescribeSecurityEventOperationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_security_event_operations_with_options_async(request, runtime)
 
     def describe_security_stat_info_with_options(
         self,
@@ -5257,6 +5425,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeSuspEventsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_susp_events_with_options_async(request, runtime)
+
+    def describe_task_error_log_with_options(
+        self,
+        request: sas_20181203_models.DescribeTaskErrorLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeTaskErrorLogResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeTaskErrorLogResponse(),
+            self.do_rpcrequest('DescribeTaskErrorLog', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_task_error_log_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeTaskErrorLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeTaskErrorLogResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeTaskErrorLogResponse(),
+            await self.do_rpcrequest_async('DescribeTaskErrorLog', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_task_error_log(
+        self,
+        request: sas_20181203_models.DescribeTaskErrorLogRequest,
+    ) -> sas_20181203_models.DescribeTaskErrorLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_task_error_log_with_options(request, runtime)
+
+    async def describe_task_error_log_async(
+        self,
+        request: sas_20181203_models.DescribeTaskErrorLogRequest,
+    ) -> sas_20181203_models.DescribeTaskErrorLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_task_error_log_with_options_async(request, runtime)
 
     def describe_uni_backup_database_with_options(
         self,
@@ -5860,6 +6070,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vul_details_with_options_async(request, runtime)
 
+    def describe_vul_export_info_with_options(
+        self,
+        request: sas_20181203_models.DescribeVulExportInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVulExportInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulExportInfoResponse(),
+            self.do_rpcrequest('DescribeVulExportInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_vul_export_info_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeVulExportInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVulExportInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulExportInfoResponse(),
+            await self.do_rpcrequest_async('DescribeVulExportInfo', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_vul_export_info(
+        self,
+        request: sas_20181203_models.DescribeVulExportInfoRequest,
+    ) -> sas_20181203_models.DescribeVulExportInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vul_export_info_with_options(request, runtime)
+
+    async def describe_vul_export_info_async(
+        self,
+        request: sas_20181203_models.DescribeVulExportInfoRequest,
+    ) -> sas_20181203_models.DescribeVulExportInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vul_export_info_with_options_async(request, runtime)
+
     def describe_vul_list_with_options(
         self,
         request: sas_20181203_models.DescribeVulListRequest,
@@ -6224,48 +6476,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_backup_storage_count_with_options_async(runtime)
 
-    def get_inc_iocs_with_options(
-        self,
-        request: sas_20181203_models.GetIncIOCsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.GetIncIOCsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.GetIncIOCsResponse(),
-            self.do_rpcrequest('GetIncIOCs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_inc_iocs_with_options_async(
-        self,
-        request: sas_20181203_models.GetIncIOCsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.GetIncIOCsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.GetIncIOCsResponse(),
-            await self.do_rpcrequest_async('GetIncIOCs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_inc_iocs(
-        self,
-        request: sas_20181203_models.GetIncIOCsRequest,
-    ) -> sas_20181203_models.GetIncIOCsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_inc_iocs_with_options(request, runtime)
-
-    async def get_inc_iocs_async(
-        self,
-        request: sas_20181203_models.GetIncIOCsRequest,
-    ) -> sas_20181203_models.GetIncIOCsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_inc_iocs_with_options_async(request, runtime)
-
     def get_iocs_with_options(
         self,
         request: sas_20181203_models.GetIOCsRequest,
@@ -6307,6 +6517,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetIOCsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_iocs_with_options_async(request, runtime)
+
+    def get_inc_iocs_with_options(
+        self,
+        request: sas_20181203_models.GetIncIOCsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetIncIOCsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetIncIOCsResponse(),
+            self.do_rpcrequest('GetIncIOCs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_inc_iocs_with_options_async(
+        self,
+        request: sas_20181203_models.GetIncIOCsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetIncIOCsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetIncIOCsResponse(),
+            await self.do_rpcrequest_async('GetIncIOCs', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_inc_iocs(
+        self,
+        request: sas_20181203_models.GetIncIOCsRequest,
+    ) -> sas_20181203_models.GetIncIOCsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_inc_iocs_with_options(request, runtime)
+
+    async def get_inc_iocs_async(
+        self,
+        request: sas_20181203_models.GetIncIOCsRequest,
+    ) -> sas_20181203_models.GetIncIOCsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_inc_iocs_with_options_async(request, runtime)
 
     def get_local_install_script_with_options(
         self,
