@@ -10147,6 +10147,7 @@ class SendCommentRequest(TeaModel):
         extension: Dict[str, str] = None,
         room_id: str = None,
         sender_id: str = None,
+        sender_nick: str = None,
     ):
         # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
@@ -10158,6 +10159,8 @@ class SendCommentRequest(TeaModel):
         self.room_id = room_id
         # 弹幕发送者的用户ID，最大长度不超过32个字节。
         self.sender_id = sender_id
+        # 弹幕消息发送者的昵称。
+        self.sender_nick = sender_nick
 
     def validate(self):
         pass
@@ -10178,6 +10181,8 @@ class SendCommentRequest(TeaModel):
             result['RoomId'] = self.room_id
         if self.sender_id is not None:
             result['SenderId'] = self.sender_id
+        if self.sender_nick is not None:
+            result['SenderNick'] = self.sender_nick
         return result
 
     def from_map(self, m: dict = None):
@@ -10192,6 +10197,8 @@ class SendCommentRequest(TeaModel):
             self.room_id = m.get('RoomId')
         if m.get('SenderId') is not None:
             self.sender_id = m.get('SenderId')
+        if m.get('SenderNick') is not None:
+            self.sender_nick = m.get('SenderNick')
         return self
 
 
@@ -10203,6 +10210,7 @@ class SendCommentShrinkRequest(TeaModel):
         extension_shrink: str = None,
         room_id: str = None,
         sender_id: str = None,
+        sender_nick: str = None,
     ):
         # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
@@ -10214,6 +10222,8 @@ class SendCommentShrinkRequest(TeaModel):
         self.room_id = room_id
         # 弹幕发送者的用户ID，最大长度不超过32个字节。
         self.sender_id = sender_id
+        # 弹幕消息发送者的昵称。
+        self.sender_nick = sender_nick
 
     def validate(self):
         pass
@@ -10234,6 +10244,8 @@ class SendCommentShrinkRequest(TeaModel):
             result['RoomId'] = self.room_id
         if self.sender_id is not None:
             result['SenderId'] = self.sender_id
+        if self.sender_nick is not None:
+            result['SenderNick'] = self.sender_nick
         return result
 
     def from_map(self, m: dict = None):
@@ -10248,6 +10260,8 @@ class SendCommentShrinkRequest(TeaModel):
             self.room_id = m.get('RoomId')
         if m.get('SenderId') is not None:
             self.sender_id = m.get('SenderId')
+        if m.get('SenderNick') is not None:
+            self.sender_nick = m.get('SenderNick')
         return self
 
 

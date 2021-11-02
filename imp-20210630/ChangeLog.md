@@ -1,3 +1,6 @@
+2021-11-02 Version: 2.8.4
+- SendComment API support SenderNick.
+
 2021-10-27 Version: 2.8.3
 - Live features.
 
