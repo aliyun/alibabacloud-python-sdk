@@ -808,6 +808,240 @@ class DeleteRuleResponse(TeaModel):
         return self
 
 
+class DescribeCategoryTemplateRuleListRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        custom_type: int = None,
+        lang: str = None,
+        page_size: int = None,
+        risk_level_id: int = None,
+        status: int = None,
+        template_id: int = None,
+    ):
+        self.current_page = current_page
+        self.custom_type = custom_type
+        self.lang = lang
+        self.page_size = page_size
+        self.risk_level_id = risk_level_id
+        self.status = status
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.custom_type is not None:
+            result['CustomType'] = self.custom_type
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('CustomType') is not None:
+            self.custom_type = m.get('CustomType')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeCategoryTemplateRuleListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        custom_type: int = None,
+        description: str = None,
+        id: int = None,
+        identification_rule_ids: str = None,
+        identification_scope: str = None,
+        name: str = None,
+        risk_level_id: int = None,
+        status: int = None,
+        template_id: int = None,
+    ):
+        self.custom_type = custom_type
+        self.description = description
+        self.id = id
+        self.identification_rule_ids = identification_rule_ids
+        self.identification_scope = identification_scope
+        self.name = name
+        self.risk_level_id = risk_level_id
+        self.status = status
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_type is not None:
+            result['CustomType'] = self.custom_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.identification_rule_ids is not None:
+            result['IdentificationRuleIds'] = self.identification_rule_ids
+        if self.identification_scope is not None:
+            result['IdentificationScope'] = self.identification_scope
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomType') is not None:
+            self.custom_type = m.get('CustomType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdentificationRuleIds') is not None:
+            self.identification_rule_ids = m.get('IdentificationRuleIds')
+        if m.get('IdentificationScope') is not None:
+            self.identification_scope = m.get('IdentificationScope')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeCategoryTemplateRuleListResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeCategoryTemplateRuleListResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeCategoryTemplateRuleListResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCategoryTemplateRuleListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeCategoryTemplateRuleListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeCategoryTemplateRuleListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeColumnsRequest(TeaModel):
     def __init__(
         self,
@@ -911,44 +1145,44 @@ class DescribeColumnsResponseBodyItems(TeaModel):
     def __init__(
         self,
         creation_time: int = None,
-        table_name: str = None,
         data_type: str = None,
-        odps_risk_level_value: int = None,
-        instance_id: int = None,
-        risk_level_id: int = None,
-        rule_name: str = None,
-        rule_id: int = None,
-        sensitive: bool = None,
-        sens_level_name: str = None,
-        instance_name: str = None,
-        risk_level_name: str = None,
-        odps_risk_level_name: str = None,
-        name: str = None,
-        table_id: int = None,
         id: str = None,
+        instance_id: int = None,
+        instance_name: str = None,
+        name: str = None,
+        odps_risk_level_name: str = None,
+        odps_risk_level_value: int = None,
         product_code: str = None,
-        revision_status: int = None,
         revision_id: int = None,
+        revision_status: int = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        rule_id: int = None,
+        rule_name: str = None,
+        sens_level_name: str = None,
+        sensitive: bool = None,
+        table_id: int = None,
+        table_name: str = None,
     ):
         self.creation_time = creation_time
-        self.table_name = table_name
         self.data_type = data_type
-        self.odps_risk_level_value = odps_risk_level_value
-        self.instance_id = instance_id
-        self.risk_level_id = risk_level_id
-        self.rule_name = rule_name
-        self.rule_id = rule_id
-        self.sensitive = sensitive
-        self.sens_level_name = sens_level_name
-        self.instance_name = instance_name
-        self.risk_level_name = risk_level_name
-        self.odps_risk_level_name = odps_risk_level_name
-        self.name = name
-        self.table_id = table_id
         self.id = id
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.name = name
+        self.odps_risk_level_name = odps_risk_level_name
+        self.odps_risk_level_value = odps_risk_level_value
         self.product_code = product_code
-        self.revision_status = revision_status
         self.revision_id = revision_id
+        self.revision_status = revision_status
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.sens_level_name = sens_level_name
+        self.sensitive = sensitive
+        self.table_id = table_id
+        self.table_name = table_name
 
     def validate(self):
         pass
@@ -961,84 +1195,84 @@ class DescribeColumnsResponseBodyItems(TeaModel):
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
-        if self.table_name is not None:
-            result['TableName'] = self.table_name
         if self.data_type is not None:
             result['DataType'] = self.data_type
-        if self.odps_risk_level_value is not None:
-            result['OdpsRiskLevelValue'] = self.odps_risk_level_value
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.risk_level_id is not None:
-            result['RiskLevelId'] = self.risk_level_id
-        if self.rule_name is not None:
-            result['RuleName'] = self.rule_name
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
-        if self.sensitive is not None:
-            result['Sensitive'] = self.sensitive
-        if self.sens_level_name is not None:
-            result['SensLevelName'] = self.sens_level_name
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
-        if self.risk_level_name is not None:
-            result['RiskLevelName'] = self.risk_level_name
-        if self.odps_risk_level_name is not None:
-            result['OdpsRiskLevelName'] = self.odps_risk_level_name
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.table_id is not None:
-            result['TableId'] = self.table_id
         if self.id is not None:
             result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.odps_risk_level_name is not None:
+            result['OdpsRiskLevelName'] = self.odps_risk_level_name
+        if self.odps_risk_level_value is not None:
+            result['OdpsRiskLevelValue'] = self.odps_risk_level_value
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
-        if self.revision_status is not None:
-            result['RevisionStatus'] = self.revision_status
         if self.revision_id is not None:
             result['RevisionId'] = self.revision_id
+        if self.revision_status is not None:
+            result['RevisionStatus'] = self.revision_status
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sens_level_name is not None:
+            result['SensLevelName'] = self.sens_level_name
+        if self.sensitive is not None:
+            result['Sensitive'] = self.sensitive
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
-        if m.get('TableName') is not None:
-            self.table_name = m.get('TableName')
         if m.get('DataType') is not None:
             self.data_type = m.get('DataType')
-        if m.get('OdpsRiskLevelValue') is not None:
-            self.odps_risk_level_value = m.get('OdpsRiskLevelValue')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('RiskLevelId') is not None:
-            self.risk_level_id = m.get('RiskLevelId')
-        if m.get('RuleName') is not None:
-            self.rule_name = m.get('RuleName')
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
-        if m.get('Sensitive') is not None:
-            self.sensitive = m.get('Sensitive')
-        if m.get('SensLevelName') is not None:
-            self.sens_level_name = m.get('SensLevelName')
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
-        if m.get('RiskLevelName') is not None:
-            self.risk_level_name = m.get('RiskLevelName')
-        if m.get('OdpsRiskLevelName') is not None:
-            self.odps_risk_level_name = m.get('OdpsRiskLevelName')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('TableId') is not None:
-            self.table_id = m.get('TableId')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OdpsRiskLevelName') is not None:
+            self.odps_risk_level_name = m.get('OdpsRiskLevelName')
+        if m.get('OdpsRiskLevelValue') is not None:
+            self.odps_risk_level_value = m.get('OdpsRiskLevelValue')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
-        if m.get('RevisionStatus') is not None:
-            self.revision_status = m.get('RevisionStatus')
         if m.get('RevisionId') is not None:
             self.revision_id = m.get('RevisionId')
+        if m.get('RevisionStatus') is not None:
+            self.revision_status = m.get('RevisionStatus')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SensLevelName') is not None:
+            self.sens_level_name = m.get('SensLevelName')
+        if m.get('Sensitive') is not None:
+            self.sensitive = m.get('Sensitive')
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
         return self
 
 
@@ -1169,16 +1403,16 @@ class DescribeConfigsResponseBodyConfigList(TeaModel):
     def __init__(
         self,
         code: str = None,
-        value: str = None,
         default_value: str = None,
         description: str = None,
         id: int = None,
+        value: str = None,
     ):
         self.code = code
-        self.value = value
         self.default_value = default_value
         self.description = description
         self.id = id
+        self.value = value
 
     def validate(self):
         pass
@@ -1191,28 +1425,28 @@ class DescribeConfigsResponseBodyConfigList(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        if self.value is not None:
-            result['Value'] = self.value
         if self.default_value is not None:
             result['DefaultValue'] = self.default_value
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
             result['Id'] = self.id
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         if m.get('DefaultValue') is not None:
             self.default_value = m.get('DefaultValue')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1363,42 +1597,42 @@ class DescribeDataAssetsResponseBodyItems(TeaModel):
         acl: str = None,
         creation_time: int = None,
         data_type: str = None,
-        owner: str = None,
-        sensitive_ratio: str = None,
-        protection: bool = None,
+        id: str = None,
         labelsec: bool = None,
-        total_count: int = None,
+        name: str = None,
+        object_key: str = None,
+        odps_risk_level_name: str = None,
+        owner: str = None,
+        product_code: str = None,
+        product_id: str = None,
+        protection: bool = None,
         risk_level_id: int = None,
+        risk_level_name: str = None,
         rule_name: str = None,
         sensitive: bool = None,
-        object_key: str = None,
-        risk_level_name: str = None,
-        odps_risk_level_name: str = None,
-        product_id: str = None,
-        name: str = None,
         sensitive_count: int = None,
-        id: str = None,
-        product_code: str = None,
+        sensitive_ratio: str = None,
+        total_count: int = None,
     ):
         self.acl = acl
         self.creation_time = creation_time
         self.data_type = data_type
-        self.owner = owner
-        self.sensitive_ratio = sensitive_ratio
-        self.protection = protection
+        self.id = id
         self.labelsec = labelsec
-        self.total_count = total_count
+        self.name = name
+        self.object_key = object_key
+        self.odps_risk_level_name = odps_risk_level_name
+        self.owner = owner
+        self.product_code = product_code
+        self.product_id = product_id
+        self.protection = protection
         self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
         self.rule_name = rule_name
         self.sensitive = sensitive
-        self.object_key = object_key
-        self.risk_level_name = risk_level_name
-        self.odps_risk_level_name = odps_risk_level_name
-        self.product_id = product_id
-        self.name = name
         self.sensitive_count = sensitive_count
-        self.id = id
-        self.product_code = product_code
+        self.sensitive_ratio = sensitive_ratio
+        self.total_count = total_count
 
     def validate(self):
         pass
@@ -1415,38 +1649,38 @@ class DescribeDataAssetsResponseBodyItems(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.data_type is not None:
             result['DataType'] = self.data_type
-        if self.owner is not None:
-            result['Owner'] = self.owner
-        if self.sensitive_ratio is not None:
-            result['SensitiveRatio'] = self.sensitive_ratio
-        if self.protection is not None:
-            result['Protection'] = self.protection
+        if self.id is not None:
+            result['Id'] = self.id
         if self.labelsec is not None:
             result['Labelsec'] = self.labelsec
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.object_key is not None:
+            result['ObjectKey'] = self.object_key
+        if self.odps_risk_level_name is not None:
+            result['OdpsRiskLevelName'] = self.odps_risk_level_name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.protection is not None:
+            result['Protection'] = self.protection
         if self.risk_level_id is not None:
             result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.sensitive is not None:
             result['Sensitive'] = self.sensitive
-        if self.object_key is not None:
-            result['ObjectKey'] = self.object_key
-        if self.risk_level_name is not None:
-            result['RiskLevelName'] = self.risk_level_name
-        if self.odps_risk_level_name is not None:
-            result['OdpsRiskLevelName'] = self.odps_risk_level_name
-        if self.product_id is not None:
-            result['ProductId'] = self.product_id
-        if self.name is not None:
-            result['Name'] = self.name
         if self.sensitive_count is not None:
             result['SensitiveCount'] = self.sensitive_count
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.product_code is not None:
-            result['ProductCode'] = self.product_code
+        if self.sensitive_ratio is not None:
+            result['SensitiveRatio'] = self.sensitive_ratio
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -1457,38 +1691,38 @@ class DescribeDataAssetsResponseBodyItems(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('DataType') is not None:
             self.data_type = m.get('DataType')
-        if m.get('Owner') is not None:
-            self.owner = m.get('Owner')
-        if m.get('SensitiveRatio') is not None:
-            self.sensitive_ratio = m.get('SensitiveRatio')
-        if m.get('Protection') is not None:
-            self.protection = m.get('Protection')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('Labelsec') is not None:
             self.labelsec = m.get('Labelsec')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ObjectKey') is not None:
+            self.object_key = m.get('ObjectKey')
+        if m.get('OdpsRiskLevelName') is not None:
+            self.odps_risk_level_name = m.get('OdpsRiskLevelName')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('Protection') is not None:
+            self.protection = m.get('Protection')
         if m.get('RiskLevelId') is not None:
             self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('Sensitive') is not None:
             self.sensitive = m.get('Sensitive')
-        if m.get('ObjectKey') is not None:
-            self.object_key = m.get('ObjectKey')
-        if m.get('RiskLevelName') is not None:
-            self.risk_level_name = m.get('RiskLevelName')
-        if m.get('OdpsRiskLevelName') is not None:
-            self.odps_risk_level_name = m.get('OdpsRiskLevelName')
-        if m.get('ProductId') is not None:
-            self.product_id = m.get('ProductId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('SensitiveCount') is not None:
             self.sensitive_count = m.get('SensitiveCount')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('ProductCode') is not None:
-            self.product_code = m.get('ProductCode')
+        if m.get('SensitiveRatio') is not None:
+            self.sensitive_ratio = m.get('SensitiveRatio')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -1828,29 +2062,29 @@ class DescribeDataLimitSetRequest(TeaModel):
 class DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList(TeaModel):
     def __init__(
         self,
-        local_name: str = None,
         check_status: int = None,
-        connector: str = None,
         check_status_name: str = None,
-        region_id: str = None,
-        parent_id: str = None,
-        resource_type: int = None,
+        connector: str = None,
         gmt_create: int = None,
+        id: int = None,
+        local_name: str = None,
+        parent_id: str = None,
+        region_id: str = None,
+        resource_type: int = None,
         resource_type_code: str = None,
         user_name: str = None,
-        id: int = None,
     ):
-        self.local_name = local_name
         self.check_status = check_status
-        self.connector = connector
         self.check_status_name = check_status_name
-        self.region_id = region_id
-        self.parent_id = parent_id
-        self.resource_type = resource_type
+        self.connector = connector
         self.gmt_create = gmt_create
+        self.id = id
+        self.local_name = local_name
+        self.parent_id = parent_id
+        self.region_id = region_id
+        self.resource_type = resource_type
         self.resource_type_code = resource_type_code
         self.user_name = user_name
-        self.id = id
 
     def validate(self):
         pass
@@ -1861,65 +2095,65 @@ class DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList(TeaModel):
             return _map
 
         result = dict()
-        if self.local_name is not None:
-            result['LocalName'] = self.local_name
         if self.check_status is not None:
             result['CheckStatus'] = self.check_status
-        if self.connector is not None:
-            result['Connector'] = self.connector
         if self.check_status_name is not None:
             result['CheckStatusName'] = self.check_status_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.parent_id is not None:
-            result['ParentId'] = self.parent_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
+        if self.connector is not None:
+            result['Connector'] = self.connector
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.parent_id is not None:
+            result['ParentId'] = self.parent_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.resource_type_code is not None:
             result['ResourceTypeCode'] = self.resource_type_code
         if self.user_name is not None:
             result['UserName'] = self.user_name
-        if self.id is not None:
-            result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LocalName') is not None:
-            self.local_name = m.get('LocalName')
         if m.get('CheckStatus') is not None:
             self.check_status = m.get('CheckStatus')
-        if m.get('Connector') is not None:
-            self.connector = m.get('Connector')
         if m.get('CheckStatusName') is not None:
             self.check_status_name = m.get('CheckStatusName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ParentId') is not None:
-            self.parent_id = m.get('ParentId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
+        if m.get('Connector') is not None:
+            self.connector = m.get('Connector')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('ParentId') is not None:
+            self.parent_id = m.get('ParentId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('ResourceTypeCode') is not None:
             self.resource_type_code = m.get('ResourceTypeCode')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         return self
 
 
 class DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         bucket_name: str = None,
+        region_id: str = None,
     ):
-        self.region_id = region_id
         self.bucket_name = bucket_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1930,29 +2164,29 @@ class DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.bucket_name is not None:
             result['BucketName'] = self.bucket_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('BucketName') is not None:
             self.bucket_name = m.get('BucketName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
 class DescribeDataLimitSetResponseBodyDataLimitSetRegionList(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         local_name: str = None,
+        region_id: str = None,
     ):
-        self.region_id = region_id
         self.local_name = local_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1963,18 +2197,18 @@ class DescribeDataLimitSetResponseBodyDataLimitSetRegionList(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.local_name is not None:
             result['LocalName'] = self.local_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('LocalName') is not None:
             self.local_name = m.get('LocalName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2235,79 +2469,79 @@ class DescribeDataLimitsRequest(TeaModel):
 class DescribeDataLimitsResponseBodyItems(TeaModel):
     def __init__(
         self,
-        support_event: bool = None,
-        error_message: str = None,
-        check_status: int = None,
-        local_name: str = None,
-        tenant_name: str = None,
-        next_start_time: int = None,
-        port: int = None,
-        check_status_name: str = None,
-        sampling_size: int = None,
-        parent_id: str = None,
-        datamask_status: int = None,
-        process_total_count: int = None,
-        resource_type: int = None,
-        error_code: str = None,
-        ocr_status: int = None,
-        log_store_day: int = None,
-        event_status: int = None,
-        support_scan: bool = None,
-        last_finished_time: int = None,
-        user_name: str = None,
         audit_status: int = None,
-        support_ocr: bool = None,
-        engine_type: str = None,
-        instance_id: str = None,
-        total_count: int = None,
-        instance_description: str = None,
-        db_version: str = None,
-        region_id: str = None,
-        gmt_create: int = None,
-        support_audit: bool = None,
         auto_scan: int = None,
-        resource_type_code: str = None,
-        support_datamask: bool = None,
-        process_status: int = None,
-        id: int = None,
+        check_status: int = None,
+        check_status_name: str = None,
+        datamask_status: int = None,
+        db_version: str = None,
         enable: int = None,
+        engine_type: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        event_status: int = None,
+        gmt_create: int = None,
+        id: int = None,
+        instance_description: str = None,
+        instance_id: str = None,
+        last_finished_time: int = None,
+        local_name: str = None,
+        log_store_day: int = None,
+        next_start_time: int = None,
+        ocr_status: int = None,
+        parent_id: str = None,
+        port: int = None,
+        process_status: int = None,
+        process_total_count: int = None,
+        region_id: str = None,
+        resource_type: int = None,
+        resource_type_code: str = None,
+        sampling_size: int = None,
+        support_audit: bool = None,
+        support_datamask: bool = None,
+        support_event: bool = None,
+        support_ocr: bool = None,
+        support_scan: bool = None,
+        tenant_name: str = None,
+        total_count: int = None,
+        user_name: str = None,
     ):
-        self.support_event = support_event
-        self.error_message = error_message
-        self.check_status = check_status
-        self.local_name = local_name
-        self.tenant_name = tenant_name
-        self.next_start_time = next_start_time
-        self.port = port
-        self.check_status_name = check_status_name
-        self.sampling_size = sampling_size
-        self.parent_id = parent_id
-        self.datamask_status = datamask_status
-        self.process_total_count = process_total_count
-        self.resource_type = resource_type
-        self.error_code = error_code
-        self.ocr_status = ocr_status
-        self.log_store_day = log_store_day
-        self.event_status = event_status
-        self.support_scan = support_scan
-        self.last_finished_time = last_finished_time
-        self.user_name = user_name
         self.audit_status = audit_status
-        self.support_ocr = support_ocr
-        self.engine_type = engine_type
-        self.instance_id = instance_id
-        self.total_count = total_count
-        self.instance_description = instance_description
-        self.db_version = db_version
-        self.region_id = region_id
-        self.gmt_create = gmt_create
-        self.support_audit = support_audit
         self.auto_scan = auto_scan
-        self.resource_type_code = resource_type_code
-        self.support_datamask = support_datamask
-        self.process_status = process_status
-        self.id = id
+        self.check_status = check_status
+        self.check_status_name = check_status_name
+        self.datamask_status = datamask_status
+        self.db_version = db_version
         self.enable = enable
+        self.engine_type = engine_type
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event_status = event_status
+        self.gmt_create = gmt_create
+        self.id = id
+        self.instance_description = instance_description
+        self.instance_id = instance_id
+        self.last_finished_time = last_finished_time
+        self.local_name = local_name
+        self.log_store_day = log_store_day
+        self.next_start_time = next_start_time
+        self.ocr_status = ocr_status
+        self.parent_id = parent_id
+        self.port = port
+        self.process_status = process_status
+        self.process_total_count = process_total_count
+        self.region_id = region_id
+        self.resource_type = resource_type
+        self.resource_type_code = resource_type_code
+        self.sampling_size = sampling_size
+        self.support_audit = support_audit
+        self.support_datamask = support_datamask
+        self.support_event = support_event
+        self.support_ocr = support_ocr
+        self.support_scan = support_scan
+        self.tenant_name = tenant_name
+        self.total_count = total_count
+        self.user_name = user_name
 
     def validate(self):
         pass
@@ -2318,154 +2552,154 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
             return _map
 
         result = dict()
-        if self.support_event is not None:
-            result['SupportEvent'] = self.support_event
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.check_status is not None:
-            result['CheckStatus'] = self.check_status
-        if self.local_name is not None:
-            result['LocalName'] = self.local_name
-        if self.tenant_name is not None:
-            result['TenantName'] = self.tenant_name
-        if self.next_start_time is not None:
-            result['NextStartTime'] = self.next_start_time
-        if self.port is not None:
-            result['Port'] = self.port
-        if self.check_status_name is not None:
-            result['CheckStatusName'] = self.check_status_name
-        if self.sampling_size is not None:
-            result['SamplingSize'] = self.sampling_size
-        if self.parent_id is not None:
-            result['ParentId'] = self.parent_id
-        if self.datamask_status is not None:
-            result['DatamaskStatus'] = self.datamask_status
-        if self.process_total_count is not None:
-            result['ProcessTotalCount'] = self.process_total_count
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.ocr_status is not None:
-            result['OcrStatus'] = self.ocr_status
-        if self.log_store_day is not None:
-            result['LogStoreDay'] = self.log_store_day
-        if self.event_status is not None:
-            result['EventStatus'] = self.event_status
-        if self.support_scan is not None:
-            result['SupportScan'] = self.support_scan
-        if self.last_finished_time is not None:
-            result['LastFinishedTime'] = self.last_finished_time
-        if self.user_name is not None:
-            result['UserName'] = self.user_name
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
-        if self.support_ocr is not None:
-            result['SupportOcr'] = self.support_ocr
-        if self.engine_type is not None:
-            result['EngineType'] = self.engine_type
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        if self.instance_description is not None:
-            result['InstanceDescription'] = self.instance_description
-        if self.db_version is not None:
-            result['DbVersion'] = self.db_version
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.support_audit is not None:
-            result['SupportAudit'] = self.support_audit
         if self.auto_scan is not None:
             result['AutoScan'] = self.auto_scan
-        if self.resource_type_code is not None:
-            result['ResourceTypeCode'] = self.resource_type_code
-        if self.support_datamask is not None:
-            result['SupportDatamask'] = self.support_datamask
-        if self.process_status is not None:
-            result['ProcessStatus'] = self.process_status
-        if self.id is not None:
-            result['Id'] = self.id
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.check_status_name is not None:
+            result['CheckStatusName'] = self.check_status_name
+        if self.datamask_status is not None:
+            result['DatamaskStatus'] = self.datamask_status
+        if self.db_version is not None:
+            result['DbVersion'] = self.db_version
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event_status is not None:
+            result['EventStatus'] = self.event_status
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_description is not None:
+            result['InstanceDescription'] = self.instance_description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.last_finished_time is not None:
+            result['LastFinishedTime'] = self.last_finished_time
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.log_store_day is not None:
+            result['LogStoreDay'] = self.log_store_day
+        if self.next_start_time is not None:
+            result['NextStartTime'] = self.next_start_time
+        if self.ocr_status is not None:
+            result['OcrStatus'] = self.ocr_status
+        if self.parent_id is not None:
+            result['ParentId'] = self.parent_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.process_status is not None:
+            result['ProcessStatus'] = self.process_status
+        if self.process_total_count is not None:
+            result['ProcessTotalCount'] = self.process_total_count
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.resource_type_code is not None:
+            result['ResourceTypeCode'] = self.resource_type_code
+        if self.sampling_size is not None:
+            result['SamplingSize'] = self.sampling_size
+        if self.support_audit is not None:
+            result['SupportAudit'] = self.support_audit
+        if self.support_datamask is not None:
+            result['SupportDatamask'] = self.support_datamask
+        if self.support_event is not None:
+            result['SupportEvent'] = self.support_event
+        if self.support_ocr is not None:
+            result['SupportOcr'] = self.support_ocr
+        if self.support_scan is not None:
+            result['SupportScan'] = self.support_scan
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SupportEvent') is not None:
-            self.support_event = m.get('SupportEvent')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('CheckStatus') is not None:
-            self.check_status = m.get('CheckStatus')
-        if m.get('LocalName') is not None:
-            self.local_name = m.get('LocalName')
-        if m.get('TenantName') is not None:
-            self.tenant_name = m.get('TenantName')
-        if m.get('NextStartTime') is not None:
-            self.next_start_time = m.get('NextStartTime')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
-        if m.get('CheckStatusName') is not None:
-            self.check_status_name = m.get('CheckStatusName')
-        if m.get('SamplingSize') is not None:
-            self.sampling_size = m.get('SamplingSize')
-        if m.get('ParentId') is not None:
-            self.parent_id = m.get('ParentId')
-        if m.get('DatamaskStatus') is not None:
-            self.datamask_status = m.get('DatamaskStatus')
-        if m.get('ProcessTotalCount') is not None:
-            self.process_total_count = m.get('ProcessTotalCount')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('OcrStatus') is not None:
-            self.ocr_status = m.get('OcrStatus')
-        if m.get('LogStoreDay') is not None:
-            self.log_store_day = m.get('LogStoreDay')
-        if m.get('EventStatus') is not None:
-            self.event_status = m.get('EventStatus')
-        if m.get('SupportScan') is not None:
-            self.support_scan = m.get('SupportScan')
-        if m.get('LastFinishedTime') is not None:
-            self.last_finished_time = m.get('LastFinishedTime')
-        if m.get('UserName') is not None:
-            self.user_name = m.get('UserName')
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
-        if m.get('SupportOcr') is not None:
-            self.support_ocr = m.get('SupportOcr')
-        if m.get('EngineType') is not None:
-            self.engine_type = m.get('EngineType')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        if m.get('InstanceDescription') is not None:
-            self.instance_description = m.get('InstanceDescription')
-        if m.get('DbVersion') is not None:
-            self.db_version = m.get('DbVersion')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('SupportAudit') is not None:
-            self.support_audit = m.get('SupportAudit')
         if m.get('AutoScan') is not None:
             self.auto_scan = m.get('AutoScan')
-        if m.get('ResourceTypeCode') is not None:
-            self.resource_type_code = m.get('ResourceTypeCode')
-        if m.get('SupportDatamask') is not None:
-            self.support_datamask = m.get('SupportDatamask')
-        if m.get('ProcessStatus') is not None:
-            self.process_status = m.get('ProcessStatus')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('CheckStatusName') is not None:
+            self.check_status_name = m.get('CheckStatusName')
+        if m.get('DatamaskStatus') is not None:
+            self.datamask_status = m.get('DatamaskStatus')
+        if m.get('DbVersion') is not None:
+            self.db_version = m.get('DbVersion')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('EventStatus') is not None:
+            self.event_status = m.get('EventStatus')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceDescription') is not None:
+            self.instance_description = m.get('InstanceDescription')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LastFinishedTime') is not None:
+            self.last_finished_time = m.get('LastFinishedTime')
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('LogStoreDay') is not None:
+            self.log_store_day = m.get('LogStoreDay')
+        if m.get('NextStartTime') is not None:
+            self.next_start_time = m.get('NextStartTime')
+        if m.get('OcrStatus') is not None:
+            self.ocr_status = m.get('OcrStatus')
+        if m.get('ParentId') is not None:
+            self.parent_id = m.get('ParentId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ProcessStatus') is not None:
+            self.process_status = m.get('ProcessStatus')
+        if m.get('ProcessTotalCount') is not None:
+            self.process_total_count = m.get('ProcessTotalCount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ResourceTypeCode') is not None:
+            self.resource_type_code = m.get('ResourceTypeCode')
+        if m.get('SamplingSize') is not None:
+            self.sampling_size = m.get('SamplingSize')
+        if m.get('SupportAudit') is not None:
+            self.support_audit = m.get('SupportAudit')
+        if m.get('SupportDatamask') is not None:
+            self.support_datamask = m.get('SupportDatamask')
+        if m.get('SupportEvent') is not None:
+            self.support_event = m.get('SupportEvent')
+        if m.get('SupportOcr') is not None:
+            self.support_ocr = m.get('SupportOcr')
+        if m.get('SupportScan') is not None:
+            self.support_scan = m.get('SupportScan')
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         return self
 
 
@@ -2655,45 +2889,45 @@ class DescribeDataMaskingRunHistoryRequest(TeaModel):
 class DescribeDataMaskingRunHistoryResponseBodyItems(TeaModel):
     def __init__(
         self,
-        status: int = None,
-        type: int = None,
-        src_type: int = None,
-        src_table_name: str = None,
-        masking_count: int = None,
-        percentage: int = None,
-        dst_type: int = None,
-        fail_msg: str = None,
-        fail_code: str = None,
         conflict_count: int = None,
+        dst_type: int = None,
         dst_type_code: str = None,
         end_time: int = None,
-        run_index: int = None,
-        start_time: int = None,
-        has_sub_process: int = None,
+        fail_code: str = None,
+        fail_msg: str = None,
         has_download_file: int = None,
-        task_id: str = None,
-        src_type_code: str = None,
+        has_sub_process: int = None,
         id: int = None,
+        masking_count: int = None,
+        percentage: int = None,
+        run_index: int = None,
+        src_table_name: str = None,
+        src_type: int = None,
+        src_type_code: str = None,
+        start_time: int = None,
+        status: int = None,
+        task_id: str = None,
+        type: int = None,
     ):
-        self.status = status
-        self.type = type
-        self.src_type = src_type
-        self.src_table_name = src_table_name
-        self.masking_count = masking_count
-        self.percentage = percentage
-        self.dst_type = dst_type
-        self.fail_msg = fail_msg
-        self.fail_code = fail_code
         self.conflict_count = conflict_count
+        self.dst_type = dst_type
         self.dst_type_code = dst_type_code
         self.end_time = end_time
-        self.run_index = run_index
-        self.start_time = start_time
-        self.has_sub_process = has_sub_process
+        self.fail_code = fail_code
+        self.fail_msg = fail_msg
         self.has_download_file = has_download_file
-        self.task_id = task_id
-        self.src_type_code = src_type_code
+        self.has_sub_process = has_sub_process
         self.id = id
+        self.masking_count = masking_count
+        self.percentage = percentage
+        self.run_index = run_index
+        self.src_table_name = src_table_name
+        self.src_type = src_type
+        self.src_type_code = src_type_code
+        self.start_time = start_time
+        self.status = status
+        self.task_id = task_id
+        self.type = type
 
     def validate(self):
         pass
@@ -2704,86 +2938,86 @@ class DescribeDataMaskingRunHistoryResponseBodyItems(TeaModel):
             return _map
 
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.src_type is not None:
-            result['SrcType'] = self.src_type
-        if self.src_table_name is not None:
-            result['SrcTableName'] = self.src_table_name
-        if self.masking_count is not None:
-            result['MaskingCount'] = self.masking_count
-        if self.percentage is not None:
-            result['Percentage'] = self.percentage
-        if self.dst_type is not None:
-            result['DstType'] = self.dst_type
-        if self.fail_msg is not None:
-            result['FailMsg'] = self.fail_msg
-        if self.fail_code is not None:
-            result['FailCode'] = self.fail_code
         if self.conflict_count is not None:
             result['ConflictCount'] = self.conflict_count
+        if self.dst_type is not None:
+            result['DstType'] = self.dst_type
         if self.dst_type_code is not None:
             result['DstTypeCode'] = self.dst_type_code
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.run_index is not None:
-            result['RunIndex'] = self.run_index
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.has_sub_process is not None:
-            result['HasSubProcess'] = self.has_sub_process
+        if self.fail_code is not None:
+            result['FailCode'] = self.fail_code
+        if self.fail_msg is not None:
+            result['FailMsg'] = self.fail_msg
         if self.has_download_file is not None:
             result['HasDownloadFile'] = self.has_download_file
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        if self.src_type_code is not None:
-            result['SrcTypeCode'] = self.src_type_code
+        if self.has_sub_process is not None:
+            result['HasSubProcess'] = self.has_sub_process
         if self.id is not None:
             result['Id'] = self.id
+        if self.masking_count is not None:
+            result['MaskingCount'] = self.masking_count
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.run_index is not None:
+            result['RunIndex'] = self.run_index
+        if self.src_table_name is not None:
+            result['SrcTableName'] = self.src_table_name
+        if self.src_type is not None:
+            result['SrcType'] = self.src_type
+        if self.src_type_code is not None:
+            result['SrcTypeCode'] = self.src_type_code
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('SrcType') is not None:
-            self.src_type = m.get('SrcType')
-        if m.get('SrcTableName') is not None:
-            self.src_table_name = m.get('SrcTableName')
-        if m.get('MaskingCount') is not None:
-            self.masking_count = m.get('MaskingCount')
-        if m.get('Percentage') is not None:
-            self.percentage = m.get('Percentage')
-        if m.get('DstType') is not None:
-            self.dst_type = m.get('DstType')
-        if m.get('FailMsg') is not None:
-            self.fail_msg = m.get('FailMsg')
-        if m.get('FailCode') is not None:
-            self.fail_code = m.get('FailCode')
         if m.get('ConflictCount') is not None:
             self.conflict_count = m.get('ConflictCount')
+        if m.get('DstType') is not None:
+            self.dst_type = m.get('DstType')
         if m.get('DstTypeCode') is not None:
             self.dst_type_code = m.get('DstTypeCode')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('RunIndex') is not None:
-            self.run_index = m.get('RunIndex')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('HasSubProcess') is not None:
-            self.has_sub_process = m.get('HasSubProcess')
+        if m.get('FailCode') is not None:
+            self.fail_code = m.get('FailCode')
+        if m.get('FailMsg') is not None:
+            self.fail_msg = m.get('FailMsg')
         if m.get('HasDownloadFile') is not None:
             self.has_download_file = m.get('HasDownloadFile')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        if m.get('SrcTypeCode') is not None:
-            self.src_type_code = m.get('SrcTypeCode')
+        if m.get('HasSubProcess') is not None:
+            self.has_sub_process = m.get('HasSubProcess')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('MaskingCount') is not None:
+            self.masking_count = m.get('MaskingCount')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('RunIndex') is not None:
+            self.run_index = m.get('RunIndex')
+        if m.get('SrcTableName') is not None:
+            self.src_table_name = m.get('SrcTableName')
+        if m.get('SrcType') is not None:
+            self.src_type = m.get('SrcType')
+        if m.get('SrcTypeCode') is not None:
+            self.src_type_code = m.get('SrcTypeCode')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -2949,39 +3183,39 @@ class DescribeDataMaskingTasksRequest(TeaModel):
 class DescribeDataMaskingTasksResponseBodyItems(TeaModel):
     def __init__(
         self,
-        status: int = None,
-        owner: str = None,
-        task_name: str = None,
-        src_type: int = None,
-        dst_type: int = None,
-        has_unfinish_process: bool = None,
-        original_table: bool = None,
-        trigger_type: int = None,
-        dst_type_code: str = None,
-        run_count: int = None,
-        gmt_create: int = None,
-        task_id: str = None,
         dst_path: str = None,
-        src_type_code: str = None,
+        dst_type: int = None,
+        dst_type_code: str = None,
+        gmt_create: int = None,
+        has_unfinish_process: bool = None,
         id: int = None,
+        original_table: bool = None,
+        owner: str = None,
+        run_count: int = None,
         src_path: str = None,
+        src_type: int = None,
+        src_type_code: str = None,
+        status: int = None,
+        task_id: str = None,
+        task_name: str = None,
+        trigger_type: int = None,
     ):
-        self.status = status
-        self.owner = owner
-        self.task_name = task_name
-        self.src_type = src_type
-        self.dst_type = dst_type
-        self.has_unfinish_process = has_unfinish_process
-        self.original_table = original_table
-        self.trigger_type = trigger_type
-        self.dst_type_code = dst_type_code
-        self.run_count = run_count
-        self.gmt_create = gmt_create
-        self.task_id = task_id
         self.dst_path = dst_path
-        self.src_type_code = src_type_code
+        self.dst_type = dst_type
+        self.dst_type_code = dst_type_code
+        self.gmt_create = gmt_create
+        self.has_unfinish_process = has_unfinish_process
         self.id = id
+        self.original_table = original_table
+        self.owner = owner
+        self.run_count = run_count
         self.src_path = src_path
+        self.src_type = src_type
+        self.src_type_code = src_type_code
+        self.status = status
+        self.task_id = task_id
+        self.task_name = task_name
+        self.trigger_type = trigger_type
 
     def validate(self):
         pass
@@ -2992,74 +3226,74 @@ class DescribeDataMaskingTasksResponseBodyItems(TeaModel):
             return _map
 
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.owner is not None:
-            result['Owner'] = self.owner
-        if self.task_name is not None:
-            result['TaskName'] = self.task_name
-        if self.src_type is not None:
-            result['SrcType'] = self.src_type
-        if self.dst_type is not None:
-            result['DstType'] = self.dst_type
-        if self.has_unfinish_process is not None:
-            result['HasUnfinishProcess'] = self.has_unfinish_process
-        if self.original_table is not None:
-            result['OriginalTable'] = self.original_table
-        if self.trigger_type is not None:
-            result['TriggerType'] = self.trigger_type
-        if self.dst_type_code is not None:
-            result['DstTypeCode'] = self.dst_type_code
-        if self.run_count is not None:
-            result['RunCount'] = self.run_count
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
         if self.dst_path is not None:
             result['DstPath'] = self.dst_path
-        if self.src_type_code is not None:
-            result['SrcTypeCode'] = self.src_type_code
+        if self.dst_type is not None:
+            result['DstType'] = self.dst_type
+        if self.dst_type_code is not None:
+            result['DstTypeCode'] = self.dst_type_code
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.has_unfinish_process is not None:
+            result['HasUnfinishProcess'] = self.has_unfinish_process
         if self.id is not None:
             result['Id'] = self.id
+        if self.original_table is not None:
+            result['OriginalTable'] = self.original_table
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.run_count is not None:
+            result['RunCount'] = self.run_count
         if self.src_path is not None:
             result['SrcPath'] = self.src_path
+        if self.src_type is not None:
+            result['SrcType'] = self.src_type
+        if self.src_type_code is not None:
+            result['SrcTypeCode'] = self.src_type_code
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Owner') is not None:
-            self.owner = m.get('Owner')
-        if m.get('TaskName') is not None:
-            self.task_name = m.get('TaskName')
-        if m.get('SrcType') is not None:
-            self.src_type = m.get('SrcType')
-        if m.get('DstType') is not None:
-            self.dst_type = m.get('DstType')
-        if m.get('HasUnfinishProcess') is not None:
-            self.has_unfinish_process = m.get('HasUnfinishProcess')
-        if m.get('OriginalTable') is not None:
-            self.original_table = m.get('OriginalTable')
-        if m.get('TriggerType') is not None:
-            self.trigger_type = m.get('TriggerType')
-        if m.get('DstTypeCode') is not None:
-            self.dst_type_code = m.get('DstTypeCode')
-        if m.get('RunCount') is not None:
-            self.run_count = m.get('RunCount')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
         if m.get('DstPath') is not None:
             self.dst_path = m.get('DstPath')
-        if m.get('SrcTypeCode') is not None:
-            self.src_type_code = m.get('SrcTypeCode')
+        if m.get('DstType') is not None:
+            self.dst_type = m.get('DstType')
+        if m.get('DstTypeCode') is not None:
+            self.dst_type_code = m.get('DstTypeCode')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('HasUnfinishProcess') is not None:
+            self.has_unfinish_process = m.get('HasUnfinishProcess')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('OriginalTable') is not None:
+            self.original_table = m.get('OriginalTable')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('RunCount') is not None:
+            self.run_count = m.get('RunCount')
         if m.get('SrcPath') is not None:
             self.src_path = m.get('SrcPath')
+        if m.get('SrcType') is not None:
+            self.src_type = m.get('SrcType')
+        if m.get('SrcTypeCode') is not None:
+            self.src_type_code = m.get('SrcTypeCode')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
         return self
 
 
@@ -3195,11 +3429,11 @@ class DescribeEventDetailRequest(TeaModel):
 class DescribeEventDetailResponseBodyEventDetailChartData(TeaModel):
     def __init__(
         self,
-        y: str = None,
         x: str = None,
+        y: str = None,
     ):
-        self.y = y
         self.x = x
+        self.y = y
 
     def validate(self):
         pass
@@ -3210,35 +3444,35 @@ class DescribeEventDetailResponseBodyEventDetailChartData(TeaModel):
             return _map
 
         result = dict()
-        if self.y is not None:
-            result['Y'] = self.y
         if self.x is not None:
             result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Y') is not None:
-            self.y = m.get('Y')
         if m.get('X') is not None:
             self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
         return self
 
 
 class DescribeEventDetailResponseBodyEventDetailChart(TeaModel):
     def __init__(
         self,
-        type: str = None,
+        data: DescribeEventDetailResponseBodyEventDetailChartData = None,
         label: str = None,
+        type: str = None,
         xlabel: str = None,
         ylabel: str = None,
-        data: DescribeEventDetailResponseBodyEventDetailChartData = None,
     ):
-        self.type = type
+        self.data = data
         self.label = label
+        self.type = type
         self.xlabel = xlabel
         self.ylabel = ylabel
-        self.data = data
 
     def validate(self):
         if self.data:
@@ -3250,31 +3484,31 @@ class DescribeEventDetailResponseBodyEventDetailChart(TeaModel):
             return _map
 
         result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.label is not None:
             result['Label'] = self.label
+        if self.type is not None:
+            result['Type'] = self.type
         if self.xlabel is not None:
             result['XLabel'] = self.xlabel
         if self.ylabel is not None:
             result['YLabel'] = self.ylabel
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
+        if m.get('Data') is not None:
+            temp_model = DescribeEventDetailResponseBodyEventDetailChartData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Label') is not None:
             self.label = m.get('Label')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('XLabel') is not None:
             self.xlabel = m.get('XLabel')
         if m.get('YLabel') is not None:
             self.ylabel = m.get('YLabel')
-        if m.get('Data') is not None:
-            temp_model = DescribeEventDetailResponseBodyEventDetailChartData()
-            self.data = temp_model.from_map(m['Data'])
         return self
 
 
@@ -3412,23 +3646,23 @@ class DescribeEventDetailResponseBodyEventDetail(TeaModel):
 class DescribeEventDetailResponseBodyEventHandleInfoList(TeaModel):
     def __init__(
         self,
-        status: int = None,
-        enable_time: int = None,
-        handler_value: int = None,
+        current_value: str = None,
         disable_time: int = None,
+        enable_time: int = None,
         handler_name: str = None,
         handler_type: str = None,
-        current_value: str = None,
+        handler_value: int = None,
         id: int = None,
+        status: int = None,
     ):
-        self.status = status
-        self.enable_time = enable_time
-        self.handler_value = handler_value
+        self.current_value = current_value
         self.disable_time = disable_time
+        self.enable_time = enable_time
         self.handler_name = handler_name
         self.handler_type = handler_type
-        self.current_value = current_value
+        self.handler_value = handler_value
         self.id = id
+        self.status = status
 
     def validate(self):
         pass
@@ -3439,42 +3673,42 @@ class DescribeEventDetailResponseBodyEventHandleInfoList(TeaModel):
             return _map
 
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.enable_time is not None:
-            result['EnableTime'] = self.enable_time
-        if self.handler_value is not None:
-            result['HandlerValue'] = self.handler_value
+        if self.current_value is not None:
+            result['CurrentValue'] = self.current_value
         if self.disable_time is not None:
             result['DisableTime'] = self.disable_time
+        if self.enable_time is not None:
+            result['EnableTime'] = self.enable_time
         if self.handler_name is not None:
             result['HandlerName'] = self.handler_name
         if self.handler_type is not None:
             result['HandlerType'] = self.handler_type
-        if self.current_value is not None:
-            result['CurrentValue'] = self.current_value
+        if self.handler_value is not None:
+            result['HandlerValue'] = self.handler_value
         if self.id is not None:
             result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('EnableTime') is not None:
-            self.enable_time = m.get('EnableTime')
-        if m.get('HandlerValue') is not None:
-            self.handler_value = m.get('HandlerValue')
+        if m.get('CurrentValue') is not None:
+            self.current_value = m.get('CurrentValue')
         if m.get('DisableTime') is not None:
             self.disable_time = m.get('DisableTime')
+        if m.get('EnableTime') is not None:
+            self.enable_time = m.get('EnableTime')
         if m.get('HandlerName') is not None:
             self.handler_name = m.get('HandlerName')
         if m.get('HandlerType') is not None:
             self.handler_type = m.get('HandlerType')
-        if m.get('CurrentValue') is not None:
-            self.current_value = m.get('CurrentValue')
+        if m.get('HandlerValue') is not None:
+            self.handler_value = m.get('HandlerValue')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -3768,29 +4002,29 @@ class DescribeEventTypesRequest(TeaModel):
 class DescribeEventTypesResponseBodyEventTypeListSubTypeList(TeaModel):
     def __init__(
         self,
-        status: int = None,
-        description: str = None,
-        config_content_type: int = None,
-        event_hit_count: int = None,
-        config_value: str = None,
-        config_code: str = None,
-        code: str = None,
-        config_description: str = None,
-        name: str = None,
         adapted_product: str = None,
+        code: str = None,
+        config_code: str = None,
+        config_content_type: int = None,
+        config_description: str = None,
+        config_value: str = None,
+        description: str = None,
+        event_hit_count: int = None,
         id: int = None,
+        name: str = None,
+        status: int = None,
     ):
-        self.status = status
-        self.description = description
-        self.config_content_type = config_content_type
-        self.event_hit_count = event_hit_count
-        self.config_value = config_value
-        self.config_code = config_code
-        self.code = code
-        self.config_description = config_description
-        self.name = name
         self.adapted_product = adapted_product
+        self.code = code
+        self.config_code = config_code
+        self.config_content_type = config_content_type
+        self.config_description = config_description
+        self.config_value = config_value
+        self.description = description
+        self.event_hit_count = event_hit_count
         self.id = id
+        self.name = name
+        self.status = status
 
     def validate(self):
         pass
@@ -3801,54 +4035,54 @@ class DescribeEventTypesResponseBodyEventTypeListSubTypeList(TeaModel):
             return _map
 
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.config_content_type is not None:
-            result['ConfigContentType'] = self.config_content_type
-        if self.event_hit_count is not None:
-            result['EventHitCount'] = self.event_hit_count
-        if self.config_value is not None:
-            result['ConfigValue'] = self.config_value
-        if self.config_code is not None:
-            result['ConfigCode'] = self.config_code
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.config_description is not None:
-            result['ConfigDescription'] = self.config_description
-        if self.name is not None:
-            result['Name'] = self.name
         if self.adapted_product is not None:
             result['AdaptedProduct'] = self.adapted_product
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.config_code is not None:
+            result['ConfigCode'] = self.config_code
+        if self.config_content_type is not None:
+            result['ConfigContentType'] = self.config_content_type
+        if self.config_description is not None:
+            result['ConfigDescription'] = self.config_description
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.event_hit_count is not None:
+            result['EventHitCount'] = self.event_hit_count
         if self.id is not None:
             result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('ConfigContentType') is not None:
-            self.config_content_type = m.get('ConfigContentType')
-        if m.get('EventHitCount') is not None:
-            self.event_hit_count = m.get('EventHitCount')
-        if m.get('ConfigValue') is not None:
-            self.config_value = m.get('ConfigValue')
-        if m.get('ConfigCode') is not None:
-            self.config_code = m.get('ConfigCode')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('ConfigDescription') is not None:
-            self.config_description = m.get('ConfigDescription')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('AdaptedProduct') is not None:
             self.adapted_product = m.get('AdaptedProduct')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ConfigCode') is not None:
+            self.config_code = m.get('ConfigCode')
+        if m.get('ConfigContentType') is not None:
+            self.config_content_type = m.get('ConfigContentType')
+        if m.get('ConfigDescription') is not None:
+            self.config_description = m.get('ConfigDescription')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EventHitCount') is not None:
+            self.event_hit_count = m.get('EventHitCount')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -3857,14 +4091,14 @@ class DescribeEventTypesResponseBodyEventTypeList(TeaModel):
         self,
         code: str = None,
         description: str = None,
-        name: str = None,
         id: int = None,
+        name: str = None,
         sub_type_list: List[DescribeEventTypesResponseBodyEventTypeListSubTypeList] = None,
     ):
         self.code = code
         self.description = description
-        self.name = name
         self.id = id
+        self.name = name
         self.sub_type_list = sub_type_list
 
     def validate(self):
@@ -3883,10 +4117,10 @@ class DescribeEventTypesResponseBodyEventTypeList(TeaModel):
             result['Code'] = self.code
         if self.description is not None:
             result['Description'] = self.description
-        if self.name is not None:
-            result['Name'] = self.name
         if self.id is not None:
             result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
         result['SubTypeList'] = []
         if self.sub_type_list is not None:
             for k in self.sub_type_list:
@@ -3899,10 +4133,10 @@ class DescribeEventTypesResponseBodyEventTypeList(TeaModel):
             self.code = m.get('Code')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         self.sub_type_list = []
         if m.get('SubTypeList') is not None:
             for k in m.get('SubTypeList'):
@@ -4103,47 +4337,47 @@ class DescribeEventsRequest(TeaModel):
 class DescribeEventsResponseBodyItems(TeaModel):
     def __init__(
         self,
-        display_name: str = None,
-        status: int = None,
-        warn_level: int = None,
-        user_id: int = None,
-        status_name: str = None,
-        deal_time: int = None,
-        deal_login_name: str = None,
-        sub_type_name: str = None,
+        alert_time: int = None,
         backed: bool = None,
+        deal_display_name: str = None,
+        deal_login_name: str = None,
+        deal_time: int = None,
+        deal_user_id: int = None,
+        display_name: str = None,
         event_time: int = None,
+        id: int = None,
         login_name: str = None,
+        product_code: str = None,
+        status: int = None,
+        status_name: str = None,
         sub_type_code: str = None,
+        sub_type_name: str = None,
         target_product_code: str = None,
         type_code: str = None,
-        alert_time: int = None,
-        deal_user_id: int = None,
         type_name: str = None,
-        deal_display_name: str = None,
-        id: int = None,
-        product_code: str = None,
+        user_id: int = None,
+        warn_level: int = None,
     ):
-        self.display_name = display_name
-        self.status = status
-        self.warn_level = warn_level
-        self.user_id = user_id
-        self.status_name = status_name
-        self.deal_time = deal_time
-        self.deal_login_name = deal_login_name
-        self.sub_type_name = sub_type_name
+        self.alert_time = alert_time
         self.backed = backed
+        self.deal_display_name = deal_display_name
+        self.deal_login_name = deal_login_name
+        self.deal_time = deal_time
+        self.deal_user_id = deal_user_id
+        self.display_name = display_name
         self.event_time = event_time
+        self.id = id
         self.login_name = login_name
+        self.product_code = product_code
+        self.status = status
+        self.status_name = status_name
         self.sub_type_code = sub_type_code
+        self.sub_type_name = sub_type_name
         self.target_product_code = target_product_code
         self.type_code = type_code
-        self.alert_time = alert_time
-        self.deal_user_id = deal_user_id
         self.type_name = type_name
-        self.deal_display_name = deal_display_name
-        self.id = id
-        self.product_code = product_code
+        self.user_id = user_id
+        self.warn_level = warn_level
 
     def validate(self):
         pass
@@ -4154,90 +4388,90 @@ class DescribeEventsResponseBodyItems(TeaModel):
             return _map
 
         result = dict()
-        if self.display_name is not None:
-            result['DisplayName'] = self.display_name
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.warn_level is not None:
-            result['WarnLevel'] = self.warn_level
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        if self.status_name is not None:
-            result['StatusName'] = self.status_name
-        if self.deal_time is not None:
-            result['DealTime'] = self.deal_time
-        if self.deal_login_name is not None:
-            result['DealLoginName'] = self.deal_login_name
-        if self.sub_type_name is not None:
-            result['SubTypeName'] = self.sub_type_name
+        if self.alert_time is not None:
+            result['AlertTime'] = self.alert_time
         if self.backed is not None:
             result['Backed'] = self.backed
+        if self.deal_display_name is not None:
+            result['DealDisplayName'] = self.deal_display_name
+        if self.deal_login_name is not None:
+            result['DealLoginName'] = self.deal_login_name
+        if self.deal_time is not None:
+            result['DealTime'] = self.deal_time
+        if self.deal_user_id is not None:
+            result['DealUserId'] = self.deal_user_id
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
         if self.event_time is not None:
             result['EventTime'] = self.event_time
+        if self.id is not None:
+            result['Id'] = self.id
         if self.login_name is not None:
             result['LoginName'] = self.login_name
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_name is not None:
+            result['StatusName'] = self.status_name
         if self.sub_type_code is not None:
             result['SubTypeCode'] = self.sub_type_code
+        if self.sub_type_name is not None:
+            result['SubTypeName'] = self.sub_type_name
         if self.target_product_code is not None:
             result['TargetProductCode'] = self.target_product_code
         if self.type_code is not None:
             result['TypeCode'] = self.type_code
-        if self.alert_time is not None:
-            result['AlertTime'] = self.alert_time
-        if self.deal_user_id is not None:
-            result['DealUserId'] = self.deal_user_id
         if self.type_name is not None:
             result['TypeName'] = self.type_name
-        if self.deal_display_name is not None:
-            result['DealDisplayName'] = self.deal_display_name
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.product_code is not None:
-            result['ProductCode'] = self.product_code
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.warn_level is not None:
+            result['WarnLevel'] = self.warn_level
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DisplayName') is not None:
-            self.display_name = m.get('DisplayName')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('WarnLevel') is not None:
-            self.warn_level = m.get('WarnLevel')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        if m.get('StatusName') is not None:
-            self.status_name = m.get('StatusName')
-        if m.get('DealTime') is not None:
-            self.deal_time = m.get('DealTime')
-        if m.get('DealLoginName') is not None:
-            self.deal_login_name = m.get('DealLoginName')
-        if m.get('SubTypeName') is not None:
-            self.sub_type_name = m.get('SubTypeName')
+        if m.get('AlertTime') is not None:
+            self.alert_time = m.get('AlertTime')
         if m.get('Backed') is not None:
             self.backed = m.get('Backed')
+        if m.get('DealDisplayName') is not None:
+            self.deal_display_name = m.get('DealDisplayName')
+        if m.get('DealLoginName') is not None:
+            self.deal_login_name = m.get('DealLoginName')
+        if m.get('DealTime') is not None:
+            self.deal_time = m.get('DealTime')
+        if m.get('DealUserId') is not None:
+            self.deal_user_id = m.get('DealUserId')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
         if m.get('EventTime') is not None:
             self.event_time = m.get('EventTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('LoginName') is not None:
             self.login_name = m.get('LoginName')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusName') is not None:
+            self.status_name = m.get('StatusName')
         if m.get('SubTypeCode') is not None:
             self.sub_type_code = m.get('SubTypeCode')
+        if m.get('SubTypeName') is not None:
+            self.sub_type_name = m.get('SubTypeName')
         if m.get('TargetProductCode') is not None:
             self.target_product_code = m.get('TargetProductCode')
         if m.get('TypeCode') is not None:
             self.type_code = m.get('TypeCode')
-        if m.get('AlertTime') is not None:
-            self.alert_time = m.get('AlertTime')
-        if m.get('DealUserId') is not None:
-            self.deal_user_id = m.get('DealUserId')
         if m.get('TypeName') is not None:
             self.type_name = m.get('TypeName')
-        if m.get('DealDisplayName') is not None:
-            self.deal_display_name = m.get('DealDisplayName')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('ProductCode') is not None:
-            self.product_code = m.get('ProductCode')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('WarnLevel') is not None:
+            self.warn_level = m.get('WarnLevel')
         return self
 
 
@@ -4403,49 +4637,49 @@ class DescribeInstanceSourcesRequest(TeaModel):
 class DescribeInstanceSourcesResponseBodyItems(TeaModel):
     def __init__(
         self,
-        last_modify_user_id: str = None,
-        password_status: int = None,
-        engine_type: str = None,
-        tenant_name: str = None,
-        instance_id: str = None,
-        instance_description: str = None,
-        region_id: str = None,
-        db_name: str = None,
-        last_modify_time: int = None,
-        region_name: str = None,
-        can_modify_user_name: bool = None,
-        log_store_day: int = None,
-        gmt_create: int = None,
-        auto_scan: int = None,
-        product_id: int = None,
-        instance_size: int = None,
-        user_name: str = None,
         audit_status: int = None,
-        id: int = None,
-        tenant_id: str = None,
+        auto_scan: int = None,
+        can_modify_user_name: bool = None,
+        db_name: str = None,
         enable: int = None,
+        engine_type: str = None,
+        gmt_create: int = None,
+        id: int = None,
+        instance_description: str = None,
+        instance_id: str = None,
+        instance_size: int = None,
+        last_modify_time: int = None,
+        last_modify_user_id: str = None,
+        log_store_day: int = None,
+        password_status: int = None,
+        product_id: int = None,
+        region_id: str = None,
+        region_name: str = None,
+        tenant_id: str = None,
+        tenant_name: str = None,
+        user_name: str = None,
     ):
-        self.last_modify_user_id = last_modify_user_id
-        self.password_status = password_status
-        self.engine_type = engine_type
-        self.tenant_name = tenant_name
-        self.instance_id = instance_id
-        self.instance_description = instance_description
-        self.region_id = region_id
-        self.db_name = db_name
-        self.last_modify_time = last_modify_time
-        self.region_name = region_name
-        self.can_modify_user_name = can_modify_user_name
-        self.log_store_day = log_store_day
-        self.gmt_create = gmt_create
-        self.auto_scan = auto_scan
-        self.product_id = product_id
-        self.instance_size = instance_size
-        self.user_name = user_name
         self.audit_status = audit_status
-        self.id = id
-        self.tenant_id = tenant_id
+        self.auto_scan = auto_scan
+        self.can_modify_user_name = can_modify_user_name
+        self.db_name = db_name
         self.enable = enable
+        self.engine_type = engine_type
+        self.gmt_create = gmt_create
+        self.id = id
+        self.instance_description = instance_description
+        self.instance_id = instance_id
+        self.instance_size = instance_size
+        self.last_modify_time = last_modify_time
+        self.last_modify_user_id = last_modify_user_id
+        self.log_store_day = log_store_day
+        self.password_status = password_status
+        self.product_id = product_id
+        self.region_id = region_id
+        self.region_name = region_name
+        self.tenant_id = tenant_id
+        self.tenant_name = tenant_name
+        self.user_name = user_name
 
     def validate(self):
         pass
@@ -4456,94 +4690,94 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
             return _map
 
         result = dict()
-        if self.last_modify_user_id is not None:
-            result['LastModifyUserId'] = self.last_modify_user_id
-        if self.password_status is not None:
-            result['PasswordStatus'] = self.password_status
-        if self.engine_type is not None:
-            result['EngineType'] = self.engine_type
-        if self.tenant_name is not None:
-            result['TenantName'] = self.tenant_name
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.instance_description is not None:
-            result['InstanceDescription'] = self.instance_description
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.db_name is not None:
-            result['DbName'] = self.db_name
-        if self.last_modify_time is not None:
-            result['LastModifyTime'] = self.last_modify_time
-        if self.region_name is not None:
-            result['RegionName'] = self.region_name
-        if self.can_modify_user_name is not None:
-            result['CanModifyUserName'] = self.can_modify_user_name
-        if self.log_store_day is not None:
-            result['LogStoreDay'] = self.log_store_day
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.auto_scan is not None:
-            result['AutoScan'] = self.auto_scan
-        if self.product_id is not None:
-            result['ProductId'] = self.product_id
-        if self.instance_size is not None:
-            result['InstanceSize'] = self.instance_size
-        if self.user_name is not None:
-            result['UserName'] = self.user_name
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
+        if self.auto_scan is not None:
+            result['AutoScan'] = self.auto_scan
+        if self.can_modify_user_name is not None:
+            result['CanModifyUserName'] = self.can_modify_user_name
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_description is not None:
+            result['InstanceDescription'] = self.instance_description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_size is not None:
+            result['InstanceSize'] = self.instance_size
+        if self.last_modify_time is not None:
+            result['LastModifyTime'] = self.last_modify_time
+        if self.last_modify_user_id is not None:
+            result['LastModifyUserId'] = self.last_modify_user_id
+        if self.log_store_day is not None:
+            result['LogStoreDay'] = self.log_store_day
+        if self.password_status is not None:
+            result['PasswordStatus'] = self.password_status
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.region_name is not None:
+            result['RegionName'] = self.region_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LastModifyUserId') is not None:
-            self.last_modify_user_id = m.get('LastModifyUserId')
-        if m.get('PasswordStatus') is not None:
-            self.password_status = m.get('PasswordStatus')
-        if m.get('EngineType') is not None:
-            self.engine_type = m.get('EngineType')
-        if m.get('TenantName') is not None:
-            self.tenant_name = m.get('TenantName')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('InstanceDescription') is not None:
-            self.instance_description = m.get('InstanceDescription')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('DbName') is not None:
-            self.db_name = m.get('DbName')
-        if m.get('LastModifyTime') is not None:
-            self.last_modify_time = m.get('LastModifyTime')
-        if m.get('RegionName') is not None:
-            self.region_name = m.get('RegionName')
-        if m.get('CanModifyUserName') is not None:
-            self.can_modify_user_name = m.get('CanModifyUserName')
-        if m.get('LogStoreDay') is not None:
-            self.log_store_day = m.get('LogStoreDay')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('AutoScan') is not None:
-            self.auto_scan = m.get('AutoScan')
-        if m.get('ProductId') is not None:
-            self.product_id = m.get('ProductId')
-        if m.get('InstanceSize') is not None:
-            self.instance_size = m.get('InstanceSize')
-        if m.get('UserName') is not None:
-            self.user_name = m.get('UserName')
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
+        if m.get('AutoScan') is not None:
+            self.auto_scan = m.get('AutoScan')
+        if m.get('CanModifyUserName') is not None:
+            self.can_modify_user_name = m.get('CanModifyUserName')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceDescription') is not None:
+            self.instance_description = m.get('InstanceDescription')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceSize') is not None:
+            self.instance_size = m.get('InstanceSize')
+        if m.get('LastModifyTime') is not None:
+            self.last_modify_time = m.get('LastModifyTime')
+        if m.get('LastModifyUserId') is not None:
+            self.last_modify_user_id = m.get('LastModifyUserId')
+        if m.get('LogStoreDay') is not None:
+            self.log_store_day = m.get('LogStoreDay')
+        if m.get('PasswordStatus') is not None:
+            self.password_status = m.get('PasswordStatus')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RegionName') is not None:
+            self.region_name = m.get('RegionName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         return self
 
 
@@ -4728,46 +4962,44 @@ class DescribeInstancesResponseBodyItems(TeaModel):
     def __init__(
         self,
         creation_time: int = None,
-        acl: str = None,
-        last_finish_time: int = None,
-        owner: str = None,
-        tenant_name: str = None,
-        protection: bool = None,
         depart_name: str = None,
-        labelsec: bool = None,
-        risk_level_id: int = None,
-        product_id: str = None,
-        name: str = None,
-        total_count: int = None,
+        id: int = None,
         instance_description: str = None,
+        labelsec: bool = None,
+        last_finish_time: int = None,
+        name: str = None,
+        odps_risk_level_name: str = None,
+        owner: str = None,
+        product_code: str = None,
+        product_id: str = None,
+        protection: bool = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
         rule_name: str = None,
         sensitive: bool = None,
-        risk_level_name: str = None,
-        odps_risk_level_name: str = None,
         sensitive_count: int = None,
-        id: int = None,
-        product_code: str = None,
+        tenant_name: str = None,
+        total_count: int = None,
     ):
         self.creation_time = creation_time
-        self.acl = acl
-        self.last_finish_time = last_finish_time
-        self.owner = owner
-        self.tenant_name = tenant_name
-        self.protection = protection
         self.depart_name = depart_name
-        self.labelsec = labelsec
-        self.risk_level_id = risk_level_id
-        self.product_id = product_id
-        self.name = name
-        self.total_count = total_count
+        self.id = id
         self.instance_description = instance_description
+        self.labelsec = labelsec
+        self.last_finish_time = last_finish_time
+        self.name = name
+        self.odps_risk_level_name = odps_risk_level_name
+        self.owner = owner
+        self.product_code = product_code
+        self.product_id = product_id
+        self.protection = protection
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
         self.rule_name = rule_name
         self.sensitive = sensitive
-        self.risk_level_name = risk_level_name
-        self.odps_risk_level_name = odps_risk_level_name
         self.sensitive_count = sensitive_count
-        self.id = id
-        self.product_code = product_code
+        self.tenant_name = tenant_name
+        self.total_count = total_count
 
     def validate(self):
         pass
@@ -4780,88 +5012,84 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
-        if self.acl is not None:
-            result['Acl'] = self.acl
-        if self.last_finish_time is not None:
-            result['LastFinishTime'] = self.last_finish_time
-        if self.owner is not None:
-            result['Owner'] = self.owner
-        if self.tenant_name is not None:
-            result['TenantName'] = self.tenant_name
-        if self.protection is not None:
-            result['Protection'] = self.protection
         if self.depart_name is not None:
             result['DepartName'] = self.depart_name
-        if self.labelsec is not None:
-            result['Labelsec'] = self.labelsec
-        if self.risk_level_id is not None:
-            result['RiskLevelId'] = self.risk_level_id
-        if self.product_id is not None:
-            result['ProductId'] = self.product_id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
+        if self.id is not None:
+            result['Id'] = self.id
         if self.instance_description is not None:
             result['InstanceDescription'] = self.instance_description
+        if self.labelsec is not None:
+            result['Labelsec'] = self.labelsec
+        if self.last_finish_time is not None:
+            result['LastFinishTime'] = self.last_finish_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.odps_risk_level_name is not None:
+            result['OdpsRiskLevelName'] = self.odps_risk_level_name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.protection is not None:
+            result['Protection'] = self.protection
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.sensitive is not None:
             result['Sensitive'] = self.sensitive
-        if self.risk_level_name is not None:
-            result['RiskLevelName'] = self.risk_level_name
-        if self.odps_risk_level_name is not None:
-            result['OdpsRiskLevelName'] = self.odps_risk_level_name
         if self.sensitive_count is not None:
             result['SensitiveCount'] = self.sensitive_count
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.product_code is not None:
-            result['ProductCode'] = self.product_code
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
-        if m.get('Acl') is not None:
-            self.acl = m.get('Acl')
-        if m.get('LastFinishTime') is not None:
-            self.last_finish_time = m.get('LastFinishTime')
-        if m.get('Owner') is not None:
-            self.owner = m.get('Owner')
-        if m.get('TenantName') is not None:
-            self.tenant_name = m.get('TenantName')
-        if m.get('Protection') is not None:
-            self.protection = m.get('Protection')
         if m.get('DepartName') is not None:
             self.depart_name = m.get('DepartName')
-        if m.get('Labelsec') is not None:
-            self.labelsec = m.get('Labelsec')
-        if m.get('RiskLevelId') is not None:
-            self.risk_level_id = m.get('RiskLevelId')
-        if m.get('ProductId') is not None:
-            self.product_id = m.get('ProductId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('InstanceDescription') is not None:
             self.instance_description = m.get('InstanceDescription')
+        if m.get('Labelsec') is not None:
+            self.labelsec = m.get('Labelsec')
+        if m.get('LastFinishTime') is not None:
+            self.last_finish_time = m.get('LastFinishTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OdpsRiskLevelName') is not None:
+            self.odps_risk_level_name = m.get('OdpsRiskLevelName')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('Protection') is not None:
+            self.protection = m.get('Protection')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('Sensitive') is not None:
             self.sensitive = m.get('Sensitive')
-        if m.get('RiskLevelName') is not None:
-            self.risk_level_name = m.get('RiskLevelName')
-        if m.get('OdpsRiskLevelName') is not None:
-            self.odps_risk_level_name = m.get('OdpsRiskLevelName')
         if m.get('SensitiveCount') is not None:
             self.sensitive_count = m.get('SensitiveCount')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('ProductCode') is not None:
-            self.product_code = m.get('ProductCode')
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -4997,16 +5225,16 @@ class DescribeOssObjectDetailRequest(TeaModel):
 class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList(TeaModel):
     def __init__(
         self,
-        risk_level_name: str = None,
         category_name: str = None,
-        risk_level_id: int = None,
         count: int = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
         rule_name: str = None,
     ):
-        self.risk_level_name = risk_level_name
         self.category_name = category_name
-        self.risk_level_id = risk_level_id
         self.count = count
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
         self.rule_name = rule_name
 
     def validate(self):
@@ -5018,28 +5246,28 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList(TeaModel):
             return _map
 
         result = dict()
-        if self.risk_level_name is not None:
-            result['RiskLevelName'] = self.risk_level_name
         if self.category_name is not None:
             result['CategoryName'] = self.category_name
-        if self.risk_level_id is not None:
-            result['RiskLevelId'] = self.risk_level_id
         if self.count is not None:
             result['Count'] = self.count
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RiskLevelName') is not None:
-            self.risk_level_name = m.get('RiskLevelName')
         if m.get('CategoryName') is not None:
             self.category_name = m.get('CategoryName')
-        if m.get('RiskLevelId') is not None:
-            self.risk_level_id = m.get('RiskLevelId')
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         return self
@@ -5266,13 +5494,13 @@ class DescribeOssObjectsRequest(TeaModel):
 class DescribeOssObjectsResponseBodyItemsRuleList(TeaModel):
     def __init__(
         self,
+        count: int = None,
         name: str = None,
         risk_level_id: int = None,
-        count: int = None,
     ):
+        self.count = count
         self.name = name
         self.risk_level_id = risk_level_id
-        self.count = count
 
     def validate(self):
         pass
@@ -5283,57 +5511,57 @@ class DescribeOssObjectsResponseBodyItemsRuleList(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         if self.name is not None:
             result['Name'] = self.name
         if self.risk_level_id is not None:
             result['RiskLevelId'] = self.risk_level_id
-        if self.count is not None:
-            result['Count'] = self.count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RiskLevelId') is not None:
             self.risk_level_id = m.get('RiskLevelId')
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
         return self
 
 
 class DescribeOssObjectsResponseBodyItems(TeaModel):
     def __init__(
         self,
-        instance_id: int = None,
-        category_name: str = None,
-        risk_level_id: int = None,
-        region_id: str = None,
-        file_id: str = None,
-        size: int = None,
         bucket_name: str = None,
-        risk_level_name: str = None,
         category: int = None,
-        name: str = None,
-        rule_count: int = None,
-        sensitive_count: int = None,
+        category_name: str = None,
+        file_id: str = None,
         id: str = None,
+        instance_id: int = None,
+        name: str = None,
+        region_id: str = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        rule_count: int = None,
         rule_list: List[DescribeOssObjectsResponseBodyItemsRuleList] = None,
+        sensitive_count: int = None,
+        size: int = None,
     ):
-        self.instance_id = instance_id
-        self.category_name = category_name
-        self.risk_level_id = risk_level_id
-        self.region_id = region_id
-        self.file_id = file_id
-        self.size = size
         self.bucket_name = bucket_name
-        self.risk_level_name = risk_level_name
         self.category = category
-        self.name = name
-        self.rule_count = rule_count
-        self.sensitive_count = sensitive_count
+        self.category_name = category_name
+        self.file_id = file_id
         self.id = id
+        self.instance_id = instance_id
+        self.name = name
+        self.region_id = region_id
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.rule_count = rule_count
         self.rule_list = rule_list
+        self.sensitive_count = sensitive_count
+        self.size = size
 
     def validate(self):
         if self.rule_list:
@@ -5347,71 +5575,71 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
             return _map
 
         result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.category_name is not None:
-            result['CategoryName'] = self.category_name
-        if self.risk_level_id is not None:
-            result['RiskLevelId'] = self.risk_level_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.file_id is not None:
-            result['FileId'] = self.file_id
-        if self.size is not None:
-            result['Size'] = self.size
         if self.bucket_name is not None:
             result['BucketName'] = self.bucket_name
-        if self.risk_level_name is not None:
-            result['RiskLevelName'] = self.risk_level_name
         if self.category is not None:
             result['Category'] = self.category
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.rule_count is not None:
-            result['RuleCount'] = self.rule_count
-        if self.sensitive_count is not None:
-            result['SensitiveCount'] = self.sensitive_count
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
         if self.id is not None:
             result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        if self.rule_count is not None:
+            result['RuleCount'] = self.rule_count
         result['RuleList'] = []
         if self.rule_list is not None:
             for k in self.rule_list:
                 result['RuleList'].append(k.to_map() if k else None)
+        if self.sensitive_count is not None:
+            result['SensitiveCount'] = self.sensitive_count
+        if self.size is not None:
+            result['Size'] = self.size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('CategoryName') is not None:
-            self.category_name = m.get('CategoryName')
-        if m.get('RiskLevelId') is not None:
-            self.risk_level_id = m.get('RiskLevelId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('FileId') is not None:
-            self.file_id = m.get('FileId')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
         if m.get('BucketName') is not None:
             self.bucket_name = m.get('BucketName')
-        if m.get('RiskLevelName') is not None:
-            self.risk_level_name = m.get('RiskLevelName')
         if m.get('Category') is not None:
             self.category = m.get('Category')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('RuleCount') is not None:
-            self.rule_count = m.get('RuleCount')
-        if m.get('SensitiveCount') is not None:
-            self.sensitive_count = m.get('SensitiveCount')
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        if m.get('RuleCount') is not None:
+            self.rule_count = m.get('RuleCount')
         self.rule_list = []
         if m.get('RuleList') is not None:
             for k in m.get('RuleList'):
                 temp_model = DescribeOssObjectsResponseBodyItemsRuleList()
                 self.rule_list.append(temp_model.from_map(k))
+        if m.get('SensitiveCount') is not None:
+            self.sensitive_count = m.get('SensitiveCount')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
         return self
 
 
@@ -5584,26 +5812,26 @@ class DescribePackagesResponseBodyItems(TeaModel):
     def __init__(
         self,
         creation_time: int = None,
-        sensitive: bool = None,
-        owner: str = None,
-        risk_level_name: str = None,
-        instance_id: int = None,
-        total_count: int = None,
-        name: str = None,
-        sensitive_count: int = None,
-        risk_level_id: int = None,
         id: int = None,
+        instance_id: int = None,
+        name: str = None,
+        owner: str = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        sensitive: bool = None,
+        sensitive_count: int = None,
+        total_count: int = None,
     ):
         self.creation_time = creation_time
-        self.sensitive = sensitive
-        self.owner = owner
-        self.risk_level_name = risk_level_name
-        self.instance_id = instance_id
-        self.total_count = total_count
-        self.name = name
-        self.sensitive_count = sensitive_count
-        self.risk_level_id = risk_level_id
         self.id = id
+        self.instance_id = instance_id
+        self.name = name
+        self.owner = owner
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.sensitive = sensitive
+        self.sensitive_count = sensitive_count
+        self.total_count = total_count
 
     def validate(self):
         pass
@@ -5616,48 +5844,48 @@ class DescribePackagesResponseBodyItems(TeaModel):
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
-        if self.sensitive is not None:
-            result['Sensitive'] = self.sensitive
-        if self.owner is not None:
-            result['Owner'] = self.owner
-        if self.risk_level_name is not None:
-            result['RiskLevelName'] = self.risk_level_name
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.sensitive_count is not None:
-            result['SensitiveCount'] = self.sensitive_count
-        if self.risk_level_id is not None:
-            result['RiskLevelId'] = self.risk_level_id
         if self.id is not None:
             result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        if self.sensitive is not None:
+            result['Sensitive'] = self.sensitive
+        if self.sensitive_count is not None:
+            result['SensitiveCount'] = self.sensitive_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
-        if m.get('Sensitive') is not None:
-            self.sensitive = m.get('Sensitive')
-        if m.get('Owner') is not None:
-            self.owner = m.get('Owner')
-        if m.get('RiskLevelName') is not None:
-            self.risk_level_name = m.get('RiskLevelName')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('SensitiveCount') is not None:
-            self.sensitive_count = m.get('SensitiveCount')
-        if m.get('RiskLevelId') is not None:
-            self.risk_level_id = m.get('RiskLevelId')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        if m.get('Sensitive') is not None:
+            self.sensitive = m.get('Sensitive')
+        if m.get('SensitiveCount') is not None:
+            self.sensitive_count = m.get('SensitiveCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -5787,14 +6015,14 @@ class DescribeRiskLevelsRequest(TeaModel):
 class DescribeRiskLevelsResponseBodyRiskLevelList(TeaModel):
     def __init__(
         self,
-        name: str = None,
         description: str = None,
         id: int = None,
+        name: str = None,
         reference_num: int = None,
     ):
-        self.name = name
         self.description = description
         self.id = id
+        self.name = name
         self.reference_num = reference_num
 
     def validate(self):
@@ -5806,24 +6034,24 @@ class DescribeRiskLevelsResponseBodyRiskLevelList(TeaModel):
             return _map
 
         result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
             result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.reference_num is not None:
             result['ReferenceNum'] = self.reference_num
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('ReferenceNum') is not None:
             self.reference_num = m.get('ReferenceNum')
         return self
@@ -6021,55 +6249,55 @@ class DescribeRulesRequest(TeaModel):
 class DescribeRulesResponseBodyItems(TeaModel):
     def __init__(
         self,
-        display_name: str = None,
-        status: int = None,
-        warn_level: int = None,
-        user_id: int = None,
-        stat_express: str = None,
-        gmt_modified: int = None,
-        risk_level_id: int = None,
-        description: str = None,
-        product_id: int = None,
-        name: str = None,
-        content: str = None,
-        target: str = None,
-        login_name: str = None,
-        category_name: str = None,
-        content_category: str = None,
-        hit_total_count: int = None,
-        group_id: str = None,
-        custom_type: int = None,
-        risk_level_name: str = None,
-        gmt_create: int = None,
         category: int = None,
-        major_key: str = None,
+        category_name: str = None,
+        content: str = None,
+        content_category: str = None,
+        custom_type: int = None,
+        description: str = None,
+        display_name: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        group_id: str = None,
+        hit_total_count: int = None,
         id: int = None,
+        login_name: str = None,
+        major_key: str = None,
+        name: str = None,
         product_code: str = None,
+        product_id: int = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        stat_express: str = None,
+        status: int = None,
+        target: str = None,
+        user_id: int = None,
+        warn_level: int = None,
     ):
-        self.display_name = display_name
-        self.status = status
-        self.warn_level = warn_level
-        self.user_id = user_id
-        self.stat_express = stat_express
-        self.gmt_modified = gmt_modified
-        self.risk_level_id = risk_level_id
-        self.description = description
-        self.product_id = product_id
-        self.name = name
-        self.content = content
-        self.target = target
-        self.login_name = login_name
-        self.category_name = category_name
-        self.content_category = content_category
-        self.hit_total_count = hit_total_count
-        self.group_id = group_id
-        self.custom_type = custom_type
-        self.risk_level_name = risk_level_name
-        self.gmt_create = gmt_create
         self.category = category
-        self.major_key = major_key
+        self.category_name = category_name
+        self.content = content
+        self.content_category = content_category
+        self.custom_type = custom_type
+        self.description = description
+        self.display_name = display_name
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.group_id = group_id
+        self.hit_total_count = hit_total_count
         self.id = id
+        self.login_name = login_name
+        self.major_key = major_key
+        self.name = name
         self.product_code = product_code
+        self.product_id = product_id
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.stat_express = stat_express
+        self.status = status
+        self.target = target
+        self.user_id = user_id
+        self.warn_level = warn_level
 
     def validate(self):
         pass
@@ -6080,106 +6308,106 @@ class DescribeRulesResponseBodyItems(TeaModel):
             return _map
 
         result = dict()
-        if self.display_name is not None:
-            result['DisplayName'] = self.display_name
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.warn_level is not None:
-            result['WarnLevel'] = self.warn_level
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        if self.stat_express is not None:
-            result['StatExpress'] = self.stat_express
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.risk_level_id is not None:
-            result['RiskLevelId'] = self.risk_level_id
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.product_id is not None:
-            result['ProductId'] = self.product_id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.target is not None:
-            result['Target'] = self.target
-        if self.login_name is not None:
-            result['LoginName'] = self.login_name
-        if self.category_name is not None:
-            result['CategoryName'] = self.category_name
-        if self.content_category is not None:
-            result['ContentCategory'] = self.content_category
-        if self.hit_total_count is not None:
-            result['HitTotalCount'] = self.hit_total_count
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.custom_type is not None:
-            result['CustomType'] = self.custom_type
-        if self.risk_level_name is not None:
-            result['RiskLevelName'] = self.risk_level_name
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
         if self.category is not None:
             result['Category'] = self.category
-        if self.major_key is not None:
-            result['MajorKey'] = self.major_key
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.content_category is not None:
+            result['ContentCategory'] = self.content_category
+        if self.custom_type is not None:
+            result['CustomType'] = self.custom_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.hit_total_count is not None:
+            result['HitTotalCount'] = self.hit_total_count
         if self.id is not None:
             result['Id'] = self.id
+        if self.login_name is not None:
+            result['LoginName'] = self.login_name
+        if self.major_key is not None:
+            result['MajorKey'] = self.major_key
+        if self.name is not None:
+            result['Name'] = self.name
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
+        if self.stat_express is not None:
+            result['StatExpress'] = self.stat_express
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.warn_level is not None:
+            result['WarnLevel'] = self.warn_level
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DisplayName') is not None:
-            self.display_name = m.get('DisplayName')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('WarnLevel') is not None:
-            self.warn_level = m.get('WarnLevel')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        if m.get('StatExpress') is not None:
-            self.stat_express = m.get('StatExpress')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('RiskLevelId') is not None:
-            self.risk_level_id = m.get('RiskLevelId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('ProductId') is not None:
-            self.product_id = m.get('ProductId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('Target') is not None:
-            self.target = m.get('Target')
-        if m.get('LoginName') is not None:
-            self.login_name = m.get('LoginName')
-        if m.get('CategoryName') is not None:
-            self.category_name = m.get('CategoryName')
-        if m.get('ContentCategory') is not None:
-            self.content_category = m.get('ContentCategory')
-        if m.get('HitTotalCount') is not None:
-            self.hit_total_count = m.get('HitTotalCount')
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('CustomType') is not None:
-            self.custom_type = m.get('CustomType')
-        if m.get('RiskLevelName') is not None:
-            self.risk_level_name = m.get('RiskLevelName')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
         if m.get('Category') is not None:
             self.category = m.get('Category')
-        if m.get('MajorKey') is not None:
-            self.major_key = m.get('MajorKey')
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ContentCategory') is not None:
+            self.content_category = m.get('ContentCategory')
+        if m.get('CustomType') is not None:
+            self.custom_type = m.get('CustomType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('HitTotalCount') is not None:
+            self.hit_total_count = m.get('HitTotalCount')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('LoginName') is not None:
+            self.login_name = m.get('LoginName')
+        if m.get('MajorKey') is not None:
+            self.major_key = m.get('MajorKey')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
+        if m.get('StatExpress') is not None:
+            self.stat_express = m.get('StatExpress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('WarnLevel') is not None:
+            self.warn_level = m.get('WarnLevel')
         return self
 
 
@@ -6369,13 +6597,13 @@ class DescribeTablesRequest(TeaModel):
 class DescribeTablesResponseBodyItemsRuleList(TeaModel):
     def __init__(
         self,
+        count: int = None,
         name: str = None,
         risk_level_id: int = None,
-        count: int = None,
     ):
+        self.count = count
         self.name = name
         self.risk_level_id = risk_level_id
-        self.count = count
 
     def validate(self):
         pass
@@ -6386,22 +6614,22 @@ class DescribeTablesResponseBodyItemsRuleList(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         if self.name is not None:
             result['Name'] = self.name
         if self.risk_level_id is not None:
             result['RiskLevelId'] = self.risk_level_id
-        if self.count is not None:
-            result['Count'] = self.count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RiskLevelId') is not None:
             self.risk_level_id = m.get('RiskLevelId')
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
         return self
 
 
@@ -6409,40 +6637,40 @@ class DescribeTablesResponseBodyItems(TeaModel):
     def __init__(
         self,
         creation_time: int = None,
+        id: int = None,
+        instance_description: str = None,
+        instance_id: int = None,
+        instance_name: str = None,
+        name: str = None,
         owner: str = None,
+        product_code: str = None,
+        product_id: str = None,
+        risk_level_id: int = None,
+        risk_level_name: str = None,
+        rule_list: List[DescribeTablesResponseBodyItemsRuleList] = None,
+        sensitive: bool = None,
+        sensitive_count: int = None,
         sensitive_ratio: str = None,
         tenant_name: str = None,
-        risk_level_id: int = None,
-        instance_name: str = None,
-        product_id: str = None,
-        name: str = None,
-        instance_id: int = None,
         total_count: int = None,
-        instance_description: str = None,
-        sensitive: bool = None,
-        risk_level_name: str = None,
-        sensitive_count: int = None,
-        id: int = None,
-        product_code: str = None,
-        rule_list: List[DescribeTablesResponseBodyItemsRuleList] = None,
     ):
         self.creation_time = creation_time
+        self.id = id
+        self.instance_description = instance_description
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.name = name
         self.owner = owner
+        self.product_code = product_code
+        self.product_id = product_id
+        self.risk_level_id = risk_level_id
+        self.risk_level_name = risk_level_name
+        self.rule_list = rule_list
+        self.sensitive = sensitive
+        self.sensitive_count = sensitive_count
         self.sensitive_ratio = sensitive_ratio
         self.tenant_name = tenant_name
-        self.risk_level_id = risk_level_id
-        self.instance_name = instance_name
-        self.product_id = product_id
-        self.name = name
-        self.instance_id = instance_id
         self.total_count = total_count
-        self.instance_description = instance_description
-        self.sensitive = sensitive
-        self.risk_level_name = risk_level_name
-        self.sensitive_count = sensitive_count
-        self.id = id
-        self.product_code = product_code
-        self.rule_list = rule_list
 
     def validate(self):
         if self.rule_list:
@@ -6458,81 +6686,81 @@ class DescribeTablesResponseBodyItems(TeaModel):
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
-        if self.owner is not None:
-            result['Owner'] = self.owner
-        if self.sensitive_ratio is not None:
-            result['SensitiveRatio'] = self.sensitive_ratio
-        if self.tenant_name is not None:
-            result['TenantName'] = self.tenant_name
-        if self.risk_level_id is not None:
-            result['RiskLevelId'] = self.risk_level_id
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
-        if self.product_id is not None:
-            result['ProductId'] = self.product_id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        if self.instance_description is not None:
-            result['InstanceDescription'] = self.instance_description
-        if self.sensitive is not None:
-            result['Sensitive'] = self.sensitive
-        if self.risk_level_name is not None:
-            result['RiskLevelName'] = self.risk_level_name
-        if self.sensitive_count is not None:
-            result['SensitiveCount'] = self.sensitive_count
         if self.id is not None:
             result['Id'] = self.id
+        if self.instance_description is not None:
+            result['InstanceDescription'] = self.instance_description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
+        if self.risk_level_name is not None:
+            result['RiskLevelName'] = self.risk_level_name
         result['RuleList'] = []
         if self.rule_list is not None:
             for k in self.rule_list:
                 result['RuleList'].append(k.to_map() if k else None)
+        if self.sensitive is not None:
+            result['Sensitive'] = self.sensitive
+        if self.sensitive_count is not None:
+            result['SensitiveCount'] = self.sensitive_count
+        if self.sensitive_ratio is not None:
+            result['SensitiveRatio'] = self.sensitive_ratio
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
-        if m.get('Owner') is not None:
-            self.owner = m.get('Owner')
-        if m.get('SensitiveRatio') is not None:
-            self.sensitive_ratio = m.get('SensitiveRatio')
-        if m.get('TenantName') is not None:
-            self.tenant_name = m.get('TenantName')
-        if m.get('RiskLevelId') is not None:
-            self.risk_level_id = m.get('RiskLevelId')
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
-        if m.get('ProductId') is not None:
-            self.product_id = m.get('ProductId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        if m.get('InstanceDescription') is not None:
-            self.instance_description = m.get('InstanceDescription')
-        if m.get('Sensitive') is not None:
-            self.sensitive = m.get('Sensitive')
-        if m.get('RiskLevelName') is not None:
-            self.risk_level_name = m.get('RiskLevelName')
-        if m.get('SensitiveCount') is not None:
-            self.sensitive_count = m.get('SensitiveCount')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InstanceDescription') is not None:
+            self.instance_description = m.get('InstanceDescription')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
+        if m.get('RiskLevelName') is not None:
+            self.risk_level_name = m.get('RiskLevelName')
         self.rule_list = []
         if m.get('RuleList') is not None:
             for k in m.get('RuleList'):
                 temp_model = DescribeTablesResponseBodyItemsRuleList()
                 self.rule_list.append(temp_model.from_map(k))
+        if m.get('Sensitive') is not None:
+            self.sensitive = m.get('Sensitive')
+        if m.get('SensitiveCount') is not None:
+            self.sensitive_count = m.get('SensitiveCount')
+        if m.get('SensitiveRatio') is not None:
+            self.sensitive_ratio = m.get('SensitiveRatio')
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -7670,7 +7898,6 @@ class ModifyRuleRequest(TeaModel):
         self,
         category: int = None,
         content: str = None,
-        custom_type: int = None,
         id: int = None,
         lang: str = None,
         name: str = None,
@@ -7678,12 +7905,10 @@ class ModifyRuleRequest(TeaModel):
         product_id: int = None,
         risk_level_id: int = None,
         rule_type: int = None,
-        stat_express: str = None,
         warn_level: int = None,
     ):
         self.category = category
         self.content = content
-        self.custom_type = custom_type
         self.id = id
         self.lang = lang
         self.name = name
@@ -7691,7 +7916,6 @@ class ModifyRuleRequest(TeaModel):
         self.product_id = product_id
         self.risk_level_id = risk_level_id
         self.rule_type = rule_type
-        self.stat_express = stat_express
         self.warn_level = warn_level
 
     def validate(self):
@@ -7707,8 +7931,6 @@ class ModifyRuleRequest(TeaModel):
             result['Category'] = self.category
         if self.content is not None:
             result['Content'] = self.content
-        if self.custom_type is not None:
-            result['CustomType'] = self.custom_type
         if self.id is not None:
             result['Id'] = self.id
         if self.lang is not None:
@@ -7723,8 +7945,6 @@ class ModifyRuleRequest(TeaModel):
             result['RiskLevelId'] = self.risk_level_id
         if self.rule_type is not None:
             result['RuleType'] = self.rule_type
-        if self.stat_express is not None:
-            result['StatExpress'] = self.stat_express
         if self.warn_level is not None:
             result['WarnLevel'] = self.warn_level
         return result
@@ -7735,8 +7955,6 @@ class ModifyRuleRequest(TeaModel):
             self.category = m.get('Category')
         if m.get('Content') is not None:
             self.content = m.get('Content')
-        if m.get('CustomType') is not None:
-            self.custom_type = m.get('CustomType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Lang') is not None:
@@ -7751,8 +7969,6 @@ class ModifyRuleRequest(TeaModel):
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('RuleType') is not None:
             self.rule_type = m.get('RuleType')
-        if m.get('StatExpress') is not None:
-            self.stat_express = m.get('StatExpress')
         if m.get('WarnLevel') is not None:
             self.warn_level = m.get('WarnLevel')
         return self
