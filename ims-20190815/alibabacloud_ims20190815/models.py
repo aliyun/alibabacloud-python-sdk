@@ -5477,7 +5477,7 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(TeaModel)
 class GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference(TeaModel):
     def __init__(
         self,
-        verification_types: str = None,
+        verification_types: List[str] = None,
     ):
         self.verification_types = verification_types
 
@@ -9623,7 +9623,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(TeaModel)
 class SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference(TeaModel):
     def __init__(
         self,
-        verification_types: str = None,
+        verification_types: List[str] = None,
     ):
         self.verification_types = verification_types
 
