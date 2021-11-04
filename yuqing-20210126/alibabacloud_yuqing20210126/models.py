@@ -4080,6 +4080,7 @@ class QueryTagNodesResponse(TeaModel):
 class UpdateProjectRequest(TeaModel):
     def __init__(
         self,
+        is_info: bool = None,
         project: Project = None,
         project_id: int = None,
         request_id: str = None,
@@ -4087,6 +4088,8 @@ class UpdateProjectRequest(TeaModel):
         update_user_id: str = None,
         update_user_name: str = None,
     ):
+        # 默认更新关键词
+        self.is_info = is_info
         # 舆情项目对象
         self.project = project
         # 项目id
@@ -4110,6 +4113,8 @@ class UpdateProjectRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.is_info is not None:
+            result['isInfo'] = self.is_info
         if self.project is not None:
             result['project'] = self.project.to_map()
         if self.project_id is not None:
@@ -4126,6 +4131,8 @@ class UpdateProjectRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('isInfo') is not None:
+            self.is_info = m.get('isInfo')
         if m.get('project') is not None:
             temp_model = Project()
             self.project = temp_model.from_map(m['project'])

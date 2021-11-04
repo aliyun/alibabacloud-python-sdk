@@ -976,6 +976,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.team_hash_id):
             query['teamHashId'] = request.team_hash_id
         body = {}
+        if not UtilClient.is_unset(request.is_info):
+            body['isInfo'] = request.is_info
         if not UtilClient.is_unset(request.project):
             body['project'] = request.project
         if not UtilClient.is_unset(request.project_id):
@@ -1007,6 +1009,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.team_hash_id):
             query['teamHashId'] = request.team_hash_id
         body = {}
+        if not UtilClient.is_unset(request.is_info):
+            body['isInfo'] = request.is_info
         if not UtilClient.is_unset(request.project):
             body['project'] = request.project
         if not UtilClient.is_unset(request.project_id):
