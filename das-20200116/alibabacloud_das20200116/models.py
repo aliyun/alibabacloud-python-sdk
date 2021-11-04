@@ -4,241 +4,6 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
-class AccessHDMInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        caller_bid: str = None,
-        caller_type: str = None,
-        caller_uid: str = None,
-        engine: str = None,
-        external: str = None,
-        instance_alias: str = None,
-        instance_area: str = None,
-        instance_id: str = None,
-        ip: str = None,
-        network_type: str = None,
-        owner_id: str = None,
-        owner_id_signature: str = None,
-        password: str = None,
-        port: str = None,
-        product: str = None,
-        region: str = None,
-        target: str = None,
-        tenant_id: str = None,
-        username: str = None,
-        vpc_id: str = None,
-        context: str = None,
-    ):
-        self.caller_bid = caller_bid
-        self.caller_type = caller_type
-        self.caller_uid = caller_uid
-        self.engine = engine
-        self.external = external
-        self.instance_alias = instance_alias
-        self.instance_area = instance_area
-        self.instance_id = instance_id
-        self.ip = ip
-        self.network_type = network_type
-        self.owner_id = owner_id
-        self.owner_id_signature = owner_id_signature
-        self.password = password
-        self.port = port
-        self.product = product
-        self.region = region
-        self.target = target
-        self.tenant_id = tenant_id
-        self.username = username
-        self.vpc_id = vpc_id
-        self.context = context
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.caller_bid is not None:
-            result['CallerBid'] = self.caller_bid
-        if self.caller_type is not None:
-            result['CallerType'] = self.caller_type
-        if self.caller_uid is not None:
-            result['CallerUid'] = self.caller_uid
-        if self.engine is not None:
-            result['Engine'] = self.engine
-        if self.external is not None:
-            result['External'] = self.external
-        if self.instance_alias is not None:
-            result['InstanceAlias'] = self.instance_alias
-        if self.instance_area is not None:
-            result['InstanceArea'] = self.instance_area
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.ip is not None:
-            result['Ip'] = self.ip
-        if self.network_type is not None:
-            result['NetworkType'] = self.network_type
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.owner_id_signature is not None:
-            result['OwnerIdSignature'] = self.owner_id_signature
-        if self.password is not None:
-            result['Password'] = self.password
-        if self.port is not None:
-            result['Port'] = self.port
-        if self.product is not None:
-            result['Product'] = self.product
-        if self.region is not None:
-            result['Region'] = self.region
-        if self.target is not None:
-            result['Target'] = self.target
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.username is not None:
-            result['Username'] = self.username
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
-        if self.context is not None:
-            result['__context'] = self.context
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CallerBid') is not None:
-            self.caller_bid = m.get('CallerBid')
-        if m.get('CallerType') is not None:
-            self.caller_type = m.get('CallerType')
-        if m.get('CallerUid') is not None:
-            self.caller_uid = m.get('CallerUid')
-        if m.get('Engine') is not None:
-            self.engine = m.get('Engine')
-        if m.get('External') is not None:
-            self.external = m.get('External')
-        if m.get('InstanceAlias') is not None:
-            self.instance_alias = m.get('InstanceAlias')
-        if m.get('InstanceArea') is not None:
-            self.instance_area = m.get('InstanceArea')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('Ip') is not None:
-            self.ip = m.get('Ip')
-        if m.get('NetworkType') is not None:
-            self.network_type = m.get('NetworkType')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('OwnerIdSignature') is not None:
-            self.owner_id_signature = m.get('OwnerIdSignature')
-        if m.get('Password') is not None:
-            self.password = m.get('Password')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
-        if m.get('Product') is not None:
-            self.product = m.get('Product')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        if m.get('Target') is not None:
-            self.target = m.get('Target')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('Username') is not None:
-            self.username = m.get('Username')
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
-        if m.get('__context') is not None:
-            self.context = m.get('__context')
-        return self
-
-
-class AccessHDMInstanceResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class AccessHDMInstanceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: AccessHDMInstanceResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = AccessHDMInstanceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class AddHDMInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -1423,6 +1188,139 @@ class CreateDiagnosticReportResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateDiagnosticReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRequestDiagnosisRequest(TeaModel):
+    def __init__(
+        self,
+        database: str = None,
+        instance_id: str = None,
+        node_id: str = None,
+        sql: str = None,
+    ):
+        self.database = database
+        self.instance_id = instance_id
+        self.node_id = node_id
+        self.sql = sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        return self
+
+
+class CreateRequestDiagnosisResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateRequestDiagnosisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateRequestDiagnosisResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateRequestDiagnosisResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7049,6 +6947,515 @@ class GetInstanceInspectionsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetInstanceInspectionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRequestDiagnosisPageRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        instance_id: str = None,
+        node_id: str = None,
+        page_no: str = None,
+        page_size: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.node_id = node_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetRequestDiagnosisPageResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        db_schema: str = None,
+        engine: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        message_id: str = None,
+        param: str = None,
+        result: str = None,
+        sql_id: str = None,
+        state: int = None,
+        uuid: str = None,
+    ):
+        self.account_id = account_id
+        self.db_schema = db_schema
+        self.engine = engine
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.message_id = message_id
+        self.param = param
+        self.result = result
+        self.sql_id = sql_id
+        self.state = state
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.db_schema is not None:
+            result['dbSchema'] = self.db_schema
+        if self.engine is not None:
+            result['engine'] = self.engine
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.message_id is not None:
+            result['messageId'] = self.message_id
+        if self.param is not None:
+            result['param'] = self.param
+        if self.result is not None:
+            result['result'] = self.result
+        if self.sql_id is not None:
+            result['sqlId'] = self.sql_id
+        if self.state is not None:
+            result['state'] = self.state
+        if self.uuid is not None:
+            result['uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('dbSchema') is not None:
+            self.db_schema = m.get('dbSchema')
+        if m.get('engine') is not None:
+            self.engine = m.get('engine')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('messageId') is not None:
+            self.message_id = m.get('messageId')
+        if m.get('param') is not None:
+            self.param = m.get('param')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        if m.get('sqlId') is not None:
+            self.sql_id = m.get('sqlId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('uuid') is not None:
+            self.uuid = m.get('uuid')
+        return self
+
+
+class GetRequestDiagnosisPageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        extra: str = None,
+        list: List[GetRequestDiagnosisPageResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.extra = extra
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extra is not None:
+            result['extra'] = self.extra
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['pageNo'] = self.page_no
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = GetRequestDiagnosisPageResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('pageNo') is not None:
+            self.page_no = m.get('pageNo')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class GetRequestDiagnosisPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetRequestDiagnosisPageResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetRequestDiagnosisPageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRequestDiagnosisPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetRequestDiagnosisPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetRequestDiagnosisPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRequestDiagnosisResultRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        message_id: str = None,
+        node_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.message_id = message_id
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class GetRequestDiagnosisResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        db_schema: str = None,
+        engine: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        message_id: str = None,
+        param: str = None,
+        result: str = None,
+        sql_id: str = None,
+        state: int = None,
+        uuid: str = None,
+    ):
+        self.account_id = account_id
+        self.db_schema = db_schema
+        self.engine = engine
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.message_id = message_id
+        self.param = param
+        self.result = result
+        self.sql_id = sql_id
+        self.state = state
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.db_schema is not None:
+            result['dbSchema'] = self.db_schema
+        if self.engine is not None:
+            result['engine'] = self.engine
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.message_id is not None:
+            result['messageId'] = self.message_id
+        if self.param is not None:
+            result['param'] = self.param
+        if self.result is not None:
+            result['result'] = self.result
+        if self.sql_id is not None:
+            result['sqlId'] = self.sql_id
+        if self.state is not None:
+            result['state'] = self.state
+        if self.uuid is not None:
+            result['uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('dbSchema') is not None:
+            self.db_schema = m.get('dbSchema')
+        if m.get('engine') is not None:
+            self.engine = m.get('engine')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('messageId') is not None:
+            self.message_id = m.get('messageId')
+        if m.get('param') is not None:
+            self.param = m.get('param')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        if m.get('sqlId') is not None:
+            self.sql_id = m.get('sqlId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('uuid') is not None:
+            self.uuid = m.get('uuid')
+        return self
+
+
+class GetRequestDiagnosisResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetRequestDiagnosisResultResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetRequestDiagnosisResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRequestDiagnosisResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetRequestDiagnosisResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetRequestDiagnosisResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
