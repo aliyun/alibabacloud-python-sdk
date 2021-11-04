@@ -1,3 +1,6 @@
+2021-11-04 Version: 1.1.3
+- Add relatedMediaIds param in GetTemplate API.
+
 2021-09-10 Version: 1.1.2
 - Add post method to Template API.
 
