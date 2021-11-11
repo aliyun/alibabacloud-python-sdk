@@ -1,3 +1,6 @@
+2021-11-11 Version: 1.0.6
+-  Support elasticsearch apm interface.
+
 2021-10-15 Version: 1.0.5
 - AMP version.
 
