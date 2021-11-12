@@ -250,6 +250,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.associate_additional_certificates_with_listener_with_options_async(request, runtime)
 
+    def attach_common_bandwidth_package_to_load_balancer_with_options(
+        self,
+        request: alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
+            self.do_rpcrequest('AttachCommonBandwidthPackageToLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def attach_common_bandwidth_package_to_load_balancer_with_options_async(
+        self,
+        request: alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
+            await self.do_rpcrequest_async('AttachCommonBandwidthPackageToLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def attach_common_bandwidth_package_to_load_balancer(
+        self,
+        request: alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
+    ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.attach_common_bandwidth_package_to_load_balancer_with_options(request, runtime)
+
+    async def attach_common_bandwidth_package_to_load_balancer_async(
+        self,
+        request: alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
+    ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_common_bandwidth_package_to_load_balancer_with_options_async(request, runtime)
+
     def create_acl_with_options(
         self,
         request: alb_20200616_models.CreateAclRequest,
@@ -991,6 +1033,48 @@ class Client(OpenApiClient):
     async def describe_zones_async(self) -> alb_20200616_models.DescribeZonesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(runtime)
+
+    def detach_common_bandwidth_package_from_load_balancer_with_options(
+        self,
+        request: alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
+            self.do_rpcrequest('DetachCommonBandwidthPackageFromLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def detach_common_bandwidth_package_from_load_balancer_with_options_async(
+        self,
+        request: alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
+            await self.do_rpcrequest_async('DetachCommonBandwidthPackageFromLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def detach_common_bandwidth_package_from_load_balancer(
+        self,
+        request: alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
+    ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detach_common_bandwidth_package_from_load_balancer_with_options(request, runtime)
+
+    async def detach_common_bandwidth_package_from_load_balancer_async(
+        self,
+        request: alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
+    ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_common_bandwidth_package_from_load_balancer_with_options_async(request, runtime)
 
     def disable_deletion_protection_with_options(
         self,
@@ -1832,48 +1916,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_security_policy_relations_with_options_async(request, runtime)
 
-    def list_server_groups_with_options(
-        self,
-        request: alb_20200616_models.ListServerGroupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alb_20200616_models.ListServerGroupsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            alb_20200616_models.ListServerGroupsResponse(),
-            self.do_rpcrequest('ListServerGroups', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_server_groups_with_options_async(
-        self,
-        request: alb_20200616_models.ListServerGroupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alb_20200616_models.ListServerGroupsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            alb_20200616_models.ListServerGroupsResponse(),
-            await self.do_rpcrequest_async('ListServerGroups', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_server_groups(
-        self,
-        request: alb_20200616_models.ListServerGroupsRequest,
-    ) -> alb_20200616_models.ListServerGroupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_server_groups_with_options(request, runtime)
-
-    async def list_server_groups_async(
-        self,
-        request: alb_20200616_models.ListServerGroupsRequest,
-    ) -> alb_20200616_models.ListServerGroupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_server_groups_with_options_async(request, runtime)
-
     def list_server_group_servers_with_options(
         self,
         request: alb_20200616_models.ListServerGroupServersRequest,
@@ -1915,6 +1957,48 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListServerGroupServersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_server_group_servers_with_options_async(request, runtime)
+
+    def list_server_groups_with_options(
+        self,
+        request: alb_20200616_models.ListServerGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.ListServerGroupsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.ListServerGroupsResponse(),
+            self.do_rpcrequest('ListServerGroups', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_server_groups_with_options_async(
+        self,
+        request: alb_20200616_models.ListServerGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.ListServerGroupsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.ListServerGroupsResponse(),
+            await self.do_rpcrequest_async('ListServerGroups', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_server_groups(
+        self,
+        request: alb_20200616_models.ListServerGroupsRequest,
+    ) -> alb_20200616_models.ListServerGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_server_groups_with_options(request, runtime)
+
+    async def list_server_groups_async(
+        self,
+        request: alb_20200616_models.ListServerGroupsRequest,
+    ) -> alb_20200616_models.ListServerGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_server_groups_with_options_async(request, runtime)
 
     def list_system_security_policies_with_options(
         self,
@@ -2657,6 +2741,48 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateLoadBalancerEditionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_load_balancer_edition_with_options_async(request, runtime)
+
+    def update_load_balancer_zones_with_options(
+        self,
+        request: alb_20200616_models.UpdateLoadBalancerZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.UpdateLoadBalancerZonesResponse(),
+            self.do_rpcrequest('UpdateLoadBalancerZones', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_load_balancer_zones_with_options_async(
+        self,
+        request: alb_20200616_models.UpdateLoadBalancerZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.UpdateLoadBalancerZonesResponse(),
+            await self.do_rpcrequest_async('UpdateLoadBalancerZones', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_load_balancer_zones(
+        self,
+        request: alb_20200616_models.UpdateLoadBalancerZonesRequest,
+    ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_load_balancer_zones_with_options(request, runtime)
+
+    async def update_load_balancer_zones_async(
+        self,
+        request: alb_20200616_models.UpdateLoadBalancerZonesRequest,
+    ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_load_balancer_zones_with_options_async(request, runtime)
 
     def update_rule_attribute_with_options(
         self,

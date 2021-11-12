@@ -1,3 +1,6 @@
+2021-11-12 Version: 1.0.5
+- Support lastest API.
+
 2021-09-26 Version: 1.0.4
 - Support lastest openApis.
 

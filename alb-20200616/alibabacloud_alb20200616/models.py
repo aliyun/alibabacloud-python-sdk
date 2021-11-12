@@ -42,15 +42,15 @@ class AddEntriesToAclRequestAclEntries(TeaModel):
 class AddEntriesToAclRequest(TeaModel):
     def __init__(
         self,
-        acl_id: str = None,
         acl_entries: List[AddEntriesToAclRequestAclEntries] = None,
+        acl_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
     ):
-        # AclId
-        self.acl_id = acl_id
         # 条目信息列表
         self.acl_entries = acl_entries
+        # AclId
+        self.acl_id = acl_id
         # 幂等Token
         self.client_token = client_token
         # dryRun
@@ -68,12 +68,12 @@ class AddEntriesToAclRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.acl_id is not None:
-            result['AclId'] = self.acl_id
         result['AclEntries'] = []
         if self.acl_entries is not None:
             for k in self.acl_entries:
                 result['AclEntries'].append(k.to_map() if k else None)
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -82,13 +82,13 @@ class AddEntriesToAclRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AclId') is not None:
-            self.acl_id = m.get('AclId')
         self.acl_entries = []
         if m.get('AclEntries') is not None:
             for k in m.get('AclEntries'):
                 temp_model = AddEntriesToAclRequestAclEntries()
                 self.acl_entries.append(temp_model.from_map(k))
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -234,19 +234,19 @@ class AddServersToServerGroupRequestServers(TeaModel):
 class AddServersToServerGroupRequest(TeaModel):
     def __init__(
         self,
-        server_group_id: str = None,
-        servers: List[AddServersToServerGroupRequestServers] = None,
         client_token: str = None,
         dry_run: bool = None,
+        server_group_id: str = None,
+        servers: List[AddServersToServerGroupRequestServers] = None,
     ):
-        # 后端服务器Id
-        self.server_group_id = server_group_id
-        # 后端服务器
-        self.servers = servers
         # 幂等Token
         self.client_token = client_token
         # dryRun
         self.dry_run = dry_run
+        # 后端服务器Id
+        self.server_group_id = server_group_id
+        # 后端服务器
+        self.servers = servers
 
     def validate(self):
         if self.servers:
@@ -260,20 +260,24 @@ class AddServersToServerGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
         result['Servers'] = []
         if self.servers is not None:
             for k in self.servers:
                 result['Servers'].append(k.to_map() if k else None)
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
         self.servers = []
@@ -281,10 +285,6 @@ class AddServersToServerGroupRequest(TeaModel):
             for k in m.get('Servers'):
                 temp_model = AddServersToServerGroupRequestServers()
                 self.servers.append(temp_model.from_map(k))
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
         return self
 
 
@@ -363,19 +363,19 @@ class AddServersToServerGroupResponse(TeaModel):
 class ApplyHealthCheckTemplateToServerGroupRequest(TeaModel):
     def __init__(
         self,
-        health_check_template_id: str = None,
-        server_group_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        health_check_template_id: str = None,
+        server_group_id: str = None,
     ):
-        # 健康检查模板Id
-        self.health_check_template_id = health_check_template_id
-        # 服务器组Id
-        self.server_group_id = server_group_id
         # 幂等Token
         self.client_token = client_token
         # dryRun
         self.dry_run = dry_run
+        # 健康检查模板Id
+        self.health_check_template_id = health_check_template_id
+        # 服务器组Id
+        self.server_group_id = server_group_id
 
     def validate(self):
         pass
@@ -386,26 +386,26 @@ class ApplyHealthCheckTemplateToServerGroupRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.health_check_template_id is not None:
-            result['HealthCheckTemplateId'] = self.health_check_template_id
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.health_check_template_id is not None:
+            result['HealthCheckTemplateId'] = self.health_check_template_id
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('HealthCheckTemplateId') is not None:
-            self.health_check_template_id = m.get('HealthCheckTemplateId')
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('HealthCheckTemplateId') is not None:
+            self.health_check_template_id = m.get('HealthCheckTemplateId')
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
         return self
 
 
@@ -485,21 +485,21 @@ class AssociateAclsWithListenerRequest(TeaModel):
     def __init__(
         self,
         acl_ids: List[str] = None,
-        listener_id: str = None,
         acl_type: str = None,
-        dry_run: bool = None,
         client_token: str = None,
+        dry_run: bool = None,
+        listener_id: str = None,
     ):
         # 访问控制策略Id
         self.acl_ids = acl_ids
-        # 监听Id
-        self.listener_id = listener_id
         # 绑定类型
         self.acl_type = acl_type
-        # 预检此次请求
-        self.dry_run = dry_run
         # 幂等标识
         self.client_token = client_token
+        # 预检此次请求
+        self.dry_run = dry_run
+        # 监听Id
+        self.listener_id = listener_id
 
     def validate(self):
         pass
@@ -512,28 +512,28 @@ class AssociateAclsWithListenerRequest(TeaModel):
         result = dict()
         if self.acl_ids is not None:
             result['AclIds'] = self.acl_ids
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
         if self.acl_type is not None:
             result['AclType'] = self.acl_type
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AclIds') is not None:
             self.acl_ids = m.get('AclIds')
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
         if m.get('AclType') is not None:
             self.acl_type = m.get('AclType')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         return self
 
 
@@ -640,19 +640,19 @@ class AssociateAdditionalCertificatesWithListenerRequestCertificates(TeaModel):
 class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
     def __init__(
         self,
-        listener_id: str = None,
         certificates: List[AssociateAdditionalCertificatesWithListenerRequestCertificates] = None,
         client_token: str = None,
         dry_run: bool = None,
+        listener_id: str = None,
     ):
-        # 监听Id
-        self.listener_id = listener_id
         # 证书列表
         self.certificates = certificates
         # 幂等Token
         self.client_token = client_token
         # dryRun
         self.dry_run = dry_run
+        # 监听Id
+        self.listener_id = listener_id
 
     def validate(self):
         if self.certificates:
@@ -666,8 +666,6 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
         result['Certificates'] = []
         if self.certificates is not None:
             for k in self.certificates:
@@ -676,12 +674,12 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
         self.certificates = []
         if m.get('Certificates') is not None:
             for k in m.get('Certificates'):
@@ -691,6 +689,8 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         return self
 
 
@@ -762,6 +762,134 @@ class AssociateAdditionalCertificatesWithListenerResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = AssociateAdditionalCertificatesWithListenerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AttachCommonBandwidthPackageToLoadBalancerRequest(TeaModel):
+    def __init__(
+        self,
+        bandwidth_package_id: str = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        load_balancer_id: str = None,
+        region_id: str = None,
+    ):
+        # 带宽包ID
+        self.bandwidth_package_id = bandwidth_package_id
+        # 幂等参数
+        self.client_token = client_token
+        # 是否只预检此次请求
+        self.dry_run = dry_run
+        # 实例ID
+        self.load_balancer_id = load_balancer_id
+        # 地域ID
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AttachCommonBandwidthPackageToLoadBalancerResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        # 异步任务id
+        self.job_id = job_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachCommonBandwidthPackageToLoadBalancerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AttachCommonBandwidthPackageToLoadBalancerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AttachCommonBandwidthPackageToLoadBalancerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -898,48 +1026,48 @@ class CreateHealthCheckTemplateRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
-        health_check_template_name: str = None,
+        dry_run: bool = None,
+        health_check_codes: List[str] = None,
         health_check_connect_port: int = None,
         health_check_host: str = None,
-        health_check_codes: List[str] = None,
-        health_check_interval: int = None,
-        health_check_timeout: int = None,
-        health_check_path: str = None,
-        health_check_method: str = None,
-        health_check_protocol: str = None,
         health_check_http_version: str = None,
+        health_check_interval: int = None,
+        health_check_method: str = None,
+        health_check_path: str = None,
+        health_check_protocol: str = None,
+        health_check_template_name: str = None,
+        health_check_timeout: int = None,
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
-        dry_run: bool = None,
     ):
         # 幂等参数
         self.client_token = client_token
-        # 名称
-        self.health_check_template_name = health_check_template_name
+        # dryRun
+        self.dry_run = dry_run
+        # 状态码
+        self.health_check_codes = health_check_codes
         # 端口号
         self.health_check_connect_port = health_check_connect_port
         # 域名
         self.health_check_host = health_check_host
-        # 状态码
-        self.health_check_codes = health_check_codes
-        # 时间间隔
-        self.health_check_interval = health_check_interval
-        # 超时时间
-        self.health_check_timeout = health_check_timeout
-        # uri
-        self.health_check_path = health_check_path
-        # 方法
-        self.health_check_method = health_check_method
-        # 协议
-        self.health_check_protocol = health_check_protocol
         # 版本
         self.health_check_http_version = health_check_http_version
+        # 时间间隔
+        self.health_check_interval = health_check_interval
+        # 方法
+        self.health_check_method = health_check_method
+        # uri
+        self.health_check_path = health_check_path
+        # 协议
+        self.health_check_protocol = health_check_protocol
+        # 名称
+        self.health_check_template_name = health_check_template_name
+        # 超时时间
+        self.health_check_timeout = health_check_timeout
         # 健康阈值
         self.healthy_threshold = healthy_threshold
         # 不健康阈值
         self.unhealthy_threshold = unhealthy_threshold
-        # dryRun
-        self.dry_run = dry_run
 
     def validate(self):
         pass
@@ -952,64 +1080,64 @@ class CreateHealthCheckTemplateRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.health_check_template_name is not None:
-            result['HealthCheckTemplateName'] = self.health_check_template_name
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.health_check_codes is not None:
+            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_host is not None:
             result['HealthCheckHost'] = self.health_check_host
-        if self.health_check_codes is not None:
-            result['HealthCheckCodes'] = self.health_check_codes
-        if self.health_check_interval is not None:
-            result['HealthCheckInterval'] = self.health_check_interval
-        if self.health_check_timeout is not None:
-            result['HealthCheckTimeout'] = self.health_check_timeout
-        if self.health_check_path is not None:
-            result['HealthCheckPath'] = self.health_check_path
-        if self.health_check_method is not None:
-            result['HealthCheckMethod'] = self.health_check_method
-        if self.health_check_protocol is not None:
-            result['HealthCheckProtocol'] = self.health_check_protocol
         if self.health_check_http_version is not None:
             result['HealthCheckHttpVersion'] = self.health_check_http_version
+        if self.health_check_interval is not None:
+            result['HealthCheckInterval'] = self.health_check_interval
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
+        if self.health_check_path is not None:
+            result['HealthCheckPath'] = self.health_check_path
+        if self.health_check_protocol is not None:
+            result['HealthCheckProtocol'] = self.health_check_protocol
+        if self.health_check_template_name is not None:
+            result['HealthCheckTemplateName'] = self.health_check_template_name
+        if self.health_check_timeout is not None:
+            result['HealthCheckTimeout'] = self.health_check_timeout
         if self.healthy_threshold is not None:
             result['HealthyThreshold'] = self.healthy_threshold
         if self.unhealthy_threshold is not None:
             result['UnhealthyThreshold'] = self.unhealthy_threshold
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('HealthCheckTemplateName') is not None:
-            self.health_check_template_name = m.get('HealthCheckTemplateName')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('HealthCheckCodes') is not None:
+            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckHost') is not None:
             self.health_check_host = m.get('HealthCheckHost')
-        if m.get('HealthCheckCodes') is not None:
-            self.health_check_codes = m.get('HealthCheckCodes')
-        if m.get('HealthCheckInterval') is not None:
-            self.health_check_interval = m.get('HealthCheckInterval')
-        if m.get('HealthCheckTimeout') is not None:
-            self.health_check_timeout = m.get('HealthCheckTimeout')
-        if m.get('HealthCheckPath') is not None:
-            self.health_check_path = m.get('HealthCheckPath')
-        if m.get('HealthCheckMethod') is not None:
-            self.health_check_method = m.get('HealthCheckMethod')
-        if m.get('HealthCheckProtocol') is not None:
-            self.health_check_protocol = m.get('HealthCheckProtocol')
         if m.get('HealthCheckHttpVersion') is not None:
             self.health_check_http_version = m.get('HealthCheckHttpVersion')
+        if m.get('HealthCheckInterval') is not None:
+            self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
+        if m.get('HealthCheckPath') is not None:
+            self.health_check_path = m.get('HealthCheckPath')
+        if m.get('HealthCheckProtocol') is not None:
+            self.health_check_protocol = m.get('HealthCheckProtocol')
+        if m.get('HealthCheckTemplateName') is not None:
+            self.health_check_template_name = m.get('HealthCheckTemplateName')
+        if m.get('HealthCheckTimeout') is not None:
+            self.health_check_timeout = m.get('HealthCheckTimeout')
         if m.get('HealthyThreshold') is not None:
             self.healthy_threshold = m.get('HealthyThreshold')
         if m.get('UnhealthyThreshold') is not None:
             self.unhealthy_threshold = m.get('UnhealthyThreshold')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
         return self
 
 
@@ -1085,49 +1213,9 @@ class CreateHealthCheckTemplateResponse(TeaModel):
         return self
 
 
-class CreateListenerRequestXForwardedForConfig(TeaModel):
-    def __init__(
-        self,
-        xforwarded_for_client_cert_client_verify_alias: str = None,
-        xforwarded_for_client_cert_client_verify_enabled: bool = None,
-        xforwarded_for_client_cert_fingerprint_alias: str = None,
-        xforwarded_for_client_cert_fingerprint_enabled: bool = None,
-        xforwarded_for_client_cert_issuer_dnalias: str = None,
-        xforwarded_for_client_cert_issuer_dnenabled: bool = None,
-        xforwarded_for_client_cert_subject_dnalias: str = None,
-        xforwarded_for_client_cert_subject_dnenabled: bool = None,
-        xforwarded_for_client_src_port_enabled: bool = None,
-        xforwarded_for_enabled: bool = None,
-        xforwarded_for_proto_enabled: bool = None,
-        xforwarded_for_slbid_enabled: bool = None,
-        xforwarded_for_slbport_enabled: bool = None,
-    ):
-        # 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-        self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
-        # 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
-        self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-        self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
-        # 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
-        self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-        self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
-        # 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
-        self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-        self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
-        # 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
-        self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
-        self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
-        # 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
-        self.xforwarded_for_enabled = xforwarded_for_enabled
-        # 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
-        self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # 是否通过SLB-ID头字段获取负载均衡实例ID。
-        self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
-        # 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
-        self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
+class CreateListenerRequestCaCertificates(TeaModel):
+    def __init__(self):
+        pass
 
     def validate(self):
         pass
@@ -1138,97 +1226,10 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
             return _map
 
         result = dict()
-        if self.xforwarded_for_client_cert_client_verify_alias is not None:
-            result['XForwardedForClientCertClientVerifyAlias'] = self.xforwarded_for_client_cert_client_verify_alias
-        if self.xforwarded_for_client_cert_client_verify_enabled is not None:
-            result['XForwardedForClientCertClientVerifyEnabled'] = self.xforwarded_for_client_cert_client_verify_enabled
-        if self.xforwarded_for_client_cert_fingerprint_alias is not None:
-            result['XForwardedForClientCertFingerprintAlias'] = self.xforwarded_for_client_cert_fingerprint_alias
-        if self.xforwarded_for_client_cert_fingerprint_enabled is not None:
-            result['XForwardedForClientCertFingerprintEnabled'] = self.xforwarded_for_client_cert_fingerprint_enabled
-        if self.xforwarded_for_client_cert_issuer_dnalias is not None:
-            result['XForwardedForClientCertIssuerDNAlias'] = self.xforwarded_for_client_cert_issuer_dnalias
-        if self.xforwarded_for_client_cert_issuer_dnenabled is not None:
-            result['XForwardedForClientCertIssuerDNEnabled'] = self.xforwarded_for_client_cert_issuer_dnenabled
-        if self.xforwarded_for_client_cert_subject_dnalias is not None:
-            result['XForwardedForClientCertSubjectDNAlias'] = self.xforwarded_for_client_cert_subject_dnalias
-        if self.xforwarded_for_client_cert_subject_dnenabled is not None:
-            result['XForwardedForClientCertSubjectDNEnabled'] = self.xforwarded_for_client_cert_subject_dnenabled
-        if self.xforwarded_for_client_src_port_enabled is not None:
-            result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
-        if self.xforwarded_for_enabled is not None:
-            result['XForwardedForEnabled'] = self.xforwarded_for_enabled
-        if self.xforwarded_for_proto_enabled is not None:
-            result['XForwardedForProtoEnabled'] = self.xforwarded_for_proto_enabled
-        if self.xforwarded_for_slbid_enabled is not None:
-            result['XForwardedForSLBIdEnabled'] = self.xforwarded_for_slbid_enabled
-        if self.xforwarded_for_slbport_enabled is not None:
-            result['XForwardedForSLBPortEnabled'] = self.xforwarded_for_slbport_enabled
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('XForwardedForClientCertClientVerifyAlias') is not None:
-            self.xforwarded_for_client_cert_client_verify_alias = m.get('XForwardedForClientCertClientVerifyAlias')
-        if m.get('XForwardedForClientCertClientVerifyEnabled') is not None:
-            self.xforwarded_for_client_cert_client_verify_enabled = m.get('XForwardedForClientCertClientVerifyEnabled')
-        if m.get('XForwardedForClientCertFingerprintAlias') is not None:
-            self.xforwarded_for_client_cert_fingerprint_alias = m.get('XForwardedForClientCertFingerprintAlias')
-        if m.get('XForwardedForClientCertFingerprintEnabled') is not None:
-            self.xforwarded_for_client_cert_fingerprint_enabled = m.get('XForwardedForClientCertFingerprintEnabled')
-        if m.get('XForwardedForClientCertIssuerDNAlias') is not None:
-            self.xforwarded_for_client_cert_issuer_dnalias = m.get('XForwardedForClientCertIssuerDNAlias')
-        if m.get('XForwardedForClientCertIssuerDNEnabled') is not None:
-            self.xforwarded_for_client_cert_issuer_dnenabled = m.get('XForwardedForClientCertIssuerDNEnabled')
-        if m.get('XForwardedForClientCertSubjectDNAlias') is not None:
-            self.xforwarded_for_client_cert_subject_dnalias = m.get('XForwardedForClientCertSubjectDNAlias')
-        if m.get('XForwardedForClientCertSubjectDNEnabled') is not None:
-            self.xforwarded_for_client_cert_subject_dnenabled = m.get('XForwardedForClientCertSubjectDNEnabled')
-        if m.get('XForwardedForClientSrcPortEnabled') is not None:
-            self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
-        if m.get('XForwardedForEnabled') is not None:
-            self.xforwarded_for_enabled = m.get('XForwardedForEnabled')
-        if m.get('XForwardedForProtoEnabled') is not None:
-            self.xforwarded_for_proto_enabled = m.get('XForwardedForProtoEnabled')
-        if m.get('XForwardedForSLBIdEnabled') is not None:
-            self.xforwarded_for_slbid_enabled = m.get('XForwardedForSLBIdEnabled')
-        if m.get('XForwardedForSLBPortEnabled') is not None:
-            self.xforwarded_for_slbport_enabled = m.get('XForwardedForSLBPortEnabled')
-        return self
-
-
-class CreateListenerRequestQuicConfig(TeaModel):
-    def __init__(
-        self,
-        quic_listener_id: str = None,
-        quic_upgrade_enabled: bool = None,
-    ):
-        # 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
-        self.quic_listener_id = quic_listener_id
-        # 是否开启quic升级，HTTPS监听时有效
-        self.quic_upgrade_enabled = quic_upgrade_enabled
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.quic_listener_id is not None:
-            result['QuicListenerId'] = self.quic_listener_id
-        if self.quic_upgrade_enabled is not None:
-            result['QuicUpgradeEnabled'] = self.quic_upgrade_enabled
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('QuicListenerId') is not None:
-            self.quic_listener_id = m.get('QuicListenerId')
-        if m.get('QuicUpgradeEnabled') is not None:
-            self.quic_upgrade_enabled = m.get('QuicUpgradeEnabled')
         return self
 
 
@@ -1361,61 +1362,214 @@ class CreateListenerRequestDefaultActions(TeaModel):
         return self
 
 
+class CreateListenerRequestQuicConfig(TeaModel):
+    def __init__(
+        self,
+        quic_listener_id: str = None,
+        quic_upgrade_enabled: bool = None,
+    ):
+        # 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
+        self.quic_listener_id = quic_listener_id
+        # 是否开启quic升级，HTTPS监听时有效
+        self.quic_upgrade_enabled = quic_upgrade_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quic_listener_id is not None:
+            result['QuicListenerId'] = self.quic_listener_id
+        if self.quic_upgrade_enabled is not None:
+            result['QuicUpgradeEnabled'] = self.quic_upgrade_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QuicListenerId') is not None:
+            self.quic_listener_id = m.get('QuicListenerId')
+        if m.get('QuicUpgradeEnabled') is not None:
+            self.quic_upgrade_enabled = m.get('QuicUpgradeEnabled')
+        return self
+
+
+class CreateListenerRequestXForwardedForConfig(TeaModel):
+    def __init__(
+        self,
+        xforwarded_for_client_cert_client_verify_alias: str = None,
+        xforwarded_for_client_cert_client_verify_enabled: bool = None,
+        xforwarded_for_client_cert_fingerprint_alias: str = None,
+        xforwarded_for_client_cert_fingerprint_enabled: bool = None,
+        xforwarded_for_client_cert_issuer_dnalias: str = None,
+        xforwarded_for_client_cert_issuer_dnenabled: bool = None,
+        xforwarded_for_client_cert_subject_dnalias: str = None,
+        xforwarded_for_client_cert_subject_dnenabled: bool = None,
+        xforwarded_for_client_src_port_enabled: bool = None,
+        xforwarded_for_enabled: bool = None,
+        xforwarded_for_proto_enabled: bool = None,
+        xforwarded_for_slbid_enabled: bool = None,
+        xforwarded_for_slbport_enabled: bool = None,
+    ):
+        # 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
+        self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
+        # 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
+        self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
+        # 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
+        self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
+        # 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
+        self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
+        # 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
+        self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
+        # 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
+        self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
+        # 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
+        self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
+        # 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
+        self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
+        # 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
+        self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
+        # 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
+        self.xforwarded_for_enabled = xforwarded_for_enabled
+        # 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
+        self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
+        # 是否通过SLB-ID头字段获取负载均衡实例ID。
+        self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
+        # 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
+        self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.xforwarded_for_client_cert_client_verify_alias is not None:
+            result['XForwardedForClientCertClientVerifyAlias'] = self.xforwarded_for_client_cert_client_verify_alias
+        if self.xforwarded_for_client_cert_client_verify_enabled is not None:
+            result['XForwardedForClientCertClientVerifyEnabled'] = self.xforwarded_for_client_cert_client_verify_enabled
+        if self.xforwarded_for_client_cert_fingerprint_alias is not None:
+            result['XForwardedForClientCertFingerprintAlias'] = self.xforwarded_for_client_cert_fingerprint_alias
+        if self.xforwarded_for_client_cert_fingerprint_enabled is not None:
+            result['XForwardedForClientCertFingerprintEnabled'] = self.xforwarded_for_client_cert_fingerprint_enabled
+        if self.xforwarded_for_client_cert_issuer_dnalias is not None:
+            result['XForwardedForClientCertIssuerDNAlias'] = self.xforwarded_for_client_cert_issuer_dnalias
+        if self.xforwarded_for_client_cert_issuer_dnenabled is not None:
+            result['XForwardedForClientCertIssuerDNEnabled'] = self.xforwarded_for_client_cert_issuer_dnenabled
+        if self.xforwarded_for_client_cert_subject_dnalias is not None:
+            result['XForwardedForClientCertSubjectDNAlias'] = self.xforwarded_for_client_cert_subject_dnalias
+        if self.xforwarded_for_client_cert_subject_dnenabled is not None:
+            result['XForwardedForClientCertSubjectDNEnabled'] = self.xforwarded_for_client_cert_subject_dnenabled
+        if self.xforwarded_for_client_src_port_enabled is not None:
+            result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
+        if self.xforwarded_for_enabled is not None:
+            result['XForwardedForEnabled'] = self.xforwarded_for_enabled
+        if self.xforwarded_for_proto_enabled is not None:
+            result['XForwardedForProtoEnabled'] = self.xforwarded_for_proto_enabled
+        if self.xforwarded_for_slbid_enabled is not None:
+            result['XForwardedForSLBIdEnabled'] = self.xforwarded_for_slbid_enabled
+        if self.xforwarded_for_slbport_enabled is not None:
+            result['XForwardedForSLBPortEnabled'] = self.xforwarded_for_slbport_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('XForwardedForClientCertClientVerifyAlias') is not None:
+            self.xforwarded_for_client_cert_client_verify_alias = m.get('XForwardedForClientCertClientVerifyAlias')
+        if m.get('XForwardedForClientCertClientVerifyEnabled') is not None:
+            self.xforwarded_for_client_cert_client_verify_enabled = m.get('XForwardedForClientCertClientVerifyEnabled')
+        if m.get('XForwardedForClientCertFingerprintAlias') is not None:
+            self.xforwarded_for_client_cert_fingerprint_alias = m.get('XForwardedForClientCertFingerprintAlias')
+        if m.get('XForwardedForClientCertFingerprintEnabled') is not None:
+            self.xforwarded_for_client_cert_fingerprint_enabled = m.get('XForwardedForClientCertFingerprintEnabled')
+        if m.get('XForwardedForClientCertIssuerDNAlias') is not None:
+            self.xforwarded_for_client_cert_issuer_dnalias = m.get('XForwardedForClientCertIssuerDNAlias')
+        if m.get('XForwardedForClientCertIssuerDNEnabled') is not None:
+            self.xforwarded_for_client_cert_issuer_dnenabled = m.get('XForwardedForClientCertIssuerDNEnabled')
+        if m.get('XForwardedForClientCertSubjectDNAlias') is not None:
+            self.xforwarded_for_client_cert_subject_dnalias = m.get('XForwardedForClientCertSubjectDNAlias')
+        if m.get('XForwardedForClientCertSubjectDNEnabled') is not None:
+            self.xforwarded_for_client_cert_subject_dnenabled = m.get('XForwardedForClientCertSubjectDNEnabled')
+        if m.get('XForwardedForClientSrcPortEnabled') is not None:
+            self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
+        if m.get('XForwardedForEnabled') is not None:
+            self.xforwarded_for_enabled = m.get('XForwardedForEnabled')
+        if m.get('XForwardedForProtoEnabled') is not None:
+            self.xforwarded_for_proto_enabled = m.get('XForwardedForProtoEnabled')
+        if m.get('XForwardedForSLBIdEnabled') is not None:
+            self.xforwarded_for_slbid_enabled = m.get('XForwardedForSLBIdEnabled')
+        if m.get('XForwardedForSLBPortEnabled') is not None:
+            self.xforwarded_for_slbport_enabled = m.get('XForwardedForSLBPortEnabled')
+        return self
+
+
 class CreateListenerRequest(TeaModel):
     def __init__(
         self,
-        load_balancer_id: str = None,
+        ca_certificates: List[CreateListenerRequestCaCertificates] = None,
+        ca_enabled: bool = None,
+        certificates: List[CreateListenerRequestCertificates] = None,
         client_token: str = None,
+        default_actions: List[CreateListenerRequestDefaultActions] = None,
         dry_run: bool = None,
-        listener_protocol: str = None,
-        listener_port: int = None,
-        listener_description: str = None,
-        request_timeout: int = None,
-        idle_timeout: int = None,
         gzip_enabled: bool = None,
         http_2enabled: bool = None,
+        idle_timeout: int = None,
+        listener_description: str = None,
+        listener_port: int = None,
+        listener_protocol: str = None,
+        load_balancer_id: str = None,
+        quic_config: CreateListenerRequestQuicConfig = None,
+        request_timeout: int = None,
         security_policy_id: str = None,
         xforwarded_for_config: CreateListenerRequestXForwardedForConfig = None,
-        quic_config: CreateListenerRequestQuicConfig = None,
-        certificates: List[CreateListenerRequestCertificates] = None,
-        default_actions: List[CreateListenerRequestDefaultActions] = None,
     ):
-        # 负载均衡标识
-        self.load_balancer_id = load_balancer_id
+        # 监听默认CA证书列表，N当前取值范围为1
+        self.ca_certificates = ca_certificates
+        # 是否开启双向认证
+        self.ca_enabled = ca_enabled
+        # 监听默认服务器证书列表，N当前取值范围为1
+        self.certificates = certificates
         # 幂等标识
         self.client_token = client_token
+        # 监听默认动作
+        self.default_actions = default_actions
         #  是否只预检此次请求
         self.dry_run = dry_run
-        # 监听协议
-        self.listener_protocol = listener_protocol
-        # 监听端口
-        self.listener_port = listener_port
-        # 监听描述
-        self.listener_description = listener_description
-        # 请求超时时间
-        self.request_timeout = request_timeout
-        # 连接空闲超时时间
-        self.idle_timeout = idle_timeout
         # 是否开启Gzip压缩
         self.gzip_enabled = gzip_enabled
         # 是否开启HTTP/2特性
         self.http_2enabled = http_2enabled
+        # 连接空闲超时时间
+        self.idle_timeout = idle_timeout
+        # 监听描述
+        self.listener_description = listener_description
+        # 监听端口
+        self.listener_port = listener_port
+        # 监听协议
+        self.listener_protocol = listener_protocol
+        # 负载均衡标识
+        self.load_balancer_id = load_balancer_id
+        # HTTPS启用QUIC时相关属性
+        self.quic_config = quic_config
+        # 请求超时时间
+        self.request_timeout = request_timeout
         # 安全策略
         self.security_policy_id = security_policy_id
         # XForward字段相关的配置
         self.xforwarded_for_config = xforwarded_for_config
-        # HTTPS启用QUIC时相关属性
-        self.quic_config = quic_config
-        # 监听默认服务器证书列表，N当前取值范围为1
-        self.certificates = certificates
-        # 监听默认动作
-        self.default_actions = default_actions
 
     def validate(self):
-        if self.xforwarded_for_config:
-            self.xforwarded_for_config.validate()
-        if self.quic_config:
-            self.quic_config.validate()
+        if self.ca_certificates:
+            for k in self.ca_certificates:
+                if k:
+                    k.validate()
         if self.certificates:
             for k in self.certificates:
                 if k:
@@ -1424,6 +1578,10 @@ class CreateListenerRequest(TeaModel):
             for k in self.default_actions:
                 if k:
                     k.validate()
+        if self.quic_config:
+            self.quic_config.validate()
+        if self.xforwarded_for_config:
+            self.xforwarded_for_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1431,82 +1589,95 @@ class CreateListenerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.load_balancer_id is not None:
-            result['LoadBalancerId'] = self.load_balancer_id
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
-        if self.listener_protocol is not None:
-            result['ListenerProtocol'] = self.listener_protocol
-        if self.listener_port is not None:
-            result['ListenerPort'] = self.listener_port
-        if self.listener_description is not None:
-            result['ListenerDescription'] = self.listener_description
-        if self.request_timeout is not None:
-            result['RequestTimeout'] = self.request_timeout
-        if self.idle_timeout is not None:
-            result['IdleTimeout'] = self.idle_timeout
-        if self.gzip_enabled is not None:
-            result['GzipEnabled'] = self.gzip_enabled
-        if self.http_2enabled is not None:
-            result['Http2Enabled'] = self.http_2enabled
-        if self.security_policy_id is not None:
-            result['SecurityPolicyId'] = self.security_policy_id
-        if self.xforwarded_for_config is not None:
-            result['XForwardedForConfig'] = self.xforwarded_for_config.to_map()
-        if self.quic_config is not None:
-            result['QuicConfig'] = self.quic_config.to_map()
+        result['CaCertificates'] = []
+        if self.ca_certificates is not None:
+            for k in self.ca_certificates:
+                result['CaCertificates'].append(k.to_map() if k else None)
+        if self.ca_enabled is not None:
+            result['CaEnabled'] = self.ca_enabled
         result['Certificates'] = []
         if self.certificates is not None:
             for k in self.certificates:
                 result['Certificates'].append(k.to_map() if k else None)
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         result['DefaultActions'] = []
         if self.default_actions is not None:
             for k in self.default_actions:
                 result['DefaultActions'].append(k.to_map() if k else None)
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.gzip_enabled is not None:
+            result['GzipEnabled'] = self.gzip_enabled
+        if self.http_2enabled is not None:
+            result['Http2Enabled'] = self.http_2enabled
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
+        if self.listener_description is not None:
+            result['ListenerDescription'] = self.listener_description
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
+        if self.listener_protocol is not None:
+            result['ListenerProtocol'] = self.listener_protocol
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.quic_config is not None:
+            result['QuicConfig'] = self.quic_config.to_map()
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
+        if self.security_policy_id is not None:
+            result['SecurityPolicyId'] = self.security_policy_id
+        if self.xforwarded_for_config is not None:
+            result['XForwardedForConfig'] = self.xforwarded_for_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LoadBalancerId') is not None:
-            self.load_balancer_id = m.get('LoadBalancerId')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
-        if m.get('ListenerProtocol') is not None:
-            self.listener_protocol = m.get('ListenerProtocol')
-        if m.get('ListenerPort') is not None:
-            self.listener_port = m.get('ListenerPort')
-        if m.get('ListenerDescription') is not None:
-            self.listener_description = m.get('ListenerDescription')
-        if m.get('RequestTimeout') is not None:
-            self.request_timeout = m.get('RequestTimeout')
-        if m.get('IdleTimeout') is not None:
-            self.idle_timeout = m.get('IdleTimeout')
-        if m.get('GzipEnabled') is not None:
-            self.gzip_enabled = m.get('GzipEnabled')
-        if m.get('Http2Enabled') is not None:
-            self.http_2enabled = m.get('Http2Enabled')
-        if m.get('SecurityPolicyId') is not None:
-            self.security_policy_id = m.get('SecurityPolicyId')
-        if m.get('XForwardedForConfig') is not None:
-            temp_model = CreateListenerRequestXForwardedForConfig()
-            self.xforwarded_for_config = temp_model.from_map(m['XForwardedForConfig'])
-        if m.get('QuicConfig') is not None:
-            temp_model = CreateListenerRequestQuicConfig()
-            self.quic_config = temp_model.from_map(m['QuicConfig'])
+        self.ca_certificates = []
+        if m.get('CaCertificates') is not None:
+            for k in m.get('CaCertificates'):
+                temp_model = CreateListenerRequestCaCertificates()
+                self.ca_certificates.append(temp_model.from_map(k))
+        if m.get('CaEnabled') is not None:
+            self.ca_enabled = m.get('CaEnabled')
         self.certificates = []
         if m.get('Certificates') is not None:
             for k in m.get('Certificates'):
                 temp_model = CreateListenerRequestCertificates()
                 self.certificates.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         self.default_actions = []
         if m.get('DefaultActions') is not None:
             for k in m.get('DefaultActions'):
                 temp_model = CreateListenerRequestDefaultActions()
                 self.default_actions.append(temp_model.from_map(k))
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('GzipEnabled') is not None:
+            self.gzip_enabled = m.get('GzipEnabled')
+        if m.get('Http2Enabled') is not None:
+            self.http_2enabled = m.get('Http2Enabled')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
+        if m.get('ListenerDescription') is not None:
+            self.listener_description = m.get('ListenerDescription')
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
+        if m.get('ListenerProtocol') is not None:
+            self.listener_protocol = m.get('ListenerProtocol')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('QuicConfig') is not None:
+            temp_model = CreateListenerRequestQuicConfig()
+            self.quic_config = temp_model.from_map(m['QuicConfig'])
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
+        if m.get('SecurityPolicyId') is not None:
+            self.security_policy_id = m.get('SecurityPolicyId')
+        if m.get('XForwardedForConfig') is not None:
+            temp_model = CreateListenerRequestXForwardedForConfig()
+            self.xforwarded_for_config = temp_model.from_map(m['XForwardedForConfig'])
         return self
 
 
@@ -1589,6 +1760,34 @@ class CreateListenerResponse(TeaModel):
         return self
 
 
+class CreateLoadBalancerRequestLoadBalancerBillingConfig(TeaModel):
+    def __init__(
+        self,
+        pay_type: str = None,
+    ):
+        # 实例的计费类型
+        self.pay_type = pay_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        return self
+
+
 class CreateLoadBalancerRequestModificationProtectionConfig(TeaModel):
     def __init__(
         self,
@@ -1659,84 +1858,56 @@ class CreateLoadBalancerRequestZoneMappings(TeaModel):
         return self
 
 
-class CreateLoadBalancerRequestLoadBalancerBillingConfig(TeaModel):
-    def __init__(
-        self,
-        pay_type: str = None,
-    ):
-        # 实例的计费类型
-        self.pay_type = pay_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
-        return self
-
-
 class CreateLoadBalancerRequest(TeaModel):
     def __init__(
         self,
-        client_token: str = None,
-        dry_run: bool = None,
-        vpc_id: str = None,
-        address_type: str = None,
-        load_balancer_name: str = None,
-        deletion_protection_enabled: bool = None,
-        modification_protection_config: CreateLoadBalancerRequestModificationProtectionConfig = None,
-        zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
         address_allocated_mode: str = None,
-        resource_group_id: str = None,
-        load_balancer_edition: str = None,
+        address_type: str = None,
+        client_token: str = None,
+        deletion_protection_enabled: bool = None,
+        dry_run: bool = None,
         load_balancer_billing_config: CreateLoadBalancerRequestLoadBalancerBillingConfig = None,
+        load_balancer_edition: str = None,
+        load_balancer_name: str = None,
+        modification_protection_config: CreateLoadBalancerRequestModificationProtectionConfig = None,
+        resource_group_id: str = None,
+        vpc_id: str = None,
+        zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
     ):
-        # 幂等标识
-        self.client_token = client_token
-        #  是否只预检此次请求
-        self.dry_run = dry_run
-        # 负载均衡实例的专有网络ID。
-        self.vpc_id = vpc_id
-        # 负载均衡的地址类型
-        self.address_type = address_type
-        # 名称
-        self.load_balancer_name = load_balancer_name
-        # 是否开启删除保护
-        self.deletion_protection_enabled = deletion_protection_enabled
-        # 负载均衡修改保护相关信息
-        self.modification_protection_config = modification_protection_config
-        # 可用区及交换机映射列表
-        self.zone_mappings = zone_mappings
         # 地址模式
         self.address_allocated_mode = address_allocated_mode
-        # 资源组
-        self.resource_group_id = resource_group_id
-        # 负载均衡的版本
-        self.load_balancer_edition = load_balancer_edition
+        # 负载均衡的地址类型
+        self.address_type = address_type
+        # 幂等标识
+        self.client_token = client_token
+        # 是否开启删除保护
+        self.deletion_protection_enabled = deletion_protection_enabled
+        #  是否只预检此次请求
+        self.dry_run = dry_run
         # 计费相关配置信息
         self.load_balancer_billing_config = load_balancer_billing_config
+        # 负载均衡的版本
+        self.load_balancer_edition = load_balancer_edition
+        # 名称
+        self.load_balancer_name = load_balancer_name
+        # 负载均衡修改保护相关信息
+        self.modification_protection_config = modification_protection_config
+        # 资源组
+        self.resource_group_id = resource_group_id
+        # 负载均衡实例的专有网络ID。
+        self.vpc_id = vpc_id
+        # 可用区及交换机映射列表
+        self.zone_mappings = zone_mappings
 
     def validate(self):
+        if self.load_balancer_billing_config:
+            self.load_balancer_billing_config.validate()
         if self.modification_protection_config:
             self.modification_protection_config.validate()
         if self.zone_mappings:
             for k in self.zone_mappings:
                 if k:
                     k.validate()
-        if self.load_balancer_billing_config:
-            self.load_balancer_billing_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1744,65 +1915,65 @@ class CreateLoadBalancerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
+        if self.address_allocated_mode is not None:
+            result['AddressAllocatedMode'] = self.address_allocated_mode
         if self.address_type is not None:
             result['AddressType'] = self.address_type
-        if self.load_balancer_name is not None:
-            result['LoadBalancerName'] = self.load_balancer_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.deletion_protection_enabled is not None:
             result['DeletionProtectionEnabled'] = self.deletion_protection_enabled
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.load_balancer_billing_config is not None:
+            result['LoadBalancerBillingConfig'] = self.load_balancer_billing_config.to_map()
+        if self.load_balancer_edition is not None:
+            result['LoadBalancerEdition'] = self.load_balancer_edition
+        if self.load_balancer_name is not None:
+            result['LoadBalancerName'] = self.load_balancer_name
         if self.modification_protection_config is not None:
             result['ModificationProtectionConfig'] = self.modification_protection_config.to_map()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         result['ZoneMappings'] = []
         if self.zone_mappings is not None:
             for k in self.zone_mappings:
                 result['ZoneMappings'].append(k.to_map() if k else None)
-        if self.address_allocated_mode is not None:
-            result['AddressAllocatedMode'] = self.address_allocated_mode
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.load_balancer_edition is not None:
-            result['LoadBalancerEdition'] = self.load_balancer_edition
-        if self.load_balancer_billing_config is not None:
-            result['LoadBalancerBillingConfig'] = self.load_balancer_billing_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
+        if m.get('AddressAllocatedMode') is not None:
+            self.address_allocated_mode = m.get('AddressAllocatedMode')
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
-        if m.get('LoadBalancerName') is not None:
-            self.load_balancer_name = m.get('LoadBalancerName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DeletionProtectionEnabled') is not None:
             self.deletion_protection_enabled = m.get('DeletionProtectionEnabled')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerBillingConfig') is not None:
+            temp_model = CreateLoadBalancerRequestLoadBalancerBillingConfig()
+            self.load_balancer_billing_config = temp_model.from_map(m['LoadBalancerBillingConfig'])
+        if m.get('LoadBalancerEdition') is not None:
+            self.load_balancer_edition = m.get('LoadBalancerEdition')
+        if m.get('LoadBalancerName') is not None:
+            self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('ModificationProtectionConfig') is not None:
             temp_model = CreateLoadBalancerRequestModificationProtectionConfig()
             self.modification_protection_config = temp_model.from_map(m['ModificationProtectionConfig'])
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         self.zone_mappings = []
         if m.get('ZoneMappings') is not None:
             for k in m.get('ZoneMappings'):
                 temp_model = CreateLoadBalancerRequestZoneMappings()
                 self.zone_mappings.append(temp_model.from_map(k))
-        if m.get('AddressAllocatedMode') is not None:
-            self.address_allocated_mode = m.get('AddressAllocatedMode')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('LoadBalancerEdition') is not None:
-            self.load_balancer_edition = m.get('LoadBalancerEdition')
-        if m.get('LoadBalancerBillingConfig') is not None:
-            temp_model = CreateLoadBalancerRequestLoadBalancerBillingConfig()
-            self.load_balancer_billing_config = temp_model.from_map(m['LoadBalancerBillingConfig'])
         return self
 
 
@@ -2566,20 +2737,20 @@ class CreateRuleRequestRuleConditions(TeaModel):
 class CreateRuleRequest(TeaModel):
     def __init__(
         self,
-        listener_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        listener_id: str = None,
         priority: int = None,
         rule_actions: List[CreateRuleRequestRuleActions] = None,
         rule_conditions: List[CreateRuleRequestRuleConditions] = None,
         rule_name: str = None,
     ):
-        # 监听标识
-        self.listener_id = listener_id
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
+        # 监听标识
+        self.listener_id = listener_id
         # 转发规则优先级
         self.priority = priority
         # 转发规则动作
@@ -2605,12 +2776,12 @@ class CreateRuleRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         if self.priority is not None:
             result['Priority'] = self.priority
         result['RuleActions'] = []
@@ -2627,12 +2798,12 @@ class CreateRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         self.rule_actions = []
@@ -3462,11 +3633,14 @@ class CreateRulesRequestRulesRuleConditions(TeaModel):
 class CreateRulesRequestRules(TeaModel):
     def __init__(
         self,
+        direction: str = None,
         priority: int = None,
         rule_actions: List[CreateRulesRequestRulesRuleActions] = None,
         rule_conditions: List[CreateRulesRequestRulesRuleConditions] = None,
         rule_name: str = None,
     ):
+        # 转发规则方向
+        self.direction = direction
         # 转发规则优先级
         self.priority = priority
         # 转发规则动作
@@ -3492,6 +3666,8 @@ class CreateRulesRequestRules(TeaModel):
             return _map
 
         result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
         if self.priority is not None:
             result['Priority'] = self.priority
         result['RuleActions'] = []
@@ -3508,6 +3684,8 @@ class CreateRulesRequestRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         self.rule_actions = []
@@ -3528,17 +3706,17 @@ class CreateRulesRequestRules(TeaModel):
 class CreateRulesRequest(TeaModel):
     def __init__(
         self,
-        listener_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        listener_id: str = None,
         rules: List[CreateRulesRequestRules] = None,
     ):
-        # 监听标识
-        self.listener_id = listener_id
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
+        # 监听标识
+        self.listener_id = listener_id
         # 转发规则列表
         self.rules = rules
 
@@ -3554,12 +3732,12 @@ class CreateRulesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         result['Rules'] = []
         if self.rules is not None:
             for k in self.rules:
@@ -3568,12 +3746,12 @@ class CreateRulesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         self.rules = []
         if m.get('Rules') is not None:
             for k in m.get('Rules'):
@@ -3585,13 +3763,13 @@ class CreateRulesRequest(TeaModel):
 class CreateRulesResponseBodyRuleIds(TeaModel):
     def __init__(
         self,
-        rule_id: str = None,
         priority: int = None,
+        rule_id: str = None,
     ):
-        # 转发规则标识
-        self.rule_id = rule_id
         # 转发规则优先级
         self.priority = priority
+        # 转发规则标识
+        self.rule_id = rule_id
 
     def validate(self):
         pass
@@ -3602,18 +3780,18 @@ class CreateRulesResponseBodyRuleIds(TeaModel):
             return _map
 
         result = dict()
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
         return self
 
 
@@ -3707,25 +3885,25 @@ class CreateRulesResponse(TeaModel):
 class CreateSecurityPolicyRequest(TeaModel):
     def __init__(
         self,
+        ciphers: List[str] = None,
         client_token: str = None,
         dry_run: bool = None,
-        tlsversions: List[str] = None,
         resource_group_id: str = None,
         security_policy_name: str = None,
-        ciphers: List[str] = None,
+        tlsversions: List[str] = None,
     ):
+        # 加密套件
+        self.ciphers = ciphers
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
-        # tls版本
-        self.tlsversions = tlsversions
         # 资源组id
         self.resource_group_id = resource_group_id
         # 安全策略名称
         self.security_policy_name = security_policy_name
-        # 加密套件
-        self.ciphers = ciphers
+        # tls版本
+        self.tlsversions = tlsversions
 
     def validate(self):
         pass
@@ -3736,34 +3914,34 @@ class CreateSecurityPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ciphers is not None:
+            result['Ciphers'] = self.ciphers
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
-        if self.tlsversions is not None:
-            result['TLSVersions'] = self.tlsversions
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_policy_name is not None:
             result['SecurityPolicyName'] = self.security_policy_name
-        if self.ciphers is not None:
-            result['Ciphers'] = self.ciphers
+        if self.tlsversions is not None:
+            result['TLSVersions'] = self.tlsversions
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ciphers') is not None:
+            self.ciphers = m.get('Ciphers')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
-        if m.get('TLSVersions') is not None:
-            self.tlsversions = m.get('TLSVersions')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityPolicyName') is not None:
             self.security_policy_name = m.get('SecurityPolicyName')
-        if m.get('Ciphers') is not None:
-            self.ciphers = m.get('Ciphers')
+        if m.get('TLSVersions') is not None:
+            self.tlsversions = m.get('TLSVersions')
         return self
 
 
@@ -3842,10 +4020,10 @@ class CreateSecurityPolicyResponse(TeaModel):
 class CreateServerGroupRequestHealthCheckConfig(TeaModel):
     def __init__(
         self,
+        health_check_codes: List[str] = None,
         health_check_connect_port: int = None,
         health_check_enabled: bool = None,
         health_check_host: str = None,
-        health_check_codes: List[str] = None,
         health_check_http_version: str = None,
         health_check_interval: int = None,
         health_check_method: str = None,
@@ -3855,14 +4033,14 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
+        # 健康检查正常的状态码
+        self.health_check_codes = health_check_codes
         # 健康检查端口
         self.health_check_connect_port = health_check_connect_port
         # 是否启用健康检查
         self.health_check_enabled = health_check_enabled
         # 健康检查域名
         self.health_check_host = health_check_host
-        # 健康检查正常的状态码
-        self.health_check_codes = health_check_codes
         # 健康检查HTTP协议版本
         self.health_check_http_version = health_check_http_version
         # 健康检查间隔
@@ -3889,14 +4067,14 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.health_check_codes is not None:
+            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_enabled is not None:
             result['HealthCheckEnabled'] = self.health_check_enabled
         if self.health_check_host is not None:
             result['HealthCheckHost'] = self.health_check_host
-        if self.health_check_codes is not None:
-            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_http_version is not None:
             result['HealthCheckHttpVersion'] = self.health_check_http_version
         if self.health_check_interval is not None:
@@ -3917,14 +4095,14 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HealthCheckCodes') is not None:
+            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckEnabled') is not None:
             self.health_check_enabled = m.get('HealthCheckEnabled')
         if m.get('HealthCheckHost') is not None:
             self.health_check_host = m.get('HealthCheckHost')
-        if m.get('HealthCheckCodes') is not None:
-            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckHttpVersion') is not None:
             self.health_check_http_version = m.get('HealthCheckHttpVersion')
         if m.get('HealthCheckInterval') is not None:
@@ -3996,37 +4174,37 @@ class CreateServerGroupRequestStickySessionConfig(TeaModel):
 class CreateServerGroupRequest(TeaModel):
     def __init__(
         self,
-        server_group_name: str = None,
-        server_group_type: str = None,
-        vpc_id: str = None,
-        scheduler: str = None,
-        protocol: str = None,
-        resource_group_id: str = None,
-        health_check_config: CreateServerGroupRequestHealthCheckConfig = None,
-        sticky_session_config: CreateServerGroupRequestStickySessionConfig = None,
         client_token: str = None,
         dry_run: bool = None,
+        health_check_config: CreateServerGroupRequestHealthCheckConfig = None,
+        protocol: str = None,
+        resource_group_id: str = None,
+        scheduler: str = None,
+        server_group_name: str = None,
+        server_group_type: str = None,
+        sticky_session_config: CreateServerGroupRequestStickySessionConfig = None,
+        vpc_id: str = None,
     ):
-        # 服务器组名称
-        self.server_group_name = server_group_name
-        # 服务器组类型
-        self.server_group_type = server_group_type
-        # VpcId
-        self.vpc_id = vpc_id
-        # 调度策略
-        self.scheduler = scheduler
-        # 后端协议类型
-        self.protocol = protocol
-        # 资源组id
-        self.resource_group_id = resource_group_id
-        # 健康检查配置
-        self.health_check_config = health_check_config
-        # 会话保持配置
-        self.sticky_session_config = sticky_session_config
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
+        # 健康检查配置
+        self.health_check_config = health_check_config
+        # 后端协议类型
+        self.protocol = protocol
+        # 资源组id
+        self.resource_group_id = resource_group_id
+        # 调度策略
+        self.scheduler = scheduler
+        # 服务器组名称
+        self.server_group_name = server_group_name
+        # 服务器组类型
+        self.server_group_type = server_group_type
+        # 会话保持配置
+        self.sticky_session_config = sticky_session_config
+        # VpcId
+        self.vpc_id = vpc_id
 
     def validate(self):
         if self.health_check_config:
@@ -4040,52 +4218,52 @@ class CreateServerGroupRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.server_group_name is not None:
-            result['ServerGroupName'] = self.server_group_name
-        if self.server_group_type is not None:
-            result['ServerGroupType'] = self.server_group_type
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
-        if self.scheduler is not None:
-            result['Scheduler'] = self.scheduler
-        if self.protocol is not None:
-            result['Protocol'] = self.protocol
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.health_check_config is not None:
-            result['HealthCheckConfig'] = self.health_check_config.to_map()
-        if self.sticky_session_config is not None:
-            result['StickySessionConfig'] = self.sticky_session_config.to_map()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.health_check_config is not None:
+            result['HealthCheckConfig'] = self.health_check_config.to_map()
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
+        if self.server_group_name is not None:
+            result['ServerGroupName'] = self.server_group_name
+        if self.server_group_type is not None:
+            result['ServerGroupType'] = self.server_group_type
+        if self.sticky_session_config is not None:
+            result['StickySessionConfig'] = self.sticky_session_config.to_map()
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServerGroupName') is not None:
-            self.server_group_name = m.get('ServerGroupName')
-        if m.get('ServerGroupType') is not None:
-            self.server_group_type = m.get('ServerGroupType')
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
-        if m.get('Scheduler') is not None:
-            self.scheduler = m.get('Scheduler')
-        if m.get('Protocol') is not None:
-            self.protocol = m.get('Protocol')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('HealthCheckConfig') is not None:
-            temp_model = CreateServerGroupRequestHealthCheckConfig()
-            self.health_check_config = temp_model.from_map(m['HealthCheckConfig'])
-        if m.get('StickySessionConfig') is not None:
-            temp_model = CreateServerGroupRequestStickySessionConfig()
-            self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('HealthCheckConfig') is not None:
+            temp_model = CreateServerGroupRequestHealthCheckConfig()
+            self.health_check_config = temp_model.from_map(m['HealthCheckConfig'])
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
+        if m.get('ServerGroupName') is not None:
+            self.server_group_name = m.get('ServerGroupName')
+        if m.get('ServerGroupType') is not None:
+            self.server_group_type = m.get('ServerGroupType')
+        if m.get('StickySessionConfig') is not None:
+            temp_model = CreateServerGroupRequestStickySessionConfig()
+            self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -4285,16 +4463,16 @@ class DeleteAclResponse(TeaModel):
 class DeleteHealthCheckTemplatesRequest(TeaModel):
     def __init__(
         self,
-        health_check_template_ids: List[str] = None,
         client_token: str = None,
         dry_run: bool = None,
+        health_check_template_ids: List[str] = None,
     ):
-        # 健康检查模板Id列表
-        self.health_check_template_ids = health_check_template_ids
         # 幂等token
         self.client_token = client_token
         # dryRun
         self.dry_run = dry_run
+        # 健康检查模板Id列表
+        self.health_check_template_ids = health_check_template_ids
 
     def validate(self):
         pass
@@ -4305,22 +4483,22 @@ class DeleteHealthCheckTemplatesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.health_check_template_ids is not None:
-            result['HealthCheckTemplateIds'] = self.health_check_template_ids
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.health_check_template_ids is not None:
+            result['HealthCheckTemplateIds'] = self.health_check_template_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('HealthCheckTemplateIds') is not None:
-            self.health_check_template_ids = m.get('HealthCheckTemplateIds')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('HealthCheckTemplateIds') is not None:
+            self.health_check_template_ids = m.get('HealthCheckTemplateIds')
         return self
 
 
@@ -4392,16 +4570,16 @@ class DeleteHealthCheckTemplatesResponse(TeaModel):
 class DeleteListenerRequest(TeaModel):
     def __init__(
         self,
-        listener_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        listener_id: str = None,
     ):
-        # 监听id
-        self.listener_id = listener_id
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
+        # 监听id
+        self.listener_id = listener_id
 
     def validate(self):
         pass
@@ -4412,22 +4590,22 @@ class DeleteListenerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         return self
 
 
@@ -4506,16 +4684,16 @@ class DeleteListenerResponse(TeaModel):
 class DeleteLoadBalancerRequest(TeaModel):
     def __init__(
         self,
-        load_balancer_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        load_balancer_id: str = None,
     ):
-        # 实例id
-        self.load_balancer_id = load_balancer_id
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
+        # 实例id
+        self.load_balancer_id = load_balancer_id
 
     def validate(self):
         pass
@@ -4526,22 +4704,22 @@ class DeleteLoadBalancerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.load_balancer_id is not None:
-            result['LoadBalancerId'] = self.load_balancer_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LoadBalancerId') is not None:
-            self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
         return self
 
 
@@ -4956,15 +5134,15 @@ class DeleteServerGroupRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
-        server_group_id: str = None,
         dry_run: bool = None,
+        server_group_id: str = None,
     ):
         # 幂等参数
         self.client_token = client_token
-        # 服务器组id
-        self.server_group_id = server_group_id
         # 是否DryRun
         self.dry_run = dry_run
+        # 服务器组id
+        self.server_group_id = server_group_id
 
     def validate(self):
         pass
@@ -4977,20 +5155,20 @@ class DeleteServerGroupRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
         return self
 
 
@@ -5331,6 +5509,134 @@ class DescribeZonesResponse(TeaModel):
         return self
 
 
+class DetachCommonBandwidthPackageFromLoadBalancerRequest(TeaModel):
+    def __init__(
+        self,
+        bandwidth_package_id: str = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        load_balancer_id: str = None,
+        region_id: str = None,
+    ):
+        # 带宽包ID
+        self.bandwidth_package_id = bandwidth_package_id
+        # 幂等参数
+        self.client_token = client_token
+        # 预校验
+        self.dry_run = dry_run
+        # 实例ID
+        self.load_balancer_id = load_balancer_id
+        # 地域ID
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DetachCommonBandwidthPackageFromLoadBalancerResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        # 异步任务ID
+        self.job_id = job_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetachCommonBandwidthPackageFromLoadBalancerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DetachCommonBandwidthPackageFromLoadBalancerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DetachCommonBandwidthPackageFromLoadBalancerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableDeletionProtectionRequest(TeaModel):
     def __init__(
         self,
@@ -5549,18 +5855,18 @@ class DissociateAclsFromListenerRequest(TeaModel):
     def __init__(
         self,
         acl_ids: List[str] = None,
-        listener_id: str = None,
-        dry_run: bool = None,
         client_token: str = None,
+        dry_run: bool = None,
+        listener_id: str = None,
     ):
         # 访问控制策略Id
         self.acl_ids = acl_ids
-        # 监听Id
-        self.listener_id = listener_id
-        # 预检此次请求
-        self.dry_run = dry_run
         # 幂等标识
         self.client_token = client_token
+        # 预检此次请求
+        self.dry_run = dry_run
+        # 监听Id
+        self.listener_id = listener_id
 
     def validate(self):
         pass
@@ -5573,24 +5879,24 @@ class DissociateAclsFromListenerRequest(TeaModel):
         result = dict()
         if self.acl_ids is not None:
             result['AclIds'] = self.acl_ids
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AclIds') is not None:
             self.acl_ids = m.get('AclIds')
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         return self
 
 
@@ -5697,19 +6003,19 @@ class DissociateAdditionalCertificatesFromListenerRequestCertificates(TeaModel):
 class DissociateAdditionalCertificatesFromListenerRequest(TeaModel):
     def __init__(
         self,
-        listener_id: str = None,
         certificates: List[DissociateAdditionalCertificatesFromListenerRequestCertificates] = None,
         client_token: str = None,
         dry_run: bool = None,
+        listener_id: str = None,
     ):
-        # 监听Id
-        self.listener_id = listener_id
         # 证书列表
         self.certificates = certificates
         # 幂等Token
         self.client_token = client_token
         # dryRun
         self.dry_run = dry_run
+        # 监听Id
+        self.listener_id = listener_id
 
     def validate(self):
         if self.certificates:
@@ -5723,8 +6029,6 @@ class DissociateAdditionalCertificatesFromListenerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
         result['Certificates'] = []
         if self.certificates is not None:
             for k in self.certificates:
@@ -5733,12 +6037,12 @@ class DissociateAdditionalCertificatesFromListenerRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
         self.certificates = []
         if m.get('Certificates') is not None:
             for k in m.get('Certificates'):
@@ -5748,6 +6052,8 @@ class DissociateAdditionalCertificatesFromListenerRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         return self
 
 
@@ -6082,31 +6388,29 @@ class GetHealthCheckTemplateAttributeRequest(TeaModel):
 class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        health_check_codes: List[str] = None,
         health_check_connect_port: int = None,
         health_check_host: str = None,
-        health_check_codes: List[str] = None,
         health_check_http_version: str = None,
-        health_check_template_id: str = None,
         health_check_interval: int = None,
         health_check_method: str = None,
         health_check_path: str = None,
         health_check_protocol: str = None,
+        health_check_template_id: str = None,
         health_check_template_name: str = None,
         health_check_timeout: int = None,
         healthy_threshold: int = None,
         request_id: str = None,
         unhealthy_threshold: int = None,
     ):
+        # 状态码
+        self.health_check_codes = health_check_codes
         # 端口
         self.health_check_connect_port = health_check_connect_port
         # 域名
         self.health_check_host = health_check_host
-        # 状态码
-        self.health_check_codes = health_check_codes
         # 版本
         self.health_check_http_version = health_check_http_version
-        # 健康检查模板Id
-        self.health_check_template_id = health_check_template_id
         # 间隔时间
         self.health_check_interval = health_check_interval
         # 方法
@@ -6115,6 +6419,8 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
         self.health_check_path = health_check_path
         # 协议
         self.health_check_protocol = health_check_protocol
+        # 健康检查模板Id
+        self.health_check_template_id = health_check_template_id
         # 名称
         self.health_check_template_name = health_check_template_name
         # 超时时间
@@ -6135,16 +6441,14 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.health_check_codes is not None:
+            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_host is not None:
             result['HealthCheckHost'] = self.health_check_host
-        if self.health_check_codes is not None:
-            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_http_version is not None:
             result['HealthCheckHttpVersion'] = self.health_check_http_version
-        if self.health_check_template_id is not None:
-            result['HealthCheckTemplateId'] = self.health_check_template_id
         if self.health_check_interval is not None:
             result['HealthCheckInterval'] = self.health_check_interval
         if self.health_check_method is not None:
@@ -6153,6 +6457,8 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
             result['HealthCheckPath'] = self.health_check_path
         if self.health_check_protocol is not None:
             result['HealthCheckProtocol'] = self.health_check_protocol
+        if self.health_check_template_id is not None:
+            result['HealthCheckTemplateId'] = self.health_check_template_id
         if self.health_check_template_name is not None:
             result['HealthCheckTemplateName'] = self.health_check_template_name
         if self.health_check_timeout is not None:
@@ -6167,16 +6473,14 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HealthCheckCodes') is not None:
+            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckHost') is not None:
             self.health_check_host = m.get('HealthCheckHost')
-        if m.get('HealthCheckCodes') is not None:
-            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckHttpVersion') is not None:
             self.health_check_http_version = m.get('HealthCheckHttpVersion')
-        if m.get('HealthCheckTemplateId') is not None:
-            self.health_check_template_id = m.get('HealthCheckTemplateId')
         if m.get('HealthCheckInterval') is not None:
             self.health_check_interval = m.get('HealthCheckInterval')
         if m.get('HealthCheckMethod') is not None:
@@ -6185,6 +6489,8 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
             self.health_check_path = m.get('HealthCheckPath')
         if m.get('HealthCheckProtocol') is not None:
             self.health_check_protocol = m.get('HealthCheckProtocol')
+        if m.get('HealthCheckTemplateId') is not None:
+            self.health_check_template_id = m.get('HealthCheckTemplateId')
         if m.get('HealthCheckTemplateName') is not None:
             self.health_check_template_name = m.get('HealthCheckTemplateName')
         if m.get('HealthCheckTimeout') is not None:
@@ -6700,8 +7006,8 @@ class GetListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
         acl_config: GetListenerAttributeResponseBodyAclConfig = None,
-        certificates: List[GetListenerAttributeResponseBodyCertificates] = None,
         ca_enabled: bool = None,
+        certificates: List[GetListenerAttributeResponseBodyCertificates] = None,
         default_actions: List[GetListenerAttributeResponseBodyDefaultActions] = None,
         gzip_enabled: bool = None,
         http_2enabled: bool = None,
@@ -6721,10 +7027,10 @@ class GetListenerAttributeResponseBody(TeaModel):
     ):
         # ACL相关配置信息
         self.acl_config = acl_config
-        # 监听默认服务器证书列表，N当前取值范围为1
-        self.certificates = certificates
         # 是否开启双向认证
         self.ca_enabled = ca_enabled
+        # 监听默认服务器证书列表，N当前取值范围为1
+        self.certificates = certificates
         # 默认动作
         self.default_actions = default_actions
         # 是否开启Gzip压缩
@@ -6784,12 +7090,12 @@ class GetListenerAttributeResponseBody(TeaModel):
         result = dict()
         if self.acl_config is not None:
             result['AclConfig'] = self.acl_config.to_map()
+        if self.ca_enabled is not None:
+            result['CaEnabled'] = self.ca_enabled
         result['Certificates'] = []
         if self.certificates is not None:
             for k in self.certificates:
                 result['Certificates'].append(k.to_map() if k else None)
-        if self.ca_enabled is not None:
-            result['CaEnabled'] = self.ca_enabled
         result['DefaultActions'] = []
         if self.default_actions is not None:
             for k in self.default_actions:
@@ -6831,13 +7137,13 @@ class GetListenerAttributeResponseBody(TeaModel):
         if m.get('AclConfig') is not None:
             temp_model = GetListenerAttributeResponseBodyAclConfig()
             self.acl_config = temp_model.from_map(m['AclConfig'])
+        if m.get('CaEnabled') is not None:
+            self.ca_enabled = m.get('CaEnabled')
         self.certificates = []
         if m.get('Certificates') is not None:
             for k in m.get('Certificates'):
                 temp_model = GetListenerAttributeResponseBodyCertificates()
                 self.certificates.append(temp_model.from_map(k))
-        if m.get('CaEnabled') is not None:
-            self.ca_enabled = m.get('CaEnabled')
         self.default_actions = []
         if m.get('DefaultActions') is not None:
             for k in m.get('DefaultActions'):
@@ -7471,16 +7777,16 @@ class GetLoadBalancerAttributeResponse(TeaModel):
 class ListAclEntriesRequest(TeaModel):
     def __init__(
         self,
-        next_token: str = None,
-        max_results: int = None,
         acl_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
     ):
-        # 分页查询标识
-        self.next_token = next_token
-        # 查询数量
-        self.max_results = max_results
         # 访问控制策略Id
         self.acl_id = acl_id
+        # 查询数量
+        self.max_results = max_results
+        # 分页查询标识
+        self.next_token = next_token
 
     def validate(self):
         pass
@@ -7491,22 +7797,22 @@ class ListAclEntriesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         return self
 
 
@@ -7865,20 +8171,20 @@ class ListAclsRequest(TeaModel):
         self,
         acl_ids: List[str] = None,
         acl_names: List[str] = None,
-        resource_group_id: str = None,
-        next_token: str = None,
         max_results: int = None,
+        next_token: str = None,
+        resource_group_id: str = None,
     ):
         # 访问控制策略Id
         self.acl_ids = acl_ids
         # 访问控制策略名称
         self.acl_names = acl_names
-        # 资源组ID
-        self.resource_group_id = resource_group_id
-        # 分页查询标识
-        self.next_token = next_token
         # 查询数量
         self.max_results = max_results
+        # 分页查询标识
+        self.next_token = next_token
+        # 资源组ID
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -7893,12 +8199,12 @@ class ListAclsRequest(TeaModel):
             result['AclIds'] = self.acl_ids
         if self.acl_names is not None:
             result['AclNames'] = self.acl_names
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7907,12 +8213,12 @@ class ListAclsRequest(TeaModel):
             self.acl_ids = m.get('AclIds')
         if m.get('AclNames') is not None:
             self.acl_names = m.get('AclNames')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -8076,31 +8382,31 @@ class ListAclsResponse(TeaModel):
 class ListAsynJobsRequest(TeaModel):
     def __init__(
         self,
-        job_ids: List[str] = None,
-        resource_type: str = None,
-        resource_ids: List[str] = None,
         api_name: str = None,
         begin_time: int = None,
         end_time: int = None,
-        next_token: str = None,
+        job_ids: List[str] = None,
         max_results: int = None,
+        next_token: str = None,
+        resource_ids: List[str] = None,
+        resource_type: str = None,
     ):
-        # 任务ID列表
-        self.job_ids = job_ids
-        # 资源类型类型
-        self.resource_type = resource_type
-        # 资源实例ID列表
-        self.resource_ids = resource_ids
         # 操作接口名
         self.api_name = api_name
         # 任务过滤时间范围-开始时间
         self.begin_time = begin_time
         # 任务过滤时间范围-结束时间
         self.end_time = end_time
-        # 下一个查询开始Token
-        self.next_token = next_token
+        # 任务ID列表
+        self.job_ids = job_ids
         # 本次读取的最大数据记录数量
         self.max_results = max_results
+        # 下一个查询开始Token
+        self.next_token = next_token
+        # 资源实例ID列表
+        self.resource_ids = resource_ids
+        # 资源类型类型
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -8111,42 +8417,42 @@ class ListAsynJobsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.job_ids is not None:
-            result['JobIds'] = self.job_ids
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        if self.resource_ids is not None:
-            result['ResourceIds'] = self.resource_ids
         if self.api_name is not None:
             result['ApiName'] = self.api_name
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
+        if self.job_ids is not None:
+            result['JobIds'] = self.job_ids
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobIds') is not None:
-            self.job_ids = m.get('JobIds')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        if m.get('ResourceIds') is not None:
-            self.resource_ids = m.get('ResourceIds')
         if m.get('ApiName') is not None:
             self.api_name = m.get('ApiName')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
+        if m.get('JobIds') is not None:
+            self.job_ids = m.get('JobIds')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -8345,19 +8651,19 @@ class ListAsynJobsResponse(TeaModel):
 class ListHealthCheckTemplatesRequest(TeaModel):
     def __init__(
         self,
-        next_token: str = None,
-        max_results: int = None,
         health_check_template_ids: List[str] = None,
         health_check_template_names: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
     ):
-        # 分页查询标识
-        self.next_token = next_token
-        # 查询数量
-        self.max_results = max_results
         # 健康检查模板ID列表
         self.health_check_template_ids = health_check_template_ids
         # 健康检查模板名称列表
         self.health_check_template_names = health_check_template_names
+        # 查询数量
+        self.max_results = max_results
+        # 分页查询标识
+        self.next_token = next_token
 
     def validate(self):
         pass
@@ -8368,35 +8674,35 @@ class ListHealthCheckTemplatesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
         if self.health_check_template_ids is not None:
             result['HealthCheckTemplateIds'] = self.health_check_template_ids
         if self.health_check_template_names is not None:
             result['HealthCheckTemplateNames'] = self.health_check_template_names
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
         if m.get('HealthCheckTemplateIds') is not None:
             self.health_check_template_ids = m.get('HealthCheckTemplateIds')
         if m.get('HealthCheckTemplateNames') is not None:
             self.health_check_template_names = m.get('HealthCheckTemplateNames')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         return self
 
 
 class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
     def __init__(
         self,
+        health_check_codes: List[str] = None,
         health_check_connect_port: int = None,
         health_check_host: str = None,
-        health_check_codes: List[str] = None,
         health_check_http_version: str = None,
         health_check_interval: int = None,
         health_check_method: str = None,
@@ -8408,12 +8714,12 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
+        # 状态码
+        self.health_check_codes = health_check_codes
         # 端口
         self.health_check_connect_port = health_check_connect_port
         # 域名
         self.health_check_host = health_check_host
-        # 状态码
-        self.health_check_codes = health_check_codes
         # 版本
         self.health_check_http_version = health_check_http_version
         # 间隔时间
@@ -8444,12 +8750,12 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
             return _map
 
         result = dict()
+        if self.health_check_codes is not None:
+            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_host is not None:
             result['HealthCheckHost'] = self.health_check_host
-        if self.health_check_codes is not None:
-            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_http_version is not None:
             result['HealthCheckHttpVersion'] = self.health_check_http_version
         if self.health_check_interval is not None:
@@ -8474,12 +8780,12 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HealthCheckCodes') is not None:
+            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckHost') is not None:
             self.health_check_host = m.get('HealthCheckHost')
-        if m.get('HealthCheckCodes') is not None:
-            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckHttpVersion') is not None:
             self.health_check_http_version = m.get('HealthCheckHttpVersion')
         if m.get('HealthCheckInterval') is not None:
@@ -8607,19 +8913,19 @@ class ListHealthCheckTemplatesResponse(TeaModel):
 class ListListenerCertificatesRequest(TeaModel):
     def __init__(
         self,
-        next_token: str = None,
-        max_results: int = None,
-        listener_id: str = None,
         certificate_type: str = None,
+        listener_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
     ):
-        # 分页查询标识
-        self.next_token = next_token
-        # 查询数量
-        self.max_results = max_results
-        # 监听Id
-        self.listener_id = listener_id
         # 证书类型
         self.certificate_type = certificate_type
+        # 监听Id
+        self.listener_id = listener_id
+        # 查询数量
+        self.max_results = max_results
+        # 分页查询标识
+        self.next_token = next_token
 
     def validate(self):
         pass
@@ -8630,26 +8936,26 @@ class ListListenerCertificatesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
         if self.certificate_type is not None:
             result['CertificateType'] = self.certificate_type
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
         if m.get('CertificateType') is not None:
             self.certificate_type = m.get('CertificateType')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         return self
 
 
@@ -8657,18 +8963,18 @@ class ListListenerCertificatesResponseBodyCertificates(TeaModel):
     def __init__(
         self,
         certificate_id: str = None,
+        certificate_type: str = None,
         is_default: bool = None,
         status: str = None,
-        certificate_type: str = None,
     ):
         # 证书Id
         self.certificate_id = certificate_id
+        # 证书类型
+        self.certificate_type = certificate_type
         # 是否为默认证书
         self.is_default = is_default
         # 证书状态
         self.status = status
-        # 证书类型
-        self.certificate_type = certificate_type
 
     def validate(self):
         pass
@@ -8681,36 +8987,38 @@ class ListListenerCertificatesResponseBodyCertificates(TeaModel):
         result = dict()
         if self.certificate_id is not None:
             result['CertificateId'] = self.certificate_id
+        if self.certificate_type is not None:
+            result['CertificateType'] = self.certificate_type
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
         if self.status is not None:
             result['Status'] = self.status
-        if self.certificate_type is not None:
-            result['CertificateType'] = self.certificate_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CertificateId') is not None:
             self.certificate_id = m.get('CertificateId')
+        if m.get('CertificateType') is not None:
+            self.certificate_type = m.get('CertificateType')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('CertificateType') is not None:
-            self.certificate_type = m.get('CertificateType')
         return self
 
 
 class ListListenerCertificatesResponseBody(TeaModel):
     def __init__(
         self,
+        certificates: List[ListListenerCertificatesResponseBodyCertificates] = None,
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         total_count: int = None,
-        certificates: List[ListListenerCertificatesResponseBodyCertificates] = None,
     ):
+        # 监听SSL证书列表
+        self.certificates = certificates
         # 本次查询返回记录数量
         self.max_results = max_results
         # 分页查询标识
@@ -8719,8 +9027,6 @@ class ListListenerCertificatesResponseBody(TeaModel):
         self.request_id = request_id
         # 总记录数
         self.total_count = total_count
-        # 监听SSL证书列表
-        self.certificates = certificates
 
     def validate(self):
         if self.certificates:
@@ -8734,6 +9040,10 @@ class ListListenerCertificatesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['Certificates'] = []
+        if self.certificates is not None:
+            for k in self.certificates:
+                result['Certificates'].append(k.to_map() if k else None)
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -8742,14 +9052,15 @@ class ListListenerCertificatesResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
-        result['Certificates'] = []
-        if self.certificates is not None:
-            for k in self.certificates:
-                result['Certificates'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.certificates = []
+        if m.get('Certificates') is not None:
+            for k in m.get('Certificates'):
+                temp_model = ListListenerCertificatesResponseBodyCertificates()
+                self.certificates.append(temp_model.from_map(k))
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -8758,11 +9069,6 @@ class ListListenerCertificatesResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
-        self.certificates = []
-        if m.get('Certificates') is not None:
-            for k in m.get('Certificates'):
-                temp_model = ListListenerCertificatesResponseBodyCertificates()
-                self.certificates.append(temp_model.from_map(k))
         return self
 
 
@@ -8806,22 +9112,22 @@ class ListListenerCertificatesResponse(TeaModel):
 class ListListenersRequest(TeaModel):
     def __init__(
         self,
-        next_token: str = None,
-        max_results: int = None,
         listener_ids: List[str] = None,
-        load_balancer_ids: List[str] = None,
         listener_protocol: str = None,
+        load_balancer_ids: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
     ):
-        # 用来标记当前开始读取的位置，置空表示从头开始。
-        self.next_token = next_token
-        # 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
-        self.max_results = max_results
         # 监听ID列表，N最大支持20
         self.listener_ids = listener_ids
-        # 实例ID列表，N最大支持20
-        self.load_balancer_ids = load_balancer_ids
         # 监听协议
         self.listener_protocol = listener_protocol
+        # 实例ID列表，N最大支持20
+        self.load_balancer_ids = load_balancer_ids
+        # 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
+        self.max_results = max_results
+        # 用来标记当前开始读取的位置，置空表示从头开始。
+        self.next_token = next_token
 
     def validate(self):
         pass
@@ -8832,30 +9138,30 @@ class ListListenersRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
         if self.listener_ids is not None:
             result['ListenerIds'] = self.listener_ids
-        if self.load_balancer_ids is not None:
-            result['LoadBalancerIds'] = self.load_balancer_ids
         if self.listener_protocol is not None:
             result['ListenerProtocol'] = self.listener_protocol
+        if self.load_balancer_ids is not None:
+            result['LoadBalancerIds'] = self.load_balancer_ids
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
         if m.get('ListenerIds') is not None:
             self.listener_ids = m.get('ListenerIds')
-        if m.get('LoadBalancerIds') is not None:
-            self.load_balancer_ids = m.get('LoadBalancerIds')
         if m.get('ListenerProtocol') is not None:
             self.listener_protocol = m.get('ListenerProtocol')
+        if m.get('LoadBalancerIds') is not None:
+            self.load_balancer_ids = m.get('LoadBalancerIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         return self
 
 
@@ -9468,43 +9774,43 @@ class ListLoadBalancersRequestTag(TeaModel):
 class ListLoadBalancersRequest(TeaModel):
     def __init__(
         self,
-        next_token: str = None,
-        max_results: int = None,
-        zone_id: str = None,
-        load_balancer_status: str = None,
+        address_type: str = None,
         load_balancer_bussiness_status: str = None,
         load_balancer_ids: List[str] = None,
         load_balancer_names: List[str] = None,
-        vpc_ids: List[str] = None,
-        tag: List[ListLoadBalancersRequestTag] = None,
-        address_type: str = None,
+        load_balancer_status: str = None,
+        max_results: int = None,
+        next_token: str = None,
         pay_type: str = None,
         resource_group_id: str = None,
+        tag: List[ListLoadBalancersRequestTag] = None,
+        vpc_ids: List[str] = None,
+        zone_id: str = None,
     ):
-        # 用来标记当前开始读取的位置，置空表示从头开始。
-        self.next_token = next_token
-        # 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
-        self.max_results = max_results
-        # 可用区ID
-        self.zone_id = zone_id
-        # 实例状态
-        self.load_balancer_status = load_balancer_status
+        # 负载均衡的地址类型
+        self.address_type = address_type
         # 实例业务状态
         self.load_balancer_bussiness_status = load_balancer_bussiness_status
         # 实例ID列表，N最大支持20
         self.load_balancer_ids = load_balancer_ids
         # 实例Name列表，N最大支持10
         self.load_balancer_names = load_balancer_names
-        # vpcId列表
-        self.vpc_ids = vpc_ids
-        # tag列表
-        self.tag = tag
-        # 负载均衡的地址类型
-        self.address_type = address_type
+        # 实例状态
+        self.load_balancer_status = load_balancer_status
+        # 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
+        self.max_results = max_results
+        # 用来标记当前开始读取的位置，置空表示从头开始。
+        self.next_token = next_token
         # 付费类型
         self.pay_type = pay_type
         # 资源组ID
         self.resource_group_id = resource_group_id
+        # tag列表
+        self.tag = tag
+        # vpcId列表
+        self.vpc_ids = vpc_ids
+        # 可用区ID
+        self.zone_id = zone_id
 
     def validate(self):
         if self.tag:
@@ -9518,63 +9824,63 @@ class ListLoadBalancersRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-        if self.load_balancer_status is not None:
-            result['LoadBalancerStatus'] = self.load_balancer_status
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
         if self.load_balancer_bussiness_status is not None:
             result['LoadBalancerBussinessStatus'] = self.load_balancer_bussiness_status
         if self.load_balancer_ids is not None:
             result['LoadBalancerIds'] = self.load_balancer_ids
         if self.load_balancer_names is not None:
             result['LoadBalancerNames'] = self.load_balancer_names
-        if self.vpc_ids is not None:
-            result['VpcIds'] = self.vpc_ids
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
-        if self.address_type is not None:
-            result['AddressType'] = self.address_type
+        if self.load_balancer_status is not None:
+            result['LoadBalancerStatus'] = self.load_balancer_status
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.vpc_ids is not None:
+            result['VpcIds'] = self.vpc_ids
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-        if m.get('LoadBalancerStatus') is not None:
-            self.load_balancer_status = m.get('LoadBalancerStatus')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
         if m.get('LoadBalancerBussinessStatus') is not None:
             self.load_balancer_bussiness_status = m.get('LoadBalancerBussinessStatus')
         if m.get('LoadBalancerIds') is not None:
             self.load_balancer_ids = m.get('LoadBalancerIds')
         if m.get('LoadBalancerNames') is not None:
             self.load_balancer_names = m.get('LoadBalancerNames')
-        if m.get('VpcIds') is not None:
-            self.vpc_ids = m.get('VpcIds')
+        if m.get('LoadBalancerStatus') is not None:
+            self.load_balancer_status = m.get('LoadBalancerStatus')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
                 temp_model = ListLoadBalancersRequestTag()
                 self.tag.append(temp_model.from_map(k))
-        if m.get('AddressType') is not None:
-            self.address_type = m.get('AddressType')
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('VpcIds') is not None:
+            self.vpc_ids = m.get('VpcIds')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -10061,22 +10367,22 @@ class ListLoadBalancersResponse(TeaModel):
 class ListRulesRequest(TeaModel):
     def __init__(
         self,
-        next_token: str = None,
-        max_results: int = None,
-        rule_ids: List[str] = None,
         listener_ids: List[str] = None,
         load_balancer_ids: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
+        rule_ids: List[str] = None,
     ):
-        # 用来标记当前开始读取的位置，置空表示从头开始。
-        self.next_token = next_token
-        # 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
-        self.max_results = max_results
-        # 转发规则ID列表，N最大支持20
-        self.rule_ids = rule_ids
         # 监听ID列表
         self.listener_ids = listener_ids
         # 实例ID列表
         self.load_balancer_ids = load_balancer_ids
+        # 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
+        self.max_results = max_results
+        # 用来标记当前开始读取的位置，置空表示从头开始。
+        self.next_token = next_token
+        # 转发规则ID列表，N最大支持20
+        self.rule_ids = rule_ids
 
     def validate(self):
         pass
@@ -10087,30 +10393,30 @@ class ListRulesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.rule_ids is not None:
-            result['RuleIds'] = self.rule_ids
         if self.listener_ids is not None:
             result['ListenerIds'] = self.listener_ids
         if self.load_balancer_ids is not None:
             result['LoadBalancerIds'] = self.load_balancer_ids
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('RuleIds') is not None:
-            self.rule_ids = m.get('RuleIds')
         if m.get('ListenerIds') is not None:
             self.listener_ids = m.get('ListenerIds')
         if m.get('LoadBalancerIds') is not None:
             self.load_balancer_ids = m.get('LoadBalancerIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
         return self
 
 
@@ -10997,22 +11303,22 @@ class ListRulesResponse(TeaModel):
 class ListSecurityPoliciesRequest(TeaModel):
     def __init__(
         self,
-        resource_group_id: str = None,
-        next_token: str = None,
         max_results: int = None,
-        security_policy_names: List[str] = None,
+        next_token: str = None,
+        resource_group_id: str = None,
         security_policy_ids: List[str] = None,
+        security_policy_names: List[str] = None,
     ):
-        # 资源组ID
-        self.resource_group_id = resource_group_id
-        # 分页查询标识
-        self.next_token = next_token
         # 查询数量
         self.max_results = max_results
-        # 安全策略名称
-        self.security_policy_names = security_policy_names
+        # 分页查询标识
+        self.next_token = next_token
+        # 资源组ID
+        self.resource_group_id = resource_group_id
         # 安全策略id
         self.security_policy_ids = security_policy_ids
+        # 安全策略名称
+        self.security_policy_names = security_policy_names
 
     def validate(self):
         pass
@@ -11023,30 +11329,30 @@ class ListSecurityPoliciesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.security_policy_names is not None:
-            result['SecurityPolicyNames'] = self.security_policy_names
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_policy_ids is not None:
             result['SecurityPolicyIds'] = self.security_policy_ids
+        if self.security_policy_names is not None:
+            result['SecurityPolicyNames'] = self.security_policy_names
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('SecurityPolicyNames') is not None:
-            self.security_policy_names = m.get('SecurityPolicyNames')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityPolicyIds') is not None:
             self.security_policy_ids = m.get('SecurityPolicyIds')
+        if m.get('SecurityPolicyNames') is not None:
+            self.security_policy_names = m.get('SecurityPolicyNames')
         return self
 
 
@@ -11414,6 +11720,281 @@ class ListSecurityPolicyRelationsResponse(TeaModel):
         return self
 
 
+class ListServerGroupServersRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # 标签键
+        self.key = key
+        # 标签值
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListServerGroupServersRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        server_group_id: str = None,
+        server_ids: List[str] = None,
+        tag: List[ListServerGroupServersRequestTag] = None,
+    ):
+        # 查询数量
+        self.max_results = max_results
+        # 分页查询标识
+        self.next_token = next_token
+        # 服务器组id
+        self.server_group_id = server_group_id
+        self.server_ids = server_ids
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        if self.server_ids is not None:
+            result['ServerIds'] = self.server_ids
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        if m.get('ServerIds') is not None:
+            self.server_ids = m.get('ServerIds')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListServerGroupServersRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListServerGroupServersResponseBodyServers(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        port: int = None,
+        server_group_id: str = None,
+        server_id: str = None,
+        server_ip: str = None,
+        server_type: str = None,
+        status: str = None,
+        weight: int = None,
+    ):
+        # 描述信息
+        self.description = description
+        # 端口
+        self.port = port
+        # 服务器组id
+        self.server_group_id = server_group_id
+        # 服务器id
+        self.server_id = server_id
+        # 服务器ip
+        self.server_ip = server_ip
+        # 后端服务器类型
+        self.server_type = server_type
+        # 状态
+        self.status = status
+        # 权重
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        if self.server_id is not None:
+            result['ServerId'] = self.server_id
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        if m.get('ServerId') is not None:
+            self.server_id = m.get('ServerId')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class ListServerGroupServersResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        servers: List[ListServerGroupServersResponseBodyServers] = None,
+        total_count: int = None,
+    ):
+        # 本次查询返回记录数量
+        self.max_results = max_results
+        # 分页查询标识
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        # 后端服务器
+        self.servers = servers
+        # 总记录数
+        self.total_count = total_count
+
+    def validate(self):
+        if self.servers:
+            for k in self.servers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Servers'] = []
+        if self.servers is not None:
+            for k in self.servers:
+                result['Servers'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.servers = []
+        if m.get('Servers') is not None:
+            for k in m.get('Servers'):
+                temp_model = ListServerGroupServersResponseBodyServers()
+                self.servers.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListServerGroupServersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListServerGroupServersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListServerGroupServersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListServerGroupsRequestTag(TeaModel):
     def __init__(
         self,
@@ -11452,28 +12033,28 @@ class ListServerGroupsRequestTag(TeaModel):
 class ListServerGroupsRequest(TeaModel):
     def __init__(
         self,
+        max_results: int = None,
+        next_token: str = None,
+        resource_group_id: str = None,
         server_group_ids: List[str] = None,
         server_group_names: List[str] = None,
-        resource_group_id: str = None,
-        next_token: str = None,
-        max_results: int = None,
-        vpc_id: str = None,
         tag: List[ListServerGroupsRequestTag] = None,
+        vpc_id: str = None,
     ):
+        # 查询数量
+        self.max_results = max_results
+        # 分页查询标识
+        self.next_token = next_token
+        # 资源组ID
+        self.resource_group_id = resource_group_id
         # 服务器组Id列表
         self.server_group_ids = server_group_ids
         # 服务器组名称
         self.server_group_names = server_group_names
-        # 资源组ID
-        self.resource_group_id = resource_group_id
-        # 分页查询标识
-        self.next_token = next_token
-        # 查询数量
-        self.max_results = max_results
-        # VpcId
-        self.vpc_id = vpc_id
         # Tag列表
         self.tag = tag
+        # VpcId
+        self.vpc_id = vpc_id
 
     def validate(self):
         if self.tag:
@@ -11487,53 +12068,53 @@ class ListServerGroupsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.server_group_ids is not None:
             result['ServerGroupIds'] = self.server_group_ids
         if self.server_group_names is not None:
             result['ServerGroupNames'] = self.server_group_names
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServerGroupIds') is not None:
             self.server_group_ids = m.get('ServerGroupIds')
         if m.get('ServerGroupNames') is not None:
             self.server_group_names = m.get('ServerGroupNames')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
                 temp_model = ListServerGroupsRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
 class ListServerGroupsResponseBodyServerGroupsHealthCheckConfig(TeaModel):
     def __init__(
         self,
+        health_check_codes: List[str] = None,
         health_check_connect_port: int = None,
         health_check_enabled: bool = None,
         health_check_host: str = None,
-        health_check_codes: List[str] = None,
         health_check_http_version: str = None,
         health_check_interval: int = None,
         health_check_method: str = None,
@@ -11543,14 +12124,14 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
+        # 状态码
+        self.health_check_codes = health_check_codes
         # 端口
         self.health_check_connect_port = health_check_connect_port
         # 是否启用健康检查
         self.health_check_enabled = health_check_enabled
         # 域名
         self.health_check_host = health_check_host
-        # 状态码
-        self.health_check_codes = health_check_codes
         # 版本
         self.health_check_http_version = health_check_http_version
         # 间隔时间
@@ -11577,14 +12158,14 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheckConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.health_check_codes is not None:
+            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_enabled is not None:
             result['HealthCheckEnabled'] = self.health_check_enabled
         if self.health_check_host is not None:
             result['HealthCheckHost'] = self.health_check_host
-        if self.health_check_codes is not None:
-            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_http_version is not None:
             result['HealthCheckHttpVersion'] = self.health_check_http_version
         if self.health_check_interval is not None:
@@ -11605,14 +12186,14 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheckConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HealthCheckCodes') is not None:
+            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckEnabled') is not None:
             self.health_check_enabled = m.get('HealthCheckEnabled')
         if m.get('HealthCheckHost') is not None:
             self.health_check_host = m.get('HealthCheckHost')
-        if m.get('HealthCheckCodes') is not None:
-            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckHttpVersion') is not None:
             self.health_check_http_version = m.get('HealthCheckHttpVersion')
         if m.get('HealthCheckInterval') is not None:
@@ -11723,13 +12304,14 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         protocol: str = None,
         resource_group_id: str = None,
         scheduler: str = None,
+        server_count: int = None,
         server_group_id: str = None,
         server_group_name: str = None,
         server_group_status: str = None,
         server_group_type: str = None,
         sticky_session_config: ListServerGroupsResponseBodyServerGroupsStickySessionConfig = None,
-        vpc_id: str = None,
         tags: List[ListServerGroupsResponseBodyServerGroupsTags] = None,
+        vpc_id: str = None,
     ):
         # 健康检查配置
         self.health_check_config = health_check_config
@@ -11739,6 +12321,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.resource_group_id = resource_group_id
         # 调度策略
         self.scheduler = scheduler
+        # 服务器组内服务器数量
+        self.server_count = server_count
         # 服务器组Id
         self.server_group_id = server_group_id
         # 服务器组名称
@@ -11749,10 +12333,10 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.server_group_type = server_group_type
         # 会话保持配置
         self.sticky_session_config = sticky_session_config
-        # 服务器组所在VpcId
-        self.vpc_id = vpc_id
         # 标签列表
         self.tags = tags
+        # 服务器组所在VpcId
+        self.vpc_id = vpc_id
 
     def validate(self):
         if self.health_check_config:
@@ -11778,6 +12362,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.scheduler is not None:
             result['Scheduler'] = self.scheduler
+        if self.server_count is not None:
+            result['ServerCount'] = self.server_count
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
         if self.server_group_name is not None:
@@ -11788,12 +12374,12 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             result['ServerGroupType'] = self.server_group_type
         if self.sticky_session_config is not None:
             result['StickySessionConfig'] = self.sticky_session_config.to_map()
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11807,6 +12393,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Scheduler') is not None:
             self.scheduler = m.get('Scheduler')
+        if m.get('ServerCount') is not None:
+            self.server_count = m.get('ServerCount')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
         if m.get('ServerGroupName') is not None:
@@ -11818,13 +12406,13 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         if m.get('StickySessionConfig') is not None:
             temp_model = ListServerGroupsResponseBodyServerGroupsStickySessionConfig()
             self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
                 temp_model = ListServerGroupsResponseBodyServerGroupsTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -11925,281 +12513,6 @@ class ListServerGroupsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListServerGroupsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListServerGroupServersRequestTag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        # 标签键
-        self.key = key
-        # 标签值
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class ListServerGroupServersRequest(TeaModel):
-    def __init__(
-        self,
-        next_token: str = None,
-        max_results: int = None,
-        server_group_id: str = None,
-        server_ids: List[str] = None,
-        tag: List[ListServerGroupServersRequestTag] = None,
-    ):
-        # 分页查询标识
-        self.next_token = next_token
-        # 查询数量
-        self.max_results = max_results
-        # 服务器组id
-        self.server_group_id = server_group_id
-        self.server_ids = server_ids
-        self.tag = tag
-
-    def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
-        if self.server_ids is not None:
-            result['ServerIds'] = self.server_ids
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
-        if m.get('ServerIds') is not None:
-            self.server_ids = m.get('ServerIds')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = ListServerGroupServersRequestTag()
-                self.tag.append(temp_model.from_map(k))
-        return self
-
-
-class ListServerGroupServersResponseBodyServers(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        port: int = None,
-        server_id: str = None,
-        server_ip: str = None,
-        server_type: str = None,
-        status: str = None,
-        weight: int = None,
-        server_group_id: str = None,
-    ):
-        # 描述信息
-        self.description = description
-        # 端口
-        self.port = port
-        # 服务器id
-        self.server_id = server_id
-        # 服务器ip
-        self.server_ip = server_ip
-        # 后端服务器类型
-        self.server_type = server_type
-        # 状态
-        self.status = status
-        # 权重
-        self.weight = weight
-        # 服务器组id
-        self.server_group_id = server_group_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.port is not None:
-            result['Port'] = self.port
-        if self.server_id is not None:
-            result['ServerId'] = self.server_id
-        if self.server_ip is not None:
-            result['ServerIp'] = self.server_ip
-        if self.server_type is not None:
-            result['ServerType'] = self.server_type
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.weight is not None:
-            result['Weight'] = self.weight
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
-        if m.get('ServerId') is not None:
-            self.server_id = m.get('ServerId')
-        if m.get('ServerIp') is not None:
-            self.server_ip = m.get('ServerIp')
-        if m.get('ServerType') is not None:
-            self.server_type = m.get('ServerType')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Weight') is not None:
-            self.weight = m.get('Weight')
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
-        return self
-
-
-class ListServerGroupServersResponseBody(TeaModel):
-    def __init__(
-        self,
-        max_results: int = None,
-        next_token: str = None,
-        request_id: str = None,
-        servers: List[ListServerGroupServersResponseBodyServers] = None,
-        total_count: int = None,
-    ):
-        # 本次查询返回记录数量
-        self.max_results = max_results
-        # 分页查询标识
-        self.next_token = next_token
-        # Id of the request
-        self.request_id = request_id
-        # 后端服务器
-        self.servers = servers
-        # 总记录数
-        self.total_count = total_count
-
-    def validate(self):
-        if self.servers:
-            for k in self.servers:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['Servers'] = []
-        if self.servers is not None:
-            for k in self.servers:
-                result['Servers'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.servers = []
-        if m.get('Servers') is not None:
-            for k in m.get('Servers'):
-                temp_model = ListServerGroupServersResponseBodyServers()
-                self.servers.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListServerGroupServersResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListServerGroupServersResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListServerGroupServersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12329,22 +12642,22 @@ class ListSystemSecurityPoliciesResponse(TeaModel):
 class ListTagKeysRequest(TeaModel):
     def __init__(
         self,
-        next_token: str = None,
-        max_results: int = None,
-        resource_type: str = None,
         category: str = None,
         keyword: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        resource_type: str = None,
     ):
-        # 分页查询标识
-        self.next_token = next_token
-        # 查询数量
-        self.max_results = max_results
-        # 资源类型
-        self.resource_type = resource_type
         # 标签类型
         self.category = category
         # 具体的标签Key
         self.keyword = keyword
+        # 查询数量
+        self.max_results = max_results
+        # 分页查询标识
+        self.next_token = next_token
+        # 资源类型
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -12355,30 +12668,30 @@ class ListTagKeysRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
         if self.category is not None:
             result['Category'] = self.category
         if self.keyword is not None:
             result['Keyword'] = self.keyword
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -12556,20 +12869,20 @@ class ListTagResourcesRequestTag(TeaModel):
 class ListTagResourcesRequest(TeaModel):
     def __init__(
         self,
-        next_token: str = None,
         max_results: int = None,
-        resource_type: str = None,
+        next_token: str = None,
         resource_id: List[str] = None,
+        resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # 分页查询标识
-        self.next_token = next_token
         # 查询数量
         self.max_results = max_results
-        # 资源类型
-        self.resource_type = resource_type
+        # 分页查询标识
+        self.next_token = next_token
         # 资源实例Id
         self.resource_id = resource_id
+        # 资源类型
+        self.resource_type = resource_type
         # 标签列表
         self.tag = tag
 
@@ -12585,14 +12898,14 @@ class ListTagResourcesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -12601,14 +12914,14 @@ class ListTagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -12770,20 +13083,20 @@ class ListTagResourcesResponse(TeaModel):
 class ListTagValuesRequest(TeaModel):
     def __init__(
         self,
-        next_token: str = None,
         max_results: int = None,
-        resource_type: str = None,
+        next_token: str = None,
         resource_id: str = None,
+        resource_type: str = None,
         tag_key: str = None,
     ):
-        # 分页查询标识
-        self.next_token = next_token
         # 查询数量
         self.max_results = max_results
-        # 资源类型
-        self.resource_type = resource_type
+        # 分页查询标识
+        self.next_token = next_token
         # 资源实例Id
         self.resource_id = resource_id
+        # 资源类型
+        self.resource_type = resource_type
         # 具体的标签Key
         self.tag_key = tag_key
 
@@ -12796,28 +13109,28 @@ class ListTagValuesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
         return self
@@ -12919,16 +13232,16 @@ class ListTagValuesResponse(TeaModel):
 class MoveResourceGroupRequest(TeaModel):
     def __init__(
         self,
-        resource_type: str = None,
-        resource_id: str = None,
         new_resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
     ):
-        # 资源类型
-        self.resource_type = resource_type
-        # 指定资源Id
-        self.resource_id = resource_id
         # 资源组id
         self.new_resource_group_id = new_resource_group_id
+        # 指定资源Id
+        self.resource_id = resource_id
+        # 资源类型
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -12939,22 +13252,22 @@ class MoveResourceGroupRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
         if self.new_resource_group_id is not None:
             result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
         if m.get('NewResourceGroupId') is not None:
             self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
@@ -13026,17 +13339,17 @@ class MoveResourceGroupResponse(TeaModel):
 class RemoveEntriesFromAclRequest(TeaModel):
     def __init__(
         self,
+        acl_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
-        acl_id: str = None,
         entries: List[str] = None,
     ):
+        # 访问控制策略Id
+        self.acl_id = acl_id
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
-        # 访问控制策略Id
-        self.acl_id = acl_id
         # 条目列表
         self.entries = entries
 
@@ -13049,24 +13362,24 @@ class RemoveEntriesFromAclRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
-        if self.acl_id is not None:
-            result['AclId'] = self.acl_id
         if self.entries is not None:
             result['Entries'] = self.entries
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
-        if m.get('AclId') is not None:
-            self.acl_id = m.get('AclId')
         if m.get('Entries') is not None:
             self.entries = m.get('Entries')
         return self
@@ -13196,19 +13509,19 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
 class RemoveServersFromServerGroupRequest(TeaModel):
     def __init__(
         self,
-        server_group_id: str = None,
-        servers: List[RemoveServersFromServerGroupRequestServers] = None,
         client_token: str = None,
         dry_run: bool = None,
+        server_group_id: str = None,
+        servers: List[RemoveServersFromServerGroupRequestServers] = None,
     ):
-        # 后端服务器Id
-        self.server_group_id = server_group_id
-        # 后端服务器
-        self.servers = servers
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
+        # 后端服务器Id
+        self.server_group_id = server_group_id
+        # 后端服务器
+        self.servers = servers
 
     def validate(self):
         if self.servers:
@@ -13222,20 +13535,24 @@ class RemoveServersFromServerGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
         result['Servers'] = []
         if self.servers is not None:
             for k in self.servers:
                 result['Servers'].append(k.to_map() if k else None)
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
         self.servers = []
@@ -13243,10 +13560,6 @@ class RemoveServersFromServerGroupRequest(TeaModel):
             for k in m.get('Servers'):
                 temp_model = RemoveServersFromServerGroupRequestServers()
                 self.servers.append(temp_model.from_map(k))
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
         return self
 
 
@@ -13388,19 +13701,19 @@ class ReplaceServersInServerGroupRequestAddedServers(TeaModel):
 class ReplaceServersInServerGroupRequestRemovedServers(TeaModel):
     def __init__(
         self,
+        port: int = None,
         server_id: str = None,
         server_ip: str = None,
         server_type: str = None,
-        port: int = None,
     ):
+        # 端口
+        self.port = port
         # 后端服务器id
         self.server_id = server_id
         # 后端服务器ip
         self.server_ip = server_ip
         # 后端服务器类型
         self.server_type = server_type
-        # 端口
-        self.port = port
 
     def validate(self):
         pass
@@ -13411,48 +13724,48 @@ class ReplaceServersInServerGroupRequestRemovedServers(TeaModel):
             return _map
 
         result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
         if self.server_id is not None:
             result['ServerId'] = self.server_id
         if self.server_ip is not None:
             result['ServerIp'] = self.server_ip
         if self.server_type is not None:
             result['ServerType'] = self.server_type
-        if self.port is not None:
-            result['Port'] = self.port
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
         if m.get('ServerId') is not None:
             self.server_id = m.get('ServerId')
         if m.get('ServerIp') is not None:
             self.server_ip = m.get('ServerIp')
         if m.get('ServerType') is not None:
             self.server_type = m.get('ServerType')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
         return self
 
 
 class ReplaceServersInServerGroupRequest(TeaModel):
     def __init__(
         self,
-        server_group_id: str = None,
         added_servers: List[ReplaceServersInServerGroupRequestAddedServers] = None,
-        removed_servers: List[ReplaceServersInServerGroupRequestRemovedServers] = None,
         client_token: str = None,
         dry_run: bool = None,
+        removed_servers: List[ReplaceServersInServerGroupRequestRemovedServers] = None,
+        server_group_id: str = None,
     ):
-        # 后端服务器Id
-        self.server_group_id = server_group_id
         # 待添加后端服务器
         self.added_servers = added_servers
-        # 待删除后端服务器
-        self.removed_servers = removed_servers
         # 幂等Token
         self.client_token = client_token
         # dryRun
         self.dry_run = dry_run
+        # 待删除后端服务器
+        self.removed_servers = removed_servers
+        # 后端服务器Id
+        self.server_group_id = server_group_id
 
     def validate(self):
         if self.added_servers:
@@ -13470,40 +13783,40 @@ class ReplaceServersInServerGroupRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
         result['AddedServers'] = []
         if self.added_servers is not None:
             for k in self.added_servers:
                 result['AddedServers'].append(k.to_map() if k else None)
-        result['RemovedServers'] = []
-        if self.removed_servers is not None:
-            for k in self.removed_servers:
-                result['RemovedServers'].append(k.to_map() if k else None)
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        result['RemovedServers'] = []
+        if self.removed_servers is not None:
+            for k in self.removed_servers:
+                result['RemovedServers'].append(k.to_map() if k else None)
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
         self.added_servers = []
         if m.get('AddedServers') is not None:
             for k in m.get('AddedServers'):
                 temp_model = ReplaceServersInServerGroupRequestAddedServers()
                 self.added_servers.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         self.removed_servers = []
         if m.get('RemovedServers') is not None:
             for k in m.get('RemovedServers'):
                 temp_model = ReplaceServersInServerGroupRequestRemovedServers()
                 self.removed_servers.append(temp_model.from_map(k))
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
         return self
 
 
@@ -13582,16 +13895,16 @@ class ReplaceServersInServerGroupResponse(TeaModel):
 class StartListenerRequest(TeaModel):
     def __init__(
         self,
-        listener_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        listener_id: str = None,
     ):
-        # 监听id
-        self.listener_id = listener_id
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
+        # 监听id
+        self.listener_id = listener_id
 
     def validate(self):
         pass
@@ -13602,22 +13915,22 @@ class StartListenerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         return self
 
 
@@ -13696,16 +14009,16 @@ class StartListenerResponse(TeaModel):
 class StopListenerRequest(TeaModel):
     def __init__(
         self,
-        listener_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        listener_id: str = None,
     ):
-        # 监听id
-        self.listener_id = listener_id
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
+        # 监听id
+        self.listener_id = listener_id
 
     def validate(self):
         pass
@@ -13716,22 +14029,22 @@ class StopListenerRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         return self
 
 
@@ -13845,14 +14158,14 @@ class TagResourcesRequestTag(TeaModel):
 class TagResourcesRequest(TeaModel):
     def __init__(
         self,
-        resource_type: str = None,
         resource_id: List[str] = None,
+        resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # 资源类型
-        self.resource_type = resource_type
         # 资源实例Id
         self.resource_id = resource_id
+        # 资源类型
+        self.resource_type = resource_type
         # 标签列表
         self.tag = tag
 
@@ -13868,10 +14181,10 @@ class TagResourcesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -13880,10 +14193,10 @@ class TagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -13995,15 +14308,15 @@ class UnTagResourcesRequestTag(TeaModel):
 class UnTagResourcesRequest(TeaModel):
     def __init__(
         self,
-        resource_type: str = None,
         resource_id: List[str] = None,
+        resource_type: str = None,
         tag: List[UnTagResourcesRequestTag] = None,
         tag_key: List[str] = None,
     ):
-        # 资源类型
-        self.resource_type = resource_type
         # 资源实例Id
         self.resource_id = resource_id
+        # 资源类型
+        self.resource_type = resource_type
         # 标签列表
         self.tag = tag
         # 标签键列表
@@ -14021,10 +14334,10 @@ class UnTagResourcesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -14035,10 +14348,10 @@ class UnTagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -14117,17 +14430,17 @@ class UnTagResourcesResponse(TeaModel):
 class UpdateAclAttributeRequest(TeaModel):
     def __init__(
         self,
-        client_token: str = None,
         acl_id: str = None,
         acl_name: str = None,
+        client_token: str = None,
         dry_run: bool = None,
     ):
-        # 幂等参数
-        self.client_token = client_token
         # AclId
         self.acl_id = acl_id
         # 访问控制策略名称
         self.acl_name = acl_name
+        # 幂等参数
+        self.client_token = client_token
         # 是否预校验请求
         self.dry_run = dry_run
 
@@ -14140,24 +14453,24 @@ class UpdateAclAttributeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
         if self.acl_name is not None:
             result['AclName'] = self.acl_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
         if m.get('AclName') is not None:
             self.acl_name = m.get('AclName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         return self
@@ -14232,51 +14545,51 @@ class UpdateHealthCheckTemplateAttributeRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
-        health_check_template_name: str = None,
+        dry_run: bool = None,
+        health_check_codes: List[str] = None,
         health_check_connect_port: int = None,
         health_check_host: str = None,
-        health_check_codes: List[str] = None,
-        health_check_interval: int = None,
-        health_check_timeout: int = None,
-        health_check_path: str = None,
-        health_check_method: str = None,
-        health_check_protocol: str = None,
         health_check_http_version: str = None,
+        health_check_interval: int = None,
+        health_check_method: str = None,
+        health_check_path: str = None,
+        health_check_protocol: str = None,
+        health_check_template_id: str = None,
+        health_check_template_name: str = None,
+        health_check_timeout: int = None,
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
-        dry_run: bool = None,
-        health_check_template_id: str = None,
     ):
         # 幂等参数
         self.client_token = client_token
-        # 名称
-        self.health_check_template_name = health_check_template_name
+        # dryRun
+        self.dry_run = dry_run
+        # 状态码
+        self.health_check_codes = health_check_codes
         # 端口号
         self.health_check_connect_port = health_check_connect_port
         # 域名
         self.health_check_host = health_check_host
-        # 状态码
-        self.health_check_codes = health_check_codes
-        # 时间间隔
-        self.health_check_interval = health_check_interval
-        # 超时时间
-        self.health_check_timeout = health_check_timeout
-        # uri
-        self.health_check_path = health_check_path
-        # 方法
-        self.health_check_method = health_check_method
-        # 协议
-        self.health_check_protocol = health_check_protocol
         # 版本
         self.health_check_http_version = health_check_http_version
+        # 时间间隔
+        self.health_check_interval = health_check_interval
+        # 方法
+        self.health_check_method = health_check_method
+        # uri
+        self.health_check_path = health_check_path
+        # 协议
+        self.health_check_protocol = health_check_protocol
+        # 健康检查模板ID
+        self.health_check_template_id = health_check_template_id
+        # 名称
+        self.health_check_template_name = health_check_template_name
+        # 超时时间
+        self.health_check_timeout = health_check_timeout
         # 健康阈值
         self.healthy_threshold = healthy_threshold
         # 不健康阈值
         self.unhealthy_threshold = unhealthy_threshold
-        # dryRun
-        self.dry_run = dry_run
-        # 健康检查模板ID
-        self.health_check_template_id = health_check_template_id
 
     def validate(self):
         pass
@@ -14289,68 +14602,68 @@ class UpdateHealthCheckTemplateAttributeRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.health_check_template_name is not None:
-            result['HealthCheckTemplateName'] = self.health_check_template_name
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.health_check_codes is not None:
+            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_host is not None:
             result['HealthCheckHost'] = self.health_check_host
-        if self.health_check_codes is not None:
-            result['HealthCheckCodes'] = self.health_check_codes
-        if self.health_check_interval is not None:
-            result['HealthCheckInterval'] = self.health_check_interval
-        if self.health_check_timeout is not None:
-            result['HealthCheckTimeout'] = self.health_check_timeout
-        if self.health_check_path is not None:
-            result['HealthCheckPath'] = self.health_check_path
-        if self.health_check_method is not None:
-            result['HealthCheckMethod'] = self.health_check_method
-        if self.health_check_protocol is not None:
-            result['HealthCheckProtocol'] = self.health_check_protocol
         if self.health_check_http_version is not None:
             result['HealthCheckHttpVersion'] = self.health_check_http_version
+        if self.health_check_interval is not None:
+            result['HealthCheckInterval'] = self.health_check_interval
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
+        if self.health_check_path is not None:
+            result['HealthCheckPath'] = self.health_check_path
+        if self.health_check_protocol is not None:
+            result['HealthCheckProtocol'] = self.health_check_protocol
+        if self.health_check_template_id is not None:
+            result['HealthCheckTemplateId'] = self.health_check_template_id
+        if self.health_check_template_name is not None:
+            result['HealthCheckTemplateName'] = self.health_check_template_name
+        if self.health_check_timeout is not None:
+            result['HealthCheckTimeout'] = self.health_check_timeout
         if self.healthy_threshold is not None:
             result['HealthyThreshold'] = self.healthy_threshold
         if self.unhealthy_threshold is not None:
             result['UnhealthyThreshold'] = self.unhealthy_threshold
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
-        if self.health_check_template_id is not None:
-            result['HealthCheckTemplateId'] = self.health_check_template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('HealthCheckTemplateName') is not None:
-            self.health_check_template_name = m.get('HealthCheckTemplateName')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('HealthCheckCodes') is not None:
+            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckHost') is not None:
             self.health_check_host = m.get('HealthCheckHost')
-        if m.get('HealthCheckCodes') is not None:
-            self.health_check_codes = m.get('HealthCheckCodes')
-        if m.get('HealthCheckInterval') is not None:
-            self.health_check_interval = m.get('HealthCheckInterval')
-        if m.get('HealthCheckTimeout') is not None:
-            self.health_check_timeout = m.get('HealthCheckTimeout')
-        if m.get('HealthCheckPath') is not None:
-            self.health_check_path = m.get('HealthCheckPath')
-        if m.get('HealthCheckMethod') is not None:
-            self.health_check_method = m.get('HealthCheckMethod')
-        if m.get('HealthCheckProtocol') is not None:
-            self.health_check_protocol = m.get('HealthCheckProtocol')
         if m.get('HealthCheckHttpVersion') is not None:
             self.health_check_http_version = m.get('HealthCheckHttpVersion')
+        if m.get('HealthCheckInterval') is not None:
+            self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
+        if m.get('HealthCheckPath') is not None:
+            self.health_check_path = m.get('HealthCheckPath')
+        if m.get('HealthCheckProtocol') is not None:
+            self.health_check_protocol = m.get('HealthCheckProtocol')
+        if m.get('HealthCheckTemplateId') is not None:
+            self.health_check_template_id = m.get('HealthCheckTemplateId')
+        if m.get('HealthCheckTemplateName') is not None:
+            self.health_check_template_name = m.get('HealthCheckTemplateName')
+        if m.get('HealthCheckTimeout') is not None:
+            self.health_check_timeout = m.get('HealthCheckTimeout')
         if m.get('HealthyThreshold') is not None:
             self.healthy_threshold = m.get('HealthyThreshold')
         if m.get('UnhealthyThreshold') is not None:
             self.unhealthy_threshold = m.get('UnhealthyThreshold')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
-        if m.get('HealthCheckTemplateId') is not None:
-            self.health_check_template_id = m.get('HealthCheckTemplateId')
         return self
 
 
@@ -14419,49 +14732,9 @@ class UpdateHealthCheckTemplateAttributeResponse(TeaModel):
         return self
 
 
-class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
-    def __init__(
-        self,
-        xforwarded_for_client_cert_client_verify_alias: str = None,
-        xforwarded_for_client_cert_client_verify_enabled: bool = None,
-        xforwarded_for_client_cert_fingerprint_alias: str = None,
-        xforwarded_for_client_cert_fingerprint_enabled: bool = None,
-        xforwarded_for_client_cert_issuer_dnalias: str = None,
-        xforwarded_for_client_cert_issuer_dnenabled: bool = None,
-        xforwarded_for_client_cert_subject_dnalias: str = None,
-        xforwarded_for_client_cert_subject_dnenabled: bool = None,
-        xforwarded_for_client_src_port_enabled: bool = None,
-        xforwarded_for_enabled: bool = None,
-        xforwarded_for_proto_enabled: bool = None,
-        xforwarded_for_slbid_enabled: bool = None,
-        xforwarded_for_slbport_enabled: bool = None,
-    ):
-        # 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-        self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
-        # 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
-        self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-        self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
-        # 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
-        self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-        self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
-        # 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
-        self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
-        self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
-        # 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
-        self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
-        self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
-        # 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
-        self.xforwarded_for_enabled = xforwarded_for_enabled
-        # 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
-        self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # 是否通过SLB-ID头字段获取负载均衡实例ID。
-        self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
-        # 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
-        self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
+class UpdateListenerAttributeRequestCaCertificates(TeaModel):
+    def __init__(self):
+        pass
 
     def validate(self):
         pass
@@ -14472,97 +14745,10 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
             return _map
 
         result = dict()
-        if self.xforwarded_for_client_cert_client_verify_alias is not None:
-            result['XForwardedForClientCertClientVerifyAlias'] = self.xforwarded_for_client_cert_client_verify_alias
-        if self.xforwarded_for_client_cert_client_verify_enabled is not None:
-            result['XForwardedForClientCertClientVerifyEnabled'] = self.xforwarded_for_client_cert_client_verify_enabled
-        if self.xforwarded_for_client_cert_fingerprint_alias is not None:
-            result['XForwardedForClientCertFingerprintAlias'] = self.xforwarded_for_client_cert_fingerprint_alias
-        if self.xforwarded_for_client_cert_fingerprint_enabled is not None:
-            result['XForwardedForClientCertFingerprintEnabled'] = self.xforwarded_for_client_cert_fingerprint_enabled
-        if self.xforwarded_for_client_cert_issuer_dnalias is not None:
-            result['XForwardedForClientCertIssuerDNAlias'] = self.xforwarded_for_client_cert_issuer_dnalias
-        if self.xforwarded_for_client_cert_issuer_dnenabled is not None:
-            result['XForwardedForClientCertIssuerDNEnabled'] = self.xforwarded_for_client_cert_issuer_dnenabled
-        if self.xforwarded_for_client_cert_subject_dnalias is not None:
-            result['XForwardedForClientCertSubjectDNAlias'] = self.xforwarded_for_client_cert_subject_dnalias
-        if self.xforwarded_for_client_cert_subject_dnenabled is not None:
-            result['XForwardedForClientCertSubjectDNEnabled'] = self.xforwarded_for_client_cert_subject_dnenabled
-        if self.xforwarded_for_client_src_port_enabled is not None:
-            result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
-        if self.xforwarded_for_enabled is not None:
-            result['XForwardedForEnabled'] = self.xforwarded_for_enabled
-        if self.xforwarded_for_proto_enabled is not None:
-            result['XForwardedForProtoEnabled'] = self.xforwarded_for_proto_enabled
-        if self.xforwarded_for_slbid_enabled is not None:
-            result['XForwardedForSLBIdEnabled'] = self.xforwarded_for_slbid_enabled
-        if self.xforwarded_for_slbport_enabled is not None:
-            result['XForwardedForSLBPortEnabled'] = self.xforwarded_for_slbport_enabled
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('XForwardedForClientCertClientVerifyAlias') is not None:
-            self.xforwarded_for_client_cert_client_verify_alias = m.get('XForwardedForClientCertClientVerifyAlias')
-        if m.get('XForwardedForClientCertClientVerifyEnabled') is not None:
-            self.xforwarded_for_client_cert_client_verify_enabled = m.get('XForwardedForClientCertClientVerifyEnabled')
-        if m.get('XForwardedForClientCertFingerprintAlias') is not None:
-            self.xforwarded_for_client_cert_fingerprint_alias = m.get('XForwardedForClientCertFingerprintAlias')
-        if m.get('XForwardedForClientCertFingerprintEnabled') is not None:
-            self.xforwarded_for_client_cert_fingerprint_enabled = m.get('XForwardedForClientCertFingerprintEnabled')
-        if m.get('XForwardedForClientCertIssuerDNAlias') is not None:
-            self.xforwarded_for_client_cert_issuer_dnalias = m.get('XForwardedForClientCertIssuerDNAlias')
-        if m.get('XForwardedForClientCertIssuerDNEnabled') is not None:
-            self.xforwarded_for_client_cert_issuer_dnenabled = m.get('XForwardedForClientCertIssuerDNEnabled')
-        if m.get('XForwardedForClientCertSubjectDNAlias') is not None:
-            self.xforwarded_for_client_cert_subject_dnalias = m.get('XForwardedForClientCertSubjectDNAlias')
-        if m.get('XForwardedForClientCertSubjectDNEnabled') is not None:
-            self.xforwarded_for_client_cert_subject_dnenabled = m.get('XForwardedForClientCertSubjectDNEnabled')
-        if m.get('XForwardedForClientSrcPortEnabled') is not None:
-            self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
-        if m.get('XForwardedForEnabled') is not None:
-            self.xforwarded_for_enabled = m.get('XForwardedForEnabled')
-        if m.get('XForwardedForProtoEnabled') is not None:
-            self.xforwarded_for_proto_enabled = m.get('XForwardedForProtoEnabled')
-        if m.get('XForwardedForSLBIdEnabled') is not None:
-            self.xforwarded_for_slbid_enabled = m.get('XForwardedForSLBIdEnabled')
-        if m.get('XForwardedForSLBPortEnabled') is not None:
-            self.xforwarded_for_slbport_enabled = m.get('XForwardedForSLBPortEnabled')
-        return self
-
-
-class UpdateListenerAttributeRequestQuicConfig(TeaModel):
-    def __init__(
-        self,
-        quic_listener_id: str = None,
-        quic_upgrade_enabled: bool = None,
-    ):
-        # 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
-        self.quic_listener_id = quic_listener_id
-        # 是否开启quic升级，HTTPS监听时有效
-        self.quic_upgrade_enabled = quic_upgrade_enabled
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.quic_listener_id is not None:
-            result['QuicListenerId'] = self.quic_listener_id
-        if self.quic_upgrade_enabled is not None:
-            result['QuicUpgradeEnabled'] = self.quic_upgrade_enabled
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('QuicListenerId') is not None:
-            self.quic_listener_id = m.get('QuicListenerId')
-        if m.get('QuicUpgradeEnabled') is not None:
-            self.quic_upgrade_enabled = m.get('QuicUpgradeEnabled')
         return self
 
 
@@ -14695,55 +14881,208 @@ class UpdateListenerAttributeRequestDefaultActions(TeaModel):
         return self
 
 
+class UpdateListenerAttributeRequestQuicConfig(TeaModel):
+    def __init__(
+        self,
+        quic_listener_id: str = None,
+        quic_upgrade_enabled: bool = None,
+    ):
+        # 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
+        self.quic_listener_id = quic_listener_id
+        # 是否开启quic升级，HTTPS监听时有效
+        self.quic_upgrade_enabled = quic_upgrade_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quic_listener_id is not None:
+            result['QuicListenerId'] = self.quic_listener_id
+        if self.quic_upgrade_enabled is not None:
+            result['QuicUpgradeEnabled'] = self.quic_upgrade_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QuicListenerId') is not None:
+            self.quic_listener_id = m.get('QuicListenerId')
+        if m.get('QuicUpgradeEnabled') is not None:
+            self.quic_upgrade_enabled = m.get('QuicUpgradeEnabled')
+        return self
+
+
+class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
+    def __init__(
+        self,
+        xforwarded_for_client_cert_client_verify_alias: str = None,
+        xforwarded_for_client_cert_client_verify_enabled: bool = None,
+        xforwarded_for_client_cert_fingerprint_alias: str = None,
+        xforwarded_for_client_cert_fingerprint_enabled: bool = None,
+        xforwarded_for_client_cert_issuer_dnalias: str = None,
+        xforwarded_for_client_cert_issuer_dnenabled: bool = None,
+        xforwarded_for_client_cert_subject_dnalias: str = None,
+        xforwarded_for_client_cert_subject_dnenabled: bool = None,
+        xforwarded_for_client_src_port_enabled: bool = None,
+        xforwarded_for_enabled: bool = None,
+        xforwarded_for_proto_enabled: bool = None,
+        xforwarded_for_slbid_enabled: bool = None,
+        xforwarded_for_slbport_enabled: bool = None,
+    ):
+        # 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
+        self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
+        # 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
+        self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
+        # 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
+        self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
+        # 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
+        self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
+        # 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
+        self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
+        # 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
+        self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
+        # 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
+        self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
+        # 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
+        self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
+        # 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
+        self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
+        # 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
+        self.xforwarded_for_enabled = xforwarded_for_enabled
+        # 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
+        self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
+        # 是否通过SLB-ID头字段获取负载均衡实例ID。
+        self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
+        # 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
+        self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.xforwarded_for_client_cert_client_verify_alias is not None:
+            result['XForwardedForClientCertClientVerifyAlias'] = self.xforwarded_for_client_cert_client_verify_alias
+        if self.xforwarded_for_client_cert_client_verify_enabled is not None:
+            result['XForwardedForClientCertClientVerifyEnabled'] = self.xforwarded_for_client_cert_client_verify_enabled
+        if self.xforwarded_for_client_cert_fingerprint_alias is not None:
+            result['XForwardedForClientCertFingerprintAlias'] = self.xforwarded_for_client_cert_fingerprint_alias
+        if self.xforwarded_for_client_cert_fingerprint_enabled is not None:
+            result['XForwardedForClientCertFingerprintEnabled'] = self.xforwarded_for_client_cert_fingerprint_enabled
+        if self.xforwarded_for_client_cert_issuer_dnalias is not None:
+            result['XForwardedForClientCertIssuerDNAlias'] = self.xforwarded_for_client_cert_issuer_dnalias
+        if self.xforwarded_for_client_cert_issuer_dnenabled is not None:
+            result['XForwardedForClientCertIssuerDNEnabled'] = self.xforwarded_for_client_cert_issuer_dnenabled
+        if self.xforwarded_for_client_cert_subject_dnalias is not None:
+            result['XForwardedForClientCertSubjectDNAlias'] = self.xforwarded_for_client_cert_subject_dnalias
+        if self.xforwarded_for_client_cert_subject_dnenabled is not None:
+            result['XForwardedForClientCertSubjectDNEnabled'] = self.xforwarded_for_client_cert_subject_dnenabled
+        if self.xforwarded_for_client_src_port_enabled is not None:
+            result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
+        if self.xforwarded_for_enabled is not None:
+            result['XForwardedForEnabled'] = self.xforwarded_for_enabled
+        if self.xforwarded_for_proto_enabled is not None:
+            result['XForwardedForProtoEnabled'] = self.xforwarded_for_proto_enabled
+        if self.xforwarded_for_slbid_enabled is not None:
+            result['XForwardedForSLBIdEnabled'] = self.xforwarded_for_slbid_enabled
+        if self.xforwarded_for_slbport_enabled is not None:
+            result['XForwardedForSLBPortEnabled'] = self.xforwarded_for_slbport_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('XForwardedForClientCertClientVerifyAlias') is not None:
+            self.xforwarded_for_client_cert_client_verify_alias = m.get('XForwardedForClientCertClientVerifyAlias')
+        if m.get('XForwardedForClientCertClientVerifyEnabled') is not None:
+            self.xforwarded_for_client_cert_client_verify_enabled = m.get('XForwardedForClientCertClientVerifyEnabled')
+        if m.get('XForwardedForClientCertFingerprintAlias') is not None:
+            self.xforwarded_for_client_cert_fingerprint_alias = m.get('XForwardedForClientCertFingerprintAlias')
+        if m.get('XForwardedForClientCertFingerprintEnabled') is not None:
+            self.xforwarded_for_client_cert_fingerprint_enabled = m.get('XForwardedForClientCertFingerprintEnabled')
+        if m.get('XForwardedForClientCertIssuerDNAlias') is not None:
+            self.xforwarded_for_client_cert_issuer_dnalias = m.get('XForwardedForClientCertIssuerDNAlias')
+        if m.get('XForwardedForClientCertIssuerDNEnabled') is not None:
+            self.xforwarded_for_client_cert_issuer_dnenabled = m.get('XForwardedForClientCertIssuerDNEnabled')
+        if m.get('XForwardedForClientCertSubjectDNAlias') is not None:
+            self.xforwarded_for_client_cert_subject_dnalias = m.get('XForwardedForClientCertSubjectDNAlias')
+        if m.get('XForwardedForClientCertSubjectDNEnabled') is not None:
+            self.xforwarded_for_client_cert_subject_dnenabled = m.get('XForwardedForClientCertSubjectDNEnabled')
+        if m.get('XForwardedForClientSrcPortEnabled') is not None:
+            self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
+        if m.get('XForwardedForEnabled') is not None:
+            self.xforwarded_for_enabled = m.get('XForwardedForEnabled')
+        if m.get('XForwardedForProtoEnabled') is not None:
+            self.xforwarded_for_proto_enabled = m.get('XForwardedForProtoEnabled')
+        if m.get('XForwardedForSLBIdEnabled') is not None:
+            self.xforwarded_for_slbid_enabled = m.get('XForwardedForSLBIdEnabled')
+        if m.get('XForwardedForSLBPortEnabled') is not None:
+            self.xforwarded_for_slbport_enabled = m.get('XForwardedForSLBPortEnabled')
+        return self
+
+
 class UpdateListenerAttributeRequest(TeaModel):
     def __init__(
         self,
-        listener_id: str = None,
+        ca_certificates: List[UpdateListenerAttributeRequestCaCertificates] = None,
+        ca_enabled: bool = None,
+        certificates: List[UpdateListenerAttributeRequestCertificates] = None,
         client_token: str = None,
+        default_actions: List[UpdateListenerAttributeRequestDefaultActions] = None,
         dry_run: bool = None,
-        listener_description: str = None,
-        request_timeout: int = None,
-        idle_timeout: int = None,
         gzip_enabled: bool = None,
         http_2enabled: bool = None,
+        idle_timeout: int = None,
+        listener_description: str = None,
+        listener_id: str = None,
+        quic_config: UpdateListenerAttributeRequestQuicConfig = None,
+        request_timeout: int = None,
         security_policy_id: str = None,
         xforwarded_for_config: UpdateListenerAttributeRequestXForwardedForConfig = None,
-        quic_config: UpdateListenerAttributeRequestQuicConfig = None,
-        certificates: List[UpdateListenerAttributeRequestCertificates] = None,
-        default_actions: List[UpdateListenerAttributeRequestDefaultActions] = None,
     ):
-        # 监听标识
-        self.listener_id = listener_id
+        # 监听默认CA证书列表，N当前取值范围为1
+        self.ca_certificates = ca_certificates
+        # 是否开启双向认证
+        self.ca_enabled = ca_enabled
+        # 监听默认服务器证书列表，N当前取值范围为1
+        self.certificates = certificates
         # 幂等标识
         self.client_token = client_token
+        # 监听默认动作
+        self.default_actions = default_actions
         #  是否只预检此次请求
         self.dry_run = dry_run
-        # 监听描述
-        self.listener_description = listener_description
-        # 请求超时时间
-        self.request_timeout = request_timeout
-        # 连接空闲超时时间
-        self.idle_timeout = idle_timeout
         # 是否开启Gzip压缩
         self.gzip_enabled = gzip_enabled
         # 是否开启HTTP/2特性
         self.http_2enabled = http_2enabled
+        # 连接空闲超时时间
+        self.idle_timeout = idle_timeout
+        # 监听描述
+        self.listener_description = listener_description
+        # 监听标识
+        self.listener_id = listener_id
+        # HTTPS启用QUIC时相关属性
+        self.quic_config = quic_config
+        # 请求超时时间
+        self.request_timeout = request_timeout
         # 安全策略
         self.security_policy_id = security_policy_id
         # XForward字段相关的配置
         self.xforwarded_for_config = xforwarded_for_config
-        # HTTPS启用QUIC时相关属性
-        self.quic_config = quic_config
-        # 监听默认服务器证书列表，N当前取值范围为1
-        self.certificates = certificates
-        # 监听默认动作
-        self.default_actions = default_actions
 
     def validate(self):
-        if self.xforwarded_for_config:
-            self.xforwarded_for_config.validate()
-        if self.quic_config:
-            self.quic_config.validate()
+        if self.ca_certificates:
+            for k in self.ca_certificates:
+                if k:
+                    k.validate()
         if self.certificates:
             for k in self.certificates:
                 if k:
@@ -14752,6 +15091,10 @@ class UpdateListenerAttributeRequest(TeaModel):
             for k in self.default_actions:
                 if k:
                     k.validate()
+        if self.quic_config:
+            self.quic_config.validate()
+        if self.xforwarded_for_config:
+            self.xforwarded_for_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14759,74 +15102,87 @@ class UpdateListenerAttributeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
-        if self.listener_description is not None:
-            result['ListenerDescription'] = self.listener_description
-        if self.request_timeout is not None:
-            result['RequestTimeout'] = self.request_timeout
-        if self.idle_timeout is not None:
-            result['IdleTimeout'] = self.idle_timeout
-        if self.gzip_enabled is not None:
-            result['GzipEnabled'] = self.gzip_enabled
-        if self.http_2enabled is not None:
-            result['Http2Enabled'] = self.http_2enabled
-        if self.security_policy_id is not None:
-            result['SecurityPolicyId'] = self.security_policy_id
-        if self.xforwarded_for_config is not None:
-            result['XForwardedForConfig'] = self.xforwarded_for_config.to_map()
-        if self.quic_config is not None:
-            result['QuicConfig'] = self.quic_config.to_map()
+        result['CaCertificates'] = []
+        if self.ca_certificates is not None:
+            for k in self.ca_certificates:
+                result['CaCertificates'].append(k.to_map() if k else None)
+        if self.ca_enabled is not None:
+            result['CaEnabled'] = self.ca_enabled
         result['Certificates'] = []
         if self.certificates is not None:
             for k in self.certificates:
                 result['Certificates'].append(k.to_map() if k else None)
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         result['DefaultActions'] = []
         if self.default_actions is not None:
             for k in self.default_actions:
                 result['DefaultActions'].append(k.to_map() if k else None)
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.gzip_enabled is not None:
+            result['GzipEnabled'] = self.gzip_enabled
+        if self.http_2enabled is not None:
+            result['Http2Enabled'] = self.http_2enabled
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
+        if self.listener_description is not None:
+            result['ListenerDescription'] = self.listener_description
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
+        if self.quic_config is not None:
+            result['QuicConfig'] = self.quic_config.to_map()
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
+        if self.security_policy_id is not None:
+            result['SecurityPolicyId'] = self.security_policy_id
+        if self.xforwarded_for_config is not None:
+            result['XForwardedForConfig'] = self.xforwarded_for_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
-        if m.get('ListenerDescription') is not None:
-            self.listener_description = m.get('ListenerDescription')
-        if m.get('RequestTimeout') is not None:
-            self.request_timeout = m.get('RequestTimeout')
-        if m.get('IdleTimeout') is not None:
-            self.idle_timeout = m.get('IdleTimeout')
-        if m.get('GzipEnabled') is not None:
-            self.gzip_enabled = m.get('GzipEnabled')
-        if m.get('Http2Enabled') is not None:
-            self.http_2enabled = m.get('Http2Enabled')
-        if m.get('SecurityPolicyId') is not None:
-            self.security_policy_id = m.get('SecurityPolicyId')
-        if m.get('XForwardedForConfig') is not None:
-            temp_model = UpdateListenerAttributeRequestXForwardedForConfig()
-            self.xforwarded_for_config = temp_model.from_map(m['XForwardedForConfig'])
-        if m.get('QuicConfig') is not None:
-            temp_model = UpdateListenerAttributeRequestQuicConfig()
-            self.quic_config = temp_model.from_map(m['QuicConfig'])
+        self.ca_certificates = []
+        if m.get('CaCertificates') is not None:
+            for k in m.get('CaCertificates'):
+                temp_model = UpdateListenerAttributeRequestCaCertificates()
+                self.ca_certificates.append(temp_model.from_map(k))
+        if m.get('CaEnabled') is not None:
+            self.ca_enabled = m.get('CaEnabled')
         self.certificates = []
         if m.get('Certificates') is not None:
             for k in m.get('Certificates'):
                 temp_model = UpdateListenerAttributeRequestCertificates()
                 self.certificates.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         self.default_actions = []
         if m.get('DefaultActions') is not None:
             for k in m.get('DefaultActions'):
                 temp_model = UpdateListenerAttributeRequestDefaultActions()
                 self.default_actions.append(temp_model.from_map(k))
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('GzipEnabled') is not None:
+            self.gzip_enabled = m.get('GzipEnabled')
+        if m.get('Http2Enabled') is not None:
+            self.http_2enabled = m.get('Http2Enabled')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
+        if m.get('ListenerDescription') is not None:
+            self.listener_description = m.get('ListenerDescription')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
+        if m.get('QuicConfig') is not None:
+            temp_model = UpdateListenerAttributeRequestQuicConfig()
+            self.quic_config = temp_model.from_map(m['QuicConfig'])
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
+        if m.get('SecurityPolicyId') is not None:
+            self.security_policy_id = m.get('SecurityPolicyId')
+        if m.get('XForwardedForConfig') is not None:
+            temp_model = UpdateListenerAttributeRequestXForwardedForConfig()
+            self.xforwarded_for_config = temp_model.from_map(m['XForwardedForConfig'])
         return self
 
 
@@ -14947,22 +15303,22 @@ class UpdateListenerLogConfigRequestAccessLogTracingConfig(TeaModel):
 class UpdateListenerLogConfigRequest(TeaModel):
     def __init__(
         self,
-        listener_id: str = None,
-        client_token: str = None,
-        dry_run: bool = None,
         access_log_record_customized_headers_enabled: bool = None,
         access_log_tracing_config: UpdateListenerLogConfigRequestAccessLogTracingConfig = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        listener_id: str = None,
     ):
-        # 监听标识
-        self.listener_id = listener_id
-        # 幂等标识
-        self.client_token = client_token
-        #  是否只预检此次请求
-        self.dry_run = dry_run
         # 是否开启携带自定义Header
         self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
         # 访问日志xtrace字段相关的配置
         self.access_log_tracing_config = access_log_tracing_config
+        # 幂等标识
+        self.client_token = client_token
+        #  是否只预检此次请求
+        self.dry_run = dry_run
+        # 监听标识
+        self.listener_id = listener_id
 
     def validate(self):
         if self.access_log_tracing_config:
@@ -14974,31 +15330,31 @@ class UpdateListenerLogConfigRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.listener_id is not None:
-            result['ListenerId'] = self.listener_id
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
         if self.access_log_record_customized_headers_enabled is not None:
             result['AccessLogRecordCustomizedHeadersEnabled'] = self.access_log_record_customized_headers_enabled
         if self.access_log_tracing_config is not None:
             result['AccessLogTracingConfig'] = self.access_log_tracing_config.to_map()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ListenerId') is not None:
-            self.listener_id = m.get('ListenerId')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
         if m.get('AccessLogRecordCustomizedHeadersEnabled') is not None:
             self.access_log_record_customized_headers_enabled = m.get('AccessLogRecordCustomizedHeadersEnabled')
         if m.get('AccessLogTracingConfig') is not None:
             temp_model = UpdateListenerLogConfigRequestAccessLogTracingConfig()
             self.access_log_tracing_config = temp_model.from_map(m['AccessLogTracingConfig'])
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
         return self
 
 
@@ -15244,17 +15600,17 @@ class UpdateLoadBalancerEditionRequest(TeaModel):
         self,
         client_token: str = None,
         dry_run: bool = None,
-        load_balancer_id: str = None,
         load_balancer_edition: str = None,
+        load_balancer_id: str = None,
     ):
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
-        # 实例Id
-        self.load_balancer_id = load_balancer_id
         # 实例版本
         self.load_balancer_edition = load_balancer_edition
+        # 实例Id
+        self.load_balancer_id = load_balancer_id
 
     def validate(self):
         pass
@@ -15269,10 +15625,10 @@ class UpdateLoadBalancerEditionRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
-        if self.load_balancer_id is not None:
-            result['LoadBalancerId'] = self.load_balancer_id
         if self.load_balancer_edition is not None:
             result['LoadBalancerEdition'] = self.load_balancer_edition
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
         return result
 
     def from_map(self, m: dict = None):
@@ -15281,10 +15637,10 @@ class UpdateLoadBalancerEditionRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
-        if m.get('LoadBalancerId') is not None:
-            self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('LoadBalancerEdition') is not None:
             self.load_balancer_edition = m.get('LoadBalancerEdition')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
         return self
 
 
@@ -15350,6 +15706,507 @@ class UpdateLoadBalancerEditionResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = UpdateLoadBalancerEditionResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLoadBalancerZonesRequestZoneMappings(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        # 交换机标识
+        self.v_switch_id = v_switch_id
+        # 可用区
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class UpdateLoadBalancerZonesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        load_balancer_id: str = None,
+        zone_mappings: List[UpdateLoadBalancerZonesRequestZoneMappings] = None,
+    ):
+        # 幂等标识
+        self.client_token = client_token
+        #  是否只预检此次请求
+        self.dry_run = dry_run
+        # 实例id
+        self.load_balancer_id = load_balancer_id
+        # 可用区及交换机映射列表
+        self.zone_mappings = zone_mappings
+
+    def validate(self):
+        if self.zone_mappings:
+            for k in self.zone_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        result['ZoneMappings'] = []
+        if self.zone_mappings is not None:
+            for k in self.zone_mappings:
+                result['ZoneMappings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        self.zone_mappings = []
+        if m.get('ZoneMappings') is not None:
+            for k in m.get('ZoneMappings'):
+                temp_model = UpdateLoadBalancerZonesRequestZoneMappings()
+                self.zone_mappings.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateLoadBalancerZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        # 异步任务id
+        self.job_id = job_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLoadBalancerZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateLoadBalancerZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateLoadBalancerZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActionsFixedResponseConfig(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        content_type: str = None,
+        http_code: str = None,
+    ):
+        # 内容
+        self.content = content
+        # 内容类型
+        self.content_type = content_type
+        # HTTP响应码
+        self.http_code = http_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.http_code is not None:
+            result['HttpCode'] = self.http_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('HttpCode') is not None:
+            self.http_code = m.get('HttpCode')
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
+    def __init__(
+        self,
+        server_group_id: str = None,
+    ):
+        # 服务器组标识
+        self.server_group_id = server_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActionsForwardGroupConfig(TeaModel):
+    def __init__(
+        self,
+        server_group_tuples: List[UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples] = None,
+    ):
+        # 转发到的目的服务器组列表
+        self.server_group_tuples = server_group_tuples
+
+    def validate(self):
+        if self.server_group_tuples:
+            for k in self.server_group_tuples:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ServerGroupTuples'] = []
+        if self.server_group_tuples is not None:
+            for k in self.server_group_tuples:
+                result['ServerGroupTuples'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.server_group_tuples = []
+        if m.get('ServerGroupTuples') is not None:
+            for k in m.get('ServerGroupTuples'):
+                temp_model = UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples()
+                self.server_group_tuples.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+        value_type: str = None,
+    ):
+        # HTTP标头
+        self.key = key
+        # HTTP标头内容
+        self.value = value
+        # 取值类型
+        self.value_type = value_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.value_type is not None:
+            result['ValueType'] = self.value_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('ValueType') is not None:
+            self.value_type = m.get('ValueType')
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActionsRedirectConfig(TeaModel):
+    def __init__(
+        self,
+        host: str = None,
+        http_code: str = None,
+        path: str = None,
+        port: str = None,
+        protocol: str = None,
+        query: str = None,
+    ):
+        # 要跳转的主机地址
+        self.host = host
+        # 跳转方式
+        self.http_code = http_code
+        # 要跳转的路径
+        self.path = path
+        # 要跳转的端口
+        self.port = port
+        # 要跳转的协议
+        self.protocol = protocol
+        # 要跳转的查询字符串
+        self.query = query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.http_code is not None:
+            result['HttpCode'] = self.http_code
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.query is not None:
+            result['Query'] = self.query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('HttpCode') is not None:
+            self.http_code = m.get('HttpCode')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActionsRewriteConfig(TeaModel):
+    def __init__(
+        self,
+        host: str = None,
+        path: str = None,
+        query: str = None,
+    ):
+        # 主机名
+        self.host = host
+        # 路径
+        self.path = path
+        # 查询
+        self.query = query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.query is not None:
+            result['Query'] = self.query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActions(TeaModel):
+    def __init__(
+        self,
+        fixed_response_config: UpdateRuleAttributeRequestRuleActionsFixedResponseConfig = None,
+        forward_group_config: UpdateRuleAttributeRequestRuleActionsForwardGroupConfig = None,
+        insert_header_config: UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig = None,
+        order: int = None,
+        redirect_config: UpdateRuleAttributeRequestRuleActionsRedirectConfig = None,
+        rewrite_config: UpdateRuleAttributeRequestRuleActionsRewriteConfig = None,
+        type: str = None,
+    ):
+        # 返回固定内容动作配置
+        self.fixed_response_config = fixed_response_config
+        # 转发组动作配置
+        self.forward_group_config = forward_group_config
+        # 插入头部动作配置
+        self.insert_header_config = insert_header_config
+        # 优先级
+        self.order = order
+        # 重定向动作配置
+        self.redirect_config = redirect_config
+        # 内部重定向动作配置
+        self.rewrite_config = rewrite_config
+        # 转发规则动作类型
+        self.type = type
+
+    def validate(self):
+        if self.fixed_response_config:
+            self.fixed_response_config.validate()
+        if self.forward_group_config:
+            self.forward_group_config.validate()
+        if self.insert_header_config:
+            self.insert_header_config.validate()
+        if self.redirect_config:
+            self.redirect_config.validate()
+        if self.rewrite_config:
+            self.rewrite_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fixed_response_config is not None:
+            result['FixedResponseConfig'] = self.fixed_response_config.to_map()
+        if self.forward_group_config is not None:
+            result['ForwardGroupConfig'] = self.forward_group_config.to_map()
+        if self.insert_header_config is not None:
+            result['InsertHeaderConfig'] = self.insert_header_config.to_map()
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.redirect_config is not None:
+            result['RedirectConfig'] = self.redirect_config.to_map()
+        if self.rewrite_config is not None:
+            result['RewriteConfig'] = self.rewrite_config.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FixedResponseConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsFixedResponseConfig()
+            self.fixed_response_config = temp_model.from_map(m['FixedResponseConfig'])
+        if m.get('ForwardGroupConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsForwardGroupConfig()
+            self.forward_group_config = temp_model.from_map(m['ForwardGroupConfig'])
+        if m.get('InsertHeaderConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig()
+            self.insert_header_config = temp_model.from_map(m['InsertHeaderConfig'])
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('RedirectConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsRedirectConfig()
+            self.redirect_config = temp_model.from_map(m['RedirectConfig'])
+        if m.get('RewriteConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsRewriteConfig()
+            self.rewrite_config = temp_model.from_map(m['RewriteConfig'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -15701,376 +16558,39 @@ class UpdateRuleAttributeRequestRuleConditions(TeaModel):
         return self
 
 
-class UpdateRuleAttributeRequestRuleActionsFixedResponseConfig(TeaModel):
-    def __init__(
-        self,
-        content: str = None,
-        content_type: str = None,
-        http_code: str = None,
-    ):
-        # 内容
-        self.content = content
-        # 内容类型
-        self.content_type = content_type
-        # HTTP响应码
-        self.http_code = http_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.content_type is not None:
-            result['ContentType'] = self.content_type
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('ContentType') is not None:
-            self.content_type = m.get('ContentType')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        return self
-
-
-class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
-    def __init__(
-        self,
-        server_group_id: str = None,
-    ):
-        # 服务器组标识
-        self.server_group_id = server_group_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
-        return self
-
-
-class UpdateRuleAttributeRequestRuleActionsForwardGroupConfig(TeaModel):
-    def __init__(
-        self,
-        server_group_tuples: List[UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples] = None,
-    ):
-        # 转发到的目的服务器组列表
-        self.server_group_tuples = server_group_tuples
-
-    def validate(self):
-        if self.server_group_tuples:
-            for k in self.server_group_tuples:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ServerGroupTuples'] = []
-        if self.server_group_tuples is not None:
-            for k in self.server_group_tuples:
-                result['ServerGroupTuples'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.server_group_tuples = []
-        if m.get('ServerGroupTuples') is not None:
-            for k in m.get('ServerGroupTuples'):
-                temp_model = UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples()
-                self.server_group_tuples.append(temp_model.from_map(k))
-        return self
-
-
-class UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-        value_type: str = None,
-    ):
-        # HTTP标头
-        self.key = key
-        # HTTP标头内容
-        self.value = value
-        # 取值类型
-        self.value_type = value_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        if self.value_type is not None:
-            result['ValueType'] = self.value_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        if m.get('ValueType') is not None:
-            self.value_type = m.get('ValueType')
-        return self
-
-
-class UpdateRuleAttributeRequestRuleActionsRedirectConfig(TeaModel):
-    def __init__(
-        self,
-        host: str = None,
-        http_code: str = None,
-        path: str = None,
-        port: str = None,
-        protocol: str = None,
-        query: str = None,
-    ):
-        # 要跳转的主机地址
-        self.host = host
-        # 跳转方式
-        self.http_code = http_code
-        # 要跳转的路径
-        self.path = path
-        # 要跳转的端口
-        self.port = port
-        # 要跳转的协议
-        self.protocol = protocol
-        # 要跳转的查询字符串
-        self.query = query
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.host is not None:
-            result['Host'] = self.host
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.path is not None:
-            result['Path'] = self.path
-        if self.port is not None:
-            result['Port'] = self.port
-        if self.protocol is not None:
-            result['Protocol'] = self.protocol
-        if self.query is not None:
-            result['Query'] = self.query
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Host') is not None:
-            self.host = m.get('Host')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Path') is not None:
-            self.path = m.get('Path')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
-        if m.get('Protocol') is not None:
-            self.protocol = m.get('Protocol')
-        if m.get('Query') is not None:
-            self.query = m.get('Query')
-        return self
-
-
-class UpdateRuleAttributeRequestRuleActionsRewriteConfig(TeaModel):
-    def __init__(
-        self,
-        host: str = None,
-        path: str = None,
-        query: str = None,
-    ):
-        # 主机名
-        self.host = host
-        # 路径
-        self.path = path
-        # 查询
-        self.query = query
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.host is not None:
-            result['Host'] = self.host
-        if self.path is not None:
-            result['Path'] = self.path
-        if self.query is not None:
-            result['Query'] = self.query
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Host') is not None:
-            self.host = m.get('Host')
-        if m.get('Path') is not None:
-            self.path = m.get('Path')
-        if m.get('Query') is not None:
-            self.query = m.get('Query')
-        return self
-
-
-class UpdateRuleAttributeRequestRuleActions(TeaModel):
-    def __init__(
-        self,
-        fixed_response_config: UpdateRuleAttributeRequestRuleActionsFixedResponseConfig = None,
-        forward_group_config: UpdateRuleAttributeRequestRuleActionsForwardGroupConfig = None,
-        insert_header_config: UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig = None,
-        order: int = None,
-        redirect_config: UpdateRuleAttributeRequestRuleActionsRedirectConfig = None,
-        rewrite_config: UpdateRuleAttributeRequestRuleActionsRewriteConfig = None,
-        type: str = None,
-    ):
-        # 返回固定内容动作配置
-        self.fixed_response_config = fixed_response_config
-        # 转发组动作配置
-        self.forward_group_config = forward_group_config
-        # 插入头部动作配置
-        self.insert_header_config = insert_header_config
-        # 优先级
-        self.order = order
-        # 重定向动作配置
-        self.redirect_config = redirect_config
-        # 内部重定向动作配置
-        self.rewrite_config = rewrite_config
-        # 转发规则动作类型
-        self.type = type
-
-    def validate(self):
-        if self.fixed_response_config:
-            self.fixed_response_config.validate()
-        if self.forward_group_config:
-            self.forward_group_config.validate()
-        if self.insert_header_config:
-            self.insert_header_config.validate()
-        if self.redirect_config:
-            self.redirect_config.validate()
-        if self.rewrite_config:
-            self.rewrite_config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.fixed_response_config is not None:
-            result['FixedResponseConfig'] = self.fixed_response_config.to_map()
-        if self.forward_group_config is not None:
-            result['ForwardGroupConfig'] = self.forward_group_config.to_map()
-        if self.insert_header_config is not None:
-            result['InsertHeaderConfig'] = self.insert_header_config.to_map()
-        if self.order is not None:
-            result['Order'] = self.order
-        if self.redirect_config is not None:
-            result['RedirectConfig'] = self.redirect_config.to_map()
-        if self.rewrite_config is not None:
-            result['RewriteConfig'] = self.rewrite_config.to_map()
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FixedResponseConfig') is not None:
-            temp_model = UpdateRuleAttributeRequestRuleActionsFixedResponseConfig()
-            self.fixed_response_config = temp_model.from_map(m['FixedResponseConfig'])
-        if m.get('ForwardGroupConfig') is not None:
-            temp_model = UpdateRuleAttributeRequestRuleActionsForwardGroupConfig()
-            self.forward_group_config = temp_model.from_map(m['ForwardGroupConfig'])
-        if m.get('InsertHeaderConfig') is not None:
-            temp_model = UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig()
-            self.insert_header_config = temp_model.from_map(m['InsertHeaderConfig'])
-        if m.get('Order') is not None:
-            self.order = m.get('Order')
-        if m.get('RedirectConfig') is not None:
-            temp_model = UpdateRuleAttributeRequestRuleActionsRedirectConfig()
-            self.redirect_config = temp_model.from_map(m['RedirectConfig'])
-        if m.get('RewriteConfig') is not None:
-            temp_model = UpdateRuleAttributeRequestRuleActionsRewriteConfig()
-            self.rewrite_config = temp_model.from_map(m['RewriteConfig'])
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
 class UpdateRuleAttributeRequest(TeaModel):
     def __init__(
         self,
-        rule_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
-        rule_conditions: List[UpdateRuleAttributeRequestRuleConditions] = None,
-        rule_actions: List[UpdateRuleAttributeRequestRuleActions] = None,
-        rule_name: str = None,
         priority: int = None,
+        rule_actions: List[UpdateRuleAttributeRequestRuleActions] = None,
+        rule_conditions: List[UpdateRuleAttributeRequestRuleConditions] = None,
+        rule_id: str = None,
+        rule_name: str = None,
     ):
-        # 转发规则标识
-        self.rule_id = rule_id
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
-        # 转发规则条件
-        self.rule_conditions = rule_conditions
-        # 转发规则动作
-        self.rule_actions = rule_actions
-        # 转发规则名称
-        self.rule_name = rule_name
         # 转发规则优先级
         self.priority = priority
+        # 转发规则动作
+        self.rule_actions = rule_actions
+        # 转发规则条件
+        self.rule_conditions = rule_conditions
+        # 转发规则标识
+        self.rule_id = rule_id
+        # 转发规则名称
+        self.rule_name = rule_name
 
     def validate(self):
-        if self.rule_conditions:
-            for k in self.rule_conditions:
-                if k:
-                    k.validate()
         if self.rule_actions:
             for k in self.rule_actions:
+                if k:
+                    k.validate()
+        if self.rule_conditions:
+            for k in self.rule_conditions:
                 if k:
                     k.validate()
 
@@ -16080,48 +16600,48 @@ class UpdateRuleAttributeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
-        result['RuleConditions'] = []
-        if self.rule_conditions is not None:
-            for k in self.rule_conditions:
-                result['RuleConditions'].append(k.to_map() if k else None)
+        if self.priority is not None:
+            result['Priority'] = self.priority
         result['RuleActions'] = []
         if self.rule_actions is not None:
             for k in self.rule_actions:
                 result['RuleActions'].append(k.to_map() if k else None)
+        result['RuleConditions'] = []
+        if self.rule_conditions is not None:
+            for k in self.rule_conditions:
+                result['RuleConditions'].append(k.to_map() if k else None)
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
-        if self.priority is not None:
-            result['Priority'] = self.priority
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
-        self.rule_conditions = []
-        if m.get('RuleConditions') is not None:
-            for k in m.get('RuleConditions'):
-                temp_model = UpdateRuleAttributeRequestRuleConditions()
-                self.rule_conditions.append(temp_model.from_map(k))
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         self.rule_actions = []
         if m.get('RuleActions') is not None:
             for k in m.get('RuleActions'):
                 temp_model = UpdateRuleAttributeRequestRuleActions()
                 self.rule_actions.append(temp_model.from_map(k))
+        self.rule_conditions = []
+        if m.get('RuleConditions') is not None:
+            for k in m.get('RuleConditions'):
+                temp_model = UpdateRuleAttributeRequestRuleConditions()
+                self.rule_conditions.append(temp_model.from_map(k))
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
         return self
 
 
@@ -16239,41 +16759,6 @@ class UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig(TeaModel):
         return self
 
 
-class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
-    def __init__(
-        self,
-        server_group_id: str = None,
-        weight: int = None,
-    ):
-        # 服务器组标识
-        self.server_group_id = server_group_id
-        # 权重
-        self.weight = weight
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
-        if self.weight is not None:
-            result['Weight'] = self.weight
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
-        if m.get('Weight') is not None:
-            self.weight = m.get('Weight')
-        return self
-
-
 class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession(TeaModel):
     def __init__(
         self,
@@ -16309,24 +16794,19 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupSt
         return self
 
 
-class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig(TeaModel):
+class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
     def __init__(
         self,
-        server_group_tuples: List[UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
-        server_group_sticky_session: UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession = None,
+        server_group_id: str = None,
+        weight: int = None,
     ):
-        # 转发到的目的服务器组列表
-        self.server_group_tuples = server_group_tuples
-        # 服务器组之间会话保持
-        self.server_group_sticky_session = server_group_sticky_session
+        # 服务器组标识
+        self.server_group_id = server_group_id
+        # 权重
+        self.weight = weight
 
     def validate(self):
-        if self.server_group_tuples:
-            for k in self.server_group_tuples:
-                if k:
-                    k.validate()
-        if self.server_group_sticky_session:
-            self.server_group_sticky_session.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -16334,24 +16814,64 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig(TeaModel):
             return _map
 
         result = dict()
-        result['ServerGroupTuples'] = []
-        if self.server_group_tuples is not None:
-            for k in self.server_group_tuples:
-                result['ServerGroupTuples'].append(k.to_map() if k else None)
-        if self.server_group_sticky_session is not None:
-            result['ServerGroupStickySession'] = self.server_group_sticky_session.to_map()
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig(TeaModel):
+    def __init__(
+        self,
+        server_group_sticky_session: UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession = None,
+        server_group_tuples: List[UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
+    ):
+        # 服务器组之间会话保持
+        self.server_group_sticky_session = server_group_sticky_session
+        # 转发到的目的服务器组列表
+        self.server_group_tuples = server_group_tuples
+
+    def validate(self):
+        if self.server_group_sticky_session:
+            self.server_group_sticky_session.validate()
+        if self.server_group_tuples:
+            for k in self.server_group_tuples:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.server_group_sticky_session is not None:
+            result['ServerGroupStickySession'] = self.server_group_sticky_session.to_map()
+        result['ServerGroupTuples'] = []
+        if self.server_group_tuples is not None:
+            for k in self.server_group_tuples:
+                result['ServerGroupTuples'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServerGroupStickySession') is not None:
+            temp_model = UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession()
+            self.server_group_sticky_session = temp_model.from_map(m['ServerGroupStickySession'])
         self.server_group_tuples = []
         if m.get('ServerGroupTuples') is not None:
             for k in m.get('ServerGroupTuples'):
                 temp_model = UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples()
                 self.server_group_tuples.append(temp_model.from_map(k))
-        if m.get('ServerGroupStickySession') is not None:
-            temp_model = UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession()
-            self.server_group_sticky_session = temp_model.from_map(m['ServerGroupStickySession'])
         return self
 
 
@@ -16464,6 +16984,34 @@ class UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig(TeaModel):
             self.protocol = m.get('Protocol')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        return self
+
+
+class UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+    ):
+        # HTTP标头键
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
         return self
 
 
@@ -16601,13 +17149,13 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupC
 class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig(TeaModel):
     def __init__(
         self,
-        target_type: str = None,
         mirror_group_config: UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
+        target_type: str = None,
     ):
-        # 镜像目标类型
-        self.target_type = target_type
         # 镜像至服务器组
         self.mirror_group_config = mirror_group_config
+        # 镜像目标类型
+        self.target_type = target_type
 
     def validate(self):
         if self.mirror_group_config:
@@ -16619,47 +17167,19 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig(TeaModel):
             return _map
 
         result = dict()
-        if self.target_type is not None:
-            result['TargetType'] = self.target_type
         if self.mirror_group_config is not None:
             result['MirrorGroupConfig'] = self.mirror_group_config.to_map()
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TargetType') is not None:
-            self.target_type = m.get('TargetType')
         if m.get('MirrorGroupConfig') is not None:
             temp_model = UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig()
             self.mirror_group_config = temp_model.from_map(m['MirrorGroupConfig'])
-        return self
-
-
-class UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-    ):
-        # HTTP标头键
-        self.key = key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
         return self
 
 
@@ -16671,11 +17191,11 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
         insert_header_config: UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig = None,
         order: int = None,
         redirect_config: UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig = None,
+        remove_header_config: UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig = None,
         rewrite_config: UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig = None,
-        type: str = None,
         traffic_limit_config: UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig = None,
         traffic_mirror_config: UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig = None,
-        remove_header_config: UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig = None,
+        type: str = None,
     ):
         # 返回固定内容动作配置
         self.fixed_response_config = fixed_response_config
@@ -16687,16 +17207,16 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
         self.order = order
         # 重定向动作配置
         self.redirect_config = redirect_config
+        # 去除HTTP标头
+        self.remove_header_config = remove_header_config
         # 内部重定向动作配置
         self.rewrite_config = rewrite_config
-        # 转发规则动作类型
-        self.type = type
         # 流量限速
         self.traffic_limit_config = traffic_limit_config
         # 流量镜像
         self.traffic_mirror_config = traffic_mirror_config
-        # 去除HTTP标头
-        self.remove_header_config = remove_header_config
+        # 转发规则动作类型
+        self.type = type
 
     def validate(self):
         if self.fixed_response_config:
@@ -16707,14 +17227,14 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
             self.insert_header_config.validate()
         if self.redirect_config:
             self.redirect_config.validate()
+        if self.remove_header_config:
+            self.remove_header_config.validate()
         if self.rewrite_config:
             self.rewrite_config.validate()
         if self.traffic_limit_config:
             self.traffic_limit_config.validate()
         if self.traffic_mirror_config:
             self.traffic_mirror_config.validate()
-        if self.remove_header_config:
-            self.remove_header_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16732,16 +17252,16 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
             result['Order'] = self.order
         if self.redirect_config is not None:
             result['RedirectConfig'] = self.redirect_config.to_map()
+        if self.remove_header_config is not None:
+            result['RemoveHeaderConfig'] = self.remove_header_config.to_map()
         if self.rewrite_config is not None:
             result['RewriteConfig'] = self.rewrite_config.to_map()
-        if self.type is not None:
-            result['Type'] = self.type
         if self.traffic_limit_config is not None:
             result['TrafficLimitConfig'] = self.traffic_limit_config.to_map()
         if self.traffic_mirror_config is not None:
             result['TrafficMirrorConfig'] = self.traffic_mirror_config.to_map()
-        if self.remove_header_config is not None:
-            result['RemoveHeaderConfig'] = self.remove_header_config.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -16760,20 +17280,20 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
         if m.get('RedirectConfig') is not None:
             temp_model = UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig()
             self.redirect_config = temp_model.from_map(m['RedirectConfig'])
+        if m.get('RemoveHeaderConfig') is not None:
+            temp_model = UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig()
+            self.remove_header_config = temp_model.from_map(m['RemoveHeaderConfig'])
         if m.get('RewriteConfig') is not None:
             temp_model = UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig()
             self.rewrite_config = temp_model.from_map(m['RewriteConfig'])
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('TrafficLimitConfig') is not None:
             temp_model = UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig()
             self.traffic_limit_config = temp_model.from_map(m['TrafficLimitConfig'])
         if m.get('TrafficMirrorConfig') is not None:
             temp_model = UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig()
             self.traffic_mirror_config = temp_model.from_map(m['TrafficMirrorConfig'])
-        if m.get('RemoveHeaderConfig') is not None:
-            temp_model = UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig()
-            self.remove_header_config = temp_model.from_map(m['RemoveHeaderConfig'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -17139,8 +17659,8 @@ class UpdateRulesAttributeRequestRulesRuleConditions(TeaModel):
         query_string_config: UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig = None,
         response_header_config: UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig = None,
         response_status_code_config: UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig = None,
-        type: str = None,
         source_ip_config: UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig = None,
+        type: str = None,
     ):
         # Cookie条件配置
         self.cookie_config = cookie_config
@@ -17158,10 +17678,10 @@ class UpdateRulesAttributeRequestRulesRuleConditions(TeaModel):
         self.response_header_config = response_header_config
         # 返回状态码条件
         self.response_status_code_config = response_status_code_config
-        # 条件类型
-        self.type = type
         # 基于源IP业务流量匹配
         self.source_ip_config = source_ip_config
+        # 条件类型
+        self.type = type
 
     def validate(self):
         if self.cookie_config:
@@ -17205,10 +17725,10 @@ class UpdateRulesAttributeRequestRulesRuleConditions(TeaModel):
             result['ResponseHeaderConfig'] = self.response_header_config.to_map()
         if self.response_status_code_config is not None:
             result['ResponseStatusCodeConfig'] = self.response_status_code_config.to_map()
-        if self.type is not None:
-            result['Type'] = self.type
         if self.source_ip_config is not None:
             result['SourceIpConfig'] = self.source_ip_config.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -17237,11 +17757,11 @@ class UpdateRulesAttributeRequestRulesRuleConditions(TeaModel):
         if m.get('ResponseStatusCodeConfig') is not None:
             temp_model = UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig()
             self.response_status_code_config = temp_model.from_map(m['ResponseStatusCodeConfig'])
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('SourceIpConfig') is not None:
             temp_model = UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig()
             self.source_ip_config = temp_model.from_map(m['SourceIpConfig'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -17249,21 +17769,21 @@ class UpdateRulesAttributeRequestRules(TeaModel):
     def __init__(
         self,
         priority: int = None,
-        rule_name: str = None,
         rule_actions: List[UpdateRulesAttributeRequestRulesRuleActions] = None,
         rule_conditions: List[UpdateRulesAttributeRequestRulesRuleConditions] = None,
         rule_id: str = None,
+        rule_name: str = None,
     ):
         # 转发规则优先级
         self.priority = priority
-        # 转发规则名称
-        self.rule_name = rule_name
         # 转发规则动作
         self.rule_actions = rule_actions
         # 转发规则条件
         self.rule_conditions = rule_conditions
         # 转发规则ID
         self.rule_id = rule_id
+        # 转发规则名称
+        self.rule_name = rule_name
 
     def validate(self):
         if self.rule_actions:
@@ -17283,8 +17803,6 @@ class UpdateRulesAttributeRequestRules(TeaModel):
         result = dict()
         if self.priority is not None:
             result['Priority'] = self.priority
-        if self.rule_name is not None:
-            result['RuleName'] = self.rule_name
         result['RuleActions'] = []
         if self.rule_actions is not None:
             for k in self.rule_actions:
@@ -17295,14 +17813,14 @@ class UpdateRulesAttributeRequestRules(TeaModel):
                 result['RuleConditions'].append(k.to_map() if k else None)
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
-        if m.get('RuleName') is not None:
-            self.rule_name = m.get('RuleName')
         self.rule_actions = []
         if m.get('RuleActions') is not None:
             for k in m.get('RuleActions'):
@@ -17315,6 +17833,8 @@ class UpdateRulesAttributeRequestRules(TeaModel):
                 self.rule_conditions.append(temp_model.from_map(k))
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
         return self
 
 
@@ -17322,15 +17842,15 @@ class UpdateRulesAttributeRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
-        rules: List[UpdateRulesAttributeRequestRules] = None,
         dry_run: bool = None,
+        rules: List[UpdateRulesAttributeRequestRules] = None,
     ):
         # 幂等标识
         self.client_token = client_token
-        # 转发规则列表
-        self.rules = rules
         # 是否只预检此次请求
         self.dry_run = dry_run
+        # 转发规则列表
+        self.rules = rules
 
     def validate(self):
         if self.rules:
@@ -17346,38 +17866,38 @@ class UpdateRulesAttributeRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         result['Rules'] = []
         if self.rules is not None:
             for k in self.rules:
                 result['Rules'].append(k.to_map() if k else None)
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         self.rules = []
         if m.get('Rules') is not None:
             for k in m.get('Rules'):
                 temp_model = UpdateRulesAttributeRequestRules()
                 self.rules.append(temp_model.from_map(k))
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
         return self
 
 
 class UpdateRulesAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         job_id: str = None,
+        request_id: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
         # 异步任务Id
         self.job_id = job_id
+        # Id of the request
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -17388,18 +17908,18 @@ class UpdateRulesAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -17443,25 +17963,25 @@ class UpdateRulesAttributeResponse(TeaModel):
 class UpdateSecurityPolicyAttributeRequest(TeaModel):
     def __init__(
         self,
+        ciphers: List[str] = None,
         client_token: str = None,
         dry_run: bool = None,
         security_policy_id: str = None,
-        tlsversions: List[str] = None,
-        ciphers: List[str] = None,
         security_policy_name: str = None,
+        tlsversions: List[str] = None,
     ):
+        # 加密套件
+        self.ciphers = ciphers
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
         # 安全策略id
         self.security_policy_id = security_policy_id
-        # TLS版本
-        self.tlsversions = tlsversions
-        # 加密套件
-        self.ciphers = ciphers
         # 安全策略名称
         self.security_policy_name = security_policy_name
+        # TLS版本
+        self.tlsversions = tlsversions
 
     def validate(self):
         pass
@@ -17472,34 +17992,34 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ciphers is not None:
+            result['Ciphers'] = self.ciphers
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.security_policy_id is not None:
             result['SecurityPolicyId'] = self.security_policy_id
-        if self.tlsversions is not None:
-            result['TLSVersions'] = self.tlsversions
-        if self.ciphers is not None:
-            result['Ciphers'] = self.ciphers
         if self.security_policy_name is not None:
             result['SecurityPolicyName'] = self.security_policy_name
+        if self.tlsversions is not None:
+            result['TLSVersions'] = self.tlsversions
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ciphers') is not None:
+            self.ciphers = m.get('Ciphers')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('SecurityPolicyId') is not None:
             self.security_policy_id = m.get('SecurityPolicyId')
-        if m.get('TLSVersions') is not None:
-            self.tlsversions = m.get('TLSVersions')
-        if m.get('Ciphers') is not None:
-            self.ciphers = m.get('Ciphers')
         if m.get('SecurityPolicyName') is not None:
             self.security_policy_name = m.get('SecurityPolicyName')
+        if m.get('TLSVersions') is not None:
+            self.tlsversions = m.get('TLSVersions')
         return self
 
 
@@ -17578,10 +18098,10 @@ class UpdateSecurityPolicyAttributeResponse(TeaModel):
 class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
     def __init__(
         self,
+        health_check_codes: List[str] = None,
         health_check_connect_port: int = None,
         health_check_enabled: bool = None,
         health_check_host: str = None,
-        health_check_codes: List[str] = None,
         health_check_http_version: str = None,
         health_check_interval: int = None,
         health_check_method: str = None,
@@ -17591,14 +18111,14 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
+        # 健康检查正常的状态码
+        self.health_check_codes = health_check_codes
         # 健康检查端口
         self.health_check_connect_port = health_check_connect_port
         # 是否启用健康检查
         self.health_check_enabled = health_check_enabled
         # 健康检查域名
         self.health_check_host = health_check_host
-        # 健康检查正常的状态码
-        self.health_check_codes = health_check_codes
         # 健康检查HTTP协议版本
         self.health_check_http_version = health_check_http_version
         # 健康检查间隔
@@ -17625,14 +18145,14 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.health_check_codes is not None:
+            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_enabled is not None:
             result['HealthCheckEnabled'] = self.health_check_enabled
         if self.health_check_host is not None:
             result['HealthCheckHost'] = self.health_check_host
-        if self.health_check_codes is not None:
-            result['HealthCheckCodes'] = self.health_check_codes
         if self.health_check_http_version is not None:
             result['HealthCheckHttpVersion'] = self.health_check_http_version
         if self.health_check_interval is not None:
@@ -17653,14 +18173,14 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HealthCheckCodes') is not None:
+            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckEnabled') is not None:
             self.health_check_enabled = m.get('HealthCheckEnabled')
         if m.get('HealthCheckHost') is not None:
             self.health_check_host = m.get('HealthCheckHost')
-        if m.get('HealthCheckCodes') is not None:
-            self.health_check_codes = m.get('HealthCheckCodes')
         if m.get('HealthCheckHttpVersion') is not None:
             self.health_check_http_version = m.get('HealthCheckHttpVersion')
         if m.get('HealthCheckInterval') is not None:
@@ -17732,28 +18252,28 @@ class UpdateServerGroupAttributeRequestStickySessionConfig(TeaModel):
 class UpdateServerGroupAttributeRequest(TeaModel):
     def __init__(
         self,
-        server_group_name: str = None,
-        scheduler: str = None,
         client_token: str = None,
         dry_run: bool = None,
         health_check_config: UpdateServerGroupAttributeRequestHealthCheckConfig = None,
-        sticky_session_config: UpdateServerGroupAttributeRequestStickySessionConfig = None,
+        scheduler: str = None,
         server_group_id: str = None,
+        server_group_name: str = None,
+        sticky_session_config: UpdateServerGroupAttributeRequestStickySessionConfig = None,
     ):
-        # Acl名称
-        self.server_group_name = server_group_name
-        # 调度策略
-        self.scheduler = scheduler
         # 幂等标识
         self.client_token = client_token
         #  是否只预检此次请求
         self.dry_run = dry_run
         # 健康检查配置
         self.health_check_config = health_check_config
-        # 会话保持配置
-        self.sticky_session_config = sticky_session_config
+        # 调度策略
+        self.scheduler = scheduler
         # 服务器组Id
         self.server_group_id = server_group_id
+        # Acl名称
+        self.server_group_name = server_group_name
+        # 会话保持配置
+        self.sticky_session_config = sticky_session_config
 
     def validate(self):
         if self.health_check_config:
@@ -17767,28 +18287,24 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.server_group_name is not None:
-            result['ServerGroupName'] = self.server_group_name
-        if self.scheduler is not None:
-            result['Scheduler'] = self.scheduler
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config.to_map()
-        if self.sticky_session_config is not None:
-            result['StickySessionConfig'] = self.sticky_session_config.to_map()
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
+        if self.server_group_name is not None:
+            result['ServerGroupName'] = self.server_group_name
+        if self.sticky_session_config is not None:
+            result['StickySessionConfig'] = self.sticky_session_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServerGroupName') is not None:
-            self.server_group_name = m.get('ServerGroupName')
-        if m.get('Scheduler') is not None:
-            self.scheduler = m.get('Scheduler')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -17796,11 +18312,15 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         if m.get('HealthCheckConfig') is not None:
             temp_model = UpdateServerGroupAttributeRequestHealthCheckConfig()
             self.health_check_config = temp_model.from_map(m['HealthCheckConfig'])
+        if m.get('Scheduler') is not None:
+            self.scheduler = m.get('Scheduler')
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        if m.get('ServerGroupName') is not None:
+            self.server_group_name = m.get('ServerGroupName')
         if m.get('StickySessionConfig') is not None:
             temp_model = UpdateServerGroupAttributeRequestStickySessionConfig()
             self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
         return self
 
 
@@ -17942,19 +18462,19 @@ class UpdateServerGroupServersAttributeRequestServers(TeaModel):
 class UpdateServerGroupServersAttributeRequest(TeaModel):
     def __init__(
         self,
-        server_group_id: str = None,
-        servers: List[UpdateServerGroupServersAttributeRequestServers] = None,
         client_token: str = None,
         dry_run: bool = None,
+        server_group_id: str = None,
+        servers: List[UpdateServerGroupServersAttributeRequestServers] = None,
     ):
-        # 后端服务器Id
-        self.server_group_id = server_group_id
-        # 后端服务器
-        self.servers = servers
         # 幂等Token
         self.client_token = client_token
         # dryRun
         self.dry_run = dry_run
+        # 后端服务器Id
+        self.server_group_id = server_group_id
+        # 后端服务器
+        self.servers = servers
 
     def validate(self):
         if self.servers:
@@ -17968,20 +18488,24 @@ class UpdateServerGroupServersAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
         result['Servers'] = []
         if self.servers is not None:
             for k in self.servers:
                 result['Servers'].append(k.to_map() if k else None)
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.dry_run is not None:
-            result['DryRun'] = self.dry_run
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
         self.servers = []
@@ -17989,10 +18513,6 @@ class UpdateServerGroupServersAttributeRequest(TeaModel):
             for k in m.get('Servers'):
                 temp_model = UpdateServerGroupServersAttributeRequestServers()
                 self.servers.append(temp_model.from_map(k))
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DryRun') is not None:
-            self.dry_run = m.get('DryRun')
         return self
 
 
