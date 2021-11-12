@@ -3496,13 +3496,9 @@ class Client(OpenApiClient):
 
     def describe_install_codes_with_options(
         self,
-        request: sas_20181203_models.DescribeInstallCodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeInstallCodesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
             sas_20181203_models.DescribeInstallCodesResponse(),
             self.do_rpcrequest('DescribeInstallCodes', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
@@ -3510,31 +3506,21 @@ class Client(OpenApiClient):
 
     async def describe_install_codes_with_options_async(
         self,
-        request: sas_20181203_models.DescribeInstallCodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeInstallCodesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         return TeaCore.from_map(
             sas_20181203_models.DescribeInstallCodesResponse(),
             await self.do_rpcrequest_async('DescribeInstallCodes', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def describe_install_codes(
-        self,
-        request: sas_20181203_models.DescribeInstallCodesRequest,
-    ) -> sas_20181203_models.DescribeInstallCodesResponse:
+    def describe_install_codes(self) -> sas_20181203_models.DescribeInstallCodesResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_install_codes_with_options(request, runtime)
+        return self.describe_install_codes_with_options(runtime)
 
-    async def describe_install_codes_async(
-        self,
-        request: sas_20181203_models.DescribeInstallCodesRequest,
-    ) -> sas_20181203_models.DescribeInstallCodesResponse:
+    async def describe_install_codes_async(self) -> sas_20181203_models.DescribeInstallCodesResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_install_codes_with_options_async(request, runtime)
+        return await self.describe_install_codes_with_options_async(runtime)
 
     def describe_instance_anti_brute_force_rules_with_options(
         self,
@@ -6406,6 +6392,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_record_with_options_async(request, runtime)
 
+    def export_vul_with_options(
+        self,
+        request: sas_20181203_models.ExportVulRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ExportVulResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ExportVulResponse(),
+            self.do_rpcrequest('ExportVul', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def export_vul_with_options_async(
+        self,
+        request: sas_20181203_models.ExportVulRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ExportVulResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ExportVulResponse(),
+            await self.do_rpcrequest_async('ExportVul', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def export_vul(
+        self,
+        request: sas_20181203_models.ExportVulRequest,
+    ) -> sas_20181203_models.ExportVulResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.export_vul_with_options(request, runtime)
+
+    async def export_vul_async(
+        self,
+        request: sas_20181203_models.ExportVulRequest,
+    ) -> sas_20181203_models.ExportVulResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.export_vul_with_options_async(request, runtime)
+
     def fix_check_warnings_with_options(
         self,
         request: sas_20181203_models.FixCheckWarningsRequest,
@@ -8469,6 +8497,48 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.QueryDiscoverDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_discover_database_with_options_async(request, runtime)
+
+    def query_group_id_by_group_name_with_options(
+        self,
+        request: sas_20181203_models.QueryGroupIdByGroupNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryGroupIdByGroupNameResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryGroupIdByGroupNameResponse(),
+            self.do_rpcrequest('QueryGroupIdByGroupName', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def query_group_id_by_group_name_with_options_async(
+        self,
+        request: sas_20181203_models.QueryGroupIdByGroupNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryGroupIdByGroupNameResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryGroupIdByGroupNameResponse(),
+            await self.do_rpcrequest_async('QueryGroupIdByGroupName', '2018-12-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def query_group_id_by_group_name(
+        self,
+        request: sas_20181203_models.QueryGroupIdByGroupNameRequest,
+    ) -> sas_20181203_models.QueryGroupIdByGroupNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_group_id_by_group_name_with_options(request, runtime)
+
+    async def query_group_id_by_group_name_async(
+        self,
+        request: sas_20181203_models.QueryGroupIdByGroupNameRequest,
+    ) -> sas_20181203_models.QueryGroupIdByGroupNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_group_id_by_group_name_with_options_async(request, runtime)
 
     def query_pre_check_database_with_options(
         self,

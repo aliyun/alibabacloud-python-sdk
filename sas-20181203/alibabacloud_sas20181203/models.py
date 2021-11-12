@@ -16178,51 +16178,6 @@ class DescribeInstallCaptchaResponse(TeaModel):
         return self
 
 
-class DescribeInstallCodesRequest(TeaModel):
-    def __init__(
-        self,
-        current_page: int = None,
-        page_size: int = None,
-        status: int = None,
-        sub_account_name: str = None,
-    ):
-        self.current_page = current_page
-        self.page_size = page_size
-        self.status = status
-        self.sub_account_name = sub_account_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.current_page is not None:
-            result['CurrentPage'] = self.current_page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.sub_account_name is not None:
-            result['SubAccountName'] = self.sub_account_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CurrentPage') is not None:
-            self.current_page = m.get('CurrentPage')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('SubAccountName') is not None:
-            self.sub_account_name = m.get('SubAccountName')
-        return self
-
-
 class DescribeInstallCodesResponseBodyInstallCodes(TeaModel):
     def __init__(
         self,
@@ -16232,8 +16187,6 @@ class DescribeInstallCodesResponseBodyInstallCodes(TeaModel):
         group_name: str = None,
         only_image: bool = None,
         os: str = None,
-        tag: str = None,
-        vendor: int = None,
         vendor_name: str = None,
     ):
         self.captcha_code = captcha_code
@@ -16242,8 +16195,6 @@ class DescribeInstallCodesResponseBodyInstallCodes(TeaModel):
         self.group_name = group_name
         self.only_image = only_image
         self.os = os
-        self.tag = tag
-        self.vendor = vendor
         self.vendor_name = vendor_name
 
     def validate(self):
@@ -16267,10 +16218,6 @@ class DescribeInstallCodesResponseBodyInstallCodes(TeaModel):
             result['OnlyImage'] = self.only_image
         if self.os is not None:
             result['Os'] = self.os
-        if self.tag is not None:
-            result['Tag'] = self.tag
-        if self.vendor is not None:
-            result['Vendor'] = self.vendor
         if self.vendor_name is not None:
             result['VendorName'] = self.vendor_name
         return result
@@ -16289,10 +16236,6 @@ class DescribeInstallCodesResponseBodyInstallCodes(TeaModel):
             self.only_image = m.get('OnlyImage')
         if m.get('Os') is not None:
             self.os = m.get('Os')
-        if m.get('Tag') is not None:
-            self.tag = m.get('Tag')
-        if m.get('Vendor') is not None:
-            self.vendor = m.get('Vendor')
         if m.get('VendorName') is not None:
             self.vendor_name = m.get('VendorName')
         return self
@@ -31087,6 +31030,7 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJson(TeaModel):
         self,
         absolute_path: str = None,
         alias_name: str = None,
+        description: str = None,
         ip: str = None,
         last_ts: int = None,
         necessity: DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity = None,
@@ -31100,6 +31044,7 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJson(TeaModel):
     ):
         self.absolute_path = absolute_path
         self.alias_name = alias_name
+        self.description = description
         self.ip = ip
         self.last_ts = last_ts
         self.necessity = necessity
@@ -31129,6 +31074,8 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJson(TeaModel):
             result['AbsolutePath'] = self.absolute_path
         if self.alias_name is not None:
             result['AliasName'] = self.alias_name
+        if self.description is not None:
+            result['Description'] = self.description
         if self.ip is not None:
             result['Ip'] = self.ip
         if self.last_ts is not None:
@@ -31159,6 +31106,8 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJson(TeaModel):
             self.absolute_path = m.get('AbsolutePath')
         if m.get('AliasName') is not None:
             self.alias_name = m.get('AliasName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
         if m.get('LastTs') is not None:
@@ -31204,6 +31153,7 @@ class DescribeVulListResponseBodyVulRecords(TeaModel):
         online: bool = None,
         os_version: str = None,
         primary_id: int = None,
+        region_id: str = None,
         related: str = None,
         repair_ts: int = None,
         result_code: str = None,
@@ -31228,6 +31178,7 @@ class DescribeVulListResponseBodyVulRecords(TeaModel):
         self.online = online
         self.os_version = os_version
         self.primary_id = primary_id
+        self.region_id = region_id
         self.related = related
         self.repair_ts = repair_ts
         self.result_code = result_code
@@ -31277,6 +31228,8 @@ class DescribeVulListResponseBodyVulRecords(TeaModel):
             result['OsVersion'] = self.os_version
         if self.primary_id is not None:
             result['PrimaryId'] = self.primary_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related is not None:
             result['Related'] = self.related
         if self.repair_ts is not None:
@@ -31328,6 +31281,8 @@ class DescribeVulListResponseBodyVulRecords(TeaModel):
             self.os_version = m.get('OsVersion')
         if m.get('PrimaryId') is not None:
             self.primary_id = m.get('PrimaryId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Related') is not None:
             self.related = m.get('Related')
         if m.get('RepairTs') is not None:
@@ -32569,6 +32524,163 @@ class ExportRecordResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ExportRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportVulRequest(TeaModel):
+    def __init__(
+        self,
+        alias_name: str = None,
+        attach_types: str = None,
+        dealed: str = None,
+        group_id: str = None,
+        lang: str = None,
+        necessity: str = None,
+        search_tags: str = None,
+        type: str = None,
+        uuids: str = None,
+        vpc_instance_ids: str = None,
+    ):
+        self.alias_name = alias_name
+        self.attach_types = attach_types
+        self.dealed = dealed
+        self.group_id = group_id
+        self.lang = lang
+        self.necessity = necessity
+        self.search_tags = search_tags
+        self.type = type
+        self.uuids = uuids
+        self.vpc_instance_ids = vpc_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.attach_types is not None:
+            result['AttachTypes'] = self.attach_types
+        if self.dealed is not None:
+            result['Dealed'] = self.dealed
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.necessity is not None:
+            result['Necessity'] = self.necessity
+        if self.search_tags is not None:
+            result['SearchTags'] = self.search_tags
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.uuids is not None:
+            result['Uuids'] = self.uuids
+        if self.vpc_instance_ids is not None:
+            result['VpcInstanceIds'] = self.vpc_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('AttachTypes') is not None:
+            self.attach_types = m.get('AttachTypes')
+        if m.get('Dealed') is not None:
+            self.dealed = m.get('Dealed')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Necessity') is not None:
+            self.necessity = m.get('Necessity')
+        if m.get('SearchTags') is not None:
+            self.search_tags = m.get('SearchTags')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Uuids') is not None:
+            self.uuids = m.get('Uuids')
+        if m.get('VpcInstanceIds') is not None:
+            self.vpc_instance_ids = m.get('VpcInstanceIds')
+        return self
+
+
+class ExportVulResponseBody(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.file_name = file_name
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExportVulResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ExportVulResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ExportVulResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -38543,6 +38655,109 @@ class QueryDiscoverDatabaseResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = QueryDiscoverDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryGroupIdByGroupNameRequest(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+        source_ip: str = None,
+    ):
+        self.group_name = group_name
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class QueryGroupIdByGroupNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        group_id: int = None,
+        request_id: str = None,
+    ):
+        self.group_id = group_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QueryGroupIdByGroupNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryGroupIdByGroupNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryGroupIdByGroupNameResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
