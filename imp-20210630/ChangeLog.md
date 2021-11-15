@@ -1,3 +1,6 @@
+2021-11-15 Version: 2.8.5
+- GetLiveRoomStatistics API support LikeCount and OnlineCount.
+
 2021-11-02 Version: 2.8.4
 - SendComment API support SenderNick.
 
