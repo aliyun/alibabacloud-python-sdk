@@ -1709,17 +1709,13 @@ class DetectVehicleICongestionRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
-        origin_request_id: str = None,
         pre_region_intersect_features: List[DetectVehicleICongestionRequestPreRegionIntersectFeatures] = None,
         road_regions: List[DetectVehicleICongestionRequestRoadRegions] = None,
-        stream_arn: str = None,
     ):
         # A short description of struct
         self.image_url = image_url
-        self.origin_request_id = origin_request_id
         self.pre_region_intersect_features = pre_region_intersect_features
         self.road_regions = road_regions
-        self.stream_arn = stream_arn
 
     def validate(self):
         if self.pre_region_intersect_features:
@@ -1739,8 +1735,6 @@ class DetectVehicleICongestionRequest(TeaModel):
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
-        if self.origin_request_id is not None:
-            result['OriginRequestId'] = self.origin_request_id
         result['PreRegionIntersectFeatures'] = []
         if self.pre_region_intersect_features is not None:
             for k in self.pre_region_intersect_features:
@@ -1749,16 +1743,12 @@ class DetectVehicleICongestionRequest(TeaModel):
         if self.road_regions is not None:
             for k in self.road_regions:
                 result['RoadRegions'].append(k.to_map() if k else None)
-        if self.stream_arn is not None:
-            result['StreamArn'] = self.stream_arn
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
-        if m.get('OriginRequestId') is not None:
-            self.origin_request_id = m.get('OriginRequestId')
         self.pre_region_intersect_features = []
         if m.get('PreRegionIntersectFeatures') is not None:
             for k in m.get('PreRegionIntersectFeatures'):
@@ -1769,8 +1759,6 @@ class DetectVehicleICongestionRequest(TeaModel):
             for k in m.get('RoadRegions'):
                 temp_model = DetectVehicleICongestionRequestRoadRegions()
                 self.road_regions.append(temp_model.from_map(k))
-        if m.get('StreamArn') is not None:
-            self.stream_arn = m.get('StreamArn')
         return self
 
 
@@ -1778,17 +1766,13 @@ class DetectVehicleICongestionShrinkRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
-        origin_request_id: str = None,
         pre_region_intersect_features_shrink: str = None,
         road_regions_shrink: str = None,
-        stream_arn: str = None,
     ):
         # A short description of struct
         self.image_url = image_url
-        self.origin_request_id = origin_request_id
         self.pre_region_intersect_features_shrink = pre_region_intersect_features_shrink
         self.road_regions_shrink = road_regions_shrink
-        self.stream_arn = stream_arn
 
     def validate(self):
         pass
@@ -1801,28 +1785,20 @@ class DetectVehicleICongestionShrinkRequest(TeaModel):
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
-        if self.origin_request_id is not None:
-            result['OriginRequestId'] = self.origin_request_id
         if self.pre_region_intersect_features_shrink is not None:
             result['PreRegionIntersectFeatures'] = self.pre_region_intersect_features_shrink
         if self.road_regions_shrink is not None:
             result['RoadRegions'] = self.road_regions_shrink
-        if self.stream_arn is not None:
-            result['StreamArn'] = self.stream_arn
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
-        if m.get('OriginRequestId') is not None:
-            self.origin_request_id = m.get('OriginRequestId')
         if m.get('PreRegionIntersectFeatures') is not None:
             self.pre_region_intersect_features_shrink = m.get('PreRegionIntersectFeatures')
         if m.get('RoadRegions') is not None:
             self.road_regions_shrink = m.get('RoadRegions')
-        if m.get('StreamArn') is not None:
-            self.stream_arn = m.get('StreamArn')
         return self
 
 
@@ -1875,10 +1851,12 @@ class DetectVehicleICongestionResponseBodyDataElements(TeaModel):
     def __init__(
         self,
         boxes: List[DetectVehicleICongestionResponseBodyDataElementsBoxes] = None,
+        id: int = None,
         score: float = None,
         type_name: str = None,
     ):
         self.boxes = boxes
+        self.id = id
         self.score = score
         self.type_name = type_name
 
@@ -1898,6 +1876,8 @@ class DetectVehicleICongestionResponseBodyDataElements(TeaModel):
         if self.boxes is not None:
             for k in self.boxes:
                 result['Boxes'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
         if self.score is not None:
             result['Score'] = self.score
         if self.type_name is not None:
@@ -1911,6 +1891,8 @@ class DetectVehicleICongestionResponseBodyDataElements(TeaModel):
             for k in m.get('Boxes'):
                 temp_model = DetectVehicleICongestionResponseBodyDataElementsBoxes()
                 self.boxes.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('Score') is not None:
             self.score = m.get('Score')
         if m.get('TypeName') is not None:
@@ -2253,15 +2235,11 @@ class DetectVehicleIllegalParkingRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
-        origin_request_id: str = None,
         road_regions: List[DetectVehicleIllegalParkingRequestRoadRegions] = None,
-        stream_arn: str = None,
     ):
         # A short description of struct
         self.image_url = image_url
-        self.origin_request_id = origin_request_id
         self.road_regions = road_regions
-        self.stream_arn = stream_arn
 
     def validate(self):
         if self.road_regions:
@@ -2277,29 +2255,21 @@ class DetectVehicleIllegalParkingRequest(TeaModel):
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
-        if self.origin_request_id is not None:
-            result['OriginRequestId'] = self.origin_request_id
         result['RoadRegions'] = []
         if self.road_regions is not None:
             for k in self.road_regions:
                 result['RoadRegions'].append(k.to_map() if k else None)
-        if self.stream_arn is not None:
-            result['StreamArn'] = self.stream_arn
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
-        if m.get('OriginRequestId') is not None:
-            self.origin_request_id = m.get('OriginRequestId')
         self.road_regions = []
         if m.get('RoadRegions') is not None:
             for k in m.get('RoadRegions'):
                 temp_model = DetectVehicleIllegalParkingRequestRoadRegions()
                 self.road_regions.append(temp_model.from_map(k))
-        if m.get('StreamArn') is not None:
-            self.stream_arn = m.get('StreamArn')
         return self
 
 
@@ -2307,15 +2277,11 @@ class DetectVehicleIllegalParkingShrinkRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
-        origin_request_id: str = None,
         road_regions_shrink: str = None,
-        stream_arn: str = None,
     ):
         # A short description of struct
         self.image_url = image_url
-        self.origin_request_id = origin_request_id
         self.road_regions_shrink = road_regions_shrink
-        self.stream_arn = stream_arn
 
     def validate(self):
         pass
@@ -2328,24 +2294,16 @@ class DetectVehicleIllegalParkingShrinkRequest(TeaModel):
         result = dict()
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
-        if self.origin_request_id is not None:
-            result['OriginRequestId'] = self.origin_request_id
         if self.road_regions_shrink is not None:
             result['RoadRegions'] = self.road_regions_shrink
-        if self.stream_arn is not None:
-            result['StreamArn'] = self.stream_arn
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
-        if m.get('OriginRequestId') is not None:
-            self.origin_request_id = m.get('OriginRequestId')
         if m.get('RoadRegions') is not None:
             self.road_regions_shrink = m.get('RoadRegions')
-        if m.get('StreamArn') is not None:
-            self.stream_arn = m.get('StreamArn')
         return self
 
 
@@ -2398,10 +2356,12 @@ class DetectVehicleIllegalParkingResponseBodyDataElements(TeaModel):
     def __init__(
         self,
         boxes: List[DetectVehicleIllegalParkingResponseBodyDataElementsBoxes] = None,
+        id: int = None,
         score: float = None,
         type_name: str = None,
     ):
         self.boxes = boxes
+        self.id = id
         self.score = score
         self.type_name = type_name
 
@@ -2421,6 +2381,8 @@ class DetectVehicleIllegalParkingResponseBodyDataElements(TeaModel):
         if self.boxes is not None:
             for k in self.boxes:
                 result['Boxes'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
         if self.score is not None:
             result['Score'] = self.score
         if self.type_name is not None:
@@ -2434,6 +2396,8 @@ class DetectVehicleIllegalParkingResponseBodyDataElements(TeaModel):
             for k in m.get('Boxes'):
                 temp_model = DetectVehicleIllegalParkingResponseBodyDataElementsBoxes()
                 self.boxes.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('Score') is not None:
             self.score = m.get('Score')
         if m.get('TypeName') is not None:
