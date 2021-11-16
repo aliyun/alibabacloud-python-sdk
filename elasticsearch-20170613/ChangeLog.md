@@ -1,3 +1,6 @@
+2021-11-16 Version: 1.0.7
+-  Update apm interface parameter.
+
 2021-11-11 Version: 1.0.6
 -  Support elasticsearch apm interface.
 
