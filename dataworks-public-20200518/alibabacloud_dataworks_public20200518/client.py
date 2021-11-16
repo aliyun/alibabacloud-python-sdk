@@ -564,6 +564,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_connection_with_options_async(request, runtime)
 
+    def create_disync_task_with_options(
+        self,
+        request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateDISyncTaskResponse(),
+            self.do_rpcrequest('CreateDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_disync_task_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateDISyncTaskResponse(),
+            await self.do_rpcrequest_async('CreateDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_disync_task(
+        self,
+        request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
+    ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_disync_task_with_options(request, runtime)
+
+    async def create_disync_task_async(
+        self,
+        request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
+    ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_disync_task_with_options_async(request, runtime)
+
     def create_dag_complement_with_options(
         self,
         request: dataworks_public_20200518_models.CreateDagComplementRequest,
@@ -857,48 +899,6 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_data_source_with_options_async(request, runtime)
-
-    def create_disync_task_with_options(
-        self,
-        request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.CreateDISyncTaskResponse(),
-            self.do_rpcrequest('CreateDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_disync_task_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.CreateDISyncTaskResponse(),
-            await self.do_rpcrequest_async('CreateDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_disync_task(
-        self,
-        request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
-    ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_disync_task_with_options(request, runtime)
-
-    async def create_disync_task_async(
-        self,
-        request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
-    ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_disync_task_with_options_async(request, runtime)
 
     def create_file_with_options(
         self,
@@ -1840,6 +1840,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_connection_with_options_async(request, runtime)
 
+    def delete_disync_task_with_options(
+        self,
+        request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteDISyncTaskResponse(),
+            self.do_rpcrequest('DeleteDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def delete_disync_task_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteDISyncTaskResponse(),
+            await self.do_rpcrequest_async('DeleteDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def delete_disync_task(
+        self,
+        request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
+    ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_disync_task_with_options(request, runtime)
+
+    async def delete_disync_task_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
+    ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_disync_task_with_options_async(request, runtime)
+
     def delete_data_service_api_with_options(
         self,
         request: dataworks_public_20200518_models.DeleteDataServiceApiRequest,
@@ -1965,48 +2007,6 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_source_with_options_async(request, runtime)
-
-    def delete_disync_task_with_options(
-        self,
-        request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.DeleteDISyncTaskResponse(),
-            self.do_rpcrequest('DeleteDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_disync_task_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.DeleteDISyncTaskResponse(),
-            await self.do_rpcrequest_async('DeleteDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_disync_task(
-        self,
-        request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
-    ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_disync_task_with_options(request, runtime)
-
-    async def delete_disync_task_async(
-        self,
-        request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
-    ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_disync_task_with_options_async(request, runtime)
 
     def delete_file_with_options(
         self,
@@ -2812,6 +2812,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_connections_with_options_async(request, runtime)
 
+    def export_disync_tasks_with_options(
+        self,
+        request: dataworks_public_20200518_models.ExportDISyncTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ExportDISyncTasksResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ExportDISyncTasksResponse(),
+            self.do_rpcrequest('ExportDISyncTasks', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def export_disync_tasks_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ExportDISyncTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ExportDISyncTasksResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ExportDISyncTasksResponse(),
+            await self.do_rpcrequest_async('ExportDISyncTasks', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def export_disync_tasks(
+        self,
+        request: dataworks_public_20200518_models.ExportDISyncTasksRequest,
+    ) -> dataworks_public_20200518_models.ExportDISyncTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.export_disync_tasks_with_options(request, runtime)
+
+    async def export_disync_tasks_async(
+        self,
+        request: dataworks_public_20200518_models.ExportDISyncTasksRequest,
+    ) -> dataworks_public_20200518_models.ExportDISyncTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.export_disync_tasks_with_options_async(request, runtime)
+
     def export_data_sources_with_options(
         self,
         request: dataworks_public_20200518_models.ExportDataSourcesRequest,
@@ -2855,48 +2897,6 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ExportDataSourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.export_data_sources_with_options_async(request, runtime)
-
-    def export_disync_tasks_with_options(
-        self,
-        request: dataworks_public_20200518_models.ExportDISyncTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ExportDISyncTasksResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ExportDISyncTasksResponse(),
-            self.do_rpcrequest('ExportDISyncTasks', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def export_disync_tasks_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.ExportDISyncTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ExportDISyncTasksResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ExportDISyncTasksResponse(),
-            await self.do_rpcrequest_async('ExportDISyncTasks', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def export_disync_tasks(
-        self,
-        request: dataworks_public_20200518_models.ExportDISyncTasksRequest,
-    ) -> dataworks_public_20200518_models.ExportDISyncTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.export_disync_tasks_with_options(request, runtime)
-
-    async def export_disync_tasks_async(
-        self,
-        request: dataworks_public_20200518_models.ExportDISyncTasksRequest,
-    ) -> dataworks_public_20200518_models.ExportDISyncTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.export_disync_tasks_with_options_async(request, runtime)
 
     def generate_disync_task_config_for_creating_with_options(
         self,
@@ -3192,6 +3192,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_connection_meta_with_options_async(request, runtime)
 
+    def get_ddljob_status_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDDLJobStatusResponse(),
+            self.do_rpcrequest('GetDDLJobStatus', '2020-05-18', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def get_ddljob_status_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDDLJobStatusResponse(),
+            await self.do_rpcrequest_async('GetDDLJobStatus', '2020-05-18', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def get_ddljob_status(
+        self,
+        request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
+    ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_ddljob_status_with_options(request, runtime)
+
+    async def get_ddljob_status_async(
+        self,
+        request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
+    ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ddljob_status_with_options_async(request, runtime)
+
+    def get_disync_instance_info_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDISyncInstanceInfoResponse(),
+            self.do_rpcrequest('GetDISyncInstanceInfo', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_disync_instance_info_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDISyncInstanceInfoResponse(),
+            await self.do_rpcrequest_async('GetDISyncInstanceInfo', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_disync_instance_info(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
+    ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_disync_instance_info_with_options(request, runtime)
+
+    async def get_disync_instance_info_async(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
+    ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_disync_instance_info_with_options_async(request, runtime)
+
+    def get_disync_task_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDISyncTaskResponse(),
+            self.do_rpcrequest('GetDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_disync_task_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDISyncTaskResponse(),
+            await self.do_rpcrequest_async('GetDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_disync_task(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncTaskRequest,
+    ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_disync_task_with_options(request, runtime)
+
+    async def get_disync_task_async(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncTaskRequest,
+    ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_disync_task_with_options_async(request, runtime)
+
+    def get_disync_task_metric_info_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncTaskMetricInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse(),
+            self.do_rpcrequest('GetDISyncTaskMetricInfo', '2020-05-18', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    async def get_disync_task_metric_info_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncTaskMetricInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=query
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse(),
+            await self.do_rpcrequest_async('GetDISyncTaskMetricInfo', '2020-05-18', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        )
+
+    def get_disync_task_metric_info(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncTaskMetricInfoRequest,
+    ) -> dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_disync_task_metric_info_with_options(request, runtime)
+
+    async def get_disync_task_metric_info_async(
+        self,
+        request: dataworks_public_20200518_models.GetDISyncTaskMetricInfoRequest,
+    ) -> dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_disync_task_metric_info_with_options_async(request, runtime)
+
     def get_dag_with_options(
         self,
         request: dataworks_public_20200518_models.GetDagRequest,
@@ -3486,50 +3658,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_data_source_meta_with_options_async(request, runtime)
 
-    def get_ddljob_status_with_options(
-        self,
-        request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.GetDDLJobStatusResponse(),
-            self.do_rpcrequest('GetDDLJobStatus', '2020-05-18', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def get_ddljob_status_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.GetDDLJobStatusResponse(),
-            await self.do_rpcrequest_async('GetDDLJobStatus', '2020-05-18', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def get_ddljob_status(
-        self,
-        request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
-    ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_ddljob_status_with_options(request, runtime)
-
-    async def get_ddljob_status_async(
-        self,
-        request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
-    ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_ddljob_status_with_options_async(request, runtime)
-
     def get_deployment_with_options(
         self,
         request: dataworks_public_20200518_models.GetDeploymentRequest,
@@ -3571,134 +3699,6 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_deployment_with_options_async(request, runtime)
-
-    def get_disync_instance_info_with_options(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.GetDISyncInstanceInfoResponse(),
-            self.do_rpcrequest('GetDISyncInstanceInfo', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_disync_instance_info_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.GetDISyncInstanceInfoResponse(),
-            await self.do_rpcrequest_async('GetDISyncInstanceInfo', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_disync_instance_info(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
-    ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_disync_instance_info_with_options(request, runtime)
-
-    async def get_disync_instance_info_async(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
-    ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_disync_instance_info_with_options_async(request, runtime)
-
-    def get_disync_task_with_options(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.GetDISyncTaskResponse(),
-            self.do_rpcrequest('GetDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_disync_task_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.GetDISyncTaskResponse(),
-            await self.do_rpcrequest_async('GetDISyncTask', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_disync_task(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncTaskRequest,
-    ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_disync_task_with_options(request, runtime)
-
-    async def get_disync_task_async(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncTaskRequest,
-    ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_disync_task_with_options_async(request, runtime)
-
-    def get_disync_task_metric_info_with_options(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncTaskMetricInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse(),
-            self.do_rpcrequest('GetDISyncTaskMetricInfo', '2020-05-18', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def get_disync_task_metric_info_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncTaskMetricInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse(),
-            await self.do_rpcrequest_async('GetDISyncTaskMetricInfo', '2020-05-18', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def get_disync_task_metric_info(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncTaskMetricInfoRequest,
-    ) -> dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_disync_task_metric_info_with_options(request, runtime)
-
-    async def get_disync_task_metric_info_async(
-        self,
-        request: dataworks_public_20200518_models.GetDISyncTaskMetricInfoRequest,
-    ) -> dataworks_public_20200518_models.GetDISyncTaskMetricInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_disync_task_metric_info_with_options_async(request, runtime)
 
     def get_file_with_options(
         self,
@@ -3867,6 +3867,48 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetFolderResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_folder_with_options_async(request, runtime)
+
+    def get_ideevent_detail_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetIDEEventDetailResponse(),
+            self.do_rpcrequest('GetIDEEventDetail', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_ideevent_detail_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetIDEEventDetailResponse(),
+            await self.do_rpcrequest_async('GetIDEEventDetail', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_ideevent_detail(
+        self,
+        request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
+    ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_ideevent_detail_with_options(request, runtime)
+
+    async def get_ideevent_detail_async(
+        self,
+        request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
+    ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ideevent_detail_with_options_async(request, runtime)
 
     def get_instance_with_options(
         self,
@@ -5692,48 +5734,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.import_connections_with_options_async(request, runtime)
 
-    def import_data_sources_with_options(
-        self,
-        request: dataworks_public_20200518_models.ImportDataSourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ImportDataSourcesResponse(),
-            self.do_rpcrequest('ImportDataSources', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def import_data_sources_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.ImportDataSourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ImportDataSourcesResponse(),
-            await self.do_rpcrequest_async('ImportDataSources', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def import_data_sources(
-        self,
-        request: dataworks_public_20200518_models.ImportDataSourcesRequest,
-    ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.import_data_sources_with_options(request, runtime)
-
-    async def import_data_sources_async(
-        self,
-        request: dataworks_public_20200518_models.ImportDataSourcesRequest,
-    ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.import_data_sources_with_options_async(request, runtime)
-
     def import_disync_tasks_with_options(
         self,
         request: dataworks_public_20200518_models.ImportDISyncTasksRequest,
@@ -5775,6 +5775,48 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ImportDISyncTasksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.import_disync_tasks_with_options_async(request, runtime)
+
+    def import_data_sources_with_options(
+        self,
+        request: dataworks_public_20200518_models.ImportDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ImportDataSourcesResponse(),
+            self.do_rpcrequest('ImportDataSources', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def import_data_sources_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ImportDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ImportDataSourcesResponse(),
+            await self.do_rpcrequest_async('ImportDataSources', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def import_data_sources(
+        self,
+        request: dataworks_public_20200518_models.ImportDataSourcesRequest,
+    ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_data_sources_with_options(request, runtime)
+
+    async def import_data_sources_async(
+        self,
+        request: dataworks_public_20200518_models.ImportDataSourcesRequest,
+    ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_data_sources_with_options_async(request, runtime)
 
     def list_alert_messages_with_options(
         self,
@@ -6029,6 +6071,90 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListConnectionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_connections_with_options_async(request, runtime)
+
+    def list_diproject_config_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDIProjectConfigResponse(),
+            self.do_rpcrequest('ListDIProjectConfig', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_diproject_config_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDIProjectConfigResponse(),
+            await self.do_rpcrequest_async('ListDIProjectConfig', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_diproject_config(
+        self,
+        request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
+    ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_diproject_config_with_options(request, runtime)
+
+    async def list_diproject_config_async(
+        self,
+        request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
+    ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_diproject_config_with_options_async(request, runtime)
+
+    def list_disync_tasks_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListDISyncTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDISyncTasksResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDISyncTasksResponse(),
+            self.do_rpcrequest('ListDISyncTasks', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_disync_tasks_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListDISyncTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDISyncTasksResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDISyncTasksResponse(),
+            await self.do_rpcrequest_async('ListDISyncTasks', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_disync_tasks(
+        self,
+        request: dataworks_public_20200518_models.ListDISyncTasksRequest,
+    ) -> dataworks_public_20200518_models.ListDISyncTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_disync_tasks_with_options(request, runtime)
+
+    async def list_disync_tasks_async(
+        self,
+        request: dataworks_public_20200518_models.ListDISyncTasksRequest,
+    ) -> dataworks_public_20200518_models.ListDISyncTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_disync_tasks_with_options_async(request, runtime)
 
     def list_data_service_api_authorities_with_options(
         self,
@@ -6368,131 +6494,47 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_data_sources_with_options_async(request, runtime)
 
-    def list_diproject_config_with_options(
+    def list_deployments_with_options(
         self,
-        request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
+        request: dataworks_public_20200518_models.ListDeploymentsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
+    ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            dataworks_public_20200518_models.ListDIProjectConfigResponse(),
-            self.do_rpcrequest('ListDIProjectConfig', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            dataworks_public_20200518_models.ListDeploymentsResponse(),
+            self.do_rpcrequest('ListDeployments', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def list_diproject_config_with_options_async(
+    async def list_deployments_with_options_async(
         self,
-        request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
+        request: dataworks_public_20200518_models.ListDeploymentsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
+    ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
         return TeaCore.from_map(
-            dataworks_public_20200518_models.ListDIProjectConfigResponse(),
-            await self.do_rpcrequest_async('ListDIProjectConfig', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            dataworks_public_20200518_models.ListDeploymentsResponse(),
+            await self.do_rpcrequest_async('ListDeployments', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def list_diproject_config(
+    def list_deployments(
         self,
-        request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
-    ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
+        request: dataworks_public_20200518_models.ListDeploymentsRequest,
+    ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
         runtime = util_models.RuntimeOptions()
-        return self.list_diproject_config_with_options(request, runtime)
+        return self.list_deployments_with_options(request, runtime)
 
-    async def list_diproject_config_async(
+    async def list_deployments_async(
         self,
-        request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
-    ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
+        request: dataworks_public_20200518_models.ListDeploymentsRequest,
+    ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.list_diproject_config_with_options_async(request, runtime)
-
-    def list_disync_tasks_with_options(
-        self,
-        request: dataworks_public_20200518_models.ListDISyncTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ListDISyncTasksResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ListDISyncTasksResponse(),
-            self.do_rpcrequest('ListDISyncTasks', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_disync_tasks_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.ListDISyncTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ListDISyncTasksResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ListDISyncTasksResponse(),
-            await self.do_rpcrequest_async('ListDISyncTasks', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_disync_tasks(
-        self,
-        request: dataworks_public_20200518_models.ListDISyncTasksRequest,
-    ) -> dataworks_public_20200518_models.ListDISyncTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_disync_tasks_with_options(request, runtime)
-
-    async def list_disync_tasks_async(
-        self,
-        request: dataworks_public_20200518_models.ListDISyncTasksRequest,
-    ) -> dataworks_public_20200518_models.ListDISyncTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_disync_tasks_with_options_async(request, runtime)
-
-    def list_files_with_options(
-        self,
-        request: dataworks_public_20200518_models.ListFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ListFilesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ListFilesResponse(),
-            self.do_rpcrequest('ListFiles', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_files_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.ListFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ListFilesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ListFilesResponse(),
-            await self.do_rpcrequest_async('ListFiles', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_files(
-        self,
-        request: dataworks_public_20200518_models.ListFilesRequest,
-    ) -> dataworks_public_20200518_models.ListFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_files_with_options(request, runtime)
-
-    async def list_files_async(
-        self,
-        request: dataworks_public_20200518_models.ListFilesRequest,
-    ) -> dataworks_public_20200518_models.ListFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_files_with_options_async(request, runtime)
+        return await self.list_deployments_with_options_async(request, runtime)
 
     def list_file_type_with_options(
         self,
@@ -6577,6 +6619,48 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListFileVersionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_file_versions_with_options_async(request, runtime)
+
+    def list_files_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListFilesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListFilesResponse(),
+            self.do_rpcrequest('ListFiles', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_files_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListFilesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListFilesResponse(),
+            await self.do_rpcrequest_async('ListFiles', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_files(
+        self,
+        request: dataworks_public_20200518_models.ListFilesRequest,
+    ) -> dataworks_public_20200518_models.ListFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_files_with_options(request, runtime)
+
+    async def list_files_async(
+        self,
+        request: dataworks_public_20200518_models.ListFilesRequest,
+    ) -> dataworks_public_20200518_models.ListFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_files_with_options_async(request, runtime)
 
     def list_folders_with_options(
         self,
@@ -6790,48 +6874,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_meta_dbwith_options_async(request, runtime)
 
-    def list_node_input_or_output_with_options(
-        self,
-        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ListNodeInputOrOutputResponse(),
-            self.do_rpcrequest('ListNodeInputOrOutput', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_node_input_or_output_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.ListNodeInputOrOutputResponse(),
-            await self.do_rpcrequest_async('ListNodeInputOrOutput', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_node_input_or_output(
-        self,
-        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
-    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_node_input_or_output_with_options(request, runtime)
-
-    async def list_node_input_or_output_async(
-        self,
-        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
-    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_node_input_or_output_with_options_async(request, runtime)
-
     def list_node_iowith_options(
         self,
         request: dataworks_public_20200518_models.ListNodeIORequest,
@@ -6873,6 +6915,48 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_node_iowith_options_async(request, runtime)
+
+    def list_node_input_or_output_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListNodeInputOrOutputResponse(),
+            self.do_rpcrequest('ListNodeInputOrOutput', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_node_input_or_output_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListNodeInputOrOutputResponse(),
+            await self.do_rpcrequest_async('ListNodeInputOrOutput', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_node_input_or_output(
+        self,
+        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
+    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_node_input_or_output_with_options(request, runtime)
+
+    async def list_node_input_or_output_async(
+        self,
+        request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
+    ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_node_input_or_output_with_options_async(request, runtime)
 
     def list_nodes_with_options(
         self,
@@ -8938,90 +9022,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_connection_with_options_async(request, runtime)
 
-    def update_data_service_api_with_options(
-        self,
-        request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.UpdateDataServiceApiResponse(),
-            self.do_rpcrequest('UpdateDataServiceApi', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_data_service_api_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.UpdateDataServiceApiResponse(),
-            await self.do_rpcrequest_async('UpdateDataServiceApi', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_data_service_api(
-        self,
-        request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
-    ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_data_service_api_with_options(request, runtime)
-
-    async def update_data_service_api_async(
-        self,
-        request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
-    ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_data_service_api_with_options_async(request, runtime)
-
-    def update_data_source_with_options(
-        self,
-        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.UpdateDataSourceResponse(),
-            self.do_rpcrequest('UpdateDataSource', '2020-05-18', 'HTTPS', 'PUT', 'AK', 'json', req, runtime)
-        )
-
-    async def update_data_source_with_options_async(
-        self,
-        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dataworks_public_20200518_models.UpdateDataSourceResponse(),
-            await self.do_rpcrequest_async('UpdateDataSource', '2020-05-18', 'HTTPS', 'PUT', 'AK', 'json', req, runtime)
-        )
-
-    def update_data_source(
-        self,
-        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
-    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_data_source_with_options(request, runtime)
-
-    async def update_data_source_async(
-        self,
-        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
-    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_data_source_with_options_async(request, runtime)
-
     def update_diproject_config_with_options(
         self,
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
@@ -9106,6 +9106,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_disync_task_with_options_async(request, runtime)
 
+    def update_data_service_api_with_options(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDataServiceApiResponse(),
+            self.do_rpcrequest('UpdateDataServiceApi', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_data_service_api_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDataServiceApiResponse(),
+            await self.do_rpcrequest_async('UpdateDataServiceApi', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_data_service_api(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
+    ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_service_api_with_options(request, runtime)
+
+    async def update_data_service_api_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
+    ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_service_api_with_options_async(request, runtime)
+
+    def update_data_source_with_options(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDataSourceResponse(),
+            self.do_rpcrequest('UpdateDataSource', '2020-05-18', 'HTTPS', 'PUT', 'AK', 'json', req, runtime)
+        )
+
+    async def update_data_source_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateDataSourceResponse(),
+            await self.do_rpcrequest_async('UpdateDataSource', '2020-05-18', 'HTTPS', 'PUT', 'AK', 'json', req, runtime)
+        )
+
+    def update_data_source(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
+    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_source_with_options(request, runtime)
+
+    async def update_data_source_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateDataSourceRequest,
+    ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_source_with_options_async(request, runtime)
+
     def update_file_with_options(
         self,
         request: dataworks_public_20200518_models.UpdateFileRequest,
@@ -9189,6 +9273,48 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.UpdateFolderResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_folder_with_options_async(request, runtime)
+
+    def update_ideevent_result_with_options(
+        self,
+        request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateIDEEventResultResponse(),
+            self.do_rpcrequest('UpdateIDEEventResult', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_ideevent_result_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateIDEEventResultResponse(),
+            await self.do_rpcrequest_async('UpdateIDEEventResult', '2020-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_ideevent_result(
+        self,
+        request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
+    ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_ideevent_result_with_options(request, runtime)
+
+    async def update_ideevent_result_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
+    ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ideevent_result_with_options_async(request, runtime)
 
     def update_meta_category_with_options(
         self,
