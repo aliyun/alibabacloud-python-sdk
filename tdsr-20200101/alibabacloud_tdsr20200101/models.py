@@ -6252,7 +6252,6 @@ class PublishSceneResponseBody(TeaModel):
     def __init__(
         self,
         code: int = None,
-        instance_id: str = None,
         message: str = None,
         preview_url: str = None,
         request_id: str = None,
@@ -6260,8 +6259,6 @@ class PublishSceneResponseBody(TeaModel):
     ):
         # 返回码
         self.code = code
-        # 任务实例id
-        self.instance_id = instance_id
         # 错误消息
         self.message = message
         # 预览链接
@@ -6282,8 +6279,6 @@ class PublishSceneResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.message is not None:
             result['Message'] = self.message
         if self.preview_url is not None:
@@ -6298,8 +6293,6 @@ class PublishSceneResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('PreviewUrl') is not None:
