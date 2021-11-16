@@ -1,3 +1,6 @@
+2021-11-16 Version: 3.0.0
+- Updated the data structure for worker_data_disks in CreateCluster.
+
 2021-07-28 Version: 2.4.5
 - Publish API CreateTrigger DeleteTrigger, DescribeTrigger, These three apis will replace CreateKubernetesTrigger, DeleteKubernetesTrigger, and GetKubernetesTrigger for trigger operations, The new API has authentication capabilities and operations are more controlled.
 - CreateCluster Added the parameters for security hardening and enabling the log function of the control plane.
