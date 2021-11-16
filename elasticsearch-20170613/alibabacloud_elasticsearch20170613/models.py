@@ -3737,6 +3737,7 @@ class DescribeAckOperatorResponse(TeaModel):
 class DescribeApmResponseBodyResult(TeaModel):
     def __init__(
         self,
+        apm_server_domain: str = None,
         created_at: str = None,
         deployed_replica: int = None,
         description: str = None,
@@ -3757,6 +3758,7 @@ class DescribeApmResponseBodyResult(TeaModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
+        self.apm_server_domain = apm_server_domain
         self.created_at = created_at
         self.deployed_replica = deployed_replica
         self.description = description
@@ -3786,86 +3788,90 @@ class DescribeApmResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.apm_server_domain is not None:
+            result['apmServerDomain'] = self.apm_server_domain
         if self.created_at is not None:
-            result['CreatedAt'] = self.created_at
+            result['createdAt'] = self.created_at
         if self.deployed_replica is not None:
-            result['DeployedReplica'] = self.deployed_replica
+            result['deployedReplica'] = self.deployed_replica
         if self.description is not None:
-            result['Description'] = self.description
+            result['description'] = self.description
         if self.end_time is not None:
-            result['EndTime'] = self.end_time
+            result['endTime'] = self.end_time
         if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
+            result['instanceId'] = self.instance_id
         if self.node_amount is not None:
-            result['NodeAmount'] = self.node_amount
+            result['nodeAmount'] = self.node_amount
         if self.output_es is not None:
-            result['OutputES'] = self.output_es
+            result['outputES'] = self.output_es
         if self.output_esuser_name is not None:
-            result['OutputESUserName'] = self.output_esuser_name
+            result['outputESUserName'] = self.output_esuser_name
         if self.output_es_description is not None:
-            result['OutputEsDescription'] = self.output_es_description
+            result['outputEsDescription'] = self.output_es_description
         if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
+            result['ownerId'] = self.owner_id
         if self.payment_type is not None:
-            result['PaymentType'] = self.payment_type
+            result['paymentType'] = self.payment_type
         if self.region is not None:
-            result['Region'] = self.region
+            result['region'] = self.region
         if self.replica is not None:
-            result['Replica'] = self.replica
+            result['replica'] = self.replica
         if self.resource_spec is not None:
-            result['ResourceSpec'] = self.resource_spec
+            result['resourceSpec'] = self.resource_spec
         if self.status is not None:
-            result['Status'] = self.status
+            result['status'] = self.status
         if self.version is not None:
-            result['Version'] = self.version
+            result['version'] = self.version
         if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
+            result['vpcId'] = self.vpc_id
         if self.vs_area is not None:
-            result['VsArea'] = self.vs_area
+            result['vsArea'] = self.vs_area
         if self.vswitch_id is not None:
-            result['VswitchId'] = self.vswitch_id
+            result['vswitchId'] = self.vswitch_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CreatedAt') is not None:
-            self.created_at = m.get('CreatedAt')
-        if m.get('DeployedReplica') is not None:
-            self.deployed_replica = m.get('DeployedReplica')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('NodeAmount') is not None:
-            self.node_amount = m.get('NodeAmount')
-        if m.get('OutputES') is not None:
-            self.output_es = m.get('OutputES')
-        if m.get('OutputESUserName') is not None:
-            self.output_esuser_name = m.get('OutputESUserName')
-        if m.get('OutputEsDescription') is not None:
-            self.output_es_description = m.get('OutputEsDescription')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PaymentType') is not None:
-            self.payment_type = m.get('PaymentType')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        if m.get('Replica') is not None:
-            self.replica = m.get('Replica')
-        if m.get('ResourceSpec') is not None:
-            self.resource_spec = m.get('ResourceSpec')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
-        if m.get('VsArea') is not None:
-            self.vs_area = m.get('VsArea')
-        if m.get('VswitchId') is not None:
-            self.vswitch_id = m.get('VswitchId')
+        if m.get('apmServerDomain') is not None:
+            self.apm_server_domain = m.get('apmServerDomain')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('deployedReplica') is not None:
+            self.deployed_replica = m.get('deployedReplica')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('nodeAmount') is not None:
+            self.node_amount = m.get('nodeAmount')
+        if m.get('outputES') is not None:
+            self.output_es = m.get('outputES')
+        if m.get('outputESUserName') is not None:
+            self.output_esuser_name = m.get('outputESUserName')
+        if m.get('outputEsDescription') is not None:
+            self.output_es_description = m.get('outputEsDescription')
+        if m.get('ownerId') is not None:
+            self.owner_id = m.get('ownerId')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('replica') is not None:
+            self.replica = m.get('replica')
+        if m.get('resourceSpec') is not None:
+            self.resource_spec = m.get('resourceSpec')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        if m.get('vsArea') is not None:
+            self.vs_area = m.get('vsArea')
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
         return self
 
 
@@ -11541,6 +11547,294 @@ class ListAlternativeSnapshotReposResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListAlternativeSnapshotReposResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApmRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        instance_id: str = None,
+        output: str = None,
+        page: int = None,
+        size: int = None,
+    ):
+        self.description = description
+        self.instance_id = instance_id
+        self.output = output
+        self.page = page
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.output is not None:
+            result['output'] = self.output
+        if self.page is not None:
+            result['page'] = self.page
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('output') is not None:
+            self.output = m.get('output')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListApmResponseBodyHeaders(TeaModel):
+    def __init__(
+        self,
+        x_total_count: int = None,
+    ):
+        self.x_total_count = x_total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x_total_count is not None:
+            result['X-Total-Count'] = self.x_total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X-Total-Count') is not None:
+            self.x_total_count = m.get('X-Total-Count')
+        return self
+
+
+class ListApmResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        deployed_replica: int = None,
+        description: str = None,
+        instance_id: str = None,
+        node_amount: int = None,
+        output_es: str = None,
+        output_esuser_name: str = None,
+        owner_id: str = None,
+        payment_type: str = None,
+        region: str = None,
+        replica: int = None,
+        resource_spec: str = None,
+        status: str = None,
+        version: str = None,
+        vpc_id: str = None,
+        vs_area: str = None,
+        vswitch_id: str = None,
+    ):
+        self.created_at = created_at
+        self.deployed_replica = deployed_replica
+        self.description = description
+        self.instance_id = instance_id
+        self.node_amount = node_amount
+        self.output_es = output_es
+        self.output_esuser_name = output_esuser_name
+        self.owner_id = owner_id
+        self.payment_type = payment_type
+        self.region = region
+        self.replica = replica
+        self.resource_spec = resource_spec
+        self.status = status
+        self.version = version
+        self.vpc_id = vpc_id
+        self.vs_area = vs_area
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.deployed_replica is not None:
+            result['deployedReplica'] = self.deployed_replica
+        if self.description is not None:
+            result['description'] = self.description
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.node_amount is not None:
+            result['nodeAmount'] = self.node_amount
+        if self.output_es is not None:
+            result['outputES'] = self.output_es
+        if self.output_esuser_name is not None:
+            result['outputESUserName'] = self.output_esuser_name
+        if self.owner_id is not None:
+            result['ownerId'] = self.owner_id
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.region is not None:
+            result['region'] = self.region
+        if self.replica is not None:
+            result['replica'] = self.replica
+        if self.resource_spec is not None:
+            result['resourceSpec'] = self.resource_spec
+        if self.status is not None:
+            result['status'] = self.status
+        if self.version is not None:
+            result['version'] = self.version
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        if self.vs_area is not None:
+            result['vsArea'] = self.vs_area
+        if self.vswitch_id is not None:
+            result['vswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('deployedReplica') is not None:
+            self.deployed_replica = m.get('deployedReplica')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('nodeAmount') is not None:
+            self.node_amount = m.get('nodeAmount')
+        if m.get('outputES') is not None:
+            self.output_es = m.get('outputES')
+        if m.get('outputESUserName') is not None:
+            self.output_esuser_name = m.get('outputESUserName')
+        if m.get('ownerId') is not None:
+            self.owner_id = m.get('ownerId')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('replica') is not None:
+            self.replica = m.get('replica')
+        if m.get('resourceSpec') is not None:
+            self.resource_spec = m.get('resourceSpec')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        if m.get('vsArea') is not None:
+            self.vs_area = m.get('vsArea')
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
+        return self
+
+
+class ListApmResponseBody(TeaModel):
+    def __init__(
+        self,
+        headers: ListApmResponseBodyHeaders = None,
+        request_id: str = None,
+        result: List[ListApmResponseBodyResult] = None,
+    ):
+        self.headers = headers
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.headers:
+            self.headers.validate()
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['Headers'] = self.headers.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Headers') is not None:
+            temp_model = ListApmResponseBodyHeaders()
+            self.headers = temp_model.from_map(m['Headers'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListApmResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        return self
+
+
+class ListApmResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListApmResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListApmResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20569,9 +20863,10 @@ class RemoveApmResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        result: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
+        self.result = result
 
     def validate(self):
         pass
@@ -20583,13 +20878,17 @@ class RemoveApmResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
         return self
 
 
@@ -22064,9 +22363,10 @@ class StartApmResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        result: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
+        self.result = result
 
     def validate(self):
         pass
@@ -22078,13 +22378,17 @@ class StartApmResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
         return self
 
 
@@ -22226,9 +22530,10 @@ class StopApmResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        result: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
+        self.result = result
 
     def validate(self):
         pass
@@ -22240,13 +22545,17 @@ class StopApmResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
         return self
 
 
@@ -23510,17 +23819,22 @@ class UpdateAliwsDictResponse(TeaModel):
 class UpdateApmRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
         output_es: str = None,
         output_espassword: str = None,
         output_esuser_name: str = None,
         token: str = None,
-        yml: str = None,
     ):
+        # apm实例名
+        self.description = description
+        # es实例id
         self.output_es = output_es
+        # es实例密码
         self.output_espassword = output_espassword
+        # es实例用户名
         self.output_esuser_name = output_esuser_name
+        # apm server密码
         self.token = token
-        self.yml = yml
 
     def validate(self):
         pass
@@ -23531,6 +23845,8 @@ class UpdateApmRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['description'] = self.description
         if self.output_es is not None:
             result['outputES'] = self.output_es
         if self.output_espassword is not None:
@@ -23539,12 +23855,12 @@ class UpdateApmRequest(TeaModel):
             result['outputESUserName'] = self.output_esuser_name
         if self.token is not None:
             result['token'] = self.token
-        if self.yml is not None:
-            result['yml'] = self.yml
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
         if m.get('outputES') is not None:
             self.output_es = m.get('outputES')
         if m.get('outputESPassword') is not None:
@@ -23553,8 +23869,6 @@ class UpdateApmRequest(TeaModel):
             self.output_esuser_name = m.get('outputESUserName')
         if m.get('token') is not None:
             self.token = m.get('token')
-        if m.get('yml') is not None:
-            self.yml = m.get('yml')
         return self
 
 
@@ -23562,9 +23876,10 @@ class UpdateApmResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        result: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
+        self.result = result
 
     def validate(self):
         pass
@@ -23576,13 +23891,17 @@ class UpdateApmResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
         return self
 
 
