@@ -1,3 +1,6 @@
+2021-11-16 Version: 2.0.7
+- Upgrade Service for SMS.
+
 2021-10-26 Version: 2.0.6
 - Support Short Url for SMS.
 
