@@ -1,3 +1,7 @@
+2021-11-16 Version: 1.1.4
+- Add a new API called BatchGetMediaInfos, which get multi media infos through mediaids.
+- Add a new API called GetTemplateMaterials, which get material urls of VeTemplates.
+
 2021-11-04 Version: 1.1.3
 - Add relatedMediaIds param in GetTemplate API.
 

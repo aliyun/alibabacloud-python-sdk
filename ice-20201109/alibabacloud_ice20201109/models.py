@@ -1199,15 +1199,19 @@ class CreateEditingProjectRequest(TeaModel):
     def __init__(
         self,
         business_config: str = None,
+        clips_param: str = None,
         cover_url: str = None,
         description: str = None,
         material_maps: str = None,
         project_type: str = None,
+        template_id: str = None,
         timeline: str = None,
         title: str = None,
     ):
         # 工程业务配置。如果是直播剪辑工程必填OutputMediaConfig.StorageLocation,   Path 不填默认合成的直播片段存储在根路径下 OutputMediaTarget 不填默认oss-object，可以填vod-media 表示存储到vod  OutputMediaTarget 为vod-media 时，Path不生效。
         self.business_config = business_config
+        # 模板素材参数
+        self.clips_param = clips_param
         # 云剪辑工程封面
         self.cover_url = cover_url
         # 云剪辑工程描述
@@ -1216,6 +1220,8 @@ class CreateEditingProjectRequest(TeaModel):
         self.material_maps = material_maps
         # 剪辑工程类型，EditingProject: 普通剪辑工程；LiveEditingProject: 直播剪辑工程
         self.project_type = project_type
+        # 模板Id
+        self.template_id = template_id
         # 云剪辑工程时间线，Json格式
         self.timeline = timeline
         # 云剪辑工程标题
@@ -1232,6 +1238,8 @@ class CreateEditingProjectRequest(TeaModel):
         result = dict()
         if self.business_config is not None:
             result['BusinessConfig'] = self.business_config
+        if self.clips_param is not None:
+            result['ClipsParam'] = self.clips_param
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
         if self.description is not None:
@@ -1240,6 +1248,8 @@ class CreateEditingProjectRequest(TeaModel):
             result['MaterialMaps'] = self.material_maps
         if self.project_type is not None:
             result['ProjectType'] = self.project_type
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         if self.timeline is not None:
             result['Timeline'] = self.timeline
         if self.title is not None:
@@ -1250,6 +1260,8 @@ class CreateEditingProjectRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessConfig') is not None:
             self.business_config = m.get('BusinessConfig')
+        if m.get('ClipsParam') is not None:
+            self.clips_param = m.get('ClipsParam')
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
         if m.get('Description') is not None:
@@ -1258,6 +1270,8 @@ class CreateEditingProjectRequest(TeaModel):
             self.material_maps = m.get('MaterialMaps')
         if m.get('ProjectType') is not None:
             self.project_type = m.get('ProjectType')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         if m.get('Timeline') is not None:
             self.timeline = m.get('Timeline')
         if m.get('Title') is not None:
@@ -1270,6 +1284,7 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
         self,
         business_config: str = None,
         business_status: str = None,
+        clips_param: str = None,
         cover_url: str = None,
         create_source: str = None,
         create_time: str = None,
@@ -1281,6 +1296,7 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
         project_type: str = None,
         status: int = None,
         status_name: str = None,
+        template_id: str = None,
         template_type: str = None,
         timeline: str = None,
         title: str = None,
@@ -1289,6 +1305,8 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
         self.business_config = business_config
         # 业务状态，业务状态 /** 预约中 **/ RESERVING(0, "Reserving"), /** 预约取消 **/ RESERVATION_CANCELED(1, "ReservationCanceled"), /** 直播中 **/ BROADCASTING(3, "BroadCasting"), /** 加载失败 **/ LOADING_FAILED(4, "LoadingFailed"), /** 直播结束 **/ LIVE_FINISHED(5, "LiveFinished");
         self.business_status = business_status
+        # 模板素材参数
+        self.clips_param = clips_param
         # 云剪辑工程封面。
         self.cover_url = cover_url
         # 云剪辑工程创建方式  -OpenAPI  -AliyunConsole  -WebSDK -LiveEditingOpenAPI -LiveEditingConsole
@@ -1311,6 +1329,8 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
         self.status = status
         # 云剪辑状态名称，对应状态列表中状态名称。
         self.status_name = status_name
+        # 模板Id
+        self.template_id = template_id
         self.template_type = template_type
         # 云剪辑工程时间线，Json格式
         self.timeline = timeline
@@ -1330,6 +1350,8 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
             result['BusinessConfig'] = self.business_config
         if self.business_status is not None:
             result['BusinessStatus'] = self.business_status
+        if self.clips_param is not None:
+            result['ClipsParam'] = self.clips_param
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
         if self.create_source is not None:
@@ -1352,6 +1374,8 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
             result['Status'] = self.status
         if self.status_name is not None:
             result['StatusName'] = self.status_name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
         if self.timeline is not None:
@@ -1366,6 +1390,8 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
             self.business_config = m.get('BusinessConfig')
         if m.get('BusinessStatus') is not None:
             self.business_status = m.get('BusinessStatus')
+        if m.get('ClipsParam') is not None:
+            self.clips_param = m.get('ClipsParam')
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
         if m.get('CreateSource') is not None:
@@ -1388,6 +1414,8 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
             self.status = m.get('Status')
         if m.get('StatusName') is not None:
             self.status_name = m.get('StatusName')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
         if m.get('Timeline') is not None:
@@ -2260,6 +2288,7 @@ class GetEditingProjectResponseBodyProject(TeaModel):
         self,
         business_config: str = None,
         business_status: str = None,
+        clips_param: str = None,
         cover_url: str = None,
         create_source: str = None,
         create_time: str = None,
@@ -2270,12 +2299,15 @@ class GetEditingProjectResponseBodyProject(TeaModel):
         project_id: str = None,
         project_type: str = None,
         status: str = None,
+        template_id: str = None,
         template_type: str = None,
         timeline: str = None,
         title: str = None,
     ):
         self.business_config = business_config
         self.business_status = business_status
+        # 模板素材参数
+        self.clips_param = clips_param
         # 云剪辑工程封面
         self.cover_url = cover_url
         # 云剪辑工程创建来源
@@ -2295,6 +2327,8 @@ class GetEditingProjectResponseBodyProject(TeaModel):
         self.project_type = project_type
         # 云剪辑工程状态
         self.status = status
+        # 模板Id
+        self.template_id = template_id
         # 云剪辑工程模板类型
         self.template_type = template_type
         # 云剪辑工程时间线
@@ -2315,6 +2349,8 @@ class GetEditingProjectResponseBodyProject(TeaModel):
             result['BusinessConfig'] = self.business_config
         if self.business_status is not None:
             result['BusinessStatus'] = self.business_status
+        if self.clips_param is not None:
+            result['ClipsParam'] = self.clips_param
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
         if self.create_source is not None:
@@ -2335,6 +2371,8 @@ class GetEditingProjectResponseBodyProject(TeaModel):
             result['ProjectType'] = self.project_type
         if self.status is not None:
             result['Status'] = self.status
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
         if self.timeline is not None:
@@ -2349,6 +2387,8 @@ class GetEditingProjectResponseBodyProject(TeaModel):
             self.business_config = m.get('BusinessConfig')
         if m.get('BusinessStatus') is not None:
             self.business_status = m.get('BusinessStatus')
+        if m.get('ClipsParam') is not None:
+            self.clips_param = m.get('ClipsParam')
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
         if m.get('CreateSource') is not None:
@@ -2369,6 +2409,8 @@ class GetEditingProjectResponseBodyProject(TeaModel):
             self.project_type = m.get('ProjectType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
         if m.get('Timeline') is not None:
@@ -5227,6 +5269,113 @@ class GetTemplateResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTemplateMaterialsRequest(TeaModel):
+    def __init__(
+        self,
+        file_list: str = None,
+        template_id: str = None,
+    ):
+        # 所需文件列表
+        self.file_list = file_list
+        # 模板Id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_list is not None:
+            result['FileList'] = self.file_list
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileList') is not None:
+            self.file_list = m.get('FileList')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class GetTemplateMaterialsResponseBody(TeaModel):
+    def __init__(
+        self,
+        material_urls: str = None,
+        request_id: str = None,
+    ):
+        # 关联素材地址
+        self.material_urls = material_urls
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.material_urls is not None:
+            result['MaterialUrls'] = self.material_urls
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaterialUrls') is not None:
+            self.material_urls = m.get('MaterialUrls')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTemplateMaterialsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetTemplateMaterialsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetTemplateMaterialsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9139,6 +9288,7 @@ class SubmitMediaProducingJobRequest(TeaModel):
         self,
         client_token: str = None,
         clips_param: str = None,
+        editing_produce_config: str = None,
         output_media_config: str = None,
         output_media_target: str = None,
         project_id: str = None,
@@ -9150,6 +9300,7 @@ class SubmitMediaProducingJobRequest(TeaModel):
     ):
         self.client_token = client_token
         self.clips_param = clips_param
+        self.editing_produce_config = editing_produce_config
         self.output_media_config = output_media_config
         self.output_media_target = output_media_target
         self.project_id = project_id
@@ -9172,6 +9323,8 @@ class SubmitMediaProducingJobRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.clips_param is not None:
             result['ClipsParam'] = self.clips_param
+        if self.editing_produce_config is not None:
+            result['EditingProduceConfig'] = self.editing_produce_config
         if self.output_media_config is not None:
             result['OutputMediaConfig'] = self.output_media_config
         if self.output_media_target is not None:
@@ -9196,6 +9349,8 @@ class SubmitMediaProducingJobRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('ClipsParam') is not None:
             self.clips_param = m.get('ClipsParam')
+        if m.get('EditingProduceConfig') is not None:
+            self.editing_produce_config = m.get('EditingProduceConfig')
         if m.get('OutputMediaConfig') is not None:
             self.output_media_config = m.get('OutputMediaConfig')
         if m.get('OutputMediaTarget') is not None:
@@ -9222,15 +9377,18 @@ class SubmitMediaProducingJobResponseBody(TeaModel):
         media_id: str = None,
         project_id: str = None,
         request_id: str = None,
+        vod_media_id: str = None,
     ):
         # 合成作业Id
         self.job_id = job_id
-        # 合成媒资Id
+        # 合成ICE媒资Id
         self.media_id = media_id
         # 剪辑工程Id
         self.project_id = project_id
         # Id of the request
         self.request_id = request_id
+        # vod媒资id
+        self.vod_media_id = vod_media_id
 
     def validate(self):
         pass
@@ -9249,6 +9407,8 @@ class SubmitMediaProducingJobResponseBody(TeaModel):
             result['ProjectId'] = self.project_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.vod_media_id is not None:
+            result['VodMediaId'] = self.vod_media_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9261,6 +9421,8 @@ class SubmitMediaProducingJobResponseBody(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('VodMediaId') is not None:
+            self.vod_media_id = m.get('VodMediaId')
         return self
 
 
@@ -9579,19 +9741,25 @@ class UpdateEditingProjectRequest(TeaModel):
     def __init__(
         self,
         business_status: str = None,
+        clips_param: str = None,
         cover_url: str = None,
         description: str = None,
         project_id: str = None,
+        template_id: str = None,
         timeline: str = None,
         title: str = None,
     ):
         self.business_status = business_status
+        # 模板对应的素材参数
+        self.clips_param = clips_param
         # 云剪辑工程封面
         self.cover_url = cover_url
         # 云剪辑工程描述
         self.description = description
         # 云剪辑工程ID
         self.project_id = project_id
+        # 模板Id
+        self.template_id = template_id
         # 云剪辑工程时间线，Json格式
         self.timeline = timeline
         # 云剪辑工程标题
@@ -9608,12 +9776,16 @@ class UpdateEditingProjectRequest(TeaModel):
         result = dict()
         if self.business_status is not None:
             result['BusinessStatus'] = self.business_status
+        if self.clips_param is not None:
+            result['ClipsParam'] = self.clips_param
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
         if self.description is not None:
             result['Description'] = self.description
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         if self.timeline is not None:
             result['Timeline'] = self.timeline
         if self.title is not None:
@@ -9624,12 +9796,16 @@ class UpdateEditingProjectRequest(TeaModel):
         m = m or dict()
         if m.get('BusinessStatus') is not None:
             self.business_status = m.get('BusinessStatus')
+        if m.get('ClipsParam') is not None:
+            self.clips_param = m.get('ClipsParam')
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         if m.get('Timeline') is not None:
             self.timeline = m.get('Timeline')
         if m.get('Title') is not None:
@@ -9996,11 +10172,12 @@ class UpdateTemplateRequest(TeaModel):
         cover_url: str = None,
         name: str = None,
         preview_media: str = None,
+        related_mediaids: str = None,
         source: str = None,
         status: str = None,
         template_id: str = None,
     ):
-        # 参见Timeline模板Config文档
+        # 参见模板Config文档
         self.config = config
         # 模板封面
         self.cover_url = cover_url
@@ -10008,6 +10185,8 @@ class UpdateTemplateRequest(TeaModel):
         self.name = name
         # 预览视频媒资id
         self.preview_media = preview_media
+        # 模板相关素材，模板编辑器使用
+        self.related_mediaids = related_mediaids
         # 修改来源，默认OpenAPI
         self.source = source
         # 模板状态
@@ -10032,6 +10211,8 @@ class UpdateTemplateRequest(TeaModel):
             result['Name'] = self.name
         if self.preview_media is not None:
             result['PreviewMedia'] = self.preview_media
+        if self.related_mediaids is not None:
+            result['RelatedMediaids'] = self.related_mediaids
         if self.source is not None:
             result['Source'] = self.source
         if self.status is not None:
@@ -10050,6 +10231,8 @@ class UpdateTemplateRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('PreviewMedia') is not None:
             self.preview_media = m.get('PreviewMedia')
+        if m.get('RelatedMediaids') is not None:
+            self.related_mediaids = m.get('RelatedMediaids')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Status') is not None:
