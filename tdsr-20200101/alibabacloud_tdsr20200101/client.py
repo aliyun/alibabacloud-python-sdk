@@ -883,48 +883,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_hotspot_tag_with_options_async(request, runtime)
 
-    def get_job_with_options(
-        self,
-        request: tdsr_20200101_models.GetJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetJobResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetJobResponse(),
-            self.do_rpcrequest('GetJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_job_with_options_async(
-        self,
-        request: tdsr_20200101_models.GetJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.GetJobResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.GetJobResponse(),
-            await self.do_rpcrequest_async('GetJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_job(
-        self,
-        request: tdsr_20200101_models.GetJobRequest,
-    ) -> tdsr_20200101_models.GetJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_job_with_options(request, runtime)
-
-    async def get_job_async(
-        self,
-        request: tdsr_20200101_models.GetJobRequest,
-    ) -> tdsr_20200101_models.GetJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_job_with_options_async(request, runtime)
-
     def get_layout_data_with_options(
         self,
         request: tdsr_20200101_models.GetLayoutDataRequest,
@@ -1848,6 +1806,48 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PublishSceneResponse:
         runtime = util_models.RuntimeOptions()
         return await self.publish_scene_with_options_async(request, runtime)
+
+    def publish_status_with_options(
+        self,
+        request: tdsr_20200101_models.PublishStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.PublishStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.PublishStatusResponse(),
+            self.do_rpcrequest('PublishStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def publish_status_with_options_async(
+        self,
+        request: tdsr_20200101_models.PublishStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.PublishStatusResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.PublishStatusResponse(),
+            await self.do_rpcrequest_async('PublishStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def publish_status(
+        self,
+        request: tdsr_20200101_models.PublishStatusRequest,
+    ) -> tdsr_20200101_models.PublishStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.publish_status_with_options(request, runtime)
+
+    async def publish_status_async(
+        self,
+        request: tdsr_20200101_models.PublishStatusRequest,
+    ) -> tdsr_20200101_models.PublishStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_status_with_options_async(request, runtime)
 
     def recovery_origin_image_with_options(
         self,

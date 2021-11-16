@@ -2881,127 +2881,6 @@ class GetHotspotTagResponse(TeaModel):
         return self
 
 
-class GetJobRequest(TeaModel):
-    def __init__(
-        self,
-        instance_id: str = None,
-    ):
-        # 任务实例ID
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class GetJobResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: int = None,
-        message: str = None,
-        request_id: str = None,
-        status: int = None,
-        success: bool = None,
-    ):
-        # 返回码
-        self.code = code
-        # 错误消息
-        self.message = message
-        # 请求ID，与入参requestId对应
-        self.request_id = request_id
-        # 任务运行状态
-        self.status = status
-        # 是否请求成功
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetJobResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetJobResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetLayoutDataRequest(TeaModel):
     def __init__(
         self,
@@ -3683,13 +3562,11 @@ class GetSceneBuildTaskStatusResponseBody(TeaModel):
         code: int = None,
         error_code: str = None,
         error_msg: str = None,
-        id: str = None,
         message: str = None,
         request_id: str = None,
         scene_id: str = None,
         status: str = None,
         success: bool = None,
-        type: str = None,
     ):
         # 返回码
         self.code = code
@@ -3697,20 +3574,16 @@ class GetSceneBuildTaskStatusResponseBody(TeaModel):
         self.error_code = error_code
         # 任务失败错误消息
         self.error_msg = error_msg
-        # 任务ID
-        self.id = id
         # 错误消息
         self.message = message
         # 请求ID，与入参requestId对应
         self.request_id = request_id
         # 场景ID
         self.scene_id = scene_id
-        # 未开始  init 处理中 失败     failure   processing  完成     succeed 取消     canceled
+        # 未开始  init 处理中 失败     failed   processing  完成     succeed 取消     canceled
         self.status = status
         # 是否请求成功
         self.success = success
-        # 墙线预测: wall_line  切图: cut_image  重建: build  直角优化：right_angle_optimization 其他：other
-        self.type = type
 
     def validate(self):
         pass
@@ -3727,8 +3600,6 @@ class GetSceneBuildTaskStatusResponseBody(TeaModel):
             result['ErrorCode'] = self.error_code
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
-        if self.id is not None:
-            result['Id'] = self.id
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -3739,8 +3610,6 @@ class GetSceneBuildTaskStatusResponseBody(TeaModel):
             result['Status'] = self.status
         if self.success is not None:
             result['Success'] = self.success
-        if self.type is not None:
-            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -3751,8 +3620,6 @@ class GetSceneBuildTaskStatusResponseBody(TeaModel):
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -3763,8 +3630,6 @@ class GetSceneBuildTaskStatusResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('Success') is not None:
             self.success = m.get('Success')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         return self
 
 
@@ -6483,6 +6348,127 @@ class PublishSceneResponse(TeaModel):
         return self
 
 
+class PublishStatusRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+    ):
+        # 场景ID
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class PublishStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        # 返回码
+        self.code = code
+        # 错误消息
+        self.message = message
+        # 请求ID，与入参requestId对应
+        self.request_id = request_id
+        # 任务运行状态
+        self.status = status
+        # 是否请求成功
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PublishStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: PublishStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = PublishStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RecoveryOriginImageRequest(TeaModel):
     def __init__(
         self,
@@ -7352,22 +7338,22 @@ class TempPreviewResponseBody(TeaModel):
     def __init__(
         self,
         code: int = None,
-        key: str = None,
         message: str = None,
         preview_url: str = None,
         request_id: str = None,
+        scene_id: str = None,
         success: bool = None,
     ):
         # 返回码
         self.code = code
-        # 任务ID
-        self.key = key
         # 错误消息
         self.message = message
         # 预览链接
         self.preview_url = preview_url
         # 请求ID，与入参requestId对应
         self.request_id = request_id
+        # 场景ID
+        self.scene_id = scene_id
         # 是否请求成功
         self.success = success
 
@@ -7382,14 +7368,14 @@ class TempPreviewResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        if self.key is not None:
-            result['Key'] = self.key
         if self.message is not None:
             result['Message'] = self.message
         if self.preview_url is not None:
             result['PreviewUrl'] = self.preview_url
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -7398,14 +7384,14 @@ class TempPreviewResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('PreviewUrl') is not None:
             self.preview_url = m.get('PreviewUrl')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -7451,10 +7437,10 @@ class TempPreviewResponse(TeaModel):
 class TempPreviewStatusRequest(TeaModel):
     def __init__(
         self,
-        key: str = None,
+        scene_id: str = None,
     ):
         # 任务ID
-        self.key = key
+        self.scene_id = scene_id
 
     def validate(self):
         pass
@@ -7465,14 +7451,14 @@ class TempPreviewStatusRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
         return self
 
 
@@ -7491,7 +7477,7 @@ class TempPreviewStatusResponseBody(TeaModel):
         self.message = message
         # 请求ID，与入参requestId对应
         self.request_id = request_id
-        # processing：处理中 success：成功 failed：失败
+        # 状态标识
         self.status = status
         # 是否请求成功
         self.success = success
