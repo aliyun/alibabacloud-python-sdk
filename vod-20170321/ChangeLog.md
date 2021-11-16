@@ -1,3 +1,6 @@
+2021-11-16 Version: 2.16.3
+- Add parameter type HDRType.
+
 2021-11-02 Version: 2.16.0
 - Add API UploadStreamByURL.
 

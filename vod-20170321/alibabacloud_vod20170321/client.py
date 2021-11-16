@@ -6711,6 +6711,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_image_infos_with_options_async(request, runtime)
 
+    def update_stream_info_with_options(
+        self,
+        request: vod_20170321_models.UpdateStreamInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.UpdateStreamInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.UpdateStreamInfoResponse(),
+            self.do_rpcrequest('UpdateStreamInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def update_stream_info_with_options_async(
+        self,
+        request: vod_20170321_models.UpdateStreamInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.UpdateStreamInfoResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.UpdateStreamInfoResponse(),
+            await self.do_rpcrequest_async('UpdateStreamInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def update_stream_info(
+        self,
+        request: vod_20170321_models.UpdateStreamInfoRequest,
+    ) -> vod_20170321_models.UpdateStreamInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_stream_info_with_options(request, runtime)
+
+    async def update_stream_info_async(
+        self,
+        request: vod_20170321_models.UpdateStreamInfoRequest,
+    ) -> vod_20170321_models.UpdateStreamInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_stream_info_with_options_async(request, runtime)
+
     def update_transcode_template_group_with_options(
         self,
         request: vod_20170321_models.UpdateTranscodeTemplateGroupRequest,

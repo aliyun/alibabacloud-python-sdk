@@ -17558,6 +17558,7 @@ class GetMezzanineInfoResponseBodyMezzanineVideoStreamList(TeaModel):
         dar: str = None,
         duration: str = None,
         fps: str = None,
+        hdrtype: str = None,
         has_bframes: str = None,
         height: str = None,
         index: str = None,
@@ -17582,6 +17583,8 @@ class GetMezzanineInfoResponseBodyMezzanineVideoStreamList(TeaModel):
         self.dar = dar
         self.duration = duration
         self.fps = fps
+        # 视频流HDR类型
+        self.hdrtype = hdrtype
         self.has_bframes = has_bframes
         self.height = height
         self.index = index
@@ -17625,6 +17628,8 @@ class GetMezzanineInfoResponseBodyMezzanineVideoStreamList(TeaModel):
             result['Duration'] = self.duration
         if self.fps is not None:
             result['Fps'] = self.fps
+        if self.hdrtype is not None:
+            result['HDRType'] = self.hdrtype
         if self.has_bframes is not None:
             result['HasBFrames'] = self.has_bframes
         if self.height is not None:
@@ -17675,6 +17680,8 @@ class GetMezzanineInfoResponseBodyMezzanineVideoStreamList(TeaModel):
             self.duration = m.get('Duration')
         if m.get('Fps') is not None:
             self.fps = m.get('Fps')
+        if m.get('HDRType') is not None:
+            self.hdrtype = m.get('HDRType')
         if m.get('HasBFrames') is not None:
             self.has_bframes = m.get('HasBFrames')
         if m.get('Height') is not None:
@@ -17990,6 +17997,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         encrypt_type: str = None,
         format: str = None,
         fps: str = None,
+        hdrtype: str = None,
         height: int = None,
         job_id: str = None,
         modification_time: str = None,
@@ -18010,6 +18018,8 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         self.encrypt_type = encrypt_type
         self.format = format
         self.fps = fps
+        # 视频流HDR类型
+        self.hdrtype = hdrtype
         self.height = height
         self.job_id = job_id
         self.modification_time = modification_time
@@ -18047,6 +18057,8 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
             result['Format'] = self.format
         if self.fps is not None:
             result['Fps'] = self.fps
+        if self.hdrtype is not None:
+            result['HDRType'] = self.hdrtype
         if self.height is not None:
             result['Height'] = self.height
         if self.job_id is not None:
@@ -18089,6 +18101,8 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
             self.format = m.get('Format')
         if m.get('Fps') is not None:
             self.fps = m.get('Fps')
+        if m.get('HDRType') is not None:
+            self.hdrtype = m.get('HDRType')
         if m.get('Height') is not None:
             self.height = m.get('Height')
         if m.get('JobId') is not None:
@@ -20485,9 +20499,11 @@ class GetVideoListResponse(TeaModel):
 class GetVideoPlayAuthRequest(TeaModel):
     def __init__(
         self,
+        api_version: str = None,
         auth_info_timeout: int = None,
         video_id: str = None,
     ):
+        self.api_version = api_version
         self.auth_info_timeout = auth_info_timeout
         self.video_id = video_id
 
@@ -20500,6 +20516,8 @@ class GetVideoPlayAuthRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.api_version is not None:
+            result['ApiVersion'] = self.api_version
         if self.auth_info_timeout is not None:
             result['AuthInfoTimeout'] = self.auth_info_timeout
         if self.video_id is not None:
@@ -20508,6 +20526,8 @@ class GetVideoPlayAuthRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiVersion') is not None:
+            self.api_version = m.get('ApiVersion')
         if m.get('AuthInfoTimeout') is not None:
             self.auth_info_timeout = m.get('AuthInfoTimeout')
         if m.get('VideoId') is not None:
@@ -30964,6 +30984,105 @@ class UpdateImageInfosResponse(TeaModel):
         return self
 
 
+class UpdateStreamInfoRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        media_id: str = None,
+    ):
+        # 视频流ID
+        self.job_id = job_id
+        # 视频ID
+        self.media_id = media_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        return self
+
+
+class UpdateStreamInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateStreamInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateStreamInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateStreamInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateTranscodeTemplateGroupRequest(TeaModel):
     def __init__(
         self,
@@ -31880,12 +31999,15 @@ class UploadStreamByURLRequest(TeaModel):
         self,
         definition: str = None,
         file_extension: str = None,
+        hdrtype: str = None,
         media_id: str = None,
         stream_url: str = None,
         user_data: str = None,
     ):
         self.definition = definition
         self.file_extension = file_extension
+        # 视频流HDR类型
+        self.hdrtype = hdrtype
         self.media_id = media_id
         self.stream_url = stream_url
         self.user_data = user_data
@@ -31903,6 +32025,8 @@ class UploadStreamByURLRequest(TeaModel):
             result['Definition'] = self.definition
         if self.file_extension is not None:
             result['FileExtension'] = self.file_extension
+        if self.hdrtype is not None:
+            result['HDRType'] = self.hdrtype
         if self.media_id is not None:
             result['MediaId'] = self.media_id
         if self.stream_url is not None:
@@ -31917,6 +32041,8 @@ class UploadStreamByURLRequest(TeaModel):
             self.definition = m.get('Definition')
         if m.get('FileExtension') is not None:
             self.file_extension = m.get('FileExtension')
+        if m.get('HDRType') is not None:
+            self.hdrtype = m.get('HDRType')
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
         if m.get('StreamURL') is not None:
