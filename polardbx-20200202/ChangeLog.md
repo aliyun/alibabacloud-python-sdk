@@ -1,3 +1,6 @@
+2021-11-17 Version: 1.0.4
+- Fixed some bugs.
+
 2021-11-02 Version: 1.0.3
 - Fix some problem.
 

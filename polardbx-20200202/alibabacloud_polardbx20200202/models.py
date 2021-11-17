@@ -1035,269 +1035,6 @@ class CreateDBInstanceResponse(TeaModel):
         return self
 
 
-class CreatePolarxInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        client_token: str = None,
-        description: str = None,
-        duration: int = None,
-        instance_series: str = None,
-        is_auto_renew: bool = None,
-        master_inst_id: str = None,
-        my_sqlversion: int = None,
-        pay_type: str = None,
-        pricing_cycle: str = None,
-        quantity: int = None,
-        region_id: str = None,
-        specification: str = None,
-        type: str = None,
-        vpc_id: str = None,
-        vswitch_id: str = None,
-        zone_id: str = None,
-        is_ha: bool = None,
-    ):
-        self.client_token = client_token
-        self.description = description
-        self.duration = duration
-        self.instance_series = instance_series
-        self.is_auto_renew = is_auto_renew
-        self.master_inst_id = master_inst_id
-        self.my_sqlversion = my_sqlversion
-        self.pay_type = pay_type
-        self.pricing_cycle = pricing_cycle
-        self.quantity = quantity
-        self.region_id = region_id
-        self.specification = specification
-        self.type = type
-        self.vpc_id = vpc_id
-        self.vswitch_id = vswitch_id
-        self.zone_id = zone_id
-        self.is_ha = is_ha
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.instance_series is not None:
-            result['InstanceSeries'] = self.instance_series
-        if self.is_auto_renew is not None:
-            result['IsAutoRenew'] = self.is_auto_renew
-        if self.master_inst_id is not None:
-            result['MasterInstId'] = self.master_inst_id
-        if self.my_sqlversion is not None:
-            result['MySQLVersion'] = self.my_sqlversion
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
-        if self.pricing_cycle is not None:
-            result['PricingCycle'] = self.pricing_cycle
-        if self.quantity is not None:
-            result['Quantity'] = self.quantity
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.specification is not None:
-            result['Specification'] = self.specification
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
-        if self.vswitch_id is not None:
-            result['VswitchId'] = self.vswitch_id
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-        if self.is_ha is not None:
-            result['isHa'] = self.is_ha
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('InstanceSeries') is not None:
-            self.instance_series = m.get('InstanceSeries')
-        if m.get('IsAutoRenew') is not None:
-            self.is_auto_renew = m.get('IsAutoRenew')
-        if m.get('MasterInstId') is not None:
-            self.master_inst_id = m.get('MasterInstId')
-        if m.get('MySQLVersion') is not None:
-            self.my_sqlversion = m.get('MySQLVersion')
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
-        if m.get('PricingCycle') is not None:
-            self.pricing_cycle = m.get('PricingCycle')
-        if m.get('Quantity') is not None:
-            self.quantity = m.get('Quantity')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Specification') is not None:
-            self.specification = m.get('Specification')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
-        if m.get('VswitchId') is not None:
-            self.vswitch_id = m.get('VswitchId')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-        if m.get('isHa') is not None:
-            self.is_ha = m.get('isHa')
-        return self
-
-
-class CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList(TeaModel):
-    def __init__(
-        self,
-        drds_instance_id_list: List[str] = None,
-    ):
-        self.drds_instance_id_list = drds_instance_id_list
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.drds_instance_id_list is not None:
-            result['drdsInstanceIdList'] = self.drds_instance_id_list
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('drdsInstanceIdList') is not None:
-            self.drds_instance_id_list = m.get('drdsInstanceIdList')
-        return self
-
-
-class CreatePolarxInstanceResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        drds_instance_id_list: CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList = None,
-        order_id: int = None,
-    ):
-        self.drds_instance_id_list = drds_instance_id_list
-        self.order_id = order_id
-
-    def validate(self):
-        if self.drds_instance_id_list:
-            self.drds_instance_id_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.drds_instance_id_list is not None:
-            result['DrdsInstanceIdList'] = self.drds_instance_id_list.to_map()
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DrdsInstanceIdList') is not None:
-            temp_model = CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList()
-            self.drds_instance_id_list = temp_model.from_map(m['DrdsInstanceIdList'])
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-        return self
-
-
-class CreatePolarxInstanceResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: CreatePolarxInstanceResponseBodyData = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = CreatePolarxInstanceResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class CreatePolarxInstanceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CreatePolarxInstanceResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CreatePolarxInstanceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreatePolarxOrderRequest(TeaModel):
     def __init__(
         self,
@@ -2963,14 +2700,12 @@ class DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs(TeaModel):
         type: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
-        vpc_instance_id: str = None,
     ):
         self.connection_string = connection_string
         self.port = port
         self.type = type
         self.vpcid = vpcid
         self.v_switch_id = v_switch_id
-        self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
         pass
@@ -2991,8 +2726,6 @@ class DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs(TeaModel):
             result['VPCId'] = self.vpcid
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
-        if self.vpc_instance_id is not None:
-            result['VpcInstanceId'] = self.vpc_instance_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3007,8 +2740,6 @@ class DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs(TeaModel):
             self.vpcid = m.get('VPCId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
-        if m.get('VpcInstanceId') is not None:
-            self.vpc_instance_id = m.get('VpcInstanceId')
         return self
 
 
@@ -4597,6 +4328,7 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         character_type: str = None,
         dbinstance_name: str = None,
         dbnode_ids: str = None,
+        dbnode_role: str = None,
         end_time: str = None,
         key: str = None,
         region_id: str = None,
@@ -4605,6 +4337,7 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         self.character_type = character_type
         self.dbinstance_name = dbinstance_name
         self.dbnode_ids = dbnode_ids
+        self.dbnode_role = dbnode_role
         self.end_time = end_time
         self.key = key
         self.region_id = region_id
@@ -4625,6 +4358,8 @@ class DescribeDBNodePerformanceRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.dbnode_ids is not None:
             result['DBNodeIds'] = self.dbnode_ids
+        if self.dbnode_role is not None:
+            result['DBNodeRole'] = self.dbnode_role
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.key is not None:
@@ -4643,6 +4378,8 @@ class DescribeDBNodePerformanceRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('DBNodeIds') is not None:
             self.dbnode_ids = m.get('DBNodeIds')
+        if m.get('DBNodeRole') is not None:
+            self.dbnode_role = m.get('DBNodeRole')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Key') is not None:
@@ -6275,288 +6012,6 @@ class DescribePolarxDbInstancesResponse(TeaModel):
         return self
 
 
-class DescribePolarxPgInstancesRequest(TeaModel):
-    def __init__(
-        self,
-        page_number: int = None,
-        page_size: int = None,
-        region_id: str = None,
-        resource_group_id: str = None,
-    ):
-        self.page_number = page_number
-        self.page_size = page_size
-        self.region_id = region_id
-        self.resource_group_id = resource_group_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        return self
-
-
-class DescribePolarxPgInstancesResponseBodyDBInstances(TeaModel):
-    def __init__(
-        self,
-        commodity_code: str = None,
-        create_time: str = None,
-        dbtype: str = None,
-        dbversion: str = None,
-        description: str = None,
-        engine: str = None,
-        expire_time: str = None,
-        expired: bool = None,
-        id: str = None,
-        lock_mode: str = None,
-        lock_reason: str = None,
-        network: str = None,
-        node_class: str = None,
-        node_count: int = None,
-        pay_type: str = None,
-        region_id: str = None,
-        status: str = None,
-        storage_used: int = None,
-        vpcid: str = None,
-        zone_id: str = None,
-    ):
-        self.commodity_code = commodity_code
-        self.create_time = create_time
-        self.dbtype = dbtype
-        self.dbversion = dbversion
-        self.description = description
-        self.engine = engine
-        self.expire_time = expire_time
-        self.expired = expired
-        self.id = id
-        self.lock_mode = lock_mode
-        self.lock_reason = lock_reason
-        self.network = network
-        self.node_class = node_class
-        self.node_count = node_count
-        self.pay_type = pay_type
-        self.region_id = region_id
-        self.status = status
-        self.storage_used = storage_used
-        self.vpcid = vpcid
-        self.zone_id = zone_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.commodity_code is not None:
-            result['CommodityCode'] = self.commodity_code
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.dbtype is not None:
-            result['DBType'] = self.dbtype
-        if self.dbversion is not None:
-            result['DBVersion'] = self.dbversion
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.engine is not None:
-            result['Engine'] = self.engine
-        if self.expire_time is not None:
-            result['ExpireTime'] = self.expire_time
-        if self.expired is not None:
-            result['Expired'] = self.expired
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.lock_mode is not None:
-            result['LockMode'] = self.lock_mode
-        if self.lock_reason is not None:
-            result['LockReason'] = self.lock_reason
-        if self.network is not None:
-            result['Network'] = self.network
-        if self.node_class is not None:
-            result['NodeClass'] = self.node_class
-        if self.node_count is not None:
-            result['NodeCount'] = self.node_count
-        if self.pay_type is not None:
-            result['PayType'] = self.pay_type
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.storage_used is not None:
-            result['StorageUsed'] = self.storage_used
-        if self.vpcid is not None:
-            result['VPCId'] = self.vpcid
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CommodityCode') is not None:
-            self.commodity_code = m.get('CommodityCode')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('DBType') is not None:
-            self.dbtype = m.get('DBType')
-        if m.get('DBVersion') is not None:
-            self.dbversion = m.get('DBVersion')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Engine') is not None:
-            self.engine = m.get('Engine')
-        if m.get('ExpireTime') is not None:
-            self.expire_time = m.get('ExpireTime')
-        if m.get('Expired') is not None:
-            self.expired = m.get('Expired')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('LockMode') is not None:
-            self.lock_mode = m.get('LockMode')
-        if m.get('LockReason') is not None:
-            self.lock_reason = m.get('LockReason')
-        if m.get('Network') is not None:
-            self.network = m.get('Network')
-        if m.get('NodeClass') is not None:
-            self.node_class = m.get('NodeClass')
-        if m.get('NodeCount') is not None:
-            self.node_count = m.get('NodeCount')
-        if m.get('PayType') is not None:
-            self.pay_type = m.get('PayType')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('StorageUsed') is not None:
-            self.storage_used = m.get('StorageUsed')
-        if m.get('VPCId') is not None:
-            self.vpcid = m.get('VPCId')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-        return self
-
-
-class DescribePolarxPgInstancesResponseBody(TeaModel):
-    def __init__(
-        self,
-        dbinstances: List[DescribePolarxPgInstancesResponseBodyDBInstances] = None,
-        expire_date: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-    ):
-        self.dbinstances = dbinstances
-        self.expire_date = expire_date
-        self.page_number = page_number
-        self.page_size = page_size
-        self.request_id = request_id
-
-    def validate(self):
-        if self.dbinstances:
-            for k in self.dbinstances:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['DBInstances'] = []
-        if self.dbinstances is not None:
-            for k in self.dbinstances:
-                result['DBInstances'].append(k.to_map() if k else None)
-        if self.expire_date is not None:
-            result['ExpireDate'] = self.expire_date
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.dbinstances = []
-        if m.get('DBInstances') is not None:
-            for k in m.get('DBInstances'):
-                temp_model = DescribePolarxPgInstancesResponseBodyDBInstances()
-                self.dbinstances.append(temp_model.from_map(k))
-        if m.get('ExpireDate') is not None:
-            self.expire_date = m.get('ExpireDate')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribePolarxPgInstancesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribePolarxPgInstancesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribePolarxPgInstancesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeRegionsResponseBodyRegionsRegionZonesZone(TeaModel):
     def __init__(
         self,
@@ -7115,6 +6570,215 @@ class DescribeSecurityIpsResponse(TeaModel):
         return self
 
 
+class DescribeTableDetailRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        db_name: str = None,
+        region_id: str = None,
+        table_name: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.db_name = db_name
+        self.region_id = region_id
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DescribeTableDetailResponseBodyDataFields(TeaModel):
+    def __init__(
+        self,
+        column: str = None,
+        data_type: str = None,
+        extra: str = None,
+        key: str = None,
+    ):
+        self.column = column
+        self.data_type = data_type
+        self.extra = extra
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.extra is not None:
+            result['Extra'] = self.extra
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
+class DescribeTableDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        fields: List[DescribeTableDetailResponseBodyDataFields] = None,
+    ):
+        self.fields = fields
+
+    def validate(self):
+        if self.fields:
+            for k in self.fields:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Fields'] = []
+        if self.fields is not None:
+            for k in self.fields:
+                result['Fields'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.fields = []
+        if m.get('Fields') is not None:
+            for k in m.get('Fields'):
+                temp_model = DescribeTableDetailResponseBodyDataFields()
+                self.fields.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeTableDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeTableDetailResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeTableDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeTableDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeTableDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeTableDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeTasksRequest(TeaModel):
     def __init__(
         self,
@@ -7128,8 +6792,6 @@ class DescribeTasksRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         start_time: str = None,
-        status: str = None,
-        task_action: str = None,
     ):
         self.dbinstance_id = dbinstance_id
         self.end_time = end_time
@@ -7141,8 +6803,6 @@ class DescribeTasksRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.start_time = start_time
-        self.status = status
-        self.task_action = task_action
 
     def validate(self):
         pass
@@ -7173,10 +6833,6 @@ class DescribeTasksRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.task_action is not None:
-            result['TaskAction'] = self.task_action
         return result
 
     def from_map(self, m: dict = None):
@@ -7201,10 +6857,6 @@ class DescribeTasksRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('TaskAction') is not None:
-            self.task_action = m.get('TaskAction')
         return self
 
 
@@ -7519,6 +7171,272 @@ class DescribeUserEncryptionKeyListResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeUserEncryptionKeyListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableRightsSeparationRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        dba_account_name: str = None,
+        dba_account_password: str = None,
+        region_id: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.dba_account_name = dba_account_name
+        self.dba_account_password = dba_account_password
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.dba_account_name is not None:
+            result['DbaAccountName'] = self.dba_account_name
+        if self.dba_account_password is not None:
+            result['DbaAccountPassword'] = self.dba_account_password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DbaAccountName') is not None:
+            self.dba_account_name = m.get('DbaAccountName')
+        if m.get('DbaAccountPassword') is not None:
+            self.dba_account_password = m.get('DbaAccountPassword')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DisableRightsSeparationResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DisableRightsSeparationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DisableRightsSeparationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DisableRightsSeparationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableRightsSeparationRequest(TeaModel):
+    def __init__(
+        self,
+        audit_account_description: str = None,
+        audit_account_name: str = None,
+        audit_account_password: str = None,
+        dbinstance_name: str = None,
+        region_id: str = None,
+        security_account_description: str = None,
+        security_account_name: str = None,
+        security_account_password: str = None,
+    ):
+        self.audit_account_description = audit_account_description
+        self.audit_account_name = audit_account_name
+        self.audit_account_password = audit_account_password
+        self.dbinstance_name = dbinstance_name
+        self.region_id = region_id
+        self.security_account_description = security_account_description
+        self.security_account_name = security_account_name
+        self.security_account_password = security_account_password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_account_description is not None:
+            result['AuditAccountDescription'] = self.audit_account_description
+        if self.audit_account_name is not None:
+            result['AuditAccountName'] = self.audit_account_name
+        if self.audit_account_password is not None:
+            result['AuditAccountPassword'] = self.audit_account_password
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_account_description is not None:
+            result['SecurityAccountDescription'] = self.security_account_description
+        if self.security_account_name is not None:
+            result['SecurityAccountName'] = self.security_account_name
+        if self.security_account_password is not None:
+            result['SecurityAccountPassword'] = self.security_account_password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditAccountDescription') is not None:
+            self.audit_account_description = m.get('AuditAccountDescription')
+        if m.get('AuditAccountName') is not None:
+            self.audit_account_name = m.get('AuditAccountName')
+        if m.get('AuditAccountPassword') is not None:
+            self.audit_account_password = m.get('AuditAccountPassword')
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityAccountDescription') is not None:
+            self.security_account_description = m.get('SecurityAccountDescription')
+        if m.get('SecurityAccountName') is not None:
+            self.security_account_name = m.get('SecurityAccountName')
+        if m.get('SecurityAccountPassword') is not None:
+            self.security_account_password = m.get('SecurityAccountPassword')
+        return self
+
+
+class EnableRightsSeparationResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EnableRightsSeparationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: EnableRightsSeparationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = EnableRightsSeparationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8129,6 +8047,145 @@ class ModifyAccountDescriptionResponse(TeaModel):
         return self
 
 
+class ModifyAccountPrivilegeRequest(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        account_privilege: str = None,
+        dbinstance_name: str = None,
+        db_name: str = None,
+        region_id: str = None,
+        security_account_name: str = None,
+        security_account_password: str = None,
+    ):
+        self.account_name = account_name
+        self.account_privilege = account_privilege
+        self.dbinstance_name = dbinstance_name
+        self.db_name = db_name
+        self.region_id = region_id
+        self.security_account_name = security_account_name
+        self.security_account_password = security_account_password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.account_privilege is not None:
+            result['AccountPrivilege'] = self.account_privilege
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_account_name is not None:
+            result['SecurityAccountName'] = self.security_account_name
+        if self.security_account_password is not None:
+            result['SecurityAccountPassword'] = self.security_account_password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('AccountPrivilege') is not None:
+            self.account_privilege = m.get('AccountPrivilege')
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityAccountName') is not None:
+            self.security_account_name = m.get('SecurityAccountName')
+        if m.get('SecurityAccountPassword') is not None:
+            self.security_account_password = m.get('SecurityAccountPassword')
+        return self
+
+
+class ModifyAccountPrivilegeResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyAccountPrivilegeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyAccountPrivilegeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyAccountPrivilegeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBInstanceClassRequest(TeaModel):
     def __init__(
         self,
@@ -8452,6 +8509,115 @@ class ModifyDBInstanceDescriptionResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ModifyDBInstanceDescriptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDBInstanceMaintainTimeRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dbinstance_name: str = None,
+        maintain_time: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dbinstance_name = dbinstance_name
+        self.maintain_time = maintain_time
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.maintain_time is not None:
+            result['MaintainTime'] = self.maintain_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('MaintainTime') is not None:
+            self.maintain_time = m.get('MaintainTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyDBInstanceMaintainTimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBInstanceMaintainTimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyDBInstanceMaintainTimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyDBInstanceMaintainTimeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8942,6 +9108,139 @@ class ReleaseInstancePublicConnectionResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ReleaseInstancePublicConnectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResetAccountPasswordRequest(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        account_password: str = None,
+        dbinstance_name: str = None,
+        region_id: str = None,
+        security_account_name: str = None,
+        security_account_password: str = None,
+    ):
+        self.account_name = account_name
+        self.account_password = account_password
+        self.dbinstance_name = dbinstance_name
+        self.region_id = region_id
+        self.security_account_name = security_account_name
+        self.security_account_password = security_account_password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.account_password is not None:
+            result['AccountPassword'] = self.account_password
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_account_name is not None:
+            result['SecurityAccountName'] = self.security_account_name
+        if self.security_account_password is not None:
+            result['SecurityAccountPassword'] = self.security_account_password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('AccountPassword') is not None:
+            self.account_password = m.get('AccountPassword')
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityAccountName') is not None:
+            self.security_account_name = m.get('SecurityAccountName')
+        if m.get('SecurityAccountPassword') is not None:
+            self.security_account_password = m.get('SecurityAccountPassword')
+        return self
+
+
+class ResetAccountPasswordResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ResetAccountPasswordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ResetAccountPasswordResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ResetAccountPasswordResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9727,13 +10026,9 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
         self,
         dbinstance_name: str = None,
         region_id: str = None,
-        switch_time: str = None,
-        upgrade_time: str = None,
     ):
         self.dbinstance_name = dbinstance_name
         self.region_id = region_id
-        self.switch_time = switch_time
-        self.upgrade_time = upgrade_time
 
     def validate(self):
         pass
@@ -9748,10 +10043,6 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.switch_time is not None:
-            result['SwitchTime'] = self.switch_time
-        if self.upgrade_time is not None:
-            result['UpgradeTime'] = self.upgrade_time
         return result
 
     def from_map(self, m: dict = None):
@@ -9760,10 +10051,6 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SwitchTime') is not None:
-            self.switch_time = m.get('SwitchTime')
-        if m.get('UpgradeTime') is not None:
-            self.upgrade_time = m.get('UpgradeTime')
         return self
 
 
