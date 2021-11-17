@@ -135,6 +135,8 @@ class Client(OpenApiClient):
             body['DatasetList'] = request.dataset_list
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.environments):
+            body['Environments'] = request.environments
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_url):
@@ -172,6 +174,8 @@ class Client(OpenApiClient):
             body['DatasetList'] = request.dataset_list
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.environments):
+            body['Environments'] = request.environments
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_url):
@@ -1007,6 +1011,60 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('GetUserResourceStatus', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/users/resourceStatus', 'json', req, runtime)
         )
 
+    def get_user_special_version_gpu_resource_info(
+        self,
+        request: pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoRequest,
+    ) -> pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_user_special_version_gpu_resource_info_with_options(request, headers, runtime)
+
+    async def get_user_special_version_gpu_resource_info_async(
+        self,
+        request: pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoRequest,
+    ) -> pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_user_special_version_gpu_resource_info_with_options_async(request, headers, runtime)
+
+    def get_user_special_version_gpu_resource_info_with_options(
+        self,
+        request: pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoResponse(),
+            self.do_roarequest('GetUserSpecialVersionGpuResourceInfo', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/users/specialVersionGpuResourceInfo', 'json', req, runtime)
+        )
+
+    async def get_user_special_version_gpu_resource_info_with_options_async(
+        self,
+        request: pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.GetUserSpecialVersionGpuResourceInfoResponse(),
+            await self.do_roarequest_async('GetUserSpecialVersionGpuResourceInfo', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/users/specialVersionGpuResourceInfo', 'json', req, runtime)
+        )
+
     def list_configs(self) -> pai_dsw_20210226_models.ListConfigsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1657,6 +1715,42 @@ class Client(OpenApiClient):
             await self.do_roarequest_async('ListNetworkVpcs', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/network/vpcs', 'json', req, runtime)
         )
 
+    def list_regions(self) -> pai_dsw_20210226_models.ListRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_regions_with_options(headers, runtime)
+
+    async def list_regions_async(self) -> pai_dsw_20210226_models.ListRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_regions_with_options_async(headers, runtime)
+
+    def list_regions_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.ListRegionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.ListRegionsResponse(),
+            self.do_roarequest('ListRegions', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/configs/regions', 'json', req, runtime)
+        )
+
+    async def list_regions_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.ListRegionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.ListRegionsResponse(),
+            await self.do_roarequest_async('ListRegions', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/configs/regions', 'json', req, runtime)
+        )
+
     def list_repositories(
         self,
         namespace: str,
@@ -1701,6 +1795,96 @@ class Client(OpenApiClient):
         return TeaCore.from_map(
             pai_dsw_20210226_models.ListRepositoriesResponse(),
             await self.do_roarequest_async('ListRepositories', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/imageRegistry/namespaces/{namespace}/repositories', 'json', req, runtime)
+        )
+
+    def list_user_clusters(self) -> pai_dsw_20210226_models.ListUserClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_user_clusters_with_options(headers, runtime)
+
+    async def list_user_clusters_async(self) -> pai_dsw_20210226_models.ListUserClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_user_clusters_with_options_async(headers, runtime)
+
+    def list_user_clusters_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.ListUserClustersResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.ListUserClustersResponse(),
+            self.do_roarequest('ListUserClusters', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/users/clusters', 'json', req, runtime)
+        )
+
+    async def list_user_clusters_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.ListUserClustersResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.ListUserClustersResponse(),
+            await self.do_roarequest_async('ListUserClusters', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/users/clusters', 'json', req, runtime)
+        )
+
+    def list_user_work_nodes(
+        self,
+        request: pai_dsw_20210226_models.ListUserWorkNodesRequest,
+    ) -> pai_dsw_20210226_models.ListUserWorkNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_user_work_nodes_with_options(request, headers, runtime)
+
+    async def list_user_work_nodes_async(
+        self,
+        request: pai_dsw_20210226_models.ListUserWorkNodesRequest,
+    ) -> pai_dsw_20210226_models.ListUserWorkNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_user_work_nodes_with_options_async(request, headers, runtime)
+
+    def list_user_work_nodes_with_options(
+        self,
+        request: pai_dsw_20210226_models.ListUserWorkNodesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.ListUserWorkNodesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.ListUserWorkNodesResponse(),
+            self.do_roarequest('ListUserWorkNodes', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/users/workerNodes', 'json', req, runtime)
+        )
+
+    async def list_user_work_nodes_with_options_async(
+        self,
+        request: pai_dsw_20210226_models.ListUserWorkNodesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20210226_models.ListUserWorkNodesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        return TeaCore.from_map(
+            pai_dsw_20210226_models.ListUserWorkNodesResponse(),
+            await self.do_roarequest_async('ListUserWorkNodes', '2021-02-26', 'HTTPS', 'GET', 'AK', f'/api/v1/users/workerNodes', 'json', req, runtime)
         )
 
     def start_instance(
