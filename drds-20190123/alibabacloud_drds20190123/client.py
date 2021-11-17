@@ -2382,6 +2382,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_drds_db_rds_name_list_with_options_async(request, runtime)
 
+    def describe_drds_db_spec_and_price_with_options(
+        self,
+        request: drds_20190123_models.DescribeDrdsDbSpecAndPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> drds_20190123_models.DescribeDrdsDbSpecAndPriceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbSpecAndPriceResponse(),
+            self.do_rpcrequest('DescribeDrdsDbSpecAndPrice', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_drds_db_spec_and_price_with_options_async(
+        self,
+        request: drds_20190123_models.DescribeDrdsDbSpecAndPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> drds_20190123_models.DescribeDrdsDbSpecAndPriceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            drds_20190123_models.DescribeDrdsDbSpecAndPriceResponse(),
+            await self.do_rpcrequest_async('DescribeDrdsDbSpecAndPrice', '2019-01-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_drds_db_spec_and_price(
+        self,
+        request: drds_20190123_models.DescribeDrdsDbSpecAndPriceRequest,
+    ) -> drds_20190123_models.DescribeDrdsDbSpecAndPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_drds_db_spec_and_price_with_options(request, runtime)
+
+    async def describe_drds_db_spec_and_price_async(
+        self,
+        request: drds_20190123_models.DescribeDrdsDbSpecAndPriceRequest,
+    ) -> drds_20190123_models.DescribeDrdsDbSpecAndPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_drds_db_spec_and_price_with_options_async(request, runtime)
+
     def describe_drds_db_tasks_with_options(
         self,
         request: drds_20190123_models.DescribeDrdsDbTasksRequest,

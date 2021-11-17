@@ -10684,6 +10684,574 @@ class DescribeDrdsDbRdsNameListResponse(TeaModel):
         return self
 
 
+class DescribeDrdsDbSpecAndPriceRequest(TeaModel):
+    def __init__(
+        self,
+        dbname: str = None,
+        drds_instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.dbname = dbname
+        self.drds_instance_id = drds_instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
+        if self.drds_instance_id is not None:
+            result['DrdsInstanceId'] = self.drds_instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
+        if m.get('DrdsInstanceId') is not None:
+            self.drds_instance_id = m.get('DrdsInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        discount_price: float = None,
+        original_price: float = None,
+        trade_price: float = None,
+    ):
+        self.currency = currency
+        self.discount_price = discount_price
+        self.original_price = original_price
+        self.trade_price = trade_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.discount_price is not None:
+            result['DiscountPrice'] = self.discount_price
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DiscountPrice') is not None:
+            self.discount_price = m.get('DiscountPrice')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        return self
+
+
+class DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance(TeaModel):
+    def __init__(
+        self,
+        drds_instance_id: str = None,
+        inst_role: str = None,
+        instance_series: str = None,
+        instance_spec: str = None,
+        machine_type: str = None,
+        network_type: str = None,
+        product_version: str = None,
+        protocol_type: int = None,
+        region_id: str = None,
+        status: str = None,
+        type: str = None,
+        version_action: str = None,
+        vpc_cloud_instance_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.drds_instance_id = drds_instance_id
+        self.inst_role = inst_role
+        self.instance_series = instance_series
+        self.instance_spec = instance_spec
+        self.machine_type = machine_type
+        self.network_type = network_type
+        self.product_version = product_version
+        self.protocol_type = protocol_type
+        self.region_id = region_id
+        self.status = status
+        self.type = type
+        self.version_action = version_action
+        self.vpc_cloud_instance_id = vpc_cloud_instance_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drds_instance_id is not None:
+            result['DrdsInstanceId'] = self.drds_instance_id
+        if self.inst_role is not None:
+            result['InstRole'] = self.inst_role
+        if self.instance_series is not None:
+            result['InstanceSeries'] = self.instance_series
+        if self.instance_spec is not None:
+            result['InstanceSpec'] = self.instance_spec
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.product_version is not None:
+            result['ProductVersion'] = self.product_version
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version_action is not None:
+            result['VersionAction'] = self.version_action
+        if self.vpc_cloud_instance_id is not None:
+            result['VpcCloudInstanceId'] = self.vpc_cloud_instance_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DrdsInstanceId') is not None:
+            self.drds_instance_id = m.get('DrdsInstanceId')
+        if m.get('InstRole') is not None:
+            self.inst_role = m.get('InstRole')
+        if m.get('InstanceSeries') is not None:
+            self.instance_series = m.get('InstanceSeries')
+        if m.get('InstanceSpec') is not None:
+            self.instance_spec = m.get('InstanceSpec')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('ProductVersion') is not None:
+            self.product_version = m.get('ProductVersion')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('VersionAction') is not None:
+            self.version_action = m.get('VersionAction')
+        if m.get('VpcCloudInstanceId') is not None:
+            self.vpc_cloud_instance_id = m.get('VpcCloudInstanceId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice(TeaModel):
+    def __init__(
+        self,
+        coupons: str = None,
+        currency: str = None,
+        discount_price: float = None,
+        original_price: float = None,
+        rule_ids: List[str] = None,
+        trade_price: float = None,
+    ):
+        self.coupons = coupons
+        self.currency = currency
+        self.discount_price = discount_price
+        self.original_price = original_price
+        self.rule_ids = rule_ids
+        self.trade_price = trade_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupons is not None:
+            result['Coupons'] = self.coupons
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.discount_price is not None:
+            result['DiscountPrice'] = self.discount_price
+        if self.original_price is not None:
+            result['OriginalPrice'] = self.original_price
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
+        if self.trade_price is not None:
+            result['TradePrice'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Coupons') is not None:
+            self.coupons = m.get('Coupons')
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DiscountPrice') is not None:
+            self.discount_price = m.get('DiscountPrice')
+        if m.get('OriginalPrice') is not None:
+            self.original_price = m.get('OriginalPrice')
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
+        if m.get('TradePrice') is not None:
+            self.trade_price = m.get('TradePrice')
+        return self
+
+
+class DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance(TeaModel):
+    def __init__(
+        self,
+        connect_url: str = None,
+        dbinst_type: str = None,
+        dbinstance_cpu: str = None,
+        dbinstance_class: str = None,
+        dbinstance_class_type: str = None,
+        dbinstance_description: str = None,
+        dbinstance_id: str = None,
+        dbinstance_memory: int = None,
+        dbinstance_status: int = None,
+        dbinstance_storage: int = None,
+        dbinstance_storage_type: str = None,
+        engine: str = None,
+        engine_version: str = None,
+        expire_time: str = None,
+        network_type: str = None,
+        pay_type: str = None,
+        port: int = None,
+        rdsinst_type: str = None,
+        read_weight: int = None,
+        region_id: str = None,
+        remain_days: int = None,
+        zone_id: str = None,
+    ):
+        self.connect_url = connect_url
+        self.dbinst_type = dbinst_type
+        self.dbinstance_cpu = dbinstance_cpu
+        self.dbinstance_class = dbinstance_class
+        self.dbinstance_class_type = dbinstance_class_type
+        self.dbinstance_description = dbinstance_description
+        self.dbinstance_id = dbinstance_id
+        self.dbinstance_memory = dbinstance_memory
+        self.dbinstance_status = dbinstance_status
+        self.dbinstance_storage = dbinstance_storage
+        self.dbinstance_storage_type = dbinstance_storage_type
+        self.engine = engine
+        self.engine_version = engine_version
+        self.expire_time = expire_time
+        self.network_type = network_type
+        self.pay_type = pay_type
+        self.port = port
+        self.rdsinst_type = rdsinst_type
+        self.read_weight = read_weight
+        self.region_id = region_id
+        self.remain_days = remain_days
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_url is not None:
+            result['ConnectUrl'] = self.connect_url
+        if self.dbinst_type is not None:
+            result['DBInstType'] = self.dbinst_type
+        if self.dbinstance_cpu is not None:
+            result['DBInstanceCPU'] = self.dbinstance_cpu
+        if self.dbinstance_class is not None:
+            result['DBInstanceClass'] = self.dbinstance_class
+        if self.dbinstance_class_type is not None:
+            result['DBInstanceClassType'] = self.dbinstance_class_type
+        if self.dbinstance_description is not None:
+            result['DBInstanceDescription'] = self.dbinstance_description
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dbinstance_memory is not None:
+            result['DBInstanceMemory'] = self.dbinstance_memory
+        if self.dbinstance_status is not None:
+            result['DBInstanceStatus'] = self.dbinstance_status
+        if self.dbinstance_storage is not None:
+            result['DBInstanceStorage'] = self.dbinstance_storage
+        if self.dbinstance_storage_type is not None:
+            result['DBInstanceStorageType'] = self.dbinstance_storage_type
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.rdsinst_type is not None:
+            result['RDSInstType'] = self.rdsinst_type
+        if self.read_weight is not None:
+            result['ReadWeight'] = self.read_weight
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remain_days is not None:
+            result['RemainDays'] = self.remain_days
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectUrl') is not None:
+            self.connect_url = m.get('ConnectUrl')
+        if m.get('DBInstType') is not None:
+            self.dbinst_type = m.get('DBInstType')
+        if m.get('DBInstanceCPU') is not None:
+            self.dbinstance_cpu = m.get('DBInstanceCPU')
+        if m.get('DBInstanceClass') is not None:
+            self.dbinstance_class = m.get('DBInstanceClass')
+        if m.get('DBInstanceClassType') is not None:
+            self.dbinstance_class_type = m.get('DBInstanceClassType')
+        if m.get('DBInstanceDescription') is not None:
+            self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DBInstanceMemory') is not None:
+            self.dbinstance_memory = m.get('DBInstanceMemory')
+        if m.get('DBInstanceStatus') is not None:
+            self.dbinstance_status = m.get('DBInstanceStatus')
+        if m.get('DBInstanceStorage') is not None:
+            self.dbinstance_storage = m.get('DBInstanceStorage')
+        if m.get('DBInstanceStorageType') is not None:
+            self.dbinstance_storage_type = m.get('DBInstanceStorageType')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RDSInstType') is not None:
+            self.rdsinst_type = m.get('RDSInstType')
+        if m.get('ReadWeight') is not None:
+            self.read_weight = m.get('ReadWeight')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemainDays') is not None:
+            self.remain_days = m.get('RemainDays')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices(TeaModel):
+    def __init__(
+        self,
+        rds_price: DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice = None,
+        storage_instance: DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance = None,
+    ):
+        self.rds_price = rds_price
+        self.storage_instance = storage_instance
+
+    def validate(self):
+        if self.rds_price:
+            self.rds_price.validate()
+        if self.storage_instance:
+            self.storage_instance.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rds_price is not None:
+            result['RdsPrice'] = self.rds_price.to_map()
+        if self.storage_instance is not None:
+            result['StorageInstance'] = self.storage_instance.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RdsPrice') is not None:
+            temp_model = DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice()
+            self.rds_price = temp_model.from_map(m['RdsPrice'])
+        if m.get('StorageInstance') is not None:
+            temp_model = DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance()
+            self.storage_instance = temp_model.from_map(m['StorageInstance'])
+        return self
+
+
+class DescribeDrdsDbSpecAndPriceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        drds_db_price: DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice = None,
+        drds_instance: DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance = None,
+        rds_instance_specs_and_prices: List[DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices] = None,
+    ):
+        self.drds_db_price = drds_db_price
+        self.drds_instance = drds_instance
+        self.rds_instance_specs_and_prices = rds_instance_specs_and_prices
+
+    def validate(self):
+        if self.drds_db_price:
+            self.drds_db_price.validate()
+        if self.drds_instance:
+            self.drds_instance.validate()
+        if self.rds_instance_specs_and_prices:
+            for k in self.rds_instance_specs_and_prices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drds_db_price is not None:
+            result['DrdsDbPrice'] = self.drds_db_price.to_map()
+        if self.drds_instance is not None:
+            result['DrdsInstance'] = self.drds_instance.to_map()
+        result['RdsInstanceSpecsAndPrices'] = []
+        if self.rds_instance_specs_and_prices is not None:
+            for k in self.rds_instance_specs_and_prices:
+                result['RdsInstanceSpecsAndPrices'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DrdsDbPrice') is not None:
+            temp_model = DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice()
+            self.drds_db_price = temp_model.from_map(m['DrdsDbPrice'])
+        if m.get('DrdsInstance') is not None:
+            temp_model = DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance()
+            self.drds_instance = temp_model.from_map(m['DrdsInstance'])
+        self.rds_instance_specs_and_prices = []
+        if m.get('RdsInstanceSpecsAndPrices') is not None:
+            for k in m.get('RdsInstanceSpecsAndPrices'):
+                temp_model = DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices()
+                self.rds_instance_specs_and_prices.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDrdsDbSpecAndPriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeDrdsDbSpecAndPriceResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeDrdsDbSpecAndPriceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDrdsDbSpecAndPriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDrdsDbSpecAndPriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDrdsDbSpecAndPriceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDrdsDbTasksRequest(TeaModel):
     def __init__(
         self,
@@ -13193,10 +13761,14 @@ class DescribeDrdsShardingDbsRequest(TeaModel):
         db_name: str = None,
         db_name_pattern: str = None,
         drds_instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
     ):
         self.db_name = db_name
         self.db_name_pattern = db_name_pattern
         self.drds_instance_id = drds_instance_id
+        self.page_number = page_number
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -13213,6 +13785,10 @@ class DescribeDrdsShardingDbsRequest(TeaModel):
             result['DbNamePattern'] = self.db_name_pattern
         if self.drds_instance_id is not None:
             result['DrdsInstanceId'] = self.drds_instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
@@ -13223,6 +13799,10 @@ class DescribeDrdsShardingDbsRequest(TeaModel):
             self.db_name_pattern = m.get('DbNamePattern')
         if m.get('DrdsInstanceId') is not None:
             self.drds_instance_id = m.get('DrdsInstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
@@ -13363,13 +13943,19 @@ class DescribeDrdsShardingDbsResponseBodyShardingDbs(TeaModel):
 class DescribeDrdsShardingDbsResponseBody(TeaModel):
     def __init__(
         self,
+        page_number: str = None,
+        page_size: str = None,
         request_id: str = None,
         sharding_dbs: DescribeDrdsShardingDbsResponseBodyShardingDbs = None,
         success: bool = None,
+        total: str = None,
     ):
+        self.page_number = page_number
+        self.page_size = page_size
         self.request_id = request_id
         self.sharding_dbs = sharding_dbs
         self.success = success
+        self.total = total
 
     def validate(self):
         if self.sharding_dbs:
@@ -13381,16 +13967,26 @@ class DescribeDrdsShardingDbsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.sharding_dbs is not None:
             result['ShardingDbs'] = self.sharding_dbs.to_map()
         if self.success is not None:
             result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ShardingDbs') is not None:
@@ -13398,6 +13994,8 @@ class DescribeDrdsShardingDbsResponseBody(TeaModel):
             self.sharding_dbs = temp_model.from_map(m['ShardingDbs'])
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
         return self
 
 
