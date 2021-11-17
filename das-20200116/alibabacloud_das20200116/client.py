@@ -1429,6 +1429,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_running_sql_concurrency_control_rules_with_options_async(request, runtime)
 
+    def get_sql_concurrency_control_keywords_from_sql_text_with_options(
+        self,
+        request: das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse(),
+            self.do_rpcrequest('GetSqlConcurrencyControlKeywordsFromSqlText', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def get_sql_concurrency_control_keywords_from_sql_text_with_options_async(
+        self,
+        request: das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse(),
+            await self.do_rpcrequest_async('GetSqlConcurrencyControlKeywordsFromSqlText', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def get_sql_concurrency_control_keywords_from_sql_text(
+        self,
+        request: das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextRequest,
+    ) -> das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sql_concurrency_control_keywords_from_sql_text_with_options(request, runtime)
+
+    async def get_sql_concurrency_control_keywords_from_sql_text_async(
+        self,
+        request: das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextRequest,
+    ) -> das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sql_concurrency_control_keywords_from_sql_text_with_options_async(request, runtime)
+
     def get_sql_concurrency_control_rules_history_with_options(
         self,
         request: das20200116_models.GetSqlConcurrencyControlRulesHistoryRequest,
