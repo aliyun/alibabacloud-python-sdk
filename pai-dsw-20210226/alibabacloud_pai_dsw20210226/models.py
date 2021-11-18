@@ -5235,7 +5235,7 @@ class ListNetworkSecurityGroupsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        security_groups: List[List[SecurityGroup]] = None,
+        security_groups: List[SecurityGroup] = None,
     ):
         # Id of the request
         self.request_id = request_id
@@ -5245,9 +5245,8 @@ class ListNetworkSecurityGroupsResponseBody(TeaModel):
     def validate(self):
         if self.security_groups:
             for k in self.security_groups:
-                for k1 in k:
-                    if k1:
-                        k1.validate()
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5260,10 +5259,7 @@ class ListNetworkSecurityGroupsResponseBody(TeaModel):
         result['SecurityGroups'] = []
         if self.security_groups is not None:
             for k in self.security_groups:
-                l1 = []
-                for k1 in k:
-                    l1.append(k1.to_map() if k1 else None)
-                result['securityGroups'].append(l1)
+                result['SecurityGroups'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5273,11 +5269,8 @@ class ListNetworkSecurityGroupsResponseBody(TeaModel):
         self.security_groups = []
         if m.get('SecurityGroups') is not None:
             for k in m.get('SecurityGroups'):
-                l1 = []
-                for k1 in k:
-                    temp_model = SecurityGroup()
-                    l1.append(temp_model.from_map(k1))
-                self.security_groups.append(l1)
+                temp_model = SecurityGroup()
+                self.security_groups.append(temp_model.from_map(k))
         return self
 
 
