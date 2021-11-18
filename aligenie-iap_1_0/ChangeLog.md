@@ -1,3 +1,6 @@
+2021-11-18 Version: 1.0.15
+- SDK upgrade.
+
 2021-09-17 Version: 0.0.3
 - Support PushNotifications.
 - Support WakeUpApp.
