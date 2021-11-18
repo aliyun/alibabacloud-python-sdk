@@ -3109,6 +3109,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_indexes_with_options_async(request, runtime)
 
+    def list_instance_login_audit_log_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListInstanceLoginAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse(),
+            self.do_rpcrequest('ListInstanceLoginAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_instance_login_audit_log_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListInstanceLoginAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse(),
+            await self.do_rpcrequest_async('ListInstanceLoginAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_instance_login_audit_log(
+        self,
+        request: dms_enterprise_20181101_models.ListInstanceLoginAuditLogRequest,
+    ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_login_audit_log_with_options(request, runtime)
+
+    async def list_instance_login_audit_log_async(
+        self,
+        request: dms_enterprise_20181101_models.ListInstanceLoginAuditLogRequest,
+    ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_login_audit_log_with_options_async(request, runtime)
+
     def list_instance_user_permissions_with_options(
         self,
         request: dms_enterprise_20181101_models.ListInstanceUserPermissionsRequest,
@@ -3402,6 +3444,48 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_proxy_accesses_with_options_async(request, runtime)
+
+    def list_proxy_sqlexec_audit_log_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListProxySQLExecAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse(),
+            self.do_rpcrequest('ListProxySQLExecAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_proxy_sqlexec_audit_log_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListProxySQLExecAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse(),
+            await self.do_rpcrequest_async('ListProxySQLExecAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_proxy_sqlexec_audit_log(
+        self,
+        request: dms_enterprise_20181101_models.ListProxySQLExecAuditLogRequest,
+    ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_proxy_sqlexec_audit_log_with_options(request, runtime)
+
+    async def list_proxy_sqlexec_audit_log_async(
+        self,
+        request: dms_enterprise_20181101_models.ListProxySQLExecAuditLogRequest,
+    ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_proxy_sqlexec_audit_log_with_options_async(request, runtime)
 
     def list_sqlexec_audit_log_with_options(
         self,

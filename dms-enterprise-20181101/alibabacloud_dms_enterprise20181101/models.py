@@ -8884,6 +8884,7 @@ class GetOpLogResponseBodyOpLogDetailsOpLogDetail(TeaModel):
         module: str = None,
         op_content: str = None,
         op_time: str = None,
+        op_user_id: int = None,
         order_id: int = None,
         user_id: str = None,
         user_nick: str = None,
@@ -8892,6 +8893,7 @@ class GetOpLogResponseBodyOpLogDetailsOpLogDetail(TeaModel):
         self.module = module
         self.op_content = op_content
         self.op_time = op_time
+        self.op_user_id = op_user_id
         self.order_id = order_id
         self.user_id = user_id
         self.user_nick = user_nick
@@ -8913,6 +8915,8 @@ class GetOpLogResponseBodyOpLogDetailsOpLogDetail(TeaModel):
             result['OpContent'] = self.op_content
         if self.op_time is not None:
             result['OpTime'] = self.op_time
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         if self.user_id is not None:
@@ -8931,6 +8935,8 @@ class GetOpLogResponseBodyOpLogDetailsOpLogDetail(TeaModel):
             self.op_content = m.get('OpContent')
         if m.get('OpTime') is not None:
             self.op_time = m.get('OpTime')
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         if m.get('UserId') is not None:
@@ -16196,6 +16202,263 @@ class ListIndexesResponse(TeaModel):
         return self
 
 
+class ListInstanceLoginAuditLogRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        op_user_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        search_name: str = None,
+        start_time: str = None,
+        tid: int = None,
+    ):
+        self.end_time = end_time
+        self.op_user_name = op_user_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_name = search_name
+        self.start_time = start_time
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.op_user_name is not None:
+            result['OpUserName'] = self.op_user_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_name is not None:
+            result['SearchName'] = self.search_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OpUserName') is not None:
+            self.op_user_name = m.get('OpUserName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchName') is not None:
+            self.search_name = m.get('SearchName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog(TeaModel):
+    def __init__(
+        self,
+        db_user: str = None,
+        instance_id: int = None,
+        instance_name: str = None,
+        op_time: str = None,
+        request_ip: str = None,
+        user_id: int = None,
+        user_name: str = None,
+    ):
+        self.db_user = db_user
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.op_time = op_time
+        self.request_ip = request_ip
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_user is not None:
+            result['DbUser'] = self.db_user
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.op_time is not None:
+            result['OpTime'] = self.op_time
+        if self.request_ip is not None:
+            result['RequestIp'] = self.request_ip
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbUser') is not None:
+            self.db_user = m.get('DbUser')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('OpTime') is not None:
+            self.op_time = m.get('OpTime')
+        if m.get('RequestIp') is not None:
+            self.request_ip = m.get('RequestIp')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList(TeaModel):
+    def __init__(
+        self,
+        instance_login_audit_log: List[ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog] = None,
+    ):
+        self.instance_login_audit_log = instance_login_audit_log
+
+    def validate(self):
+        if self.instance_login_audit_log:
+            for k in self.instance_login_audit_log:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceLoginAuditLog'] = []
+        if self.instance_login_audit_log is not None:
+            for k in self.instance_login_audit_log:
+                result['InstanceLoginAuditLog'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_login_audit_log = []
+        if m.get('InstanceLoginAuditLog') is not None:
+            for k in m.get('InstanceLoginAuditLog'):
+                temp_model = ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog()
+                self.instance_login_audit_log.append(temp_model.from_map(k))
+        return self
+
+
+class ListInstanceLoginAuditLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        instance_login_audit_log_list: ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.instance_login_audit_log_list = instance_login_audit_log_list
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.instance_login_audit_log_list:
+            self.instance_login_audit_log_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.instance_login_audit_log_list is not None:
+            result['InstanceLoginAuditLogList'] = self.instance_login_audit_log_list.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('InstanceLoginAuditLogList') is not None:
+            temp_model = ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList()
+            self.instance_login_audit_log_list = temp_model.from_map(m['InstanceLoginAuditLogList'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListInstanceLoginAuditLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListInstanceLoginAuditLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListInstanceLoginAuditLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListInstanceUserPermissionsRequest(TeaModel):
     def __init__(
         self,
@@ -18314,6 +18577,305 @@ class ListProxyAccessesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListProxyAccessesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProxySQLExecAuditLogRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        exec_state: str = None,
+        op_user_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sqltype: str = None,
+        search_name: str = None,
+        start_time: int = None,
+        tid: int = None,
+    ):
+        self.end_time = end_time
+        self.exec_state = exec_state
+        self.op_user_name = op_user_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sqltype = sqltype
+        self.search_name = search_name
+        self.start_time = start_time
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.exec_state is not None:
+            result['ExecState'] = self.exec_state
+        if self.op_user_name is not None:
+            result['OpUserName'] = self.op_user_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sqltype is not None:
+            result['SQLType'] = self.sqltype
+        if self.search_name is not None:
+            result['SearchName'] = self.search_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecState') is not None:
+            self.exec_state = m.get('ExecState')
+        if m.get('OpUserName') is not None:
+            self.op_user_name = m.get('OpUserName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SQLType') is not None:
+            self.sqltype = m.get('SQLType')
+        if m.get('SearchName') is not None:
+            self.search_name = m.get('SearchName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog(TeaModel):
+    def __init__(
+        self,
+        affect_rows: int = None,
+        elapsed_time: int = None,
+        exec_state: str = None,
+        instance_id: int = None,
+        instance_name: str = None,
+        op_time: str = None,
+        remark: str = None,
+        sql: str = None,
+        sqltype: str = None,
+        schema_name: str = None,
+        user_id: int = None,
+        user_name: str = None,
+    ):
+        self.affect_rows = affect_rows
+        self.elapsed_time = elapsed_time
+        self.exec_state = exec_state
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.op_time = op_time
+        self.remark = remark
+        self.sql = sql
+        self.sqltype = sqltype
+        self.schema_name = schema_name
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.affect_rows is not None:
+            result['AffectRows'] = self.affect_rows
+        if self.elapsed_time is not None:
+            result['ElapsedTime'] = self.elapsed_time
+        if self.exec_state is not None:
+            result['ExecState'] = self.exec_state
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.op_time is not None:
+            result['OpTime'] = self.op_time
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.sql is not None:
+            result['SQL'] = self.sql
+        if self.sqltype is not None:
+            result['SQLType'] = self.sqltype
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AffectRows') is not None:
+            self.affect_rows = m.get('AffectRows')
+        if m.get('ElapsedTime') is not None:
+            self.elapsed_time = m.get('ElapsedTime')
+        if m.get('ExecState') is not None:
+            self.exec_state = m.get('ExecState')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('OpTime') is not None:
+            self.op_time = m.get('OpTime')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SQL') is not None:
+            self.sql = m.get('SQL')
+        if m.get('SQLType') is not None:
+            self.sqltype = m.get('SQLType')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList(TeaModel):
+    def __init__(
+        self,
+        proxy_sqlexec_audit_log: List[ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog] = None,
+    ):
+        self.proxy_sqlexec_audit_log = proxy_sqlexec_audit_log
+
+    def validate(self):
+        if self.proxy_sqlexec_audit_log:
+            for k in self.proxy_sqlexec_audit_log:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ProxySQLExecAuditLog'] = []
+        if self.proxy_sqlexec_audit_log is not None:
+            for k in self.proxy_sqlexec_audit_log:
+                result['ProxySQLExecAuditLog'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.proxy_sqlexec_audit_log = []
+        if m.get('ProxySQLExecAuditLog') is not None:
+            for k in m.get('ProxySQLExecAuditLog'):
+                temp_model = ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog()
+                self.proxy_sqlexec_audit_log.append(temp_model.from_map(k))
+        return self
+
+
+class ListProxySQLExecAuditLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        proxy_sqlexec_audit_log_list: ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.proxy_sqlexec_audit_log_list = proxy_sqlexec_audit_log_list
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.proxy_sqlexec_audit_log_list:
+            self.proxy_sqlexec_audit_log_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.proxy_sqlexec_audit_log_list is not None:
+            result['ProxySQLExecAuditLogList'] = self.proxy_sqlexec_audit_log_list.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ProxySQLExecAuditLogList') is not None:
+            temp_model = ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList()
+            self.proxy_sqlexec_audit_log_list = temp_model.from_map(m['ProxySQLExecAuditLogList'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListProxySQLExecAuditLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListProxySQLExecAuditLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListProxySQLExecAuditLogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
