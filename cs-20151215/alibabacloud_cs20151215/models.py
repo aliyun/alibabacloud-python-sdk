@@ -776,6 +776,7 @@ class CreateClusterRequest(TeaModel):
         keep_instance_name: bool = None,
         key_pair: str = None,
         kubernetes_version: str = None,
+        load_balancer_spec: str = None,
         logging_type: str = None,
         login_password: str = None,
         master_auto_renew: bool = None,
@@ -883,6 +884,8 @@ class CreateClusterRequest(TeaModel):
         self.key_pair = key_pair
         # 集群版本
         self.kubernetes_version = kubernetes_version
+        # 负载均衡规格
+        self.load_balancer_spec = load_balancer_spec
         # ASK 集群开启日志服务
         self.logging_type = logging_type
         # SSH登录密码。密码规则为8~30 个字符，且至少同时包含三项（大小写字母、数字和特殊符号），和key_pair二选一。
@@ -1073,6 +1076,8 @@ class CreateClusterRequest(TeaModel):
             result['key_pair'] = self.key_pair
         if self.kubernetes_version is not None:
             result['kubernetes_version'] = self.kubernetes_version
+        if self.load_balancer_spec is not None:
+            result['load_balancer_spec'] = self.load_balancer_spec
         if self.logging_type is not None:
             result['logging_type'] = self.logging_type
         if self.login_password is not None:
@@ -1248,6 +1253,8 @@ class CreateClusterRequest(TeaModel):
             self.key_pair = m.get('key_pair')
         if m.get('kubernetes_version') is not None:
             self.kubernetes_version = m.get('kubernetes_version')
+        if m.get('load_balancer_spec') is not None:
+            self.load_balancer_spec = m.get('load_balancer_spec')
         if m.get('logging_type') is not None:
             self.logging_type = m.get('logging_type')
         if m.get('login_password') is not None:
@@ -1522,6 +1529,62 @@ class CreateClusterNodePoolRequestAutoScaling(TeaModel):
         return self
 
 
+class CreateClusterNodePoolRequestInterconnectConfig(TeaModel):
+    def __init__(
+        self,
+        bandwidth: int = None,
+        ccn_id: str = None,
+        ccn_region_id: str = None,
+        cen_id: str = None,
+        improved_period: str = None,
+    ):
+        # 边缘增强型节点池的网络带宽，单位M。
+        self.bandwidth = bandwidth
+        # 边缘增强型节点池绑定的云连接网实例ID(CCNID)
+        self.ccn_id = ccn_id
+        # 边缘增强型节点池绑定的云连接网实例所属的区域
+        self.ccn_region_id = ccn_region_id
+        # 边缘增强型节点池绑定的云企业网实例ID(CENID)
+        self.cen_id = cen_id
+        # 边缘增强型节点池的购买时长，单位月
+        self.improved_period = improved_period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['bandwidth'] = self.bandwidth
+        if self.ccn_id is not None:
+            result['ccn_id'] = self.ccn_id
+        if self.ccn_region_id is not None:
+            result['ccn_region_id'] = self.ccn_region_id
+        if self.cen_id is not None:
+            result['cen_id'] = self.cen_id
+        if self.improved_period is not None:
+            result['improved_period'] = self.improved_period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bandwidth') is not None:
+            self.bandwidth = m.get('bandwidth')
+        if m.get('ccn_id') is not None:
+            self.ccn_id = m.get('ccn_id')
+        if m.get('ccn_region_id') is not None:
+            self.ccn_region_id = m.get('ccn_region_id')
+        if m.get('cen_id') is not None:
+            self.cen_id = m.get('cen_id')
+        if m.get('improved_period') is not None:
+            self.improved_period = m.get('improved_period')
+        return self
+
+
 class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
     def __init__(
         self,
@@ -1707,11 +1770,14 @@ class CreateClusterNodePoolRequestNodepoolInfo(TeaModel):
         self,
         name: str = None,
         resource_group_id: str = None,
+        type: str = None,
     ):
         # 节点池名称
         self.name = name
         # 资源组ID。
         self.resource_group_id = resource_group_id
+        # 节点池类型，对于边缘节点池来说，类型为"edge"
+        self.type = type
 
     def validate(self):
         pass
@@ -1726,6 +1792,8 @@ class CreateClusterNodePoolRequestNodepoolInfo(TeaModel):
             result['name'] = self.name
         if self.resource_group_id is not None:
             result['resource_group_id'] = self.resource_group_id
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -1734,6 +1802,8 @@ class CreateClusterNodePoolRequestNodepoolInfo(TeaModel):
             self.name = m.get('name')
         if m.get('resource_group_id') is not None:
             self.resource_group_id = m.get('resource_group_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
@@ -2104,8 +2174,11 @@ class CreateClusterNodePoolRequest(TeaModel):
         self,
         auto_scaling: CreateClusterNodePoolRequestAutoScaling = None,
         count: int = None,
+        interconnect_config: CreateClusterNodePoolRequestInterconnectConfig = None,
+        interconnect_mode: str = None,
         kubernetes_config: CreateClusterNodePoolRequestKubernetesConfig = None,
         management: CreateClusterNodePoolRequestManagement = None,
+        max_nodes: int = None,
         nodepool_info: CreateClusterNodePoolRequestNodepoolInfo = None,
         scaling_group: CreateClusterNodePoolRequestScalingGroup = None,
         tee_config: CreateClusterNodePoolRequestTeeConfig = None,
@@ -2114,10 +2187,16 @@ class CreateClusterNodePoolRequest(TeaModel):
         self.auto_scaling = auto_scaling
         # 节点数量。
         self.count = count
+        # 边缘节点池网络相关的配置。该值只对edge类型的节点池有意义
+        self.interconnect_config = interconnect_config
+        # 边缘节点池的网络类型。basic：基础型；improved：增强型。该值只对edge类型的节点池有意义。
+        self.interconnect_mode = interconnect_mode
         # 集群配置
         self.kubernetes_config = kubernetes_config
         # 托管节点池配置。
         self.management = management
+        # 边缘节点池允许容纳的最大节点数量. 节点池内可以容纳的最大节点数量，该参数大于等于0。0表示无额外限制(仅受限于集群整体可以容纳的节点数，节点池本身无额外限制)。边缘节点池该参数值往往大于0；ess类型节点池和默认的edge类型节点池该参数值为0
+        self.max_nodes = max_nodes
         # 节点池配置
         self.nodepool_info = nodepool_info
         # 伸缩组配置
@@ -2128,6 +2207,8 @@ class CreateClusterNodePoolRequest(TeaModel):
     def validate(self):
         if self.auto_scaling:
             self.auto_scaling.validate()
+        if self.interconnect_config:
+            self.interconnect_config.validate()
         if self.kubernetes_config:
             self.kubernetes_config.validate()
         if self.management:
@@ -2149,10 +2230,16 @@ class CreateClusterNodePoolRequest(TeaModel):
             result['auto_scaling'] = self.auto_scaling.to_map()
         if self.count is not None:
             result['count'] = self.count
+        if self.interconnect_config is not None:
+            result['interconnect_config'] = self.interconnect_config.to_map()
+        if self.interconnect_mode is not None:
+            result['interconnect_mode'] = self.interconnect_mode
         if self.kubernetes_config is not None:
             result['kubernetes_config'] = self.kubernetes_config.to_map()
         if self.management is not None:
             result['management'] = self.management.to_map()
+        if self.max_nodes is not None:
+            result['max_nodes'] = self.max_nodes
         if self.nodepool_info is not None:
             result['nodepool_info'] = self.nodepool_info.to_map()
         if self.scaling_group is not None:
@@ -2168,12 +2255,19 @@ class CreateClusterNodePoolRequest(TeaModel):
             self.auto_scaling = temp_model.from_map(m['auto_scaling'])
         if m.get('count') is not None:
             self.count = m.get('count')
+        if m.get('interconnect_config') is not None:
+            temp_model = CreateClusterNodePoolRequestInterconnectConfig()
+            self.interconnect_config = temp_model.from_map(m['interconnect_config'])
+        if m.get('interconnect_mode') is not None:
+            self.interconnect_mode = m.get('interconnect_mode')
         if m.get('kubernetes_config') is not None:
             temp_model = CreateClusterNodePoolRequestKubernetesConfig()
             self.kubernetes_config = temp_model.from_map(m['kubernetes_config'])
         if m.get('management') is not None:
             temp_model = CreateClusterNodePoolRequestManagement()
             self.management = temp_model.from_map(m['management'])
+        if m.get('max_nodes') is not None:
+            self.max_nodes = m.get('max_nodes')
         if m.get('nodepool_info') is not None:
             temp_model = CreateClusterNodePoolRequestNodepoolInfo()
             self.nodepool_info = temp_model.from_map(m['nodepool_info'])
@@ -4500,6 +4594,62 @@ class DescribeClusterNodePoolDetailResponseBodyAutoScaling(TeaModel):
         return self
 
 
+class DescribeClusterNodePoolDetailResponseBodyInterconnectConfig(TeaModel):
+    def __init__(
+        self,
+        bandwidth: int = None,
+        ccn_id: str = None,
+        ccn_region_id: str = None,
+        cen_id: str = None,
+        improved_period: str = None,
+    ):
+        # 边缘增强型节点池的网络带宽，单位M
+        self.bandwidth = bandwidth
+        # 边缘增强型节点池绑定的云连接网实例ID(CCNID)
+        self.ccn_id = ccn_id
+        # 边缘增强型节点池绑定的云连接网实例所属的区域
+        self.ccn_region_id = ccn_region_id
+        # 边缘增强型节点池绑定的云企业网实例ID(CENID)
+        self.cen_id = cen_id
+        # 边缘增强型节点池的购买时长，单位月
+        self.improved_period = improved_period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['bandwidth'] = self.bandwidth
+        if self.ccn_id is not None:
+            result['ccn_id'] = self.ccn_id
+        if self.ccn_region_id is not None:
+            result['ccn_region_id'] = self.ccn_region_id
+        if self.cen_id is not None:
+            result['cen_id'] = self.cen_id
+        if self.improved_period is not None:
+            result['improved_period'] = self.improved_period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bandwidth') is not None:
+            self.bandwidth = m.get('bandwidth')
+        if m.get('ccn_id') is not None:
+            self.ccn_id = m.get('ccn_id')
+        if m.get('ccn_region_id') is not None:
+            self.ccn_region_id = m.get('ccn_region_id')
+        if m.get('cen_id') is not None:
+            self.cen_id = m.get('cen_id')
+        if m.get('improved_period') is not None:
+            self.improved_period = m.get('improved_period')
+        return self
+
+
 class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
     def __init__(
         self,
@@ -5172,8 +5322,11 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
     def __init__(
         self,
         auto_scaling: DescribeClusterNodePoolDetailResponseBodyAutoScaling = None,
+        interconnect_config: DescribeClusterNodePoolDetailResponseBodyInterconnectConfig = None,
+        interconnect_mode: str = None,
         kubernetes_config: DescribeClusterNodePoolDetailResponseBodyKubernetesConfig = None,
         management: DescribeClusterNodePoolDetailResponseBodyManagement = None,
+        max_nodes: int = None,
         nodepool_info: DescribeClusterNodePoolDetailResponseBodyNodepoolInfo = None,
         scaling_group: DescribeClusterNodePoolDetailResponseBodyScalingGroup = None,
         status: DescribeClusterNodePoolDetailResponseBodyStatus = None,
@@ -5181,10 +5334,16 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
     ):
         # 节点池自动伸缩信息。
         self.auto_scaling = auto_scaling
+        # 边缘节点池网络相关的配置。该值只对edge类型的节点池有意义
+        self.interconnect_config = interconnect_config
+        # 边缘节点池的网络类型。basic：基础型；improved：增强型。该值只对edge类型的节点池有意义
+        self.interconnect_mode = interconnect_mode
         # 节点池所属集群配置。
         self.kubernetes_config = kubernetes_config
         # 托管版节点池配置。
         self.management = management
+        # 边缘节点池允许容纳的最大节点数量. 节点池内可以容纳的最大节点数量，该参数大于等于0。0表示无额外限制(仅受限于集群整体可以容纳的节点数，节点池本身无额外限制)。边缘节点池该参数值往往大于0；ess类型节点池和默认的edge类型节点池该参数值为0
+        self.max_nodes = max_nodes
         # 节点池详情。
         self.nodepool_info = nodepool_info
         # 节点池扩容组信息。
@@ -5197,6 +5356,8 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
     def validate(self):
         if self.auto_scaling:
             self.auto_scaling.validate()
+        if self.interconnect_config:
+            self.interconnect_config.validate()
         if self.kubernetes_config:
             self.kubernetes_config.validate()
         if self.management:
@@ -5218,10 +5379,16 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
         result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
+        if self.interconnect_config is not None:
+            result['interconnect_config'] = self.interconnect_config.to_map()
+        if self.interconnect_mode is not None:
+            result['interconnect_mode'] = self.interconnect_mode
         if self.kubernetes_config is not None:
             result['kubernetes_config'] = self.kubernetes_config.to_map()
         if self.management is not None:
             result['management'] = self.management.to_map()
+        if self.max_nodes is not None:
+            result['max_nodes'] = self.max_nodes
         if self.nodepool_info is not None:
             result['nodepool_info'] = self.nodepool_info.to_map()
         if self.scaling_group is not None:
@@ -5237,12 +5404,19 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
         if m.get('auto_scaling') is not None:
             temp_model = DescribeClusterNodePoolDetailResponseBodyAutoScaling()
             self.auto_scaling = temp_model.from_map(m['auto_scaling'])
+        if m.get('interconnect_config') is not None:
+            temp_model = DescribeClusterNodePoolDetailResponseBodyInterconnectConfig()
+            self.interconnect_config = temp_model.from_map(m['interconnect_config'])
+        if m.get('interconnect_mode') is not None:
+            self.interconnect_mode = m.get('interconnect_mode')
         if m.get('kubernetes_config') is not None:
             temp_model = DescribeClusterNodePoolDetailResponseBodyKubernetesConfig()
             self.kubernetes_config = temp_model.from_map(m['kubernetes_config'])
         if m.get('management') is not None:
             temp_model = DescribeClusterNodePoolDetailResponseBodyManagement()
             self.management = temp_model.from_map(m['management'])
+        if m.get('max_nodes') is not None:
+            self.max_nodes = m.get('max_nodes')
         if m.get('nodepool_info') is not None:
             temp_model = DescribeClusterNodePoolDetailResponseBodyNodepoolInfo()
             self.nodepool_info = temp_model.from_map(m['nodepool_info'])
@@ -5362,6 +5536,62 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling(TeaModel):
             self.min_instances = m.get('min_instances')
         if m.get('type') is not None:
             self.type = m.get('type')
+        return self
+
+
+class DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig(TeaModel):
+    def __init__(
+        self,
+        bandwidth: int = None,
+        ccn_id: str = None,
+        ccn_region_id: str = None,
+        cen_id: str = None,
+        improved_period: str = None,
+    ):
+        # 边缘增强型节点池的网络带宽，单位M
+        self.bandwidth = bandwidth
+        # 边缘增强型节点池绑定的云连接网实例ID(CCNID)
+        self.ccn_id = ccn_id
+        # 边缘增强型节点池绑定的云连接网实例所属的区域
+        self.ccn_region_id = ccn_region_id
+        # 边缘增强型节点池绑定的云企业网实例ID(CENID)
+        self.cen_id = cen_id
+        # 边缘增强型节点池的购买时长，单位月
+        self.improved_period = improved_period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['bandwidth'] = self.bandwidth
+        if self.ccn_id is not None:
+            result['ccn_id'] = self.ccn_id
+        if self.ccn_region_id is not None:
+            result['ccn_region_id'] = self.ccn_region_id
+        if self.cen_id is not None:
+            result['cen_id'] = self.cen_id
+        if self.improved_period is not None:
+            result['improved_period'] = self.improved_period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bandwidth') is not None:
+            self.bandwidth = m.get('bandwidth')
+        if m.get('ccn_id') is not None:
+            self.ccn_id = m.get('ccn_id')
+        if m.get('ccn_region_id') is not None:
+            self.ccn_region_id = m.get('ccn_region_id')
+        if m.get('cen_id') is not None:
+            self.cen_id = m.get('cen_id')
+        if m.get('improved_period') is not None:
+            self.improved_period = m.get('improved_period')
         return self
 
 
@@ -6037,8 +6267,11 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
     def __init__(
         self,
         auto_scaling: DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling = None,
+        interconnect_config: DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig = None,
+        interconnect_mode: str = None,
         kubernetes_config: DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig = None,
         management: DescribeClusterNodePoolsResponseBodyNodepoolsManagement = None,
+        max_nodes: int = None,
         nodepool_info: DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo = None,
         scaling_group: DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup = None,
         status: DescribeClusterNodePoolsResponseBodyNodepoolsStatus = None,
@@ -6046,10 +6279,16 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
     ):
         # 自动伸缩配置详情
         self.auto_scaling = auto_scaling
+        # 边缘节点池网络相关的配置。该值只对edge类型的节点池有意义
+        self.interconnect_config = interconnect_config
+        # 边缘节点池的网络类型。basic：基础型；improved：增强型。该值只对edge类型的节点池有意义
+        self.interconnect_mode = interconnect_mode
         # 集群配置信息
         self.kubernetes_config = kubernetes_config
         # 托管节点池配置
         self.management = management
+        # 边缘节点池允许容纳的最大节点数量. 节点池内可以容纳的最大节点数量，该参数大于等于0。0表示无额外限制(仅受限于集群整体可以容纳的节点数，节点池本身无额外限制)。边缘节点池该参数值往往大于0；ess类型节点池和默认的edge类型节点池该参数值为0
+        self.max_nodes = max_nodes
         # 节点池配置详情
         self.nodepool_info = nodepool_info
         # 扩容组配置详情
@@ -6062,6 +6301,8 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
     def validate(self):
         if self.auto_scaling:
             self.auto_scaling.validate()
+        if self.interconnect_config:
+            self.interconnect_config.validate()
         if self.kubernetes_config:
             self.kubernetes_config.validate()
         if self.management:
@@ -6083,10 +6324,16 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
         result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
+        if self.interconnect_config is not None:
+            result['interconnect_config'] = self.interconnect_config.to_map()
+        if self.interconnect_mode is not None:
+            result['interconnect_mode'] = self.interconnect_mode
         if self.kubernetes_config is not None:
             result['kubernetes_config'] = self.kubernetes_config.to_map()
         if self.management is not None:
             result['management'] = self.management.to_map()
+        if self.max_nodes is not None:
+            result['max_nodes'] = self.max_nodes
         if self.nodepool_info is not None:
             result['nodepool_info'] = self.nodepool_info.to_map()
         if self.scaling_group is not None:
@@ -6102,12 +6349,19 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
         if m.get('auto_scaling') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling()
             self.auto_scaling = temp_model.from_map(m['auto_scaling'])
+        if m.get('interconnect_config') is not None:
+            temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig()
+            self.interconnect_config = temp_model.from_map(m['interconnect_config'])
+        if m.get('interconnect_mode') is not None:
+            self.interconnect_mode = m.get('interconnect_mode')
         if m.get('kubernetes_config') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig()
             self.kubernetes_config = temp_model.from_map(m['kubernetes_config'])
         if m.get('management') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsManagement()
             self.management = temp_model.from_map(m['management'])
+        if m.get('max_nodes') is not None:
+            self.max_nodes = m.get('max_nodes')
         if m.get('nodepool_info') is not None:
             temp_model = DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo()
             self.nodepool_info = temp_model.from_map(m['nodepool_info'])

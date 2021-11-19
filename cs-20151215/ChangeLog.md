@@ -1,3 +1,6 @@
+2021-11-19 Version: 3.0.1
+- Support edge node pool.
+
 2021-11-16 Version: 3.0.0
 - Updated the data structure for worker_data_disks in CreateCluster.
 

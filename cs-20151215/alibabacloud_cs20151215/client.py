@@ -494,6 +494,8 @@ class Client(OpenApiClient):
             body['key_pair'] = request.key_pair
         if not UtilClient.is_unset(request.kubernetes_version):
             body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.load_balancer_spec):
+            body['load_balancer_spec'] = request.load_balancer_spec
         if not UtilClient.is_unset(request.logging_type):
             body['logging_type'] = request.logging_type
         if not UtilClient.is_unset(request.login_password):
@@ -673,6 +675,8 @@ class Client(OpenApiClient):
             body['key_pair'] = request.key_pair
         if not UtilClient.is_unset(request.kubernetes_version):
             body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.load_balancer_spec):
+            body['load_balancer_spec'] = request.load_balancer_spec
         if not UtilClient.is_unset(request.logging_type):
             body['logging_type'] = request.logging_type
         if not UtilClient.is_unset(request.login_password):
@@ -826,10 +830,16 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not UtilClient.is_unset(request.count):
             body['count'] = request.count
+        if not UtilClient.is_unset(request.interconnect_config):
+            body['interconnect_config'] = request.interconnect_config
+        if not UtilClient.is_unset(request.interconnect_mode):
+            body['interconnect_mode'] = request.interconnect_mode
         if not UtilClient.is_unset(request.kubernetes_config):
             body['kubernetes_config'] = request.kubernetes_config
         if not UtilClient.is_unset(request.management):
             body['management'] = request.management
+        if not UtilClient.is_unset(request.max_nodes):
+            body['max_nodes'] = request.max_nodes
         if not UtilClient.is_unset(request.nodepool_info):
             body['nodepool_info'] = request.nodepool_info
         if not UtilClient.is_unset(request.scaling_group):
@@ -859,10 +869,16 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not UtilClient.is_unset(request.count):
             body['count'] = request.count
+        if not UtilClient.is_unset(request.interconnect_config):
+            body['interconnect_config'] = request.interconnect_config
+        if not UtilClient.is_unset(request.interconnect_mode):
+            body['interconnect_mode'] = request.interconnect_mode
         if not UtilClient.is_unset(request.kubernetes_config):
             body['kubernetes_config'] = request.kubernetes_config
         if not UtilClient.is_unset(request.management):
             body['management'] = request.management
+        if not UtilClient.is_unset(request.max_nodes):
+            body['max_nodes'] = request.max_nodes
         if not UtilClient.is_unset(request.nodepool_info):
             body['nodepool_info'] = request.nodepool_info
         if not UtilClient.is_unset(request.scaling_group):
