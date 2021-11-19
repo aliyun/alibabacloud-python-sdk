@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_aiearth-meteorology20210928.
 
-Created on 11/10/2021
+Created on 19/11/2021
 
 @author: Alibaba Cloud SDK
 """

@@ -69,20 +69,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         data_type = OpenApiUtilClient.get_encode_param(data_type)
         query = {}
-        if not UtilClient.is_unset(request.product):
-            query['product'] = request.product
-        if not UtilClient.is_unset(request.page_no):
-            query['pageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.element):
             query['element'] = request.element
         if not UtilClient.is_unset(request.forecast_timestamp):
             query['forecastTimestamp'] = request.forecast_timestamp
-        if not UtilClient.is_unset(request.longitude):
-            query['longitude'] = request.longitude
         if not UtilClient.is_unset(request.latitude):
             query['latitude'] = request.latitude
+        if not UtilClient.is_unset(request.longitude):
+            query['longitude'] = request.longitude
+        if not UtilClient.is_unset(request.page_no):
+            query['pageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product):
+            query['product'] = request.product
+        if not UtilClient.is_unset(request.report_timestamp):
+            query['reportTimestamp'] = request.report_timestamp
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -102,20 +104,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         data_type = OpenApiUtilClient.get_encode_param(data_type)
         query = {}
-        if not UtilClient.is_unset(request.product):
-            query['product'] = request.product
-        if not UtilClient.is_unset(request.page_no):
-            query['pageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.element):
             query['element'] = request.element
         if not UtilClient.is_unset(request.forecast_timestamp):
             query['forecastTimestamp'] = request.forecast_timestamp
-        if not UtilClient.is_unset(request.longitude):
-            query['longitude'] = request.longitude
         if not UtilClient.is_unset(request.latitude):
             query['latitude'] = request.latitude
+        if not UtilClient.is_unset(request.longitude):
+            query['longitude'] = request.longitude
+        if not UtilClient.is_unset(request.page_no):
+            query['pageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product):
+            query['product'] = request.product
+        if not UtilClient.is_unset(request.report_timestamp):
+            query['reportTimestamp'] = request.report_timestamp
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
