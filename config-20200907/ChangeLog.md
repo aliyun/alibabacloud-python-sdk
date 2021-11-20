@@ -1,3 +1,6 @@
+2021-11-20 Version: 2.0.2
+- Support custom compliance pack.
+
 2021-09-29 Version: 2.0.1
 - Support custom compliance pack.
 
