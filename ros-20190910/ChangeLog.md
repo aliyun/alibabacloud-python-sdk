@@ -1,3 +1,9 @@
+2021-11-22 Version: 3.0.0
+- Add API GetServiceProvisions.
+- Add API GetTemplateParameterConstraints.
+- Add API GetFeatureDetails.
+- CreateChangeSet supports Parallelism.
+
 2021-09-23 Version: 2.1.3
 - Terraform stack supports custom of parallelism.
 
