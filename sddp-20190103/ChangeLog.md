@@ -1,3 +1,6 @@
+2021-11-22 Version: 1.0.4
+- Fix some apis.
+
 2021-11-02 Version: 1.0.3
 - Set DescribeCategoryTemplateRuleList public.
 

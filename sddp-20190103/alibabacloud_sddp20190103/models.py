@@ -812,20 +812,16 @@ class DescribeCategoryTemplateRuleListRequest(TeaModel):
     def __init__(
         self,
         current_page: int = None,
-        custom_type: int = None,
         lang: str = None,
         page_size: int = None,
         risk_level_id: int = None,
         status: int = None,
-        template_id: int = None,
     ):
         self.current_page = current_page
-        self.custom_type = custom_type
         self.lang = lang
         self.page_size = page_size
         self.risk_level_id = risk_level_id
         self.status = status
-        self.template_id = template_id
 
     def validate(self):
         pass
@@ -838,8 +834,6 @@ class DescribeCategoryTemplateRuleListRequest(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.custom_type is not None:
-            result['CustomType'] = self.custom_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.page_size is not None:
@@ -848,16 +842,12 @@ class DescribeCategoryTemplateRuleListRequest(TeaModel):
             result['RiskLevelId'] = self.risk_level_id
         if self.status is not None:
             result['Status'] = self.status
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        if m.get('CustomType') is not None:
-            self.custom_type = m.get('CustomType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('PageSize') is not None:
@@ -866,15 +856,12 @@ class DescribeCategoryTemplateRuleListRequest(TeaModel):
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
         return self
 
 
 class DescribeCategoryTemplateRuleListResponseBodyItems(TeaModel):
     def __init__(
         self,
-        custom_type: int = None,
         description: str = None,
         id: int = None,
         identification_rule_ids: str = None,
@@ -882,9 +869,7 @@ class DescribeCategoryTemplateRuleListResponseBodyItems(TeaModel):
         name: str = None,
         risk_level_id: int = None,
         status: int = None,
-        template_id: int = None,
     ):
-        self.custom_type = custom_type
         self.description = description
         self.id = id
         self.identification_rule_ids = identification_rule_ids
@@ -892,7 +877,6 @@ class DescribeCategoryTemplateRuleListResponseBodyItems(TeaModel):
         self.name = name
         self.risk_level_id = risk_level_id
         self.status = status
-        self.template_id = template_id
 
     def validate(self):
         pass
@@ -903,8 +887,6 @@ class DescribeCategoryTemplateRuleListResponseBodyItems(TeaModel):
             return _map
 
         result = dict()
-        if self.custom_type is not None:
-            result['CustomType'] = self.custom_type
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
@@ -919,14 +901,10 @@ class DescribeCategoryTemplateRuleListResponseBodyItems(TeaModel):
             result['RiskLevelId'] = self.risk_level_id
         if self.status is not None:
             result['Status'] = self.status
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CustomType') is not None:
-            self.custom_type = m.get('CustomType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
@@ -941,8 +919,6 @@ class DescribeCategoryTemplateRuleListResponseBodyItems(TeaModel):
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
         return self
 
 
@@ -6894,23 +6870,10 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
         authed: bool = None,
         buyed: bool = None,
         charge_type: str = None,
-        data_mask_columns: int = None,
-        data_mask_tasks: int = None,
-        datamask_columns: int = None,
-        divulge_count: int = None,
-        dlp_total_count: int = None,
-        inc_sensitive_objects: int = None,
         instance_id: str = None,
         instance_num: int = None,
-        instance_status: int = None,
         lab_status: int = None,
-        oss_bucket_set: bool = None,
-        oss_size: int = None,
         remain_days: int = None,
-        sensitive_object: int = None,
-        sensitive_table: int = None,
-        sensitive_tables: int = None,
-        total_data_mask_columns: int = None,
         trail: bool = None,
         use_instance_num: int = None,
         use_oss_size: int = None,
@@ -6919,23 +6882,10 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
         self.authed = authed
         self.buyed = buyed
         self.charge_type = charge_type
-        self.data_mask_columns = data_mask_columns
-        self.data_mask_tasks = data_mask_tasks
-        self.datamask_columns = datamask_columns
-        self.divulge_count = divulge_count
-        self.dlp_total_count = dlp_total_count
-        self.inc_sensitive_objects = inc_sensitive_objects
         self.instance_id = instance_id
         self.instance_num = instance_num
-        self.instance_status = instance_status
         self.lab_status = lab_status
-        self.oss_bucket_set = oss_bucket_set
-        self.oss_size = oss_size
         self.remain_days = remain_days
-        self.sensitive_object = sensitive_object
-        self.sensitive_table = sensitive_table
-        self.sensitive_tables = sensitive_tables
-        self.total_data_mask_columns = total_data_mask_columns
         self.trail = trail
         self.use_instance_num = use_instance_num
         self.use_oss_size = use_oss_size
@@ -6957,40 +6907,14 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             result['Buyed'] = self.buyed
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
-        if self.data_mask_columns is not None:
-            result['DataMaskColumns'] = self.data_mask_columns
-        if self.data_mask_tasks is not None:
-            result['DataMaskTasks'] = self.data_mask_tasks
-        if self.datamask_columns is not None:
-            result['DatamaskColumns'] = self.datamask_columns
-        if self.divulge_count is not None:
-            result['DivulgeCount'] = self.divulge_count
-        if self.dlp_total_count is not None:
-            result['DlpTotalCount'] = self.dlp_total_count
-        if self.inc_sensitive_objects is not None:
-            result['IncSensitiveObjects'] = self.inc_sensitive_objects
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_num is not None:
             result['InstanceNum'] = self.instance_num
-        if self.instance_status is not None:
-            result['InstanceStatus'] = self.instance_status
         if self.lab_status is not None:
             result['LabStatus'] = self.lab_status
-        if self.oss_bucket_set is not None:
-            result['OssBucketSet'] = self.oss_bucket_set
-        if self.oss_size is not None:
-            result['OssSize'] = self.oss_size
         if self.remain_days is not None:
             result['RemainDays'] = self.remain_days
-        if self.sensitive_object is not None:
-            result['SensitiveObject'] = self.sensitive_object
-        if self.sensitive_table is not None:
-            result['SensitiveTable'] = self.sensitive_table
-        if self.sensitive_tables is not None:
-            result['SensitiveTables'] = self.sensitive_tables
-        if self.total_data_mask_columns is not None:
-            result['TotalDataMaskColumns'] = self.total_data_mask_columns
         if self.trail is not None:
             result['Trail'] = self.trail
         if self.use_instance_num is not None:
@@ -7009,40 +6933,14 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             self.buyed = m.get('Buyed')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
-        if m.get('DataMaskColumns') is not None:
-            self.data_mask_columns = m.get('DataMaskColumns')
-        if m.get('DataMaskTasks') is not None:
-            self.data_mask_tasks = m.get('DataMaskTasks')
-        if m.get('DatamaskColumns') is not None:
-            self.datamask_columns = m.get('DatamaskColumns')
-        if m.get('DivulgeCount') is not None:
-            self.divulge_count = m.get('DivulgeCount')
-        if m.get('DlpTotalCount') is not None:
-            self.dlp_total_count = m.get('DlpTotalCount')
-        if m.get('IncSensitiveObjects') is not None:
-            self.inc_sensitive_objects = m.get('IncSensitiveObjects')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceNum') is not None:
             self.instance_num = m.get('InstanceNum')
-        if m.get('InstanceStatus') is not None:
-            self.instance_status = m.get('InstanceStatus')
         if m.get('LabStatus') is not None:
             self.lab_status = m.get('LabStatus')
-        if m.get('OssBucketSet') is not None:
-            self.oss_bucket_set = m.get('OssBucketSet')
-        if m.get('OssSize') is not None:
-            self.oss_size = m.get('OssSize')
         if m.get('RemainDays') is not None:
             self.remain_days = m.get('RemainDays')
-        if m.get('SensitiveObject') is not None:
-            self.sensitive_object = m.get('SensitiveObject')
-        if m.get('SensitiveTable') is not None:
-            self.sensitive_table = m.get('SensitiveTable')
-        if m.get('SensitiveTables') is not None:
-            self.sensitive_tables = m.get('SensitiveTables')
-        if m.get('TotalDataMaskColumns') is not None:
-            self.total_data_mask_columns = m.get('TotalDataMaskColumns')
         if m.get('Trail') is not None:
             self.trail = m.get('Trail')
         if m.get('UseInstanceNum') is not None:
