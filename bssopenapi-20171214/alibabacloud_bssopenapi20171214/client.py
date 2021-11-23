@@ -103,32 +103,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.AddAccountRelationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ChildNick'] = request.child_nick
-        query['ChildUserId'] = request.child_user_id
-        query['ParentUserId'] = request.parent_user_id
-        query['PermissionCodes'] = request.permission_codes
-        query['RelationType'] = request.relation_type
-        query['RequestId'] = request.request_id
-        query['RoleCodes'] = request.role_codes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddAccountRelation',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.AddAccountRelationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AddAccountRelation', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def add_account_relation_with_options_async(
@@ -137,32 +117,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.AddAccountRelationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ChildNick'] = request.child_nick
-        query['ChildUserId'] = request.child_user_id
-        query['ParentUserId'] = request.parent_user_id
-        query['PermissionCodes'] = request.permission_codes
-        query['RelationType'] = request.relation_type
-        query['RequestId'] = request.request_id
-        query['RoleCodes'] = request.role_codes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddAccountRelation',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.AddAccountRelationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AddAccountRelation', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def add_account_relation(
@@ -185,30 +145,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.AllocateCostUnitResourceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['FromUnitId'] = request.from_unit_id
-        query['FromUnitUserId'] = request.from_unit_user_id
-        query['ResourceInstanceList'] = request.resource_instance_list
-        query['ToUnitId'] = request.to_unit_id
-        query['ToUnitUserId'] = request.to_unit_user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateCostUnitResource',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.AllocateCostUnitResourceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AllocateCostUnitResource', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def allocate_cost_unit_resource_with_options_async(
@@ -217,30 +159,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.AllocateCostUnitResourceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['FromUnitId'] = request.from_unit_id
-        query['FromUnitUserId'] = request.from_unit_user_id
-        query['ResourceInstanceList'] = request.resource_instance_list
-        query['ToUnitId'] = request.to_unit_id
-        query['ToUnitUserId'] = request.to_unit_user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateCostUnitResource',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.AllocateCostUnitResourceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AllocateCostUnitResource', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def allocate_cost_unit_resource(
@@ -263,35 +187,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ApplyInvoiceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AddressId'] = request.address_id
-        query['ApplyUserNick'] = request.apply_user_nick
-        query['CustomerId'] = request.customer_id
-        query['InvoiceAmount'] = request.invoice_amount
-        query['InvoiceByAmount'] = request.invoice_by_amount
-        query['InvoicingType'] = request.invoicing_type
-        query['OwnerId'] = request.owner_id
-        query['ProcessWay'] = request.process_way
-        query['SelectedIds'] = request.selected_ids
-        query['UserRemark'] = request.user_remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ApplyInvoice',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ApplyInvoiceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ApplyInvoice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def apply_invoice_with_options_async(
@@ -300,35 +201,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ApplyInvoiceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AddressId'] = request.address_id
-        query['ApplyUserNick'] = request.apply_user_nick
-        query['CustomerId'] = request.customer_id
-        query['InvoiceAmount'] = request.invoice_amount
-        query['InvoiceByAmount'] = request.invoice_by_amount
-        query['InvoicingType'] = request.invoicing_type
-        query['OwnerId'] = request.owner_id
-        query['ProcessWay'] = request.process_way
-        query['SelectedIds'] = request.selected_ids
-        query['UserRemark'] = request.user_remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ApplyInvoice',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ApplyInvoiceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ApplyInvoice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def apply_invoice(
@@ -351,27 +229,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CancelOrderResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OrderId'] = request.order_id
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CancelOrder',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CancelOrderResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CancelOrder', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def cancel_order_with_options_async(
@@ -380,27 +243,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CancelOrderResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OrderId'] = request.order_id
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CancelOrder',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CancelOrderResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CancelOrder', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def cancel_order(
@@ -423,33 +271,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AdjustType'] = request.adjust_type
-        query['Amount'] = request.amount
-        query['BusinessType'] = request.business_type
-        query['Currency'] = request.currency
-        query['ExtendMap'] = request.extend_map
-        query['OutBizId'] = request.out_biz_id
-        query['OwnerId'] = request.owner_id
-        query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ChangeResellerConsumeAmount',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ChangeResellerConsumeAmount', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def change_reseller_consume_amount_with_options_async(
@@ -458,33 +285,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AdjustType'] = request.adjust_type
-        query['Amount'] = request.amount
-        query['BusinessType'] = request.business_type
-        query['Currency'] = request.currency
-        query['ExtendMap'] = request.extend_map
-        query['OutBizId'] = request.out_biz_id
-        query['OwnerId'] = request.owner_id
-        query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ChangeResellerConsumeAmount',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ChangeResellerConsumeAmount', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def change_reseller_consume_amount(
@@ -507,31 +313,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ConfirmRelationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ChildUserId'] = request.child_user_id
-        query['ConfirmCode'] = request.confirm_code
-        query['ParentUserId'] = request.parent_user_id
-        query['PermissionCodes'] = request.permission_codes
-        query['RelationType'] = request.relation_type
-        query['RequestId'] = request.request_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConfirmRelation',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ConfirmRelationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ConfirmRelation', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def confirm_relation_with_options_async(
@@ -540,31 +327,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ConfirmRelationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ChildUserId'] = request.child_user_id
-        query['ConfirmCode'] = request.confirm_code
-        query['ParentUserId'] = request.parent_user_id
-        query['PermissionCodes'] = request.permission_codes
-        query['RelationType'] = request.relation_type
-        query['RequestId'] = request.request_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConfirmRelation',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ConfirmRelationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ConfirmRelation', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def confirm_relation(
@@ -587,31 +355,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ConvertChargeTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConvertChargeType',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ConvertChargeTypeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ConvertChargeType', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def convert_charge_type_with_options_async(
@@ -620,31 +369,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ConvertChargeTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConvertChargeType',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ConvertChargeTypeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ConvertChargeType', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def convert_charge_type(
@@ -667,34 +397,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateAgAccountResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccountAttr'] = request.account_attr
-        query['CityName'] = request.city_name
-        query['EnterpriseName'] = request.enterprise_name
-        query['FirstName'] = request.first_name
-        query['LastName'] = request.last_name
-        query['LoginEmail'] = request.login_email
-        query['NationCode'] = request.nation_code
-        query['Postcode'] = request.postcode
-        query['ProvinceName'] = request.province_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateAgAccount',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateAgAccountResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateAgAccount', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ag_account_with_options_async(
@@ -703,34 +411,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateAgAccountResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccountAttr'] = request.account_attr
-        query['CityName'] = request.city_name
-        query['EnterpriseName'] = request.enterprise_name
-        query['FirstName'] = request.first_name
-        query['LastName'] = request.last_name
-        query['LoginEmail'] = request.login_email
-        query['NationCode'] = request.nation_code
-        query['Postcode'] = request.postcode
-        query['ProvinceName'] = request.province_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateAgAccount',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateAgAccountResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateAgAccount', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ag_account(
@@ -753,26 +439,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateCostUnitResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['UnitEntityList'] = request.unit_entity_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateCostUnit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateCostUnitResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_cost_unit_with_options_async(
@@ -781,26 +453,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateCostUnitResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['UnitEntityList'] = request.unit_entity_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateCostUnit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateCostUnitResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_cost_unit(
@@ -823,35 +481,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Logistics'] = request.logistics
-        query['OwnerId'] = request.owner_id
-        query['Parameter'] = request.parameter
-        query['Period'] = request.period
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['RenewPeriod'] = request.renew_period
-        query['RenewalStatus'] = request.renewal_status
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_instance_with_options_async(
@@ -860,35 +495,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Logistics'] = request.logistics
-        query['OwnerId'] = request.owner_id
-        query['Parameter'] = request.parameter
-        query['Period'] = request.period
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['RenewPeriod'] = request.renew_period
-        query['RenewalStatus'] = request.renewal_status
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_instance(
@@ -911,29 +523,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateResellerUserQuotaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Amount'] = request.amount
-        query['Currency'] = request.currency
-        query['OutBizId'] = request.out_biz_id
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateResellerUserQuota',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateResellerUserQuotaResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateResellerUserQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_reseller_user_quota_with_options_async(
@@ -942,29 +537,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateResellerUserQuotaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Amount'] = request.amount
-        query['Currency'] = request.currency
-        query['OutBizId'] = request.out_biz_id
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateResellerUserQuota',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateResellerUserQuotaResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateResellerUserQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_reseller_user_quota(
@@ -987,32 +565,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateResourcePackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Duration'] = request.duration
-        query['EffectiveDate'] = request.effective_date
-        query['OwnerId'] = request.owner_id
-        query['PackageType'] = request.package_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['ProductCode'] = request.product_code
-        query['Specification'] = request.specification
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateResourcePackage',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateResourcePackageResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_resource_package_with_options_async(
@@ -1021,32 +579,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateResourcePackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Duration'] = request.duration
-        query['EffectiveDate'] = request.effective_date
-        query['OwnerId'] = request.owner_id
-        query['PackageType'] = request.package_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['ProductCode'] = request.product_code
-        query['Specification'] = request.specification
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateResourcePackage',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateResourcePackageResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_resource_package(
@@ -1069,35 +607,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CommodityCode'] = request.commodity_code
-        query['Duration'] = request.duration
-        query['EffectiveDate'] = request.effective_date
-        query['PayMode'] = request.pay_mode
-        query['PoolValue'] = request.pool_value
-        query['PricingCycle'] = request.pricing_cycle
-        query['Region'] = request.region
-        query['SpecType'] = request.spec_type
-        query['Specification'] = request.specification
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSavingsPlansInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateSavingsPlansInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_savings_plans_instance_with_options_async(
@@ -1106,35 +621,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CommodityCode'] = request.commodity_code
-        query['Duration'] = request.duration
-        query['EffectiveDate'] = request.effective_date
-        query['PayMode'] = request.pay_mode
-        query['PoolValue'] = request.pool_value
-        query['PricingCycle'] = request.pricing_cycle
-        query['Region'] = request.region
-        query['SpecType'] = request.spec_type
-        query['Specification'] = request.specification
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSavingsPlansInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateSavingsPlansInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_savings_plans_instance(
@@ -1157,27 +649,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DeleteCostUnitResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerUid'] = request.owner_uid
-        query['UnitId'] = request.unit_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteCostUnit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DeleteCostUnitResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_cost_unit_with_options_async(
@@ -1186,27 +663,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DeleteCostUnitResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerUid'] = request.owner_uid
-        query['UnitId'] = request.unit_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteCostUnit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DeleteCostUnitResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_cost_unit(
@@ -1229,38 +691,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['BillingDate'] = request.billing_date
-        query['Granularity'] = request.granularity
-        query['InstanceID'] = request.instance_id
-        query['IsBillingItem'] = request.is_billing_item
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeInstanceBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeInstanceBillResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeInstanceBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_instance_bill_with_options_async(
@@ -1269,38 +705,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['BillingDate'] = request.billing_date
-        query['Granularity'] = request.granularity
-        query['InstanceID'] = request.instance_id
-        query['IsBillingItem'] = request.is_billing_item
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeInstanceBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeInstanceBillResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeInstanceBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_instance_bill(
@@ -1323,29 +733,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePricingModule',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribePricingModuleResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribePricingModule', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_pricing_module_with_options_async(
@@ -1354,29 +747,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePricingModule',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribePricingModuleResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribePricingModule', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_pricing_module(
@@ -1399,32 +775,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['PeriodType'] = request.period_type
-        query['ResourceType'] = request.resource_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourceCoverageDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeResourceCoverageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_resource_coverage_detail_with_options_async(
@@ -1433,32 +789,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['PeriodType'] = request.period_type
-        query['ResourceType'] = request.resource_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourceCoverageDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeResourceCoverageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_resource_coverage_detail(
@@ -1481,30 +817,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['PeriodType'] = request.period_type
-        query['ResourceType'] = request.resource_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourceCoverageTotal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeResourceCoverageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_resource_coverage_total_with_options_async(
@@ -1513,30 +831,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['PeriodType'] = request.period_type
-        query['ResourceType'] = request.resource_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourceCoverageTotal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeResourceCoverageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_resource_coverage_total(
@@ -1559,26 +859,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourcePackageProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourcePackageProduct',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourcePackageProductResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeResourcePackageProduct', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_resource_package_product_with_options_async(
@@ -1587,26 +873,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourcePackageProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourcePackageProduct',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourcePackageProductResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeResourcePackageProduct', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_resource_package_product(
@@ -1629,32 +901,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['PeriodType'] = request.period_type
-        query['ResourceType'] = request.resource_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourceUsageDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourceUsageDetailResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeResourceUsageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_resource_usage_detail_with_options_async(
@@ -1663,32 +915,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['PeriodType'] = request.period_type
-        query['ResourceType'] = request.resource_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourceUsageDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourceUsageDetailResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeResourceUsageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_resource_usage_detail(
@@ -1711,30 +943,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageTotalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['PeriodType'] = request.period_type
-        query['ResourceType'] = request.resource_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourceUsageTotal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourceUsageTotalResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeResourceUsageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_resource_usage_total_with_options_async(
@@ -1743,30 +957,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageTotalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['PeriodType'] = request.period_type
-        query['ResourceType'] = request.resource_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeResourceUsageTotal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeResourceUsageTotalResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeResourceUsageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_resource_usage_total(
@@ -1789,31 +985,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['MaxResults'] = request.max_results
-        query['PeriodType'] = request.period_type
-        query['StartPeriod'] = request.start_period
-        query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSavingsPlansCoverageDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeSavingsPlansCoverageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_savings_plans_coverage_detail_with_options_async(
@@ -1822,31 +999,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['MaxResults'] = request.max_results
-        query['PeriodType'] = request.period_type
-        query['StartPeriod'] = request.start_period
-        query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSavingsPlansCoverageDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeSavingsPlansCoverageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_savings_plans_coverage_detail(
@@ -1869,29 +1027,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['PeriodType'] = request.period_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSavingsPlansCoverageTotal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeSavingsPlansCoverageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_savings_plans_coverage_total_with_options_async(
@@ -1900,29 +1041,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['PeriodType'] = request.period_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSavingsPlansCoverageTotal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeSavingsPlansCoverageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_savings_plans_coverage_total(
@@ -1945,31 +1069,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['MaxResults'] = request.max_results
-        query['PeriodType'] = request.period_type
-        query['StartPeriod'] = request.start_period
-        query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSavingsPlansUsageDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeSavingsPlansUsageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_savings_plans_usage_detail_with_options_async(
@@ -1978,31 +1083,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['MaxResults'] = request.max_results
-        query['PeriodType'] = request.period_type
-        query['StartPeriod'] = request.start_period
-        query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSavingsPlansUsageDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeSavingsPlansUsageDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_savings_plans_usage_detail(
@@ -2025,29 +1111,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['PeriodType'] = request.period_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSavingsPlansUsageTotal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeSavingsPlansUsageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_savings_plans_usage_total_with_options_async(
@@ -2056,29 +1125,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['EndPeriod'] = request.end_period
-        query['PeriodType'] = request.period_type
-        query['StartPeriod'] = request.start_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSavingsPlansUsageTotal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeSavingsPlansUsageTotal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_savings_plans_usage_total(
@@ -2101,38 +1153,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['BillingDate'] = request.billing_date
-        query['Granularity'] = request.granularity
-        query['InstanceID'] = request.instance_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SplitItemID'] = request.split_item_id
-        query['SubscriptionType'] = request.subscription_type
-        query['TagFilter'] = request.tag_filter
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSplitItemBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSplitItemBillResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeSplitItemBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_split_item_bill_with_options_async(
@@ -2141,38 +1167,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['BillingDate'] = request.billing_date
-        query['Granularity'] = request.granularity
-        query['InstanceID'] = request.instance_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SplitItemID'] = request.split_item_id
-        query['SubscriptionType'] = request.subscription_type
-        query['TagFilter'] = request.tag_filter
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSplitItemBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.DescribeSplitItemBillResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeSplitItemBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_split_item_bill(
@@ -2195,27 +1195,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.EnableBillGenerationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnableBillGeneration',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.EnableBillGenerationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('EnableBillGeneration', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def enable_bill_generation_with_options_async(
@@ -2224,27 +1209,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.EnableBillGenerationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnableBillGeneration',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.EnableBillGenerationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('EnableBillGeneration', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def enable_bill_generation(
@@ -2267,26 +1237,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerAccountInfoResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetCustomerAccountInfo',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetCustomerAccountInfoResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetCustomerAccountInfo', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_customer_account_info_with_options_async(
@@ -2295,26 +1251,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerAccountInfoResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetCustomerAccountInfo',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetCustomerAccountInfoResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetCustomerAccountInfo', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_customer_account_info(
@@ -2336,20 +1278,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetCustomerList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetCustomerListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetCustomerList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_customer_list_with_options_async(
@@ -2357,20 +1288,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetCustomerList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetCustomerListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetCustomerList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_customer_list(self) -> bss_open_api_20171214_models.GetCustomerListResponse:
@@ -2387,27 +1307,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetOrderDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OrderId'] = request.order_id
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetOrderDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetOrderDetailResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetOrderDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_order_detail_with_options_async(
@@ -2416,27 +1321,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetOrderDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OrderId'] = request.order_id
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetOrderDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetOrderDetailResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetOrderDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_order_detail(
@@ -2459,31 +1349,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetPayAsYouGoPriceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ModuleList'] = request.module_list
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['Region'] = request.region
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetPayAsYouGoPrice',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetPayAsYouGoPriceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetPayAsYouGoPrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_pay_as_you_go_price_with_options_async(
@@ -2492,31 +1363,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetPayAsYouGoPriceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ModuleList'] = request.module_list
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['Region'] = request.region
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetPayAsYouGoPrice',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetPayAsYouGoPriceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetPayAsYouGoPrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_pay_as_you_go_price(
@@ -2539,34 +1391,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetResourcePackagePriceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Duration'] = request.duration
-        query['EffectiveDate'] = request.effective_date
-        query['InstanceId'] = request.instance_id
-        query['OrderType'] = request.order_type
-        query['OwnerId'] = request.owner_id
-        query['PackageType'] = request.package_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['ProductCode'] = request.product_code
-        query['Specification'] = request.specification
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetResourcePackagePrice',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetResourcePackagePriceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetResourcePackagePrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_resource_package_price_with_options_async(
@@ -2575,34 +1405,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetResourcePackagePriceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Duration'] = request.duration
-        query['EffectiveDate'] = request.effective_date
-        query['InstanceId'] = request.instance_id
-        query['OrderType'] = request.order_type
-        query['OwnerId'] = request.owner_id
-        query['PackageType'] = request.package_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['ProductCode'] = request.product_code
-        query['Specification'] = request.specification
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetResourcePackagePrice',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetResourcePackagePriceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetResourcePackagePrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_resource_package_price(
@@ -2625,36 +1433,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetSubscriptionPriceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleList'] = request.module_list
-        query['OrderType'] = request.order_type
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['Quantity'] = request.quantity
-        query['Region'] = request.region
-        query['ServicePeriodQuantity'] = request.service_period_quantity
-        query['ServicePeriodUnit'] = request.service_period_unit
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetSubscriptionPrice',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetSubscriptionPriceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetSubscriptionPrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_subscription_price_with_options_async(
@@ -2663,36 +1447,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetSubscriptionPriceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleList'] = request.module_list
-        query['OrderType'] = request.order_type
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['Quantity'] = request.quantity
-        query['Region'] = request.region
-        query['ServicePeriodQuantity'] = request.service_period_quantity
-        query['ServicePeriodUnit'] = request.service_period_unit
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetSubscriptionPrice',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.GetSubscriptionPriceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetSubscriptionPrice', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_subscription_price(
@@ -2715,33 +1475,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyAccountRelationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ChildNick'] = request.child_nick
-        query['ChildUserId'] = request.child_user_id
-        query['ParentUserId'] = request.parent_user_id
-        query['PermissionCodes'] = request.permission_codes
-        query['RelationOperation'] = request.relation_operation
-        query['RelationType'] = request.relation_type
-        query['RequestId'] = request.request_id
-        query['RoleCodes'] = request.role_codes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyAccountRelation',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ModifyAccountRelationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyAccountRelation', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_account_relation_with_options_async(
@@ -2750,33 +1489,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyAccountRelationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ChildNick'] = request.child_nick
-        query['ChildUserId'] = request.child_user_id
-        query['ParentUserId'] = request.parent_user_id
-        query['PermissionCodes'] = request.permission_codes
-        query['RelationOperation'] = request.relation_operation
-        query['RelationType'] = request.relation_type
-        query['RequestId'] = request.request_id
-        query['RoleCodes'] = request.role_codes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyAccountRelation',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ModifyAccountRelationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyAccountRelation', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_account_relation(
@@ -2799,26 +1517,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyCostUnitResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['UnitEntityList'] = request.unit_entity_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCostUnit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ModifyCostUnitResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_cost_unit_with_options_async(
@@ -2827,26 +1531,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyCostUnitResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['UnitEntityList'] = request.unit_entity_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCostUnit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ModifyCostUnitResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_cost_unit(
@@ -2869,33 +1559,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['ModifyType'] = request.modify_type
-        query['OwnerId'] = request.owner_id
-        query['Parameter'] = request.parameter
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ModifyInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_instance_with_options_async(
@@ -2904,33 +1573,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['ModifyType'] = request.modify_type
-        query['OwnerId'] = request.owner_id
-        query['Parameter'] = request.parameter
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.ModifyInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_instance(
@@ -2952,20 +1600,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBalanceResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='QueryAccountBalance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAccountBalanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryAccountBalance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_account_balance_with_options_async(
@@ -2973,20 +1610,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBalanceResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='QueryAccountBalance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAccountBalanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryAccountBalance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_account_balance(self) -> bss_open_api_20171214_models.QueryAccountBalanceResponse:
@@ -3003,34 +1629,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['BillingDate'] = request.billing_date
-        query['Granularity'] = request.granularity
-        query['IsGroupByProduct'] = request.is_group_by_product
-        query['OwnerID'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryAccountBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAccountBillResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryAccountBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_account_bill_with_options_async(
@@ -3039,34 +1643,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['BillingDate'] = request.billing_date
-        query['Granularity'] = request.granularity
-        query['IsGroupByProduct'] = request.is_group_by_product
-        query['OwnerID'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryAccountBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAccountBillResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryAccountBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_account_bill(
@@ -3089,34 +1671,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CreateTimeEnd'] = request.create_time_end
-        query['CreateTimeStart'] = request.create_time_start
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RecordID'] = request.record_id
-        query['TransactionChannel'] = request.transaction_channel
-        query['TransactionChannelSN'] = request.transaction_channel_sn
-        query['TransactionNumber'] = request.transaction_number
-        query['TransactionType'] = request.transaction_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryAccountTransactionDetails',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryAccountTransactionDetails', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_account_transaction_details_with_options_async(
@@ -3125,34 +1685,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CreateTimeEnd'] = request.create_time_end
-        query['CreateTimeStart'] = request.create_time_start
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RecordID'] = request.record_id
-        query['TransactionChannel'] = request.transaction_channel
-        query['TransactionChannelSN'] = request.transaction_channel_sn
-        query['TransactionNumber'] = request.transaction_number
-        query['TransactionType'] = request.transaction_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryAccountTransactionDetails',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryAccountTransactionDetails', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_account_transaction_details(
@@ -3175,32 +1713,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CreateTimeEnd'] = request.create_time_end
-        query['CreateTimeStart'] = request.create_time_start
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['RecordID'] = request.record_id
-        query['TransactionChannelSN'] = request.transaction_channel_sn
-        query['TransactionNumber'] = request.transaction_number
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryAccountTransactions',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAccountTransactionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryAccountTransactions', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_account_transactions_with_options_async(
@@ -3209,32 +1727,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CreateTimeEnd'] = request.create_time_end
-        query['CreateTimeStart'] = request.create_time_start
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['RecordID'] = request.record_id
-        query['TransactionChannelSN'] = request.transaction_channel_sn
-        query['TransactionNumber'] = request.transaction_number
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryAccountTransactions',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAccountTransactionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryAccountTransactions', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_account_transactions(
@@ -3257,38 +1755,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAvailableInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CreateTimeEnd'] = request.create_time_end
-        query['CreateTimeStart'] = request.create_time_start
-        query['EndTimeEnd'] = request.end_time_end
-        query['EndTimeStart'] = request.end_time_start
-        query['InstanceIDs'] = request.instance_ids
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['Region'] = request.region
-        query['RenewStatus'] = request.renew_status
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryAvailableInstances',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAvailableInstancesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryAvailableInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_available_instances_with_options_async(
@@ -3297,38 +1769,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAvailableInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CreateTimeEnd'] = request.create_time_end
-        query['CreateTimeStart'] = request.create_time_start
-        query['EndTimeEnd'] = request.end_time_end
-        query['EndTimeStart'] = request.end_time_start
-        query['InstanceIDs'] = request.instance_ids
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['Region'] = request.region
-        query['RenewStatus'] = request.renew_status
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryAvailableInstances',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryAvailableInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryAvailableInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_available_instances(
@@ -3351,36 +1797,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['IsDisplayLocalCurrency'] = request.is_display_local_currency
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryBillResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_bill_with_options_async(
@@ -3389,36 +1811,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['IsDisplayLocalCurrency'] = request.is_display_local_currency
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryBillResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_bill(
@@ -3441,30 +1839,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillOverviewResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryBillOverview',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryBillOverviewResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryBillOverview', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_bill_overview_with_options_async(
@@ -3473,30 +1853,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillOverviewResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryBillOverview',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryBillOverviewResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryBillOverview', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_bill_overview(
@@ -3518,20 +1880,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='QueryBillToOSSSubscription',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryBillToOSSSubscription', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_bill_to_osssubscription_with_options_async(
@@ -3539,20 +1890,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse:
         req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='QueryBillToOSSSubscription',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryBillToOSSSubscription', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_bill_to_osssubscription(self) -> bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse:
@@ -3569,28 +1909,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCashCouponsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EffectiveOrNot'] = request.effective_or_not
-        query['ExpiryTimeEnd'] = request.expiry_time_end
-        query['ExpiryTimeStart'] = request.expiry_time_start
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCashCoupons',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryCashCouponsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryCashCoupons', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_cash_coupons_with_options_async(
@@ -3599,28 +1923,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCashCouponsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EffectiveOrNot'] = request.effective_or_not
-        query['ExpiryTimeEnd'] = request.expiry_time_end
-        query['ExpiryTimeStart'] = request.expiry_time_start
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCashCoupons',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryCashCouponsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryCashCoupons', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_cash_coupons(
@@ -3643,29 +1951,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCostUnitResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerUid'] = request.owner_uid
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ParentUnitId'] = request.parent_unit_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCostUnit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryCostUnitResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_cost_unit_with_options_async(
@@ -3674,29 +1965,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCostUnitResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerUid'] = request.owner_uid
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ParentUnitId'] = request.parent_unit_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCostUnit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryCostUnitResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryCostUnit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_cost_unit(
@@ -3719,29 +1993,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCostUnitResourceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerUid'] = request.owner_uid
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['UnitId'] = request.unit_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCostUnitResource',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryCostUnitResourceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryCostUnitResource', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_cost_unit_resource_with_options_async(
@@ -3750,29 +2007,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCostUnitResourceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerUid'] = request.owner_uid
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['UnitId'] = request.unit_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCostUnitResource',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryCostUnitResourceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryCostUnitResource', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_cost_unit_resource(
@@ -3795,26 +2035,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCustomerAddressListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCustomerAddressList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryCustomerAddressListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryCustomerAddressList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_customer_address_list_with_options_async(
@@ -3823,26 +2049,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCustomerAddressListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCustomerAddressList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryCustomerAddressListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryCustomerAddressList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_customer_address_list(
@@ -3865,35 +2077,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CommodityCode'] = request.commodity_code
-        query['DeductedInstanceId'] = request.deducted_instance_id
-        query['EndTime'] = request.end_time
-        query['IncludeShare'] = request.include_share
-        query['InstanceId'] = request.instance_id
-        query['InstanceSpec'] = request.instance_spec
-        query['LastToken'] = request.last_token
-        query['Limit'] = request.limit
-        query['ProdCode'] = request.prod_code
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryDPUtilizationDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryDPUtilizationDetailResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryDPUtilizationDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_dputilization_detail_with_options_async(
@@ -3902,35 +2091,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CommodityCode'] = request.commodity_code
-        query['DeductedInstanceId'] = request.deducted_instance_id
-        query['EndTime'] = request.end_time
-        query['IncludeShare'] = request.include_share
-        query['InstanceId'] = request.instance_id
-        query['InstanceSpec'] = request.instance_spec
-        query['LastToken'] = request.last_token
-        query['Limit'] = request.limit
-        query['ProdCode'] = request.prod_code
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryDPUtilizationDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryDPUtilizationDetailResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryDPUtilizationDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_dputilization_detail(
@@ -3953,39 +2119,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryEvaluateListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillCycle'] = request.bill_cycle
-        query['BizTypeList'] = request.biz_type_list
-        query['EndAmount'] = request.end_amount
-        query['EndBizTime'] = request.end_biz_time
-        query['EndSearchTime'] = request.end_search_time
-        query['OutBizId'] = request.out_biz_id
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['SortType'] = request.sort_type
-        query['StartAmount'] = request.start_amount
-        query['StartBizTime'] = request.start_biz_time
-        query['StartSearchTime'] = request.start_search_time
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryEvaluateList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryEvaluateListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryEvaluateList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_evaluate_list_with_options_async(
@@ -3994,39 +2133,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryEvaluateListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillCycle'] = request.bill_cycle
-        query['BizTypeList'] = request.biz_type_list
-        query['EndAmount'] = request.end_amount
-        query['EndBizTime'] = request.end_biz_time
-        query['EndSearchTime'] = request.end_search_time
-        query['OutBizId'] = request.out_biz_id
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['SortType'] = request.sort_type
-        query['StartAmount'] = request.start_amount
-        query['StartBizTime'] = request.start_biz_time
-        query['StartSearchTime'] = request.start_search_time
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryEvaluateList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryEvaluateListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryEvaluateList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_evaluate_list(
@@ -4049,26 +2161,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryFinancialAccountInfoResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryFinancialAccountInfo',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryFinancialAccountInfoResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryFinancialAccountInfo', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_financial_account_info_with_options_async(
@@ -4077,26 +2175,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryFinancialAccountInfoResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryFinancialAccountInfo',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryFinancialAccountInfoResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryFinancialAccountInfo', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_financial_account_info(
@@ -4119,37 +2203,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['BillingDate'] = request.billing_date
-        query['Granularity'] = request.granularity
-        query['IsBillingItem'] = request.is_billing_item
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryInstanceBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryInstanceBillResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryInstanceBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_instance_bill_with_options_async(
@@ -4158,37 +2217,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['BillingDate'] = request.billing_date
-        query['Granularity'] = request.granularity
-        query['IsBillingItem'] = request.is_billing_item
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryInstanceBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryInstanceBillResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryInstanceBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_instance_bill(
@@ -4211,28 +2245,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceByTagResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryInstanceByTag',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryInstanceByTagResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryInstanceByTag', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_instance_by_tag_with_options_async(
@@ -4241,28 +2259,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceByTagResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryInstanceByTag',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryInstanceByTagResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryInstanceByTag', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_instance_by_tag(
@@ -4285,31 +2287,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceGaapCostResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillingCycle'] = request.billing_cycle
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryInstanceGaapCost',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryInstanceGaapCostResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryInstanceGaapCost', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_instance_gaap_cost_with_options_async(
@@ -4318,31 +2301,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceGaapCostResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillingCycle'] = request.billing_cycle
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryInstanceGaapCost',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryInstanceGaapCostResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryInstanceGaapCost', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_instance_gaap_cost(
@@ -4365,26 +2329,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInvoicingCustomerListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryInvoicingCustomerList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryInvoicingCustomerListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryInvoicingCustomerList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_invoicing_customer_list_with_options_async(
@@ -4393,26 +2343,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInvoicingCustomerListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryInvoicingCustomerList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryInvoicingCustomerListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryInvoicingCustomerList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_invoicing_customer_list(
@@ -4435,26 +2371,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryMonthlyBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillingCycle'] = request.billing_cycle
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryMonthlyBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryMonthlyBillResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryMonthlyBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_monthly_bill_with_options_async(
@@ -4463,26 +2385,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryMonthlyBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillingCycle'] = request.billing_cycle
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryMonthlyBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryMonthlyBillResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryMonthlyBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_monthly_bill(
@@ -4505,32 +2413,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryMonthlyInstanceConsumptionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillingCycle'] = request.billing_cycle
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryMonthlyInstanceConsumption',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryMonthlyInstanceConsumptionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryMonthlyInstanceConsumption', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_monthly_instance_consumption_with_options_async(
@@ -4539,32 +2427,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryMonthlyInstanceConsumptionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillingCycle'] = request.billing_cycle
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryMonthlyInstanceConsumption',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryMonthlyInstanceConsumptionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryMonthlyInstanceConsumption', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_monthly_instance_consumption(
@@ -4587,35 +2455,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryOrdersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CreateTimeEnd'] = request.create_time_end
-        query['CreateTimeStart'] = request.create_time_start
-        query['OrderType'] = request.order_type
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['PaymentStatus'] = request.payment_status
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryOrders',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryOrdersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryOrders', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_orders_with_options_async(
@@ -4624,35 +2469,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryOrdersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CreateTimeEnd'] = request.create_time_end
-        query['CreateTimeStart'] = request.create_time_start
-        query['OrderType'] = request.order_type
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['PaymentStatus'] = request.payment_status
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryOrders',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryOrdersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryOrders', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_orders(
@@ -4675,26 +2497,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPermissionListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['RelationId'] = request.relation_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryPermissionList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryPermissionListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryPermissionList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_permission_list_with_options_async(
@@ -4703,26 +2511,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPermissionListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['RelationId'] = request.relation_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryPermissionList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryPermissionListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryPermissionList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_permission_list(
@@ -4745,28 +2539,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPrepaidCardsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EffectiveOrNot'] = request.effective_or_not
-        query['ExpiryTimeEnd'] = request.expiry_time_end
-        query['ExpiryTimeStart'] = request.expiry_time_start
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryPrepaidCards',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryPrepaidCardsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryPrepaidCards', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_prepaid_cards_with_options_async(
@@ -4775,28 +2553,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPrepaidCardsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EffectiveOrNot'] = request.effective_or_not
-        query['ExpiryTimeEnd'] = request.expiry_time_end
-        query['ExpiryTimeStart'] = request.expiry_time_start
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryPrepaidCards',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryPrepaidCardsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryPrepaidCards', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_prepaid_cards(
@@ -4819,28 +2581,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryProductListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['QueryTotalCount'] = request.query_total_count
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryProductList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryProductListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryProductList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_product_list_with_options_async(
@@ -4849,28 +2595,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryProductListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['QueryTotalCount'] = request.query_total_count
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryProductList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryProductListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryProductList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_product_list(
@@ -4893,33 +2623,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRIUtilizationDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DeductedInstanceId'] = request.deducted_instance_id
-        query['EndTime'] = request.end_time
-        query['InstanceSpec'] = request.instance_spec
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['RICommodityCode'] = request.ricommodity_code
-        query['RIInstanceId'] = request.riinstance_id
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryRIUtilizationDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryRIUtilizationDetailResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryRIUtilizationDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_riutilization_detail_with_options_async(
@@ -4928,33 +2637,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRIUtilizationDetailResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DeductedInstanceId'] = request.deducted_instance_id
-        query['EndTime'] = request.end_time
-        query['InstanceSpec'] = request.instance_spec
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['RICommodityCode'] = request.ricommodity_code
-        query['RIInstanceId'] = request.riinstance_id
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryRIUtilizationDetail',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryRIUtilizationDetailResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryRIUtilizationDetail', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_riutilization_detail(
@@ -4979,22 +2667,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryRedeem',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryRedeemResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryRedeem', '2017-12-14', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     async def query_redeem_with_options_async(
@@ -5005,22 +2682,11 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryRedeem',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
+            query=query
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryRedeemResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryRedeem', '2017-12-14', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
         )
 
     def query_redeem(
@@ -5043,29 +2709,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRelationListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['StatusList'] = request.status_list
-        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryRelationList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryRelationListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryRelationList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_relation_list_with_options_async(
@@ -5074,29 +2723,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRelationListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['StatusList'] = request.status_list
-        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryRelationList',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryRelationListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryRelationList', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_relation_list(
@@ -5119,27 +2751,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ItemCodes'] = request.item_codes
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryResellerAvailableQuota',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryResellerAvailableQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_reseller_available_quota_with_options_async(
@@ -5148,27 +2765,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ItemCodes'] = request.item_codes
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryResellerAvailableQuota',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryResellerAvailableQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_reseller_available_quota(
@@ -5191,32 +2793,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ExpiryTimeEnd'] = request.expiry_time_end
-        query['ExpiryTimeStart'] = request.expiry_time_start
-        query['IncludePartner'] = request.include_partner
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryResourcePackageInstances',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryResourcePackageInstancesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryResourcePackageInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_resource_package_instances_with_options_async(
@@ -5225,32 +2807,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ExpiryTimeEnd'] = request.expiry_time_end
-        query['ExpiryTimeStart'] = request.expiry_time_start
-        query['IncludePartner'] = request.include_partner
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryResourcePackageInstances',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryResourcePackageInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryResourcePackageInstances', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_resource_package_instances(
@@ -5273,32 +2835,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EndTime'] = request.end_time
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['Locale'] = request.locale
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySavingsPlansDeductLog',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QuerySavingsPlansDeductLog', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_savings_plans_deduct_log_with_options_async(
@@ -5307,32 +2849,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EndTime'] = request.end_time
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['Locale'] = request.locale
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySavingsPlansDeductLog',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QuerySavingsPlansDeductLog', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_savings_plans_deduct_log(
@@ -5355,32 +2877,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EndTime'] = request.end_time
-        query['InstanceId'] = request.instance_id
-        query['Locale'] = request.locale
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySavingsPlansInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QuerySavingsPlansInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_savings_plans_instance_with_options_async(
@@ -5389,32 +2891,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EndTime'] = request.end_time
-        query['InstanceId'] = request.instance_id
-        query['Locale'] = request.locale
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySavingsPlansInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QuerySavingsPlansInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_savings_plans_instance(
@@ -5437,37 +2919,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySettleBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['IsDisplayLocalCurrency'] = request.is_display_local_currency
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['RecordID'] = request.record_id
-        query['SubscriptionType'] = request.subscription_type
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySettleBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySettleBillResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QuerySettleBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_settle_bill_with_options_async(
@@ -5476,37 +2933,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySettleBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['IsDisplayLocalCurrency'] = request.is_display_local_currency
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['RecordID'] = request.record_id
-        query['SubscriptionType'] = request.subscription_type
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySettleBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySettleBillResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QuerySettleBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_settle_bill(
@@ -5529,36 +2961,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySettlementBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillingCycle'] = request.billing_cycle
-        query['EndTime'] = request.end_time
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['StartTime'] = request.start_time
-        query['SubscriptionType'] = request.subscription_type
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySettlementBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySettlementBillResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QuerySettlementBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_settlement_bill_with_options_async(
@@ -5567,36 +2975,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySettlementBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillingCycle'] = request.billing_cycle
-        query['EndTime'] = request.end_time
-        query['IsHideZeroCharge'] = request.is_hide_zero_charge
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['StartTime'] = request.start_time
-        query['SubscriptionType'] = request.subscription_type
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySettlementBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySettlementBillResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QuerySettlementBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_settlement_bill(
@@ -5619,33 +3003,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySplitItemBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySplitItemBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySplitItemBillResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QuerySplitItemBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_split_item_bill_with_options_async(
@@ -5654,33 +3017,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySplitItemBillResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BillOwnerId'] = request.bill_owner_id
-        query['BillingCycle'] = request.billing_cycle
-        query['OwnerId'] = request.owner_id
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QuerySplitItemBill',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QuerySplitItemBillResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QuerySplitItemBill', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_split_item_bill(
@@ -5703,32 +3045,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryUserOmsDataResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DataType'] = request.data_type
-        query['EndTime'] = request.end_time
-        query['Marker'] = request.marker
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['Table'] = request.table
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryUserOmsData',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryUserOmsDataResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('QueryUserOmsData', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def query_user_oms_data_with_options_async(
@@ -5737,32 +3059,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryUserOmsDataResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DataType'] = request.data_type
-        query['EndTime'] = request.end_time
-        query['Marker'] = request.marker
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['Table'] = request.table
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryUserOmsData',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.QueryUserOmsDataResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('QueryUserOmsData', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def query_user_oms_data(
@@ -5785,29 +3087,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RelieveAccountRelationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ChildUserId'] = request.child_user_id
-        query['ParentUserId'] = request.parent_user_id
-        query['RelationType'] = request.relation_type
-        query['RequestId'] = request.request_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RelieveAccountRelation',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.RelieveAccountRelationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RelieveAccountRelation', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def relieve_account_relation_with_options_async(
@@ -5816,29 +3101,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RelieveAccountRelationResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ChildUserId'] = request.child_user_id
-        query['ParentUserId'] = request.parent_user_id
-        query['RelationType'] = request.relation_type
-        query['RequestId'] = request.request_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RelieveAccountRelation',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.RelieveAccountRelationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RelieveAccountRelation', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def relieve_account_relation(
@@ -5861,31 +3129,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['RenewPeriod'] = request.renew_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RenewInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.RenewInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RenewInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def renew_instance_with_options_async(
@@ -5894,31 +3143,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['RenewPeriod'] = request.renew_period
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RenewInstance',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.RenewInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RenewInstance', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def renew_instance(
@@ -5941,30 +3171,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewResourcePackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Duration'] = request.duration
-        query['EffectiveDate'] = request.effective_date
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['PricingCycle'] = request.pricing_cycle
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RenewResourcePackage',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.RenewResourcePackageResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RenewResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def renew_resource_package_with_options_async(
@@ -5973,30 +3185,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewResourcePackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Duration'] = request.duration
-        query['EffectiveDate'] = request.effective_date
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['PricingCycle'] = request.pricing_cycle
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RenewResourcePackage',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.RenewResourcePackageResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RenewResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def renew_resource_package(
@@ -6019,33 +3213,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SaveUserCreditResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AvoidExpiration'] = request.avoid_expiration
-        query['AvoidNotification'] = request.avoid_notification
-        query['AvoidPrepaidExpiration'] = request.avoid_prepaid_expiration
-        query['AvoidPrepaidNotification'] = request.avoid_prepaid_notification
-        query['CreditType'] = request.credit_type
-        query['CreditValue'] = request.credit_value
-        query['Description'] = request.description
-        query['Operator'] = request.operator
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SaveUserCredit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SaveUserCreditResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('SaveUserCredit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def save_user_credit_with_options_async(
@@ -6054,33 +3227,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SaveUserCreditResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AvoidExpiration'] = request.avoid_expiration
-        query['AvoidNotification'] = request.avoid_notification
-        query['AvoidPrepaidExpiration'] = request.avoid_prepaid_expiration
-        query['AvoidPrepaidNotification'] = request.avoid_prepaid_notification
-        query['CreditType'] = request.credit_type
-        query['CreditValue'] = request.credit_value
-        query['Description'] = request.description
-        query['Operator'] = request.operator
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SaveUserCredit',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SaveUserCreditResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('SaveUserCredit', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def save_user_credit(
@@ -6103,27 +3255,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetAllExpirationDayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['UnifyExpireDay'] = request.unify_expire_day
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetAllExpirationDay',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetAllExpirationDayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('SetAllExpirationDay', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def set_all_expiration_day_with_options_async(
@@ -6132,27 +3269,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetAllExpirationDayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['UnifyExpireDay'] = request.unify_expire_day
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetAllExpirationDay',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetAllExpirationDayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('SetAllExpirationDay', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def set_all_expiration_day(
@@ -6175,42 +3297,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetCreditLabelActionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ActionType'] = request.action_type
-        query['ClearCycle'] = request.clear_cycle
-        query['CreditAmount'] = request.credit_amount
-        query['CurrencyCode'] = request.currency_code
-        query['DailyCycle'] = request.daily_cycle
-        query['Description'] = request.description
-        query['IsNeedAddSettleLabel'] = request.is_need_add_settle_label
-        query['IsNeedAdjustCreditAccount'] = request.is_need_adjust_credit_account
-        query['IsNeedSaveNotifyRule'] = request.is_need_save_notify_rule
-        query['IsNeedSetCreditAmount'] = request.is_need_set_credit_amount
-        query['NeedNotice'] = request.need_notice
-        query['NewCreateMode'] = request.new_create_mode
-        query['Operator'] = request.operator
-        query['RequestId'] = request.request_id
-        query['SiteCode'] = request.site_code
-        query['Source'] = request.source
-        query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetCreditLabelAction',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetCreditLabelActionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('SetCreditLabelAction', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def set_credit_label_action_with_options_async(
@@ -6219,42 +3311,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetCreditLabelActionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ActionType'] = request.action_type
-        query['ClearCycle'] = request.clear_cycle
-        query['CreditAmount'] = request.credit_amount
-        query['CurrencyCode'] = request.currency_code
-        query['DailyCycle'] = request.daily_cycle
-        query['Description'] = request.description
-        query['IsNeedAddSettleLabel'] = request.is_need_add_settle_label
-        query['IsNeedAdjustCreditAccount'] = request.is_need_adjust_credit_account
-        query['IsNeedSaveNotifyRule'] = request.is_need_save_notify_rule
-        query['IsNeedSetCreditAmount'] = request.is_need_set_credit_amount
-        query['NeedNotice'] = request.need_notice
-        query['NewCreateMode'] = request.new_create_mode
-        query['Operator'] = request.operator
-        query['RequestId'] = request.request_id
-        query['SiteCode'] = request.site_code
-        query['Source'] = request.source
-        query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetCreditLabelAction',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetCreditLabelActionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('SetCreditLabelAction', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def set_credit_label_action(
@@ -6277,33 +3339,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetRenewalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceIDs'] = request.instance_ids
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['RenewalPeriod'] = request.renewal_period
-        query['RenewalPeriodUnit'] = request.renewal_period_unit
-        query['RenewalStatus'] = request.renewal_status
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetRenewal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetRenewalResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('SetRenewal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def set_renewal_with_options_async(
@@ -6312,33 +3353,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetRenewalResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceIDs'] = request.instance_ids
-        query['OwnerId'] = request.owner_id
-        query['ProductCode'] = request.product_code
-        query['ProductType'] = request.product_type
-        query['RenewalPeriod'] = request.renewal_period
-        query['RenewalPeriodUnit'] = request.renewal_period_unit
-        query['RenewalStatus'] = request.renewal_status
-        query['SubscriptionType'] = request.subscription_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetRenewal',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetRenewalResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('SetRenewal', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def set_renewal(
@@ -6361,28 +3381,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AlarmThresholds'] = request.alarm_thresholds
-        query['AlarmType'] = request.alarm_type
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetResellerUserAlarmThreshold',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('SetResellerUserAlarmThreshold', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def set_reseller_user_alarm_threshold_with_options_async(
@@ -6391,28 +3395,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AlarmThresholds'] = request.alarm_thresholds
-        query['AlarmType'] = request.alarm_type
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetResellerUserAlarmThreshold',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('SetResellerUserAlarmThreshold', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def set_reseller_user_alarm_threshold(
@@ -6435,29 +3423,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Amount'] = request.amount
-        query['Currency'] = request.currency
-        query['OutBizId'] = request.out_biz_id
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetResellerUserQuota',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetResellerUserQuotaResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('SetResellerUserQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def set_reseller_user_quota_with_options_async(
@@ -6466,29 +3437,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Amount'] = request.amount
-        query['Currency'] = request.currency
-        query['OutBizId'] = request.out_biz_id
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetResellerUserQuota',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetResellerUserQuotaResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('SetResellerUserQuota', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def set_reseller_user_quota(
@@ -6511,28 +3465,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BusinessType'] = request.business_type
-        query['OwnerId'] = request.owner_id
-        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetResellerUserStatus',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetResellerUserStatusResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('SetResellerUserStatus', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def set_reseller_user_status_with_options_async(
@@ -6541,28 +3479,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BusinessType'] = request.business_type
-        query['OwnerId'] = request.owner_id
-        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetResellerUserStatus',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SetResellerUserStatusResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('SetResellerUserStatus', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def set_reseller_user_status(
@@ -6585,30 +3507,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BeginBillingCycle'] = request.begin_billing_cycle
-        query['BucketOwnerId'] = request.bucket_owner_id
-        query['MultAccountRelSubscribe'] = request.mult_account_rel_subscribe
-        query['SubscribeBucket'] = request.subscribe_bucket
-        query['SubscribeType'] = request.subscribe_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SubscribeBillToOSS',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SubscribeBillToOSSResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('SubscribeBillToOSS', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def subscribe_bill_to_osswith_options_async(
@@ -6617,30 +3521,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BeginBillingCycle'] = request.begin_billing_cycle
-        query['BucketOwnerId'] = request.bucket_owner_id
-        query['MultAccountRelSubscribe'] = request.mult_account_rel_subscribe
-        query['SubscribeBucket'] = request.subscribe_bucket
-        query['SubscribeType'] = request.subscribe_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SubscribeBillToOSS',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.SubscribeBillToOSSResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('SubscribeBillToOSS', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def subscribe_bill_to_oss(
@@ -6663,28 +3549,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.TagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('TagResources', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -6693,28 +3563,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.TagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('TagResources', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def tag_resources(
@@ -6737,27 +3591,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UnsubscribeBillToOSSResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MultAccountRelSubscribe'] = request.mult_account_rel_subscribe
-        query['SubscribeType'] = request.subscribe_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnsubscribeBillToOSS',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.UnsubscribeBillToOSSResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UnsubscribeBillToOSS', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def unsubscribe_bill_to_osswith_options_async(
@@ -6766,27 +3605,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UnsubscribeBillToOSSResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MultAccountRelSubscribe'] = request.mult_account_rel_subscribe
-        query['SubscribeType'] = request.subscribe_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnsubscribeBillToOSS',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.UnsubscribeBillToOSSResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UnsubscribeBillToOSS', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def unsubscribe_bill_to_oss(
@@ -6809,29 +3633,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['All'] = request.all
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UntagResources', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -6840,29 +3647,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['All'] = request.all
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UntagResources', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def untag_resources(
@@ -6885,29 +3675,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UpgradeResourcePackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EffectiveDate'] = request.effective_date
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['Specification'] = request.specification
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpgradeResourcePackage',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.UpgradeResourcePackageResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpgradeResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def upgrade_resource_package_with_options_async(
@@ -6916,29 +3689,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UpgradeResourcePackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EffectiveDate'] = request.effective_date
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['Specification'] = request.specification
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpgradeResourcePackage',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             bss_open_api_20171214_models.UpgradeResourcePackageResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpgradeResourcePackage', '2017-12-14', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def upgrade_resource_package(
