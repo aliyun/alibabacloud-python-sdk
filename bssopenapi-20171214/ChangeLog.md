@@ -1,3 +1,6 @@
+2021-11-23 Version: 2.0.1
+- Add Create Savingplan Instance API.
+
 2021-08-12 Version: 1.0.8
 - Generated python 2017-12-14 for BssOpenApi.
 
