@@ -393,6 +393,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_node_with_options_async(request, runtime)
 
+    def create_node_batch_with_options(
+        self,
+        request: dds_20151201_models.CreateNodeBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.CreateNodeBatchResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.CreateNodeBatchResponse(),
+            self.do_rpcrequest('CreateNodeBatch', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def create_node_batch_with_options_async(
+        self,
+        request: dds_20151201_models.CreateNodeBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.CreateNodeBatchResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.CreateNodeBatchResponse(),
+            await self.do_rpcrequest_async('CreateNodeBatch', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def create_node_batch(
+        self,
+        request: dds_20151201_models.CreateNodeBatchRequest,
+    ) -> dds_20151201_models.CreateNodeBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_node_batch_with_options(request, runtime)
+
+    async def create_node_batch_async(
+        self,
+        request: dds_20151201_models.CreateNodeBatchRequest,
+    ) -> dds_20151201_models.CreateNodeBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_node_batch_with_options_async(request, runtime)
+
     def create_recommendation_task_with_options(
         self,
         request: dds_20151201_models.CreateRecommendationTaskRequest,
@@ -897,6 +939,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_records_with_options_async(request, runtime)
 
+    def describe_available_engine_version_with_options(
+        self,
+        request: dds_20151201_models.DescribeAvailableEngineVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeAvailableEngineVersionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeAvailableEngineVersionResponse(),
+            self.do_rpcrequest('DescribeAvailableEngineVersion', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_available_engine_version_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeAvailableEngineVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeAvailableEngineVersionResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeAvailableEngineVersionResponse(),
+            await self.do_rpcrequest_async('DescribeAvailableEngineVersion', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_available_engine_version(
+        self,
+        request: dds_20151201_models.DescribeAvailableEngineVersionRequest,
+    ) -> dds_20151201_models.DescribeAvailableEngineVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_available_engine_version_with_options(request, runtime)
+
+    async def describe_available_engine_version_async(
+        self,
+        request: dds_20151201_models.DescribeAvailableEngineVersionRequest,
+    ) -> dds_20151201_models.DescribeAvailableEngineVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_available_engine_version_with_options_async(request, runtime)
+
+    def describe_available_resource_with_options(
+        self,
+        request: dds_20151201_models.DescribeAvailableResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeAvailableResourceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeAvailableResourceResponse(),
+            self.do_rpcrequest('DescribeAvailableResource', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_available_resource_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeAvailableResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeAvailableResourceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeAvailableResourceResponse(),
+            await self.do_rpcrequest_async('DescribeAvailableResource', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_available_resource(
+        self,
+        request: dds_20151201_models.DescribeAvailableResourceRequest,
+    ) -> dds_20151201_models.DescribeAvailableResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_available_resource_with_options(request, runtime)
+
+    async def describe_available_resource_async(
+        self,
+        request: dds_20151201_models.DescribeAvailableResourceRequest,
+    ) -> dds_20151201_models.DescribeAvailableResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_available_resource_with_options_async(request, runtime)
+
     def describe_available_time_range_with_options(
         self,
         request: dds_20151201_models.DescribeAvailableTimeRangeRequest,
@@ -1233,48 +1359,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_performance_with_options_async(request, runtime)
 
-    def describe_dbinstances_with_options(
-        self,
-        request: dds_20151201_models.DescribeDBInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeDBInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeDBInstancesResponse(),
-            self.do_rpcrequest('DescribeDBInstances', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_dbinstances_with_options_async(
-        self,
-        request: dds_20151201_models.DescribeDBInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeDBInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeDBInstancesResponse(),
-            await self.do_rpcrequest_async('DescribeDBInstances', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_dbinstances(
-        self,
-        request: dds_20151201_models.DescribeDBInstancesRequest,
-    ) -> dds_20151201_models.DescribeDBInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dbinstances_with_options(request, runtime)
-
-    async def describe_dbinstances_async(
-        self,
-        request: dds_20151201_models.DescribeDBInstancesRequest,
-    ) -> dds_20151201_models.DescribeDBInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dbinstances_with_options_async(request, runtime)
-
     def describe_dbinstance_sslwith_options(
         self,
         request: dds_20151201_models.DescribeDBInstanceSSLRequest,
@@ -1358,6 +1442,48 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DescribeDBInstanceTDEInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_tdeinfo_with_options_async(request, runtime)
+
+    def describe_dbinstances_with_options(
+        self,
+        request: dds_20151201_models.DescribeDBInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeDBInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeDBInstancesResponse(),
+            self.do_rpcrequest('DescribeDBInstances', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_dbinstances_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeDBInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeDBInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeDBInstancesResponse(),
+            await self.do_rpcrequest_async('DescribeDBInstances', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_dbinstances(
+        self,
+        request: dds_20151201_models.DescribeDBInstancesRequest,
+    ) -> dds_20151201_models.DescribeDBInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstances_with_options(request, runtime)
+
+    async def describe_dbinstances_async(
+        self,
+        request: dds_20151201_models.DescribeDBInstancesRequest,
+    ) -> dds_20151201_models.DescribeDBInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstances_with_options_async(request, runtime)
 
     def describe_dedicated_cluster_instance_list_with_options(
         self,
@@ -1611,48 +1737,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameter_modification_history_with_options_async(request, runtime)
 
-    def describe_parameters_with_options(
-        self,
-        request: dds_20151201_models.DescribeParametersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeParametersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeParametersResponse(),
-            self.do_rpcrequest('DescribeParameters', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_parameters_with_options_async(
-        self,
-        request: dds_20151201_models.DescribeParametersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeParametersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeParametersResponse(),
-            await self.do_rpcrequest_async('DescribeParameters', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_parameters(
-        self,
-        request: dds_20151201_models.DescribeParametersRequest,
-    ) -> dds_20151201_models.DescribeParametersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_parameters_with_options(request, runtime)
-
-    async def describe_parameters_async(
-        self,
-        request: dds_20151201_models.DescribeParametersRequest,
-    ) -> dds_20151201_models.DescribeParametersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_parameters_with_options_async(request, runtime)
-
     def describe_parameter_templates_with_options(
         self,
         request: dds_20151201_models.DescribeParameterTemplatesRequest,
@@ -1694,6 +1778,48 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DescribeParameterTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameter_templates_with_options_async(request, runtime)
+
+    def describe_parameters_with_options(
+        self,
+        request: dds_20151201_models.DescribeParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeParametersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeParametersResponse(),
+            self.do_rpcrequest('DescribeParameters', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_parameters_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeParametersResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeParametersResponse(),
+            await self.do_rpcrequest_async('DescribeParameters', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_parameters(
+        self,
+        request: dds_20151201_models.DescribeParametersRequest,
+    ) -> dds_20151201_models.DescribeParametersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parameters_with_options(request, runtime)
+
+    async def describe_parameters_async(
+        self,
+        request: dds_20151201_models.DescribeParametersRequest,
+    ) -> dds_20151201_models.DescribeParametersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parameters_with_options_async(request, runtime)
 
     def describe_price_with_options(
         self,
@@ -1778,6 +1904,48 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def describe_renewal_price_with_options(
+        self,
+        request: dds_20151201_models.DescribeRenewalPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeRenewalPriceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeRenewalPriceResponse(),
+            self.do_rpcrequest('DescribeRenewalPrice', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_renewal_price_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeRenewalPriceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeRenewalPriceResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeRenewalPriceResponse(),
+            await self.do_rpcrequest_async('DescribeRenewalPrice', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_renewal_price(
+        self,
+        request: dds_20151201_models.DescribeRenewalPriceRequest,
+    ) -> dds_20151201_models.DescribeRenewalPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_renewal_price_with_options(request, runtime)
+
+    async def describe_renewal_price_async(
+        self,
+        request: dds_20151201_models.DescribeRenewalPriceRequest,
+    ) -> dds_20151201_models.DescribeRenewalPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_renewal_price_with_options_async(request, runtime)
 
     def describe_replica_set_role_with_options(
         self,
@@ -2072,6 +2240,90 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DescribeSlowLogRecordsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_log_records_with_options_async(request, runtime)
+
+    def describe_tags_with_options(
+        self,
+        request: dds_20151201_models.DescribeTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeTagsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeTagsResponse(),
+            self.do_rpcrequest('DescribeTags', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_tags_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeTagsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeTagsResponse(),
+            await self.do_rpcrequest_async('DescribeTags', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_tags(
+        self,
+        request: dds_20151201_models.DescribeTagsRequest,
+    ) -> dds_20151201_models.DescribeTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tags_with_options(request, runtime)
+
+    async def describe_tags_async(
+        self,
+        request: dds_20151201_models.DescribeTagsRequest,
+    ) -> dds_20151201_models.DescribeTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tags_with_options_async(request, runtime)
+
+    def describe_user_encryption_key_list_with_options(
+        self,
+        request: dds_20151201_models.DescribeUserEncryptionKeyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeUserEncryptionKeyListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeUserEncryptionKeyListResponse(),
+            self.do_rpcrequest('DescribeUserEncryptionKeyList', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def describe_user_encryption_key_list_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeUserEncryptionKeyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeUserEncryptionKeyListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeUserEncryptionKeyListResponse(),
+            await self.do_rpcrequest_async('DescribeUserEncryptionKeyList', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def describe_user_encryption_key_list(
+        self,
+        request: dds_20151201_models.DescribeUserEncryptionKeyListRequest,
+    ) -> dds_20151201_models.DescribeUserEncryptionKeyListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_encryption_key_list_with_options(request, runtime)
+
+    async def describe_user_encryption_key_list_async(
+        self,
+        request: dds_20151201_models.DescribeUserEncryptionKeyListRequest,
+    ) -> dds_20151201_models.DescribeUserEncryptionKeyListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
 
     def destroy_instance_with_options(
         self,
@@ -2703,48 +2955,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_network_type_with_options_async(request, runtime)
 
-    def modify_dbinstance_spec_with_options(
-        self,
-        request: dds_20151201_models.ModifyDBInstanceSpecRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.ModifyDBInstanceSpecResponse(),
-            self.do_rpcrequest('ModifyDBInstanceSpec', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_dbinstance_spec_with_options_async(
-        self,
-        request: dds_20151201_models.ModifyDBInstanceSpecRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.ModifyDBInstanceSpecResponse(),
-            await self.do_rpcrequest_async('ModifyDBInstanceSpec', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_dbinstance_spec(
-        self,
-        request: dds_20151201_models.ModifyDBInstanceSpecRequest,
-    ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_dbinstance_spec_with_options(request, runtime)
-
-    async def modify_dbinstance_spec_async(
-        self,
-        request: dds_20151201_models.ModifyDBInstanceSpecRequest,
-    ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_dbinstance_spec_with_options_async(request, runtime)
-
     def modify_dbinstance_sslwith_options(
         self,
         request: dds_20151201_models.ModifyDBInstanceSSLRequest,
@@ -2786,6 +2996,48 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ModifyDBInstanceSSLResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_sslwith_options_async(request, runtime)
+
+    def modify_dbinstance_spec_with_options(
+        self,
+        request: dds_20151201_models.ModifyDBInstanceSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyDBInstanceSpecResponse(),
+            self.do_rpcrequest('ModifyDBInstanceSpec', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_dbinstance_spec_with_options_async(
+        self,
+        request: dds_20151201_models.ModifyDBInstanceSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyDBInstanceSpecResponse(),
+            await self.do_rpcrequest_async('ModifyDBInstanceSpec', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_dbinstance_spec(
+        self,
+        request: dds_20151201_models.ModifyDBInstanceSpecRequest,
+    ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_spec_with_options(request, runtime)
+
+    async def modify_dbinstance_spec_async(
+        self,
+        request: dds_20151201_models.ModifyDBInstanceSpecRequest,
+    ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_spec_with_options_async(request, runtime)
 
     def modify_dbinstance_tdewith_options(
         self,
@@ -2955,6 +3207,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_node_spec_with_options_async(request, runtime)
 
+    def modify_node_spec_batch_with_options(
+        self,
+        request: dds_20151201_models.ModifyNodeSpecBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyNodeSpecBatchResponse(),
+            self.do_rpcrequest('ModifyNodeSpecBatch', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_node_spec_batch_with_options_async(
+        self,
+        request: dds_20151201_models.ModifyNodeSpecBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyNodeSpecBatchResponse(),
+            await self.do_rpcrequest_async('ModifyNodeSpecBatch', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_node_spec_batch(
+        self,
+        request: dds_20151201_models.ModifyNodeSpecBatchRequest,
+    ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_node_spec_batch_with_options(request, runtime)
+
+    async def modify_node_spec_batch_async(
+        self,
+        request: dds_20151201_models.ModifyNodeSpecBatchRequest,
+    ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_node_spec_batch_with_options_async(request, runtime)
+
     def modify_parameters_with_options(
         self,
         request: dds_20151201_models.ModifyParametersRequest,
@@ -2996,6 +3290,48 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ModifyParametersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_parameters_with_options_async(request, runtime)
+
+    def modify_resource_group_with_options(
+        self,
+        request: dds_20151201_models.ModifyResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyResourceGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyResourceGroupResponse(),
+            self.do_rpcrequest('ModifyResourceGroup', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def modify_resource_group_with_options_async(
+        self,
+        request: dds_20151201_models.ModifyResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyResourceGroupResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyResourceGroupResponse(),
+            await self.do_rpcrequest_async('ModifyResourceGroup', '2015-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def modify_resource_group(
+        self,
+        request: dds_20151201_models.ModifyResourceGroupRequest,
+    ) -> dds_20151201_models.ModifyResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_resource_group_with_options(request, runtime)
+
+    async def modify_resource_group_async(
+        self,
+        request: dds_20151201_models.ModifyResourceGroupRequest,
+    ) -> dds_20151201_models.ModifyResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_resource_group_with_options_async(request, runtime)
 
     def modify_security_group_configuration_with_options(
         self,
